@@ -1,0 +1,2018 @@
+{
+    "augments": [
+        {
+            "apiName": "WarmupRoutine",
+            "calculations": {},
+            "dataValues": {
+                "DamagePerStack": 0.009999999776482582,
+                "MaxStacks": 24.0
+            },
+            "desc": "获得召唤师技能<spellName>热身动作</spellName>。<br><br><rules><spellName>热身动作</spellName>可使你通过进行引导来提升你的伤害，持续至回合结束。</rules>",
+            "iconLarge": "assets/ux/cherry/augments/icons/warmuproutine_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/warmuproutine_small.2v2_mode_fighters.png",
+            "id": 93,
+            "name": "热身动作",
+            "rarity": 0,
+            "tooltip": "进行引导，每秒使你的伤害提升2%，至多至24%。<br><br>这个回合的额外伤害：@f1@<br>额外伤害的总和：@f2@"
+        },
+        {
+            "apiName": "Vanish",
+            "calculations": {},
+            "dataValues": {
+                "StealthDuration": 4.0
+            },
+            "desc": "获得召唤师技能<spellName>遁入暗影</spellName>。<br><br><rules><spellName>遁入暗影</spellName>会使你进入<stealth>潜行</stealth>状态。</rules>",
+            "iconLarge": "assets/ux/cherry/augments/icons/vanish_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/vanish_small.2v2_mode_fighters.png",
+            "id": 89,
+            "name": "遁入暗影",
+            "rarity": 4,
+            "tooltip": "进入<stealth>隐形</stealth>状态，持续@StealthDuration@秒或直到你进行攻击或施放技能为止。<br>这个潜行不会被【奥术探测器】饰品给显形。"
+        },
+        {
+            "apiName": "Typhoon",
+            "calculations": {
+                "Damage": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "StatByNamedDataValueCalculationPart",
+                            "mDataValue": "ADRatio",
+                            "mStat": 2
+                        }
+                    ]
+                }
+            },
+            "dataValues": {
+                "ADRatio": 0.30000001192092896
+            },
+            "desc": "你的攻击会对一个额外目标发射一根弩箭，这个弩箭会造成削减过的伤害并施加攻击特效。",
+            "iconLarge": "assets/ux/cherry/augments/icons/typhoon_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/typhoon_small.2v2_mode_fighters.png",
+            "id": 87,
+            "name": "台风",
+            "rarity": 0,
+            "tooltip": "你的攻击会对一个额外目标发射一根弩箭，这个弩箭会造成@ADRatio*100@%伤害并施加攻击特效。"
+        },
+        {
+            "apiName": "QuantumComputing",
+            "calculations": {},
+            "dataValues": {
+                "AutoCastCooldown": 15.0
+            },
+            "desc": "每15秒<keywordMajor>自动</keywordMajor>在你周围进行环状斩击，外侧边缘造成额外伤害。<br><br>你的<keywordMajor>自动式</keywordMajor>强化符文会受益于技能急速。",
+            "iconLarge": "assets/ux/cherry/augments/icons/quantumcomputing_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/quantumcomputing_small.2v2_mode_fighters.png",
+            "id": 66,
+            "name": "量子计算",
+            "rarity": 8,
+            "tooltip": "每15秒<keywordMajor>自动</keywordMajor>在你周围进行环状斩击，外侧边缘造成额外伤害。<br><br>你的<keywordMajor>自动式</keywordMajor>强化符文会受益于技能急速。<br><br>已造成的伤害总和：@f1@<br>已造成的治疗效果总和：@f2@"
+        },
+        {
+            "apiName": "DemonsDance",
+            "calculations": {},
+            "dataValues": {
+                "FFHealAPRatio": 0.20000000298023224,
+                "FFHealBase": 10.0,
+                "FFHealBonusADRatio": 0.30000001192092896,
+                "FFHealCritMod": 0,
+                "FFHealMax": 100.0,
+                "FFMSBuff": 0.20000000298023224,
+                "FFMSBuffMelee": 0.20000000298023224,
+                "FFMSDuration": 1.0,
+                "GRMaxHealthPerProc": 7.0,
+                "GRMeleeFlatHeal": 3.0,
+                "GRPercentHealthDamage": 3.5,
+                "GRPercentHealthHeal": 0.012000000104308128,
+                "GRRangedHealthPerProc": 4.0,
+                "GRRangedPenaltyMod": 0.4000000059604645,
+                "GRTriggerTime": 4.0,
+                "GRWindow": 5.0
+            },
+            "desc": "获得<spellName>迅捷步法</spellName>和<spellName>不灭之握</spellName>基石符文。<br>",
+            "iconLarge": "assets/ux/cherry/augments/icons/demonsdance_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/demonsdance_small.2v2_mode_fighters.png",
+            "id": 23,
+            "name": "魔鬼之舞",
+            "rarity": 4,
+            "tooltip": "获得<spellName>迅捷步法</spellName>和<spellName>不灭之握</spellName>基石符文。<br><br>这个回合已造成的治疗效果：@f1@<br>已造成的治疗效果总和：@f2@<br>已获得的最大生命值：@f3@"
+        },
+        {
+            "apiName": "DefensiveManeuvers",
+            "calculations": {
+                "BarrierAmount": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "ByCharLevelInterpolationCalculationPart",
+                            "mEndValue": 411.0,
+                            "mStartValue": 105.0
+                        }
+                    ]
+                },
+                "HealAmount": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "ByCharLevelInterpolationCalculationPart",
+                            "mEndValue": 318.0,
+                            "mStartValue": 80.0
+                        }
+                    ]
+                }
+            },
+            "dataValues": {},
+            "desc": "获得召唤师技能<spellName>防御计略</spellName>。<br><br><rules><spellName>防御计略</spellName>会对你和你的队友施放<spellName>屏障</spellName>和<spellName>治疗术</spellName>。</rules>",
+            "iconLarge": "assets/ux/cherry/augments/icons/defensivemaneuvers_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/defensivemaneuvers_small.2v2_mode_fighters.png",
+            "id": 21,
+            "name": "防御计略",
+            "rarity": 4,
+            "tooltip": "对你和你的友军施放<abilityName>屏障</abilityName>和<abilityName>治疗术</abilityName>。提供<shield>@BarrierAmount@护盾值</shield>，回复<healing>@HealAmount@生命值</healing>并提供持续1秒的<speed>30%移动速度</speed>。<br><br>已造成的治疗效果总和：@f1@<br>已生成的护盾值总和：@f2@"
+        },
+        {
+            "apiName": "Chauffeur",
+            "calculations": {},
+            "dataValues": {
+                "AttackSpeed": 0.5,
+                "Haste": 100.0
+            },
+            "desc": "你附身于你的友军，并且无法自行移动。你的额外移动速度还会提供给你的友军，并且你获得<scaleLevel>技能急速</scaleLevel>和<attackSpeed>攻击速度</attackSpeed>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/chauffeur_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/chauffeur_small.2v2_mode_fighters.png",
+            "id": 14,
+            "name": "专属司机",
+            "rarity": 8,
+            "tooltip": "你附身于你的友军。你的额外移动速度还会提供给你的友军，并且你获得<scaleLevel>@Haste@技能急速</scaleLevel>和<attackSpeed>@AttackSpeed*100@%攻击速度</attackSpeed>。<br><br>使用一个冲刺类或闪烁类技能会使灵链被移除1.5秒，然后回链至你的友军。"
+        },
+        {
+            "apiName": "BladeWaltz",
+            "calculations": {
+                "Damage": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "ByCharLevelInterpolationCalculationPart",
+                            "mEndValue": 150.0,
+                            "mStartValue": 30.0
+                        },
+                        {
+                            "__type": "StatByCoefficientCalculationPart",
+                            "mCoefficient": 0.10000000149011612,
+                            "mStat": 2,
+                            "mStatFormula": 2
+                        },
+                        {
+                            "__type": "StatByCoefficientCalculationPart",
+                            "mCoefficient": 0.05999999865889549
+                        }
+                    ],
+                    "{37070a8d}": 4,
+                    "{cbcac618}": 4,
+                    "{e6eebb2f}": 4
+                }
+            },
+            "dataValues": {
+                "TotalHits": 8.0
+            },
+            "desc": "获得召唤师技能<spellName>利刃华尔兹</spellName>。<br><br><rules><spellName>利刃华尔兹</spellName>会让你进入不可被选取状态，在此期间对敌人进行反复突进并造成@TotalHits@次伤害。</rules>",
+            "iconLarge": "assets/ux/cherry/augments/icons/bladewaltz_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/bladewaltz_small.2v2_mode_fighters.png",
+            "id": 6,
+            "name": "利刃华尔兹",
+            "rarity": 8,
+            "tooltip": "<rules>让你进入不可被选取状态，在此期间对敌人进行突进并造成@Damage@伤害@TotalHits@次（可造成50%攻击特效伤害）。</rules><br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@<br>"
+        },
+        {
+            "apiName": "WillingSacrifice",
+            "calculations": {},
+            "dataValues": {
+                "AllyHealthThreshold": 0.30000001192092896,
+                "CurrentHealthToDrain": 0.30000001192092896
+            },
+            "desc": "当你的友军跌到<health>@AllyHealthThreshold*100@%生命值</health>以下时，将你的一些生命值换成<shield>护盾值</shield>来提供给你的友军。",
+            "iconLarge": "assets/ux/cherry/augments/icons/willingsacrifice_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/willingsacrifice_small.2v2_mode_fighters.png",
+            "id": 94,
+            "name": "自愿牺牲",
+            "rarity": 4,
+            "tooltip": "当你的友军跌到<health>@AllyHealthThreshold*100@%生命值</health>以下时，将<health>你的@CurrentHealthToDrain*100@%当前生命值</health>换成等额<shield>护盾值</shield>来提供给你的队友。<br><br>这个回合已生成的护盾值：@f1@<br>已生成的护盾值总和：@f2@"
+        },
+        {
+            "apiName": "IceCold",
+            "calculations": {},
+            "dataValues": {
+                "ExtraSlowAmount": 100.0
+            },
+            "desc": "你的<status>减速</status>效果可使移动速度降低额外的100。",
+            "iconLarge": "assets/ux/cherry/augments/icons/icecold_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/icecold_small.2v2_mode_fighters.png",
+            "id": 44,
+            "name": "冰寒",
+            "rarity": 0,
+            "tooltip": "你的<status>减速</status>效果可使移动速度降低额外的100。"
+        },
+        {
+            "apiName": "BannerofCommand",
+            "calculations": {},
+            "dataValues": {
+                "BuffDuration": 10.0,
+                "EmpowermentValue": 0.20000000298023224
+            },
+            "desc": "获得召唤师技能<spellName>号令之旗</spellName>。<br><br><rules><spellName>号令之旗</spellName>可短暂增强你的友军</rules>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/bannerofcommand_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/bannerofcommand_small.2v2_mode_fighters.png",
+            "id": 5,
+            "name": "号令之旗",
+            "rarity": 4,
+            "tooltip": "你的搭档获得额外的@EmpowermentValue*100@%<scaleHealth>生命值</scaleHealth>、<scaleAD>攻击力</scaleAD>、<scaleAP>法术强度</scaleAP>和<attackSpeed>攻击速度</attackSpeed>，持续10秒。"
+        },
+        {
+            "apiName": "TankItOrLeaveIt",
+            "calculations": {},
+            "dataValues": {
+                "CritChance": 0.20000000298023224,
+                "DamageReduction": 0.30000001192092896,
+                "MaxChance": 0.6000000238418579
+            },
+            "desc": "你可以使用你的暴击几率(最大@MaxChance*100@%几率)来进行<crit>会心防御</crit>，使你有一定几率来使所受伤害降低。获得@CritChance*100@%暴击几率。",
+            "iconLarge": "assets/ux/cherry/augments/icons/tankitorleaveit_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/tankitorleaveit_small.2v2_mode_fighters.png",
+            "id": 80,
+            "name": "会心防守",
+            "rarity": 0,
+            "tooltip": "你可以使用你的暴击几率(最大@MaxChance*100@%几率)来进行<crit>会心防御</crit>，使你有一定几率来使所受伤害降低@DamageReduction*100@%。获得@CritChance*100@%暴击几率。<br><br>这个回合已降低的伤害：@f1@<br>已降低伤害的总和：@f2@"
+        },
+        {
+            "apiName": "WitchfulThinking",
+            "calculations": {},
+            "dataValues": {
+                "AP": 70.0
+            },
+            "desc": "获得<scaleAP>@AP@法术强度</scaleAP>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/witchfulthinking_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/witchfulthinking_small.2v2_mode_fighters.png",
+            "id": 97,
+            "name": "巫师式思考",
+            "rarity": 0,
+            "tooltip": "获得<scaleAP>@AP@法术强度</scaleAP>。"
+        },
+        {
+            "apiName": "Vengeance",
+            "calculations": {},
+            "dataValues": {
+                "DamageAmp": 0.30000001192092896,
+                "Omnivamp": 0.30000001192092896
+            },
+            "desc": "在你的搭档阵亡时，获得大幅提升的伤害和全能吸血。",
+            "iconLarge": "assets/ux/cherry/augments/icons/vengeance_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/vengeance_small.2v2_mode_fighters.png",
+            "id": 90,
+            "name": "复仇",
+            "rarity": 4,
+            "tooltip": "在你的搭档阵亡时，获得@DamageAmp*100@%提升伤害和@Omnivamp*100@%全能吸血。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
+        },
+        {
+            "apiName": "Erosion",
+            "calculations": {},
+            "dataValues": {
+                "MaxStacks": 20.0,
+                "Shred": 0.014999999664723873,
+                "ShredDuration": 4.0
+            },
+            "desc": "对敌人造成伤害时会施加一层持续@ShredDuration@秒且可叠加的<scaleArmor>护甲</scaleArmor>和<scaleMR>魔法抗性</scaleMR>击碎效果。 ",
+            "iconLarge": "assets/ux/cherry/augments/icons/erosion_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/erosion_small.2v2_mode_fighters.png",
+            "id": 28,
+            "name": "侵蚀",
+            "rarity": 0,
+            "tooltip": "对敌人造成伤害时会施加一层持续@ShredDuration@秒的@Shred*100@%<scaleArmor>护甲</scaleArmor>和<scaleMR>魔法抗性</scaleMR>击碎效果。<br><br>至多可叠加@MaxStacks@层。"
+        },
+        {
+            "apiName": "ZhonyasEpiphany",
+            "calculations": {},
+            "dataValues": {
+                "Duration": 3.0
+            },
+            "desc": "获得召唤师技能<spellName>中娅显灵</spellName>。<br><br><spellName>中娅显灵</spellName> 会使你进入持续3秒的凝滞状态，使你在此期间变得不可被选取且免疫伤害但无法进行任何行动，此外，重置你各个基础技能的冷却时间。",
+            "iconLarge": "assets/ux/cherry/augments/icons/zhonyasepiphany_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/zhonyasepiphany_small.2v2_mode_fighters.png",
+            "id": 99,
+            "name": "中娅显灵",
+            "rarity": 8,
+            "tooltip": "将你置于持续3秒的凝滞状态，使你在此期间变得不可被选取且免疫伤害但无法进行任何行动，此外，重置你各个基础技能的冷却时间。"
+        },
+        {
+            "apiName": "MasterofDuality",
+            "calculations": {
+                "ADGained": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "ByCharLevelInterpolationCalculationPart",
+                            "mEndValue": 9.0,
+                            "mStartValue": 3.0
+                        }
+                    ],
+                    "{37070a8d}": 4,
+                    "{cbcac618}": 4,
+                    "{e6eebb2f}": 4
+                },
+                "APGained": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "ByCharLevelInterpolationCalculationPart",
+                            "mEndValue": 18.0,
+                            "mStartValue": 6.0
+                        }
+                    ],
+                    "{37070a8d}": 4,
+                    "{cbcac618}": 4,
+                    "{e6eebb2f}": 4
+                }
+            },
+            "dataValues": {},
+            "desc": "你的每次攻击为你提供可叠加的<scaleAP>法术强度</scaleAP>，并且你的每次技能为你提供可叠加的<scaleAD>攻击力</scaleAD>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/masterofduality_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/masterofduality_small.2v2_mode_fighters.png",
+            "id": 54,
+            "name": "物法皆修",
+            "rarity": 8,
+            "tooltip": "你的每次攻击为你提供<scaleAP>@APGained@法术强度</scaleAP>，并且你的每次技能为你提供<scaleAD>@ADGained@攻击力</scaleAD>，可无限叠加，持续到战斗结束。"
+        },
+        {
+            "apiName": "LightemUp",
+            "calculations": {
+                "Damage": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "ByCharLevelInterpolationCalculationPart",
+                            "mEndValue": 105.0,
+                            "mStartValue": 15.0
+                        },
+                        {
+                            "__type": "StatByCoefficientCalculationPart",
+                            "mCoefficient": 0.44999998807907104,
+                            "mStat": 2,
+                            "mStatFormula": 2
+                        },
+                        {
+                            "__type": "StatByCoefficientCalculationPart",
+                            "mCoefficient": 0.1899999976158142
+                        }
+                    ],
+                    "{37070a8d}": 4,
+                    "{cbcac618}": 4,
+                    "{e6eebb2f}": 4
+                },
+                "TOOLTIPONLYDamage": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "ByCharLevelInterpolationCalculationPart",
+                            "mEndValue": 420.0,
+                            "mStartValue": 60.0
+                        },
+                        {
+                            "__type": "StatByCoefficientCalculationPart",
+                            "mCoefficient": 1.7999999523162842,
+                            "mStat": 2,
+                            "mStatFormula": 2
+                        },
+                        {
+                            "__type": "StatByCoefficientCalculationPart",
+                            "mCoefficient": 0.7599999904632568
+                        }
+                    ],
+                    "{37070a8d}": 4,
+                    "{cbcac618}": 4,
+                    "{e6eebb2f}": 4
+                }
+            },
+            "dataValues": {},
+            "desc": "每第4次攻击造成额外<scaleMagic>魔法伤害</scaleMagic>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/lightemup_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/lightemup_small.2v2_mode_fighters.png",
+            "id": 51,
+            "name": "点亮他们！",
+            "rarity": 0,
+            "tooltip": "每第4次攻击造成额外<scaleMagic>@TOOLTIPONLYDamage@魔法伤害</scaleMagic>。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
+        },
+        {
+            "apiName": "SearingDawn",
+            "calculations": {
+                "Damage": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "ByCharLevelInterpolationCalculationPart",
+                            "mEndValue": 160.0,
+                            "mStartValue": 24.0
+                        }
+                    ],
+                    "{37070a8d}": 4,
+                    "{cbcac618}": 4,
+                    "{e6eebb2f}": 4
+                }
+            },
+            "dataValues": {
+                "ProcCooldown": 0.75
+            },
+            "desc": "你的技能会标记敌人，使其在被你的友军的下一个效果命中时会受到额外伤害。",
+            "iconLarge": "assets/ux/cherry/augments/icons/searingdawn_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/searingdawn_small.2v2_mode_fighters.png",
+            "id": 72,
+            "name": "炽烈黎明",
+            "rarity": 4,
+            "tooltip": "你的技能会标记敌人，使其在被你的友军的下一个攻击或技能命中时会受到额外<magicDamage>@Damage@魔法伤害</magicDamage>。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
+        },
+        {
+            "apiName": "PhenomenalEvil",
+            "calculations": {},
+            "dataValues": {
+                "ProcCooldown": 0.75
+            },
+            "desc": "在你用技能命中敌人时永久提供<scaleAP>1法术强度</scaleAP>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/phenomenalevil_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/phenomenalevil_small.2v2_mode_fighters.png",
+            "id": 65,
+            "name": "超凡邪恶",
+            "rarity": 4,
+            "tooltip": "在你用技能命中敌人时永久提供<scaleAP>1法术强度</scaleAP>。<br><br>1秒冷却时间。<br><br>已获得的法术强度：@f1@"
+        },
+        {
+            "apiName": "Vulnerability",
+            "calculations": {},
+            "dataValues": {
+                "CritChance": 0.20000000298023224,
+                "CritDamage": 0.5
+            },
+            "desc": "你的装备和持续伤害效果可以暴击。获得@CritChance*100@%暴击几率。",
+            "iconLarge": "assets/ux/cherry/augments/icons/vulnerability_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/vulnerability_small.2v2_mode_fighters.png",
+            "id": 92,
+            "name": "易损",
+            "rarity": 0,
+            "tooltip": "你的装备和持续伤害效果可以暴击来造成@CritDamage*100@%额外伤害。获得20%暴击几率。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
+        },
+        {
+            "apiName": "CannonFodder",
+            "calculations": {},
+            "dataValues": {},
+            "desc": "你会被一门大炮给发射进战斗中。",
+            "iconLarge": "assets/ux/cherry/augments/icons/cannonfodder_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/cannonfodder_small.2v2_mode_fighters.png",
+            "id": 10,
+            "name": "炮灰",
+            "rarity": 4,
+            "tooltip": "你会被一门大炮给发射进战斗中。"
+        },
+        {
+            "apiName": "MadScientist",
+            "calculations": {},
+            "dataValues": {
+                "ADAmp": 0.30000001192092896,
+                "APAmp": 0.30000001192092896,
+                "Haste": 70.0,
+                "HealthAmp": 0.20000000298023224,
+                "MovespeedAmp": 0.30000001192092896,
+                "SizeAmp": 0.30000001192092896
+            },
+            "desc": "在回合开始时，你的体型要么变大(<scaleAD>适应之力</scaleAD>和<healing>生命值</healing>)要么变小(<scaleLevel>技能急速</scaleLevel>和<speed>移动速度</speed>)。",
+            "iconLarge": "assets/ux/cherry/augments/icons/madscientist_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/madscientist_small.2v2_mode_fighters.png",
+            "id": 53,
+            "name": "科学狂人",
+            "rarity": 8,
+            "tooltip": "在回合开始时，你的体型要么变大(获得<scaleAD>@ADAmp*100@%适应之力</scaleAD>和<healing>@HealthAmp*100@%生命值</healing>)要么变小(获得<scaleLevel>@Haste@技能急速</scaleLevel>和<speed>@MovespeedAmp*100@%移动速度</speed>)。"
+        },
+        {
+            "apiName": "MountainSoul",
+            "calculations": {},
+            "dataValues": {},
+            "desc": "你获得【山脉龙魂】，在脱离战斗之后获得持续一小段时间的<shield>护盾值</shield>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/mountainsoul_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/mountainsoul_small.2v2_mode_fighters.png",
+            "id": 57,
+            "name": "山脉龙魂",
+            "rarity": 0,
+            "tooltip": "你获得【山脉龙魂】，在脱离战斗之后获得持续一小段时间的<shield>护盾值</shield>。<br><br>已生成的护盾值总和：@f1@"
+        },
+        {
+            "apiName": "UltimateRevolution",
+            "calculations": {},
+            "dataValues": {},
+            "desc": "每回合一次，在你施放终极技能后刷新你的终极技能。",
+            "iconLarge": "assets/ux/cherry/augments/icons/ultimaterevolution_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/ultimaterevolution_small.2v2_mode_fighters.png",
+            "id": 88,
+            "name": "终极刷新",
+            "rarity": 8,
+            "tooltip": "每回合一次，在你施放终极技能后刷新你的终极技能。"
+        },
+        {
+            "apiName": "FrostWraith",
+            "calculations": {},
+            "dataValues": {
+                "Cooldown": 7.0,
+                "Radius": 450.0,
+                "RootDuration": 1.0
+            },
+            "desc": "每@Cooldown@秒，<keywordMajor>自动</keywordMajor><status>禁锢</status>附近的敌人们@RootDuration@秒。<br>",
+            "iconLarge": "assets/ux/cherry/augments/icons/frostwraith_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/frostwraith_small.2v2_mode_fighters.png",
+            "id": 39,
+            "name": "冰霜 幽灵",
+            "rarity": 0,
+            "tooltip": "每@Cooldown@秒，<keywordMajor>自动</keywordMajor><status>禁锢</status>附近的敌人们@RootDuration@秒。<br><br>这个回合已禁锢的敌人数量：@f1@<br>已禁锢的敌人数量总和：@f2@"
+        },
+        {
+            "apiName": "SymphonyofWar",
+            "calculations": {
+                "ASMelee": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "ByCharLevelBreakpointsCalculationPart",
+                            "mBreakpoints": [
+                                {
+                                    "__type": "Breakpoint",
+                                    "mLevel": 3,
+                                    "{d5fd07ed}": 0.009999999776482582
+                                },
+                                {
+                                    "__type": "Breakpoint",
+                                    "mLevel": 6,
+                                    "{d5fd07ed}": 0.009999999776482582
+                                },
+                                {
+                                    "__type": "Breakpoint",
+                                    "mLevel": 9,
+                                    "{d5fd07ed}": 0.009999999776482582
+                                },
+                                {
+                                    "__type": "Breakpoint",
+                                    "mLevel": 12,
+                                    "{d5fd07ed}": 0.009999999776482582
+                                },
+                                {
+                                    "__type": "Breakpoint",
+                                    "mLevel": 15,
+                                    "{d5fd07ed}": 0.009999999776482582
+                                }
+                            ],
+                            "mLevel1Value": 0.10000000149011612
+                        }
+                    ]
+                },
+                "ASRanged": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "ByCharLevelBreakpointsCalculationPart",
+                            "mBreakpoints": [
+                                {
+                                    "__type": "Breakpoint",
+                                    "mLevel": 3,
+                                    "{d5fd07ed}": 0.009999999776482582
+                                },
+                                {
+                                    "__type": "Breakpoint",
+                                    "mLevel": 6,
+                                    "{d5fd07ed}": 0.009999999776482582
+                                },
+                                {
+                                    "__type": "Breakpoint",
+                                    "mLevel": 9,
+                                    "{d5fd07ed}": 0.009999999776482582
+                                },
+                                {
+                                    "__type": "Breakpoint",
+                                    "mLevel": 12,
+                                    "{d5fd07ed}": 0.009999999776482582
+                                }
+                            ],
+                            "mLevel1Value": 0.05000000074505806
+                        }
+                    ]
+                }
+            },
+            "dataValues": {
+                "ASCap": 10.0,
+                "BuffDuration": 5.0,
+                "Duration": 6.0,
+                "HealingPercent": 0.07999999821186066,
+                "MaxAdaptivePerStack": 4.5,
+                "MaxStacks": 12.0,
+                "MinAdaptivePerStack": 2.0,
+                "PerCastIDLockout": 10.0,
+                "RangeBonus": 50.0,
+                "RangedHealingPercent": 0.05000000074505806,
+                "StackCap": 6.0,
+                "TimeUntilNextStackFromSameSpell": 5.0
+            },
+            "desc": "获得<spellName>致命节奏</spellName>和<spellName>征服者</spellName>基石符文。",
+            "iconLarge": "assets/ux/cherry/augments/icons/symphonyofwar_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/symphonyofwar_small.2v2_mode_fighters.png",
+            "id": 79,
+            "name": "战争交响乐",
+            "rarity": 8,
+            "tooltip": "获得<spellName>致命节奏</spellName>和<spellName>征服者</spellName>基石符文。"
+        },
+        {
+            "apiName": "TrueshotProdigy",
+            "calculations": {
+                "Damage": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "ByCharLevelInterpolationCalculationPart",
+                            "mEndValue": 700.0,
+                            "mStartValue": 200.0
+                        },
+                        {
+                            "__type": "StatByCoefficientCalculationPart",
+                            "mCoefficient": 1.0,
+                            "mStat": 2,
+                            "mStatFormula": 2
+                        },
+                        {
+                            "__type": "StatByCoefficientCalculationPart",
+                            "mCoefficient": 0.8999999761581421
+                        }
+                    ],
+                    "{37070a8d}": 4,
+                    "{cbcac618}": 4,
+                    "{e6eebb2f}": 4
+                }
+            },
+            "dataValues": {
+                "Cooldown": 5.0,
+                "SnipeDistance": 700.0
+            },
+            "desc": "在你从远处对一名敌人造成伤害时，<keywordMajor>自动</keywordMajor>对其发射一道<abilityName>精准弹幕</abilityName>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/trueshotprodigy_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/trueshotprodigy_small.2v2_mode_fighters.png",
+            "id": 86,
+            "name": "精准奇才",
+            "rarity": 8,
+            "tooltip": "在你从@SnipeDistance@码外对一名敌人造成伤害时， <keywordMajor>自动</keywordMajor>对其发射一道<abilityName>精准弹幕</abilityName>，造成不限距离的@Damage@伤害。@Cooldown@秒冷却时间。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
+        },
+        {
+            "apiName": "Eureka",
+            "calculations": {},
+            "dataValues": {
+                "APToHasteConversion": 0.25
+            },
+            "desc": "获得相当于<scaleAP>你@APToHasteConversion*100@%法术强度</scaleAP>的技能急速。",
+            "iconLarge": "assets/ux/cherry/augments/icons/eureka_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/eureka_small.2v2_mode_fighters.png",
+            "id": 30,
+            "name": "尤里卡",
+            "rarity": 8,
+            "tooltip": "获得相当于<scaleAP>你@APToHasteConversion*100@%法术强度</scaleAP>的技能急速。"
+        },
+        {
+            "apiName": "OceanSoul",
+            "calculations": {},
+            "dataValues": {},
+            "desc": "获得【海洋龙魂】，在对敌方英雄造成伤害后提供高额的<healing>生命</healing>和<scaleMana>法力</scaleMana>回复。",
+            "iconLarge": "assets/ux/cherry/augments/icons/oceansoul_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/oceansoul_small.2v2_mode_fighters.png",
+            "id": 60,
+            "name": "海洋龙魂",
+            "rarity": 0,
+            "tooltip": "获得【海洋龙魂】，在对敌方英雄造成伤害后提供高额的<healing>生命</healing>和<scaleMana>法力</scaleMana>回复。<br><br>这个回合已造成的治疗效果：@f1@<br>已造成的治疗效果总和：@f2@"
+        },
+        {
+            "apiName": "CircleofDeath",
+            "calculations": {},
+            "dataValues": {
+                "DamageRange": 1000.0,
+                "HealToDamageConversion": 0.5
+            },
+            "desc": "你造成的<health>治疗效果</health>和回复效果会对相距最近的那个敌方英雄造成一部分该数额的<scaleAP>魔法伤害</scaleAP>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/circleofdeath_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/circleofdeath_small.2v2_mode_fighters.png",
+            "id": 15,
+            "name": "生机绽放",
+            "rarity": 8,
+            "tooltip": "你造成的<health>治疗效果</health>和回复效果会对相距最近的那个敌方英雄造成<magicDamage>@HealToDamageConversion*100@%该数额的魔法伤害</magicDamage>。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
+        },
+        {
+            "apiName": "Earthwake",
+            "calculations": {
+                "Damage": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "ByCharLevelInterpolationCalculationPart",
+                            "mEndValue": 2200.0,
+                            "mStartValue": 220.0
+                        },
+                        {
+                            "__type": "StatByCoefficientCalculationPart",
+                            "mCoefficient": 0.8999999761581421
+                        },
+                        {
+                            "__type": "StatByCoefficientCalculationPart",
+                            "mCoefficient": 1.600000023841858,
+                            "mStat": 2,
+                            "mStatFormula": 2
+                        }
+                    ],
+                    "{37070a8d}": 4,
+                    "{cbcac618}": 4,
+                    "{e6eebb2f}": 4
+                }
+            },
+            "dataValues": {
+                "ExplosionDelayTime": 0.75,
+                "ExplosionRadius": 300.0
+            },
+            "desc": "你的冲刺、跳跃、闪烁或传送类技能会留下一条在1秒后爆炸的轨迹。",
+            "iconLarge": "assets/ux/cherry/augments/icons/earthwake_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/earthwake_small.2v2_mode_fighters.png",
+            "id": 27,
+            "name": "大地苏醒",
+            "rarity": 8,
+            "tooltip": "你的冲刺、跳跃、闪烁或传送类技能会留下一条在1秒后爆炸的轨迹，造成@Damage@物理伤害。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
+        },
+        {
+            "apiName": "ScopedWeapons",
+            "calculations": {},
+            "dataValues": {
+                "MeleeRangeIncrease": 200.0,
+                "RangedRangeIncrease": 100.0
+            },
+            "desc": "获得@MeleeRangeIncrease@攻击距离，对远程英雄们的加成降低至@RangedRangeIncrease@攻击距离。",
+            "iconLarge": "assets/ux/cherry/augments/icons/scopedweapons_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/scopedweapons_small.2v2_mode_fighters.png",
+            "id": 71,
+            "name": "万用瞄准镜",
+            "rarity": 4,
+            "tooltip": "获得@MeleeRangeIncrease@攻击距离，对远程英雄们的加成降低至@RangedRangeIncrease@攻击距离。"
+        },
+        {
+            "apiName": "TheBrutalizer",
+            "calculations": {},
+            "dataValues": {
+                "AD": 25.0,
+                "AbilityHaste": 10.0,
+                "Lethality": 15.0
+            },
+            "desc": "获得<scaleAD>@AD@攻击力</scaleAD>、<scaleLevel>@AbilityHaste@技能急速</scaleLevel>和<scaleAD>@Lethality@穿甲</scaleAD>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/thebrutalizer_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/thebrutalizer_small.2v2_mode_fighters.png",
+            "id": 82,
+            "name": "残暴之力",
+            "rarity": 4,
+            "tooltip": "获得<scaleAD>@AD@攻击力</scaleAD>、<scaleLevel>@AbilityHaste@技能急速</scaleLevel>和<scaleAD>@Lethality@穿甲</scaleAD>。"
+        },
+        {
+            "apiName": "SonicBoom",
+            "calculations": {
+                "Damage": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "ByCharLevelInterpolationCalculationPart",
+                            "mEndValue": 160.0,
+                            "mStartValue": 40.0
+                        }
+                    ],
+                    "{37070a8d}": 2,
+                    "{cbcac618}": 2,
+                    "{e6eebb2f}": 2
+                }
+            },
+            "dataValues": {
+                "ProcCooldown": 2.0,
+                "Radius": 450.0
+            },
+            "desc": "在为你的友军提供增益效果、<healing>治疗效果</healing>或<shield>护盾效果</shield>时，会对其附近的敌人们造成伤害和<status>减速</status>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/sonicboom_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/sonicboom_small.2v2_mode_fighters.png",
+            "id": 76,
+            "name": "天音爆",
+            "rarity": 0,
+            "tooltip": "在为你的友军提供增益效果、<healing>治疗效果</healing>或<shield>护盾效果</shield>时，会对其附近的敌人们造成<trueDamage>@Damage@真实伤害</trueDamage>和持续2秒的30%<status>减速</status>。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
+        },
+        {
+            "apiName": "Evocation",
+            "calculations": {},
+            "dataValues": {
+                "Duration": 4.0,
+                "MSBuffAmount": 0.5,
+                "MSBuffDuration": 2.0,
+                "TotalHealAmount": 0.6000000238418579
+            },
+            "desc": "获得召唤师技能<spellName>活力焕发</spellName>。<br><br><rules><spellName>活力焕发</spellName>可让你进行引导来回复<healing>生命值</healing>和<scaleMana>法力值</scaleMana>。</rules>",
+            "iconLarge": "assets/ux/cherry/augments/icons/evocation_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/evocation_small.2v2_mode_fighters.png",
+            "id": 31,
+            "name": "活力焕发",
+            "rarity": 0,
+            "tooltip": "<rules>让你进行引导来回复<healing>生命值</healing>和<scaleMana>法力值</scaleMana>。然后你会获得持续@MSBuffDuration@秒的@MSBuffAmount*100@%移动速度。</rules><br><br>这个回合造成的治疗效果：@f1@<br>造成治疗效果的总和：@f2@"
+        },
+        {
+            "apiName": "CelestialBody",
+            "calculations": {},
+            "dataValues": {
+                "DamageReduction": 0.10000000149011612,
+                "Health": 1000.0
+            },
+            "desc": "获得<health>@Health@生命值</health>，但你造成的伤害降低@DamageReduction*100@%。",
+            "iconLarge": "assets/ux/cherry/augments/icons/celestialbody_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/celestialbody_small.2v2_mode_fighters.png",
+            "id": 13,
+            "name": "星界躯体",
+            "rarity": 4,
+            "tooltip": "获得<health>@Health@生命值</health>，但你造成的伤害降低@DamageReduction*100@%。"
+        },
+        {
+            "apiName": "WithHaste",
+            "calculations": {},
+            "dataValues": {
+                "AbilityHasteToMSConversion": 1.5
+            },
+            "desc": "获得<moveSpeed>移动速度</moveSpeed>，相当于你的@AbilityHasteToMSConversion@倍<scaleLevel>技能急速</scaleLevel>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/withhaste_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/withhaste_small.2v2_mode_fighters.png",
+            "id": 98,
+            "name": "急急小子",
+            "rarity": 4,
+            "tooltip": "获得<moveSpeed>移动速度</moveSpeed>，相当于你的@AbilityHasteToMSConversion@倍<scaleLevel>技能急速</scaleLevel>。"
+        },
+        {
+            "apiName": "FallenAegis",
+            "calculations": {
+                "ShieldAmount": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "ByCharLevelInterpolationCalculationPart",
+                            "mEndValue": 350.0,
+                            "mStartValue": 50.0
+                        }
+                    ],
+                    "{37070a8d}": 4,
+                    "{cbcac618}": 4,
+                    "{e6eebb2f}": 4
+                }
+            },
+            "dataValues": {
+                "ShieldDuration": 12.0
+            },
+            "desc": "带着一个持续@ShieldDuration@秒的<abilityName>黑暗之盾</abilityName>开始战斗。<br><br><rules><abilityName>黑暗之盾</abilityName>会格挡魔法伤害和<status>定身</status>效果。</rules>",
+            "iconLarge": "assets/ux/cherry/augments/icons/fallenaegis_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/fallenaegis_small.2v2_mode_fighters.png",
+            "id": 34,
+            "name": "堕落圣盾",
+            "rarity": 0,
+            "tooltip": "带着一个持续@ShieldDuration@秒且可吸收@ShieldAmount@魔法伤害的<abilityName>黑暗之盾</abilityName>开始战斗。<br><br><rules><abilityName>黑暗之盾</abilityName>会格挡魔法伤害和<status>定身</status>效果。</rules><br><br>已生成的护盾值总和：@f1@<br>已格挡的定身技能总和：@f2@"
+        },
+        {
+            "apiName": "FeeltheBurn",
+            "calculations": {
+                "{7c50d74e}": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "ByCharLevelInterpolationCalculationPart",
+                            "mEndValue": 410.0,
+                            "mStartValue": 70.0
+                        }
+                    ]
+                }
+            },
+            "dataValues": {
+                "DamageReductionTOOLTIPONLY": 0.3499999940395355,
+                "ExhaustDuration": 3.0,
+                "Range": 1000.0,
+                "SlowAmount": 0.30000001192092896
+            },
+            "desc": "获得召唤师技能<spellName>感受灼烧</spellName>。<br><br><rules><spellName>感受灼烧</spellName>会对所有附近的敌人们施放<spellName>引燃</spellName>和<spellName>虚弱</spellName>。</rules>",
+            "iconLarge": "assets/ux/cherry/augments/icons/feeltheburn_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/feeltheburn_small.2v2_mode_fighters.png",
+            "id": 35,
+            "name": "感受燃烧",
+            "rarity": 8,
+            "tooltip": "<rules>对附近的所有敌方英雄施放<spellName>引燃</spellName>和<spellName>虚弱</spellName>。</rules><br><br>已造成的伤害总和：@f1@<br>已降低的伤害总和：@f2@"
+        },
+        {
+            "apiName": "GuiltyPleasure",
+            "calculations": {},
+            "dataValues": {
+                "HealPercentage": 0.03999999910593033
+            },
+            "desc": "<status>定身</status>敌方英雄时会<healing>回复@HealPercentage*100@%最大生命值</healing>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/guiltypleasure_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/guiltypleasure_small.2v2_mode_fighters.png",
+            "id": 42,
+            "name": "恶趣味",
+            "rarity": 0,
+            "tooltip": "<status>定身</status>敌方英雄时会<healing>回复@HealPercentage*100@%最大生命值</healing>。<br><br>这个回合已造成的治疗效果：@f1@<br>已造成的治疗效果总和：@f2@"
+        },
+        {
+            "apiName": "BuffBuddies",
+            "calculations": {},
+            "dataValues": {},
+            "desc": "你获得永久的红霸符和蓝霸符。",
+            "iconLarge": "assets/ux/cherry/augments/icons/buffbuddies_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/buffbuddies_small.2v2_mode_fighters.png",
+            "id": 9,
+            "name": "霸符兄弟",
+            "rarity": 0,
+            "tooltip": "你获得永久的红霸符和蓝霸符。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
+        },
+        {
+            "apiName": "OutlawsGrit",
+            "calculations": {},
+            "dataValues": {
+                "MaxStacks": 5.0,
+                "ResistsPerStack": 15.0
+            },
+            "desc": "你的冲刺、跳跃、闪烁或传送类技能会为你提供<scaleArmor>@ResistsPerStack@护甲</scaleArmor>和<scaleMR>魔法抗性</scaleMR>。<br><br>这个效果至多可叠加至@MaxStacks@层。",
+            "iconLarge": "assets/ux/cherry/augments/icons/outlawsgrit_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/outlawsgrit_small.2v2_mode_fighters.png",
+            "id": 63,
+            "name": "狂徒豪气",
+            "rarity": 4,
+            "tooltip": "你的冲刺、跳跃、闪烁或传送类技能会为你提供<scaleArmor>@ResistsPerStack@护甲</scaleArmor>和<scaleMR>魔法抗性</scaleMR>。<br><br>这个效果至多可叠加至@MaxStacks@层。"
+        },
+        {
+            "apiName": "DontBlink",
+            "calculations": {},
+            "dataValues": {
+                "BonusDamagePerMSDifference": 0.0010000000474974513
+            },
+            "desc": "你的移动速度比目标越快，则对其造成越多伤害。",
+            "iconLarge": "assets/ux/cherry/augments/icons/dontblink_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/dontblink_small.2v2_mode_fighters.png",
+            "id": 26,
+            "name": "唯快不破",
+            "rarity": 0,
+            "tooltip": "你每比目标多<moveSpeed>10移动速度</moveSpeed>，则对其多造成@BonusDamagePerMSDifference*1000@%额外伤害。<br><br>这个回合的额外伤害：@f1@<br>额外伤害总和：@f2@"
+        },
+        {
+            "apiName": "ShadowRunner",
+            "calculations": {},
+            "dataValues": {
+                "BuffDuration": 2.0,
+                "MSAmount": 300.0
+            },
+            "desc": "在使用一个冲刺、跳跃、闪烁或传送类技能或离开<stealth>潜行</stealth>状态之后，获得持续@BuffDuration@秒的@MSAmount@移动速度。",
+            "iconLarge": "assets/ux/cherry/augments/icons/shadowrunner_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/shadowrunner_small.2v2_mode_fighters.png",
+            "id": 73,
+            "name": "暗影疾奔",
+            "rarity": 0,
+            "tooltip": "在使用一个冲刺、跳跃、闪烁或传送类技能或离开<stealth>潜行</stealth>状态之后，获得持续@BuffDuration@秒的@MSAmount@移动速度。"
+        },
+        {
+            "apiName": "InfernalConduit",
+            "calculations": {
+                "BleedDamageTooltip": {
+                    "__type": "GameCalculationModified",
+                    "mModifiedGameCalculation": "{0a242b94}",
+                    "mMultiplier": {
+                        "__type": "NumberCalculationPart",
+                        "mNumber": 0.20000000298023224
+                    },
+                    "{37070a8d}": 4,
+                    "{cbcac618}": 4,
+                    "{e6eebb2f}": 4
+                },
+                "{0a242b94}": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "ByCharLevelInterpolationCalculationPart",
+                            "mEndValue": 60.0,
+                            "mStartValue": 6.0
+                        },
+                        {
+                            "__type": "StatByCoefficientCalculationPart",
+                            "mCoefficient": 0.10000000149011612
+                        },
+                        {
+                            "__type": "StatByCoefficientCalculationPart",
+                            "mCoefficient": 0.14000000059604645,
+                            "mStat": 2,
+                            "mStatFormula": 2
+                        }
+                    ]
+                }
+            },
+            "dataValues": {
+                "BleedDuration": 5.0,
+                "FlatCooldownRefundPerTick": 0.11999999731779099,
+                "ProcCooldown": 1.0
+            },
+            "desc": "你的技能会施加一层可叠加的<keywordMajor>灼烧</keywordMajor>，持续造成<scaleAP>魔法伤害</scaleAP>。<br><br>你的<keywordMajor>灼烧</keywordMajor>效果会降低你各基础技能的冷却时间。",
+            "iconLarge": "assets/ux/cherry/augments/icons/infernalconduit_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/infernalconduit_small.2v2_mode_fighters.png",
+            "id": 45,
+            "name": "炼狱导管",
+            "rarity": 8,
+            "tooltip": "你的技能会施加一层可叠加的<keywordMajor>灼烧</keywordMajor>，在@BleedDuration@秒的持续时间里每秒造成<scaleAP>@BleedDamageTooltip@魔法伤害</scaleAP>。<keywordMajor>灼烧</keywordMajor>可无限叠加。<br><br>你的所有<keywordMajor>灼烧</keywordMajor>效果会在对敌人们造成伤害时使你的各基础技能的剩余冷却时间缩短@FlatCooldownRefundPerTick@秒。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@<br>"
+        },
+        {
+            "apiName": "BacktoBasics",
+            "calculations": {},
+            "dataValues": {
+                "DamageAmp": 0.3499999940395355,
+                "Haste": 60.0,
+                "HealingAmp": 0.3499999940395355,
+                "ShieldingAmp": 0.3499999940395355
+            },
+            "desc": "获得提升伤害，<scaleLevel>伤害</scaleLevel>、<healing>治疗效果</healing>、<shield>护盾</shield>和<scaleBonus>技能急速</scaleBonus>，但你<keywordMajor>不能使用你的终极技能</keywordMajor>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/backtobasics_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/backtobasics_small.2v2_mode_fighters.png",
+            "id": 4,
+            "name": "回归基本功",
+            "rarity": 8,
+            "tooltip": "你的终极技能已被封印。获得@DamageAmp*100@%<scaleLevel>伤害</scaleLevel>、<healing>治疗效果</healing>、<shield>护盾</shield>，和<scaleBonus>@Haste@技能急速</scaleBonus>。"
+        },
+        {
+            "apiName": "ThiefsGloves",
+            "calculations": {},
+            "dataValues": {
+                "ItemDamageAmp": 0.30000001192092896,
+                "ItemStatAmp": 0.30000001192092896
+            },
+            "desc": "每回合移除你当前的装备，然后获得随机的装备作为替代。额外属性和装备伤害提升@ItemStatAmp*100@%。",
+            "iconLarge": "assets/ux/cherry/augments/icons/thiefsgloves_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/thiefsgloves_small.2v2_mode_fighters.png",
+            "id": 83,
+            "name": "窃贼手套",
+            "rarity": 8,
+            "tooltip": "每回合移除你当前的装备，然后获得随机的装备作为替代。额外属性和装备伤害提升@ItemStatAmp*100@%。"
+        },
+        {
+            "apiName": "SoulSiphon",
+            "calculations": {},
+            "dataValues": {
+                "CritChance": 0.20000000298023224,
+                "HealPercentage": 0.30000001192092896
+            },
+            "desc": "获得<crit>@CritChance*100@%暴击几率</crit>和作用于<crit>暴击</crit>的@HealPercentage*100@%生命偷取。",
+            "iconLarge": "assets/ux/cherry/augments/icons/soulsiphon_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/soulsiphon_small.2v2_mode_fighters.png",
+            "id": 77,
+            "name": "灵魂虹吸",
+            "rarity": 4,
+            "tooltip": "获得<crit>@CritChance*100@%暴击几率</crit>和作用于<crit>暴击</crit>的@HealPercentage*100@%生命偷取。<br><br>这个回合已造成的治疗效果：@f1@<br>已造成的治疗效果总和：@f2@"
+        },
+        {
+            "apiName": "WindspeakersBlessing",
+            "calculations": {
+                "Resists": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "ByCharLevelInterpolationCalculationPart",
+                            "mEndValue": 90.0,
+                            "mStartValue": 30.0
+                        }
+                    ]
+                }
+            },
+            "dataValues": {},
+            "desc": "你的<healing>治疗效果</healing>和<shield>护盾效果</shield>还会提升目标的<scaleArmor>护甲</scaleArmor>和<scaleMR>魔法抗性</scaleMR>，这些加成持续3秒。",
+            "iconLarge": "assets/ux/cherry/augments/icons/windspeakersblessing_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/windspeakersblessing_small.2v2_mode_fighters.png",
+            "id": 95,
+            "name": "风语者的祝福",
+            "rarity": 8,
+            "tooltip": "你的<healing>治疗效果</healing>和<shield>护盾效果</shield>还会提升目标@Resists@<scaleArmor>护甲</scaleArmor>和<scaleMR>魔法抗性</scaleMR>，这些加成持续3秒。"
+        },
+        {
+            "apiName": "ThreadtheNeedle",
+            "calculations": {},
+            "dataValues": {
+                "PercentPen": 0.25
+            },
+            "desc": "获得@PercentPen*100@%<scaleAD>护甲穿透</scaleAD>和<scaleAP>法术穿透</scaleAP>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/threadtheneedle_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/threadtheneedle_small.2v2_mode_fighters.png",
+            "id": 84,
+            "name": "穿针引线",
+            "rarity": 4,
+            "tooltip": "获得@PercentPen*100@%<scaleAD>护甲穿透</scaleAD>和<scaleAP>法术穿透</scaleAP>。"
+        },
+        {
+            "apiName": "ExtendoArm",
+            "calculations": {},
+            "dataValues": {
+                "Cooldown": 12.0
+            },
+            "desc": "每12秒<keywordMajor>自动</keywordMajor>朝一个附近的敌方英雄发射一个布里茨的飞爪。",
+            "iconLarge": "assets/ux/cherry/augments/icons/extendoarm_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/extendoarm_small.2v2_mode_fighters.png",
+            "id": 33,
+            "name": "弹簧飞爪",
+            "rarity": 4,
+            "tooltip": "每12秒<keywordMajor>自动</keywordMajor>朝一个附近的敌方英雄发射一个布里茨的飞爪。<br><br>飞爪命中次数：@f1@"
+        },
+        {
+            "apiName": "SlowCooker",
+            "calculations": {
+                "BleedDamageTooltip": {
+                    "__type": "GameCalculationModified",
+                    "mModifiedGameCalculation": "{0a242b94}",
+                    "mMultiplier": {
+                        "__type": "NumberCalculationPart",
+                        "mNumber": 0.20000000298023224
+                    },
+                    "{37070a8d}": 4,
+                    "{cbcac618}": 4,
+                    "{e6eebb2f}": 4
+                },
+                "{0a242b94}": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "StatByCoefficientCalculationPart",
+                            "mCoefficient": 0.02500000037252903,
+                            "mStat": 11
+                        }
+                    ]
+                }
+            },
+            "dataValues": {
+                "BleedDuration": 5.0,
+                "Range": 500.0
+            },
+            "desc": "每一秒，对附近的敌方英雄们施加一层可叠加的<keywordMajor>灼烧</keywordMajor>，这个效果受益于你的<health>最大生命值</health>。<keywordMajor>灼烧</keywordMajor>可无限叠加。",
+            "iconLarge": "assets/ux/cherry/augments/icons/slowcooker_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/slowcooker_small.2v2_mode_fighters.png",
+            "id": 75,
+            "name": "慢炖",
+            "rarity": 8,
+            "tooltip": "每一秒，对@Range@码内的敌方英雄们施加一层可叠加的<keywordMajor>灼烧</keywordMajor>，这个效果在@BleedDuration@秒的持续时间里每秒造成<health>@BleedDamageTooltip@<scaleAP>魔法伤害</scaleAP></health>。<keywordMajor>灼烧</keywordMajor>可无限叠加。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
+        },
+        {
+            "apiName": "DieAnotherDay",
+            "calculations": {},
+            "dataValues": {
+                "HealFlatTooltip": 250.0
+            },
+            "desc": "获得召唤师技能<spellName>择日赴死</spellName>。<br><br><rules><spellName>择日赴死</spellName>会生成一个持续4秒的地带，期间内其中的单位都不会阵亡。</rules>",
+            "iconLarge": "assets/ux/cherry/augments/icons/dieanotherday_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/dieanotherday_small.2v2_mode_fighters.png",
+            "id": 24,
+            "name": "择日赴死",
+            "rarity": 4,
+            "tooltip": "赐福你脚下的大地4秒，防止其中的任一单位跌到10%最大生命值以下。在效果结束时，其中的单位们都会被治疗<healing>@HealFlatTooltip@生命值</healing>。 "
+        },
+        {
+            "apiName": "SpiritLink",
+            "calculations": {},
+            "dataValues": {
+                "DamageRedirectPercentage": 0.25,
+                "HealCopyPercentage": 0.44999998807907104
+            },
+            "desc": "你的友军受到的@DamageRedirectPercentage*100@%实际伤害值将被转移给你，并且其所受的@HealCopyPercentage*100@%<healing>治疗效果</healing>也会转移给你。",
+            "iconLarge": "assets/ux/cherry/augments/icons/spiritlink_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/spiritlink_small.2v2_mode_fighters.png",
+            "id": 78,
+            "name": "灵魂连接",
+            "rarity": 8,
+            "tooltip": "你的友军受到的@DamageRedirectPercentage*100@%实际伤害值将被转移给你，并且其所受的@HealCopyPercentage*100@%<healing>治疗效果</healing>也会转移给你。<br><br>已转移的伤害总和：@f1@<br>已造成的治疗总和：@f2@<br>"
+        },
+        {
+            "apiName": "ContractKiller",
+            "calculations": {},
+            "dataValues": {
+                "DamageAmp": 0.15000000596046448,
+                "Gold": 350.0
+            },
+            "desc": "每一回合，标记一个对方英雄来对其造成@DamageAmp*100@%额外伤害并在其阵亡时获得额外的@Gold@金币。",
+            "iconLarge": "assets/ux/cherry/augments/icons/contractkiller_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/contractkiller_small.2v2_mode_fighters.png",
+            "id": 17,
+            "name": "职业杀手",
+            "rarity": 0,
+            "tooltip": "每一回合，标记一个对方英雄。该英雄受到@DamageAmp*100@%额外伤害并且在阵亡时会为你和你的队友提供@Gold@金币。<br><br>这个回合的额外伤害：  @f1@<br>额外伤害总和：@f2@<br>各个队员获得的金币总和：@f3@"
+        },
+        {
+            "apiName": "FirstAidKit",
+            "calculations": {},
+            "dataValues": {
+                "HealShieldAmp": 0.25
+            },
+            "desc": "获得<healing>@HealShieldAmp*100@%治疗和护盾强度</healing>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/firstaidkit_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/firstaidkit_small.2v2_mode_fighters.png",
+            "id": 37,
+            "name": "急救用具",
+            "rarity": 0,
+            "tooltip": "获得<healing>@HealShieldAmp*100@%治疗和护盾强度</healing>。"
+        },
+        {
+            "apiName": "OkBoomerang",
+            "calculations": {
+                "Damage": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "ByCharLevelInterpolationCalculationPart",
+                            "mEndValue": 225.0,
+                            "mStartValue": 45.0
+                        },
+                        {
+                            "__type": "StatByCoefficientCalculationPart",
+                            "mCoefficient": 0.25,
+                            "mStat": 2,
+                            "mStatFormula": 2
+                        },
+                        {
+                            "__type": "StatByCoefficientCalculationPart",
+                            "mCoefficient": 0.17000000178813934
+                        }
+                    ],
+                    "{37070a8d}": 4,
+                    "{cbcac618}": 4,
+                    "{e6eebb2f}": 4
+                }
+            },
+            "dataValues": {},
+            "desc": "每7秒<keywordMajor>自动</keywordMajor>对附近一名敌方英雄发射一个回力镖。",
+            "iconLarge": "assets/ux/cherry/augments/icons/okboomerang_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/okboomerang_small.2v2_mode_fighters.png",
+            "id": 61,
+            "name": "回力OK镖",
+            "rarity": 4,
+            "tooltip": "每7秒<keywordMajor>自动</keywordMajor>对附近一名敌方英雄发射一个回力镖，对命中的敌人们造成@Damage@自适应伤害。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
+        },
+        {
+            "apiName": "JuiceBox",
+            "calculations": {},
+            "dataValues": {},
+            "desc": "每回合，你和你的队友免费获得一份额外的果汁。",
+            "iconLarge": "assets/ux/cherry/augments/icons/juicebox_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/juicebox_small.2v2_mode_fighters.png",
+            "id": 49,
+            "name": "果汁盒",
+            "rarity": 0,
+            "tooltip": "每回合，你和你的队友免费获得一份额外的果汁。"
+        },
+        {
+            "apiName": "Firebrand",
+            "calculations": {},
+            "dataValues": {
+                "BleedDuration": 5.0,
+                "PercentMaxHPDamagePer5Seconds": 0.029999999329447746
+            },
+            "desc": "你的攻击会施加一个可无限叠加的<keywordMajor>灼烧</keywordMajor>，持续造成伤害。",
+            "iconLarge": "assets/ux/cherry/augments/icons/firebrand_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/firebrand_small.2v2_mode_fighters.png",
+            "id": 36,
+            "name": "火上浇油",
+            "rarity": 4,
+            "tooltip": "你的攻击还会<keywordMajor>灼烧</keywordMajor>敌人，在@BleedDuration@秒的持续时间里每秒持续造成<scaleAP>@PercentMaxHPDamagePer5Seconds*20@%最大生命值的魔法伤害</scaleAP>。<keywordMajor>灼烧</keywordMajor>可无限叠加。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
+        },
+        {
+            "apiName": "TapDancer",
+            "calculations": {},
+            "dataValues": {
+                "MSPerHit": 10.0,
+                "MSToASConversion": 0.0010000000474974513
+            },
+            "desc": "你的攻击会为你提供<moveSpeed>@MSPerHit@移动速度</moveSpeed>，可无限叠加。获得相当于你@MSToASConversion*10000@%移动速度的攻击速度。",
+            "iconLarge": "assets/ux/cherry/augments/icons/tapdancer_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/tapdancer_small.2v2_mode_fighters.png",
+            "id": 81,
+            "name": "踢踏舞",
+            "rarity": 8,
+            "tooltip": "你的攻击会为你提供<moveSpeed>@MSPerHit@移动速度</moveSpeed>，可无限叠加。获得相当于你@MSToASConversion*10000@%移动速度的攻击速度。"
+        },
+        {
+            "apiName": "Tormentor",
+            "calculations": {},
+            "dataValues": {
+                "BleedDuration": 5.0,
+                "PercentMaxHPDamagePer5Seconds": 0.05000000074505806
+            },
+            "desc": "<status>定身</status>敌方英雄时提供一层<keywordMajor>灼烧</keywordMajor>，这个效果会持续造成伤害并可无限叠加。",
+            "iconLarge": "assets/ux/cherry/augments/icons/tormentor_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/tormentor_small.2v2_mode_fighters.png",
+            "id": 85,
+            "name": "折磨之叉",
+            "rarity": 0,
+            "tooltip": "<status>定身</status>敌方英雄时还会施加一层<keywordMajor>灼烧</keywordMajor>，@BleedDuration@秒的持续时间里每秒持续造成<scaleAP>@PercentMaxHPDamagePer5Seconds*20@%最大生命值的魔法伤害</scaleAP>。<keywordMajor>灼烧</keywordMajor>可无限叠加。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
+        },
+        {
+            "apiName": "EtherealWeapon",
+            "calculations": {},
+            "dataValues": {},
+            "desc": "你的各个技能都会附带特效。(每个目标有1秒冷却时间)。",
+            "iconLarge": "assets/ux/cherry/augments/icons/etherealweapon_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/etherealweapon_small.2v2_mode_fighters.png",
+            "id": 29,
+            "name": "虚幻武器",
+            "rarity": 4,
+            "tooltip": "你的各个技能都会附带特效。(每个目标有1秒冷却时间)。<br><br>这个回合的触发次数。@f1@<br>触发次数总和：@f2@"
+        },
+        {
+            "apiName": "OmniSoul",
+            "calculations": {},
+            "dataValues": {},
+            "desc": "获得3个随机龙魂。",
+            "iconLarge": "assets/ux/cherry/augments/icons/omnisoul_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/omnisoul_small.2v2_mode_fighters.png",
+            "id": 62,
+            "name": "全能龙魂",
+            "rarity": 8,
+            "tooltip": "获得3个随机龙魂。"
+        },
+        {
+            "apiName": "DawnbringersResolve",
+            "calculations": {
+                "HealCalc": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "StatByNamedDataValueCalculationPart",
+                            "mDataValue": "HealAmount",
+                            "mStat": 11
+                        }
+                    ],
+                    "mMultiplier": {
+                        "__type": "NumberCalculationPart",
+                        "mNumber": 0.08299999684095383
+                    },
+                    "{37070a8d}": 4,
+                    "{cbcac618}": 4,
+                    "{e6eebb2f}": 4
+                }
+            },
+            "dataValues": {
+                "Duration": 3.0,
+                "HealAmount": 0.30000001192092896,
+                "HealthThreshold": 0.5
+            },
+            "desc": "在跌到@HealthThreshold*100@%生命值以下时，在3秒里持续回复共@HealAmount*100@%最大生命值。<br>",
+            "iconLarge": "assets/ux/cherry/augments/icons/dawnbringersresolve_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/dawnbringersresolve_small.2v2_mode_fighters.png",
+            "id": 20,
+            "name": "黎明使者的坚决",
+            "rarity": 4,
+            "tooltip": "在跌到@HealthThreshold*100@%生命值以下时，在3秒里持续回复共@HealAmount*100@%最大生命值。<br><br>这个回合已造成的治疗效果：@f1@<br>已造成的治疗效果总和：@f2@"
+        },
+        {
+            "apiName": "FromBeginningToEnd",
+            "calculations": {
+                "ChampRange": {
+                    "__type": "GameCalculationConditional",
+                    "mConditionalGameCalculation": "{06387172}",
+                    "mDefaultGameCalculation": "{792cf56b}",
+                    "{37070a8d}": 5,
+                    "{c0482365}": {
+                        "__type": "{dc65ffe4}"
+                    },
+                    "{cbcac618}": 5,
+                    "{e6eebb2f}": 5
+                },
+                "Cooldown": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "ProductOfSubPartsCalculationPart",
+                            "mPart1": {
+                                "__type": "ByCharLevelInterpolationCalculationPart",
+                                "mEndValue": 15.0,
+                                "mStartValue": 25.0
+                            },
+                            "mPart2": {
+                                "__type": "NamedDataValueCalculationPart",
+                                "mDataValue": "{e367b19b}"
+                            }
+                        }
+                    ]
+                },
+                "{06387172}": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "NumberCalculationPart",
+                            "mNumber": 2.0
+                        }
+                    ]
+                },
+                "{792cf56b}": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "NumberCalculationPart",
+                            "mNumber": 1.0
+                        }
+                    ]
+                }
+            },
+            "dataValues": {
+                "ADRatio": 0.3499999940395355,
+                "APRatio": 0.25,
+                "BaseDamageHigh": 100.0,
+                "BaseDamageLow": 50.0,
+                "CooldownResetValue": 1.5,
+                "DHCooldown": 45.0,
+                "DamageAmp": 0.15000000596046448,
+                "DamagePerSoulEssence": 10.0,
+                "Duration": 3.0,
+                "GoldPercentBonus": 1.2000000476837158,
+                "GoldPercentBonusRanged": 0.8999999761581421,
+                "GoldProcBonus": 6.0,
+                "GraceWindow": 0.25,
+                "HarvestThreshold": 0.5,
+                "MissileNoiseNumberLimiter": 3.0,
+                "MissileNoiseRangeLimiter": 1500.0,
+                "ModesCooldownReduction": 1.0,
+                "OOCTimer": 10.0
+            },
+            "desc": "获得<spellName>先攻</spellName>和<spellName>黑暗收割</spellName>基石符文。",
+            "iconLarge": "assets/ux/cherry/augments/icons/frombeginningtoend_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/frombeginningtoend_small.2v2_mode_fighters.png",
+            "id": 38,
+            "name": "有始有终",
+            "rarity": 4,
+            "tooltip": "获得<spellName>先攻</spellName>和<spellName>黑暗收割</spellName>基石符文。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@<br>已获得的金币总和：@f3@"
+        },
+        {
+            "apiName": "CantTouchThis",
+            "calculations": {},
+            "dataValues": {
+                "Cooldown": 8.0,
+                "InvulnDuration": 2.0
+            },
+            "desc": "在施放你的终极技能后，还会使你进入短时间的<status>免疫伤害</status>状态。",
+            "iconLarge": "assets/ux/cherry/augments/icons/canttouchthis_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/canttouchthis_small.2v2_mode_fighters.png",
+            "id": 11,
+            "name": "你摸不到",
+            "rarity": 8,
+            "tooltip": "在施放你的终极技能后，还会使你进入持续@InvulnDuration@秒的<status>免疫伤害</status>状态。@Cooldown@秒冷却时间。"
+        },
+        {
+            "apiName": "ItsCritical",
+            "calculations": {},
+            "dataValues": {
+                "CritChance": 0.4000000059604645
+            },
+            "desc": "获得<crit>@CritChance*100@%暴击几率</crit>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/itscritical_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/itscritical_small.2v2_mode_fighters.png",
+            "id": 47,
+            "name": "关键暴击",
+            "rarity": 4,
+            "tooltip": "获得<crit>@CritChance*100@%暴击几率</crit>。"
+        },
+        {
+            "apiName": "Recursion",
+            "calculations": {},
+            "dataValues": {
+                "AbilityHaste": 60.0
+            },
+            "desc": "获得<scaleLevel>@AbilityHaste@技能急速</scaleLevel>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/recursion_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/recursion_small.2v2_mode_fighters.png",
+            "id": 68,
+            "name": "循环往复",
+            "rarity": 4,
+            "tooltip": "获得<scaleLevel>@AbilityHaste@技能急速</scaleLevel>。"
+        },
+        {
+            "apiName": "Deft",
+            "calculations": {},
+            "dataValues": {
+                "AttackSpeed": 0.5
+            },
+            "desc": "获得@AttackSpeed*100@%攻击速度。",
+            "iconLarge": "assets/ux/cherry/augments/icons/deft_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/deft_small.2v2_mode_fighters.png",
+            "id": 22,
+            "name": "灵巧",
+            "rarity": 0,
+            "tooltip": "获得@AttackSpeed*100@%攻击速度。"
+        },
+        {
+            "apiName": "Goliath",
+            "calculations": {},
+            "dataValues": {
+                "ADAmp": 0.15000000596046448,
+                "APAmp": 0.15000000596046448,
+                "HealthAmp": 0.3499999940395355,
+                "SizeAmp": 0.5
+            },
+            "desc": "体型变大，获得@HealthAmp*100@%<scaleHealth>生命值</scaleHealth>和@ADAmp*100@% <scaleAP>适应之力</scaleAP>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/goliath_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/goliath_small.2v2_mode_fighters.png",
+            "id": 41,
+            "name": "歌利亚巨人",
+            "rarity": 8,
+            "tooltip": "体型变大，获得@HealthAmp*100@%<scaleHealth>生命值</scaleHealth>和@ADAmp*100@% <scaleAP>适应之力</scaleAP>。"
+        },
+        {
+            "apiName": "AcceleratingSorcery",
+            "calculations": {},
+            "dataValues": {
+                "HastePerCast": 8.0
+            },
+            "desc": "使用技能时会为你提供可无限叠加的<scaleBonus>技能急速</scaleBonus>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/acceleratingsorcery_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/acceleratingsorcery_small.2v2_mode_fighters.png",
+            "id": 1,
+            "name": "加速巫术",
+            "rarity": 8,
+            "tooltip": "使用一个技能时提供<scaleBonus>@HastePerCast@技能急速</scaleBonus>，可无限叠加。"
+        },
+        {
+            "apiName": "MysticPunch",
+            "calculations": {},
+            "dataValues": {
+                "CooldownRefund": 1.0
+            },
+            "desc": "你的攻击会使你的各个冷却时间缩短@CooldownRefund@秒。",
+            "iconLarge": "assets/ux/cherry/augments/icons/mysticpunch_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/mysticpunch_small.2v2_mode_fighters.png",
+            "id": 58,
+            "name": "秘术冲拳",
+            "rarity": 8,
+            "tooltip": "你的攻击会使你的各个冷却时间缩短@CooldownRefund@秒。"
+        },
+        {
+            "apiName": "RabbleRousing",
+            "calculations": {
+                "HealAmount": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "StatByNamedDataValueCalculationPart",
+                            "mDataValue": "MaxHealthPercentageHeal",
+                            "mStat": 11
+                        }
+                    ]
+                }
+            },
+            "dataValues": {
+                "MaxHealthPercentageHeal": 0.019999999552965164
+            },
+            "desc": "你在使用一个技能时可回复<healing>@MaxHealthPercentageHeal*100@%最大生命值</healing>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/rabblerousing_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/rabblerousing_small.2v2_mode_fighters.png",
+            "id": 67,
+            "name": "古式佳酿",
+            "rarity": 4,
+            "tooltip": "你在使用一个技能时可回复<healing>@MaxHealthPercentageHeal*100@%最大生命值</healing>。<br><br>这个回合已造成的治疗效果：@f1@<br>已造成的治疗效果总和：@f2@"
+        },
+        {
+            "apiName": "FrozenFoundations",
+            "calculations": {},
+            "dataValues": {
+                "ChampPushDistance": 120.0,
+                "NonChampPushDistance": 250.0,
+                "WallDuration": 5.0,
+                "WallWidth": 400.0
+            },
+            "desc": "获得召唤师技能<spellName>冰封地基</spellName>。<br><br><rules><spellName>冰封地基</spellName>会在一个位置上召唤一道冰墙。</rules>",
+            "iconLarge": "assets/ux/cherry/augments/icons/frozenfoundations_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/frozenfoundations_small.2v2_mode_fighters.png",
+            "id": 40,
+            "name": "冰封地基",
+            "rarity": 0,
+            "tooltip": "<rules>在目标位置上召唤一道冰墙。</rules>"
+        },
+        {
+            "apiName": "ApexInventor",
+            "calculations": {},
+            "dataValues": {
+                "ItemHaste": 300.0,
+                "TooltipCDR": 75.0
+            },
+            "desc": "提供<scaleBonus>@ItemHaste@装备急速</scaleBonus>(相当于@TooltipCDR@%装备冷却缩减)。<br><br><rules>装备急速可缩减所有装备技能的冷却时间。</rules>",
+            "iconLarge": "assets/ux/cherry/augments/icons/apexinventor_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/apexinventor_small.2v2_mode_fighters.png",
+            "id": 2,
+            "name": "尖端发明家",
+            "rarity": 4,
+            "tooltip": "提供<scaleBonus>@ItemHaste@装备急速</scaleBonus>(相当于@TooltipCDR@%装备冷却缩减)。<br><br><rules>装备急速可缩减所有装备技能的冷却时间。</rules>"
+        },
+        {
+            "apiName": "KeystoneConjurer",
+            "calculations": {},
+            "dataValues": {
+                "ADRatio": 0.3499999940395355,
+                "APRatio": 0.20000000298023224,
+                "AoEPercentRefund": 0.10000000149011612,
+                "DamageADRatio": 0.15000000596046448,
+                "DamageAPRatio": 0.10000000149011612,
+                "DamageBase": 10.0,
+                "DamageMax": 40.0,
+                "DotPercentRefund": 0.05000000074505806,
+                "PercentRefund": 0.20000000298023224,
+                "RechargeTime": 20.0,
+                "RechargeTimeMin": 8.0,
+                "ShieldBase": 30.0,
+                "ShieldMax": 75.0,
+                "ShieldRatio": 0.22499999403953552,
+                "ShieldRatioAD": 0.3499999940395355
+            },
+            "desc": "获得<spellName>召唤：艾黎</spellName>和<spellName>奥术彗星</spellName>基石符文。",
+            "iconLarge": "assets/ux/cherry/augments/icons/keystoneconjurer_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/keystoneconjurer_small.2v2_mode_fighters.png",
+            "id": 50,
+            "name": "基石法师",
+            "rarity": 4,
+            "tooltip": "获得<spellName>召唤：艾黎</spellName>和<spellName>奥术彗星</spellName>基石符文。<br><br>已造成的伤害总和：@f1@<br>已生成的护盾值总和：@f2@"
+        },
+        {
+            "apiName": "MidnightExpress",
+            "calculations": {},
+            "dataValues": {},
+            "desc": "每12秒<keywordMajor>自动</keywordMajor>朝你的友军投掷一个灯笼。<br><br><rules>友军可通过点击灯笼来位移到你身边</rules>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/midnightexpress_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/midnightexpress_small.2v2_mode_fighters.png",
+            "id": 55,
+            "name": "午夜快递",
+            "rarity": 0,
+            "tooltip": "每12秒<keywordMajor>自动</keywordMajor>朝你的友军投掷一个灯笼。<br><br><rules>友军可通过点击灯笼来位移到你身边</rules>。"
+        },
+        {
+            "apiName": "Mythical",
+            "calculations": {},
+            "dataValues": {},
+            "desc": "你可以购买任意数量的神话装备。",
+            "iconLarge": "assets/ux/cherry/augments/icons/mythical_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/mythical_small.2v2_mode_fighters.png",
+            "id": 59,
+            "name": "神话化身",
+            "rarity": 4,
+            "tooltip": "你可以购买任意数量的神话装备。"
+        },
+        {
+            "apiName": "BuckleUp",
+            "calculations": {},
+            "dataValues": {},
+            "desc": "在每场战斗回合开始时，生成一个【战地雪橇】。",
+            "iconLarge": "assets/ux/cherry/augments/icons/buckleup_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/buckleup_small.2v2_mode_fighters.png",
+            "id": 8,
+            "name": "雪橇战术",
+            "rarity": 0,
+            "tooltip": "在每场战斗回合开始时，生成一个【战地雪橇】。"
+        },
+        {
+            "apiName": "Dashing",
+            "calculations": {},
+            "dataValues": {
+                "Haste": 200.0
+            },
+            "desc": "你的冲刺、跳跃、闪烁或传送类技能获得<scaleLevel>@Haste@技能急速</scaleLevel>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/dashing_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/dashing_small.2v2_mode_fighters.png",
+            "id": 19,
+            "name": "全凭身法",
+            "rarity": 8,
+            "tooltip": "你的冲刺、跳跃、闪烁或传送类技能获得<scaleLevel>@Haste@技能急速</scaleLevel>。"
+        },
+        {
+            "apiName": "LightningStrikes",
+            "calculations": {},
+            "dataValues": {
+                "ASToADConversion": 30.0
+            },
+            "desc": "获得受益于你<attackSpeed>攻击速度</attackSpeed>的<scaleAD>攻击力</scaleAD>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/lightningstrikes_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/lightningstrikes_small.2v2_mode_fighters.png",
+            "id": 52,
+            "name": "闪电打击",
+            "rarity": 4,
+            "tooltip": "每<attackSpeed>0.1攻击速度</attackSpeed>提供<scaleAD>@ASToADConversion*.1@攻击力</scaleAD>。"
+        },
+        {
+            "apiName": "Repulsor",
+            "calculations": {},
+            "dataValues": {
+                "HealthThreshold1": 0.6000000238418579,
+                "HealthThreshold2": 0.30000001192092896,
+                "KnockbackDistance": 750.0,
+                "KnockbackRange": 500.0
+            },
+            "desc": "在你跌到@HealthThreshold1*100@或@HealthThreshold2*100@%生命值时，附近的敌人们会被<status>击退</status>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/repulsor_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/repulsor_small.2v2_mode_fighters.png",
+            "id": 69,
+            "name": "退敌力场",
+            "rarity": 0,
+            "tooltip": "在你跌到@HealthThreshold1*100@或@HealthThreshold2*100@%生命值时，附近的敌人们会被<status>击退</status>。"
+        },
+        {
+            "apiName": "RestlessRestoration",
+            "calculations": {
+                "HealCalcPer1000Units": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "StatByNamedDataValueCalculationPart",
+                            "mDataValue": "{9f86324f}",
+                            "mStat": 11
+                        },
+                        {
+                            "__type": "ByCharLevelInterpolationCalculationPart",
+                            "mEndValue": 150.0,
+                            "mStartValue": 30.0
+                        }
+                    ],
+                    "{37070a8d}": 4,
+                    "{cbcac618}": 4,
+                    "{e6eebb2f}": 4
+                }
+            },
+            "dataValues": {
+                "HealthRatioPer1000Units": 0.02500000037252903
+            },
+            "desc": "你在移动时持续获得<healing>治疗</healing>，数额会基于已移动的距离来提升。",
+            "iconLarge": "assets/ux/cherry/augments/icons/restlessrestoration_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/restlessrestoration_small.2v2_mode_fighters.png",
+            "id": 70,
+            "name": "无休回复",
+            "rarity": 4,
+            "tooltip": "你每移动1000码距离就会获得@HealCalcPer1000Units@治疗效果。<br><br>这个回合已造成的治疗效果：@f1@<br>已造成的治疗效果总和：@f2@"
+        },
+        {
+            "apiName": "DiveBomber",
+            "calculations": {},
+            "dataValues": {
+                "ExplosionRadius": 500.0,
+                "PercentMaxHPDamage": 0.20000000298023224
+            },
+            "desc": "你的队伍在每回合的第一次阵亡会爆炸，造成巨额伤害。",
+            "iconLarge": "assets/ux/cherry/augments/icons/divebomber_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/divebomber_small.2v2_mode_fighters.png",
+            "id": 25,
+            "name": "俯冲轰炸",
+            "rarity": 4,
+            "tooltip": "你的队伍在每回合的第一次阵亡会爆炸，对附近的敌人们造成<trueDamage>目标@PercentMaxHPDamage*100@%最大生命值的真实伤害</trueDamage>。<br><br>这个回合已造成的伤害：@f1@<br>阵亡伤害总和：@f2@"
+        },
+        {
+            "apiName": "BluntForce",
+            "calculations": {},
+            "dataValues": {
+                "ADIncrease": 0.15000000596046448
+            },
+            "desc": "获得<scaleAD>@ADIncrease*100@%攻击力</scaleAD>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/bluntforce_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/bluntforce_small.2v2_mode_fighters.png",
+            "id": 7,
+            "name": "大力",
+            "rarity": 0,
+            "tooltip": "获得<scaleAD>@ADIncrease*100@%攻击力</scaleAD>。"
+        },
+        {
+            "apiName": "VirtuousCycle",
+            "calculations": {},
+            "dataValues": {
+                "HealFromShieldPercentage": 0.20000000298023224,
+                "MinimumTrigger": 1.0,
+                "ShieldDuration": 5.0,
+                "ShieldFromHealPercentage": 0.20000000298023224
+            },
+            "desc": "你的<healing>治疗效果</healing>提供额外<shield>护盾</shield>，而你的<shield>护盾</shield>提供额外<healing>治疗效果</healing>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/virtuouscycle_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/virtuouscycle_small.2v2_mode_fighters.png",
+            "id": 91,
+            "name": "良性循环",
+            "rarity": 0,
+            "tooltip": "你的<healing>治疗效果</healing>提供额外的<shield>@ShieldFromHealPercentage*100@%护盾</shield>，而你的<shield>护盾</shield>提供额外的<healing>@HealFromShieldPercentage@%治疗效果</healing>。<br><br>已造成的治疗效果总和：@f1@<br>已生成的护盾值总和：@f2@"
+        },
+        {
+            "apiName": "ShrinkRay",
+            "calculations": {},
+            "dataValues": {
+                "DamageReduction": 0.15000000596046448
+            },
+            "desc": "你的攻击会对敌人造成持续3秒的@DamageReduction*100@%伤害削减效果。",
+            "iconLarge": "assets/ux/cherry/augments/icons/shrinkray_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/shrinkray_small.2v2_mode_fighters.png",
+            "id": 74,
+            "name": "缩小射线",
+            "rarity": 4,
+            "tooltip": "你的攻击会对敌人造成持续3秒的@DamageReduction*100@%伤害削减效果。<br><br>这个回合已削减的伤害：@f1@<br>已削减的伤害总和：@f2@"
+        },
+        {
+            "apiName": "Castle",
+            "calculations": {},
+            "dataValues": {
+                "MSBuffAmount": 0.5,
+                "MSBuffDuration": 2.0
+            },
+            "desc": "获得召唤师技能<spellName>王车易位</spellName>。<br><br><rules><spellName>王车易位</spellName>会使你与你的友军交换位置。</rules>",
+            "iconLarge": "assets/ux/cherry/augments/icons/castle_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/castle_small.2v2_mode_fighters.png",
+            "id": 12,
+            "name": "王车易位",
+            "rarity": 0,
+            "tooltip": "获得召唤师技能<spellName>王车易位</spellName>。<br><br><rules>允许你与你的友军交换位置。然后你会获得持续@MSBuffDuration@秒的@MSBuffAmount*100@%移动速度。</rules>"
+        },
+        {
+            "apiName": "Executioner",
+            "calculations": {},
+            "dataValues": {
+                "BonusDamage": 0.15000000596046448,
+                "HealthThreshold": 0.5
+            },
+            "desc": "对生命值低于@HealthThreshold*100@%的敌人们多造成@BonusDamage*100@%伤害。在参与击杀后重置你的基础技能。",
+            "iconLarge": "assets/ux/cherry/augments/icons/executioner_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/executioner_small.2v2_mode_fighters.png",
+            "id": 32,
+            "name": "裁决使",
+            "rarity": 0,
+            "tooltip": "对生命值低于@HealthThreshold*100@%的敌人们多造成@BonusDamage*100@%伤害。在参与击杀后重置你的基础技能。<br><br>这个回合的额外伤害：@f1@<br>额外伤害总和：@f2@"
+        },
+        {
+            "apiName": "CourageoftheColossus",
+            "calculations": {
+                "TotalShield": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "NamedDataValueCalculationPart",
+                            "mDataValue": "ShieldBase"
+                        },
+                        {
+                            "__type": "StatByNamedDataValueCalculationPart",
+                            "mDataValue": "{5d235963}",
+                            "mStat": 11
+                        }
+                    ],
+                    "{37070a8d}": 4,
+                    "{cbcac618}": 4,
+                    "{e6eebb2f}": 4
+                }
+            },
+            "dataValues": {
+                "HealthScalar": 0.05999999865889549,
+                "ShieldBase": 200.0
+            },
+            "desc": "在<status>定身</status>一名敌方英雄后获得受益于最大生命值的<shield>护盾值</shield>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/courageofthecolossus_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/courageofthecolossus_small.2v2_mode_fighters.png",
+            "id": 18,
+            "name": "巨像的勇气",
+            "rarity": 8,
+            "tooltip": "在<status>定身</status>一名敌方英雄后获得<shield>@TotalShield@最大生命值的护盾值</shield>。<br><br>这个回合已生成的护盾值：@f1@<br>已生成的护盾值总和：@f2@"
+        },
+        {
+            "apiName": "InfernalSoul",
+            "calculations": {},
+            "dataValues": {},
+            "desc": "你获得炼狱龙魂，在你用技能或攻击命中敌人时造成额外伤害。",
+            "iconLarge": "assets/ux/cherry/augments/icons/infernalsoul_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/infernalsoul_small.2v2_mode_fighters.png",
+            "id": 46,
+            "name": "炼狱龙魂",
+            "rarity": 0,
+            "tooltip": "你获得炼狱龙魂，在你用技能或攻击命中敌人时造成额外伤害。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
+        },
+        {
+            "apiName": "ComboMaster",
+            "calculations": {
+                "Cooldown": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "ByCharLevelInterpolationCalculationPart",
+                            "mEndValue": 10.0,
+                            "mStartValue": 20.0
+                        }
+                    ]
+                },
+                "{4120d321}": {
+                    "__type": "GameCalculation",
+                    "mFormulaParts": [
+                        {
+                            "__type": "ByCharLevelInterpolationCalculationPart",
+                            "mEndValue": 250.0,
+                            "mStartValue": 50.0
+                        },
+                        {
+                            "__type": "StatByCoefficientCalculationPart",
+                            "mCoefficient": 0.44999998807907104,
+                            "mStat": 2,
+                            "mStatFormula": 2
+                        },
+                        {
+                            "__type": "StatByCoefficientCalculationPart",
+                            "mCoefficient": 0.30000001192092896
+                        }
+                    ]
+                }
+            },
+            "dataValues": {
+                "HasteBase": 0.20000000298023224,
+                "HasteBaseMelee": 0.30000001192092896,
+                "HasteDuration": 3.0,
+                "HasteMax": 0.6000000238418579,
+                "HasteMaxMelee": 0.6000000238418579,
+                "MaxBonusSeconds": 4.0,
+                "NumberToProc": 3.0,
+                "SlowResist": 0.75,
+                "WindowDuration": 4.0
+            },
+            "desc": "获得<spellName>电刑</spellName>和<spellName>相位猛冲</spellName>基石符文。",
+            "iconLarge": "assets/ux/cherry/augments/icons/combomaster_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/combomaster_small.2v2_mode_fighters.png",
+            "id": 16,
+            "name": "连招大师",
+            "rarity": 4,
+            "tooltip": "获得<spellName>电刑</spellName>和<spellName>相位猛冲</spellName>基石符文。<br><br>这个回合的【电刑】伤害：@f1@<br>【电刑】伤害总和：@f2@"
+        },
+        {
+            "apiName": "MindtoMatter",
+            "calculations": {},
+            "dataValues": {
+                "ManaToHealthConversion": 0.5
+            },
+            "desc": "使你的<healing>最大生命值</healing>提升，数额相当于你一半的<scaleMana>法力值</scaleMana>。",
+            "iconLarge": "assets/ux/cherry/augments/icons/mindtomatter_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/mindtomatter_small.2v2_mode_fighters.png",
+            "id": 56,
+            "name": "由心及物",
+            "rarity": 0,
+            "tooltip": "使你的<healing>最大生命值</healing>提升，数额相当于你一半的<scaleMana>法力值</scaleMana>。"
+        },
+        {
+            "apiName": "WisdomofAges",
+            "calculations": {},
+            "dataValues": {},
+            "desc": "立刻提升1级，并且每隔一回合额外提升1级。你的等级上限已被移除。",
+            "iconLarge": "assets/ux/cherry/augments/icons/wisdomofages_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/wisdomofages_small.2v2_mode_fighters.png",
+            "id": 96,
+            "name": "时光之智慧",
+            "rarity": 8,
+            "tooltip": "立刻提升1级，并且每隔一回合额外提升1级。你的等级上限已被移除。"
+        },
+        {
+            "apiName": "NowYouSeeMe",
+            "calculations": {},
+            "dataValues": {
+                "MSBuffAmount": 0.5,
+                "MSBuffDuration": 2.0
+            },
+            "desc": "获得召唤师技能<spellName>位移魔术</spellName>。<br><br><rules><spellName>位移魔术</spellName>可将你传送回你最后一个移动技能的初始位置。</rules>",
+            "iconLarge": "assets/ux/cherry/augments/icons/houdini_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/houdini_small.2v2_mode_fighters.png",
+            "id": 43,
+            "name": "位移魔术",
+            "rarity": 0,
+            "tooltip": "<passive>被动：</passive>每当你使用一个移动技能时留下一个标记。<br><br><active>主动：</active>回到你最后留下的那个标记的位置。然后你会获得持续@MSBuffDuration@秒的@MSBuffAmount*100@%移动速度。"
+        },
+        {
+            "apiName": "Perseverance",
+            "calculations": {},
+            "dataValues": {
+                "AmpedHPThreshold": 0.25,
+                "AmpedRegen": 12.0,
+                "BaseRegen": 6.0
+            },
+            "desc": "获得巨幅提升的<healing>生命回复</healing>，这个数额会在低生命值时进一步提升。",
+            "iconLarge": "assets/ux/cherry/augments/icons/perseverance_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/perseverance_small.2v2_mode_fighters.png",
+            "id": 64,
+            "name": "坚韧",
+            "rarity": 4,
+            "tooltip": "获得<healing>@BaseRegen*100@%基础生命回复</healing>，在低于25%生命值时提升至<healing>@AmpedRegen*100@%基础生命回复</healing>。<br><br>这个回合已造成的治疗效果：@f1@<br>已造成的治疗效果总和：@f2@"
+        },
+        {
+            "apiName": "JeweledGauntlet",
+            "calculations": {
+                "APToCritConversion": {
+                    "__type": "GameCalculation",
+                    "mDisplayAsPercent": true,
+                    "mFormulaParts": [
+                        {
+                            "__type": "StatByCoefficientCalculationPart",
+                            "mCoefficient": 0.0005000000237487257
+                        }
+                    ]
+                }
+            },
+            "dataValues": {
+                "CritChance": 0.20000000298023224,
+                "CritDamage": 1.5
+            },
+            "desc": "你的技能可以造成暴击。获得20%暴击几率。",
+            "iconLarge": "assets/ux/cherry/augments/icons/jeweledgauntlet_large.2v2_mode_fighters.png",
+            "iconSmall": "assets/ux/cherry/augments/icons/jeweledgauntlet_small.2v2_mode_fighters.png",
+            "id": 48,
+            "name": "珠光护手",
+            "rarity": 8,
+            "tooltip": "你的技能可以造成暴击，造成140%总伤害。获得20%暴击几率。获得随法术强度增长的额外@APToCritConversion@暴击几率。<br><br>这个回合的额外伤害：@f1@<br>额外伤害总和：@f2@"
+        }
+    ]
+}

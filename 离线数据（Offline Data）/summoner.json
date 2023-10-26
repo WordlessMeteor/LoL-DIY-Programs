@@ -1,0 +1,346 @@
+[
+    {
+        "id": 1,
+        "name": "净化",
+        "description": "移除身上的所有限制效果（压制效果和击飞效果除外）和召唤师技能的减益效果，并且若在接下来的3秒里再次被施加限制效果时，新效果的持续时间会减少65%。",
+        "summonerLevel": 9,
+        "cooldown": 210,
+        "gameModes": [
+            "URF",
+            "CLASSIC",
+            "ARSR",
+            "ARAM",
+            "ULTBOOK",
+            "WIPMODEWIP",
+            "TUTORIAL",
+            "DOOMBOTSTEEMO",
+            "PRACTICETOOL",
+            "FIRSTBLOOD",
+            "NEXUSBLITZ",
+            "PROJECT",
+            "ONEFORALL"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_boost.png"
+    },
+    {
+        "id": 3,
+        "name": "虚弱",
+        "description": "虚弱目标敌方英雄，降低其30%的移动速度，并使其造成的伤害减少35%，持续3秒。",
+        "summonerLevel": 4,
+        "cooldown": 210,
+        "gameModes": [
+            "URF",
+            "CLASSIC",
+            "ARSR",
+            "ARAM",
+            "ULTBOOK",
+            "WIPMODEWIP",
+            "TUTORIAL",
+            "DOOMBOTSTEEMO",
+            "PRACTICETOOL",
+            "NEXUSBLITZ",
+            "ONEFORALL"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_exhaust.png"
+    },
+    {
+        "id": 4,
+        "name": "闪现",
+        "description": "使英雄朝着你的指针所停的区域瞬间传送一小段距离。",
+        "summonerLevel": 7,
+        "cooldown": 300,
+        "gameModes": [
+            "PRACTICETOOL",
+            "CLASSIC",
+            "ARSR",
+            "ARAM",
+            "NEXUSBLITZ",
+            "ULTBOOK",
+            "TUTORIAL",
+            "FIRSTBLOOD",
+            "ASSASSINATE",
+            "DOOMBOTSTEEMO",
+            "URF",
+            "STARGUARDIAN",
+            "PROJECT",
+            "WIPMODEWIP",
+            "SNOWURF",
+            "ONEFORALL"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_flash.png"
+    },
+    {
+        "id": 5,
+        "name": "",
+        "description": "",
+        "summonerLevel": 4,
+        "cooldown": 180,
+        "gameModes": [],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_Backtrack.png"
+    },
+    {
+        "id": 6,
+        "name": "幽灵疾步",
+        "description": "你的英雄在移动时会无视单位的碰撞体积，并获得24 - 48% 移动速度（基于英雄等级），持续15秒。",
+        "summonerLevel": 1,
+        "cooldown": 210,
+        "gameModes": [
+            "URF",
+            "CLASSIC",
+            "ARSR",
+            "ARAM",
+            "ASSASSINATE",
+            "TUTORIAL_MODULE_2",
+            "TUTORIAL_MODULE_1",
+            "ULTBOOK",
+            "WIPMODEWIP",
+            "TUTORIAL",
+            "DOOMBOTSTEEMO",
+            "PRACTICETOOL",
+            "FIRSTBLOOD",
+            "NEXUSBLITZ",
+            "STARGUARDIAN",
+            "PROJECT",
+            "ONEFORALL"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_haste.png"
+    },
+    {
+        "id": 7,
+        "name": "治疗术",
+        "description": "为你和目标友军英雄回复80-318生命值，并为你和目标友军英雄提供持续1秒的30%移动速度。若目标近期已受到过其它治疗术的影响，则治疗术对目标产生的治疗效果减半。",
+        "summonerLevel": 1,
+        "cooldown": 240,
+        "gameModes": [
+            "URF",
+            "CLASSIC",
+            "ARSR",
+            "ARAM",
+            "ASSASSINATE",
+            "TUTORIAL_MODULE_2",
+            "TUTORIAL_MODULE_1",
+            "ULTBOOK",
+            "WIPMODEWIP",
+            "TUTORIAL",
+            "DOOMBOTSTEEMO",
+            "PRACTICETOOL",
+            "NEXUSBLITZ",
+            "STARGUARDIAN",
+            "PROJECT",
+            "ONEFORALL"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_heal.png"
+    },
+    {
+        "id": 11,
+        "name": "惩戒",
+        "description": "对目标野怪造成600~1200真实伤害。",
+        "summonerLevel": 9,
+        "cooldown": 15,
+        "gameModes": [
+            "URF",
+            "CLASSIC",
+            "ARSR",
+            "ONEFORALL",
+            "PRACTICETOOL",
+            "NEXUSBLITZ",
+            "TUTORIAL",
+            "DOOMBOTSTEEMO"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_smite.png"
+    },
+    {
+        "id": 12,
+        "name": "传送",
+        "description": "在引导4秒后，将英雄传送到友方建筑物旁边。会在10分钟时升级为【解封的传送】，【解封的传送】可将你的英雄传送至友方建筑物、友方小兵或友方守卫旁边。",
+        "summonerLevel": 7,
+        "cooldown": 360,
+        "gameModes": [
+            "ONEFORALL",
+            "PRACTICETOOL",
+            "CLASSIC",
+            "TUTORIAL",
+            "ULTBOOK",
+            "ARSR",
+            "ASSASSINATE",
+            "DOOMBOTSTEEMO"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_teleport.png"
+    },
+    {
+        "id": 13,
+        "name": "清晰术",
+        "description": "为你的英雄回复50%的最大法力值。也会为周围的友军回复25%的最大法力值",
+        "summonerLevel": 6,
+        "cooldown": 240,
+        "gameModes": [
+            "ARAM",
+            "FIRSTBLOOD"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/SummonerMana.png"
+    },
+    {
+        "id": 14,
+        "name": "引燃",
+        "description": "引燃是对单体敌方目标施放的持续性伤害技能，在5秒的持续时间里造成70-410（取决于英雄等级）真实伤害，获得目标的视野，并减少目标所受的治疗和回复效果。",
+        "summonerLevel": 9,
+        "cooldown": 180,
+        "gameModes": [
+            "URF",
+            "CLASSIC",
+            "ARSR",
+            "ARAM",
+            "ASSASSINATE",
+            "ULTBOOK",
+            "WIPMODEWIP",
+            "TUTORIAL",
+            "DOOMBOTSTEEMO",
+            "PRACTICETOOL",
+            "FIRSTBLOOD",
+            "NEXUSBLITZ",
+            "ONEFORALL"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/SummonerIgnite.png"
+    },
+    {
+        "id": 21,
+        "name": "屏障",
+        "description": "为你的英雄套上护盾，吸收105-411（取决于英雄等级）伤害，持续2秒。",
+        "summonerLevel": 4,
+        "cooldown": 180,
+        "gameModes": [
+            "URF",
+            "CLASSIC",
+            "ARSR",
+            "ARAM",
+            "ASSASSINATE",
+            "ULTBOOK",
+            "WIPMODEWIP",
+            "TUTORIAL",
+            "DOOMBOTSTEEMO",
+            "PRACTICETOOL",
+            "FIRSTBLOOD",
+            "NEXUSBLITZ",
+            "STARGUARDIAN",
+            "PROJECT",
+            "ONEFORALL"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/SummonerBarrier.png"
+    },
+    {
+        "id": 30,
+        "name": "护驾！",
+        "description": "快速位移到魄罗之王旁边。",
+        "summonerLevel": 1,
+        "cooldown": 10,
+        "gameModes": [
+            "KINGPORO"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Benevolence_Of_King_Poro_Icon.png"
+    },
+    {
+        "id": 31,
+        "name": "魄罗投掷",
+        "description": "把一个魄罗投向你的敌人。如果它命中了一名敌人，那么你接下来就可以快速位移到被命中的敌人旁边。",
+        "summonerLevel": 1,
+        "cooldown": 20,
+        "gameModes": [
+            "KINGPORO"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Trailblazer_Poro_Icon.png"
+    },
+    {
+        "id": 32,
+        "name": "标记",
+        "description": "沿直线扔出一个雪球。如果雪球命中了一个敌人，那么这个敌人会被【标记】，提供真实视野，并且你的英雄接下来可以快速突进到被【标记】的目标旁边。",
+        "summonerLevel": 6,
+        "cooldown": 80,
+        "gameModes": [
+            "ARAM",
+            "FIRSTBLOOD"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_Mark.png"
+    },
+    {
+        "id": 39,
+        "name": "标记",
+        "description": "沿直线扔出一个雪球。如果雪球命中了一个敌人，那么这个敌人会被【标记】，提供真实视野，并且你的英雄接下来可以快速突进到被【标记】的目标旁边。",
+        "summonerLevel": 6,
+        "cooldown": 80,
+        "gameModes": [
+            "SNOWURF"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_Mark.png"
+    },
+    {
+        "id": 54,
+        "name": "占位",
+        "description": "这个栏位将在游戏开始后，被替换为所选的另一位英雄的终极技能。届时将有30秒的时间选择一个终极技能。请做好准备！",
+        "summonerLevel": 1,
+        "cooldown": 0,
+        "gameModes": [
+            "ULTBOOK"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_Empty.png"
+    },
+    {
+        "id": 55,
+        "name": "占位和攻击惩戒",
+        "description": "这个栏位将在游戏开始后，被替换为所选的另一位英雄的终极技能并且你将获得【攻击惩戒】。届时将有30秒的时间选择一个终极技能。请做好准备！",
+        "summonerLevel": 1,
+        "cooldown": 0,
+        "gameModes": [
+            "ULTBOOK"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_EmptySmite.png"
+    },
+    {
+        "id": 2201,
+        "name": "闪人",
+        "description": "获得短暂的爆发性移动速度，这个移速会在逃离敌方英雄时提升。",
+        "summonerLevel": 1,
+        "cooldown": 45,
+        "gameModes": [
+            "CHERRY"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Icon_SummonerSpell_Flee.2v2_Mode_Fighters.png"
+    },
+    {
+        "id": 2202,
+        "name": "闪现",
+        "description": "使英雄朝着你的指针悬停的位置瞬间传送一小段距离。",
+        "summonerLevel": 1,
+        "cooldown": 0,
+        "gameModes": [
+            "CHERRY"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_flash.png"
+    },
+    {
+        "id": 4294967295,
+        "name": "原初惩戒",
+        "description": "",
+        "summonerLevel": 9,
+        "cooldown": 15,
+        "gameModes": [],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/1103_Smite.png"
+    },
+    {
+        "id": 4294967295,
+        "name": "原初惩戒",
+        "description": "",
+        "summonerLevel": 9,
+        "cooldown": 15,
+        "gameModes": [],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/1101_Smite.png"
+    },
+    {
+        "id": 4294967295,
+        "name": "原初惩戒",
+        "description": "",
+        "summonerLevel": 9,
+        "cooldown": 15,
+        "gameModes": [],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/1102_Smite.png"
+    }
+]
