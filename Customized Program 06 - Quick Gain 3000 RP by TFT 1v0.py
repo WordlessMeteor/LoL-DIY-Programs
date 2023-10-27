@@ -51,7 +51,7 @@ async def get_lockfile(connection):
     return None
 
 #-----------------------------------------------------------------------------
-# 快速启动云顶之弈1V0对局（Quick launch a TFT 1V0 match）
+# 快速启动云顶之弈对局（Quickly launch a TFT match）
 #-----------------------------------------------------------------------------
 async def RP_generator(connection):
     queue = {
@@ -63,7 +63,7 @@ async def RP_generator(connection):
     print(create_lobby)
     if "errorCode" in create_lobby:
         if create_lobby["message"] == "INVALID_LOBBY":
-            print("请确认当前服务器云顶之弈1V0模式可用！\nPlease ensure TFT 1V0 mode is available on current server!")
+            print("请确认当前服务器云顶之弈匹配模式（队列序号：2200）可用！\nPlease ensure TFT Normal (queueId: 2200) is available on current server!")
             time.sleep(5)
             return create_lobby["httpStatus"]
         elif create_lobby["message"] == "Gameflow prevented a lobby.":
