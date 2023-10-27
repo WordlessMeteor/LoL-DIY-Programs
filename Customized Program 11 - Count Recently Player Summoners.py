@@ -1650,7 +1650,7 @@ async def search_recent_players(connection):
                         if not fetched_info:
                             print("未获取到有效对局。请重新输入要查询的对局序号。\nThe program didn't fetch any valid match. Please reinput the match ID to check.")
                             continue
-                        recent_LoLPlayers_statistics_display_order = [10, 9, 8, 2, 0, 1, 7, 3, 4, 6, 5, 137, 11, 12, 18, 13, 14, 37, 38, 39, 40, 41, 42, 43, 93, 94, 95, 96, 97, 98, 99, 100, 15, 19, 122, 123, 47, 44, 48, 27, 26, 31, 30, 29, 28, 24, 126, 112, 57, 131, 116, 124, 118, 91, 51, 128, 117, 90, 50, 127, 46, 21, 20, 120, 125, 119, 92, 52, 129, 22, 132, 135, 134, 113, 133, 34, 35, 121, 53, 55, 54, 130, 36, 49, 88, 89, 58, 59, 63, 64, 68, 69, 73, 74, 78, 79, 83, 84, 17, 25, 115, 32, 33]
+                        recent_LoLPlayers_statistics_display_order = [10, 9, 8, 2, 0, 1, 7, 3, 4, 6, 5, 137, 11, 12, 18, 13, 14, 37, 38, 39, 40, 41, 42, 43, 93, 94, 95, 96, 97, 98, 99, 100, 15, 19, 122, 123, 47, 44, 48, 27, 26, 31, 30, 29, 28, 24, 126, 112, 57, 131, 116, 124, 118, 91, 51, 128, 117, 90, 50, 127, 46, 21, 20, 120, 125, 119, 92, 52, 129, 22, 132, 135, 134, 113, 133, 34, 35, 121, 53, 55, 54, 130, 36, 49, 88, 89, 58, 59, 63, 64, 68, 69, 73, 74, 78, 79, 83, 84, 17, 25, 115, 32, 33, 136]
                         recent_LoLPlayers_data_organized = {}
                         for i in range(len(recent_LoLPlayers_statistics_display_order)):
                             key = LoLGame_info_header_keys[recent_LoLPlayers_statistics_display_order[i]]
@@ -2453,6 +2453,7 @@ async def search_recent_players(connection):
                                         continue
                                     elif gameflow_phase == "ChampSelect":
                                         session = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
+                                        print(session)
                                         break
                                     elif gameflow_phase == "InProgress":
                                         print("您已在游戏中！请等待对局结束后使用生成模式以查看近期一起玩过的玩家信息。\nYou're now in game! Please wait for this match until end and use [Generate Mode] to check the recently played summoner information.")
@@ -2467,8 +2468,10 @@ async def search_recent_players(connection):
                                 friends = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
                                 friends = list(map(lambda x: x["puuid"], friends))
                                 ally_count = 0
+                                enemy_count = 0
                                 recent_friends = []
                                 LoLAlly_df_to_print = pandas.DataFrame()
+                                LoLEnemy_df_to_print = pandas.DataFrame() #在玩家对战的英雄选择阶段，所有敌方玩家的信息都是不可见的；在人机对战的英雄选择阶段，无敌方玩家。统计敌方信息只适用于自定义对局（During champ select of PVP games, all enemies' information is hidden; during champ select of PVE games, there're no enemy players. Counting enemy stats only applys for custom games）
                                 TFTAlly_df_to_print = pandas.DataFrame()
                                 update = False
                                 for ally in session["myTeam"]:
@@ -2486,7 +2489,7 @@ async def search_recent_players(connection):
                                         if len(LoLAlly_index) + len(TFTAlly_index) > 2: #这里不需要关于是否查询了云顶之弈对局记录分类讨论，因为不管有没有查询云顶之弈对局记录，TFTAlly_index都存在，且长度至少为1（Here it's not necessary to discuss whether TFT match history has been searched before, because no matter whether it's searched, TFTAlly_index is defined and its length is at least 1）
                                             ally_count += 1
                                             LoLAlly_df = recent_LoLPlayers_df.loc[LoLAlly_index, :]
-                                            LoLAlly_df_to_print = pandas.concat([LoLAlly_df_to_print, LoLAlly_df.loc[:, ["summonerName", "gameCreationDate", "gameMode", "gameModeName", "mapId", "ally?", "champion", "alias", "champLevel", "spell1", "spell2", "KDA", "item1", "item2", "item3", "item4", "item5", "item6", "ornament"]]], axis = 0)
+                                            LoLAlly_df_to_print = pandas.concat([LoLAlly_df_to_print, LoLAlly_df.loc[:, ["summonerName", "gameCreationDate", "gameMode", "gameModeName", "mapId", "ally?", "champion", "alias", "champLevel", "spell1", "spell2", "KDA", "item1", "item2", "item3", "item4", "item5", "item6", "ornament", "win/lose"]]], axis = 0)
                                             TFTAlly_df = recent_TFTPlayers_df.loc[TFTAlly_index, :]
                                             TFTAlly_df_to_print = pandas.concat([TFTAlly_df_to_print, TFTAlly_df.loc[:, ["summonerName", "game_datetime", "tft_game_type", "companion", "companion_level", "companion_rarity", "level", "last_round", "time_eliminated", "gold_left", "total_damage_to_players", "players_eliminated", "placement", "augment1", "augment2", "augment3", "unit0 character", "unit0 rarity", "unit0 tier", "unit0 item0", "unit0 item1", "unit0 item2", "unit1 character", "unit1 rarity", "unit1 tier", "unit1 item0", "unit1 item1", "unit1 item2", "unit2 character", "unit2 rarity", "unit2 tier", "unit2 item0", "unit2 item1", "unit2 item2", "unit3 character", "unit3 rarity", "unit3 tier", "unit3 item0", "unit3 item1", "unit3 item2", "unit4 character", "unit4 rarity", "unit4 tier", "unit4 item0", "unit4 item1", "unit4 item2", "unit5 character", "unit5 rarity", "unit5 tier", "unit5 item0", "unit5 item1", "unit5 item2", "unit6 character", "unit6 rarity", "unit6 tier", "unit6 item0", "unit6 item1", "unit6 item2", "unit7 character", "unit7 rarity", "unit7 tier", "unit7 item0", "unit7 item1", "unit7 item2", "unit8 character", "unit8 rarity", "unit8 tier", "unit8 item0", "unit8 item1", "unit8 item2", "unit9 character", "unit9 rarity", "unit9 tier", "unit9 item0", "unit9 item1", "unit9 item2", "unit10 character", "unit10 rarity", "unit11 tier", "unit10 item0", "unit10 item1", "unit10 item2", "trait0 name", "trait0 num_units", "trait0 style", "trait0 tier_current", "trait0 tier_total", "trait1 name", "trait1 num_units", "trait1 style", "trait1 tier_current", "trait1 tier_total", "trait2 name", "trait2 num_units", "trait2 style", "trait2 tier_current", "trait2 tier_total", "trait3 name", "trait3 num_units", "trait3 style", "trait3 tier_current", "trait3 tier_total", "trait4 name", "trait4 num_units", "trait4 style", "trait4 tier_current", "trait4 tier_total", "trait5 name", "trait5 num_units", "trait5 style", "trait5 tier_current", "trait5 tier_total", "trait6 name", "trait6 num_units", "trait6 style", "trait6 tier_current", "trait6 tier_total", "trait7 name", "trait7 num_units", "trait7 style", "trait7 tier_current", "trait7 tier_total", "trait8 name", "trait8 num_units", "trait8 style", "trait8 tier_current", "trait8 tier_total", "trait9 name", "trait9 num_units", "trait9 style", "trait9 tier_current", "trait9 tier_total", "trait10 name", "trait10 num_units", "trait10 style", "trait10 tier_current", "trait10 tier_total", "trait11 name", "trait11 num_units", "trait11 style", "trait11 tier_current", "trait11 tier_total", "trait12 name", "trait12 num_units", "trait12 style", "trait12 tier_current", "trait12 tier_total"]]], axis = 0)
                                             if ally["puuid"] in friends:
@@ -2498,7 +2501,7 @@ async def search_recent_players(connection):
                                                             LoLAlly_df.to_excel(excel_writer = writer, sheet_name = ally_info["displayName"] + " (LoL)")
                                                         if search_TFT != "" and len(TFTAlly_index) > 1:
                                                             TFTAlly_df.to_excel(excel_writer = writer, sheet_name = ally_info["displayName"] + " (TFT)")
-                                                        print("玩家%s曾经与您一同战斗过%d次。\nSummoner %s has fought with you for %d times." %(ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2, ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2))
+                                                        print("队友%s曾经与您一同战斗过%d次。\nAlly %s has fought with you for %d times." %(ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2, ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2))
                                                 except PermissionError:
                                                     print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
                                                     input()
@@ -2508,30 +2511,79 @@ async def search_recent_players(connection):
                                                             LoLAlly_df.to_excel(excel_writer = writer, sheet_name = ally_info["displayName"] + " (LoL)")
                                                         if search_TFT != "" and len(TFTAlly_index) > 1:
                                                             TFTAlly_df.to_excel(excel_writer = writer, sheet_name = ally_info["displayName"] + " (TFT)")
-                                                        print("玩家%s曾经与您一同战斗过%d次。\nSummoner %s has fought with you for %d times." %(ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2, ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2))
+                                                        print("队友%s曾经与您一同战斗过%d次。\nAlly %s has fought with you for %d times." %(ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2, ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2))
                                                     break
                                                 else:
                                                     break
+                                if session["theirTeam"]: #在人机对战中，无敌方玩家（There're not enemy players in bot games）
+                                    for enemy in session["theirTeam"]:
+                                        if enemy["nameVisibilityType"] == "VISIBLE":
+                                            enemy_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %enemy["puuid"])).json()
+                                            LoLEnemy_index = [0]
+                                            TFTEnemy_index = [0]
+                                            for i in range(len(recent_LoLPlayers_df.loc[:, "puuid"])):
+                                                if recent_LoLPlayers_df.at[i, "puuid"] == enemy["puuid"]:
+                                                    LoLEnemy_index.append(i)
+                                            if search_TFT != "":
+                                                for i in range(len(recent_TFTPlayers_df.loc[:, "puuid"])):
+                                                    if recent_TFTPlayers_df.at[i, "puuid"] == enemy["puuid"]:
+                                                        TFTEnemy_index.append(i)
+                                            if len(LoLEnemy_index) + len(TFTEnemy_index) > 2:
+                                                enemy_count += 1
+                                                LoLEnemy_df = recent_LoLPlayers_df.loc[LoLEnemy_index, :]
+                                                LoLEnemy_df_to_print = pandas.concat([LoLEnemy_df_to_print, LoLEnemy_df.loc[:, ["summonerName", "gameCreationDate", "gameMode", "gameModeName", "mapId", "ally?", "champion", "alias", "champLevel", "spell1", "spell2", "KDA", "item1", "item2", "item3", "item4", "item5", "item6", "ornament", "win/lose"]]], axis = 0)
+                                                TFTEnemy_df = recent_TFTPlayers_df.loc[TFTEnemy_index, :]
+                                                TFTEnemy_df_to_print = pandas.concat([TFTEnemy_df_to_print, TFTEnemy_df.loc[:, ["summonerName", "game_datetime", "tft_game_type", "companion", "companion_level", "companion_rarity", "level", "last_round", "time_eliminated", "gold_left", "total_damage_to_players", "players_eliminated", "placement", "augment1", "augment2", "augment3", "unit0 character", "unit0 rarity", "unit0 tier", "unit0 item0", "unit0 item1", "unit0 item2", "unit1 character", "unit1 rarity", "unit1 tier", "unit1 item0", "unit1 item1", "unit1 item2", "unit2 character", "unit2 rarity", "unit2 tier", "unit2 item0", "unit2 item1", "unit2 item2", "unit3 character", "unit3 rarity", "unit3 tier", "unit3 item0", "unit3 item1", "unit3 item2", "unit4 character", "unit4 rarity", "unit4 tier", "unit4 item0", "unit4 item1", "unit4 item2", "unit5 character", "unit5 rarity", "unit5 tier", "unit5 item0", "unit5 item1", "unit5 item2", "unit6 character", "unit6 rarity", "unit6 tier", "unit6 item0", "unit6 item1", "unit6 item2", "unit7 character", "unit7 rarity", "unit7 tier", "unit7 item0", "unit7 item1", "unit7 item2", "unit8 character", "unit8 rarity", "unit8 tier", "unit8 item0", "unit8 item1", "unit8 item2", "unit9 character", "unit9 rarity", "unit9 tier", "unit9 item0", "unit9 item1", "unit9 item2", "unit10 character", "unit10 rarity", "unit11 tier", "unit10 item0", "unit10 item1", "unit10 item2", "trait0 name", "trait0 num_units", "trait0 style", "trait0 tier_current", "trait0 tier_total", "trait1 name", "trait1 num_units", "trait1 style", "trait1 tier_current", "trait1 tier_total", "trait2 name", "trait2 num_units", "trait2 style", "trait2 tier_current", "trait2 tier_total", "trait3 name", "trait3 num_units", "trait3 style", "trait3 tier_current", "trait3 tier_total", "trait4 name", "trait4 num_units", "trait4 style", "trait4 tier_current", "trait4 tier_total", "trait5 name", "trait5 num_units", "trait5 style", "trait5 tier_current", "trait5 tier_total", "trait6 name", "trait6 num_units", "trait6 style", "trait6 tier_current", "trait6 tier_total", "trait7 name", "trait7 num_units", "trait7 style", "trait7 tier_current", "trait7 tier_total", "trait8 name", "trait8 num_units", "trait8 style", "trait8 tier_current", "trait8 tier_total", "trait9 name", "trait9 num_units", "trait9 style", "trait9 tier_current", "trait9 tier_total", "trait10 name", "trait10 num_units", "trait10 style", "trait10 tier_current", "trait10 tier_total", "trait11 name", "trait11 num_units", "trait11 style", "trait11 tier_current", "trait11 tier_total", "trait12 name", "trait12 num_units", "trait12 style", "trait12 tier_current", "trait12 tier_total"]]], axis = 0)
+                                                if enemy["puuid"] in friends:
+                                                    recent_friends.append((enemy["displayName"]))
+                                                while True:
+                                                    try:
+                                                        with pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") as writer:
+                                                            if len(LoLEnemy_index) > 1:
+                                                                LoLEnemy_df.to_excel(excel_writer = writer, sheet_name = enemy_info["displayName"] + " (LoL)")
+                                                            if search_TFT != "" and len(TFTEnemy_index) > 1:
+                                                                TFTEnemy_df.to_excel(excel_writer = writer, sheet_name = enemy_info["displayName"] + " (TFT)")
+                                                            print("敌方%s曾经与您一同战斗过%d次。\nEnemy %s has fought with you for %d times." %(enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2, enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2))
+                                                    except PermissionError:
+                                                        print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
+                                                        input()
+                                                    except FileNotFoundError:
+                                                        with pandas.ExcelWriter(path = excel_name) as writer:
+                                                            if len(LoLEnemy_index) > 1:
+                                                                LoLEnemy_df.to_excel(excel_writer = writer, sheet_name = enemy_info["displayName"] + " (LoL)")
+                                                            if search_TFT != "" and len(TFTEnemy_index) > 1:
+                                                                TFTEnemy_df.to_excel(excel_writer = writer, sheet_name = enemy_info["displayName"] + " (TFT)")
+                                                            print("敌方%s曾经与您一同战斗过%d次。\nEnemy %s has fought with you for %d times." %(enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2, enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2))
+                                                        break
+                                                    else:
+                                                        break
                                 if ally_count == 0:
                                     print("您目前遇到的都是新的队友。尝试拓展人缘吧！\nThe allies you've met now are all new. Try extending your friendship!")
-                                elif ally_count == 1:
-                                    print(LoLAlly_df_to_print)
-                                    if search_TFT != "":
-                                        print(TFTAlly_df_to_print)
-                                    if recent_friends == []:
-                                        print("一名队友曾经出现在您的历史对局中。请查看主目录下的%s文件。\nThere's an ally present in your past matches. Please check the workbook %s in the main directory." %(excel_name, excel_name))
-                                    else:
-                                        print("一名好友曾经出现在您的历史对局中。请查看主目录下的%s文件。\nThere's an ally present in your past matches. Please check the workbook %s in the main directory." %(excel_name, excel_name))
                                 else:
                                     print(LoLAlly_df_to_print)
                                     if search_TFT != "":
                                         print(TFTAlly_df_to_print)
                                     if recent_friends == []:
-                                        print("有%d名队友曾经出现在您的历史对局中。请查看主目录下的%s文件。\nThere're %d allies present in your past matches. Please check the workbook %s in the main directory." %(ally_count, excel_name, ally_count, excel_name))
-                                    elif len(recent_friends) == 1:
-                                        print("有%d名队友曾经出现在您的历史对局中。其中%s是您的好友。请查看主目录下的%s文件。\nThere're %d allies present in your past matches. Among them, %s is your friend. Please check the workbook %s in the main directory." %(ally_count, recent_friends[0], excel_name, ally_count, recent_friends[0], excel_name))
-                                    else:
-                                        print("有%d名队友曾经出现在您的历史对局中。其中%s是您的好友。请查看主目录下的%s文件。\nThere're %d allies present in your past matches. Among them, %s are your friends. Please check the workbook %s in the main directory." %(ally_count, "、".join(recent_friends), excel_name, ally_count, ", ".join(recent_friends), excel_name))
+                                        if ally_count == 1:
+                                            print("一名队友曾经出现在您的历史对局中。请查看主目录下的%s文件。\nThere's an ally present in your past matches. Please check the workbook %s in the main directory." %(excel_name, excel_name))
+                                        else:
+                                            print("%d名队友曾经出现在您的历史对局中。请查看主目录下的%s文件。\nThere're %d allies present in your past matches. Please check the workbook %s in the main directory." %(ally_count, excel_name, ally_count, excel_name))
+                                if any(map(lambda x: x["nameVisibilityType"] == "VISIBLE", session["theirTeam"])):
+                                    if enemy_count > 0:
+                                        print(LoLEnemy_df_to_print)
+                                        if search_TFT != "":
+                                            print(TFTEnemy_df_to_print)
+                                        if recent_friends == []:
+                                            if enemy_count == 1:
+                                                print("一名敌人曾经出现在您的历史对局中。请查看主目录下的%s文件。\nThere's an enemy present in your past matches. Please check the workbook %s in the main directory." %(excel_name, excel_name))
+                                            else:
+                                                print("%d名敌人曾经出现在您的历史对局中。请查看主目录下的%s文件。\nThere're %d enemies present in your past matches. Please check the workbook %s in the main directory." %(enemy_count, excel_name, enemy_count, excel_name))
+                                if len(recent_friends) == 1:
+                                    print("以上玩家中，%s是您的好友。\nAmong the above players, %s is your friend." %(recent_friends[0], recent_friends[0]))
+                                elif len(recent_friends) > 1:
+                                    print("以上玩家中，%s是您的好友。\nAmong the above players, %s are your friends." %("、".join(recent_friends), ", ".join(recent_friends)))
+                                if not all(map(lambda x: x["nameVisibilityType"] == "VISIBLE", session["theirTeam"])):
+                                    print("检测到敌方信息可见性异常！请检查之前输出的英雄选择阶段信息。\nDetected enemies' visibility abnormal! Please check the champ select session information printed before.")
                                 print('是否更新数据？（输入“0”以返回上一层更新对局记录信息，否则在不更新对局信息的情况下再次查询近期一起玩过的玩家）\nUpdate data? (Submit "0" to update match history information, otherwise check the recently played summoners again without updating match history)')
                                 update_str = input()
                                 if update_str != "" and update_str[0] == "0":

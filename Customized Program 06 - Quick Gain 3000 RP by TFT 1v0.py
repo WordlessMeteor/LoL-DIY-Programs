@@ -55,7 +55,7 @@ async def get_lockfile(connection):
 #-----------------------------------------------------------------------------
 async def RP_generator(connection):
     queue = {
-                "queueId": 1091
+                "queueId": 2200
             }
     create_lobby = await connection.request("POST", "/lol-lobby/v2/lobby", data = queue)
     create_lobby = await create_lobby.json()

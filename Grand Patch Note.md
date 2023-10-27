@@ -297,7 +297,7 @@ Fixed a key error: <u>Added the **Emerald** rank</u>. (Line 72.)
 3. This program only **cralws and sorts out data**. For further demands, please perform the corresponding analysis on the Excel workbook under the main summoner's folder by yourself.
 ### (ⅶ) Main Dataframe Structure
 1. Names of sheets that represent the dataframes in Customized Programs 5 and 11 now differentiate between LoL and TFT.
-2. Following the principle that "You may remove the excess, but you can't make up for the deficiency", <u>summonerIconId</u> and <u>puuid</u> are added into the sheet `05 - LoLgame_info_header` (originally `game_info_header`).
+2. Following the principle that "You may remove the data excess, but you can't make up for data loss", <u>summonerIconId</u> and <u>puuid</u> are added into the sheet `05 - LoLgame_info_header` (originally `game_info_header`).
 3. Added the details of headers of <u>TFT match history dataframe</u> (`05 - TFTHistory_header`), <u>TFT match information dataframe</u> (`05 - TFTGame_info_header`), <u>recently played TFT players' data</u> (`11 - recent_TFTPlayers_header`) and <u>player loot dataframe</u> (`12 - player_loot_header`).
 ### (ⅷ) `清除临时文件` bat file
 Now, intermediate **pkl** files generated under the corresponding summoner's folder by Customized Program 5 can be deleted by this bat file.

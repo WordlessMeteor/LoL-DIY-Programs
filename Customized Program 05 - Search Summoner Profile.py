@@ -1024,8 +1024,9 @@ async def search_profile(connection):
                     txtfile1.write(json.dumps(info, indent = 8, ensure_ascii = False))
                 except UnicodeEncodeError:
                     print("召唤师信息文本文档生成失败！请检查召唤师名称是否包含不常用字符！\nSummoner information text generation failure! Please check if the summoner name includes any abnormal characters!\n")
+                else:
+                    print('召唤师信息已保存为“%s”。\nSummoner information is saved as "%s".\n' %(os.path.join(folder, txt1name), os.path.join(folder, txt1name)))
                 txtfile1.close()
-                print('召唤师信息已保存为“%s”。\nSummoner information is saved as "%s".\n' %(os.path.join(folder, txt1name), os.path.join(folder, txt1name)))
                 currentTime = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
                 pkl1name = "Intermediate Object - info (Summoner Profile) - %s (%s).pkl" %(displayName, currentTime)
                 #with open(os.path.join(folder, pkl1name), "wb") as IntObj1:
@@ -1053,8 +1054,9 @@ async def search_profile(connection):
                     txtfile2.write(json.dumps(mastery, indent = 8, ensure_ascii = False))
                 except UnicodeEncodeError:
                     print("召唤师英雄成就文本文档生成失败！请检查召唤师名称是否包含不常用字符！\nSummoner champion mastery text generation failure! Please check if the summoner name includes any abnormal characters!\n")
+                else:
+                    print('召唤师英雄成就已保存为“%s”。\nSummoner champion mastery is saved as "%s".\n' %(os.path.join(folder, txt2name), os.path.join(folder, txt2name)))
                 txtfile2.close()
-                print('召唤师英雄成就已保存为“%s”。\nSummoner champion mastery is saved as "%s".\n' %(os.path.join(folder, txt2name), os.path.join(folder, txt2name)))
                 currentTime = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
                 pkl2name = "Intermediate Object - mastery (Champion Mastery) - %s (%s).pkl" %(displayName, currentTime)
                 #with open(os.path.join(folder, pkl2name), "wb") as IntObj2:
@@ -1121,8 +1123,9 @@ async def search_profile(connection):
                     txtfile3.write(json.dumps(ranked, indent = 8, ensure_ascii = False))
                 except UnicodeEncodeError:
                     print("召唤师排位数据文本文档生成失败！请检查召唤师名称是否包含不常用字符！\nSummoner ranked data text generation failure! Please check if the summoner name includes any abnormal characters!\n")
+                else:
+                    print('召唤师排位数据已保存为“%s”。\nSummoner ranked data are saved as "%s".\n' %(os.path.join(folder, txt3name), os.path.join(folder, txt3name)))
                 txtfile3.close()
-                print('召唤师排位数据已保存为“%s”。\nSummoner ranked data are saved as "%s".\n' %(os.path.join(folder, txt3name), os.path.join(folder, txt3name)))
                 currentTime = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
                 pkl3name = "Intermediate Object - ranked (Rank) - %s (%s).pkl" %(displayName, currentTime)
                 #with open(os.path.join(folder, pkl3name), "wb") as IntObj3:
