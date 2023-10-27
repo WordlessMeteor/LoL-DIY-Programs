@@ -2582,7 +2582,7 @@ async def search_recent_players(connection):
                                     print("以上玩家中，%s是您的好友。\nAmong the above players, %s is your friend." %(recent_friends[0], recent_friends[0]))
                                 elif len(recent_friends) > 1:
                                     print("以上玩家中，%s是您的好友。\nAmong the above players, %s are your friends." %("、".join(recent_friends), ", ".join(recent_friends)))
-                                if not all(map(lambda x: x["nameVisibilityType"] == "VISIBLE", session["theirTeam"])):
+                                if not (all(map(lambda x: x["nameVisibilityType"] == "VISIBLE", session["theirTeam"])) or all(map(lambda x: x["nameVisibilityType"] == "HIDDEN", session["theirTeam"]))):
                                     print("检测到敌方信息可见性异常！请检查之前输出的英雄选择阶段信息。\nDetected enemies' visibility abnormal! Please check the champ select session information printed before.")
                                 print('是否更新数据？（输入“0”以返回上一层更新对局记录信息，否则在不更新对局信息的情况下再次查询近期一起玩过的玩家）\nUpdate data? (Submit "0" to update match history information, otherwise check the recently played summoners again without updating match history)')
                                 update_str = input()
