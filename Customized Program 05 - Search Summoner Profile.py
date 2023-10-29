@@ -1509,7 +1509,7 @@ async def search_profile(connection):
                     
                     print('请输入要查询的英雄联盟对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出英雄联盟对局查询“0”：\nPlease enter the LoL match ID to check. Submit a list containing matchIDs to search in batches. Submit "3" to search the currently stored history in batches. Submit "0" to quit searching for LoL matches.')
                     LoLMatchIDs = []
-                    matches_to_remove = [] #在扫描模式下，当从本地文件获取的对局从API重新获取出现异常时，处理策略是输出异常信息并跳过该对局，而不是将其直接从对局序号列表中去除，因为这样会使循环乱套。而后面的info_exist_error、timeline_exist_error、main_player_included和match_reserve_strategy只会在该对局正常获取时才会统计。所以一旦出现数据获取失败的对局，在最后导出数据时，“if match_reserve_strategy[i]:”语句会出现“IndexError: list index out of range”报错（Under scan mode, when an exception occurred during crawling matches with LoLMatchIDs obtained from local files from API, the strategy is to print the exception and skip this match, instead of directly removing them from the matchID list, for the removal will disturb the loop. However, the variables info_exist_error, timeline_exist_error, main_player_included and match_reserve_strategy only work when the matches are crawled from the database as expected. So once a match fails to be captured, during xlsx file exportion at the end of the program, an "IndexError: list index out of range" exception will emerge from the statement "if match_reserve_strategy[i]:"）
+                    matches_to_remove = [] #在扫描模式下，当从本地文件获取的对局从API重新获取出现异常时，处理策略是输出异常信息并跳过该对局，而不是将其直接从对局序号列表中去除，因为这样会使循环乱套。而后面的info_exist_error、timeline_exist_error、main_player_included和match_reserve_strategy只会在该对局正常获取时才会统计。所以一旦出现数据获取失败的对局，在最后导出数据时，“if match_reserve_strategy[i]:”语句会出现“IndexError: list index out of range”报错（Under scan mode, when an exception occurred during crawling matches with LoLMatchIDs obtained from local files from API, the strategy is to print the exception and skip this match, instead of directly removing them from the matchID list, for the removal will disturb the loop. However, the variables info_exist_error, timeline_exist_error, main_player_included and match_reserve_strategy only work when the matches are crawled from the database as expected. So once a match fails to be captured, during xlsx file export at the end of the program, an "IndexError: list index out of range" exception will emerge from the statement "if match_reserve_strategy[i]:"）
                     scan = False #用于将扫描获取的历史记录保存为后缀为“ - Scan”的工作表，防止后续【一键查询】时会把【本地重查】辛辛苦苦得到的对局记录覆盖掉。这样也有利于手动重整，即每次【一键查询】后，可手动将新增的对局记录加到后缀为“ - Scan”的工作表中（Determines whether to save the match histories to a sheet postfixxed with " - Scan", in case the subsequent [One-Key Query] overwrites the match histories fetched and sorted hard by [Local Recheck]. It also helps to manual arrangement. That is, after each [One-Key Query], the user may manually add the new match histories to the sheet postfixxed with " - Scan"）
                     while True:
                         matchID = input()
@@ -2364,7 +2364,7 @@ async def search_profile(connection):
                                         key = LoLGame_timeline_header_keys[i]
                                         LoLGame_timeline_data_organized[key] = [LoLGame_timeline_header[key]] + LoLGame_timeline_data[key]
                                     LoLGame_timeline_df = pandas.DataFrame(data = LoLGame_timeline_data_organized)
-                                else: #当LoLGame_info正常获取而LoLGame_timeline获取异常时，上述程序将导致无法LoLGame_timeline_df未定义。但是最后导出数据时，是根据确定的对局序号列表来生成工作表名称的，因此一定要向game_timeline_dfs中追加某个数据框，即使该数据框没有任何含义。否则不追加的话，时间轴数据框列表的长度与对局记录中的对局数量不相等，会导致时间轴内容和对局序号乱套。考虑到追加的数据框期望呈现出该对局查询时出现问题，这里选择追加LoLGame_info_df（When LoLGame_info is captured as expected but LoLGame_timeline isn't captured, the program above will cause LoLGame_timeline_df not to be defined. But note that during data exportion, sheet names are specified based on matchIDs. Therefore, some dataframe must be appended to game_timeline_dfs, even if it doesn't have any meaning. Otherwise, the length of game_timeline_dfs will unequal the length of matchIDs, which results in the discordance between the timeline content and the timeline sheet name. Considering the expectation for the appended dataframe to reflect that the program encountered some problem when searching this match, here LoLGame_info_df is choosen to be appended）
+                                else: #当LoLGame_info正常获取而LoLGame_timeline获取异常时，上述程序将导致无法LoLGame_timeline_df未定义。但是最后导出数据时，是根据确定的对局序号列表来生成工作表名称的，因此一定要向game_timeline_dfs中追加某个数据框，即使该数据框没有任何含义。否则不追加的话，时间轴数据框列表的长度与对局记录中的对局数量不相等，会导致时间轴内容和对局序号乱套。考虑到追加的数据框期望呈现出该对局查询时出现问题，这里选择追加LoLGame_info_df（When LoLGame_info is captured as expected but LoLGame_timeline isn't captured, the program above will cause LoLGame_timeline_df not to be defined. But note that during data export, sheet names are specified based on matchIDs. Therefore, some dataframe must be appended to game_timeline_dfs, even if it doesn't have any meaning. Otherwise, the length of game_timeline_dfs will unequal the length of matchIDs, which results in the discordance between the timeline content and the timeline sheet name. Considering the expectation for the appended dataframe to reflect that the program encountered some problem when searching this match, here LoLGame_info_df is choosen to be appended）
                                     LoLGame_timeline_df = LoLGame_info_df.copy(deep = True)
                                     timeline_exist_error[int(matchID)] = True
 
@@ -2965,18 +2965,18 @@ async def search_profile(connection):
                                             game_timeline_dfs[matchIDs[i]].to_excel(excel_writer = writer, sheet_name = "Match " + str(matchIDs[i]) + " - Timeline")
                                     if not main_player_included[matchIDs[i]]:
                                         if not match_reserve_strategy[matchIDs[i]]:
-                                            print("对局信息和时间轴导出进度（Match information and timeline exportion process）：%d/%d (Excluding this summoner and not exported!)" %(i + 1, len(matchIDs)))
+                                            print("对局信息和时间轴导出进度（Match information and timeline export process）：%d/%d (Excluding this summoner and not exported!)" %(i + 1, len(matchIDs)))
                                         else:
-                                            print("对局信息和时间轴导出进度（Match information and timeline exportion process）：%d/%d (Excluding this summoner but yet exported!)" %(i + 1, len(matchIDs)))
+                                            print("对局信息和时间轴导出进度（Match information and timeline export process）：%d/%d (Excluding this summoner but yet exported!)" %(i + 1, len(matchIDs)))
                                     else:
                                         if info_exist_error[matchIDs[i]] and not timeline_exist_error[matchIDs[i]]:
-                                            print("对局信息和时间轴导出进度（Match information and timeline exportion process）：%d/%d (Match information capture failure!)" %(i + 1, len(matchIDs)))
+                                            print("对局信息和时间轴导出进度（Match information and timeline export process）：%d/%d (Match information capture failure!)" %(i + 1, len(matchIDs)))
                                         elif not info_exist_error[matchIDs[i]] and timeline_exist_error[matchIDs[i]]:
-                                            print("对局信息和时间轴导出进度（Match information and timeline exportion process）：%d/%d (Match timeline capture failure!)" %(i + 1, len(matchIDs)))
+                                            print("对局信息和时间轴导出进度（Match information and timeline export process）：%d/%d (Match timeline capture failure!)" %(i + 1, len(matchIDs)))
                                         elif info_exist_error[matchIDs[i]] and timeline_exist_error[matchIDs[i]]:
-                                            print("对局信息和时间轴导出进度（Match information and timeline exportion process）：%d/%d (Match information & timeline capture Failure!)" %(i + 1, len(matchIDs)))
+                                            print("对局信息和时间轴导出进度（Match information and timeline export process）：%d/%d (Match information & timeline capture Failure!)" %(i + 1, len(matchIDs)))
                                         else:
-                                            print("对局信息和时间轴导出进度（Match information and timeline exportion process）：%d/%d" %(i + 1, len(matchIDs)))
+                                            print("对局信息和时间轴导出进度（Match information and timeline export process）：%d/%d" %(i + 1, len(matchIDs)))
                                 print("对局信息和时间轴导出完成!\nMatch information and timeline exported!\n")
                         except PermissionError:
                             print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
@@ -3022,22 +3022,22 @@ async def search_profile(connection):
                                             game_timeline_dfs[matchIDs[i]].to_excel(excel_writer = writer, sheet_name = "Match " + str(matchIDs[i]) + " - Timeline")
                                     if not main_player_included[matchIDs[i]]:
                                         if not match_reserve_strategy[matchIDs[i]]:
-                                            print("对局信息和时间轴导出进度（Match information and timeline exportion process）：%d/%d (Excluding this summoner and not exported!)" %(i + 1, len(matchIDs)))
+                                            print("对局信息和时间轴导出进度（Match information and timeline export process）：%d/%d (Excluding this summoner and not exported!)" %(i + 1, len(matchIDs)))
                                         else:
-                                            print("对局信息和时间轴导出进度（Match information and timeline exportion process）：%d/%d (Excluding this summoner but yet exported!)" %(i + 1, len(matchIDs)))
+                                            print("对局信息和时间轴导出进度（Match information and timeline export process）：%d/%d (Excluding this summoner but yet exported!)" %(i + 1, len(matchIDs)))
                                     else:
                                         if info_exist_error[matchIDs[i]] and not timeline_exist_error[matchIDs[i]]:
-                                            print("对局信息和时间轴导出进度（Match information and timeline exportion process）：%d/%d (Match information capture failure!)" %(i + 1, len(matchIDs)))
+                                            print("对局信息和时间轴导出进度（Match information and timeline export process）：%d/%d (Match information capture failure!)" %(i + 1, len(matchIDs)))
                                         elif not info_exist_error[matchIDs[i]] and timeline_exist_error[matchIDs[i]]:
-                                            print("对局信息和时间轴导出进度（Match information and timeline exportion process）：%d/%d (Match timeline capture failure!)" %(i + 1, len(matchIDs)))
+                                            print("对局信息和时间轴导出进度（Match information and timeline export process）：%d/%d (Match timeline capture failure!)" %(i + 1, len(matchIDs)))
                                         elif info_exist_error[matchIDs[i]] and timeline_exist_error[matchIDs[i]]:
-                                            print("对局信息和时间轴导出进度（Match information and timeline exportion process）：%d/%d (Match information & timeline capture Failure!)" %(i + 1, len(matchIDs)))
+                                            print("对局信息和时间轴导出进度（Match information and timeline export process）：%d/%d (Match information & timeline capture Failure!)" %(i + 1, len(matchIDs)))
                                         else:
-                                            print("对局信息和时间轴导出进度（Match information and timeline exportion process）：%d/%d" %(i + 1, len(matchIDs)))
-                                print("对局信息和时间轴导出完成!\nMatch information and timeline exported!\n")
+                                            print("对局信息和时间轴导出进度（Match information and timeline export process）：%d/%d" %(i + 1, len(matchIDs)))
                             break
                         else:
                             break
+                print("对局信息和时间轴导出完成!\nMatch information and timeline exported!\n")
 
 #-----------------------------------------------------------------------------
 # websocket
