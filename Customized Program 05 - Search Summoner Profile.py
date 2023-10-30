@@ -2460,8 +2460,8 @@ async def search_profile(connection):
                         #云顶之弈的每场对局没有独立的API以存储对局战绩，只能通过某玩家的对局记录来存储。这里先生成对局文档，再同时生成和对局记录有关的变量（No available LCU API for each TFT match. It can only be fetched from some player's match history. Here the program generates match text files first and then dataframes regarding match history and game information）
                         save = True
                         TFTGame_info = TFTHistory[i]
-                        matchID = TFTGame_info["json"]["game_id"] #云顶之弈对局记录中存储的对局序号是整数类型（MatchIDs stored in TFTHistory are of integer type）
-                        currentPlatformId = TFTHistory[i]["metadata"]["match_id"].split("_")[0]
+                        matchID = int(TFTGame_info["metadata"]["match_id"].split("_")[1]) #由于后面将对局序号作为键实现混合排序，所以这里需要将字符串分割后提取到的对局序号转化为整数类型（Because the matchIDs are used as keys to perform a mixed sort, the matchID extracted here needs transforming into integer type）
+                        currentPlatformId = TFTGame_info["metadata"]["match_id"].split("_")[0]
                         txt8name = "Match Information (TFT) - " + currentPlatformId + "-" + str(matchID) + ".txt"
                         while True:
                             try:
