@@ -2977,7 +2977,6 @@ async def search_profile(connection):
                                             print("对局信息和时间轴导出进度（Match information and timeline export process）：%d/%d (Match information & timeline capture Failure!)" %(i + 1, len(matchIDs)))
                                         else:
                                             print("对局信息和时间轴导出进度（Match information and timeline export process）：%d/%d" %(i + 1, len(matchIDs)))
-                                print("对局信息和时间轴导出完成!\nMatch information and timeline exported!\n")
                         except PermissionError:
                             print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
                             input()
@@ -3036,8 +3035,8 @@ async def search_profile(connection):
                                             print("对局信息和时间轴导出进度（Match information and timeline export process）：%d/%d" %(i + 1, len(matchIDs)))
                             break
                         else:
+                            print("对局信息和时间轴导出完成！\nMatch information and timeline exported!\n")
                             break
-                    print("对局信息和时间轴导出完成!\nMatch information and timeline exported!\n")
 
 #-----------------------------------------------------------------------------
 # websocket
