@@ -1139,7 +1139,7 @@ async def search_recent_players(connection):
                     except KeyError: #在国服体验服的对局序号为696083511的对局中，出现了召唤师技能序号为37225015和4964（In a match with matchId 696083511 on Chinese PBE, there're two spells with spellIds 37225015 and 4964）
                         spellPatch_adopted = bigVersion
                         spell_recapture = 1
-                        print("第%d/%d场对局（对局序号：%s）召唤师技能信息（%s）获取失败！正在第%d次尝试改用%s版本的召唤师技能信息……\nSpell information (%s) of Match %d / %d (matchID: %s) capture failed! Try changing to spells of Patch %s ... Times tried: %d" %(i + 1, len(games), game["gameId"], spellId, spell_recapture, spellPatch_adopted, spellId, i + 1, len(games), game["gameId"], spellPatch_adopted, spell_recapture))
+                        print("第%d/%d场对局（对局序号：%s）召唤师技能信息（%s）获取失败！正在第%d次尝试改用%s版本的召唤师技能信息……\nSpell information (%s) of Match %d / %d (matchID: %s) capture failed! Changing to spells of Patch %s ... Times tried: %d." %(i + 1, len(games), game["gameId"], spellId, spell_recapture, spellPatch_adopted, spellId, i + 1, len(games), game["gameId"], spellPatch_adopted, spell_recapture))
                         while True:
                             try:
                                 spell = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[language_code])).json()
@@ -1147,11 +1147,11 @@ async def search_recent_players(connection):
                                 spellPatch_deserted = spellPatch_adopted
                                 spellPatch_adopted = bigPatches[bigPatches.index(spellPatch_adopted) + 1]
                                 spell_recapture = 1
-                                print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Try changing to TFT augments of Patch %s ... Times tried: %d" %(spellPatch_deserted, spell_recapture, spellPatch_adopted, spellPatch_deserted, spellPatch_adopted, spell_recapture))
+                                print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT augments of Patch %s ... Times tried: %d." %(spellPatch_deserted, spell_recapture, spellPatch_adopted, spellPatch_deserted, spellPatch_adopted, spell_recapture))
                             except requests.exceptions.RequestException:
                                 if spell_recapture < 3:
                                     spell_recapture += 1
-                                    print("网络环境异常！正在第%d次尝试改用%s版本的召唤师技能信息……\nYour network environment is abnormal! Try changing to spells of Patch %s ... Times tried: %d" %(spell_recapture, spellPatch_adopted, spellPatch_adopted, spell_recapture))
+                                    print("网络环境异常！正在第%d次尝试改用%s版本的召唤师技能信息……\nYour network environment is abnormal! Changing to spells of Patch %s ... Times tried: %d." %(spell_recapture, spellPatch_adopted, spellPatch_adopted, spell_recapture))
                                 else:
                                     print("网络环境异常！第%d/%d场对局（对局序号：%s）的召唤师技能信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the spell (%s) of Match %d / %d (matchID: %s)!" %(i + 1, len(games), game["gameId"], spellId, spellId, i + 1, len(games), game["gameId"]))
                                     spell1.append(game["participants"][0]["spell1Id"])
@@ -1212,7 +1212,7 @@ async def search_recent_players(connection):
                     except KeyError:
                         LoLItemPatch_adopted = bigVersion
                         LoLItem_recapture = 1
-                        print("第%d/%d场对局（对局序号：%s）装备信息（%s）获取失败！正在第%d次尝试改用%s版本的英雄联盟装备信息……\nLoL item information (%s) of Match %d / %d (matchID: %s) capture failed! Try changing to LoL items of Patch %s ... Times tried: %d" %(i + 1, len(games), game["gameId"], LoLItemID, LoLItem_recapture, LoLItemPatch_adopted, LoLItemID, i + 1, len(games), game["gameId"], LoLItemPatch_adopted, LoLItem_recapture))
+                        print("第%d/%d场对局（对局序号：%s）装备信息（%s）获取失败！正在第%d次尝试改用%s版本的英雄联盟装备信息……\nLoL item information (%s) of Match %d / %d (matchID: %s) capture failed! Changing to LoL items of Patch %s ... Times tried: %d." %(i + 1, len(games), game["gameId"], LoLItemID, LoLItem_recapture, LoLItemPatch_adopted, LoLItemID, i + 1, len(games), game["gameId"], LoLItemPatch_adopted, LoLItem_recapture))
                         while True:
                             try:
                                 LoLItem = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[language_code])).json()
@@ -1220,11 +1220,11 @@ async def search_recent_players(connection):
                                 LoLItemPatch_deserted = LoLItemPatch_adopted
                                 LoLItemPatch_adopted = bigPatches[bigPatches.index(LoLItemPatch_adopted) + 1]
                                 LoLItem_recapture = 1
-                                print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Try changing to LoL items of Patch %s ... Times tried: %d" %(LoLItemPatch_deserted, LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_deserted, LoLItemPatch_adopted, LoLItem_recapture))
+                                print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItemPatch_deserted, LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_deserted, LoLItemPatch_adopted, LoLItem_recapture))
                             except requests.exceptions.RequestException:
                                 if LoLItem_recapture < 3:
                                     LoLItem_recapture += 1
-                                    print("网络环境异常！正在第%d次尝试改用%s版本的英雄联盟装备信息……\nYour network environment is abnormal! Try changing to LoL items of Patch %s ... Times tried: %d" %(LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_adopted, LoLItem_recapture))
+                                    print("网络环境异常！正在第%d次尝试改用%s版本的英雄联盟装备信息……\nYour network environment is abnormal! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_adopted, LoLItem_recapture))
                                 else:
                                     print("网络环境异常！第%d/%d场对局（对局序号：%s）的装备信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the item (%s) of Match %d / %d (matchID: %s)!" %(i + 1, len(games), game["gameId"], LoLItemID, LoLItemID, i + 1, len(games), game["gameId"]))
                                     break
@@ -1495,7 +1495,7 @@ async def search_recent_players(connection):
                                                                 except KeyError:
                                                                     perkPatch_adopted = ".".join(LoLGame_info["gameVersion"].split(".")[:2])
                                                                     perk_recapture = 1
-                                                                    print("第%d/%d场对局（对局序号：%s）基石符文信息（%s）获取失败！正在第%d次尝试改用%s版本的基石符文信息……\nRunes information (%s) of Match %d / %d (matchID: %s) capture failed! Try changing to runes of Patch %s ... Times tried: %d" %(LoLMatchIDs.index(matchID) + 1, len(LoLMatchIDs), matchID, perkId, perk_recapture, perkPatch_adopted, perkId, LoLMatchIDs.index(matchID) + 1, len(LoLMatchIDs), matchID, perkPatch_adopted, perk_recapture))
+                                                                    print("第%d/%d场对局（对局序号：%s）基石符文信息（%s）获取失败！正在第%d次尝试改用%s版本的基石符文信息……\nRunes information (%s) of Match %d / %d (matchID: %s) capture failed! Changing to runes of Patch %s ... Times tried: %d." %(LoLMatchIDs.index(matchID) + 1, len(LoLMatchIDs), matchID, perkId, perk_recapture, perkPatch_adopted, perkId, LoLMatchIDs.index(matchID) + 1, len(LoLMatchIDs), matchID, perkPatch_adopted, perk_recapture))
                                                                     while True:
                                                                         try:
                                                                             perk = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perks.json" %(perkPatch_adopted, language_cdragon[language_code])).json()
@@ -1503,11 +1503,11 @@ async def search_recent_players(connection):
                                                                             perkPatch_deserted = perkPatch_adopted
                                                                             perkPatch_adopted = bigPatches[bigPatches.index(perkPatch_adopted) + 1]
                                                                             perk_recapture = 1
-                                                                            print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Try changing to runes of Patch %s ... Times tried: %d" %(perkPatch_deserted, perk_recapture, perkPatch_adopted, perkPatch_deserted, perkPatch_adopted, perk_recapture))
+                                                                            print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to runes of Patch %s ... Times tried: %d." %(perkPatch_deserted, perk_recapture, perkPatch_adopted, perkPatch_deserted, perkPatch_adopted, perk_recapture))
                                                                         except requests.exceptions.RequestException:
                                                                             if perk_recapture < 3:
                                                                                 perk_recapture += 1
-                                                                                print("网络环境异常！正在第%d次尝试改用%s版本的基石符文信息……\nYour network environment is abnormal! Try changing to runes of Patch %s ... Times tried: %d" %(perk_recapture, perkPatch_adopted, perkPatch_adopted, perk_recapture))
+                                                                                print("网络环境异常！正在第%d次尝试改用%s版本的基石符文信息……\nYour network environment is abnormal! Changing to runes of Patch %s ... Times tried: %d." %(perk_recapture, perkPatch_adopted, perkPatch_adopted, perk_recapture))
                                                                             else:
                                                                                 print("网络环境异常！第%d/%d场对局（对局序号：%s）的基石符文信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the runes (%s) of Match %d / %d (matchID: %s)!" %(LoLMatchIDs.index(matchID) + 1, len(LoLMatchIDs), matchID, perkId, perkId, LoLMatchIDs.index(matchID) + 1, len(LoLMatchIDs), matchID))
                                                                                 perk_captured = False
@@ -1550,7 +1550,7 @@ async def search_recent_players(connection):
                                                             except KeyError:
                                                                 perkstylePatch_adopted = ".".join(LoLGame_info["gameVersion"].split(".")[:2])
                                                                 perkstyle_recapture = 1
-                                                                print("第%d/%d场对局（对局序号：%s）符文系信息（%s）获取失败！正在第%d次尝试改用%s版本的符文系信息……\nPerkstyle information (%s) of Match %d / %d (matchID: %s) capture failed! Try changing to perkstyles of Patch %s ... Times tried: %d" %(LoLMatchIDs.index(matchID) + 1, len(LoLMatchIDs), matchID, subkey, perkstyle_recapture, perkstylePatch_adopted, subkey, LoLMatchIDs.index(matchID) + 1, len(LoLMatchIDs), matchID, perkstylePatch_adopted, perkstyle_recapture))
+                                                                print("第%d/%d场对局（对局序号：%s）符文系信息（%s）获取失败！正在第%d次尝试改用%s版本的符文系信息……\nPerkstyle information (%s) of Match %d / %d (matchID: %s) capture failed! Changing to perkstyles of Patch %s ... Times tried: %d." %(LoLMatchIDs.index(matchID) + 1, len(LoLMatchIDs), matchID, subkey, perkstyle_recapture, perkstylePatch_adopted, subkey, LoLMatchIDs.index(matchID) + 1, len(LoLMatchIDs), matchID, perkstylePatch_adopted, perkstyle_recapture))
                                                                 while True:
                                                                     try:
                                                                         perkstyle = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perkstyles.json" %(perkstylePatch_adopted, language_cdragon[language_code])).json()
@@ -1558,11 +1558,11 @@ async def search_recent_players(connection):
                                                                         perkstylePatch_deserted = perkstylePatch_adopted
                                                                         perkstylePatch_adopted = bigPatches[bigPatches.index(perkstylePatch_adopted) + 1]
                                                                         perkstyle_recapture = 1
-                                                                        print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Try changing to perkstyles of Patch %s ... Times tried: %d" %(perkstylePatch_deserted, perkstyle_recapture, perkstylePatch_adopted, perkstylePatch_deserted, perkstylePatch_adopted, perkstyle_recapture))
+                                                                        print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to perkstyles of Patch %s ... Times tried: %d." %(perkstylePatch_deserted, perkstyle_recapture, perkstylePatch_adopted, perkstylePatch_deserted, perkstylePatch_adopted, perkstyle_recapture))
                                                                     except requests.exceptions.RequestException:
                                                                         if perkstyle_recapture < 3:
                                                                             perkstyle_recapture += 1
-                                                                            print("网络环境异常！正在第%d次尝试改用%s版本的符文系信息……\nYour network environment is abnormal! Try changing to runes styles of Patch %s ... Times tried: %d" %(perkstyle_recapture, perkstylePatch_adopted, perkstylePatch_adopted, perkstyle_recapture))
+                                                                            print("网络环境异常！正在第%d次尝试改用%s版本的符文系信息……\nYour network environment is abnormal! Changing to runes styles of Patch %s ... Times tried: %d." %(perkstyle_recapture, perkstylePatch_adopted, perkstylePatch_adopted, perkstyle_recapture))
                                                                         else:
                                                                             print("网络环境异常！第%d/%d场对局（对局序号：%s）的符文系信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the perkstyles (%s) of Match %d / %d (matchID: %s)!" %(LoLMatchIDs.index(matchID) + 1, len(LoLMatchIDs), matchID, subkey, subkey, LoLMatchIDs.index(matchID) + 1, len(LoLMatchIDs), matchID))
                                                                             to_append = subkey
@@ -1594,7 +1594,7 @@ async def search_recent_players(connection):
                                                         except KeyError:
                                                             ArenaPatch_adopted = ".".join(LoLGame_info["gameVersion"].split(".")[:2])
                                                             Arena_recapture = 1
-                                                            print("第%d/%d场对局（对局序号：%s）强化符文信息（%s）获取失败！正在第%d次尝试改用%s版本的斗魂竞技场强化符文信息……\nArena augment information (%s) of Match %d / %d (matchID: %s) capture failed! Try changing to Arena augments of Patch %s ... Times tried: %d" %(LoLMatchIDs.index(matchID) + 1, len(LoLMatchIDs), matchID, playerAugmentId, Arena_recapture, ArenaPatch_adopted, playerAugmentId, LoLMatchIDs.index(matchID) + 1, len(LoLMatchIDs), matchID, ArenaPatch_adopted, Arena_recapture))
+                                                            print("第%d/%d场对局（对局序号：%s）强化符文信息（%s）获取失败！正在第%d次尝试改用%s版本的斗魂竞技场强化符文信息……\nArena augment information (%s) of Match %d / %d (matchID: %s) capture failed! Changing to Arena augments of Patch %s ... Times tried: %d." %(LoLMatchIDs.index(matchID) + 1, len(LoLMatchIDs), matchID, playerAugmentId, Arena_recapture, ArenaPatch_adopted, playerAugmentId, LoLMatchIDs.index(matchID) + 1, len(LoLMatchIDs), matchID, ArenaPatch_adopted, Arena_recapture))
                                                             while True:
                                                                 try:
                                                                     Arena = requests.get("https://raw.communitydragon.org/%s/cdragon/arena/%s.json" %(ArenaPatch_adopted, language_cdragon[language_code])).json()
@@ -1602,11 +1602,11 @@ async def search_recent_players(connection):
                                                                     ArenaPatch_deserted = ArenaPatch_adopted
                                                                     ArenaPatch_adopted = bigPatches[bigPatches.index(ArenaPatch_adopted) + 1]
                                                                     Arena_recapture = 1
-                                                                    print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Try changing to Arena augments of Patch %s ... Times tried: %d" %(ArenaPatch_deserted, Arena_recapture, ArenaPatch_adopted, ArenaPatch_deserted, ArenaPatch_adopted, Arena_recapture))
+                                                                    print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to Arena augments of Patch %s ... Times tried: %d." %(ArenaPatch_deserted, Arena_recapture, ArenaPatch_adopted, ArenaPatch_deserted, ArenaPatch_adopted, Arena_recapture))
                                                                 except requests.exceptions.RequestException:
                                                                     if Arena_recapture < 3:
                                                                         Arena_recapture += 1
-                                                                        print("网络环境异常！正在第%d次尝试改用%s版本的斗魂竞技场强化符文信息……\nYour network environment is abnormal! Try changing to Arena augments of Patch %s ... Times tried: %d" %(Arena_recapture, ArenaPatch_adopted, ArenaPatch_adopted, Arena_recapture))
+                                                                        print("网络环境异常！正在第%d次尝试改用%s版本的斗魂竞技场强化符文信息……\nYour network environment is abnormal! Changing to Arena augments of Patch %s ... Times tried: %d." %(Arena_recapture, ArenaPatch_adopted, ArenaPatch_adopted, Arena_recapture))
                                                                     else:
                                                                         print("网络环境异常！第%d/%d场对局（对局序号：%s）的强化符文信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the Arena augments (%s) of Match %d / %d (matchID: %s)!" %(LoLMatchIDs.index(matchID) + 1, len(LoLMatchIDs), matchID, playerAugmentId, playerAugmentId, LoLMatchIDs.index(matchID) + 1, len(LoLMatchIDs), matchID))
                                                                         ArenaAugment_captured = False
@@ -1814,7 +1814,7 @@ async def search_recent_players(connection):
                                                     except KeyError:
                                                         TFTAugmentPatch_adopted = TFTGamePatch
                                                         TFTAugment_recapture = 1
-                                                        print("第%d/%d场对局（对局序号：%d）强化符文信息（%s）获取失败！正在第%d次尝试改用%s版本的云顶之弈强化符文信息……\nTFT augment information (%s) of Match %d / %d (matchID: %d) capture failed! Try changing to TFT augments of Patch %s ... Times tried: %d" %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer["augments"][j - 10], TFTAugment_recapture, TFTAugmentPatch_adopted, TFTPlayer["augments"][j - 10], i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTAugmentPatch_adopted, TFTAugment_recapture))
+                                                        print("第%d/%d场对局（对局序号：%d）强化符文信息（%s）获取失败！正在第%d次尝试改用%s版本的云顶之弈强化符文信息……\nTFT augment information (%s) of Match %d / %d (matchID: %d) capture failed! Changing to TFT augments of Patch %s ... Times tried: %d." %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer["augments"][j - 10], TFTAugment_recapture, TFTAugmentPatch_adopted, TFTPlayer["augments"][j - 10], i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTAugmentPatch_adopted, TFTAugment_recapture))
                                                         while True:
                                                             try:
                                                                 TFT = requests.get("https://raw.communitydragon.org/%s/cdragon/tft/%s.json" %(TFTAugmentPatch_adopted, language_cdragon[language_code])).json()
@@ -1822,11 +1822,11 @@ async def search_recent_players(connection):
                                                                 TFTAugmentPatch_deserted = TFTAugmentPatch_adopted
                                                                 TFTAugmentPatch_adopted = bigPatches[bigPatches.index(TFTAugmentPatch_adopted) + 1]
                                                                 TFTAugment_recapture = 1
-                                                                print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Try changing to TFT augments of Patch %s ... Times tried: %d" %(TFTAugmentPatch_deserted, TFTAugment_recapture, TFTAugmentPatch_adopted, TFTAugmentPatch_deserted, TFTAugmentPatch_adopted, TFTAugment_recapture))
+                                                                print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT augments of Patch %s ... Times tried: %d." %(TFTAugmentPatch_deserted, TFTAugment_recapture, TFTAugmentPatch_adopted, TFTAugmentPatch_deserted, TFTAugmentPatch_adopted, TFTAugment_recapture))
                                                             except requests.exceptions.RequestException: #如果重新获取数据的过程中出现网络异常，那么暂时先将原始数据导入工作表中（If a network error occurs when recapturing the data, then temporarily export the initial data into the worksheet）
                                                                 if TFTAugment_recapture < 3:
                                                                     TFTAugment_recapture += 1
-                                                                    print("网络环境异常！正在第%d次尝试改用%s版本的云顶之弈强化符文信息……\nYour network environment is abnormal! Try changing to TFT augments of Patch %s ... Times tried: %d" %(TFTAugment_recapture, TFTAugmentPatch_adopted, TFTAugmentPatch_adopted, TFTAugment_recapture))
+                                                                    print("网络环境异常！正在第%d次尝试改用%s版本的云顶之弈强化符文信息……\nYour network environment is abnormal! Changing to TFT augments of Patch %s ... Times tried: %d." %(TFTAugment_recapture, TFTAugmentPatch_adopted, TFTAugmentPatch_adopted, TFTAugment_recapture))
                                                                 else:
                                                                     print("网络环境异常！第%d/%d场对局（对局序号：%d）的强化符文信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the augment (%s) of Match %d / %d (matchID: %d)!" %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer["augments"][j - 10], TFTPlayer["augments"][j - 10], i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"]))
                                                                     to_append = TFTPlayer["augments"][j - 10]
@@ -1856,7 +1856,7 @@ async def search_recent_players(connection):
                                                     except KeyError:
                                                         TFTCompanionPatch_adopted = TFTGamePatch
                                                         TFTCompanion_recapture = 1
-                                                        print("第%d/%d场对局（对局序号：%d）小小英雄信息（%s）获取失败！正在第%d次尝试改用%s版本的小小英雄信息……\nTFT companion information (%s) of Match %d / %d (matchID: %d) capture failed! Try changing to TFT companions of Patch %s ... Times tried: %d" %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], contentId, TFTCompanion_recapture, TFTCompanionPatch_adopted, contentId, i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTCompanionPatch_adopted, TFTCompanion_recapture))
+                                                        print("第%d/%d场对局（对局序号：%d）小小英雄信息（%s）获取失败！正在第%d次尝试改用%s版本的小小英雄信息……\nTFT companion information (%s) of Match %d / %d (matchID: %d) capture failed! Changing to TFT companions of Patch %s ... Times tried: %d." %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], contentId, TFTCompanion_recapture, TFTCompanionPatch_adopted, contentId, i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTCompanionPatch_adopted, TFTCompanion_recapture))
                                                         while True:
                                                             try:
                                                                 TFTCompanion = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/companions.json" %(TFTCompanionPatch_adopted, language_cdragon[language_code])).json()
@@ -1864,11 +1864,11 @@ async def search_recent_players(connection):
                                                                 TFTCompanionPatch_deserted = TFTCompanionPatch_adopted
                                                                 TFTCompanionPatch_adopted = bigPatches[bigPatches.index(TFTCompanionPatch_adopted) + 1]
                                                                 TFTCompanion_recapture = 1
-                                                                print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Try changing to TFT traits of Patch %s ... Times tried: %d" %(TFTCompanionPatch_deserted, TFTCompanion_recapture, TFTCompanionPatch_adopted, TFTCompanionPatch_deserted, TFTCompanionPatch_adopted, TFTCompanion_recapture))
+                                                                print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT traits of Patch %s ... Times tried: %d." %(TFTCompanionPatch_deserted, TFTCompanion_recapture, TFTCompanionPatch_adopted, TFTCompanionPatch_deserted, TFTCompanionPatch_adopted, TFTCompanion_recapture))
                                                             except requests.exceptions.RequestException:
                                                                 if TFTCompanion_recapture < 3:
                                                                     TFTCompanion_recapture += 1
-                                                                    print("网络环境异常！正在第%d次尝试改用%s版本的小小英雄信息……\nYour network environment is abnormal! Try changing to TFT companions of Patch %s ... Times tried: %d" %(TFTCompanion_recapture, TFTCompanionPatch_adopted, TFTCompanionPatch_adopted, TFTCompanion_recapture))
+                                                                    print("网络环境异常！正在第%d次尝试改用%s版本的小小英雄信息……\nYour network environment is abnormal! Changing to TFT companions of Patch %s ... Times tried: %d." %(TFTCompanion_recapture, TFTCompanionPatch_adopted, TFTCompanionPatch_adopted, TFTCompanion_recapture))
                                                                 else:
                                                                     print("网络环境异常！第%d/%d场对局（对局序号：%d）的小小英雄信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the companion (%s) of Match %d / %d (matchID: %d)!" %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], contentId, contentId, i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"]))
                                                                     to_append = {13: contentId, 14: "", 15: ""}
@@ -1904,8 +1904,13 @@ async def search_recent_players(connection):
                                                     if TFTPlayer["puuid"] != current_puuid:
                                                         TFTHistory_data[key].append(to_append)
                                                 elif j == 22 or j == 23:
+                                                    TFTPlayer_info_recapture = 0
                                                     TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
-                                                    if TFTPlayer["puuid"] == "00000000-0000-0000-0000-000000000000": #在云顶之弈（新手教程）中，无法通过电脑玩家的玩家通用唯一识别码（00000000-0000-0000-0000-000000000000）来查询其召唤师名称和序号（Summoner names and IDs of bot players in TFT (Tutorial) can't be searched for according to their puuid: 00000000-0000-0000-0000-000000000000）
+                                                    while "errorCode" in TFTPlayer_info and TFTPlayer_info_recapture < 3:
+                                                        TFTPlayer_info_recapture += 1
+                                                        print("第%d/%d场对局（对局序号：%d）玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of Player (puuid: %s) in Match %d / %d (matchID: %d) capture failed! Recapturing this player's information ... Times tried: %d." %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer["puuid"], TFTPlayer_info_recapture, TFTPlayer["puuid"], i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer_info_recapture))
+                                                        TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
+                                                    if TFTPlayer["puuid"] == "00000000-0000-0000-0000-000000000000" or "errorCode" in TFTPlayer: #在云顶之弈（新手教程）中，无法通过电脑玩家的玩家通用唯一识别码（00000000-0000-0000-0000-000000000000）来查询其召唤师名称和序号（Summoner names and IDs of bot players in TFT (Tutorial) can't be searched for according to their puuid: 00000000-0000-0000-0000-000000000000）
                                                         to_append = {22: "", 23: ""}
                                                     else:
                                                         to_append = {22: TFTPlayer_info["displayName"], 23: TFTPlayer_info["summonerId"]}
@@ -1936,7 +1941,7 @@ async def search_recent_players(connection):
                                                     except KeyError:
                                                         TFTTraitPatch_adopted = TFTGamePatch
                                                         TFTTrait_recapture = 1
-                                                        print("第%d/%d场对局（对局序号：%d）羁绊信息（%s）获取失败！正在第%d次尝试改用%s版本的羁绊信息……\nTFT trait information (%s) of Match %d / %d (matchID: %d) capture failed! Try changing to TFT traits of Patch %s ... Times tried: %d" %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer_Traits[int(TFTTrait_iter[5:])]["name"], TFTTrait_recapture, TFTTraitPatch_adopted, TFTPlayer_Traits[int(TFTTrait_iter[5:])]["name"], i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTTraitPatch_adopted, TFTTrait_recapture))
+                                                        print("第%d/%d场对局（对局序号：%d）羁绊信息（%s）获取失败！正在第%d次尝试改用%s版本的羁绊信息……\nTFT trait information (%s) of Match %d / %d (matchID: %d) capture failed! Changing to TFT traits of Patch %s ... Times tried: %d." %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer_Traits[int(TFTTrait_iter[5:])]["name"], TFTTrait_recapture, TFTTraitPatch_adopted, TFTPlayer_Traits[int(TFTTrait_iter[5:])]["name"], i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTTraitPatch_adopted, TFTTrait_recapture))
                                                         while True:
                                                             try:
                                                                 TFTTrait = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tfttraits.json" %(TFTTraitPatch_adopted, language_cdragon[language_code])).json()
@@ -1944,11 +1949,11 @@ async def search_recent_players(connection):
                                                                 TFTTraitPatch_deserted = TFTTraitPatch_adopted
                                                                 TFTTraitPatch_adopted = bigPatches[bigPatches.index(TFTTraitPatch_adopted) + 1]
                                                                 TFTTrait_recapture = 1
-                                                                print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Try changing to TFT traits of Patch %s ... Times tried: %d" %(TFTTraitPatch_deserted, TFTTrait_recapture, TFTTraitPatch_adopted, TFTTraitPatch_deserted, TFTTraitPatch_adopted, TFTTrait_recapture))
+                                                                print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT traits of Patch %s ... Times tried: %d." %(TFTTraitPatch_deserted, TFTTrait_recapture, TFTTraitPatch_adopted, TFTTraitPatch_deserted, TFTTraitPatch_adopted, TFTTrait_recapture))
                                                             except requests.exceptions.RequestException:
                                                                 if TFTTrait_recapture < 3:
                                                                     TFTTrait_recapture += 1
-                                                                    print("网络环境异常！正在第%d次尝试改用%s版本的羁绊信息……\nYour network environment is abnormal! Try changing to TFT traits of Patch %s ... Times tried: %d" %(TFTTrait_recapture, TFTTraitPatch_adopted, TFTTraitPatch_adopted, TFTTrait_recapture))
+                                                                    print("网络环境异常！正在第%d次尝试改用%s版本的羁绊信息……\nYour network environment is abnormal! Changing to TFT traits of Patch %s ... Times tried: %d." %(TFTTrait_recapture, TFTTraitPatch_adopted, TFTTraitPatch_adopted, TFTTrait_recapture))
                                                                 else:
                                                                     print("网络环境异常！第%d/%d场对局（对局序号：%d）的羁绊信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the trait (%s) of Match %d / %d (matchID: %d)!" %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer_Traits[int(TFTTrait_iter[5:])]["name"], TFTPlayer_Traits[int(TFTTrait_iter[5:])]["name"], i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"]))
                                                                     to_append = TFTPlayer_Traits[int(TFTTrait_iter[5:])][subkey]
@@ -2003,7 +2008,7 @@ async def search_recent_players(connection):
                                                                 except ValueError: #当在列表list(map(lambda x: x.lower(), list(TFTChampions.keys())))中查不到TFTPlayer_Units[int(unit_iter[4:])]["character_id"].lower()时，需要更换版本（When the champion with `character_id` `TFTPlayer_Units[int(unit_iter[4:])]["character_id"].lower()` isn't in the list `list(map(lambda x: x.lower(), list(TFTChampions.keys())))`, the data version needs to be changed）
                                                                     TFTChampionPatch_adopted = TFTGamePatch
                                                                     TFTChampion_recapture = 1
-                                                                    print("第%d/%d场对局（对局序号：%d）英雄信息（%s）获取失败！正在第%d次尝试改用%s版本的棋子信息……\nTFT champion (%s) information of Match %d / %d (matchID: %d) capture failed! Try changing to TFT champions of Patch %s ... Times tried: %d" %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer_Units[int(unit_iter[4:])]["character_id"], TFTChampion_recapture, TFTChampionPatch_adopted, TFTPlayer_Units[int(unit_iter[4:])]["character_id"], i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTChampionPatch_adopted, TFTChampion_recapture))
+                                                                    print("第%d/%d场对局（对局序号：%d）英雄信息（%s）获取失败！正在第%d次尝试改用%s版本的棋子信息……\nTFT champion (%s) information of Match %d / %d (matchID: %d) capture failed! Changing to TFT champions of Patch %s ... Times tried: %d." %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer_Units[int(unit_iter[4:])]["character_id"], TFTChampion_recapture, TFTChampionPatch_adopted, TFTPlayer_Units[int(unit_iter[4:])]["character_id"], i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTChampionPatch_adopted, TFTChampion_recapture))
                                                                     while True:
                                                                         try:
                                                                             TFTChampion = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftchampions.json" %(TFTChampionPatch_adopted, language_cdragon[language_code])).json()
@@ -2011,11 +2016,11 @@ async def search_recent_players(connection):
                                                                             TFTChampionPatch_deserted = TFTChampionPatch_adopted
                                                                             TFTChampionPatch_adopted = bigPatches[bigPatches.index(TFTChampionPatch_adopted) + 1]
                                                                             TFTChampion_recapture = 1
-                                                                            print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Try changing to TFT champions of Patch %s ... Times tried: %d" %(TFTChampionPatch_deserted, TFTChampion_recapture, TFTChampionPatch_adopted, TFTChampionPatch_deserted, TFTChampionPatch_adopted, TFTChampion_recapture))
+                                                                            print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT champions of Patch %s ... Times tried: %d." %(TFTChampionPatch_deserted, TFTChampion_recapture, TFTChampionPatch_adopted, TFTChampionPatch_deserted, TFTChampionPatch_adopted, TFTChampion_recapture))
                                                                         except requests.exceptions.RequestException:
                                                                             if TFTChampion_recapture < 3:
                                                                                 TFTChampion_recapture += 1
-                                                                                print("网络环境异常！正在第%d次尝试改用%s版本的棋子信息……\nYour network environment is abnormal! Try changing to TFT champions of Patch %s ... Times tried: %d" %(TFTChampion_recapture, TFTChampionPatch_adopted, TFTChampionPatch_adopted, TFTChampion_recapture))
+                                                                                print("网络环境异常！正在第%d次尝试改用%s版本的棋子信息……\nYour network environment is abnormal! Changing to TFT champions of Patch %s ... Times tried: %d." %(TFTChampion_recapture, TFTChampionPatch_adopted, TFTChampionPatch_adopted, TFTChampion_recapture))
                                                                             else:
                                                                                 print("网络环境异常！第%d/%d场对局（对局序号：%d）将采用原始数据！\nNetwork error! The original data will be used for Match %d / %d (matchID: %d)!" %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"]))
                                                                                 to_append = TFTPlayer_Units[int(unit_iter[4:])]["character_id"]
@@ -2063,7 +2068,7 @@ async def search_recent_players(connection):
                                                             except KeyError:
                                                                 TFTItemPatch_adopted = TFTGamePatch
                                                                 TFTItem_recapture = 1
-                                                                print("第%d/%d场对局（对局序号：%d）装备信息（%s）获取失败！正在第%d次尝试改用%s版本的云顶之弈装备信息……\nTFT item information (%s) of Match %d / %d (matchID: %d) capture failed! Try changing to TFT items of Patch %s ... Times tried: %d" %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTItemNameId, TFTItem_recapture, TFTItemPatch_adopted, TFTItemNameId, i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTItemPatch_adopted, TFTItem_recapture))
+                                                                print("第%d/%d场对局（对局序号：%d）装备信息（%s）获取失败！正在第%d次尝试改用%s版本的云顶之弈装备信息……\nTFT item information (%s) of Match %d / %d (matchID: %d) capture failed! Changing to TFT items of Patch %s ... Times tried: %d." %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTItemNameId, TFTItem_recapture, TFTItemPatch_adopted, TFTItemNameId, i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTItemPatch_adopted, TFTItem_recapture))
                                                                 while True:
                                                                     try:
                                                                         TFTItem = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftitems.json" %(TFTItemPatch_adopted, language_cdragon[language_code])).json()
@@ -2071,11 +2076,11 @@ async def search_recent_players(connection):
                                                                         TFTItemPatch_deserted = TFTItemPatch_adopted
                                                                         TFTItemPatch_adopted = bigPatches[bigPatches.index(TFTItemPatch_adopted) + 1]
                                                                         TFTItemPatch_recapture = 1
-                                                                        print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Try changing to TFT items of Patch %s ... Times tried: %d" %(TFTItemPatch_deserted, TFTItem_recapture, TFTItemPatch_adopted, TFTItemPatch_deserted, TFTItemPatch_adopted, TFTItem_recapture))
+                                                                        print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT items of Patch %s ... Times tried: %d." %(TFTItemPatch_deserted, TFTItem_recapture, TFTItemPatch_adopted, TFTItemPatch_deserted, TFTItemPatch_adopted, TFTItem_recapture))
                                                                     except requests.exceptions.RequestException:
                                                                         if TFTItem_recapture < 3:
                                                                             TFTItem_recapture += 1
-                                                                            print("网络环境异常！正在第%d次尝试改用%s版本的云顶之弈装备信息……\nYour network environment is abnormal! Try changing to TFT items of Patch %s ... Times tried: %d" %(TFTItem_recapture, TFTItemPatch_adopted, TFTItemPatch_adopted, TFTItem_recapture))
+                                                                            print("网络环境异常！正在第%d次尝试改用%s版本的云顶之弈装备信息……\nYour network environment is abnormal! Changing to TFT items of Patch %s ... Times tried: %d." %(TFTItem_recapture, TFTItemPatch_adopted, TFTItemPatch_adopted, TFTItem_recapture))
                                                                         else:
                                                                             print("网络环境异常！第%d/%d场对局（对局序号：%d）的装备信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the item (%s) of Match %d / %d (matchID: %d)!" %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTItemNameId, TFTItemNameId, i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"]))
                                                                             to_append = TFTItemNameId
@@ -2101,7 +2106,7 @@ async def search_recent_players(connection):
                                                             except KeyError:
                                                                 TFTItemPatch_adopted = TFTGamePatch
                                                                 TFTItem_recapture = 1
-                                                                print("第%d/%d场对局（对局序号：%d）装备信息（%d）获取失败！正在第%d次尝试改用%s版本的云顶之弈装备信息……\nTFT item information (%d) of Match %d / %d (matchID: %d) capture failed! Try changing to TFT items of Patch %s ... Times tried: %d" %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTItemId, TFTItem_recapture, TFTItemPatch_adopted, TFTItemId, i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTItemPatch_adopted, TFTItem_recapture))
+                                                                print("第%d/%d场对局（对局序号：%d）装备信息（%d）获取失败！正在第%d次尝试改用%s版本的云顶之弈装备信息……\nTFT item information (%d) of Match %d / %d (matchID: %d) capture failed! Changing to TFT items of Patch %s ... Times tried: %d." %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTItemId, TFTItem_recapture, TFTItemPatch_adopted, TFTItemId, i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTItemPatch_adopted, TFTItem_recapture))
                                                                 while True:
                                                                     try:
                                                                         TFTItem = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftitems.json" %(TFTItemPatch_adopted, language_cdragon[language_code])).json()
@@ -2109,11 +2114,11 @@ async def search_recent_players(connection):
                                                                         TFTItemPatch_deserted = TFTItemPatch_adopted
                                                                         TFTItemPatch_adopted = bigPatches[bigPatches.index(TFTItemPatch_adopted) + 1]
                                                                         TFTItemPatch_recapture = 1
-                                                                        print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Try changing to TFT items of Patch %s ... Times tried: %d" %(TFTItemPatch_deserted, TFTItem_recapture, TFTItemPatch_adopted, TFTItemPatch_deserted, TFTItemPatch_adopted, TFTItem_recapture))
+                                                                        print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT items of Patch %s ... Times tried: %d." %(TFTItemPatch_deserted, TFTItem_recapture, TFTItemPatch_adopted, TFTItemPatch_deserted, TFTItemPatch_adopted, TFTItem_recapture))
                                                                     except requests.exceptions.RequestException:
                                                                         if TFTItem_recapture < 3:
                                                                             TFTItem_recapture += 1
-                                                                            print("网络环境异常！正在第%d次尝试改用%s版本的云顶之弈装备信息……\nYour network environment is abnormal! Try changing to TFT items of Patch %s ... Times tried: %d" %(TFTItem_recapture, TFTItemPatch_adopted, TFTItemPatch_adopted, TFTItem_recapture))
+                                                                            print("网络环境异常！正在第%d次尝试改用%s版本的云顶之弈装备信息……\nYour network environment is abnormal! Changing to TFT items of Patch %s ... Times tried: %d." %(TFTItem_recapture, TFTItemPatch_adopted, TFTItemPatch_adopted, TFTItem_recapture))
                                                                         else:
                                                                             print("网络环境异常！第%d/%d场对局（对局序号：%d）的装备信息（%d）将采用原始数据！\nNetwork error! The original data will be used for the item (%d) of Match %d / %d (matchID: %d)!" %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTItemId, TFTItemId, i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"]))
                                                                             to_append = TFTItemId
@@ -2476,7 +2481,15 @@ async def search_recent_players(connection):
                                 update = False
                                 for ally in session["myTeam"]:
                                     if ally["puuid"] != current_puuid:
+                                        ally_info_recapture = 0
                                         ally_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %ally["puuid"])).json()
+                                        while "errorCode" in ally_info_recapture and ally_info_recapture < 3:
+                                            ally_info_recapture += 1
+                                            print("队友信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an ally (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
+                                            TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
+                                        if ally_info_recapture >= 3:
+                                            print("队友信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an ally (puuid: %s) capture failed! The program will ignore this ally.")
+                                            continue
                                         LoLAlly_index = [0] #第0行是中文表头，所以一开始要包含在内（The 0th line is Chinese header, so it should be contained in the beginning）
                                         TFTAlly_index = [0]
                                         for i in range(len(recent_LoLPlayers_df.loc[:, "puuid"])):
@@ -2493,7 +2506,7 @@ async def search_recent_players(connection):
                                             TFTAlly_df = recent_TFTPlayers_df.loc[TFTAlly_index, :]
                                             TFTAlly_df_to_print = pandas.concat([TFTAlly_df_to_print, TFTAlly_df.loc[:, ["summonerName", "game_datetime", "tft_game_type", "companion", "companion_level", "companion_rarity", "level", "last_round", "time_eliminated", "gold_left", "total_damage_to_players", "players_eliminated", "placement", "augment1", "augment2", "augment3", "unit0 character", "unit0 rarity", "unit0 tier", "unit0 item0", "unit0 item1", "unit0 item2", "unit1 character", "unit1 rarity", "unit1 tier", "unit1 item0", "unit1 item1", "unit1 item2", "unit2 character", "unit2 rarity", "unit2 tier", "unit2 item0", "unit2 item1", "unit2 item2", "unit3 character", "unit3 rarity", "unit3 tier", "unit3 item0", "unit3 item1", "unit3 item2", "unit4 character", "unit4 rarity", "unit4 tier", "unit4 item0", "unit4 item1", "unit4 item2", "unit5 character", "unit5 rarity", "unit5 tier", "unit5 item0", "unit5 item1", "unit5 item2", "unit6 character", "unit6 rarity", "unit6 tier", "unit6 item0", "unit6 item1", "unit6 item2", "unit7 character", "unit7 rarity", "unit7 tier", "unit7 item0", "unit7 item1", "unit7 item2", "unit8 character", "unit8 rarity", "unit8 tier", "unit8 item0", "unit8 item1", "unit8 item2", "unit9 character", "unit9 rarity", "unit9 tier", "unit9 item0", "unit9 item1", "unit9 item2", "unit10 character", "unit10 rarity", "unit11 tier", "unit10 item0", "unit10 item1", "unit10 item2", "trait0 name", "trait0 num_units", "trait0 style", "trait0 tier_current", "trait0 tier_total", "trait1 name", "trait1 num_units", "trait1 style", "trait1 tier_current", "trait1 tier_total", "trait2 name", "trait2 num_units", "trait2 style", "trait2 tier_current", "trait2 tier_total", "trait3 name", "trait3 num_units", "trait3 style", "trait3 tier_current", "trait3 tier_total", "trait4 name", "trait4 num_units", "trait4 style", "trait4 tier_current", "trait4 tier_total", "trait5 name", "trait5 num_units", "trait5 style", "trait5 tier_current", "trait5 tier_total", "trait6 name", "trait6 num_units", "trait6 style", "trait6 tier_current", "trait6 tier_total", "trait7 name", "trait7 num_units", "trait7 style", "trait7 tier_current", "trait7 tier_total", "trait8 name", "trait8 num_units", "trait8 style", "trait8 tier_current", "trait8 tier_total", "trait9 name", "trait9 num_units", "trait9 style", "trait9 tier_current", "trait9 tier_total", "trait10 name", "trait10 num_units", "trait10 style", "trait10 tier_current", "trait10 tier_total", "trait11 name", "trait11 num_units", "trait11 style", "trait11 tier_current", "trait11 tier_total", "trait12 name", "trait12 num_units", "trait12 style", "trait12 tier_current", "trait12 tier_total"]]], axis = 0)
                                             if ally["puuid"] in friends:
-                                                recent_friends.append((ally["displayName"]))
+                                                recent_friends.append((ally_info["displayName"]))
                                             while True:
                                                 try:
                                                     with pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") as writer:
@@ -2518,7 +2531,15 @@ async def search_recent_players(connection):
                                 if session["theirTeam"]: #在人机对战中，无敌方玩家（There're not enemy players in bot games）
                                     for enemy in session["theirTeam"]:
                                         if enemy["nameVisibilityType"] == "VISIBLE":
+                                            enemy_info_recapture = 0
                                             enemy_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %enemy["puuid"])).json()
+                                            while "errorCode" in enemy_info_recapture and enemy_info_recapture < 3:
+                                                enemy_info_recapture += 1
+                                                print("对手信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an enemy (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(enemy["puuid"], enemy_info_recapture, enemy["puuid"], enemy_info_recapture))
+                                                TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
+                                            if enemy_info_recapture >= 3:
+                                                print("对手信息（玩家通用唯一识别码：%s）获取失败！将忽略该名对手。\nInformation of an enemy (puuid: %s) capture failed! The program will ignore this enemy.")
+                                                continue
                                             LoLEnemy_index = [0]
                                             TFTEnemy_index = [0]
                                             for i in range(len(recent_LoLPlayers_df.loc[:, "puuid"])):
@@ -2535,7 +2556,7 @@ async def search_recent_players(connection):
                                                 TFTEnemy_df = recent_TFTPlayers_df.loc[TFTEnemy_index, :]
                                                 TFTEnemy_df_to_print = pandas.concat([TFTEnemy_df_to_print, TFTEnemy_df.loc[:, ["summonerName", "game_datetime", "tft_game_type", "companion", "companion_level", "companion_rarity", "level", "last_round", "time_eliminated", "gold_left", "total_damage_to_players", "players_eliminated", "placement", "augment1", "augment2", "augment3", "unit0 character", "unit0 rarity", "unit0 tier", "unit0 item0", "unit0 item1", "unit0 item2", "unit1 character", "unit1 rarity", "unit1 tier", "unit1 item0", "unit1 item1", "unit1 item2", "unit2 character", "unit2 rarity", "unit2 tier", "unit2 item0", "unit2 item1", "unit2 item2", "unit3 character", "unit3 rarity", "unit3 tier", "unit3 item0", "unit3 item1", "unit3 item2", "unit4 character", "unit4 rarity", "unit4 tier", "unit4 item0", "unit4 item1", "unit4 item2", "unit5 character", "unit5 rarity", "unit5 tier", "unit5 item0", "unit5 item1", "unit5 item2", "unit6 character", "unit6 rarity", "unit6 tier", "unit6 item0", "unit6 item1", "unit6 item2", "unit7 character", "unit7 rarity", "unit7 tier", "unit7 item0", "unit7 item1", "unit7 item2", "unit8 character", "unit8 rarity", "unit8 tier", "unit8 item0", "unit8 item1", "unit8 item2", "unit9 character", "unit9 rarity", "unit9 tier", "unit9 item0", "unit9 item1", "unit9 item2", "unit10 character", "unit10 rarity", "unit11 tier", "unit10 item0", "unit10 item1", "unit10 item2", "trait0 name", "trait0 num_units", "trait0 style", "trait0 tier_current", "trait0 tier_total", "trait1 name", "trait1 num_units", "trait1 style", "trait1 tier_current", "trait1 tier_total", "trait2 name", "trait2 num_units", "trait2 style", "trait2 tier_current", "trait2 tier_total", "trait3 name", "trait3 num_units", "trait3 style", "trait3 tier_current", "trait3 tier_total", "trait4 name", "trait4 num_units", "trait4 style", "trait4 tier_current", "trait4 tier_total", "trait5 name", "trait5 num_units", "trait5 style", "trait5 tier_current", "trait5 tier_total", "trait6 name", "trait6 num_units", "trait6 style", "trait6 tier_current", "trait6 tier_total", "trait7 name", "trait7 num_units", "trait7 style", "trait7 tier_current", "trait7 tier_total", "trait8 name", "trait8 num_units", "trait8 style", "trait8 tier_current", "trait8 tier_total", "trait9 name", "trait9 num_units", "trait9 style", "trait9 tier_current", "trait9 tier_total", "trait10 name", "trait10 num_units", "trait10 style", "trait10 tier_current", "trait10 tier_total", "trait11 name", "trait11 num_units", "trait11 style", "trait11 tier_current", "trait11 tier_total", "trait12 name", "trait12 num_units", "trait12 style", "trait12 tier_current", "trait12 tier_total"]]], axis = 0)
                                                 if enemy["puuid"] in friends:
-                                                    recent_friends.append((enemy["displayName"]))
+                                                    recent_friends.append((enemy_info["displayName"]))
                                                 while True:
                                                     try:
                                                         with pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") as writer:
@@ -2543,7 +2564,7 @@ async def search_recent_players(connection):
                                                                 LoLEnemy_df.to_excel(excel_writer = writer, sheet_name = enemy_info["displayName"] + " (LoL)")
                                                             if search_TFT != "" and len(TFTEnemy_index) > 1:
                                                                 TFTEnemy_df.to_excel(excel_writer = writer, sheet_name = enemy_info["displayName"] + " (TFT)")
-                                                            print("敌方%s曾经与您一同战斗过%d次。\nEnemy %s has fought with you for %d times." %(enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2, enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2))
+                                                            print("对手%s曾经与您一同战斗过%d次。\nEnemy %s has fought with you for %d times." %(enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2, enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2))
                                                     except PermissionError:
                                                         print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
                                                         input()
@@ -2553,7 +2574,7 @@ async def search_recent_players(connection):
                                                                 LoLEnemy_df.to_excel(excel_writer = writer, sheet_name = enemy_info["displayName"] + " (LoL)")
                                                             if search_TFT != "" and len(TFTEnemy_index) > 1:
                                                                 TFTEnemy_df.to_excel(excel_writer = writer, sheet_name = enemy_info["displayName"] + " (TFT)")
-                                                            print("敌方%s曾经与您一同战斗过%d次。\nEnemy %s has fought with you for %d times." %(enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2, enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2))
+                                                            print("对手%s曾经与您一同战斗过%d次。\nEnemy %s has fought with you for %d times." %(enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2, enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2))
                                                         break
                                                     else:
                                                         break
@@ -2575,9 +2596,9 @@ async def search_recent_players(connection):
                                             print(TFTEnemy_df_to_print)
                                         if recent_friends == []:
                                             if enemy_count == 1:
-                                                print("一名敌人曾经出现在您的历史对局中。请查看主目录下的%s文件。\nThere's an enemy present in your past matches. Please check the workbook %s in the main directory." %(excel_name, excel_name))
+                                                print("一名对手曾经出现在您的历史对局中。请查看主目录下的%s文件。\nThere's an enemy present in your past matches. Please check the workbook %s in the main directory." %(excel_name, excel_name))
                                             else:
-                                                print("%d名敌人曾经出现在您的历史对局中。请查看主目录下的%s文件。\nThere're %d enemies present in your past matches. Please check the workbook %s in the main directory." %(enemy_count, excel_name, enemy_count, excel_name))
+                                                print("%d名对手曾经出现在您的历史对局中。请查看主目录下的%s文件。\nThere're %d enemies present in your past matches. Please check the workbook %s in the main directory." %(enemy_count, excel_name, enemy_count, excel_name))
                                 if len(recent_friends) == 1:
                                     print("以上玩家中，%s是您的好友。\nAmong the above players, %s is your friend." %(recent_friends[0], recent_friends[0]))
                                 elif len(recent_friends) > 1:
