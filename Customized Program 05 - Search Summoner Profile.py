@@ -3037,7 +3037,7 @@ async def search_profile(connection):
                             break
                         else:
                             break
-                print("对局信息和时间轴导出完成!\nMatch information and timeline exported!\n")
+                    print("对局信息和时间轴导出完成!\nMatch information and timeline exported!\n")
 
 #-----------------------------------------------------------------------------
 # websocket
