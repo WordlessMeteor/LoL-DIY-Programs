@@ -2660,16 +2660,19 @@ async def search_profile(connection):
                                             if TFTPlayer["puuid"] == current_puuid:
                                                 TFTHistory_data[key].append(to_append)
                                         elif j == 22 or j == 23:
-                                            TFTPlayer_info_recapture = 0
-                                            TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
-                                            while "errorCode" in TFTPlayer_info and TFTPlayer_info_recapture < 3: #有较小的概率出现玩家信息获取失败的情况，导致后面赋值过程出现错误（It happens that player information capture fails, which leads to KeyError）
-                                                TFTPlayer_info_recapture += 1
-                                                print("第%d/%d场对局（对局序号：%d）玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of the player (puuid: %s) in Match %d / %d (matchID: %d) capture failed! Recapturing this player's information ... Times tried: %d." %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer["puuid"], TFTPlayer_info_recapture, TFTPlayer["puuid"], i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer_info_recapture))
-                                                TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
-                                            if TFTPlayer["puuid"] == "00000000-0000-0000-0000-000000000000" or "errorCode" in TFTPlayer: #在云顶之弈（新手教程）中，无法通过电脑玩家的玩家通用唯一识别码（00000000-0000-0000-0000-000000000000）来查询其召唤师名称和序号（Summoner names and IDs of bot players in TFT (Tutorial) can't be searched for according to their puuid: 00000000-0000-0000-0000-000000000000）
+                                            if TFTPlayer["puuid"] == "00000000-0000-0000-0000-000000000000": #在云顶之弈（新手教程）中，无法通过电脑玩家的玩家通用唯一识别码（00000000-0000-0000-0000-000000000000）来查询其召唤师名称和序号（Summoner names and IDs of bot players in TFT (Tutorial) can't be searched for according to their puuid: 00000000-0000-0000-0000-000000000000）
                                                 to_append = {22: "", 23: ""}
                                             else:
-                                                to_append = {22: TFTPlayer_info["displayName"], 23: TFTPlayer_info["summonerId"]}
+                                                TFTPlayer_info_recapture = 0
+                                                TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
+                                                while "errorCode" in TFTPlayer_info and TFTPlayer_info_recapture < 3:
+                                                    TFTPlayer_info_recapture += 1
+                                                    print("第%d/%d场对局（对局序号：%d）玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of Player (puuid: %s) in Match %d / %d (matchID: %d) capture failed! Recapturing this player's information ... Times tried: %d." %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer["puuid"], TFTPlayer_info_recapture, TFTPlayer["puuid"], i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer_info_recapture))
+                                                    TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
+                                                if "errorCode" in TFTPlayer:
+                                                    to_append = {22: "", 23: ""}
+                                                else:
+                                                    to_append = {22: TFTPlayer_info["displayName"], 23: TFTPlayer_info["summonerId"]}
                                             TFTGame_info_data[key].append(to_append[j])
                                             if TFTPlayer["puuid"] == current_puuid:
                                                 TFTHistory_data[key].append(to_append[j])

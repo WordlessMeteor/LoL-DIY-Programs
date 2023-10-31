@@ -1757,7 +1757,7 @@ async def search_recent_players(connection):
                                     for j in range(len(TFTHistory_header)):
                                         key = TFTHistory_header_keys[j]
                                         if j == 0:
-                                            for k in range(len(TFTHistory[i]["metadata"]["participants"])):
+                                            for k in range(len(TFTHistory[i]["metadata"]["participants"])): #这里选择遍历元数据子字典中的玩家，而不是json子字典中的玩家，是因为前者不会包含电脑玩家的玩家通用唯一识别码，而后者会。显然，统计最近一起玩过的玩家数据不应当包含电脑玩家（Here the for-loop traverses the participants saved in the "metadata" sub-dictionary instead of the "json" sub-dictionary. This is becasue puuid of bot players isn't included in the former dictionary, but included in the latter dictionary. Obviously, they shouldn't counted as a recently played summoner）
                                                 if TFTHistory[i]["json"]["participants"][k]["puuid"] != current_puuid:
                                                     TFTHistory_data[key].append(i + 1)
                                         elif j >= 1 and j <= 8:
@@ -1904,16 +1904,19 @@ async def search_recent_players(connection):
                                                     if TFTPlayer["puuid"] != current_puuid:
                                                         TFTHistory_data[key].append(to_append)
                                                 elif j == 22 or j == 23:
-                                                    TFTPlayer_info_recapture = 0
-                                                    TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
-                                                    while "errorCode" in TFTPlayer_info and TFTPlayer_info_recapture < 3:
-                                                        TFTPlayer_info_recapture += 1
-                                                        print("第%d/%d场对局（对局序号：%d）玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of Player (puuid: %s) in Match %d / %d (matchID: %d) capture failed! Recapturing this player's information ... Times tried: %d." %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer["puuid"], TFTPlayer_info_recapture, TFTPlayer["puuid"], i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer_info_recapture))
-                                                        TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
-                                                    if TFTPlayer["puuid"] == "00000000-0000-0000-0000-000000000000" or "errorCode" in TFTPlayer: #在云顶之弈（新手教程）中，无法通过电脑玩家的玩家通用唯一识别码（00000000-0000-0000-0000-000000000000）来查询其召唤师名称和序号（Summoner names and IDs of bot players in TFT (Tutorial) can't be searched for according to their puuid: 00000000-0000-0000-0000-000000000000）
+                                                    if TFTPlayer["puuid"] == "00000000-0000-0000-0000-000000000000": #在云顶之弈（新手教程）中，无法通过电脑玩家的玩家通用唯一识别码（00000000-0000-0000-0000-000000000000）来查询其召唤师名称和序号（Summoner names and IDs of bot players in TFT (Tutorial) can't be searched for according to their puuid: 00000000-0000-0000-0000-000000000000）
                                                         to_append = {22: "", 23: ""}
                                                     else:
-                                                        to_append = {22: TFTPlayer_info["displayName"], 23: TFTPlayer_info["summonerId"]}
+                                                        TFTPlayer_info_recapture = 0
+                                                        TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
+                                                        while "errorCode" in TFTPlayer_info and TFTPlayer_info_recapture < 3:
+                                                            TFTPlayer_info_recapture += 1
+                                                            print("第%d/%d场对局（对局序号：%d）玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of Player (puuid: %s) in Match %d / %d (matchID: %d) capture failed! Recapturing this player's information ... Times tried: %d." %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer["puuid"], TFTPlayer_info_recapture, TFTPlayer["puuid"], i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer_info_recapture))
+                                                            TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
+                                                        if "errorCode" in TFTPlayer:
+                                                            to_append = {22: "", 23: ""}
+                                                        else:
+                                                            to_append = {22: TFTPlayer_info["displayName"], 23: TFTPlayer_info["summonerId"]}
                                                     if TFTPlayer["puuid"] != current_puuid:
                                                         TFTHistory_data[key].append(to_append[j])
                                                 elif j == 24:
