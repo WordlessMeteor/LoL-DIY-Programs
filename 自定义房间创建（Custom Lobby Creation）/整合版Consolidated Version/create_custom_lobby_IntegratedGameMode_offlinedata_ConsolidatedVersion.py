@@ -18,7 +18,8 @@ from lcu_driver import Connector
 #-----------------------------------------------------------------------------
 # 获取自定义模式电脑玩家列表（Get access to the bot list in Custom）
 #-----------------------------------------------------------------------------
-import os, pandas, random, time
+import os, pandas, random, time, unicodedata
+from wcwidth import wcswidth
 #localdata = pandas.read_excel("../../available-bots.xlsx")
 localdata = pandas.read_excel("../../available-bots.xlsx", sheet_name = "Sheet1")
 champions_CN = { int(localdata["championId"][bot]): localdata["CN"][bot] for bot in range(len(localdata)) }
@@ -41,6 +42,9 @@ if check_botlist != "":
 ##    for h in range(len(localdata)):
 ##        print("{0:<7}".format(str(localdata["QueueID"][h])) + "\t" + "{0:<5}".format(str(localdata["mapID"][h])) + "\t" + "{0:<14}".format(localdata["map_CN"][h]) + "\t" + "{0:<30}".format(localdata["Gamemode_CN"][h]) + "\t" + "{0:<11}".format(localdata["PickType_CN"][h]) + "\t" + "{0:<24}".format(localdata["map_EN"][h]) + "\t" + "{0:<34}".format(localdata["Gamemode_EN"][h]) + "\t" + "{0:<15}".format(localdata["PickType_EN"][h]))
 ##    print("*****************************************************************************")
+
+def count_nonASCII(s: str): #统计一个字符串中占用命令行2个宽度单位的字符个数（Count the number of characters that take up 2 width unit in CMD）
+    return sum([unicodedata.east_asian_width(character) in ("F", "W") for character in list(str(s))])
 
 connector = Connector()
 
@@ -77,17 +81,18 @@ async def check_available_queue(connection):
     queues = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
     map_CN = {8: "水晶之痕", 10: "扭曲丛林", 11: "召唤师峡谷", 12: "嚎哭深渊", 14: "屠夫之桥", 16: "宇宙遗迹", 18: "瓦罗兰城市公园", 19: "第43区", 20: "失控地点", 21: "百合与莲花的神庙", 22: "聚点危机", 30: "怒火角斗场"}
     map_EN = {8: "Crystal Scar", 10: "Twisted Treeline", 11: "Summoner's Rift", 12: "Howling Abyss", 14: "Butcher's Bridge", 16: "Cosmic Ruins", 18: "Valoran City Park", 19: "Substructure 43", 20: "Crash Site", 21: "Temple of Lily and Lotus", 22: "Convergence", 30: "RoW"}
-    pickmode_CN = {"AllRandomPickStrategy": "全随机模式", "SimulPickStrategy": "自选模式", "TeamBuilderDraftPickStrategy": "征召模式", "OneTeamVotePickStrategy": "投票", "TournamentPickStrategy": "竞技征召模式"}
-    pickmode_EN = {"AllRandomPickStrategy": "All Random", "SimulPickStrategy": "Blind Pick", "TeamBuilderDraftPickStrategy": "Draft Mode", "OneTeamVotePickStrategy": "Vote", "TournamentPickStrategy": "Tournament Draft"}
+    pickmode_CN = {"AllRandomPickStrategy": "全随机模式", "SimulPickStrategy": "自选模式", "TeamBuilderDraftPickStrategy": "征召模式", "OneTeamVotePickStrategy": "投票", "TournamentPickStrategy": "竞技征召模式", "": "待定"}
+    pickmode_EN = {"AllRandomPickStrategy": "All Random", "SimulPickStrategy": "Blind Pick", "TeamBuilderDraftPickStrategy": "Draft Mode", "OneTeamVotePickStrategy": "Vote", "TournamentPickStrategy": "Tournament Draft", "": "Pending"}
     available_queues = {}
     for queue in queues:
         if queue["queueAvailability"] == "Available":
             available_queues[queue["id"]] = queue
     print("*****************************************************************************")
-    print("QueueID\tmapID\t" + "{0:^14}".format("map_CN") + "\t" + "{0:^30}".format("Gamemode_CN") + "\t" + "{0:^11}".format("PickType_CN") + "\t" + "{0:^24}".format("map_EN") + "\t" + "{0:^34}".format("Gamemode_EN") + "\t" + "{0:^15}".format("PickType_EN"))
+    lens = {"queueID": max(max(map(lambda x: wcswidth(str(x["id"])), available_queues.values())), len("queueID")) + 2, "mapID": max(max(map(lambda x: wcswidth(str(x["mapId"])), available_queues.values())), len("mapID")) + 2, "map_CN": max(max(map(lambda x: wcswidth(map_CN[x["mapId"]]), available_queues.values())), len("map_CN")) + 2, "map_EN": max(max(map(lambda x: wcswidth(map_EN[x["mapId"]]), available_queues.values())), len("map_EN")) + 2, "gameMode": max(max(map(lambda x: wcswidth(x["name"]), available_queues.values())), len("gameMode")) + 2, "pickType_CN": max(max(map(lambda x: wcswidth(pickmode_CN[x["gameTypeConfig"]["pickMode"]]), available_queues.values())), len("pickType_CN")) + 2, "pickType_EN": max(max(map(lambda x: wcswidth(pickmode_EN[x["gameTypeConfig"]["pickMode"]]), available_queues.values())), len("pickType_CN")) + 2}
+    print("{0:^{w0}}  {1:^{w1}}  {2:^{w2}}  {3:^{w3}}  {4:^{w4}}  {5:^{w5}}  {6:^{w6}}".format("queueID", "mapID", "map_CN", "map_EN", "gameMode", "pickType_CN", "pickType_EN", w0 = lens["queueID"], w1 = lens["mapID"], w2 = lens["map_CN"], w3 = lens["map_EN"], w4 = lens["gameMode"], w5 = lens["pickType_CN"], w6 = lens["pickType_EN"]))
     for i in sorted(available_queues.keys()):
         queue = available_queues[i]
-        print(str(queue["id"]) + "\t" + str(queue["mapId"]) + "\t" + map_CN[queue["mapId"]] + "\t" + map_EN[queue["mapId"]] + "\t" + queue["name"] + "\t" + pickmode_CN[queue["gameTypeConfig"]["pickMode"]] + "\t" + pickmode_EN[queue["gameTypeConfig"]["pickMode"]])
+        print("{0:^{w0}}  {1:^{w1}}  {2:^{w2}}  {3:^{w3}}  {4:^{w4}}  {5:^{w5}}  {6:^{w6}}".format(queue["id"], queue["mapId"], map_CN[queue["mapId"]], map_EN[queue["mapId"]], queue["name"], pickmode_CN[queue["gameTypeConfig"]["pickMode"]], pickmode_EN[queue["gameTypeConfig"]["pickMode"]], w0 = lens["queueID"] - count_nonASCII(queue["id"]), w1 = lens["mapID"] - count_nonASCII(queue["mapId"]), w2 = lens["map_CN"] - count_nonASCII(map_CN[queue["mapId"]]), w3 = lens["map_EN"] - count_nonASCII(map_EN[queue["mapId"]]), w4 = lens["gameMode"] - count_nonASCII(queue["name"]), w5 = lens["pickType_CN"] - count_nonASCII(pickmode_CN[queue["gameTypeConfig"]["pickMode"]]), w6 = lens["pickType_EN"] - count_nonASCII(pickmode_EN[queue["gameTypeConfig"]["pickMode"]]))) #算法实现原理：全ASCII字符串可以直接参考前面计算好的宽度进行格式化，因为每个字符占用1个字符宽度。如果字符串中包含一个中文字符，而格式化的宽度不变的话，那么最终格式化得到的结果是整个字符串宽度会多一个单位。所以，当字符串中包含中文字符时，传入format函数的宽度参数应当在原来计算好的宽度的基础上减去中文字符的个数（Algorithm principle: A string that consists of all ASCII characters can be formatted the width based on the width calculated before (`lens`), for each character takes up 1 width unit. If a string consists of a Chinese character and the width parameter in the `format` function stays unchanged, then the final width of the formatted string is actually one unit more than expected. Therefore, when a string contains Chinese characters, the width parameter to be passed into the `format` function should be the previously calculated width subtracted by the number of Chinese characters）
     print("*****************************************************************************")
 
 #-----------------------------------------------------------------------------

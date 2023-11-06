@@ -81,7 +81,10 @@ The following explanations only apply to the current branch. For other details (
 	- 自定义脚本2参考了Mario开发的图形化界面的LeagueLobby中**根据Json创建房间**按钮的功能。使用时，需要先在文本编辑器中修改该文件中create_custom_lobby函数中的各参数的值，保存后再双击该文件以尝试创建房间。
 	（图片待完善）
 		- 若要查看创建房间后的返回信息，请选择先打开命令提示符或终端再输入`python [文件名]`。
-	- 自定义脚本3为**探索LCU API**提供了一个基础工具，将**格式化的**返回结果输出到同目录下的`temporary data.txt`中。该程序中列出了一些参考的网络请求命令。所有可用API来自[LCU Explorer](https://github.com/HextechDocs/lcu-explorer/releases/tag/1.2.0)。
+	- 自定义脚本3为**探索LCU API**提供了一个基础工具，将**格式化的**返回结果输出到同目录下的`temporary data.txt`，并将变量以**二进制**的形式保存到同目录下的`temporary data.pkl`中。该程序中列出了一些参考的网络请求命令。所有可用API来自[LCU Explorer](https://github.com/HextechDocs/lcu-explorer/releases/tag/1.2.0)。
+		- 请参考示例输入。<font color=#ff0000><b>不合法的输入会导致程序直接退出。</b></font>合法的输入格式有以下要求：
+			- 包含<u>一或两个</u>空格。
+			- 地址（输入字符串以空格作为分隔符分隔而成的列表的第二个字符串元素）以<u>斜杠</u>开头。
 		- 该程序无法发送稍微复杂一些的网络请求。如需要附带json数据的网络请求。
 		- 要在网页端而不是软件端查看所有LCU API，请访问[Swagger](https://www.mingweisamuel.com/lcu-schema/tool/)。（如在浏览器中使用Ctrl + F以搜索API。）
 	- 自定义脚本4用于**更新主目录下的`available-bots.xlsx`文件**。使用时，请先将结果复制粘贴到记事本中，再进行合适的整理，将其汇入已有的Excel文件中。
@@ -284,7 +287,10 @@ For details about customized programs that is beyond the scope of creating a cus
 	- Customized Program 02 refers to the **根据Json创建房间** button in the GUI LeagueLobby software by Mario. When using, users need first modify the values of parameters in create_custom_lobby function and then double-click the file after saving the change.
 	(A picture to add)
 		- To check the returned lobby information after creating a lobby, please first open Command Prompt or Terminal and then type `python [Filename]`.
-	- Customized Program 03 provides a basic tool for **exploration into LCU API**, which saved formatted returned result as `temporary data.txt` in the same directory. Some reference requests are listed in this program. All available APIs are from [LCU Explorer](https://github.com/HextechDocs/lcu-explorer/releases/tag/1.2.0).
+	- Customized Program 03 provides a basic tool for **exploration into LCU API**, which saves **formatted** returned result into `temporary data.txt` in the same directory, and also saves the variable into `temporary data.pkl` in the **binary** form in the same directory. Some reference requests are listed in this program. All available APIs are from [LCU Explorer](https://github.com/HextechDocs/lcu-explorer/releases/tag/1.2.0).
+		- Please input according to the examples. <font color=#ff0000><b>Illegal input will cause the program to exit.</b></font> A legal input requires: 
+			- Containing <u>one or two</u> spaces.
+			- Endpoint (The second string element of the list from the input string split by space) to start with a <u>slash</u>.
 		- This program isn't designed to send any complex requests. E.g. requests with json data slot.
 		- To view all LCU APIs in a web instead of in an APP, please visit [swagger](https://www.mingweisamuel.com/lcu-schema/tool/). (For example, you may use Ctrl + F to search for certain API.)
 	- Customized Program 04 is designed to **update `available-bots.xlsx` in the home directory**. For use, please copy the result to notepad and then sort it out to adjust to the existing xlsx file.
