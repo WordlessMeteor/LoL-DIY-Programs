@@ -69,7 +69,7 @@ async def create_custom_lobby(connection):
     summoner = await data.json()
     gameMode = ["CLASSIC","ARAM","PRACTICETOOL","NEXUSBLITZ"]
     mapId = [11,12,11,21]
-    print("请选择自定义房间的游戏模式：\nPlease select a game mode of the lobby:\n1\t召唤师峡谷（Summoner's Rift）\n2\t嚎哭深渊（Howling Abyss）\n3\t训练模式（Practice Tool）\n4\t极限闪击（暂时不可用）【Nexus Blitz (temporarily unavailable)】")
+    print("请选择自定义房间的游戏模式：\nPlease select a game mode of the lobby:\n1\t召唤师峡谷（Summoner's Rift）\n2\t嚎哭深渊（Howling Abyss）\n3\t训练模式（Practice Tool）\n4\t极限闪击（国服不可用）【Nexus Blitz (Unavailable on Chinese servers)】")
     while True:
         TypeNumber = input()
         if TypeNumber == "":

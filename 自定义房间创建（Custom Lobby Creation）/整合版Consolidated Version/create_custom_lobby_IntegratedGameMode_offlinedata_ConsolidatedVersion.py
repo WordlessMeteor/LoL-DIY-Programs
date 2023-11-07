@@ -102,9 +102,9 @@ async def create_custom_lobby(connection):
     data = await connection.request("GET", "/lol-summoner/v1/current-summoner")
     summoner = await data.json()
     gameMode = ["CLASSIC","ARAM","PRACTICETOOL","NEXUSBLITZ","TUTORIAL"]
-    gamemap = {8: "水晶之痕（Crystal Scar）", 10: "扭曲丛林（Twisted Treeline）", 11: "召唤师峡谷（Summoner's Rift）", 12: "嚎哭深渊（Howling Abyss）", 14: "屠夫之桥（Butcher's Bridge）", 16: "宇宙遗迹（Cosmic Ruins）", 18: "瓦罗兰城市公园（Valoran City Park）", 19: "第43区（Substructure 43）", 20: "失控地点（Crash Site）", 21: "百合与莲花的神庙（Temple of Lily and Lotus）", 22: "聚点危机（Convergence）", 30: "怒火角斗场（RoW）"}
+    gamemap = {8: "水晶之痕（Crystal Scar）", 10: "扭曲丛林（Twisted Treeline）", 11: "召唤师峡谷（Summoner's Rift）", 12: "嚎哭深渊（Howling Abyss）", 14: "屠夫之桥（Butcher's Bridge）", 16: "宇宙遗迹（Cosmic Ruins）", 18: "瓦罗兰城市公园（Valoran City Park）", 19: "第43区（Substructure 43）", 20: "失控地点（Crash Site）", 21: "百合与莲花的神庙（Temple of Lily and Lotus）", 22: "聚点危机（Convergence）", 30: "怒火角斗场（Rings of Wrath）"}
     spectatorPolicy = ["LobbyAllowed", "FriendsAllowed", "AllAllowed", "NotAllowed"]
-    print("请选择自定义房间的游戏模式：\nPlease select a game mode of the lobby:\n1\t召唤师峡谷（Summoner's Rift）\n2\t嚎哭深渊（Howling Abyss）\n3\t训练模式（Practice Tool）\n4\t极限闪击（暂时不可用）【Nexus Blitz (temporarily unavailable)】")
+    print("请选择自定义房间的游戏模式：\nPlease select a game mode of the lobby:\n1\t召唤师峡谷（Summoner's Rift）\n2\t嚎哭深渊（Howling Abyss）\n3\t训练模式（Practice Tool）\n4\t极限闪击（国服不可用）【Nexus Blitz (Unavailable on Chinese servers)】")
     while True:
         gameModeTypeNumber = input()
         if gameModeTypeNumber == "":
