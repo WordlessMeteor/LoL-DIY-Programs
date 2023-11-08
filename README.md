@@ -34,7 +34,7 @@ The following explanations only apply to the current branch. For other details (
 		- 电脑玩家数量设置
 		- 模拟客户端行为
 	- 另外一个py文件允许用户在已经创建好的房间内添加电脑玩家而不覆盖原房间。仅此文件允许访问**非官方**电脑玩家数据。
-	~~- 在极限闪击正式开放之前，整合版<b>不可</b>创建极限闪击房间。请尝试整合简化版或`极限闪击`下属程序。~~
+	- ~~在极限闪击正式开放之前，整合版<b>不可</b>创建极限闪击房间。请尝试整合简化版或`极限闪击`下属程序。~~
 3. 本程序集中的`check_available_bots.py`和`check_available_gameMode.py`分别提供检查可用电脑玩家和可用游戏模式的功能。
 	- **请勿在前者运行过程中创建自定义房间**，否者可能输出重复的电脑玩家序号和错误的统计结果。
 	- **请勿在后者运行过程中创建自定义房间**，否则可能输出实际不可创建的房间信息。（但可利用这一点查看当前程序的运行进度。）
@@ -91,8 +91,11 @@ The following explanations only apply to the current branch. For other details (
 		- 一般情况下不需要用户自行更新英雄数据。我会保持更新。每次更新的依据是新英雄的发布。
 		- 该程序允许在客户端未运行时使用。此时只能获取全英雄信息，但可以设置输出语言。
 	- 自定义脚本5（☆）用于**查询和导出召唤师战绩**。
+		- 该脚本支持通过<u>召唤师名称</u>和<u.玩家通用唯一识别码</u>查询。
 		- 由于使用的是LCU API，在国服环境下，即使召唤师生涯**不可见**，仍然能够查询到该召唤师的全部对局记录和段位信息。
 		- 该脚本获取数据所依赖的数据资源主要来自<u>CommunityDragon数据库</u>，支持**离线获取**。如果选择离线获取，<u>请按照程序提示，在主目录下新建文件夹`离线数据（Offline Data）`，打开相应资源的网页，将相应的json文件下载到该文件夹下。</u>
+		- 从13.22版本开始，美测服采用**拳头ID**来替代召唤师名称。因此，如果通过召唤师名称无法查询一名召唤师的信息，**请尝试在玩家名称后加上一个“#”，再加上服务器后缀**。
+			- <b>提示：</b>在客户端中打开一个召唤师的生涯界面，**将鼠标悬停在玩家名称上**，即可看到完整的带有服务器后缀的拳头ID。单击即可复制。粘贴到生涯界面右上方的搜索栏即可搜索该玩家。
 		- 在选择导出全部数据的情况下，生成的Excel文件中包含五大部分：
 			- 人物简介（单工作表）
 			- 排位信息（单工作表）
@@ -240,7 +243,7 @@ For details about customized programs that is beyond the scope of creating a cus
 		- Bot number configuration
 		- Client behavior simulation
 	- Another py file allows users to add bot players to already created lobbies, instead of recreating another lobby and clearing all players. Only this file is allowed to visit **unofficial** bot player information.
-	- Before Nexus Blitz formally returns, the consolidated version **can't** be used to create the Nexus Blitz lobbies. Please try the simplified consolidated version or programs that belong to `Nexus Blitz` directory.
+	- ~~Before Nexus Blitz formally returns, the consolidated version <b>can't</b> be used to create the Nexus Blitz lobbies. Please try the simplified consolidated version or programs that belong to `Nexus Blitz` directory.~~
 3. In this program set, `check_available_bots.py` and `check_available_gameMode.py` provide the functions of checking available bot players and game modes, respectively.
 	- **Please don't create any custom lobby while the former program is running**, in case wrong botIDs and wrong statistics are output.
 	- **Please don't create any custom lobby while the latter program is running**, in case unavailable lobbies may be output. (Neverthelss, this feature may be used to check the running process.)
@@ -297,8 +300,11 @@ For details about customized programs that is beyond the scope of creating a cus
 		- Usually users aren't needed to update the champion data. I'll keep updating it if any new champion is released.
 		- This program can be run without logging into LoL client, but it only returns information of all champions. Nevertheless, users may choose the output language.
 	- Customized Program 05 (☆) is designed to **search and export summoners' profile**.
-		- Thanks to LCU API, even if a summoner sets its profile private, its whole match history and rank data can still be found.
+		- This program supports queries based on <u>summonerName</u> and <u>puuid</u>.
+		- Thanks to LCU API, even if a summoner sets its profile private, its whole match history and rank data can still be fetched.
 		- The data resources for capturing data in this program are mainly from <u>CommunityDragon database</u>, and it's allowed to obtain these data resources **offline**. If the user chooses to obtain the data resources offline, <u>please create a folder named as `离线数据（Offline Data）` in the main directory, open the url of the corresponding data resources and then download them to this new folder.</u>
+		- Since Patch 13.22, **Riot ID** has taken the place of summoner name. Therefore, if a summoner's information can't be visited by its summonerName, **please add a "#" and the summoner's tagLine after the gameName.**
+			- **Note:** Open a summoner's profile page in the League Client. Keep the mouse cursor stay on his/her gameName. You should see a window with the complete Riot ID with the postfixxed tagLine. Click to copy it. Paste it into the search bar on the top-right corner of the page to search this summoner.
 		- If all data are exported, the generated xlsx file contains 5 parts of sheets:
 			- Profile (Single sheet)
 			- Rank (Single sheet)
