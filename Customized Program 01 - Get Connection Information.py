@@ -19,14 +19,18 @@ connector = Connector()
 #-----------------------------------------------------------------------------
 # 自定义函数（DIY Function）
 #-----------------------------------------------------------------------------
-async def DIY(connection):
+async def get_connection_data(connection):
+    current_summoner = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     print("连接信息如下：\nConnection information is as follows:")
     print("address: ", connection.address)
     print("auth_key: ", connection.auth_key)
+    print("displayName: ", current_summoner["displayName"])
     print("installation_path: ", connection.installation_path)
     print("pid: ", connection.pid)
     print("port: ", connection.port)
     print("protocols: ", connection.protocols)
+    print("puuid: ", current_summoner["puuid"])
+    print("summonerId", current_summoner["summonerId"])
     print("ws_address: ", connection.ws_address)
     print()
     print("请按回车键退出……\nPress Enter to exit ...")
@@ -37,7 +41,7 @@ async def DIY(connection):
 #-----------------------------------------------------------------------------
 @connector.ready
 async def connect(connection):
-    await DIY(connection)
+    await get_connection_data(connection)
 
 #-----------------------------------------------------------------------------
 # Main
