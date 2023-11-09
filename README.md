@@ -43,11 +43,7 @@ The following explanations only apply to the current branch. For other details (
 5. 本程序集提供了离线数据资源，用于降低资源获取时间。
 	- 该部分资源预期跟随版本定期更新。
 	- 考虑到程序集可能在美测服运行，这里默认提供美测服的资源。
-6. 本程序集提供了经过本人修改后的[lcu_driver库](https://github.com/sousa-andre/lcu-driver)文件，以便相应的拉取请求在经过lcu_driver库的作者同意合并之前，或者被作者拒绝时，用户仍然可以下载体验本存储库的lcu_driver库文件。
-	- <font color=#ff0000><b>声明：该文件夹的内容视为复刻原作者的代码。本人不会将该代码用于任何盈利用途。</b></font>
-	- 本人只负责**根据本程序集需要**对本存储库中的库文件进行修改，没有义务将其它GitHub用户对库文件的修改与本人对库文件的修改进行合并。不过，欢迎任何用户**基于本程序集的更新**对库文件更新提出意见和建议👏
-		- 当然，本程序集将尽力将**原作者**对库文件的更新合并到本存储库的lcu_driver库文件中。
-7. 本程序集起源于主目录下的`create_custom_lobby.py`。
+6. 本程序集起源于主目录下的`create_custom_lobby.py`。
 # 注意事项
 1. 本程序集全部为Python程序，需要从[Python官网中](www.python.org)下载最新版本的Python。（不是最新版本也可，但不要太古早～）
 	- 初次安装Python，切记勾选`Add Python to PATH`选项。
@@ -67,12 +63,15 @@ The following explanations only apply to the current branch. For other details (
 		6. 重启已经打开的<u>命令提示符</u>或<u>终端</u>，即可正常使用Python工具。如pip。
 	- 安装完成并配置好环境变量后，需要使用`pip install [库名]`命令安装本程序集所需的一些Python库。在科学上网的网络环境下，下载Python库应当会比国内环境快很多。本程序集所需的Python库有：
 		- lcu_driver
+			- 本人复刻了[lcu_driver库]文件(https://github.com/WordlessMeteor/lcu-driver/tree/master/lcu_driver)，以便相应的拉取请求在经过lcu_driver库的作者同意合并之前，或者被作者拒绝时，用户仍然可以下载体验本存储库的lcu_driver库文件。
+			- 本人只负责**根据本程序集需要**对该存储库中的库文件进行修改，没有义务将其它GitHub用户对库文件的修改与本人对库文件的修改进行合并。不过，欢迎任何用户**基于本程序集的更新**对库文件更新提出意见和建议👏
 		- openpyxl
 		- pandas
 		- requests
 		- pyperclip
 		- pickle
 		- urllib
+		- wcwidth
 2. 为提高响应速度，请在命令行环境中，而不是Python IDLE中使用本程序集。
 	- 为方便查看程序的返回信息，避免命令行一闪而过，建议先打开命令提示符（或终端），使用cd命令切换到程序集所在目录，再输入命令`python [文件名]`以使用某个程序。
 3. 所有程序必须在登录英雄联盟客户端后运行。
@@ -256,10 +255,6 @@ For details about customized programs that is beyond the scope of creating a cus
 5. This program set provides offline data resources to save the time of preparing data.
 	- The data resources will follow the patch update.
 	- Considering that the program set might be used when PBE client is running, the data resources of PBE version are provided by default here.
-6. This program set provides the [lcu_driver library](https://github.com/sousa-andre/lcu-driver) scripts modified by myself, so that the user can still library files in this repository if the corresponding pull request hasn't been accepted to merge into the official version, or has been rejected to merge, by the original author.
-	- <font color=#ff0000><b>Declaration: The folder `基础库文件（lcu_driver）` is regarded as a fork of the original lcu_driver library. It's guaranteed that it won't be misused for any commericla behavior.</b></font>
-	- I'm only reponsible for modifying the library files **according to the demands of this program set**, and not obligated to merge others' changes to the library files into mine. However, any user that commented and suggested on the library update **based on the program set update** is welcome 👏
-		- Of course, I'll try to merge the library update made by **the original author** into this repository.
 7. The program set is adapted from `create_custom_lobby.py` in the home directory.
 # Notes on Instructions
 1. The whole program set is made of Python programs. Users are highly suggested to download the latest version of Python from [Python official website](www.python.org). (A version that isn't latest is also OK, but please make sure it's not too early, either [xD])
@@ -280,12 +275,15 @@ For details about customized programs that is beyond the scope of creating a cus
 		6. Restart <u>Command Prompt</u> or <u>Terminal</u>. In that case, Python tools, e.g. pip, can be used as normal.
 	- After installation and environment variable configuration of Python, use `pip install [LibraryName]` command to install required libraries for this program set. For Chinese mainland users, using proxies to ignore the GFW should accelerate the downloading stage of Python libraries. Required libraries for this program set are:
 		- lcu_driver
+			- I've forked [lcu_driver library](https://github.com/WordlessMeteor/lcu-driver/tree/master/lcu_driver) , so that the user can still pxperience library files in the forked repository if the corresponding pull request hasn't been accepted to merge into the official version, or has been rejected to merge, by the original author.
+			- I'm only reponsible for modifying the library files in the forked repository **according to the demands of this program set**, and not obligated to merge others' changes to the library files into mine. However, any user that commented and suggested on the library update **based on the program set update** is welcome 👏
 		- openpyxl
 		- pandas
 		- requests
 		- pyperclip
 		- pickle
 		- urllib
+		- wcwidth
 2. To improve the speed of reponses, please open any program in this program set by Command Prompt or Terminal, instead of Python IDLE.
 	- To prevent the window from flashing quickly, it's suggested that users first open Command Prompt (or Terminal), switch to the directory of the program set using `cd` command and then open some program by `python [Filename]`. In this way, it's easy check the returned information.
 3. All programs must run after the user logs in the LoL client. 
