@@ -43,7 +43,11 @@ The following explanations only apply to the current branch. For other details (
 5. 本程序集提供了离线数据资源，用于降低资源获取时间。
 	- 该部分资源预期跟随版本定期更新。
 	- 考虑到程序集可能在美测服运行，这里默认提供美测服的资源。
-6. 本程序集起源于主目录下的`create_custom_lobby.py`。
+6. 本程序集提供了经过本人修改后的[lcu_driver库](https://github.com/sousa-andre/lcu-driver)文件，以便相应的拉取请求在经过lcu_driver库的作者同意合并之前，或者被作者拒绝时，用户仍然可以下载体验本存储库的lcu_driver库文件。
+	- <font color=#ff0000><b>声明：该文件夹的内容视为复刻原作者的代码。本人不会将该代码用于任何盈利用途。</b></font>
+	- 本人只负责**根据本程序集需要**对本存储库中的库文件进行修改，没有义务将其它GitHub用户对库文件的修改与本人对库文件的修改进行合并。不过，欢迎任何用户**基于本程序集的更新**对库文件更新提出意见和建议👏
+		- 当然，本程序集将尽力将**原作者**对库文件的更新合并到本存储库的lcu_driver库文件中。
+7. 本程序集起源于主目录下的`create_custom_lobby.py`。
 # 注意事项
 1. 本程序集全部为Python程序，需要从[Python官网中](www.python.org)下载最新版本的Python。（不是最新版本也可，但不要太古早～）
 	- 初次安装Python，切记勾选`Add Python to PATH`选项。
@@ -252,7 +256,11 @@ For details about customized programs that is beyond the scope of creating a cus
 5. This program set provides offline data resources to save the time of preparing data.
 	- The data resources will follow the patch update.
 	- Considering that the program set might be used when PBE client is running, the data resources of PBE version are provided by default here.
-6. The program set is adapted from `create_custom_lobby.py` in the home directory.
+6. This program set provides the [lcu_driver library](https://github.com/sousa-andre/lcu-driver) scripts modified by myself, so that the user can still library files in this repository if the corresponding pull request hasn't been accepted to merge into the official version, or has been rejected to merge, by the original author.
+	- <font color=#ff0000><b>Declaration: The folder `基础库文件（lcu_driver）` is regarded as a fork of the original lcu_driver library. It's guaranteed that it won't be misused for any commericla behavior.</b></font>
+	- I'm only reponsible for modifying the library files **according to the demands of this program set**, and not obligated to merge others' changes to the library files into mine. However, any user that commented and suggested on the library update **based on the program set update** is welcome 👏
+		- Of course, I'll try to merge the library update made by **the original author** into this repository.
+7. The program set is adapted from `create_custom_lobby.py` in the home directory.
 # Notes on Instructions
 1. The whole program set is made of Python programs. Users are highly suggested to download the latest version of Python from [Python official website](www.python.org). (A version that isn't latest is also OK, but please make sure it's not too early, either [xD])
 	- For this first time of installation of Python, please tick on `Add Python to PATH` option.
