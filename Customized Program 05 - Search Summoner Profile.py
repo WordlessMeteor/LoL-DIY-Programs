@@ -1,5 +1,5 @@
 from lcu_driver import Connector
-import os, copy, unicodedata, pandas, requests, time, json, re, pickle
+import os, copy, unicodedata, shutil, pandas, requests, time, json, re, pickle
 from urllib.parse import quote, unquote
 from wcwidth import wcswidth
 
@@ -83,6 +83,44 @@ def format_json(origin = '''{"customGameLobby": {"configuration": {"gameMode": "
 
 def count_nonASCII(s: str): #统计一个字符串中占用命令行2个宽度单位的字符个数（Count the number of characters that take up 2 width unit in CMD）
     return sum([unicodedata.east_asian_width(character) in ("F", "W") for character in list(str(s))])
+
+def format_df(df: pandas.DataFrame): #按照每列最长字符串的命令行宽度加上2，再根据每个数据的中文字符数量决定最终格式化输出的字符串宽度（Get the width of the longest string of each column, add it by 2, and substract it by the number of each cell string's Chinese characters to get the final width for each cell to print using `format` function）
+    maxLens = {}
+    maxWidth = shutil.get_terminal_size()[0]
+    fields = df.columns.tolist()
+    for field in fields:
+        maxLens[field] = max(max(map(lambda x: wcswidth(str(x)), df[field])), wcswidth(str(field))) + 2
+    if sum(maxLens.values()) + 2 * (len(fields) - 1) > maxWidth: #因为输出的时候，相邻两列之间需要有两个空格分隔，所以在计算总宽度的时候必须算上这些空格的宽度（Because two spaces are used between each pair of columns, the width they take up must be taken into consideration）
+        print("单行数据字符串输出宽度超过当前终端窗口宽度！是否继续？（输入任意键继续，否则直接打印该数据框。）\nThe output width of each record string exceeds the current width of the terminal window! Continue? (Input anything to continue, or null to directly print this dataframe.)")
+        if input() == "":
+            #print(df)
+            result = str(df)
+            return (result, maxLens)
+    result = ""
+    for i in range(df.shape[1]):
+        field = fields[i]
+        tmp = "{0:^{w}}".format(field, w = maxLens[str(field)] - count_nonASCII(str(field))) #算法实现原理：全ASCII字符串可以直接参考前面计算好的宽度进行格式化，因为每个字符占用1个字符宽度。如果字符串中包含一个中文字符，而格式化的宽度不变的话，那么最终格式化得到的结果是整个字符串宽度会多一个单位。所以，当字符串中包含中文字符时，传入format函数的宽度参数应当在原来计算好的宽度的基础上减去中文字符的个数（Algorithm principle: A string that consists of all ASCII characters can be formatted the width based on the width calculated before (`lens`), for each character takes up 1 width unit. If a string consists of a Chinese character and the width parameter in the `format` function stays unchanged, then the final width of the formatted string is actually one unit more than expected. Therefore, when a string contains Chinese characters, the width parameter to be passed into the `format` function should be the previously calculated width subtracted by the number of Chinese characters）
+        result += tmp
+        #print(tmp, end = "")
+        if i != df.shape[1] - 1:
+            result += "  "
+            #print("  ", end = "")
+    result += "\n"
+    #print()
+    for i in range(df.shape[0]):
+        for j in range(df.shape[1]):
+            field = fields[j]
+            cell = df[field][i]
+            tmp = "{0:^{w}}".format(cell, w = maxLens[field] - count_nonASCII(str(cell)))
+            result += tmp
+            #print(tmp, end = "")
+            if j != df.shape[1] - 1:
+                result += "  "
+                #print("  ", end = "")
+        if i != df.shape[0] - 1:
+            result += "\n"
+        #print() #注意这里的缩进和上一行不同（Note that here the indentation is different from the last line）
+    return (result, maxLens)
 
 def lcuTimestamp(timestamp): #根据对局时间轴的时间戳返回对局时间（Return the time according to the timestamp in match timeline）
     min = timestamp // 60
@@ -168,10 +206,15 @@ async def search_profile(connection):
             language_cdragon[language_ddragon[i]["CODE"]] = "default" #在CommunityDragon数据库上，美服正式服的数据资源代码是default，而不是小写的en_US（The code for English (US) data resources on CommunityDragon database is "default" instead of the lowercase of "en_US"）
         else:
             language_cdragon[language_ddragon[i]["CODE"]] = language_ddragon[i]["CODE"].lower()
-    lens = {"No.": max(max(map(lambda x: wcswidth(str(x)), language_ddragon.keys())), len("No.") - count_nonASCII("No.")) + 2, "CODE": max(max(map(lambda x: wcswidth(x["CODE"]), language_ddragon.values())), len("CODE") - count_nonASCII("CODE")) + 2, "LANGUAGE": max(max(map(lambda x: wcswidth(x["LANGUAGE (EN)"]), language_ddragon.values())), len("LANGUAGE") - count_nonASCII("LANGUAGE")) + 2, "语言": max(max(map(lambda x: wcswidth(x["LANGUAGE (ZH)"]), language_ddragon.values())), len("语言") - count_nonASCII("语言")) + 2, "Applicable CDragon Data Patches": max(max(map(lambda x: wcswidth(x["Applicable CDragon Data Patches"]), language_ddragon.values())), len("Applicable CDragon Data Patches") - count_nonASCII("Applicable CDragon Data Patches")) + 2}
-    print("{0:^{w0}}  {1:^{w1}}  {2:^{w2}}  {3:^{w3}}  {4:^{w4}}".format("No.", "CODE", "LANGUAGE", "语言", "Applicable CDragon Data Patches", w0 = lens["No."] - count_nonASCII("No."), w1 = lens["CODE"] - count_nonASCII("CODE"), w2 = lens["LANGUAGE"] - count_nonASCII("LANGUAGE"), w3 = lens["语言"] - count_nonASCII("语言"), w4 = lens["Applicable CDragon Data Patches"] - count_nonASCII("Applicable CDragon Data Patches")))
-    for i in range(1, 30):
-        print("{0:^{w0}}  {1:^{w1}}  {2:^{w2}}  {3:^{w3}}  {4:^{w4}}".format(i, language_ddragon[i]["CODE"], language_ddragon[i]["LANGUAGE (EN)"], language_ddragon[i]["LANGUAGE (ZH)"], language_ddragon[i]["Applicable CDragon Data Patches"], w0 = lens["No."] - count_nonASCII(i), w1 = lens["CODE"] - count_nonASCII(language_ddragon[i]["CODE"]), w2 = lens["LANGUAGE"] - count_nonASCII(language_ddragon[i]["LANGUAGE (EN)"]), w3 = lens["语言"] - count_nonASCII(language_ddragon[i]["LANGUAGE (ZH)"]), w4 = lens["Applicable CDragon Data Patches"] - count_nonASCII(language_ddragon[i]["Applicable CDragon Data Patches"])))
+    language_dict = {"No.": [], "CODE": [], "LANGUAGE": [], "语言": [], "Applicable CDragon Data Patches": []}
+    for i in language_ddragon:
+        language_dict["No."].append(i)
+        language_dict["CODE"].append(language_ddragon[i]["CODE"])
+        language_dict["LANGUAGE"].append(language_ddragon[i]["LANGUAGE (EN)"])
+        language_dict["语言"].append(language_ddragon[i]["LANGUAGE (ZH)"])
+        language_dict["Applicable CDragon Data Patches"].append(language_ddragon[i]["Applicable CDragon Data Patches"])
+    language_df = pandas.DataFrame(language_dict)
+    print(format_df(language_df)[0])
     while True:
         language_option = input()
         if language_option == "" or language_option in [str(i) for i in range(1, 30)]:

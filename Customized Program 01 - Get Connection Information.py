@@ -30,7 +30,7 @@ async def get_connection_data(connection):
     print("port: ", connection.port)
     print("protocols: ", connection.protocols)
     print("puuid: ", current_summoner["puuid"])
-    print("summonerId", current_summoner["summonerId"])
+    print("summonerId: ", current_summoner["summonerId"])
     print("ws_address: ", connection.ws_address)
     print()
     print("请按回车键退出……\nPress Enter to exit ...")

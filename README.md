@@ -55,7 +55,7 @@ The following explanations only apply to the current branch. For other details (
 			`C:\Users\[用户名]\AppData\Local\Programs\Python\Launcher\`\
 			`C:\Users\[用户名]\AppData\Local\Programs\Python\Python[版本号]\`\
 			`C:\Users\[用户名]\AppData\Local\Programs\Python\Python[版本号]\Scripts`\
-			如我的用户名是`19250`，使用的Python版本是<u>3.11.4</u>，则PATH中包含：\
+			如我的用户名是`19250`，使用的Python版本是<u>3.11.6</u>，则PATH中包含：\
 			`C:\Users\19250\AppData\Local\Programs\Python\Launcher\`\
 			`C:\Users\19250\AppData\Local\Programs\Python\Python311\`\
 			`C:\Users\19250\AppData\Local\Programs\Python\Python311\Scripts\`
@@ -65,6 +65,18 @@ The following explanations only apply to the current branch. For other details (
 		- lcu_driver
 			- 本人复刻了[lcu_driver库]文件(https://github.com/WordlessMeteor/lcu-driver/tree/master/lcu_driver)，以便相应的拉取请求在经过lcu_driver库的作者同意合并之前，或者被作者拒绝时，用户仍然可以下载体验本存储库的lcu_driver库文件。
 			- 本人只负责**根据本程序集需要**对该存储库中的库文件进行修改，没有义务将其它GitHub用户对库文件的修改与本人对库文件的修改进行合并。不过，欢迎任何用户**基于本程序集的更新**对库文件更新提出意见和建议👏
+			- 如果需要使用本人修改的lcu_driver库，请按照如下步骤进行。
+				1. 打开[本人的lcu-driver存储库主页](https://github.com/WordlessMeteor/lcu-driver)。
+				2. 单击<u>绿色Code按钮</u>，再单击<u>DownloadZIP</u>，下载本存储库的源代码。
+				3. 将下载好的压缩包【解压到当前文件夹】。
+					- 不用担心解压完成之后会不会有一大堆文件分散在文件夹里面。从GitHub上下载的源代码应该已经放在了一个文件夹里面。
+				4. 打开Python存储库的目录。
+					- 一般位于`C:\Users\[用户名]\AppData\Local\Programs\Python\Python[版本号]\Lib\site-packages`。
+						- 如我的用户名是`19250`，使用的Python版本是<u>3.11.6</u>，则应打开\
+						`C:\Users\19250\AppData\Local\Programs\Python\Python311\Lib\site-packages`。
+					- 如果上一条方法行不通，请先在命令行中输入`pip install lcu_driver`以安装`lcu_driver`库，再使用[Everything软件](https://www.voidtools.com/zh-cn/)搜索<u>lcu_driver</u>关键字，从而定位到Python存储库的位置。
+				5. 在解压好的文件中找到`lcu_driver`文件夹，将其复制到上面的目录中。如果提示文件已存在，请选择覆盖。
+				6. 若要恢复原始lcu_driver库文件，请先在命令行中输入`pip uninstall lcu_driver`，再输入`pip install lcu_driver`重新安装。
 		- openpyxl
 		- pandas
 		- requests
@@ -267,7 +279,7 @@ For details about customized programs that is beyond the scope of creating a cus
 			`C:\Users\[Username]\AppData\Local\Programs\Python\Launcher\`\
 			`C:\Users\[Username]\AppData\Local\Programs\Python\Python[Version]\`\
 			`C:\Users\[Username]\AppData\Local\Programs\Python\Python[Version]\Scripts`\
-			For example, my username is `19250`, and my Python version is <u>3.11.4</u>. Then the updated PATH should include \
+			For example, my username is `19250`, and my Python version is <u>3.11.6</u>. Then the updated PATH should include \
 			`C:\Users\19250\AppData\Local\Programs\Python\Launcher\`\
 			`C:\Users\19250\AppData\Local\Programs\Python\Python311\`\
 			`C:\Users\19250\AppData\Local\Programs\Python\Python311\Scripts\`
@@ -277,6 +289,18 @@ For details about customized programs that is beyond the scope of creating a cus
 		- lcu_driver
 			- I've forked [lcu_driver library](https://github.com/WordlessMeteor/lcu-driver/tree/master/lcu_driver) , so that the user can still pxperience library files in the forked repository if the corresponding pull request hasn't been accepted to merge into the official version, or has been rejected to merge, by the original author.
 			- I'm only reponsible for modifying the library files in the forked repository **according to the demands of this program set**, and not obligated to merge others' changes to the library files into mine. However, any user that commented and suggested on the library update **based on the program set update** is welcome 👏
+			- If you want to use my `lcu_driver` library, please follow these steps:
+				1. Open [my lcu-driver repo homepage](https://github.com/WordlessMeteor/lcu-driver).
+				2. Click <u>the green "Code" button</u>. Then click <u>DownloadZIP</u> to download the source code of this repository.
+				3. Extract the zip file to the current folder.
+					- Don't worry about the chaos after the extraction! The files should have been put in a subfolder.
+				4. Open the directory where Python stores libraries.
+					- Basically, the directory is at `C:\Users\[Username]\AppData\Local\Programs\Python\Python[Version]\Lib\site-packages`.
+						- For example, my username is `19250`, and my Python version is <u>3.11.6</u>. Then the library directory should be \
+						`C:\Users\19250\AppData\Local\Programs\Python\Python311\Lib\site-packages`
+					- If the last approach doesn't work, please enter the command `pip install lcu_driver` in CMD to install the original `lcu_driver` library and then search for <u>lcu_driver</u> in [Everything App](https://www.voidtools.com/en-us/) to locate to the Python library directory.
+				5. Select `lcu_driver` folder in the extracted files. Copy it to the Python library directory. If files already exist, please select `Replace the files in the destination`.
+				6. If you need to recover the original `lcu_driver` library, please enter `pip uninstall lcu_driver` in CMD to uninstall the modified library, and then enter `pip install lcu_driver` to reinstall the original release of the library.
 		- openpyxl
 		- pandas
 		- requests

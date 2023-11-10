@@ -18,7 +18,7 @@ from lcu_driver import Connector
 #-----------------------------------------------------------------------------
 # 获取自定义模式电脑玩家列表（Get access to the bot list in Custom）
 #-----------------------------------------------------------------------------
-import os, pandas, random, time, unicodedata
+import os, pandas, random, shutil, time, unicodedata
 from wcwidth import wcswidth
 #localdata = pandas.read_excel("../../available-bots.xlsx")
 localdata = pandas.read_excel("../../available-bots.xlsx", sheet_name = "Sheet1")
@@ -45,6 +45,44 @@ if check_botlist != "":
 
 def count_nonASCII(s: str): #统计一个字符串中占用命令行2个宽度单位的字符个数（Count the number of characters that take up 2 width unit in CMD）
     return sum([unicodedata.east_asian_width(character) in ("F", "W") for character in list(str(s))])
+
+def format_df(df: pandas.DataFrame): #按照每列最长字符串的命令行宽度加上2，再根据每个数据的中文字符数量决定最终格式化输出的字符串宽度（Get the width of the longest string of each column, add it by 2, and substract it by the number of each cell string's Chinese characters to get the final width for each cell to print using `format` function）
+    maxLens = {}
+    maxWidth = shutil.get_terminal_size()[0]
+    fields = df.columns.tolist()
+    for field in fields:
+        maxLens[field] = max(max(map(lambda x: wcswidth(str(x)), df[field])), wcswidth(str(field))) + 2
+    if sum(maxLens.values()) + 2 * (len(fields) - 1) > maxWidth:
+        print("单行数据字符串输出宽度超过当前终端窗口宽度！是否继续？（输入任意键继续，否则直接打印该数据框。）\nThe output width of each record string exceeds the current width of the terminal window! Continue? (Input anything to continue, or null to directly print this dataframe.)")
+        if input() == "":
+            #print(df)
+            result = str(df)
+            return (result, maxLens)
+    result = ""
+    for i in range(df.shape[1]):
+        field = fields[i]
+        tmp = "{0:^{w}}".format(field, w = maxLens[str(field)] - count_nonASCII(str(field)))
+        result += tmp
+        #print(tmp, end = "")
+        if i != df.shape[1] - 1:
+            result += "  "
+            #print("  ", end = "")
+    result += "\n"
+    #print()
+    for i in range(df.shape[0]):
+        for j in range(df.shape[1]):
+            field = fields[j]
+            cell = df[field][i]
+            tmp = "{0:^{w}}".format(cell, w = maxLens[field] - count_nonASCII(str(cell)))
+            result += tmp
+            #print(tmp, end = "")
+            if j != df.shape[1] - 1:
+                result += "  "
+                #print("  ", end = "")
+        if i != df.shape[0] - 1:
+            result += "\n"
+        #print() #注意这里的缩进和上一行不同（Note that here the indentation is different from the last line）
+    return (result, maxLens)
 
 connector = Connector()
 
@@ -87,12 +125,19 @@ async def check_available_queue(connection):
     for queue in queues:
         if queue["queueAvailability"] == "Available":
             available_queues[queue["id"]] = queue
+    queue_dict = {"queueID": [], "mapID": [], "map_CN": [], "map_EN": [], "gameMode": [], "pickType_CN": [], "pickType_EN": []}
+    for queue in available_queues.values():
+        queue_dict["queueID"].append(queue["id"])
+        queue_dict["mapID"].append(queue["mapId"])
+        queue_dict["map_CN"].append(map_CN[queue["mapId"]])
+        queue_dict["map_EN"].append(map_EN[queue["mapId"]])
+        queue_dict["gameMode"].append(queue["name"])
+        queue_dict["pickType_CN"].append(pickmode_CN[queue["gameTypeConfig"]["pickMode"]])
+        queue_dict["pickType_EN"].append(pickmode_EN[queue["gameTypeConfig"]["pickMode"]])
+    queue_df = pandas.DataFrame(queue_dict)
+    queue_df.sort_values(by = "queueID", inplace = True, ascending = True, ignore_index = True)
     print("*****************************************************************************")
-    lens = {"queueID": max(max(map(lambda x: wcswidth(str(x["id"])), available_queues.values())), len("queueID")) + 2, "mapID": max(max(map(lambda x: wcswidth(str(x["mapId"])), available_queues.values())), len("mapID")) + 2, "map_CN": max(max(map(lambda x: wcswidth(map_CN[x["mapId"]]), available_queues.values())), len("map_CN")) + 2, "map_EN": max(max(map(lambda x: wcswidth(map_EN[x["mapId"]]), available_queues.values())), len("map_EN")) + 2, "gameMode": max(max(map(lambda x: wcswidth(x["name"]), available_queues.values())), len("gameMode")) + 2, "pickType_CN": max(max(map(lambda x: wcswidth(pickmode_CN[x["gameTypeConfig"]["pickMode"]]), available_queues.values())), len("pickType_CN")) + 2, "pickType_EN": max(max(map(lambda x: wcswidth(pickmode_EN[x["gameTypeConfig"]["pickMode"]]), available_queues.values())), len("pickType_CN")) + 2}
-    print("{0:^{w0}}  {1:^{w1}}  {2:^{w2}}  {3:^{w3}}  {4:^{w4}}  {5:^{w5}}  {6:^{w6}}".format("queueID", "mapID", "map_CN", "map_EN", "gameMode", "pickType_CN", "pickType_EN", w0 = lens["queueID"], w1 = lens["mapID"], w2 = lens["map_CN"], w3 = lens["map_EN"], w4 = lens["gameMode"], w5 = lens["pickType_CN"], w6 = lens["pickType_EN"]))
-    for i in sorted(available_queues.keys()):
-        queue = available_queues[i]
-        print("{0:^{w0}}  {1:^{w1}}  {2:^{w2}}  {3:^{w3}}  {4:^{w4}}  {5:^{w5}}  {6:^{w6}}".format(queue["id"], queue["mapId"], map_CN[queue["mapId"]], map_EN[queue["mapId"]], queue["name"], pickmode_CN[queue["gameTypeConfig"]["pickMode"]], pickmode_EN[queue["gameTypeConfig"]["pickMode"]], w0 = lens["queueID"] - count_nonASCII(queue["id"]), w1 = lens["mapID"] - count_nonASCII(queue["mapId"]), w2 = lens["map_CN"] - count_nonASCII(map_CN[queue["mapId"]]), w3 = lens["map_EN"] - count_nonASCII(map_EN[queue["mapId"]]), w4 = lens["gameMode"] - count_nonASCII(queue["name"]), w5 = lens["pickType_CN"] - count_nonASCII(pickmode_CN[queue["gameTypeConfig"]["pickMode"]]), w6 = lens["pickType_EN"] - count_nonASCII(pickmode_EN[queue["gameTypeConfig"]["pickMode"]]))) #算法实现原理：全ASCII字符串可以直接参考前面计算好的宽度进行格式化，因为每个字符占用1个字符宽度。如果字符串中包含一个中文字符，而格式化的宽度不变的话，那么最终格式化得到的结果是整个字符串宽度会多一个单位。所以，当字符串中包含中文字符时，传入format函数的宽度参数应当在原来计算好的宽度的基础上减去中文字符的个数（Algorithm principle: A string that consists of all ASCII characters can be formatted the width based on the width calculated before (`lens`), for each character takes up 1 width unit. If a string consists of a Chinese character and the width parameter in the `format` function stays unchanged, then the final width of the formatted string is actually one unit more than expected. Therefore, when a string contains Chinese characters, the width parameter to be passed into the `format` function should be the previously calculated width subtracted by the number of Chinese characters）
+    print(format_df(queue_df)[0])
     print("*****************************************************************************")
 
 #-----------------------------------------------------------------------------
