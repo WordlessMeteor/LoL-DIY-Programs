@@ -36,13 +36,13 @@
                 "DamageMod": 0.4000000059604645,
                 "Range": 700.0
             },
-            "desc": "Cherry_ChainLightning_Summary",
+            "desc": "\u5bf9\u4e00\u4e2a\u654c\u4eba\u9020\u6210\u4f24\u5bb3\u65f6\uff0c\u8fd8\u4f1a\u5bf9\u5176\u53cb\u519b\u9020\u6210<trueDamage>@DamageMod*100@%\u771f\u5b9e\u4f24\u5bb3</trueDamage>\uff0c\u524d\u63d0\u662f\u5176\u53cb\u519b\u5728\u9644\u8fd1\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/chainlightning_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/chainlightning_small.arena_augments_v2.png",
             "id": 166,
-            "name": "Cherry_ChainLightning_Name",
+            "name": "\u8fde\u9501\u95ea\u7535",
             "rarity": 8,
-            "tooltip": "Cherry_ChainLightning_Tooltip"
+            "tooltip": " {{Cherry_ChainLightning_Summary}}<br><br>\u8fd9\u4e2a\u56de\u5408\u5df2\u9020\u6210\u7684\u4f24\u5bb3\uff1a@f1@<br>\u5df2\u9020\u6210\u4f24\u5bb3\u7684\u603b\u548c\uff1a@f2@"
         },
         {
             "apiName": "Typhoon",
@@ -74,14 +74,15 @@
             "calculations": {},
             "dataValues": {
                 "BombDelay": 15.0,
-                "MaxHealthDamage": 0.25,
+                "KnockupDuration": 0.75,
+                "MaxHealthDamage": 0.20000000298023224,
                 "Radius": 350.0
             },
-            "desc": "Cherry_SelfDestruct_Summary",
+            "desc": "\u6bcf\u4e2a\u56de\u5408\u5f00\u59cb\u65f6\u4f1a\u6709\u4e00\u4e2a\u70b8\u5f39\u9644\u5728\u4f60\u8eab\u4e0a\u3002\u5728@BombDelay@\u79d2\u540e\uff0c\u5b83\u4f1a\u7206\u70b8\uff0c\u9020\u6210<trueDamage>@MaxHealthDamage*100@%\u6700\u5927\u751f\u547d\u503c\u7684\u771f\u5b9e\u4f24\u5bb3</trueDamage>\u3002<br>",
             "iconLarge": "assets/ux/cherry/augments/icons/selfdestruct_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/selfdestruct_small.arena_augments_v2.png",
             "id": 108,
-            "name": "Cherry_SelfDestruct_Name",
+            "name": "\u81ea\u6211\u6bc1\u706d",
             "rarity": 0,
             "tooltip": "Cherry_SelfDestruct_Tooltip"
         },
@@ -111,13 +112,13 @@
                 "TicksPerSecond": 4.0,
                 "TriumphPercent": 20.0
             },
-            "desc": "Cherry_ServeBeyondDeath_Tooltip",
+            "desc": "\u5728\u4f60\u6bcf\u56de\u5408\u7b2c\u4e00\u6b21\u5373\u5c06\u9635\u4ea1\u65f6\uff0c\u8f6c\u800c\u56de\u6ee1\u751f\u547d\u503c\u5e76\u5728@DecayDuration@\u79d2\u91cc\u6301\u7eed\u8870\u51cf\u3002\u5728\u4f60\u7684\u751f\u547d\u503c\u6b63\u5728\u8870\u51cf\u7684\u72b6\u6001\u4e0b\uff0c\u53c2\u4e0e\u51fb\u6740\u4e00\u540d\u654c\u65b9\u82f1\u96c4\u540e\uff0c\u4f1a\u4f7f\u8870\u51cf\u505c\u6b62\u5e76\u5c06\u4f60\u7684\u751f\u547d\u503c\u8bbe\u7f6e\u4e3a<healing>@TriumphPercent@%\u6700\u5927\u751f\u547d\u503c</healing>\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/servebeyonddeath_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/servebeyonddeath_small.arena_augments_v2.png",
             "id": 120,
-            "name": "Cherry_ServeBeyondDeath_Name",
+            "name": "\u8d85\u8d8a\u6b7b\u4ea1\u7684\u6548\u52b3",
             "rarity": 0,
-            "tooltip": "Cherry_ServeBeyondDeath_Tooltip"
+            "tooltip": "\u5728\u4f60\u6bcf\u56de\u5408\u7b2c\u4e00\u6b21\u5373\u5c06\u9635\u4ea1\u65f6\uff0c\u8f6c\u800c\u56de\u6ee1\u751f\u547d\u503c\u5e76\u5728@DecayDuration@\u79d2\u91cc\u6301\u7eed\u8870\u51cf\u3002\u5728\u4f60\u7684\u751f\u547d\u503c\u6b63\u5728\u8870\u51cf\u7684\u72b6\u6001\u4e0b\uff0c\u53c2\u4e0e\u51fb\u6740\u4e00\u540d\u654c\u65b9\u82f1\u96c4\u540e\uff0c\u4f1a\u4f7f\u8870\u51cf\u505c\u6b62\u5e76\u5c06\u4f60\u7684\u751f\u547d\u503c\u8bbe\u7f6e\u4e3a<healing>@TriumphPercent@%\u6700\u5927\u751f\u547d\u503c</healing>\u3002"
         },
         {
             "apiName": "QuantumComputing",
@@ -230,13 +231,13 @@
             "dataValues": {
                 "APRatio": 1.0
             },
-            "desc": "Cherry_Marksmage_Summary",
+            "desc": "\u4f60\u7684\u653b\u51fb\u9020\u6210\u76f8\u5f53\u4e8e\u4f60<magicDamage>@APRatio*100@%\u6cd5\u672f\u5f3a\u5ea6</magicDamage>\u7684\u989d\u5916<physicalDamage>\u7269\u7406\u4f24\u5bb3</physicalDamage>\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/marksmage_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/marksmage_small.arena_augments_v2.png",
             "id": 129,
-            "name": "Cherry_Name_Marksmage",
+            "name": "\u795e\u5c04\u6cd5\u5e08",
             "rarity": 4,
-            "tooltip": "Cherry_Marksmage_ToolTip"
+            "tooltip": " {{Cherry_Marksmage_Summary}}<br><br>\u8fd9\u4e2a\u56de\u5408\u5df2\u9020\u6210\u7684\u4f24\u5bb3\uff1a@f1@<br>\u5df2\u9020\u6210\u4f24\u5bb3\u7684\u603b\u548c\uff1a@f2@"
         },
         {
             "apiName": "BladeWaltz",
@@ -312,13 +313,13 @@
                 "SpinDamageAmp": 0.20000000298023224,
                 "SpinHaste": 20.0
             },
-            "desc": "Cherry_SpinToWin_Summary",
+            "desc": "\u4f60\u7684\u65cb\u8f6c\u7c7b\u6280\u80fd\u83b7\u5f97@SpinHaste@\u6280\u80fd\u6025\u901f\u5e76\u4e14\u591a\u9020\u6210@SpinDamageAmp*100@%\u4f24\u5bb3\uff01",
             "iconLarge": "assets/ux/cherry/augments/icons/spintowin_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/spintowin_small.arena_augments_v2.png",
             "id": 214,
-            "name": "Cherry_SpinToWin_Name",
+            "name": "\u65cb\u8f6c\u81f3\u80dc",
             "rarity": 0,
-            "tooltip": "Cherry_SpinToWin_Tooltip"
+            "tooltip": "{{ Cherry_SpinToWin_Summary }}<br><br>\u8fd9\u4e2a\u56de\u5408\u7684\u4f24\u5bb3\uff1a@f1@<br>\u8fd9\u5c40\u6e38\u620f\u7684\u4f24\u5bb3\uff1a@f2@"
         },
         {
             "apiName": "BannerofCommand",
@@ -357,13 +358,13 @@
             "dataValues": {
                 "ItemStatAmp": 0.05000000074505806
             },
-            "desc": "Cherry_Itemizer_Tooltip",
+            "desc": "\u4f60\u6bcf\u4e2a\u56de\u5408\u552e\u51fa\u7684\u7b2c\u4e00\u4ef6\u88c5\u5907\u4f1a\u4ee5\u5168\u4ef7\u552e\u51fa\u3002\u83b7\u5f97@ItemStatAmp*100@%\u88c5\u5907\u63d0\u4f9b\u7684\u989d\u5916\u5c5e\u6027\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/midnightexpress_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/midnightexpress_small.arena_augments_v2.png",
             "id": 110,
-            "name": "Cherry_Itemizer_Name",
+            "name": "\u914d\u88c5\u5c0f\u80fd\u624b",
             "rarity": 0,
-            "tooltip": "Cherry_Itemizer_Tooltip"
+            "tooltip": "\u4f60\u6bcf\u4e2a\u56de\u5408\u552e\u51fa\u7684\u7b2c\u4e00\u4ef6\u88c5\u5907\u4f1a\u4ee5\u5168\u4ef7\u552e\u51fa\u3002\u83b7\u5f97@ItemStatAmp*100@%\u88c5\u5907\u63d0\u4f9b\u7684\u989d\u5916\u5c5e\u6027\u3002"
         },
         {
             "apiName": "WitchfulThinking",
@@ -385,13 +386,13 @@
             "dataValues": {
                 "TakedownsNeeded": 10.0
             },
-            "desc": "Cherry_Quest_UrfsChampion_Summary",
+            "desc": "\u9700\u6c42\uff1a\u53c2\u4e0e\u51fb\u6740@TakedownsNeeded@\u6b21\u3002<br><br>\u5956\u52b1\uff1a\u3010\u91d1\u94f2\u94f2\u3011",
             "iconLarge": "assets/ux/cherry/augments/icons/quest_urfschampion_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/quest_urfschampion_small.arena_augments_v2.png",
             "id": 154,
-            "name": "Cherry_Quest_UrfsChampion_Name",
+            "name": "\u4efb\u52a1\uff1a\u6d77\u725b\u963f\u798f\u7684\u52c7\u58eb",
             "rarity": 4,
-            "tooltip": "Cherry_Quest_UrfsChampion_Summary"
+            "tooltip": "\u9700\u6c42\uff1a\u53c2\u4e0e\u51fb\u6740@TakedownsNeeded@\u6b21\u3002<br><br>\u5956\u52b1\uff1a\u3010\u91d1\u94f2\u94f2\u3011"
         },
         {
             "apiName": "Vengeance",
@@ -570,13 +571,13 @@
             "dataValues": {
                 "AdaptiveForce": 20.0
             },
-            "desc": "Cherry_SlapAround_Summary",
+            "desc": "\u6bcf\u5f53\u4f60\u5b9a\u8eab\u4e00\u4e2a\u654c\u4eba\u65f6\uff0c\u83b7\u5f97\u6301\u7eed\u5230\u56de\u5408\u7ed3\u675f\u7684@AdaptiveForce@\u9002\u5e94\u4e4b\u529b\uff0c\u53ef\u65e0\u9650\u53e0\u52a0\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/slaparound_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/slaparound_small.arena_augments_v2.png",
             "id": 136,
-            "name": "Cherry_SlapAround_Name",
+            "name": "\u6247\u5df4\u638c",
             "rarity": 0,
-            "tooltip": "Cherry_SlapAround_Summary"
+            "tooltip": "\u6bcf\u5f53\u4f60\u5b9a\u8eab\u4e00\u4e2a\u654c\u4eba\u65f6\uff0c\u83b7\u5f97\u6301\u7eed\u5230\u56de\u5408\u7ed3\u675f\u7684@AdaptiveForce@\u9002\u5e94\u4e4b\u529b\uff0c\u53ef\u65e0\u9650\u53e0\u52a0\u3002"
         },
         {
             "apiName": "MagicMissile",
@@ -586,13 +587,13 @@
                 "MaxHealthDamagePerMissile": 0.009999999776482582,
                 "NumberOfMissiles": 3.0
             },
-            "desc": "Cherry_MagicMissle_Summary",
+            "desc": "\u7528\u4e00\u4e2a\u4e3b\u52a8\u6280\u80fd\u9020\u6210\u4f24\u5bb3\u65f6\uff0c\u4f1a\u5bf9\u6bcf\u4e2a\u88ab\u547d\u4e2d\u7684\u654c\u4eba\u53d1\u5c04@NumberOfMissiles@\u4e2a\u9b54\u6cd5\u98de\u5f39\uff0c\u6bcf\u4e2a\u9b54\u6cd5\u98de\u5f39\u57fa\u4e8e\u98de\u884c\u8ddd\u79bb\u81f3\u591a\u9020\u6210<trueDamage>@MaxHealthDamagePerMissile*300@%\u6700\u5927\u751f\u547d\u503c\u7684\u771f\u5b9e\u4f24\u5bb3</trueDamage>\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/magicmissile_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/magicmissile_small.arena_augments_v2.png",
             "id": 133,
-            "name": "Cherry_MagicMissile_Name",
+            "name": "\u9b54\u6cd5\u98de\u5f39",
             "rarity": 4,
-            "tooltip": "Cherry_MagicMissile_Tooltip"
+            "tooltip": "\u7528\u4e00\u4e2a\u4e3b\u52a8\u6280\u80fd\u9020\u6210\u4f24\u5bb3\u65f6\uff0c\u4f1a\u5bf9\u6bcf\u4e2a\u88ab\u547d\u4e2d\u7684\u654c\u4eba\u53d1\u5c04@NumberOfMissiles@\u4e2a\u9b54\u6cd5\u98de\u5f39\uff0c\u6bcf\u4e2a\u9b54\u6cd5\u98de\u5f39\u57fa\u4e8e\u98de\u884c\u8ddd\u79bb\u81f3\u591a\u9020\u6210<trueDamage>@MaxHealthDamagePerMissile*300@%\u6700\u5927\u751f\u547d\u503c\u7684\u771f\u5b9e\u4f24\u5bb3</trueDamage>\u3002<br><br>\u8fd9\u4e2a\u56de\u5408\u5df2\u9020\u6210\u7684\u4f24\u5bb3\uff1a@f1@<br>\u5df2\u9020\u6210\u4f24\u5bb3\u7684\u603b\u548c\uff1a@f2@"
         },
         {
             "apiName": "Spellwake",
@@ -626,13 +627,13 @@
                 "ExplosionDelayTime": 0.75,
                 "ExplosionRadius": 100.0
             },
-            "desc": "Cherry_SpellWake_Summary",
+            "desc": "\u7528\u6280\u80fd\u547d\u4e2d\u654c\u4eba\u65f6\u4f1a\u4ece\u4f60\u7684\u4f4d\u7f6e\u751f\u6210\u4e00\u9053\u901a\u5411\u547d\u4e2d\u654c\u4eba\u4f4d\u7f6e\u7684\u9707\u6ce2\uff0c\u6765\u9020\u6210\u9b54\u6cd5\u4f24\u5bb3\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/spellwake_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/spellwake_small.arena_augments_v2.png",
             "id": 135,
-            "name": "Cherry_Spellwake_Name",
+            "name": "\u6cd5\u672f\u82cf\u9192",
             "rarity": 8,
-            "tooltip": "Cherry_SpellWake_Tooltip"
+            "tooltip": "\u7528\u4e3b\u52a8\u6280\u80fd\u547d\u4e2d\u654c\u4eba\u65f6\u4f1a\u4ece\u4f60\u7684\u4f4d\u7f6e\u751f\u6210\u4e00\u9053\u901a\u5411\u547d\u4e2d\u654c\u4eba\u4f4d\u7f6e\u7684\u9707\u6ce2\uff0c\u6765\u9020\u6210\u9b54\u6cd5\u4f24\u5bb3\u3002<br><br>\u8fd9\u4e2a\u56de\u5408\u5df2\u9020\u6210\u7684\u4f24\u5bb3\uff1a@f1@<br>\u5df2\u9020\u6210\u4f24\u5bb3\u7684\u603b\u548c\uff1a@f2@"
         },
         {
             "apiName": "CenterOfTheUniverse",
@@ -665,13 +666,13 @@
                 "MissileWidth": 50.0,
                 "OrbitDistance": 300.0
             },
-            "desc": "Cherry_CenterOfTheUniverse_Summary",
+            "desc": "\u536b\u661f\u4f1a\u4ee5\u4f60\u7684\u653b\u51fb\u8ddd\u79bb\u4e3a\u534a\u5f84\u73af\u7ed5\u4e8e\u4f60\uff0c\u5bf9\u9014\u7ecf\u7684\u654c\u4eba\u4eec\u9020\u6210<magicDamage>@StarDamage@\u9b54\u6cd5\u4f24\u5bb3</magicDamage>\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/centeroftheuniverse_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/centeroftheuniverse_small.arena_augments_v2.png",
             "id": 193,
-            "name": "Cherry_CenterOfTheUniverse_Name",
+            "name": "\u661f\u539f\u4e4b\u51c6",
             "rarity": 8,
-            "tooltip": "Cherry_CenterOfTheUniverse_Tooltip"
+            "tooltip": " {{Cherry_CenterOfTheUniverse_Summary}}<br><br>\u8fd9\u4e2a\u56de\u5408\u5df2\u9020\u6210\u7684\u4f24\u5bb3\uff1a@f1@<br>\u5df2\u9020\u6210\u4f24\u5bb3\u7684\u603b\u548c\uff1a@f2@"
         },
         {
             "apiName": "PhenomenalEvil",
@@ -705,13 +706,13 @@
                 "AP": 1.0,
                 "ShieldBase": 3.0
             },
-            "desc": "Cherry_BigBrain_Summary",
+            "desc": "\u5728\u6218\u6597\u5f00\u59cb\u65f6\uff0c\u6bcf\u62e5\u6709<attention>%i:scaleAP% @AP@</attention>\u6cd5\u672f\u5f3a\u5ea6\u5c31\u4f1a\u83b7\u5f97<shield> @ShieldBase@\u62a4\u76fe\u503c</shield>\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/bigbrain_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/bigbrain_small.arena_augments_v2.png",
             "id": 180,
-            "name": "Cherry_BigBrain_Name",
+            "name": "\u8d85\u5f3a\u5927\u8111",
             "rarity": 4,
-            "tooltip": "Cherry_BigBrain_Summary"
+            "tooltip": "\u5728\u6218\u6597\u5f00\u59cb\u65f6\uff0c\u6bcf\u62e5\u6709<attention>%i:scaleAP% @AP@</attention>\u6cd5\u672f\u5f3a\u5ea6\u5c31\u4f1a\u83b7\u5f97<shield> @ShieldBase@\u62a4\u76fe\u503c</shield>\u3002"
         },
         {
             "apiName": "Vulnerability",
@@ -789,13 +790,13 @@
             "dataValues": {
                 "AdaptiveForce": 20.0
             },
-            "desc": "Cherry_Dematerialize_Summary",
+            "desc": "\u53c2\u4e0e\u51fb\u6740\u540e\u83b7\u5f97@AdaptiveForce@\u9002\u5e94\u4e4b\u529b\uff0c\u6bcf\u56de\u5408\u6bcf\u4e2a\u82f1\u96c41\u6b21\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/dematerialize_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/dematerialize_small.arena_augments_v2.png",
             "id": 171,
-            "name": "Cherry_Dematerialize_Name",
+            "name": "\u53bb\u8d28",
             "rarity": 0,
-            "tooltip": "Cherry_Dematerialize_Tooltip"
+            "tooltip": "{{Cherry_Dematerialize_Summary}}<br><br>\u5df2\u83b7\u5f97\u7684\u9002\u5e94\u4e4b\u529b\uff1a@f1@"
         },
         {
             "apiName": "FrostWraith",
@@ -937,13 +938,13 @@
                 "Cooldown": 5.0,
                 "SnipeDistance": 700.0
             },
-            "desc": "Cherry_TrueshotProdigy_Summary",
+            "desc": "\u5728\u4f60\u4ece\u8fdc\u5904\u5bf9\u4e00\u540d\u654c\u4eba\u9020\u6210\u4f24\u5bb3\u65f6\uff0c\u5bf9\u5176<keywordMajor>\u81ea\u52a8\u65bd\u653e</keywordMajor>\u4e00\u9053<abilityName>\u7cbe\u51c6\u5f39\u5e55</abilityName>\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/trueshotprodigy_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/trueshotprodigy_small.arena_augments_v2.png",
             "id": 86,
             "name": "\u7cbe\u51c6\u5947\u624d",
             "rarity": 8,
-            "tooltip": "Cherry_TrueshotProdigy_Tooltip"
+            "tooltip": "\u5728\u4f60\u4ece@SnipeDistance@\u7801\u5916\u5bf9\u4e00\u540d\u654c\u4eba\u9020\u6210\u4f24\u5bb3\u65f6\uff0c \u5bf9\u5176<keywordMajor>\u81ea\u52a8\u65bd\u653e</keywordMajor>\u4e00\u9053<abilityName>\u7cbe\u51c6\u5f39\u5e55</abilityName>\uff0c\u9020\u6210\u4e0d\u9650\u8ddd\u79bb\u7684@Damage@\u4f24\u5bb3\u3002@Cooldown@\u79d2\u51b7\u5374\u65f6\u95f4\u3002<br><br>\u8fd9\u4e2a\u56de\u5408\u5df2\u9020\u6210\u7684\u4f24\u5bb3\uff1a@f1@<br>\u5df2\u9020\u6210\u4f24\u5bb3\u7684\u603b\u548c\uff1a@f2@"
         },
         {
             "apiName": "Eureka",
@@ -990,13 +991,13 @@
             "apiName": "Quest_WoogletsWitchcap",
             "calculations": {},
             "dataValues": {},
-            "desc": "Cherry_Quest_WoogletsWitchcap_Summary",
+            "desc": "\u5373\u523b\uff1a\u83b7\u5f97\u3010\u65e0\u7528\u5927\u68d2\u3011\u3002<br><br>\u9700\u6c42\uff1a\u6301\u6709\u3010\u65e0\u7528\u5927\u68d2\u3011\u3001\u3010\u706d\u4e16\u8005\u7684\u6b7b\u4ea1\u4e4b\u5e3d\u3011\u548c\u3010\u4e2d\u5a05\u6c99\u6f0f\u3011\u3002<br><br>\u5956\u52b1:\u83b7\u5f97\u3010\u6c83\u683c\u52d2\u7279\u7684\u5deb\u5e08\u5e3d\u3011\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/quest_woogletswitchcap_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/quest_woogletswitchcap_small.arena_augments_v2.png",
             "id": 156,
-            "name": "Cherry_Quest_WoogletsWitchcap_Name",
+            "name": "\u4efb\u52a1\uff1a\u6c83\u683c\u52d2\u7279\u7684\u5deb\u5e08\u5e3d",
             "rarity": 8,
-            "tooltip": "Cherry_Quest_WoogletsWitchcap_Summary"
+            "tooltip": "\u5373\u523b\uff1a\u83b7\u5f97\u3010\u65e0\u7528\u5927\u68d2\u3011\u3002<br><br>\u9700\u6c42\uff1a\u6301\u6709\u3010\u65e0\u7528\u5927\u68d2\u3011\u3001\u3010\u706d\u4e16\u8005\u7684\u6b7b\u4ea1\u4e4b\u5e3d\u3011\u548c\u3010\u4e2d\u5a05\u6c99\u6f0f\u3011\u3002<br><br>\u5956\u52b1:\u83b7\u5f97\u3010\u6c83\u683c\u52d2\u7279\u7684\u5deb\u5e08\u5e3d\u3011\u3002"
         },
         {
             "apiName": "Earthwake",
@@ -1044,13 +1045,13 @@
                 "MeleeRangeIncrease": 75.0,
                 "RangedRangeIncrease": 50.0
             },
-            "desc": "Cherry_ScopedWeapons_Summary",
+            "desc": "\u83b7\u5f97@MeleeRangeIncrease@\u653b\u51fb\u8ddd\u79bb\uff0c\u5982\u679c\u4f60\u662f\u8fdc\u7a0b\u82f1\u96c4\u5219\u964d\u4f4e\u81f3@RangedRangeIncrease@\u653b\u51fb\u8ddd\u79bb\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/scopedweapons_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/scopedweapons_small.arena_augments_v2.png",
             "id": 170,
             "name": "\u4e07\u7528\u7784\u51c6\u955c",
             "rarity": 0,
-            "tooltip": "Cherry_ScopedWeapons_Summary"
+            "tooltip": "\u83b7\u5f97@MeleeRangeIncrease@\u653b\u51fb\u8ddd\u79bb\uff0c\u5982\u679c\u4f60\u662f\u8fdc\u7a0b\u82f1\u96c4\u5219\u964d\u4f4e\u81f3@RangedRangeIncrease@\u653b\u51fb\u8ddd\u79bb\u3002"
         },
         {
             "apiName": "BreadAndButter",
@@ -1059,13 +1060,13 @@
                 "QAbilityHaste": 150.0,
                 "QReducedAbilityHaste": 150.0
             },
-            "desc": "Cherry_BreadAndButter_Tooltip",
+            "desc": "\u4f60\u7684Q\u83b7\u5f97@QAbilityHaste@\u6280\u80fd\u6025\u901f\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/breadandbutter_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/breadandbutter_small.arena_augments_v2.png",
             "id": 103,
-            "name": "Cherry_BreadAndButter_Name",
+            "name": "\u9762\u5305\u548c\u9ec4\u6cb9",
             "rarity": 4,
-            "tooltip": "Cherry_BreadAndButter_Tooltip"
+            "tooltip": "\u4f60\u7684Q\u83b7\u5f97@QAbilityHaste@\u6280\u80fd\u6025\u901f\u3002"
         },
         {
             "apiName": "TheBrutalizer",
@@ -1089,13 +1090,13 @@
             "dataValues": {
                 "AutocastFlatCDR": 3.0
             },
-            "desc": "Cherry_FullyAutomated_Tooltip",
+            "desc": "\u4f60\u7684<keywordMajor>\u81ea\u52a8\u65bd\u653e</keywordMajor>\u7684\u51b7\u5374\u65f6\u95f4\u7f29\u77ed@AutocastFlatCDR@\u79d2\u5e76\u53d7\u76ca\u4e8e\u4f60\u7684\u6280\u80fd\u6025\u901f\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/fullyautomated_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/fullyautomated_small.arena_augments_v2.png",
             "id": 213,
-            "name": "Cherry_FullyAutomated_Name",
+            "name": "\u5b8c\u5168\u81ea\u52a8\u5316",
             "rarity": 0,
-            "tooltip": "Cherry_FullyAutomated_Tooltip"
+            "tooltip": "\u4f60\u7684<keywordMajor>\u81ea\u52a8\u65bd\u653e</keywordMajor>\u7684\u51b7\u5374\u65f6\u95f4\u7f29\u77ed@AutocastFlatCDR@\u79d2\u5e76\u53d7\u76ca\u4e8e\u4f60\u7684\u6280\u80fd\u6025\u901f\u3002"
         },
         {
             "apiName": "SonicBoom",
@@ -1125,7 +1126,7 @@
             "id": 76,
             "name": "\u5929\u97f3\u7206",
             "rarity": 0,
-            "tooltip": "Cherry_SonicBoom_Tooltip"
+            "tooltip": "\u5728\u4e3a\u4f60\u7684\u53cb\u519b\u63d0\u4f9b\u589e\u76ca\u6548\u679c\u3001<healing>\u6cbb\u7597\u6548\u679c</healing>\u6216<shield>\u62a4\u76fe\u6548\u679c</shield>\u65f6\uff0c\u4f1a\u5bf9\u5176\u9644\u8fd1\u7684\u654c\u4eba\u4eec\u9020\u6210<trueDamage>@Damage@\u771f\u5b9e\u4f24\u5bb3</trueDamage>\u548c\u6301\u7eed2\u79d2\u7684@SlowAmount*-100@%<status>\u51cf\u901f</status>\u3002<br><br>\u8fd9\u4e2a\u56de\u5408\u5df2\u9020\u6210\u7684\u4f24\u5bb3\uff1a@f1@<br>\u5df2\u9020\u6210\u4f24\u5bb3\u7684\u603b\u548c\uff1a@f2@"
         },
         {
             "apiName": "Evocation",
@@ -1150,13 +1151,13 @@
             "dataValues": {
                 "ProcMultiplier": 1.5
             },
-            "desc": "Cherry_TwiceThrice_Tooltip",
+            "desc": "\u6bcf\u7b2c\u4e09\u6b21\u653b\u51fb\uff0c\u4f60\u9644\u5e26\u7684\u653b\u51fb\u7279\u6548\u4f1a\u89e6\u53d1\u7b2c\u4e8c\u6b21\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/twicethrice_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/twicethrice_small.arena_augments_v2.png",
             "id": 107,
-            "name": "Cherry_TwiceThrice_Name",
+            "name": "\u63a5\u4e8c\u8fde\u4e09",
             "rarity": 4,
-            "tooltip": "Cherry_TwiceThrice_Tooltip"
+            "tooltip": "\u6bcf\u7b2c\u4e09\u6b21\u653b\u51fb\uff0c\u4f60\u9644\u5e26\u7684\u653b\u51fb\u7279\u6548\u4f1a\u89e6\u53d1\u7b2c\u4e8c\u6b21\u3002"
         },
         {
             "apiName": "CelestialBody",
@@ -1179,13 +1180,13 @@
             "dataValues": {
                 "WAbilityHaste": 150.0
             },
-            "desc": "Cherry_BreadAndJam_Summary",
+            "desc": "\u4f60\u7684W\u83b7\u5f97@WAbilityHaste@\u6280\u80fd\u6025\u901f\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/breadandjam_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/breadandjam_small.arena_augments_v2.png",
             "id": 150,
-            "name": "Cherry_BreadAndJam_Name",
+            "name": "\u9762\u5305\u548c\u679c\u9171",
             "rarity": 4,
-            "tooltip": "Cherry_BreadAndJam_Summary"
+            "tooltip": "\u4f60\u7684W\u83b7\u5f97@WAbilityHaste@\u6280\u80fd\u6025\u901f\u3002"
         },
         {
             "apiName": "WithHaste",
@@ -1261,8 +1262,8 @@
             "iconLarge": "assets/ux/cherry/augments/icons/holyfire_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/holyfire_small.arena_augments_v2.png",
             "id": 198,
-            "name": "Cherry_HolyFire_Name",
-            "rarity": 0,
+            "name": "\u5723\u706b",
+            "rarity": 4,
             "tooltip": "Cherry_HolyFire_Tooltip"
         },
         {
@@ -1315,13 +1316,13 @@
             "dataValues": {
                 "HealPercentage": 0.019999999552965164
             },
-            "desc": "Cherry_GuiltyPleasure_Summary",
+            "desc": "<status>\u5b9a\u8eab</status>\u654c\u65b9\u82f1\u96c4\u65f6<healing>\u56de\u590d@TotalHeal@\u751f\u547d\u503c</healing>\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/guiltypleasure_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/guiltypleasure_small.arena_augments_v2.png",
             "id": 42,
             "name": "\u6076\u8da3\u5473",
             "rarity": 0,
-            "tooltip": "Cherry_GuiltyPleasure_Tooltip"
+            "tooltip": "<status>\u5b9a\u8eab</status>\u654c\u65b9\u82f1\u96c4\u65f6<healing>\u56de\u590d@TotalHeal@\u751f\u547d\u503c</healing>\u3002<br><br>\u8fd9\u4e2a\u56de\u5408\u5df2\u9020\u6210\u7684\u6cbb\u7597\u6548\u679c\uff1a@f1@<br>\u5df2\u9020\u6210\u7684\u6cbb\u7597\u6548\u679c\u603b\u548c\uff1a@f2@"
         },
         {
             "apiName": "ScopierWeapons",
@@ -1330,13 +1331,13 @@
                 "MeleeRangeIncrease": 200.0,
                 "RangedRangeIncrease": 100.0
             },
-            "desc": "Cherry_ScopierScopedWeapons_Summary",
+            "desc": "\u83b7\u5f97@MeleeRangeIncrease@\u653b\u51fb\u8ddd\u79bb\uff0c\u5982\u679c\u4f60\u662f\u8fdc\u7a0b\u82f1\u96c4\u5219\u964d\u4f4e\u81f3@RangedRangeIncrease@\u653b\u51fb\u8ddd\u79bb\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/scopierweapons_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/scopierweapons_small.arena_augments_v2.png",
             "id": 71,
-            "name": "Cherry_ScopierScopedWeapons_Name",
+            "name": "\u66f4\u4e07\u7528\u7684\u7784\u51c6\u955c",
             "rarity": 4,
-            "tooltip": "Cherry_ScopierScopedWeapons_Summary"
+            "tooltip": "\u83b7\u5f97@MeleeRangeIncrease@\u653b\u51fb\u8ddd\u79bb\uff0c\u5982\u679c\u4f60\u662f\u8fdc\u7a0b\u82f1\u96c4\u5219\u964d\u4f4e\u81f3@RangedRangeIncrease@\u653b\u51fb\u8ddd\u79bb\u3002"
         },
         {
             "apiName": "BuffBuddies",
@@ -1361,13 +1362,13 @@
                 "ShieldHealthRatio": 0.30000001192092896,
                 "StatIncrease": 0.5
             },
-            "desc": "Cherry_RaidBoss_Tooltip",
+            "desc": "\u4f60\u6bcf\u4e2a\u56de\u5408\u5f00\u59cb\u65f6\u90fd\u4f1a\u88ab\u5c01\u5370\u5728\u7ade\u6280\u573a\u4e2d\u5fc3\uff0c\u65e0\u6cd5\u8fdb\u884c\u4efb\u4f55\u884c\u52a8\u3002\u5728\u88ab\u5c01\u5370\u7684\u72b6\u6001\u4e0b\uff0c\u4f60\u62e5\u6709\u81f3\u591a@DamageReductionMax*100@%\u4f24\u5bb3\u51cf\u514d(\u57fa\u4e8e\u5df2\u635f\u5931\u751f\u547d\u503c)\uff0c\u5e76\u6301\u7eed\u83b7\u5f97\u751f\u547d\u503c\u3001\u653b\u51fb\u529b\u548c\u6cd5\u672f\u5f3a\u5ea6(\u6700\u5927\u503c\u4e3a@StatIncrease*100@%)\u3002\u5728@ImprisonDuration@\u79d2\u4e4b\u540e\u6216\u5728\u8fbe\u5230@BreakoutHealthThreshold*100@%\u751f\u547d\u503c\u65f6\uff0c\u4f60\u4f1a\u6253\u7834\u5c01\u5370\uff0c<status>\u51fb\u9000</status>\u654c\u4eba\u4eec\u5e76\u83b7\u5f97<shield>@ShieldHealthRatio*100@%\u6700\u5927\u751f\u547d\u503c\u7684\u62a4\u76fe\u503c</shield>\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/raidboss_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/raidboss_small.arena_augments_v2.png",
             "id": 125,
-            "name": "Cherry_RaidBoss_Name",
+            "name": "\u526f\u672cBOSS",
             "rarity": 8,
-            "tooltip": "Cherry_RaidBoss_Tooltip"
+            "tooltip": "\u4f60\u6bcf\u4e2a\u56de\u5408\u5f00\u59cb\u65f6\u90fd\u4f1a\u88ab\u5c01\u5370\u5728\u7ade\u6280\u573a\u4e2d\u5fc3\uff0c\u65e0\u6cd5\u8fdb\u884c\u4efb\u4f55\u884c\u52a8\u3002\u5728\u88ab\u5c01\u5370\u7684\u72b6\u6001\u4e0b\uff0c\u4f60\u62e5\u6709\u81f3\u591a@DamageReductionMax*100@%\u4f24\u5bb3\u51cf\u514d(\u57fa\u4e8e\u5df2\u635f\u5931\u751f\u547d\u503c)\uff0c\u5e76\u6301\u7eed\u83b7\u5f97\u751f\u547d\u503c\u3001\u653b\u51fb\u529b\u548c\u6cd5\u672f\u5f3a\u5ea6(\u6700\u5927\u503c\u4e3a@StatIncrease*100@%)\u3002\u5728@ImprisonDuration@\u79d2\u4e4b\u540e\u6216\u5728\u8fbe\u5230@BreakoutHealthThreshold*100@%\u751f\u547d\u503c\u65f6\uff0c\u4f60\u4f1a\u6253\u7834\u5c01\u5370\uff0c<status>\u51fb\u9000</status>\u654c\u4eba\u4eec\u5e76\u83b7\u5f97<shield>@ShieldHealthRatio*100@%\u6700\u5927\u751f\u547d\u503c\u7684\u62a4\u76fe\u503c</shield>\u3002"
         },
         {
             "apiName": "OutlawsGrit",
@@ -1469,13 +1470,13 @@
                 "ConversionRate": 1.666659951210022,
                 "InverseRate": 0.6000000238418579
             },
-            "desc": "Cherry_ADAPt_Summary",
+            "desc": "\u5c06<physicalDamage>\u989d\u5916\u653b\u51fb\u529b</physicalDamage>\u8f6c\u5316\u4e3a<magicDamage>\u6cd5\u672f\u5f3a\u5ea6</magicDamage>\u3002\u83b7\u5f97<magicDamage>@APAmp*100@%\u6cd5\u672f\u5f3a\u5ea6</magicDamage>\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/adapt_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/adapt_small.arena_augments_v2.png",
             "id": 205,
-            "name": "Cherry_ADAPt_Name",
+            "name": "\u7269\u7406\u8f6c\u9b54\u6cd5",
             "rarity": 0,
-            "tooltip": "Cherry_ADAPt_Summary"
+            "tooltip": "\u5c06<physicalDamage>\u989d\u5916\u653b\u51fb\u529b</physicalDamage>\u8f6c\u5316\u4e3a<magicDamage>\u6cd5\u672f\u5f3a\u5ea6</magicDamage>\u3002\u83b7\u5f97<magicDamage>@APAmp*100@%\u6cd5\u672f\u5f3a\u5ea6</magicDamage>\u3002"
         },
         {
             "apiName": "BacktoBasics",
@@ -1524,13 +1525,13 @@
                 "RectangleHalfWidth": 50.0,
                 "TetherRange": 25000.0
             },
-            "desc": "Cherry_Clothesline_Summary",
+            "desc": "\u5728\u4f60\u548c\u4f60\u7684\u642d\u6863\u4e4b\u95f4\u6709\u4e00\u6761\u7075\u94fe\uff0c\u5b83\u53ef\u4ee5\u707c\u70e7\u4f60\u7684\u654c\u4eba\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/clothesline_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/clothesline_small.arena_augments_v2.png",
             "id": 110,
-            "name": "Cherry_Clothesline_Name",
+            "name": "\u667e\u8863\u7ef3",
             "rarity": 0,
-            "tooltip": "Cherry_Clothesline_Tooltip"
+            "tooltip": "\u5728\u4f60\u548c\u4f60\u7684\u642d\u6863\u4e4b\u95f4\u6709\u4e00\u6761\u7075\u94fe\uff0c\u5b83\u53ef\u4ee5\u707c\u70e7\u4f60\u7684\u654c\u4eba\uff0c\u6bcf\u79d2\u9020\u6210<magicDamage>@BurnDamageTooltip@\u9b54\u6cd5\u4f24\u5bb3</magicDamage>\u3002<br><br>\u8fd9\u4e2a\u56de\u5408\u5df2\u9020\u6210\u7684\u4f24\u5bb3\uff1a@f1@<br>\u5df2\u9020\u6210\u4f24\u5bb3\u7684\u603b\u548c\uff1a@f2@"
         },
         {
             "apiName": "ThiefsGloves",
@@ -1590,13 +1591,13 @@
                 "TicksPerSecond": 4.0,
                 "ToggleCooldown": 1.0
             },
-            "desc": "Cherry_DontChase_Summary",
+            "desc": "\u4f60\u65e0\u89c6\u5355\u4f4d\u7684\u78b0\u649e\u4f53\u79ef\u5e76\u5728\u8eab\u540e\u7559\u4e0b\u4e00\u6761\u5267\u6bd2\u8e2a\u8ff9\uff0c\u5bf9\u7ecf\u8fc7\u4e0a\u9762\u7684\u654c\u4eba\u9020\u6210\u6301\u7eed\u4f24\u5bb3\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/dontchase_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/dontchase_small.arena_augments_v2.png",
             "id": 102,
-            "name": "Cherry_DontChase_Name",
+            "name": "\u8bf7\u52ff\u8ffd\u51fb",
             "rarity": 0,
-            "tooltip": "Cherry_DontChase_Tooltip"
+            "tooltip": "\u5267\u6bd2\u8e2a\u8ff9\u6bcf\u79d2\u6700\u521d<magicDamage>@DamagePerSecond@\u9b54\u6cd5\u4f24\u5bb3</magicDamage>\u3002<br><br>\u8fd9\u4e2a\u56de\u5408\u5df2\u9020\u6210\u7684\u4f24\u5bb3\uff1a@f1@<br>\u5df2\u9020\u6210\u4f24\u5bb3\u7684\u603b\u548c\uff1a@f2@"
         },
         {
             "apiName": "SoulSiphon",
@@ -1643,13 +1644,13 @@
                 "DamageAmp": 0.30000001192092896,
                 "Omnivamp": 0.30000001192092896
             },
-            "desc": "Cherry_Augment_Backstab_Summary",
+            "desc": "\u4f60\u5728\u654c\u4eba\u8eab\u540e\u547d\u4e2d\u654c\u4eba\u65f6\u4f1a\u83b7\u5f97@DamageAmp*100@%\u989d\u5916\u4f24\u5bb3\u548c\u5168\u80fd\u5438\u8840\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/mythical_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/mythical_small.arena_augments_v2.png",
             "id": 210,
-            "name": "Cherry_Augment_Backstab_Name",
+            "name": "\u80cc\u523a",
             "rarity": 4,
-            "tooltip": "Cherry_Augment_Backstab_Tooltip"
+            "tooltip": "\u4f60\u5728\u654c\u4eba\u8eab\u540e\u547d\u4e2d\u654c\u4eba\u65f6\u4f1a\u83b7\u5f97@DamageAmp*100@%\u989d\u5916\u4f24\u5bb3\u548c\u5168\u80fd\u5438\u8840\u3002<br><br>\u5df2\u9020\u6210\u7684\u4f24\u5bb3\uff1a@f1@<br>\u5df2\u9020\u6210\u7684\u6cbb\u7597\u6548\u679c\uff1a@f2@"
         },
         {
             "apiName": "ThreadtheNeedle",
@@ -1671,13 +1672,13 @@
             "dataValues": {
                 "EAbilityHaste": 150.0
             },
-            "desc": "Cherry_BreadAndCheese_Summary",
+            "desc": "\u4f60\u7684E\u83b7\u5f97@EAbilityHaste@\u6280\u80fd\u6025\u901f\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/breadandcheese_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/breadandcheese_small.arena_augments_v2.png",
             "id": 151,
-            "name": "Cherry_BreadAndCheese_Name",
+            "name": "\u9762\u5305\u548c\u5976\u916a",
             "rarity": 4,
-            "tooltip": "Cherry_BreadAndCheese_Summary"
+            "tooltip": "\u4f60\u7684E\u83b7\u5f97@EAbilityHaste@\u6280\u80fd\u6025\u901f\u3002"
         },
         {
             "apiName": "Impassable",
@@ -1713,13 +1714,13 @@
                 "SlowZoneWidth": 80.0,
                 "StartingBaseDamage": 25.0
             },
-            "desc": "Cherry_Impassable_Summary",
+            "desc": "\u83b7\u3010\u4f59\u9707\u3011\u548c\u3010\u51b0\u5ddd\u589e\u5e45\u3011\u57fa\u77f3\u7b26\u6587\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/impassable_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/impassable_small.arena_augments_v2.png",
             "id": 149,
-            "name": "Cherry_Impassable_Name",
+            "name": "\u4e0d\u52a8\u5982\u5c71",
             "rarity": 4,
-            "tooltip": "Cherry_Impassable_Summary"
+            "tooltip": "\u83b7\u3010\u4f59\u9707\u3011\u548c\u3010\u51b0\u5ddd\u589e\u5e45\u3011\u57fa\u77f3\u7b26\u6587\u3002"
         },
         {
             "apiName": "ExtendoArm",
@@ -1809,13 +1810,13 @@
                 "CurseCounter": 1.0,
                 "PercentMaxHPDamagePer5Seconds": 0.029999999329447746
             },
-            "desc": "Cherry_Deathtouch_Summary",
+            "desc": "\u4f60\u7684\u653b\u51fb\u65bd\u52a0@CurseCounter@\u5c42\u6301\u7eed@BleedDuration@\u79d2\u7684<keywordMajor>\u8bc5\u5492</keywordMajor>\uff0c\u53ef\u65e0\u9650\u53e0\u52a0\u3002<br><br><br>{{ Cherry_Curse_WithTracker }}",
             "iconLarge": "assets/ux/cherry/augments/icons/deathtouch_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/deathtouch_small.arena_augments_v2.png",
             "id": 217,
-            "name": "Cherry_Deathtouch_Name",
+            "name": "\u6b7b\u4ea1\u89e6\u6478",
             "rarity": 4,
-            "tooltip": "Cherry_Deathtouch_Summary"
+            "tooltip": "\u4f60\u7684\u653b\u51fb\u65bd\u52a0@CurseCounter@\u5c42\u6301\u7eed@BleedDuration@\u79d2\u7684<keywordMajor>\u8bc5\u5492</keywordMajor>\uff0c\u53ef\u65e0\u9650\u53e0\u52a0\u3002<br><br><br>{{ Cherry_Curse_WithTracker }}"
         },
         {
             "apiName": "Quest_AngelofRetribution",
@@ -1837,15 +1838,15 @@
             "dataValues": {
                 "AttackSpeed": 1.0,
                 "HealPowerToDamageConversion": 3.0,
-                "RequirementAmount": 4000.0
+                "RequirementAmount": 2500.0
             },
-            "desc": "Cherry_QuestAngelofRetribution_Summary",
+            "desc": "\u9700\u6c42\uff1a\u7ed9\u53cb\u519b\u56de\u590d\u6216\u9884\u9632@RequirementAmount@\u4f24\u5bb3\u3002<br>\u5956\u52b1\uff1a\u83b7\u5f97<attackspeed>@AttackSpeed*100@%\u653b\u51fb\u901f\u5ea6</attackspeed>\uff0c\u5e76\u4e14\u4f60\u7684\u653b\u51fb\u9020\u6210\u76f8\u5f53\u4e8e<healing>@HealPowerToDamageConversion*100@%\u6cbb\u7597/\u62a4\u76fe\u503c</healing>\u7684\u989d\u5916<magicdamage>\u9b54\u6cd5\u4f24\u5bb3</magicdamage>\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/quest_angelofretribution_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/quest_angelofretribution_small.arena_augments_v2.png",
             "id": 192,
-            "name": "Cherry_Augment_Quest_AngelofRetribution_Name",
-            "rarity": 0,
-            "tooltip": "Cherry_QuestAngelofRetribution_Tooltip"
+            "name": "\u60e9\u6212\u5929\u4f7f",
+            "rarity": 4,
+            "tooltip": "{{Cherry_QuestAngelofRetribution_Summary}}<br><br>\u5df2\u6cbb\u7597\u6216\u963b\u6321\u7684\u4f24\u5bb3\uff1a@f1@<br>\u5df2\u9020\u6210\u7684\u4f24\u5bb3\uff1a@f2@"
         },
         {
             "apiName": "ContractKiller",
@@ -1868,13 +1869,13 @@
             "dataValues": {
                 "Omnivamp": 0.20000000298023224
             },
-            "desc": "Cherry_Goredrink_Summary",
+            "desc": "\u83b7\u5f97@Omnivamp*100@\u5168\u80fd\u5438\u8840\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/goredrink_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/goredrink_small.arena_augments_v2.png",
             "id": 138,
-            "name": "Cherry_Goredrink_Name",
+            "name": "\u6e34\u8840",
             "rarity": 0,
-            "tooltip": "Cherry_Goredrink_Summary"
+            "tooltip": "\u83b7\u5f97@Omnivamp*100@\u5168\u80fd\u5438\u8840\u3002"
         },
         {
             "apiName": "FirstAidKit",
@@ -1918,13 +1919,13 @@
                 }
             },
             "dataValues": {},
-            "desc": "Cherry_OkBoomerang_Summary",
+            "desc": "\u6bcf7\u79d2\u671d\u7740\u4e00\u4e2a\u9644\u8fd1\u7684\u654c\u4eba<keywordMajor>\u81ea\u52a8\u65bd\u653e</keywordMajor>\u4e00\u4e2a\u56de\u529b\u9556\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/okboomerang_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/okboomerang_small.arena_augments_v2.png",
             "id": 61,
             "name": "\u56de\u529bOK\u9556",
             "rarity": 4,
-            "tooltip": "Cherry_OkBoomerang_Tooltip"
+            "tooltip": "\u6bcf7\u79d2\u671d\u7740\u4e00\u4e2a\u9644\u8fd1\u7684\u654c\u4eba<keywordMajor>\u81ea\u52a8\u65bd\u653e</keywordMajor>\u4e00\u4e2a\u56de\u529b\u9556\uff0c\u5bf9\u547d\u4e2d\u7684\u654c\u4eba\u4eec\u9020\u6210@Damage@\u81ea\u9002\u5e94\u4f24\u5bb3\u3002<br><br>\u8fd9\u4e2a\u56de\u5408\u5df2\u9020\u6210\u7684\u4f24\u5bb3\uff1a@f1@<br>\u5df2\u9020\u6210\u4f24\u5bb3\u7684\u603b\u548c\uff1a@f2@"
         },
         {
             "apiName": "JuiceBox",
@@ -1945,13 +1946,13 @@
                 "MeleeRangeIncrease": 250.0,
                 "RangedRangeIncrease": 150.0
             },
-            "desc": "Cherry_ScopiestWeapons_Tooltip",
+            "desc": "\u83b7\u5f97@MeleeRangeIncrease@\u653b\u51fb\u8ddd\u79bb\uff0c\u5982\u679c\u4f60\u662f\u8fdc\u7a0b\u82f1\u96c4\u5219\u964d\u4f4e\u81f3@RangedRangeIncrease@\u653b\u51fb\u8ddd\u79bb\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/scopiestweapons_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/scopiestweapons_small.arena_augments_v2.png",
             "id": 115,
-            "name": "Cherry_ScopiestWeapons_Name",
+            "name": "\u6700\u4e07\u7528\u7684\u7784\u51c6\u955c",
             "rarity": 8,
-            "tooltip": "Cherry_ScopiestWeapons_Tooltip"
+            "tooltip": "\u83b7\u5f97@MeleeRangeIncrease@\u653b\u51fb\u8ddd\u79bb\uff0c\u5982\u679c\u4f60\u662f\u8fdc\u7a0b\u82f1\u96c4\u5219\u964d\u4f4e\u81f3@RangedRangeIncrease@\u653b\u51fb\u8ddd\u79bb\u3002"
         },
         {
             "apiName": "StackosaurusRex",
@@ -1959,13 +1960,13 @@
             "dataValues": {
                 "StackModifier": 0.5
             },
-            "desc": "Cherry_StackosaurusRex_Summary",
+            "desc": "\u5728\u4f60\u83b7\u5f97\u4e00\u4e2a\u6280\u80fd\u7684\u6c38\u4e45<keywordMajor>\u5c42\u6570</keywordMajor>\u65f6\uff0c\u591a\u83b7\u5f97@StackModifier*100@%\uff01",
             "iconLarge": "assets/ux/cherry/augments/icons/stackosaurusrex_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/stackosaurusrex_small.arena_augments_v2.png",
             "id": 204,
-            "name": "Cherry_StackosaurusRex_Name",
+            "name": "\u53e0\u89d2\u9f99",
             "rarity": 0,
-            "tooltip": "Cherry_StackosaurusRex_Tooltip"
+            "tooltip": "{{ Cherry_StackosaurusRex_Summary }}<br><br>\u5df2\u83b7\u5f97\u7684\u5c42\u6570\uff1a@f1@"
         },
         {
             "apiName": "escAPADe",
@@ -1975,13 +1976,13 @@
                 "ConversionRate": 0.6000000238418579,
                 "InverseRate": 1.666659951210022
             },
-            "desc": "Cherry_escAPADe_Summary",
+            "desc": "\u5c06<magicDamage>\u6cd5\u672f\u5f3a\u5ea6</magicDamage>\u8f6c\u5316\u4e3a<physicalDamage>\u989d\u5916\u653b\u51fb\u529b</physicalDamage>\u3002\u83b7\u5f97<physicalDamage>@ADAmp*100@%\u653b\u51fb\u529b</physicalDamage>\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/escapade_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/escapade_small.arena_augments_v2.png",
             "id": 206,
-            "name": "Cherry_escAPADe_Name",
+            "name": "\u9b54\u6cd5\u8f6c\u7269\u7406",
             "rarity": 0,
-            "tooltip": "Cherry_escAPADe_Summary"
+            "tooltip": "\u5c06<magicDamage>\u6cd5\u672f\u5f3a\u5ea6</magicDamage>\u8f6c\u5316\u4e3a<physicalDamage>\u989d\u5916\u653b\u51fb\u529b</physicalDamage>\u3002\u83b7\u5f97<physicalDamage>@ADAmp*100@%\u653b\u51fb\u529b</physicalDamage>\u3002"
         },
         {
             "apiName": "FeyMagic",
@@ -1991,13 +1992,13 @@
                 "PolyDuration": 1.5,
                 "WEnemySlow": 60.0
             },
-            "desc": "Cherry_FeyMagic_Tooltip",
+            "desc": "\u4f60\u7684\u7ec8\u6781\u6280\u80fd\u7684\u4f24\u5bb3\u4f1a\u5bf9\u654c\u4eba\u9020\u6210@PolyDuration@\u79d2<status>\u53d8\u5f62</status>\u6548\u679c(@PolyCooldown@\u79d2\u51b7\u5374\u65f6\u95f4)\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/feymagic_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/feymagic_small.arena_augments_v2.png",
             "id": 194,
-            "name": "Cherry_FeyMagic_Name",
+            "name": "\u7cbe\u602a\u9b54\u6cd5",
             "rarity": 8,
-            "tooltip": "Cherry_FeyMagic_Tooltip"
+            "tooltip": "\u4f60\u7684\u7ec8\u6781\u6280\u80fd\u7684\u4f24\u5bb3\u4f1a\u5bf9\u654c\u4eba\u9020\u6210@PolyDuration@\u79d2<status>\u53d8\u5f62</status>\u6548\u679c(@PolyCooldown@\u79d2\u51b7\u5374\u65f6\u95f4)\u3002"
         },
         {
             "apiName": "Firebrand",
@@ -2023,13 +2024,13 @@
                 "CurseCounter": 2.0,
                 "PercentMaxHPDamagePer5Seconds": 0.029999999329447746
             },
-            "desc": "Cherry_Doomsayer_Summary",
+            "desc": "\u4f60\u7684\u6280\u80fd\u5bf9\u547d\u4e2d\u7684\u654c\u65b9\u82f1\u96c4\u65bd\u52a0@CurseCounter@\u5c42\u6301\u7eed@BleedDuration@\u79d2\u7684<keywordMajor>\u8bc5\u5492</keywordMajor>\uff0c\u53ef\u65e0\u9650\u53e0\u52a0\u3002<br><br>{{ Cherry_Curse_WithTracker }}",
             "iconLarge": "assets/ux/cherry/augments/icons/doomsayer_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/doomsayer_small.arena_augments_v2.png",
             "id": 219,
-            "name": "Cherry_Doomsayer_Name",
+            "name": "\u672b\u65e5\u9884\u8a00\u8005",
             "rarity": 8,
-            "tooltip": "Cherry_Doomsayer_Summary"
+            "tooltip": "\u4f60\u7684\u6280\u80fd\u5bf9\u547d\u4e2d\u7684\u654c\u65b9\u82f1\u96c4\u65bd\u52a0@CurseCounter@\u5c42\u6301\u7eed@BleedDuration@\u79d2\u7684<keywordMajor>\u8bc5\u5492</keywordMajor>\uff0c\u53ef\u65e0\u9650\u53e0\u52a0\u3002<br><br>{{ Cherry_Curse_WithTracker }}"
         },
         {
             "apiName": "Flashy",
@@ -2037,13 +2038,13 @@
             "dataValues": {
                 "FlashCooldown": 2.0
             },
-            "desc": "Cherry_Flashy_Summary",
+            "desc": "\u4f60\u7684\u3010\u95ea\u73b0\u3011\u67093\u5c42\u5145\u80fd\uff0c\u5e76\u4e14\u51b7\u5374\u65f6\u95f4\u4e3a@FlashCooldown@\u79d2\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/flashy_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/flashy_small.arena_augments_v2.png",
             "id": 116,
-            "name": "Cherry_Flashy_Name",
+            "name": "\u95ea\u73b0\u5411\u524d",
             "rarity": 0,
-            "tooltip": "Cherry_Flashy_Summary"
+            "tooltip": "\u4f60\u7684\u3010\u95ea\u73b0\u3011\u67093\u5c42\u5145\u80fd\uff0c\u5e76\u4e14\u51b7\u5374\u65f6\u95f4\u4e3a@FlashCooldown@\u79d2\u3002"
         },
         {
             "apiName": "NestingDoll",
@@ -2055,13 +2056,13 @@
                 "SecondSizeMod": -0.4000000059604645,
                 "SizeMod": -0.20000000298023224
             },
-            "desc": "Cherry_NestingDoll_Summary",
+            "desc": "\u5728\u4f60\u9996\u6b21\u9635\u4ea1\u65f6\uff0c\u590d\u6d3b\u4e3a\u4f60\u81ea\u5df1\u7684\u4e00\u4e2a\u5c0f\u578b\u7248\u672c\uff0c\u62e5\u6709@ReviveMod*100@%\u751f\u547d\u503c\u5e76\u9020\u6210@ReviveMod*100@%\u4f24\u5bb3\u3002\u5982\u679c\u4f60\u518d\u6b21\u9635\u4ea1\uff0c\u590d\u6d3b\u4e3a\u4f60\u81ea\u5df1\u7684\u4e00\u4e2a\u66f4\u52a0\u5c0f\u578b\u7684\u7248\u672c\uff0c\u62e5\u6709@SecondReviveMod*100@%\u751f\u547d\u503c\u5e76\u9020\u6210@SecondReviveMod*100@%\u4f24\u5bb3\u3002<br><br>\u5728\u4f60\u590d\u6d3b\u65f6\uff0c<status>\u51fb\u9000</status>\u4f60\u5468\u56f4\u7684\u654c\u4eba\u4eec\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/nestingdoll_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/nestingdoll_small.arena_augments_v2.png",
             "id": 177,
-            "name": "Cherry_NestingDoll_Name",
+            "name": "\u5957\u5a03",
             "rarity": 8,
-            "tooltip": "Cherry_NestingDoll_Summary"
+            "tooltip": "\u5728\u4f60\u9996\u6b21\u9635\u4ea1\u65f6\uff0c\u590d\u6d3b\u4e3a\u4f60\u81ea\u5df1\u7684\u4e00\u4e2a\u5c0f\u578b\u7248\u672c\uff0c\u62e5\u6709@ReviveMod*100@%\u751f\u547d\u503c\u5e76\u9020\u6210@ReviveMod*100@%\u4f24\u5bb3\u3002\u5982\u679c\u4f60\u518d\u6b21\u9635\u4ea1\uff0c\u590d\u6d3b\u4e3a\u4f60\u81ea\u5df1\u7684\u4e00\u4e2a\u66f4\u52a0\u5c0f\u578b\u7684\u7248\u672c\uff0c\u62e5\u6709@SecondReviveMod*100@%\u751f\u547d\u503c\u5e76\u9020\u6210@SecondReviveMod*100@%\u4f24\u5bb3\u3002<br><br>\u5728\u4f60\u590d\u6d3b\u65f6\uff0c<status>\u51fb\u9000</status>\u4f60\u5468\u56f4\u7684\u654c\u4eba\u4eec\u3002"
         },
         {
             "apiName": "TapDancer",
@@ -2101,13 +2102,13 @@
                 "MinionHealthIncrease": 1.0,
                 "MinionSizeIncrease": 0.75
             },
-            "desc": "Cherry_Minionmancer_Tooltip",
+            "desc": "\u4f60\u7684\u53ec\u5524\u7269\u83b7\u5f97@MinionSizeIncrease*100@%\u4f53\u578b\u63d0\u5347\u3001\u751f\u547d\u503c\u548c\u4f24\u5bb3\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/minionmancer_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/minionmancer_small.arena_augments_v2.png",
             "id": 104,
-            "name": "Cherry_Minionmancer_Name",
+            "name": "\u4ec6\u4ece\u5927\u5e08",
             "rarity": 4,
-            "tooltip": "Cherry_Minionmancer_Tooltip"
+            "tooltip": "\u4f60\u7684\u53ec\u5524\u7269\u83b7\u5f97@MinionSizeIncrease*100@%\u4f53\u578b\u63d0\u5347\u3001\u751f\u547d\u503c\u548c\u4f24\u5bb3\u3002"
         },
         {
             "apiName": "EtherealWeapon",
@@ -2204,13 +2205,13 @@
                 "BonusMS": 0.20000000298023224,
                 "HoldStillDuration": 1.5
             },
-            "desc": "Cherry_HoldVeryStill_Summary",
+            "desc": "\u83b7\u5f97<spellName>\u6e38\u51fb\u961f\u519b\u5907</spellName><br><br><rules>\u5728\u539f\u5730\u4e0d\u52a8@HoldStillDuration@\u79d2\u540e\uff0c\u83b7\u5f97<keywordStealth>\u9690\u5f62</keywordStealth>\uff0c\u6301\u7eed\u5230\u4f60\u79fb\u52a8\u4e3a\u6b62\u3002\u5728\u4f60\u79bb\u5f00\u8fd9\u4e2a<keywordStealth>\u9690\u5f62</keywordStealth>\u72b6\u6001\u65f6\uff0c<attackSpeed>@BonusAS@\u83b7\u5f97\u653b\u51fb\u901f\u5ea6</attackSpeed>\u3002</rules>",
             "iconLarge": "assets/ux/cherry/augments/icons/holdverystill_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/holdverystill_small.arena_augments_v2.png",
             "id": 207,
-            "name": "Cherry_HoldVeryStill_Name",
+            "name": "\u7eb9\u4e1d\u4e0d\u52a8",
             "rarity": 0,
-            "tooltip": "Cherry_HoldVeryStill_Summary"
+            "tooltip": "\u83b7\u5f97<spellName>\u6e38\u51fb\u961f\u519b\u5907</spellName><br><br><rules>\u5728\u539f\u5730\u4e0d\u52a8@HoldStillDuration@\u79d2\u540e\uff0c\u83b7\u5f97<keywordStealth>\u9690\u5f62</keywordStealth>\uff0c\u6301\u7eed\u5230\u4f60\u79fb\u52a8\u4e3a\u6b62\u3002\u5728\u4f60\u79bb\u5f00\u8fd9\u4e2a<keywordStealth>\u9690\u5f62</keywordStealth>\u72b6\u6001\u65f6\uff0c<attackSpeed>@BonusAS@\u83b7\u5f97\u653b\u51fb\u901f\u5ea6</attackSpeed>\u3002</rules>"
         },
         {
             "apiName": "FromBeginningToEnd",
@@ -2311,13 +2312,13 @@
             "dataValues": {
                 "Cooldown": 15.0
             },
-            "desc": "Cherry_SnowballFight_Tooltip",
+            "desc": "\u5c06\u53ec\u5524\u5e08\u6280\u80fd\u3010\u95ea\u4eba\u3011\u66ff\u6362\u4e3a\u3010\u6807\u8bb0\u3011\u3002\u6254\u51fa\u4e00\u56e2\u96ea\u7403\u6765\u6807\u8bb0\u547d\u4e2d\u7684\u7b2c\u4e00\u4e2a\u654c\u4eba\u5e76\u9020\u6210\u4f24\u5bb3\u3002\u518d\u6b21\u65bd\u653e\u6765\u51b2\u523a\u5230\u88ab\u6807\u8bb0\u654c\u4eba\u7684\u4f4d\u7f6e\u3002 ",
             "iconLarge": "assets/ux/cherry/augments/icons/snowballfight_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/snowballfight_small.arena_augments_v2.png",
             "id": 176,
-            "name": "Cherry_SnowballFight_Name",
+            "name": "\u96ea\u7403\u5927\u6218\uff01",
             "rarity": 0,
-            "tooltip": "Cherry_SnowballFight_Tooltip"
+            "tooltip": "\u5c06\u53ec\u5524\u5e08\u6280\u80fd\u3010\u95ea\u4eba\u3011\u66ff\u6362\u4e3a\u3010\u6807\u8bb0\u3011\u3002\u6254\u51fa\u4e00\u56e2\u96ea\u7403\u6765\u6807\u8bb0\u547d\u4e2d\u7684\u7b2c\u4e00\u4e2a\u654c\u4eba\u5e76\u9020\u6210\u4f24\u5bb3\u3002\u518d\u6b21\u65bd\u653e\u6765\u51b2\u523a\u5230\u88ab\u6807\u8bb0\u654c\u4eba\u7684\u4f4d\u7f6e\u3002 "
         },
         {
             "apiName": "ItsCritical",
@@ -2379,13 +2380,13 @@
                 "MaxStacks": 5.0,
                 "SecondsPerTick": 1.2599999904632568
             },
-            "desc": "Cherry_BloodBrother_Summary",
+            "desc": "\u83b7\u5f97\u5fb7\u83b1\u5384\u65af\u7684<spellName>\u51fa\u8840</spellName>\u88ab\u52a8\u3002<br><br><rules>\u653b\u51fb\u548c\u4f24\u5bb3\u578b\u6280\u80fd\u4f1a\u4f7f\u76ee\u6807<keywordMajor>\u51fa\u8840</keywordMajor>\uff0c\u5728@BleedDuration@\u79d2\u91cc\u6301\u7eed\u9020\u6210\u5171<physicalDamage>@BleedDamagePerStack@\u7269\u7406\u4f24\u5bb3</physicalDamage>\uff0c\u81f3\u591a\u53ef\u53e0\u52a0@MaxStacks@\u5c42\u3002<br><br>\u5fb7\u83b1\u6587\u5728<keywordMajor>\u51fa\u8840</keywordMajor>\u8fbe\u5230@MaxStacks@\u5c42\u65f6\u4f1a\u83b7\u5f97<scaleAD>@NoxianMightBonusAD@\u653b\u51fb\u529b</scaleAD>\u3002</rules><br><br>",
             "iconLarge": "assets/ux/cherry/augments/icons/bloodbrother_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/bloodbrother_small.arena_augments_v2.png",
             "id": 200,
-            "name": "Cherry_BloodBrother_Name",
+            "name": "\u8840\u4eb2\u5144\u5f1f",
             "rarity": 4,
-            "tooltip": "Cherry_BloodBrother_Summary"
+            "tooltip": "\u83b7\u5f97\u5fb7\u83b1\u5384\u65af\u7684<spellName>\u51fa\u8840</spellName>\u88ab\u52a8\u3002<br><br><rules>\u653b\u51fb\u548c\u4f24\u5bb3\u578b\u6280\u80fd\u4f1a\u4f7f\u76ee\u6807<keywordMajor>\u51fa\u8840</keywordMajor>\uff0c\u5728@BleedDuration@\u79d2\u91cc\u6301\u7eed\u9020\u6210\u5171<physicalDamage>@BleedDamagePerStack@\u7269\u7406\u4f24\u5bb3</physicalDamage>\uff0c\u81f3\u591a\u53ef\u53e0\u52a0@MaxStacks@\u5c42\u3002<br><br>\u5fb7\u83b1\u6587\u5728<keywordMajor>\u51fa\u8840</keywordMajor>\u8fbe\u5230@MaxStacks@\u5c42\u65f6\u4f1a\u83b7\u5f97<scaleAD>@NoxianMightBonusAD@\u653b\u51fb\u529b</scaleAD>\u3002</rules><br><br>"
         },
         {
             "apiName": "UltimateUnstoppable",
@@ -2394,13 +2395,13 @@
                 "Cooldown": 8.0,
                 "UnstoppableDuration": 3.0
             },
-            "desc": "Cherry_UltimateUnstoppable_Tooltip",
+            "desc": "\u5728\u4f60\u4f7f\u7528\u4f60\u7684\u7ec8\u6781\u6280\u80fd\u540e\uff0c\u4f60\u83b7\u5f97\u6301\u7eed@UnstoppableDuration@\u79d2\u7684\u514d\u75ab\u63a7\u5236\u3002 (@Cooldown@\u79d2\u51b7\u5374\u65f6\u95f4)\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/ultimateunstoppable_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/ultimateunstoppable_small.arena_augments_v2.png",
             "id": 112,
-            "name": "Cherry_UltimateUnstoppable_Name",
+            "name": "\u7ec8\u6781\u4e0d\u53ef\u963b\u6321",
             "rarity": 0,
-            "tooltip": "Cherry_UltimateUnstoppable_Tooltip"
+            "tooltip": "\u5728\u4f60\u4f7f\u7528\u4f60\u7684\u7ec8\u6781\u6280\u80fd\u540e\uff0c\u4f60\u83b7\u5f97\u6301\u7eed@UnstoppableDuration@\u79d2\u7684\u514d\u75ab\u63a7\u5236\u3002 (@Cooldown@\u79d2\u51b7\u5374\u65f6\u95f4)\u3002"
         },
         {
             "apiName": "Recursion",
@@ -2460,13 +2461,13 @@
                 "CurseCounter": 1.0,
                 "Range": 500.0
             },
-            "desc": "Cherry_Plaguebearer_Summary",
+            "desc": "\u4f60\u6bcf\u79d2\u5bf9\u9644\u8fd1\u7684\u654c\u65b9\u82f1\u96c4\u4eec\u65bd\u52a0@CurseCounter*4@\u5c42\u6301\u7eed@BleedDuration@\u79d2\u7684<keywordMajor>\u8bc5\u5492</keywordMajor>\uff0c\u53ef\u65e0\u9650\u53e0\u52a0\u3002<br><br>{{ Cherry_Curse_WithTracker }}",
             "iconLarge": "assets/ux/cherry/augments/icons/plaguebearer_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/plaguebearer_small.arena_augments_v2.png",
             "id": 216,
-            "name": "Cherry_Plaguebearer_Name",
+            "name": "\u75ab\u75c5\u4f7f\u8005",
             "rarity": 8,
-            "tooltip": "Cherry_Plaguebearer_Summary"
+            "tooltip": "\u4f60\u6bcf\u79d2\u5bf9\u9644\u8fd1\u7684\u654c\u65b9\u82f1\u96c4\u4eec\u65bd\u52a0@CurseCounter*4@\u5c42\u6301\u7eed@BleedDuration@\u79d2\u7684<keywordMajor>\u8bc5\u5492</keywordMajor>\uff0c\u53ef\u65e0\u9650\u53e0\u52a0\u3002<br><br>{{ Cherry_Curse_WithTracker }}"
         },
         {
             "apiName": "Goliath",
@@ -2538,13 +2539,13 @@
                 "LaserDelay": 2.5,
                 "TickRate": 0.5
             },
-            "desc": "Cherry_OrbitalLaser_Summary",
+            "desc": "\u5c06\u53ec\u5524\u5e08\u6280\u80fd\u3010\u95ea\u4eba\u3011\u66ff\u6362\u4e3a<spellName>\u8f68\u9053\u956d\u5c04</spellName>\u3002\u5728\u4e00\u9635\u5ef6\u8fdf\u540e\uff0c\u53ec\u5524\u4e00\u9053\u8f68\u9053\u956d\u5c04\u5149\u675f\u843d\u4e0b\uff0c\u9020\u6210<trueDamage>@DamagetoChampions*100@%\u6700\u5927\u751f\u547d\u503c\u7684\u771f\u5b9e\u4f24\u5bb3</trueDamage>\u5916\u52a0\u5728@GroundDuration@\u79d2\u91cc\u6301\u7eed\u9020\u6210\u5171<magicDamage>@TotalDamageOverTimeTooltip@\u9b54\u6cd5\u4f24\u5bb3</magicDamage>\u3002 ",
             "iconLarge": "assets/ux/cherry/augments/icons/orbitallaser_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/orbitallaser_small.arena_augments_v2.png",
             "id": 208,
-            "name": "Cherry_OrbitalLaser_Name",
+            "name": "\u8f68\u9053\u956d\u5c04",
             "rarity": 8,
-            "tooltip": "Cherry_OrbitalLaser_Tooltip"
+            "tooltip": " {{Cherry_OrbitalLaser_Summary}}<br><br>\u8fd9\u4e2a\u56de\u5408\u5df2\u9020\u6210\u7684\u4f24\u5bb3\uff1a@f1@<br>\u5df2\u9020\u6210\u4f24\u5bb3\u7684\u603b\u548c\uff1a@f2@"
         },
         {
             "apiName": "MysticPunch",
@@ -2552,13 +2553,13 @@
             "dataValues": {
                 "CooldownRefund": 1.25
             },
-            "desc": "Cherry_MysticPunch_Summary",
+            "desc": "\u4f60\u7684\u653b\u51fb\u4f1a\u4f7f\u4f60\u7684\u5404\u4e2a\u51b7\u5374\u65f6\u95f4\u7f29\u77ed@CooldownRefund@\u79d2\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/mysticpunch_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/mysticpunch_small.arena_augments_v2.png",
             "id": 58,
             "name": "\u79d8\u672f\u51b2\u62f3",
             "rarity": 8,
-            "tooltip": "Cherry_MysticPunch_Summary"
+            "tooltip": "\u4f60\u7684\u653b\u51fb\u4f1a\u4f7f\u4f60\u7684\u5404\u4e2a\u51b7\u5374\u65f6\u95f4\u7f29\u77ed@CooldownRefund@\u79d2\u3002"
         },
         {
             "apiName": "Homeguard",
@@ -2568,13 +2569,13 @@
                 "Duration": 10.0,
                 "MovementSpeed": 1.0
             },
-            "desc": "Cherry_Homeguard_Tooltip",
+            "desc": "\u83b7\u5f97<speed>@MovementSpeed*100@%\u79fb\u52a8\u901f\u5ea6</speed>\uff0c\u5728\u53d7\u5230\u4f24\u5bb3\u540e\u5931\u6548@DisableCooldown@\u79d2\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/homeguard_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/homeguard_small.arena_augments_v2.png",
             "id": 105,
-            "name": "Cherry_Homeguard_Name",
+            "name": "\u5bb6\u56ed\u536b\u58eb",
             "rarity": 0,
-            "tooltip": "Cherry_Homeguard_Tooltip"
+            "tooltip": "\u83b7\u5f97<speed>@MovementSpeed*100@%\u79fb\u52a8\u901f\u5ea6</speed>\uff0c\u5728\u53d7\u5230\u4f24\u5bb3\u540e\u5931\u6548@DisableCooldown@\u79d2\u3002"
         },
         {
             "apiName": "HeavyHitter",
@@ -2593,13 +2594,13 @@
             "dataValues": {
                 "HealthPercent": 0.05000000074505806
             },
-            "desc": "Cherry_HeavyHitter_Summary",
+            "desc": "\u4f60\u7684\u653b\u51fb\u9020\u6210\u76f8\u5f53\u4e8e\u4f60@HealthPercent*100@%\u6700\u5927\u751f\u547d\u503c\u7684\u989d\u5916\u7269\u7406\u4f24\u5bb3\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/heavyhitter_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/heavyhitter_small.arena_augments_v2.png",
             "id": 181,
-            "name": "Cherry_HeavyHitter_Name",
+            "name": "\u91cd\u91cf\u7ea7\u6253\u51fb\u624b",
             "rarity": 0,
-            "tooltip": "Cherry_HeavyHitter_Summary"
+            "tooltip": "\u4f60\u7684\u653b\u51fb\u9020\u6210\u76f8\u5f53\u4e8e\u4f60@HealthPercent*100@%\u6700\u5927\u751f\u547d\u503c\u7684\u989d\u5916\u7269\u7406\u4f24\u5bb3\u3002"
         },
         {
             "apiName": "RabbleRousing",
@@ -2623,13 +2624,13 @@
             "dataValues": {
                 "MaxHealthPercentageHeal": 0.009999999776482582
             },
-            "desc": "Cherry_RabbleRousing_Summary",
+            "desc": "\u5728\u4f7f\u7528\u4e00\u4e2a\u6280\u80fd\u65f6\u6cbb\u7597\u81ea\u8eab<healing>@HealAmount@\u751f\u547d\u503c</healing>\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/rabblerousing_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/rabblerousing_small.arena_augments_v2.png",
             "id": 67,
             "name": "\u53e4\u5f0f\u4f73\u917f",
             "rarity": 4,
-            "tooltip": "Cherry_RabbleRousing_Tooltip"
+            "tooltip": "\u5728\u4f7f\u7528\u4e00\u4e2a\u6280\u80fd\u65f6\u6cbb\u7597\u81ea\u8eab<healing>@HealAmount@\u751f\u547d\u503c</healing>\u3002<br><br>\u8fd9\u4e2a\u56de\u5408\u5df2\u9020\u6210\u7684\u6cbb\u7597\u6548\u679c\uff1a@f1@<br>\u5df2\u9020\u6210\u7684\u6cbb\u7597\u6548\u679c\u603b\u548c\uff1a@f2@"
         },
         {
             "apiName": "GiantSlayer",
@@ -2642,13 +2643,13 @@
                 "SmallBonusDamage": 0.15000000596046448,
                 "XLargeBonusDamage": 0.3499999940395355
             },
-            "desc": "Cherry_GiantSlayer_Tooltip",
+            "desc": "\u4f53\u578b\u53d8\u5c0f\uff0c\u83b7\u5f97<speed>@MovespeedMod*100@%\u79fb\u52a8\u901f\u5ea6</speed>\uff0c\u5e76\u57fa\u4e8e\u654c\u65b9\u82f1\u96c4\u4f53\u578b\u5927\u4e8e\u4f60\u7684\u7a0b\u5ea6\u9020\u6210@SmallBonusDamage*100@%\u5230@XLargeBonusDamage*100@%\u989d\u5916\u4f24\u5bb3\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/giantslayer_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/giantslayer_small.arena_augments_v2.png",
             "id": 195,
-            "name": "Cherry_GiantSlayer_Name",
+            "name": "\u5de8\u4eba\u6740\u624b",
             "rarity": 8,
-            "tooltip": "Cherry_GiantSlayer_Tooltip"
+            "tooltip": "\u4f53\u578b\u53d8\u5c0f\uff0c\u83b7\u5f97<speed>@MovespeedMod*100@%\u79fb\u52a8\u901f\u5ea6</speed>\uff0c\u5e76\u57fa\u4e8e\u654c\u65b9\u82f1\u96c4\u4f53\u578b\u5927\u4e8e\u4f60\u7684\u7a0b\u5ea6\u9020\u6210@SmallBonusDamage*100@%\u5230@XLargeBonusDamage*100@%\u989d\u5916\u4f24\u5bb3\u3002"
         },
         {
             "apiName": "FrozenFoundations",
@@ -2674,13 +2675,13 @@
                 "CritChance": 0.20000000298023224,
                 "CritHeal": 0.5
             },
-            "desc": "Cherry_CriticalHealing_Summary",
+            "desc": "\u4f60\u7684\u6cbb\u7597\u548c\u62a4\u76fe\u53ef\u4ee5\u66b4\u51fb\u3002\u83b7\u5f97@CritChance*100@%\u66b4\u51fb\u51e0\u7387\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/criticalhealing_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/criticalhealing_small.arena_augments_v2.png",
             "id": 118,
-            "name": "Cherry_CriticalHealing_Name",
+            "name": "\u4f1a\u5fc3\u6cbb\u7597",
             "rarity": 4,
-            "tooltip": "Cherry_CriticalHealing_Tooltip"
+            "tooltip": "\u4f60\u7684\u6cbb\u7597\u548c\u62a4\u76fe\u53ef\u4ee5\u66b4\u51fb\uff0c\u83b7\u5f97@CritHeal*100@%\u989d\u5916\u6570\u989d\u7684\u6548\u679c\u3002\u83b7\u5f97@CritChance*100@%\u66b4\u51fb\u51e0\u7387\u3002<br><br>\u989d\u5916\u6cbb\u7597\uff1a@f1@<br>\u989d\u5916\u62a4\u76fe\uff1a@f2@"
         },
         {
             "apiName": "ApexInventor",
@@ -2706,13 +2707,13 @@
                 "HealthThreshold": 0.30000001192092896,
                 "StealthDuration": 1.25
             },
-            "desc": "Cherry_MirrorImage_Summary",
+            "desc": "\u5f53\u4f60\u8dcc\u4e0b@HealthThreshold*100@%\u751f\u547d\u503c\u65f6\uff0c\u6682\u65f6\u6d88\u5931\u5e76\u751f\u6210\u4f60\u81ea\u5df1\u7684\u4e00\u4e2a\u590d\u5236\u4f53\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/mirrorimage_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/mirrorimage_small.arena_augments_v2.png",
             "id": 172,
-            "name": "Cherry_MirrorImage_Name",
+            "name": "\u955c\u82b1\u6c34\u6708",
             "rarity": 0,
-            "tooltip": "Cherry_MirrorImage_Summary"
+            "tooltip": "\u5f53\u4f60\u8dcc\u4e0b@HealthThreshold*100@%\u751f\u547d\u503c\u65f6\uff0c\u6682\u65f6\u6d88\u5931\u5e76\u751f\u6210\u4f60\u81ea\u5df1\u7684\u4e00\u4e2a\u590d\u5236\u4f53\u3002"
         },
         {
             "apiName": "Desecrator",
@@ -2722,13 +2723,13 @@
                 "CurseCounter": 3.0,
                 "PercentMaxHPDamagePer5Seconds": 0.05000000074505806
             },
-            "desc": "Cherry_Desecrator_Summary",
+            "desc": "<status>\u5b9a\u8eab</status>\u654c\u65b9\u82f1\u96c4\u65f6\u65bd\u52a0@CurseCounter@\u5c42\u6301\u7eed@BleedDuration@\u79d2\u7684<keywordMajor>\u8bc5\u5492</keywordMajor>\uff0c\u53ef\u65e0\u9650\u53e0\u52a0\u3002<br><br>{{ Cherry_Curse_WithTracker }}",
             "iconLarge": "assets/ux/cherry/augments/icons/desecrator_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/desecrator_small.arena_augments_v2.png",
             "id": 218,
-            "name": "Cherry_Desecrator_Name",
+            "name": "\u4eb5\u6e0e\u8005",
             "rarity": 0,
-            "tooltip": "Cherry_Desecrator_Summary"
+            "tooltip": "<status>\u5b9a\u8eab</status>\u654c\u65b9\u82f1\u96c4\u65f6\u65bd\u52a0@CurseCounter@\u5c42\u6301\u7eed@BleedDuration@\u79d2\u7684<keywordMajor>\u8bc5\u5492</keywordMajor>\uff0c\u53ef\u65e0\u9650\u53e0\u52a0\u3002<br><br>{{ Cherry_Curse_WithTracker }}"
         },
         {
             "apiName": "AllForYou",
@@ -2736,13 +2737,13 @@
             "dataValues": {
                 "HealShieldAmp": 0.4000000059604645
             },
-            "desc": "Cherry_AllForYou_Summary",
+            "desc": "\u4f60\u7684\u6cbb\u7597/\u62a4\u76fe\u5728\u7528\u5728\u4f60\u7684\u642d\u6863\u8eab\u4e0a\u65f6\u4f1a\u53d8\u5f3a@HealShieldAmp*100@%\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/allforyou_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/allforyou_small.arena_augments_v2.png",
             "id": 141,
-            "name": "Cherry_AllForYou_Name",
+            "name": "\u5168\u5fc3\u4e3a\u4f60",
             "rarity": 4,
-            "tooltip": "Cherry_AllForYou_Summary"
+            "tooltip": "\u4f60\u7684\u6cbb\u7597/\u62a4\u76fe\u5728\u7528\u5728\u4f60\u7684\u642d\u6863\u8eab\u4e0a\u65f6\u4f1a\u53d8\u5f3a@HealShieldAmp*100@%\u3002"
         },
         {
             "apiName": "KeystoneConjurer",
@@ -2826,25 +2827,25 @@
                 "LaserLength": 700.0,
                 "RectHalfWidth": 60.0
             },
-            "desc": "Cherry_LaserEyes_Summary",
+            "desc": "\u4f60\u6b63\u5728\u9762\u5bf9\u7684\u65b9\u5411\u4f1a\u51fa\u73b0\u4e00\u9053\u956d\u5c04\u5149\u675f\uff0c\u53ef\u6bcf\u79d2\u9020\u6210<magicDamage>@LaserEyesTooltip@\u9b54\u6cd5\u4f24\u5bb3</magicDamage>\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/lasereyes_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/lasereyes_small.arena_augments_v2.png",
             "id": 174,
-            "name": "Cherry_LaserEyes_Name",
+            "name": "\u956d\u5c04\u773c",
             "rarity": 8,
-            "tooltip": "Cherry_LaserEyes_Tooltip"
+            "tooltip": "\u4f60\u6b63\u5728\u9762\u5bf9\u7684\u65b9\u5411\u4f1a\u51fa\u73b0\u4e00\u9053\u956d\u5c04\u5149\u675f\uff0c\u53ef\u6bcf\u79d2\u9020\u6210<magicDamage>@LaserEyesTooltip@\u9b54\u6cd5\u4f24\u5bb3</magicDamage>\u3002<br><br>\u8fd9\u4e2a\u56de\u5408\u5df2\u9020\u6210\u7684\u4f24\u5bb3\uff1a@f1@<br>\u5df2\u9020\u6210\u4f24\u5bb3\u7684\u603b\u548c\uff1a@f2@"
         },
         {
             "apiName": "MidnightExpress",
             "calculations": {},
             "dataValues": {},
-            "desc": "Cherry_MidnightExpress_Summary",
+            "desc": "\u6bcf12\u79d2<keywordMajor>\u81ea\u52a8\u65bd\u653e</keywordMajor>\u4ee5\u671d\u4f60\u7684\u53cb\u519b\u6295\u63b7\u4e00\u4e2a\u706f\u7b3c\u3002<br><br><rules>\u53cb\u519b\u53ef\u901a\u8fc7\u70b9\u51fb\u706f\u7b3c\u6765\u4f4d\u79fb\u5230\u4f60\u8eab\u8fb9</rules>\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/midnightexpress_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/midnightexpress_small.arena_augments_v2.png",
             "id": 55,
             "name": "\u5348\u591c\u5feb\u9012",
             "rarity": 0,
-            "tooltip": "Cherry_MidnightExpress_Summary"
+            "tooltip": "\u6bcf12\u79d2<keywordMajor>\u81ea\u52a8\u65bd\u653e</keywordMajor>\u4ee5\u671d\u4f60\u7684\u53cb\u519b\u6295\u63b7\u4e00\u4e2a\u706f\u7b3c\u3002<br><br><rules>\u53cb\u519b\u53ef\u901a\u8fc7\u70b9\u51fb\u706f\u7b3c\u6765\u4f4d\u79fb\u5230\u4f60\u8eab\u8fb9</rules>\u3002"
         },
         {
             "apiName": "Mythical",
@@ -2922,13 +2923,13 @@
                 "ReducedCooldown": 0.5,
                 "SnipeDistance": 700.0
             },
-            "desc": "Cherry_SkilledSniper_Summary",
+            "desc": "\u7528\u4e00\u4e2a\u975e\u7ec8\u6781\u6280\u80fd\u547d\u4e2d\u4e00\u4e2a@SnipeDistance@\u7801\u5916\u7684\u654c\u4eba\u65f6\uff0c\u5c06\u8fd9\u4e2a\u6280\u80fd\u7684\u51b7\u5374\u65f6\u95f4\u7f29\u77ed@ReducedCooldown@\u79d2\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/skilledsniper_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/skilledsniper_small.arena_augments_v2.png",
             "id": 113,
-            "name": "Cherry_SkilledSniper_Name",
+            "name": "\u8001\u7ec3\u72d9\u795e",
             "rarity": 4,
-            "tooltip": "Cherry_SkilledSniper_Summary"
+            "tooltip": "\u7528\u4e00\u4e2a\u975e\u7ec8\u6781\u6280\u80fd\u547d\u4e2d\u4e00\u4e2a@SnipeDistance@\u7801\u5916\u7684\u654c\u4eba\u65f6\uff0c\u5c06\u8fd9\u4e2a\u6280\u80fd\u7684\u51b7\u5374\u65f6\u95f4\u7f29\u77ed@ReducedCooldown@\u79d2\u3002"
         },
         {
             "apiName": "ParasiticRelationship",
@@ -2936,13 +2937,13 @@
             "dataValues": {
                 "HealPercent": 0.15000000596046448
             },
-            "desc": "Cherry_ParasiticRelationship_Summary",
+            "desc": "\u4f60\u83b7\u5f97\u4f60\u53cb\u519b@HealPercent*100@%\u5df2\u9020\u6210\u4f24\u5bb3\u503c\u7684\u6cbb\u7597\u6548\u679c\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/parasiticrelationship_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/parasiticrelationship_small.arena_augments_v2.png",
             "id": 175,
-            "name": "Cherry_ParasiticRelationship_Name",
+            "name": "\u5bc4\u751f\u5173\u7cfb",
             "rarity": 4,
-            "tooltip": "Cherry_ParasiticRelationship_Tooltip"
+            "tooltip": "\u4f60\u83b7\u5f97\u4f60\u53cb\u519b@HealPercent*100@%\u5df2\u9020\u6210\u4f24\u5bb3\u503c\u7684\u6cbb\u7597\u6548\u679c\u3002<br><br>\u8fd9\u4e2a\u56de\u5408\u7684\u6cbb\u7597\u6548\u679c\uff1a@f1@<br>\u6cbb\u7597\u6548\u679c\u603b\u548c\uff1a@f2@"
         },
         {
             "apiName": "Restart",
@@ -2950,13 +2951,13 @@
             "dataValues": {
                 "CoolDown": 10.0
             },
-            "desc": "Cherry_Restart_Summary",
+            "desc": "\u4f60\u7684\u975e\u7ec8\u6781\u6280\u80fd\u6bcf@CoolDown@\u79d2\u5237\u65b0\u4e00\u6b21\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/restart_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/restart_small.arena_augments_v2.png",
             "id": 165,
-            "name": "Cherry_Restart_Name",
+            "name": "\u91cd\u542f",
             "rarity": 4,
-            "tooltip": "Cherry_Restart_Summary"
+            "tooltip": "\u4f60\u7684\u975e\u7ec8\u6781\u6280\u80fd\u6bcf@CoolDown@\u79d2\u5237\u65b0\u4e00\u6b21\u3002"
         },
         {
             "apiName": "DrawYourSword",
@@ -2972,13 +2973,13 @@
                 "MaxStatMod": 0.30000001192092896,
                 "MeleeAttackRange": 200.0
             },
-            "desc": "Cherry_DrawYourSword_Tooltip",
+            "desc": "\u4f60\u73b0\u5728\u662f\u8fd1\u6218\u72b6\u6001\u3002\u83b7\u5f97<physicalDamage>@BonusAD*100@%\u653b\u51fb\u529b</physicalDamage>\u3001<healing>@BonusHP*100@%\u751f\u547d\u503c</healing>\u3001<attackSpeed>@BonusAS*100@%\u653b\u51fb\u901f\u5ea6</attackSpeed>\u3001<lifesteal>@BonusLifesteal*100@%\u751f\u547d\u5077\u53d6</lifesteal>\u548c<speed>@BonusMS*100@%\u79fb\u52a8\u901f\u5ea6</speed> (\u5c5e\u6027\u53d7\u76ca\u4e8e\u653b\u51fb\u8ddd\u79bb)\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/drawyoursword_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/drawyoursword_small.arena_augments_v2.png",
             "id": 134,
-            "name": "Cherry_DrawYourSword_Name",
+            "name": "\u4eae\u51fa\u4f60\u7684\u5251",
             "rarity": 8,
-            "tooltip": "Cherry_DrawYourSword_Tooltip"
+            "tooltip": "\u4f60\u73b0\u5728\u662f\u8fd1\u6218\u72b6\u6001\u3002\u83b7\u5f97<physicalDamage>@BonusAD*100@%\u653b\u51fb\u529b</physicalDamage>\u3001<healing>@BonusHP*100@%\u751f\u547d\u503c</healing>\u3001<attackSpeed>@BonusAS*100@%\u653b\u51fb\u901f\u5ea6</attackSpeed>\u3001<lifesteal>@BonusLifesteal*100@%\u751f\u547d\u5077\u53d6</lifesteal>\u548c<speed>@BonusMS*100@%\u79fb\u52a8\u901f\u5ea6</speed> (\u5c5e\u6027\u53d7\u76ca\u4e8e\u653b\u51fb\u8ddd\u79bb)\u3002"
         },
         {
             "apiName": "RestlessRestoration",
@@ -3046,13 +3047,13 @@
             "apiName": "Oathsworn",
             "calculations": {},
             "dataValues": {},
-            "desc": "Cherry_Oathsworn_Tooltip",
+            "desc": "\u5c06\u53ec\u5524\u5e08\u6280\u80fd\u3010\u95ea\u4eba\u3011\u66ff\u6362\u4e3a<spellName>\u547d\u8fd0\u7684\u53ec\u5524</spellName>\u3002<br><br><rules><spellName>\u547d\u8fd0\u7684\u53ec\u5524</spellName>\u4f1a\u5c06\u4f60\u7684\u642d\u6863\u62c9\u62fd\u8fc7\u6765\u81f3\u591a4\u79d2\uff0c\u8ba9\u5176\u53d8\u4e3a\u4e0d\u53ef\u88ab\u9009\u53d6\u72b6\u6001\u3002\u642d\u6863\u53ef\u4ee5\u70b9\u51fb\u6765\u5c06\u81ea\u5df1\u6295\u653e\u51fa\u53bb\uff0c\u5728\u547d\u4e2d\u7b2c\u4e00\u4e2a\u82f1\u96c4\u65f6\u505c\u6b62\u5e76<status>\u51fb\u9000</status>\u6240\u6709\u9644\u8fd1\u7684\u654c\u4eba\u3002</rules><br>",
             "iconLarge": "assets/ux/cherry/augments/icons/oathsworn_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/oathsworn_small.arena_augments_v2.png",
             "id": 109,
-            "name": "Cherry_Oathsworn_Name",
+            "name": "\u8a93\u7ea6\u8005",
             "rarity": 4,
-            "tooltip": "Cherry_Oathsworn_Tooltip"
+            "tooltip": "\u5c06\u53ec\u5524\u5e08\u6280\u80fd\u3010\u95ea\u4eba\u3011\u66ff\u6362\u4e3a<spellName>\u547d\u8fd0\u7684\u53ec\u5524</spellName>\u3002<br><br><rules><spellName>\u547d\u8fd0\u7684\u53ec\u5524</spellName>\u4f1a\u5c06\u4f60\u7684\u642d\u6863\u62c9\u62fd\u8fc7\u6765\u81f3\u591a4\u79d2\uff0c\u8ba9\u5176\u53d8\u4e3a\u4e0d\u53ef\u88ab\u9009\u53d6\u72b6\u6001\u3002\u642d\u6863\u53ef\u4ee5\u70b9\u51fb\u6765\u5c06\u81ea\u5df1\u6295\u653e\u51fa\u53bb\uff0c\u5728\u547d\u4e2d\u7b2c\u4e00\u4e2a\u82f1\u96c4\u65f6\u505c\u6b62\u5e76<status>\u51fb\u9000</status>\u6240\u6709\u9644\u8fd1\u7684\u654c\u4eba\u3002</rules><br>"
         },
         {
             "apiName": "Flashbang",
@@ -3081,13 +3082,13 @@
                 "SlowAmount": 0.3499999940395355,
                 "SlowDuration": 1.25
             },
-            "desc": "Cherry_Flashbang_Summary",
+            "desc": "\u4f60\u5728\u3010\u95ea\u73b0\u3011\u65f6\u4f1a\u5728\u4f60\u5468\u56f4\u5f15\u53d1\u7206\u70b8\uff0c\u9020\u6210<MagicalDamage>@ExplosiveDamage@\u9b54\u6cd5\u4f24\u5bb3</MagicalDamage>\u548c\u6301\u7eed@SlowDuration@\u79d2\u7684@SlowAmount*100@%<status>\u51cf\u901f</status>\u3002\u6b64\u5916\uff0c\u3010\u95ea\u73b0\u3011\u6bcf\u56de\u5408\u90fd\u4f1a\u91cd\u7f6e\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/flashbang_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/flashbang_small.arena_augments_v2.png",
             "id": 187,
-            "name": "Cherry_Flashbang_Name",
+            "name": "\u95ea\u5149\u5f39",
             "rarity": 0,
-            "tooltip": "Cherry_Flashbang_Tooltip"
+            "tooltip": " {{Cherry_Flashbang_Summary}}<br><br>\u8fd9\u4e2a\u56de\u5408\u5df2\u9020\u6210\u7684\u4f24\u5bb3\uff1a@f1@<br>\u5df2\u9020\u6210\u4f24\u5bb3\u7684\u603b\u548c\uff1a@f2@"
         },
         {
             "apiName": "SummonersRoulette",
@@ -3095,13 +3096,13 @@
             "dataValues": {
                 "Cooldown": 6.0
             },
-            "desc": "Cherry_SummonersRoulette_Summary",
+            "desc": "\u5c06\u4f60\u7684\u53ec\u5524\u5e08\u6280\u80fd\u66ff\u6362\u4e3a\u968f\u673a\u4e00\u4e2a\u53ec\u5524\u5e08\u6280\u80fd\u3002\u5728\u4f60\u5728\u6218\u6597\u72b6\u6001\u4e0b\u4f7f\u7528\u4e00\u4e2a\u53ec\u5524\u5e08\u6280\u80fd\u65f6\uff0c\u5c06\u5176\u6362\u6210\u53e6\u4e00\u4e2a\u968f\u673a\u7684\u53ec\u5524\u5e08\u6280\u80fd\uff0c\u5e76\u8bbe\u7f6e@Cooldown@\u79d2\u7684\u51b7\u5374\u65f6\u95f4\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/summonersroulette_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/summonersroulette_small.arena_augments_v2.png",
             "id": 123,
             "name": "\u53ec\u5524\u5e08\u5ce1\u8c37\u7684\u8f6e\u76d8",
             "rarity": 8,
-            "tooltip": "Cherry_SummonersRoulette_Summary"
+            "tooltip": "\u5c06\u4f60\u7684\u53ec\u5524\u5e08\u6280\u80fd\u66ff\u6362\u4e3a\u968f\u673a\u4e00\u4e2a\u53ec\u5524\u5e08\u6280\u80fd\u3002\u5728\u4f60\u5728\u6218\u6597\u72b6\u6001\u4e0b\u4f7f\u7528\u4e00\u4e2a\u53ec\u5524\u5e08\u6280\u80fd\u65f6\uff0c\u5c06\u5176\u6362\u6210\u53e6\u4e00\u4e2a\u968f\u673a\u7684\u53ec\u5524\u5e08\u6280\u80fd\uff0c\u5e76\u8bbe\u7f6e@Cooldown@\u79d2\u7684\u51b7\u5374\u65f6\u95f4\u3002"
         },
         {
             "apiName": "VirtuousCycle",
@@ -3157,13 +3158,13 @@
                 "StackThreshold": 400.0,
                 "StacktoRegenConversion": 0.05000000074505806
             },
-            "desc": "Cherry_Quest_SteelYourHeart_Summary",
+            "desc": "\u9700\u6c42\uff1a\u6301\u6709\u3010\u5fc3\u4e4b\u94a2\u3011\u4e14\u5c42\u6570\u5728@StackThreshold@\u5c42\u6216\u4ee5\u4e0a\u3002<br><br>\u5956\u52b1\uff1a\u5c06\u4f60\u7684\u5fc3\u4e4b\u94a2\u5c42\u6570\u4e58\u4ee5@StackMultiplication@\u3002\u4f7f\u4f60\u7684\u751f\u547d\u56de\u590d\u63d0\u5347@StacktoRegenConversion*100@%x\u4f60\u7684\u5c42\u6570\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/quest_steelyourheart_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/quest_steelyourheart_small.arena_augments_v2.png",
             "id": 152,
-            "name": "Cherry_Quest_SteelYourHeart_Name",
+            "name": "\u4efb\u52a1\uff1a\u94a2\u5316\u4f60\u5fc3",
             "rarity": 4,
-            "tooltip": "Cherry_Quest_SteelYourHeart_Summary"
+            "tooltip": "\u9700\u6c42\uff1a\u6301\u6709\u3010\u5fc3\u4e4b\u94a2\u3011\u4e14\u5c42\u6570\u5728@StackThreshold@\u5c42\u6216\u4ee5\u4e0a\u3002<br><br>\u5956\u52b1\uff1a\u5c06\u4f60\u7684\u5fc3\u4e4b\u94a2\u5c42\u6570\u4e58\u4ee5@StackMultiplication@\u3002\u4f7f\u4f60\u7684\u751f\u547d\u56de\u590d\u63d0\u5347@StacktoRegenConversion*100@%x\u4f60\u7684\u5c42\u6570\u3002"
         },
         {
             "apiName": "Executioner",
@@ -3205,13 +3206,13 @@
             "dataValues": {
                 "HealthScalar": 0.05999999865889549
             },
-            "desc": "Cherry_CourageoftheColossus_Summary",
+            "desc": "\u5728<status>\u5b9a\u8eab</status>\u4e00\u540d\u654c\u65b9\u82f1\u96c4\u540e\u83b7\u5f97<shield>@TotalShield@\u62a4\u76fe\u503c</shield>\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/courageofthecolossus_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/courageofthecolossus_small.arena_augments_v2.png",
             "id": 18,
             "name": "\u5de8\u50cf\u7684\u52c7\u6c14",
             "rarity": 8,
-            "tooltip": "Cherry_CourageoftheColossus_Tooltip"
+            "tooltip": "\u5728<status>\u5b9a\u8eab</status>\u4e00\u540d\u654c\u65b9\u82f1\u96c4\u540e\u83b7\u5f97<shield>@TotalShield@\u62a4\u76fe\u503c</shield>\u3002<br><br>\u8fd9\u4e2a\u56de\u5408\u5df2\u751f\u6210\u7684\u62a4\u76fe\u503c\uff1a@f1@<br>\u5df2\u751f\u6210\u7684\u62a4\u76fe\u503c\u603b\u548c\uff1a@f2@"
         },
         {
             "apiName": "InfernalSoul",
@@ -3287,13 +3288,13 @@
                 "CurseCounter": 2.0,
                 "Radius": 450.0
             },
-            "desc": "Cherry_DarkBlessing_Summary",
+            "desc": "\u5728\u4f60\u63d0\u4f9b\u6cbb\u7597/\u62a4\u76fe\u65f6\uff0c\u5bf9\u4e00\u4e2a\u9644\u8fd1\u7684\u654c\u65b9\u82f1\u96c4\u65bd\u52a0@CurseCounter@\u5c42\u6301\u7eed@BleedDuration@\u79d2\u7684<keywordMajor>\u8bc5\u5492</keywordMajor>\uff0c\u53ef\u65e0\u9650\u53e0\u52a0\u3002<br>",
             "iconLarge": "assets/ux/cherry/augments/icons/darkblessing_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/darkblessing_small.arena_augments_v2.png",
             "id": 215,
-            "name": "Cherry_DarkBlessing_Name",
+            "name": "\u9ed1\u6697\u8d50\u798f",
             "rarity": 4,
-            "tooltip": "Cherry_DarkBlessing_Tooltip"
+            "tooltip": "{{Cherry_DarkBlessing_Summary}}<br><br>{{Cherry_Curse_WithTracker}}"
         },
         {
             "apiName": "MindtoMatter",
@@ -3317,13 +3318,13 @@
                 "DamageStorePercentage": 0.30000001192092896,
                 "MarkDuration": 5.0
             },
-            "desc": "Cherry_ItsKillingTime_Summary",
+            "desc": "\u5728\u65bd\u653e\u4f60\u7684\u7ec8\u6781\u6280\u80fd\u540e\uff0c\u5c06\u6240\u6709\u654c\u4eba\u6253\u4e0a\u6b7b\u4ea1\u6807\u8bb0\u3002\u8fd9\u4e2a\u6807\u8bb0\u4f1a\u5c06\u5bf9\u5176\u9020\u6210\u7684@DamageStorePercentage*100@%\u4f24\u5bb3\u50a8\u5b58\u8d77\u6765\uff0c\u7136\u540e\u5728@MarkDuration@\u79d2\u540e\u5f15\u7206\uff0c\u9020\u6210\u5df2\u50a8\u5b58\u7684\u4f24\u5bb3(@Cooldown@\u79d2\u51b7\u5374\u65f6\u95f4)\u3002",
             "iconLarge": "assets/ux/cherry/augments/icons/itskillingtime_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/itskillingtime_small.arena_augments_v2.png",
             "id": 211,
-            "name": "Cherry_ItsKillingTime_Name",
+            "name": "\u6740\u622e\u65f6\u95f4\u5230\u4e86",
             "rarity": 4,
-            "tooltip": "Cherry_ItsKillingTime_Tooltip"
+            "tooltip": " {{Cherry_ItsKillingTime_Summary}}<br><br>\u8fd9\u4e2a\u56de\u5408\u5df2\u9020\u6210\u7684\u4f24\u5bb3\uff1a@f1@<br>\u5df2\u9020\u6210\u4f24\u5bb3\u7684\u603b\u548c\uff1a@f2@"
         },
         {
             "apiName": "WisdomofAges",
