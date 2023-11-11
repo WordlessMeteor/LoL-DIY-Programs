@@ -177,8 +177,8 @@ def FindPostPatch(patch, patchList): #二分查找某个版本号在DataDragon�
     if mid >= 1:
         return patchList[mid - 1]
     else:
-        print("该版本为美测服最新版本，暂未收录在DataDragon数据库中。\nThis version is the latest version on PBE and isn't temporarily archived in DataDragon database.")
-        return 0
+        print("该版本为美测服最新版本，暂未收录在DataDragon数据库中。该函数将返回正式服的最新版本。\nThis version is the latest version on PBE and isn't temporarily archived in DataDragon database. This function will return the latest Live version.")
+        return patchList[0]
 
 def patch_sort(patchList: list): #利用插入排序算法，根据patch_compare函数对版本列表进行升序排列（Sorts a patch list according to the principle of `patch_compare` function through the insertion sort algorithm）
     bigPatch_re = re.compile("[0-9]*.[0-9]*")
@@ -1415,7 +1415,7 @@ async def search_profile(connection):
                                     spell = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[language_code])).json()
                                 except requests.exceptions.JSONDecodeError:
                                     spellPatch_deserted = spellPatch_adopted
-                                    spellPatch_adopted = bigPatches[bigPatches.index(spellPatch_adopted) + 1]
+                                    spellPatch_adopted = FindPostPatch(spellPatch_adopted, bigPatches)
                                     spell_recapture = 1
                                     print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT augments of Patch %s ... Times tried: %d." %(spellPatch_deserted, spell_recapture, spellPatch_adopted, spellPatch_deserted, spellPatch_adopted, spell_recapture))
                                 except requests.exceptions.RequestException:
@@ -1488,7 +1488,7 @@ async def search_profile(connection):
                                     LoLItem = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[language_code])).json()
                                 except requests.exceptions.JSONDecodeError:
                                     LoLItemPatch_deserted = LoLItemPatch_adopted
-                                    LoLItemPatch_adopted = bigPatches[bigPatches.index(LoLItemPatch_adopted) + 1]
+                                    LoLItemPatch_adopted = FindPostPatch(LolItemPatch_adopted, bigPatches)
                                     LoLItem_recapture = 1
                                     print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItemPatch_deserted, LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_deserted, LoLItemPatch_adopted, LoLItem_recapture))
                                 except requests.exceptions.RequestException:
@@ -1751,7 +1751,7 @@ async def search_profile(connection):
                                                     spell = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[language_code])).json()
                                                 except requests.exceptions.JSONDecodeError:
                                                     spellPatch_deserted = spellPatch_adopted
-                                                    spellPatch_adopted = bigPatches[bigPatches.index(spellPatch_adopted) + 1]
+                                                    spellPatch_adopted = FindPostPatch(spellPatch_adopted, bigPatches)
                                                     spell_recapture = 1
                                                     print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT augments of Patch %s ... Times tried: %d." %(spellPatch_deserted, spell_recapture, spellPatch_adopted, spellPatch_deserted, spellPatch_adopted, spell_recapture))
                                                 except requests.exceptions.RequestException:
@@ -1817,7 +1817,7 @@ async def search_profile(connection):
                                                     LoLItem = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[language_code])).json()
                                                 except requests.exceptions.JSONDecodeError:
                                                     LoLItemPatch_deserted = LoLItemPatch_adopted
-                                                    LoLItemPatch_adopted = bigPatches[bigPatches.index(LoLItemPatch_adopted) + 1]
+                                                    LolItemPatch_adopted = FindPostPatch(LolItemPatch_adopted, bigPatches)
                                                     LoLItem_recapture = 1
                                                     print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItemPatch_deserted, LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_deserted, LoLItemPatch_adopted, LoLItem_recapture))
                                                 except requests.exceptions.RequestException:
@@ -2062,7 +2062,7 @@ async def search_profile(connection):
                                                                 spell = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[language_code])).json()
                                                             except requests.exceptions.JSONDecodeError:
                                                                 spellPatch_deserted = spellPatch_adopted
-                                                                spellPatch_adopted = bigPatches[bigPatches.index(spellPatch_adopted) + 1]
+                                                                spellPatch_adopted = FindPostPatch(spellPatch_adopted, bigPatches)
                                                                 spell_recapture = 1
                                                                 print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT augments of Patch %s ... Times tried: %d." %(spellPatch_deserted, spell_recapture, spellPatch_adopted, spellPatch_deserted, spellPatch_adopted, spell_recapture))
                                                             except requests.exceptions.RequestException:
@@ -2111,7 +2111,7 @@ async def search_profile(connection):
                                                                 LoLItem = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[language_code])).json()
                                                             except requests.exceptions.JSONDecodeError:
                                                                 LoLItemPatch_deserted = LoLItemPatch_adopted
-                                                                LoLItemPatch_adopted = bigPatches[bigPatches.index(LoLItemPatch_adopted) + 1]
+                                                                LolItemPatch_adopted = FindPostPatch(LolItemPatch_adopted, bigPatches)
                                                                 LoLItem_recapture = 1
                                                                 print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItemPatch_deserted, LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_deserted, LoLItemPatch_adopted, LoLItem_recapture))
                                                             except requests.exceptions.RequestException:
@@ -2157,7 +2157,7 @@ async def search_profile(connection):
                                                                         perk = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perks.json" %(perkPatch_adopted, language_cdragon[language_code])).json()
                                                                     except requests.exceptions.JSONDecodeError:
                                                                         perkPatch_deserted = perkPatch_adopted
-                                                                        perkPatch_adopted = bigPatches[bigPatches.index(perkPatch_adopted) + 1]
+                                                                        perkPatch_adopted = FindPostPatch(perkPatch_adopted, bigPatches)
                                                                         perk_recapture = 1
                                                                         print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to runes of Patch %s ... Times tried: %d." %(perkPatch_deserted, perk_recapture, perkPatch_adopted, perkPatch_deserted, perkPatch_adopted, perk_recapture))
                                                                     except requests.exceptions.RequestException:
@@ -2212,7 +2212,7 @@ async def search_profile(connection):
                                                                     perkstyle = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perkstyles.json" %(perkstylePatch_adopted, language_cdragon[language_code])).json()
                                                                 except requests.exceptions.JSONDecodeError:
                                                                     perkstylePatch_deserted = perkstylePatch_adopted
-                                                                    perkstylePatch_adopted = bigPatches[bigPatches.index(perkstylePatch_adopted) + 1]
+                                                                    perkstylePatch_adopted = FindPostPatch(perkstylePatch_adopted, bigPatches)
                                                                     perkstyle_recapture = 1
                                                                     print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to perkstyles of Patch %s ... Times tried: %d." %(perkstylePatch_deserted, perkstyle_recapture, perkstylePatch_adopted, perkstylePatch_deserted, perkstylePatch_adopted, perkstyle_recapture))
                                                                 except requests.exceptions.RequestException:
@@ -2256,7 +2256,7 @@ async def search_profile(connection):
                                                                 Arena = requests.get("https://raw.communitydragon.org/%s/cdragon/arena/%s.json" %(ArenaPatch_adopted, language_cdragon[language_code])).json()
                                                             except requests.exceptions.JSONDecodeError:
                                                                 ArenaPatch_deserted = ArenaPatch_adopted
-                                                                ArenaPatch_adopted = bigPatches[bigPatches.index(ArenaPatch_adopted) + 1]
+                                                                ArenaPatch_adopted = FindPostPatch(ArenaPatch_adopted, bigPatches)
                                                                 Arena_recapture = 1
                                                                 print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to Arena augments of Patch %s ... Times tried: %d." %(ArenaPatch_deserted, Arena_recapture, ArenaPatch_adopted, ArenaPatch_deserted, ArenaPatch_adopted, Arena_recapture))
                                                             except requests.exceptions.RequestException:
@@ -2504,7 +2504,7 @@ async def search_profile(connection):
                     TFTHistory_data = {}
                     TFTHistory_header_keys = list(TFTHistory_header.keys())
                     #traitStyles = {"kThreat": "威慑", "kBronze": "青铜", "kSilver": "白银", "kGold": "黄金", "kChromatic": "炫金"}
-                    traitStyles = {0: "", 1: "青铜", 2: "白银", 3: "黄金", 4: "炫金"}
+                    traitStyles = {0: "", 1: "青铜", 2: "白银", 3: "黄金", 4: "炫金", 5: "独行"}
                     rarity = {"Default": "经典", "NoRarity": "其它", "Epic": "史诗", "Legendary": "传说", "Mythic": "神话", "Rare": "稀有", "Ultimate": "终极"}
                     TFTGamePlayed = len(TFTHistory) != 0 #标记该玩家是否进行过云顶之弈对局（Mark whether this summoner has played any TFT game）
                     TFT_main_player_indices = [] #云顶之弈对局记录中记录了所有玩家的数据，但是在历史记录的工作表中只要显示主召唤师的数据，因此必须知道每场对局中主召唤师的索引（Each match in TFT history records all players' data, but only the main player's data are needed to display in the match history worksheet, so the index of the main player in each match is necessary）
@@ -2638,7 +2638,7 @@ async def search_profile(connection):
                                                         TFT = requests.get("https://raw.communitydragon.org/%s/cdragon/tft/%s.json" %(TFTAugmentPatch_adopted, language_cdragon[language_code])).json()
                                                     except requests.exceptions.JSONDecodeError: #存在版本合并更新的情况（Situation like merged update exists）
                                                         TFTAugmentPatch_deserted = TFTAugmentPatch_adopted
-                                                        TFTAugmentPatch_adopted = bigPatches[bigPatches.index(TFTAugmentPatch_adopted) + 1]
+                                                        TFTAugmentPatch_adopted = FindPostPatch(TFTAugmentPatch_adopted, bigPatches)
                                                         TFTAugment_recapture = 1
                                                         print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT augments of Patch %s ... Times tried: %d." %(TFTAugmentPatch_deserted, TFTAugment_recapture, TFTAugmentPatch_adopted, TFTAugmentPatch_deserted, TFTAugmentPatch_adopted, TFTAugment_recapture))
                                                     except requests.exceptions.RequestException: #如果重新获取数据的过程中出现网络异常，那么暂时先将原始数据导入工作表中（If a network error occurs when recapturing the data, then temporarily export the initial data into the worksheet）
@@ -2681,7 +2681,7 @@ async def search_profile(connection):
                                                         TFTCompanion = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/companions.json" %(TFTCompanionPatch_adopted, language_cdragon[language_code])).json()
                                                     except requests.exceptions.JSONDecodeError:
                                                         TFTCompanionPatch_deserted = TFTCompanionPatch_adopted
-                                                        TFTCompanionPatch_adopted = bigPatches[bigPatches.index(TFTCompanionPatch_adopted) + 1]
+                                                        TFTCompanionPatch_adopted = FindPostPatch(TFTCompanionPatch_adopted, bigPatches)
                                                         TFTCompanion_recapture = 1
                                                         print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT traits of Patch %s ... Times tried: %d." %(TFTCompanionPatch_deserted, TFTCompanion_recapture, TFTCompanionPatch_adopted, TFTCompanionPatch_deserted, TFTCompanionPatch_adopted, TFTCompanion_recapture))
                                                     except requests.exceptions.RequestException:
@@ -2774,7 +2774,7 @@ async def search_profile(connection):
                                                         TFTTrait = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tfttraits.json" %(TFTTraitPatch_adopted, language_cdragon[language_code])).json()
                                                     except requests.exceptions.JSONDecodeError:
                                                         TFTTraitPatch_deserted = TFTTraitPatch_adopted
-                                                        TFTTraitPatch_adopted = bigPatches[bigPatches.index(TFTTraitPatch_adopted) + 1]
+                                                        TFTTraitPatch_adopted = FindPostPatch(TFTTraitPatch_adopted, bigPatches)
                                                         TFTTrait_recapture = 1
                                                         print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT traits of Patch %s ... Times tried: %d." %(TFTTraitPatch_deserted, TFTTrait_recapture, TFTTraitPatch_adopted, TFTTraitPatch_deserted, TFTTraitPatch_adopted, TFTTrait_recapture))
                                                     except requests.exceptions.RequestException:
@@ -2843,7 +2843,7 @@ async def search_profile(connection):
                                                                     TFTChampion = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftchampions.json" %(TFTChampionPatch_adopted, language_cdragon[language_code])).json()
                                                                 except requests.exceptions.JSONDecodeError:
                                                                     TFTChampionPatch_deserted = TFTChampionPatch_adopted
-                                                                    TFTChampionPatch_adopted = bigPatches[bigPatches.index(TFTChampionPatch_adopted) + 1]
+                                                                    TFTChampionPatch_adopted = FindPostPatch(TFTChampionPatch_adopted, bigPatches)
                                                                     TFTChampion_recapture = 1
                                                                     print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT champions of Patch %s ... Times tried: %d." %(TFTChampionPatch_deserted, TFTChampion_recapture, TFTChampionPatch_adopted, TFTChampionPatch_deserted, TFTChampionPatch_adopted, TFTChampion_recapture))
                                                                 except requests.exceptions.RequestException:
@@ -2906,7 +2906,7 @@ async def search_profile(connection):
                                                                 TFTItem = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftitems.json" %(TFTItemPatch_adopted, language_cdragon[language_code])).json()
                                                             except requests.exceptions.JSONDecodeError:
                                                                 TFTItemPatch_deserted = TFTItemPatch_adopted
-                                                                TFTItemPatch_adopted = bigPatches[bigPatches.index(TFTItemPatch_adopted) + 1]
+                                                                TFTItemPatch_adopted = FindPostPatch(TFTItemPatch_adopted, bigPatches)
                                                                 TFTItemPatch_recapture = 1
                                                                 print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT items of Patch %s ... Times tried: %d." %(TFTItemPatch_deserted, TFTItem_recapture, TFTItemPatch_adopted, TFTItemPatch_deserted, TFTItemPatch_adopted, TFTItem_recapture))
                                                             except requests.exceptions.RequestException:
@@ -2944,7 +2944,7 @@ async def search_profile(connection):
                                                                 TFTItem = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftitems.json" %(TFTItemPatch_adopted, language_cdragon[language_code])).json()
                                                             except requests.exceptions.JSONDecodeError:
                                                                 TFTItemPatch_deserted = TFTItemPatch_adopted
-                                                                TFTItemPatch_adopted = bigPatches[bigPatches.index(TFTItemPatch_adopted) + 1]
+                                                                TFTItemPatch_adopted = FindPostPatch(TFTItemPatch_adopted, bigPatches)
                                                                 TFTItemPatch_recapture = 1
                                                                 print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT items of Patch %s ... Times tried: %d." %(TFTItemPatch_deserted, TFTItem_recapture, TFTItemPatch_adopted, TFTItemPatch_deserted, TFTItemPatch_adopted, TFTItem_recapture))
                                                             except requests.exceptions.RequestException:
@@ -3072,19 +3072,24 @@ async def search_profile(connection):
                                     if scan:
                                         pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History")
                                         LoLHistory_df.to_excel(excel_writer = writer, sheet_name = "LoL Match History - Scan")
+                                        pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History - Manual")
                                     else:
                                         LoLHistory_df.to_excel(excel_writer = writer, sheet_name = "LoL Match History")
                                         pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History - Scan")
+                                        pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History - Manual")
                                     print("召唤师英雄联盟对局记录导出完成！\nSummoner LoL match history exported!\n")
                                 else:
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History")
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History - Scan")
+                                    pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History - Manual")
                                     print("已创建英雄联盟对局记录的空白数据表！\nCreated an empty sheet for LoL match history!\n")
                                 if TFTHistory_searched:
                                     TFTHistory_df.to_excel(excel_writer = writer, sheet_name = "TFT Match History")
+                                    pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "TFT Match History - Manual")
                                     print("召唤师云顶之弈对局记录导出完成！\nSummoner TFT match history exported!\n")
                                 else:
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "TFT Match History")
+                                    pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "TFT Match History - Manual")
                                     print("已创建云顶之弈对局记录的空白工作表！\nCreated an empty sheet for TFT match history!\n")
                                 for i in range(len(matchIDs)):
                                     if match_reserve_strategy[matchIDs[i]]:

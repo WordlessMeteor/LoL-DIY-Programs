@@ -178,8 +178,8 @@ def FindPostPatch(patch, patchList): #二分查找某个版本号在DataDragon�
     if mid >= 1:
         return patchList[mid - 1]
     else:
-        print("该版本为美测服最新版本，暂未收录在DataDragon数据库中。\nThis version is the latest version on PBE and isn't temporarily archived in DataDragon database.")
-        return 0
+        print("该版本为美测服最新版本，暂未收录在DataDragon数据库中。该函数将返回正式服的最新版本。\nThis version is the latest version on PBE and isn't temporarily archived in DataDragon database. This function will return the latest Live version.")
+        return patchList[0]
 
 async def search_recent_players(connection):
     platform_config = await (await connection.request("GET", "/lol-platform-config/v1/namespaces")).json()
@@ -1023,20 +1023,21 @@ async def search_recent_players(connection):
             print('请输入要查询的召唤师名称，退出请输入“0”：\nPlease input the summoner name to be searched. Submit "0" to exit.')
             summoner_name = input()
         else:
-            current_summoner = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
-            summoner_name = current_summoner["displayName"]
+            info = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
+            summoner_name = info["displayName"]
         if summoner_name == "0":
             os._exit(0)
         elif summoner_name == "":
             print("请输入非空字符串！\nPlease input a string instead of null!")
             continue
         else:
-            if summoner_name.replace(" ", "").count("-") == 4 and len(summoner_name.replace(" ", "")) > 22: #拳头规定的玩家名称不超过16个字符，标语不超过5个字符（Riot game name can't exceed 16 characters. The tagline can't exceed 5 characters）
-                search_by_puuid = True
-                info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + quote(summoner_name))).json()
-            else:
-                search_by_puuid = False
-                info = await (await connection.request("GET", "/lol-summoner/v1/summoners?name=" + quote(summoner_name))).json()
+            if detectMode == False:
+                if summoner_name.replace(" ", "").count("-") == 4 and len(summoner_name.replace(" ", "")) > 22: #拳头规定的玩家名称不超过16个字符，标语不超过5个字符（Riot game name can't exceed 16 characters. The tagline can't exceed 5 characters）
+                    search_by_puuid = True
+                    info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + quote(summoner_name))).json()
+                else:
+                    search_by_puuid = False
+                    info = await (await connection.request("GET", "/lol-summoner/v1/summoners?name=" + quote(summoner_name))).json()
             if "errorCode" in info and info["httpStatus"] == 400:
                 if search_by_puuid:
                     print("您输入的玩家通用唯一识别码格式有误！请重新输入！\nPUUID wasn't in UUID format! Please try again!")
@@ -1049,6 +1050,7 @@ async def search_recent_players(connection):
                     print("未找到" + summoner_name + "；请核对下名字并稍后再试。\n" + summoner_name + " was not found; verify the name and try again.")
             elif "errorCode" in info and info["httpStatus"] == 422:
                 print('召唤师名称已变更为拳头ID。请以“{召唤师名称}#{标语}”的格式输入。\nSummoner name has been replaced with Riot ID. Please input the name in this format: "{gameName}#{tagLine}", e.g. "%s#%s".' %(current_info["gameName"], current_info["tagLine"]))
+                continue
             elif "accountId" in info:
                 displayName = info["displayName"] #用于扫描模式定位到某召唤师（Determines the directory which contains the summoner's data）
                 current_puuid = info["puuid"] #用于核验对局是否包含该召唤师。此外，还用于扫描模式从对局的所有玩家信息中定位到该玩家（For use of checking whether the searched matches include this summoner. In addition, it's used for localization of this player from all players in a match in "scan" mode）
@@ -1209,7 +1211,7 @@ async def search_recent_players(connection):
                                 spell = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[language_code])).json()
                             except requests.exceptions.JSONDecodeError:
                                 spellPatch_deserted = spellPatch_adopted
-                                spellPatch_adopted = bigPatches[bigPatches.index(spellPatch_adopted) + 1]
+                                spellPatch_adopted = FindPostPatch(spellPatch_adopted, bigPatches)
                                 spell_recapture = 1
                                 print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT augments of Patch %s ... Times tried: %d." %(spellPatch_deserted, spell_recapture, spellPatch_adopted, spellPatch_deserted, spellPatch_adopted, spell_recapture))
                             except requests.exceptions.RequestException:
@@ -1282,7 +1284,7 @@ async def search_recent_players(connection):
                                 LoLItem = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[language_code])).json()
                             except requests.exceptions.JSONDecodeError:
                                 LoLItemPatch_deserted = LoLItemPatch_adopted
-                                LoLItemPatch_adopted = bigPatches[bigPatches.index(LoLItemPatch_adopted) + 1]
+                                LoLItemPatch_adopted = FindPostPatch(LoLItemPatch_adopted, bigPatches)
                                 LoLItem_recapture = 1
                                 print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItemPatch_deserted, LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_deserted, LoLItemPatch_adopted, LoLItem_recapture))
                             except requests.exceptions.RequestException:
@@ -1565,7 +1567,7 @@ async def search_recent_players(connection):
                                                                             perk = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perks.json" %(perkPatch_adopted, language_cdragon[language_code])).json()
                                                                         except requests.exceptions.JSONDecodeError:
                                                                             perkPatch_deserted = perkPatch_adopted
-                                                                            perkPatch_adopted = bigPatches[bigPatches.index(perkPatch_adopted) + 1]
+                                                                            perkPatch_adopted = FindPostPatch(perkPatch_adopted, bigPatches)
                                                                             perk_recapture = 1
                                                                             print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to runes of Patch %s ... Times tried: %d." %(perkPatch_deserted, perk_recapture, perkPatch_adopted, perkPatch_deserted, perkPatch_adopted, perk_recapture))
                                                                         except requests.exceptions.RequestException:
@@ -1620,7 +1622,7 @@ async def search_recent_players(connection):
                                                                         perkstyle = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perkstyles.json" %(perkstylePatch_adopted, language_cdragon[language_code])).json()
                                                                     except requests.exceptions.JSONDecodeError:
                                                                         perkstylePatch_deserted = perkstylePatch_adopted
-                                                                        perkstylePatch_adopted = bigPatches[bigPatches.index(perkstylePatch_adopted) + 1]
+                                                                        perkstylePatch_adopted = FindPostPatch(perkstylePatch_adopted, bigPatches)
                                                                         perkstyle_recapture = 1
                                                                         print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to perkstyles of Patch %s ... Times tried: %d." %(perkstylePatch_deserted, perkstyle_recapture, perkstylePatch_adopted, perkstylePatch_deserted, perkstylePatch_adopted, perkstyle_recapture))
                                                                     except requests.exceptions.RequestException:
@@ -1664,7 +1666,7 @@ async def search_recent_players(connection):
                                                                     Arena = requests.get("https://raw.communitydragon.org/%s/cdragon/arena/%s.json" %(ArenaPatch_adopted, language_cdragon[language_code])).json()
                                                                 except requests.exceptions.JSONDecodeError:
                                                                     ArenaPatch_deserted = ArenaPatch_adopted
-                                                                    ArenaPatch_adopted = bigPatches[bigPatches.index(ArenaPatch_adopted) + 1]
+                                                                    ArenaPatch_adopted = FindPostPatch(ArenaPatch_adopted, bigPatches)
                                                                     Arena_recapture = 1
                                                                     print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to Arena augments of Patch %s ... Times tried: %d." %(ArenaPatch_deserted, Arena_recapture, ArenaPatch_adopted, ArenaPatch_deserted, ArenaPatch_adopted, Arena_recapture))
                                                                 except requests.exceptions.RequestException:
@@ -1736,11 +1738,28 @@ async def search_recent_players(connection):
                         print("是否查询云顶之弈对局记录？（输入任意键查询，否则不查询）\nSearch TFT matches? (Input anything to search or null to export data or switch for another summoner)")
                         search_TFT = input()
                         if search_TFT != "":
-                            print("\n正在加载云顶之弈对局信息……\nLoading TFT match information ...")
+                            print("请设置需要查询的对局索引下界和对局数，以空格为分隔符（输入空字符以默认查询近20场对局）：\nPlease set the begin and count of the matches to be searched, split by space (Enter an empty string to search for the recent 20 matches):")
+                            while True:
+                                gameIndex = input()
+                                if gameIndex == "":
+                                    begin, count = 0, 20
+                                elif gameIndex == "0":
+                                    break
+                                else:
+                                    try:
+                                        begin, count = gameIndex.split()
+                                        begin, count = int(begin), int(count)
+                                    except ValueError:
+                                        print("请以空格为分隔符输入自然数类型的对局索引下界和对局数！\nPlease enter the two nonnegative integers as the begin and count of the matches split by space!")
+                                        continue
+                                break
+                            if gameIndex == "0":
+                                break
+                            print("正在加载云顶之弈对局信息……\nLoading TFT match information ...")
                             TFTHistory_get = True
                             while True:
                                 try:
-                                    TFTHistory = await (await connection.request("GET", "/lol-match-history/v1/products/tft/%s/matches?begin=0&count=500" %(info["puuid"]))).json()
+                                    TFTHistory = await (await connection.request("GET", "/lol-match-history/v1/products/tft/%s/matches?begin=%d&count=%d" %(info["puuid"], begin, count))).json()
                                     #print(TFTHistory)
                                     count = 0 #存储内部服务器错误次数（Stores the times of internal server error）
                                     if "errorCode" in TFTHistory:
@@ -1751,7 +1770,7 @@ async def search_recent_players(connection):
                                             while "errorCode" in TFTHistory and "500 Internal Server Error" in TFTHistory["message"] and count <= 3:
                                                 count += 1
                                                 print("正在进行第%d次尝试……\nTimes trying: No. %d ..." %(count, count))
-                                                TFTHistory = await (await connection.request("GET", "/lol-match-history/v1/products/tft/%s/matches" %(info["puuid"]))).json()
+                                                TFTHistory = await (await connection.request("GET", "/lol-match-history/v1/products/tft/%s/matches?begin=%d&count=%d" %(info["puuid"], begin, count))).json()
                                     currentTime = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
                                     pkl5name = "Intermediate Object - TFTHistory - %s (%s).pkl" %(displayName, currentTime)
                                     #with open(os.path.join(folder, pkl5name), "wb") as IntObj5:
@@ -1779,7 +1798,7 @@ async def search_recent_players(connection):
                             TFTHistory_header = {"gameIndex": "游戏序号", "game_datetime": "创建日期", "game_id": "对局序号", "game_length": "持续时长", "game_version": "对局版本", "queue_id": "队列序号", "tft_game_type": "游戏类型", "tft_set_core_name": "数据版本名称", "tft_set_number": "赛季", "participantId": "玩家序号", "augment1": "强化符文1", "augment2": "强化符文2", "augment3": "强化符文3", "companion": "小小英雄", "companion_level": "小小英雄星级", "companion_rarity": "小小英雄稀有度", "gold_left": "剩余金币", "last_round": "存活回合", "level": "等级", "placement": "名次", "players_eliminated": "淘汰玩家数", "puuid": "玩家通用唯一识别码", "summonerName": "召唤师名称", "summonerId": "召唤师序号", "time_eliminated": "存活时长", "total_damage_to_players": "造成玩家伤害", "trait0 name": "羁绊1", "trait0 num_units": "羁绊1单位数", "trait0 style": "羁绊1羁绊框颜色", "trait0 tier_current": "羁绊1当前等级", "trait0 tier_total": "羁绊1最高等级", "trait1 name": "羁绊2", "trait1 num_units": "羁绊2单位数", "trait1 style": "羁绊2羁绊框颜色", "trait1 tier_current": "羁绊2当前等级", "trait1 tier_total": "羁绊2最高等级", "trait2 name": "羁绊3", "trait2 num_units": "羁绊3单位数", "trait2 style": "羁绊3羁绊框颜色", "trait2 tier_current": "羁绊3当前等级", "trait2 tier_total": "羁绊3最高等级", "trait3 name": "羁绊4", "trait3 num_units": "羁绊4单位数", "trait3 style": "羁绊4羁绊框颜色", "trait3 tier_current": "羁绊4当前等级", "trait3 tier_total": "羁绊4最高等级", "trait4 name": "羁绊5", "trait4 num_units": "羁绊5单位数", "trait4 style": "羁绊5羁绊框颜色", "trait4 tier_current": "羁绊5当前等级", "trait4 tier_total": "羁绊5最高等级", "trait5 name": "羁绊6", "trait5 num_units": "羁绊6单位数", "trait5 style": "羁绊6羁绊框颜色", "trait5 tier_current": "羁绊6当前等级", "trait5 tier_total": "羁绊6最高等级", "trait6 name": "羁绊7", "trait6 num_units": "羁绊7单位数", "trait6 style": "羁绊7羁绊框颜色", "trait6 tier_current": "羁绊7当前等级", "trait6 tier_total": "羁绊7最高等级", "trait7 name": "羁绊8", "trait7 num_units": "羁绊8单位数", "trait7 style": "羁绊8羁绊框颜色", "trait7 tier_current": "羁绊8当前等级", "trait7 tier_total": "羁绊8最高等级", "trait8 name": "羁绊9", "trait8 num_units": "羁绊9单位数", "trait8 style": "羁绊9羁绊框颜色", "trait8 tier_current": "羁绊9当前等级", "trait8 tier_total": "羁绊9最高等级", "trait9 name": "羁绊10", "trait9 num_units": "羁绊10单位数", "trait9 style": "羁绊10羁绊框颜色", "trait9 tier_current": "羁绊10当前等级", "trait9 tier_total": "羁绊10最高等级", "trait10 name": "羁绊11", "trait10 num_units": "羁绊11单位数", "trait10 style": "羁绊11羁绊框颜色", "trait10 tier_current": "羁绊11当前等级", "trait10 tier_total": "羁绊11最高等级", "trait11 name": "羁绊12", "trait11 num_units": "羁绊12单位数", "trait11 style": "羁绊12羁绊框颜色", "trait11 tier_current": "羁绊12当前等级", "trait11 tier_total": "羁绊12最高等级", "trait12 name": "羁绊13", "trait12 num_units": "羁绊13单位数", "trait12 style": "羁绊13羁绊框颜色", "trait12 tier_current": "羁绊13当前等级", "trait12 tier_total": "羁绊13最高等级", "unit0 character": "英雄1", "unit0 rarity": "英雄1：稀有度", "unit0 tier": "英雄1：星级", "unit1 character": "英雄2", "unit1 rarity": "英雄2：稀有度", "unit1 tier": "英雄2：星级", "unit2 character": "英雄3", "unit2 rarity": "英雄3：稀有度", "unit2 tier": "英雄3：星级", "unit3 character": "英雄4", "unit3 rarity": "英雄4：稀有度", "unit3 tier": "英雄4：星级", "unit4 character": "英雄5", "unit4 rarity": "英雄5：稀有度", "unit4 tier": "英雄5：星级", "unit5 character": "英雄6", "unit5 rarity": "英雄6：稀有度", "unit5 tier": "英雄6：星级", "unit6 character": "英雄7", "unit6 rarity": "英雄7：稀有度", "unit6 tier": "英雄7：星级", "unit7 character": "英雄8", "unit7 rarity": "英雄8：稀有度", "unit7 tier": "英雄8：星级", "unit8 character": "英雄9", "unit8 rarity": "英雄9：稀有度", "unit8 tier": "英雄9：星级", "unit9 character": "英雄10", "unit9 rarity": "英雄10：稀有度", "unit9 tier": "英雄10：星级", "unit10 character": "英雄11", "unit10 rarity": "英雄11：稀有度", "unit11 tier": "英雄11：星级", "unit0 item0": "英雄1：装备1", "unit0 item1": "英雄1：装备2", "unit0 item2": "英雄1：装备3", "unit1 item0": "英雄2：装备1", "unit1 item1": "英雄2：装备2", "unit1 item2": "英雄2：装备3", "unit2 item0": "英雄3：装备1", "unit2 item1": "英雄3：装备2", "unit2 item2": "英雄3：装备3", "unit3 item0": "英雄4：装备1", "unit3 item1": "英雄4：装备2", "unit3 item2": "英雄4：装备3", "unit4 item0": "英雄5：装备1", "unit4 item1": "英雄5：装备2", "unit4 item2": "英雄5：装备3", "unit5 item0": "英雄6：装备1", "unit5 item1": "英雄6：装备2", "unit5 item2": "英雄6：装备3", "unit6 item0": "英雄7：装备1", "unit6 item1": "英雄7：装备2", "unit6 item2": "英雄7：装备3", "unit7 item0": "英雄8：装备1", "unit7 item1": "英雄8：装备2", "unit7 item2": "英雄8：装备3", "unit8 item0": "英雄9：装备1", "unit8 item1": "英雄9：装备2", "unit8 item2": "英雄9：装备3", "unit9 item0": "英雄10：装备1", "unit9 item1": "英雄10：装备2", "unit9 item2": "英雄10：装备3", "unit10 item0": "英雄11：装备1", "unit10 item1": "英雄11：装备2", "unit10 item2": "英雄11：装备3"}
                             TFTHistory_data = {}
                             TFTHistory_header_keys = list(TFTHistory_header.keys())
-                            traitStyles = {0: "", 1: "青铜", 2: "白银", 3: "黄金", 4: "炫金"}
+                            traitStyles = {0: "", 1: "青铜", 2: "白银", 3: "黄金", 4: "炫金", 5: "独行"}
                             rarity = {"Default": "经典", "NoRarity": "其它", "Epic": "史诗", "Legendary": "传说", "Mythic": "神话", "Rare": "稀有", "Ultimate": "终极"}
                             TFTGamePlayed = len(TFTHistory) != 0 #标记该玩家是否进行过云顶之弈对局（Mark whether this summoner has played any TFT game）
                             TFT_main_player_indices = [] #云顶之弈对局记录中记录了所有玩家的数据，但是在历史记录的工作表中只要显示主召唤师的数据，因此必须知道每场对局中主召唤师的索引（Each match in TFT history records all players' data, but only the main player's data are needed to display in the match history worksheet, so the index of the main player in each match is necessary）
@@ -1884,7 +1903,7 @@ async def search_recent_players(connection):
                                                                 TFT = requests.get("https://raw.communitydragon.org/%s/cdragon/tft/%s.json" %(TFTAugmentPatch_adopted, language_cdragon[language_code])).json()
                                                             except requests.exceptions.JSONDecodeError: #存在版本合并更新的情况（Situation like merged update exists）
                                                                 TFTAugmentPatch_deserted = TFTAugmentPatch_adopted
-                                                                TFTAugmentPatch_adopted = bigPatches[bigPatches.index(TFTAugmentPatch_adopted) + 1]
+                                                                TFTAugmentPatch_adopted = FindPostPatch(TFTAugmentPatch_adopted, bigPatches)
                                                                 TFTAugment_recapture = 1
                                                                 print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT augments of Patch %s ... Times tried: %d." %(TFTAugmentPatch_deserted, TFTAugment_recapture, TFTAugmentPatch_adopted, TFTAugmentPatch_deserted, TFTAugmentPatch_adopted, TFTAugment_recapture))
                                                             except requests.exceptions.RequestException: #如果重新获取数据的过程中出现网络异常，那么暂时先将原始数据导入工作表中（If a network error occurs when recapturing the data, then temporarily export the initial data into the worksheet）
@@ -1926,7 +1945,7 @@ async def search_recent_players(connection):
                                                                 TFTCompanion = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/companions.json" %(TFTCompanionPatch_adopted, language_cdragon[language_code])).json()
                                                             except requests.exceptions.JSONDecodeError:
                                                                 TFTCompanionPatch_deserted = TFTCompanionPatch_adopted
-                                                                TFTCompanionPatch_adopted = bigPatches[bigPatches.index(TFTCompanionPatch_adopted) + 1]
+                                                                TFTCompanionPatch_adopted = FindPostPatch(TFTCompanionPatch_adopted, bigPatches)
                                                                 TFTCompanion_recapture = 1
                                                                 print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT traits of Patch %s ... Times tried: %d." %(TFTCompanionPatch_deserted, TFTCompanion_recapture, TFTCompanionPatch_adopted, TFTCompanionPatch_deserted, TFTCompanionPatch_adopted, TFTCompanion_recapture))
                                                             except requests.exceptions.RequestException:
@@ -2014,7 +2033,7 @@ async def search_recent_players(connection):
                                                                 TFTTrait = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tfttraits.json" %(TFTTraitPatch_adopted, language_cdragon[language_code])).json()
                                                             except requests.exceptions.JSONDecodeError:
                                                                 TFTTraitPatch_deserted = TFTTraitPatch_adopted
-                                                                TFTTraitPatch_adopted = bigPatches[bigPatches.index(TFTTraitPatch_adopted) + 1]
+                                                                TFTTraitPatch_adopted = FindPostPatch(TFTTraitPatch_adopted, bigPatches)
                                                                 TFTTrait_recapture = 1
                                                                 print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT traits of Patch %s ... Times tried: %d." %(TFTTraitPatch_deserted, TFTTrait_recapture, TFTTraitPatch_adopted, TFTTraitPatch_deserted, TFTTraitPatch_adopted, TFTTrait_recapture))
                                                             except requests.exceptions.RequestException:
@@ -2081,7 +2100,7 @@ async def search_recent_players(connection):
                                                                             TFTChampion = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftchampions.json" %(TFTChampionPatch_adopted, language_cdragon[language_code])).json()
                                                                         except requests.exceptions.JSONDecodeError:
                                                                             TFTChampionPatch_deserted = TFTChampionPatch_adopted
-                                                                            TFTChampionPatch_adopted = bigPatches[bigPatches.index(TFTChampionPatch_adopted) + 1]
+                                                                            TFTChampionPatch_adopted = FindPostPatch(TFTChampionPatch_adopted, bigPatches)
                                                                             TFTChampion_recapture = 1
                                                                             print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT champions of Patch %s ... Times tried: %d." %(TFTChampionPatch_deserted, TFTChampion_recapture, TFTChampionPatch_adopted, TFTChampionPatch_deserted, TFTChampionPatch_adopted, TFTChampion_recapture))
                                                                         except requests.exceptions.RequestException:
@@ -2141,7 +2160,7 @@ async def search_recent_players(connection):
                                                                         TFTItem = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftitems.json" %(TFTItemPatch_adopted, language_cdragon[language_code])).json()
                                                                     except requests.exceptions.JSONDecodeError:
                                                                         TFTItemPatch_deserted = TFTItemPatch_adopted
-                                                                        TFTItemPatch_adopted = bigPatches[bigPatches.index(TFTItemPatch_adopted) + 1]
+                                                                        TFTItemPatch_adopted = FindPostPatch(TFTItemPatch_adopted, bigPatches)
                                                                         TFTItemPatch_recapture = 1
                                                                         print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT items of Patch %s ... Times tried: %d." %(TFTItemPatch_deserted, TFTItem_recapture, TFTItemPatch_adopted, TFTItemPatch_deserted, TFTItemPatch_adopted, TFTItem_recapture))
                                                                     except requests.exceptions.RequestException:
@@ -2179,7 +2198,7 @@ async def search_recent_players(connection):
                                                                         TFTItem = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftitems.json" %(TFTItemPatch_adopted, language_cdragon[language_code])).json()
                                                                     except requests.exceptions.JSONDecodeError:
                                                                         TFTItemPatch_deserted = TFTItemPatch_adopted
-                                                                        TFTItemPatch_adopted = bigPatches[bigPatches.index(TFTItemPatch_adopted) + 1]
+                                                                        TFTItemPatch_adopted = FindPostPatch(TFTItemPatch_adopted, bigPatches)
                                                                         TFTItemPatch_recapture = 1
                                                                         print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT items of Patch %s ... Times tried: %d." %(TFTItemPatch_deserted, TFTItem_recapture, TFTItemPatch_adopted, TFTItemPatch_deserted, TFTItemPatch_adopted, TFTItem_recapture))
                                                                     except requests.exceptions.RequestException:
@@ -2216,29 +2235,11 @@ async def search_recent_players(connection):
                                 key = TFTHistory_header_keys[recent_TFTPlayers_statistics_display_order[i]]
                                 recent_TFTPlayers_data_organized[key] = [TFTHistory_header[key]] + TFTHistory_data[key]
                                 #print("近期一起玩过的云顶之弈玩家数据重排进度（Rearranging process of recently played summoner (TFT) data）：%d/%d" %(i + 1, len(recent_TFTPlayers_statistics_display_order)))
-                            recent_TFTPlayers_df = pandas.DataFrame(data = recent_TFTPlayers_data_organized)
-                            print("请设置需要查询的对局索引下界和对局数，以空格为分隔符（输入空字符以默认查询近20场对局）：\nPlease set the begin and count of the matches to be searched, split by space (Enter an empty string to search for the recent 20 matches):")
                             #print("正在创建数据框……\nCreating the dataframe ...")
-                            while True:
-                                gameIndex = input()
-                                if gameIndex == "":
-                                    begin, count = 0, 20
-                                elif gameIndex == "0":
-                                    break
-                                else:
-                                    try:
-                                        begin, count = gameIndex.split()
-                                        begin, count = int(begin), int(count)
-                                    except ValueError:
-                                        print("请以空格为分隔符输入自然数类型的对局索引下界和对局数！\nPlease enter the two nonnegative integers as the begin and count of the matches split by space!")
-                                        continue
-                                break
-                            if gameIndex == "0":
-                                break
+                            recent_TFTPlayers_df = pandas.DataFrame(data = recent_TFTPlayers_data_organized)
+                            #print("数据框创建完成！\nDataframe creation finished!")
                             if not TFTGamePlayed:
                                 print("这位召唤师从5月1日起就没有进行过任何云顶之弈对局。\nThis summoner hasn't played any TFT game yet since May 1st.")
-                            recent_TFTPlayers_df = recent_TFTPlayers_df[begin:begin + count]
-                            #print("数据框创建完成！\nDataframe creation finished!")
                         else:
                             TFTHistory_header = {"gameIndex": "游戏序号", "game_datetime": "创建日期", "game_id": "对局序号", "game_length": "持续时长", "game_version": "对局版本", "queue_id": "队列序号", "tft_game_type": "游戏类型", "tft_set_core_name": "数据版本名称", "tft_set_number": "赛季", "participantId": "玩家序号", "augment1": "强化符文1", "augment2": "强化符文2", "augment3": "强化符文3", "companion": "小小英雄", "companion_level": "小小英雄星级", "companion_rarity": "小小英雄稀有度", "gold_left": "剩余金币", "last_round": "存活回合", "level": "等级", "placement": "名次", "players_eliminated": "淘汰玩家数", "puuid": "玩家通用唯一识别码", "summonerName": "召唤师名称", "summonerId": "召唤师序号", "time_eliminated": "存活时长", "total_damage_to_players": "造成玩家伤害", "trait0 name": "羁绊1", "trait0 num_units": "羁绊1单位数", "trait0 style": "羁绊1羁绊框颜色", "trait0 tier_current": "羁绊1当前等级", "trait0 tier_total": "羁绊1最高等级", "trait1 name": "羁绊2", "trait1 num_units": "羁绊2单位数", "trait1 style": "羁绊2羁绊框颜色", "trait1 tier_current": "羁绊2当前等级", "trait1 tier_total": "羁绊2最高等级", "trait2 name": "羁绊3", "trait2 num_units": "羁绊3单位数", "trait2 style": "羁绊3羁绊框颜色", "trait2 tier_current": "羁绊3当前等级", "trait2 tier_total": "羁绊3最高等级", "trait3 name": "羁绊4", "trait3 num_units": "羁绊4单位数", "trait3 style": "羁绊4羁绊框颜色", "trait3 tier_current": "羁绊4当前等级", "trait3 tier_total": "羁绊4最高等级", "trait4 name": "羁绊5", "trait4 num_units": "羁绊5单位数", "trait4 style": "羁绊5羁绊框颜色", "trait4 tier_current": "羁绊5当前等级", "trait4 tier_total": "羁绊5最高等级", "trait5 name": "羁绊6", "trait5 num_units": "羁绊6单位数", "trait5 style": "羁绊6羁绊框颜色", "trait5 tier_current": "羁绊6当前等级", "trait5 tier_total": "羁绊6最高等级", "trait6 name": "羁绊7", "trait6 num_units": "羁绊7单位数", "trait6 style": "羁绊7羁绊框颜色", "trait6 tier_current": "羁绊7当前等级", "trait6 tier_total": "羁绊7最高等级", "trait7 name": "羁绊8", "trait7 num_units": "羁绊8单位数", "trait7 style": "羁绊8羁绊框颜色", "trait7 tier_current": "羁绊8当前等级", "trait7 tier_total": "羁绊8最高等级", "trait8 name": "羁绊9", "trait8 num_units": "羁绊9单位数", "trait8 style": "羁绊9羁绊框颜色", "trait8 tier_current": "羁绊9当前等级", "trait8 tier_total": "羁绊9最高等级", "trait9 name": "羁绊10", "trait9 num_units": "羁绊10单位数", "trait9 style": "羁绊10羁绊框颜色", "trait9 tier_current": "羁绊10当前等级", "trait9 tier_total": "羁绊10最高等级", "trait10 name": "羁绊11", "trait10 num_units": "羁绊11单位数", "trait10 style": "羁绊11羁绊框颜色", "trait10 tier_current": "羁绊11当前等级", "trait10 tier_total": "羁绊11最高等级", "trait11 name": "羁绊12", "trait11 num_units": "羁绊12单位数", "trait11 style": "羁绊12羁绊框颜色", "trait11 tier_current": "羁绊12当前等级", "trait11 tier_total": "羁绊12最高等级", "trait12 name": "羁绊13", "trait12 num_units": "羁绊13单位数", "trait12 style": "羁绊13羁绊框颜色", "trait12 tier_current": "羁绊13当前等级", "trait12 tier_total": "羁绊13最高等级", "unit0 character": "英雄1", "unit0 rarity": "英雄1：稀有度", "unit0 tier": "英雄1：星级", "unit1 character": "英雄2", "unit1 rarity": "英雄2：稀有度", "unit1 tier": "英雄2：星级", "unit2 character": "英雄3", "unit2 rarity": "英雄3：稀有度", "unit2 tier": "英雄3：星级", "unit3 character": "英雄4", "unit3 rarity": "英雄4：稀有度", "unit3 tier": "英雄4：星级", "unit4 character": "英雄5", "unit4 rarity": "英雄5：稀有度", "unit4 tier": "英雄5：星级", "unit5 character": "英雄6", "unit5 rarity": "英雄6：稀有度", "unit5 tier": "英雄6：星级", "unit6 character": "英雄7", "unit6 rarity": "英雄7：稀有度", "unit6 tier": "英雄7：星级", "unit7 character": "英雄8", "unit7 rarity": "英雄8：稀有度", "unit7 tier": "英雄8：星级", "unit8 character": "英雄9", "unit8 rarity": "英雄9：稀有度", "unit8 tier": "英雄9：星级", "unit9 character": "英雄10", "unit9 rarity": "英雄10：稀有度", "unit9 tier": "英雄10：星级", "unit10 character": "英雄11", "unit10 rarity": "英雄11：稀有度", "unit11 tier": "英雄11：星级", "unit0 item0": "英雄1：装备1", "unit0 item1": "英雄1：装备2", "unit0 item2": "英雄1：装备3", "unit1 item0": "英雄2：装备1", "unit1 item1": "英雄2：装备2", "unit1 item2": "英雄2：装备3", "unit2 item0": "英雄3：装备1", "unit2 item1": "英雄3：装备2", "unit2 item2": "英雄3：装备3", "unit3 item0": "英雄4：装备1", "unit3 item1": "英雄4：装备2", "unit3 item2": "英雄4：装备3", "unit4 item0": "英雄5：装备1", "unit4 item1": "英雄5：装备2", "unit4 item2": "英雄5：装备3", "unit5 item0": "英雄6：装备1", "unit5 item1": "英雄6：装备2", "unit5 item2": "英雄6：装备3", "unit6 item0": "英雄7：装备1", "unit6 item1": "英雄7：装备2", "unit6 item2": "英雄7：装备3", "unit7 item0": "英雄8：装备1", "unit7 item1": "英雄8：装备2", "unit7 item2": "英雄8：装备3", "unit8 item0": "英雄9：装备1", "unit8 item1": "英雄9：装备2", "unit8 item2": "英雄9：装备3", "unit9 item0": "英雄10：装备1", "unit9 item1": "英雄10：装备2", "unit9 item2": "英雄10：装备3", "unit10 item0": "英雄11：装备1", "unit10 item1": "英雄11：装备2", "unit10 item2": "英雄11：装备3"}
                             TFTHistory_data = {}
