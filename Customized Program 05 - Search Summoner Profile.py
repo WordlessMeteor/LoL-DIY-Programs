@@ -2,6 +2,7 @@ from lcu_driver import Connector
 import os, copy, unicodedata, shutil, pandas, requests, time, json, re, pickle
 from urllib.parse import quote, unquote
 from wcwidth import wcswidth
+from openpyxl import load_workbook
 
 #=============================================================================
 # * 声明（Declaration）
@@ -1417,7 +1418,7 @@ async def search_profile(connection):
                                     spellPatch_deserted = spellPatch_adopted
                                     spellPatch_adopted = FindPostPatch(spellPatch_adopted, bigPatches)
                                     spell_recapture = 1
-                                    print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT augments of Patch %s ... Times tried: %d." %(spellPatch_deserted, spell_recapture, spellPatch_adopted, spellPatch_deserted, spellPatch_adopted, spell_recapture))
+                                    print("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to TFT augments of Patch %s ... Times tried: %d." %(spellPatch_deserted, spell_recapture, spellPatch_adopted, spellPatch_deserted, spellPatch_adopted, spell_recapture))
                                 except requests.exceptions.RequestException:
                                     if spell_recapture < 3:
                                         spell_recapture += 1
@@ -1490,7 +1491,7 @@ async def search_profile(connection):
                                     LoLItemPatch_deserted = LoLItemPatch_adopted
                                     LoLItemPatch_adopted = FindPostPatch(LolItemPatch_adopted, bigPatches)
                                     LoLItem_recapture = 1
-                                    print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItemPatch_deserted, LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_deserted, LoLItemPatch_adopted, LoLItem_recapture))
+                                    print("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItemPatch_deserted, LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_deserted, LoLItemPatch_adopted, LoLItem_recapture))
                                 except requests.exceptions.RequestException:
                                     if LoLItem_recapture < 3:
                                         LoLItem_recapture += 1
@@ -1753,7 +1754,7 @@ async def search_profile(connection):
                                                     spellPatch_deserted = spellPatch_adopted
                                                     spellPatch_adopted = FindPostPatch(spellPatch_adopted, bigPatches)
                                                     spell_recapture = 1
-                                                    print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT augments of Patch %s ... Times tried: %d." %(spellPatch_deserted, spell_recapture, spellPatch_adopted, spellPatch_deserted, spellPatch_adopted, spell_recapture))
+                                                    print("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to TFT augments of Patch %s ... Times tried: %d." %(spellPatch_deserted, spell_recapture, spellPatch_adopted, spellPatch_deserted, spellPatch_adopted, spell_recapture))
                                                 except requests.exceptions.RequestException:
                                                     if spell_recapture < 3:
                                                         spell_recapture += 1
@@ -1819,7 +1820,7 @@ async def search_profile(connection):
                                                     LoLItemPatch_deserted = LoLItemPatch_adopted
                                                     LolItemPatch_adopted = FindPostPatch(LolItemPatch_adopted, bigPatches)
                                                     LoLItem_recapture = 1
-                                                    print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItemPatch_deserted, LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_deserted, LoLItemPatch_adopted, LoLItem_recapture))
+                                                    print("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItemPatch_deserted, LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_deserted, LoLItemPatch_adopted, LoLItem_recapture))
                                                 except requests.exceptions.RequestException:
                                                     if LoLItem_recapture < 3:
                                                         LoLItem_recapture += 1
@@ -1916,6 +1917,8 @@ async def search_profile(connection):
                                     continue
                             spells = copy.deepcopy(spells_initial)
                             LoLItems = copy.deepcopy(LoLItems_initial) #接下来查询具体的对局信息和时间轴，使用的可能并不是历史记录中记载的对局序号形成的列表。考虑实际使用需求，这里对于装备的合适版本信息采取的思路是默认从最新版本开始获取，如果有装备不存在于最新版本的装备信息，则获取游戏信息中存储的版本对应的装备信息。该思路仍然有问题，详见后续关于美测服的装备获取的注释（The next step is to capture the information and timeline for each specific match, which may not originate from the matchIDs recorded in the match history. Considering the practical use, here the stream of thought for an appropriate version for items is to get items' information from the latest patch, and if some item doesn't exist in the items information of the latest patch, then get the items of the version corresponding to the game according to gameVersion recorded in the match information. There's a flaw of this idea. Please refer to the annotation regarding PBE data crawling for further solution）
+                            print("是否输出每场对局的文本文档？（输入任意键不输出，否则默认输出）\nExport text files of each match? (Input anything to cancel, or null to export by default)")
+                            export_txt = input() == ""
                             for matchID in LoLMatchIDs:
                                 LoLGame_info = await (await connection.request("GET", "/lol-match-history/v1/games/" + matchID)).json()
                                 #print(LoLGame_info)
@@ -1980,7 +1983,7 @@ async def search_profile(connection):
                                     info_exist_error[int(matchID)] = False
                                     currentPlatformId = LoLGame_info["participantIdentities"][0]["player"]["currentPlatformId"]
                                     save = True #指示保存是否成功，成功则输出保存进度，不成功则提示生成失败（Indicates whether the saving process is successful. If so, output the saving process, otherwise give a hint of generation failure）
-                                    if reserve:
+                                    if export_txt and reserve:
                                         txt6name = "Match Information (LoL) - " + currentPlatformId + "-" + matchID + ".txt"
                                         while True:
                                             try:
@@ -2017,8 +2020,11 @@ async def search_profile(connection):
                                         pkl7name = "Intermediate Object - Match Timeline (LoL) - %s-%s.pkl" %(currentPlatformId, matchID)
                                         #with open(os.path.join(folder, pkl7name), "wb") as IntObj7:
                                             #pickle.dump(LoLGame_timeline, IntObj7)
-                                        if save:
+                                    if save:
+                                        if export_txt:
                                             print('保存进度（Saving process）：%d/%d\t对局序号（MatchID）： %s' %(LoLMatchIDs.index(matchID) + 1, len(LoLMatchIDs), matchID))
+                                        else:
+                                            print('加载进度（Loading process）：%d/%d\t对局序号（MatchID）： %s' %(LoLMatchIDs.index(matchID) + 1, len(LoLMatchIDs), matchID))
                                     LoLGame_info_header = {"participantId": "玩家序号", "currentPlatformId": "当前大区", "platformId": "原大区", "profileIcon": "召唤师图标序号", "puuid": "玩家通用唯一识别码", "summonerId": "召唤师序号", "summonerName": "召唤师名称", "champion": "选用英雄", "alias": "名称", "spell1": "召唤师技能1", "spell2": "召唤师技能2", "teamId": "阵营", "assists": "助攻", "causedEarlySurrender": "发起提前投降", "champLevel": "英雄等级", "combatPlayerScore": "战斗得分", "damageDealtToObjectives": "对战略点的总伤害", "damageDealtToTurrets": "对防御塔的总伤害", "damageSelfMitigated": "自我缓和的伤害", "deaths": "死亡", "doubleKills": "双杀", "earlySurrenderAccomplice": "同意提前投降", "firstBloodAssist": "协助获得第一滴血", "firstBloodKill": "第一滴血", "firstInhibitorAssist": "协助摧毁第一座召唤水晶", "firstInhibitorKill": "摧毁第一座召唤水晶", "firstTowerAssist": "协助摧毁第一座塔", "firstTowerKill": "摧毁第一座塔", "gameEndedInEarlySurrender": "提前投降导致比赛结束", "gameEndedInSurrender": "投降导致比赛结束", "goldEarned": "金币获取", "goldSpent": "金币使用", "inhibitorKills": "摧毁召唤水晶", "item1": "装备1", "item2": "装备2", "item3": "装备3", "item4": "装备4", "item5": "装备5", "item6": "装备6", "ornament": "饰品", "killingSprees": "大杀特杀", "kills": "击杀", "largestCriticalStrike": "最大暴击伤害", "largestKillingSpree": "最高连杀", "largestMultiKill": "最高多杀", "longestTimeSpentLiving": "最长生存时间", "magicDamageDealt": "造成的魔法伤害", "magicDamageDealtToChampions": "对英雄的魔法伤害", "magicalDamageTaken": "承受的魔法伤害", "neutralMinionsKilled": "击杀野怪", "neutralMinionsKilledEnemyJungle": "击杀敌方野区野怪", "neutralMinionsKilledTeamJungle": "击杀我方野区野怪", "objectivePlayerScore": "战略点玩家得分", "pentaKills": "五杀", "perk0": "符文1", "perk0EndOfGameStatDescs": "符文1游戏结算数据", "perk0Var1": "符文1：参数1", "perk0Var2": "符文1：参数2", "perk0Var3": "符文1：参数3", "perk1": "符文2", "perk1EndOfGameStatDescs": "符文2游戏结算数据", "perk1Var1": "符文2：参数1", "perk1Var2": "符文2：参数2", "perk1Var3": "符文2：参数3", "perk2": "符文3", "perk2EndOfGameStatDescs": "符文3游戏结算数据", "perk2Var1": "符文3：参数1", "perk2Var2": "符文3：参数2", "perk2Var3": "符文3：参数3", "perk3": "符文4", "perk3EndOfGameStatDescs": "符文4游戏结算数据", "perk3Var1": "符文4：参数1", "perk3Var2": "符文4：参数2", "perk3Var3": "符文4：参数3", "perk4": "符文5", "perk4EndOfGameStatDescs": "符文5游戏结算数据", "perk4Var1": "符文5：参数1", "perk4Var2": "符文5：参数2", "perk4Var3": "符文5：参数3", "perk5": "符文6", "perk5EndOfGameStatDescs": "符文6游戏结算数据", "perk5Var1": "符文6：参数1", "perk5Var2": "符文6：参数2", "perk5Var3": "符文6：参数3", "perkPrimaryStyle": "主系", "perkSubStyle": "副系", "physicalDamageDealt": "造成的物理伤害", "physicalDamageDealtToChampions": "对英雄的物理伤害", "physicalDamageTaken": "承受的物理伤害", "playerAugment1": "强化符文1", "playerAugment1_rarity": "强化符文1等级", "playerAugment2": "强化符文2", "playerAugment2_rarity": "强化符文2等级", "playerAugment3": "强化符文3", "playerAugment3_rarity": "强化符文3等级", "playerAugment4": "强化符文4", "playerAugment4_rarity": "强化符文4等级", "playerScore0": "玩家得分1", "playerScore1": "玩家得分2", "playerScore2": "玩家得分3", "playerScore3": "玩家得分4", "playerScore4": "玩家得分5", "playerScore5": "玩家得分6", "playerScore6": "玩家得分7", "playerScore7": "玩家得分8", "playerScore8": "玩家得分9", "playerScore9": "玩家得分10", "playerSubteamId": "子阵营序号", "quadraKills": "四杀", "sightWardsBoughtInGame": "购买洞察之石", "subteamPlacement": "队伍排名", "teamEarlySurrendered": "队伍提前投降", "timeCCingOthers": "控制得分", "totalDamageDealt": "造成的伤害总和", "totalDamageDealtToChampions": "对英雄的伤害总和", "totalDamageTaken": "承受伤害", "totalHeal": "治疗伤害", "totalMinionsKilled": "击杀小兵", "totalPlayerScore": "玩家总得分", "totalScoreRank": "总得分排名", "totalTimeCrowdControlDealt": "控制时间", "totalUnitsHealed": "治疗单位数", "tripleKills": "三杀", "trueDamageDealt": "造成真实伤害", "trueDamageDealtToChampions": "对英雄的真实伤害", "trueDamageTaken": "承受的真实伤害", "turretKills": "摧毁防御塔", "unrealKills": "六杀及以上", "visionScore": "视野得分", "visionWardsBoughtInGame": "购买控制守卫", "wardsKilled": "摧毁守卫", "wardsPlaced": "放置守卫", "win/lose": "胜负", "bannedChampion": "禁用英雄", "bannedAlias": "名称"}
                                     LoLGame_info_data = {} ####这里将对局的数据放在一个字典中，键为统计量，值为由所有玩家的数据组成的列表（Here the whole match data are stored in a dictionary whose keys are statistics and values are lists composed of corresponding data of all players）
                                     LoLGame_info_header_keys = list(LoLGame_info_header.keys())
@@ -2064,7 +2070,7 @@ async def search_profile(connection):
                                                                 spellPatch_deserted = spellPatch_adopted
                                                                 spellPatch_adopted = FindPostPatch(spellPatch_adopted, bigPatches)
                                                                 spell_recapture = 1
-                                                                print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT augments of Patch %s ... Times tried: %d." %(spellPatch_deserted, spell_recapture, spellPatch_adopted, spellPatch_deserted, spellPatch_adopted, spell_recapture))
+                                                                print("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to TFT augments of Patch %s ... Times tried: %d." %(spellPatch_deserted, spell_recapture, spellPatch_adopted, spellPatch_deserted, spellPatch_adopted, spell_recapture))
                                                             except requests.exceptions.RequestException:
                                                                 if spell_recapture < 3:
                                                                     spell_recapture += 1
@@ -2113,7 +2119,7 @@ async def search_profile(connection):
                                                                 LoLItemPatch_deserted = LoLItemPatch_adopted
                                                                 LolItemPatch_adopted = FindPostPatch(LolItemPatch_adopted, bigPatches)
                                                                 LoLItem_recapture = 1
-                                                                print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItemPatch_deserted, LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_deserted, LoLItemPatch_adopted, LoLItem_recapture))
+                                                                print("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItemPatch_deserted, LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_deserted, LoLItemPatch_adopted, LoLItem_recapture))
                                                             except requests.exceptions.RequestException:
                                                                 if LoLItem_recapture < 3:
                                                                     LoLItem_recapture += 1
@@ -2159,7 +2165,7 @@ async def search_profile(connection):
                                                                         perkPatch_deserted = perkPatch_adopted
                                                                         perkPatch_adopted = FindPostPatch(perkPatch_adopted, bigPatches)
                                                                         perk_recapture = 1
-                                                                        print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to runes of Patch %s ... Times tried: %d." %(perkPatch_deserted, perk_recapture, perkPatch_adopted, perkPatch_deserted, perkPatch_adopted, perk_recapture))
+                                                                        print("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to runes of Patch %s ... Times tried: %d." %(perkPatch_deserted, perk_recapture, perkPatch_adopted, perkPatch_deserted, perkPatch_adopted, perk_recapture))
                                                                     except requests.exceptions.RequestException:
                                                                         if perk_recapture < 3:
                                                                             perk_recapture += 1
@@ -2214,7 +2220,7 @@ async def search_profile(connection):
                                                                     perkstylePatch_deserted = perkstylePatch_adopted
                                                                     perkstylePatch_adopted = FindPostPatch(perkstylePatch_adopted, bigPatches)
                                                                     perkstyle_recapture = 1
-                                                                    print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to perkstyles of Patch %s ... Times tried: %d." %(perkstylePatch_deserted, perkstyle_recapture, perkstylePatch_adopted, perkstylePatch_deserted, perkstylePatch_adopted, perkstyle_recapture))
+                                                                    print("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to perkstyles of Patch %s ... Times tried: %d." %(perkstylePatch_deserted, perkstyle_recapture, perkstylePatch_adopted, perkstylePatch_deserted, perkstylePatch_adopted, perkstyle_recapture))
                                                                 except requests.exceptions.RequestException:
                                                                     if perkstyle_recapture < 3:
                                                                         perkstyle_recapture += 1
@@ -2258,7 +2264,7 @@ async def search_profile(connection):
                                                                 ArenaPatch_deserted = ArenaPatch_adopted
                                                                 ArenaPatch_adopted = FindPostPatch(ArenaPatch_adopted, bigPatches)
                                                                 Arena_recapture = 1
-                                                                print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to Arena augments of Patch %s ... Times tried: %d." %(ArenaPatch_deserted, Arena_recapture, ArenaPatch_adopted, ArenaPatch_deserted, ArenaPatch_adopted, Arena_recapture))
+                                                                print("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to Arena augments of Patch %s ... Times tried: %d." %(ArenaPatch_deserted, Arena_recapture, ArenaPatch_adopted, ArenaPatch_deserted, ArenaPatch_adopted, Arena_recapture))
                                                             except requests.exceptions.RequestException:
                                                                 if Arena_recapture < 3:
                                                                     Arena_recapture += 1
@@ -2499,6 +2505,8 @@ async def search_profile(connection):
                             break
                     if not TFTHistory_get:
                         continue
+                    print("是否输出每场对局的文本文档？（输入任意键不输出，否则默认输出）\nExport text files of each match? (Input anything to cancel, or null to export by default)")
+                    export_txt = input() == ""
                     TFTHistory = TFTHistory["games"]
                     TFTHistory_header = {"gameIndex": "游戏序号", "game_datetime": "创建日期", "game_id": "对局序号", "game_length": "持续时长", "game_version": "对局版本", "queue_id": "队列序号", "tft_game_type": "游戏类型", "tft_set_core_name": "数据版本名称", "tft_set_number": "赛季", "participantId": "玩家序号", "augment1": "强化符文1", "augment2": "强化符文2", "augment3": "强化符文3", "companion": "小小英雄", "companion_level": "小小英雄星级", "companion_rarity": "小小英雄稀有度", "gold_left": "剩余金币", "last_round": "存活回合", "level": "等级", "placement": "名次", "players_eliminated": "淘汰玩家数", "puuid": "玩家通用唯一识别码", "summonerName": "召唤师名称", "summonerId": "召唤师序号", "time_eliminated": "存活时长", "total_damage_to_players": "造成玩家伤害", "trait0 name": "羁绊1", "trait0 num_units": "羁绊1单位数", "trait0 style": "羁绊1羁绊框颜色", "trait0 tier_current": "羁绊1当前等级", "trait0 tier_total": "羁绊1最高等级", "trait1 name": "羁绊2", "trait1 num_units": "羁绊2单位数", "trait1 style": "羁绊2羁绊框颜色", "trait1 tier_current": "羁绊2当前等级", "trait1 tier_total": "羁绊2最高等级", "trait2 name": "羁绊3", "trait2 num_units": "羁绊3单位数", "trait2 style": "羁绊3羁绊框颜色", "trait2 tier_current": "羁绊3当前等级", "trait2 tier_total": "羁绊3最高等级", "trait3 name": "羁绊4", "trait3 num_units": "羁绊4单位数", "trait3 style": "羁绊4羁绊框颜色", "trait3 tier_current": "羁绊4当前等级", "trait3 tier_total": "羁绊4最高等级", "trait4 name": "羁绊5", "trait4 num_units": "羁绊5单位数", "trait4 style": "羁绊5羁绊框颜色", "trait4 tier_current": "羁绊5当前等级", "trait4 tier_total": "羁绊5最高等级", "trait5 name": "羁绊6", "trait5 num_units": "羁绊6单位数", "trait5 style": "羁绊6羁绊框颜色", "trait5 tier_current": "羁绊6当前等级", "trait5 tier_total": "羁绊6最高等级", "trait6 name": "羁绊7", "trait6 num_units": "羁绊7单位数", "trait6 style": "羁绊7羁绊框颜色", "trait6 tier_current": "羁绊7当前等级", "trait6 tier_total": "羁绊7最高等级", "trait7 name": "羁绊8", "trait7 num_units": "羁绊8单位数", "trait7 style": "羁绊8羁绊框颜色", "trait7 tier_current": "羁绊8当前等级", "trait7 tier_total": "羁绊8最高等级", "trait8 name": "羁绊9", "trait8 num_units": "羁绊9单位数", "trait8 style": "羁绊9羁绊框颜色", "trait8 tier_current": "羁绊9当前等级", "trait8 tier_total": "羁绊9最高等级", "trait9 name": "羁绊10", "trait9 num_units": "羁绊10单位数", "trait9 style": "羁绊10羁绊框颜色", "trait9 tier_current": "羁绊10当前等级", "trait9 tier_total": "羁绊10最高等级", "trait10 name": "羁绊11", "trait10 num_units": "羁绊11单位数", "trait10 style": "羁绊11羁绊框颜色", "trait10 tier_current": "羁绊11当前等级", "trait10 tier_total": "羁绊11最高等级", "trait11 name": "羁绊12", "trait11 num_units": "羁绊12单位数", "trait11 style": "羁绊12羁绊框颜色", "trait11 tier_current": "羁绊12当前等级", "trait11 tier_total": "羁绊12最高等级", "trait12 name": "羁绊13", "trait12 num_units": "羁绊13单位数", "trait12 style": "羁绊13羁绊框颜色", "trait12 tier_current": "羁绊13当前等级", "trait12 tier_total": "羁绊13最高等级", "unit0 character": "英雄1", "unit0 rarity": "英雄1：稀有度", "unit0 tier": "英雄1：星级", "unit1 character": "英雄2", "unit1 rarity": "英雄2：稀有度", "unit1 tier": "英雄2：星级", "unit2 character": "英雄3", "unit2 rarity": "英雄3：稀有度", "unit2 tier": "英雄3：星级", "unit3 character": "英雄4", "unit3 rarity": "英雄4：稀有度", "unit3 tier": "英雄4：星级", "unit4 character": "英雄5", "unit4 rarity": "英雄5：稀有度", "unit4 tier": "英雄5：星级", "unit5 character": "英雄6", "unit5 rarity": "英雄6：稀有度", "unit5 tier": "英雄6：星级", "unit6 character": "英雄7", "unit6 rarity": "英雄7：稀有度", "unit6 tier": "英雄7：星级", "unit7 character": "英雄8", "unit7 rarity": "英雄8：稀有度", "unit7 tier": "英雄8：星级", "unit8 character": "英雄9", "unit8 rarity": "英雄9：稀有度", "unit8 tier": "英雄9：星级", "unit9 character": "英雄10", "unit9 rarity": "英雄10：稀有度", "unit9 tier": "英雄10：星级", "unit10 character": "英雄11", "unit10 rarity": "英雄11：稀有度", "unit11 tier": "英雄11：星级", "unit0 item0": "英雄1：装备1", "unit0 item1": "英雄1：装备2", "unit0 item2": "英雄1：装备3", "unit1 item0": "英雄2：装备1", "unit1 item1": "英雄2：装备2", "unit1 item2": "英雄2：装备3", "unit2 item0": "英雄3：装备1", "unit2 item1": "英雄3：装备2", "unit2 item2": "英雄3：装备3", "unit3 item0": "英雄4：装备1", "unit3 item1": "英雄4：装备2", "unit3 item2": "英雄4：装备3", "unit4 item0": "英雄5：装备1", "unit4 item1": "英雄5：装备2", "unit4 item2": "英雄5：装备3", "unit5 item0": "英雄6：装备1", "unit5 item1": "英雄6：装备2", "unit5 item2": "英雄6：装备3", "unit6 item0": "英雄7：装备1", "unit6 item1": "英雄7：装备2", "unit6 item2": "英雄7：装备3", "unit7 item0": "英雄8：装备1", "unit7 item1": "英雄8：装备2", "unit7 item2": "英雄8：装备3", "unit8 item0": "英雄9：装备1", "unit8 item1": "英雄9：装备2", "unit8 item2": "英雄9：装备3", "unit9 item0": "英雄10：装备1", "unit9 item1": "英雄10：装备2", "unit9 item2": "英雄10：装备3", "unit10 item0": "英雄11：装备1", "unit10 item1": "英雄11：装备2", "unit10 item2": "英雄11：装备3"}
                     TFTHistory_data = {}
@@ -2527,26 +2535,31 @@ async def search_profile(connection):
                         TFTGame_info = TFTHistory[i]
                         matchID = int(TFTGame_info["metadata"]["match_id"].split("_")[1]) #由于后面将对局序号作为键实现混合排序，所以这里需要将字符串分割后提取到的对局序号转化为整数类型（Because the matchIDs are used as keys to perform a mixed sort, the matchID extracted here needs transforming into integer type）
                         currentPlatformId = TFTGame_info["metadata"]["match_id"].split("_")[0]
-                        txt8name = "Match Information (TFT) - " + currentPlatformId + "-" + str(matchID) + ".txt"
-                        while True:
+                        if export_txt:
+                            save = True
+                            txt8name = "Match Information (TFT) - " + currentPlatformId + "-" + str(matchID) + ".txt"
+                            while True:
+                                try:
+                                    txtfile8 = open(os.path.join(folder, txt8name), "w", encoding = "utf-8")
+                                except FileNotFoundError:
+                                    os.makedirs(folder)
+                                else:
+                                    break
                             try:
-                                txtfile8 = open(os.path.join(folder, txt8name), "w", encoding = "utf-8")
-                            except FileNotFoundError:
-                                os.makedirs(folder)
-                            else:
-                                break
-                        try:
-                            txtfile8.write(json.dumps(TFTHistory[i], indent = 8, ensure_ascii = False))
-                        except UnicodeDecodeError:
-                            print("对局%s信息文本文档生成失败！请检查召唤师名称是否包含不常用字符！\nMatch %s information text generation failure! Please check if the summoner name includes any abnormal characters!" %(matchID, matchID))
-                            save = False
-                        txtfile8.close()
-                        currentTime = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
-                        pkl8name = "Intermediate Object - Match Information (LoL) - %s-%d.pkl" %(currentPlatformId, matchID)
-                        #with open(os.path.join(folder, pkl8name), "wb") as IntObj8:
-                            #pickle.dump(TFTGame_info, IntObj8)
+                                txtfile8.write(json.dumps(TFTHistory[i], indent = 8, ensure_ascii = False))
+                            except UnicodeDecodeError:
+                                print("对局%s信息文本文档生成失败！请检查召唤师名称是否包含不常用字符！\nMatch %s information text generation failure! Please check if the summoner name includes any abnormal characters!" %(matchID, matchID))
+                                save = False
+                            txtfile8.close()
+                            currentTime = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
+                            pkl8name = "Intermediate Object - Match Information (LoL) - %s-%d.pkl" %(currentPlatformId, matchID)
+                            #with open(os.path.join(folder, pkl8name), "wb") as IntObj8:
+                                #pickle.dump(TFTGame_info, IntObj8)
                         if save:
-                            print('保存进度（Saving process）：%d/%d\t对局序号（MatchID）： %d' %(i + 1, len(TFTHistory), matchID))
+                            if export_txt:
+                                print('保存进度（Saving process）：%d/%d\t对局序号（MatchID）： %d' %(i + 1, len(TFTHistory), matchID))
+                            else:
+                                print('加载进度（Loading process）：%d/%d\t对局序号（MatchID）： %d' %(i + 1, len(TFTHistory), matchID))
                         
                         info_exist_error[matchID] = False #一旦正常获取到云顶之弈的对局记录，对局信息即视为正常获取（Once the TFT match history is captured successfully, the TFT games' information is then regarded to be captured successfully as well）
                         timeline_exist_error[matchID] = True #云顶之弈对局中没有时间轴信息，因此每个云顶之弈对局的时间轴标记为异常获取（There's no timeline information in each TFT match, so each TFT match's timeline is labeled as "error" captured）
@@ -2640,7 +2653,7 @@ async def search_profile(connection):
                                                         TFTAugmentPatch_deserted = TFTAugmentPatch_adopted
                                                         TFTAugmentPatch_adopted = FindPostPatch(TFTAugmentPatch_adopted, bigPatches)
                                                         TFTAugment_recapture = 1
-                                                        print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT augments of Patch %s ... Times tried: %d." %(TFTAugmentPatch_deserted, TFTAugment_recapture, TFTAugmentPatch_adopted, TFTAugmentPatch_deserted, TFTAugmentPatch_adopted, TFTAugment_recapture))
+                                                        print("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to TFT augments of Patch %s ... Times tried: %d." %(TFTAugmentPatch_deserted, TFTAugment_recapture, TFTAugmentPatch_adopted, TFTAugmentPatch_deserted, TFTAugmentPatch_adopted, TFTAugment_recapture))
                                                     except requests.exceptions.RequestException: #如果重新获取数据的过程中出现网络异常，那么暂时先将原始数据导入工作表中（If a network error occurs when recapturing the data, then temporarily export the initial data into the worksheet）
                                                         if TFTAugment_recapture < 3:
                                                             TFTAugment_recapture += 1
@@ -2683,7 +2696,7 @@ async def search_profile(connection):
                                                         TFTCompanionPatch_deserted = TFTCompanionPatch_adopted
                                                         TFTCompanionPatch_adopted = FindPostPatch(TFTCompanionPatch_adopted, bigPatches)
                                                         TFTCompanion_recapture = 1
-                                                        print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT traits of Patch %s ... Times tried: %d." %(TFTCompanionPatch_deserted, TFTCompanion_recapture, TFTCompanionPatch_adopted, TFTCompanionPatch_deserted, TFTCompanionPatch_adopted, TFTCompanion_recapture))
+                                                        print("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to TFT traits of Patch %s ... Times tried: %d." %(TFTCompanionPatch_deserted, TFTCompanion_recapture, TFTCompanionPatch_adopted, TFTCompanionPatch_deserted, TFTCompanionPatch_adopted, TFTCompanion_recapture))
                                                     except requests.exceptions.RequestException:
                                                         if TFTCompanion_recapture < 3:
                                                             TFTCompanion_recapture += 1
@@ -2776,7 +2789,7 @@ async def search_profile(connection):
                                                         TFTTraitPatch_deserted = TFTTraitPatch_adopted
                                                         TFTTraitPatch_adopted = FindPostPatch(TFTTraitPatch_adopted, bigPatches)
                                                         TFTTrait_recapture = 1
-                                                        print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT traits of Patch %s ... Times tried: %d." %(TFTTraitPatch_deserted, TFTTrait_recapture, TFTTraitPatch_adopted, TFTTraitPatch_deserted, TFTTraitPatch_adopted, TFTTrait_recapture))
+                                                        print("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to TFT traits of Patch %s ... Times tried: %d." %(TFTTraitPatch_deserted, TFTTrait_recapture, TFTTraitPatch_adopted, TFTTraitPatch_deserted, TFTTraitPatch_adopted, TFTTrait_recapture))
                                                     except requests.exceptions.RequestException:
                                                         if TFTTrait_recapture < 3:
                                                             TFTTrait_recapture += 1
@@ -2845,7 +2858,7 @@ async def search_profile(connection):
                                                                     TFTChampionPatch_deserted = TFTChampionPatch_adopted
                                                                     TFTChampionPatch_adopted = FindPostPatch(TFTChampionPatch_adopted, bigPatches)
                                                                     TFTChampion_recapture = 1
-                                                                    print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT champions of Patch %s ... Times tried: %d." %(TFTChampionPatch_deserted, TFTChampion_recapture, TFTChampionPatch_adopted, TFTChampionPatch_deserted, TFTChampionPatch_adopted, TFTChampion_recapture))
+                                                                    print("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to TFT champions of Patch %s ... Times tried: %d." %(TFTChampionPatch_deserted, TFTChampion_recapture, TFTChampionPatch_adopted, TFTChampionPatch_deserted, TFTChampionPatch_adopted, TFTChampion_recapture))
                                                                 except requests.exceptions.RequestException:
                                                                     if TFTChampion_recapture < 3:
                                                                         TFTChampion_recapture += 1
@@ -2908,7 +2921,7 @@ async def search_profile(connection):
                                                                 TFTItemPatch_deserted = TFTItemPatch_adopted
                                                                 TFTItemPatch_adopted = FindPostPatch(TFTItemPatch_adopted, bigPatches)
                                                                 TFTItemPatch_recapture = 1
-                                                                print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT items of Patch %s ... Times tried: %d." %(TFTItemPatch_deserted, TFTItem_recapture, TFTItemPatch_adopted, TFTItemPatch_deserted, TFTItemPatch_adopted, TFTItem_recapture))
+                                                                print("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to TFT items of Patch %s ... Times tried: %d." %(TFTItemPatch_deserted, TFTItem_recapture, TFTItemPatch_adopted, TFTItemPatch_deserted, TFTItemPatch_adopted, TFTItem_recapture))
                                                             except requests.exceptions.RequestException:
                                                                 if TFTItem_recapture < 3:
                                                                     TFTItem_recapture += 1
@@ -2946,7 +2959,7 @@ async def search_profile(connection):
                                                                 TFTItemPatch_deserted = TFTItemPatch_adopted
                                                                 TFTItemPatch_adopted = FindPostPatch(TFTItemPatch_adopted, bigPatches)
                                                                 TFTItemPatch_recapture = 1
-                                                                print("%s版本文件不存在！正在第%s次尝试回退至%s版本……\n%s patch file doesn't exist! Changing to TFT items of Patch %s ... Times tried: %d." %(TFTItemPatch_deserted, TFTItem_recapture, TFTItemPatch_adopted, TFTItemPatch_deserted, TFTItemPatch_adopted, TFTItem_recapture))
+                                                                print("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to TFT items of Patch %s ... Times tried: %d." %(TFTItemPatch_deserted, TFTItem_recapture, TFTItemPatch_adopted, TFTItemPatch_deserted, TFTItemPatch_adopted, TFTItem_recapture))
                                                             except requests.exceptions.RequestException:
                                                                 if TFTItem_recapture < 3:
                                                                     TFTItem_recapture += 1
@@ -3011,6 +3024,8 @@ async def search_profile(connection):
                 export = input()
                 if export != "":
                     excel_name = "Summoner Profile - " + displayName + ".xlsx"
+                    excel_name_sorted = "Summoner Profile - " + displayName + " (sorted).xlsx"
+                    workbook_exist = True
                     while True:
                         try:
                             with pandas.ExcelWriter(path = os.path.join(folder, excel_name), mode = "a", if_sheet_exists = "replace") as writer:
@@ -3054,6 +3069,7 @@ async def search_profile(connection):
                             print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
                             input()
                         except FileNotFoundError:
+                            workbook_exist = False
                             try:
                                 os.makedirs(folder)
                             except FileExistsError:
@@ -3113,8 +3129,48 @@ async def search_profile(connection):
                                             print("对局信息和时间轴导出进度（Match information and timeline export process）：%d/%d" %(i + 1, len(matchIDs)))
                             break
                         else:
-                            print("对局信息和时间轴导出完成！\nMatch information and timeline exported!\n")
+                            print("对局信息和时间轴导出完成！\nMatch information and timeline exported!")
                             break
+                    if workbook_exist:
+                        print("警告：由于该文件已存在，本次导出已追加新工作表到工作簿的末尾。这可能导致对局序号顺序的错乱。是否需要对工作表进行排序？（输入任意键排序，否则不排序）\nWarning: Because the excel workbook has existed, new sheets are appended to the last of the original sheet list. This may result in the disarrangement of matchID order. Do you want to sort the sheets? (Input anything to sort the sheets, or null to skip sorting)")
+                        sort = input()
+                        if sort != "": #所有工作表分为基础信息类和对局信息类，排列顺序为前者在前、后者在后。基础信息工作表类按顺序依次为人物简介、排位信息、英雄成就和对局记录。对局信息类工作表包括对局信息和对局时间轴，按照对局序号排序（All sheets are divided into the basic data class and match information class, the former arranged in front of the latter. The basic data class includes profile, rank, champion mastery and match history in turn. The match information class includes match information and match timeline ordered by matchIDs）
+                            profile_loaded = True
+                            print("正在读取刚刚创建的工作表……\nLoading the workbook just created ...")
+                            while True:
+                                try:
+                                    wb = load_workbook(os.path.join(folder, excel_name))
+                                except FileNotFoundError:
+                                    print('召唤师生涯工作簿读取失败！请确保“%s”文件夹内含有名为“%s”的工作簿。如果需要重新生成该召唤师的工作簿，请输入“0”。\nERROR reading the summoner profile workbook! Please make sure the workbook "%s" is in the folder "%s". If you want to regenerate this summoner\'s workbook, please submit "0".' %(folder, excel_name, excel_name, folder))
+                                    profile_reload = input()
+                                    if profile_reload == "0":
+                                        profile_loaded = False
+                                        break
+                                else:
+                                    break
+                            if profile_loaded:
+                                sheetnames = wb.sheetnames #第一次获取原工作簿的工作表名称列表（The first time to get the sheet name list of the original workbook）
+                                #下面锁定基础信息类的工作表顺序（The following code lock the order of sheets in basic data class）
+                                print("正在创建顺序工作表列表……\nCreating the ordered sheet list ...")
+                                basic_info_list = ["Profile", "Rank", "Champion Mastery", "Recently Played Summoners (LoL)", "Recently Played Summoners (TFT)", "LoL Match History", "LoL Match History - Scan", "LoL Match History - Manual", "TFT Match History", "TFT Match History - Manual"]
+                                sheetnames_sorted = []
+                                for sheet_iter in basic_info_list:
+                                    if sheet_iter in sheetnames:
+                                        sheetnames.remove(sheet_iter)
+                                        sheetnames_sorted.append(sheet_iter)
+                                sheetnames_sorted += sorted(sheetnames) #所有工作表的期望顺序存储在sheetnames_sorted变量中（The ordered result of all sheets is stored in the variable `sheetnames_sorted`）
+                                #下面排列所有工作表（The following code arrange all sheets）
+                                print("正在排序……\nOrdering ...")
+                                for i in range(len(sheetnames_sorted)): #排序的思路是每次将一个工作表根据其在原工作表列表中的索引和在顺序工作表列表中的索引的差值进行移动（The main idea of sheets' sorting is to move each sheet according to the difference of the indices between in the original sheet list and in the ordered sheet list）
+                                    sheetnames = wb.sheetnames #因为一次移动可能导致很多其它工作表的位置发生变化，所以必须每次都重新获取工作表列表（Because a moving event may result in location change of many other sheets, the sheet list must be obtained each time）
+                                    sheetname_iter = sheetnames_sorted[i] #这里以顺序工作表为迭代器进行遍历，因为顺序工作表是固定不变的（Here the ordered sheet list acts as the iterator to be traversed, for the ordered sheet list is fixed）
+                                    if sheetnames[i] != sheetname_iter:
+                                        preIndex = sheetnames.index(sheetname_iter)
+                                        wb.move_sheet(sheetname_iter, i - preIndex) #注意移动距离数应当是排序后的索引减去排序前的索引（Note that the moving offset should be the index in the ordered list subtracted by that in the original list）
+                                    #print("排序进度（Ordering process）：%d/%d\t工作表名称（Sheet name）： %s" %(i + 1, len(sheetnames_sorted), sheetname_iter))
+                                print('正在保存中……\nSaving the ordered workbook ...')
+                                wb.save(os.path.join(folder, excel_name_sorted))
+                                print('排序完成！排好序的工作簿已保存为“%s”。\nOrdering finished! The ordered workbook is saved as "%s".\n' %(excel_name_sorted, excel_name_sorted))
 
 #-----------------------------------------------------------------------------
 # websocket

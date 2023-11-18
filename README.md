@@ -150,7 +150,8 @@ The following explanations only apply to the current branch. For other details (
 					- <b>注意：</b>云顶之弈对局也是有英雄选择阶段的！只不过持续时间太短了。
 				- 由于英雄选择阶段具有临时性，因此在该模式下，程序只会在主目录生成一个临时文件。
 				- 和查战绩脚本相同，该脚本的扫描模式只适用于查询**英雄联盟**对局。
-			- 如果用户在英雄选择阶段因为某些原因（如命令行一闪而过、历史记录无法正常获取等）未能通过【检测模式】获取队友是否曾遇到过的信息，那么只能在**对局结束**后通过<u>【生成模式】</u>手动查询。
+			- 如果用户在英雄选择阶段因为某些原因（如命令行一闪而过、历史记录无法正常获取等）未能通过【检测模式】获取队友是否曾遇到过的信息，那么在游戏中还可以通过【单独查询】手动输入对局中的召唤师名称来检查曾经遇到过的玩家。
+				- 自美测服13.22版本，对于拳头代理的服务器上的玩家，只输入玩家名称无法正常查询其信息。由于加载资源界面只呈现玩家名称，这时可以**等待游戏开始**后在**计分板**中查看玩家名称及其标语。
 	- 自定义脚本12用于**整理战利品信息**。
 		- 该脚本的最终结果是一个**包含部分字段的二维表**，保存在工作簿中。**工作簿的生成路径参照查战绩脚本**。
 		- 该脚本仅作数据的转换和整理，不作任何数据分析。如有需要，<u>请自行使用Excel软件进行分析</u>。
@@ -375,7 +376,8 @@ For details about customized programs that is beyond the scope of creating a cus
 					**Note:** TFT matches do have champ select stage. It's just that this stage lasts too short.
 				- Considering temporariness of champ select, this mode will only generate a temporary file in the home directory.
 				- Similar to Customized Program 5, the [Scan Mode] in this program only applies for **LoL** matches.
-			- If for some reason (like the CMD window pops up and disappears immediately, or the match history fails to be fetched), the user fails to get whether the allies have been encountered before using [Detect Mode], then the user must check again by <u>[Generate Mode]</u> **after the match is over**.
+			- If for some reason (like the CMD window pops up and disappears immediately, or the match history fails to be fetched), the user fails to get whether the allies have been encountered before using [Detect Mode], the user can still [Single Check] whether there's any recently played summoner by inputting the in-game summoner name by hand.
+				- Since PBE Patch 13.22, players on Riot servers can't be searches with only gameName. Because the loading screen only displays the gameName, the user may wait **until the game starts** to check the gameName and slogan on the **scoreboard**.
 	- Customized Program 12 is used to **sort out player loot information**.
 		- The final result of this program is a **2-dimension table including a part of the field** to be saved into a workbook. **To get the generation path, please refer to Customized Program 5.**
 		- This program only transforms and sorts out data. No data analysis is involved. If you have further needs, <u>please analyze with Excel APP on your own</u>.

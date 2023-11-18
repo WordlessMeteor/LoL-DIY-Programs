@@ -1077,18 +1077,18 @@
         "trait_id": "Set10_8Bit",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_8Bit.TFT_Set10.png",
-        "tooltip_text": "【8比特】弈子们获得@BaseAD@%攻击力并开始记录你的队伍通过造成伤害而获得的得分。你每突破一个高分，【8比特】弈子们就会获得更多攻击力。<br><br><row>(@MinUnits@) @AttackDamage@% %i:scaleAD%</row><br><row>(@MinUnits@) @AttackDamage@% %i:scaleAD%</row><br><row>(@MinUnits@) @AttackDamage@% %i:scaleAD%并解锁一个终极高分，在你打破它时会获得一份大奖。</row><br><br>加成：@TFTUnitProperty.trait:TFT10_Trait_8bit_CurrentBonus@% %i:scaleAD% (@TFTUnitProperty.trait:TFT10_Trait_8bit_StackCount@/@NumHighScores@)",
+        "tooltip_text": "将你队伍的已造成伤害记录成分数。你每突破一个高分，【8比特】弈子们就会获得攻击力。<br><br><row>(@MinUnits@) @AttackDamage@% %i:scaleAD%</row><br><row>(@MinUnits@) @AttackDamage@% %i:scaleAD%</row><br><row>(@MinUnits@) @AttackDamage@% %i:scaleAD%并解锁一个终极高分，可奖励你一份大奖。</row><br><br>加成：@TFTUnitProperty.trait:TFT10_Trait_8bit_CurrentBonus@% %i:scaleAD% (@TFTUnitProperty.trait:TFT10_Trait_8bit_StackCount@/@NumHighScores@)",
         "innate_trait_sets": [
             {
                 "effect_amounts": [
                     {
                         "name": "NumHighScores",
-                        "value": 20.0000,
+                        "value": 10.0000,
                         "format_string": ""
                     },
                     {
                         "name": "Tier1Highscore",
-                        "value": 2500.0000,
+                        "value": 1000.0000,
                         "format_string": ""
                     },
                     {
@@ -1103,92 +1103,42 @@
                     },
                     {
                         "name": "Tier4Highscore",
-                        "value": 15000.0000,
-                        "format_string": ""
-                    },
-                    {
-                        "name": "Tier5Highscore",
                         "value": 20000.0000,
                         "format_string": ""
                     },
                     {
-                        "name": "Tier6Highscore",
-                        "value": 27500.0000,
-                        "format_string": ""
-                    },
-                    {
-                        "name": "Tier7Highscore",
+                        "name": "Tier5Highscore",
                         "value": 35000.0000,
                         "format_string": ""
                     },
                     {
-                        "name": "Tier8Highscore",
-                        "value": 45000.0000,
-                        "format_string": ""
-                    },
-                    {
-                        "name": "Tier9Highscore",
+                        "name": "Tier6Highscore",
                         "value": 55000.0000,
                         "format_string": ""
                     },
                     {
-                        "name": "Tier10Highscore",
-                        "value": 70000.0000,
-                        "format_string": ""
-                    },
-                    {
-                        "name": "Tier11Highscore",
+                        "name": "Tier7Highscore",
                         "value": 85000.0000,
                         "format_string": ""
                     },
                     {
-                        "name": "Tier12Highscore",
-                        "value": 105000.0000,
-                        "format_string": ""
-                    },
-                    {
-                        "name": "Tier13Highscore",
+                        "name": "Tier8Highscore",
                         "value": 125000.0000,
                         "format_string": ""
                     },
                     {
-                        "name": "Tier14Highscore",
-                        "value": 145000.0000,
-                        "format_string": ""
-                    },
-                    {
-                        "name": "Tier15Highscore",
+                        "name": "Tier9Highscore",
                         "value": 170000.0000,
                         "format_string": ""
                     },
                     {
-                        "name": "Tier16Highscore",
-                        "value": 195000.0000,
-                        "format_string": ""
-                    },
-                    {
-                        "name": "Tier17Highscore",
+                        "name": "Tier10Highscore",
                         "value": 225000.0000,
                         "format_string": ""
                     },
                     {
-                        "name": "Tier18Highscore",
-                        "value": 255000.0000,
-                        "format_string": ""
-                    },
-                    {
-                        "name": "Tier19Highscore",
-                        "value": 280000.0000,
-                        "format_string": ""
-                    },
-                    {
-                        "name": "Tier20Highscore",
-                        "value": 300000.0000,
-                        "format_string": ""
-                    },
-                    {
                         "name": "Tier1Highscore_HR",
-                        "value": 1250.0000,
+                        "value": 500.0000,
                         "format_string": ""
                     },
                     {
@@ -1203,97 +1153,47 @@
                     },
                     {
                         "name": "Tier4Highscore_HR",
-                        "value": 7500.0000,
-                        "format_string": ""
-                    },
-                    {
-                        "name": "Tier5Highscore_HR",
                         "value": 10000.0000,
                         "format_string": ""
                     },
                     {
-                        "name": "Tier6Highscore_HR",
-                        "value": 13750.0000,
-                        "format_string": ""
-                    },
-                    {
-                        "name": "Tier7Highscore_HR",
+                        "name": "Tier5Highscore_HR",
                         "value": 17500.0000,
                         "format_string": ""
                     },
                     {
-                        "name": "Tier8Highscore_HR",
-                        "value": 22500.0000,
-                        "format_string": ""
-                    },
-                    {
-                        "name": "Tier9Highscore_HR",
+                        "name": "Tier6Highscore_HR",
                         "value": 27500.0000,
                         "format_string": ""
                     },
                     {
-                        "name": "Tier10Highscore_HR",
-                        "value": 35000.0000,
-                        "format_string": ""
-                    },
-                    {
-                        "name": "Tier11Highscore_HR",
+                        "name": "Tier7Highscore_HR",
                         "value": 42500.0000,
                         "format_string": ""
                     },
                     {
-                        "name": "Tier12Highscore_HR",
-                        "value": 52500.0000,
-                        "format_string": ""
-                    },
-                    {
-                        "name": "Tier13Highscore_HR",
+                        "name": "Tier8Highscore_HR",
                         "value": 62500.0000,
                         "format_string": ""
                     },
                     {
-                        "name": "Tier14Highscore_HR",
-                        "value": 72500.0000,
-                        "format_string": ""
-                    },
-                    {
-                        "name": "Tier15Highscore_HR",
+                        "name": "Tier9Highscore_HR",
                         "value": 85000.0000,
                         "format_string": ""
                     },
                     {
-                        "name": "Tier16Highscore_HR",
-                        "value": 97500.0000,
-                        "format_string": ""
-                    },
-                    {
-                        "name": "Tier17Highscore_HR",
+                        "name": "Tier10Highscore_HR",
                         "value": 112500.0000,
                         "format_string": ""
                     },
                     {
-                        "name": "Tier18Highscore_HR",
-                        "value": 127500.0000,
-                        "format_string": ""
-                    },
-                    {
-                        "name": "Tier19Highscore_HR",
-                        "value": 140000.0000,
-                        "format_string": ""
-                    },
-                    {
-                        "name": "Tier20Highscore_HR",
-                        "value": 150000.0000,
-                        "format_string": ""
-                    },
-                    {
                         "name": "GrandPrizeHighscore",
-                        "value": 444444.0000,
+                        "value": 456789.0000,
                         "format_string": ""
                     },
                     {
                         "name": "GrandPrizeHighscore_HR",
-                        "value": 222222.0000,
+                        "value": 234567.0000,
                         "format_string": ""
                     }
                 ]
@@ -1304,12 +1204,7 @@
                 "effect_amounts": [
                     {
                         "name": "AttackDamage",
-                        "value": 1.7500,
-                        "format_string": ""
-                    },
-                    {
-                        "name": "BaseAD",
-                        "value": 5.0000,
+                        "value": 3.5000,
                         "format_string": ""
                     }
                 ],
@@ -1322,12 +1217,7 @@
                 "effect_amounts": [
                     {
                         "name": "AttackDamage",
-                        "value": 3.0000,
-                        "format_string": ""
-                    },
-                    {
-                        "name": "BaseAD",
-                        "value": 5.0000,
+                        "value": 6.0000,
                         "format_string": ""
                     }
                 ],
@@ -1340,12 +1230,7 @@
                 "effect_amounts": [
                     {
                         "name": "AttackDamage",
-                        "value": 5.0000,
-                        "format_string": ""
-                    },
-                    {
-                        "name": "BaseAD",
-                        "value": 5.0000,
+                        "value": 10.0000,
                         "format_string": ""
                     }
                 ],
@@ -1570,7 +1455,7 @@
                     },
                     {
                         "name": "JumpDamage",
-                        "value": 300.0000,
+                        "value": 400.0000,
                         "format_string": ""
                     },
                     {
@@ -1604,7 +1489,7 @@
                 "effect_amounts": [
                     {
                         "name": "BaseBonus",
-                        "value": 0.2000,
+                        "value": 0.3000,
                         "format_string": ""
                     }
                 ],
@@ -1617,7 +1502,7 @@
                 "effect_amounts": [
                     {
                         "name": "BaseBonus",
-                        "value": 0.5000,
+                        "value": 0.7000,
                         "format_string": ""
                     }
                 ],
@@ -1688,7 +1573,7 @@
                     },
                     {
                         "name": "DOTPercent",
-                        "value": 0.5000,
+                        "value": 0.6000,
                         "format_string": ""
                     }
                 ],
@@ -1711,7 +1596,7 @@
                     },
                     {
                         "name": "DOTPercent",
-                        "value": 0.8000,
+                        "value": 1.0000,
                         "format_string": ""
                     }
                 ],
@@ -1779,12 +1664,12 @@
                 "effect_amounts": [
                     {
                         "name": "PercentAD",
-                        "value": 0.2000,
+                        "value": 0.2500,
                         "format_string": ""
                     },
                     {
                         "name": "PercentADEmpowered",
-                        "value": 0.8000,
+                        "value": 1.0000,
                         "format_string": ""
                     }
                 ],
@@ -1805,7 +1690,7 @@
                 "effect_amounts": [
                     {
                         "name": "TFT10_Jax_Freq",
-                        "value": 9.0000,
+                        "value": 8.0000,
                         "format_string": ""
                     },
                     {
@@ -1851,7 +1736,7 @@
                 "effect_amounts": [
                     {
                         "name": "EDMstats",
-                        "value": 0.5000,
+                        "value": 0.8000,
                         "format_string": ""
                     }
                 ],
@@ -1864,7 +1749,7 @@
                 "effect_amounts": [
                     {
                         "name": "EDMstats",
-                        "value": 0.7500,
+                        "value": 0.9000,
                         "format_string": ""
                     }
                 ],
@@ -1895,7 +1780,7 @@
                 "effect_amounts": [
                     {
                         "name": "EDMstats",
-                        "value": 1.2500,
+                        "value": 1.2000,
                         "format_string": ""
                     },
                     {
@@ -1978,7 +1863,7 @@
         "trait_id": "Set10_Emo",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_BigSad.TFT_Set10.png",
-        "tooltip_text": "【EMO】弈子们的技能的法力消耗更低，并且他们会在一名队友阵亡时获得法力值。<br><br><row>(@MinUnits@) 降低@InitialMana@%法力消耗，获得@StackingMana@ %i:scaleMana%</row><br><row>(@MinUnits@) 降低@InitialMana@%法力消耗，获得@StackingMana@ %i:scaleMana%</row><br><row>(@MinUnits@) @BonusAP@ %i:scaleAP%；降低@InitialMana@%法力消耗，获得@StackingMana@ %i:scaleMana% </row>",
+        "tooltip_text": "【EMO】弈子们的技能的法力消耗更低，并且他们会在一名己方弈子阵亡时获得法力值。<br><br><row>(@MinUnits@) 降低@InitialMana@%法力消耗，获得@StackingMana@ %i:scaleMana%</row><br><row>(@MinUnits@) 降低@InitialMana@%法力消耗，获得@StackingMana@ %i:scaleMana%</row><br><row>(@MinUnits@) @BonusAP@ %i:scaleAP%；降低@InitialMana@%法力消耗，获得@StackingMana@ %i:scaleMana% </row>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
             {
@@ -2021,7 +1906,7 @@
                 "effect_amounts": [
                     {
                         "name": "InitialMana",
-                        "value": 40.0000,
+                        "value": 30.0000,
                         "format_string": ""
                     },
                     {
@@ -2031,7 +1916,7 @@
                     },
                     {
                         "name": "BonusAP",
-                        "value": 25.0000,
+                        "value": 20.0000,
                         "format_string": ""
                     }
                 ],
@@ -2411,6 +2296,24 @@
                     }
                 ],
                 "min_units": 2,
+                "max_units": 2,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AS",
+                        "value": 0.3500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Mana",
+                        "value": 7.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
                 "max_units": 3,
                 "style_idx": 4,
                 "style_name": "kGold"
@@ -2419,12 +2322,12 @@
                 "effect_amounts": [
                     {
                         "name": "AS",
-                        "value": 0.4000,
+                        "value": 0.6000,
                         "format_string": ""
                     },
                     {
                         "name": "Mana",
-                        "value": 8.0000,
+                        "value": 10.0000,
                         "format_string": ""
                     }
                 ],
@@ -2476,7 +2379,7 @@
         "trait_id": "Set10_Jazz",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Jazz.TFT_Set10.png",
-        "tooltip_text": "每拥有一个处于激活状态的非唯一羁绊，你的队伍就会获得额外生命值并造成额外伤害。<br><br><expandRow>(@MinUnits@) @BonusHealth*100@% %i:scaleHealth%, @BonusDamage*100@%伤害</expandRow><br><br>额外生命值：@TFTUnitProperty.trait:TFT10_Trait_Jazz_TraitTracker_CurrentBonus@%<br>额外伤害：@TFTUnitProperty.trait:TFT10_Trait_Jazz_TraitTracker_CurrentBonus_Damage@%",
+        "tooltip_text": "每拥有一个处于激活状态的羁绊(唯一羁绊除外)，你的队伍就会获得额外生命值并造成额外伤害。<br><br><expandRow>(@MinUnits@) @BonusHealth*100@% %i:scaleHealth%, @BonusDamage*100@%伤害</expandRow><br><br>额外生命值：@TFTUnitProperty.trait:TFT10_Trait_Jazz_TraitTracker_CurrentBonus@%<br>额外伤害：@TFTUnitProperty.trait:TFT10_Trait_Jazz_TraitTracker_CurrentBonus_Damage@%",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
             {
@@ -2539,7 +2442,7 @@
         "trait_id": "Set10_KDA",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_KDA.TFT_Set10.png",
-        "tooltip_text": "己方处于灯光格内的弈子们都会获得最大生命值、法术强度和攻击力。【K/DA】弈子们则双倍此加成！<br><br><expandRow>(@MinUnits@) +@BonusMaxHealth*100@%最大%i:scaleHealth%和@BonusAP@%&nbsp;%i:scaleAP%%i:scaleAD%</expandRow>",
+        "tooltip_text": "己方处于灯光格内的弈子们都会获得最大生命值、法术强度和攻击力。【K/DA】弈子们则双倍此加成！<br><br><row>(@MinUnits@) @BonusMaxHealth*100@%最大%i:scaleHealth%，@BonusAP@%%i:scaleAP%%i:scaleAD%</row><br><row>(@MinUnits@) @BonusMaxHealth*100@%最大%i:scaleHealth%，@BonusAP@%%i:scaleAP%%i:scaleAD%</row><br><row>(@MinUnits@) @BonusMaxHealth*100@%最大%i:scaleHealth%，@BonusAP@%%i:scaleAP%%i:scaleAD%</row><br><row>(@MinUnits@) @BonusMaxHealth*100@%最大%i:scaleHealth%，@BonusAP@%%i:scaleAP%%i:scaleAD%，每秒@ManaPerSecond@法力值</row>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
             {
@@ -2552,6 +2455,16 @@
                     {
                         "name": "BonusAP",
                         "value": 10.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "KDAPercentIncrease",
+                        "value": 2.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ManaPerSecond",
+                        "value": 0.0000,
                         "format_string": ""
                     }
                 ],
@@ -2571,6 +2484,16 @@
                         "name": "BonusAP",
                         "value": 15.0000,
                         "format_string": ""
+                    },
+                    {
+                        "name": "KDAPercentIncrease",
+                        "value": 2.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ManaPerSecond",
+                        "value": 0.0000,
+                        "format_string": ""
                     }
                 ],
                 "min_units": 5,
@@ -2582,12 +2505,22 @@
                 "effect_amounts": [
                     {
                         "name": "BonusMaxHealth",
-                        "value": 0.2000,
+                        "value": 0.2200,
                         "format_string": ""
                     },
                     {
                         "name": "BonusAP",
-                        "value": 20.0000,
+                        "value": 22.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "KDAPercentIncrease",
+                        "value": 2.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ManaPerSecond",
+                        "value": 0.0000,
                         "format_string": ""
                     }
                 ],
@@ -2605,7 +2538,17 @@
                     },
                     {
                         "name": "BonusAP",
-                        "value": 100.0000,
+                        "value": 50.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "KDAPercentIncrease",
+                        "value": 2.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ManaPerSecond",
+                        "value": 10.0000,
                         "format_string": ""
                     }
                 ],
@@ -2721,7 +2664,7 @@
         "trait_id": "Set10_PopBand",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Heartsteel.TFT_Set10.png",
-        "tooltip_text": "通过击杀敌人来获得心能。输掉玩家战斗回合会获得更多心能。每经过@RoundCount@场玩家战斗回合，就会将心能转化为强力奖励！<br><br><expandRow>(@MinUnits@) @PercentHeartRate@x心能</expandRow>",
+        "tooltip_text": "通过击杀敌人来获得心能。输掉玩家战斗回合会获得更多心能。每经过@RoundCount@场玩家战斗回合，就会将心能转化为强力奖励！<br><br><row>(@MinUnits@) @PercentHeartRate@x心能</row><br><row>(@MinUnits@) @PercentHeartRate@x心能</row><br><row>(@MinUnits@) @PercentHeartRate@x心能</row><br><row>(@MinUnits@) @PercentHeartRate@x心能，每回合获得奖励并保留你的@HeartKeepPercentage*100@%心能！</row>",
         "innate_trait_sets": [
             {
                 "effect_amounts": [
@@ -2742,7 +2685,7 @@
                     },
                     {
                         "name": "HeartsPerLossStage2",
-                        "value": 7.0000,
+                        "value": 10.0000,
                         "format_string": ""
                     },
                     {
@@ -2752,7 +2695,7 @@
                     },
                     {
                         "name": "HeartsPerLossStage3",
-                        "value": 12.0000,
+                        "value": 18.0000,
                         "format_string": ""
                     },
                     {
@@ -2762,7 +2705,7 @@
                     },
                     {
                         "name": "HeartsPerLossStage4",
-                        "value": 20.0000,
+                        "value": 25.0000,
                         "format_string": ""
                     },
                     {
@@ -2772,7 +2715,7 @@
                     },
                     {
                         "name": "HeartsPerLossStage5",
-                        "value": 30.0000,
+                        "value": 32.0000,
                         "format_string": ""
                     },
                     {
@@ -2865,6 +2808,16 @@
                         "name": "PercentHeartRate",
                         "value": 1.0000,
                         "format_string": ""
+                    },
+                    {
+                        "name": "CashoutEveryRound",
+                        "value": 0.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HeartKeepPercentage",
+                        "value": 0.0000,
+                        "format_string": ""
                     }
                 ],
                 "min_units": 3,
@@ -2877,6 +2830,16 @@
                     {
                         "name": "PercentHeartRate",
                         "value": 2.5000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "CashoutEveryRound",
+                        "value": 0.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HeartKeepPercentage",
+                        "value": 0.0000,
                         "format_string": ""
                     }
                 ],
@@ -2891,10 +2854,20 @@
                         "name": "PercentHeartRate",
                         "value": 6.0000,
                         "format_string": ""
+                    },
+                    {
+                        "name": "CashoutEveryRound",
+                        "value": 0.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HeartKeepPercentage",
+                        "value": 0.0000,
+                        "format_string": ""
                     }
                 ],
                 "min_units": 7,
-                "max_units": 8,
+                "max_units": 9,
                 "style_idx": 4,
                 "style_name": "kGold"
             },
@@ -2902,11 +2875,21 @@
                 "effect_amounts": [
                     {
                         "name": "PercentHeartRate",
-                        "value": 12.0000,
+                        "value": 10.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "CashoutEveryRound",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HeartKeepPercentage",
+                        "value": 0.8000,
                         "format_string": ""
                     }
                 ],
-                "min_units": 9,
+                "min_units": 10,
                 "style_idx": 5,
                 "style_name": "kChromatic"
             }
@@ -2917,7 +2900,7 @@
         "trait_id": "Set10_PunkRock",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Punk.TFT_Set10.png",
-        "tooltip_text": "【朋克】们获得额外生命值和攻击力。在你每次将金币花在刷新商店时，这个加成都会提升1%。<br><br>在【朋克】们参与战斗之后，你的第一次商店刷新花费1金币并转而提供+@FIRST_ROLL_BONUS@%加成！<br><br><expandRow>(@MinUnits@) @BONUS_HEALTH@ %i:scaleHealth%和@BONUS_AD_AP*100@% %i:scaleAD%</expandRow><br><br>当前加成：@TFTUnitProperty.trait:TFT10_Punk_CurrentBonus@%<br>@TFTUnitProperty.trait:TFT10_Punk_CurrentHealthBonus@ %i:scaleHealth%和@TFTUnitProperty.trait:TFT10_Punk_CurrentADBonus@% %i:scaleAD%",
+        "tooltip_text": "【朋克】们获得额外生命值和攻击力。在你每次将金币花在刷新商店时，这个加成都会提升1%。<br><br>在【朋克】们参与战斗之后，你的第一次商店刷新花费1金币并转而提供@FIRST_ROLL_BONUS@%加成！<br><br><expandRow>(@MinUnits@) @BONUS_HEALTH@ %i:scaleHealth%和@BONUS_AD_AP*100@% %i:scaleAD%</expandRow><br><br>当前加成：@TFTUnitProperty.trait:TFT10_Punk_CurrentBonus@%<br>@TFTUnitProperty.trait:TFT10_Punk_CurrentHealthBonus@ %i:scaleHealth%和@TFTUnitProperty.trait:TFT10_Punk_CurrentADBonus@% %i:scaleAD%",
         "innate_trait_sets": [
             {
                 "effect_amounts": [
@@ -2939,12 +2922,12 @@
                 "effect_amounts": [
                     {
                         "name": "BONUS_HEALTH",
-                        "value": 160.0000,
+                        "value": 170.0000,
                         "format_string": ""
                     },
                     {
                         "name": "BONUS_AD_AP",
-                        "value": 0.1600,
+                        "value": 0.1700,
                         "format_string": ""
                     }
                 ],
@@ -2957,12 +2940,12 @@
                 "effect_amounts": [
                     {
                         "name": "BONUS_HEALTH",
-                        "value": 260.0000,
+                        "value": 280.0000,
                         "format_string": ""
                     },
                     {
                         "name": "BONUS_AD_AP",
-                        "value": 0.2600,
+                        "value": 0.2800,
                         "format_string": ""
                     }
                 ],
@@ -3080,7 +3063,7 @@
                     },
                     {
                         "name": "WardenBonusArmor",
-                        "value": 36.0000,
+                        "value": 32.0000,
                         "format_string": ""
                     }
                 ],
@@ -3365,7 +3348,7 @@
                 "effect_amounts": [
                     {
                         "name": "BONUS_DAMAGE",
-                        "value": 0.9500,
+                        "value": 1.2500,
                         "format_string": ""
                     },
                     {
