@@ -1030,7 +1030,7 @@ async def search_recent_players(connection):
             continue
         else:
             if detectMode == False:
-                if summoner_name.replace(" ", "").count("-") == 4 and len(summoner_name.replace(" ", "")) > 22: #拳头规定的玩家名称不超过16个字符，标语不超过5个字符（Riot game name can't exceed 16 characters. The tagline can't exceed 5 characters）
+                if summoner_name.replace(" ", "").count("-") == 4 and len(summoner_name.replace(" ", "")) > 22: #拳头规定的玩家名称不超过16个字符，尾标不超过5个字符（Riot game name can't exceed 16 characters. The tagline can't exceed 5 characters）
                     search_by_puuid = True
                     info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + quote(summoner_name))).json()
                 else:
@@ -1047,7 +1047,7 @@ async def search_recent_players(connection):
                 else:
                     print("未找到" + summoner_name + "；请核对下名字并稍后再试。\n" + summoner_name + " was not found; verify the name and try again.")
             elif "errorCode" in info and info["httpStatus"] == 422:
-                print('召唤师名称已变更为拳头ID。请以“{召唤师名称}#{标语}”的格式输入。\nSummoner name has been replaced with Riot ID. Please input the name in this format: "{gameName}#{tagLine}", e.g. "%s#%s".' %(current_info["gameName"], current_info["tagLine"]))
+                print('召唤师名称已变更为拳头ID。请以“{召唤师名称}#{尾标}”的格式输入。\nSummoner name has been replaced with Riot ID. Please input the name in this format: "{gameName}#{tagLine}", e.g. "%s#%s".' %(current_info["gameName"], current_info["tagLine"]))
                 continue
             elif "accountId" in info:
                 displayName = info["displayName"] #用于扫描模式定位到某召唤师（Determines the directory which contains the summoner's data）
@@ -2700,7 +2700,7 @@ async def search_recent_players(connection):
                                                 print("请输入非空字符串！\nPlease input a string instead of null!")
                                                 continue
                                             else:
-                                                if summoner_name_check.replace(" ", "").count("-") == 4 and len(summoner_name_check.replace(" ", "")) > 22: #拳头规定的玩家名称不超过16个字符，标语不超过5个字符（Riot game name can't exceed 16 characters. The tagline can't exceed 5 characters）
+                                                if summoner_name_check.replace(" ", "").count("-") == 4 and len(summoner_name_check.replace(" ", "")) > 22: #拳头规定的玩家名称不超过16个字符，尾标不超过5个字符（Riot game name can't exceed 16 characters. The tagline can't exceed 5 characters）
                                                     check_by_puuid = True
                                                     info_check = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + quote(summoner_name_check))).json()
                                                 else:
@@ -2717,7 +2717,7 @@ async def search_recent_players(connection):
                                                     else:
                                                         print("未找到" + summoner_name_check + "；请核对下名字并稍后再试。\n" + summoner_name_check + " was not found; verify the name and try again.")
                                                 elif "errorCode" in info_check and info_check["httpStatus"] == 422:
-                                                    print('召唤师名称已变更为拳头ID。请以“{召唤师名称}#{标语}”的格式输入。\nSummoner name has been replaced with Riot ID. Please input the name in this format: "{gameName}#{tagLine}", e.g. "%s#%s".' %(current_info["gameName"], current_info["tagLine"]))
+                                                    print('召唤师名称已变更为拳头ID。请以“{召唤师名称}#{尾标}”的格式输入。\nSummoner name has been replaced with Riot ID. Please input the name in this format: "{gameName}#{tagLine}", e.g. "%s#%s".' %(current_info["gameName"], current_info["tagLine"]))
                                                     continue
                                                 elif "accountId" in info_check:
                                                     recent_player_checked = info_check["puuid"] in recent_player_puuid #代表一名玩家是否已经检查过（Represents whether a player has been checked）

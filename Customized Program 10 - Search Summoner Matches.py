@@ -93,7 +93,7 @@ async def search_summoner_online(connection):
             global opened
             opened = False
             #由于召唤师可能使用过改名卡，因此需要依据玩家通用唯一识别码来查询某玩家是否进行过某场对局（Since a summoner may have used the Summoner Name Change, puuid is used to judge whether a summoner is in a match）
-            if name.replace(" ", "").count("-") == 4 and len(name.replace(" ", "")) > 22: #拳头规定的玩家名称不超过16个字符，标语不超过5个字符（Riot game name can't exceed 16 characters. The tagline can't exceed 5 characters）
+            if name.replace(" ", "").count("-") == 4 and len(name.replace(" ", "")) > 22: #拳头规定的玩家名称不超过16个字符，尾标不超过5个字符（Riot game name can't exceed 16 characters. The tagline can't exceed 5 characters）
                 search_by_puuid = True
                 info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + quote(name))).json()
             else:
@@ -110,7 +110,7 @@ async def search_summoner_online(connection):
                 else:
                     print("未找到" + name + "；请核对下名字并稍后再试。\n" + name + " was not found; verify the name and try again.")
             elif "errorCode" in info and info["httpStatus"] == 422:
-                print('召唤师名称已变更为拳头ID。请以“{召唤师名称}#{标语}”的格式输入。\nSummoner name has been replaced with Riot ID. Please input the name in this format: "{gameName}#{tagLine}", e.g. "%s#%s".' %(current_info["gameName"], current_info["tagLine"]))
+                print('召唤师名称已变更为拳头ID。请以“{召唤师名称}#{尾标}”的格式输入。\nSummoner name has been replaced with Riot ID. Please input the name in this format: "{gameName}#{tagLine}", e.g. "%s#%s".' %(current_info["gameName"], current_info["tagLine"]))
             elif "accountId" in info:
                 displayName = info["displayName"] #用于文件名命名（For use of file naming）
                 puuid = info["puuid"]
