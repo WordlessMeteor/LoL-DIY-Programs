@@ -34,7 +34,7 @@
             "calculations": {},
             "dataValues": {
                 "DamageMod": 0.5,
-                "Range": 700.0
+                "Range": 1000.0
             },
             "desc": "对一个敌人造成伤害时，还会对其友军造成<trueDamage>@DamageMod*100@%真实伤害</trueDamage>，前提是其友军在附近。",
             "iconLarge": "assets/ux/cherry/augments/icons/chainlightning_large.arena_augments_v2.png",
@@ -584,8 +584,8 @@
             "calculations": {},
             "dataValues": {
                 "Cooldown": 2.0,
-                "MaxHealthDamagePerMissile": 0.007000000216066837,
-                "MaxRangeThreshold": 700.0,
+                "MaxHealthDamagePerMissile": 0.004999999888241291,
+                "MaxRangeThreshold": 1000.0,
                 "NumberOfMissiles": 3.0
             },
             "desc": "用一个主动技能造成伤害时，会对每个被命中的敌人发射@NumberOfMissiles@个魔法飞弹，每个魔法飞弹基于飞行距离至多造成<trueDamage>@MaxHealthDamagePerMissile*300@%最大生命值的真实伤害</trueDamage>。",
@@ -664,8 +664,7 @@
                 }
             },
             "dataValues": {
-                "MissileWidth": 50.0,
-                "OrbitDistance": 300.0
+                "MissileWidth": 50.0
             },
             "desc": "卫星会以你的攻击距离为半径环绕于你，对途经的敌人们造成<magicDamage>@StarDamage@魔法伤害</magicDamage>。",
             "iconLarge": "assets/ux/cherry/augments/icons/centeroftheuniverse_large.arena_augments_v2.png",
@@ -1059,8 +1058,8 @@
             "apiName": "BreadAndButter",
             "calculations": {},
             "dataValues": {
-                "QAbilityHaste": 150.0,
-                "QReducedAbilityHaste": 150.0
+                "QAbilityHaste": 200.0,
+                "QReducedAbilityHaste": 200.0
             },
             "desc": "你的Q获得@QAbilityHaste@技能急速。",
             "iconLarge": "assets/ux/cherry/augments/icons/breadandbutter_large.arena_augments_v2.png",
@@ -1090,7 +1089,7 @@
             "apiName": "FullyAutomated",
             "calculations": {},
             "dataValues": {
-                "AutocastFlatCDR": 3.0
+                "AutocastFlatCDR": 2.0
             },
             "desc": "你的<keywordMajor>自动施放</keywordMajor>的冷却时间缩短@AutocastFlatCDR@秒并受益于你的技能急速。",
             "iconLarge": "assets/ux/cherry/augments/icons/fullyautomated_large.arena_augments_v2.png",
@@ -1180,7 +1179,7 @@
             "apiName": "BreadAndJam",
             "calculations": {},
             "dataValues": {
-                "WAbilityHaste": 150.0
+                "WAbilityHaste": 200.0
             },
             "desc": "你的W获得@WAbilityHaste@技能急速。",
             "iconLarge": "assets/ux/cherry/augments/icons/breadandjam_large.arena_augments_v2.png",
@@ -1671,7 +1670,7 @@
             "apiName": "BreadAndCheese",
             "calculations": {},
             "dataValues": {
-                "EAbilityHaste": 150.0
+                "EAbilityHaste": 200.0
             },
             "desc": "你的E获得@EAbilityHaste@技能急速。",
             "iconLarge": "assets/ux/cherry/augments/icons/breadandcheese_large.arena_augments_v2.png",
@@ -1807,8 +1806,10 @@
             "apiName": "Deathtouch",
             "calculations": {},
             "dataValues": {
+                "AttackSpeedRatio": 0.0010000000474974513,
                 "BleedDuration": 5.0,
                 "CurseCounter": 1.0,
+                "OnHitDamageRatio": 0.36000001430511475,
                 "PercentMaxHPDamagePer5Seconds": 0.029999999329447746
             },
             "desc": "你的攻击施加@CurseCounter@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br><br>{{ Cherry_Curse_WithTracker }}",
@@ -1817,7 +1818,7 @@
             "id": 217,
             "name": "死亡触摸",
             "rarity": 4,
-            "tooltip": "你的攻击施加@CurseCounter@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>{{ Cherry_Curse }}<br><br>上个回合已偷取的生命值：@f1@<br>已偷取生命值的总和：@f2@"
+            "tooltip": "Cherry_Deathtouch_Tooltip"
         },
         {
             "apiName": "Quest_AngelofRetribution",
@@ -1959,7 +1960,7 @@
             "apiName": "StackosaurusRex",
             "calculations": {},
             "dataValues": {
-                "StackModifier": 1.0
+                "StackModifier": 0.5
             },
             "desc": "在你获得一个技能的永久<keywordMajor>层数</keywordMajor>时，多获得@StackModifier*100@%！",
             "iconLarge": "assets/ux/cherry/augments/icons/stackosaurusrex_large.arena_augments_v2.png",
@@ -1989,8 +1990,8 @@
             "apiName": "FeyMagic",
             "calculations": {},
             "dataValues": {
-                "PolyCooldown": 8.0,
-                "PolyDuration": 1.5,
+                "PolyCooldown": 15.0,
+                "PolyDuration": 2.0,
                 "WEnemySlow": 60.0
             },
             "desc": "你的终极技能的伤害会对敌人造成@PolyDuration@秒<status>变形</status>效果(@PolyCooldown@秒冷却时间)。",
@@ -2020,9 +2021,10 @@
             "apiName": "Doomsayer",
             "calculations": {},
             "dataValues": {
+                "AdaptiveForceRatio": 0.44999998807907104,
                 "BleedDuration": 5.0,
                 "Cooldown": 1.5,
-                "CurseCounter": 2.0,
+                "CurseCounter": 1.0,
                 "PercentMaxHPDamagePer5Seconds": 0.029999999329447746
             },
             "desc": "你的技能对命中的敌方英雄施加@CurseCounter@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>{{ Cherry_Curse_WithTracker }}",
@@ -2031,7 +2033,7 @@
             "id": 219,
             "name": "末日预言者",
             "rarity": 8,
-            "tooltip": "你的技能对命中的敌方英雄施加@CurseCounter@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>{{ Cherry_Curse_WithTracker }}"
+            "tooltip": "Cherry_Doomsayer_Tooltip"
         },
         {
             "apiName": "Flashy",
@@ -2052,8 +2054,8 @@
             "calculations": {},
             "dataValues": {
                 "ReviveDuration": 1.5,
-                "ReviveMod": 0.75,
-                "SecondReviveMod": 0.5,
+                "ReviveMod": 0.6499999761581421,
+                "SecondReviveMod": 0.3499999940395355,
                 "SecondSizeMod": -0.4000000059604645,
                 "SizeMod": -0.20000000298023224
             },
@@ -2343,12 +2345,12 @@
                     "mFormulaParts": [
                         {
                             "__type": "ByCharLevelInterpolationCalculationPart",
-                            "mEndValue": 30.0,
-                            "mStartValue": 13.0
+                            "mEndValue": 45.0,
+                            "mStartValue": 15.0
                         },
                         {
                             "__type": "StatByCoefficientCalculationPart",
-                            "mCoefficient": 0.30000001192092896,
+                            "mCoefficient": 0.4000000059604645,
                             "mStat": 2
                         }
                     ]
@@ -2362,12 +2364,12 @@
                                 {
                                     "__type": "Breakpoint",
                                     "mLevel": 11,
-                                    "{57fdc438}": 10.0
+                                    "{57fdc438}": 15.0
                                 },
                                 {
                                     "__type": "Breakpoint",
                                     "mLevel": 14,
-                                    "{57fdc438}": 25.0
+                                    "{57fdc438}": 30.0
                                 }
                             ],
                             "mLevel1Value": 30.0,
@@ -2459,8 +2461,10 @@
             },
             "dataValues": {
                 "BleedDuration": 5.0,
-                "CurseCounter": 1.0,
-                "Range": 500.0
+                "CurseStacksPerTick": 1.0,
+                "MaxHealthRatio": 1.0,
+                "Range": 500.0,
+                "TickCadence": 1.5
             },
             "desc": "你每秒对附近的敌方英雄们施加@CurseCounter*4@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>{{ Cherry_Curse_WithTracker }}",
             "iconLarge": "assets/ux/cherry/augments/icons/plaguebearer_large.arena_augments_v2.png",
@@ -2468,7 +2472,7 @@
             "id": 216,
             "name": "疫病使者",
             "rarity": 8,
-            "tooltip": "你每秒对附近的敌方英雄们施加@CurseCounter*4@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>{{ Cherry_Curse_WithTracker }}"
+            "tooltip": "Cherry_Plaguebearer_Tooltip"
         },
         {
             "apiName": "Goliath",
@@ -2509,8 +2513,8 @@
                     "mFormulaParts": [
                         {
                             "__type": "ByCharLevelInterpolationCalculationPart",
-                            "mEndValue": 60.0,
-                            "mStartValue": 20.0
+                            "mEndValue": 90.0,
+                            "mStartValue": 30.0
                         }
                     ]
                 },
@@ -2644,7 +2648,7 @@
                 "SmallBonusDamage": 0.15000000596046448,
                 "XLargeBonusDamage": 0.3499999940395355
             },
-            "desc": "体型变小，获得<speed>@MovespeedMod*100@%移动速度</speed>，并基于敌方英雄体型大于你的程度造成@SmallBonusDamage*100@%到@XLargeBonusDamage*100@%额外伤害。",
+            "desc": "Cherry_GiantSlayer_Summary",
             "iconLarge": "assets/ux/cherry/augments/icons/giantslayer_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/giantslayer_small.arena_augments_v2.png",
             "id": 195,
@@ -2720,8 +2724,9 @@
             "apiName": "Desecrator",
             "calculations": {},
             "dataValues": {
+                "ArmorMRRatio": 0.11999999731779099,
                 "BleedDuration": 5.0,
-                "CurseCounter": 3.0,
+                "CurseCounter": 1.0,
                 "PercentMaxHPDamagePer5Seconds": 0.05000000074505806
             },
             "desc": "<status>定身</status>敌方英雄时施加@CurseCounter@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>{{ Cherry_Curse_WithTracker }}",
@@ -2730,7 +2735,7 @@
             "id": 218,
             "name": "亵渎者",
             "rarity": 0,
-            "tooltip": "<status>定身</status>敌方英雄时施加@CurseCounter@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>{{ Cherry_Curse_WithTracker }}"
+            "tooltip": "Cherry_Desecrator_Tooltip"
         },
         {
             "apiName": "AllForYou",
@@ -2782,8 +2787,8 @@
                     "mFormulaParts": [
                         {
                             "__type": "ByCharLevelInterpolationCalculationPart",
-                            "mEndValue": 75.0,
-                            "mStartValue": 6.0
+                            "mEndValue": 60.0,
+                            "mStartValue": 5.0
                         },
                         {
                             "__type": "StatByNamedDataValueCalculationPart",
@@ -2801,8 +2806,8 @@
                     "mFormulaParts": [
                         {
                             "__type": "ByCharLevelInterpolationCalculationPart",
-                            "mEndValue": 300.0,
-                            "mStartValue": 24.0
+                            "mEndValue": 240.0,
+                            "mStartValue": 20.0
                         },
                         {
                             "__type": "StatByNamedDataValueCalculationPart",
@@ -2821,10 +2826,10 @@
                 }
             },
             "dataValues": {
-                "ADRatio": 0.1599999964237213,
-                "ADRatioTooltip": 0.6399999856948853,
-                "APRatio": 0.10000000149011612,
-                "APRatioTooltip": 0.4000000059604645,
+                "ADRatio": 0.14000000059604645,
+                "ADRatioTooltip": 0.5600000023841858,
+                "APRatio": 0.8999999761581421,
+                "APRatioTooltip": 0.36000001430511475,
                 "LaserLength": 700.0,
                 "RectHalfWidth": 60.0
             },
@@ -3028,7 +3033,7 @@
             "id": 25,
             "name": "俯冲轰炸",
             "rarity": 4,
-            "tooltip": "你的队伍在每回合的第一次阵亡会爆炸，对附近的敌人们造成<trueDamage>目标@PercentMaxHPDamage*100@%最大生命值的真实伤害</trueDamage>。<br><br>这个回合已造成的伤害：@f1@<br>阵亡伤害总和：@f2@"
+            "tooltip": "Cherry_DiveBomber_Tooltip"
         },
         {
             "apiName": "BluntForce",
@@ -3284,9 +3289,10 @@
             "apiName": "DarkBlessing",
             "calculations": {},
             "dataValues": {
+                "AbilityHasteRatio": 0.11999999731779099,
                 "BleedDuration": 5.0,
                 "Cooldown": 1.5,
-                "CurseCounter": 2.0,
+                "CurseCounter": 1.0,
                 "Radius": 450.0
             },
             "desc": "在你提供治疗/护盾时，对一个附近的敌方英雄施加@CurseCounter@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br>",
