@@ -326,7 +326,7 @@
             "calculations": {},
             "dataValues": {
                 "BuffDuration": 10.0,
-                "EmpowermentValue": 0.25
+                "EmpowermentValue": 0.15000000596046448
             },
             "desc": "获得召唤师技能<spellName>号令之旗</spellName>。<br><br><rules><spellName>号令之旗</spellName>可短暂增强你的友军</rules>。",
             "iconLarge": "assets/ux/cherry/augments/icons/bannerofcommand_large.arena_augments_v2.png",
@@ -1293,7 +1293,7 @@
             "id": 35,
             "name": "感受燃烧",
             "rarity": 8,
-            "tooltip": "<rules>对附近的所有敌方英雄施放<spellName>引燃</spellName>和<spellName>虚弱</spellName>。</rules><br><br>已造成的伤害总和：@f1@<br>已降低的伤害总和：@f2@"
+            "tooltip": "Cherry_FeeltheBurn_Tooltip"
         },
         {
             "apiName": "GuiltyPleasure",
@@ -1311,7 +1311,10 @@
                             "mDataValue": "{57e364d3}",
                             "mStat": 11
                         }
-                    ]
+                    ],
+                    "{37070a8d}": 4,
+                    "{cbcac618}": 4,
+                    "{e6eebb2f}": 4
                 }
             },
             "dataValues": {
@@ -1363,13 +1366,13 @@
                 "ShieldHealthRatio": 0.3499999940395355,
                 "StatIncrease": 0.5
             },
-            "desc": "你每个回合开始时都会被封印在竞技场中心，无法进行任何行动。在被封印的状态下，你拥有@DamageReductionMax*100@%伤害减免(基于已损失生命值)，并持续获得生命值、攻击力和法术强度(最大值为@StatIncrease*100@%)。在@ImprisonDuration@秒之后或在达到@BreakoutHealthThreshold*100@%生命值时，你会打破封印，<status>击退</status>敌人们并获得<shield>@ShieldHealthRatio*100@%最大生命值的护盾值</shield>。",
+            "desc": "你每个回合开始时都会被封印在竞技场中心，无法进行任何行动，持续@ImprisonDuration@秒，并获得大量伤害减免。在你爆炸后，会击退敌人们，治疗自身并获得大量属性提升。",
             "iconLarge": "assets/ux/cherry/augments/icons/raidboss_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/raidboss_small.arena_augments_v2.png",
             "id": 125,
             "name": "副本BOSS",
             "rarity": 8,
-            "tooltip": "你每个回合开始时都会被封印在竞技场中心，无法进行任何行动。在被封印的状态下，你拥有@DamageReductionMax*100@%伤害减免(基于已损失生命值)，并持续获得生命值、攻击力和法术强度(最大值为@StatIncrease*100@%)。在@ImprisonDuration@秒之后或在达到@BreakoutHealthThreshold*100@%生命值时，你会打破封印，<status>击退</status>敌人们并获得<shield>@ShieldHealthRatio*100@%最大生命值的护盾值</shield>。"
+            "tooltip": "你每个回合开始时都会被封印在竞技场中心，无法进行任何行动，持续@ImprisonDuration@秒，并获得大量伤害减免。在你爆炸后，会击退敌人们，治疗自身并获得大量属性提升。"
         },
         {
             "apiName": "OutlawsGrit",
@@ -1809,7 +1812,7 @@
                 "AttackSpeedRatio": 0.0010000000474974513,
                 "BleedDuration": 5.0,
                 "CurseCounter": 1.0,
-                "OnHitDamageRatio": 0.36000001430511475,
+                "OnHitDamageRatio": 0.23999999463558197,
                 "PercentMaxHPDamagePer5Seconds": 0.029999999329447746
             },
             "desc": "你的攻击施加@CurseCounter@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br><br>{{ Cherry_Curse_WithTracker }}",
@@ -2021,9 +2024,9 @@
             "apiName": "Doomsayer",
             "calculations": {},
             "dataValues": {
-                "AdaptiveForceRatio": 0.44999998807907104,
+                "AdaptiveForceRatio": 0.3499999940395355,
                 "BleedDuration": 5.0,
-                "Cooldown": 1.5,
+                "Cooldown": 2.0,
                 "CurseCounter": 1.0,
                 "PercentMaxHPDamagePer5Seconds": 0.029999999329447746
             },
@@ -2464,7 +2467,7 @@
                 "CurseStacksPerTick": 1.0,
                 "MaxHealthRatio": 1.0,
                 "Range": 500.0,
-                "TickCadence": 1.5
+                "TickCadence": 1.25
             },
             "desc": "你每秒对附近的敌方英雄们施加@CurseCounter*4@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>{{ Cherry_Curse_WithTracker }}",
             "iconLarge": "assets/ux/cherry/augments/icons/plaguebearer_large.arena_augments_v2.png",
@@ -2724,9 +2727,9 @@
             "apiName": "Desecrator",
             "calculations": {},
             "dataValues": {
-                "ArmorMRRatio": 0.11999999731779099,
+                "ArmorMRRatio": 0.07999999821186066,
                 "BleedDuration": 5.0,
-                "CurseCounter": 1.0,
+                "CurseCounter": 2.0,
                 "PercentMaxHPDamagePer5Seconds": 0.05000000074505806
             },
             "desc": "<status>定身</status>敌方英雄时施加@CurseCounter@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>{{ Cherry_Curse_WithTracker }}",

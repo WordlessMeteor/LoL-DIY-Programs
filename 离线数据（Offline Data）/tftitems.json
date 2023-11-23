@@ -1807,6 +1807,19 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT10_DiamondHands.TFT_Set10.png"
     },
     {
+        "guid": "aff8e947-f9ac-4f67-b9b2-7db5b79b0dd0",
+        "name": "投机者之刃",
+        "nameId": "TFT7_Item_ShimmerscaleGamblersBlade_HR",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 0,
+            "G": 0,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT10_GamblersBlade.TFT_Set10.png"
+    },
+    {
         "guid": "5c208d2b-737f-40f3-bb28-4a74842bc5df",
         "name": "朋克纹章",
         "nameId": "TFT10_Item_PunkEmblem",
@@ -4642,7 +4655,7 @@
     },
     {
         "guid": "8c9fe701-40f0-447d-bdc7-0de06101a646",
-        "name": "TFT7_Augment_LuckyGlovesPlus_Name",
+        "name": "幸运手套+",
         "nameId": "TFT7_Augment_LuckyGlovesPlus",
         "id": 0,
         "color": {
@@ -7436,6 +7449,19 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT10_DiamondHands.TFT_Set10.png"
     },
     {
+        "guid": "aff8e947-f9ac-4f67-b9b2-7db5b79b0dd0",
+        "name": "投机者之刃",
+        "nameId": "TFT7_Item_ShimmerscaleGamblersBlade_HR",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 0,
+            "G": 0,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT10_GamblersBlade.TFT_Set10.png"
+    },
+    {
         "guid": "5c208d2b-737f-40f3-bb28-4a74842bc5df",
         "name": "朋克纹章",
         "nameId": "TFT10_Item_PunkEmblem",
@@ -9308,9 +9334,9 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/100-Duck-Sized-Horses-III.png"
     },
     {
-        "guid": "0ca9cda9-d5da-481a-aee7-7318c3565c70",
+        "guid": "83b9d4ae-c8cf-4e96-ad6f-e16812977e3c",
         "name": "好运连连",
-        "nameId": "TFT10_Augment_LuckyStreak",
+        "nameId": "TFT10_Augment_LuckyStreak_HR",
         "id": 0,
         "color": {
             "R": 255,
@@ -9673,7 +9699,7 @@
     },
     {
         "guid": "8c9fe701-40f0-447d-bdc7-0de06101a646",
-        "name": "TFT7_Augment_LuckyGlovesPlus_Name",
+        "name": "幸运手套+",
         "nameId": "TFT7_Augment_LuckyGlovesPlus",
         "id": 0,
         "color": {
@@ -12506,6 +12532,19 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT10_DiamondHands.TFT_Set10.png"
     },
     {
+        "guid": "aff8e947-f9ac-4f67-b9b2-7db5b79b0dd0",
+        "name": "投机者之刃",
+        "nameId": "TFT7_Item_ShimmerscaleGamblersBlade_HR",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 0,
+            "G": 0,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT10_GamblersBlade.TFT_Set10.png"
+    },
+    {
         "guid": "5c208d2b-737f-40f3-bb28-4a74842bc5df",
         "name": "朋克纹章",
         "nameId": "TFT10_Item_PunkEmblem",
@@ -14157,19 +14196,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Building-an-army-I.png"
     },
     {
-        "guid": "2c5818e5-8984-4609-8cea-77dad84c3dd2",
-        "name": "冒险举动",
-        "nameId": "TFT9_Augment_RiskyMoves",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Risky-Moves-I.png"
-    },
-    {
         "guid": "d1a00c00-4117-47fb-b050-9c35f8047e42",
         "name": "不是今天",
         "nameId": "TFT9_Augment_NotToday",
@@ -14415,19 +14441,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Red-Buff-I.png"
-    },
-    {
-        "guid": "f245aaf9-3764-44a8-807c-0595ddec14af",
-        "name": "健康信用",
-        "nameId": "TFT9_Augment_MoneyHealsAllWounds",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Money-Heals-all-Wounds-III.png"
     },
     {
         "guid": "b36f42d7-9869-4aa3-a522-563af38ce628",
@@ -15172,7 +15185,7 @@
     },
     {
         "guid": "8c9fe701-40f0-447d-bdc7-0de06101a646",
-        "name": "TFT7_Augment_LuckyGlovesPlus_Name",
+        "name": "幸运手套+",
         "nameId": "TFT7_Augment_LuckyGlovesPlus",
         "id": 0,
         "color": {
@@ -15195,19 +15208,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Stationary-Support-III.TFT_Set9_Stage2.png"
-    },
-    {
-        "guid": "5a536851-e5ea-40e4-823c-56a87c153b26",
-        "name": "最小巨人+",
-        "nameId": "TFT9_Augment_TiniestTitanPlus",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Tiniest-TitanIII.png"
     },
     {
         "guid": "14657c11-a387-4697-bf0b-aa5e9fa27004",
