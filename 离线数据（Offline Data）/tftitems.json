@@ -4356,7 +4356,7 @@
     },
     {
         "guid": "3ee33c0f-c948-4c65-a840-32c1e62068be",
-        "name": "休克疗法",
+        "name": "电击疗法",
         "nameId": "TFT10_Augment_ShockTreatment",
         "id": 0,
         "color": {
@@ -9491,7 +9491,7 @@
     },
     {
         "guid": "3ee33c0f-c948-4c65-a840-32c1e62068be",
-        "name": "休克疗法",
+        "name": "电击疗法",
         "nameId": "TFT10_Augment_ShockTreatment",
         "id": 0,
         "color": {
@@ -14899,7 +14899,7 @@
     },
     {
         "guid": "3ee33c0f-c948-4c65-a840-32c1e62068be",
-        "name": "休克疗法",
+        "name": "电击疗法",
         "nameId": "TFT10_Augment_ShockTreatment",
         "id": 0,
         "color": {

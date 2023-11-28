@@ -931,7 +931,7 @@
     {
         "id": 1104,
         "name": "先锋之眼",
-        "description": "<mainText><stats></stats><br><br><br><br><active>主动 - 消耗：</active>已经碾碎了先锋之眼，开始了召唤峡谷先锋的仪式。你可以点击在峡谷先锋被召唤处来后点击它来控制它的冲锋方式。这个控制效果在它被召唤出来时可以进行一次，并在每有一座附近的敌方建筑物被摧毁后再进行一次。</mainText>",
+        "description": "<mainText><stats></stats><br><br><br><br><active>主动 - 消耗：</active>已经碾碎了先锋之眼，开始了召唤峡谷先锋的仪式。你可以在峡谷先锋被召唤出来后点击它来控制它的冲锋方式。这个控制效果在它被召唤出来时可以进行一次，并在每有一座附近的敌方建筑物被摧毁后再进行一次。</mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -5575,7 +5575,7 @@
     {
         "id": 3513,
         "name": "先锋之眼",
-        "description": "<mainText><stats></stats><br><br><br><br><active>主动 - 消耗：</active>已经碾碎了先锋之眼，开始了召唤峡谷先锋的仪式。你可以点击在峡谷先锋被召唤处来后点击它来控制它的冲锋方式。这个控制效果在它被召唤出来时可以进行一次，并在每有一座附近的敌方建筑物被摧毁后再进行一次。</mainText>",
+        "description": "<mainText><stats></stats><br><br><br><br><active>主动 - 消耗：</active>已经碾碎了先锋之眼，开始了召唤峡谷先锋的仪式。你可以在峡谷先锋被召唤出来后点击它来控制它的冲锋方式。这个控制效果在它被召唤出来时可以进行一次，并在每有一座附近的敌方建筑物被摧毁后再进行一次。</mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -12364,7 +12364,7 @@
     {
         "id": 226664,
         "name": "涡轮炼金罐",
-        "description": "<mainText><stats><buffedStat>600</buffedStat>生命值<br><attention>40</attention>魔法抗性<br><attention>100%</attention>基础生命回复</stats><br><br><br><br><active>主动 - </active> <active>极限超载：</active>在朝着敌方英雄或敌方防御塔移动时会提供<speed>40%移动速度</speed>，持续4秒。一旦贴近一名敌方英雄(或在4秒后)，你就会放出一道冲击波，使附近敌方英雄<status>减速</status>-50%，持续1.5秒(20秒)。</mainText>",
+        "description": "<mainText><stats><buffedStat>600</buffedStat>生命值<br><attention>40</attention>魔法抗性<br><attention>100%</attention>基础生命回复</stats><br><br><br><br><active>主动 - </active> <active>极限超载：</active>在朝着敌方英雄或敌方防御塔移动时会提供<speed>80%移动速度</speed>，持续4秒。一旦贴近一名敌方英雄(或在4秒后)，你就会放出一道冲击波，使附近敌方英雄<status>减速</status>-50%，持续1.5秒(30秒)。</mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -12575,7 +12575,7 @@
     {
         "id": 226691,
         "name": "德拉克萨的暮刃",
-        "description": "<mainText><stats><attention>60</attention>攻击力<br><buffedStat>22</buffedStat>穿甲<br><attention>20</attention>技能急速</stats><br><br><br><li><passive>夜行者：</passive>你的技能可基于目标的已损失生命值造成额外的一部分伤害。如果一名在过去3秒内曾被你造成过伤害的英雄阵亡，你就会进入持续1.5秒的对非建筑单位的<keywordStealth>不可被选取</keywordStealth>状态(10秒)。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得技能急速和移动速度。<br></mainText>",
+        "description": "<mainText><stats><attention>60</attention>攻击力<br><buffedStat>22</buffedStat>穿甲<br><attention>15</attention>技能急速</stats><br><br><br><li><passive>夜行者：</passive>你的技能可基于目标的已损失生命值造成额外的一部分伤害。如果一名在过去3秒内曾被你造成过伤害的英雄阵亡，你就会进入持续1.5秒的对非建筑单位的<keywordStealth>不可被选取</keywordStealth>状态(10秒)。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得技能急速和移动速度。<br></mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -12817,7 +12817,7 @@
     {
         "id": 227006,
         "name": " 台风",
-        "description": "<mainText><stats><buffedStat>70</buffedStat>攻击力<br><ornnBonus>40%</ornnBonus>攻击速度<br><attention>20%</attention>暴击几率<br><ornnBonus>10%</ornnBonus>移动速度</stats><br><br><br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得<attention>5</attention>攻击力。<br><br><rules>弹体伤害在敌人生命值低于25%时达到最大值。<br>【暴雨】的冲刺无法穿过地形。</rules><br><br><active>主动 - </active> <active>暴雨：</active>朝着目标方向冲刺，同时对你终点附近生命值最低的敌人发射3个弹体。造成物理伤害，对低生命值的目标时造成提升过的伤害。</mainText>",
+        "description": "<mainText><stats><ornnBonus>80</ornnBonus>攻击力<br><ornnBonus>55%</ornnBonus>攻击速度<br><attention>20%</attention>暴击几率<br><ornnBonus>10%</ornnBonus>移动速度</stats><br><br><br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得<attention>5</attention>攻击力。<br><br><rules>弹体伤害在敌人生命值低于25%时达到最大值。<br>【暴雨】的冲刺无法穿过地形。</rules><br><br><active>主动 - </active> <active>暴雨：</active>朝着目标方向冲刺，同时对你终点附近生命值最低的敌人发射3个弹体。造成物理伤害，对低生命值的目标时造成提升过的伤害。</mainText>",
         "active": true,
         "inStore": false,
         "from": [
@@ -13219,7 +13219,7 @@
     {
         "id": 227023,
         "name": " 季分点",
-        "description": "<mainText><stats><ornnBonus>500</ornnBonus>生命值<br><attention>40</attention>护甲<br><ornnBonus>40</ornnBonus>护甲<br><ornnBonus>40</ornnBonus>魔法抗性</stats><br><br><br><li><passive>闪芒：</passive>在<status>定身</status>英雄或<status>被定身</status>时，使该目标和附近的所有敌方英雄受到提升过的伤害。<br> <br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得 <attention>护甲和魔法抗性</attention></mainText>",
+        "description": "<mainText><stats><ornnBonus>600</ornnBonus>生命值<br><ornnBonus>40</ornnBonus>护甲<br><ornnBonus>40</ornnBonus>魔法抗性<br><ornnBonus>25</ornnBonus>技能急速</stats><br><br><br><li><passive>闪芒：</passive>在<status>定身</status>英雄或<status>被定身</status>时，使该目标和附近的所有敌方英雄受到提升过的伤害。<br> <br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得 <attention>护甲和魔法抗性</attention></mainText>",
         "active": false,
         "inStore": false,
         "from": [
