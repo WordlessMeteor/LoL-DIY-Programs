@@ -310,8 +310,8 @@
             "apiName": "SpinToWin",
             "calculations": {},
             "dataValues": {
-                "SpinDamageAmp": 0.20000000298023224,
-                "SpinHaste": 20.0
+                "SpinDamageAmp": 0.30000001192092896,
+                "SpinHaste": 30.0
             },
             "desc": "你的旋转类技能获得@SpinHaste@技能急速并且多造成@SpinDamageAmp*100@%伤害！",
             "iconLarge": "assets/ux/cherry/augments/icons/spintowin_large.arena_augments_v2.png",
@@ -569,7 +569,7 @@
             "apiName": "SlapAround",
             "calculations": {},
             "dataValues": {
-                "AdaptiveForce": 20.0
+                "AdaptiveForce": 30.0
             },
             "desc": "每当你<status>定身</status>一个敌人时，获得持续到回合结束的@AdaptiveForce@适应之力，可无限叠加。",
             "iconLarge": "assets/ux/cherry/augments/icons/slaparound_large.arena_augments_v2.png",
@@ -789,7 +789,7 @@
             "apiName": "Dematerialize",
             "calculations": {},
             "dataValues": {
-                "AdaptiveForce": 30.0
+                "AdaptiveForce": 20.0
             },
             "desc": "参与击杀后获得@AdaptiveForce@适应之力，每回合每个英雄1次。",
             "iconLarge": "assets/ux/cherry/augments/icons/dematerialize_large.arena_augments_v2.png",
@@ -1363,8 +1363,8 @@
                 "DamageReductionMax": 0.8500000238418579,
                 "ImprisonDuration": 9.0,
                 "MissingHPHealUponRelease": 0.30000001192092896,
-                "ShieldHealthRatio": 0.3499999940395355,
-                "StatIncrease": 0.5
+                "ShieldHealthRatio": 0.4000000059604645,
+                "StatIncrease": 0.6000000238418579
             },
             "desc": "你每个回合开始时都会被封印在竞技场中心，无法进行任何行动。在被封印的状态下，你拥有@DamageReductionMax*100@%伤害减免并持续获得体型、<healing>生命值</healing>、<physicalDamage>攻击力</physicalDamage>和<magicDamage>法术强度</magicDamage>(最大值为@StatIncrease*100@%)。在@ImprisonDuration@秒之后或在达到<healing>@BreakoutHealthThreshold*100@%生命值</healing>时，你会打破封印，<status>击退</status>敌人们并获得<shield>@ShieldHealthRatio*100@%最大生命值的护盾值</shield>。",
             "iconLarge": "assets/ux/cherry/augments/icons/raidboss_large.arena_augments_v2.png",
@@ -1971,7 +1971,7 @@
             "id": 204,
             "name": "叠角龙",
             "rarity": 0,
-            "tooltip": "{{ Cherry_StackosaurusRex_Summary }}<br><br>已获得的层数：@f1@"
+            "tooltip": "在你获得一个技能的永久<keywordMajor>层数</keywordMajor>时，多获得@StackModifier*100@%！"
         },
         {
             "apiName": "escAPADe",
@@ -2467,15 +2467,15 @@
                 "CurseStacksPerTick": 1.0,
                 "MaxHealthRatio": 1.0,
                 "Range": 500.0,
-                "TickCadence": 1.25
+                "TickCadence": 1.0
             },
-            "desc": "你每秒对附近的敌方英雄们施加@CurseStacksPerTick*4@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>每秒从被<keywordMajor>诅咒</keywordMajor>的敌人们身上获得永久的<healing>最大生命值</healing>，可随着层数的数量而提升。",
+            "desc": "你每秒对附近的敌方英雄们施加@CurseStacksPerTick@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>每秒从被<keywordMajor>诅咒</keywordMajor>的敌人们身上获得永久的<healing>最大生命值</healing>，可随着层数的数量而提升。",
             "iconLarge": "assets/ux/cherry/augments/icons/plaguebearer_large.arena_augments_v2.png",
             "iconSmall": "assets/ux/cherry/augments/icons/plaguebearer_small.arena_augments_v2.png",
             "id": 216,
             "name": "疫病使者",
             "rarity": 8,
-            "tooltip": "你每秒对附近的敌方英雄们施加@CurseStacksPerTick*4@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>{{ Cherry_Curse }}<br><br>获得相当于@MaxHealthRatio*100@%<keywordMajor>诅咒能量</keywordMajor>的<healing>最大生命值</healing>。<br><br>已获得的最大生命值：@f1@"
+            "tooltip": "你每秒对附近的敌方英雄们施加@CurseStacksPerTick@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>{{ Cherry_Curse }}<br><br>获得相当于@MaxHealthRatio*100@%<keywordMajor>诅咒能量</keywordMajor>的<healing>最大生命值</healing>。<br><br>已获得的最大生命值：@f1@"
         },
         {
             "apiName": "Goliath",
@@ -2483,7 +2483,7 @@
             "dataValues": {
                 "ADAmp": 0.15000000596046448,
                 "APAmp": 0.15000000596046448,
-                "HealthAmp": 0.30000001192092896,
+                "HealthAmp": 0.3499999940395355,
                 "SizeAmp": 0.5
             },
             "desc": "体型变大，获得@HealthAmp*100@%<scaleHealth>生命值</scaleHealth>和@ADAmp*100@% <scaleAP>适应之力</scaleAP>。",
@@ -2644,12 +2644,12 @@
             "apiName": "GiantSlayer",
             "calculations": {},
             "dataValues": {
-                "LargeBonusDamage": 0.30000001192092896,
-                "MedBonusDamage": 0.20000000298023224,
+                "LargeBonusDamage": 0.25,
+                "MedBonusDamage": 0.15000000596046448,
                 "MovespeedMod": 0.30000001192092896,
                 "SizeMod": 0.25,
-                "SmallBonusDamage": 0.15000000596046448,
-                "XLargeBonusDamage": 0.3499999940395355
+                "SmallBonusDamage": 0.10000000149011612,
+                "XLargeBonusDamage": 0.30000001192092896
             },
             "desc": "体型变小，获得<speed>移动速度</speed>，并基于敌方英雄体型大于你的程度造成额外伤害。",
             "iconLarge": "assets/ux/cherry/augments/icons/giantslayer_large.arena_augments_v2.png",
@@ -2727,7 +2727,7 @@
             "apiName": "Desecrator",
             "calculations": {},
             "dataValues": {
-                "ArmorMRRatio": 0.07999999821186066,
+                "ArmorMRRatio": 0.10000000149011612,
                 "BleedDuration": 5.0,
                 "CurseCounter": 2.0,
                 "PercentMaxHPDamagePer5Seconds": 0.05000000074505806
@@ -2831,7 +2831,7 @@
             "dataValues": {
                 "ADRatio": 0.14000000059604645,
                 "ADRatioTooltip": 0.5600000023841858,
-                "APRatio": 0.8999999761581421,
+                "APRatio": 0.09000000357627869,
                 "APRatioTooltip": 0.36000001430511475,
                 "LaserLength": 700.0,
                 "RectHalfWidth": 60.0
@@ -3163,7 +3163,7 @@
             "apiName": "Quest_SteelYourHeart",
             "calculations": {},
             "dataValues": {
-                "StackMultiplication": 3.0,
+                "StackMultiplication": 4.0,
                 "StackThreshold": 400.0,
                 "StacktoRegenConversion": 0.10000000149011612
             },
@@ -3325,7 +3325,7 @@
             "calculations": {},
             "dataValues": {
                 "Cooldown": 8.0,
-                "DamageStorePercentage": 0.30000001192092896,
+                "DamageStorePercentage": 0.4000000059604645,
                 "MarkDuration": 5.0,
                 "VFXHighDamageThreshold": 500.0
             },

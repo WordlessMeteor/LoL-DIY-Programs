@@ -881,15 +881,15 @@
     },
     {
         "id": 8313,
-        "name": "PerfectTiming",
+        "name": "完美时机",
         "majorChangePatchVersion": "",
-        "tooltip": "",
-        "shortDesc": "",
-        "longDesc": "",
+        "tooltip": "开始游戏时带着一个始动的秒表，可在对局开始14分钟后变成一个秒表。你每次参与击杀后，都会使这个时间点提前120秒。<br><br>秒表有一个一次性使用的凝滞效果（凝滞持续2.5秒）。",
+        "shortDesc": "获得一个免费的始动的秒表。在对局开始14分钟后，它会有一个一次性使用的<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Stasis'>凝滞</lol-uikit-tooltipped-keyword>效果。<br><br>每次<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Takedown'>参与击杀</lol-uikit-tooltipped-keyword>后都会使这个时间点提前120秒。",
+        "longDesc": "开始游戏时带着一个始动的秒表，可在对局开始14分钟后变成一个秒表。你每次参与击杀后，都会使这个时间点提前120秒。<br><br>秒表有一个一次性使用的凝滞效果（凝滞持续2.5秒）。",
         "recommendationDescriptor": "",
-        "iconPath": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/PerfectTiming/AlchemistCabinet.png",
+        "iconPath": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/PerfectTiming/PerfectTiming.png",
         "endOfGameStatDescs": [
-            ""
+            "时机：完美"
         ],
         "recommendationDescriptorAttributes": {
             "kUtility": 10

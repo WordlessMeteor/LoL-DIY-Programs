@@ -1188,7 +1188,7 @@
                     },
                     {
                         "name": "GrandPrizeHighscore",
-                        "value": 399999.0000,
+                        "value": 345678.0000,
                         "format_string": ""
                     },
                     {
@@ -1362,7 +1362,7 @@
         ]
     },
     {
-        "display_name": "乡村乐",
+        "display_name": "乡村音乐",
         "trait_id": "Set10_Country",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Country.TFT_Set10.png",

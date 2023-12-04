@@ -5109,19 +5109,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Blinged-Out-II.TFT_Set10.png"
     },
     {
-        "guid": "7b9e8da1-3dac-41e3-987a-cd81a97aa82f",
-        "name": "分享聚光灯",
-        "nameId": "TFT10_Augment_MesmerizingPerformance",
-        "id": 0,
-        "color": {
-            "R": 162,
-            "B": 48,
-            "G": 153,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Mesmerizing-Performance-II.TFT_Set10.png"
-    },
-    {
         "guid": "c8f1160b-b6e2-4f7e-86a9-107a9db1d2a6",
         "name": "16金币",
         "nameId": "TFT_Assist_Gold_16",
@@ -9646,19 +9633,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/The-Silver-Veil-I.TFT_Set10.png"
     },
     {
-        "guid": "0bdca75b-45cf-4725-a6d4-e727d3778094",
-        "name": "救援已在路上",
-        "nameId": "TFT10_Augment_HelpIsOnTheWay",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Help-Is-On-The-Way-I.TFT_Set10.png"
-    },
-    {
         "guid": "e65118c4-cba4-483c-8f5a-5cd36239e3b7",
         "name": "辅助宝库",
         "nameId": "TFT9_Augment_SupportCache",
@@ -10190,19 +10164,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Blinged-Out-II.TFT_Set10.png"
-    },
-    {
-        "guid": "7b9e8da1-3dac-41e3-987a-cd81a97aa82f",
-        "name": "分享聚光灯",
-        "nameId": "TFT10_Augment_MesmerizingPerformance",
-        "id": 0,
-        "color": {
-            "R": 162,
-            "B": 48,
-            "G": 153,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Mesmerizing-Performance-II.TFT_Set10.png"
     },
     {
         "guid": "c8f1160b-b6e2-4f7e-86a9-107a9db1d2a6",
@@ -13767,19 +13728,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Stars-are-born-II.png"
     },
     {
-        "guid": "24bd4de7-5e98-4458-9e32-a44cb12a5e57",
-        "name": "极客发明",
-        "nameId": "TFT9_Augment_ImpromptuInventions",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Impromptu-Invention-II.png"
-    },
-    {
         "guid": "08797c95-3b8d-488c-bd7e-3854f9df3ee0",
         "name": "一二二三",
         "nameId": "TFT9_Augment_OneTwosThree",
@@ -15624,19 +15572,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Blinged-Out-II.TFT_Set10.png"
-    },
-    {
-        "guid": "7b9e8da1-3dac-41e3-987a-cd81a97aa82f",
-        "name": "分享聚光灯",
-        "nameId": "TFT10_Augment_MesmerizingPerformance",
-        "id": 0,
-        "color": {
-            "R": 162,
-            "B": 48,
-            "G": 153,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Mesmerizing-Performance-II.TFT_Set10.png"
     },
     {
         "guid": "c8f1160b-b6e2-4f7e-86a9-107a9db1d2a6",
