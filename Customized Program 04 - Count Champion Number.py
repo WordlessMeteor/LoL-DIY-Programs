@@ -313,7 +313,7 @@ async def count_all_champions(connection):
     print(header, end = "")
     f.write(header)
     champions = await (await connection.request("GET", "/lol-champions/v1/inventories/%s/champions" %summoner["summonerId"])).json()
-    alias_dict = {4: "Twisted Fate", 5: "Xin Zhao", 11: "Master Yi", 20: "Nunu & Willump", 21: "Miss Fortune", 31: "Cho'Gath", 36: "Dr. Mundo", 59: "Jarvan IV", 62: "Monkey King", 64: "Lee Sin", 96: "Kog'Maw", 136: "Aurelion Sol", 145: "Kai'Sa", 223: "Tahm Kench", 421: "Rek'Sai", 888: "Renata Glasc"}
+    alias_dict = {4: "Twisted Fate", 5: "Xin Zhao", 11: "Master Yi", 20: "Nunu & Willump", 21: "Miss Fortune", 31: "Cho'Gath", 36: "Dr. Mundo", 59: "Jarvan IV", 62: "Monkey King", 64: "Lee Sin", 96: "Kog'Maw", 136: "Aurelion Sol", 145: "Kai'Sa", 161: "Vel'Koz", 200: "Bel'Veth", 223: "Tahm Kench", 421: "Rek'Sai", 888: "Renata Glasc", 897: "K'Sante"}
     for champion in champions:
         if champion["id"] in alias_dict.keys():
             alias = alias_dict[champion["id"]]
@@ -339,7 +339,7 @@ async def count_all_bots(connection):
     f.write(header)
     champions = await (await connection.request("GET", "/lol-champions/v1/inventories/%s/champions" %summoner["summonerId"])).json()
     await create_custom_lobby(connection)
-    alias_dict = {4: "Twisted Fate", 5: "Xin Zhao", 11: "Master Yi", 20: "Nunu & Willump", 21: "Miss Fortune", 31: "Cho'Gath", 36: "Dr. Mundo", 59: "Jarvan IV", 62: "Monkey King", 64: "Lee Sin", 96: "Kog'Maw", 136: "Aurelion Sol", 145: "Kai'Sa", 223: "Tahm Kench", 421: "Rek'Sai", 888: "Renata Glasc"}
+    alias_dict = {4: "Twisted Fate", 5: "Xin Zhao", 11: "Master Yi", 20: "Nunu & Willump", 21: "Miss Fortune", 31: "Cho'Gath", 36: "Dr. Mundo", 59: "Jarvan IV", 62: "Monkey King", 64: "Lee Sin", 96: "Kog'Maw", 136: "Aurelion Sol", 145: "Kai'Sa", 161: "Vel'Koz", 200: "Bel'Veth", 223: "Tahm Kench", 421: "Rek'Sai", 888: "Renata Glasc", 897: "K'Sante"}
     for champion in champions:
         bot = { "championId": champion["id"], "botDifficulty": "HARD", "teamId": "200"}
         await connection.request("POST", "/lol-lobby/v1/lobby/custom/bots", data = bot)
@@ -381,7 +381,7 @@ async def count_available_bots(connection):
     print(header, end = "")
     f.write(header)
     champions = await (await connection.request("GET", "/lol-champions/v1/inventories/%s/champions" %summoner["summonerId"])).json()
-    alias_dict = {4: "Twisted Fate", 5: "Xin Zhao", 11: "Master Yi", 20: "Nunu & Willump", 21: "Miss Fortune", 31: "Cho'Gath", 36: "Dr. Mundo", 59: "Jarvan IV", 62: "Monkey King", 64: "Lee Sin", 96: "Kog'Maw", 136: "Aurelion Sol", 145: "Kai'Sa", 223: "Tahm Kench", 421: "Rek'Sai", 888: "Renata Glasc"}
+    alias_dict = {4: "Twisted Fate", 5: "Xin Zhao", 11: "Master Yi", 20: "Nunu & Willump", 21: "Miss Fortune", 31: "Cho'Gath", 36: "Dr. Mundo", 59: "Jarvan IV", 62: "Monkey King", 64: "Lee Sin", 96: "Kog'Maw", 136: "Aurelion Sol", 145: "Kai'Sa", 161: "Vel'Koz", 200: "Bel'Veth", 223: "Tahm Kench", 421: "Rek'Sai", 888: "Renata Glasc", 897: "K'Sante"}
     available_bots = await (await connection.request("GET", "/lol-lobby/v2/lobby/custom/available-bots")).json()
     available_botIds = [bot["id"] for bot in available_bots]
     for champion in champions:
