@@ -353,20 +353,6 @@
             "tooltip": "你可以使用你的暴击几率(最大@MaxChance*100@%几率)来进行<crit>会心防御</crit>，使你有一定几率来使所受伤害降低@DamageReduction*100@%。获得@CritChance*100@%暴击几率。<br><br>这个回合已降低的伤害：@f1@<br>已降低伤害的总和：@f2@"
         },
         {
-            "apiName": "Itemizer",
-            "calculations": {},
-            "dataValues": {
-                "ItemStatAmp": 0.05000000074505806
-            },
-            "desc": "你每个回合售出的第一件装备会以全价售出。获得@ItemStatAmp*100@%装备提供的额外属性。",
-            "iconLarge": "assets/ux/cherry/augments/icons/midnightexpress_large.arena_augments_v2.png",
-            "iconSmall": "assets/ux/cherry/augments/icons/midnightexpress_small.arena_augments_v2.png",
-            "id": 110,
-            "name": "配装小能手",
-            "rarity": 0,
-            "tooltip": "你每个回合售出的第一件装备会以全价售出。获得@ItemStatAmp*100@%装备提供的额外属性。"
-        },
-        {
             "apiName": "WitchfulThinking",
             "calculations": {},
             "dataValues": {
@@ -424,20 +410,6 @@
             "name": "侵蚀",
             "rarity": 0,
             "tooltip": "对敌人造成伤害时会施加一层持续@ShredDuration@秒的@Shred*100@%<scaleArmor>护甲</scaleArmor>和<scaleMR>魔法抗性</scaleMR>击碎效果。<br><br>至多可叠加@MaxStacks@层。"
-        },
-        {
-            "apiName": "ZhonyasEpiphany",
-            "calculations": {},
-            "dataValues": {
-                "Duration": 3.0
-            },
-            "desc": "获得召唤师技能<spellName>中娅显灵</spellName>。<br><br><spellName>中娅显灵</spellName> 会使你进入持续3秒的凝滞状态，使你在此期间变得不可被选取且免疫伤害但无法进行任何行动，此外，重置你各个基础技能的冷却时间。",
-            "iconLarge": "assets/ux/cherry/augments/icons/zhonyasepiphany_large.arena_augments_v2.png",
-            "iconSmall": "assets/ux/cherry/augments/icons/zhonyasepiphany_small.arena_augments_v2.png",
-            "id": 99,
-            "name": "中娅显灵",
-            "rarity": 8,
-            "tooltip": "将你置于持续3秒的凝滞状态，使你在此期间变得不可被选取且免疫伤害但无法进行任何行动，此外，重置你各个基础技能的冷却时间。"
         },
         {
             "apiName": "MasterofDuality",
@@ -1130,23 +1102,6 @@
             "tooltip": "在为你的友军提供增益效果、<healing>治疗效果</healing>或<shield>护盾效果</shield>时，会对其附近的敌人们造成<trueDamage>@Damage@真实伤害</trueDamage>和持续2秒的@SlowAmount*-100@%<status>减速</status>。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
         },
         {
-            "apiName": "Evocation",
-            "calculations": {},
-            "dataValues": {
-                "Duration": 4.0,
-                "MSBuffAmount": 0.5,
-                "MSBuffDuration": 2.0,
-                "TotalHealAmount": 0.6000000238418579
-            },
-            "desc": "获得召唤师技能<spellName>活力焕发</spellName>。<br><br><rules><spellName>活力焕发</spellName>可让你进行引导来回复<healing>生命值</healing>和<scaleMana>法力值</scaleMana>。</rules>",
-            "iconLarge": "assets/ux/cherry/augments/icons/evocation_large.arena_augments_v2.png",
-            "iconSmall": "assets/ux/cherry/augments/icons/evocation_small.arena_augments_v2.png",
-            "id": 31,
-            "name": "活力焕发",
-            "rarity": 0,
-            "tooltip": "<rules>让你进行引导来回复<healing>生命值</healing>和<scaleMana>法力值</scaleMana>。然后你会获得持续@MSBuffDuration@秒的@MSBuffAmount*100@%移动速度。</rules><br><br>这个回合造成的治疗效果：@f1@<br>造成治疗效果的总和：@f2@"
-        },
-        {
             "apiName": "TwiceThrice",
             "calculations": {},
             "dataValues": {
@@ -1618,44 +1573,6 @@
             "tooltip": "获得<crit>@CritChance*100@%暴击几率</crit>和作用于<crit>暴击</crit>的@HealPercentage*100@%生命偷取。<br><br>这个回合已造成的治疗效果：@f1@<br>已造成的治疗效果总和：@f2@"
         },
         {
-            "apiName": "WindspeakersBlessing",
-            "calculations": {
-                "Resists": {
-                    "__type": "GameCalculation",
-                    "mFormulaParts": [
-                        {
-                            "__type": "ByCharLevelInterpolationCalculationPart",
-                            "mEndValue": 90.0,
-                            "mStartValue": 30.0
-                        }
-                    ]
-                }
-            },
-            "dataValues": {},
-            "desc": "你的<healing>治疗效果</healing>和<shield>护盾效果</shield>还会提升目标的<scaleArmor>护甲</scaleArmor>和<scaleMR>魔法抗性</scaleMR>，这些加成持续3秒。",
-            "iconLarge": "assets/ux/cherry/augments/icons/windspeakersblessing_large.arena_augments_v2.png",
-            "iconSmall": "assets/ux/cherry/augments/icons/windspeakersblessing_small.arena_augments_v2.png",
-            "id": 95,
-            "name": "风语者的祝福",
-            "rarity": 8,
-            "tooltip": "你的<healing>治疗效果</healing>和<shield>护盾效果</shield>还会提升目标@Resists@<scaleArmor>护甲</scaleArmor>和<scaleMR>魔法抗性</scaleMR>，这些加成持续3秒。"
-        },
-        {
-            "apiName": "Backstab",
-            "calculations": {},
-            "dataValues": {
-                "DamageAmp": 0.30000001192092896,
-                "Omnivamp": 0.30000001192092896
-            },
-            "desc": "你在敌人身后命中敌人时会获得@DamageAmp*100@%额外伤害和全能吸血。",
-            "iconLarge": "assets/ux/cherry/augments/icons/mythical_large.arena_augments_v2.png",
-            "iconSmall": "assets/ux/cherry/augments/icons/mythical_small.arena_augments_v2.png",
-            "id": 210,
-            "name": "背刺",
-            "rarity": 4,
-            "tooltip": "你在敌人身后命中敌人时会获得@DamageAmp*100@%额外伤害和全能吸血。<br><br>已造成的伤害：@f1@<br>已造成的治疗效果：@f2@"
-        },
-        {
             "apiName": "ThreadtheNeedle",
             "calculations": {},
             "dataValues": {
@@ -2026,7 +1943,7 @@
             "dataValues": {
                 "AdaptiveForceRatio": 0.3499999940395355,
                 "BleedDuration": 5.0,
-                "Cooldown": 2.0,
+                "Cooldown": 3.0,
                 "CurseCounter": 1.0,
                 "PercentMaxHPDamagePer5Seconds": 0.029999999329447746
             },
@@ -2845,18 +2762,6 @@
             "tooltip": "你正在面对的方向会出现一道镭射光束，可每秒造成<magicDamage>@LaserEyesTooltip@魔法伤害</magicDamage>。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
         },
         {
-            "apiName": "MidnightExpress",
-            "calculations": {},
-            "dataValues": {},
-            "desc": "每12秒<keywordMajor>自动施放</keywordMajor>以朝你的友军投掷一个灯笼。<br><br><rules>友军可通过点击灯笼来位移到你身边</rules>。",
-            "iconLarge": "assets/ux/cherry/augments/icons/midnightexpress_large.arena_augments_v2.png",
-            "iconSmall": "assets/ux/cherry/augments/icons/midnightexpress_small.arena_augments_v2.png",
-            "id": 55,
-            "name": "午夜快递",
-            "rarity": 0,
-            "tooltip": "每12秒<keywordMajor>自动施放</keywordMajor>以朝你的友军投掷一个灯笼。<br><br><rules>友军可通过点击灯笼来位移到你身边</rules>。"
-        },
-        {
             "apiName": "Mythical",
             "calculations": {},
             "dataValues": {},
@@ -2867,18 +2772,6 @@
             "name": "神话化身",
             "rarity": 4,
             "tooltip": "你可以购买任意数量的神话装备。"
-        },
-        {
-            "apiName": "BuckleUp",
-            "calculations": {},
-            "dataValues": {},
-            "desc": "在每场战斗回合开始时，生成一个【战地雪橇】。",
-            "iconLarge": "assets/ux/cherry/augments/icons/buckleup_large.arena_augments_v2.png",
-            "iconSmall": "assets/ux/cherry/augments/icons/buckleup_small.arena_augments_v2.png",
-            "id": 8,
-            "name": "雪橇战术",
-            "rarity": 0,
-            "tooltip": "在每场战斗回合开始时，生成一个【战地雪橇】。"
         },
         {
             "apiName": "Dashing",
@@ -3112,23 +3005,6 @@
             "name": "召唤师峡谷的轮盘",
             "rarity": 8,
             "tooltip": "将你的召唤师技能替换为随机一个召唤师技能。在你在战斗状态下使用一个召唤师技能时，将其换成另一个随机的召唤师技能，并设置@Cooldown@秒的冷却时间。"
-        },
-        {
-            "apiName": "VirtuousCycle",
-            "calculations": {},
-            "dataValues": {
-                "HealFromShieldPercentage": 0.20000000298023224,
-                "MinimumTrigger": 1.0,
-                "ShieldDuration": 5.0,
-                "ShieldFromHealPercentage": 0.20000000298023224
-            },
-            "desc": "你的<healing>治疗效果</healing>提供额外<shield>护盾</shield>，而你的<shield>护盾</shield>提供额外<healing>治疗效果</healing>。",
-            "iconLarge": "assets/ux/cherry/augments/icons/virtuouscycle_large.arena_augments_v2.png",
-            "iconSmall": "assets/ux/cherry/augments/icons/virtuouscycle_small.arena_augments_v2.png",
-            "id": 91,
-            "name": "良性循环",
-            "rarity": 0,
-            "tooltip": "你的<healing>治疗效果</healing>提供额外的<shield>@ShieldFromHealPercentage*100@%护盾</shield>，而你的<shield>护盾</shield>提供额外的<healing>@HealFromShieldPercentage@%治疗效果</healing>。<br><br>已造成的治疗效果总和：@f1@<br>已生成的护盾值总和：@f2@"
         },
         {
             "apiName": "ShrinkRay",

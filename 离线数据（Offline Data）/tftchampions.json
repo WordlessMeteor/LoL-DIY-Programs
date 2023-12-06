@@ -7,7 +7,7 @@
             "rarity": 0,
             "display_name": "虚空生物",
             "traits": [],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_VoidSpawn/HUD/Voidspawn_square.png"
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_VoidSpawn/HUD/Icons2D/Voidspawn_SquareCopy.png"
         }
     },
     {
@@ -73,7 +73,7 @@
             "rarity": 6,
             "display_name": "金蛋",
             "traits": [],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT5_DraconicEgg/HUD/TFT5_DraconicEgg_Square.png"
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT5_DraconicEgg/HUD/Icons2D/TFT5_DraconicEgg_Square.png"
         }
     },
     {
@@ -84,7 +84,7 @@
             "rarity": 6,
             "display_name": "辅助装锻造器",
             "traits": [],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_ArmoryKeySupport/HUD/TFT_ArmoryKeySupport_Square.TFT_9_5_ItemUpdate.png"
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_ArmoryKeySupport/HUD/TFT_ArmoryKeySupport_Square.png"
         }
     },
     {
@@ -832,7 +832,7 @@
             "rarity": 0,
             "display_name": "虚空生物",
             "traits": [],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_VoidSpawn/HUD/Voidspawn_square.png"
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_VoidSpawn/HUD/Icons2D/Voidspawn_SquareCopy.png"
         }
     },
     {
@@ -898,7 +898,7 @@
             "rarity": 6,
             "display_name": "金蛋",
             "traits": [],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT5_DraconicEgg/HUD/TFT5_DraconicEgg_Square.png"
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT5_DraconicEgg/HUD/Icons2D/TFT5_DraconicEgg_Square.png"
         }
     },
     {
@@ -909,7 +909,7 @@
             "rarity": 6,
             "display_name": "辅助装锻造器",
             "traits": [],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_ArmoryKeySupport/HUD/TFT_ArmoryKeySupport_Square.TFT_9_5_ItemUpdate.png"
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_ArmoryKeySupport/HUD/TFT_ArmoryKeySupport_Square.png"
         }
     },
     {
@@ -2256,7 +2256,7 @@
             "rarity": 0,
             "display_name": "虚空生物",
             "traits": [],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_VoidSpawn/HUD/Voidspawn_square.png"
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_VoidSpawn/HUD/Icons2D/Voidspawn_SquareCopy.png"
         }
     },
     {
@@ -2322,7 +2322,7 @@
             "rarity": 6,
             "display_name": "金蛋",
             "traits": [],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT5_DraconicEgg/HUD/TFT5_DraconicEgg_Square.png"
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT5_DraconicEgg/HUD/Icons2D/TFT5_DraconicEgg_Square.png"
         }
     },
     {
@@ -2333,7 +2333,7 @@
             "rarity": 6,
             "display_name": "辅助装锻造器",
             "traits": [],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_ArmoryKeySupport/HUD/TFT_ArmoryKeySupport_Square.TFT_9_5_ItemUpdate.png"
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_ArmoryKeySupport/HUD/TFT_ArmoryKeySupport_Square.png"
         }
     },
     {
@@ -3680,7 +3680,7 @@
             "rarity": 0,
             "display_name": "虚空生物",
             "traits": [],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_VoidSpawn/HUD/Voidspawn_square.png"
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_VoidSpawn/HUD/Icons2D/Voidspawn_SquareCopy.png"
         }
     },
     {
@@ -3746,7 +3746,7 @@
             "rarity": 6,
             "display_name": "金蛋",
             "traits": [],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT5_DraconicEgg/HUD/TFT5_DraconicEgg_Square.png"
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT5_DraconicEgg/HUD/Icons2D/TFT5_DraconicEgg_Square.png"
         }
     },
     {
@@ -3757,7 +3757,7 @@
             "rarity": 6,
             "display_name": "辅助装锻造器",
             "traits": [],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_ArmoryKeySupport/HUD/TFT_ArmoryKeySupport_Square.TFT_9_5_ItemUpdate.png"
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_ArmoryKeySupport/HUD/TFT_ArmoryKeySupport_Square.png"
         }
     },
     {

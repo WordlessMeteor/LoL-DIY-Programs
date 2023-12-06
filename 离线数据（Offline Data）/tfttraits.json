@@ -1204,7 +1204,7 @@
                 "effect_amounts": [
                     {
                         "name": "AttackDamage",
-                        "value": 3.5000,
+                        "value": 4.5000,
                         "format_string": ""
                     }
                 ],
@@ -1217,7 +1217,7 @@
                 "effect_amounts": [
                     {
                         "name": "AttackDamage",
-                        "value": 6.0000,
+                        "value": 7.5000,
                         "format_string": ""
                     }
                 ],
@@ -1230,7 +1230,7 @@
                 "effect_amounts": [
                     {
                         "name": "AttackDamage",
-                        "value": 10.0000,
+                        "value": 12.0000,
                         "format_string": ""
                     }
                 ],
@@ -2796,6 +2796,21 @@
                     {
                         "name": "HeartsPerLossStage9_HR",
                         "value": 50.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BonusHeartsOnFire",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "OnFireWinPenalty",
+                        "value": 0.4000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HeartsOnSuccessfileFireCashout",
+                        "value": 380.0000,
                         "format_string": ""
                     }
                 ]
@@ -6056,7 +6071,7 @@
         "display_name": "以绪塔尔",
         "trait_id": "Set9_Ixtal",
         "set": "TFTSet9_Stage2",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Ixtal.TFT_Set9_Stage2.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Ixtal.png",
         "tooltip_text": "获得多个【元素格】，这些格子会提供一个每局游戏都不同的加成。",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -6464,7 +6479,7 @@
         "display_name": "海洋之灾",
         "trait_id": "Set9_ReaverKing",
         "set": "TFTSet9_Stage2",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_ReaverKing.TFT_Set9_Stage2.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_ReaverKing.png",
         "tooltip_text": "【普朗克】在被放在前2排时会使用他的弯刀被动，并在被放在后2排时会使用他的手枪被动。",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -6481,7 +6496,7 @@
         "display_name": "比尔吉沃特",
         "trait_id": "Set9b_Bilgewater",
         "set": "TFTSet9_Stage2",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Bilgewater.TFT_Set9_Stage2.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Bilgewater.png",
         "tooltip_text": "比港鼠辈的攻击和技能会标记敌人。这个标记会将比港鼠辈们对该敌人的一部分已造成伤害储存起来。<br><br>被标记的敌人们会在@BarrageInterval@秒后被一颗炮弹击中，造成已储存的伤害外加一个固定数额的<physicalDamage>物理伤害</physicalDamage>。<br><br><row>(@MinUnits@) <physicalDamage>@Damage@</physicalDamage> + @DamagePercent@%已造成伤害</row><br><row>(@MinUnits@) <physicalDamage>@Damage@</physicalDamage> + @DamagePercent@%已造成伤害</row><br><row>(@MinUnits@) <physicalDamage>@Damage@</physicalDamage> + @DamagePercent@%已造成伤害</row><br><row>(@MinUnits@) <physicalDamage>@Damage@</physicalDamage> + @DamagePercent@%已造成伤害；附近的敌人们受到@SplashPercent@%炮弹伤害</row>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -6667,7 +6682,7 @@
         "display_name": "征服者",
         "trait_id": "Set9b_Vanquisher",
         "set": "TFTSet9_Stage2",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Vanquisher.TFT_Set9_Stage2.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Vanquisher.png",
         "tooltip_text": "来自【征服者】技能的伤害可以造成暴击。【征服者】们获得额外的暴击几率和暴击伤害。<br><br><expandRow>(@MinUnits@) @BaseCritChance@% %i:scaleCrit%，@CritDmg@% %i:scaleCritMult%</expandRow><br>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
