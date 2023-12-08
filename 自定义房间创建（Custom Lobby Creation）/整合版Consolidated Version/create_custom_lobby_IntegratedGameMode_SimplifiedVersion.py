@@ -20,8 +20,8 @@ from lcu_driver import Connector
 #-----------------------------------------------------------------------------
 import os, pandas, random, time
 localdata = pandas.read_excel("../../available-bots.xlsx")
-champions_CN = { int(localdata["championId"][bot]): localdata["CN"][bot] for bot in range(len(localdata)) }
-champions_EN = { int(localdata["championId"][bot]): localdata["EN"][bot] for bot in range(len(localdata)) }
+champions_CN = { int(localdata["championId"][bot]): localdata["name"][bot] for bot in range(len(localdata)) }
+champions_EN = { int(localdata["championId"][bot]): localdata["alias"][bot] for bot in range(len(localdata)) }
 all_champions = list(champions_CN.keys())
 
 connector = Connector()

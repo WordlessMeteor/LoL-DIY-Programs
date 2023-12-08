@@ -2627,7 +2627,7 @@
     },
     {
         "guid": "6ea8bb69-d504-4351-9156-bb7f048801c6",
-        "name": "tft_item_name_TFT10_Heartsteel_Cashout",
+        "name": "提现",
         "nameId": "TFT10_Heartsteel_Cashout",
         "id": 0,
         "color": {
@@ -2640,7 +2640,7 @@
     },
     {
         "guid": "e2c9834d-f7e0-444d-bc8b-14af6e888976",
-        "name": "tft_item_name_TFT10_Heartsteel_PushYourLuck_name",
+        "name": "加注",
         "nameId": "TFT10_Heartsteel_PushYourLuck",
         "id": 0,
         "color": {
@@ -2653,7 +2653,7 @@
     },
     {
         "guid": "35e73b53-73e7-4908-991b-dfea9b3d1274",
-        "name": "tft_item_name_TFT10_Heartsteel_ReallyPushYourLuck_name",
+        "name": "加注",
         "nameId": "TFT10_Heartsteel_ReallyPushYourLuck",
         "id": 0,
         "color": {
@@ -8295,7 +8295,7 @@
     },
     {
         "guid": "6ea8bb69-d504-4351-9156-bb7f048801c6",
-        "name": "tft_item_name_TFT10_Heartsteel_Cashout",
+        "name": "提现",
         "nameId": "TFT10_Heartsteel_Cashout",
         "id": 0,
         "color": {
@@ -8308,7 +8308,7 @@
     },
     {
         "guid": "e2c9834d-f7e0-444d-bc8b-14af6e888976",
-        "name": "tft_item_name_TFT10_Heartsteel_PushYourLuck_name",
+        "name": "加注",
         "nameId": "TFT10_Heartsteel_PushYourLuck",
         "id": 0,
         "color": {
@@ -8321,7 +8321,7 @@
     },
     {
         "guid": "35e73b53-73e7-4908-991b-dfea9b3d1274",
-        "name": "tft_item_name_TFT10_Heartsteel_ReallyPushYourLuck_name",
+        "name": "加注",
         "nameId": "TFT10_Heartsteel_ReallyPushYourLuck",
         "id": 0,
         "color": {
@@ -13352,7 +13352,7 @@
     },
     {
         "guid": "6ea8bb69-d504-4351-9156-bb7f048801c6",
-        "name": "tft_item_name_TFT10_Heartsteel_Cashout",
+        "name": "提现",
         "nameId": "TFT10_Heartsteel_Cashout",
         "id": 0,
         "color": {
@@ -13365,7 +13365,7 @@
     },
     {
         "guid": "e2c9834d-f7e0-444d-bc8b-14af6e888976",
-        "name": "tft_item_name_TFT10_Heartsteel_PushYourLuck_name",
+        "name": "加注",
         "nameId": "TFT10_Heartsteel_PushYourLuck",
         "id": 0,
         "color": {
@@ -13378,7 +13378,7 @@
     },
     {
         "guid": "35e73b53-73e7-4908-991b-dfea9b3d1274",
-        "name": "tft_item_name_TFT10_Heartsteel_ReallyPushYourLuck_name",
+        "name": "加注",
         "nameId": "TFT10_Heartsteel_ReallyPushYourLuck",
         "id": 0,
         "color": {

@@ -22,16 +22,16 @@ import os, pandas, random, shutil, time, unicodedata
 from wcwidth import wcswidth
 #localdata = pandas.read_excel("../../available-bots.xlsx")
 localdata = pandas.read_excel("../../available-bots.xlsx", sheet_name = "Sheet1")
-champions_CN = { int(localdata["championId"][bot]): localdata["CN"][bot] for bot in range(len(localdata)) }
-champions_EN = { int(localdata["championId"][bot]): localdata["EN"][bot] for bot in range(len(localdata)) }
+champions_CN = { int(localdata["championId"][bot]): localdata["name"][bot] for bot in range(len(localdata)) }
+champions_EN = { int(localdata["championId"][bot]): localdata["alias"][bot] for bot in range(len(localdata)) }
 all_champions = list(champions_CN.keys())
 print("是否查看可用电脑玩家列表？（输入任意键查看，否则不查看）\nCheck the availbale-bots list? (Any keys for Y, or null for N)")
 check_botlist = input()
 if check_botlist != "":
     print("*****************************************************************************")
-    print("championId\t" + "{0:^14}".format("CN") + "\t" + "{0:^14}".format("EN"))
+    print("championId\t" + "{0:^14}".format("name") + "\t" + "{0:^14}".format("alias"))
     for h in range(len(localdata)):
-        print("{0:<10}".format(str(localdata["championId"][h])) + "\t" + "{0:<14}".format(localdata["CN"][h]) + "\t" + "{0:<14}".format(localdata["EN"][h]))
+        print("{0:<10}".format(str(localdata["championId"][h])) + "\t" + "{0:<14}".format(localdata["name"][h]) + "\t" + "{0:<14}".format(localdata["alias"][h]))
     print("*****************************************************************************\n")
 ##localdata = pandas.read_excel("../../QueueID.xlsx")
 ##print("是否查看可用队列房间序号？（输入任意键查看，否则不查看）\nCheck the available QueueID list? (Any keys for Y, or null for N)")

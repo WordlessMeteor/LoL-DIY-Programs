@@ -1069,9 +1069,10 @@ async def search_recent_players(connection):
                     folder = "召唤师信息（Summoner Information）\\" + "外服（RIOT）" + "\\" + (platform_RIOT | platform_GARENA)[region] + "\\" + displayName
                 #print("召唤师英雄联盟对局记录如下：\nLoL match history is as follows:")
                 LoLHistory_get = True
+                begIndex_get, endIndex_get = 0, 500
                 while True:
                     try:
-                        LoLHistory = await (await connection.request("GET", "/lol-match-history/v1/products/lol/%s/matches?begIndex=0&endIndex=500" %(info["puuid"]))).json()
+                        LoLHistory = await (await connection.request("GET", "/lol-match-history/v1/products/lol/%s/matches?begIndex=%d&endIndex=%d" %(info["puuid"], begIndex_get, endIndex_get))).json()
                         #print(LoLHistory)
                         error_occurred = False
                         count = 0 #存储内部服务器错误次数（Stores the times of internal server error）
@@ -1083,7 +1084,7 @@ async def search_recent_players(connection):
                                 while "errorCode" in LoLHistory and "500 Internal Server Error" in LoLHistory["message"] and count <= 3: #在查询艾欧尼亚和黑色玫瑰大区的对局记录时，有时会产生如下报错：An error when looking up match history on HN1 and HN10 servers might occur as follows: {'errorCode': 'RPC_ERROR', 'httpStatus': 500, 'implementationDetails': {}, 'message': 'Failed due to Error deserializing json response for GET https: //hn1-cloud-acs.lol.qq.com/v1/stats/player_history/HN1/2936900903?begIndex=0&endIndex=500: Error: Invalid value. at offset 0. given body <html>\r\n<head><title>500 Internal Server Error</title></head>\r\n<body bgcolor="white">\r\n<center><h1>500 Internal Server Error</h1></center>\r\n<hr><center>nginx/1.10.0</center>\r\n</body>\r\n</html>\r\n'}
                                     count += 1
                                     print("正在进行第%d次尝试……\nTimes trying: No. %d ..." %(count, count))
-                                    LoLHistory = await (await connection.request("GET", "/lol-match-history/v1/products/lol/%s/matches?begIndex=0&endIndex=500" %(info["puuid"]))).json()
+                                    LoLHistory = await (await connection.request("GET", "/lol-match-history/v1/products/lol/%s/matches?begIndex=%d&endIndex=%d" %(info["puuid"], begIndex_get, endIndex_get))).json()
                             elif "body was empty" in LoLHistory["message"]:
                                 LoLHistory_get = False
                                 print("这位召唤师从5月1日起就没有进行过英雄联盟任何对局。\nThis summoner hasn't played any LoL game yet since May 1st.")
@@ -1095,14 +1096,19 @@ async def search_recent_players(connection):
                         print('该玩家共进行%d场对局。\nThis player has played %d matches.\n' %(LoLHistory["games"]["gameCount"], LoLHistory["games"]["gameCount"]))
                     except KeyError:
                         print(LoLHistory)
-                        url = "%s/lol-match-history/v1/products/lol/%s/matches?begIndex=0&endIndex=200" %(connection.address, info["puuid"])
-                        print("请打开以下网址，输入如下所示的用户名和密码如下，打开后在命令行中按回车键继续（Please open the following website, type in the username and password accordingly and press Enter to continue）：\n网址（URL）：\t\t%s\n用户名（Username）：\triot\n密码（Password）：\t%s" %(url, connection.auth_key))
+                        LoLHistory_url = "%s/lol-match-history/v1/products/lol/%s/matches?begIndex=0&endIndex=200" %(connection.address, info["puuid"])
+                        print("请打开以下网址，输入如下所示的用户名和密码如下，打开后在命令行中按回车键继续（Please open the following website, type in the username and password accordingly and press Enter to continue）：\n网址（URL）：\t\t%s\n用户名（Username）：\triot\n密码（Password）：\t%s\n或者输入空格分隔的两个自然数以重新指定对局索引下限和上限。\nOr submit two nonnegative integers split by space to respecify the begIndex and endIndex." %(LoLHistory_url, connection.auth_key))
                         cont = input()
                         if cont == "":
                             continue
                         else:
-                            LoLHistory_get = False
-                            break
+                            try:
+                                begIndex_get, endIndex_get = map(int, cont.split())
+                            except ValueError:
+                                LoLHistory_get = False
+                                break
+                            else:
+                                continue
                     else:
                         break
                 if not LoLHistory_get:
@@ -1388,8 +1394,7 @@ async def search_recent_players(connection):
                                     break
                                 else:
                                     try:
-                                        begIndex, endIndex = gameIndex.split()
-                                        begIndex, endIndex = int(begIndex), int(endIndex)
+                                        begIndex, endIndex = map(int, gameIndex.split())
                                     except ValueError:
                                         print("请以空格为分隔符输入对局索引的自然数类型的下界和上界！\nPlease enter the two nonnegative integers as the begIndex and endIndex of the matches split by space!")
                                         continue
@@ -1740,13 +1745,12 @@ async def search_recent_players(connection):
                             while True:
                                 gameIndex = input()
                                 if gameIndex == "":
-                                    begin, count = 0, 20
+                                    begin_get, count_get = 0, 20
                                 elif gameIndex == "0":
                                     break
                                 else:
                                     try:
-                                        begin, count = gameIndex.split()
-                                        begin, count = int(begin), int(count)
+                                        begin_get, count_get = map(int, gameIndex.split())
                                     except ValueError:
                                         print("请以空格为分隔符输入自然数类型的对局索引下界和对局数！\nPlease enter the two nonnegative integers as the begin and count of the matches split by space!")
                                         continue
@@ -1757,7 +1761,7 @@ async def search_recent_players(connection):
                             TFTHistory_get = True
                             while True:
                                 try:
-                                    TFTHistory = await (await connection.request("GET", "/lol-match-history/v1/products/tft/%s/matches?begin=%d&count=%d" %(info["puuid"], begin, count))).json()
+                                    TFTHistory = await (await connection.request("GET", "/lol-match-history/v1/products/tft/%s/matches?begin=%d&count=%d" %(info["puuid"], begin_get, count_get))).json()
                                     #print(TFTHistory)
                                     count = 0 #存储内部服务器错误次数（Stores the times of internal server error）
                                     if "errorCode" in TFTHistory:
@@ -1768,7 +1772,7 @@ async def search_recent_players(connection):
                                             while "errorCode" in TFTHistory and "500 Internal Server Error" in TFTHistory["message"] and count <= 3:
                                                 count += 1
                                                 print("正在进行第%d次尝试……\nTimes trying: No. %d ..." %(count, count))
-                                                TFTHistory = await (await connection.request("GET", "/lol-match-history/v1/products/tft/%s/matches?begin=%d&count=%d" %(info["puuid"], begin, count))).json()
+                                                TFTHistory = await (await connection.request("GET", "/lol-match-history/v1/products/tft/%s/matches?begin=%d&count=%d" %(info["puuid"], begin_get, count_get))).json()
                                     currentTime = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
                                     pkl5name = "Intermediate Object - TFTHistory - %s (%s).pkl" %(displayName, currentTime)
                                     #with open(os.path.join(folder, pkl5name), "wb") as IntObj5:
@@ -1781,13 +1785,18 @@ async def search_recent_players(connection):
                                     if "errorCode" in TFTHistory:
                                         print(TFTHistory)
                                         TFTHistory_url = "%s/lol-match-history/v1/products/tft/%s/matches?begin=0&count=200" %(connection.address, info["puuid"])
-                                        print("请打开以下网址，输入如下所示的用户名和密码，打开后在命令行中按回车键继续，或输入任意字符以切换召唤师（Please open the following website, type in the username and password accordingly and press Enter to continue or input anything to switch to another summoner）：\n网址（URL）：\t\t%s\n用户名（Username）：\triot\n密码（Password）：\t%s" %(TFTHistory_url, connection.auth_key))
+                                        print("请打开以下网址，输入如下所示的用户名和密码，打开后在命令行中按回车键继续，或输入任意字符以切换召唤师（Please open the following website, type in the username and password accordingly and press Enter to continue or input anything to switch to another summoner）：\n网址（URL）：\t\t%s\n用户名（Username）：\triot\n密码（Password）：\t%s\n或者输入空格分隔的两个自然数以重新指定对局索引下限和对局数。\nOr submit two nonnegative integers split by space to respecify the begin and count." %(TFTHistory_url, connection.auth_key))
                                         cont = input()
                                         if cont == "":
                                             continue
                                         else:
-                                            TFTHistory_get = False
-                                            break
+                                            try:
+                                                begin_get, count_get = map(int, cont.split())
+                                            except ValueError:
+                                                TFTHistory_get = False
+                                                break
+                                            else:
+                                                continue
                                 else:
                                     break
                             if not TFTHistory_get:
