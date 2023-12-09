@@ -3094,7 +3094,7 @@
     {
         "id": 3053,
         "name": "斯特拉克的挑战护手",
-        "description": "<mainText><stats><attention>450</attention>生命值</stats><br><br><passive>抓人双爪</passive><br>获得额外攻击力。<br><br><passive>救主灵刃</passive> ((0秒冷却时间))<br>在受到将使你的生命值跌到30%以下的魔法伤害时，获得护盾值、体型和韧性。</mainText>",
+        "description": "<mainText><stats><attention>450</attention>生命值<br><attention>15%</attention>韧性</stats><br><br><passive>抓人双爪</passive><br>获得额外攻击力。<br><br><passive>救主灵刃</passive> ((0秒冷却时间))<br>在受到将使你的生命值跌到30%以下的魔法伤害时，获得护盾值、体型和韧性。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7717,7 +7717,7 @@
     {
         "id": 6657,
         "name": "时光之杖",
-        "description": "<mainText><stats><attention>50</attention>法术强度<br><attention>300</attention>生命值<br><attention>300</attention>法力</stats><br><br><passive>时无限</passive><br>这件装备每60秒获得20生命值、20法力值和4法术强度，至多至10层。在达到最大层数时，还会使英雄等级提升1级。<br><br><passive>永恒</passive><br>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值。施放一个技能时，你会治疗自身相当于25%法力消耗的生命值，每次施法每秒最多治疗20生命值。</mainText>",
+        "description": "<mainText><stats><attention>50</attention>法术强度<br><attention>300</attention>生命值<br><attention>300</attention>法力</stats><br><br><br><br>这件装备每60秒获得20生命值、20法力值和4法术强度，至多叠加10层，最大值为200生命值、200法力值和40法术强度。在达到最大层数时，还会使英雄等级提升1级并使所有【永恒】效果提升0%。<br><li><passive>永恒：</passive>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值；花费法力时，你会回复相当于25%法力消耗的生命值，每次施法每秒最多治疗20生命值。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9195,7 +9195,7 @@
     {
         "id": 7026,
         "name": " 不可言说的寄生物",
-        "description": "<mainText><stats><ornnBonus>550</ornnBonus>生命值<br><ornnBonus>40</ornnBonus>护甲<br><ornnBonus>40</ornnBonus>魔法抗性</stats><br><br><passive>虚空生物的复原力</passive><br>在与英雄的战斗期间获得强化，使你的额外<scaleArmor>护甲</scaleArmor>和<scaleMR>魔法抗性</scaleMR>提升，持续到战斗结束为止。</mainText>",
+        "description": "<mainText><stats><ornnBonus>550</ornnBonus>生命值<br><ornnBonus>60</ornnBonus>护甲<br><ornnBonus>60</ornnBonus>魔法抗性</stats><br><br><passive>虚空生物的复原力</passive><br>在与英雄的战斗期间获得强化，使你的额外<scaleArmor>护甲</scaleArmor>和<scaleMR>魔法抗性</scaleMR>提升，持续到战斗结束为止。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9251,7 +9251,7 @@
     {
         "id": 7028,
         "name": " 无限会聚",
-        "description": "<mainText><stats><ornnBonus>70</ornnBonus>法术强度<br><ornnBonus>500</ornnBonus>生命值<br><ornnBonus>550</ornnBonus>法力</stats><br><br><passive>时无限</passive><br>这件装备每60秒获得20生命值、20法力值和4法术强度，至多至10层。在达到最大层数时，还会使英雄等级提升1级。<br><br><passive>永恒</passive><br>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值。施放一个技能时，你会治疗自身相当于25%法力消耗的生命值，每次施法每秒最多治疗20生命值。</mainText>",
+        "description": "<mainText><stats><ornnBonus>70</ornnBonus>法术强度<br><ornnBonus>500</ornnBonus>生命值<br><ornnBonus>550</ornnBonus>法力</stats><br><br><br><br>这件装备每60秒获得20生命值、20法力值和4法术强度，至多叠加10层，最大值为200生命值、200法力值和40法术强度。在达到最大层数时，还会使英雄等级提升1级并使所有【永恒】效果提升0%。<br><li><passive>永恒：</passive>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值；花费法力时，你会回复相当于25%法力消耗的生命值，每次施法每秒最多治疗20生命值。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -10296,7 +10296,7 @@
     {
         "id": 223053,
         "name": "斯特拉克的挑战护手",
-        "description": "<mainText><stats><nerfedStat>350</nerfedStat>生命值</stats><br><br><br><li><passive>抓人双爪：</passive>获得相当于额外攻击力的基础攻击力。<li><passive>救主灵刃：</passive>在受到将使你的生命值跌到30%以下的伤害时，提供持续衰减的护盾值，以及韧性。</mainText>",
+        "description": "<mainText><stats><nerfedStat>350</nerfedStat>生命值<br><attention>15%</attention>韧性</stats><br><br><br><li><passive>抓人双爪：</passive>获得相当于额外攻击力的基础攻击力。<li><passive>救主灵刃：</passive>在受到将使你的生命值跌到30%以下的伤害时，提供持续衰减的护盾值，以及韧性。</mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -12296,7 +12296,7 @@
     {
         "id": 226657,
         "name": "时光之杖",
-        "description": "<mainText><stats><buffedStat> 70</buffedStat>法术强度<br><attention>300</attention>生命值<br><attention>300</attention>法力</stats><br><br><passive>时无限</passive><br>这件装备每60秒获得30生命值、30法力值和4法术强度，至多至10层。在达到最大层数时，还会使英雄等级提升1级。<br><br><passive>永恒</passive><br>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值。施放一个技能时，你会治疗自身相当于25%法力消耗的生命值，每次施法每秒最多治疗20生命值。</mainText>",
+        "description": "<mainText><stats><buffedStat> 70</buffedStat>法术强度<br><attention>300</attention>生命值<br><attention>300</attention>法力</stats><br><br><br><br>这件装备每60秒获得30生命值、30法力值和4法术强度，至多叠加10层，最大值为300生命值、300法力值和40法术强度。在达到最大层数时，还会使英雄等级提升1级并使所有【永恒】效果提升50%。<br><li><passive>永恒：</passive>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值；花费法力时，你会回复相当于25%法力消耗的生命值，每次施法每秒最多治疗20生命值。</mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -13342,7 +13342,7 @@
     {
         "id": 227028,
         "name": " 无限会聚",
-        "description": "<mainText><stats><ornnBonus>90</ornnBonus>法术强度<br><ornnBonus>550</ornnBonus>生命值<br><ornnBonus>550</ornnBonus>法力</stats><br><br><passive>时无限</passive><br>这件装备每60秒获得30生命值、30法力值和4法术强度，至多至10层。在达到最大层数时，还会使英雄等级提升1级。<br><br><passive>永恒</passive><br>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值。施放一个技能时，你会治疗自身相当于25%法力消耗的生命值，每次施法每秒最多治疗20生命值。</mainText>",
+        "description": "<mainText><stats><ornnBonus>90</ornnBonus>法术强度<br><ornnBonus>550</ornnBonus>生命值<br><ornnBonus>550</ornnBonus>法力</stats><br><br><br><br>这件装备每60秒获得30生命值、30法力值和4法术强度，至多叠加10层，最大值为300生命值、300法力值和40法术强度。在达到最大层数时，还会使英雄等级提升1级并使所有【永恒】效果提升50%。<br><li><passive>永恒：</passive>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值；花费法力时，你会回复相当于25%法力消耗的生命值，每次施法每秒最多治疗20生命值。</mainText>",
         "active": false,
         "inStore": false,
         "from": [
