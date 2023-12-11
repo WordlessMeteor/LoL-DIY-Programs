@@ -255,9 +255,9 @@ async def search_profile(connection):
                     switch_prepare_mode = False
                     #下面获取版本信息（The following code get the patch data）
                     try:
-                        patches_initial = requests.get(patches_url)
+                        patches_initial = requests.get(patches_url).json()
                     except requests.exceptions.RequestException:
-                        print('版本信息获取超时！正在尝试离线加载数据……\nPatch information capture timeout! Trying loading offline data ...\n请输入版本Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the patch Json data file path. Enter an empty string to use the default relative path: "%s". Submit "0" to exit.' %(patches_local_default, patches_local_default))
+                        print('版本信息获取超时！正在尝试离线加载数据……\nPatch information capture timeout! Trying loading offline data ...\n请输入版本Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the patch Json data file path. Enter an empty string to use the default relative path: "%s". Submit "2" to switch to offline mode. Submit "0" to exit.' %(patches_local_default, patches_local_default))
                         while True:
                             patches_local = input()
                             if patches_local == "":
@@ -286,22 +286,20 @@ async def search_profile(connection):
                             except json.decoder.JSONDecodeError:
                                 print("数据格式错误！请选择一个符合DataDragon数据库中记录的版本数据格式（%s）的数据文件！\nData format mismatched! Please select a data file that corresponds to the format of the patch data archived in DataDragon database (%s)!" %(patches_url, patches_url))
                                 continue
-                    else:
-                        patches_initial = patches_initial.json()
-                        latest_patch = patches_initial[0]
-                        patches_dict = {}
-                        smallPatches = []
-                        bigPatches = []
-                        for patch in patches_initial:
-                            if not patch.startswith("lolpatch"):
-                                patch_split = patch.split(".")
-                                smallPatch = ".".join(patch_split[:3])
-                                smallPatches.append(smallPatch)
-                                bigPatch = ".".join(patch_split[:2])
-                                bigPatches.append(bigPatch)
-                                patches_dict[bigPatch] = []
-                        for i in range(len(bigPatches)):
-                            patches_dict[bigPatches[i]].append(smallPatches[i])
+                    latest_patch = patches_initial[0]
+                    patches_dict = {}
+                    smallPatches = []
+                    bigPatches = []
+                    for patch in patches_initial:
+                        if not patch.startswith("lolpatch"):
+                            patch_split = patch.split(".")
+                            smallPatch = ".".join(patch_split[:3])
+                            smallPatches.append(smallPatch)
+                            bigPatch = ".".join(patch_split[:2])
+                            bigPatches.append(bigPatch)
+                            patches_dict[bigPatch] = []
+                    for i in range(len(bigPatches)):
+                        patches_dict[bigPatches[i]].append(smallPatches[i])
                     #下面获取召唤师技能数据（The following code get summoner spell data）
                     try:
                         print("正在加载召唤师技能信息……\nLoading summoner spell information from CommunityDragon...")
