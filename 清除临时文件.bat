@@ -1,6 +1,6 @@
 del "Champion List.txt"
-del "Store items.txt"
-del "temporary data.txt"
+del "Store items.json"
+del "temporary data.json"
 del /s "*.log"
 del /s "Recently Played Summoners in Match *.xlsx"
 del /s "*.pkl"

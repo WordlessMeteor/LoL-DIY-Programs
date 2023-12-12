@@ -1076,21 +1076,21 @@ async def search_profile(connection):
                 else: #拳头公司与竞舞娱乐公司的合同于2023年1月终止（In January 2023, Riot Games ended its contract with Garena）
                     folder = "召唤师信息（Summoner Information）\\" + "外服（RIOT）" + "\\" + (platform_RIOT | platform_GARENA)[region] + "\\" + displayName
                 
-                txt1name = "Summoner Profile - " + displayName + ".txt"
+                json1name = "Summoner Profile - " + displayName + ".json"
                 while True:
                     try:
-                        txtfile1 = open(os.path.join(folder, txt1name), "w", encoding = "utf-8")
+                        jsonfile1 = open(os.path.join(folder, json1name), "w", encoding = "utf-8")
                     except FileNotFoundError: #这里需要注意是否具有创建文件夹的权限。下同（Pay attention to the authority to create the folder. So are the following）
                         os.makedirs(folder)
                     else:
                         break
                 try:
-                    txtfile1.write(json.dumps(info, indent = 8, ensure_ascii = False))
+                    jsonfile1.write(json.dumps(info, indent = 4, ensure_ascii = False))
                 except UnicodeEncodeError:
                     print("召唤师信息文本文档生成失败！请检查召唤师名称是否包含不常用字符！\nSummoner information text generation failure! Please check if the summoner name includes any abnormal characters!\n")
                 else:
-                    print('召唤师信息已保存为“%s”。\nSummoner information is saved as "%s".\n' %(os.path.join(folder, txt1name), os.path.join(folder, txt1name)))
-                txtfile1.close()
+                    print('召唤师信息已保存为“%s”。\nSummoner information is saved as "%s".\n' %(os.path.join(folder, json1name), os.path.join(folder, json1name)))
+                jsonfile1.close()
                 currentTime = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
                 pkl1name = "Intermediate Object - info (Summoner Profile) - %s (%s).pkl" %(displayName, currentTime)
                 #with open(os.path.join(folder, pkl1name), "wb") as IntObj1:
@@ -1106,21 +1106,21 @@ async def search_profile(connection):
                 if "errorCode" in mastery: #美测服13.20版本需要使用玩家通用唯一识别码代替召唤师序号来查询英雄成就信息（summonerId is replaced by puuid to search for champion mastery information in Patch 13.20 on PBE. Extra information: A capture of the champion mastery at 2023年10月5日16:08:00 (UTC+8) gave the following information: {"errorCode": "RPC_ERROR", "httpStatus": 500, "implementationDetails": {}, "message": "Error requesting summoner champion masteries for 2772370761401792: {\"message\":\"{\\\"httpStatus\\\":500,\\\"errorCode\\\":\\\"UNHANDLED_SERVER_SIDE_ERROR\\\",\\\"message\\\":\\\"Invlaid puuid 2772370761401792\\\",\\\"implementationDetails\\\":\\\"filtered\\\"}\",\"failureCode_int\":500}"}）
                     mastery = await (await connection.request("GET", "/lol-collections/v1/inventories/" + current_puuid + "/champion-mastery")).json()
                 #print(mastery)
-                txt2name = "Champion Mastery - " + displayName + ".txt"
+                json2name = "Champion Mastery - " + displayName + ".json"
                 while True:
                     try:
-                        txtfile2 = open(os.path.join(folder, txt2name), "w", encoding = "utf-8")
+                        jsonfile2 = open(os.path.join(folder, json2name), "w", encoding = "utf-8")
                     except FileNotFoundError:
                         os.makedirs(folder)
                     else:
                         break
                 try:
-                    txtfile2.write(json.dumps(mastery, indent = 8, ensure_ascii = False))
+                    jsonfile2.write(json.dumps(mastery, indent = 4, ensure_ascii = False))
                 except UnicodeEncodeError:
                     print("召唤师英雄成就文本文档生成失败！请检查召唤师名称是否包含不常用字符！\nSummoner champion mastery text generation failure! Please check if the summoner name includes any abnormal characters!\n")
                 else:
-                    print('召唤师英雄成就已保存为“%s”。\nSummoner champion mastery is saved as "%s".\n' %(os.path.join(folder, txt2name), os.path.join(folder, txt2name)))
-                txtfile2.close()
+                    print('召唤师英雄成就已保存为“%s”。\nSummoner champion mastery is saved as "%s".\n' %(os.path.join(folder, json2name), os.path.join(folder, json2name)))
+                jsonfile2.close()
                 currentTime = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
                 pkl2name = "Intermediate Object - mastery (Champion Mastery) - %s (%s).pkl" %(displayName, currentTime)
                 #with open(os.path.join(folder, pkl2name), "wb") as IntObj2:
@@ -1175,21 +1175,21 @@ async def search_profile(connection):
                     
                 #print("召唤师排位数据如下：\nSummoner ranked data are as follows:") #排位赛部分数据位于召唤师信息中（Part of ranked data are in Profile Sheet）
                 #print(ranked)
-                txt3name = "Ranked Data - " + displayName + ".txt"
+                json3name = "Ranked Data - " + displayName + ".json"
                 while True:
                     try:
-                        txtfile3 = open(os.path.join(folder, txt3name), "w", encoding = "utf-8")
+                        jsonfile3 = open(os.path.join(folder, json3name), "w", encoding = "utf-8")
                     except FileNotFoundError:
                         os.makedirs(folder)
                     else:
                         break
                 try:
-                    txtfile3.write(json.dumps(ranked, indent = 8, ensure_ascii = False))
+                    jsonfile3.write(json.dumps(ranked, indent = 4, ensure_ascii = False))
                 except UnicodeEncodeError:
                     print("召唤师排位数据文本文档生成失败！请检查召唤师名称是否包含不常用字符！\nSummoner ranked data text generation failure! Please check if the summoner name includes any abnormal characters!\n")
                 else:
-                    print('召唤师排位数据已保存为“%s”。\nSummoner ranked data are saved as "%s".\n' %(os.path.join(folder, txt3name), os.path.join(folder, txt3name)))
-                txtfile3.close()
+                    print('召唤师排位数据已保存为“%s”。\nSummoner ranked data are saved as "%s".\n' %(os.path.join(folder, json3name), os.path.join(folder, json3name)))
+                jsonfile3.close()
                 currentTime = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
                 pkl3name = "Intermediate Object - ranked (Rank) - %s (%s).pkl" %(displayName, currentTime)
                 #with open(os.path.join(folder, pkl3name), "wb") as IntObj3:
@@ -1277,19 +1277,19 @@ async def search_profile(connection):
                                     LoLHistory_get = False
                                     print("这位召唤师从5月1日起就没有进行过任何英雄联盟对局。\nThis summoner hasn't played any LoL game yet since May 1st.")
                                     break
-                            txt4name = "Match History (LoL) - " + displayName + ".txt"
+                            json4name = "Match History (LoL) - " + displayName + ".json"
                             while True:
                                 try:
-                                    txtfile4 = open(os.path.join(folder, txt4name), "w", encoding = "utf-8")
+                                    jsonfile4 = open(os.path.join(folder, json4name), "w", encoding = "utf-8")
                                 except FileNotFoundError:
                                     os.makedirs(folder)
                                 else:
                                     break
                             try:
-                                txtfile4.write(json.dumps(LoLHistory, indent = 8, ensure_ascii = False))
+                                jsonfile4.write(json.dumps(LoLHistory, indent = 4, ensure_ascii = False))
                             except UnicodeEncodeError:
                                 print("召唤师英雄联盟对局记录文本文档生成失败！请检查召唤师名称和所选语言是否包含不常用字符！\nSummoner LoL match history text generation failure! Please check if the summoner name and the chosen language include any abnormal characters!\n")
-                            txtfile4.close()
+                            jsonfile4.close()
                             currentTime = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
                             pkl4name = "Intermediate Object - LoLHistory - %s (%s).pkl" %(displayName, currentTime)
                             #with open(os.path.join(folder, pkl4name), "wb") as IntObj4:
@@ -1298,7 +1298,7 @@ async def search_profile(connection):
                                 LoLHistory_get = False
                                 print("英雄联盟对局记录获取失败！请等待官方修复对局记录服务！\nLoL match history capture failure! Please wait for Tencent to fix the match history service!")
                                 break
-                            print('该玩家共进行%d场英雄联盟对局。近期对局（最近20场）已保存为“%s”。\nThis player has played %d LoL matches. Recent matches (last 20 played) are saved as "%s".\n' %(LoLHistory["games"]["gameCount"], os.path.join(folder, txt4name), LoLHistory["games"]["gameCount"], os.path.join(folder, txt4name)))
+                            print('该玩家共进行%d场英雄联盟对局。近期对局（最近20场）已保存为“%s”。\nThis player has played %d LoL matches. Recent matches (last 20 played) are saved as "%s".\n' %(LoLHistory["games"]["gameCount"], os.path.join(folder, json4name), LoLHistory["games"]["gameCount"], os.path.join(folder, json4name)))
                         except KeyError:
                             print(LoLHistory)
                             LoLHistory_url = "%s/lol-match-history/v1/products/lol/%s/matches?begIndex=0&endIndex=200" %(connection.address, info["puuid"])
@@ -1921,7 +1921,7 @@ async def search_profile(connection):
                             spells = copy.deepcopy(spells_initial)
                             LoLItems = copy.deepcopy(LoLItems_initial) #接下来查询具体的对局信息和时间轴，使用的可能并不是历史记录中记载的对局序号形成的列表。考虑实际使用需求，这里对于装备的合适版本信息采取的思路是默认从最新版本开始获取，如果有装备不存在于最新版本的装备信息，则获取游戏信息中存储的版本对应的装备信息。该思路仍然有问题，详见后续关于美测服的装备获取的注释（The next step is to capture the information and timeline for each specific match, which may not originate from the matchIDs recorded in the match history. Considering the practical use, here the stream of thought for an appropriate version for items is to get items' information from the latest patch, and if some item doesn't exist in the items information of the latest patch, then get the items of the version corresponding to the game according to gameVersion recorded in the match information. There's a flaw of this idea. Please refer to the annotation regarding PBE data crawling for further solution）
                             print("是否输出每场对局的文本文档？（输入任意键不输出，否则默认输出）\nExport text files of each match? (Input anything to cancel, or null to export by default)")
-                            export_txt = input() == ""
+                            export_json = input() == ""
                             for matchID in LoLMatchIDs:
                                 LoLGame_info = await (await connection.request("GET", "/lol-match-history/v1/games/" + matchID)).json()
                                 #print(LoLGame_info)
@@ -1967,7 +1967,7 @@ async def search_profile(connection):
                                         LoLGame_info_error = {"项目": list(error_header.values()), "items": list(error_header.keys()), "值": [LoLGame_info[j] for j in error_header_keys]}
                                         LoLGame_info_df = pandas.DataFrame(data = LoLGame_info_error)
                                 else:
-                                    reserve = True #决定是否保存对局的文本文档。match_reserve_strategy变量决定的是是否将不包含主召唤师的对局记录导出到Excel中（Decides whether to save the matches into txt files. The variable match_reserve_strategy decides whether to export the matches which don't include the main summoner into Excel）
+                                    reserve = True #决定是否保存对局的文本文档。match_reserve_strategy变量决定的是是否将不包含主召唤师的对局记录导出到Excel中（Decides whether to save the matches into json files. The variable match_reserve_strategy decides whether to export the matches which don't include the main summoner into Excel）
                                     participant = []
                                     for i in LoLGame_info["participantIdentities"]:
                                         participant.append(i["player"]["puuid"])
@@ -1976,7 +1976,7 @@ async def search_profile(connection):
                                         match_reserve_strategy[int(matchID)] = True
                                     else:
                                         main_player_included[int(matchID)] = False
-                                        reserve = False #由于从文本文件中可以提取该召唤师的对局序号，所以需要保证保留下来的文本文件都包含该召唤师。因此，如果一场对局不包含该召唤师，就不应该把这场对局保存下来（Because a summoner's matchIDs can be extracted from the saved txt files, it needs to be guaranteed that all saved txt files belong to this summoner. Therefore, if a match doesn't include this summoner, then it shouldn't be saved into txt files）
+                                        reserve = False #由于从文本文件中可以提取该召唤师的对局序号，所以需要保证保留下来的文本文件都包含该召唤师。因此，如果一场对局不包含该召唤师，就不应该把这场对局保存下来（Because a summoner's matchIDs can be extracted from the saved json files, it needs to be guaranteed that all saved json files belong to this summoner. Therefore, if a match doesn't include this summoner, then it shouldn't be saved into json files）
                                         print("警告：对局%s所在对局不包含该玩家！是否仍要保持该对局？（输入任意键以保留该对局，否则舍弃该对局）\nWarning: The match %s doesn't include the current player! Continue? (Input any nonempty string to reserve this match, or null to abandon it)" %(matchID, matchID))
                                         cont = input()
                                         if cont == "":
@@ -1986,45 +1986,45 @@ async def search_profile(connection):
                                     info_exist_error[int(matchID)] = False
                                     currentPlatformId = LoLGame_info["participantIdentities"][0]["player"]["currentPlatformId"]
                                     save = True #指示保存是否成功，成功则输出保存进度，不成功则提示生成失败（Indicates whether the saving process is successful. If so, output the saving process, otherwise give a hint of generation failure）
-                                    if export_txt and reserve:
-                                        txt6name = "Match Information (LoL) - " + currentPlatformId + "-" + matchID + ".txt"
+                                    if export_json and reserve:
+                                        json6name = "Match Information (LoL) - " + currentPlatformId + "-" + matchID + ".json"
                                         while True:
                                             try:
-                                                txtfile6 = open(os.path.join(folder, txt6name), "w", encoding = "utf-8")
+                                                jsonfile6 = open(os.path.join(folder, json6name), "w", encoding = "utf-8")
                                             except FileNotFoundError:
                                                 os.makedirs(folder)
                                             else:
                                                 break
                                         try:
-                                            txtfile6.write(json.dumps(LoLGame_info, indent = 8, ensure_ascii = False))
+                                            jsonfile6.write(json.dumps(LoLGame_info, indent = 4, ensure_ascii = False))
                                         except UnicodeEncodeError:
                                             print("对局%s信息文本文档生成失败！请检查召唤师名称是否包含不常用字符！\nMatch %s information text generation failure! Please check if the summoner name includes any abnormal characters!" %(matchID, matchID))
                                             save = False
-                                        txtfile6.close()
+                                        jsonfile6.close()
                                         currentTime = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
                                         pkl6name = "Intermediate Object - Match Information (LoL) - %s-%s.pkl" %(currentPlatformId, matchID)
                                         #with open(os.path.join(folder, pkl6name), "wb") as IntObj6:
                                             #pickle.dump(LoLGame_info, IntObj6)
-                                        txt7name = "Match Timeline (LoL) - " + currentPlatformId + "-" + matchID + ".txt"
+                                        json7name = "Match Timeline (LoL) - " + currentPlatformId + "-" + matchID + ".json"
                                         while True:
                                             try:
-                                                txtfile7 = open(os.path.join(folder, txt7name), "w", encoding = "utf-8")
+                                                jsonfile7 = open(os.path.join(folder, json7name), "w", encoding = "utf-8")
                                             except FileNotFoundError:
                                                 os.makedirs(folder)
                                             else:
                                                 break
                                         try:
-                                            txtfile7.write(json.dumps(LoLGame_timeline, indent = 8, ensure_ascii = False))
+                                            jsonfile7.write(json.dumps(LoLGame_timeline, indent = 4, ensure_ascii = False))
                                         except UnicodeEncodeError:
                                             print("对局%s时间轴文本文档生成失败！请检查召唤师名称是否包含不常用字符！\nMatch %s timeline text generation failure! Please check if the summoner name includes any abnormal characters!" %(matchID, matchID))
                                             save = False
-                                        txtfile7.close()
+                                        jsonfile7.close()
                                         currentTime = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
                                         pkl7name = "Intermediate Object - Match Timeline (LoL) - %s-%s.pkl" %(currentPlatformId, matchID)
                                         #with open(os.path.join(folder, pkl7name), "wb") as IntObj7:
                                             #pickle.dump(LoLGame_timeline, IntObj7)
                                     if save:
-                                        if export_txt:
+                                        if export_json:
                                             print('保存进度（Saving process）：%d/%d\t对局序号（MatchID）： %s' %(LoLMatchIDs.index(matchID) + 1, len(LoLMatchIDs), matchID))
                                         else:
                                             print('加载进度（Loading process）：%d/%d\t对局序号（MatchID）： %s' %(LoLMatchIDs.index(matchID) + 1, len(LoLMatchIDs), matchID))
@@ -2472,19 +2472,19 @@ async def search_profile(connection):
                                         count += 1
                                         print("正在进行第%d次尝试……\nTimes trying: No. %d ..." %(count, count))
                                         TFTHistory = await (await connection.request("GET", "/lol-match-history/v1/products/tft/%s/matches?begin=%d&count=%d" %(info["puuid"], begin_get, count_get))).json()
-                            txt5name = "Match History (TFT) - " + displayName + ".txt"
+                            json5name = "Match History (TFT) - " + displayName + ".json"
                             while True:
                                 try:
-                                    txtfile5 = open(os.path.join(folder, txt5name), "w", encoding = "utf-8")
+                                    jsonfile5 = open(os.path.join(folder, json5name), "w", encoding = "utf-8")
                                 except FileNotFoundError:
                                     os.makedirs(folder)
                                 else:
                                     break
                             try:
-                                txtfile5.write(json.dumps(TFTHistory, indent = 8, ensure_ascii = False))
+                                jsonfile5.write(json.dumps(TFTHistory, indent = 4, ensure_ascii = False))
                             except UnicodeEncodeError:
                                 print("召唤师云顶之弈对局记录文本文档生成失败！请检查召唤师名称和所选语言是否包含不常用字符！\nSummoner TFT match history text generation failure! Please check if the summoner name and the chosen language include any abnormal characters!\n")
-                            txtfile5.close()
+                            jsonfile5.close()
                             currentTime = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
                             pkl5name = "Intermediate Object - TFTHistory - %s (%s).pkl" %(displayName, currentTime)
                             #with open(os.path.join(folder, pkl5name), "wb") as IntObj5:
@@ -2493,7 +2493,7 @@ async def search_profile(connection):
                                 TFTHistory_get = False
                                 print("云顶之弈对局记录获取失败！请等待官方修复对局记录服务！\TFT match history capture failure! Please wait for Tencent to fix the match history service!")
                                 break
-                            print('该玩家共进行%d场云顶之弈对局。近期云顶之弈对局（最近20场）已保存为“%s”。\nThis player has played %d TFT matches. Recent TFT matches (last 20 played) are saved as "%s".\n' %(len(TFTHistory["games"]), os.path.join(folder, txt5name), len(TFTHistory["games"]), os.path.join(folder, txt5name)))
+                            print('该玩家共进行%d场云顶之弈对局。近期云顶之弈对局（最近20场）已保存为“%s”。\nThis player has played %d TFT matches. Recent TFT matches (last 20 played) are saved as "%s".\n' %(len(TFTHistory["games"]), os.path.join(folder, json5name), len(TFTHistory["games"]), os.path.join(folder, json5name)))
                         except KeyError:
                             if "errorCode" in TFTHistory:
                                 print(TFTHistory)
@@ -2515,7 +2515,7 @@ async def search_profile(connection):
                     if not TFTHistory_get:
                         continue
                     print("是否输出每场对局的文本文档？（输入任意键不输出，否则默认输出）\nExport text files of each match? (Input anything to cancel, or null to export by default)")
-                    export_txt = input() == ""
+                    export_json = input() == ""
                     TFTHistory = TFTHistory["games"]
                     TFTHistory_header = {"gameIndex": "游戏序号", "game_datetime": "创建日期", "game_id": "对局序号", "game_length": "持续时长", "game_version": "对局版本", "queue_id": "队列序号", "tft_game_type": "游戏类型", "tft_set_core_name": "数据版本名称", "tft_set_number": "赛季", "participantId": "玩家序号", "augment1": "强化符文1", "augment2": "强化符文2", "augment3": "强化符文3", "companion": "小小英雄", "companion_level": "小小英雄星级", "companion_rarity": "小小英雄稀有度", "gold_left": "剩余金币", "last_round": "存活回合", "level": "等级", "placement": "名次", "players_eliminated": "淘汰玩家数", "puuid": "玩家通用唯一识别码", "summonerName": "召唤师名称", "summonerId": "召唤师序号", "time_eliminated": "存活时长", "total_damage_to_players": "造成玩家伤害", "trait0 name": "羁绊1", "trait0 num_units": "羁绊1单位数", "trait0 style": "羁绊1羁绊框颜色", "trait0 tier_current": "羁绊1当前等级", "trait0 tier_total": "羁绊1最高等级", "trait1 name": "羁绊2", "trait1 num_units": "羁绊2单位数", "trait1 style": "羁绊2羁绊框颜色", "trait1 tier_current": "羁绊2当前等级", "trait1 tier_total": "羁绊2最高等级", "trait2 name": "羁绊3", "trait2 num_units": "羁绊3单位数", "trait2 style": "羁绊3羁绊框颜色", "trait2 tier_current": "羁绊3当前等级", "trait2 tier_total": "羁绊3最高等级", "trait3 name": "羁绊4", "trait3 num_units": "羁绊4单位数", "trait3 style": "羁绊4羁绊框颜色", "trait3 tier_current": "羁绊4当前等级", "trait3 tier_total": "羁绊4最高等级", "trait4 name": "羁绊5", "trait4 num_units": "羁绊5单位数", "trait4 style": "羁绊5羁绊框颜色", "trait4 tier_current": "羁绊5当前等级", "trait4 tier_total": "羁绊5最高等级", "trait5 name": "羁绊6", "trait5 num_units": "羁绊6单位数", "trait5 style": "羁绊6羁绊框颜色", "trait5 tier_current": "羁绊6当前等级", "trait5 tier_total": "羁绊6最高等级", "trait6 name": "羁绊7", "trait6 num_units": "羁绊7单位数", "trait6 style": "羁绊7羁绊框颜色", "trait6 tier_current": "羁绊7当前等级", "trait6 tier_total": "羁绊7最高等级", "trait7 name": "羁绊8", "trait7 num_units": "羁绊8单位数", "trait7 style": "羁绊8羁绊框颜色", "trait7 tier_current": "羁绊8当前等级", "trait7 tier_total": "羁绊8最高等级", "trait8 name": "羁绊9", "trait8 num_units": "羁绊9单位数", "trait8 style": "羁绊9羁绊框颜色", "trait8 tier_current": "羁绊9当前等级", "trait8 tier_total": "羁绊9最高等级", "trait9 name": "羁绊10", "trait9 num_units": "羁绊10单位数", "trait9 style": "羁绊10羁绊框颜色", "trait9 tier_current": "羁绊10当前等级", "trait9 tier_total": "羁绊10最高等级", "trait10 name": "羁绊11", "trait10 num_units": "羁绊11单位数", "trait10 style": "羁绊11羁绊框颜色", "trait10 tier_current": "羁绊11当前等级", "trait10 tier_total": "羁绊11最高等级", "trait11 name": "羁绊12", "trait11 num_units": "羁绊12单位数", "trait11 style": "羁绊12羁绊框颜色", "trait11 tier_current": "羁绊12当前等级", "trait11 tier_total": "羁绊12最高等级", "trait12 name": "羁绊13", "trait12 num_units": "羁绊13单位数", "trait12 style": "羁绊13羁绊框颜色", "trait12 tier_current": "羁绊13当前等级", "trait12 tier_total": "羁绊13最高等级", "unit0 character": "英雄1", "unit0 rarity": "英雄1：稀有度", "unit0 tier": "英雄1：星级", "unit1 character": "英雄2", "unit1 rarity": "英雄2：稀有度", "unit1 tier": "英雄2：星级", "unit2 character": "英雄3", "unit2 rarity": "英雄3：稀有度", "unit2 tier": "英雄3：星级", "unit3 character": "英雄4", "unit3 rarity": "英雄4：稀有度", "unit3 tier": "英雄4：星级", "unit4 character": "英雄5", "unit4 rarity": "英雄5：稀有度", "unit4 tier": "英雄5：星级", "unit5 character": "英雄6", "unit5 rarity": "英雄6：稀有度", "unit5 tier": "英雄6：星级", "unit6 character": "英雄7", "unit6 rarity": "英雄7：稀有度", "unit6 tier": "英雄7：星级", "unit7 character": "英雄8", "unit7 rarity": "英雄8：稀有度", "unit7 tier": "英雄8：星级", "unit8 character": "英雄9", "unit8 rarity": "英雄9：稀有度", "unit8 tier": "英雄9：星级", "unit9 character": "英雄10", "unit9 rarity": "英雄10：稀有度", "unit9 tier": "英雄10：星级", "unit10 character": "英雄11", "unit10 rarity": "英雄11：稀有度", "unit11 tier": "英雄11：星级", "unit0 item0": "英雄1：装备1", "unit0 item1": "英雄1：装备2", "unit0 item2": "英雄1：装备3", "unit1 item0": "英雄2：装备1", "unit1 item1": "英雄2：装备2", "unit1 item2": "英雄2：装备3", "unit2 item0": "英雄3：装备1", "unit2 item1": "英雄3：装备2", "unit2 item2": "英雄3：装备3", "unit3 item0": "英雄4：装备1", "unit3 item1": "英雄4：装备2", "unit3 item2": "英雄4：装备3", "unit4 item0": "英雄5：装备1", "unit4 item1": "英雄5：装备2", "unit4 item2": "英雄5：装备3", "unit5 item0": "英雄6：装备1", "unit5 item1": "英雄6：装备2", "unit5 item2": "英雄6：装备3", "unit6 item0": "英雄7：装备1", "unit6 item1": "英雄7：装备2", "unit6 item2": "英雄7：装备3", "unit7 item0": "英雄8：装备1", "unit7 item1": "英雄8：装备2", "unit7 item2": "英雄8：装备3", "unit8 item0": "英雄9：装备1", "unit8 item1": "英雄9：装备2", "unit8 item2": "英雄9：装备3", "unit9 item0": "英雄10：装备1", "unit9 item1": "英雄10：装备2", "unit9 item2": "英雄10：装备3", "unit10 item0": "英雄11：装备1", "unit10 item1": "英雄11：装备2", "unit10 item2": "英雄11：装备3"}
                     TFTHistory_data = {}
@@ -2544,28 +2544,28 @@ async def search_profile(connection):
                         TFTGame_info = TFTHistory[i]
                         matchID = int(TFTGame_info["metadata"]["match_id"].split("_")[1]) #由于后面将对局序号作为键实现混合排序，所以这里需要将字符串分割后提取到的对局序号转化为整数类型（Because the matchIDs are used as keys to perform a mixed sort, the matchID extracted here needs transforming into integer type）
                         currentPlatformId = TFTGame_info["metadata"]["match_id"].split("_")[0]
-                        if export_txt:
+                        if export_json:
                             save = True
-                            txt8name = "Match Information (TFT) - " + currentPlatformId + "-" + str(matchID) + ".txt"
+                            json8name = "Match Information (TFT) - " + currentPlatformId + "-" + str(matchID) + ".json"
                             while True:
                                 try:
-                                    txtfile8 = open(os.path.join(folder, txt8name), "w", encoding = "utf-8")
+                                    jsonfile8 = open(os.path.join(folder, json8name), "w", encoding = "utf-8")
                                 except FileNotFoundError:
                                     os.makedirs(folder)
                                 else:
                                     break
                             try:
-                                txtfile8.write(json.dumps(TFTHistory[i], indent = 8, ensure_ascii = False))
+                                jsonfile8.write(json.dumps(TFTHistory[i], indent = 4, ensure_ascii = False))
                             except UnicodeDecodeError:
                                 print("对局%s信息文本文档生成失败！请检查召唤师名称是否包含不常用字符！\nMatch %s information text generation failure! Please check if the summoner name includes any abnormal characters!" %(matchID, matchID))
                                 save = False
-                            txtfile8.close()
+                            jsonfile8.close()
                             currentTime = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
                             pkl8name = "Intermediate Object - Match Information (LoL) - %s-%d.pkl" %(currentPlatformId, matchID)
                             #with open(os.path.join(folder, pkl8name), "wb") as IntObj8:
                                 #pickle.dump(TFTGame_info, IntObj8)
                         if save:
-                            if export_txt:
+                            if export_json:
                                 print('保存进度（Saving process）：%d/%d\t对局序号（MatchID）： %d' %(i + 1, len(TFTHistory), matchID))
                             else:
                                 print('加载进度（Loading process）：%d/%d\t对局序号（MatchID）： %d' %(i + 1, len(TFTHistory), matchID))

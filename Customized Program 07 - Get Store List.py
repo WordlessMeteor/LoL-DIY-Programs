@@ -93,8 +93,8 @@ async def items(connection):
             item = await connection.request("GET", "/lol-catalog/v1/items/" + inventoryType_en[int(check_type) - 1])
             item = await item.json()
             print(str(item))
-            file = open("Store items.txt", "w", encoding = "utf-8")
-            file.write(json.dumps(item, indent = 8, ensure_ascii = False))
+            file = open("Store items.json", "w", encoding = "utf-8")
+            file.write(json.dumps(item, indent = 4, ensure_ascii = False))
             file.close()
             print('请选择商品类型，输入“0”以退出程序：\nPlease choose inventory type. Submit "0" to exit.')
             if len(inventoryType_zh) == len(inventoryType_en):

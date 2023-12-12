@@ -97,8 +97,8 @@ async def send_commands(connection):
             continue
         data = await (await connection.request(method, endpoint)).json()
         print(data)
-        with open("temporary data.txt", "w", encoding = "utf-8") as fp:
-            fp.write(json.dumps(data, indent = 8, ensure_ascii = False))
+        with open("temporary data.json", "w", encoding = "utf-8") as fp:
+            fp.write(json.dumps(data, indent = 4, ensure_ascii = False))
         if option[0].lower() == "e":
             with open("temporary data.pkl", "wb") as fp:
                 pickle.dump(data, fp)

@@ -2340,16 +2340,16 @@ async def search_recent_players(connection):
                                         recent_players_metadata[puuid_iter]["totalCustomTime"] += TFTGameDuration_iter * isCustom_iter
                                     #print("用于可视化的元数据创建进度（Creating process of metadata for visualization）：%d/%d" %(i, len(recent_TFTPlayers_df) - 1))
                             #pyperclip.copy(str(recent_players_metadata))
-                            txtname = "Recently Played Summoners - %s.txt" %displayName
+                            jsonname = "Recently Played Summoners - %s.json" %displayName
                             while True:
                                 try:
-                                    txtfile = open(os.path.join(folder, txtname), "w", encoding = "utf-8")
+                                    jsonfile = open(os.path.join(folder, jsonname), "w", encoding = "utf-8")
                                 except FileNotFoundError:
                                     os.makedirs(folder)
                                 else:
                                     break
                             try:
-                                txtfile.write(str(json.dumps(recent_players_metadata, indent = 8, ensure_ascii = False)))
+                                jsonfile.write(str(json.dumps(recent_players_metadata, indent = 4, ensure_ascii = False)))
                             except UnicodeEncodeError:
                                 print("近期一起玩过的玩家元数据文本文档生成失败！请检查召唤师名称是否包含不常用字符！\nRecently played summoner metadata text generation failure! Please check if the summoner name includes any abnormal characters!\n")
                             

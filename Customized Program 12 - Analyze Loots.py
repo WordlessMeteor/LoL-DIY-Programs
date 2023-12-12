@@ -81,20 +81,20 @@ async def analyze_player_loots(connection): #导出玩家目前含有的战利�
     platformId = platform_config["LoginDataPacket"]["platformId"]
     loots = await (await connection.request("GET", "/lol-loot/v1/loot-items")).json()
     player_loot = await (await connection.request("GET", "/lol-loot/v1/player-loot")).json()
-    txtname = "Loot - %s.txt" %displayName
+    jsonname = "Loot - %s.json" %displayName
     while True:
         try:
-            txtfile = open(os.path.join(folder, txtname), "w", encoding = "utf-8")
+            jsonfile = open(os.path.join(folder, jsonname), "w", encoding = "utf-8")
         except FileNotFoundError:
             os.makedirs(folder)
         else:
             break
     try:
-        txtfile.write(str(json.dumps(player_loot, indent = 8, ensure_ascii = False)))
+        jsonfile.write(str(json.dumps(player_loot, indent = 4, ensure_ascii = False)))
     except UnicodeEncodeError:
         print("玩家战利品信息文本文档生成失败！请检查战利品信息是否包含不常用字符！\nPlayer loot text generation failure! Please check if the loot information includes any abnormal characters!\n")
     else:
-        print('玩家战利品信息已保存为“%s”。\nPlayer loot information is saved as "%s".\n' %(os.path.join(folder, txtname), os.path.join(folder, txtname)))
+        print('玩家战利品信息已保存为“%s”。\nPlayer loot information is saved as "%s".\n' %(os.path.join(folder, jsonname), os.path.join(folder, jsonname)))
     player_loot_header = {"asset": "资产类型", "count": "数量", "disenchantLootName": "分解获得精萃类型", "disenchantRecipeName": "战利品分解种类", "disenchantValue": "分解返还", "displayCategories": "战利品类别", "expiryTime": "到期时间戳", "isNew": "是否未查看", "isRental": "是否租赁", "itemDesc": "物品描述", "itemStatus": "战利品拥有状态", "localizedDescription": "战利品附加说明", "localizedName": "战利品简称", "localizedRecipeSubtitle": "战利品兑换界面说明", "localizedRecipeTitle": "战利品兑换界面标题", "lootId": "战利品序号", "lootName": "战利品名称", "parentItemStatus": "升级所需物品状态", "parentStoreItemId": "升级所需商品序号", "rarity": "内容阶位", "redeemableStatus": "可解锁状况", "refId": "解锁商品序号", "rentalGames": "可租借局数", "rentalSeconds": "可租借时间（秒）", "shadowPath": "阴影图示路径", "splashPath": "背景图路径", "storeItemId": "商品序号", "tags": "关键词", "tilePath": "方块图路径", "type": "战利品类型", "upgradeEssenceName": "升级所需精萃类型", "upgradeEssenceValue": "升级所需精萃数量", "upgradeLootName": "升级后的战利品名称", "value": "对应商品原价"}
     player_loot_data = {}
     player_loot_header_keys = list(player_loot_header.keys())
