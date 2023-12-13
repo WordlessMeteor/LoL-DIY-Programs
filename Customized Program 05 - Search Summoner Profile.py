@@ -1608,12 +1608,12 @@ async def search_profile(connection):
                                 filenames = os.listdir(folder)
                                 for filename in filenames:
                                     if filename.startswith("Match Information (LoL) - "):
-                                        LoLMatchIDs.append(filename.split("-")[-1][:-4])
+                                        LoLMatchIDs.append(filename.split("-")[-1].split(".")[0])
                                 if LoLMatchIDs == list():
                                     print("尚未保存过该玩家的数据！\nYou haven't saved this summoner's matches yet!\n")
                                     break
                                 else:
-                                    LoLMatchIDs = list(map(int, LoLMatchIDs)) #正确的对局顺序应当是根据整型对局序号的大小来排列的（The correct order of matches should be according to the size of LoLMatchIDs of integer type）
+                                    LoLMatchIDs = list(map(int, set(LoLMatchIDs))) #正确的对局顺序应当是根据整型对局序号的大小来排列的（The correct order of matches should be according to the size of LoLMatchIDs of integer type）
                                     LoLMatchIDs.sort(reverse = True)
                                     LoLMatchIDs = list(map(str, LoLMatchIDs))
                                     print("检测到%d场对局。是否继续？（输入任意键以重新输入要查询的对局序号，否则重新获取这些对局的数据）\nDetected %d matches. Continue? (Input any nonempty string to return to the last step of inputting the matchID, or null to recapture those matches' data)" %(len(LoLMatchIDs), len(LoLMatchIDs)))

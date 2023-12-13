@@ -616,8 +616,8 @@
                     "mFormulaParts": [
                         {
                             "__type": "ByCharLevelBreakpointsCalculationPart",
-                            "mLevel1Value": 10.0,
-                            "{02deb550}": 10.0
+                            "mLevel1Value": 5.0,
+                            "{02deb550}": 9.0
                         },
                         {
                             "__type": "StatByCoefficientCalculationPart",
@@ -1880,7 +1880,7 @@
             "apiName": "StackosaurusRex",
             "calculations": {},
             "dataValues": {
-                "StackModifier": 0.5
+                "StackModifier": 0.75
             },
             "desc": "在你获得一个技能的永久<keywordMajor>层数</keywordMajor>时，多获得@StackModifier*100@%！",
             "iconLarge": "assets/ux/cherry/augments/icons/stackosaurusrex_large.arena_augments_v2.png",
@@ -2384,7 +2384,7 @@
                 "CurseStacksPerTick": 1.0,
                 "MaxHealthRatio": 1.0,
                 "Range": 500.0,
-                "TickCadence": 1.0
+                "TickCadence": 1.5
             },
             "desc": "你每秒对附近的敌方英雄们施加@CurseStacksPerTick@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>每秒从被<keywordMajor>诅咒</keywordMajor>的敌人们身上获得永久的<healing>最大生命值</healing>，可随着层数的数量而提升。",
             "iconLarge": "assets/ux/cherry/augments/icons/plaguebearer_large.arena_augments_v2.png",
@@ -2433,8 +2433,8 @@
                     "mFormulaParts": [
                         {
                             "__type": "ByCharLevelInterpolationCalculationPart",
-                            "mEndValue": 90.0,
-                            "mStartValue": 30.0
+                            "mEndValue": 120.0,
+                            "mStartValue": 45.0
                         }
                     ]
                 },
@@ -2777,7 +2777,7 @@
             "apiName": "Dashing",
             "calculations": {},
             "dataValues": {
-                "Haste": 200.0
+                "Haste": 250.0
             },
             "desc": "你的冲刺、跳跃、闪烁或传送类技能获得<scaleLevel>@Haste@技能急速</scaleLevel>。",
             "iconLarge": "assets/ux/cherry/augments/icons/dashing_large.arena_augments_v2.png",
@@ -3039,7 +3039,7 @@
             "apiName": "Quest_SteelYourHeart",
             "calculations": {},
             "dataValues": {
-                "StackMultiplication": 4.0,
+                "StackMultiplication": 5.0,
                 "StackThreshold": 400.0,
                 "StacktoRegenConversion": 0.10000000149011612
             },
@@ -3168,7 +3168,7 @@
             "apiName": "DarkBlessing",
             "calculations": {},
             "dataValues": {
-                "AbilityHasteRatio": 0.11999999731779099,
+                "AbilityHasteRatio": 0.14000000059604645,
                 "BleedDuration": 5.0,
                 "Cooldown": 1.5,
                 "CurseCounter": 1.0,
