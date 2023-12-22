@@ -1016,7 +1016,7 @@ async def search_profile(connection):
             print("请输入非空字符串！\nPlease input a string instead of null!")
             continue
         else:
-            if summoner_name.replace(" ", "").count("-") == 4 and len(summoner_name.replace(" ", "")) > 22: #拳头规定的玩家名称不超过16个字符，尾标不超过5个字符（Riot game name can't exceed 16 characters. The tagline can't exceed 5 characters）
+            if summoner_name.count("-") == 4 and len(summoner_name.replace(" ", "")) > 22: #拳头规定的玩家名称不超过16个字符，尾标不超过5个字符（Riot game name can't exceed 16 characters. The tagline can't exceed 5 characters）
                 search_by_puuid = True
                 info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + quote(summoner_name))).json()
             else:
@@ -1027,7 +1027,7 @@ async def search_profile(connection):
                     print("您输入的玩家通用唯一识别码格式有误！请重新输入！\nPUUID wasn't in UUID format! Please try again!")
                 else:
                     print("您输入的召唤师名称格式有误！请重新输入！\nERROR format of summoner name! Please try again!")
-            if "errorCode" in info and info["httpStatus"] == 404:
+            elif "errorCode" in info and info["httpStatus"] == 404:
                 if search_by_puuid:
                     print("未找到玩家通用唯一识别码为" + summoner_name + "的玩家；请核对识别码并稍后再试。\nA player with puuid " + summoner_name + " was not found; verify the puuid and try again.")
                 else:
