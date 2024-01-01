@@ -917,6 +917,8 @@ async def search_recent_players(connection):
         else:
             print("语言选项输入错误！请重新输入：\nERROR input of language option! Please try again:")
     #首先准备一些数据（First, prepare some data）
+    #准备自己的召唤师数据（Prepare the information of the user himself/herself）
+    current_info = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     ##准备游戏模式数据（Prepare game mode data）
     gamemode = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
     gamemodes = {0: {"name": "自定义", "gameMode": "CUSTOM", "category": "CUSTOM"}}
@@ -928,7 +930,7 @@ async def search_recent_players(connection):
         gamemodes_iter["category"] = gamemode_iter["category"]
         gamemodes[gamemode_id] = gamemodes_iter
     ##准备英雄数据，用于将英雄序号映射到英雄名称（Prepare champion data to map championIds to champions' names）
-    summonerId = (await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json())["summonerId"]
+    summonerId = current_info["summonerId"]
     LoLChampion = await (await connection.request("GET", "/lol-champions/v1/inventories/" + str(summonerId) + "/champions")).json()
     LoLChampions = {}
     for LoLChampion_iter in LoLChampion:
@@ -989,8 +991,6 @@ async def search_recent_players(connection):
     for ArenaAugment in Arena_initial["augments"]:
         ArenaAugment_id = ArenaAugment.pop("id")
         ArenaAugments_initial[ArenaAugment_id] = ArenaAugment
-    #准备自己的召唤师数据（Prepare the information of the user himself/herself）
-    current_info = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     ##准备大区数据（Prepare server / platform data）
     platform_TENCENT = {"BGP1": "全网通区 男爵领域（Baron Zone）", "BGP2": "峡谷之巅（Super Zone）", "EDU1": "教育网专区（CRENET Server）", "HN1": "电信一区 艾欧尼亚（Ionia）", "HN2": "电信二区 祖安（Zaun）", "HN3": "电信三区 诺克萨斯（Noxus 1）", "HN4": "电信四区 班德尔城（Bandle City）", "HN5": "电信五区 皮尔特沃夫（Piltover）", "HN6": "电信六区 战争学院（the Institute of War）", "HN7": "电信七区 巨神峰（Mount Targon）", "HN8": "电信八区 雷瑟守备（Noxus 2）", "HN9": "电信九区 裁决之地（the Proving Grounds）", "HN10": "电信十区 黑色玫瑰（the Black Rose）", "HN11": "电信十一区 暗影岛（Shadow Isles）", "HN12": "电信十二区 钢铁烈阳（the Iron Solari）", "HN13": "电信十三区 水晶之痕（Crystal Scar）", "HN14": "电信十四区 均衡教派（the Kinkou Order）", "HN15": "电信十五区 影流（the Shadow Order）", "HN16": "电信十六区 守望之海（Guardian's Sea）", "HN17": "电信十七区 征服之海（Conqueror's Sea）", "HN18": "电信十八区 卡拉曼达（Kalamanda）", "HN19": "电信十九区 皮城警备（Piltover Wardens）", "PBE": "体验服 试炼之地（Chinese PBE）", "WT1": "网通一区 比尔吉沃特（Bilgewater）", "WT2": "网通二区 德玛西亚（Demacia）", "WT3": "网通三区 弗雷尔卓德（Freljord）", "WT4": "网通四区 无畏先锋（House Crownguard）", "WT5": "网通五区 恕瑞玛（Shurima）", "WT6": "网通六区 扭曲丛林（Twisted Treeline）", "WT7": "网通七区 巨龙之巢（the Dragon Camp）"}
     platform_RIOT = {"BR": "巴西服（Brazil）", "EUNE": "北欧和东欧服（Europe Nordic & East）", "EUW": "西欧服（Europe West）", "LAN": "北拉美服（Latin America North）", "LAS": "南拉美服（Latin America South）", "NA": "北美服（North America）", "OCE": "大洋洲服（Oceania）", "RU": "俄罗斯服（Russia）", "TR": "土耳其服（Turkey）", "JP": "日服（Japan）", "KR": "韩服（Republic of Korea）", "PBE": "测试服（Public Beta Environment）"}
