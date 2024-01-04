@@ -2665,6 +2665,71 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.png"
     },
     {
+        "guid": "7587c4dd-49c3-4f0b-bb54-fb5151db3397",
+        "name": "",
+        "nameId": "TFT7_Item_TreasureDragonBlankSlot",
+        "id": 0,
+        "color": {
+            "R": 65,
+            "B": 76,
+            "G": 47,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/TreasureDragon/Blank_Treasure_Frame.png"
+    },
+    {
+        "guid": "a11f16eb-65da-4448-aba7-dd8797151270",
+        "name": "20金币",
+        "nameId": "TFT7_Item_TreasureDragonGold20",
+        "id": 0,
+        "color": {
+            "R": 65,
+            "B": 76,
+            "G": 47,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.png"
+    },
+    {
+        "guid": "03835102-509e-4d12-a8d3-c7d1969f4015",
+        "name": "3金币",
+        "nameId": "TFT7_Item_TreasureDragonGold3",
+        "id": 0,
+        "color": {
+            "R": 65,
+            "B": 76,
+            "G": 47,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.png"
+    },
+    {
+        "guid": "abfdc697-dca2-42c2-8b2d-9d58fe7c68a7",
+        "name": "4金币",
+        "nameId": "TFT7_Item_TreasureDragonGold4",
+        "id": 0,
+        "color": {
+            "R": 65,
+            "B": 76,
+            "G": 47,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.png"
+    },
+    {
+        "guid": "07bd4f68-1e3e-42c2-a9a5-f16f56dd6d83",
+        "name": "9金币",
+        "nameId": "TFT7_Item_TreasureDragonGold9",
+        "id": 0,
+        "color": {
+            "R": 65,
+            "B": 76,
+            "G": 47,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.png"
+    },
+    {
         "guid": "83ddbdce-45fd-481b-9326-4049e34fd856",
         "name": "打捞桶",
         "nameId": "TFT6_Augment_SalvageBin",
@@ -8333,6 +8398,71 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.png"
     },
     {
+        "guid": "7587c4dd-49c3-4f0b-bb54-fb5151db3397",
+        "name": "",
+        "nameId": "TFT7_Item_TreasureDragonBlankSlot",
+        "id": 0,
+        "color": {
+            "R": 65,
+            "B": 76,
+            "G": 47,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/TreasureDragon/Blank_Treasure_Frame.png"
+    },
+    {
+        "guid": "a11f16eb-65da-4448-aba7-dd8797151270",
+        "name": "20金币",
+        "nameId": "TFT7_Item_TreasureDragonGold20",
+        "id": 0,
+        "color": {
+            "R": 65,
+            "B": 76,
+            "G": 47,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.png"
+    },
+    {
+        "guid": "03835102-509e-4d12-a8d3-c7d1969f4015",
+        "name": "3金币",
+        "nameId": "TFT7_Item_TreasureDragonGold3",
+        "id": 0,
+        "color": {
+            "R": 65,
+            "B": 76,
+            "G": 47,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.png"
+    },
+    {
+        "guid": "abfdc697-dca2-42c2-8b2d-9d58fe7c68a7",
+        "name": "4金币",
+        "nameId": "TFT7_Item_TreasureDragonGold4",
+        "id": 0,
+        "color": {
+            "R": 65,
+            "B": 76,
+            "G": 47,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.png"
+    },
+    {
+        "guid": "07bd4f68-1e3e-42c2-a9a5-f16f56dd6d83",
+        "name": "9金币",
+        "nameId": "TFT7_Item_TreasureDragonGold9",
+        "id": 0,
+        "color": {
+            "R": 65,
+            "B": 76,
+            "G": 47,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.png"
+    },
+    {
         "guid": "cad5d5db-85c5-4d22-a0e1-2c0ff695f9ce",
         "name": "便携锻炉",
         "nameId": "TFT6_Augment_PortableForge",
@@ -13388,6 +13518,71 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.png"
+    },
+    {
+        "guid": "7587c4dd-49c3-4f0b-bb54-fb5151db3397",
+        "name": "",
+        "nameId": "TFT7_Item_TreasureDragonBlankSlot",
+        "id": 0,
+        "color": {
+            "R": 65,
+            "B": 76,
+            "G": 47,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/TreasureDragon/Blank_Treasure_Frame.png"
+    },
+    {
+        "guid": "a11f16eb-65da-4448-aba7-dd8797151270",
+        "name": "20金币",
+        "nameId": "TFT7_Item_TreasureDragonGold20",
+        "id": 0,
+        "color": {
+            "R": 65,
+            "B": 76,
+            "G": 47,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.png"
+    },
+    {
+        "guid": "03835102-509e-4d12-a8d3-c7d1969f4015",
+        "name": "3金币",
+        "nameId": "TFT7_Item_TreasureDragonGold3",
+        "id": 0,
+        "color": {
+            "R": 65,
+            "B": 76,
+            "G": 47,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.png"
+    },
+    {
+        "guid": "abfdc697-dca2-42c2-8b2d-9d58fe7c68a7",
+        "name": "4金币",
+        "nameId": "TFT7_Item_TreasureDragonGold4",
+        "id": 0,
+        "color": {
+            "R": 65,
+            "B": 76,
+            "G": 47,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.png"
+    },
+    {
+        "guid": "07bd4f68-1e3e-42c2-a9a5-f16f56dd6d83",
+        "name": "9金币",
+        "nameId": "TFT7_Item_TreasureDragonGold9",
+        "id": 0,
+        "color": {
+            "R": 65,
+            "B": 76,
+            "G": 47,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.png"
     },
     {
         "guid": "83ddbdce-45fd-481b-9326-4049e34fd856",

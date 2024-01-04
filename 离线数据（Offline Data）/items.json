@@ -2235,7 +2235,7 @@
     {
         "id": 2421,
         "name": "碎裂的护臂",
-        "description": "<mainText><stats><attention>45</attention>法术强度<br><attention>25</attention>护甲</stats><br><br><passive>支离破碎的时间</passive><br>【护臂】目前是破碎状态，但仍然可以用于升级。<br><br><rules>在打破一个【护臂】后，商店主人就只会卖给你<rarityGeneric>破碎的护臂</rarityGeneric>了。</rules></mainText>",
+        "description": "<mainText><stats><attention>45</attention>法术强度<br><attention>25</attention>护甲</stats><br><br><passive>支离破碎的时间</passive><br>【护臂】目前是破碎状态，但仍然可以用于升级。<br><br><rules>在打破一个【护臂】后，商店主人就只会卖给你<rarityGeneric>碎裂的护臂</rarityGeneric>了。</rules><br><br></mainText>",
         "active": false,
         "inStore": false,
         "from": [],
@@ -2349,7 +2349,7 @@
     {
         "id": 2504,
         "name": "败魔",
-        "description": "<mainText><stats><attention>400</attention>生命值<br><attention>80</attention>魔法抗性<br><attention>150%</attention>基础生命回复</stats><br><br><passive>法师之祸</passive><br>如果连续12秒没有受到<magicDamage>魔法伤害</magicDamage>，获得<magicDamage>0魔法护盾</magicDamage>。 </mainText>",
+        "description": "<mainText><stats><attention>400</attention>生命值<br><attention>80</attention>魔法抗性<br><attention>150%</attention>基础生命回复</stats><br><br><passive>法师之祸</passive><br>如果连续12秒没有受到<magicDamage>魔法伤害</magicDamage>，获得<magicDamage>0魔法护盾</magicDamage>。<br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -2406,7 +2406,7 @@
     {
         "id": 3002,
         "name": "引路者",
-        "description": "<mainText><stats><attention>250</attention>生命值<br><attention>40</attention>护甲<br><attention>5%</attention>移动速度</stats><br><br><passive>引路</passive><br>在移动时，获得<speed>20额外移动速度</speed>。在最大速度时，生成一条路径来使你的友方英雄们加快15%移动速度。你的下一次攻击会释放掉这个额外移动速度并且如果是  近战英雄，还会对目标造成持续1秒的50%<keyword>减速</keyword>。</mainText>",
+        "description": "<mainText><stats><attention>250</attention>生命值<br><attention>40</attention>护甲<br><attention>5%</attention>移动速度</stats><br><br><passive>引路</passive><br>在移动时，获得<speed>20额外移动速度</speed>。在最大速度时，生成一条路径来使你的友方英雄们加快15%移动速度。你的下一次攻击会释放掉这个额外移动速度并且如果是  近战英雄，还会对目标造成持续1秒的50%<keyword>减速</keyword>。<br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -3094,7 +3094,7 @@
     {
         "id": 3053,
         "name": "斯特拉克的挑战护手",
-        "description": "<mainText><stats><attention>450</attention>生命值<br><attention>15%</attention>韧性</stats><br><br><passive>抓人双爪</passive><br>获得额外攻击力。<br><br><passive>救主灵刃</passive> (0秒冷却时间)<br>在受到将使你的生命值跌到30%以下的伤害时，获得护盾值、体型和韧性。</mainText>",
+        "description": "<mainText><stats><attention>400</attention>生命值<br><attention>20%</attention>韧性</stats><br><br><passive>抓人双爪</passive><br>获得额外攻击力。<br><br><passive>救主灵刃</passive> (0秒冷却时间)<br>在受到将使你的生命值跌到30%以下的伤害时，获得护盾值、体型和韧性。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4036,7 +4036,7 @@
     {
         "id": 3110,
         "name": "冰霜之心",
-        "description": "<mainText><stats><attention>70</attention>护甲<br><attention>400</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>凛冬之抚</passive><br>使附近敌人的<attackSpeed>攻击速度</attackSpeed>降低20%。<br><br><passive>坚如磐石</passive><br>使所受的来自普攻的伤害降低0，至多为该次攻击伤害的0%。</mainText>",
+        "description": "<mainText><stats><attention>70</attention>护甲<br><attention>400</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>凛冬之抚</passive><br>使附近敌人的<attackSpeed>攻击速度</attackSpeed>降低20%。<br><br><passive>坚如磐石</passive><br>使所受的来自普攻的伤害至多降低0，上限为该次攻击伤害的0%。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4318,7 +4318,7 @@
     {
         "id": 3121,
         "name": "末日寒冬",
-        "description": "<mainText><stats><attention>400</attention>生命值<br><attention>860</attention>法力<br><attention>15</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得<scaleHealth>相当于0的生命值</scaleHealth>。<br><passive>永续</passive> (0秒冷却时间)<br><status>定身</status>或<status>减速</status> (仅限近战)一名敌方英雄时会提供一个持续3秒的护盾，护盾值为<scaleMana>0 + 4.5%当前法力值</scaleMana>。如果附近有1名以上的敌人，则护盾值会提升<attention>80%</attention>。</mainText>",
+        "description": "<mainText><stats><attention>400</attention>生命值<br><attention>860</attention>法力<br><attention>15</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得额外<scaleHealth>相当于0的生命值</scaleHealth>。<br><passive>永续</passive> (0秒冷却时间)<br><status>定身</status>或<status>减速</status> (仅限近战)一名敌方英雄时会提供一个持续3秒的护盾，护盾值为<scaleMana>0 + 4.5%当前法力值</scaleMana>。如果附近有1名以上的敌人，则护盾值会提升<attention>80%</attention>。</mainText>",
         "active": false,
         "inStore": false,
         "from": [],
@@ -4369,7 +4369,7 @@
     {
         "id": 3124,
         "name": "鬼索的狂暴之刃",
-        "description": "<mainText><stats><attention>30</attention>攻击力<br><attention>30</attention>法术强度<br><attention>25%</attention>攻击速度</stats><br><br><passive>怨怒</passive><br>攻击附带<magicDamage>30魔法伤害<OnHit>攻击特效</OnHit></magicDamage>.<br><br><passive>沸腾打击</passive><br>普通攻击会提供<attackSpeed>8%攻击速度</attackSpeed>，至多可叠加4次并至多提供<attackSpeed>0攻击速度</attackSpeed>。在满层状态下，每第三次攻击会附带2次<OnHit>攻击特效</OnHit>。</mainText>",
+        "description": "<mainText><stats><attention>30</attention>攻击力<br><attention>30</attention>法术强度<br><attention>25%</attention>攻击速度</stats><br><br><passive>怨怒</passive><br>攻击附带<magicDamage>30魔法伤害<OnHit>攻击特效</OnHit></magicDamage>。<br><br><passive>沸腾打击</passive><br>普通攻击会提供<attackSpeed>8%攻击速度</attackSpeed>，至多可叠加4次并至多提供<attackSpeed>0攻击速度</attackSpeed>。在满层状态下，每第三次攻击会附带2次<OnHit>攻击特效</OnHit>。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4561,7 +4561,7 @@
     {
         "id": 3137,
         "name": "蜕生",
-        "description": "<mainText><stats><attention>70</attention>法术强度<br><attention>30%</attention>法术穿透<br><attention>15</attention>技能急速</stats><br><br><passive>死中焕生</passive> (0秒冷却时间)<br>每当你在对一个敌方英雄造成伤害后的3秒内参与击杀该英雄后，在其所在位置生成一个治愈新星，来为友军们治疗<healing>0</healing>生命值。</mainText>",
+        "description": "<mainText><stats><attention>70</attention>法术强度<br><attention>30%</attention>法术穿透<br><attention>15</attention>技能急速</stats><br><br><passive>死中焕生</passive> (0秒冷却时间)<br>每当你在对一个敌方英雄造成伤害后的3秒内参与击杀该英雄后，在其所在位置生成一个治愈新星，来为友军们治疗<healing>0</healing>生命值。<br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4941,7 +4941,7 @@
     {
         "id": 3158,
         "name": "明朗之靴",
-        "description": "<mainText><stats><attention>15</attention>技能急速<br><attention>45</attention>移动速度</stats><br><br>获得12召唤师技能急速。</mainText>",
+        "description": "<mainText><stats><attention>15</attention>技能急速<br><attention>45</attention>移动速度</stats><br><br>获得12召唤师技能急速。<br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -5765,7 +5765,7 @@
     {
         "id": 3803,
         "name": "万世催化石",
-        "description": "<mainText><stats><attention>300</attention>生命值<br><attention>300</attention>法力</stats><br><br><passive>永恒</passive><br>承受来英雄的伤害时回复法力值。施放一个技能时持续自我治疗。</mainText>",
+        "description": "<mainText><stats><attention>350</attention>生命值<br><attention>300</attention>法力</stats><br><br><passive>永恒</passive><br>承受来英雄的伤害时回复法力值。施放一个技能时持续自我治疗。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -6158,7 +6158,7 @@
     {
         "id": 3866,
         "name": "符文罗盘",
-        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>50%</attention>基础生命回复<br><attention>50%</attention>基础法力回复<br><attention>100</attention>生命值</stats><br><br><br><br><active>主动 - </active> <active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存3个侦察守卫，并在访问商店时补满。<br><br><br><br><br><passive>任务：</passive>使用这个装备赚取1000金币来将其转变为<rarityGeneric>符文罗盘</rarityGeneric>，并提供<active>主动 - </active><active>布置守卫</active>。每<passive>18</passive> 秒获得1层充能，至多至<passive>3</passive>层。当附近有一个友方英雄时，消耗一层充能来赚取金币：<br><li>对英雄或建筑物进行的伤害型技能和攻击会提供<keywordMajor>34</keywordMajor> (近战) / <keywordMajor>32</keywordMajor> (远程) 金币；<li>以任意方式击杀一个小兵会为你提供<keywordMajor>28</keywordMajor>金币并为相距最近的友方英雄提供击杀金币。Item_3866_Active</mainText>",
+        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>50%</attention>基础生命回复<br><attention>50%</attention>基础法力回复<br><attention>100</attention>生命值</stats><br><br><br><br><active>主动 - </active> <active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存3个侦察守卫，并在访问商店时补满。<br><br><br><br><br><passive>任务：</passive>使用这个装备赚取1000金币来将其转变为<rarityGeneric>符文罗盘</rarityGeneric>，并提供<active>主动 - </active><active>布置守卫</active>。每<passive>18</passive> 秒获得1层充能，至多至<passive>3</passive>层。当附近有一个友方英雄时，消耗一层充能来赚取金币：<br><li>对英雄或建筑物进行的伤害型技能和攻击会提供<keywordMajor>34</keywordMajor> (近战) / <keywordMajor>32</keywordMajor> (远程) 金币；<li>以任意方式击杀一个小兵会为你提供<keywordMajor>28</keywordMajor>金币并为相距最近的友方英雄提供击杀金币。<br><br><active>主动 - </active><active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存0个侦察守卫，并在访问商店时补满。 <br><br></mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -6183,7 +6183,7 @@
     {
         "id": 3867,
         "name": "异世珍藏",
-        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>50%</attention>基础生命回复<br><attention>50%</attention>基础法力回复<br><attention>100</attention>生命值</stats><br><br><br><li><passive>升级：</passive>这件装备可被免费升级为<rarityLegendary>血鸣</rarityLegendary>、<rarityLegendary>星界据守</rarityLegendary>、<rarityLegendary>圆梦使者</rarityLegendary>、<rarityLegendary>扎兹沙克的溃口</rarityLegendary>或<rarityLegendary>摩天雪橇</rarityLegendary>。<br><br> <active>主动 - </active><active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存4个侦察守卫，并在访问商店时补满。<br>Item_3867_Active</mainText>",
+        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>50%</attention>基础生命回复<br><attention>50%</attention>基础法力回复<br><attention>100</attention>生命值</stats><br><br><br><li><passive>升级：</passive>这件装备可被免费升级为<rarityLegendary>血鸣</rarityLegendary>、<rarityLegendary>星界据守</rarityLegendary>、<rarityLegendary>圆梦使者</rarityLegendary>、<rarityLegendary>扎兹沙克的溃口</rarityLegendary>或<rarityLegendary>摩天雪橇</rarityLegendary>。<br><br> <active>主动 - </active><active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存4个侦察守卫，并在访问商店时补满。<br><br><br><active>主动 - </active><active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存0个侦察守卫，并在访问商店时补满。 <br><br></mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -6214,7 +6214,7 @@
     {
         "id": 3869,
         "name": "星界据守",
-        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>神峰庇佑：</passive>获得庇佑，使所承受的来自英雄的伤害降低，受到来自英雄的伤害后会存留2秒。(在未受到伤害15秒后刷新。)<br><br><active>主动 - </active> <active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存4个侦察守卫，并在访问商店时补满。 Item_3869_Active</mainText>",
+        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>神峰庇佑：</passive>获得庇佑，使所承受的来自英雄的伤害降低，受到来自英雄的伤害后会存留2秒。(在未受到伤害15秒后刷新。)<br><br><active>主动 - </active> <active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存4个侦察守卫，并在访问商店时补满。 <br><br><active>主动 - </active><active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存0个侦察守卫，并在访问商店时补满。 <br><br></mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -6242,7 +6242,7 @@
     {
         "id": 3870,
         "name": "圆梦使者",
-        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>圆梦使者</passive><br>随时间获得一个<passive>蓝色美梦泡泡</passive>和一个<passive>紫色美梦泡泡</passive>。给其他队友进行治疗或加护盾时，<passive>两个泡泡</passive>都会飞向对方，为其赋能，来降低即将受到的伤害并提升即将造成的伤害。<br><br><active>主动 - </active><active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
+        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>圆梦使者</passive><br>随时间获得一个<passive>蓝色美梦泡泡</passive>和一个<passive>紫色美梦泡泡</passive>。给其他队友进行治疗或加护盾时，<passive>两个泡泡</passive>都会飞向对方，为其赋能，来降低即将受到的伤害并提升即将造成的伤害。<br><br><active>主动 - </active><active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存0个侦察守卫，并在访问商店时补满。 <br><br></mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -6270,7 +6270,7 @@
     {
         "id": 3871,
         "name": "扎兹沙克的溃口",
-        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>虚空扩爆</passive><br>造成技能伤害时会在目标周围引发一次爆炸，造成魔法伤害和基于目标最大生命值的伤害。<br><br><active>主动 - </active> <active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存4个侦察守卫，并在访问商店时补满。 Item_3871_Active</mainText>",
+        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>虚空扩爆</passive><br>造成技能伤害时会在目标周围引发一次爆炸，造成魔法伤害和基于目标最大生命值的伤害。<br><br><active>主动 - </active> <active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存4个侦察守卫，并在访问商店时补满。 <br><br><active>主动 - </active><active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存0个侦察守卫，并在访问商店时补满。 <br><br></mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -6298,7 +6298,7 @@
     {
         "id": 3876,
         "name": "摩天雪橇",
-        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>雪橇出击</passive><br><status>减速</status>或<status>定身</status>一名敌方英雄时会为你和附近生命值最低的那名友军回复生命值并提供移动速度。Item_3876_Active</mainText>",
+        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>雪橇出击</passive><br><status>减速</status>或<status>定身</status>一名敌方英雄时会为你和附近生命值最低的那名友军回复额外生命值并提供移动速度。<br><br><active>主动 - </active><active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存0个侦察守卫，并在访问商店时补满。 <br><br></mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -6326,7 +6326,7 @@
     {
         "id": 3877,
         "name": "血鸣",
-        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>咒刃</passive><br>在施放技能后，你在10秒内的下次普攻附带150%基础攻击力的额外物理伤害并施加洞察弱点，被施加了洞察弱点的敌方英雄在6秒内会受到提升过的伤害。<br><br><br> <active>主动 - </active><active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存4个侦察守卫，并在访问商店时补满。 Item_3877_Active</mainText>",
+        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>咒刃</passive><br>在施放技能后，你在10秒内的下次普攻附带150%基础攻击力的额外物理伤害并施加洞察弱点，被施加了洞察弱点的敌方英雄在6秒内会受到提升过的伤害。<br><br><br> <active>主动 - </active><active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存4个侦察守卫，并在访问商店时补满。 <br><br><active>主动 - </active><active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存0个侦察守卫，并在访问商店时补满。 <br><br></mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -6495,7 +6495,7 @@
     {
         "id": 4005,
         "name": "帝国指令",
-        "description": "<mainText><stats><attention>60</attention>法术强度<br><attention>20</attention>技能急速<br><attention>125%</attention>基础法力回复</stats><br><br><passive>协同开火</passive><status>减速</status>或<status>定身</status>一名敌方英雄时会将其标记，并使友方英雄对其造成额外伤害并为你和该友军都提供移动速度。</mainText>",
+        "description": "<mainText><stats><attention>60</attention>法术强度<br><attention>20</attention>技能急速<br><attention>125%</attention>基础法力回复</stats><br><br><passive>协同开火</passive><br><status>减速</status>或<status>定身</status>一名敌方英雄时会将其标记，并使友方英雄对其造成额外伤害并为你和该友军都提供移动速度。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -6823,7 +6823,7 @@
     {
         "id": 4628,
         "name": "视界专注",
-        "description": "<mainText><stats><attention>90</attention>法术强度<br><attention>20</attention>技能急速</stats><br><br><passive>高能射击</passive><br>在你用技能对700码或更远的英雄造成伤害时，将其<keywordStealth>显形</keywordStealth>6秒。.对被高能射击<keywordStealth>显形</keywordStealth>的敌人们造成10%提升伤害。<br><passive>专注</passive> (0秒冷却时间)<br>在<passive>高能射击</passive>触发时，<keywordStealth>显形</keywordStealth>目标1200码内的所有其它敌方英雄3秒。</mainText>",
+        "description": "<mainText><stats><attention>90</attention>法术强度<br><attention>20</attention>技能急速</stats><br><br><passive>高能射击</passive><br>在你用技能对700码或更远的英雄造成伤害时，将其<keywordStealth>显形</keywordStealth>6秒。对被高能射击<keywordStealth>显形</keywordStealth>的敌人们造成10%提升伤害。<br><br><passive>专注</passive> (0秒冷却时间)<br>在<passive>高能射击</passive>触发时，<keywordStealth>显形</keywordStealth>目标1200码内的所有其它敌方英雄3秒。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7717,7 +7717,7 @@
     {
         "id": 6657,
         "name": "时光之杖",
-        "description": "<mainText><stats><attention>50</attention>法术强度<br><attention>300</attention>生命值<br><attention>300</attention>法力</stats><br><br><br><br>这件装备每60秒获得20生命值、20法力值和4法术强度，至多叠加10层，最大值为200生命值、200法力值和40法术强度。在达到最大层数时，还会使英雄等级提升1级并使所有【永恒】效果提升0%。<br><li><passive>永恒：</passive>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值；花费法力时，你会回复相当于25%法力消耗的生命值，每次施法每秒最多治疗20生命值。</mainText>",
+        "description": "<mainText><stats><attention>50</attention>法术强度<br><attention>350</attention>生命值<br><attention>300</attention>法力</stats><br><br><br><br>这件装备每60秒获得20生命值、20法力值和4法术强度，至多叠加10层，最大值为200生命值、200法力值和40法术强度。在达到最大层数时，还会使英雄等级提升1级并使所有【永恒】效果提升0%。<br><li><passive>永恒：</passive>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值；花费法力时，你会回复相当于25%法力消耗的生命值，每次施放每秒最多治疗20生命值。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7778,7 +7778,7 @@
     {
         "id": 6662,
         "name": "冰脉护手",
-        "description": "<mainText><stats><attention>200</attention>生命值<br><attention>50</attention>护甲<br><attention>15</attention>技能急速</stats><br><br><passive>咒刃</passive> (0秒冷却时间)<br>施放技能后，你的下一次普通攻击会因强化而附带额外伤害并生成一个持续2秒的冰冷地带。经过该地带的敌人会被<status>减速</status>。</mainText>",
+        "description": "<mainText><stats><attention>300</attention>生命值<br><attention>50</attention>护甲<br><attention>15</attention>技能急速</stats><br><br><passive>咒刃</passive> (0秒冷却时间)<br>施放技能后，你的下一次普通攻击会因强化而附带额外伤害并生成一个持续2秒的冰冷地带。经过该地带的敌人会被<status>减速</status>。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7804,14 +7804,14 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 500,
-        "priceTotal": 2700,
+        "price": 400,
+        "priceTotal": 2600,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6662_Tank_T3_IcebornGauntlet.png"
     },
     {
         "id": 6664,
         "name": "璀璨回响",
-        "description": "<mainText><stats><attention>600</attention>生命值<br><attention>40</attention>魔法抗性<br><attention>100%</attention>基础生命回复</stats><br><br><passive>献祭</passive><br>承受或造成伤害时会使你开始每秒对附近敌人造成<magicDamage>0魔法伤害</magicDamage>(对小兵提升25%)，持续3秒。承受或造成伤害会刷新效果的持续时长。<br><br><passive>荒弃</passive><br>击杀一个敌人时会在其周围的一个区域内造成<magicDamage>0魔法伤害</magicDamage>。</mainText>",
+        "description": "<mainText><stats><attention>600</attention>生命值<br><attention>40</attention>魔法抗性<br><attention>100%</attention>基础生命回复</stats><br><br><passive>献祭</passive><br>承受或造成伤害时会使你开始每秒对附近敌人造成<magicDamage>0魔法伤害</magicDamage>(对小兵提升25%)，持续3秒。承受或造成伤害会刷新效果的持续时长。<br><br><passive>荒弃</passive><br>击杀一个敌人时会在其周围的一个区域内造成<magicDamage>0魔法伤害</magicDamage>。<br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8206,7 +8206,7 @@
     {
         "id": 6693,
         "name": "暗行者之爪",
-        "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>22</attention>穿甲<br><attention>15</attention>技能急速</stats><br><br><passive>唯我</passive><br>击杀英雄时会生成一座你自己的雕像。<br><br><passive>盛名</passive><br>如果一名在刚被你造成过伤害的英雄阵亡，则获得攻击力。</mainText>",
+        "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>22</attention>穿甲<br><attention>15</attention>技能急速</stats><br><br><passive>伺机待发</passive><br>在脱离与英雄的战斗状态8秒后获得穿甲。<br><br><passive>险境脱身</passive><br>击杀英雄后获得移动速度。</mainText>",
         "active": false,
         "inStore": false,
         "from": [
@@ -8317,7 +8317,7 @@
     {
         "id": 6697,
         "name": "狂妄",
-        "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>18</attention>穿甲<br><attention>15</attention>技能急速</stats><br><br><passive>唯我</passive><br>击杀英雄时会生成一座你自己的雕像。<br><br><passive>盛名</passive><br>如果一名在刚被你造成过伤害的英雄阵亡，则获得攻击力。</mainText>",
+        "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>18</attention>穿甲<br><attention>15</attention>技能急速</stats><br><br><passive>伺机待发</passive><br>在脱离与英雄的战斗状态8秒后获得穿甲。<br><br><passive>险境脱身</passive><br>击杀英雄后获得移动速度。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8348,7 +8348,7 @@
     {
         "id": 6698,
         "name": "亵渎九头蛇",
-        "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>18</attention>穿甲<br><attention>20</attention>技能急速</stats><br><br><passive>顺劈</passive><br>攻击附带额外伤害<OnHit>攻击特效</OnHit>，并生成一道冲击波来对目标身后的敌人们造成物理伤害。<br><br> <active>正处于激活状态</active> <br><active>邪斩</active><br>对附近的敌人们造成物理伤害。这个伤害在对低血量敌人时会提升。</mainText>",
+        "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>18</attention>穿甲<br><attention>20</attention>技能急速</stats><br><br><passive>顺劈</passive><br>攻击附带额外伤害<OnHit>攻击特效</OnHit>，并生成一道冲击波来对目标身后的敌人们造成物理伤害。<br><br> <active>正处于激活状态</active> <br><active>邪斩</active><br>对附近的敌人们造成物理伤害。这个伤害在对低生命值敌人时会提升。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -8438,7 +8438,7 @@
     {
         "id": 6701,
         "name": "禁忌时机",
-        "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>18</attention>穿甲<br><attention>5%</attention>移动速度</stats><br><br><passive>唯我</passive><br>击杀英雄时会生成一座你自己的雕像。<br><br><passive>盛名</passive><br>如果一名在刚被你造成过伤害的英雄阵亡，则获得攻击力。</mainText>",
+        "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>18</attention>穿甲<br><attention>5%</attention>移动速度</stats><br><br><passive>伺机待发</passive><br>在脱离与英雄的战斗状态8秒后获得穿甲。<br><br><passive>险境脱身</passive><br>击杀英雄后获得移动速度。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8468,7 +8468,7 @@
     {
         "id": 7000,
         "name": " 沙雀之爪",
-        "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>26</ornnBonus>穿甲<br><ornnBonus>25</ornnBonus>技能急速</stats><br><br><passive>唯我</passive><br>击杀英雄时会生成一座你自己的雕像。<br><br><passive>盛名</passive><br>如果一名在刚被你造成过伤害的英雄阵亡，则获得攻击力。</mainText>",
+        "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>26</ornnBonus>穿甲<br><ornnBonus>25</ornnBonus>技能急速</stats><br><br><passive>伺机待发</passive><br>在脱离与英雄的战斗状态8秒后获得穿甲。<br><br><passive>险境脱身</passive><br>击杀英雄后获得移动速度。</mainText>",
         "active": false,
         "inStore": false,
         "from": [
@@ -8624,7 +8624,7 @@
         "specialRecipe": 0,
         "isEnchantment": false,
         "price": 0,
-        "priceTotal": 2700,
+        "priceTotal": 2600,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6662_Tank_T3_IcebornGauntlet.png"
     },
     {
@@ -8686,7 +8686,7 @@
     {
         "id": 7008,
         "name": " 无我",
-        "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>27</ornnBonus>穿甲<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br><passive>唯我</passive><br>击杀英雄时会生成一座你自己的雕像。<br><br><passive>盛名</passive><br>如果一名在刚被你造成过伤害的英雄阵亡，则获得攻击力。</mainText>",
+        "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>27</ornnBonus>穿甲<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br><passive>伺机待发</passive><br>在脱离与英雄的战斗状态8秒后获得穿甲。<br><br><passive>险境脱身</passive><br>击杀英雄后获得移动速度。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9086,7 +9086,7 @@
     {
         "id": 7022,
         "name": " 必然",
-        "description": "<mainText><stats><ornnBonus>70</ornnBonus>攻击力<br><ornnBonus>27</ornnBonus>穿甲<br><ornnBonus>8%</ornnBonus>移动速度</stats><br><br><passive>唯我</passive><br>击杀英雄时会生成一座你自己的雕像。<br><br><passive>盛名</passive><br>如果一名在刚被你造成过伤害的英雄阵亡，则获得攻击力。</mainText>",
+        "description": "<mainText><stats><ornnBonus>70</ornnBonus>攻击力<br><ornnBonus>27</ornnBonus>穿甲<br><ornnBonus>8%</ornnBonus>移动速度</stats><br><br><passive>伺机待发</passive><br>在脱离与英雄的战斗状态8秒后获得穿甲。<br><br><passive>险境脱身</passive><br>击杀英雄后获得移动速度。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9251,7 +9251,7 @@
     {
         "id": 7028,
         "name": " 无限会聚",
-        "description": "<mainText><stats><ornnBonus>70</ornnBonus>法术强度<br><ornnBonus>500</ornnBonus>生命值<br><ornnBonus>550</ornnBonus>法力</stats><br><br><br><br>这件装备每60秒获得20生命值、20法力值和4法术强度，至多叠加10层，最大值为200生命值、200法力值和40法术强度。在达到最大层数时，还会使英雄等级提升1级并使所有【永恒】效果提升0%。<br><li><passive>永恒：</passive>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值；花费法力时，你会回复相当于25%法力消耗的生命值，每次施法每秒最多治疗20生命值。</mainText>",
+        "description": "<mainText><stats><ornnBonus>70</ornnBonus>法术强度<br><ornnBonus>500</ornnBonus>生命值<br><ornnBonus>550</ornnBonus>法力</stats><br><br><br><br>这件装备每60秒获得20生命值、20法力值和4法术强度，至多叠加10层，最大值为200生命值、200法力值和40法术强度。在达到最大层数时，还会使英雄等级提升1级并使所有【永恒】效果提升0%。<br><li><passive>永恒：</passive>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值；花费法力时，你会回复相当于25%法力消耗的生命值，每次施放每秒最多治疗20生命值。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9308,7 +9308,7 @@
     {
         "id": 7030,
         "name": " 沸腾悲伤",
-        "description": "<mainText><stats><ornnBonus>40</ornnBonus>攻击力<br><ornnBonus>50</ornnBonus>法术强度<br><ornnBonus>35%</ornnBonus>攻击速度</stats><br><br><passive>怨怒</passive><br>攻击附带<magicDamage>30魔法伤害<OnHit>攻击特效</OnHit></magicDamage>.<br><br><passive>沸腾打击</passive><br>普通攻击会提供<attackSpeed>8%攻击速度</attackSpeed>，至多可叠加4次并至多提供<attackSpeed>0攻击速度</attackSpeed>。在满层状态下，每第三次攻击会附带2次<OnHit>攻击特效</OnHit>。</mainText>",
+        "description": "<mainText><stats><ornnBonus>40</ornnBonus>攻击力<br><ornnBonus>50</ornnBonus>法术强度<br><ornnBonus>35%</ornnBonus>攻击速度</stats><br><br><passive>怨怒</passive><br>攻击附带<magicDamage>30魔法伤害<OnHit>攻击特效</OnHit></magicDamage>。<br><br><passive>沸腾打击</passive><br>普通攻击会提供<attackSpeed>8%攻击速度</attackSpeed>，至多可叠加4次并至多提供<attackSpeed>0攻击速度</attackSpeed>。在满层状态下，每第三次攻击会附带2次<OnHit>攻击特效</OnHit>。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9682,7 +9682,7 @@
     {
         "id": 8001,
         "name": "厌恨锁链",
-        "description": "<mainText><stats><attention>650</attention>生命值<br><attention>20</attention>技能急速</stats><br><br><passive>复仇令</passive><br>你随时间持续获得【复仇令】层数，并在秒后达到最大值层。每层【复仇令】会为你提供针对【仇敌】的1%伤害减免，至多提供%伤害减免。<br><br><passive>报复</passive><br>在满层时，你的【仇敌】在你附近时会降低%韧性。<active>主动 - </active> <active>起誓</active><br>选择一名【仇敌】以开始积攒一个【复仇令】。</mainText>",
+        "description": "<mainText><stats><attention>650</attention>生命值<br><attention>20</attention>技能急速</stats><br><br><passive>复仇令</passive><br>你随时间持续获得【复仇令】层数。每层【复仇令】会为你提供针对【仇敌】的1%伤害减免。<br><br><passive>报复</passive><br>在满层时，你的【仇敌】在你附近时会降低%韧性。<br><br><active>主动 - </active> <active>起誓</active><br>选择一名【仇敌】以开始积攒一个【复仇令】。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -10296,7 +10296,7 @@
     {
         "id": 223053,
         "name": "斯特拉克的挑战护手",
-        "description": "<mainText><stats><nerfedStat>350</nerfedStat>生命值<br><attention>15%</attention>韧性</stats><br><br><br><li><passive>抓人双爪：</passive>获得相当于额外攻击力的基础攻击力。<li><passive>救主灵刃：</passive>在受到将使你的生命值跌到30%以下的伤害时，提供持续衰减的护盾值，以及韧性。</mainText>",
+        "description": "<mainText><stats><nerfedStat>350</nerfedStat>生命值<br><attention>20%</attention>韧性</stats><br><br><br><li><passive>抓人双爪：</passive>获得相当于额外攻击力的基础攻击力。<li><passive>救主灵刃：</passive>在受到将使你的生命值跌到30%以下的伤害时，提供持续衰减的护盾值，以及韧性。</mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -12296,7 +12296,7 @@
     {
         "id": 226657,
         "name": "时光之杖",
-        "description": "<mainText><stats><buffedStat> 70</buffedStat>法术强度<br><attention>300</attention>生命值<br><attention>300</attention>法力</stats><br><br><br><br>这件装备每60秒获得30生命值、30法力值和4法术强度，至多叠加10层，最大值为300生命值、300法力值和40法术强度。在达到最大层数时，还会使英雄等级提升1级并使所有【永恒】效果提升50%。<br><li><passive>永恒：</passive>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值；花费法力时，你会回复相当于25%法力消耗的生命值，每次施法每秒最多治疗20生命值。</mainText>",
+        "description": "<mainText><stats><buffedStat> 70</buffedStat>法术强度<br><attention>350</attention>生命值<br><attention>300</attention>法力</stats><br><br><br><br>这件装备每60秒获得30生命值、30法力值和4法术强度，至多叠加10层，最大值为300生命值、300法力值和40法术强度。在达到最大层数时，还会使英雄等级提升1级并使所有【永恒】效果提升50%。<br><li><passive>永恒：</passive>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值；花费法力时，你会回复相当于25%法力消耗的生命值，每次施放每秒最多治疗20生命值。</mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -12326,7 +12326,7 @@
     {
         "id": 226662,
         "name": "冰脉护手",
-        "description": "<mainText><stats><attention>200</attention>生命值<br><attention>50</attention>护甲<br><nerfedStat>10</nerfedStat>技能急速</stats><br><br><br><li><passive>咒刃：</passive>施放技能后，你的下一次普通攻击会因强化而附带额外伤害并生成一个持续2秒的冰冷地带。经过该地带的敌人会被<status>减速</status>。你会致残你的主要目标，使其受到的减速幅度提升100%并使其对你造成的伤害削减0%，持续2.5秒(1.5(0秒冷却时间))。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得 <attention> 50生命值</attention>、<attention>5%</attention>韧性、和<attention>5%</attention>减速抗性。<br></mainText>",
+        "description": "<mainText><stats><attention>300</attention>生命值<br><attention>50</attention>护甲<br><nerfedStat>10</nerfedStat>技能急速</stats><br><br><br><li><passive>咒刃：</passive>施放技能后，你的下一次普通攻击会因强化而附带额外伤害并生成一个持续2秒的冰冷地带。经过该地带的敌人会被<status>减速</status>。你会致残你的主要目标，使其受到的减速幅度提升100%并使其对你造成的伤害削减0%，持续2.5秒(1.5(0秒冷却时间))。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得 <attention> 50生命值</attention>、<attention>5%</attention>韧性、和<attention>5%</attention>减速抗性。<br></mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -13342,7 +13342,7 @@
     {
         "id": 227028,
         "name": " 无限会聚",
-        "description": "<mainText><stats><ornnBonus>90</ornnBonus>法术强度<br><ornnBonus>550</ornnBonus>生命值<br><ornnBonus>550</ornnBonus>法力</stats><br><br><br><br>这件装备每60秒获得30生命值、30法力值和4法术强度，至多叠加10层，最大值为300生命值、300法力值和40法术强度。在达到最大层数时，还会使英雄等级提升1级并使所有【永恒】效果提升50%。<br><li><passive>永恒：</passive>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值；花费法力时，你会回复相当于25%法力消耗的生命值，每次施法每秒最多治疗20生命值。</mainText>",
+        "description": "<mainText><stats><ornnBonus>90</ornnBonus>法术强度<br><ornnBonus>550</ornnBonus>生命值<br><ornnBonus>550</ornnBonus>法力</stats><br><br><br><br>这件装备每60秒获得30生命值、30法力值和4法术强度，至多叠加10层，最大值为300生命值、300法力值和40法术强度。在达到最大层数时，还会使英雄等级提升1级并使所有【永恒】效果提升50%。<br><li><passive>永恒：</passive>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值；花费法力时，你会回复相当于25%法力消耗的生命值，每次施放每秒最多治疗20生命值。</mainText>",
         "active": false,
         "inStore": false,
         "from": [
@@ -13399,7 +13399,7 @@
     {
         "id": 227030,
         "name": " 沸腾悲伤",
-        "description": "<mainText><stats><ornnBonus>35</ornnBonus>攻击力<br><ornnBonus>35</ornnBonus>法术强度<br><ornnBonus>40%</ornnBonus>攻击速度</stats><br><br><passive>怨怒</passive><br>攻击附带<magicDamage>30魔法伤害<OnHit>攻击特效</OnHit></magicDamage>.<br><br><passive>沸腾打击</passive><br>普通攻击会提供<attackSpeed>8%攻击速度</attackSpeed>，至多可叠加4次并至多提供<attackSpeed>0攻击速度</attackSpeed>。在满层状态下，每第三次攻击会附带2次<OnHit>攻击特效</OnHit>。</mainText>",
+        "description": "<mainText><stats><ornnBonus>35</ornnBonus>攻击力<br><ornnBonus>35</ornnBonus>法术强度<br><ornnBonus>40%</ornnBonus>攻击速度</stats><br><br><passive>怨怒</passive><br>攻击附带<magicDamage>30魔法伤害<OnHit>攻击特效</OnHit></magicDamage>。<br><br><passive>沸腾打击</passive><br>普通攻击会提供<attackSpeed>8%攻击速度</attackSpeed>，至多可叠加4次并至多提供<attackSpeed>0攻击速度</attackSpeed>。在满层状态下，每第三次攻击会附带2次<OnHit>攻击特效</OnHit>。</mainText>",
         "active": false,
         "inStore": false,
         "from": [

@@ -1723,24 +1723,6 @@
             "tooltip": "你的友军受到的@DamageRedirectPercentage*100@%实际伤害值将被转移给你，并且其所受的@HealCopyPercentage*100@%<healing>治疗效果</healing>也会转移给你。<br><br>已转移的伤害总和：@f1@<br>已造成的治疗效果总和：@f2@<br>"
         },
         {
-            "apiName": "Deathtouch",
-            "calculations": {},
-            "dataValues": {
-                "AttackSpeedRatio": 0.0010000000474974513,
-                "BleedDuration": 5.0,
-                "CurseCounter": 1.0,
-                "OnHitDamageRatio": 0.23999999463558197,
-                "PercentMaxHPDamagePer5Seconds": 0.029999999329447746
-            },
-            "desc": "你的攻击施加@CurseCounter@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>每过一秒，你的攻击会对被<keywordMajor>诅咒</keywordMajor>的敌人们永久地造成额外<magicDamage>魔法伤害</magicDamage>，可随着层数的数量而提升。",
-            "iconLarge": "assets/ux/cherry/augments/icons/deathtouch_large.arena_augments_v2.png",
-            "iconSmall": "assets/ux/cherry/augments/icons/deathtouch_small.arena_augments_v2.png",
-            "id": 217,
-            "name": "死亡触摸",
-            "rarity": 4,
-            "tooltip": "你的攻击施加@CurseCounter@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>{{ Cherry_Curse }}<br><br>你的攻击会造成相当于你 @OnHitDamageRatio*100%@%<keywordMajor>诅咒能量</keywordMajor>的额外<magicDamage>魔法伤害</magicDamage>。<br><br>附带伤害：@f1@"
-        },
-        {
             "apiName": "Quest_AngelofRetribution",
             "calculations": {
                 "BaseDamage": {
@@ -1936,24 +1918,6 @@
             "name": "火上浇油",
             "rarity": 4,
             "tooltip": "你的攻击还会<keywordMajor>灼烧</keywordMajor>敌人，在@BleedDuration@秒的持续时间里每秒持续造成<scaleAP>@PercentMaxHPDamagePer5Seconds*20@%最大生命值的魔法伤害</scaleAP>。<keywordMajor>灼烧</keywordMajor>可无限叠加。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
-        },
-        {
-            "apiName": "Doomsayer",
-            "calculations": {},
-            "dataValues": {
-                "AdaptiveForceRatio": 0.3499999940395355,
-                "BleedDuration": 5.0,
-                "Cooldown": 3.0,
-                "CurseCounter": 1.0,
-                "PercentMaxHPDamagePer5Seconds": 0.029999999329447746
-            },
-            "desc": "你的技能对命中的敌方英雄施加@CurseCounter@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>每秒从被<keywordMajor>诅咒</keywordMajor>的敌人们身上获得永久的适应之力，可随着层数的数量而提升。",
-            "iconLarge": "assets/ux/cherry/augments/icons/doomsayer_large.arena_augments_v2.png",
-            "iconSmall": "assets/ux/cherry/augments/icons/doomsayer_small.arena_augments_v2.png",
-            "id": 219,
-            "name": "末日预言者",
-            "rarity": 8,
-            "tooltip": "你的技能对命中的敌方英雄施加@CurseCounter@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>{{ Cherry_Curse }}<br><br>获得相当于@AdaptiveForceRatio*100@% <keywordMajor>诅咒能量</keywordMajor>的适应之力。<br><br>已获得的适应之力：@f1@"
         },
         {
             "apiName": "Flashy",
@@ -2355,46 +2319,6 @@
             "tooltip": "获得@AttackSpeed*100@%攻击速度。"
         },
         {
-            "apiName": "PlagueBearer",
-            "calculations": {
-                "BleedDamageTooltip": {
-                    "__type": "GameCalculationModified",
-                    "mModifiedGameCalculation": "{0a242b94}",
-                    "mMultiplier": {
-                        "__type": "NumberCalculationPart",
-                        "mNumber": 0.20000000298023224
-                    },
-                    "{37070a8d}": 4,
-                    "{cbcac618}": 4,
-                    "{e6eebb2f}": 4
-                },
-                "{0a242b94}": {
-                    "__type": "GameCalculation",
-                    "mFormulaParts": [
-                        {
-                            "__type": "StatByCoefficientCalculationPart",
-                            "mCoefficient": 0.02500000037252903,
-                            "mStat": 11
-                        }
-                    ]
-                }
-            },
-            "dataValues": {
-                "BleedDuration": 5.0,
-                "CurseStacksPerTick": 1.0,
-                "MaxHealthRatio": 1.0,
-                "Range": 500.0,
-                "TickCadence": 1.5
-            },
-            "desc": "你每秒对附近的敌方英雄们施加@CurseStacksPerTick@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>每秒从被<keywordMajor>诅咒</keywordMajor>的敌人们身上获得永久的<healing>最大生命值</healing>，可随着层数的数量而提升。",
-            "iconLarge": "assets/ux/cherry/augments/icons/plaguebearer_large.arena_augments_v2.png",
-            "iconSmall": "assets/ux/cherry/augments/icons/plaguebearer_small.arena_augments_v2.png",
-            "id": 216,
-            "name": "疫病使者",
-            "rarity": 8,
-            "tooltip": "你每秒对附近的敌方英雄们施加@CurseStacksPerTick@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>{{ Cherry_Curse }}<br><br>获得相当于@MaxHealthRatio*100@%<keywordMajor>诅咒能量</keywordMajor>的<healing>最大生命值</healing>。<br><br>已获得的最大生命值：@f1@"
-        },
-        {
             "apiName": "Goliath",
             "calculations": {},
             "dataValues": {
@@ -2639,23 +2563,6 @@
             "name": "镜花水月",
             "rarity": 0,
             "tooltip": "当你跌下@HealthThreshold*100@%生命值时，暂时<keywordStealth>隐形</keywordStealth>并生成你自己的一个复制体。"
-        },
-        {
-            "apiName": "Desecrator",
-            "calculations": {},
-            "dataValues": {
-                "ArmorMRRatio": 0.10000000149011612,
-                "BleedDuration": 5.0,
-                "CurseCounter": 2.0,
-                "PercentMaxHPDamagePer5Seconds": 0.05000000074505806
-            },
-            "desc": "<status>定身</status>敌方英雄时施加@CurseCounter@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>每秒从被<keywordMajor>诅咒</keywordMajor>的敌人们身上获得永久的<armor>护甲</armor>和<magicresistance>魔法抗性</magicresistance>，可随着层数的数量而提升。",
-            "iconLarge": "assets/ux/cherry/augments/icons/desecrator_large.arena_augments_v2.png",
-            "iconSmall": "assets/ux/cherry/augments/icons/desecrator_small.arena_augments_v2.png",
-            "id": 218,
-            "name": "亵渎者",
-            "rarity": 0,
-            "tooltip": "<status>定身</status>敌方英雄时施加@CurseCounter@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>{{ Cherry_Curse }}<br><br>每秒从被<keywordMajor>诅咒</keywordMajor>的敌人们身上获得相当于@ArmorMRRatio*100@% 诅咒能量的<armor>护甲</armor>和<magicresistance>魔法抗性</magicresistance>。<br><br>已获得的护甲与魔抗：@f1@"
         },
         {
             "apiName": "AllForYou",
@@ -3163,24 +3070,6 @@
             "name": "连招大师",
             "rarity": 4,
             "tooltip": "获得<spellName>电刑</spellName>和<spellName>相位猛冲</spellName>基石符文。<br><br>这个回合的【电刑】伤害：@f1@<br>【电刑】伤害总和：@f2@"
-        },
-        {
-            "apiName": "DarkBlessing",
-            "calculations": {},
-            "dataValues": {
-                "AbilityHasteRatio": 0.14000000059604645,
-                "BleedDuration": 5.0,
-                "Cooldown": 1.5,
-                "CurseCounter": 1.0,
-                "Radius": 450.0
-            },
-            "desc": "在你提供治疗/护盾时，对一个附近的敌方英雄施加@CurseCounter@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br>每秒从被<keywordMajor>诅咒</keywordMajor>的敌人们身上获得永久的技能急速，可随着层数的数量而提升。",
-            "iconLarge": "assets/ux/cherry/augments/icons/darkblessing_large.arena_augments_v2.png",
-            "iconSmall": "assets/ux/cherry/augments/icons/darkblessing_small.arena_augments_v2.png",
-            "id": 215,
-            "name": "黑暗赐福",
-            "rarity": 4,
-            "tooltip": "在你提供治疗/护盾时，对一个附近的敌方英雄施加@CurseCounter@层持续@BleedDuration@秒的<keywordMajor>诅咒</keywordMajor>，可无限叠加。<br><br>{{ Cherry_Curse }}<br><br>获得相当于你@AbilityHasteRatio*100@%<keywordMajor>诅咒能量</keywordMajor>的技能急速。<br><br>已获取的技能急速：@f1@"
         },
         {
             "apiName": "MindtoMatter",
