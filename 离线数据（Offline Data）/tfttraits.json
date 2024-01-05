@@ -2309,7 +2309,7 @@
                     },
                     {
                         "name": "Mana",
-                        "value": 20.0000,
+                        "value": 15.0000,
                         "format_string": ""
                     }
                 ],
@@ -2327,7 +2327,7 @@
                     },
                     {
                         "name": "Mana",
-                        "value": 30.0000,
+                        "value": 20.0000,
                         "format_string": ""
                     }
                 ],

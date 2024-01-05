@@ -4056,19 +4056,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Eagle-Eye-III.png"
     },
     {
-        "guid": "80464635-b7ea-4c07-873a-5aab0961ff00",
-        "name": "超级加倍",
-        "nameId": "TFT7_Augment_Consistency",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Consistency-I.png"
-    },
-    {
         "guid": "7889a8a2-00b4-49a4-b077-6eea7543b909",
         "name": "后期专家",
         "nameId": "TFT7_Augment_LategameSpecialist",
@@ -14766,19 +14753,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Eagle-Eye-III.png"
-    },
-    {
-        "guid": "80464635-b7ea-4c07-873a-5aab0961ff00",
-        "name": "超级加倍",
-        "nameId": "TFT7_Augment_Consistency",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Consistency-I.png"
     },
     {
         "guid": "7889a8a2-00b4-49a4-b077-6eea7543b909",

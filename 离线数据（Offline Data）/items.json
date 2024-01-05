@@ -6214,7 +6214,7 @@
     {
         "id": 3869,
         "name": "星界据守",
-        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>神峰庇佑：</passive>获得庇佑，使所承受的来自英雄的伤害降低，受到来自英雄的伤害后会存留2秒。(在未受到伤害15秒后刷新。)<br><br><active>主动 - </active> <active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存4个侦察守卫，并在访问商店时补满。 <br><br><active>主动 - </active><active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存0个侦察守卫，并在访问商店时补满。 <br><br></mainText>",
+        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>神峰庇佑：</passive>获得庇佑，使所承受的来自英雄的伤害降低，受到来自英雄的伤害后会存留2秒。(在未受到伤害20秒后刷新。)<br><br><active>主动 - </active> <active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存4个侦察守卫，并在访问商店时补满。 <br><br><active>主动 - </active><active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存0个侦察守卫，并在访问商店时补满。 <br><br></mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -7232,7 +7232,7 @@
     {
         "id": 4646,
         "name": "风暴狂涌",
-        "description": "<mainText><stats><attention>100</attention>法术强度<br><attention>12</attention>法术穿透<br><attention>5%</attention>移动速度</stats><br><br><passive>风暴驭者</passive> (0秒冷却时间)<br>在短时间内对一个英雄造成相当于其35%最大生命值的伤害时，对其施加<passive>风啸</passive>并提供移动速度。<br><passive>风啸</passive><br>在若干秒后，打击该目标，造成魔法伤害。如果一个敌人在打击前阵亡，那么它会立刻引爆，在一个大范围内造成伤害并提供额外金币。 </mainText>",
+        "description": "<mainText><stats><attention>100</attention>法术强度<br><attention>10</attention>法术穿透<br><attention>5%</attention>移动速度</stats><br><br><passive>风暴驭者</passive> (0秒冷却时间)<br>在短时间内对一个英雄造成相当于其35%最大生命值的伤害时，对其施加<passive>风啸</passive>并提供移动速度。<br><passive>风啸</passive><br>在若干秒后，打击该目标，造成魔法伤害。如果一个敌人在打击前阵亡，那么它会立刻引爆，在一个大范围内造成伤害并提供额外金币。 </mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9491,8 +9491,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 600,
-        "priceTotal": 3600,
+        "price": 0,
+        "priceTotal": 3000,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3073_Hexaegis.png"
     },
     {
