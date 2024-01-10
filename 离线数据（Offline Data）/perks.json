@@ -585,13 +585,13 @@
         "id": 8242,
         "name": "坚定",
         "majorChangePatchVersion": "",
-        "tooltip": "获得5%韧性和5%减速抵抗。这些数值会基于已损失生命值而最多提升额外的20%韧性和20%减速抵抗。最大值会在30%生命值时达成。<br>当前韧性加成：@f1@%<br>当前减速抵抗加成：@f2@%<br><br>带着抗性加成战斗的总时长：@f6@秒。",
-        "shortDesc": "获得小幅度的韧性加成，会随着已损失生命值来提升。",
-        "longDesc": "获得5%韧性和5%减速抵抗。这些数值会基于已损失生命值而最多提升额外的20%韧性和20%减速抵抗。最大值会在30%生命值时达成。",
+        "tooltip": "",
+        "shortDesc": "",
+        "longDesc": "",
         "recommendationDescriptor": "",
         "iconPath": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/Unflinching/Unflinching.png",
         "endOfGameStatDescs": [
-            "在战斗中带着最大韧性加成的时间(秒)：@eogvar1@"
+            ""
         ],
         "recommendationDescriptorAttributes": {
             "kDurability": 4,
@@ -691,6 +691,18 @@
         "recommendationDescriptorAttributes": {}
     },
     {
+        "id": 5012,
+        "name": "ResistScaling",
+        "majorChangePatchVersion": "",
+        "tooltip": "",
+        "shortDesc": "",
+        "longDesc": "",
+        "recommendationDescriptor": "",
+        "iconPath": "/lol-game-data/assets/v1/perk-images/StatMods/StatModsAdaptiveForceScalingIcon.png",
+        "endOfGameStatDescs": [],
+        "recommendationDescriptorAttributes": {}
+    },
+    {
         "id": 8439,
         "name": "余震",
         "majorChangePatchVersion": "9.9",
@@ -726,6 +738,30 @@
         "longDesc": "+6护甲",
         "recommendationDescriptor": "",
         "iconPath": "/lol-game-data/assets/v1/perk-images/StatMods/StatModsArmorIcon.png",
+        "endOfGameStatDescs": [],
+        "recommendationDescriptorAttributes": {}
+    },
+    {
+        "id": 5011,
+        "name": "Health",
+        "majorChangePatchVersion": "",
+        "tooltip": "",
+        "shortDesc": "",
+        "longDesc": "",
+        "recommendationDescriptor": "",
+        "iconPath": "/lol-game-data/assets/v1/perk-images/StatMods/StatModsHealthScalingIcon.png",
+        "endOfGameStatDescs": [],
+        "recommendationDescriptorAttributes": {}
+    },
+    {
+        "id": 5013,
+        "name": "Tenacity",
+        "majorChangePatchVersion": "",
+        "tooltip": "",
+        "shortDesc": "",
+        "longDesc": "",
+        "recommendationDescriptor": "",
+        "iconPath": "/lol-game-data/assets/v1/perk-images/StatMods/StatModsMovementSpeedIcon.png",
         "endOfGameStatDescs": [],
         "recommendationDescriptorAttributes": {}
     },
@@ -782,8 +818,8 @@
         "name": "成长生命值",
         "majorChangePatchVersion": "",
         "tooltip": "+@f1@生命值(基于等级)",
-        "shortDesc": "+15-140生命值(基于等级)",
-        "longDesc": "+15-140生命值(基于等级)",
+        "shortDesc": "+10-150生命值(基于等级)",
+        "longDesc": "+10-150生命值(基于等级)",
         "recommendationDescriptor": "",
         "iconPath": "/lol-game-data/assets/v1/perk-images/StatMods/StatModsHealthScalingIcon.png",
         "endOfGameStatDescs": [],
@@ -1142,6 +1178,18 @@
             "kBurstDamage": 5,
             "kDamagePerSecond": 5
         }
+    },
+    {
+        "id": 5010,
+        "name": "移动速度",
+        "majorChangePatchVersion": "",
+        "tooltip": "",
+        "shortDesc": "",
+        "longDesc": "",
+        "recommendationDescriptor": "",
+        "iconPath": "/lol-game-data/assets/v1/perk-images/StatMods/StatModsMovementSpeedIcon.png",
+        "endOfGameStatDescs": [],
+        "recommendationDescriptorAttributes": {}
     },
     {
         "id": 8127,

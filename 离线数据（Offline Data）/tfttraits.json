@@ -1540,7 +1540,7 @@
                 "effect_amounts": [
                     {
                         "name": "DamageDecrease",
-                        "value": 0.1500,
+                        "value": 0.1000,
                         "format_string": ""
                     },
                     {
@@ -1563,7 +1563,7 @@
                 "effect_amounts": [
                     {
                         "name": "DamageDecrease",
-                        "value": 0.1500,
+                        "value": 0.1000,
                         "format_string": ""
                     },
                     {
@@ -1586,7 +1586,7 @@
                 "effect_amounts": [
                     {
                         "name": "DamageDecrease",
-                        "value": 0.1500,
+                        "value": 0.1000,
                         "format_string": ""
                     },
                     {
@@ -1961,7 +1961,7 @@
                     },
                     {
                         "name": "CRIT_DAMAGE",
-                        "value": 0.2000,
+                        "value": 0.1500,
                         "format_string": ""
                     }
                 ],
@@ -3412,6 +3412,1153 @@
                 "min_units": 1,
                 "style_idx": 6,
                 "style_name": "kUnique"
+            }
+        ]
+    },
+    {
+        "display_name": "宇航员",
+        "trait_id": "Astro",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Astro.png",
+        "tooltip_text": "(@MinUnits@) 【宇航员】们的技能少消耗@ManaCostReduction@法力值。",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ManaCostReduction",
+                        "value": 30.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 25000,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "战地机甲",
+        "trait_id": "Battlecast",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Battlecast.png",
+        "tooltip_text": "在造成或受到10次伤害后，【战地机甲】弈子们对相距最近的那个敌人造成魔法伤害。如果低于50%生命值，则转而治疗等额的生命值。<br><br><expandRow>(@MinUnits@) @HealOrDamageAmount@魔法伤害</expandRow>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HealOrDamageAmount",
+                        "value": 90.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HealOrDamageAmount",
+                        "value": 200.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HealOrDamageAmount",
+                        "value": 400.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 7,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HealOrDamageAmount",
+                        "value": 800.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 8,
+                "max_units": 25000,
+                "style_idx": 5,
+                "style_name": "kChromatic"
+            }
+        ]
+    },
+    {
+        "display_name": "强袭枪手",
+        "trait_id": "Blaster",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Blaster.png",
+        "tooltip_text": "每第4次攻击，【强袭枪手】们对随机的敌人们发射若干次额外攻击。这些额外攻击可以暴击。<br><br><expandRow>(@MinUnits@) @AdditionalAttacks@次额外攻击</expandRow>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AdditionalAttacks",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AdditionalAttacks",
+                        "value": 2.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 25000,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "未来战士",
+        "trait_id": "Chrono",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Chrono.png",
+        "tooltip_text": "在战斗开始时和每过若干秒，你的弈子们获得@PercentAttackSpeed@%攻击速度。<br><br><row>(@MinUnits@) @Frequency@秒</row><br><row>(@MinUnits@) @Frequency@秒</row><br><row>(@MinUnits@) @Frequency@秒</row><br><row>(@MinUnits@) @Frequency@秒</row>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PercentAttackSpeed",
+                        "value": 10.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Frequency",
+                        "value": 7.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PercentAttackSpeed",
+                        "value": 10.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Frequency",
+                        "value": 4.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PercentAttackSpeed",
+                        "value": 10.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Frequency",
+                        "value": 1.5000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 7,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PercentAttackSpeed",
+                        "value": 10.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Frequency",
+                        "value": 0.5000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 8,
+                "max_units": 25000,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "源计划",
+        "trait_id": "Cybernetic",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Cybernetic.png",
+        "tooltip_text": "至少携带了1件装备的【源计划】弈子们获得攻击力和生命值。<br><br><expandRow>(@MinUnits@) +@ADAmp*100@% %i:scaleAD%; +@HealthAmp@ %i:scaleHealth%</expandRow>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HealthAmp",
+                        "value": 300.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ADAmp",
+                        "value": 0.3000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 5,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HealthAmp",
+                        "value": 700.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ADAmp",
+                        "value": 0.6000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 25000,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "暗星",
+        "trait_id": "DarkStar",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_DarkStar.png",
+        "tooltip_text": "每当一个己方弈子阵亡时，【暗星】们都会获得攻击力和法术强度。<br><br><expandRow>(@MinUnits@) +@ADandSP@% %i:scaleAD%; +@ADandSP@% %i:scaleAP%</expandRow>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ADandSP",
+                        "value": 6.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ADandSP",
+                        "value": 15.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ADandSP",
+                        "value": 25.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 7,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ADandSP",
+                        "value": 50.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 8,
+                "max_units": 25000,
+                "style_idx": 5,
+                "style_name": "kChromatic"
+            }
+        ]
+    },
+    {
+        "display_name": "爆破专家",
+        "trait_id": "Demolitionist",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Demolitionist.png",
+        "tooltip_text": "<expandRow>(@MinUnits@) 【爆破专家】们的技能会对敌人造成@StunDuration@秒晕眩。(每次施放仅一次晕眩)</expandRow>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "StunDuration",
+                        "value": 1.5000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 25000,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "刺客",
+        "trait_id": "Infiltrator",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Infiltrator.png",
+        "tooltip_text": "固有能力：在战斗开始时，【刺客】们会移动到敌人的后排。<br><br>【刺客】们在战斗开始时获得持续@Duration@秒的攻击速度加成，并在参与击杀敌人后刷新。<br><br><expandRow>(@MinUnits@) @AttackSpeedPercent@% %i:scaleAS%</expandRow>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": []
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AttackSpeedPercent",
+                        "value": 25.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Duration",
+                        "value": 6.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Reset",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AttackSpeedPercent",
+                        "value": 45.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Duration",
+                        "value": 6.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Reset",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AttackSpeedPercent",
+                        "value": 75.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Duration",
+                        "value": 6.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Reset",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 25000,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "破法战士",
+        "trait_id": "ManaReaver",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_ManaReaver.png",
+        "tooltip_text": "<expandRow>(@MinUnits@) 【破法战士】们的攻击会造成破法效果。</expandRow><br><br><rules><tftbold>破法</tftbold>：使最大法力值提升@CostIncreasePercent@% ，持续到下次施放技能为止。</rules>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "CostIncreasePercent",
+                        "value": 33.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 25000,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "银河魔装机神",
+        "trait_id": "MechPilot",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_MechPilot.png",
+        "tooltip_text": "(@MinUnits@) 战斗开始时：3名随机的【银河魔装机神】机师会被传送到一台【超级魔装机神】中。<br><br>【超级魔装机神】结合了它的机师们的羁绊、3件来自机师们的装备、并获得机师们的60%总生命值和攻击力。<br><br>当【超级魔装机神】阵亡时，机师们会被弹出并带着各自的@EjectedPilotHealthPercent@%最大生命值。",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ManaOnDeath",
+                        "value": 0.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "MechBaseHealth",
+                        "value": 1500.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "MechCombinedHealthRatio",
+                        "value": 0.6500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "MechBaseAD",
+                        "value": 90.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "MechCombinedADRatio",
+                        "value": 0.6500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "CleaveRatio",
+                        "value": 0.8000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "EjectedPilotHealthPercent",
+                        "value": 35.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 25000,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "佣兵",
+        "trait_id": "Mercenary",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Mercenary.png",
+        "tooltip_text": "(@MinUnits@) 固有能力：【佣兵】们的技能升级项目有一定几率出现在商店中。",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [],
+                "min_units": 1,
+                "max_units": 25000,
+                "style_idx": 6,
+                "style_name": "kUnique"
+            }
+        ]
+    },
+    {
+        "display_name": "大魔法使",
+        "trait_id": "Paragon",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Paragon.png",
+        "tooltip_text": "(@MinUnits@) 己方队伍的攻击会被转化为魔法伤害。你的【星之守护者】的攻击转而造成真实伤害。",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [],
+                "min_units": 1,
+                "max_units": 25000,
+                "style_idx": 6,
+                "style_name": "kUnique"
+            }
+        ]
+    },
+    {
+        "display_name": "圣盾使",
+        "trait_id": "Protector",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Protector.png",
+        "tooltip_text": "每当一个【圣盾使】施放其技能时，该弈子就会获得持续@Duration@秒的护盾值。<br><br><expandRow>(@MinUnits@) @ShieldPercent@%最大%i:scaleHealth%</expandRow>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ShieldPercent",
+                        "value": 30.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Duration",
+                        "value": 4.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ShieldPercent",
+                        "value": 40.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Duration",
+                        "value": 4.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ShieldPercent",
+                        "value": 50.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Duration",
+                        "value": 4.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 25000,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "奥德赛",
+        "trait_id": "Rebel",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Rebel.png",
+        "tooltip_text": "在战斗开始时，【奥德赛】弈子们会为邻格的每个【奥德赛】弈子提供持续@ShieldDuration@秒的护盾值和额外伤害。<br><br><expandRow>(@MinUnits@) @ShieldAmount@护盾值；+@DamageAmp@%额外伤害</expandRow>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ShieldAmount",
+                        "value": 150.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DamageAmp",
+                        "value": 6.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ShieldDuration",
+                        "value": 8.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 5,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ShieldAmount",
+                        "value": 225.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DamageAmp",
+                        "value": 10.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ShieldDuration",
+                        "value": 8.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 8,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ShieldAmount",
+                        "value": 400.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DamageAmp",
+                        "value": 20.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ShieldDuration",
+                        "value": 8.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 9,
+                "max_units": 25000,
+                "style_idx": 5,
+                "style_name": "kChromatic"
+            }
+        ]
+    },
+    {
+        "display_name": "剑士",
+        "trait_id": "Set3_Blademaster",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_2_Blademaster.png",
+        "tooltip_text": "【剑士】们的攻击有一定几率对目标触发额外次数的攻击。<br><br><expandRow>(@MinUnits@) @ProcChance@%几率。@ExtraAttacks@额外攻击次数。</expandRow>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ProcChance",
+                        "value": 40.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ExtraAttacks",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 5,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ProcChance",
+                        "value": 40.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ExtraAttacks",
+                        "value": 2.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 8,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ProcChance",
+                        "value": 80.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ExtraAttacks",
+                        "value": 2.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 9,
+                "max_units": 25000,
+                "style_idx": 5,
+                "style_name": "kChromatic"
+            }
+        ]
+    },
+    {
+        "display_name": "斗士",
+        "trait_id": "Set3_Brawler",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Brawler.png",
+        "tooltip_text": "【斗士】们获得生命值。<br><br><expandRow>(@MinUnits@) +@BonusHealth@ %i:scaleHealth%</expandRow>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "BonusHealth",
+                        "value": 350.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "BonusHealth",
+                        "value": 600.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 25000,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "星神",
+        "trait_id": "Set3_Celestial",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Celestial.png",
+        "tooltip_text": "你的弈子们获得全能吸血。<br><br><expandRow>(@MinUnits@) @HealPercent@%全能吸血</expandRow>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HealPercent",
+                        "value": 12.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HealPercent",
+                        "value": 25.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HealPercent",
+                        "value": 50.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 25000,
+                "style_idx": 5,
+                "style_name": "kChromatic"
+            }
+        ]
+    },
+    {
+        "display_name": "秘术师",
+        "trait_id": "Set3_Mystic",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_2_Mystic.png",
+        "tooltip_text": "你的队伍获得魔抗。<br><br><expandRow>(@MinUnits@) @MagicResist@ %i:scaleMR%</expandRow>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "MagicResist",
+                        "value": 30.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "MagicResist",
+                        "value": 80.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 25000,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "法师",
+        "trait_id": "Set3_Sorcerer",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Sorcerer.png",
+        "tooltip_text": "你的弈子们获得法术强度。<br><br><expandRow>(@MinUnits@) @AP@% %i:scaleAP%</expandRow>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AP",
+                        "value": 20.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AP",
+                        "value": 40.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AP",
+                        "value": 70.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 25000,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "虚空",
+        "trait_id": "Set3_Void",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Void.png",
+        "tooltip_text": "(@MinUnits@) 【虚空】英雄们的攻击和技能造成真实伤害。",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [],
+                "min_units": 3,
+                "max_units": 25000,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "狙神",
+        "trait_id": "Sniper",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Sniper.png",
+        "tooltip_text": "【狙神】们基于自身与目标的相距格数造成额外伤害。<br><br><expandRow>(@MinUnits@) +@PercentDamageIncrease@% %i:scaleAD%每格</expandRow>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PercentDamageIncrease",
+                        "value": 9.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PercentDamageIncrease",
+                        "value": 16.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 25000,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "太空海盗",
+        "trait_id": "SpacePirate",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_SpacePirate.png",
+        "tooltip_text": "每当一名【太空海盗】完成夺命一击时，就会有一定几率掉落战利品。<br><br><row>(@MinUnits@) @CoinDropChance@%几率掉落1金币</row><br><row>(@MinUnits@) 以及@ItemDropChance@%几率掉落一件装备</row>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "CoinDropChance",
+                        "value": 50.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ItemDropChance",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "CoinDropChance",
+                        "value": 50.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ItemDropChance",
+                        "value": 33.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 25000,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "星之守护者",
+        "trait_id": "StarGuardian",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_StarGuardian.png",
+        "tooltip_text": "每当一个【星之守护者】在施放技能时，所有其它【星之守护者】都会获得法力值。<br><br><expandRow>(@MinUnits@) @ManaRestore@ %i:scaleMana%</expandRow>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ManaRestore",
+                        "value": 15.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 5,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ManaRestore",
+                        "value": 25.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 8,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ManaRestore",
+                        "value": 80.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 9,
+                "max_units": 25000,
+                "style_idx": 5,
+                "style_name": "kChromatic"
+            }
+        ]
+    },
+    {
+        "display_name": "星舰龙神",
+        "trait_id": "Starship",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Starship.png",
+        "tooltip_text": "(@MinUnits@)【星舰龙神】每秒获得@ManaPerSecond@法力值，围着棋盘不断回旋，并且免疫移动受损效果，但不会进行攻击。",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ManaPerSecond",
+                        "value": 40.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 1,
+                "max_units": 25000,
+                "style_idx": 6,
+                "style_name": "kUnique"
+            }
+        ]
+    },
+    {
+        "display_name": "女武神",
+        "trait_id": "Valkyrie",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Valkyrie.png",
+        "tooltip_text": "<expandRow>(@MinUnits@)【女武神】的攻击和技能总会对生命值低于@PercentHealth@%的目标造成暴击。</expandRow>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PercentHealth",
+                        "value": 40.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 25000,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "重装战士",
+        "trait_id": "Vanguard",
+        "set": "TFTSet3",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Vanguard.png",
+        "tooltip_text": "【重装战士】们获得护甲。<br><br><expandRow>(@MinUnits@) @Armor@ %i:scaleArmor%</expandRow>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Armor",
+                        "value": 70.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Armor",
+                        "value": 150.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Armor",
+                        "value": 350.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 25000,
+                "style_idx": 4,
+                "style_name": "kGold"
             }
         ]
     },

@@ -924,110 +924,6 @@
         }
     },
     {
-        "name": "TFT10_Ahri",
-        "character_record": {
-            "path": "Characters/TFT10_Ahri/CharacterRecords/Root",
-            "character_id": "TFT10_Ahri",
-            "rarity": 9,
-            "display_name": "阿狸",
-            "traits": [
-                {
-                    "name": "K/DA",
-                    "id": "Set10_KDA"
-                },
-                {
-                    "name": "法师",
-                    "id": "Set10_Spellweaver"
-                }
-            ],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Ahri/HUD/TFT10_Ahri_Square.TFT_Set10.png"
-        }
-    },
-    {
-        "name": "TFT10_Akali",
-        "character_record": {
-            "path": "Characters/TFT10_Akali/CharacterRecords/Root",
-            "character_id": "TFT10_Akali",
-            "rarity": 9,
-            "display_name": "阿卡丽",
-            "traits": [
-                {
-                    "name": "K/DA",
-                    "id": "Set10_KDA"
-                },
-                {
-                    "name": "裁决使",
-                    "id": "Set10_Executioner"
-                },
-                {
-                    "name": "双修出道",
-                    "id": "Set10_Breakout"
-                }
-            ],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Akali/HUD/TFT10_Akali_Square.TFT_Set10.png"
-        }
-    },
-    {
-        "name": "TFT10_Amumu",
-        "character_record": {
-            "path": "Characters/TFT10_Amumu/CharacterRecords/Root",
-            "character_id": "TFT10_Amumu",
-            "rarity": 9,
-            "display_name": "阿木木",
-            "traits": [
-                {
-                    "name": "EMO",
-                    "id": "Set10_Emo"
-                },
-                {
-                    "name": "护卫",
-                    "id": "Set10_Guardian"
-                }
-            ],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Amumu/HUD/TFT10_Amumu_Square.TFT_Set10.png"
-        }
-    },
-    {
-        "name": "TFT10_Annie",
-        "character_record": {
-            "path": "Characters/TFT10_Annie/CharacterRecords/Root",
-            "character_id": "TFT10_Annie",
-            "rarity": 9,
-            "display_name": "安妮",
-            "traits": [
-                {
-                    "name": "EMO",
-                    "id": "Set10_Emo"
-                },
-                {
-                    "name": "法师",
-                    "id": "Set10_Spellweaver"
-                }
-            ],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Annie/HUD/TFT10_Annie_Square.TFT_Set10.png"
-        }
-    },
-    {
-        "name": "TFT10_Aphelios",
-        "character_record": {
-            "path": "Characters/TFT10_Aphelios/CharacterRecords/Root",
-            "character_id": "TFT10_Aphelios",
-            "rarity": 9,
-            "display_name": "厄斐琉斯",
-            "traits": [
-                {
-                    "name": "心之钢",
-                    "id": "Set10_PopBand"
-                },
-                {
-                    "name": "疾射枪手",
-                    "id": "Set10_Quickshot"
-                }
-            ],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Aphelios/HUD/TFT10_Aphelios_Square.TFT_Set10.png"
-        }
-    },
-    {
         "name": "TFT10_Bard",
         "character_record": {
             "path": "Characters/TFT10_Bard/CharacterRecords/Root",
@@ -2161,30 +2057,6 @@
         }
     },
     {
-        "name": "TFT10_Akali_TrueDamage",
-        "character_record": {
-            "path": "Characters/TFT10_Akali_TrueDamage/CharacterRecords/Root",
-            "character_id": "TFT10_Akali_TrueDamage",
-            "rarity": 9,
-            "display_name": "阿卡丽",
-            "traits": [
-                {
-                    "name": "真实伤害",
-                    "id": "Set10_TrueDamage"
-                },
-                {
-                    "name": "裁决使",
-                    "id": "Set10_Executioner"
-                },
-                {
-                    "name": "双修出道",
-                    "id": "Set10_Breakout"
-                }
-            ],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Akali_TrueDamage/HUD/TFT10_Akali_TrueDamage_Square.TFT_Set10.png"
-        }
-    },
-    {
         "name": "TFT10_DesperadoProp",
         "character_record": {
             "path": "Characters/TFT10_DesperadoProp/CharacterRecords/Root",
@@ -2235,17 +2107,6 @@
                 }
             ],
             "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Garen/HUD/TFT10_Garen_Square.TFT_Set10.png"
-        }
-    },
-    {
-        "name": "TFT10_Augment",
-        "character_record": {
-            "path": "Characters/TFT10_Augment/CharacterRecords/Root",
-            "character_id": "TFT10_Augment",
-            "rarity": 9,
-            "display_name": "海克斯核心",
-            "traits": [],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Augment/HUD/Icons2D/TFT10_AugmentProp.TFT_Set10.png"
         }
     },
     {
@@ -2348,110 +2209,6 @@
         }
     },
     {
-        "name": "TFT10_Ahri",
-        "character_record": {
-            "path": "Characters/TFT10_Ahri/CharacterRecords/Root",
-            "character_id": "TFT10_Ahri",
-            "rarity": 9,
-            "display_name": "阿狸",
-            "traits": [
-                {
-                    "name": "K/DA",
-                    "id": "Set10_KDA"
-                },
-                {
-                    "name": "法师",
-                    "id": "Set10_Spellweaver"
-                }
-            ],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Ahri/HUD/TFT10_Ahri_Square.TFT_Set10.png"
-        }
-    },
-    {
-        "name": "TFT10_Akali",
-        "character_record": {
-            "path": "Characters/TFT10_Akali/CharacterRecords/Root",
-            "character_id": "TFT10_Akali",
-            "rarity": 9,
-            "display_name": "阿卡丽",
-            "traits": [
-                {
-                    "name": "K/DA",
-                    "id": "Set10_KDA"
-                },
-                {
-                    "name": "裁决使",
-                    "id": "Set10_Executioner"
-                },
-                {
-                    "name": "双修出道",
-                    "id": "Set10_Breakout"
-                }
-            ],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Akali/HUD/TFT10_Akali_Square.TFT_Set10.png"
-        }
-    },
-    {
-        "name": "TFT10_Amumu",
-        "character_record": {
-            "path": "Characters/TFT10_Amumu/CharacterRecords/Root",
-            "character_id": "TFT10_Amumu",
-            "rarity": 9,
-            "display_name": "阿木木",
-            "traits": [
-                {
-                    "name": "EMO",
-                    "id": "Set10_Emo"
-                },
-                {
-                    "name": "护卫",
-                    "id": "Set10_Guardian"
-                }
-            ],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Amumu/HUD/TFT10_Amumu_Square.TFT_Set10.png"
-        }
-    },
-    {
-        "name": "TFT10_Annie",
-        "character_record": {
-            "path": "Characters/TFT10_Annie/CharacterRecords/Root",
-            "character_id": "TFT10_Annie",
-            "rarity": 9,
-            "display_name": "安妮",
-            "traits": [
-                {
-                    "name": "EMO",
-                    "id": "Set10_Emo"
-                },
-                {
-                    "name": "法师",
-                    "id": "Set10_Spellweaver"
-                }
-            ],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Annie/HUD/TFT10_Annie_Square.TFT_Set10.png"
-        }
-    },
-    {
-        "name": "TFT10_Aphelios",
-        "character_record": {
-            "path": "Characters/TFT10_Aphelios/CharacterRecords/Root",
-            "character_id": "TFT10_Aphelios",
-            "rarity": 9,
-            "display_name": "厄斐琉斯",
-            "traits": [
-                {
-                    "name": "心之钢",
-                    "id": "Set10_PopBand"
-                },
-                {
-                    "name": "疾射枪手",
-                    "id": "Set10_Quickshot"
-                }
-            ],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Aphelios/HUD/TFT10_Aphelios_Square.TFT_Set10.png"
-        }
-    },
-    {
         "name": "TFT10_Bard",
         "character_record": {
             "path": "Characters/TFT10_Bard/CharacterRecords/Root",
@@ -3585,30 +3342,6 @@
         }
     },
     {
-        "name": "TFT10_Akali_TrueDamage",
-        "character_record": {
-            "path": "Characters/TFT10_Akali_TrueDamage/CharacterRecords/Root",
-            "character_id": "TFT10_Akali_TrueDamage",
-            "rarity": 9,
-            "display_name": "阿卡丽",
-            "traits": [
-                {
-                    "name": "真实伤害",
-                    "id": "Set10_TrueDamage"
-                },
-                {
-                    "name": "裁决使",
-                    "id": "Set10_Executioner"
-                },
-                {
-                    "name": "双修出道",
-                    "id": "Set10_Breakout"
-                }
-            ],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Akali_TrueDamage/HUD/TFT10_Akali_TrueDamage_Square.TFT_Set10.png"
-        }
-    },
-    {
         "name": "TFT10_DesperadoProp",
         "character_record": {
             "path": "Characters/TFT10_DesperadoProp/CharacterRecords/Root",
@@ -3659,17 +3392,6 @@
                 }
             ],
             "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Garen/HUD/TFT10_Garen_Square.TFT_Set10.png"
-        }
-    },
-    {
-        "name": "TFT10_Augment",
-        "character_record": {
-            "path": "Characters/TFT10_Augment/CharacterRecords/Root",
-            "character_id": "TFT10_Augment",
-            "rarity": 9,
-            "display_name": "海克斯核心",
-            "traits": [],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Augment/HUD/Icons2D/TFT10_AugmentProp.TFT_Set10.png"
         }
     },
     {
@@ -3772,107 +3494,1294 @@
         }
     },
     {
-        "name": "TFT10_Ahri",
+        "name": "TFT3_Ziggs",
         "character_record": {
-            "path": "Characters/TFT10_Ahri/CharacterRecords/Root",
-            "character_id": "TFT10_Ahri",
-            "rarity": 9,
+            "path": "Characters/TFT3_Ziggs/CharacterRecords/Root",
+            "character_id": "TFT3_Ziggs",
+            "rarity": 0,
+            "display_name": "吉格斯",
+            "traits": [
+                {
+                    "name": "奥德赛",
+                    "id": "Rebel"
+                },
+                {
+                    "name": "爆破专家",
+                    "id": "Demolitionist"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Ziggs/HUD/TFT3_Ziggs_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Jinx",
+        "character_record": {
+            "path": "Characters/TFT3_Jinx/CharacterRecords/Root",
+            "character_id": "TFT3_Jinx",
+            "rarity": 4,
+            "display_name": "金克丝",
+            "traits": [
+                {
+                    "name": "奥德赛",
+                    "id": "Rebel"
+                },
+                {
+                    "name": "强袭枪手",
+                    "id": "Blaster"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Jinx/HUD/TFT3_Jinx_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Teemo",
+        "character_record": {
+            "path": "Characters/TFT3_Teemo/CharacterRecords/Root",
+            "character_id": "TFT3_Teemo",
+            "rarity": 4,
+            "display_name": "提莫",
+            "traits": [
+                {
+                    "name": "宇航员",
+                    "id": "Astro"
+                },
+                {
+                    "name": "狙神",
+                    "id": "Sniper"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Teemo/HUD/TFT3_Teemo_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Yasuo",
+        "character_record": {
+            "path": "Characters/TFT3_Yasuo/CharacterRecords/Root",
+            "character_id": "TFT3_Yasuo",
+            "rarity": 1,
+            "display_name": "亚索",
+            "traits": [
+                {
+                    "name": "奥德赛",
+                    "id": "Rebel"
+                },
+                {
+                    "name": "剑士",
+                    "id": "Set3_Blademaster"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Yasuo/HUD/TFT3_Yasuo_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Malphite",
+        "character_record": {
+            "path": "Characters/TFT3_Malphite/CharacterRecords/Root",
+            "character_id": "TFT3_Malphite",
+            "rarity": 0,
+            "display_name": "墨菲特",
+            "traits": [
+                {
+                    "name": "奥德赛",
+                    "id": "Rebel"
+                },
+                {
+                    "name": "斗士",
+                    "id": "Set3_Brawler"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Malphite/HUD/TFT3_Malphite_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_MasterYi",
+        "character_record": {
+            "path": "Characters/TFT3_MasterYi/CharacterRecords/Root",
+            "character_id": "TFT3_MasterYi",
+            "rarity": 2,
+            "display_name": "易",
+            "traits": [
+                {
+                    "name": "奥德赛",
+                    "id": "Rebel"
+                },
+                {
+                    "name": "剑士",
+                    "id": "Set3_Blademaster"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_MasterYi/HUD/TFT3_MasterYi_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_AurelionSol",
+        "character_record": {
+            "path": "Characters/TFT3_AurelionSol/CharacterRecords/Root",
+            "character_id": "TFT3_AurelionSol",
+            "rarity": 6,
+            "display_name": "奥瑞利安·索尔",
+            "traits": [
+                {
+                    "name": "奥德赛",
+                    "id": "Rebel"
+                },
+                {
+                    "name": "星舰龙神",
+                    "id": "Starship"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_AurelionSol/HUD/TFT3_AurelionSol_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Viktor",
+        "character_record": {
+            "path": "Characters/TFT3_Viktor/CharacterRecords/Root",
+            "character_id": "TFT3_Viktor",
+            "rarity": 4,
+            "display_name": "维克托",
+            "traits": [
+                {
+                    "name": "战地机甲",
+                    "id": "Battlecast"
+                },
+                {
+                    "name": "法师",
+                    "id": "Set3_Sorcerer"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Viktor/HUD/TFT3_Viktor_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_KogMaw",
+        "character_record": {
+            "path": "Characters/TFT3_KogMaw/CharacterRecords/Root",
+            "character_id": "TFT3_KogMaw",
+            "rarity": 1,
+            "display_name": "克格莫",
+            "traits": [
+                {
+                    "name": "战地机甲",
+                    "id": "Battlecast"
+                },
+                {
+                    "name": "强袭枪手",
+                    "id": "Blaster"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_KogMaw/HUD/TFT3_KogMaw_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Urgot",
+        "character_record": {
+            "path": "Characters/TFT3_Urgot/CharacterRecords/Root",
+            "character_id": "TFT3_Urgot",
+            "rarity": 6,
+            "display_name": "厄加特",
+            "traits": [
+                {
+                    "name": "战地机甲",
+                    "id": "Battlecast"
+                },
+                {
+                    "name": "圣盾使",
+                    "id": "Protector"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Urgot/HUD/TFT3_Urgot_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Ekko",
+        "character_record": {
+            "path": "Characters/TFT3_Ekko/CharacterRecords/Root",
+            "character_id": "TFT3_Ekko",
+            "rarity": 6,
+            "display_name": "艾克",
+            "traits": [
+                {
+                    "name": "源计划",
+                    "id": "Cybernetic"
+                },
+                {
+                    "name": "刺客",
+                    "id": "Infiltrator"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Ekko/HUD/TFT3_Ekko_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Fiora",
+        "character_record": {
+            "path": "Characters/TFT3_Fiora/CharacterRecords/Root",
+            "character_id": "TFT3_Fiora",
+            "rarity": 0,
+            "display_name": "菲奥娜",
+            "traits": [
+                {
+                    "name": "源计划",
+                    "id": "Cybernetic"
+                },
+                {
+                    "name": "剑士",
+                    "id": "Set3_Blademaster"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Fiora/HUD/TFT3_Fiora_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Vi",
+        "character_record": {
+            "path": "Characters/TFT3_Vi/CharacterRecords/Root",
+            "character_id": "TFT3_Vi",
+            "rarity": 2,
+            "display_name": "蔚",
+            "traits": [
+                {
+                    "name": "源计划",
+                    "id": "Cybernetic"
+                },
+                {
+                    "name": "斗士",
+                    "id": "Set3_Brawler"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Vi/HUD/TFT3_Vi_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Irelia",
+        "character_record": {
+            "path": "Characters/TFT3_Irelia/CharacterRecords/Root",
+            "character_id": "TFT3_Irelia",
+            "rarity": 4,
+            "display_name": "艾瑞莉娅",
+            "traits": [
+                {
+                    "name": "源计划",
+                    "id": "Cybernetic"
+                },
+                {
+                    "name": "破法战士",
+                    "id": "ManaReaver"
+                },
+                {
+                    "name": "剑士",
+                    "id": "Set3_Blademaster"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Irelia/HUD/TFT3_Irelia_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Poppy",
+        "character_record": {
+            "path": "Characters/TFT3_Poppy/CharacterRecords/Root",
+            "character_id": "TFT3_Poppy",
+            "rarity": 0,
+            "display_name": "波比",
+            "traits": [
+                {
+                    "name": "星之守护者",
+                    "id": "StarGuardian"
+                },
+                {
+                    "name": "重装战士",
+                    "id": "Vanguard"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Poppy/HUD/TFT3_Poppy_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Soraka",
+        "character_record": {
+            "path": "Characters/TFT3_Soraka/CharacterRecords/Root",
+            "character_id": "TFT3_Soraka",
+            "rarity": 4,
+            "display_name": "索拉卡",
+            "traits": [
+                {
+                    "name": "星之守护者",
+                    "id": "StarGuardian"
+                },
+                {
+                    "name": "秘术师",
+                    "id": "Set3_Mystic"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Soraka/HUD/TFT3_Soraka_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Ahri",
+        "character_record": {
+            "path": "Characters/TFT3_Ahri/CharacterRecords/Root",
+            "character_id": "TFT3_Ahri",
+            "rarity": 1,
             "display_name": "阿狸",
             "traits": [
                 {
-                    "name": "K/DA",
-                    "id": "Set10_KDA"
+                    "name": "星之守护者",
+                    "id": "StarGuardian"
                 },
                 {
                     "name": "法师",
-                    "id": "Set10_Spellweaver"
+                    "id": "Set3_Sorcerer"
                 }
             ],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Ahri/HUD/TFT10_Ahri_Square.TFT_Set10.png"
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Ahri/HUD/TFT3_Ahri_Square.png"
         }
     },
     {
-        "name": "TFT10_Akali",
+        "name": "TFT3_Syndra",
         "character_record": {
-            "path": "Characters/TFT10_Akali/CharacterRecords/Root",
-            "character_id": "TFT10_Akali",
-            "rarity": 9,
-            "display_name": "阿卡丽",
+            "path": "Characters/TFT3_Syndra/CharacterRecords/Root",
+            "character_id": "TFT3_Syndra",
+            "rarity": 2,
+            "display_name": "辛德拉",
             "traits": [
                 {
-                    "name": "K/DA",
-                    "id": "Set10_KDA"
+                    "name": "星之守护者",
+                    "id": "StarGuardian"
                 },
                 {
-                    "name": "裁决使",
-                    "id": "Set10_Executioner"
-                },
-                {
-                    "name": "双修出道",
-                    "id": "Set10_Breakout"
+                    "name": "法师",
+                    "id": "Set3_Sorcerer"
                 }
             ],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Akali/HUD/TFT10_Akali_Square.TFT_Set10.png"
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Syndra/HUD/TFT3_Syndra_Square.png"
         }
     },
     {
-        "name": "TFT10_Amumu",
+        "name": "TFT3_Neeko",
         "character_record": {
-            "path": "Characters/TFT10_Amumu/CharacterRecords/Root",
-            "character_id": "TFT10_Amumu",
-            "rarity": 9,
-            "display_name": "阿木木",
+            "path": "Characters/TFT3_Neeko/CharacterRecords/Root",
+            "character_id": "TFT3_Neeko",
+            "rarity": 2,
+            "display_name": "妮蔻",
             "traits": [
                 {
-                    "name": "EMO",
-                    "id": "Set10_Emo"
+                    "name": "星之守护者",
+                    "id": "StarGuardian"
                 },
                 {
-                    "name": "护卫",
-                    "id": "Set10_Guardian"
+                    "name": "圣盾使",
+                    "id": "Protector"
                 }
             ],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Amumu/HUD/TFT10_Amumu_Square.TFT_Set10.png"
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Neeko/HUD/TFT3_Neeko_Square.png"
         }
     },
     {
-        "name": "TFT10_Annie",
+        "name": "TFT3_Gangplank",
         "character_record": {
-            "path": "Characters/TFT10_Annie/CharacterRecords/Root",
-            "character_id": "TFT10_Annie",
-            "rarity": 9,
+            "path": "Characters/TFT3_Gangplank/CharacterRecords/Root",
+            "character_id": "TFT3_Gangplank",
+            "rarity": 6,
+            "display_name": "普朗克",
+            "traits": [
+                {
+                    "name": "太空海盗",
+                    "id": "SpacePirate"
+                },
+                {
+                    "name": "佣兵",
+                    "id": "Mercenary"
+                },
+                {
+                    "name": "爆破专家",
+                    "id": "Demolitionist"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Gangplank/HUD/TFT3_Gangplank_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Darius",
+        "character_record": {
+            "path": "Characters/TFT3_Darius/CharacterRecords/Root",
+            "character_id": "TFT3_Darius",
+            "rarity": 1,
+            "display_name": "德莱厄斯",
+            "traits": [
+                {
+                    "name": "太空海盗",
+                    "id": "SpacePirate"
+                },
+                {
+                    "name": "破法战士",
+                    "id": "ManaReaver"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Darius/HUD/TFT3_Darius_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Jayce",
+        "character_record": {
+            "path": "Characters/TFT3_Jayce/CharacterRecords/Root",
+            "character_id": "TFT3_Jayce",
+            "rarity": 2,
+            "display_name": "杰斯",
+            "traits": [
+                {
+                    "name": "太空海盗",
+                    "id": "SpacePirate"
+                },
+                {
+                    "name": "重装战士",
+                    "id": "Vanguard"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Jayce/HUD/TFT3_Jayce_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Annie",
+        "character_record": {
+            "path": "Characters/TFT3_Annie/CharacterRecords/Root",
+            "character_id": "TFT3_Annie",
+            "rarity": 1,
             "display_name": "安妮",
             "traits": [
                 {
-                    "name": "EMO",
-                    "id": "Set10_Emo"
+                    "name": "银河魔装机神",
+                    "id": "MechPilot"
                 },
                 {
                     "name": "法师",
-                    "id": "Set10_Spellweaver"
+                    "id": "Set3_Sorcerer"
                 }
             ],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Annie/HUD/TFT10_Annie_Square.TFT_Set10.png"
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Annie/HUD/TFT3_Annie_Square.png"
         }
     },
     {
-        "name": "TFT10_Aphelios",
+        "name": "TFT3_Fizz",
         "character_record": {
-            "path": "Characters/TFT10_Aphelios/CharacterRecords/Root",
-            "character_id": "TFT10_Aphelios",
-            "rarity": 9,
-            "display_name": "厄斐琉斯",
+            "path": "Characters/TFT3_Fizz/CharacterRecords/Root",
+            "character_id": "TFT3_Fizz",
+            "rarity": 4,
+            "display_name": "菲兹",
             "traits": [
                 {
-                    "name": "心之钢",
-                    "id": "Set10_PopBand"
+                    "name": "银河魔装机神",
+                    "id": "MechPilot"
                 },
                 {
-                    "name": "疾射枪手",
-                    "id": "Set10_Quickshot"
+                    "name": "刺客",
+                    "id": "Infiltrator"
                 }
             ],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Aphelios/HUD/TFT10_Aphelios_Square.TFT_Set10.png"
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Fizz/HUD/TFT3_Fizz_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Rumble",
+        "character_record": {
+            "path": "Characters/TFT3_Rumble/CharacterRecords/Root",
+            "character_id": "TFT3_Rumble",
+            "rarity": 2,
+            "display_name": "兰博",
+            "traits": [
+                {
+                    "name": "银河魔装机神",
+                    "id": "MechPilot"
+                },
+                {
+                    "name": "爆破专家",
+                    "id": "Demolitionist"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Rumble/HUD/TFT3_Rumble_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Ezreal",
+        "character_record": {
+            "path": "Characters/TFT3_Ezreal/CharacterRecords/Root",
+            "character_id": "TFT3_Ezreal",
+            "rarity": 2,
+            "display_name": "伊泽瑞尔",
+            "traits": [
+                {
+                    "name": "未来战士",
+                    "id": "Chrono"
+                },
+                {
+                    "name": "强袭枪手",
+                    "id": "Blaster"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Ezreal/HUD/TFT3_Ezreal_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Shen",
+        "character_record": {
+            "path": "Characters/TFT3_Shen/CharacterRecords/Root",
+            "character_id": "TFT3_Shen",
+            "rarity": 1,
+            "display_name": "慎",
+            "traits": [
+                {
+                    "name": "未来战士",
+                    "id": "Chrono"
+                },
+                {
+                    "name": "剑士",
+                    "id": "Set3_Blademaster"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Shen/HUD/TFT3_Shen_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_WuKong",
+        "character_record": {
+            "path": "Characters/TFT3_WuKong/CharacterRecords/Root",
+            "character_id": "TFT3_WuKong",
+            "rarity": 4,
+            "display_name": "孙悟空",
+            "traits": [
+                {
+                    "name": "未来战士",
+                    "id": "Chrono"
+                },
+                {
+                    "name": "重装战士",
+                    "id": "Vanguard"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_WuKong/HUD/TFT3_WuKong_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Thresh",
+        "character_record": {
+            "path": "Characters/TFT3_Thresh/CharacterRecords/Root",
+            "character_id": "TFT3_Thresh",
+            "rarity": 6,
+            "display_name": "锤石",
+            "traits": [
+                {
+                    "name": "未来战士",
+                    "id": "Chrono"
+                },
+                {
+                    "name": "破法战士",
+                    "id": "ManaReaver"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Thresh/HUD/TFT3_Thresh_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Caitlyn",
+        "character_record": {
+            "path": "Characters/TFT3_Caitlyn/CharacterRecords/Root",
+            "character_id": "TFT3_Caitlyn",
+            "rarity": 0,
+            "display_name": "凯特琳",
+            "traits": [
+                {
+                    "name": "未来战士",
+                    "id": "Chrono"
+                },
+                {
+                    "name": "狙神",
+                    "id": "Sniper"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Caitlyn/HUD/TFT3_Caitlyn_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_TwistedFate",
+        "character_record": {
+            "path": "Characters/TFT3_TwistedFate/CharacterRecords/Root",
+            "character_id": "TFT3_TwistedFate",
+            "rarity": 0,
+            "display_name": "崔斯特",
+            "traits": [
+                {
+                    "name": "未来战士",
+                    "id": "Chrono"
+                },
+                {
+                    "name": "法师",
+                    "id": "Set3_Sorcerer"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_TwistedFate/HUD/TFT3_TwistedFate_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_XinZhao",
+        "character_record": {
+            "path": "Characters/TFT3_XinZhao/CharacterRecords/Root",
+            "character_id": "TFT3_XinZhao",
+            "rarity": 1,
+            "display_name": "赵信",
+            "traits": [
+                {
+                    "name": "星神",
+                    "id": "Set3_Celestial"
+                },
+                {
+                    "name": "圣盾使",
+                    "id": "Protector"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_XinZhao/HUD/TFT3_XinZhao_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Lulu",
+        "character_record": {
+            "path": "Characters/TFT3_Lulu/CharacterRecords/Root",
+            "character_id": "TFT3_Lulu",
+            "rarity": 6,
+            "display_name": "璐璐",
+            "traits": [
+                {
+                    "name": "星神",
+                    "id": "Set3_Celestial"
+                },
+                {
+                    "name": "秘术师",
+                    "id": "Set3_Mystic"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Lulu/HUD/TFT3_Lulu_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Xayah",
+        "character_record": {
+            "path": "Characters/TFT3_Xayah/CharacterRecords/Root",
+            "character_id": "TFT3_Xayah",
+            "rarity": 0,
+            "display_name": "霞",
+            "traits": [
+                {
+                    "name": "星神",
+                    "id": "Set3_Celestial"
+                },
+                {
+                    "name": "剑士",
+                    "id": "Set3_Blademaster"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Xayah/HUD/TFT3_Xayah_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Rakan",
+        "character_record": {
+            "path": "Characters/TFT3_Rakan/CharacterRecords/Root",
+            "character_id": "TFT3_Rakan",
+            "rarity": 1,
+            "display_name": "洛",
+            "traits": [
+                {
+                    "name": "星神",
+                    "id": "Set3_Celestial"
+                },
+                {
+                    "name": "圣盾使",
+                    "id": "Protector"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Rakan/HUD/TFT3_Rakan_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Ashe",
+        "character_record": {
+            "path": "Characters/TFT3_Ashe/CharacterRecords/Root",
+            "character_id": "TFT3_Ashe",
+            "rarity": 2,
+            "display_name": "艾希",
+            "traits": [
+                {
+                    "name": "星神",
+                    "id": "Set3_Celestial"
+                },
+                {
+                    "name": "狙神",
+                    "id": "Sniper"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Ashe/HUD/TFT3_Ashe_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Mordekaiser",
+        "character_record": {
+            "path": "Characters/TFT3_Mordekaiser/CharacterRecords/Root",
+            "character_id": "TFT3_Mordekaiser",
+            "rarity": 1,
+            "display_name": "莫德凯撒",
+            "traits": [
+                {
+                    "name": "暗星",
+                    "id": "DarkStar"
+                },
+                {
+                    "name": "重装战士",
+                    "id": "Vanguard"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Mordekaiser/HUD/TFT3_Mordekaiser_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Shaco",
+        "character_record": {
+            "path": "Characters/TFT3_Shaco/CharacterRecords/Root",
+            "character_id": "TFT3_Shaco",
+            "rarity": 2,
+            "display_name": "萨科",
+            "traits": [
+                {
+                    "name": "暗星",
+                    "id": "DarkStar"
+                },
+                {
+                    "name": "刺客",
+                    "id": "Infiltrator"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Shaco/HUD/TFT3_Shaco_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_JarvanIV",
+        "character_record": {
+            "path": "Characters/TFT3_JarvanIV/CharacterRecords/Root",
+            "character_id": "TFT3_JarvanIV",
+            "rarity": 0,
+            "display_name": "嘉文四世",
+            "traits": [
+                {
+                    "name": "暗星",
+                    "id": "DarkStar"
+                },
+                {
+                    "name": "圣盾使",
+                    "id": "Protector"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_JarvanIV/HUD/TFT3_JarvanIV_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Karma",
+        "character_record": {
+            "path": "Characters/TFT3_Karma/CharacterRecords/Root",
+            "character_id": "TFT3_Karma",
+            "rarity": 2,
+            "display_name": "卡尔玛",
+            "traits": [
+                {
+                    "name": "暗星",
+                    "id": "DarkStar"
+                },
+                {
+                    "name": "秘术师",
+                    "id": "Set3_Mystic"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Karma/HUD/TFT3_Karma_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Jhin",
+        "character_record": {
+            "path": "Characters/TFT3_Jhin/CharacterRecords/Root",
+            "character_id": "TFT3_Jhin",
+            "rarity": 4,
+            "display_name": "烬",
+            "traits": [
+                {
+                    "name": "暗星",
+                    "id": "DarkStar"
+                },
+                {
+                    "name": "狙神",
+                    "id": "Sniper"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Jhin/HUD/TFT3_Jhin_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Zoe",
+        "character_record": {
+            "path": "Characters/TFT3_Zoe/CharacterRecords/Root",
+            "character_id": "TFT3_Zoe",
+            "rarity": 0,
+            "display_name": "佐伊",
+            "traits": [
+                {
+                    "name": "星之守护者",
+                    "id": "StarGuardian"
+                },
+                {
+                    "name": "法师",
+                    "id": "Set3_Sorcerer"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Zoe/HUD/TFT3_Zoe_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Blitzcrank",
+        "character_record": {
+            "path": "Characters/TFT3_Blitzcrank/CharacterRecords/Root",
+            "character_id": "TFT3_Blitzcrank",
+            "rarity": 1,
+            "display_name": "布里茨",
+            "traits": [
+                {
+                    "name": "未来战士",
+                    "id": "Chrono"
+                },
+                {
+                    "name": "斗士",
+                    "id": "Set3_Brawler"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Blitzcrank/HUD/TFT3_Blitzcrank_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Leona",
+        "character_record": {
+            "path": "Characters/TFT3_Leona/CharacterRecords/Root",
+            "character_id": "TFT3_Leona",
+            "rarity": 0,
+            "display_name": "蕾欧娜",
+            "traits": [
+                {
+                    "name": "源计划",
+                    "id": "Cybernetic"
+                },
+                {
+                    "name": "重装战士",
+                    "id": "Vanguard"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Leona/HUD/TFT3_Leona_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Lucian",
+        "character_record": {
+            "path": "Characters/TFT3_Lucian/CharacterRecords/Root",
+            "character_id": "TFT3_Lucian",
+            "rarity": 1,
+            "display_name": "卢锡安",
+            "traits": [
+                {
+                    "name": "源计划",
+                    "id": "Cybernetic"
+                },
+                {
+                    "name": "强袭枪手",
+                    "id": "Blaster"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Lucian/HUD/TFT3_Lucian_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_SuperMech",
+        "character_record": {
+            "path": "Characters/TFT3_SuperMech/CharacterRecords/Root",
+            "character_id": "TFT3_SuperMech",
+            "rarity": 8,
+            "display_name": "超级魔装机神",
+            "traits": [],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_SuperMech/HUD/TFT3_SuperMech_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Graves",
+        "character_record": {
+            "path": "Characters/TFT3_Graves/CharacterRecords/Root",
+            "character_id": "TFT3_Graves",
+            "rarity": 0,
+            "display_name": "格雷福斯",
+            "traits": [
+                {
+                    "name": "太空海盗",
+                    "id": "SpacePirate"
+                },
+                {
+                    "name": "强袭枪手",
+                    "id": "Blaster"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Graves/HUD/TFT3_Graves_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Xerath",
+        "character_record": {
+            "path": "Characters/TFT3_Xerath/CharacterRecords/Root",
+            "character_id": "TFT3_Xerath",
+            "rarity": 6,
+            "display_name": "泽拉斯",
+            "traits": [
+                {
+                    "name": "暗星",
+                    "id": "DarkStar"
+                },
+                {
+                    "name": "法师",
+                    "id": "Set3_Sorcerer"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Xerath/HUD/TFT3_Xerath_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Gnar",
+        "character_record": {
+            "path": "Characters/TFT3_Gnar/CharacterRecords/Root",
+            "character_id": "TFT3_Gnar",
+            "rarity": 4,
+            "display_name": "纳尔",
+            "traits": [
+                {
+                    "name": "宇航员",
+                    "id": "Astro"
+                },
+                {
+                    "name": "斗士",
+                    "id": "Set3_Brawler"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Gnar/HUD/TFT3_Gnar_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_GnarBig",
+        "character_record": {
+            "path": "Characters/TFT3_GnarBig/CharacterRecords/Root",
+            "character_id": "TFT3_GnarBig",
+            "rarity": 4,
+            "display_name": "纳尔",
+            "traits": [],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_GnarBig/HUD/TFT3_GnarBig_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Nautilus",
+        "character_record": {
+            "path": "Characters/TFT3_Nautilus/CharacterRecords/Root",
+            "character_id": "TFT3_Nautilus",
+            "rarity": 1,
+            "display_name": "诺提勒斯",
+            "traits": [
+                {
+                    "name": "宇航员",
+                    "id": "Astro"
+                },
+                {
+                    "name": "重装战士",
+                    "id": "Vanguard"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Nautilus/HUD/TFT3_Nautilus_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Illaoi",
+        "character_record": {
+            "path": "Characters/TFT3_Illaoi/CharacterRecords/Root",
+            "character_id": "TFT3_Illaoi",
+            "rarity": 0,
+            "display_name": "俄洛伊",
+            "traits": [
+                {
+                    "name": "战地机甲",
+                    "id": "Battlecast"
+                },
+                {
+                    "name": "斗士",
+                    "id": "Set3_Brawler"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Illaoi/HUD/TFT3_Illaoi_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Nocturne",
+        "character_record": {
+            "path": "Characters/TFT3_Nocturne/CharacterRecords/Root",
+            "character_id": "TFT3_Nocturne",
+            "rarity": 0,
+            "display_name": "魔腾",
+            "traits": [
+                {
+                    "name": "战地机甲",
+                    "id": "Battlecast"
+                },
+                {
+                    "name": "刺客",
+                    "id": "Infiltrator"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Nocturne/HUD/TFT3_Nocturne_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Cassiopeia",
+        "character_record": {
+            "path": "Characters/TFT3_Cassiopeia/CharacterRecords/Root",
+            "character_id": "TFT3_Cassiopeia",
+            "rarity": 2,
+            "display_name": "卡西奥佩娅",
+            "traits": [
+                {
+                    "name": "战地机甲",
+                    "id": "Battlecast"
+                },
+                {
+                    "name": "秘术师",
+                    "id": "Set3_Mystic"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Cassiopeia/HUD/TFT3_Cassiopeia_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Vayne",
+        "character_record": {
+            "path": "Characters/TFT3_Vayne/CharacterRecords/Root",
+            "character_id": "TFT3_Vayne",
+            "rarity": 2,
+            "display_name": "薇恩",
+            "traits": [
+                {
+                    "name": "源计划",
+                    "id": "Cybernetic"
+                },
+                {
+                    "name": "狙神",
+                    "id": "Sniper"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Vayne/HUD/TFT3_Vayne_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Janna",
+        "character_record": {
+            "path": "Characters/TFT3_Janna/CharacterRecords/Root",
+            "character_id": "TFT3_Janna",
+            "rarity": 6,
+            "display_name": "迦娜",
+            "traits": [
+                {
+                    "name": "星之守护者",
+                    "id": "StarGuardian"
+                },
+                {
+                    "name": "大魔法使",
+                    "id": "Paragon"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Janna/HUD/TFT3_Janna_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Riven",
+        "character_record": {
+            "path": "Characters/TFT3_Riven/CharacterRecords/Root",
+            "character_id": "TFT3_Riven",
+            "rarity": 4,
+            "display_name": "锐雯",
+            "traits": [
+                {
+                    "name": "未来战士",
+                    "id": "Chrono"
+                },
+                {
+                    "name": "剑士",
+                    "id": "Set3_Blademaster"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Riven/HUD/TFT3_Riven_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_Bard",
+        "character_record": {
+            "path": "Characters/TFT3_Bard/CharacterRecords/Root",
+            "character_id": "TFT3_Bard",
+            "rarity": 2,
+            "display_name": "巴德",
+            "traits": [
+                {
+                    "name": "宇航员",
+                    "id": "Astro"
+                },
+                {
+                    "name": "秘术师",
+                    "id": "Set3_Mystic"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Bard/HUD/TFT3_Bard_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_BardMeep",
+        "character_record": {
+            "path": "Characters/TFT3_BardMeep/CharacterRecords/Root",
+            "character_id": "TFT3_BardMeep",
+            "rarity": 2,
+            "display_name": "木灵",
+            "traits": [],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_ItemUnknown/Skins/Skin0/TFT_Item_Unknown.png"
+        }
+    },
+    {
+        "name": "TFT3_Zed",
+        "character_record": {
+            "path": "Characters/TFT3_Zed/CharacterRecords/Root",
+            "character_id": "TFT3_Zed",
+            "rarity": 1,
+            "display_name": "劫",
+            "traits": [
+                {
+                    "name": "奥德赛",
+                    "id": "Rebel"
+                },
+                {
+                    "name": "刺客",
+                    "id": "Infiltrator"
+                }
+            ],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT3_Zed/HUD/TFT3_Zed_Square.png"
+        }
+    },
+    {
+        "name": "TFT3_5_Augment",
+        "character_record": {
+            "path": "Characters/TFT3_5_Augment/CharacterRecords/Root",
+            "character_id": "TFT3_5_Augment",
+            "rarity": 9,
+            "display_name": "海克斯核心",
+            "traits": [],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_BandleCity.png"
+        }
+    },
+    {
+        "name": "TFT_VoidSpawn",
+        "character_record": {
+            "path": "Characters/TFT_VoidSpawn/CharacterRecords/Root",
+            "character_id": "TFT_VoidSpawn",
+            "rarity": 0,
+            "display_name": "虚空生物",
+            "traits": [],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_VoidSpawn/HUD/Icons2D/Voidspawn_SquareCopy.png"
+        }
+    },
+    {
+        "name": "TFT_TrainingDummy",
+        "character_record": {
+            "path": "Characters/TFT_TrainingDummy/CharacterRecords/Root",
+            "character_id": "TFT_TrainingDummy",
+            "rarity": 0,
+            "display_name": "目标假人",
+            "traits": [],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_TrainingDummy/HUD/Icons2D/TFT_TrainingDummy_DoNothing.png"
+        }
+    },
+    {
+        "name": "TFT5_EmblemArmoryKey",
+        "character_record": {
+            "path": "Characters/TFT5_EmblemArmoryKey/CharacterRecords/Root",
+            "character_id": "TFT5_EmblemArmoryKey",
+            "rarity": 6,
+            "display_name": "纹章之书",
+            "traits": [],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT5_EmblemArmoryKey/HUD/TFT5_EmblemArmoryKey_Square.png"
+        }
+    },
+    {
+        "name": "TFT_ArmoryKeyCompleted",
+        "character_record": {
+            "path": "Characters/TFT_ArmoryKeyCompleted/CharacterRecords/Root",
+            "character_id": "TFT_ArmoryKeyCompleted",
+            "rarity": 6,
+            "display_name": "成装锻造器",
+            "traits": [],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_ArmoryKeyCompleted/HUD/TFT_ArmoryKeyCompleted_Square.png"
+        }
+    },
+    {
+        "name": "TFT_ArmoryKeyComponent",
+        "character_record": {
+            "path": "Characters/TFT_ArmoryKeyComponent/CharacterRecords/Root",
+            "character_id": "TFT_ArmoryKeyComponent",
+            "rarity": 6,
+            "display_name": "基础装备锻造器",
+            "traits": [],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_ArmoryKeyComponent/HUD/TFT_ArmoryKeyComponent_Square.png"
+        }
+    },
+    {
+        "name": "TFT_ArmoryKeyOrnn",
+        "character_record": {
+            "path": "Characters/TFT_ArmoryKeyOrnn/CharacterRecords/Root",
+            "character_id": "TFT_ArmoryKeyOrnn",
+            "rarity": 6,
+            "display_name": "神器装备锻造器",
+            "traits": [],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_ArmoryKeyOrnn/HUD/TFT_ArmoryKeyOrnn_Square.png"
+        }
+    },
+    {
+        "name": "TFT_GoldenEgg",
+        "character_record": {
+            "path": "Characters/TFT_GoldenEgg/CharacterRecords/Root",
+            "character_id": "TFT_GoldenEgg",
+            "rarity": 6,
+            "display_name": "金蛋",
+            "traits": [],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT5_DraconicEgg/HUD/Icons2D/TFT5_DraconicEgg_Square.png"
+        }
+    },
+    {
+        "name": "TFT_ArmoryKeySupport",
+        "character_record": {
+            "path": "Characters/TFT_ArmoryKeySupport/CharacterRecords/Root",
+            "character_id": "TFT_ArmoryKeySupport",
+            "rarity": 6,
+            "display_name": "辅助装锻造器",
+            "traits": [],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_ArmoryKeySupport/HUD/TFT_ArmoryKeySupport_Square.png"
+        }
+    },
+    {
+        "name": "TFT6_MercenaryChest",
+        "character_record": {
+            "path": "Characters/TFT6_MercenaryChest/CharacterRecords/Root",
+            "character_id": "TFT6_MercenaryChest",
+            "rarity": 9,
+            "display_name": "赏金猎人宝箱",
+            "traits": [],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_ItemUnknown/Skins/Skin0/TFT_Item_Unknown.png"
         }
     },
     {
@@ -5009,30 +5918,6 @@
         }
     },
     {
-        "name": "TFT10_Akali_TrueDamage",
-        "character_record": {
-            "path": "Characters/TFT10_Akali_TrueDamage/CharacterRecords/Root",
-            "character_id": "TFT10_Akali_TrueDamage",
-            "rarity": 9,
-            "display_name": "阿卡丽",
-            "traits": [
-                {
-                    "name": "真实伤害",
-                    "id": "Set10_TrueDamage"
-                },
-                {
-                    "name": "裁决使",
-                    "id": "Set10_Executioner"
-                },
-                {
-                    "name": "双修出道",
-                    "id": "Set10_Breakout"
-                }
-            ],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Akali_TrueDamage/HUD/TFT10_Akali_TrueDamage_Square.TFT_Set10.png"
-        }
-    },
-    {
         "name": "TFT10_DesperadoProp",
         "character_record": {
             "path": "Characters/TFT10_DesperadoProp/CharacterRecords/Root",
@@ -5083,17 +5968,6 @@
                 }
             ],
             "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Garen/HUD/TFT10_Garen_Square.TFT_Set10.png"
-        }
-    },
-    {
-        "name": "TFT10_Augment",
-        "character_record": {
-            "path": "Characters/TFT10_Augment/CharacterRecords/Root",
-            "character_id": "TFT10_Augment",
-            "rarity": 9,
-            "display_name": "海克斯核心",
-            "traits": [],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Augment/HUD/Icons2D/TFT10_AugmentProp.TFT_Set10.png"
         }
     }
 ]

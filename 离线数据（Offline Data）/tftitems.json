@@ -846,7 +846,7 @@
     },
     {
         "guid": "d76ce77b-a4ff-40ef-adb9-fcbc12ad0420",
-        "name": "无尽之力",
+        "name": "三相之力",
         "nameId": "TFT4_Item_OrnnInfinityForce",
         "id": 0,
         "color": {
@@ -6566,7 +6566,7 @@
     },
     {
         "guid": "d76ce77b-a4ff-40ef-adb9-fcbc12ad0420",
-        "name": "无尽之力",
+        "name": "三相之力",
         "nameId": "TFT4_Item_OrnnInfinityForce",
         "id": 0,
         "color": {
@@ -11688,7 +11688,3738 @@
     },
     {
         "guid": "d76ce77b-a4ff-40ef-adb9-fcbc12ad0420",
-        "name": "无尽之力",
+        "name": "三相之力",
+        "nameId": "TFT4_Item_OrnnInfinityForce",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 0,
+            "G": 0,
+            "A": 100
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT4_OrnnItem_Fighter_T4_TrinityForce.png"
+    },
+    {
+        "guid": "e4b314d4-0711-4fcf-b2e0-e510c601db7b",
+        "name": "魔蕴",
+        "nameId": "TFT4_Item_OrnnMuramana",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 0,
+            "G": 0,
+            "A": 100
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT4_OrnnItem_Marksman_T3_Muramana.png"
+    },
+    {
+        "guid": "c592c022-e504-4cf2-9e41-cfc567af4ee6",
+        "name": "黑曜石切割者",
+        "nameId": "TFT4_Item_OrnnObsidianCleaver",
+        "id": 0,
+        "color": {
+            "R": 66,
+            "B": 140,
+            "G": 87,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/TFT9_SupportItems/Obsidian_Cleaver.png"
+    },
+    {
+        "guid": "54f4c4e7-ad5e-4a6c-8778-e1761e5bdce4",
+        "name": "兰顿之兆",
+        "nameId": "TFT4_Item_OrnnRanduinsSanctum",
+        "id": 0,
+        "color": {
+            "R": 66,
+            "B": 140,
+            "G": 87,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/TFT9_SupportItems/Randuins_Sanctum_Support.png"
+    },
+    {
+        "guid": "53c5595c-cdc1-4696-915f-7c91065a46bb",
+        "name": "中娅悖论",
+        "nameId": "TFT4_Item_OrnnZhonyasParadox",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 0,
+            "G": 0,
+            "A": 100
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT4_OrnnItem_Mage_T3_ZhonyasHourglass.png"
+    },
+    {
+        "guid": "aae87392-d680-4483-8b84-18056bf54ca2",
+        "name": "意志破坏者",
+        "nameId": "TFT5_Item_TrapClawRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Stridebreaker-Radiant.png"
+    },
+    {
+        "guid": "0e915e09-7b4c-4d7d-a577-eff60856c6af",
+        "name": "福佑饮血剑",
+        "nameId": "TFT5_Item_BloodthirsterRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Bloodthirster_Radiant.png"
+    },
+    {
+        "guid": "6482fcfa-b7a7-4df4-bf10-52ac86983b08",
+        "name": "神圣离子火花",
+        "nameId": "TFT5_Item_IonicSparkRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Ionic_Spark_Radiant.png"
+    },
+    {
+        "guid": "b2455bfc-432a-4cf0-93fe-cec572218a4e",
+        "name": "恶魔杀手",
+        "nameId": "TFT5_Item_GiantSlayerRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Giant_Slayer_Radiant.png"
+    },
+    {
+        "guid": "fffde13f-cdf2-4ea4-8ba0-8a08d94ad33a",
+        "name": "巨龙意志",
+        "nameId": "TFT5_Item_DragonsClawRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Dragons_Claw_Radiant.png"
+    },
+    {
+        "guid": "65610b25-5ef7-46bb-90e0-f0613a7af9f4",
+        "name": "天神石板甲",
+        "nameId": "TFT5_Item_GargoyleStoneplateRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Gargoyle_Stoneplate_Radiant.png"
+    },
+    {
+        "guid": "6f34164f-143c-432a-b536-eea49df48304",
+        "name": "永恒轻语",
+        "nameId": "TFT5_Item_LastWhisperRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Last_Whisper_Radiant.png"
+    },
+    {
+        "guid": "8c082fd3-3fc0-4678-89d2-42aa5328b982",
+        "name": "绝对正义之拳",
+        "nameId": "TFT5_Item_HandOfJusticeRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Hand_of_Justice_Radiant.png"
+    },
+    {
+        "guid": "dd84a276-0788-4606-9e2a-d185fb5ba921",
+        "name": "壁垒的誓言",
+        "nameId": "TFT5_Item_FrozenHeartRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Fimbulwinter_Radiant.png"
+    },
+    {
+        "guid": "2bab5b03-8103-4cae-944a-a29fbb29c4d1",
+        "name": "圣洁珠光护手",
+        "nameId": "TFT5_Item_JeweledGauntletRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Jeweled_Gauntlet_Radiant.png"
+    },
+    {
+        "guid": "44f73f25-728e-432c-b559-9bbe9e7d7eb3",
+        "name": "黎明锋刃",
+        "nameId": "TFT5_Item_GuardianAngelRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Edge_Of_Night_Radiant.png"
+    },
+    {
+        "guid": "84dc5d6b-6002-439a-8796-40c47368fd71",
+        "name": "鬼索的清算",
+        "nameId": "TFT5_Item_GuinsoosRagebladeRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Guinsoos_Rageblade_Radiant.png"
+    },
+    {
+        "guid": "d6ad53fa-ceb2-4968-a7a0-ca9e117291ad",
+        "name": "海克斯科技生命之刃",
+        "nameId": "TFT5_Item_HextechGunbladeRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Hextech_Gunblade_Radiant.png"
+    },
+    {
+        "guid": "b02a5151-c3cc-4c39-9c6c-238ea2ab816e",
+        "name": "光辉之刃",
+        "nameId": "TFT5_Item_DeathbladeRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Death_Blade_Radiant.png"
+    },
+    {
+        "guid": "d71db2ec-99fe-4719-8a6b-04a0d5aa29f6",
+        "name": "莫雷洛圣典",
+        "nameId": "TFT5_Item_MorellonomiconRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Morellonomicon_Radiant.png"
+    },
+    {
+        "guid": "df996c87-c681-491a-9e4d-46c7e7b254e7",
+        "name": "至速水银",
+        "nameId": "TFT5_Item_QuicksilverRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Quicksilver_Radiant.png"
+    },
+    {
+        "guid": "42550a65-89ec-4e65-9454-b7176f33bece",
+        "name": "灭世者的飞升之帽",
+        "nameId": "TFT5_Item_RabadonsDeathcapRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Rabadons_Deathcap_Radiant.png"
+    },
+    {
+        "guid": "1dbdddf7-58ab-40d8-b4b4-4232272854a8",
+        "name": "赦除",
+        "nameId": "TFT5_Item_RedemptionRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Redemption_Radiant.png"
+    },
+    {
+        "guid": "4182ee08-b7b5-429f-a818-ee189588956d",
+        "name": "余烬之冠",
+        "nameId": "TFT5_Item_RapidFirecannonRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/RedBuff_Radiant.png"
+    },
+    {
+        "guid": "56bd0e94-1e97-426c-9aa7-473dcbaefb3b",
+        "name": "光明窃贼手套",
+        "nameId": "TFT5_Item_ThiefsGlovesRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Thieves_Gloves_Radiant.png"
+    },
+    {
+        "guid": "2271d5e2-4d01-4837-8641-354e42839970",
+        "name": "瑰刺背心",
+        "nameId": "TFT5_Item_BrambleVestRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Bramble_Vest_Radiant.png"
+    },
+    {
+        "guid": "44238ba0-212a-4548-91c4-bcbfb24bdfb8",
+        "name": "卢安娜的风暴",
+        "nameId": "TFT5_Item_RunaansHurricaneRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Runaans_Hurricane_Radiant.png"
+    },
+    {
+        "guid": "5fb5eef6-4f1d-4ba2-812d-d21ad8c20389",
+        "name": "希拉娜之矛",
+        "nameId": "TFT5_Item_SpearOfShojinRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Spear_of_Shojin_Radiant.png"
+    },
+    {
+        "guid": "3e4f4258-7868-4550-a176-d4e56b1da1de",
+        "name": "斯塔缇克狂热",
+        "nameId": "TFT5_Item_StatikkShivRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Statikk_Shiv_Radiant.png"
+    },
+    {
+        "guid": "83f7903b-0952-420e-9680-ee0ac8ad2ad5",
+        "name": "日光斗篷",
+        "nameId": "TFT5_Item_SunfireCapeRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Sunfire_Cape_Radiant.png"
+    },
+    {
+        "guid": "af222813-fe9d-4168-bac2-efe0ba4c181a",
+        "name": "泰坦的誓言",
+        "nameId": "TFT5_Item_TitansResolveRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Titans_Resolve_Radiant.png"
+    },
+    {
+        "guid": "4a50aa3d-4e5b-4496-b37b-0f2ba99ff459",
+        "name": "阿福天使之杖",
+        "nameId": "TFT5_Item_ArchangelsStaffRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Archangel_Staff_Radiant.png"
+    },
+    {
+        "guid": "1434bd27-c639-4e03-ba0a-5474bcec5bba",
+        "name": "狂徒之傲",
+        "nameId": "TFT5_Item_WarmogsArmorRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Warmogs_Armor_Radiant.png"
+    },
+    {
+        "guid": "7fa90fe0-d378-402f-983d-806dd07f1f47",
+        "name": "天顶锋刃",
+        "nameId": "TFT5_Item_InfinityEdgeRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Infinity_Edge_Radiant.png"
+    },
+    {
+        "guid": "6e48b2d8-35f8-4d04-bfd3-a9fa5559690d",
+        "name": "兹若特传送门",
+        "nameId": "TFT5_Item_ZzRotPortalRadiant",
+        "id": 0,
+        "color": {
+            "R": 66,
+            "B": 140,
+            "G": 87,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/TFT9_SupportItems/ZZRot_Portal.png"
+    },
+    {
+        "guid": "f69eb8de-3db8-4151-a796-5feddbd5e537",
+        "name": "便携痛苦",
+        "nameId": "TFT_Item_DebugDamage",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 0,
+            "G": 0,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Augments/TFT6_Augment_BrawlerVeterans.png"
+    },
+    {
+        "guid": "c866ac1e-1440-46ce-9c71-ba16238fbeea",
+        "name": "我敌人们的眼泪",
+        "nameId": "TFT_Item_DebugMana",
+        "id": 0,
+        "color": {
+            "R": 66,
+            "B": 253,
+            "G": 188,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Augments/DU_Augment_SolarPower.png"
+    },
+    {
+        "guid": "102d5bdb-284c-468c-9a5b-1415f5ab48fb",
+        "name": "冲脸之锤",
+        "nameId": "TFT_Item_DebugStun",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 48,
+            "G": 193,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Augments/TFT6_Augment_ClockworkOverclock.png"
+    },
+    {
+        "guid": "cff6f6c2-922e-4797-af2b-50848fe45b89",
+        "name": "你知道我是谁吗？",
+        "nameId": "TFT_Item_DebugUnitID",
+        "id": 0,
+        "color": {
+            "R": 199,
+            "B": 255,
+            "G": 66,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Augments/TFT6_Augment_ExperimentalEmblem.png"
+    },
+    {
+        "guid": "e19cd372-8e3d-4cd1-b08d-b13598e94720",
+        "name": "大亨之铠",
+        "nameId": "TFT7_Item_ShimmerscaleMogulsMail",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 0,
+            "G": 0,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/Moguls_Mail.png"
+    },
+    {
+        "guid": "11b3d642-c09c-4262-b142-de1782aa816f",
+        "name": "无用大宝石",
+        "nameId": "TFT7_Item_ShimmerscaleHeartOfGold",
+        "id": 0,
+        "color": {
+            "R": 66,
+            "B": 140,
+            "G": 87,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/TFT9_SupportItems/Needlessy_Large_Gem.png"
+    },
+    {
+        "guid": "443e6966-b61c-48d1-b87e-b5de74bc96a5",
+        "name": "御金师之杖",
+        "nameId": "TFT7_Item_ShimmerscaleGoldmancersStaff",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 0,
+            "G": 0,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/GoldmancersStaff.png"
+    },
+    {
+        "guid": "173e1840-574a-46a0-b104-14cc69d18843",
+        "name": "次级英雄复制器",
+        "nameId": "TFT_Consumable_ChampionDuplicator_III",
+        "id": 0,
+        "color": {
+            "R": 52,
+            "B": 241,
+            "G": 118,
+            "A": 251
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/ChampionDuplicator_III.png"
+    },
+    {
+        "guid": "4f372118-71d7-4667-af0a-94931cc0ec26",
+        "name": "碎舰者",
+        "nameId": "TFT9_Item_OrnnHullbreaker",
+        "id": 0,
+        "color": {
+            "R": 180,
+            "B": 38,
+            "G": 38,
+            "A": 100
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT9_OrnnItem_Hullbreaker.png"
+    },
+    {
+        "guid": "b4376ae0-7f0c-487c-9e6a-492ea87a2d5a",
+        "name": "诡术师之镜",
+        "nameId": "TFT9_Item_OrnnTrickstersGlass",
+        "id": 0,
+        "color": {
+            "R": 180,
+            "B": 38,
+            "G": 38,
+            "A": 100
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT9_OrnnItem_TrickstersGlass.png"
+    },
+    {
+        "guid": "f78fb930-dcb9-4875-a885-7cfa9ae6685f",
+        "name": "冥火之拥",
+        "nameId": "TFT9_Item_OrnnDeathfireGrasp",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 0,
+            "G": 0,
+            "A": 100
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT9_OrnnItem_DeathfireGrasp.png"
+    },
+    {
+        "guid": "c7137cfa-af21-49e6-ac13-e991f6230546",
+        "name": "狙击手的专注",
+        "nameId": "TFT9_Item_OrnnHorizonFocus",
+        "id": 0,
+        "color": {
+            "R": 180,
+            "B": 38,
+            "G": 38,
+            "A": 100
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT9_OrnnItem_SnipersFocus.png"
+    },
+    {
+        "guid": "07a3ad21-fe68-4236-8960-64e0ba87daab",
+        "name": "不可用的栏位",
+        "nameId": "TFT_Item_UnusableSlot",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 255,
+            "G": 255,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Placeholders/TFT_Item_UnusableSlot.png"
+    },
+    {
+        "guid": "acf41f6d-5656-45ff-8732-39a199d8f6f4",
+        "name": "",
+        "nameId": "TFT_Item_BlankSlot",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 213,
+            "G": 110,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Placeholders/TFT_Item_EmptySlot.png"
+    },
+    {
+        "guid": "7c172979-2f92-4bc8-8ca2-b3a3f712a4eb",
+        "name": "薄暮法袍",
+        "nameId": "TFT_Item_SpectralGauntlet",
+        "id": 0,
+        "color": {
+            "R": 139,
+            "B": 211,
+            "G": 89,
+            "A": 56
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Evenshroud.png"
+    },
+    {
+        "guid": "ba6c3178-7114-41ad-bb2a-ff28617921eb",
+        "name": "星体结界",
+        "nameId": "TFT5_Item_SpectralGauntletRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Evenshroud_Radiant.png"
+    },
+    {
+        "guid": "407ab5a0-64d1-4611-be26-28f504d58f66",
+        "name": "冕卫",
+        "nameId": "TFT_Item_Crownguard",
+        "id": 0,
+        "color": {
+            "R": 127,
+            "B": 165,
+            "G": 30,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Crownguard.png"
+    },
+    {
+        "guid": "7d9c5a00-2e3d-4625-8ea2-0860872144dd",
+        "name": "皇家冕盾",
+        "nameId": "TFT5_Item_CrownguardRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Crownguard_Radiant.png"
+    },
+    {
+        "guid": "570d3a26-d655-4a8f-94e3-57148ea181a5",
+        "name": "御金师之杖",
+        "nameId": "TFT7_Item_ShimmerscaleGoldmancersStaff_HR",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 0,
+            "G": 0,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/GoldmancersStaff.png"
+    },
+    {
+        "guid": "ec1a7244-ef4a-4400-9edd-9fae321003f8",
+        "name": "坚定之心",
+        "nameId": "TFT_Item_NightHarvester",
+        "id": 0,
+        "color": {
+            "R": 204,
+            "B": 116,
+            "G": 145,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Behemoth.png"
+    },
+    {
+        "guid": "ea6d99a8-74f9-4f03-83fe-6010644e08d2",
+        "name": "无用大宝石",
+        "nameId": "TFT7_Item_ShimmerscaleHeartOfGold_HR",
+        "id": 0,
+        "color": {
+            "R": 66,
+            "B": 140,
+            "G": 87,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Traits/Set7_Shimmerscale/Shimmerscale_HeartOfGold_Base.png"
+    },
+    {
+        "guid": "bf247c5f-fbf5-4775-9b44-d19107eb2d4c",
+        "name": "巨像的传承",
+        "nameId": "TFT5_Item_NightHarvesterRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Behemoth_Radiant.png"
+    },
+    {
+        "guid": "49048be4-b2a6-46e6-85e9-9946e6aca783",
+        "name": "大亨之铠",
+        "nameId": "TFT7_Item_ShimmerscaleMogulsMail_HR",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 0,
+            "G": 0,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/Moguls_Mail.png"
+    },
+    {
+        "guid": "3182f180-264f-46b2-ba62-d97537d3dd0c",
+        "name": "斯特拉克的挑战护手",
+        "nameId": "TFT_Item_SteraksGage",
+        "id": 0,
+        "color": {
+            "R": 234,
+            "B": 61,
+            "G": 81,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Steraks_Gage.png"
+    },
+    {
+        "guid": "8e2347d1-971b-4ce6-a9c0-e599ef2999f0",
+        "name": "斯特拉克的究极盾牌",
+        "nameId": "TFT5_Item_SteraksGageRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Steraks_Gage_Radiant.png"
+    },
+    {
+        "guid": "74400ed8-722a-4b4c-af6c-f6c1c26d2f63",
+        "name": "蓝霸符",
+        "nameId": "TFT_Item_BlueBuff",
+        "id": 0,
+        "color": {
+            "R": 20,
+            "B": 255,
+            "G": 154,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Blue_Buff.png"
+    },
+    {
+        "guid": "e3dab7d2-d9ff-4fce-9e1d-9ada482447ab",
+        "name": "圣蓝祝福",
+        "nameId": "TFT5_Item_BlueBuffRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Blue_Buff_Radiant.png"
+    },
+    {
+        "guid": "0be70ac0-d2ef-415d-8fc5-26b34473ee03",
+        "name": "适应性头盔",
+        "nameId": "TFT_Item_AdaptiveHelm",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 0,
+            "G": 0,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Adaptive_Helm.png"
+    },
+    {
+        "guid": "a8f024b3-428d-4b8d-a2fb-ef3543f86247",
+        "name": "千变者贾修",
+        "nameId": "TFT5_Item_AdaptiveHelmRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Adaptive_Helm_Radiant.png"
+    },
+    {
+        "guid": "972ed0e1-341f-4fc9-a438-5b8450845195",
+        "name": "纳什之牙",
+        "nameId": "TFT_Item_Leviathan",
+        "id": 0,
+        "color": {
+            "R": 186,
+            "B": 181,
+            "G": 18,
+            "A": 56
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Nashors_Tooth.png"
+    },
+    {
+        "guid": "ea79784c-80f5-4811-95fd-a398c07c13b6",
+        "name": "男爵赠礼",
+        "nameId": "TFT5_Item_LeviathanRadiant",
+        "id": 0,
+        "color": {
+            "R": 151,
+            "B": 0,
+            "G": 146,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Radiant/Nashors_Tooth_Radiant.png"
+    },
+    {
+        "guid": "63c33fa3-5dd2-4d47-a04d-679a773ea9a1",
+        "name": "军团圣盾",
+        "nameId": "TFT_Item_AegisOfTheLegion",
+        "id": 0,
+        "color": {
+            "R": 66,
+            "B": 140,
+            "G": 87,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/TFT9_SupportItems/Aegis.png"
+    },
+    {
+        "guid": "5301fd7b-4f4e-4b4d-9b68-c610a49480f9",
+        "name": "殉道美德",
+        "nameId": "TFT_Item_RadiantVirtue",
+        "id": 0,
+        "color": {
+            "R": 66,
+            "B": 140,
+            "G": 87,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/TFT9_SupportItems/Radiant_Virtue.png"
+    },
+    {
+        "guid": "fc507d99-b6e0-4a1b-8410-e6eba14c94b6",
+        "name": "女妖面纱",
+        "nameId": "TFT_Item_BansheesVeil",
+        "id": 0,
+        "color": {
+            "R": 66,
+            "B": 140,
+            "G": 87,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/TFT9_SupportItems/Banshees_Veil.png"
+    },
+    {
+        "guid": "2889a2c2-b62c-45a5-9ca4-936db76d19da",
+        "name": "铁匠手套",
+        "nameId": "TFT9_Item_OrnnPrototypeForge",
+        "id": 0,
+        "color": {
+            "R": 180,
+            "B": 38,
+            "G": 38,
+            "A": 100
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT9_OrnnItem_BlacksmithsGloves.png"
+    },
+    {
+        "guid": "3e2d41e7-35c3-4489-bbfc-e5f34720fc23",
+        "name": "企鹅的庇护",
+        "nameId": "TFT_Item_DebugShield",
+        "id": 0,
+        "color": {
+            "R": 30,
+            "B": 167,
+            "G": 119,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Augments/DU_Augment_SpeedySupport.png"
+    },
+    {
+        "guid": "e016ead4-f814-4446-a358-b099cee676ee",
+        "name": "暴击命中！",
+        "nameId": "TFT_Item_DebugCrit",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 44,
+            "G": 223,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Augments/TFT6_Augment_EnchanterInfinityCane.png"
+    },
+    {
+        "guid": "0fe13e99-497a-47d7-956c-ffec4387ff0e",
+        "name": "投机者之刃",
+        "nameId": "TFT7_Item_ShimmerscaleGamblersBlade",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 0,
+            "G": 0,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT10_GamblersBlade.TFT_Set10.png"
+    },
+    {
+        "guid": "b2e4dd8a-3108-4fde-8ee9-358199d43c4b",
+        "name": "钻石之手",
+        "nameId": "TFT7_Item_ShimmerscaleDiamondHands",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 0,
+            "G": 0,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT10_DiamondHands.TFT_Set10.png"
+    },
+    {
+        "guid": "aff8e947-f9ac-4f67-b9b2-7db5b79b0dd0",
+        "name": "投机者之刃",
+        "nameId": "TFT7_Item_ShimmerscaleGamblersBlade_HR",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 0,
+            "G": 0,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT10_GamblersBlade.TFT_Set10.png"
+    },
+    {
+        "guid": "66de2339-de0b-43a1-9fb6-fbab8148d461",
+        "name": "剑士纹章",
+        "nameId": "TFT3_Item_BlademasterEmblem",
+        "id": 0,
+        "color": {
+            "R": 121,
+            "B": 107,
+            "G": 0,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Traits/Spatula/Set3/Blademaster.TFT_Set3_5_Revival.png"
+    },
+    {
+        "guid": "3eacfee7-492e-428c-b875-0a71458577cd",
+        "name": "星之守护者纹章",
+        "nameId": "TFT3_Item_StarGuardianEmblem",
+        "id": 0,
+        "color": {
+            "R": 101,
+            "B": 132,
+            "G": 127,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Traits/Spatula/Set3/StarGuardian.TFT_Set3_5_Revival.png"
+    },
+    {
+        "guid": "441ae7d4-a2b3-4c92-bd97-fb5438e1949c",
+        "name": "刺客纹章",
+        "nameId": "TFT3_Item_InfiltratorEmblem",
+        "id": 0,
+        "color": {
+            "R": 109,
+            "B": 197,
+            "G": 57,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Traits/Spatula/Set3/Infiltrator.TFT_Set3_5_Revival.png"
+    },
+    {
+        "guid": "b552f152-91f8-4836-836b-1f81951f508e",
+        "name": "圣盾使纹章",
+        "nameId": "TFT3_Item_ProtectorEmblem",
+        "id": 0,
+        "color": {
+            "R": 32,
+            "B": 40,
+            "G": 90,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Traits/Spatula/Set3/Protector.TFT_Set3_5_Revival.png"
+    },
+    {
+        "guid": "ca1ea5a3-6018-4644-8896-66d8709d40de",
+        "name": "暗星纹章",
+        "nameId": "TFT3_Item_DarkStarEmblem",
+        "id": 0,
+        "color": {
+            "R": 45,
+            "B": 189,
+            "G": 89,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Traits/Spatula/Set3/DarkStar.TFT_Set3_5_Revival.png"
+    },
+    {
+        "guid": "d7a9c3e7-3269-4788-939d-9e4efe996678",
+        "name": "星界纹章",
+        "nameId": "TFT3_Item_CelestialEmblem",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 139,
+            "G": 123,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Traits/Spatula/Set3/Celestial.TFT_Set3_5_Revival.png"
+    },
+    {
+        "guid": "8280b8b7-bd57-4cbd-bd5c-18718bba37f6",
+        "name": "奥德赛纹章",
+        "nameId": "TFT3_Item_RebelEmblem",
+        "id": 0,
+        "color": {
+            "R": 146,
+            "B": 27,
+            "G": 112,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Traits/Spatula/Set3/Rebel.TFT_Set3_5_Revival.png"
+    },
+    {
+        "guid": "8eb312f7-78ca-49bc-b7b6-12efd3252c49",
+        "name": "战地机甲纹章",
+        "nameId": "TFT3_Item_BattlecastEmblem",
+        "id": 0,
+        "color": {
+            "R": 116,
+            "B": 0,
+            "G": 19,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Traits/Spatula/Set3/Battlecast.TFT_Set3_5_Revival.png"
+    },
+    {
+        "guid": "07a3ad21-fe68-4236-8960-64e0ba87daab",
+        "name": "不可用的栏位",
+        "nameId": "TFT_Item_UnusableSlot",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 255,
+            "G": 255,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Placeholders/TFT_Item_UnusableSlot.png"
+    },
+    {
+        "guid": "83ddbdce-45fd-481b-9326-4049e34fd856",
+        "name": "打捞桶",
+        "nameId": "TFT6_Augment_SalvageBin",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Salvage2.png"
+    },
+    {
+        "guid": "7f396223-c314-43e6-9742-0ae13b8aa0e8",
+        "name": "前进之路",
+        "nameId": "TFT6_Augment_SlowAndSteady",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/SlowAndSteady3.png"
+    },
+    {
+        "guid": "cad5d5db-85c5-4d22-a0e1-2c0ff695f9ce",
+        "name": "便携锻炉",
+        "nameId": "TFT6_Augment_PortableForge",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PortableForge2.png"
+    },
+    {
+        "guid": "34a15a66-7ce0-4a0e-8f15-872129a35193",
+        "name": "二进制空投",
+        "nameId": "TFT6_Augment_BinaryAirdrop",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/BinaryAirdrop3.png"
+    },
+    {
+        "guid": "5e559456-19cd-4042-a314-2e26070c819a",
+        "name": "变形重组器",
+        "nameId": "TFT6_Augment_Recombobulator",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Recombobulator-I.png"
+    },
+    {
+        "guid": "7e702739-b6a5-46a1-a092-1c45fdeb0fd1",
+        "name": "珠光莲花 II",
+        "nameId": "TFT9_Augment_JeweledLotus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Jeweled-Lotus-II.png"
+    },
+    {
+        "guid": "582f1a74-8433-42f0-9c14-ae6ec5101b45",
+        "name": "恶魔契约",
+        "nameId": "TFT7_Augment_SacrificialPact",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Sacrificial-Pact-III.png"
+    },
+    {
+        "guid": "cd71f1d0-6684-4eab-b610-2a3a9d860a11",
+        "name": "三费小组",
+        "nameId": "TFT6_Augment_ThreesCompany",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Threes-Company-II.png"
+    },
+    {
+        "guid": "d8a205d9-07ac-410e-b37b-e8a0998646af",
+        "name": "活体锻炉",
+        "nameId": "TFT7_Augment_LivingForge",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Living-Forge-III.png"
+    },
+    {
+        "guid": "7f027683-63d5-4e0f-aa25-51e2fdb200c1",
+        "name": "开摆",
+        "nameId": "TFT7_Augment_AFK",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/AFK-I.png"
+    },
+    {
+        "guid": "6fb63991-8742-41d2-b60f-15209d11ce85",
+        "name": "背水一战",
+        "nameId": "TFT7_Augment_LastStand",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Last-Stand-II.png"
+    },
+    {
+        "guid": "698cb2e2-11e4-4ae8-81ca-057224c0f400",
+        "name": "利滚利",
+        "nameId": "TFT6_Augment_RichGetRicher",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/RichGetRicher2.png"
+    },
+    {
+        "guid": "786f0e6f-5ce9-459d-a3dd-da1b319478bb",
+        "name": "利滚利加强版",
+        "nameId": "TFT6_Augment_RichGetRicherPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/RichGetRicher2.png"
+    },
+    {
+        "guid": "b0bb4315-c3b5-434a-9efe-a4c0935de871",
+        "name": "生日礼物",
+        "nameId": "TFT7_Augment_BirthdayPresents",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Golden-Gifts-III.png"
+    },
+    {
+        "guid": "e3841c8a-5b1e-4ac1-85da-8f85aac7e952",
+        "name": "棱彩门票",
+        "nameId": "TFT6_Augment_GachaAddict",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/GoldenTicket3.png"
+    },
+    {
+        "guid": "f5c11836-daa8-476a-b95e-5ec75eaab44f",
+        "name": "黄金门票",
+        "nameId": "TFT9_Augment_SilverTicket",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/GoldenTicket2.png"
+    },
+    {
+        "guid": "5ebbe1d0-e1d3-46ce-8755-dff8664d5725",
+        "name": "不拘一格",
+        "nameId": "TFT9_Augment_YoungAndWildAndFree",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Young-and-wild-and-free-I.png"
+    },
+    {
+        "guid": "a42a2049-9115-40b8-932e-45fd4785de55",
+        "name": "成吨的伤害",
+        "nameId": "TFT9_Augment_PhreakyFriday",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Phreaky-Friday-III.png"
+    },
+    {
+        "guid": "6af76c70-bfbf-4707-a789-6fa39ca31b7f",
+        "name": "多变锻炉",
+        "nameId": "TFT9_Augment_CapriciousForge",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Prototype-Forge-II.png"
+    },
+    {
+        "guid": "5bdfe4a3-10a8-4735-ae47-1fbe74b892f1",
+        "name": "入门套件",
+        "nameId": "TFT9_Augment_StarterKit",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Starter-Kit-III.png"
+    },
+    {
+        "guid": "dfb0c2fa-9d7b-41e6-b232-ef099ee28bec",
+        "name": "休眠锻炉",
+        "nameId": "TFT9_Augment_LongTimeCrafting",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Long-time-Crafting-I.png"
+    },
+    {
+        "guid": "eabbd64f-be7b-4ffd-a09e-a0503684832d",
+        "name": "联合抵抗 II",
+        "nameId": "TFT9_Augment_Formation2",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Red-Rover-II.png"
+    },
+    {
+        "guid": "25fb60d7-1f93-4346-bc43-9f0f651c9f7c",
+        "name": "成吨的属性！",
+        "nameId": "TFT9_Augment_TonsOfStats",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Tons-of-Stats-II.png"
+    },
+    {
+        "guid": "a1f99a9c-7300-477b-a049-a2a3936b4514",
+        "name": "联合抵抗 I",
+        "nameId": "TFT9_Augment_Formation1",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Red-Rover-I.png"
+    },
+    {
+        "guid": "a2a32338-ce94-4487-8bcc-b219bb4cc9d6",
+        "name": "银汤匙",
+        "nameId": "TFT9_Augment_SilverSpoon",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Silver-Spoon-I.png"
+    },
+    {
+        "guid": "aa685954-71bd-4992-a196-3eb17d7a1e25",
+        "name": "基础装备自助餐",
+        "nameId": "TFT9_Augment_CustomerIsAlwaysRight",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/The-customer-is-always-right-I.png"
+    },
+    {
+        "guid": "f0401984-6337-4442-8f97-607c40ede5cb",
+        "name": "黑铁资产",
+        "nameId": "TFT9_Augment_IronAssets",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Iron-Assets-I.png"
+    },
+    {
+        "guid": "c3af3502-48f7-4762-a11a-42ecd504da1e",
+        "name": "升星之运",
+        "nameId": "TFT9_Augment_OnARoll",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/On-a-Roll-I.png"
+    },
+    {
+        "guid": "b7086873-6522-4a4a-a257-c6acbc74a00c",
+        "name": "天生二星",
+        "nameId": "TFT9_Augment_StarsAreBorn",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Stars-are-born-II.png"
+    },
+    {
+        "guid": "24bd4de7-5e98-4458-9e32-a44cb12a5e57",
+        "name": "极客发明",
+        "nameId": "TFT9_Augment_ImpromptuInventions",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Impromptu-Invention-II.png"
+    },
+    {
+        "guid": "08797c95-3b8d-488c-bd7e-3854f9df3ee0",
+        "name": "一二二三",
+        "nameId": "TFT9_Augment_OneTwosThree",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Threes-Company-I.png"
+    },
+    {
+        "guid": "64bfec19-cd5d-4046-af39-acc7e999b172",
+        "name": "不屈意志",
+        "nameId": "TFT9_Augment_IndomitableWill",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Indomitable-Will-I.png"
+    },
+    {
+        "guid": "9979cde0-c00b-48a8-a92a-b012a1017d39",
+        "name": "最后储备",
+        "nameId": "TFT9_Augment_FinalReserves",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Final-Reserves-III.png"
+    },
+    {
+        "guid": "ce110406-3f19-4840-8d2b-7a80f6db26ff",
+        "name": "别再错过",
+        "nameId": "TFT9_Augment_MissedConnections",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Missed-Connections-I.png"
+    },
+    {
+        "guid": "cfec1586-c487-4071-8982-7441f58befb6",
+        "name": "灌注",
+        "nameId": "TFT9_Augment_Infusion",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Infusion-II.png"
+    },
+    {
+        "guid": "67bd1b78-7928-421c-843e-5a630967510c",
+        "name": "交给运气",
+        "nameId": "TFT9_Augment_RollTheDice",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Roll-the-Dice-III.png"
+    },
+    {
+        "guid": "425ebdc4-3b90-4ec1-85eb-9c92565ab275",
+        "name": "整活锻炉",
+        "nameId": "TFT9_Augment_WhatTheForge",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/What-The-Forge-III.png"
+    },
+    {
+        "guid": "07ea2e1c-93be-47fe-b902-560804b67b5f",
+        "name": "行家里手",
+        "nameId": "TFT9_Augment_Sleightofhand",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Sleight-of-Hand-II.png"
+    },
+    {
+        "guid": "4caa8d0d-a57b-4ba4-b995-e378b2bf6879",
+        "name": "血红金币",
+        "nameId": "TFT9_Augment_BloodMoney",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Blood-Money-I.png"
+    },
+    {
+        "guid": "c2a4f80c-6d2c-4c7b-91eb-cce36bc94ad3",
+        "name": "刀下取金",
+        "nameId": "TFT9_Augment_ACutAbove",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/A-Cut-Above-II.png"
+    },
+    {
+        "guid": "f021d478-78fd-4edb-8f05-307e8a83a3bf",
+        "name": "理想主义",
+        "nameId": "TFT9_Augment_Idealism",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Idealism-II.png"
+    },
+    {
+        "guid": "3e9068a1-aca0-47ac-b9d9-ff42181d36e6",
+        "name": "治疗法球 I",
+        "nameId": "TFT9_Augment_HealingOrbsI",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Healing-Orbs-I.png"
+    },
+    {
+        "guid": "6302e6f9-c5ba-4e47-81ba-cc485c803561",
+        "name": "治疗法球 II",
+        "nameId": "TFT9_Augment_HealingOrbsII",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Healing-Orbs-II.png"
+    },
+    {
+        "guid": "4e2e8678-d0a2-4cad-84f7-22a797fcb1d7",
+        "name": "参天巨人的坚决",
+        "nameId": "TFT9_Augment_GargantuanResolve",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Gargantuan-Resolve-II.png"
+    },
+    {
+        "guid": "ccaaa68a-1426-42cd-9b30-e0ac61e7fc7a",
+        "name": "陨落赠礼",
+        "nameId": "TFT9_Augment_GiftsFromTheFallen",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Gifts-from-the-Fallen-II.png"
+    },
+    {
+        "guid": "b253403f-8dde-4b9c-8b8c-96aed73a0175",
+        "name": "对冲基金",
+        "nameId": "TFT9_Augment_HedgeFund",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/RichGetRicher3.png"
+    },
+    {
+        "guid": "e22f0e65-f089-4b95-8ac6-99f4a87655bc",
+        "name": "对冲基金+",
+        "nameId": "TFT9_Augment_HedgeFundPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/RichGetRicher3.png"
+    },
+    {
+        "guid": "83e378ef-2b0a-4a5e-8862-dd2d7a60c492",
+        "name": "殉道者",
+        "nameId": "TFT9_Augment_Martyr",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Martyr-II.png"
+    },
+    {
+        "guid": "f38bbe49-9cb0-4a6b-865b-d8c7df7b42b2",
+        "name": "天涯若比邻",
+        "nameId": "TFT9_Augment_LongDistanceRelationship2",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Long-Distance-Relationship-II.png"
+    },
+    {
+        "guid": "59cf26b6-458c-4ab2-b733-67ae30c36053",
+        "name": "减益传播",
+        "nameId": "TFT9_Augment_Contagion",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Contagion-II.png"
+    },
+    {
+        "guid": "0759c091-7ea9-4f21-8d86-6969b7dc4485",
+        "name": "珠光莲花 III",
+        "nameId": "TFT9_Augment_GreaterJeweledLotus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Jeweled-Lotus-III.png"
+    },
+    {
+        "guid": "d00be851-c8d4-4f3c-bfd2-bcbf9a5f8c75",
+        "name": "白银门票",
+        "nameId": "TFT9_Augment_BronzeTicket",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/GoldenTicket1.png"
+    },
+    {
+        "guid": "cecd1f4f-20ae-49fe-87f3-ab3a11cb63a8",
+        "name": "珍藏财宝 I",
+        "nameId": "TFT9_Augment_BuildingACollection",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Buried-Treasures-I.png"
+    },
+    {
+        "guid": "c6e3e100-cef8-4a89-8da2-0af5df9f621e",
+        "name": "珍藏财宝 II",
+        "nameId": "TFT9_Augment_BuildingACollectionPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Buried-Treasures-II.png"
+    },
+    {
+        "guid": "9d364a91-b639-46c5-85b3-d1459a93c4f6",
+        "name": "珍藏财宝 III",
+        "nameId": "TFT9_Augment_BuildingACollectionPlusPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Buried-Treasures-III.png"
+    },
+    {
+        "guid": "5db25df7-4d79-491b-ad36-d1483dcb5d7e",
+        "name": "了解你的敌人",
+        "nameId": "TFT9_Augment_KnowYourEnemy",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Know-Your-Enemy-II.png"
+    },
+    {
+        "guid": "231173f0-60c9-4088-9629-ad7b1628f838",
+        "name": "小巨人",
+        "nameId": "TFT6_Augment_TinyTitans",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Tiny-Titans-I.png"
+    },
+    {
+        "guid": "255d31ae-0448-4fb2-b5d1-b06009417b5b",
+        "name": "代谢增速器",
+        "nameId": "TFT6_Augment_MetabolicAccelerator",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/MetabolicAccel2.png"
+    },
+    {
+        "guid": "3aefd60e-2daf-450e-a08c-a2a7f5c67ee5",
+        "name": "药剂师 I",
+        "nameId": "TFT9_Augment_Harmacist1",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Harmacist-1-2-3-I.png"
+    },
+    {
+        "guid": "0c36b834-ddf9-4b69-8d68-d43d2391512d",
+        "name": "药剂师 II",
+        "nameId": "TFT9_Augment_Harmacist2",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Harmacist-1-2-3-II.png"
+    },
+    {
+        "guid": "44f0f1b2-6202-41b9-8e07-f1a379aecf70",
+        "name": "药剂师 III",
+        "nameId": "TFT9_Augment_Harmacist3",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Harmacist-1-2-3-III.png"
+    },
+    {
+        "guid": "43f4aeb7-ffcb-42fc-9211-bb68ddb1cd9c",
+        "name": "潘朵拉的装备",
+        "nameId": "TFT6_Augment_PandorasItems",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Pandora1.png"
+    },
+    {
+        "guid": "c7f2d5c6-0721-4e39-8d57-2ea3882b4a7f",
+        "name": "潘朵拉的装备 III",
+        "nameId": "TFT9_Augment_PandorasRadiantBox",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Pandora3.png"
+    },
+    {
+        "guid": "6676d10c-96c7-4ba2-afe1-d5ae4671d441",
+        "name": "潘朵拉的装备 II",
+        "nameId": "TFT9_Augment_PandorasItems2",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Pandora2.png"
+    },
+    {
+        "guid": "7508888b-b0c3-47d6-9a66-2e8eb5651ba1",
+        "name": "在失败中变强",
+        "nameId": "TFT9_Augment_WhatDoesntKillYou",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/What-Doesn_t-Kill-You-II.png"
+    },
+    {
+        "guid": "e0b7a521-af48-4629-9ed8-442f39fd03aa",
+        "name": "团队建设",
+        "nameId": "TFT9_Augment_ArmyBuilding",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Building-an-army-I.png"
+    },
+    {
+        "guid": "2c5818e5-8984-4609-8cea-77dad84c3dd2",
+        "name": "冒险举动",
+        "nameId": "TFT9_Augment_RiskyMoves",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Risky-Moves-I.png"
+    },
+    {
+        "guid": "d1a00c00-4117-47fb-b050-9c35f8047e42",
+        "name": "不是今天",
+        "nameId": "TFT9_Augment_NotToday",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Not-Today-II.png"
+    },
+    {
+        "guid": "436f2cd4-3609-416f-842d-a84638d3d540",
+        "name": "一，二，五！",
+        "nameId": "TFT6_Augment_OneTwoFive",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/One-Two-Five-I.png"
+    },
+    {
+        "guid": "6d9f6414-abe8-48fb-b4a2-cee8b6491a2d",
+        "name": "投资回报",
+        "nameId": "TFT9_Augment_ReturnOnInvestment",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/GoldReserves2.png"
+    },
+    {
+        "guid": "e5967fe8-1717-46fc-be90-e47be0dacdef",
+        "name": "战争财宝 I",
+        "nameId": "TFT9_Augment_DravenSpoilsOfWar",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Spoils-Of-War-Legend-I.png"
+    },
+    {
+        "guid": "c4e8f005-f907-4123-9078-beb5a5328acb",
+        "name": "战争财宝 II",
+        "nameId": "TFT9_Augment_DravenSpoilsOfWar2",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Spoils-Of-War-Legend-II.png"
+    },
+    {
+        "guid": "18a340e6-0f1e-44d5-a56f-706b7bb0759c",
+        "name": "战争财宝 III",
+        "nameId": "TFT9_Augment_DravenSpoilsOfWar3",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Spoils-Of-War-Legend-III.png"
+    },
+    {
+        "guid": "8005f084-8024-446c-ac9e-c73a0edaf76a",
+        "name": "打气 I",
+        "nameId": "TFT9_Augment_PumpingUp",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Pumping-Up-I.png"
+    },
+    {
+        "guid": "9ca6dd2b-f048-47f7-a426-c980a6cad2f6",
+        "name": "打气 II",
+        "nameId": "TFT9_Augment_PumpingUp2",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Pumping-Up-II.png"
+    },
+    {
+        "guid": "ac90c1c2-e4bd-4bb4-ba1f-3e539288a540",
+        "name": "打气 III",
+        "nameId": "TFT9_Augment_PumpingUp3",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Pumping-Up-III.png"
+    },
+    {
+        "guid": "00ae7099-3815-4d86-936d-738ef05e2a12",
+        "name": "最小巨人",
+        "nameId": "TFT9_Augment_TiniestTitan",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Tiniest-TitanIII.png"
+    },
+    {
+        "guid": "bfdbd6ae-3941-414b-a226-941f2941b819",
+        "name": "临别赠礼",
+        "nameId": "TFT9_Augment_DangerousToGoAlone",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/It_s-Dangerous-to-Go-Alone-I.png"
+    },
+    {
+        "guid": "5473b05d-1f68-4d68-8517-ca498ac5eca5",
+        "name": "吾剑听命于您",
+        "nameId": "TFT9_Augment_YouHaveMySword",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/You-Have-My-Sword-II.png"
+    },
+    {
+        "guid": "6b41e7da-069f-4240-84ad-af7d1a449368",
+        "name": "吾弓听命于您",
+        "nameId": "TFT9_Augment_YouHaveMyBow",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/You-Have-My-Bow-II.png"
+    },
+    {
+        "guid": "099ec64c-5317-474b-a06d-532c24a4389d",
+        "name": "魔杖",
+        "nameId": "TFT9_Augment_OldMansWalkingStick",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Old-Man_s-Walking-Stick-II.png"
+    },
+    {
+        "guid": "28991aef-4db9-4e81-9bfe-8a20a3f09011",
+        "name": "主打一个陪伴",
+        "nameId": "TFT9_Augment_EscortQuest",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Escort-Quest-II.png"
+    },
+    {
+        "guid": "00c079b0-8b2a-440b-b7d7-65db2196edc4",
+        "name": "三费成众",
+        "nameId": "TFT9_Augment_ThreesACrowd",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Three_s-a-Crowd-II.png"
+    },
+    {
+        "guid": "712e080b-2d05-47cd-b86c-4dcd3ce96114",
+        "name": "二费活力",
+        "nameId": "TFT9_Augment_TwoHealthy",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Two-Healthy-II.png"
+    },
+    {
+        "guid": "3c8c68fe-0417-4024-9a15-cb4eb1ebba28",
+        "name": "酷热打击",
+        "nameId": "TFT9_Augment_RedBuff",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Red-Buff-I.png"
+    },
+    {
+        "guid": "f245aaf9-3764-44a8-807c-0595ddec14af",
+        "name": "健康信用",
+        "nameId": "TFT9_Augment_MoneyHealsAllWounds",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Money-Heals-all-Wounds-III.png"
+    },
+    {
+        "guid": "b36f42d7-9869-4aa3-a522-563af38ce628",
+        "name": "耐心学习",
+        "nameId": "TFT9_Augment_LearningFromExperience2",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Learning-From-Experience-II.png"
+    },
+    {
+        "guid": "a9ca4d1e-42bd-48f7-9b9a-d8e94dc3fb2a",
+        "name": "光明圣物",
+        "nameId": "TFT6_Augment_RadiantRelics",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/RadiantRelic-III.png"
+    },
+    {
+        "guid": "bfd6a114-c64c-4aa8-87e6-cd3070c9037f",
+        "name": "百宝袋 I",
+        "nameId": "TFT6_Augment_ItemGrabBag1",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/ItemGrabBag1.png"
+    },
+    {
+        "guid": "b87ad42f-c648-4b7d-957b-51e5fc938a8b",
+        "name": "施法即是防御",
+        "nameId": "TFT9_Augment_CombatCaster",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Combat-Caster-II.png"
+    },
+    {
+        "guid": "491151f3-8e7b-4969-bf5a-b4c077bb3cbe",
+        "name": "炫目之速",
+        "nameId": "TFT9_Augment_BlindingSpeed",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Berserk-III.png"
+    },
+    {
+        "guid": "7c39b984-33fa-4b1e-8dd2-68c5dd6d197d",
+        "name": "不破壁垒",
+        "nameId": "TFT9_Augment_ImpenetrableBulwark",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/StandBehind3.png"
+    },
+    {
+        "guid": "d9d8f63f-9dbe-4a13-bae6-5a943c02b849",
+        "name": "奥秘启封",
+        "nameId": "TFT9_Augment_UnleashedArcana",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/LifelongLearner3.png"
+    },
+    {
+        "guid": "7cfb40b1-982a-448c-8bd1-cf288b2b87dc",
+        "name": "克敌双刃",
+        "nameId": "TFT9_Augment_OverwhelmingForce",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Eagle-Eye-III.png"
+    },
+    {
+        "guid": "7889a8a2-00b4-49a4-b077-6eea7543b909",
+        "name": "后期专家",
+        "nameId": "TFT7_Augment_LategameSpecialist",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Late-Game-Specialist-I.png"
+    },
+    {
+        "guid": "1046ac72-594f-4ef0-9619-9d816c5edb5a",
+        "name": "诅咒冠冕",
+        "nameId": "TFT7_Augment_CursedCrown",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/CursedCrown-III.png"
+    },
+    {
+        "guid": "4e280083-ba63-4be7-8584-20013c5a2d4a",
+        "name": "炼狱合约",
+        "nameId": "TFT9_Augment_InfernalContract",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Infernal-Contract-III.png"
+    },
+    {
+        "guid": "49f359f3-8cc5-4841-a115-dd84f568ecab",
+        "name": "走捷径",
+        "nameId": "TFT9_Augment_CuttingCorners",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Cutting-Corners-I.png"
+    },
+    {
+        "guid": "e9be5c5a-51b9-430c-b61f-21800a281317",
+        "name": "对冲基金++",
+        "nameId": "TFT9_Augment_HedgeFundPlusPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/RichGetRicher3.png"
+    },
+    {
+        "guid": "bd255e17-a4a6-4596-9c7b-f63add267a62",
+        "name": "打捞桶+",
+        "nameId": "TFT8_Augment_SalvageBinPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Salvage2.png"
+    },
+    {
+        "guid": "485025d6-aa0c-4d75-8f96-8fded162c825",
+        "name": "无尽部落",
+        "nameId": "TFT9_Augment_OneHundredDuckSizedHorses",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/100-Duck-Sized-Horses-III.png"
+    },
+    {
+        "guid": "afe3cb5f-29d8-425f-9a43-875e0ec6e7e9",
+        "name": "碰撞测试假人",
+        "nameId": "TFT10_Augment_CrashTestDummies",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Crash-Test-Dummies-II.TFT_Set10.png"
+    },
+    {
+        "guid": "0ca9cda9-d5da-481a-aee7-7318c3565c70",
+        "name": "好运连连",
+        "nameId": "TFT10_Augment_LuckyStreak",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Lucky-Streak-II.TFT_Set10.png"
+    },
+    {
+        "guid": "fe77aeed-1238-42ca-bd81-d558e1d0bbe3",
+        "name": "掀桌",
+        "nameId": "TFT10_Augment_BlankSlate",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Blank-Slate-II.TFT_Set10.png"
+    },
+    {
+        "guid": "17c410b5-ac5d-43ef-ba24-843c89febabd",
+        "name": "坚定投资器",
+        "nameId": "TFT10_Augment_Determinedinvestors",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/A-Determined-Investor-III.TFT_Set10.png"
+    },
+    {
+        "guid": "6b3cf9a8-1a01-4144-9c0d-6bc7d086aed1",
+        "name": "最佳好友 I",
+        "nameId": "TFT7_Augment_BestFriends1",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 0,
+            "G": 0,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Best-Friends-I.png"
+    },
+    {
+        "guid": "112ab4f3-eb9e-4b1e-a51c-038ae14aef7d",
+        "name": "双喜临门 I",
+        "nameId": "TFT10_Augment_TwinTerror1",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Twin-Terror-II.TFT_Set10.png"
+    },
+    {
+        "guid": "6e9282c4-04b3-477a-a62c-6943d5b22e4b",
+        "name": "最佳好友 II",
+        "nameId": "TFT7_Augment_BestFriends2",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Best-Friends-II.png"
+    },
+    {
+        "guid": "52eb8ba8-908f-4290-851c-1acd0748798e",
+        "name": "双喜临门 II",
+        "nameId": "TFT10_Augment_TwinTerror2",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Twin-Terror-III.TFT_Set10.png"
+    },
+    {
+        "guid": "3826eb50-c288-45bf-b66f-53ed3c344b19",
+        "name": "学习拼读",
+        "nameId": "TFT10_Augment_LearningToSpell",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Learning-To-Spell-II.TFT_Set10.png"
+    },
+    {
+        "guid": "7db7b2c3-6dbe-4a31-a028-513e479f3039",
+        "name": "重量级人物",
+        "nameId": "TFT10_Augment_HeavyHitters",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Heavy-Hitters-II.TFT_Set10.png"
+    },
+    {
+        "guid": "7bf34ada-7f0a-4830-baa9-11c881e72156",
+        "name": "赚大发",
+        "nameId": "TFT10_Augment_BigGains",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Big-Gains-II.TFT_Set10.png"
+    },
+    {
+        "guid": "37e33c31-a8d3-4226-93a2-dd06daa02874",
+        "name": "激昂墓志铭",
+        "nameId": "TFT10_Augment_InspiringEpitaph",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Inspiring-Epitaph-II.TFT_Set10.png"
+    },
+    {
+        "guid": "a3dd23ee-401a-470b-a516-0a6376ac3805",
+        "name": "吸血习性 I",
+        "nameId": "TFT10_Augment_Vampirism",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Vampirism-I.TFT_Set10.png"
+    },
+    {
+        "guid": "2bc28bbe-608e-4316-bfc6-63c01f9c7fea",
+        "name": "吸血习性 II",
+        "nameId": "TFT10_Augment_VampirismPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Vampirism-II.TFT_Set10.png"
+    },
+    {
+        "guid": "941f433e-1701-4efe-b968-ab94fddd4850",
+        "name": "新人入队",
+        "nameId": "TFT6_Augment_ForceOfNature",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/NewRecruit3.png"
+    },
+    {
+        "guid": "3ee33c0f-c948-4c65-a840-32c1e62068be",
+        "name": "电击疗法",
+        "nameId": "TFT10_Augment_ShockTreatment",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Shock-Treatment-II.TFT_Set10.png"
+    },
+    {
+        "guid": "dd83f20b-667a-4706-9407-8a2438d27971",
+        "name": "低利率",
+        "nameId": "TFT10_Augment_LowInterestRates",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Low-Interest-Rates-II.TFT_Set10.png"
+    },
+    {
+        "guid": "ac395620-922e-4dc9-bbc6-d4e36ed83dcd",
+        "name": "换档齿轮",
+        "nameId": "TFT10_Augment_SwitchingGears",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Switching-Gears-I.TFT_Set10.png"
+    },
+    {
+        "guid": "e79a88ea-4ca3-47d2-a2d1-ab5ee1127d6c",
+        "name": "英勇福袋",
+        "nameId": "TFT10_Augment_HeroicGrabBag",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Heroic-Grab-Bag-II.TFT_Set10.png"
+    },
+    {
+        "guid": "39ca89ae-1b27-49cb-9822-c70ec4527834",
+        "name": "登上顶峰",
+        "nameId": "TFT10_Augment_ReachTheSummit",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Reach-The-Summit-I.TFT_Set10.png"
+    },
+    {
+        "guid": "2b9d2375-ccfc-45b3-a92b-1130e2e29e5d",
+        "name": "完全适应",
+        "nameId": "TFT10_Augment_FullyAdapted",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Fully-Adapted-II.TFT_Set10.png"
+    },
+    {
+        "guid": "024a46b7-9311-48db-9468-2001976ef6d8",
+        "name": "飞升",
+        "nameId": "TFT9_Augment_Commander_Ascension",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Ascension2.png"
+    },
+    {
+        "guid": "53409e8d-d862-4a6a-9af5-180cb5994459",
+        "name": "清晰头脑",
+        "nameId": "TFT6_Augment_ClearMind",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/ClearMind2.png"
+    },
+    {
+        "guid": "4cd02674-f51d-4f4b-a443-94cf631964d3",
+        "name": "纷乱头脑",
+        "nameId": "TFT7_Augment_ClutteredMind",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Dizzy-II.png"
+    },
+    {
+        "guid": "c2a7b4f5-a135-43e6-bea3-713463748ae7",
+        "name": "有用之材 II",
+        "nameId": "TFT10_Augment_GoodForSomething",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Good-For-Something-II.TFT_Set10.png"
+    },
+    {
+        "guid": "2018dbed-5772-4ca9-b044-16b3ee350e45",
+        "name": "遥遥领先",
+        "nameId": "TFT10_Augment_GoingLong",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Going-Long-III.TFT_Set10.png"
+    },
+    {
+        "guid": "9c4db033-758e-4714-868a-f24341e32857",
+        "name": "挂件也疯狂",
+        "nameId": "TFT10_Augment_SticksAndStones",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Sticks-And-Stones-I.TFT_Set10.png"
+    },
+    {
+        "guid": "25a12cd6-bdbe-4483-98fa-0bde66c38844",
+        "name": "替罪羊",
+        "nameId": "TFT10_Augment_Scapegoat",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/The-Scapegoat-II.TFT_Set10.png"
+    },
+    {
+        "guid": "49630374-ea89-4b66-aeee-a09ac919ae05",
+        "name": "有用之材 I",
+        "nameId": "TFT10_Augment_GoodForSomethingSilver",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Good-For-Something-I.TFT_Set10.png"
+    },
+    {
+        "guid": "a179f0a4-8b63-4b48-a76f-ed1088bc7746",
+        "name": "冕已有卫",
+        "nameId": "TFT10_Augment_CrownGuarded",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Crown-Guarded-II.TFT_Set10.png"
+    },
+    {
+        "guid": "209a1bcb-4e42-49fe-9cf8-a0baccab6276",
+        "name": "白银面纱",
+        "nameId": "TFT10_Augment_SilverVeil",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/The-Silver-Veil-I.TFT_Set10.png"
+    },
+    {
+        "guid": "0bdca75b-45cf-4725-a6d4-e727d3778094",
+        "name": "救援已在路上",
+        "nameId": "TFT10_Augment_HelpIsOnTheWay",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Help-Is-On-The-Way-I.TFT_Set10.png"
+    },
+    {
+        "guid": "b7106b08-337b-4eff-a211-21abaee91b98",
+        "name": "先苦后甜",
+        "nameId": "TFT10_Augment_Stimpack",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Stimpack-I.TFT_Set10.png"
+    },
+    {
+        "guid": "e65118c4-cba4-483c-8f5a-5cd36239e3b7",
+        "name": "辅助宝库",
+        "nameId": "TFT9_Augment_SupportCache",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Support-Cache-II.png"
+    },
+    {
+        "guid": "c1fbda45-c31a-4490-8b89-c84b76684a66",
+        "name": "假人辅助 II",
+        "nameId": "TFT9_Augment_StationarySupport2",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Stationary-Support-II.png"
+    },
+    {
+        "guid": "1a78570c-e58a-40ae-b48c-f34fd2c2cd9c",
+        "name": "幸运手套",
+        "nameId": "TFT7_Augment_LuckyGloves",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Lucky-Gloves-III.png"
+    },
+    {
+        "guid": "8c9fe701-40f0-447d-bdc7-0de06101a646",
+        "name": "幸运手套+",
+        "nameId": "TFT7_Augment_LuckyGlovesPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Lucky-Gloves-III.png"
+    },
+    {
+        "guid": "83c262f9-71ea-4a40-ac27-a6896ae2b9e8",
+        "name": "假人辅助 III",
+        "nameId": "TFT9_Augment_StationarySupport3",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Stationary-Support-III.png"
+    },
+    {
+        "guid": "5a536851-e5ea-40e4-823c-56a87c153b26",
+        "name": "最小巨人+",
+        "nameId": "TFT9_Augment_TiniestTitanPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Tiniest-TitanIII.png"
+    },
+    {
+        "guid": "14657c11-a387-4697-bf0b-aa5e9fa27004",
+        "name": "平衡预算",
+        "nameId": "TFT9_Augment_BalancedBudget2",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Balanced-Budget-II.png"
+    },
+    {
+        "guid": "4c60b1f4-fb59-453f-841e-d8456a18ea3b",
+        "name": "便携锻炉+",
+        "nameId": "TFT6_Augment_PortableForgePlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PortableForge2.png"
+    },
+    {
+        "guid": "f6759da4-1077-4b19-853f-fba4ba4172ea",
+        "name": "便携锻炉++",
+        "nameId": "TFT6_Augment_PortableForgePlusPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PortableForge2.png"
+    },
+    {
+        "guid": "cd66e313-3b47-411e-878f-11e7239a917a",
+        "name": "假人辅助 I",
+        "nameId": "TFT9_Augment_StationarySupport1",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Stationary-Support-I.png"
+    },
+    {
+        "guid": "61ff8a07-ce81-4950-859e-8b23a83c8508",
+        "name": "大百宝袋",
+        "nameId": "TFT9_Augment_BigGrabBag",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Grab-Bag-II.png"
+    },
+    {
+        "guid": "7efb330b-f7ad-4e40-b1db-2d30e0339480",
+        "name": "常客优惠",
+        "nameId": "TFT9_Augment_JustKeepRolling",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Pirates2.png"
+    },
+    {
+        "guid": "cb9b0a31-fe75-4fd9-bd5e-c55ac7b7ef7f",
+        "name": "小伙伴",
+        "nameId": "TFT10_Augment_LittleBuddies",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Little-Buddies-II.TFT_Set10.png"
+    },
+    {
+        "guid": "12f5140e-6617-4a9c-8305-96e38b63f8f8",
+        "name": "英雄复制器",
+        "nameId": "TFT_Consumable_NeekosHelp",
+        "id": 0,
+        "color": {
+            "R": 125,
+            "B": 56,
+            "G": 87,
+            "A": 251
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/ChampionDuplicator_V.png"
+    },
+    {
+        "guid": "35b4c963-2f87-4f7c-b489-465b61c3609d",
+        "name": "暴风之剑",
+        "nameId": "TFT_Item_BFSword",
+        "id": 0,
+        "color": {
+            "R": 73,
+            "B": 54,
+            "G": 68,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/BF_Sword.png"
+    },
+    {
+        "guid": "b4c5587d-cf90-4173-96fa-ebe40bc9fadf",
+        "name": "饮血剑",
+        "nameId": "TFT_Item_Bloodthirster",
+        "id": 0,
+        "color": {
+            "R": 188,
+            "B": 19,
+            "G": 53,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Bloodthirster.png"
+    },
+    {
+        "guid": "5717e500-c893-44c5-9a37-a55a644955e5",
+        "name": "棘刺背心",
+        "nameId": "TFT_Item_BrambleVest",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 0,
+            "G": 0,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Bramble_Vest.png"
+    },
+    {
+        "guid": "d871e7c3-0839-4ef4-b9eb-167d90da3034",
+        "name": "锁子甲",
+        "nameId": "TFT_Item_ChainVest",
+        "id": 0,
+        "color": {
+            "R": 73,
+            "B": 54,
+            "G": 68,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Chain_Vest.png"
+    },
+    {
+        "guid": "d17fe655-4a9a-40ba-8c55-70f0c4507bf2",
+        "name": "拳套",
+        "nameId": "TFT_Item_SparringGloves",
+        "id": 0,
+        "color": {
+            "R": 73,
+            "B": 54,
+            "G": 68,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Sparring_Gloves.png"
+    },
+    {
+        "guid": "311099cc-0b7d-4429-92c0-320fc981a94b",
+        "name": "死亡之刃",
+        "nameId": "TFT_Item_Deathblade",
+        "id": 0,
+        "color": {
+            "R": 73,
+            "B": 54,
+            "G": 68,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Death_Blade.png"
+    },
+    {
+        "guid": "98226b44-7044-475b-80af-828fbe7c67a3",
+        "name": "巨龙之爪",
+        "nameId": "TFT_Item_DragonsClaw",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 200,
+            "G": 140,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Dragons_Claw.png"
+    },
+    {
+        "guid": "92eb7863-2766-4609-85db-83e505637074",
+        "name": "",
+        "nameId": "TFT_Item_EmptyBag",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 213,
+            "G": 110,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Placeholders/TFT_Item_EmptySlot.png"
+    },
+    {
+        "guid": "f0fec5db-e1b8-4a8d-9df9-a9e9315be396",
+        "name": "金铲铲冠冕",
+        "nameId": "TFT_Item_ForceOfNature",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Tacticians_Crown.png"
+    },
+    {
+        "guid": "8964d562-79c2-4822-b777-213db7bb40b3",
+        "name": "窃贼手套",
+        "nameId": "TFT_Item_ThiefsGloves",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 213,
+            "G": 110,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Thieves_Gloves.png"
+    },
+    {
+        "guid": "7c38f2ba-5983-4ff6-93d0-9cccd0c71bfc",
+        "name": "",
+        "nameId": "TFT_Item_ThiefsGloves_Empty",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 213,
+            "G": 110,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Placeholders/TFT_Item_EmptySlot.png"
+    },
+    {
+        "guid": "9939be34-334f-4ef3-97a7-314879841522",
+        "name": "静止法衣",
+        "nameId": "TFT_Item_Shroud",
+        "id": 0,
+        "color": {
+            "R": 66,
+            "B": 140,
+            "G": 87,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/TFT9_SupportItems/Shroud_of_Stillness.png"
+    },
+    {
+        "guid": "a549713c-c321-48fd-81ff-78222620327b",
+        "name": "圣盾使的誓约",
+        "nameId": "TFT_Item_FrozenHeart",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 213,
+            "G": 110,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Winters_Approach.png"
+    },
+    {
+        "guid": "65097eee-c3a3-4e44-b17e-b71fef360d17",
+        "name": "巨人腰带",
+        "nameId": "TFT_Item_GiantsBelt",
+        "id": 0,
+        "color": {
+            "R": 73,
+            "B": 54,
+            "G": 68,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Gaints_Belt.png"
+    },
+    {
+        "guid": "85af504e-4417-4b0f-84d5-ce8df3c129f7",
+        "name": "巨人杀手",
+        "nameId": "TFT_Item_MadredsBloodrazor",
+        "id": 0,
+        "color": {
+            "R": 186,
+            "B": 255,
+            "G": 46,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Giant_Slayer.png"
+    },
+    {
+        "guid": "76d0467f-15f1-474f-b118-7e63d2059d34",
+        "name": "夜之锋刃",
+        "nameId": "TFT_Item_GuardianAngel",
+        "id": 0,
+        "color": {
+            "R": 20,
+            "B": 127,
+            "G": 0,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Edge_Of_Night.png"
+    },
+    {
+        "guid": "9ec89eb5-7417-4499-b8ab-0d6dbf789a70",
+        "name": "鬼索的狂暴之刃",
+        "nameId": "TFT_Item_GuinsoosRageblade",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 44,
+            "G": 132,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Guinsoos_Rageblade.png"
+    },
+    {
+        "guid": "4d292a01-c2c8-4525-85f1-39b1cab13c00",
+        "name": "正义之手",
+        "nameId": "TFT_Item_UnstableConcoction",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 48,
+            "G": 193,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Hand_of_Justice.png"
+    },
+    {
+        "guid": "6ac5338b-cd39-4384-8e56-8eb8f8dc0de4",
+        "name": "海克斯科技枪刃",
+        "nameId": "TFT_Item_HextechGunblade",
+        "id": 0,
+        "color": {
+            "R": 55,
+            "B": 136,
+            "G": 206,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Hextech_Gunblade.png"
+    },
+    {
+        "guid": "82ce37ea-c1ad-442e-a8a0-baf32b35645d",
+        "name": "能量圣杯",
+        "nameId": "TFT_Item_Chalice",
+        "id": 0,
+        "color": {
+            "R": 66,
+            "B": 140,
+            "G": 87,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/TFT9_SupportItems/Chalice_of_Power.png"
+    },
+    {
+        "guid": "6b8af42f-b183-4348-80ba-0f3064896130",
+        "name": "无尽之刃",
+        "nameId": "TFT_Item_InfinityEdge",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 48,
+            "G": 193,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Infinity_Edge.png"
+    },
+    {
+        "guid": "f6435570-1976-48cf-8a3c-12edd469988e",
+        "name": "离子火花",
+        "nameId": "TFT_Item_IonicSpark",
+        "id": 0,
+        "color": {
+            "R": 80,
+            "B": 230,
+            "G": 42,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Ionic_Spark.png"
+    },
+    {
+        "guid": "f7d56c91-a127-4e2f-9055-88edb8293f44",
+        "name": "珠光护手",
+        "nameId": "TFT_Item_JeweledGauntlet",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 213,
+            "G": 110,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Jeweled_Guantlet.png"
+    },
+    {
+        "guid": "800b5d5b-f271-4503-b0f0-0c91e17fa25f",
+        "name": "最后的轻语",
+        "nameId": "TFT_Item_LastWhisper",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 0,
+            "G": 0,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Last_Whisper.png"
+    },
+    {
+        "guid": "a728b67f-3200-4f58-b84d-3397bcf7ca6b",
+        "name": "钢铁烈阳之匣",
+        "nameId": "TFT_Item_LocketOfTheIronSolari",
+        "id": 0,
+        "color": {
+            "R": 66,
+            "B": 140,
+            "G": 87,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/TFT9_SupportItems/Locket_of_the_Iron_Solari.png"
+    },
+    {
+        "guid": "f33ec3a0-14e7-419e-a862-5555669017dd",
+        "name": "大天使之杖",
+        "nameId": "TFT_Item_ArchangelsStaff",
+        "id": 0,
+        "color": {
+            "R": 121,
+            "B": 7,
+            "G": 123,
+            "A": 0
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Archangel_Staff.png"
+    },
+    {
+        "guid": "23116d7d-0cde-4538-9316-75fcdd74cfff",
+        "name": "金铲铲",
+        "nameId": "TFT_Item_Spatula",
+        "id": 0,
+        "color": {
+            "R": 65,
+            "B": 76,
+            "G": 47,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Spatula.png"
+    },
+    {
+        "guid": "c0533401-4b18-417d-a52f-588e36b0dad4",
+        "name": "水银",
+        "nameId": "TFT_Item_Quicksilver",
+        "id": 0,
+        "color": {
+            "R": 131,
+            "B": 255,
+            "G": 29,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Quicksilver.png"
+    },
+    {
+        "guid": "da582488-f20c-48ae-af21-e8482eb4f89a",
+        "name": "莫雷洛秘典",
+        "nameId": "TFT_Item_Morellonomicon",
+        "id": 0,
+        "color": {
+            "R": 30,
+            "B": 255,
+            "G": 116,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Morellonomicon.png"
+    },
+    {
+        "guid": "982e94fc-525f-448f-9891-d4b9f840a5ca",
+        "name": "无用大棒",
+        "nameId": "TFT_Item_NeedlesslyLargeRod",
+        "id": 0,
+        "color": {
+            "R": 73,
+            "B": 54,
+            "G": 68,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Needlessly_Large_Rod.png"
+    },
+    {
+        "guid": "dca5358a-bb26-4484-a1ba-9ef48cbb5167",
+        "name": "负极斗篷",
+        "nameId": "TFT_Item_NegatronCloak",
+        "id": 0,
+        "color": {
+            "R": 73,
+            "B": 54,
+            "G": 68,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Negatron_Cloak.png"
+    },
+    {
+        "guid": "508846ff-e43a-42b6-a364-38ef7a8ad00d",
+        "name": "破防者",
+        "nameId": "TFT_Item_PowerGauntlet",
+        "id": 0,
+        "color": {
+            "R": 73,
+            "B": 54,
+            "G": 68,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Stridebreaker.png"
+    },
+    {
+        "guid": "840e7148-098c-4833-acfc-dea25f340acc",
+        "name": "灭世者的死亡之帽",
+        "nameId": "TFT_Item_RabadonsDeathcap",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 15,
+            "G": 135,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Rabadons_Deathcap.png"
+    },
+    {
+        "guid": "f7acf8f1-69cd-4458-bbd0-b3a75bdc916a",
+        "name": "红霸符",
+        "nameId": "TFT_Item_RapidFireCannon",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 1,
+            "G": 51,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/RedBuff.png"
+    },
+    {
+        "guid": "f07b58ef-1efe-40b3-aa75-7cc4ac1ee4f8",
+        "name": "反曲之弓",
+        "nameId": "TFT_Item_RecurveBow",
+        "id": 0,
+        "color": {
+            "R": 73,
+            "B": 54,
+            "G": 68,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Recurve_Bow.png"
+    },
+    {
+        "guid": "5032a979-9169-4ecb-b16d-014c82a3a6e8",
+        "name": "日炎斗篷",
+        "nameId": "TFT_Item_RedBuff",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 44,
+            "G": 68,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Sunfire_Cape.png"
+    },
+    {
+        "guid": "e2479dd0-708b-41bc-8b51-8942ae5609d3",
+        "name": "救赎",
+        "nameId": "TFT_Item_Redemption",
+        "id": 0,
+        "color": {
+            "R": 206,
+            "B": 206,
+            "G": 206,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Redemption.png"
+    },
+    {
+        "guid": "bc53dfe9-ef5a-4e88-ac32-662c16b63cca",
+        "name": "卢安娜的飓风",
+        "nameId": "TFT_Item_RunaansHurricane",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 41,
+            "G": 73,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Runaans_Hurricane.png"
+    },
+    {
+        "guid": "57f457a8-fc4b-4658-b0b4-46de9ec6cf5f",
+        "name": "朔极之矛",
+        "nameId": "TFT_Item_SpearOfShojin",
+        "id": 0,
+        "color": {
+            "R": 60,
+            "B": 83,
+            "G": 255,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Spear_of_Shojin.png"
+    },
+    {
+        "guid": "c1bf420b-2507-46b7-bada-2974e0bbf5d8",
+        "name": "斯塔缇克电刃",
+        "nameId": "TFT_Item_StatikkShiv",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 28,
+            "G": 218,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Statikk_Shiv.png"
+    },
+    {
+        "guid": "c50e09a9-f4d4-4381-bb64-8eb445d8758f",
+        "name": "石像鬼石板甲",
+        "nameId": "TFT_Item_GargoyleStoneplate",
+        "id": 0,
+        "color": {
+            "R": 73,
+            "B": 54,
+            "G": 68,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Gargoyle_Stoneplate.png"
+    },
+    {
+        "guid": "15313c66-7f0f-496a-90be-24c124cf7d1f",
+        "name": "女神之泪",
+        "nameId": "TFT_Item_TearOfTheGoddess",
+        "id": 0,
+        "color": {
+            "R": 73,
+            "B": 54,
+            "G": 68,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Tear_of_the_Goddess.png"
+    },
+    {
+        "guid": "e1f83bb5-9975-4c7c-8d14-a6cbd3ddc4d5",
+        "name": "兹若特传送门",
+        "nameId": "TFT_Item_TitanicHydra",
+        "id": 0,
+        "color": {
+            "R": 170,
+            "B": 255,
+            "G": 0,
+            "A": 56
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/ZZRot_Portal.png"
+    },
+    {
+        "guid": "9ebdadaa-9378-4355-996a-9aa3afef8488",
+        "name": "泰坦的坚决",
+        "nameId": "TFT_Item_TitansResolve",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 0,
+            "G": 0,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Titans_Resolve.png"
+    },
+    {
+        "guid": "7fd585a8-3174-406d-8e04-daeb98fdff98",
+        "name": "狂徒铠甲",
+        "nameId": "TFT_Item_WarmogsArmor",
+        "id": 0,
+        "color": {
+            "R": 36,
+            "B": 33,
+            "G": 166,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Warmogs_Armor.png"
+    },
+    {
+        "guid": "1617a996-8953-4788-975b-bc46bf626e93",
+        "name": "基克的先驱",
+        "nameId": "TFT_Item_ZekesHerald",
+        "id": 0,
+        "color": {
+            "R": 66,
+            "B": 140,
+            "G": 87,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/TFT9_SupportItems/Zekes_Herald.png"
+    },
+    {
+        "guid": "d158f06b-c407-4063-88a1-fbc4e2d09ba5",
+        "name": "灵风",
+        "nameId": "TFT_Item_Zephyr",
+        "id": 0,
+        "color": {
+            "R": 66,
+            "B": 140,
+            "G": 87,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/TFT9_SupportItems/Zephyr.png"
+    },
+    {
+        "guid": "a21b6214-9b6b-42ac-8a9a-12e2ada8e01f",
+        "name": "装备拆卸器",
+        "nameId": "TFT_Consumable_ItemRemover",
+        "id": 0,
+        "color": {
+            "R": 118,
+            "B": 63,
+            "G": 63,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/TFT_Item_Consumable_ItemRemover.png"
+    },
+    {
+        "guid": "8bf65a9d-b200-4692-8f1b-d54c066f7e6d",
+        "name": "装备重铸器",
+        "nameId": "TFT_Consumable_ItemReroller",
+        "id": 0,
+        "color": {
+            "R": 114,
+            "B": 4,
+            "G": 11,
+            "A": 251
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/TFT_Item_Consumable_ItemReroller.png"
+    },
+    {
+        "guid": "c96e811b-7281-4c97-ab0a-2ef58d4db92e",
+        "name": "灌铅骰子",
+        "nameId": "TFT_Consumable_ShopReroller",
+        "id": 0,
+        "color": {
+            "R": 113,
+            "B": 5,
+            "G": 109,
+            "A": 251
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/TFT_Item_Consumable_ShopReroll.png"
+    },
+    {
+        "guid": "833ee0a7-071f-4b1c-ab66-ff58ba324738",
+        "name": "MissingNo",
+        "nameId": "TFT_Item_DebugBase",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 44,
+            "G": 68,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Augments/DU_Augment_MysteryGift.png"
+    },
+    {
+        "guid": "d9067b34-aad9-4903-b321-ff09c53001ce",
+        "name": "生命盔甲",
+        "nameId": "TFT4_Item_OrnnAnimaVisage",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 0,
+            "G": 0,
+            "A": 100
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT4_OrnnItem_Tank_T3_SpiritVisage.png"
+    },
+    {
+        "guid": "badff6c0-a287-4e28-b17b-4c1cd7f7a3f6",
+        "name": "死亡之蔑",
+        "nameId": "TFT4_Item_OrnnDeathsDefiance",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 0,
+            "G": 0,
+            "A": 100
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT4_OrnnItem_Fighter_T3_DeathsDance.png"
+    },
+    {
+        "guid": "8ba9280c-bcb1-428a-af78-467cc3decc06",
+        "name": "永恒凛冬",
+        "nameId": "TFT4_Item_OrnnEternalWinter",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 0,
+            "G": 0,
+            "A": 100
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT4_OrnnItem_Mage_T4_Everfrost.png"
+    },
+    {
+        "guid": "5e593ceb-5e60-4271-a19c-13e503de6b25",
+        "name": "金币收集者",
+        "nameId": "TFT4_Item_OrnnTheCollector",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 0,
+            "G": 0,
+            "A": 100
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT4_OrnnItem_Marksman_T3_TheCollector.png"
+    },
+    {
+        "guid": "d76ce77b-a4ff-40ef-adb9-fcbc12ad0420",
+        "name": "三相之力",
         "nameId": "TFT4_Item_OrnnInfinityForce",
         "id": 0,
         "color": {

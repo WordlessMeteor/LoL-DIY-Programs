@@ -2433,7 +2433,7 @@
     {
         "id": 3003,
         "name": "大天使之杖",
-        "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得相当于你的额外法力值的法术强度。<br><passive>法力积攒</passive><br>用一个技能击中一个目标时，会消耗一层充能并获得额外法力值。至多提供360法力值，且此时这个装备会转变为<rarityLegendary>炽天使之拥</rarityLegendary>。</mainText>",
+        "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br>Item_3003_TooltipExternal</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -2871,7 +2871,7 @@
     {
         "id": 3040,
         "name": "炽天使之拥",
-        "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>1000</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>敬畏</passive>获得相当于<scaleMana>2%额外法力值</scaleMana>的法术强度。<br><passive>救主灵刃</passive> (90(0秒冷却时间))<br>在受到将使你的生命值跌到30%以下的伤害时，获得持续3秒的<shield>250+20%当前法力值的护盾值</shield>。</mainText>",
+        "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>1000</attention>法力<br><attention>20</attention>技能急速</stats><br><br>Item_3040_TooltipExternal</mainText>",
         "active": false,
         "inStore": false,
         "from": [],
@@ -3034,7 +3034,7 @@
     {
         "id": 3050,
         "name": "基克的聚合",
-        "description": "<mainText><stats><attention>200</attention>生命值<br><attention>250</attention>法力<br><attention>30</attention>护甲<br><attention>20</attention>技能急速</stats><br><br><passive>霜火风暴</passive> (0秒冷却时间)<br>施放你的终极技能时会召唤一个风暴环绕于你5秒，每秒对敌人们造成<magicDamage>50魔法伤害</magicDamage>和30%<keyword>减速</keyword>。</mainText>",
+        "description": "<mainText><stats><attention>200</attention>生命值<br><attention>250</attention>法力<br><attention>30</attention>护甲<br><attention>20</attention>技能急速</stats><br><br>Item_3050_TooltipExternal</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -3063,7 +3063,7 @@
     {
         "id": 3051,
         "name": "缚炉之斧",
-        "description": "<mainText><stats><attention>20</attention>攻击力<br><attention>25%</attention>攻击速度</stats><br><br><br><br></mainText>",
+        "description": "<mainText><stats><attention>20</attention>攻击力<br><attention>25%</attention>攻击速度</stats><br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -3585,7 +3585,7 @@
     {
         "id": 3083,
         "name": "狂徒铠甲",
-        "description": "<mainText><stats><attention>750</attention>生命值<br><attention>5%</attention>移动速度<br><attention>200%</attention>基础生命回复</stats><br><br><passive>狂徒之心</passive><br>如果你至少拥有1300额外生命值，并且在6秒内没有受到伤害，就会每秒回复一部分最大生命值。</mainText>",
+        "description": "<mainText><stats><attention>750</attention>生命值<br><attention>5%</attention>移动速度<br><attention>200%</attention>基础生命回复</stats><br><br>Item_3083_TooltipExternal</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4005,7 +4005,7 @@
     {
         "id": 3109,
         "name": "骑士之誓",
-        "description": "<mainText><stats><attention>300</attention>生命值<br><attention>45</attention>护甲<br><attention>15</attention>技能急速</stats><br><br><passive>牺牲</passive><br>当你的<attention>誓约者</attention>友军在附近时，将其所受的伤害转移到你身上，并为你提供基于<attention>誓约者</attention>友军对英雄的已造成伤害值的治疗效果。<br><br><br> <active>正处于激活状态</active> (0秒冷却时间)<br><active>立誓</active><br>指定一名友方英雄成为你的<attention>骑士</attention>。</mainText>",
+        "description": "<mainText><stats><attention>300</attention>生命值<br><attention>45</attention>护甲<br><attention>15</attention>技能急速</stats><br><br><passive>牺牲</passive><br>当你的<attention>誓约者</attention>友军在附近时，将其所受的伤害转移到你身上，并为你提供基于<attention>誓约者</attention>友军对英雄的已造成伤害值的治疗效果。<br>Item_3109_Active</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -5287,7 +5287,7 @@
     {
         "id": 3302,
         "name": "界弓",
-        "description": "<mainText><stats><attention>40</attention>攻击力<br><attention>30%</attention>攻击速度</stats><br><br><passive>晦影</passive><br>攻击附带<magicDamage>30魔法伤害</magicDamage> <OnHit>攻击特效</OnHit><br><passive>交相</passive><br>每次攻击在<keywordMajor>光明</keywordMajor>特效和<keywordMajor>黑暗</keywordMajor>特效之间轮换：<li>附带<keywordMajor>光明</keywordMajor>特效的攻击提供持续5秒的0 <scaleArmor>护甲</scaleArmor>和<scaleMR>魔抗</scaleMR>(至多至0)。<li>附带<keywordMajor>黑暗</keywordMajor>特效的攻击提供持续5秒的6%<scaleArmor>护甲穿透</scaleArmor>和<scaleMR>法术穿透</scaleMR>(至多至30%)。 </mainText>",
+        "description": "<mainText><stats><attention>40</attention>攻击力<br><attention>30%</attention>攻击速度</stats><br><br><passive>晦影</passive><br>攻击附带<magicDamage>30魔法伤害</magicDamage> <OnHit>攻击特效</OnHit><br><passive>交相</passive><br>每次攻击在<keywordMajor>光明</keywordMajor>特效和<keywordMajor>黑暗</keywordMajor>特效之间轮换：<li>附带<keywordMajor>光明</keywordMajor>特效的攻击提供持续5秒的0 <scaleArmor>护甲</scaleArmor>和<scaleMR>魔抗</scaleMR>(至多至0)。<li>附带<keywordMajor>黑暗</keywordMajor>特效的攻击提供持续5秒的6%<scaleArmor>护甲穿透</scaleArmor>和<scaleMR>法术穿透</scaleMR>(至多至330%)。 </mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7373,7 +7373,7 @@
     {
         "id": 6610,
         "name": "焚天",
-        "description": "GeneratedTip_Item_6610_ExternalDescription",
+        "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>300</attention>生命值<br><attention>15</attention>技能急速</stats><br><br>Item_6610_Tooltip</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7717,7 +7717,7 @@
     {
         "id": 6657,
         "name": "时光之杖",
-        "description": "<mainText><stats><attention>50</attention>法术强度<br><attention>350</attention>生命值<br><attention>300</attention>法力</stats><br><br><br><br>这件装备每60秒获得20生命值、20法力值和4法术强度，至多叠加10层，最大值为200生命值、200法力值和40法术强度。在达到最大层数时，还会使英雄等级提升1级并使所有【永恒】效果提升0%。<br><li><passive>永恒：</passive>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值；花费法力时，你会回复相当于25%法力消耗的生命值，每次施放每秒最多治疗20生命值。</mainText>",
+        "description": "<mainText><stats><attention>50</attention>法术强度<br><attention>350</attention>生命值<br><attention>300</attention>法力</stats><br><br><passive>时无限</passive><br>这件装备每60秒获得20生命值、20法力值和4法术强度，至多至10层。在达到最大层数时，还会使英雄等级提升1级。<br><br><passive>永恒</passive><br>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值。施放一个技能时，你会治疗自身相当于25%法力消耗的生命值，每次施法每秒最多治疗20生命值。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8551,7 +8551,7 @@
     {
         "id": 7003,
         "name": " 灭世者的死亡之冠",
-        "description": "<mainText><stats><ornnBonus>190</ornnBonus>法术强度</stats><br><br><br><li><passive>魔法乐章：</passive>使你的总<scaleAP>法术强度提升35%</scaleAP>。</mainText>",
+        "description": "<mainText><stats><ornnBonus>190</ornnBonus>法术强度</stats><br><br>Item_7003_Tooltip</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8575,7 +8575,7 @@
     {
         "id": 7004,
         "name": " 万众之恨意",
-        "description": "<mainText><stats><ornnBonus>110</ornnBonus>法术强度<br><ornnBonus>800</ornnBonus>法力<br><ornnBonus>30</ornnBonus>技能急速</stats><br><br><passive>蔑视</passive><br>获得20终极技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成0<magic>魔法伤害</magic>并削减其<MR>0魔法抗性</MR>。<br></mainText>",
+        "description": "<mainText><stats><ornnBonus>110</ornnBonus>法术强度<br><ornnBonus>800</ornnBonus>法力<br><ornnBonus>30</ornnBonus>技能急速</stats><br><br><passive>蔑视</passive><br>获得终极技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9251,7 +9251,7 @@
     {
         "id": 7028,
         "name": " 无限会聚",
-        "description": "<mainText><stats><ornnBonus>70</ornnBonus>法术强度<br><ornnBonus>500</ornnBonus>生命值<br><ornnBonus>550</ornnBonus>法力</stats><br><br><br><br>这件装备每60秒获得20生命值、20法力值和4法术强度，至多叠加10层，最大值为200生命值、200法力值和40法术强度。在达到最大层数时，还会使英雄等级提升1级并使所有【永恒】效果提升0%。<br><li><passive>永恒：</passive>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值；花费法力时，你会回复相当于25%法力消耗的生命值，每次施放每秒最多治疗20生命值。</mainText>",
+        "description": "<mainText><stats><ornnBonus>70</ornnBonus>法术强度<br><ornnBonus>500</ornnBonus>生命值<br><ornnBonus>550</ornnBonus>法力</stats><br><br><passive>时无限</passive><br>这件装备每60秒获得20生命值、20法力值和4法术强度，至多至10层。在达到最大层数时，还会使英雄等级提升1级。<br><br><passive>永恒</passive><br>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值。施放一个技能时，你会治疗自身相当于25%法力消耗的生命值，每次施法每秒最多治疗20生命值。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9555,7 +9555,7 @@
     {
         "id": 7039,
         "name": " 天殒",
-        "description": "GeneratedTip_Item_7039_ExternalDescription",
+        "description": "<mainText><stats><ornnBonus>65</ornnBonus>攻击力<br><ornnBonus>500</ornnBonus>生命值<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br>Item_6610_Tooltip</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -10549,7 +10549,7 @@
     {
         "id": 223084,
         "name": "心之钢",
-        "description": "<mainText><stats><attention>800</attention>生命值<br><attention>200%</attention>基础生命回复</stats><br><br><br><li><passive>庞然吞食：</passive>当700码内有一名敌方英雄时，会在3秒里持续充能一次对该英雄的强力攻击。充能攻击会造成125 + 你<scalehealth>7%</scalehealth>最大生命值的额外物理伤害，并为你提供相当于12%该伤害值的永久最大生命值。对每个目标有(20秒)冷却时间。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得 <attention> 0%</attention>生命值提升和<attention>6%</attention>英雄体型。</mainText>",
+        "description": "<mainText><stats><attention>800</attention>生命值<br><attention>200%</attention>基础生命回复</stats><br><br>Item_223084_Tooltip</mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -12296,7 +12296,7 @@
     {
         "id": 226657,
         "name": "时光之杖",
-        "description": "<mainText><stats><buffedStat> 70</buffedStat>法术强度<br><attention>350</attention>生命值<br><attention>300</attention>法力</stats><br><br><br><br>这件装备每60秒获得30生命值、30法力值和4法术强度，至多叠加10层，最大值为300生命值、300法力值和40法术强度。在达到最大层数时，还会使英雄等级提升1级并使所有【永恒】效果提升50%。<br><li><passive>永恒：</passive>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值；花费法力时，你会回复相当于25%法力消耗的生命值，每次施放每秒最多治疗20生命值。</mainText>",
+        "description": "<mainText><stats><buffedStat> 70</buffedStat>法术强度<br><attention>350</attention>生命值<br><attention>300</attention>法力</stats><br><br><passive>时无限</passive><br>这件装备每60秒获得30生命值、30法力值和4法术强度，至多至10层。在达到最大层数时，还会使英雄等级提升1级。<br><br><passive>永恒</passive><br>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值。施放一个技能时，你会治疗自身相当于25%法力消耗的生命值，每次施法每秒最多治疗20生命值。</mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -13260,7 +13260,7 @@
     {
         "id": 227025,
         "name": " 利维坦之甲",
-        "description": "<mainText><stats><ornnBonus>1050</ornnBonus>生命值<br><ornnBonus>300%</ornnBonus>基础生命回复</stats><br><br><br><li><passive>庞然吞食：</passive>当700码内有一名敌方英雄时，会在3秒里持续充能一次对该英雄的强力攻击。充能攻击会造成125 + 你<scalehealth>7%</scalehealth>最大生命值的额外物理伤害，并为你提供相当于12%该伤害值的永久最大生命值。对每个目标有(20秒)冷却时间。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得 <attention> 0%</attention>生命值提升和<attention>6%</attention>英雄体型。</mainText>",
+        "description": "<mainText><stats><ornnBonus>1050</ornnBonus>生命值<br><ornnBonus>300%</ornnBonus>基础生命回复</stats><br><br>Item_223084_Tooltip</mainText>",
         "active": false,
         "inStore": false,
         "from": [
@@ -13342,7 +13342,7 @@
     {
         "id": 227028,
         "name": " 无限会聚",
-        "description": "<mainText><stats><ornnBonus>90</ornnBonus>法术强度<br><ornnBonus>550</ornnBonus>生命值<br><ornnBonus>550</ornnBonus>法力</stats><br><br><br><br>这件装备每60秒获得30生命值、30法力值和4法术强度，至多叠加10层，最大值为300生命值、300法力值和40法术强度。在达到最大层数时，还会使英雄等级提升1级并使所有【永恒】效果提升50%。<br><li><passive>永恒：</passive>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值；花费法力时，你会回复相当于25%法力消耗的生命值，每次施放每秒最多治疗20生命值。</mainText>",
+        "description": "<mainText><stats><ornnBonus>90</ornnBonus>法术强度<br><ornnBonus>550</ornnBonus>生命值<br><ornnBonus>550</ornnBonus>法力</stats><br><br><passive>时无限</passive><br>这件装备每60秒获得30生命值、30法力值和4法术强度，至多至10层。在达到最大层数时，还会使英雄等级提升1级。<br><br><passive>永恒</passive><br>承受来自英雄的伤害时，你会回复相当于7%折前伤害值的法力值。施放一个技能时，你会治疗自身相当于25%法力消耗的生命值，每次施法每秒最多治疗20生命值。</mainText>",
         "active": false,
         "inStore": false,
         "from": [
