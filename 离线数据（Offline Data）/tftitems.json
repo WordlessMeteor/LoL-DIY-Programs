@@ -2627,7 +2627,7 @@
     },
     {
         "guid": "6ea8bb69-d504-4351-9156-bb7f048801c6",
-        "name": "提现",
+        "name": "收手跑路",
         "nameId": "TFT10_Heartsteel_Cashout",
         "id": 0,
         "color": {
@@ -2640,7 +2640,7 @@
     },
     {
         "guid": "e2c9834d-f7e0-444d-bc8b-14af6e888976",
-        "name": "加注",
+        "name": "继续搞事",
         "nameId": "TFT10_Heartsteel_PushYourLuck",
         "id": 0,
         "color": {
@@ -2653,7 +2653,7 @@
     },
     {
         "guid": "35e73b53-73e7-4908-991b-dfea9b3d1274",
-        "name": "加注",
+        "name": "继续搞事",
         "nameId": "TFT10_Heartsteel_ReallyPushYourLuck",
         "id": 0,
         "color": {
@@ -8347,7 +8347,7 @@
     },
     {
         "guid": "6ea8bb69-d504-4351-9156-bb7f048801c6",
-        "name": "提现",
+        "name": "收手跑路",
         "nameId": "TFT10_Heartsteel_Cashout",
         "id": 0,
         "color": {
@@ -8360,7 +8360,7 @@
     },
     {
         "guid": "e2c9834d-f7e0-444d-bc8b-14af6e888976",
-        "name": "加注",
+        "name": "继续搞事",
         "nameId": "TFT10_Heartsteel_PushYourLuck",
         "id": 0,
         "color": {
@@ -8373,7 +8373,7 @@
     },
     {
         "guid": "35e73b53-73e7-4908-991b-dfea9b3d1274",
-        "name": "加注",
+        "name": "继续搞事",
         "nameId": "TFT10_Heartsteel_ReallyPushYourLuck",
         "id": 0,
         "color": {
@@ -12728,7 +12728,7 @@
     },
     {
         "guid": "d7a9c3e7-3269-4788-939d-9e4efe996678",
-        "name": "星界纹章",
+        "name": "星神纹章",
         "nameId": "TFT3_Item_CelestialEmblem",
         "id": 0,
         "color": {
@@ -17200,7 +17200,7 @@
     },
     {
         "guid": "6ea8bb69-d504-4351-9156-bb7f048801c6",
-        "name": "提现",
+        "name": "收手跑路",
         "nameId": "TFT10_Heartsteel_Cashout",
         "id": 0,
         "color": {
@@ -17213,7 +17213,7 @@
     },
     {
         "guid": "e2c9834d-f7e0-444d-bc8b-14af6e888976",
-        "name": "加注",
+        "name": "继续搞事",
         "nameId": "TFT10_Heartsteel_PushYourLuck",
         "id": 0,
         "color": {
@@ -17226,7 +17226,7 @@
     },
     {
         "guid": "35e73b53-73e7-4908-991b-dfea9b3d1274",
-        "name": "加注",
+        "name": "继续搞事",
         "nameId": "TFT10_Heartsteel_ReallyPushYourLuck",
         "id": 0,
         "color": {

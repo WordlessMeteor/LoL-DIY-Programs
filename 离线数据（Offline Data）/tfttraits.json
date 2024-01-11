@@ -3630,12 +3630,12 @@
                 "effect_amounts": [
                     {
                         "name": "HealthAmp",
-                        "value": 300.0000,
+                        "value": 250.0000,
                         "format_string": ""
                     },
                     {
                         "name": "ADAmp",
-                        "value": 0.3000,
+                        "value": 0.2000,
                         "format_string": ""
                     }
                 ],
@@ -3648,12 +3648,12 @@
                 "effect_amounts": [
                     {
                         "name": "HealthAmp",
-                        "value": 700.0000,
+                        "value": 550.0000,
                         "format_string": ""
                     },
                     {
                         "name": "ADAmp",
-                        "value": 0.6000,
+                        "value": 0.4500,
                         "format_string": ""
                     }
                 ],
@@ -3844,7 +3844,7 @@
                 "effect_amounts": [
                     {
                         "name": "CostIncreasePercent",
-                        "value": 33.0000,
+                        "value": 30.0000,
                         "format_string": ""
                     }
                 ],
