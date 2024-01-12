@@ -3393,7 +3393,6 @@
             "CooldownReduction",
             "OnHit",
             "NonbootsMovement",
-            "ArmorPenetration",
             "AbilityHaste"
         ],
         "maxStacks": 1,
@@ -3859,7 +3858,6 @@
         ],
         "to": [],
         "categories": [
-            "AttackSpeed",
             "SpellDamage",
             "OnHit",
             "NonbootsMovement"
@@ -5118,8 +5116,6 @@
         "to": [],
         "categories": [
             "Health",
-            "SpellBlock",
-            "Armor",
             "Damage",
             "NonbootsMovement"
         ],
@@ -7572,10 +7568,8 @@
             "Health",
             "Damage",
             "AttackSpeed",
-            "CooldownReduction",
             "Slow",
-            "NonbootsMovement",
-            "AbilityHaste"
+            "NonbootsMovement"
         ],
         "maxStacks": 1,
         "requiredChampion": "",
@@ -7732,9 +7726,7 @@
             "HealthRegen",
             "SpellDamage",
             "Mana",
-            "ManaRegen",
-            "CooldownReduction",
-            "AbilityHaste"
+            "ManaRegen"
         ],
         "maxStacks": 1,
         "requiredChampion": "",
@@ -8921,10 +8913,8 @@
             "Health",
             "Damage",
             "AttackSpeed",
-            "CooldownReduction",
             "Slow",
-            "NonbootsMovement",
-            "AbilityHaste"
+            "NonbootsMovement"
         ],
         "maxStacks": 1,
         "requiredChampion": "",
@@ -9263,9 +9253,7 @@
             "HealthRegen",
             "SpellDamage",
             "Mana",
-            "ManaRegen",
-            "CooldownReduction",
-            "AbilityHaste"
+            "ManaRegen"
         ],
         "maxStacks": 1,
         "requiredChampion": "",
@@ -10729,7 +10717,6 @@
         "from": [],
         "to": [],
         "categories": [
-            "AttackSpeed",
             "SpellDamage",
             "OnHit",
             "NonbootsMovement"
@@ -11408,8 +11395,6 @@
         "to": [],
         "categories": [
             "Health",
-            "SpellBlock",
-            "Armor",
             "Damage",
             "NonbootsMovement"
         ],
@@ -12165,10 +12150,8 @@
             "Health",
             "Damage",
             "AttackSpeed",
-            "CooldownReduction",
             "Slow",
-            "NonbootsMovement",
-            "AbilityHaste"
+            "NonbootsMovement"
         ],
         "maxStacks": 1,
         "requiredChampion": "",
@@ -12308,9 +12291,7 @@
             "HealthRegen",
             "SpellDamage",
             "Mana",
-            "ManaRegen",
-            "CooldownReduction",
-            "AbilityHaste"
+            "ManaRegen"
         ],
         "maxStacks": 1,
         "requiredChampion": "",
@@ -13039,10 +13020,8 @@
             "Health",
             "Damage",
             "AttackSpeed",
-            "CooldownReduction",
             "Slow",
-            "NonbootsMovement",
-            "AbilityHaste"
+            "NonbootsMovement"
         ],
         "maxStacks": 1,
         "requiredChampion": "",
@@ -13354,9 +13333,7 @@
             "HealthRegen",
             "SpellDamage",
             "Mana",
-            "ManaRegen",
-            "CooldownReduction",
-            "AbilityHaste"
+            "ManaRegen"
         ],
         "maxStacks": 1,
         "requiredChampion": "",

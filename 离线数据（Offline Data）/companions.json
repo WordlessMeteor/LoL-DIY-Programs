@@ -22512,6 +22512,21 @@
         "TFTOnly": false
     },
     {
+        "contentId": "1e7b3f8d-93b6-436a-a357-7d3c818659b5",
+        "itemId": 34,
+        "name": "companion_name_tftavatar_variant",
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/Companions/Tooltip_TFTAvatar_SuperFanVariant_Variant_Tier1.LL_TFTAvatar_SuperFanVariant.png",
+        "description": "companion_description_tftavatar_superfanvariant",
+        "level": 1,
+        "speciesName": "小河灵",
+        "speciesId": 0,
+        "rarity": "Legendary",
+        "rarityValue": 2,
+        "isDefault": false,
+        "upgrades": [],
+        "TFTOnly": false
+    },
+    {
         "contentId": "5a0155e7-32d9-4c29-a940-0c863d474944",
         "itemId": 8007,
         "name": "火山口 桨翼",
