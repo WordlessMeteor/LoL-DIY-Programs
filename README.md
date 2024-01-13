@@ -133,6 +133,7 @@ The following explanations only apply to the current branch. For other details (
 	- 自定义脚本6用于**在美测服一键开启云顶之弈1V0模式，以获取3000点券**。双击即可。
 		- 对于非北美洲用户，即使使用了加速器，也要<u>在游戏大厅的PLAY按钮高亮3秒之后，再双击本程序</u>。否则会导致召唤师状态异常（实际为在线状态，却显示为正在排队，并有“正在匹配”的计时器）。这时只能通过<u>重启客户端</u>来解决。
 		- 从2023年8月27日开始，云顶之弈1V0模式不再可用。<u>请自行进入匹配对局并秒退来获取3000点券。</u>
+		- 目前云顶之弈不可用于获取3000点券，请尝试通过其它游戏模式获取。
 	- 自定义脚本7用于**获取商店中上架的商品信息**。
 		- 该程序将商品信息输出到`Store items.txt`中。
 	- 自定义脚本8从来没有被寄予统计一个服务器上所有召唤师的数量的厚望。（因为人实在是太多了，并且遍历是最盲目的！）
@@ -379,6 +380,7 @@ For details about customized programs that is beyond the scope of creating a cus
 	- Customized Program 06 is designed to **one-key start the TFT 1v0 mode on PBE to gain 3000 RP**. A simple double-click will work.
 		- For users not in North America (in terms of location), despite any accerelator used, please don't double-click this program until several seconds after the PLAY button highlights. Otherwise, the summoner status will come into an unexpected state (the client will show that the summoner is in queue and display the "Finding Match" timer, but actually it's online). A **restart** for client is the only way to solve this problem.
 		- Since Aug. 27th, 2023, TFT 1V0 mode has been unavailable. <u>Please start a TFT normal game and quit the game as soon as you enter the game to acquite 3000 RP.</u>
+		- Currently, the Riot 3000 RP Bonus mission doesn't support TFT games. Please complete this mission by other game modes.
 	- Customized Program 07 is designed to **get information of items on sale in the store**.
 		- This program exports information to `Store items.txt`.
 	- Customized Program 08 is never expected to count the number of summoners on a server. (since the number is too large, let alone the brute-force traversal of summonerId)!

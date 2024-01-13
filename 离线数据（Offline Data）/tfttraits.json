@@ -2563,7 +2563,7 @@
         "trait_id": "Set10_Pentakill",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Pentakill.TFT_Set10.png",
-        "tooltip_text": "【五杀摇滚】弈子们获得15%伤害减免并造成额外伤害。每击杀一个英雄，一个【五杀摇滚】弈子就会摇滚起来，使其伤害加成提升@Kill_Bonus*100@%。<br><br>第@Kill_Count@次击杀会使所有【五杀摇滚】弈子摇滚起来并且你的队伍会获得@Attack_Speed*100@%攻击速度。<br><br><row>(@MinUnits@) @Bonus_Damage*100@%额外伤害</row><br><row>(@MinUnits@) @Bonus_Damage*100@%额外伤害</row><br><row>(@MinUnits@) @Bonus_Damage*100@%额外伤害</row><br><row>(@MinUnits@) 50%伤害减免和@Bonus_Damage*100@%额外伤害</row>",
+        "tooltip_text": "【五杀摇滚】弈子们获得15%伤害减免并造成额外伤害。每击杀一个弈子，一个最强大的【五杀摇滚】弈子就会摇滚起来，使其伤害加成提升@Kill_Bonus*100@%。<br><br>第@Kill_Count@次击杀会使所有【五杀摇滚】弈子摇滚起来并且你的队伍会获得@Attack_Speed*100@%攻击速度。<br><br><row>(@MinUnits@) @Bonus_Damage*100@%额外伤害</row><br><row>(@MinUnits@) @Bonus_Damage*100@%额外伤害</row><br><row>(@MinUnits@) @Bonus_Damage*100@%额外伤害</row><br><row>(@MinUnits@) 50%伤害减免和@Bonus_Damage*100@%额外伤害</row>",
         "innate_trait_sets": [
             {
                 "effect_amounts": [
@@ -3623,7 +3623,7 @@
         "trait_id": "Cybernetic",
         "set": "TFTSet3",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Cybernetic.png",
-        "tooltip_text": "至少携带了1件装备的【源计划】弈子们获得攻击力和生命值。<br><br><expandRow>(@MinUnits@) +@ADAmp*100@% %i:scaleAD%; +@HealthAmp@ %i:scaleHealth%</expandRow>",
+        "tooltip_text": "至少携带了1件装备的【源计划】弈子们获得攻击力和生命值。<br><br><expandRow>(@MinUnits@) +@ADAmp*100@ %i:scaleAD%，+@HealthAmp@ %i:scaleHealth%</expandRow>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
             {
@@ -3669,7 +3669,7 @@
         "trait_id": "DarkStar",
         "set": "TFTSet3",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_DarkStar.png",
-        "tooltip_text": "每当一个己方弈子阵亡时，【暗星】们都会获得攻击力和法术强度。<br><br><expandRow>(@MinUnits@) +@ADandSP@% %i:scaleAD%; +@ADandSP@% %i:scaleAP%</expandRow>",
+        "tooltip_text": "每当一个己方弈子阵亡时，【暗星】们都会获得攻击力和法术强度。<br><br><expandRow>(@MinUnits@) +@ADandSP@ %i:scaleAD%，+@ADandSP@ %i:scaleAP%</expandRow>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
             {
@@ -3860,7 +3860,7 @@
         "trait_id": "MechPilot",
         "set": "TFTSet3",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_MechPilot.png",
-        "tooltip_text": "(@MinUnits@) 战斗开始时：3名随机的【银河魔装机神】机师会被传送到一台【超级魔装机神】中。<br><br>【超级魔装机神】结合了它的机师们的羁绊、3件来自机师们的装备、并获得机师们的60%总生命值和攻击力。<br><br>当【超级魔装机神】阵亡时，机师们会被弹出并带着各自的@EjectedPilotHealthPercent@%最大生命值。",
+        "tooltip_text": "(@MinUnits@) 战斗开始时：3名随机的【银河魔装机神】机师会被传送到一台【超级魔装机神】中。<br><br>【超级魔装机神】结合了它的机师们的羁绊、3件来自机师们的装备、并获得机师们的65%总生命值和攻击力。<br><br>当【超级魔装机神】阵亡时，机师们会被弹出并带着各自的@EjectedPilotHealthPercent@%最大生命值。",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
             {
@@ -4275,7 +4275,7 @@
         "trait_id": "Set3_Sorcerer",
         "set": "TFTSet3",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Sorcerer.png",
-        "tooltip_text": "你的弈子们获得法术强度。<br><br><expandRow>(@MinUnits@) @AP@% %i:scaleAP%</expandRow>",
+        "tooltip_text": "你的弈子们获得法术强度。<br><br><expandRow>(@MinUnits@) @AP@ %i:scaleAP%</expandRow>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
             {
@@ -4341,7 +4341,7 @@
         "trait_id": "Sniper",
         "set": "TFTSet3",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Sniper.png",
-        "tooltip_text": "【狙神】们基于自身与目标的相距格数造成额外伤害。<br><br><expandRow>(@MinUnits@) +@PercentDamageIncrease@% %i:scaleAD%每格</expandRow>",
+        "tooltip_text": "【狙神】们基于自身与目标的相距格数造成额外伤害。<br><br><expandRow>(@MinUnits@) +@PercentDamageIncrease@%每格</expandRow>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
             {
