@@ -263,7 +263,13 @@ async def create_queue_lobby(connection):
         i = int(i)
     enabled_QueueId.sort()
     print("当前可用队列房间序号：\nCurrently enabled QueueIds:")
-    await check_available_queue(connection)
+    while True:
+        await check_available_queue(connection)
+        print("(" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + ")")
+        print("是否刷新可用队列信息？（输入任意键不刷新，否则刷新）\nRefresh available queue information? (Submit anything to quit refreshing, or null to continue refreshing)")
+        refresh = input()
+        if refresh != "":
+            break
 ##    print("*****************************************************************************")
 ##    print("QueueID\tmapID\t" + "{0:^14}".format("map_CN") + "\t" + "{0:^30}".format("Gamemode_CN") + "\t" + "{0:^11}".format("PickType_CN") + "\t" + "{0:^24}".format("map_EN") + "\t" + "{0:^34}".format("Gamemode_EN") + "\t" + "{0:^15}".format("PickType_EN"))
 ##    for i in enabled_QueueId:
