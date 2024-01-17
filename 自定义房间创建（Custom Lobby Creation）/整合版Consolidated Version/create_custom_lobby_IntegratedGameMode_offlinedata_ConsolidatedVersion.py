@@ -255,17 +255,19 @@ async def create_custom_lobby(connection):
 # 创建队列房间（Create a queue lobby）
 #-----------------------------------------------------------------------------
 async def create_queue_lobby(connection):
-    clientsystemstates = await connection.request("GET", "/lol-platform-config/v1/namespaces/ClientSystemStates")
-    Client_System_States = await clientsystemstates.json()
+    Client_System_States = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/ClientSystemStates")).json()
     #print(Client_System_States)
     enabled_QueueId = Client_System_States["enabledQueueIdsList"]
+    game_version = await (await connection.request("GET", "/lol-patch/v1/game-version")).json()
+    platform_config = await (await connection.request("GET", "/lol-platform-config/v1/namespaces")).json()
+    platformId = platform_config["LoginDataPacket"]["platformId"]
     for i in enabled_QueueId:
         i = int(i)
     enabled_QueueId.sort()
     print("当前可用队列房间序号：\nCurrently enabled QueueIds:")
     while True:
         await check_available_queue(connection)
-        print("(" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + ")")
+        print("(" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + "\t" + platformId + "\t" + game_version + ")")
         print("是否刷新可用队列信息？（输入任意键不刷新，否则刷新）\nRefresh available queue information? (Submit anything to quit refreshing, or null to continue refreshing)")
         refresh = input()
         if refresh != "":
