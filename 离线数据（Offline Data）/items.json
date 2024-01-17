@@ -681,7 +681,7 @@
     {
         "id": 1054,
         "name": "多兰之盾",
-        "description": "<mainText><stats><attention>110</attention>生命值</stats><br><br><passive>耐久专注</passive><li>攻击会对小兵造成额外的<physicalDamage>5物理伤害</physicalDamage>。<li>每5秒回复<healing>4生命值</healing>。在承受来自英雄、大型或史诗级野怪的伤害后，在8秒里至多回复<healing>45生命值</healing>。回复额会在你生命值较低时提升。<br><br><rules>被远程英雄持有时，或受到群体伤害或周期型伤害时，治疗的效能为66%。</rules></mainText>",
+        "description": "<mainText><stats><attention>110</attention>生命值</stats><br><br><passive>耐久专注</passive><li>攻击会对小兵造成额外的<physicalDamage>5物理伤害</physicalDamage>。<li>每5秒回复<healing>4生命值</healing>。在承受来自英雄、大型或史诗级野怪的伤害后，在8秒里至多回复<healing>45生命值</healing>。回复额会在你生命值较低时提升。</mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -705,7 +705,7 @@
     {
         "id": 1055,
         "name": "多兰之刃",
-        "description": "<mainText><stats><attention>10</attention>攻击力<br><attention>100</attention>生命值<br><attention>3.5%</attention>生命偷取</stats><br><br><br><li><passive>好战者：</passive>获得全能吸血。<br><br><rules>在造成群体伤害或通过宠物造成伤害时，全能吸血只有33%效能。</rules></mainText>",
+        "description": "<mainText><stats><attention>10</attention>攻击力<br><attention>100</attention>生命值<br><attention>3.5%</attention>生命偷取</stats><br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -1891,7 +1891,7 @@
     {
         "id": 2065,
         "name": "舒瑞娅的战歌",
-        "description": "GeneratedTip_Item_2065_ExternalDescription",
+        "description": "<mainText><stats><attention>55</attention>法术强度<br><attention>15</attention>技能急速<br><attention>8%</attention>移动速度<br><attention>125%</attention>基础法力回复</stats><br><br><br><br> <active>主动</active>  (0秒)<br><active>鼓舞演讲</active><br>为附近的友军提供移动速度。<br><br></mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -2158,7 +2158,7 @@
     {
         "id": 2403,
         "name": "小兵去质器",
-        "description": "GeneratedTip_Item_2403_ExternalDescription",
+        "description": "<mainText><stats></stats><br><br><active>主动 - 消耗：</active>击杀目标线上小兵(10 (0秒))。</mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -2204,7 +2204,7 @@
     {
         "id": 2420,
         "name": "探索者的护臂",
-        "description": "GeneratedTip_Item_2420_ExternalDescription",
+        "description": "<mainText><stats><attention>45</attention>法术强度<br><attention>25</attention>护甲</stats><br><br> <active>主动</active><br><active>时间停止</active>(单次使用)<br>进入<keyword>凝滞</keyword>状态2.5秒。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -2287,7 +2287,7 @@
     {
         "id": 2423,
         "name": "完美时机秒表",
-        "description": "GeneratedTip_Item_2423_ExternalDescription",
+        "description": "<mainText><stats><attention>45</attention>法术强度<br><attention>25</attention>护甲</stats><br><br> <active>主动</active><br><active>时间停止</active>(单次使用)<br>进入<keyword>凝滞</keyword>状态2.5秒。</mainText>",
         "active": true,
         "inStore": false,
         "from": [
@@ -2491,7 +2491,7 @@
     {
         "id": 3005,
         "name": "鬼蟹",
-        "description": "GeneratedTip_Item_3005_ExternalDescription",
+        "description": "<mainText><stats><attention>45</attention>移动速度</stats><br><br><br><br><active>主动 - </active> <active>墙体行走：</active>获得持续6秒的穿墙行走能力。在墙体内时，获得125移动速度。施放一个技能或进行攻击将结束这个效果(60 (0秒)).</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -2871,7 +2871,7 @@
     {
         "id": 3040,
         "name": "炽天使之拥",
-        "description": "GeneratedTip_Item_3040_ExternalDescription",
+        "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>1000</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>敬畏</passive>获得相当于<scaleMana>2%额外法力值</scaleMana>的法术强度。<br><passive>救主灵刃</passive> (90 (0秒))<br>在受到将使你的生命值跌到30%以下的伤害时，获得持续3秒的<shield>250+20%当前法力值的护盾值</shield>。</mainText>",
         "active": false,
         "inStore": false,
         "from": [],
@@ -3034,7 +3034,7 @@
     {
         "id": 3050,
         "name": "基克的聚合",
-        "description": "GeneratedTip_Item_3050_ExternalDescription",
+        "description": "<mainText><stats><attention>200</attention>生命值<br><attention>250</attention>法力<br><attention>30</attention>护甲<br><attention>20</attention>技能急速</stats><br><br><passive>霜火风暴</passive>  (0秒)<br>施放你的终极技能时会召唤一个风暴环绕于你5秒，每秒对敌人们造成<magicDamage>50魔法伤害</magicDamage>和30%<keyword>减速</keyword>。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -3045,8 +3045,7 @@
         "categories": [
             "Health",
             "Armor",
-            "CooldownReduction",
-            "OnHit",
+            "Mana",
             "AbilityHaste"
         ],
         "maxStacks": 1,
@@ -3094,7 +3093,7 @@
     {
         "id": 3053,
         "name": "斯特拉克的挑战护手",
-        "description": "GeneratedTip_Item_3053_ExternalDescription",
+        "description": "<mainText><stats><attention>400</attention>生命值<br><attention>20%</attention>韧性</stats><br><br><passive>抓人双爪：</passive><br>获得额外攻击力。<br><br><passive>救主灵刃：</passive> (0秒)<br>在受到将使你的生命值跌到30%以下的伤害时，提供一个护盾。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -3391,7 +3390,6 @@
             "Damage",
             "AttackSpeed",
             "CooldownReduction",
-            "OnHit",
             "NonbootsMovement",
             "AbilityHaste"
         ],
@@ -3409,7 +3407,7 @@
     {
         "id": 3074,
         "name": "贪欲九头蛇",
-        "description": "GeneratedTip_Item_3074_ExternalDescription",
+        "description": "<mainText><stats><attention>70</attention>攻击力<br><attention>20</attention>技能急速<br><attention>12%</attention>生命偷取</stats><br><br><passive>顺劈</passive><br>攻击会对附近的敌人们造成物理伤害。<br><br> <active>主动</active><br><active>血斩</active><br>对你周围的敌人们造成物理伤害。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -3492,7 +3490,7 @@
     {
         "id": 3077,
         "name": "提亚马特",
-        "description": "GeneratedTip_Item_3077_ExternalDescription",
+        "description": "<mainText><stats><attention>20</attention>攻击力</stats><br><br><passive>顺劈</passive><br>攻击会对附近的敌人们造成物理伤害。<br><br>装备对近战携带者和远程携带者会有不同的性能。<br><br><br> <active>主动</active>  (0秒)<br><active>新月</active><br>对你周围的敌人们造成<physicalDamage>0物理伤害</physicalDamage>。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -3612,7 +3610,7 @@
     {
         "id": 3084,
         "name": "心之钢",
-        "description": "GeneratedTip_Item_3084_ExternalDescription",
+        "description": "<mainText><stats><attention>900</attention>生命值<br><attention>200%</attention>基础生命回复</stats><br><br><passive>庞然吞食</passive> 每个目标 (0秒)<br>当码内有一名敌方英雄时，会持续充能一次对该英雄的强力攻击。充能攻击会造成额外物理伤害，并为你提供永久最大生命值。<br><br><passive>歌利亚巨人</passive><br>获得基于总生命值的体型提升。 </mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -3847,7 +3845,7 @@
     {
         "id": 3100,
         "name": "巫妖之祸",
-        "description": "GeneratedTip_Item_3100_ExternalDescription",
+        "description": "<mainText><stats><attention>100</attention>法术强度<br><attention>8%</attention>移动速度<br><attention>15</attention>技能急速</stats><br><br><passive>咒刃</passive>  (0秒)<br>施放技能后，你的下一次普通攻击因强化而附带额外的<magicDamage>0魔法伤害</magicDamage><OnHit>攻击特效</OnHit>。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -3859,7 +3857,8 @@
         "categories": [
             "SpellDamage",
             "OnHit",
-            "NonbootsMovement"
+            "NonbootsMovement",
+            "AbilityHaste"
         ],
         "maxStacks": 1,
         "requiredChampion": "",
@@ -3934,7 +3933,7 @@
     {
         "id": 3107,
         "name": "救赎",
-        "description": "GeneratedTip_Item_3107_ExternalDescription",
+        "description": "<mainText><stats><attention>200</attention>生命值<br><attention>15</attention>技能急速<br><attention>100%</attention>基础法力回复<br><attention> 15%</attention>治疗和护盾强度</stats><br><br> <active>主动</active>  (0秒)<br><active>干涉</active><br>选择一个区域来为友方英雄们回复生命值并对敌方英雄们造成真实伤害。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -4002,7 +4001,7 @@
     {
         "id": 3109,
         "name": "骑士之誓",
-        "description": "GeneratedTip_Item_3109_ExternalDescription",
+        "description": "<mainText><stats><attention>300</attention>生命值<br><attention>45</attention>护甲<br><attention>15</attention>技能急速</stats><br><br><passive>牺牲</passive><br>当你的<attention>誓约者</attention>友军在附近时，将其所受的伤害转移到你身上，并为你提供基于<attention>誓约者</attention>友军对英雄的已造成伤害值的治疗效果。<br><br><br> <active>主动</active>  (0秒)<br><active>立誓</active><br>指定一名友方英雄作为你的<attention>誓约者</attention>。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -4315,7 +4314,7 @@
     {
         "id": 3121,
         "name": "末日寒冬",
-        "description": "GeneratedTip_Item_3121_ExternalDescription",
+        "description": "<mainText><stats><attention>400</attention>生命值<br><attention>860</attention>法力<br><attention>15</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得额外<scaleHealth>相当于0的生命值</scaleHealth>。<br><passive>永续</passive>  (0秒)<br><status>定身</status>或<status>减速</status> (仅限近战)一名敌方英雄时会提供一个持续3秒的护盾，护盾值为<scaleMana>0 + 4.5%当前法力值</scaleMana>。如果附近有1名以上的敌人，则护盾值会提升<attention>80%</attention>。</mainText>",
         "active": false,
         "inStore": false,
         "from": [],
@@ -4395,7 +4394,7 @@
     {
         "id": 3128,
         "name": "冥火之拥",
-        "description": "GeneratedTip_Item_3128_ExternalDescription",
+        "description": "<mainText><stats><attention>120</attention>法术强度<br><attention>10</attention>技能急速</stats><br><br><br><br><active>主动 - </active> <active>沉默：</active>造成相当于目标<magicDamage>15%最大生命值</magicDamage>的魔法伤害，然后使其所受伤害增幅15%，持续4秒(90 (0秒))。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -4421,7 +4420,7 @@
     {
         "id": 3131,
         "name": "神圣之剑",
-        "description": "GeneratedTip_Item_3131_ExternalDescription",
+        "description": "<mainText><stats><attention>30</attention>攻击力<br><attention>25%</attention>攻击速度<br><attention>18</attention>穿甲</stats><br><br><br><br><active>主动 - </active> <active>神圣祝福：</active>提供<attackSpeed>100%攻击速度</attackSpeed> 和100%暴击几率，持续3秒或3次普攻(90 (0秒))。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -4585,7 +4584,7 @@
     {
         "id": 3139,
         "name": "水银弯刀",
-        "description": "GeneratedTip_Item_3139_ExternalDescription",
+        "description": "<mainText><stats><attention>40</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>50</attention>魔法抗性</stats><br><br><br><br> <active>主动</active>  (0秒)<br><active>水银</active><br>移除所有控制类减益效果(<keyword>浮空</keyword>除外)，并提供持续1.5秒的<speed>50%移动速度</speed>。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -4616,7 +4615,7 @@
     {
         "id": 3140,
         "name": "水银饰带",
-        "description": "GeneratedTip_Item_3140_ExternalDescription",
+        "description": "<mainText><stats><attention>30</attention>魔法抗性</stats><br><br> <active>主动</active>  (0秒)<br><active>水银</active><br>移除所有控制类减益效果(<keyword>浮空</keyword>除外)。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -4644,7 +4643,7 @@
     {
         "id": 3142,
         "name": "幽梦之灵",
-        "description": "GeneratedTip_Item_3142_ExternalDescription",
+        "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>18</attention>穿甲</stats><br><br><passive>鬼影萦绕</passive><br>提供非战斗状态下的<speed>40移动速度</speed>。<br><br> <active>主动</active>  (0秒)<br><active>鬼魂步伐：</active><br>提供<speed>移动速度</speed>和<keyword>幽灵状态</keyword>。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -4674,7 +4673,7 @@
     {
         "id": 3143,
         "name": "兰顿之兆",
-        "description": "GeneratedTip_Item_3143_ExternalDescription",
+        "description": "<mainText><stats><attention>400</attention>生命值<br><attention>55</attention>护甲</stats><br><br><passive>坚如磐石</passive><br>降低来自攻击的伤害。<br><br><passive>暴击抵抗</passive><br>暴击对你造成的伤害降低。<br><br> <active>主动</active><active>谦卑</active><br><keyword>减速</keyword>附近的敌人。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -4793,7 +4792,7 @@
     {
         "id": 3152,
         "name": "海克斯科技火箭腰带",
-        "description": "GeneratedTip_Item_3152_ExternalDescription",
+        "description": "<mainText><stats><attention>60</attention>法术强度<br><attention>300</attention>生命值<br><attention>15</attention>技能急速</stats><br><br> <active>主动</active>  (0秒)<br><active>超音速</active><br>朝着目标方向冲刺，释放一道魔法弹圆弧，造成魔法伤害。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -4825,7 +4824,7 @@
     {
         "id": 3153,
         "name": "破败王者之刃",
-        "description": "GeneratedTip_Item_3153_ExternalDescription",
+        "description": "<mainText><stats><attention>40</attention>攻击力<br><attention>25%</attention>攻击速度<br><attention>8%</attention>生命偷取</stats><br><br><passive>雾之锋</passive><br>攻击附带额外的敌人当前生命值的物理伤害 <OnHit>攻击特效</OnHit>。<br><br><passive>抓挠之影</passive>  (0秒)<br>你对一名敌方英雄打出的第一次普攻会对其造成减速。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -5252,7 +5251,7 @@
     {
         "id": 3222,
         "name": "米凯尔的祝福",
-        "description": "GeneratedTip_Item_3222_ExternalDescription",
+        "description": "<mainText><stats><attention>250</attention>生命值<br><attention>100%</attention>基础法力回复<br><attention> 12%</attention>治疗和护盾强度<br><attention>15</attention>技能急速</stats><br><br> <active>主动</active><br><active>纯化</active>  (0秒)<br>移除一名友方英雄身上的所有控制类减益效果并为其回复生命值。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -5666,7 +5665,7 @@
     {
         "id": 3748,
         "name": "巨型九头蛇",
-        "description": "GeneratedTip_Item_3748_ExternalDescription",
+        "description": "<mainText><stats><attention>50</attention>攻击力<br><attention>500</attention>生命值</stats><br><br><passive>顺劈</passive><br>攻击附带额外伤害，并生成一道冲击波来对目标身后的敌人们造成物理伤害。<br><br> <active>主动</active><br><active>刚斩</active><br>在你的下一次攻击，<passive>顺劈</passive>将对你的目标和一个附近的冲击波内造成额外物理伤害。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -5845,7 +5844,7 @@
     {
         "id": 3851,
         "name": "冰霜之牙",
-        "description": "GeneratedTip_Item_3851_ExternalDescription",
+        "description": "<mainText><stats><attention>15</attention>法术强度<br><attention>70</attention>生命值<br><attention>50%</attention>基础法力回复<br><attention>3</attention>金币/10秒</stats><br><br><br><br><active>主动 - </active> <active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存3个侦察守卫，并在访问商店时补满。 <br><br><br><br><li><passive>贡品：</passive>当附近有一名友方英雄时，用技能和普攻对敌方英雄或防御塔造成伤害时，会提供20金币。这个效果每30秒最多触发3次。<li><passive>任务：</passive>使用这个装备赚取1000金币来将其转变为<rarityLegendary>极冰碎片</rarityLegendary>。<br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -5870,7 +5869,7 @@
     {
         "id": 3853,
         "name": "极冰碎片",
-        "description": "GeneratedTip_Item_3853_ExternalDescription",
+        "description": "<mainText><stats><attention>40</attention>法术强度<br><attention>75</attention>生命值<br><attention>100%</attention>基础法力回复<br><attention>3</attention>金币/10秒</stats><br><br><br><br><active>主动 - </active><active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存4个侦察守卫，并在访问商店时补满。 <br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -5922,7 +5921,7 @@
     {
         "id": 3855,
         "name": "符钢肩甲",
-        "description": "GeneratedTip_Item_3855_ExternalDescription",
+        "description": "<mainText><stats><attention>6</attention>攻击力<br><attention>100</attention>生命值<br><attention>75%</attention>基础生命回复<br><attention>3</attention>金币/10秒</stats><br><br><br><br><active>主动 - </active> <active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存3个侦察守卫，并在访问商店时补满。 <br><li><passive>战利品：</passive>附近有一名友方英雄时，普攻会处决低于50%最大生命值的小兵。击杀一位小兵会为距离最近的友方英雄提供击杀金币。这些效果每35秒获得一层充能(最多拥有3层充能)。<li><passive>任务：</passive>使用这个装备赚取1000金币来将其转变为<rarityLegendary>山脉壁垒</rarityLegendary>。 <br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -5947,7 +5946,7 @@
     {
         "id": 3857,
         "name": "白岩肩铠",
-        "description": "GeneratedTip_Item_3857_ExternalDescription",
+        "description": "<mainText><stats><attention>15</attention>攻击力<br><attention>250</attention>生命值<br><attention>100%</attention>基础生命回复<br><attention>3</attention>金币/10秒</stats><br><br><br><br><active>主动 - </active> <active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存4个侦察守卫，并在访问商店时补满。 <br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -5999,7 +5998,7 @@
     {
         "id": 3859,
         "name": "巨神峰圆盾",
-        "description": "GeneratedTip_Item_3859_ExternalDescription",
+        "description": "<mainText><stats><attention>10</attention>法术强度<br><attention>100</attention>生命值<br><attention>75%</attention>基础生命回复<br><attention>3</attention>金币/10秒</stats><br><br><br><br><active>主动 - </active> <active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存3个侦察守卫，并在访问商店时补满。 <br><li><passive>战利品：</passive>附近有一名友方英雄时，普攻会处决低于50%最大生命值的小兵。击杀一位小兵会为距离最近的友方英雄提供等量的击杀金币。这些效果每35秒获得一层充能(最多拥有3层充能)。<li><passive>任务：</passive>使用这个装备赚取1000金币来将其转变为<rarityLegendary>山脉壁垒</rarityLegendary>。<br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -6024,7 +6023,7 @@
     {
         "id": 3860,
         "name": "山脉壁垒",
-        "description": "GeneratedTip_Item_3860_ExternalDescription",
+        "description": "<mainText><stats><attention>20</attention>法术强度<br><attention>250</attention>生命值<br><attention>100%</attention>基础生命回复<br><attention>3</attention>金币/10秒</stats><br><br><br><br><active>主动 - </active> <active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存4个侦察守卫，并在访问商店时补满。 <br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -6076,7 +6075,7 @@
     {
         "id": 3863,
         "name": "鬼影新月",
-        "description": "GeneratedTip_Item_3863_ExternalDescription",
+        "description": "<mainText><stats><attention>10</attention>攻击力<br><attention>60</attention>生命值<br><attention>50%</attention>基础法力回复<br><attention>3</attention>金币/10秒</stats><br><br><br><li><passive>贡品：</passive>当附近有一名友方英雄时，用技能和普攻对敌方英雄或防御塔造成伤害时，会提供20金币。这个效果每36秒最多触发3次。<li><passive>任务：</passive>使用这个装备赚取1000金币来将其转变为<rarityLegendary>黑雾巨镰</rarityLegendary>。<br><br><rules>这件装备会在你击杀了过多数量的小兵时降低来自小兵的金币。</rules><br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -6101,7 +6100,7 @@
     {
         "id": 3864,
         "name": "黑雾巨镰",
-        "description": "GeneratedTip_Item_3864_ExternalDescription",
+        "description": "<mainText><stats><attention>20</attention>攻击力<br><attention>75</attention>生命值<br><attention>100%</attention>基础法力回复<br><attention>3</attention>金币/10秒</stats><br><br><br><br><active>主动 - </active> <active>守卫：</active>在地上放置一个侦察守卫，对敌方<keywordStealth>隐形</keywordStealth>但会为你的队伍提供附近区域的视野。至多可储存4个侦察守卫，并在访问商店时补满。 <br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -6153,7 +6152,7 @@
     {
         "id": 3866,
         "name": "符文罗盘",
-        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>50%</attention>基础生命回复<br><attention>50%</attention>基础法力回复<br><attention>100</attention>生命值</stats><br><br>Item_3866_TooltipExternalItem_3866_Active</mainText>",
+        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>50%</attention>基础生命回复<br><attention>50%</attention>基础法力回复<br><attention>100</attention>生命值</stats><br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 <br><br><br><br><passive>任务</passive><br>使用这个装备赚取1000金币来将其转变为<rarityGeneric>符文罗盘</rarityGeneric>。每<passive>18</passive>秒获得1层充能，至多至<passive>3</passive>层。当附近有一个友方英雄时，消耗一层充能来赚取金币：<br><li>对英雄或建筑物进行的伤害型技能和攻击会提供<keywordMajor>34</keywordMajor> (近战) / <keywordMajor>32</keywordMajor> (远程) 金币；<li>以任意方式击杀一个小兵会为你提供<keywordMajor>28</keywordMajor>金币并为相距最近的友方英雄提供击杀金币。<br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -6178,7 +6177,7 @@
     {
         "id": 3867,
         "name": "异世珍藏",
-        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>50%</attention>基础生命回复<br><attention>50%</attention>基础法力回复<br><attention>100</attention>生命值</stats><br><br>Item_3867_TooltipExternalItem_3867_Active</mainText>",
+        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>50%</attention>基础生命回复<br><attention>50%</attention>基础法力回复<br><attention>100</attention>生命值</stats><br><br><br><li><passive>升级：</passive> <br>这件装备可被免费升级为<rarityLegendary>血鸣</rarityLegendary>、<rarityLegendary>星界据守</rarityLegendary>、<rarityLegendary>圆梦使者</rarityLegendary>、<rarityLegendary>扎兹沙克的溃口</rarityLegendary>或<rarityLegendary>摩天雪橇</rarityLegendary>。<br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 <br><br></mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -6209,7 +6208,7 @@
     {
         "id": 3869,
         "name": "星界据守",
-        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br>Item_3869_TooltipExternalItem_3869_Active</mainText>",
+        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>神峰庇佑：</passive><br>获得庇佑，使所承受的来自英雄的伤害降低，受到来自英雄的伤害后会存留2秒。<br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -6237,7 +6236,7 @@
     {
         "id": 3870,
         "name": "圆梦使者",
-        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>圆梦使者</passive><br>随时间获得一个<passive>蓝色美梦泡泡</passive>和一个<passive>紫色美梦泡泡</passive>。给其他队友进行治疗或加护盾时，<passive>两个泡泡</passive>都会飞向对方，为其赋能，来降低即将受到的伤害并提升即将造成的伤害。Item_3870_Active</mainText>",
+        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>圆梦使者</passive><br>随时间获得一个<passive>蓝色美梦泡泡</passive>和一个<passive>紫色美梦泡泡</passive>。给其他队友进行治疗或加护盾时，<passive>两个泡泡</passive>都会飞向对方，为其赋能，来降低即将受到的伤害并提升即将造成的伤害。<br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -6265,7 +6264,7 @@
     {
         "id": 3871,
         "name": "扎兹沙克的溃口",
-        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br>Item_3871_TooltipExternalItem_3871_Active</mainText>",
+        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>虚空扩爆</passive><br>造成技能伤害时会引发一次爆炸，造成魔法伤害和基于目标最大生命值的伤害。<br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -6293,7 +6292,7 @@
     {
         "id": 3876,
         "name": "摩天雪橇",
-        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>雪橇出击</passive><br><status>减速</status>或<status>定身</status>一名敌方英雄时会为你和附近生命值最低的那名友军回复生命值并提供移动速度。Item_3876_Active</mainText>",
+        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>雪橇出击</passive><br><status>减速</status>或<status>定身</status>一名敌方英雄时会为你和附近生命值最低的那名友军回复额外生命值并提供移动速度。<br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -6321,7 +6320,7 @@
     {
         "id": 3877,
         "name": "血鸣",
-        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br>Item_3877_TooltipExternalItem_3877_Active</mainText>",
+        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>咒刃</passive><br>在施放技能后，你在10秒内的下次普攻附带150%基础攻击力的额外物理伤害并使受影响的敌方英雄在6秒里受到额外伤害。<br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -6436,7 +6435,7 @@
     {
         "id": 4003,
         "name": "救生索",
-        "description": "GeneratedTip_Item_4003_ExternalDescription",
+        "description": "<mainText><stats><attention>20</attention>攻击力<br><attention>8</attention>穿甲</stats><br><br><br><br><active>主动 - </active> <active>灵魂之锚：</active>标记你的当前位置。在4秒后你将回到被标记的位置(60 (0秒))。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -6464,7 +6463,7 @@
     {
         "id": 4004,
         "name": "幽魂弯刀",
-        "description": "GeneratedTip_Item_4004_ExternalDescription",
+        "description": "<mainText><stats><attention>70</attention>攻击力<br><attention>21</attention>穿甲</stats><br><br><br><br><active>主动 - </active> <active>灵魂之锚：</active>标记你的当前位置。在4秒后你将回到被标记的位置(45 (0秒))。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -6569,7 +6568,7 @@
     {
         "id": 4012,
         "name": "食罪者",
-        "description": "GeneratedTip_Item_4012_ExternalDescription",
+        "description": "<mainText><stats><attention>300</attention>生命值<br><attention>45</attention>护甲<br><attention>45</attention>魔法抗性<br><attention>30%</attention>韧性</stats><br><br><br><li><passive>盛宴：</passive>每当一个附近的友方英雄受到一个定身类控制效果的影响时，你会转而晕眩，时长相当于该控制效果的时长(20 (0秒))。</mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -6671,7 +6670,7 @@
     {
         "id": 4016,
         "name": "无言承诺",
-        "description": "GeneratedTip_Item_4016_ExternalDescription",
+        "description": "<mainText><stats><attention>60</attention>法术强度<br><attention> 15%</attention>治疗和护盾强度<br><attention>25</attention>技能急速</stats><br><br><br><li><passive>承诺：</passive>获得被你<attention>承诺</attention>的友军的20% 法术强度，并为被你<attention>承诺</attention>的友军提供你的20%技能急速。<br><br><rules>同一个英雄同一时间只能被一个【无言承诺】所连接。</rules><br><br><active>主动 - </active> <active>承诺：</active>对一名友军做出<attention>承诺</attention> (90 (0秒))。</mainText>",
         "active": true,
         "inStore": true,
         "from": [],
@@ -6818,7 +6817,7 @@
     {
         "id": 4628,
         "name": "视界专注",
-        "description": "GeneratedTip_Item_4628_ExternalDescription",
+        "description": "<mainText><stats><attention>90</attention>法术强度<br><attention>20</attention>技能急速</stats><br><br><passive>高能射击</passive><br>在你用技能对700码或更远的英雄造成伤害时，将其<keywordStealth>显形</keywordStealth>6秒。对被高能射击<keywordStealth>显形</keywordStealth>的敌人们造成10%提升伤害。<br><br><passive>专注</passive>  (0秒)<br>在<passive>高能射击</passive>触发时，<keywordStealth>显形</keywordStealth>目标1200码内的所有其它敌方英雄3秒。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -6854,8 +6853,8 @@
         ],
         "to": [],
         "categories": [
+            "Health",
             "SpellDamage",
-            "CooldownReduction",
             "NonbootsMovement",
             "AbilityHaste"
         ],
@@ -6901,7 +6900,7 @@
     {
         "id": 4632,
         "name": "翠绿屏障",
-        "description": "GeneratedTip_Item_4632_ExternalDescription",
+        "description": "<mainText><stats><attention>40</attention>法术强度<br><attention>30</attention>魔法抗性</stats><br><br><passive>废除</passive>  (0秒)<br>提供一层法术护盾来格挡下一个敌方技能。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7368,7 +7367,7 @@
     {
         "id": 6610,
         "name": "焚天",
-        "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>300</attention>生命值<br><attention>15</attention>技能急速</stats><br><br>Item_6610_TooltipExternal</mainText>",
+        "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>300</attention>生命值<br><attention>15</attention>技能急速</stats><br><br><passive>光盾打击</passive><br>对一个英雄打出的第一次普攻会暴击并治疗你自身。溢出的治疗效果会被提供为一个临时的额外生命值。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7457,7 +7456,7 @@
     {
         "id": 6620,
         "name": "海力亚的回响",
-        "description": "<mainText><stats><attention>40</attention>法术强度<br><attention>200</attention>生命值<br><attention>20</attention>技能急速<br><attention>125%</attention>基础法力回复</stats><br><br><passive>灵魂虹吸</passive><br>对一名英雄造成伤害时会提供一块<passive>灵魂碎片</passive>。对一名友军提供治疗或护盾时，会消耗所有<passive>灵魂碎片</passive>来治疗该友军并对相距最近的那个敌方英雄造成基于碎片数量的魔法伤害。<br><br></mainText>",
+        "description": "<mainText><stats><attention>40</attention>法术强度<br><attention>200</attention>生命值<br><attention>20</attention>技能急速<br><attention>125%</attention>基础法力回复</stats><br><br><passive>灵魂虹吸</passive><br>对一名英雄造成伤害时会提供一块<passive>灵魂碎片</passive>。对一名友军提供治疗或护盾时，会消耗所有<passive>灵魂碎片</passive>来基于碎片数量治疗该友军并对相距最近的那个敌方英雄造成基于碎片数量的魔法伤害。<br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7552,7 +7551,7 @@
     {
         "id": 6631,
         "name": "挺进破坏者",
-        "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>25%</attention>攻击速度<br><attention>400</attention>生命值</stats><br><br><br><br><br><br><br><active>主动 - </active> <active>蹒跚斩击：</active>以你为中心，将450码半径内的敌人减速25%，并获得25%x命中英雄数的移动速度加成，持续3秒。可在施放时移动(30秒(受益于技能急速)冷却时间)。</mainText>",
+        "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>25%</attention>攻击速度<br><attention>400</attention>生命值</stats><br><br><passive>回火</passive><br>造成<physicalDamage>物理伤害</physicalDamage>时为你提供持续2秒的<speed>20移动速度</speed>。<br><br> <active>主动</active> <br><active>破阵冲击波</active><br>对附近的敌人们造成35%<status>减速</status>并且每命中一个英雄就会获得<speed>35%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -7769,7 +7768,7 @@
     {
         "id": 6662,
         "name": "冰脉护手",
-        "description": "GeneratedTip_Item_6662_ExternalDescription",
+        "description": "<mainText><stats><attention>300</attention>生命值<br><attention>50</attention>护甲<br><attention>15</attention>技能急速</stats><br><br><passive>咒刃</passive>  (0秒)<br>施放技能后，你的下一次普通攻击会因强化而附带额外伤害并生成一个持续2秒的冰冷地带。经过该地带的敌人会被<status>减速</status>。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7990,7 +7989,7 @@
     {
         "id": 6673,
         "name": "不朽盾弓",
-        "description": "GeneratedTip_Item_6673_ExternalDescription",
+        "description": "<mainText><stats><attention>50</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>12%</attention>生命偷取</stats><br><br><passive>救主灵刃</passive>  (0秒)<br>在受到将使你的生命值跌到30%以下的伤害时，获得持续3秒的<shield>0护盾值</shield>。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8080,7 +8079,7 @@
         "name": "狂怒小刀",
         "description": "<mainText><stats><attention>25%</attention>攻击速度</stats><br><br><br><li><passive>怨怒：</passive>攻击附带<magicDamage>20魔法伤害</magicDamage><OnHit>攻击特效</OnHit>。<li><passive>沸腾打击：</passive>普通攻击会提供<attackSpeed>5%攻击速度</attackSpeed>，至多可叠加3次。</mainText>",
         "active": false,
-        "inStore": true,
+        "inStore": false,
         "from": [
             1042,
             1042
@@ -8134,7 +8133,7 @@
     {
         "id": 6691,
         "name": "德拉克萨的暮刃",
-        "description": "GeneratedTip_Item_6691_ExternalDescription",
+        "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>18</attention>穿甲<br><attention>15</attention>技能急速</stats><br><br><br><li><passive>夜行者：</passive>你的技能可基于目标的已损失生命值造成额外的一部分伤害。如果一名在过去3秒内曾被你造成过伤害的英雄阵亡，你就会进入持续1.5秒的对非建筑单位的<keywordStealth>不可被选取</keywordStealth>状态(30 (0秒))。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得技能急速和移动速度。<br></mainText>",
         "active": false,
         "inStore": false,
         "from": [
@@ -8308,7 +8307,7 @@
     {
         "id": 6697,
         "name": "狂妄",
-        "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>18</attention>穿甲<br><attention>15</attention>技能急速</stats><br><br><passive>伺机待发</passive><br>在脱离与英雄的战斗状态8秒后获得穿甲。<br><br><passive>险境脱身</passive><br>击杀英雄后获得移动速度。</mainText>",
+        "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>18</attention>穿甲<br><attention>15</attention>技能急速</stats><br><br><passive>唯我</passive><br>击杀时获得一座你自己的雕像，这座雕像可不断升级。<br><br><passive>盛名</passive><br>击杀时获得基于你雕像等级的临时攻击力。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8339,7 +8338,7 @@
     {
         "id": 6698,
         "name": "亵渎九头蛇",
-        "description": "GeneratedTip_Item_6698_ExternalDescription",
+        "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>18</attention>穿甲<br><attention>20</attention>技能急速</stats><br><br><passive>顺劈</passive><br>攻击附带额外伤害<OnHit>攻击特效</OnHit>，并生成一道冲击波来对目标身后的敌人们造成物理伤害。<br><br> <active>主动</active> <br><active>邪斩</active><br>对附近的敌人们造成物理伤害。这个伤害在对低血量敌人时会提升。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -8399,7 +8398,7 @@
     {
         "id": 6700,
         "name": "拉阔尔之盾",
-        "description": "GeneratedTip_Item_6700_ExternalDescription",
+        "description": "<mainText><stats><attention>50</attention>攻击力<br><attention>30</attention>护甲<br><attention>5%</attention>移动速度</stats><br><br><br><li><passive>神佑：</passive>每过8 (0秒)秒，格挡将要命中你的第一次攻击。在这个护盾被打破后，你对一名英雄打出的第一次攻击会返还此效果50%当前冷却时间并提供短暂持续的<MS> 20%移动速度</MS>。<br><br><br><br></mainText>",
         "active": false,
         "inStore": false,
         "from": [
@@ -8512,7 +8511,7 @@
     {
         "id": 7002,
         "name": " 德拉克萨的暗影雕刻者",
-        "description": "GeneratedTip_Item_7002_ExternalDescription",
+        "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>26</ornnBonus>穿甲<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br><br><li><passive>夜行者：</passive>你的技能可基于目标的已损失生命值造成额外的一部分伤害。如果一名在过去3秒内曾被你造成过伤害的英雄阵亡，你就会进入持续1.5秒的对非建筑单位的<keywordStealth>不可被选取</keywordStealth>状态(30 (0秒))。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得技能急速和移动速度。<br></mainText>",
         "active": false,
         "inStore": false,
         "from": [
@@ -8592,7 +8591,7 @@
     {
         "id": 7005,
         "name": " 冰霜之拳",
-        "description": "GeneratedTip_Item_7005_ExternalDescription",
+        "description": "<mainText><stats><ornnBonus>400</ornnBonus>生命值<br><ornnBonus>60</ornnBonus>护甲<br><ornnBonus>25</ornnBonus>技能急速</stats><br><br><passive>咒刃</passive>  (0秒)<br>施放技能后，你的下一次普通攻击会因强化而附带额外伤害并生成一个持续2秒的冰冷地带。经过该地带的敌人会被<status>减速</status>。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8760,7 +8759,7 @@
     {
         "id": 7011,
         "name": " 升级版飞行包",
-        "description": "GeneratedTip_Item_7011_ExternalDescription",
+        "description": "<mainText><stats><ornnBonus>85</ornnBonus>法术强度<br><ornnBonus>450</ornnBonus>生命值<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br> <active>主动</active>  (0秒)<br><active>超音速</active><br>朝着目标方向冲刺，释放一道魔法弹圆弧，造成魔法伤害。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -8901,7 +8900,7 @@
     {
         "id": 7016,
         "name": " 梦想击碎者",
-        "description": "<mainText><stats><ornnBonus>65</ornnBonus>攻击力<br><ornnBonus>30%</ornnBonus>攻击速度<br><ornnBonus>475</ornnBonus>生命值</stats><br><br><br><br><br><br><br><active>主动 - </active> <active>蹒跚斩击：</active>以你为中心，将450码半径内的敌人减速25%，并获得25%x命中英雄数的移动速度加成，持续3秒。可在施放时移动(30秒(受益于技能急速)冷却时间)。</mainText>",
+        "description": "<mainText><stats><ornnBonus>70</ornnBonus>攻击力<br><ornnBonus>35%</ornnBonus>攻击速度<br><ornnBonus>475</ornnBonus>生命值</stats><br><br><passive>回火</passive><br>造成<physicalDamage>物理伤害</physicalDamage>时为你提供持续2秒的<speed>20移动速度</speed>。<br><br> <active>主动</active> <br><active>破阵冲击波</active><br>对附近的敌人们造成35%<status>减速</status>并且每命中一个英雄就会获得<speed>35%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -9018,7 +9017,7 @@
     {
         "id": 7020,
         "name": " 舒瑞娅的安魂曲",
-        "description": "GeneratedTip_Item_7020_ExternalDescription",
+        "description": "<mainText><stats><ornnBonus>70</ornnBonus>法术强度<br><ornnBonus>25</ornnBonus>技能急速<br><ornnBonus>10%</ornnBonus>移动速度<br><ornnBonus>200%</ornnBonus>基础法力回复</stats><br><br><br><br> <active>主动</active>  (0秒)<br><active>鼓舞演讲</active><br>为附近的友军提供移动速度。<br><br></mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -9158,7 +9157,7 @@
     {
         "id": 7025,
         "name": " 利维坦之甲",
-        "description": "GeneratedTip_Item_7025_ExternalDescription",
+        "description": "<mainText><stats><ornnBonus>1150</ornnBonus>生命值<br><ornnBonus>300%</ornnBonus>基础生命回复</stats><br><br><passive>庞然吞食</passive> 每个目标 (0秒)<br>当码内有一名敌方英雄时，会持续充能一次对该英雄的强力攻击。充能攻击会造成额外物理伤害，并为你提供永久最大生命值。<br><br><passive>歌利亚巨人</passive><br>获得基于总生命值的体型提升。 </mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9268,7 +9267,7 @@
     {
         "id": 7029,
         "name": " 幽梦之苏醒",
-        "description": "GeneratedTip_Item_7029_ExternalDescription",
+        "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>26</ornnBonus>穿甲</stats><br><br><passive>鬼影萦绕</passive><br>提供非战斗状态下的<speed>40移动速度</speed>。<br><br> <active>主动</active>  (0秒)<br><active>鬼魂步伐：</active><br>提供<speed>移动速度</speed>和<keyword>幽灵状态</keyword>。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -9373,7 +9372,7 @@
     {
         "id": 7033,
         "name": " 尖叫之城的哭喊",
-        "description": "<mainText><stats><ornnBonus>60</ornnBonus>法术强度<br><ornnBonus>300</ornnBonus>生命值<br><ornnBonus>25</ornnBonus>技能急速<br><ornnBonus>175%</ornnBonus>基础法力回复</stats><br><br><passive>灵魂虹吸</passive><br>对一名英雄造成伤害时会提供一块<passive>灵魂碎片</passive>。对一名友军提供治疗或护盾时，会消耗所有<passive>灵魂碎片</passive>来治疗该友军并对相距最近的那个敌方英雄造成基于碎片数量的魔法伤害。<br><br></mainText>",
+        "description": "<mainText><stats><ornnBonus>60</ornnBonus>法术强度<br><ornnBonus>300</ornnBonus>生命值<br><ornnBonus>25</ornnBonus>技能急速<br><ornnBonus>175%</ornnBonus>基础法力回复</stats><br><br><passive>灵魂虹吸</passive><br>对一名英雄造成伤害时会提供一块<passive>灵魂碎片</passive>。对一名友军提供治疗或护盾时，会消耗所有<passive>灵魂碎片</passive>来基于碎片数量治疗该友军并对相距最近的那个敌方英雄造成基于碎片数量的魔法伤害。<br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9542,7 +9541,7 @@
     {
         "id": 7039,
         "name": " 天殒",
-        "description": "<mainText><stats><ornnBonus>65</ornnBonus>攻击力<br><ornnBonus>500</ornnBonus>生命值<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br><passive>光盾打击</passive><br>对一个英雄打出的第一次攻击会暴击并治疗你自身。溢出的治疗效果会被提供为一个临时的额外生命值。</mainText>",
+        "description": "<mainText><stats><ornnBonus>65</ornnBonus>攻击力<br><ornnBonus>500</ornnBonus>生命值<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br><passive>光盾打击</passive><br>对一个英雄打出的第一次普攻会暴击并治疗你自身。溢出的治疗效果会被提供为一个临时的额外生命值。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9669,7 +9668,7 @@
     {
         "id": 8001,
         "name": "厌恨锁链",
-        "description": "<mainText><stats><attention>650</attention>生命值<br><attention>20</attention>技能急速</stats><br><br><passive>复仇令</passive><br>你随时间持续获得【复仇令】层数。每层【复仇令】会为你提供针对【仇敌】的1%伤害减免。<br><br><passive>报复</passive><br>在满层时，你的【仇敌】在你附近时会降低%韧性。<br><br><active>主动 - </active> <active>起誓</active><br>选择一名【仇敌】以开始积攒一个【复仇令】。</mainText>",
+        "description": "<mainText><stats><attention>650</attention>生命值<br><attention>20</attention>技能急速</stats><br><br><passive>复仇令</passive><br>你随时间持续获得【复仇令】层数。每层【复仇令】会为你提供针对【仇敌】的1%伤害减免。<br><br><passive>报复</passive><br>在满层时，你的【仇敌】在你附近时会降低%韧性。<br><br> <active>主动</active>  (0秒)<br><active>起誓</active><br>选择你的<passive>仇敌</passive>。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -9924,7 +9923,7 @@
     {
         "id": 223005,
         "name": "鬼蟹",
-        "description": "GeneratedTip_Item_223005_ExternalDescription",
+        "description": "<mainText><stats><attention>55</attention>移动速度</stats><br><br><br><br><active>主动 - </active> <active>墙体行走：</active>获得持续6秒的穿墙行走能力。在墙体内时，获得300移动速度。施放一个技能或进行攻击将结束这个效果(15 (0秒)).</mainText>",
         "active": true,
         "inStore": true,
         "from": [],
@@ -10265,8 +10264,7 @@
         "categories": [
             "Health",
             "Armor",
-            "CooldownReduction",
-            "OnHit",
+            "Mana",
             "AbilityHaste"
         ],
         "maxStacks": 1,
@@ -10457,7 +10455,7 @@
     {
         "id": 223074,
         "name": "贪欲九头蛇",
-        "description": "GeneratedTip_Item_223074_ExternalDescription",
+        "description": "<mainText><stats><attention>70</attention>攻击力<br><attention>20</attention>技能急速<br><buffedStat>15%</buffedStat>生命偷取</stats><br><br><br><li><passive>顺劈：</passive>攻击和技能会对附近的其它敌人造成物理伤害。<br><br><br> <active>主动</active><br><active>血斩</active><br>对你周围的敌人们造成物理伤害。</mainText>",
         "active": true,
         "inStore": true,
         "from": [],
@@ -10536,7 +10534,7 @@
     {
         "id": 223084,
         "name": "心之钢",
-        "description": "GeneratedTip_Item_223084_ExternalDescription",
+        "description": "<mainText><stats><attention>900</attention>生命值<br><attention>200%</attention>基础生命回复</stats><br><br><passive>庞然吞食</passive> 每个目标 (0秒)<br>当700码内有一名敌方英雄时，会在0秒里持续充能一次对该英雄的强力攻击。充能攻击会造成<physicalDamage>125 + <scaleHealth>10%装备生命值</scaleHealth>额外物理伤害</physicalDamage>，并为你提供相当于12%该伤害的<scaleHealth>永久最大生命值。</scaleHealth><br><br><passive>歌利亚巨人</passive><br>每有<scaleHealth>1000最大生命值</scaleHealth>，获得6%体型提升，至多至30%。 </mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -10717,7 +10715,8 @@
         "categories": [
             "SpellDamage",
             "OnHit",
-            "NonbootsMovement"
+            "NonbootsMovement",
+            "AbilityHaste"
         ],
         "maxStacks": 1,
         "requiredChampion": "",
@@ -10806,7 +10805,7 @@
     {
         "id": 223109,
         "name": "骑士之誓",
-        "description": "GeneratedTip_Item_223109_ExternalDescription",
+        "description": "<mainText><stats><buffedStat>500</buffedStat>生命值<br><buffedStat>45</buffedStat>护甲<br><attention>15</attention>技能急速<br><attention>125%</attention>基础生命回复</stats><br><br><br><li><passive>牺牲：</passive>当你的<attention>誓约者</attention>友军在附近时，将其所受的伤害转移到你身上，并为你提供基于<attention>誓约者</attention>对英雄的已造成伤害值的治疗效果。<br><br><br><active>主动 - </active> <active>立誓：</active>指定一名友方英雄作为你的<attention>誓约者</attention>(60 (0秒))。</mainText>",
         "active": true,
         "inStore": true,
         "from": [],
@@ -11619,7 +11618,7 @@
     {
         "id": 223748,
         "name": "巨型九头蛇",
-        "description": "GeneratedTip_Item_223748_ExternalDescription",
+        "description": "<mainText><stats><attention>50</attention>攻击力<br><attention>400</attention>生命值</stats><br><br><br><li><passive>巨像：</passive>获得基于<scaleAD>额外生命值的攻击力</scaleAD>。<li><passive>顺劈：</passive>攻击附带额外伤害<OnHit>攻击特效</OnHit>，并生成一道冲击波来对目标身后的敌人们造成物理伤害。<br><br> <active>主动</active><br><active>刚斩</active><br>在你的下一次攻击，<passive>顺劈</passive>将对你的目标和一个附近的冲击波内造成额外物理伤害。</mainText>",
         "active": true,
         "inStore": true,
         "from": [],
@@ -11668,7 +11667,7 @@
     {
         "id": 224004,
         "name": "幽魂弯刀",
-        "description": "GeneratedTip_Item_224004_ExternalDescription",
+        "description": "<mainText><stats><attention>70</attention>攻击力<br><attention>21</attention>穿甲</stats><br><br><br><br><active>主动 - </active> <active>灵魂之锚：</active>标记你的当前位置。在5秒后你将回到被标记的位置(30 (0秒))。</mainText>",
         "active": true,
         "inStore": true,
         "from": [],
@@ -11803,8 +11802,8 @@
         "from": [],
         "to": [],
         "categories": [
+            "Health",
             "SpellDamage",
-            "CooldownReduction",
             "NonbootsMovement",
             "AbilityHaste"
         ],
@@ -12137,7 +12136,7 @@
     {
         "id": 226631,
         "name": "挺进破坏者",
-        "description": "<mainText><stats><nerfedStat>60</nerfedStat>攻击力<br><attention>20%</attention>攻击速度<br><attention>375</attention>生命值</stats><br><br><br><li><passive>英勇步态：</passive>造成物理伤害时会提供移动速度。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得移动速度。<br><br><active>主动 - </active> <active>蹒跚斩击：</active>以你为中心，将450码半径内的敌人减速25%，并获得25%x命中英雄数的移动速度加成，持续3秒。可在施放时移动(30秒(受益于技能急速)冷却时间)。</mainText>",
+        "description": "<mainText><stats><nerfedStat>60</nerfedStat>攻击力<br><attention>20%</attention>攻击速度<br><attention>375</attention>生命值</stats><br><br><br><li><passive>英勇步态：</passive>造成物理伤害时会提供移动速度。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得移动速度。<br><br> <active>主动</active> <br><active>破阵冲击波</active><br>对附近的敌人们造成40%<status>减速</status>并且每命中一个英雄就会获得<speed>40%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
         "active": true,
         "inStore": true,
         "from": [],
@@ -12305,7 +12304,7 @@
     {
         "id": 226662,
         "name": "冰脉护手",
-        "description": "GeneratedTip_Item_226662_ExternalDescription",
+        "description": "<mainText><stats><attention>300</attention>生命值<br><attention>50</attention>护甲<br><nerfedStat>10</nerfedStat>技能急速</stats><br><br><br><li><passive>咒刃：</passive>施放技能后，你的下一次普通攻击会因强化而附带额外伤害并生成一个持续2秒的冰冷地带。经过该地带的敌人会被<status>减速</status>。你会致残你的主要目标，使其受到的减速幅度提升100%并使其对你造成的伤害削减0%，持续2.5秒(1.5 (0秒))。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得 <attention> 50生命值</attention>、<attention>5%</attention>韧性、和<attention>5%</attention>减速抗性。<br></mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -12334,7 +12333,7 @@
     {
         "id": 226664,
         "name": "涡轮炼金罐",
-        "description": "GeneratedTip_Item_226664_ExternalDescription",
+        "description": "<mainText><stats><buffedStat>600</buffedStat>生命值<br><attention>40</attention>魔法抗性<br><attention>100%</attention>基础生命回复</stats><br><br><br><br><active>主动 - </active> <active>极限超载：</active>在朝着敌方英雄或敌方防御塔移动时会提供<speed>80%移动速度</speed>，持续4秒。一旦贴近一名敌方英雄(或在4秒后)，你就会放出一道冲击波，使附近敌方英雄<status>减速</status>-50%，持续1.5秒(30 (0秒))。</mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -12545,7 +12544,7 @@
     {
         "id": 226691,
         "name": "德拉克萨的暮刃",
-        "description": "GeneratedTip_Item_226691_ExternalDescription",
+        "description": "<mainText><stats><attention>60</attention>攻击力<br><buffedStat>22</buffedStat>穿甲<br><attention>15</attention>技能急速</stats><br><br><br><li><passive>夜行者：</passive>你的技能可基于目标的已损失生命值造成额外的一部分伤害。如果一名在过去3秒内曾被你造成过伤害的英雄阵亡，你就会进入持续1.5秒的对非建筑单位的<keywordStealth>不可被选取</keywordStealth>状态(10 (0秒))。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得技能急速和移动速度。<br></mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -12724,7 +12723,7 @@
     {
         "id": 227002,
         "name": " 德拉克萨的暗影雕刻者",
-        "description": "GeneratedTip_Item_227002_ExternalDescription",
+        "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>26</ornnBonus>穿甲<br><ornnBonus>25</ornnBonus>技能急速</stats><br><br><br><li><passive>夜行者：</passive>你的技能可基于目标的已损失生命值造成额外的一部分伤害。如果一名在过去3秒内曾被你造成过伤害的英雄阵亡，你就会进入持续1.5秒的对非建筑单位的<keywordStealth>不可被选取</keywordStealth>状态(10 (0秒))。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得技能急速和移动速度。<br></mainText>",
         "active": false,
         "inStore": false,
         "from": [
@@ -12754,7 +12753,7 @@
     {
         "id": 227005,
         "name": " 冰霜之拳",
-        "description": "GeneratedTip_Item_227005_ExternalDescription",
+        "description": "<mainText><stats><ornnBonus>550</ornnBonus>生命值<br><ornnBonus>70</ornnBonus>护甲<br><ornnBonus>15</ornnBonus>技能急速</stats><br><br><br><li><passive>咒刃：</passive>施放技能后，你的下一次普通攻击会因强化而附带额外伤害并生成一个持续2秒的冰冷地带。经过该地带的敌人会被<status>减速</status>。你会致残你的主要目标，使其受到的减速幅度提升100%并使其对你造成的伤害削减0%，持续2.5秒(1.5 (0秒))。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得 <attention> 50生命值</attention>、<attention>5%</attention>韧性、和<attention>5%</attention>减速抗性。<br></mainText>",
         "active": false,
         "inStore": false,
         "from": [
@@ -13007,7 +13006,7 @@
     {
         "id": 227016,
         "name": " 梦想击碎者",
-        "description": "<mainText><stats><nerfedStat>60</nerfedStat>攻击力<br><ornnBonus>30%</ornnBonus>攻击速度<br><ornnBonus>400</ornnBonus>生命值</stats><br><br><br><li><passive>英勇步态：</passive>造成物理伤害时会提供移动速度。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得移动速度。<br><br><active>主动 - </active> <active>蹒跚斩击：</active>以你为中心，将450码半径内的敌人减速25%，并获得25%x命中英雄数的移动速度加成，持续3秒。可在施放时移动(30秒(受益于技能急速)冷却时间)。</mainText>",
+        "description": "<mainText><stats><nerfedStat>60</nerfedStat>攻击力<br><ornnBonus>30%</ornnBonus>攻击速度<br><ornnBonus>400</ornnBonus>生命值</stats><br><br><br><li><passive>英勇步态：</passive>造成物理伤害时会提供移动速度。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得移动速度。<br><br> <active>主动</active> <br><active>破阵冲击波</active><br>对附近的敌人们造成40%<status>减速</status>并且每命中一个英雄就会获得<speed>40%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
         "active": true,
         "inStore": false,
         "from": [
@@ -13237,7 +13236,7 @@
     {
         "id": 227025,
         "name": " 利维坦之甲",
-        "description": "GeneratedTip_Item_227025_ExternalDescription",
+        "description": "<mainText><stats><ornnBonus>1050</ornnBonus>生命值<br><ornnBonus>300%</ornnBonus>基础生命回复</stats><br><br><passive>庞然吞食</passive> 每个目标 (0秒)<br>当700码内有一名敌方英雄时，会在0秒里持续充能一次对该英雄的强力攻击。充能攻击会造成<physicalDamage>125 + <scaleHealth>10%装备生命值</scaleHealth>额外物理伤害</physicalDamage>，并为你提供相当于12%该伤害的<scaleHealth>永久最大生命值。</scaleHealth><br><br><passive>歌利亚巨人</passive><br>每有<scaleHealth>1000最大生命值</scaleHealth>，获得6%体型提升，至多至30%。 </mainText>",
         "active": false,
         "inStore": false,
         "from": [
@@ -13347,7 +13346,7 @@
     {
         "id": 227029,
         "name": " 幽梦之苏醒",
-        "description": "GeneratedTip_Item_227029_ExternalDescription",
+        "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>26</ornnBonus>穿甲</stats><br><br><passive>鬼影萦绕</passive><br>提供非战斗状态下的<speed>40移动速度</speed>。<br><br> <active>主动</active>  (0秒)<br><active>鬼魂步伐：</active><br>提供<speed>移动速度</speed>和<keyword>幽灵状态</keyword>。</mainText>",
         "active": true,
         "inStore": false,
         "from": [
@@ -13480,7 +13479,7 @@
     {
         "id": 228001,
         "name": "厌恨锁链",
-        "description": "GeneratedTip_Item_228001_ExternalDescription",
+        "description": "<mainText><stats><attention>650</attention>生命值<br><attention>20</attention>技能急速</stats><br><br><br><li><passive>复仇令：</passive>减免来自你的【仇敌】的伤害。你的【仇敌】在你附近时会降低韧性。<br><br><rules>主动效果的施放距离无限。</rules><br><br><flavorText>“她曾发誓要用她的一生来毁灭他……”</flavorText><br><br><active>主动 - </active> <active>起誓：</active>选择一名【仇敌】(90 (0秒))。</mainText>",
         "active": true,
         "inStore": true,
         "from": [],

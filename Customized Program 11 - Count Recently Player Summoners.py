@@ -1844,6 +1844,14 @@ async def search_recent_players(connection):
                                             TFTHistory_data[key].append("")
                                     print("加载进度（Loading process）：%d/%d\t对局序号（MatchID）： Unknown" %(i + 1, len(TFTHistory)))
                                 else:
+                                    TFTHistoryJson = TFTHistory[i]["json"] #该数据结构应用于1 ≤ j ≤ 8（This variable applies when 1 ≤ j ≤ 8）
+                                    #j == 1
+                                    game_datetime = int(TFTHistoryJson["game_datetime"])
+                                    game_date = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(game_datetime // 1000))
+                                    game_date_fraction = game_datetime / 1000 - game_datetime // 1000
+                                    #j == 4
+                                    TFTGameVersion = version_re.search(TFTHistoryJson["game_version"]).group()
+                                    TFTGamePatch = ".".join(TFTGameVersion.split(".")[:2])
                                     for j in range(len(TFTHistory_header)):
                                         key = TFTHistory_header_keys[j]
                                         if j == 0:
@@ -1851,13 +1859,9 @@ async def search_recent_players(connection):
                                                 if TFTHistory[i]["json"]["participants"][k]["puuid"] != current_puuid:
                                                     TFTHistory_data[key].append(i + 1)
                                         elif j >= 1 and j <= 8:
-                                            TFTHistoryJson = TFTHistory[i]["json"]
                                             for k in range(len(TFTHistory[i]["metadata"]["participants"])):
                                                 if TFTHistory[i]["json"]["participants"][k]["puuid"] != current_puuid:
                                                     if j == 1:
-                                                        game_datetime = int(TFTHistoryJson["game_datetime"])
-                                                        game_date = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(game_datetime // 1000))
-                                                        game_date_fraction = game_datetime / 1000 - game_datetime // 1000
                                                         to_append = game_date + ("{0:.3}".format(game_date_fraction))[1:5]
                                                         TFTHistory_data[key].append(to_append)
                                                     elif j in {2, 5, 7}:
@@ -1869,9 +1873,7 @@ async def search_recent_players(connection):
                                                         TFTGameDuration_raw.append(TFTHistoryJson["game_length"])
                                                         TFTHistory_data[key].append("%d:%02d" %(int(TFTHistoryJson["game_length"]) // 60, int(TFTHistoryJson["game_length"]) % 60))
                                                     elif j == 4:
-                                                        TFTGameVersion = version_re.search(TFTHistoryJson["game_version"]).group()
                                                         TFTHistory_data[key].append(TFTGameVersion)
-                                                        TFTGamePatch = ".".join(TFTGameVersion.split(".")[:2])
                                                         TFTGamePatches.append(TFTGamePatch)
                                                     else:
                                                         if not key in TFTHistoryJson.keys() or TFTHistoryJson[key] == "standard": #在云顶之弈第4赛季及以前，TFTHistoryJson中无tft_game_type键（Before (and including) TFT set 4, the key `tft_game_type` is absent from `TFTHistoryJson`）
@@ -2230,6 +2232,8 @@ async def search_recent_players(connection):
                                                                             break
                                                                         else:
                                                                             break
+                                                        else:
+                                                            to_append = ""
                                                         if TFTHistory[i]["json"]["participants"][k]["puuid"] != current_puuid:
                                                             TFTHistory_data[key].append(to_append)
                                                     else:

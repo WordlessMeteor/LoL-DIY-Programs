@@ -7790,7 +7790,7 @@
     {
         "contentId": "fb26c400-5020-45c3-93ad-6548ce7cb0bc",
         "itemId": 47028,
-        "name": "花灯 小雅",
+        "name": "幸运花灯 小雅",
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/Companions/Tooltip_ElegantDragon_Liuli_Liuli4_Tier1.LL_ElegantDragon_Liuli.png",
         "description": "新年新气象。",
         "level": 1,
@@ -7808,7 +7808,7 @@
     {
         "contentId": "13dd199d-76cc-494d-87d3-0ab2228a7212",
         "itemId": 47029,
-        "name": "花灯 小雅",
+        "name": "幸运花灯 小雅",
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/Companions/Tooltip_ElegantDragon_Liuli_Liuli4_Tier2.LL_ElegantDragon_Liuli.png",
         "description": "新年新气象。",
         "level": 2,
@@ -7823,7 +7823,7 @@
     {
         "contentId": "6418f933-1a78-4fd0-99e9-f5c6c8c86eda",
         "itemId": 47030,
-        "name": "花灯 小雅",
+        "name": "幸运花灯 小雅",
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/Companions/Tooltip_ElegantDragon_Liuli_Liuli4_Tier3.LL_ElegantDragon_Liuli.png",
         "description": "新年新气象。",
         "level": 3,
@@ -7838,9 +7838,9 @@
     {
         "contentId": "74762a46-b770-4fac-a03a-bdeec96f819f",
         "itemId": 47031,
-        "name": "皇家 小雅",
+        "name": "祥瑞 小雅",
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/Companions/Tooltip_ElegantDragon_Liuli_Liuli5_Tier1.LL_ElegantDragon_Liuli.png",
-        "description": "庄严精妙，做到最好。",
+        "description": "庄严精妙，尊享非凡。",
         "level": 1,
         "speciesName": "小雅",
         "speciesId": 47,
@@ -7856,9 +7856,9 @@
     {
         "contentId": "87922f4c-66f6-4693-8bab-825037093a5e",
         "itemId": 47032,
-        "name": "皇家 小雅",
+        "name": "祥瑞 小雅",
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/Companions/Tooltip_ElegantDragon_Liuli_Liuli5_Tier2.LL_ElegantDragon_Liuli.png",
-        "description": "庄严精妙，做到最好。",
+        "description": "庄严精妙，尊享非凡。",
         "level": 2,
         "speciesName": "小雅",
         "speciesId": 47,
@@ -7871,9 +7871,9 @@
     {
         "contentId": "1fcb083c-9513-4968-9944-44cc96c75e1c",
         "itemId": 47033,
-        "name": "皇家 小雅",
+        "name": "祥瑞 小雅",
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/Companions/Tooltip_ElegantDragon_Liuli_Liuli5_Tier3.LL_ElegantDragon_Liuli.png",
-        "description": "庄严精妙，做到最好。",
+        "description": "庄严精妙，尊享非凡。",
         "level": 3,
         "speciesName": "小雅",
         "speciesId": 47,

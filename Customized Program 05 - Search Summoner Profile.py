@@ -1095,10 +1095,12 @@ async def search_profile(connection):
                 pkl1name = "Intermediate Object - info (Summoner Profile) - %s (%s).pkl" %(displayName, currentTime)
                 #with open(os.path.join(folder, pkl1name), "wb") as IntObj1:
                     #pickle.dump(info, IntObj1)
-                if "errorCode" in ranked and ranked["httpStatus"] == 404: #国服测试服的排位数据API未知（API of ranked stats on Chinese PBE is unknown）
+                if "errorCode" in ranked and ranked["httpStatus"] == 404: #很久以前，国服体验服的排位数据API未知。现在已经与正式服统一（Long ago, API of ranked stats on Chinese PBE was unknown. Now it accords with Live servers）
                     info_data = {"项目": ["帐户序号", "召唤师名称", "玩家名称", "内置名称", "改名警告", "升级进度", "生涯公开性", "生涯背景序号", "玩家通用唯一识别码", "当前大乱斗重随次数", "最大重随次数", "当前大乱斗重随点", "单次重随消耗大乱斗重随点", "增加一次重随次数所需大乱斗重随点", "召唤师序号", "召唤师等级", "尾标", "尚未命名", "目前经验", "升级所需经验"], "Items": ["accountID", "displayName", "gameName", "internalName", "nameChangeFlag", "percentCompleteforNextLevel", "privacy", "profileIconId", "puuid", "numberOfRolls", "maxRerollPoints", "currentRerollPoints", "pointsCostToRoll", "pointsToRoll", "summonerId", "summonerLevel", "tagLine", "unnamed", "xpSinceLastLevel", "xpUntilNextLevel"], "值": [info["accountId"], info["displayName"], info["gameName"], info["internalName"], info["nameChangeFlag"], info["percentCompleteForNextLevel"], info["privacy"], info["profileIconId"], info["puuid"], info["rerollPoints"]["numberOfRolls"], info["rerollPoints"]["maxRolls"], info["rerollPoints"]["currentPoints"], info["rerollPoints"]["pointsCostToRoll"], info["rerollPoints"]["pointsToReroll"], info["summonerId"], info["summonerLevel"], info["tagLine"], info["unnamed"], info["xpSinceLastLevel"], info["xpUntilNextLevel"]]}
+                elif not "highestPreviousSeasonAchievedDivision" in ranked and not "highestPreviousSeasonAchievedTier" in ranked: #在美测服14.2版本发现这两个键被删除了（These two keys are found to be deleted in PBE Patch 14.2）
+                    info_data = {"项目": ["帐户序号", "召唤师名称", "玩家名称", "内置名称", "改名警告", "升级进度", "生涯公开性", "生涯背景序号", "玩家通用唯一识别码", "当前大乱斗重随次数", "最大重随次数", "当前大乱斗重随点", "单次重随消耗大乱斗重随点", "增加一次重随次数所需大乱斗重随点", "召唤师序号", "召唤师等级", "尾标", "尚未命名", "目前经验", "升级所需经验", "当前赛季赛段点", "已获得的排位赛段奖励物品序号", "当前赛季最高赛段（召唤师峡谷）", "过往赛季结束赛段", "过往赛季结束赛段分级"], "Items": ["accountID", "displayName", "gameName", "internalName", "nameChangeFlag", "percentCompleteforNextLevel", "privacy", "profileIconId", "puuid", "numberOfRolls", "maxRerollPoints", "currentRerollPoints", "pointsCostToRoll", "pointsToRoll", "summonerId", "summonerLevel", "tagLine", "unnamed", "xpSinceLastLevel", "xpUntilNextLevel", "currentSeasonSplitPoints", "earnedRegaliaRewardIds", "highestCurrentSeasonReachedTierSR", "highestPreviousSeasonEndTier", "highestPreviousSeasonEndDivision"], "值": [info["accountId"], info["displayName"], info["gameName"], info["internalName"], info["nameChangeFlag"], info["percentCompleteForNextLevel"], info["privacy"], info["profileIconId"], info["puuid"], info["rerollPoints"]["numberOfRolls"], info["rerollPoints"]["maxRolls"], info["rerollPoints"]["currentPoints"], info["rerollPoints"]["pointsCostToRoll"], info["rerollPoints"]["pointsToReroll"], info["summonerId"], info["summonerLevel"], info["tagLine"], info["unnamed"], info["xpSinceLastLevel"], info["xpUntilNextLevel"], ranked["currentSeasonSplitPoints"], ranked["earnedRegaliaRewardIds"], tier[ranked["highestCurrentSeasonReachedTierSR"]], tier[ranked["highestPreviousSeasonEndTier"]], ranked["highestPreviousSeasonEndDivision"]]}
                 else:
-                    info_data = {"项目": ["帐户序号", "召唤师名称", "玩家名称", "内置名称", "改名警告", "升级进度", "生涯公开性", "生涯背景序号", "玩家通用唯一识别码", "当前大乱斗重随次数", "最大重随次数", "当前大乱斗重随点", "单次重随消耗大乱斗重随点", "增加一次重随次数所需大乱斗重随点", "召唤师序号", "召唤师等级", "尾标", "尚未命名", "目前经验", "升级所需经验", "已获得的排位赛段奖励物品序号", "当前赛季最高赛段", "过往赛季最高赛段（召唤师峡谷）", "过往赛季最高赛段分级", "过往赛季结束赛段", "过往赛季结束赛段分级"], "Items": ["accountID", "displayName", "gameName", "internalName", "nameChangeFlag", "percentCompleteforNextLevel", "privacy", "profileIconId", "puuid", "numberOfRolls", "maxRerollPoints", "currentRerollPoints", "pointsCostToRoll", "pointsToRoll", "summonerId", "summonerLevel", "tagLine", "unnamed", "xpSinceLastLevel", "xpUntilNextLevel", "earnedRegaliaRewardIds", "highestCurrentSeasonReachedTierSR", "highestPreviousSeasonAchievedTier", "highestPreviousSeasonAchievedDivision", "highestPreviousSeasonEndTier", "highestPreviousSeasonEndDivision"], "值": [info["accountId"], info["displayName"], info["gameName"], info["internalName"], info["nameChangeFlag"], info["percentCompleteForNextLevel"], info["privacy"], info["profileIconId"], info["puuid"], info["rerollPoints"]["numberOfRolls"], info["rerollPoints"]["maxRolls"], info["rerollPoints"]["currentPoints"], info["rerollPoints"]["pointsCostToRoll"], info["rerollPoints"]["pointsToReroll"], info["summonerId"], info["summonerLevel"], info["tagLine"], info["unnamed"], info["xpSinceLastLevel"], info["xpUntilNextLevel"], tier[ranked["highestCurrentSeasonReachedTierSR"]], ranked["earnedRegaliaRewardIds"], tier[ranked["highestPreviousSeasonAchievedTier"]], ranked["highestPreviousSeasonAchievedDivision"], tier[ranked["highestPreviousSeasonEndTier"]], ranked["highestPreviousSeasonEndDivision"]]}
+                    info_data = {"项目": ["帐户序号", "召唤师名称", "玩家名称", "内置名称", "改名警告", "升级进度", "生涯公开性", "生涯背景序号", "玩家通用唯一识别码", "当前大乱斗重随次数", "最大重随次数", "当前大乱斗重随点", "单次重随消耗大乱斗重随点", "增加一次重随次数所需大乱斗重随点", "召唤师序号", "召唤师等级", "尾标", "尚未命名", "目前经验", "升级所需经验", "当前赛季赛段点", "已获得的排位赛段奖励物品序号", "当前赛季最高赛段（召唤师峡谷）", "过往赛季最高赛段", "过往赛季最高赛段分级", "过往赛季结束赛段", "过往赛季结束赛段分级"], "Items": ["accountID", "displayName", "gameName", "internalName", "nameChangeFlag", "percentCompleteforNextLevel", "privacy", "profileIconId", "puuid", "numberOfRolls", "maxRerollPoints", "currentRerollPoints", "pointsCostToRoll", "pointsToRoll", "summonerId", "summonerLevel", "tagLine", "unnamed", "xpSinceLastLevel", "xpUntilNextLevel", "currentSeasonSplitPoints", "earnedRegaliaRewardIds", "highestCurrentSeasonReachedTierSR", "highestPreviousSeasonAchievedTier", "highestPreviousSeasonAchievedDivision", "highestPreviousSeasonEndTier", "highestPreviousSeasonEndDivision"], "值": [info["accountId"], info["displayName"], info["gameName"], info["internalName"], info["nameChangeFlag"], info["percentCompleteForNextLevel"], info["privacy"], info["profileIconId"], info["puuid"], info["rerollPoints"]["numberOfRolls"], info["rerollPoints"]["maxRolls"], info["rerollPoints"]["currentPoints"], info["rerollPoints"]["pointsCostToRoll"], info["rerollPoints"]["pointsToReroll"], info["summonerId"], info["summonerLevel"], info["tagLine"], info["unnamed"], info["xpSinceLastLevel"], info["xpUntilNextLevel"], ranked["currentSeasonSplitPoints"], ranked["earnedRegaliaRewardIds"], tier[ranked["highestCurrentSeasonReachedTierSR"]], tier[ranked["highestPreviousSeasonAchievedTier"]], ranked["highestPreviousSeasonAchievedDivision"], tier[ranked["highestPreviousSeasonEndTier"]], ranked["highestPreviousSeasonEndDivision"]]}
                 info_df = pandas.DataFrame(data = info_data)
                 
                 #print("召唤师英雄成就如下：\nSummoner champion mastery is as follows:")
@@ -1194,7 +1196,7 @@ async def search_profile(connection):
                 pkl3name = "Intermediate Object - ranked (Rank) - %s (%s).pkl" %(displayName, currentTime)
                 #with open(os.path.join(folder, pkl3name), "wb") as IntObj3:
                     #pickle.dump(ranked, IntObj3)
-                ranked_header = {"division": "分级", "isProvisional": "定位中", "leaguePoints": "胜点", "losses": "负场", "miniSeriesProgress": "定位赛/晋级赛进展", "previousSeasonAchievedDivision": "过往赛季取得赛段分级", "previousSeasonAchievedTier": "过往赛季取得赛段", "previousSeasonEndDivision": "过往赛季结束赛段分级", "previousSeasonEndTier": "过往赛季结束赛段", "provisionalGameThreshold": "总定位场次", "provisionalGamesRemaining": "剩余定位场次", "queueType": "对局类型", "ratedRating": "段位点", "ratedTier": "段位", "tier": "段位", "warnings": "警告消息", "wins": "胜场"}
+                ranked_header = {"division": "分级", "isProvisional": "定位中", "leaguePoints": "胜点", "losses": "负场", "miniSeriesProgress": "定位赛/晋级赛进展", "previousSeasonAchievedDivision": "过往赛季最高赛段分级", "previousSeasonAchievedTier": "过往赛季最高赛段", "previousSeasonEndDivision": "过往赛季结束赛段分级", "previousSeasonEndTier": "过往赛季结束赛段", "provisionalGameThreshold": "总定位场次", "provisionalGamesRemaining": "剩余定位场次", "queueType": "对局类型", "ratedRating": "段位点", "ratedTier": "段位", "tier": "段位", "warnings": "警告消息", "wins": "胜场"}
                 queueType = {"RANKED_SOLO_5x5": "单人/双人", "RANKED_FLEX_SR": "灵活 5V5", "RANKED_TFT": "云顶之弈", "RANKED_TFT_PAIRS": "2V0", "RANKED_TFT_DOUBLE_UP": "双人作战 (BETA测试)", "RANKED_TFT_TURBO": "狂暴模式", "CHERRY": "斗魂竞技场"} #2V0模式仅美测服可用（RANKED_TFT_PAIRS is only available on PBE）
                 ranked_header_keys = list(ranked_header.keys())
                 ranked_data = {}
@@ -1207,7 +1209,10 @@ async def search_profile(connection):
                     ranked_data[key] = [ranked_header[key]]
                     if i == 0 or i == 5 or i == 7:
                         for j in range(len(ranked["queues"])):
-                            value = ranked["queues"][j][key]
+                            try:
+                                value = ranked["queues"][j][key]
+                            except KeyError: #在美测服14.2版本发现“previousSeasonAchievedDivision”这个键被删除了（The key `previousSeasonAchievedDivision` are found to be deleted in PBE Patch 14.2）
+                                value = "NA"
                             if value == "NA":
                                 ranked_data[key].append("")
                             else:
@@ -1221,14 +1226,20 @@ async def search_profile(connection):
                                 ranked_data[key].append("")
                     elif i == 6 or i == 8 or i == 14:
                         for j in range(len(ranked["queues"])):
-                            ranked_data[key].append(tier[ranked["queues"][j][key]])
+                            try:
+                                ranked_data[key].append(tier[ranked["queues"][j][key]])
+                            except KeyError: #在美测服14.2版本发现“previousSeasonAchievedTier”这个键被删除了（The key `previousSeasonAchievedTier` are found to be deleted in PBE Patch 14.2）
+                                ranked_data[key].append("")
                     elif i == 11:
                         for j in range(len(ranked["queues"])):
                             ranked_data[key].append(queueType[ranked["queues"][j][key]])
                     else:
                         for j in range(len(ranked["queues"])):
                             ranked_data[key].append(ranked["queues"][j][key])
-                ranked_statistics_display_order = [11, 14, 0, 2, 13, 12, 16, 3, 1, 9, 10, 4, 6, 5, 8, 7, 15]
+                if not "previousSeasonAchievedDivision" in ranked["queues"][0] and not "previousSeasonAchievedTier" in ranked["queues"][0]:
+                    ranked_statistics_display_order = [11, 14, 0, 2, 13, 12, 16, 3, 1, 9, 10, 4, 8, 7, 15]
+                else:
+                    ranked_statistics_display_order = [11, 14, 0, 2, 13, 12, 16, 3, 1, 9, 10, 4, 6, 5, 8, 7, 15]
                 ranked_data_organized = {}
                 for i in ranked_statistics_display_order:
                     if not i in [13, 14, 2, 12]: #这里要实现将两个段位参数和两个胜点各合并为一个参数，因此不能简单沿用ranked_data中相应的列表（Here I want to merge the two pairs of parameters - ratedTier and tier, leaguePoints and ratedRating - into two single parameters respectively, so I shouldn't simply inherit the two lists in ranked_data）

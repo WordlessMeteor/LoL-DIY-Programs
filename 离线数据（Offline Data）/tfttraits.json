@@ -2047,7 +2047,7 @@
                 "effect_amounts": [
                     {
                         "name": "FighterAS",
-                        "value": 60.0000,
+                        "value": 70.0000,
                         "format_string": ""
                     },
                     {
@@ -2112,7 +2112,7 @@
                 "effect_amounts": [
                     {
                         "name": "AttackSpeed",
-                        "value": 0.1000,
+                        "value": 0.0800,
                         "format_string": ""
                     },
                     {
@@ -2135,7 +2135,7 @@
                 "effect_amounts": [
                     {
                         "name": "AttackSpeed",
-                        "value": 0.1500,
+                        "value": 0.1200,
                         "format_string": ""
                     },
                     {
@@ -2163,7 +2163,7 @@
                     },
                     {
                         "name": "Healing",
-                        "value": 0.0500,
+                        "value": 0.0400,
                         "format_string": ""
                     },
                     {
@@ -2937,12 +2937,12 @@
                 "effect_amounts": [
                     {
                         "name": "BONUS_HEALTH",
-                        "value": 170.0000,
+                        "value": 180.0000,
                         "format_string": ""
                     },
                     {
                         "name": "BONUS_AD_AP",
-                        "value": 0.1700,
+                        "value": 0.1800,
                         "format_string": ""
                     }
                 ],
@@ -2955,12 +2955,12 @@
                 "effect_amounts": [
                     {
                         "name": "BONUS_HEALTH",
-                        "value": 280.0000,
+                        "value": 300.0000,
                         "format_string": ""
                     },
                     {
                         "name": "BONUS_AD_AP",
-                        "value": 0.2800,
+                        "value": 0.3000,
                         "format_string": ""
                     }
                 ],
@@ -2973,12 +2973,12 @@
                 "effect_amounts": [
                     {
                         "name": "BONUS_HEALTH",
-                        "value": 420.0000,
+                        "value": 450.0000,
                         "format_string": ""
                     },
                     {
                         "name": "BONUS_AD_AP",
-                        "value": 0.4200,
+                        "value": 0.4500,
                         "format_string": ""
                     }
                 ],
