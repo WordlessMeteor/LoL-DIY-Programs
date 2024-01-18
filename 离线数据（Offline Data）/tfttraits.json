@@ -4097,7 +4097,7 @@
                 "effect_amounts": [
                     {
                         "name": "ProcChance",
-                        "value": 40.0000,
+                        "value": 35.0000,
                         "format_string": ""
                     },
                     {
@@ -4115,7 +4115,7 @@
                 "effect_amounts": [
                     {
                         "name": "ProcChance",
-                        "value": 40.0000,
+                        "value": 35.0000,
                         "format_string": ""
                     },
                     {
