@@ -7551,7 +7551,7 @@
     {
         "id": 6631,
         "name": "挺进破坏者",
-        "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>25%</attention>攻击速度<br><attention>400</attention>生命值</stats><br><br><passive>回火</passive><br>造成<physicalDamage>物理伤害</physicalDamage>时为你提供持续2秒的<speed>20移动速度</speed>。<br><br> <active>主动</active> <br><active>破阵冲击波</active><br>对附近的敌人们造成35%<status>减速</status>并且每命中一个英雄就会获得<speed>35%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
+        "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>30%</attention>攻击速度<br><attention>400</attention>生命值</stats><br><br><passive>回火</passive><br>造成<physicalDamage>物理伤害</physicalDamage>时为你提供持续2秒的<speed>20移动速度</speed>。<br><br> <active>主动</active> <br><active>破阵冲击波</active><br>对附近的敌人们造成35%<status>减速</status>并且每命中一个英雄就会获得<speed>35%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -8900,7 +8900,7 @@
     {
         "id": 7016,
         "name": " 梦想击碎者",
-        "description": "<mainText><stats><ornnBonus>70</ornnBonus>攻击力<br><ornnBonus>35%</ornnBonus>攻击速度<br><ornnBonus>475</ornnBonus>生命值</stats><br><br><passive>回火</passive><br>造成<physicalDamage>物理伤害</physicalDamage>时为你提供持续2秒的<speed>20移动速度</speed>。<br><br> <active>主动</active> <br><active>破阵冲击波</active><br>对附近的敌人们造成35%<status>减速</status>并且每命中一个英雄就会获得<speed>35%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
+        "description": "<mainText><stats><ornnBonus>70</ornnBonus>攻击力<br><ornnBonus>40%</ornnBonus>攻击速度<br><ornnBonus>475</ornnBonus>生命值</stats><br><br><passive>回火</passive><br>造成<physicalDamage>物理伤害</physicalDamage>时为你提供持续2秒的<speed>20移动速度</speed>。<br><br> <active>主动</active> <br><active>破阵冲击波</active><br>对附近的敌人们造成35%<status>减速</status>并且每命中一个英雄就会获得<speed>35%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
         "active": true,
         "inStore": true,
         "from": [

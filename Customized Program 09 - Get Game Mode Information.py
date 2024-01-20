@@ -1,5 +1,6 @@
 from lcu_driver import Connector
-import os, pandas, time
+from wcwidth import wcswidth
+import os, pandas, time, unicodedata, shutil
 
 #=============================================================================
 # * 声明（Declaration）
@@ -49,6 +50,78 @@ async def get_lockfile(connection):
         print(f'riot    {connection.auth_key}')
         return connection.auth_key
     return None
+
+#-----------------------------------------------------------------------------
+# 数据框格式化输出（Format print dataframes）
+#-----------------------------------------------------------------------------
+def count_nonASCII(s: str): #统计一个字符串中占用命令行2个宽度单位的字符个数（Count the number of characters that take up 2 width unit in CMD）
+    return sum([unicodedata.east_asian_width(character) in ("F", "W") for character in list(str(s))])
+
+def format_df(df: pandas.DataFrame): #按照每列最长字符串的命令行宽度加上2，再根据每个数据的中文字符数量决定最终格式化输出的字符串宽度（Get the width of the longest string of each column, add it by 2, and substract it by the number of each cell string's Chinese characters to get the final width for each cell to print using `format` function）
+    maxLens = {}
+    maxWidth = shutil.get_terminal_size()[0]
+    fields = df.columns.tolist()
+    for field in fields:
+        maxLens[field] = max(max(map(lambda x: wcswidth(str(x)), df[field])), wcswidth(str(field))) + 2
+    if sum(maxLens.values()) + 2 * (len(fields) - 1) > maxWidth:
+        print("单行数据字符串输出宽度超过当前终端窗口宽度！是否继续？（输入任意键继续，否则直接打印该数据框。）\nThe output width of each record string exceeds the current width of the terminal window! Continue? (Input anything to continue, or null to directly print this dataframe.)")
+        if input() == "":
+            #print(df)
+            result = str(df)
+            return (result, maxLens)
+    result = ""
+    for i in range(df.shape[1]):
+        field = fields[i]
+        tmp = "{0:^{w}}".format(field, w = maxLens[str(field)] - count_nonASCII(str(field)))
+        result += tmp
+        #print(tmp, end = "")
+        if i != df.shape[1] - 1:
+            result += "  "
+            #print("  ", end = "")
+    result += "\n"
+    #print()
+    for i in range(df.shape[0]):
+        for j in range(df.shape[1]):
+            field = fields[j]
+            cell = df[field][i]
+            tmp = "{0:^{w}}".format(cell, w = maxLens[field] - count_nonASCII(str(cell)))
+            result += tmp
+            #print(tmp, end = "")
+            if j != df.shape[1] - 1:
+                result += "  "
+                #print("  ", end = "")
+        if i != df.shape[0] - 1:
+            result += "\n"
+        #print() #注意这里的缩进和上一行不同（Note that here the indentation is different from the last line）
+    return (result, maxLens)
+
+#-----------------------------------------------------------------------------
+# 梳理可用队列（Sorts out available queues）
+#-----------------------------------------------------------------------------
+async def check_available_queue(connection):
+    queues = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
+    map_CN = {8: "水晶之痕", 10: "扭曲丛林", 11: "召唤师峡谷", 12: "嚎哭深渊", 14: "屠夫之桥", 16: "宇宙遗迹", 18: "瓦罗兰城市公园", 19: "第43区", 20: "失控地点", 21: "百合与莲花的神庙", 22: "聚点危机", 30: "怒火角斗场"}
+    map_EN = {8: "Crystal Scar", 10: "Twisted Treeline", 11: "Summoner's Rift", 12: "Howling Abyss", 14: "Butcher's Bridge", 16: "Cosmic Ruins", 18: "Valoran City Park", 19: "Substructure 43", 20: "Crash Site", 21: "Temple of Lily and Lotus", 22: "Convergence", 30: "Rings of Wrath"}
+    pickmode_CN = {"AllRandomPickStrategy": "全随机模式", "SimulPickStrategy": "自选模式", "TeamBuilderDraftPickStrategy": "征召模式", "OneTeamVotePickStrategy": "投票", "TournamentPickStrategy": "竞技征召模式", "": "待定"}
+    pickmode_EN = {"AllRandomPickStrategy": "All Random", "SimulPickStrategy": "Blind Pick", "TeamBuilderDraftPickStrategy": "Draft Mode", "OneTeamVotePickStrategy": "Vote", "TournamentPickStrategy": "Tournament Draft", "": "Pending"}
+    available_queues = {}
+    for queue in queues:
+        if queue["queueAvailability"] == "Available":
+            available_queues[queue["id"]] = queue
+    queue_dict = {"queueID": [], "mapID": [], "map_CN": [], "map_EN": [], "gameMode": [], "pickType_CN": [], "pickType_EN": []}
+    for queue in available_queues.values():
+        queue_dict["queueID"].append(queue["id"])
+        queue_dict["mapID"].append(queue["mapId"])
+        queue_dict["map_CN"].append(map_CN[queue["mapId"]])
+        queue_dict["map_EN"].append(map_EN[queue["mapId"]])
+        queue_dict["gameMode"].append(queue["name"])
+        queue_dict["pickType_CN"].append(pickmode_CN[queue["gameTypeConfig"]["pickMode"]])
+        queue_dict["pickType_EN"].append(pickmode_EN[queue["gameTypeConfig"]["pickMode"]])
+    queue_df = pandas.DataFrame(queue_dict)
+    queue_df.sort_values(by = "queueID", inplace = True, ascending = True, ignore_index = True)
+    print("*****************************************************************************")
+    print(format_df(queue_df)[0])
+    print("*****************************************************************************")
 
 #-----------------------------------------------------------------------------
 # 获取游戏模式信息（Get game mode information）
@@ -146,6 +219,21 @@ async def gamemode(connection):
             version_df.to_excel(excel_writer = writer, sheet_name = currentTime + " " + platformId + " " + locale, header = None, index = False, startcol = 0, startrow = 0)
     #要完整读取游戏队列信息，请使用命令（To read in the queue information entirely, it's highly recommended that user use the following command）：df = pandas.read_excel("游戏队列信息.xlsx", header = 0, index_col = 0)
 
+async def print_available_queue(connection):
+    platform_config = await (await connection.request("GET", "/lol-platform-config/v1/namespaces")).json()
+    platformId = platform_config["LoginDataPacket"]["platformId"]
+    game_version = await (await connection.request("GET", "/lol-patch/v1/game-version")).json()
+    print("是否检查可用队列？（输入任意键检查，否则退出程序）\nDo you want to check available queues? (Submit anything to check, or null to exit the program)")
+    check = input()
+    if check != "":
+        while True:
+            await check_available_queue(connection)
+            print("(" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + "\t" + platformId + "\t" + game_version + ")")
+            print("是否刷新可用队列信息？（输入任意键不刷新，否则刷新）\nRefresh available queue information? (Submit anything to quit refreshing, or null to continue refreshing)")
+            refresh = input()
+            if refresh != "":
+                break
+
 #-----------------------------------------------------------------------------
 # websocket
 #-----------------------------------------------------------------------------
@@ -153,7 +241,11 @@ async def gamemode(connection):
 async def connect(connection):
     await get_summoner_data(connection)
     await get_lockfile(connection)
-    await gamemode(connection)
+    print("是否导出游戏队列数据？（输入任意键不导出，否则导出）\nExport queue data? (Enter anything to refuse exporting, or null to export)")
+    export = input()
+    if export == "":
+        await gamemode(connection)
+    await print_available_queue(connection)
 
 #-----------------------------------------------------------------------------
 # Main
