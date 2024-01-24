@@ -13156,19 +13156,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Stars-are-born-II.png"
     },
     {
-        "guid": "24bd4de7-5e98-4458-9e32-a44cb12a5e57",
-        "name": "极客发明",
-        "nameId": "TFT9_Augment_ImpromptuInventions",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Impromptu-Invention-II.png"
-    },
-    {
         "guid": "08797c95-3b8d-488c-bd7e-3854f9df3ee0",
         "name": "一二二三",
         "nameId": "TFT9_Augment_OneTwosThree",

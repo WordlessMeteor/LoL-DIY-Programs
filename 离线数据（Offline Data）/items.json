@@ -2236,7 +2236,7 @@
         "name": "碎裂的护臂",
         "description": "<mainText><stats><attention>45</attention>法术强度<br><attention>25</attention>护甲</stats><br><br><passive>支离破碎的时间</passive><br>【护臂】目前是破碎状态，但仍然可以用于升级。<br><br><rules>在打破一个【护臂】后，商店主人就只会卖给你<rarityGeneric>碎裂的护臂</rarityGeneric>了。</rules><br><br></mainText>",
         "active": false,
-        "inStore": false,
+        "inStore": true,
         "from": [],
         "to": [
             3157
@@ -3519,7 +3519,7 @@
     {
         "id": 3078,
         "name": "三相之力",
-        "description": "<mainText><stats><attention>45</attention>攻击力<br><attention>33%</attention>攻击速度<br><attention>300</attention>生命值<br><attention>20</attention>技能急速</stats><br><br><passive>咒刃</passive><br>在施放一个技能后，你的下一次普通攻击会获得强化，造成额外物理伤害。<br><br><passive>加快</passive><br>普攻会提供移动速度。<br><br></mainText>",
+        "description": "<mainText><stats><attention>45</attention>攻击力<br><attention>33%</attention>攻击速度<br><attention>300</attention>生命值<br><attention>20</attention>技能急速</stats><br><br>Item_3078_TooltipExternal</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -3622,8 +3622,7 @@
         ],
         "categories": [
             "Health",
-            "HealthRegen",
-            "AbilityHaste"
+            "HealthRegen"
         ],
         "maxStacks": 1,
         "requiredChampion": "",
@@ -4419,7 +4418,7 @@
     },
     {
         "id": 3131,
-        "name": "神圣之剑",
+        "name": "Item_3131_Name",
         "description": "<mainText><stats><attention>30</attention>攻击力<br><attention>25%</attention>攻击速度<br><attention>18</attention>穿甲</stats><br><br><br><br><active>主动 - </active> <active>神圣祝福：</active>提供<attackSpeed>100%攻击速度</attackSpeed> 和100%暴击几率，持续3秒或3次普攻(90 (0秒))。</mainText>",
         "active": true,
         "inStore": true,
@@ -6746,7 +6745,7 @@
     },
     {
         "id": 4402,
-        "name": "激发之匣",
+        "name": "Item_4402_Name",
         "description": "<mainText><stats><attention>30</attention>攻击力<br><attention>400</attention>生命值<br><attention>300</attention>法力<br><attention>10</attention>技能急速</stats><br><br><br><li><passive>永恒：</passive>承受来自英雄的伤害时，你会回复相当于15%折前伤害值的法力值；花费法力时，你会回复相当于25%法力消耗的生命值，每次施法每秒最多治疗20生命值。<li><passive>激发：</passive>在使用一次技能后，在3秒里持续回复共<healing>3%已损失生命值</healing>和<scaleMana>3%已损失法力值</scaleMana>。<br><br><flavorText>“挫败那些诺克萨斯人” <br>- 神庙守卫鲍迪尔</flavorText></mainText>",
         "active": false,
         "inStore": true,
@@ -6771,7 +6770,7 @@
         "isEnchantment": false,
         "price": 600,
         "priceTotal": 3000,
-        "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3032_Innervating_Locket.Nexus_Blitz_2023.png"
+        "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3032_Innervating_Locket.png"
     },
     {
         "id": 4403,
@@ -6817,7 +6816,7 @@
     {
         "id": 4628,
         "name": "视界专注",
-        "description": "<mainText><stats><attention>90</attention>法术强度<br><attention>20</attention>技能急速</stats><br><br><passive>高能射击</passive><br>在你用技能对600码或更远的英雄造成伤害时，将其<keywordStealth>显形</keywordStealth>6秒。对被高能射击<keywordStealth>显形</keywordStealth>的敌人们造成10%提升伤害。<br><br><passive>专注</passive>  (0秒)<br>在<passive>高能射击</passive>触发时，<keywordStealth>显形</keywordStealth>目标1400码内的所有其它敌方英雄3秒。</mainText>",
+        "description": "<mainText><stats><attention>90</attention>法术强度<br><attention>20</attention>技能急速</stats><br><br><br><li><passive>亢奋射击：</passive>用一个无目标类技能对相距600码之外的一名英雄造成<status>减速或定身</status>时，会使该英雄<keywordStealth>显形</keywordStealth>并使你对其造成的伤害提升。<br><br><rules>触发<passive>亢奋射击</passive>的该次技能也会享受到这个伤害提升效果。宠物和非定身类陷阱不会触发这个效果。领域类技能只有在初始放置时会触发这个效果。距离是从技能施放位置处进行测量的。</rules></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7200,7 +7199,7 @@
     {
         "id": 4645,
         "name": "影焰",
-        "description": "<mainText><stats><attention>120</attention>法术强度<br><attention>12</attention>法术穿透</stats><br><br><passive>余烬绽放</passive><br><magicDamage>魔法伤害</magicDamage>和<trueDamage>真实伤害</trueDamage>会暴击低生命值的敌人。</mainText>",
+        "description": "<mainText><stats><attention>120</attention>法术强度<br><attention>12</attention>法术穿透</stats><br><br>Item_4645_TooltipExternal</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8958,7 +8957,7 @@
     {
         "id": 7018,
         "name": " 无尽之力",
-        "description": "<mainText><stats><ornnBonus>55</ornnBonus>攻击力<br><ornnBonus>43%</ornnBonus>攻击速度<br><ornnBonus>400</ornnBonus>生命值<br><ornnBonus>25</ornnBonus>技能急速</stats><br><br><passive>咒刃</passive><br>在施放一个技能后，你的下一次普通攻击会获得强化，造成额外物理伤害。<br><br><passive>加快</passive><br>普攻会提供移动速度。<br><br></mainText>",
+        "description": "<mainText><stats><ornnBonus>55</ornnBonus>攻击力<br><ornnBonus>43%</ornnBonus>攻击速度<br><ornnBonus>400</ornnBonus>生命值<br><ornnBonus>25</ornnBonus>技能急速</stats><br><br>Item_3078_TooltipExternal</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9166,8 +9165,7 @@
         "to": [],
         "categories": [
             "Health",
-            "HealthRegen",
-            "AbilityHaste"
+            "HealthRegen"
         ],
         "maxStacks": 1,
         "requiredChampion": "",
@@ -10543,8 +10541,7 @@
         ],
         "categories": [
             "Health",
-            "HealthRegen",
-            "AbilityHaste"
+            "HealthRegen"
         ],
         "maxStacks": 1,
         "requiredChampion": "",
@@ -11773,7 +11770,7 @@
     {
         "id": 224628,
         "name": "视界专注",
-        "description": "<mainText><stats><attention>100</attention>法术强度<br><attention>150</attention>生命值<br><attention>15</attention>技能急速</stats><br><br><br><li><passive>亢奋射击：</passive>用一个无目标类技能对相距700码之外的一名英雄造成伤害、或将一名英雄<status>减速或定身</status>时，会使该英雄<keywordStealth>显形</keywordStealth>并使你对其造成的伤害提升<buffedStat>10%</buffedStat>，持续6秒。<br><br><rules>触发<passive>亢奋射击</passive>的该次技能也会享受到这个伤害提升效果。宠物和非定身类陷阱不会触发这个效果。领域类技能只有在初始放置时会触发这个效果。距离是从技能施放位置处进行测量的。</rules></mainText>",
+        "description": "<mainText><stats><attention>100</attention>法术强度<br><attention>150</attention>生命值<br><attention>15</attention>技能急速</stats><br><br><br><li><passive>亢奋射击：</passive>用一个无目标类技能对相距700码之外的一名英雄造成<status>减速或定身</status>时，会使该英雄<keywordStealth>显形</keywordStealth>并使你对其造成的伤害提升。<br><br><rules>触发<passive>亢奋射击</passive>的该次技能也会享受到这个伤害提升效果。宠物和非定身类陷阱不会触发这个效果。领域类技能只有在初始放置时会触发这个效果。距离是从技能施放位置处进行测量的。</rules></mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -13245,8 +13242,7 @@
         "to": [],
         "categories": [
             "Health",
-            "HealthRegen",
-            "AbilityHaste"
+            "HealthRegen"
         ],
         "maxStacks": 1,
         "requiredChampion": "",

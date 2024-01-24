@@ -2788,16 +2788,25 @@ async def search_profile(connection):
                                     #TFTMainPlayer_Traits = TFTHistory[i]["json"]["participants"][TFT_main_player_indices[i]]["traits"]
                                     TFTTrait_iter, subkey = key.split(" ")
                                     for k in range(len(TFTHistory[i]["json"]["participants"])):
-                                        TFTPlayer_Traits = TFTHistory[i]["json"]["participants"][k]["traits"]
+                                        TFTPlayer = TFTHistory[i]["json"]["participants"][k]
+                                        TFTPlayer_Traits = TFTPlayer["traits"]
+                                        TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
                                         if int(TFTTrait_iter[5:]) < len(TFTPlayer_Traits): #在这个小于的问题上纠结了很久[敲打]——下标是从0开始的。假设API上记录了n个羁绊，那么当程序正在获取第n个羁绊时，就会引起下标越界的问题。所以这里不能使用小于等于号（I stuck at this less than sign for long xD - note that the index begins from 0. Suppose there're totally n traits recorded in LCU API. Then, when the program is trying to capture the n-th trait, it'll throw an IndexError. That's why the less than or equal to sign can't be used here）
                                             try:
-                                                if (j - 26) % 5 == 0:
-                                                    to_append = TFTTraits[TFTPlayer_Traits[int(TFTTrait_iter[5:])]["name"]]["display_name"]
-                                                elif (j - 26) % 5 == 2:
-                                                    #to_append = traitStyles[TFTTraits[TFTPlayer_Traits[int(TFTTrait_iter[5:])]["name"]]["conditional_trait_sets"][TFTPlayer_Traits[int(TFTTrait_iter[5:])]["style"]]["style_name"]] #至于为什么前面traitStyles变量不直接用数字作为键，那是因为一旦用数字作为键，我的习惯是比较想知道是不是还有其它数字对应了某一种类型，就是说看上去不是特别舒服（As for why I don't take numbers as the keys of the dictionary variable `traitStyles`, if I do that, then I tend to wonder if there's some other number correspondent to some other type, that is, the program seems not so perfect and long-living）
-                                                    to_append = traitStyles[TFTPlayer_Traits[int(TFTTrait_iter[5:])]["style"]] #LCU API中记录的style和CommunityDragon数据库中记录的style_idx不是一个东西（`style` in LCU API and `style_idx` in CommunityDragon database aren't the same thing）
+                                                if TFTPlayer_Traits[int(TFTTrait_iter[5:])]["name"] == "TemplateTrait": #CommunityDragon数据库中没有收录模板羁绊的数据（Data about TemplateTrait aren't archived in CommunityDragon database）
+                                                    if (j - 26) % 5 == 4: #模板羁绊没有tier_total键（The key `tier_total` doesn't exist in "TemplateTrait" dictionary）
+                                                        to_append = ""
+                                                        print("警告：对局%d中玩家%s（玩家通用唯一识别码：%s）的第%d个羁绊是模板羁绊！\nWarning: Trait No. %d of the player %s (puuid: %s) in the match %d is TemplateTrait." %(TFTHistory[i]["json"]["game_id"], TFTPlayer_info["displayName"], TFTPlayer["puuid"], int(TFTTrait_iter[5:]) + 1, int(TFTTrait_iter[5:]) + 1, TFTPlayer_info["displayName"], TFTPlayer["puuid"], TFTHistory[i]["json"]["game_id"]))
+                                                    else:
+                                                        to_append = TFTPlayer_Traits[int(TFTTrait_iter[5:])][subkey]
                                                 else:
-                                                    to_append = TFTPlayer_Traits[int(TFTTrait_iter[5:])][subkey]
+                                                    if (j - 26) % 5 == 0:
+                                                        to_append = TFTTraits[TFTPlayer_Traits[int(TFTTrait_iter[5:])]["name"]]["display_name"]
+                                                    elif (j - 26) % 5 == 2:
+                                                        #to_append = traitStyles[TFTTraits[TFTPlayer_Traits[int(TFTTrait_iter[5:])]["name"]]["conditional_trait_sets"][TFTPlayer_Traits[int(TFTTrait_iter[5:])]["style"]]["style_name"]] #至于为什么前面traitStyles变量不直接用数字作为键，那是因为一旦用数字作为键，我的习惯是比较想知道是不是还有其它数字对应了某一种类型，就是说看上去不是特别舒服（As for why I don't take numbers as the keys of the dictionary variable `traitStyles`, if I do that, then I tend to wonder if there's some other number correspondent to some other type, that is, the program seems not so perfect and long-living）
+                                                        to_append = traitStyles[TFTPlayer_Traits[int(TFTTrait_iter[5:])]["style"]] #LCU API中记录的style和CommunityDragon数据库中记录的style_idx不是一个东西（`style` in LCU API and `style_idx` in CommunityDragon database aren't the same thing）
+                                                    else:
+                                                        to_append = TFTPlayer_Traits[int(TFTTrait_iter[5:])][subkey]
                                             except KeyError:
                                                 TFTTraitPatch_adopted = TFTGamePatches[i]
                                                 TFTTrait_recapture = 1
@@ -2847,11 +2856,11 @@ async def search_profile(connection):
                                                         else:
                                                             break
                                             TFTGame_info_data[key].append(to_append)
-                                            if TFTHistory[i]["json"]["participants"][k]["puuid"] == current_puuid:
+                                            if TFTPlayer["puuid"] == current_puuid:
                                                 TFTHistory_data[key].append(to_append)
                                         else:
                                             TFTGame_info_data[key].append("")
-                                            if TFTHistory[i]["json"]["participants"][k]["puuid"] == current_puuid:
+                                            if TFTPlayer["puuid"] == current_puuid:
                                                 TFTHistory_data[key].append("")
                                 else:
                                     #TFTMainPlayer_Units = TFTHistory[i]["json"]["participants"][TFT_main_player_indices[i]]["units"]

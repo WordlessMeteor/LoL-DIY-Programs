@@ -1494,7 +1494,6 @@ async def search_recent_players(connection):
                                 for i in LoLGame_info["participantIdentities"]:
                                     participant.append(i["player"]["puuid"])
                                 if current_puuid in participant: #之所以使用玩家通用唯一识别码，而不是用召唤师名称来识别对局是否包含主玩家，是因为该玩家可能使用过改名卡。这里也没有选择帐户序号，这是因为保存在对局中的各玩家的帐户序号竟然是0！（The reason why the puuid instead of the displayName or summonerName is used to identify whether the matches contain the main player is that the player may have used name changing card. AccountId isn't chosen here, because all players' accountIds saved in the match fetched from 127 API is 0, to my surprise!）
-                                    player_count = len(LoLGame_info["participantIdentities"])
                                     for currentParticipantId in range(len(LoLGame_info["participantIdentities"])): #定位主召唤师（Find the index of the main player in a match）
                                         if LoLGame_info["participantIdentities"][currentParticipantId]["player"]["puuid"] == current_puuid:
                                             break
@@ -2023,16 +2022,25 @@ async def search_recent_players(connection):
                                             #TFTMainPlayer_Traits = TFTHistory[i]["json"]["participants"][TFT_main_player_indices[i]]["traits"]
                                             TFTTrait_iter, subkey = key.split(" ")
                                             for k in range(len(TFTHistory[i]["metadata"]["participants"])):
-                                                TFTPlayer_Traits = TFTHistory[i]["json"]["participants"][k]["traits"]
+                                                TFTPlayer = TFTHistory[i]["json"]["participants"][k]
+                                                TFTPlayer_Traits = TFTPlayer["traits"]
+                                                TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
                                                 if int(TFTTrait_iter[5:]) < len(TFTPlayer_Traits): #在这个小于的问题上纠结了很久[敲打]——下标是从0开始的。假设API上记录了n个羁绊，那么当程序正在获取第n个羁绊时，就会引起下标越界的问题。所以这里不能使用小于等于号（I stuck at this less than sign for long xD - note that the index begins from 0. Suppose there're totally n traits recorded in LCU API. Then, when the program is trying to capture the n-th trait, it'll throw an IndexError. That's why the less than or equal to sign can't be used here）
                                                     try:
-                                                        if (j - 26) % 5 == 0:
-                                                            to_append = TFTTraits[TFTPlayer_Traits[int(TFTTrait_iter[5:])]["name"]]["display_name"]
-                                                        elif (j - 26) % 5 == 2:
-                                                            #to_append = traitStyles[TFTTraits[TFTPlayer_Traits[int(TFTTrait_iter[5:])]["name"]]["conditional_trait_sets"][TFTPlayer_Traits[int(TFTTrait_iter[5:])]["style"]]["style_name"]] #至于为什么前面traitStyles变量不直接用数字作为键，那是因为一旦用数字作为键，我的习惯是比较想知道是不是还有其它数字对应了某一种类型，就是说看上去不是特别舒服（As for why I don't take numbers as the keys of the dictionary variable `traitStyles`, if I do that, then I tend to wonder if there's some other number correspondent to some other type, that is, the program seems not so perfect and long-living）
-                                                            to_append = traitStyles[TFTPlayer_Traits[int(TFTTrait_iter[5:])]["style"]] #LCU API中记录的style和CommunityDragon数据库中记录的style_idx不是一个东西（`style` in LCU API and `style_idx` in CommunityDragon database aren't the same thing）
+                                                        if TFTPlayer_Traits[int(TFTTrait_iter[5:])]["name"] == "TemplateTrait": #CommunityDragon数据库中没有收录模板羁绊的数据（Data about TemplateTrait aren't archived in CommunityDragon database）
+                                                            if (j - 26) % 5 == 4: #模板羁绊没有tier_total键（The key `tier_total` doesn't exist in "TemplateTrait" dictionary）
+                                                                to_append == ""
+                                                                print("警告：对局%d中玩家%s（玩家通用唯一识别码：%s）的第%d个羁绊是模板羁绊！\nWarning: Trait No. %d of the player %s (puuid: %s) in the match %d is TemplateTrait." %(TFTHistory[i]["json"]["game_id"], TFTPlayer_info["displayName"], TFTPlayer["puuid"], int(TFTTrait_iter[5:]) + 1, int(TFTTrait_iter[5:]) + 1, TFTPlayer_info["displayName"], TFTPlayer["puuid"], TFTHistory[i]["json"]["game_id"]))
+                                                            else:
+                                                                to_append == TFTPlayer_Traits[int(TFTTrait_iter[5:])][subkey]
                                                         else:
-                                                            to_append = TFTPlayer_Traits[int(TFTTrait_iter[5:])][subkey]
+                                                            if (j - 26) % 5 == 0:
+                                                                to_append = TFTTraits[TFTPlayer_Traits[int(TFTTrait_iter[5:])]["name"]]["display_name"]
+                                                            elif (j - 26) % 5 == 2:
+                                                                #to_append = traitStyles[TFTTraits[TFTPlayer_Traits[int(TFTTrait_iter[5:])]["name"]]["conditional_trait_sets"][TFTPlayer_Traits[int(TFTTrait_iter[5:])]["style"]]["style_name"]] #至于为什么前面traitStyles变量不直接用数字作为键，那是因为一旦用数字作为键，我的习惯是比较想知道是不是还有其它数字对应了某一种类型，就是说看上去不是特别舒服（As for why I don't take numbers as the keys of the dictionary variable `traitStyles`, if I do that, then I tend to wonder if there's some other number correspondent to some other type, that is, the program seems not so perfect and long-living）
+                                                                to_append = traitStyles[TFTPlayer_Traits[int(TFTTrait_iter[5:])]["style"]] #LCU API中记录的style和CommunityDragon数据库中记录的style_idx不是一个东西（`style` in LCU API and `style_idx` in CommunityDragon database aren't the same thing）
+                                                            else:
+                                                                to_append = TFTPlayer_Traits[int(TFTTrait_iter[5:])][subkey]
                                                     except KeyError:
                                                         TFTTraitPatch_adopted = TFTGamePatch
                                                         TFTTrait_recapture = 1
@@ -2081,10 +2089,10 @@ async def search_recent_players(connection):
                                                                     break
                                                                 else:
                                                                     break
-                                                    if TFTHistory[i]["json"]["participants"][k]["puuid"] != current_puuid:
+                                                    if TFTPlayer["puuid"] != current_puuid:
                                                         TFTHistory_data[key].append(to_append)
                                                 else:
-                                                    if TFTHistory[i]["json"]["participants"][k]["puuid"] != current_puuid:
+                                                    if TFTPlayer["puuid"] != current_puuid:
                                                         TFTHistory_data[key].append("")
                                         else:
                                             #TFTMainPlayer_Units = TFTHistory[i]["json"]["participants"][TFT_main_player_indices[i]]["units"]
@@ -2539,15 +2547,18 @@ async def search_recent_players(connection):
                                 if detect_scene == "1":
                                     ally_count = 0
                                     enemy_count = 0
+                                    player_count = 0
                                     recent_player_count = 0
                                     recent_friends = []
-                                    recent_friends_check = []
                                     LoLAlly_df_to_print = pandas.DataFrame(data = recent_LoLPlayer_dict_to_print)
                                     LoLEnemy_df_to_print = pandas.DataFrame(data = recent_LoLPlayer_dict_to_print) #在玩家对战的英雄选择阶段，所有敌方玩家的信息都是不可见的；在人机对战的英雄选择阶段，无敌方玩家。统计敌方信息只适用于自定义对局（During champ select of PVP games, all enemies' information is hidden; during champ select of PVE games, there're no enemy players. Counting enemy stats only applys for custom games）
+                                    LoLPlayer_df_to_print = pandas.DataFrame(data = recent_LoLPlayer_dict_to_print)
                                     TFTAlly_df_to_print = pandas.DataFrame(data = recent_TFTPlayer_dict_to_print)
+                                    TFTEnemy_df_to_print = pandas.DataFrame(data = recent_TFTPlayer_dict_to_print)
+                                    TFTPlayer_df_to_print = pandas.DataFrame(data = recent_TFTPlayer_dict_to_print)
                                     recent_LoLPlayer_df_to_print = pandas.DataFrame(data = recent_LoLPlayer_dict_to_print)
                                     recent_TFTPlayer_df_to_print = pandas.DataFrame(data = recent_TFTPlayer_dict_to_print)
-                                    print('''请确保您在英雄选择阶段，以便本脚本检测是否存在曾经遇到过的队友。在英雄选择阶段，按回车键开始检测；或者按“0”以返回上一步。\nPlease confirm you're during champ select, so that this script can detect whether there's an ally encountered before. During champ select, press Enter to start detection; or press "0" to return to the last step.''')
+                                    print('''请确保您在英雄选择阶段或在游戏中，以便本脚本检测是否存在曾经遇到过的队友。在英雄选择阶段，按回车键开始检测；或者按“0”以返回上一步。\nPlease confirm you're during champ select or already in game, so that this script can detect whether there's an ally encountered before. During champ select or in game, press Enter to start detection; or press "0" to return to the last step.''')
                                     while True:
                                         detect = input()
                                         if detect != "" and detect[0] == "0":
@@ -2565,11 +2576,7 @@ async def search_recent_players(connection):
                                         elif gameflow_phase == "ReadyCheck":
                                             print("您已找到对局！请接受对局，并在进入英雄选择阶段后按回车键开始检测。\nA match has been found! Please accept this match and press Enter to start detection after entering champ select stage.")
                                             continue
-                                        elif gameflow_phase == "ChampSelect":
-                                            break
-                                        elif gameflow_phase == "InProgress":
-                                            print("您已在游戏中！是否单独检查一名召唤师是否曾经遇到过？（输入任意键以进入单独检查模式，否则退出检查）\nYou're now in game! Do you want to check if an in-game player has been encountered before? (Input anything to enter the [Single Check] Mode, or null to cancel checking)")
-                                            single_check = input() != ""
+                                        elif gameflow_phase == "ChampSelect" or gameflow_phase == "InProgress" or gameflow_phase == "Reconnect":
                                             break
                                         elif gameflow_phase == "WaitingForStats" or gameflow_phase == "EndOfGame" or gameflow_phase == "PreEndOfGame":
                                             print("您已完成对局！请使用生成模式以查看最近一局比赛中遇到的玩家信息，或者开启下一局以查看下一局遇到的队友是否曾经遇到过。\nYou've finished the match! Please use [Generate Mode] to check the information of players encountered in the latest match, or start another game and use [Detect Mode] to check whether an ally has been met before.")
@@ -2583,17 +2590,237 @@ async def search_recent_players(connection):
                                         champ_select_session = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
                                         print(champ_select_session)
                                         excel_name = "Recently Played Summoners in Match %s.xlsx" %champ_select_session["gameId"]
-                                        for ally in champ_select_session["myTeam"]:
-                                            if ally["puuid"] != current_puuid:
-                                                if ally["nameVisibilityType"] == "VISIBLE":
+                                        if champ_select_session["isSpectating"]:
+                                            print("您正在观战，无法显示玩家信息。请等待进入游戏后查看。\nYou're during the champ select of a spectated game, and the player information won't display. Please wait until you enter the game.")
+                                        else:
+                                            for ally in champ_select_session["myTeam"]:
+                                                if ally["puuid"] != current_puuid:
+                                                    if ally["nameVisibilityType"] == "VISIBLE":
+                                                        ally_info_recapture = 0
+                                                        ally_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %ally["puuid"])).json()
+                                                        while "errorCode" in ally_info and ally_info_recapture < 3:
+                                                            ally_info_recapture += 1
+                                                            print("队友信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an ally (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
+                                                            ally_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %ally["puuid"])).json()
+                                                        if ally_info_recapture >= 3:
+                                                            print("队友信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an ally (puuid: %s) capture failed! The program will ignore this ally.")
+                                                            continue
+                                                        LoLAlly_index = [0] #第0行是中文表头，所以一开始要包含在内（The 0th line is Chinese header, so it should be contained in the beginning）
+                                                        TFTAlly_index = [0]
+                                                        for i in range(len(recent_LoLPlayers_df.loc[:, "puuid"])):
+                                                            if recent_LoLPlayers_df.at[i, "puuid"] == ally["puuid"]:
+                                                                LoLAlly_index.append(i)
+                                                        if search_TFT != "":
+                                                            for i in range(len(recent_TFTPlayers_df.loc[:, "puuid"])):
+                                                                if recent_TFTPlayers_df.at[i, "puuid"] == ally["puuid"]:
+                                                                    TFTAlly_index.append(i)
+                                                        if len(LoLAlly_index) + len(TFTAlly_index) > 2: #这里不需要关于是否查询了云顶之弈对局记录分类讨论，因为不管有没有查询云顶之弈对局记录，TFTAlly_index都存在，且长度至少为1（Here it's not necessary to discuss whether TFT match history has been searched before, because no matter whether it's searched, TFTAlly_index is defined and its length is at least 1）
+                                                            ally_count += 1
+                                                            LoLAlly_df = recent_LoLPlayers_df.loc[LoLAlly_index, :]
+                                                            LoLAlly_df_to_print = pandas.concat([LoLAlly_df_to_print, LoLAlly_df.loc[1:, recent_LoLPlayer_fields]], axis = 0)
+                                                            TFTAlly_df = recent_TFTPlayers_df.loc[TFTAlly_index, :]
+                                                            TFTAlly_df_to_print = pandas.concat([TFTAlly_df_to_print, TFTAlly_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
+                                                            if ally["puuid"] in friends:
+                                                                recent_friends.append(ally_info["displayName"])
+                                                            while True:
+                                                                try:
+                                                                    with pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") as writer:
+                                                                        if len(LoLAlly_index) > 1:
+                                                                            LoLAlly_df.to_excel(excel_writer = writer, sheet_name = ally_info["displayName"] + " (LoL)")
+                                                                        if search_TFT != "" and len(TFTAlly_index) > 1:
+                                                                            TFTAlly_df.to_excel(excel_writer = writer, sheet_name = ally_info["displayName"] + " (TFT)")
+                                                                        print("队友%s曾经与您一同战斗过%d次。\nAlly %s has fought with you for %d times." %(ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2, ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2))
+                                                                except PermissionError:
+                                                                    print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
+                                                                    input()
+                                                                except FileNotFoundError:
+                                                                    with pandas.ExcelWriter(path = excel_name) as writer:
+                                                                        if len(LoLAlly_index) > 1:
+                                                                            LoLAlly_df.to_excel(excel_writer = writer, sheet_name = ally_info["displayName"] + " (LoL)")
+                                                                        if search_TFT != "" and len(TFTAlly_index) > 1:
+                                                                            TFTAlly_df.to_excel(excel_writer = writer, sheet_name = ally_info["displayName"] + " (TFT)")
+                                                                        print("队友%s曾经与您一同战斗过%d次。\nAlly %s has fought with you for %d times." %(ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2, ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2))
+                                                                    break
+                                                                else:
+                                                                    break
+                                            if champ_select_session["theirTeam"]: #在人机对战、云顶之弈和斗魂竞技场中，无敌方玩家（There're no enemy players in bot games, TFT and Arena）
+                                                for enemy in champ_select_session["theirTeam"]:
+                                                    if enemy["nameVisibilityType"] == "VISIBLE":
+                                                        enemy_info_recapture = 0
+                                                        enemy_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %enemy["puuid"])).json()
+                                                        while "errorCode" in enemy_info and enemy_info_recapture < 3:
+                                                            enemy_info_recapture += 1
+                                                            print("对手信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an enemy (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(enemy["puuid"], enemy_info_recapture, enemy["puuid"], enemy_info_recapture))
+                                                            enemy_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %enemy["puuid"])).json()
+                                                        if enemy_info_recapture >= 3:
+                                                            print("对手信息（玩家通用唯一识别码：%s）获取失败！将忽略该名对手。\nInformation of an enemy (puuid: %s) capture failed! The program will ignore this enemy.")
+                                                            continue
+                                                        LoLEnemy_index = [0]
+                                                        TFTEnemy_index = [0]
+                                                        for i in range(len(recent_LoLPlayers_df.loc[:, "puuid"])):
+                                                            if recent_LoLPlayers_df.at[i, "puuid"] == enemy["puuid"]:
+                                                                LoLEnemy_index.append(i)
+                                                        if search_TFT != "":
+                                                            for i in range(len(recent_TFTPlayers_df.loc[:, "puuid"])):
+                                                                if recent_TFTPlayers_df.at[i, "puuid"] == enemy["puuid"]:
+                                                                    TFTEnemy_index.append(i)
+                                                        if len(LoLEnemy_index) + len(TFTEnemy_index) > 2:
+                                                            enemy_count += 1
+                                                            LoLEnemy_df = recent_LoLPlayers_df.loc[LoLEnemy_index, :]
+                                                            LoLEnemy_df_to_print = pandas.concat([LoLEnemy_df_to_print, LoLEnemy_df.loc[1:, recent_LoLPlayer_fields]], axis = 0)
+                                                            TFTEnemy_df = recent_TFTPlayers_df.loc[TFTEnemy_index, :]
+                                                            TFTEnemy_df_to_print = pandas.concat([TFTEnemy_df_to_print, TFTEnemy_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
+                                                            if enemy["puuid"] in friends:
+                                                                recent_friends.append((enemy_info["displayName"]))
+                                                            while True:
+                                                                try:
+                                                                    with pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") as writer:
+                                                                        if len(LoLEnemy_index) > 1:
+                                                                            LoLEnemy_df.to_excel(excel_writer = writer, sheet_name = enemy_info["displayName"] + " (LoL)")
+                                                                        if search_TFT != "" and len(TFTEnemy_index) > 1:
+                                                                            TFTEnemy_df.to_excel(excel_writer = writer, sheet_name = enemy_info["displayName"] + " (TFT)")
+                                                                        print("对手%s曾经与您一同战斗过%d次。\nEnemy %s has fought with you for %d times." %(enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2, enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2))
+                                                                except PermissionError:
+                                                                    print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
+                                                                    input()
+                                                                except FileNotFoundError:
+                                                                    with pandas.ExcelWriter(path = excel_name) as writer:
+                                                                        if len(LoLEnemy_index) > 1:
+                                                                            LoLEnemy_df.to_excel(excel_writer = writer, sheet_name = enemy_info["displayName"] + " (LoL)")
+                                                                        if search_TFT != "" and len(TFTEnemy_index) > 1:
+                                                                            TFTEnemy_df.to_excel(excel_writer = writer, sheet_name = enemy_info["displayName"] + " (TFT)")
+                                                                        print("对手%s曾经与您一同战斗过%d次。\nEnemy %s has fought with you for %d times." %(enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2, enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2))
+                                                                    break
+                                                                else:
+                                                                    break
+                                            if ally_count == 0:
+                                                print("您目前遇到的都是新的队友。尝试拓展人缘吧！\nThe allies you've met now are all new. Try extending your friendship!")
+                                            else:
+                                                print()
+                                                print(LoLAlly_df_to_print)
+                                                if search_TFT != "":
+                                                    print(TFTAlly_df_to_print)
+                                                if recent_friends == []:
+                                                    if ally_count == 1:
+                                                        print('''一名队友曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's an ally present in your past matches. Please check the workbook "%s" in the main directory.''' %(excel_name, excel_name))
+                                                    else:
+                                                        print('''%d名队友曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d allies present in your past matches. Please check the workbook "%s" in the main directory.''' %(ally_count, excel_name, ally_count, excel_name))
+                                            if any(map(lambda x: x["nameVisibilityType"] == "VISIBLE", champ_select_session["theirTeam"])):
+                                                if enemy_count > 0:
+                                                    print()
+                                                    print(LoLEnemy_df_to_print)
+                                                    if search_TFT != "":
+                                                        print(TFTEnemy_df_to_print)
+                                                    if recent_friends == []:
+                                                        if enemy_count == 1:
+                                                            print('''一名对手曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's an enemy present in your past matches. Please check the workbook "%s" in the main directory.''' %(excel_name, excel_name))
+                                                        else:
+                                                            print('''%d名对手曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d enemies present in your past matches. Please check the workbook "%s" in the main directory.''' %(enemy_count, excel_name, enemy_count, excel_name))
+                                            if len(recent_friends) == 1:
+                                                print("以上玩家中，%s是您的好友。\nAmong the above players, %s is your friend." %(recent_friends[0], recent_friends[0]))
+                                            elif len(recent_friends) > 1:
+                                                print("以上玩家中，%s是您的好友。\nAmong the above players, %s are your friends." %("、".join(recent_friends), ", ".join(recent_friends)))
+                                            if not (all(map(lambda x: x["nameVisibilityType"] == "VISIBLE", champ_select_session["theirTeam"])) or all(map(lambda x: x["nameVisibilityType"] == "HIDDEN", champ_select_session["theirTeam"]))):
+                                                print("检测到敌方信息可见性异常！请检查之前输出的英雄选择阶段信息。\nDetected enemies' visibility abnormal! Please check the champ select session information printed before.")
+                                    elif gameflow_phase == "InProgress" or gameflow_phase == "Reconnect":
+                                        gameflow_session = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
+                                        print(gameflow_session)
+                                        gameData = gameflow_session["gameData"]
+                                        excel_name = "Recently Played Summoners in Match %s.xlsx" %gameData["gameId"]
+                                        if gameData["queue"]["mapId"] == "22" or gameData["queue"]["mapId"] == "30": #玩家在API上的阵营划分随对局模式而不同。云顶之弈和斗魂竞技场虽然有多个阵营，但是都是记录在gameData["teamOne"]中，这需要和其它模式区分开来。该条件语句与“if gameData["queue"]["gameMode"] == "TFT" or gameData["queue"]["gameMode"] == "CHERRY"”等价，但是因为召唤师峡谷还能分成CLASSIC、URF等模式，所以这里直接用地图序号作为判断依据（The team where a player belongs varies by the game mode. Although there're actually more than 2 teams in TFT and Arena, all players are recorded in `gameData["teamOne"]`, which needs ditinguishing from other game modes. This conditional statement is equivalent to `if gameData["queue"]["gameMode"] == "TFT" or gameData["queue"]["gameMode"] == "CHERRY"`, but since there're multiple modes based on one map, like CLASSIC and URF based on Summoner's Rift, the mapId is thus taken as the judgment criterium）
+                                            for player in gameData["teamOne"]:
+                                                if "puuid" in player and player["puuid"] != current_puuid: #电脑玩家没有玩家通用唯一识别码（Bot players don't have puuids）
+                                                    player_info_recapture = 0
+                                                    player_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %player["puuid"])).json()
+                                                    while "errorCode" in player_info and player_info_recapture < 3:
+                                                        player_info_recapture += 1
+                                                        print("玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an player (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(player["puuid"], player_info_recapture, player["puuid"], player_info_recapture))
+                                                        player_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %player["puuid"])).json()
+                                                    if player_info_recapture >= 3:
+                                                        print("玩家信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an player (puuid: %s) capture failed! The program will ignore this player.")
+                                                        continue
+                                                    LoLPlayer_index = [0] #第0行是中文表头，所以一开始要包含在内（The 0th line is Chinese header, so it should be contained in the beginning）
+                                                    TFTPlayer_index = [0]
+                                                    for i in range(len(recent_LoLPlayers_df.loc[:, "puuid"])):
+                                                        if recent_LoLPlayers_df.at[i, "puuid"] == player["puuid"]:
+                                                            LoLPlayer_index.append(i)
+                                                    if search_TFT != "":
+                                                        for i in range(len(recent_TFTPlayers_df.loc[:, "puuid"])):
+                                                            if recent_TFTPlayers_df.at[i, "puuid"] == player["puuid"]:
+                                                                TFTPlayer_index.append(i)
+                                                    if len(LoLPlayer_index) + len(TFTPlayer_index) > 2: #这里不需要关于是否查询了云顶之弈对局记录分类讨论，因为不管有没有查询云顶之弈对局记录，TFTPlayer_index都存在，且长度至少为1（Here it's not necessary to discuss whether TFT match history has been searched before, because no matter whether it's searched, TFTPlayer_index is defined and its length is at least 1）
+                                                        player_count += 1
+                                                        LoLPlayer_df = recent_LoLPlayers_df.loc[LoLPlayer_index, :]
+                                                        LoLPlayer_df_to_print = pandas.concat([LoLPlayer_df_to_print, LoLPlayer_df.loc[1:, recent_LoLPlayer_fields]], axis = 0)
+                                                        TFTPlayer_df = recent_TFTPlayers_df.loc[TFTPlayer_index, :]
+                                                        TFTPlayer_df_to_print = pandas.concat([TFTPlayer_df_to_print, TFTPlayer_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
+                                                        if player["puuid"] in friends:
+                                                            recent_friends.append(player_info["displayName"])
+                                                        while True:
+                                                            try:
+                                                                with pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") as writer:
+                                                                    if len(LoLPlayer_index) > 1:
+                                                                        LoLPlayer_df.to_excel(excel_writer = writer, sheet_name = player_info["displayName"] + " (LoL)")
+                                                                    if search_TFT != "" and len(TFTPlayer_index) > 1:
+                                                                        TFTPlayer_df.to_excel(excel_writer = writer, sheet_name = player_info["displayName"] + " (TFT)")
+                                                                    print("玩家%s曾经与您一同战斗过%d次。\nPlayer %s has fought with you for %d times." %(player_info["displayName"], len(LoLPlayer_index) + len(TFTPlayer_index) - 2, player_info["displayName"], len(LoLPlayer_index) + len(TFTPlayer_index) - 2))
+                                                            except PermissionError:
+                                                                print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
+                                                                input()
+                                                            except FileNotFoundError:
+                                                                with pandas.ExcelWriter(path = excel_name) as writer:
+                                                                    if len(LoLPlayer_index) > 1:
+                                                                        LoLPlayer_df.to_excel(excel_writer = writer, sheet_name = player_info["displayName"] + " (LoL)")
+                                                                    if search_TFT != "" and len(TFTPlayer_index) > 1:
+                                                                        TFTPlayer_df.to_excel(excel_writer = writer, sheet_name = player_info["displayName"] + " (TFT)")
+                                                                    print("玩家%s曾经与您一同战斗过%d次。\nPlayer %s has fought with you for %d times." %(player_info["displayName"], len(LoLPlayer_index) + len(TFTPlayer_index) - 2, player_info["displayName"], len(LoLPlayer_index) + len(TFTPlayer_index) - 2))
+                                                                break
+                                                            else:
+                                                                break
+                                            if player_count == 0:
+                                                print("您目前遇到的都是新的玩家。尝试拓展人缘吧！\nThe players you've met now are all new. Try extending your friendship!")
+                                            else:
+                                                print()
+                                                print(LoLPlayer_df_to_print)
+                                                if search_TFT != "":
+                                                    print(TFTPlayer_df_to_print)
+                                                if recent_friends == []:
+                                                    if player_count == 1:
+                                                        print('''一名玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's a player present in your past matches. Please check the workbook "%s" in the main directory.''' %(excel_name, excel_name))
+                                                    else:
+                                                        print('''%d名玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d players present in your past matches. Please check the workbook "%s" in the main directory.''' %(ally_count, excel_name, ally_count, excel_name))
+                                            if len(recent_friends) == 1:
+                                                print("以上玩家中，%s是您的好友。\nAmong the above players, %s is your friend." %(recent_friends[0], recent_friends[0]))
+                                            elif len(recent_friends) > 1:
+                                                print("以上玩家中，%s是您的好友。\nAmong the above players, %s are your friends." %("、".join(recent_friends), ", ".join(recent_friends)))
+                                        else:
+                                            isSpectating = False #目前支持观战的地图只有召唤师峡谷和极地大乱斗，所以只在这一部分设置观战逻辑变量，来表示游戏会话是不是观战的（Currently only the games based on Summoner's Rift and Howling Abyss support spectation, so this boolean variable is declared only this part, to tell whether the game session is a spectation）
+                                            if current_puuid in map(lambda x: x["puuid"], gameData["teamOne"]): #API记录游戏中的玩家时，只会区分红蓝方，不会区分敌我。所以这里需要先判断那个阵营是我方（Players recorded in API only differentiate by blue or red team, instead of my or enemy team. So judging the own team or the enemy team is the first thing to do）
+                                                myTeam = gameData["teamOne"]
+                                                theirTeam = gameData["teamTwo"]
+                                            elif current_puuid in map(lambda x: x["puuid"], gameData["teamTwo"]):
+                                                myTeam = gameData["teamTwo"]
+                                                theirTeam = gameData["teamOne"]
+                                            else:
+                                                myTeam = gameData["teamOne"] + gameData["teamTwo"]
+                                                theirTeam = []
+                                                isSpectating = True
+                                            for ally in myTeam:
+                                                if "puuid" in ally and ally["puuid"] != current_puuid:
                                                     ally_info_recapture = 0
                                                     ally_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %ally["puuid"])).json()
                                                     while "errorCode" in ally_info and ally_info_recapture < 3:
                                                         ally_info_recapture += 1
-                                                        print("队友信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an ally (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
+                                                        if isSpectating:
+                                                            print("队友信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an ally (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
+                                                        else:
+                                                            print("玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of a player (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
                                                         ally_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %ally["puuid"])).json()
                                                     if ally_info_recapture >= 3:
-                                                        print("队友信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an ally (puuid: %s) capture failed! The program will ignore this ally.")
+                                                        if isSpectating:
+                                                            print("队友信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an ally (puuid: %s) capture failed! The program will ignore this ally.")
+                                                        else:
+                                                            print("玩家信息（玩家通用唯一识别码：%s）获取失败！将忽略该名玩家。\nInformation of a player (puuid: %s) capture failed! The program will ignore this player.")
                                                         continue
                                                     LoLAlly_index = [0] #第0行是中文表头，所以一开始要包含在内（The 0th line is Chinese header, so it should be contained in the beginning）
                                                     TFTAlly_index = [0]
@@ -2619,7 +2846,10 @@ async def search_recent_players(connection):
                                                                         LoLAlly_df.to_excel(excel_writer = writer, sheet_name = ally_info["displayName"] + " (LoL)")
                                                                     if search_TFT != "" and len(TFTAlly_index) > 1:
                                                                         TFTAlly_df.to_excel(excel_writer = writer, sheet_name = ally_info["displayName"] + " (TFT)")
-                                                                    print("队友%s曾经与您一同战斗过%d次。\nAlly %s has fought with you for %d times." %(ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2, ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2))
+                                                                    if isSpectating:
+                                                                        print("队友%s曾经与您一同战斗过%d次。\nAlly %s has fought with you for %d times." %(ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2, ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2))
+                                                                    else:
+                                                                        print("玩家%s曾经与您一同战斗过%d次。\nPlayer %s has fought with you for %d times." %(ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2, ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2))
                                                             except PermissionError:
                                                                 print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
                                                                 input()
@@ -2629,13 +2859,15 @@ async def search_recent_players(connection):
                                                                         LoLAlly_df.to_excel(excel_writer = writer, sheet_name = ally_info["displayName"] + " (LoL)")
                                                                     if search_TFT != "" and len(TFTAlly_index) > 1:
                                                                         TFTAlly_df.to_excel(excel_writer = writer, sheet_name = ally_info["displayName"] + " (TFT)")
-                                                                    print("队友%s曾经与您一同战斗过%d次。\nAlly %s has fought with you for %d times." %(ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2, ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2))
+                                                                    if isSpectating:
+                                                                        print("队友%s曾经与您一同战斗过%d次。\nAlly %s has fought with you for %d times." %(ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2, ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2))
+                                                                    else:
+                                                                        print("玩家%s曾经与您一同战斗过%d次。\nPlayer %s has fought with you for %d times." %(ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2, ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2))
                                                                 break
                                                             else:
                                                                 break
-                                        if champ_select_session["theirTeam"]: #在人机对战中，无敌方玩家（There're not enemy players in bot games）
-                                            for enemy in champ_select_session["theirTeam"]:
-                                                if enemy["nameVisibilityType"] == "VISIBLE":
+                                            for enemy in theirTeam:
+                                                if "puuid" in enemy:
                                                     enemy_info_recapture = 0
                                                     enemy_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %enemy["puuid"])).json()
                                                     while "errorCode" in enemy_info and enemy_info_recapture < 3:
@@ -2683,130 +2915,46 @@ async def search_recent_players(connection):
                                                                 break
                                                             else:
                                                                 break
-                                        if ally_count == 0:
-                                            print("您目前遇到的都是新的队友。尝试拓展人缘吧！\nThe allies you've met now are all new. Try extending your friendship!")
-                                        else:
-                                            print()
-                                            print(LoLAlly_df_to_print)
-                                            if search_TFT != "":
-                                                print(TFTAlly_df_to_print)
-                                            if recent_friends == []:
-                                                if ally_count == 1:
-                                                    print('''一名队友曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's an ally present in your past matches. Please check the workbook "%s" in the main directory.''' %(excel_name, excel_name))
+                                            if isSpectating:
+                                                if ally_count == 0:
+                                                    print("您目前遇到的都是新的玩家。尝试拓展人缘吧！\nThe players you've met now are all new. Try extending your friendship!")
                                                 else:
-                                                    print('''%d名队友曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d allies present in your past matches. Please check the workbook "%s" in the main directory.''' %(ally_count, excel_name, ally_count, excel_name))
-                                        if any(map(lambda x: x["nameVisibilityType"] == "VISIBLE", champ_select_session["theirTeam"])):
-                                            if enemy_count > 0:
-                                                print()
-                                                print(LoLEnemy_df_to_print)
-                                                if search_TFT != "":
-                                                    print(TFTEnemy_df_to_print)
-                                                if recent_friends == []:
-                                                    if enemy_count == 1:
-                                                        print('''一名对手曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's an enemy present in your past matches. Please check the workbook "%s" in the main directory.''' %(excel_name, excel_name))
-                                                    else:
-                                                        print('''%d名对手曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d enemies present in your past matches. Please check the workbook "%s" in the main directory.''' %(enemy_count, excel_name, enemy_count, excel_name))
-                                        if len(recent_friends) == 1:
-                                            print("以上玩家中，%s是您的好友。\nAmong the above players, %s is your friend." %(recent_friends[0], recent_friends[0]))
-                                        elif len(recent_friends) > 1:
-                                            print("以上玩家中，%s是您的好友。\nAmong the above players, %s are your friends." %("、".join(recent_friends), ", ".join(recent_friends)))
-                                        if not (all(map(lambda x: x["nameVisibilityType"] == "VISIBLE", champ_select_session["theirTeam"])) or all(map(lambda x: x["nameVisibilityType"] == "HIDDEN", champ_select_session["theirTeam"]))):
-                                            print("检测到敌方信息可见性异常！请检查之前输出的英雄选择阶段信息。\nDetected enemies' visibility abnormal! Please check the champ select session information printed before.")
-                                    elif gameflow_phase == "InProgress":
-                                        if single_check:
-                                            gameflow_session = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
-                                            excel_name = "Recently Played Summoners in Match %s.xlsx" %gameflow_session["gameData"]["gameId"]
-                                            recent_player_puuid = [] #用来存储单独检查时的玩家通用唯一识别码，防止玩家不断输入相同的召唤师名，导致计数出现失误（Designed to store a single player's puuid, in case if the player had input the same summoner name over and over again, then the count of recent played players would be wrong）
-                                            while True:
-                                                print('请输入需要检查的召唤师名，退出请输入“0”：\nPlease input the summoner name to check. Submit "0" to exit.')
-                                                summoner_name_check = input()
-                                                if summoner_name_check == "0":
-                                                    break
-                                                elif summoner_name_check == "":
-                                                    print("请输入非空字符串！\nPlease input a string instead of null!")
-                                                    continue
-                                                else:
-                                                    if summoner_name_check.count("-") == 4 and len(summoner_name_check.replace(" ", "")) > 22: #拳头规定的玩家名称不超过16个字符，尾标不超过5个字符（Riot game name can't exceed 16 characters. The tagline can't exceed 5 characters）
-                                                        check_by_puuid = True
-                                                        info_check = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + quote(summoner_name_check))).json()
-                                                    else:
-                                                        check_by_puuid = False
-                                                        info_check = await (await connection.request("GET", "/lol-summoner/v1/summoners?name=" + quote(summoner_name_check))).json()
-                                                    if "errorCode" in info_check and info_check["httpStatus"] == 400:
-                                                        if check_by_puuid:
-                                                            print("您输入的玩家通用唯一识别码格式有误！请重新输入！\nPUUID wasn't in UUID format! Please try again!")
+                                                    print()
+                                                    print(LoLAlly_df_to_print)
+                                                    if search_TFT != "":
+                                                        print(TFTAlly_df_to_print)
+                                                    if recent_friends == []:
+                                                        if ally_count == 1:
+                                                            print('''一名玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's a player present in your past matches. Please check the workbook "%s" in the main directory.''' %(excel_name, excel_name))
                                                         else:
-                                                            print("您输入的召唤师名称格式有误！请重新输入！\nERROR format of summoner name! Please try again!")
-                                                    if "errorCode" in info_check and info_check["httpStatus"] == 404:
-                                                        if check_by_puuid:
-                                                            print("未找到玩家通用唯一识别码为" + summoner_name_check + "的玩家；请核对识别码并稍后再试。\nA player with puuid " + summoner_name_check + " was not found; verify the puuid and try again.")
-                                                        else:
-                                                            print("未找到" + summoner_name_check + "；请核对下名字并稍后再试。\n" + summoner_name_check + " was not found; verify the name and try again.")
-                                                    elif "errorCode" in info_check and info_check["httpStatus"] == 422:
-                                                        print('召唤师名称已变更为拳头ID。请以“{召唤师名称}#{尾标}”的格式输入。\nSummoner name has been replaced with Riot ID. Please input the name in this format: "{gameName}#{tagLine}", e.g. "%s#%s".' %(current_info["gameName"], current_info["tagLine"]))
-                                                        continue
-                                                    elif "accountId" in info_check:
-                                                        recent_player_checked = info_check["puuid"] in recent_player_puuid #代表一名玩家是否已经检查过（Represents whether a player has been checked）
-                                                        if recent_player_checked:
-                                                            print("您已检查过该玩家。\nYou've checked this player.")
-                                                        else:
-                                                            recent_player_puuid.append(info_check["puuid"])
-                                                        recent_LoLPlayer_index = [0]
-                                                        recent_TFTPlayer_index = [0]
-                                                        for i in range(len(recent_LoLPlayers_df.loc[:, "puuid"])):
-                                                            if recent_LoLPlayers_df.at[i, "puuid"] == info_check["puuid"]:
-                                                                recent_LoLPlayer_index.append(i)
-                                                        if search_TFT != "":
-                                                            for i in range(len(recent_TFTPlayers_df.loc[:, "puuid"])):
-                                                                if recent_TFTPlayers_df.at[i, "puuid"] == info_check["puuid"]:
-                                                                    recent_TFTPlayer_index.append(i)
-                                                        if len(recent_LoLPlayer_index) + len(recent_TFTPlayer_index) > 2:
-                                                            if not recent_player_checked:
-                                                                recent_player_count += 1
-                                                            recent_LoLPlayer_df = recent_LoLPlayers_df.loc[recent_LoLPlayer_index, :]
-                                                            recent_TFTPlayer_df = recent_TFTPlayers_df.loc[recent_TFTPlayer_index, :]
-                                                            if not recent_player_checked:
-                                                                recent_LoLPlayer_df_to_print = pandas.concat([recent_LoLPlayer_df_to_print, recent_LoLPlayer_df.loc[1:, recent_LoLPlayer_fields]], axis = 0)
-                                                                recent_TFTPlayer_df_to_print = pandas.concat([recent_TFTPlayer_df_to_print, recent_TFTPlayer_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
-                                                                if info_check["puuid"] in friends:
-                                                                    recent_friends_check.append(info_check["displayName"])
-                                                            while True:
-                                                                try:
-                                                                    with pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") as writer:
-                                                                        if len(recent_LoLPlayer_index) > 1:
-                                                                            recent_LoLPlayer_df.to_excel(excel_writer = writer, sheet_name = info_check["displayName"] + " (LoL)")
-                                                                        if search_TFT != "" and len(recent_TFTPlayer_index) > 1:
-                                                                            recent_TFTPlayer_df.to_excel(excel_writer = writer, sheet_name = info_check["displayName"] + " (TFT)")
-                                                                        print("玩家%s曾经与您一同战斗过%d次。\nPlayer %s has fought with you for %d times." %(info_check["displayName"], len(recent_LoLPlayer_index) + len(recent_TFTPlayer_index) - 2, info_check["displayName"], len(recent_LoLPlayer_index) + len(recent_TFTPlayer_index) - 2))
-                                                                except PermissionError:
-                                                                    print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
-                                                                    input()
-                                                                except FileNotFoundError:
-                                                                    with pandas.ExcelWriter(path = excel_name) as writer:
-                                                                        if len(recent_LoLPlayer_index) > 1:
-                                                                            recent_LoLPlayer_df.to_excel(excel_writer = writer, sheet_name = info_check["displayName"] + " (LoL)")
-                                                                        if search_TFT != "" and len(recent_TFTPlayer_index) > 1:
-                                                                            recent_TFTPlayer_df.to_excel(excel_writer = writer, sheet_name = info_check["displayName"] + " (TFT)")
-                                                                else:
-                                                                    break
-                                                        else:
-                                                            print("玩家%s未曾与您战斗过！\nPlayer %s hasn't fought with/against you!" %(info_check["displayName"], info_check["displayName"]))
-                                            if recent_player_count == 0:
-                                                print("您目前遇到的都是新的玩家。尝试拓展人缘吧！\nThe players you've met now are all new. Try extending your friendship!")
+                                                            print('''%d名玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d players present in your past matches. Please check the workbook "%s" in the main directory.''' %(ally_count, excel_name, ally_count, excel_name))
                                             else:
-                                                print()
-                                                print(recent_LoLPlayer_df_to_print)
-                                                if search_TFT != "":
-                                                    print(recent_TFTPlayer_df_to_print)
-                                                if recent_friends == []:
-                                                    if recent_player_count == 1:
-                                                        print('''一名队友曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's an ally present in your past matches. Please check the workbook "%s" in the main directory.''' %(excel_name, excel_name))
-                                                    else:
-                                                        print('''%d名队友曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d allies present in your past matches. Please check the workbook "%s" in the main directory.''' %(recent_player_count, excel_name, recent_player_count, excel_name))
-                                            if len(recent_friends_check) == 1:
-                                                print("以上玩家中，%s是您的好友。\nAmong the above players, %s is your friend." %(recent_friends_check[0], recent_friends_check[0]))
-                                            elif len(recent_friends_check) > 1:
-                                                print("以上玩家中，%s是您的好友。\nAmong the above players, %s are your friends." %("、".join(recent_friends_check), ", ".join(recent_friends_check)))
+                                                if ally_count == 0:
+                                                    print("您目前遇到的都是新的玩家。尝试拓展人缘吧！\nThe players you've met now are all new. Try extending your friendship!")
+                                                else:
+                                                    print()
+                                                    print(LoLAlly_df_to_print)
+                                                    if search_TFT != "":
+                                                        print(TFTAlly_df_to_print)
+                                                    if recent_friends == []:
+                                                        if ally_count == 1:
+                                                            print('''一名队友曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's an ally present in your past matches. Please check the workbook "%s" in the main directory.''' %(excel_name, excel_name))
+                                                        else:
+                                                            print('''%d名队友曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d allies present in your past matches. Please check the workbook "%s" in the main directory.''' %(ally_count, excel_name, ally_count, excel_name))
+                                                if enemy_count > 0:
+                                                    print()
+                                                    print(LoLEnemy_df_to_print)
+                                                    if search_TFT != "":
+                                                        print(TFTEnemy_df_to_print)
+                                                    if recent_friends == []:
+                                                        if enemy_count == 1:
+                                                            print('''一名对手曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's an enemy present in your past matches. Please check the workbook "%s" in the main directory.''' %(excel_name, excel_name))
+                                                        else:
+                                                            print('''%d名对手曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d enemies present in your past matches. Please check the workbook "%s" in the main directory.''' %(enemy_count, excel_name, enemy_count, excel_name))
+                                            if len(recent_friends) == 1:
+                                                print("以上玩家中，%s是您的好友。\nAmong the above players, %s is your friend." %(recent_friends[0], recent_friends[0]))
+                                            elif len(recent_friends) > 1:
+                                                print("以上玩家中，%s是您的好友。\nAmong the above players, %s are your friends." %("、".join(recent_friends), ", ".join(recent_friends)))
                                 elif detect_scene == "2":
                                     recent_friend_count = 0
                                     recent_LoLFriend_df_to_print = pandas.DataFrame(data = recent_LoLPlayer_dict_to_print)
