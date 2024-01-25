@@ -429,7 +429,6 @@
         "inStore": true,
         "from": [],
         "to": [
-            6631,
             3156,
             3139,
             2020,
@@ -3499,7 +3498,8 @@
         "to": [
             3074,
             3748,
-            6698
+            6698,
+            6631
         ],
         "categories": [
             "Damage",
@@ -3519,7 +3519,7 @@
     {
         "id": 3078,
         "name": "三相之力",
-        "description": "<mainText><stats><attention>45</attention>攻击力<br><attention>33%</attention>攻击速度<br><attention>300</attention>生命值<br><attention>20</attention>技能急速</stats><br><br>Item_3078_TooltipExternal</mainText>",
+        "description": "<mainText><stats><attention>45</attention>攻击力<br><attention>33%</attention>攻击速度<br><attention>300</attention>生命值<br><attention>20</attention>技能急速</stats><br><br><passive>咒刃</passive><br>在施放一个技能后，你的下一次普通攻击会获得强化，造成额外物理伤害。<br><br><passive>加快</passive><br>普攻会提供移动速度。<br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -3721,8 +3721,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 400,
-        "priceTotal": 3000,
+        "price": 200,
+        "priceTotal": 2800,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3087_Statikk_Shiv.png"
     },
     {
@@ -3813,7 +3813,7 @@
     {
         "id": 3095,
         "name": "岚切",
-        "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>15%</attention>攻击速度<br><attention>20%</attention>暴击几率</stats><br><br><passive>弩箭</passive><br>你的盈能攻击附带额外魔法伤害并提供移动速度。</mainText>",
+        "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>20%</attention>攻击速度<br><attention>20%</attention>暴击几率</stats><br><br><passive>弩箭</passive><br>你的盈能攻击附带额外魔法伤害并提供移动速度。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4256,7 +4256,7 @@
     {
         "id": 3118,
         "name": "残疫",
-        "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>蔑视</passive><br>获得终极技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
+        "description": "<mainText><stats><attention>90</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>蔑视</passive><br>获得终极技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4418,7 +4418,7 @@
     },
     {
         "id": 3131,
-        "name": "Item_3131_Name",
+        "name": "神圣之剑",
         "description": "<mainText><stats><attention>30</attention>攻击力<br><attention>25%</attention>攻击速度<br><attention>18</attention>穿甲</stats><br><br><br><br><active>主动 - </active> <active>神圣祝福：</active>提供<attackSpeed>100%攻击速度</attackSpeed> 和100%暴击几率，持续3秒或3次普攻(90 (0秒))。</mainText>",
         "active": true,
         "inStore": true,
@@ -5664,7 +5664,7 @@
     {
         "id": 3748,
         "name": "巨型九头蛇",
-        "description": "<mainText><stats><attention>50</attention>攻击力<br><attention>500</attention>生命值</stats><br><br><passive>顺劈</passive><br>攻击附带额外伤害，并生成一道冲击波来对目标身后的敌人们造成物理伤害。<br><br> <active>主动</active><br><active>刚斩</active><br>在你的下一次攻击，<passive>顺劈</passive>将对你的目标和一个附近的冲击波内造成额外物理伤害。</mainText>",
+        "description": "<mainText><stats><attention>50</attention>攻击力<br><attention>550</attention>生命值</stats><br><br><passive>顺劈</passive><br>攻击附带额外伤害，并生成一道冲击波来对目标身后的敌人们造成物理伤害。<br><br> <active>主动</active><br><active>刚斩</active><br>在你的下一次攻击，<passive>顺劈</passive>将对你的目标和一个附近的冲击波内造成额外物理伤害。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -6745,7 +6745,7 @@
     },
     {
         "id": 4402,
-        "name": "Item_4402_Name",
+        "name": "激发之匣",
         "description": "<mainText><stats><attention>30</attention>攻击力<br><attention>400</attention>生命值<br><attention>300</attention>法力<br><attention>10</attention>技能急速</stats><br><br><br><li><passive>永恒：</passive>承受来自英雄的伤害时，你会回复相当于15%折前伤害值的法力值；花费法力时，你会回复相当于25%法力消耗的生命值，每次施法每秒最多治疗20生命值。<li><passive>激发：</passive>在使用一次技能后，在3秒里持续回复共<healing>3%已损失生命值</healing>和<scaleMana>3%已损失法力值</scaleMana>。<br><br><flavorText>“挫败那些诺克萨斯人” <br>- 神庙守卫鲍迪尔</flavorText></mainText>",
         "active": false,
         "inStore": true,
@@ -7199,7 +7199,7 @@
     {
         "id": 4645,
         "name": "影焰",
-        "description": "<mainText><stats><attention>120</attention>法术强度<br><attention>12</attention>法术穿透</stats><br><br>Item_4645_TooltipExternal</mainText>",
+        "description": "<mainText><stats><attention>120</attention>法术强度<br><attention>12</attention>法术穿透</stats><br><br><passive>余烬绽放</passive><br><magicDamage>魔法伤害</magicDamage>和<trueDamage>真实伤害</trueDamage>会暴击低生命值的敌人。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7225,7 +7225,7 @@
     {
         "id": 4646,
         "name": "风暴狂涌",
-        "description": "<mainText><stats><attention>90</attention>法术强度<br><attention>10</attention>法术穿透<br><attention>5%</attention>移动速度</stats><br><br><passive>风暴掠袭</passive><br>在短时间内对一个英雄造成相当于其35%最大生命值的伤害时，对其施加<passive>风啸</passive>并提供移动速度。<br><br><passive>风啸</passive><br>在若干秒后，打击该目标，造成魔法伤害。如果一个敌人在打击前阵亡，那么它会立刻引爆，在一个大范围内造成伤害并提供额外金币。 </mainText>",
+        "description": "<mainText><stats><attention>95</attention>法术强度<br><attention>10</attention>法术穿透<br><attention>5%</attention>移动速度</stats><br><br><passive>风暴掠袭</passive><br>在短时间内对一个英雄造成相当于其35%最大生命值的伤害时，对其施加<passive>风啸</passive>并提供移动速度。<br><br><passive>风啸</passive><br>在若干秒后，打击该目标，造成魔法伤害。如果一个敌人在打击前阵亡，那么它会立刻引爆，在一个大范围内造成伤害并提供额外金币。 </mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7366,7 +7366,7 @@
     {
         "id": 6610,
         "name": "焚天",
-        "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>300</attention>生命值<br><attention>15</attention>技能急速</stats><br><br><passive>光盾打击</passive><br>对一个英雄打出的第一次普攻会暴击并治疗你自身。溢出的治疗效果会被提供为一个临时的额外生命值。</mainText>",
+        "description": "<mainText><stats><attention>45</attention>攻击力<br><attention>450</attention>生命值<br><attention>15</attention>技能急速</stats><br><br><passive>光盾打击</passive><br>对一个英雄打出的第一次普攻会暴击并治疗你自身。溢出的治疗效果会被提供为一个临时的额外生命值。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7550,12 +7550,12 @@
     {
         "id": 6631,
         "name": "挺进破坏者",
-        "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>30%</attention>攻击速度<br><attention>400</attention>生命值</stats><br><br><passive>回火</passive><br>造成<physicalDamage>物理伤害</physicalDamage>时为你提供持续2秒的<speed>20移动速度</speed>。<br><br> <active>主动</active> <br><active>破阵冲击波</active><br>对附近的敌人们造成35%<status>减速</status>并且每命中一个英雄就会获得<speed>35%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
+        "description": "<mainText><stats><attention>50</attention>攻击力<br><attention>30%</attention>攻击速度<br><attention>450</attention>生命值</stats><br><br><passive>回火</passive><br>造成<physicalDamage>物理伤害</physicalDamage>时为你提供持续2秒的<speed>20移动速度</speed>。<br><br> <active>主动</active> <br><active>破阵冲击波</active><br>对附近的敌人们造成35%<status>减速</status>并且每命中一个英雄就会获得<speed>35%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
+            3077,
             3044,
-            1037,
             1042
         ],
         "to": [
@@ -7565,6 +7565,7 @@
             "Health",
             "Damage",
             "AttackSpeed",
+            "CooldownReduction",
             "Slow",
             "NonbootsMovement"
         ],
@@ -7575,8 +7576,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 725,
-        "priceTotal": 3000,
+        "price": 700,
+        "priceTotal": 3300,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6631_Fighter_T4_StrideBreaker.png"
     },
     {
@@ -7644,7 +7645,7 @@
     {
         "id": 6655,
         "name": "卢登的伙伴",
-        "description": "<mainText><stats><attention>90</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>装填</passive><br>每若干秒获得一层【射击充能】。<br><br><passive>开火</passive><br>伤害型技能会消耗所有【射击充能】来对目标和目标附近的其它敌人(其它敌人的数量相当于【射击充能】层数)造成额外魔法伤害。如果距离内的目标数量不足，那么每剩余一次射击，就会对主要目标重复造成一次伤害。</mainText>",
+        "description": "<mainText><stats><attention>100</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>装填</passive><br>每若干秒获得一层【射击充能】。<br><br><passive>开火</passive><br>伤害型技能会消耗所有【射击充能】来对目标和目标附近的其它敌人(其它敌人的数量相当于【射击充能】层数)造成额外魔法伤害。如果距离内的目标数量不足，那么每剩余一次射击，就会对主要目标重复造成一次伤害。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7956,7 +7957,7 @@
     {
         "id": 6672,
         "name": "海妖杀手",
-        "description": "<mainText><stats><attention>40</attention>攻击力<br><attention>35%</attention>攻击速度<br><attention>20%</attention>暴击几率</stats><br><br><br><li><passive>放倒它</passive>每第三次普攻造成额外物理伤害，在重复命中相同目标时提升。</mainText>",
+        "description": "<mainText><stats><attention>45</attention>攻击力<br><attention>35%</attention>攻击速度<br><attention>20%</attention>暴击几率</stats><br><br><br><li><passive>放倒它</passive>每第三次普攻造成额外物理伤害，在重复命中相同目标时提升。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8564,7 +8565,7 @@
     {
         "id": 7004,
         "name": " 万众之恨意",
-        "description": "<mainText><stats><ornnBonus>110</ornnBonus>法术强度<br><ornnBonus>800</ornnBonus>法力<br><ornnBonus>30</ornnBonus>技能急速</stats><br><br><passive>蔑视</passive><br>获得终极技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
+        "description": "<mainText><stats><ornnBonus>120</ornnBonus>法术强度<br><ornnBonus>800</ornnBonus>法力<br><ornnBonus>30</ornnBonus>技能急速</stats><br><br><passive>蔑视</passive><br>获得终极技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8812,7 +8813,7 @@
     {
         "id": 7013,
         "name": " 武备之力",
-        "description": "<mainText><stats><ornnBonus>115</ornnBonus>法术强度<br><ornnBonus>950</ornnBonus>法力<br><ornnBonus>30</ornnBonus>技能急速</stats><br><br><passive>装填</passive><br>每若干秒获得一层【射击充能】。<br><br><passive>开火</passive><br>伤害型技能会消耗所有【射击充能】来对目标和目标附近的其它敌人(其它敌人的数量相当于【射击充能】层数)造成额外魔法伤害。如果距离内的目标数量不足，那么每剩余一次射击，就会对主要目标重复造成一次伤害。</mainText>",
+        "description": "<mainText><stats><ornnBonus>125</ornnBonus>法术强度<br><ornnBonus>950</ornnBonus>法力<br><ornnBonus>30</ornnBonus>技能急速</stats><br><br><passive>装填</passive><br>每若干秒获得一层【射击充能】。<br><br><passive>开火</passive><br>伤害型技能会消耗所有【射击充能】来对目标和目标附近的其它敌人(其它敌人的数量相当于【射击充能】层数)造成额外魔法伤害。如果距离内的目标数量不足，那么每剩余一次射击，就会对主要目标重复造成一次伤害。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8899,7 +8900,7 @@
     {
         "id": 7016,
         "name": " 梦想击碎者",
-        "description": "<mainText><stats><ornnBonus>70</ornnBonus>攻击力<br><ornnBonus>40%</ornnBonus>攻击速度<br><ornnBonus>475</ornnBonus>生命值</stats><br><br><passive>回火</passive><br>造成<physicalDamage>物理伤害</physicalDamage>时为你提供持续2秒的<speed>20移动速度</speed>。<br><br> <active>主动</active> <br><active>破阵冲击波</active><br>对附近的敌人们造成35%<status>减速</status>并且每命中一个英雄就会获得<speed>35%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
+        "description": "<mainText><stats><ornnBonus>60</ornnBonus>攻击力<br><ornnBonus>40%</ornnBonus>攻击速度<br><ornnBonus>600</ornnBonus>生命值</stats><br><br><passive>回火</passive><br>造成<physicalDamage>物理伤害</physicalDamage>时为你提供持续2秒的<speed>20移动速度</speed>。<br><br> <active>主动</active> <br><active>破阵冲击波</active><br>对附近的敌人们造成35%<status>减速</status>并且每命中一个英雄就会获得<speed>35%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -8910,6 +8911,7 @@
             "Health",
             "Damage",
             "AttackSpeed",
+            "CooldownReduction",
             "Slow",
             "NonbootsMovement"
         ],
@@ -8921,7 +8923,7 @@
         "specialRecipe": 0,
         "isEnchantment": false,
         "price": 0,
-        "priceTotal": 3000,
+        "priceTotal": 3300,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6631_Fighter_T4_StrideBreaker.png"
     },
     {
@@ -8957,7 +8959,7 @@
     {
         "id": 7018,
         "name": " 无尽之力",
-        "description": "<mainText><stats><ornnBonus>55</ornnBonus>攻击力<br><ornnBonus>43%</ornnBonus>攻击速度<br><ornnBonus>400</ornnBonus>生命值<br><ornnBonus>25</ornnBonus>技能急速</stats><br><br>Item_3078_TooltipExternal</mainText>",
+        "description": "<mainText><stats><ornnBonus>55</ornnBonus>攻击力<br><ornnBonus>43%</ornnBonus>攻击速度<br><ornnBonus>400</ornnBonus>生命值<br><ornnBonus>25</ornnBonus>技能急速</stats><br><br><passive>咒刃</passive><br>在施放一个技能后，你的下一次普通攻击会获得强化，造成额外物理伤害。<br><br><passive>加快</passive><br>普攻会提供移动速度。<br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9539,7 +9541,7 @@
     {
         "id": 7039,
         "name": " 天殒",
-        "description": "<mainText><stats><ornnBonus>65</ornnBonus>攻击力<br><ornnBonus>500</ornnBonus>生命值<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br><passive>光盾打击</passive><br>对一个英雄打出的第一次普攻会暴击并治疗你自身。溢出的治疗效果会被提供为一个临时的额外生命值。</mainText>",
+        "description": "<mainText><stats><ornnBonus>60</ornnBonus>攻击力<br><ornnBonus>600</ornnBonus>生命值<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br><passive>光盾打击</passive><br>对一个英雄打出的第一次普攻会暴击并治疗你自身。溢出的治疗效果会被提供为一个临时的额外生命值。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9593,7 +9595,7 @@
     {
         "id": 7041,
         "name": " 堕蛟祭品",
-        "description": "<mainText><stats><ornnBonus>60</ornnBonus>攻击力<br><ornnBonus>45%</ornnBonus>攻击速度<br><attention>20%</attention>暴击几率</stats><br><br><br><li><passive>放倒它</passive>每第三次普攻造成额外物理伤害，在重复命中相同目标时提升。</mainText>",
+        "description": "<mainText><stats><ornnBonus>65</ornnBonus>攻击力<br><ornnBonus>45%</ornnBonus>攻击速度<br><attention>20%</attention>暴击几率</stats><br><br><br><li><passive>放倒它</passive>每第三次普攻造成额外物理伤害，在重复命中相同目标时提升。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -12144,6 +12146,7 @@
             "Health",
             "Damage",
             "AttackSpeed",
+            "CooldownReduction",
             "Slow",
             "NonbootsMovement"
         ],
@@ -13014,6 +13017,7 @@
             "Health",
             "Damage",
             "AttackSpeed",
+            "CooldownReduction",
             "Slow",
             "NonbootsMovement"
         ],

@@ -3623,7 +3623,7 @@
         "trait_id": "Cybernetic",
         "set": "TFTSet3",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Cybernetic.png",
-        "tooltip_text": "至少携带了1件装备的【源计划】弈子们获得攻击力和生命值。<br><br><expandRow>(@MinUnits@) +@ADAmp*100@ %i:scaleAD%，+@HealthAmp@ %i:scaleHealth%</expandRow>",
+        "tooltip_text": "至少携带了1件装备的【源计划】弈子们获得攻击力和生命值。<br><br><expandRow>(@MinUnits@) +@ADAmp*100@% %i:scaleAD%，+@HealthAmp@ %i:scaleHealth%</expandRow>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
             {
@@ -3669,7 +3669,7 @@
         "trait_id": "DarkStar",
         "set": "TFTSet3",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_DarkStar.png",
-        "tooltip_text": "每当一个己方弈子阵亡时，【暗星】们都会获得攻击力和法术强度。<br><br><expandRow>(@MinUnits@) +@ADandSP@ %i:scaleAD%，+@ADandSP@ %i:scaleAP%</expandRow>",
+        "tooltip_text": "每当一个己方弈子阵亡时，【暗星】们都会获得攻击力和法术强度。<br><br><expandRow>(@MinUnits@) +@ADandSP@% %i:scaleAD%，+@ADandSP@ %i:scaleAP%</expandRow>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
             {
