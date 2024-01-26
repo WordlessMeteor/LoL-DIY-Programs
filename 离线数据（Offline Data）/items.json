@@ -2431,7 +2431,7 @@
     {
         "id": 3003,
         "name": "大天使之杖",
-        "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得相当于你的额外法力值的法术强度。<br><passive>法力积攒</passive><br>用一个技能击中一个目标时，会消耗一层充能并获得额外法力值。至多提供360法力值，且此时这个装备会转变为<rarityLegendary>炽天使之拥</rarityLegendary>。</mainText>",
+        "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br>Item_3003_TooltipExternal</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -2459,7 +2459,7 @@
     {
         "id": 3004,
         "name": "魔宗",
-        "description": "<mainText><stats><attention>35</attention>攻击力<br><attention>500</attention>法力<br><attention>15</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得基于法力值的额外攻击力。<br><br><passive>法力积攒</passive><br>用一个技能或攻击击中一个目标时会获得额外法力值。在提供的法力值达到最大值时，这个装备会转变为<rarityLegendary>魔切</rarityLegendary>。</mainText>",
+        "description": "<mainText><stats><attention>35</attention>攻击力<br><attention>500</attention>法力<br><attention>15</attention>技能急速</stats><br><br>Item_3004_TooltipExternal</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -3284,7 +3284,7 @@
     {
         "id": 3070,
         "name": "女神之泪",
-        "description": "<mainText><stats><attention>240</attention>法力</stats><br><br><br><li><passive>专注：</passive>攻击对小兵附带额外的物理伤害。<li><passive>法力积攒：</passive>用一个技能击中一个目标时，会消耗一层充能并提供<scaleMana>3额外法力值</scaleMana>，如果目标是英雄，则该次提供的额外法力值翻倍。至多提供360额外法力值。<br><br><rules>每8秒获得一层新的<passive>法力积攒</passive>充能(至多4层)。</rules></mainText>",
+        "description": "<mainText><stats><attention>240</attention>法力</stats><br><br>Item_3070_TooltipExternal</mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -4285,7 +4285,7 @@
     {
         "id": 3119,
         "name": "凛冬之临",
-        "description": "<mainText><stats><attention>400</attention>生命值<br><attention>500</attention>法力<br><attention>15</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得额外<scaleHealth>生命值，相当于0</scaleHealth>。<br><br><passive>法力积攒</passive><br>用一个技能或攻击击中一个目标时，会消耗一层充能并获得额外法力值。在提供的法力值达到最大值时，这个装备会转变为<rarityLegendary>末日寒冬</rarityLegendary>。</mainText>",
+        "description": "<mainText><stats><attention>400</attention>生命值<br><attention>500</attention>法力<br><attention>15</attention>技能急速</stats><br><br>Item_3119_TooltipExternal</mainText>",
         "active": false,
         "inStore": true,
         "from": [
