@@ -1,0 +1,1255 @@
+[
+    {
+        "internalName": "Dragonmancers24_Thumbnail",
+        "internalDescription": "Dragonmancers24_Thumbnail",
+        "path": "/lol-game-data/assets/ASSETS/Missions/Dragonmancers24_pngThumbnail.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "Dragonmancers2024_TrackerIcon",
+        "internalDescription": "Dragonmancers2024_TrackerIcon",
+        "path": "/lol-game-data/assets/ASSETS/Missions/Dragonmancers2024_TrackerIcon.svg",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "Feature_FWoTD",
+        "internalDescription": "Feature unlock for free win of the day (Leveling)",
+        "path": "/lol-game-data/assets/ASSETS/Missions/eog/rewards/leveling/features/Feature_FWoTD.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "FWOTD_MissionThumbnail",
+        "internalDescription": "FWOTD_MissionThumbnail",
+        "path": "/lol-game-data/assets/ASSETS/Missions/MissionIcon-WOTD.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "XP_Reward",
+        "internalDescription": "XP_Reward",
+        "path": "/lol-game-data/assets/ASSETS/Missions/XP.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "ImmortalJourney23_MissionThumbnail",
+        "internalDescription": "ImmortalJourney23_MissionThumbnail",
+        "path": "/lol-game-data/assets/ASSETS/Missions/ImmortalJourney23_MissionThumbnail.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "ImmortalJourney23_TrackerIcon",
+        "internalDescription": "ImmortalJourney23_TrackerIcon",
+        "path": "/lol-game-data/assets/ASSETS/Missions/ImmortalJourney23_TrackerIcon.svg",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "LaIlusion_MissionThumbnail",
+        "internalDescription": "LaIlusion_MissionThumbnail",
+        "path": "/lol-game-data/assets/ASSETS/Missions/LaIlusion_MissionThumbnail.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "LaIlusion_TrackerIcon",
+        "internalDescription": "LaIlusion_TrackerIcon",
+        "path": "/lol-game-data/assets/ASSETS/Missions/LaIlusion_TrackerIcon.svg",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "LunarRevel2024_MissionThumbnail",
+        "internalDescription": "LunarRevel2024_MissionThumbnail",
+        "path": "/lol-game-data/assets/ASSETS/Missions/LunarRevel2024_MissionThumbnail.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "LunarRevel2024_Tracker",
+        "internalDescription": "LunarRevel2024_Tracker",
+        "path": "/lol-game-data/assets/ASSETS/Missions/LunarRevel2024_Tracker.svg",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "NPEMission_ARAM",
+        "internalDescription": "NPEMission_ARAM",
+        "path": "/lol-game-data/assets/ASSETS/Missions/newPlayerExperience/NPEMission_ARAM.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "NPEMission_GetInGame",
+        "internalDescription": "NPEMission_GetInGame",
+        "path": "/lol-game-data/assets/ASSETS/Missions/newPlayerExperience/NPEMission_GetInGame.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "NPEMission_SRBlind",
+        "internalDescription": "NPEMission_SRBlind",
+        "path": "/lol-game-data/assets/ASSETS/Missions/newPlayerExperience/NPEMission_SRBlind.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "NPEMission_SRDraft",
+        "internalDescription": "NPEMission_SRDraft",
+        "path": "/lol-game-data/assets/ASSETS/Missions/newPlayerExperience/NPEMission_SRDraft.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "NPE_Mission_Annihilation",
+        "internalDescription": "NPE_Mission_Annihilation",
+        "path": "/lol-game-data/assets/ASSETS/Missions/newPlayerExperience/NPE_Mission_Annihilation.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "NPE_Mission_Dragons",
+        "internalDescription": "NPE_Mission_Dragons",
+        "path": "/lol-game-data/assets/ASSETS/Missions/newPlayerExperience/NPE_Mission_Dragons.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "NPE_Mission_EarnYourWay",
+        "internalDescription": "NPE_Mission_EarnYourWay",
+        "path": "/lol-game-data/assets/ASSETS/Missions/newPlayerExperience/NPE_Mission_EarnYourWay.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "NPE_Mission_Flash",
+        "internalDescription": "NPE_Mission_Flash",
+        "path": "/lol-game-data/assets/ASSETS/Missions/newPlayerExperience/NPE_Mission_Flash.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "NPE_Mission_Jungle",
+        "internalDescription": "NPE_Mission_Jungle",
+        "path": "/lol-game-data/assets/ASSETS/Missions/newPlayerExperience/NPE_Mission_Jungle.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "NPE_Mission_Teamwork",
+        "internalDescription": "NPE_Mission_Teamwork",
+        "path": "/lol-game-data/assets/ASSETS/Missions/newPlayerExperience/NPE_Mission_Teamwork.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "EoG_Border_100_4k",
+        "internalDescription": "EoG_Border_100_4k",
+        "path": "/lol-game-data/assets/ASSETS/Missions/EoG_Border_100_4k.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "EoG_Border_125_4k",
+        "internalDescription": "EoG_Border_125_4k",
+        "path": "/lol-game-data/assets/ASSETS/Missions/EoG_Border_125_4k.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "EoG_Border_150_4k",
+        "internalDescription": "EoG_Border_150_4k",
+        "path": "/lol-game-data/assets/ASSETS/Missions/EoG_Border_150_4k.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "EoG_Border_175_4k",
+        "internalDescription": "EoG_Border_175_4k",
+        "path": "/lol-game-data/assets/ASSETS/Missions/EoG_Border_175_4k.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "EoG_Border_30_4k",
+        "internalDescription": "EoG_Border_30_4k",
+        "path": "/lol-game-data/assets/ASSETS/Missions/EoG_Border_30_4k.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "EoG_Border_50_4k",
+        "internalDescription": "EoG_Border_50_4k",
+        "path": "/lol-game-data/assets/ASSETS/Missions/EoG_Border_50_4k.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "EoG_Border_75_4k",
+        "internalDescription": "EoG_Border_75_4k",
+        "path": "/lol-game-data/assets/ASSETS/Missions/EoG_Border_75_4k.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "Feature_FCR",
+        "internalDescription": "Feature_FCR",
+        "path": "/lol-game-data/assets/ASSETS/Missions/Feature_FCR.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "Feature_FWoTD",
+        "internalDescription": "Feature_FWoTD",
+        "path": "/lol-game-data/assets/ASSETS/Missions/Feature_FWoTD.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "Feature_Loot",
+        "internalDescription": "Feature_Loot",
+        "path": "/lol-game-data/assets/ASSETS/Missions/Feature_Loot.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "Runes_inspiration",
+        "internalDescription": "Runes_inspiration",
+        "path": "/lol-game-data/assets/ASSETS/Missions/Runes_inspiration.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "Runes_unlocked",
+        "internalDescription": "Runes_unlocked",
+        "path": "/lol-game-data/assets/ASSETS/Missions/Runes_unlocked.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "QSMissions_Form1_CelebrationBG",
+        "internalDescription": "QSMissions_Form1_CelebrationBG",
+        "path": "/lol-game-data/assets/ASSETS/Missions/QSMissions_Form1_CelebrationBG.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "QSMissions_Form2_CelebrationBG",
+        "internalDescription": "QSMissions_Form2_CelebrationBG",
+        "path": "/lol-game-data/assets/ASSETS/Missions/QSMissions_Form2_CelebrationBG.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "QSMissions_Form3_CelebrationBG",
+        "internalDescription": "QSMissions_Form3_CelebrationBG",
+        "path": "/lol-game-data/assets/ASSETS/Missions/QSMissions_Form3_CelebrationBG.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "QS_Mask",
+        "internalDescription": "QS_Mask",
+        "path": "/lol-game-data/assets/ASSETS/Missions/QS_Mask_TrackerIcon.svg",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "PassXPToast",
+        "internalDescription": "Pass XP reward image",
+        "path": "/lol-game-data/assets/ASSETS/Missions/LoL_Pass_XP_Toast.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "XPBoost",
+        "internalDescription": "Xp boost reward image",
+        "path": "/lol-game-data/assets/ASSETS/Missions/XP_Boost.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "champion_series_icon",
+        "internalDescription": "Series Icon for all champion missions",
+        "path": "/lol-game-data/assets/ASSETS/Missions/seriesIcons/champion_series_icon.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "champion_series_icon_delete_me",
+        "internalDescription": "Series Icon for all champion missions",
+        "path": "/lol-game-data/assets/ASSETS/Missions/champion_series_icon.svg",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "daily_series_icon_delete_me",
+        "internalDescription": "Series Icon for all daily missions",
+        "path": "/lol-game-data/assets/ASSETS/Missions/daily_series_icon.svg",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "esports_wach_series_icon_delete_me",
+        "internalDescription": "Series Icon for all Esports Watch items",
+        "path": "/lol-game-data/assets/ASSETS/Missions/esports_watch_series_icon.svg",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "lunar_revel_series_icon_delete_me",
+        "internalDescription": "Icon represeting all lunar revel series",
+        "path": "/lol-game-data/assets/ASSETS/Missions/lunar_revel_series_icon.svg",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "ranked_series_icon_delete_me",
+        "internalDescription": "Series icon for all ranked missions",
+        "path": "/lol-game-data/assets/ASSETS/Missions/ranked_series_icon.svg",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "daily_series_icon",
+        "internalDescription": "Series Icon for all daily missions",
+        "path": "/lol-game-data/assets/ASSETS/Missions/seriesIcons/daily_series_icon.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "esports_watch_series_icon",
+        "internalDescription": "Series Icon for all Esports Watch items",
+        "path": "/lol-game-data/assets/ASSETS/Missions/seriesIcons/esports_watch_series_icon.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "lunar_revel_series_icon",
+        "internalDescription": "Icon represeting all lunar revel series",
+        "path": "/lol-game-data/assets/ASSETS/Missions/seriesIcons/lunar_revel_series_icon.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "ranked_series_icon",
+        "internalDescription": "Series icon for all ranked missions",
+        "path": "/lol-game-data/assets/ASSETS/Missions/seriesIcons/ranked_series_icon.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "SoulFighter_ReputationIcon",
+        "internalDescription": "SoulFighter_ReputationIcon",
+        "path": "/lol-game-data/assets/ASSETS/Missions/SoulFighter_Reputation_Icon.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "SoulFighter_MissionThumbnail",
+        "internalDescription": "SoulFighter_MissionThumbnail",
+        "path": "/lol-game-data/assets/ASSETS/Missions/SoulFighter2023_MissionThumbnail.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "SoulFighter_TrackerIcon",
+        "internalDescription": "SoulFighter_TrackerIcon",
+        "path": "/lol-game-data/assets/ASSETS/Missions/SoulFighter_Tracker_icon.svg",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "tft_series_icon",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Missions/SeriesIcons/series_icon.svg",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "egg_ll",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/egg_ll.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "egg_ll_legendary",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/egg_ll_legendary.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_random",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/emote_random.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "star_shard_bundle",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/star_shard_bundle.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "tencent_web_gacha",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tencent_token.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "treasure_tokens_10",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/treasure_token.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "treasure_tokens_15",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/treasure_token.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "treasure_tokens_25",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/treasure_token.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "treasure_tokens_50",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/treasure_token.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "arena_a_10a",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_Backstage_Day.TFT_ArenaSkin_Backstage_Day.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "arena_a_10b",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_Backstage_Dusk.TFT_ArenaSkin_Backstage_Day.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "arena_b_10a",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_NeonDJ.TFT_ArenaSkin_NeonDJ.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "arena_b_10b",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_Backstage_Night.TFT_ArenaSkin_Backstage_Day.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_a_10a",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/BP_Boom_InstrumentToss.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_a_10b",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_SonicBoom_T3.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_b_10a",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_DiscoDrop.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_b_10b",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_GuitarSmash.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "egg_ll_a",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactician_mixmasterumbra_1.TFT_Set10_Stage2.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "egg_ll_a1",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactician_dj_gloop.TFT_Set10.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "egg_ll_b",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactician_sugarconeporo_1.TFT_Set10_Stage2.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_a_10a",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4419_Heading_Out_Inventory.ACCESSORIES_13_23.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_a_10b",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4453_Heartsteel_Love_Inventory.ACCESSORIES_14_2.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_b_10a",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4422_The_Boss_Inventory.ACCESSORIES_13_23.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_b_10b",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4454_Nyaah_Inventory.ACCESSORIES_14_2.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_c_10a",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4421_On_Mute_Inventory.ACCESSORIES_13_23.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_c_10b",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4455_Drop_The_Beat_Inventory.ACCESSORIES_14_2.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_d_10a",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4420_Fawning_Inventory.ACCESSORIES_13_23.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_d_10b",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4456_Worlds_Smallest_Violin_Inventory.ACCESSORIES_14_2.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_devotion_10a",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4425_Victory_Jump_Inventory.ACCESSORIES_13_23.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_devotion_10b",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4459_Run_It_Back_Inventory.ACCESSORIES_14_2.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_perserverance_10a",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4424_Cake_Throw_Inventory.ACCESSORIES_13_23.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_perserverance_10b",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4458_Im_Not_A_Rapper_Inventory.ACCESSORIES_14_2.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_tenacity_10a",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4423_Approaching_Challenger_Inventory.ACCESSORIES_13_23.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_tenacity_10b",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4457_Look_Into_The_Future_Inventory.ACCESSORIES_14_2.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "tactician_pentakill_10a",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactician_pentakill_ao_shin.TFT_Set10.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "tactitian_choncc_10a",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactician_emo_choncc.TFT_Set10.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "tactitian_sprite_10a",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactician_superfan_sprite.TFT_Set10.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "tactitian_sprite_10b",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactician_megafan_sprite.TFT_Set10_Stage2.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "arena_a1_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_LandmarksOfRuneterra_Day.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "arena_b1_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_LandmarksOfRuneterra_Dusk.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "arena_c1_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_LandmarksOfRuneterra_Night.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "arena_d3_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_NoxusRing.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_a1_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/BP_Boom_StatueofDemacia_T1.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_a2_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/BP_Boom_StatueofDemacia_T2.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_a3_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/BP_Boom_StatueofDemacia_T3.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_b1_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_SunDiscOfShurima_T1.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_b2_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_SunDiscOfShurima_T2.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_b3_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_SunDiscOfShurima_T3.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_c1_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/BoomVoidInvades_T1.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_c2_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/BoomVoidInvades_T2.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_c3_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/BoomVoidInvades_T3.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_d1_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_Noxus_Siege_Ballista_T1.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_d2_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_Noxus_Siege_Ballista_T2.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_d3_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_Noxus_Siege_Ballista_T3.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "emote_a_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4259_Heimerdanger_Inventory.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_b_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4260_Unbannable_Inventory.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_c_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4261_Runterra_Unleashed_Inventory.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_d_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4262_WHERE_R_U_Inventory.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_devotion_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4265_Too_Late_For_Mercy_Inventory.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_perserverance_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4264_Untamable_Inventory.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_tenacity_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4263_My_True_Nature_Inventory.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "star_shard_bundle",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/star_shard_bundle.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "tactitian_a1_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/egg_star_tower_d_runespirit_1.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "tactitian_a2_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/egg_star_tower_d_runespirit_2.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "tactitian_a3_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/egg_star_tower_d_runespirit_3.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "tactitian_sprite_reforged",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactitian_set9_stage1_sprite.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "treasure_tokens",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/treasure_token.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "arena_a_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_SailingInRuneterra_Day.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "arena_b_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_SailingInRuneterra_Dusk.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "arena_c_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_SailingInRuneterra_Night.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "arena_d_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_BilgewaterBay.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_a1_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_Bilgewater_T1.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_a2_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_Bilgewater_T2.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_a3_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_Bilgewater_T3.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_b1_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/BP_Boom_ShadowIslesLifeDrain_T1.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_b2_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/BP_Boom_ShadowIslesLifeDrain_T2.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_b3_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/BP_Boom_ShadowIslesLifeDrain_T3.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_c1_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/BP_Boom_BandeCityPortals_T1.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_c2_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/BP_Boom_BandeCityPortals_T2.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_c3_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/BP_Boom_BandeCityPortals_T3.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_d1_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/BP_Boom_ZaunToxin_T1.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_d2_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/BP_Boom_ZaunToxin_T2.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "boom_d3_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/BP_Boom_ZaunToxin_T3.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "egg_a_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loot/Companions/Egg_Knifepup_Large.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "egg_b_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loot/Companions/Egg_Knifehound_Large.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_a_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4334_WoahDizzy_Inventory.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_b_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4335_Dogged_Inventory.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_c_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4336_High_Cost_Inventory.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_d_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4337_Ill_Wait_Inventory.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_devotion_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4340_Salute_Inventory.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_perserverance_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4339_Allez_Inventory.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "emote_tenacity_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4338_En_Garde_Inventory.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "tactitian_a1_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactician_lightcharger.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "tactitian_sprite_horizonbound",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactitian_set9_stage2_sprite.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "soul_brawl",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Missions/RewardIcons/event_sf.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "reward_boom_catseye",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/boom_pride_catseye_small.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "reward_boom_citrine",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/boom_pride_citrine_small.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "reward_boom_mint",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/boom_pride_mint_small.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "reward_boom_obsidian",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/boom_pride_obsidian_small.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "reward_boom_rainbow",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/boom_pride_rainbow_small.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "reward_boom_rosequartz",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/boom_pride_rosequartz_small.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "reward_boom_sapphire",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/boom_pride_rosequartz_small.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "reward_boom_tanzanite",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/boom_pride_tanzanite_small.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "egg_set7_stage2_event_silverwing",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loot/Companions/Loot_Egg_Large_Griffin.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "reward_em_dip",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Pride/4233_Dip_Inventory.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "reward_em_gunsblazing",
+        "internalDescription": "TFT Outlaw Squink & Samira SF Emote",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/4270_Guns_Blazing_Inventory.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "reward_em_heroicbrothers",
+        "internalDescription": "TFT Heroic Shisa & Sett SF Emote",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/4271_Heroic_Brothers_Inventory.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "reward_em_luminoussouls",
+        "internalDescription": "TFT Redeemed Nimblefoot & Lux SF Emote",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/4269_Luminous_Souls_Inventory.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "reward_em_westudiedtheblade",
+        "internalDescription": "TFT Pengu & Gwen SF Emote",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/4268_We_Studied_The_Blade_Inventory.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "reward_tactician_birthdayfuwa",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Missions/RewardIcons/tactician_set9_fuwa_birthday.png",
+        "startDate": 0,
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "reward_xp_blue",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Missions/RewardIcons/xp_blue.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "reward_xp_gold",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Missions/RewardIcons/xp_gold.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "reward_xp_gray",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Missions/RewardIcons/xp_gray.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "reward_xp_green",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Missions/RewardIcons/xp_green.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "reward_xp_purple",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Missions/RewardIcons/xp_purple.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "reward_xp_rainbow",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Missions/RewardIcons/xp_rainbow.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "series_lny_2023",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Missions/SeriesIcons/lny_2023_series_icon.svg",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "series_lny_2024",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Missions/SeriesIcons/lny_2023_series_icon.svg",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "tft_event_series_icon",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Missions/SeriesIcons/tft_event_series_icon.svg",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "tracker_pride",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Missions/TrackerIcons/pride.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "tracker_xp_blue",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Missions/TrackerIcons/xp_blue.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "tracker_xp_purple",
+        "internalDescription": "",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Missions/TrackerIcons/xp_purple.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "Winterblessed2023_MissionThumbnail",
+        "internalDescription": "Winterblessed2023_MissionThumbnail",
+        "path": "/lol-game-data/assets/ASSETS/Missions/Winterblessed2023_MissionThumbnail.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "Winterblessed2023_TrackerIcon",
+        "internalDescription": "Winterblessed2023_TrackerIcon",
+        "path": "/lol-game-data/assets/ASSETS/Missions/Winterblessed2023_TrackerIcon.svg",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "Worlds23_MissionThumbnail",
+        "internalDescription": "Worlds23_MissionThumbnail",
+        "path": "/lol-game-data/assets/ASSETS/Missions/Worlds2023_MissionThumbnail.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "Worlds23_TrackerIcon",
+        "internalDescription": "Worlds23_TrackerIcon",
+        "path": "/lol-game-data/assets/ASSETS/Missions/Worlds2023_TrackerIcon.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    }
+]

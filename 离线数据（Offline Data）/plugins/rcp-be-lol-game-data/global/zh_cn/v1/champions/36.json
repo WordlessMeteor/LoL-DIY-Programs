@@ -1,0 +1,1259 @@
+{
+    "id": 36,
+    "name": "祖安狂人",
+    "alias": "DrMundo",
+    "title": "蒙多医生",
+    "shortBio": "精神与认知彻底崩坏、杀人的欲望永不满足、浑身皮肤紫得发黑，这就是蒙多医生，这就是祖安人在漆黑的夜里不敢出门的原因。如今的他自封为一名医生，但在以前，他是祖安最臭名昭著的疯人院里的病人。在“治愈”疯人院里的全体工作人员后，蒙多医生在过去收治他的空病房里搭起了手术台，有模有样地还原起他当年亲历的各种非人实验。蒙多医生的药柜里装满了瓶瓶罐罐，脑子里却丝毫没有半点医学知识。随着他把药剂一针针注入体内，他的外貌也变得愈发丑陋骇人，把误入他办公室周围的“病人”吓得魂飞胆散。",
+    "tacticalInfo": {
+        "style": 6,
+        "difficulty": 1,
+        "damageType": "kMixed"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 3,
+        "crowdControl": 1,
+        "mobility": 1,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/36.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/36.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/36.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/36.ogg",
+    "roles": [
+        "fighter",
+        "tank"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 36000,
+            "isBase": true,
+            "name": "祖安狂人",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/36/36000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/36/36000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/36/36000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/DrMundo/Skins/Base/DrMundoLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 36001,
+            "isBase": false,
+            "name": "战栗之毒 蒙多",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/36/36001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/36/36001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/36/36001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/DrMundo/Skins/Skin01/DrMundoLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 111
+                }
+            ],
+            "skinAugments": null,
+            "description": "蒙多并不毒，蒙多有健康的情绪复制机制——噢，你是说紫色粘胶？蒙多很确定它也还好。"
+        },
+        {
+            "id": 36002,
+            "isBase": false,
+            "name": "健美教练 蒙多",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/36/36002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/36/36002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/36/36002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/DrMundo/Skins/Skin02/DrMundoLoadScreen_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/DrMundo/Skins/Skin02/DrMundoLoadScreen_2_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": "蒙多并没有立志成为健身大V，但蒙多的收获说明了一切。蒙多建议绝对不要跳过蹲腿日、吃大量的蛋白质、并猛按点赞和订阅按钮来获得健美教练蒙多的更多内容。"
+        },
+        {
+            "id": 36003,
+            "isBase": false,
+            "name": "律政大亨 蒙多",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/36/36003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/36/36003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/36/36003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/DrMundo/Skins/Skin03/DrMundoLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/36/36003.png",
+            "chromas": [
+                {
+                    "id": 36016,
+                    "name": "律政大亨 蒙多 生意兴隆",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/36/36016.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 36017,
+                    "name": "律政大亨 蒙多 财源广进",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/36/36017.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 36018,
+                    "name": "律政大亨 蒙多 蒸蒸日上",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/36/36018.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 36019,
+                    "name": "律政大亨 蒙多 和气生财",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/36/36019.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 36020,
+                    "name": "律政大亨 蒙多 招财进宝",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/36/36020.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 100
+                }
+            ],
+            "skinAugments": null,
+            "description": "蒙多并非理财顾问。这并非理财建议。但你应该买这个皮肤。蒙多喜欢这个皮肤。"
+        },
+        {
+            "id": 36004,
+            "isBase": false,
+            "name": "蒙多蒙多",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/36/36004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/36/36004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/36/36004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/DrMundo/Skins/Skin04/DrMundoLoadScreen_4.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/DrMundo/Skins/Skin04/DrMundoLoadScreen_4_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "the City Hero",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/18.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/18.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 88
+                }
+            ],
+            "skinAugments": null,
+            "description": "蒙多可以穿任何人的装束去“不给糖就捣蛋”，但今年他想穿蒙多的装束前往。每一年他都穿蒙多的装束前往。蒙多想去“不给糖就捣蛋”就去“不给糖就捣蛋”。"
+        },
+        {
+            "id": 36005,
+            "isBase": false,
+            "name": "嗜血行刑 蒙多",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/36/36005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/36/36005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/36/36005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/DrMundo/Skins/Skin05/DrMundoLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 80
+                }
+            ],
+            "skinAugments": null,
+            "description": "嗜血行刑蒙多认为人们不该如此畏惧他。嗜血行刑蒙多穿上裤子然后一次切掉囚犯的一条腿，正如蒙多乐意的那样。"
+        },
+        {
+            "id": 36006,
+            "isBase": false,
+            "name": "战争血统 蒙多",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/36/36006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/36/36006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/36/36006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/DrMundo/Skins/Skin06/DrMundoLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kRare",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 38
+                }
+            ],
+            "skinAugments": null,
+            "description": "关于战争血统的威胁有很多传说：有的说他用一次顺劈就杀掉几条龙，有的说就连最强大的巫师们也不能阻挡他的前进，有的说没有哪位高贵的骑士蠢到试图阻止他还能活着回来的。这些说法经常互相矛盾，但有一件事它们达成了一致：蒙多所到之处，除他之外没人乐意。"
+        },
+        {
+            "id": 36007,
+            "isBase": false,
+            "name": "暗杀星 蒙多",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/36/36007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/36/36007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/36/36007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/DrMundo/Skins/Skin07/DrMundoLoadScreen_7.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 2
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此致敬Lilballz在2012全球总决赛中使用蒙多的夺胜表现。"
+        },
+        {
+            "id": 36008,
+            "isBase": false,
+            "name": "泳池派对 蒙多",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/36/36008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/36/36008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/36/36008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/DrMundo/Skins/Skin08/DrMundoLoadScreen_8.jpg",
+            "skinType": "",
+            "rarity": "kRare",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 15
+                }
+            ],
+            "skinAugments": null,
+            "description": "泳池派对蒙多很享受他的帽子和乌克丽丽，但是他真正爱的是他的短裤。这短裤如此舒适且易于穿着。 "
+        },
+        {
+            "id": 36009,
+            "isBase": false,
+            "name": "硬汉 蒙多",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/36/36009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/36/36009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/36/36009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/DrMundo/Skins/Skin09/DrMundoLoadscreen_9.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 34
+                }
+            ],
+            "skinAugments": null,
+            "description": "硬汉摔跤手蒙多很有可能在一个他不应该在的位置上，将要在周日的无限制投注对局中面对三个当代最伟大的斗士。幸运的是，蒙多能提供的疯狂超出了联盟对他的预期，并且，金子总会发光的。"
+        },
+        {
+            "id": 36010,
+            "isBase": false,
+            "name": "冰封王子 蒙多",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/36/36010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/36/36010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/36/36010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/DrMundo/Skins/Skin10/DrMundoLoadScreen_10.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/DrMundo/Skins/Skin10/DrMundoLoadScreen_10_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/36/36010.png",
+            "chromas": [
+                {
+                    "id": 36011,
+                    "name": "骄傲王子 蒙多",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/36/36011.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2018年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 36012,
+                    "name": "忧郁王子 蒙多",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/36/36012.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 36013,
+                    "name": "失落王子 蒙多",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/36/36013.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 36014,
+                    "name": "寂寞王子 蒙多",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/36/36014.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 36015,
+                    "name": "情歌王子 蒙多",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/36/36015.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Snowdown",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/9.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/9.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 47
+                }
+            ],
+            "skinAugments": null,
+            "description": "蒙多曾是冬境的某个边远国度的英俊王子，但被冰王图奇的诅咒触碰过——将他腐蚀成了一个粗野的奴隶。他仍然深信自己还是以前的那个美如雕像的王室成员，正因如此……想去哪就去哪。"
+        },
+        {
+            "id": 36021,
+            "isBase": false,
+            "name": "妖怪艺术家 蒙多医生",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/36/36021.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/36/36021.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/36/36021.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/DrMundo/Skins/Skin21/DrMundoLoadScreen_21.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/36/36021.png",
+            "chromas": [
+                {
+                    "id": 36022,
+                    "name": "妖怪艺术家 蒙多医生 朱槿",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/36/36022.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 36023,
+                    "name": "妖怪艺术家 蒙多医生 沙石",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/36/36023.png",
+                    "colors": [
+                        "#DED6B0",
+                        "#DED6B0"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 36024,
+                    "name": "妖怪艺术家 蒙多医生 碧荷",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/36/36024.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 36025,
+                    "name": "妖怪艺术家 蒙多医生 紫萱",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/36/36025.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 36026,
+                    "name": "妖怪艺术家 蒙多医生 青黛",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/36/36026.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 36027,
+                    "name": "妖怪艺术家 蒙多医生 霞光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/36/36027.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 36028,
+                    "name": "妖怪艺术家 蒙多医生 青矾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/36/36028.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 36029,
+                    "name": "妖怪艺术家 蒙多医生 浅烙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/36/36029.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 197
+                }
+            ],
+            "skinAugments": null,
+            "description": "蒙多是一位拥有美术博士学位的顶级抽象天才，他鲁莽而狂野的手指绘画因其对怪物/人类状况的高概念分析而在艺术界赢得了很多尊重。（蒙多不确定这意味着什么；他只是对人们喜欢他的作品感到很高兴！）"
+        }
+    ],
+    "passive": {
+        "name": "想去哪就去哪",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/DrMundo/HUD/Icons2D/DrMundo_P.png",
+        "abilityVideoPath": "champion-abilities/0036/ability_0036_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0036/ability_0036_P1.jpg",
+        "description": "蒙多医生抵抗他受到的第一个定身效果，但会失去生命值并在附近掉落一罐化学药剂。蒙多医生可移动到化学药剂上来拾取它，从而回复生命值并缩短这个技能的冷却时间。<br><br>蒙多医生也会显著提升生命回复。<br>"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "病毒屠刀",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/DrMundo/HUD/Icons2D/DrMundo_Q.png",
+            "abilityVideoPath": "champion-abilities/0036/ability_0036_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0036/ability_0036_Q1.jpg",
+            "cost": "<font color='#CC3300'>@HealthCost@生命值</font>",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "蒙多医生掷出一把沾染病菌的骨锯，对命中的第一个敌人造成基于其当前生命值的魔法伤害和减速效果。",
+            "dynamicDescription": "蒙多医生掷出一把沾染病菌的骨锯，对命中的第一个敌人造成<magicDamage>@CurrentHealthDamage*100@%当前生命值的魔法伤害</magicDamage>，并对其造成持续@SlowDuration@秒的@SlowAmount*100@%<status>减速</status>。<br><br>如果骨锯命中了一名英雄或野怪，蒙多医生会回复<healing>@HealthRestoreOnHitChampionMonster@生命值</healing>。如果骨锯命中了一个非英雄非野怪的单位，蒙多医生则会回复<healing>@HealthRestoreOnHitMinion@生命值</healing>。@SpellModifierDescriptionAppend@",
+            "range": [
+                975.0000,
+                975.0000,
+                975.0000,
+                975.0000,
+                975.0000,
+                975.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                4.0000,
+                4.0000,
+                4.0000,
+                4.0000,
+                4.0000,
+                4.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "电击疗法",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/DrMundo/HUD/Icons2D/DrMundo_W.png",
+            "abilityVideoPath": "champion-abilities/0036/ability_0036_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0036/ability_0036_W1.jpg",
+            "cost": "<font color='#CC3300'>@CurrentHealthCost*100@%当前生命值</font>",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "蒙多医生电击他自己，对附近的敌人们造成持续伤害并储存他受到的一部分伤害。在持续时间结束时或再次施放时，蒙多医生会对附近的敌人们造成一次爆发伤害。如果这个效果命中了一名敌人，那么蒙多医生会回复一部分已储存的伤害值。",
+            "dynamicDescription": "蒙多医生为一台除颤器充电，每秒对附近的敌人们造成<magicDamage>@DamagePerTick*4@魔法伤害</magicDamage>，至多持续@Duration@秒。此外，他会将在最初@GrayHealthInitialDuration@秒里受到的@GrayHealthStorageInitial@伤害值和在剩余时长里受到的@GrayHealthStorage*100@%伤害值储存为灰色生命值，并能<recast>再次施放</recast>这个技能。<br><br><recast>再次施放：</recast>引爆除颤器，对附近的敌人们造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>。如果这个效果命中了至少一名敌方英雄，那么蒙多医生会回复<healing>@GrayHealthBigMod*100@%的灰色生命值</healing>，否则蒙多医生会转而回复<healing>@GrayHealthSmallMod*100@%的灰色生命值</healing>。@SpellModifierDescriptionAppend@",
+            "range": [
+                325.0000,
+                325.0000,
+                325.0000,
+                325.0000,
+                325.0000,
+                325.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                17.0000,
+                16.5000,
+                16.0000,
+                15.5000,
+                15.0000,
+                15.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "大力行医",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/DrMundo/HUD/Icons2D/DrMundo_E.png",
+            "abilityVideoPath": "champion-abilities/0036/ability_0036_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0036/ability_0036_E1.jpg",
+            "cost": "<font color='#CC3300'>@FlatHealthCost@生命值</font>",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "被动 - 蒙多医生获得额外攻击力，数额会基于他的最大生命值而提升。<br><br>主动 - 蒙多医生用他的“医用”手提包猛砸一个敌人，造成基于他已损失生命值的额外伤害。如果这个敌人被击杀，那么还会被拍飞，对途经的所有敌人造成伤害。",
+            "dynamicDescription": "<spellPassive>被动：</spellPassive>蒙多医生获得<physicalDamage>@PassiveBonusAD@攻击力</physicalDamage>。<br><br><spellActive>主动：</spellActive>蒙多医生粗暴地挥舞他的“医用”手提包，使他的下次攻击造成额外的<physicalDamage>@AdditionalDamage@物理伤害</physicalDamage>，基于他的已损失生命值至多提升至@MaxDamageAmpTooltip@。如果击杀了目标敌人，蒙多还会将其拍飞，对其途经的所有敌人造成<physicalDamage>@AdditionalDamage@物理伤害</physicalDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                9.0000,
+                8.2500,
+                7.5000,
+                6.7500,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "极限剂量",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/DrMundo/HUD/Icons2D/DrMundo_R.png",
+            "abilityVideoPath": "champion-abilities/0036/ability_0036_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0036/ability_0036_R1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "蒙多医生给自己注入化学药剂，立刻治疗他的一部分已损失生命值。随后他会获得移动速度并在一段长周期内持续回复自身一部分最大生命值。",
+            "dynamicDescription": "蒙多将化学药剂注入体内，获得<healing>相当于他@MissingHealthHeal*100@%已损失生命值的最大生命值</healing>、<speed>@SpeedBoostAmount*100@%移动速度</speed>、并在@Duration@秒里持续回复共<healing>@MaxHealthHoT*100@%最大生命值</healing>。<br><br>在3级时，附近的每个敌方英雄都会使这两种治疗效果提升额外的@BonusPerNearbyChampion*100@%。@SpellModifierDescriptionAppend@",
+            "range": [
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                120.0000,
+                120.0000,
+                120.0000,
+                120.0000,
+                120.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

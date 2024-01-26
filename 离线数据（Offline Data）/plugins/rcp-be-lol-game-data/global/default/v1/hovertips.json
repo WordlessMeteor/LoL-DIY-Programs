@@ -1,0 +1,46 @@
+[
+    {
+        "key": "LinkTooltip_Description_Adaptive",
+        "value": "Every 1 point of adaptive force will provide either 0.6 AD or 1.0 AP depending on which you have more of during the course of the game. Affected by item purchases."
+    },
+    {
+        "key": "LinkTooltip_Description_MS",
+        "value": "Move Speed"
+    },
+    {
+        "key": "LinkTooltip_Description_ImpairAct",
+        "value": "Includes Blind, Nearsighted, Silence, Slow, Polymorph, Grounded, Suppression, Stun, Root, Knockup, Knockback, Charm, Sleep, Taunt and Fear effects "
+    },
+    {
+        "key": "LinkTooltip_Description_ImpairMov",
+        "value": "Includes Slow, Polymorph, Grounded, Suppression, Stun, Root, Knockup, Knockback, Charm, Sleep, Taunt and Fear effects"
+    },
+    {
+        "key": "LinkTooltip_Description_Immobilize",
+        "value": "Includes Suppression, Stun, Root, Knockup, Knockback, Charm, Sleep, Taunt and Fear effects "
+    },
+    {
+        "key": "LinkTooltip_Description_Takedown",
+        "value": "Kills or assists "
+    },
+    {
+        "key": "LinkTooltip_Description_AoE",
+        "value": "Area of Effect"
+    },
+    {
+        "key": "LinkTooltip_Description_CDR",
+        "value": "Cooldown Reduction "
+    },
+    {
+        "key": "LinkTooltip_Description_AdaptiveDmg",
+        "value": "Will either deal physical or magical damage depending on which ratio (AD or AP) has a greater contribution. Basically, more damage of the type your champion deals. "
+    },
+    {
+        "key": "LinkTooltip_Description_Stasis",
+        "value": "Render yourself untargetable and invunerable for the duration but also unable to move, attack, cast spells or use items. "
+    },
+    {
+        "key": "LinkTooltip_Description_EnemyTerritory",
+        "value": "Enemy territory is the opposite half of the map to your own Nexus. This does not include the river on Summoner's Rift."
+    }
+]

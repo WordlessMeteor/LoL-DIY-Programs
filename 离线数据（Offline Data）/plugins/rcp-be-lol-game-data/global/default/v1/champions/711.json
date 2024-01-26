@@ -1,0 +1,955 @@
+{
+    "id": 711,
+    "name": "Vex",
+    "alias": "Vex",
+    "title": "the Gloomist",
+    "shortBio": "In the black heart of the Shadow Isles, a lone yordle trudges through the spectral fog, content in its murky misery. With an endless supply of teen angst and a powerful shadow in tow, Vex lives in her own self-made slice of gloom, far from the revolting cheer of the “normie” world. Though she lacks ambition, she is quick to strike down color and happiness, stopping all would-be interlopers with her magical malaise.",
+    "tacticalInfo": {
+        "style": 9,
+        "difficulty": 2,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 2,
+        "crowdControl": 2,
+        "mobility": 2,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/711.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/711.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/711.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/711.ogg",
+    "roles": [
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 711000,
+            "isBase": true,
+            "name": "Vex",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/711/711000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/711/711000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/711/711000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Vex/Skins/Base/VexLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 711001,
+            "isBase": false,
+            "name": "Dawnbringer Vex",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/711/711001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/711/711001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/711/711001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Vex/Skins/Skin01/VexLoadScreen_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Vex/Skins/Skin01/VexLoadscreen_1_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711001.png",
+            "chromas": [
+                {
+                    "id": 711002,
+                    "name": "Dawnbringer Vex",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2021."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 711003,
+                    "name": "Dawnbringer Vex",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711003.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 711004,
+                    "name": "Dawnbringer Vex",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711004.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 711005,
+                    "name": "Dawnbringer Vex",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711005.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 711006,
+                    "name": "Dawnbringer Vex",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711006.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 711007,
+                    "name": "Dawnbringer Vex",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711007.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 711008,
+                    "name": "Dawnbringer Vex",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711008.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 711009,
+                    "name": "Dawnbringer Vex",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711009.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#A67400"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the Worlds 2021 event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 193
+                }
+            ],
+            "skinAugments": null,
+            "description": "Vex finds order in the day's descent to darkness, and spends her evenings watching her shadow chase the sun below the horizon. A preternaturally sour and unenthusiastic god, she finds the whole chaos and order 'thing' very blasé."
+        },
+        {
+            "id": 711010,
+            "isBase": false,
+            "name": "Empyrean Vex",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/711/711010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/711/711010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/711/711010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Vex/Skins/Skin10/VexLoadScreen_10.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Vex/Skins/Skin10/VexLoadscreen_10_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711010.png",
+            "chromas": [
+                {
+                    "id": 711011,
+                    "name": "Empyrean Vex",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711011.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 711012,
+                    "name": "Empyrean Vex",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711012.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 711013,
+                    "name": "Empyrean Vex",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711013.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 711014,
+                    "name": "Empyrean Vex",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711014.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 711015,
+                    "name": "Empyrean Vex",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711015.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 711016,
+                    "name": "Empyrean Vex",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711016.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 711017,
+                    "name": "Empyrean Vex",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711017.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 711018,
+                    "name": "Empyrean Vex",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711018.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 711019,
+                    "name": "Empyrean Vex",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711019.png",
+                    "colors": [
+                        "#FF655B",
+                        "#95E237"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the Worlds 2022 Event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 186
+                }
+            ],
+            "skinAugments": null,
+            "description": "Vex didn't need anyone. Growing up alone, she was self-sufficient and annoyed by most people. Her realm's destruction barely made her blink, but her new Empyrean powers did give her an idea. By empowering her own shadow, she finally had a companion she tolerated. Vex may not need anyone, but then again, misery loves company."
+        }
+    ],
+    "passive": {
+        "name": "Doom 'n Gloom",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Vex/HUD/Icons2D/Icons_Vex_Passive.png",
+        "abilityVideoPath": "champion-abilities/0711/ability_0711_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0711/ability_0711_P1.jpg",
+        "description": "Vex periodically becomes empowered, causing her next basic Ability to fear enemies and interrupt dashes. Whenever a nearby enemy dashes, Vex applies a mark that can be consumed for bonus damage that also reduces the cooldown of her empowered state."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Mistral Bolt",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Vex/HUD/Icons2D/Icons_Vex_Q01.png",
+            "abilityVideoPath": "champion-abilities/0711/ability_0711_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0711/ability_0711_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Launch a damaging missile that accelerates mid-flight.",
+            "dynamicDescription": "Vex launches a wave of mist that deals <magicDamage>@QDamageCalc@ magic damage</magicDamage>. After a delay, the wave becomes smaller and faster.<br><br>Consumes <keywordMajor>Gloom</keywordMajor> on enemies hit.@SpellModifierDescriptionAppend@",
+            "range": [
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000
+            ],
+            "costCoefficients": [
+                45.0000,
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                65.0000
+            ],
+            "cooldownCoefficients": [
+                8.0000,
+                7.0000,
+                6.0000,
+                5.0000,
+                4.0000,
+                4.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Personal Space",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Vex/HUD/Icons2D/Icons_Vex_W01.png",
+            "abilityVideoPath": "champion-abilities/0711/ability_0711_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0711/ability_0711_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Gain a shield and damage nearby enemies.",
+            "dynamicDescription": "Vex gains <shield>@ShieldCalc@ Shield</shield> for @ShieldDuration@ seconds and emits a shockwave that deals <magicDamage>@WDamageCalc@ magic damage</magicDamage>.<br><br>Consumes <keywordMajor>Gloom</keywordMajor> on enemies hit.@SpellModifierDescriptionAppend@",
+            "range": [
+                475.0000,
+                475.0000,
+                475.0000,
+                475.0000,
+                475.0000,
+                475.0000
+            ],
+            "costCoefficients": [
+                75.0000,
+                75.0000,
+                75.0000,
+                75.0000,
+                75.0000,
+                75.0000
+            ],
+            "cooldownCoefficients": [
+                16.0000,
+                15.0000,
+                14.0000,
+                13.0000,
+                12.0000,
+                11.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Looming Darkness",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Vex/HUD/Icons2D/Icons_Vex_E01.png",
+            "abilityVideoPath": "champion-abilities/0711/ability_0711_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0711/ability_0711_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Summon a damaging and slowing zone that applies Gloom to enemies.",
+            "dynamicDescription": "Vex commands Shadow to fly to a location, increasing in size as it travels. Upon arriving, it deals <magicDamage>@EDamageCalc@ magic damage</magicDamage> and <status>Slows</status> by @SlowAmount*100@% for @SlowDuration@ seconds.<br><br>Applies <keywordMajor>Gloom</keywordMajor> to enemies hit.@SpellModifierDescriptionAppend@",
+            "range": [
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                80.0000,
+                90.0000,
+                100.0000,
+                110.0000,
+                110.0000
+            ],
+            "cooldownCoefficients": [
+                13.0000,
+                13.0000,
+                13.0000,
+                13.0000,
+                13.0000,
+                13.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Shadow Surge",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Vex/HUD/Icons2D/Icons_Vex_R01.png",
+            "abilityVideoPath": "champion-abilities/0711/ability_0711_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0711/ability_0711_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Fire a missile that marks an enemy champion.  Recast to dash to them and deal damage.",
+            "dynamicDescription": "Shadow excitedly surges forward, dealing <magicDamage>@spell.VexR:RDamageCalc@ magic damage</magicDamage> and marking the first enemy champion hit for 4 seconds.<br><br><recast>Recast</recast>: Dash to the marked champion, dealing <magicDamage>@spell.VexR:RecastDamageCalc@ magic damage</magicDamage> on arrival.<br><br>If the marked champion dies within @spell.VexR:TakedownWindow@ seconds of taking damage from this Ability, its Cooldown is temporarily reset.@SpellModifierDescriptionAppend@",
+            "range": [
+                2000.0000,
+                2500.0000,
+                3000.0000,
+                3000.0000,
+                3000.0000,
+                3000.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                140.0000,
+                120.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

@@ -1,0 +1,1464 @@
+{
+    "id": 246,
+    "name": "元素女皇",
+    "alias": "Qiyana",
+    "title": "奇亚娜",
+    "shortBio": "在丛林都市以绪奥肯中，奇亚娜谋划着自己荣登育恩塔尔塔座的无情之路。作为父母的末位继承人，她以前无古人的元素魔法技艺，傲视所有挡在面前的人。这片大地服从着奇亚娜的每一道指令，她认为自己是以绪奥肯历史上最伟大的元素使——就凭这点，她理应执掌的不仅是一座城邦，而是一个帝国。",
+    "tacticalInfo": {
+        "style": 7,
+        "difficulty": 3,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 2,
+        "mobility": 2,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/246.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/246.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/246.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/246.ogg",
+    "roles": [
+        "assassin",
+        "fighter"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 246000,
+            "isBase": true,
+            "name": "元素女皇",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/246/246000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/246/246000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/246/246000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Qiyana/Skins/Base/QiyanaLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 246001,
+            "isBase": false,
+            "name": "战场BOSS 奇亚娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/246/246001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/246/246001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/246/246001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Qiyana/Skins/Skin01/QiyanaLoadscreen_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Qiyana/Skins/Skin01/QiyanaLoadscreen_1_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246001.png",
+            "chromas": [
+                {
+                    "id": 246003,
+                    "name": "战场BOSS 奇亚娜 杀意女王",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246003.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 246004,
+                    "name": "战场BOSS 奇亚娜 毒桃公主",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246004.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 246005,
+                    "name": "战场BOSS 奇亚娜 时之魔女",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246005.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246006,
+                    "name": "战场BOSS 奇亚娜 叹息之轮",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246006.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246007,
+                    "name": "战场BOSS 奇亚娜 绝杀王女",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246007.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246008,
+                    "name": "战场BOSS 奇亚娜 K.O.",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246008.png",
+                    "colors": [
+                        "#A5FFF8",
+                        "#D87BFF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "2019电玩事件期间的战利品专属道具。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 246009,
+                    "name": "战场BOSS 奇亚娜 隐藏强者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246009.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 11
+                }
+            ],
+            "skinAugments": null,
+            "description": "奇亚娜是一位在1981年“超级以绪奥肯兄弟”电玩港中不断需要被拯救的公主。用恶毒的战场BOSS代码来强化她自身并不需要什么令人信服的理由。她一刻也没有浪费地在前文提到的超级以绪奥肯兄弟身上测试了她新获得的技能。他们现在都挂了。她仍活在他们的城堡中。"
+        },
+        {
+            "id": 246002,
+            "isBase": false,
+            "name": "真实伤害 奇亚娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/246/246002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/246/246002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/246/246002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Qiyana/Skins/Skin02/QiyanaLoadScreen_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Qiyana/Skins/Skin02/QiyanaLoadscreen_2_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 120
+                }
+            ],
+            "skinAugments": null,
+            "description": "奇亚娜是拉丁音乐世家之女。凭借着她家族的美名，成为超级巨星为她来说如履平地——然而，她将目光放在了更加宏伟的目标上。由于她的自负和叛逆，她决定改变游戏规则，不只是乐坛的，而是整个流行文化的。"
+        },
+        {
+            "id": 246010,
+            "isBase": false,
+            "name": "至臻 真实伤害 奇亚娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/246/246010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/246/246010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/246/246010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Qiyana/Skins/Skin10/QiyanaLoadscreen_10.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Qiyana/Skins/Skin02/QiyanaLoadscreen_2_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 120
+                }
+            ],
+            "skinAugments": null,
+            "description": "在“真实伤害”那场一票难求的巴黎演唱会中，奇亚娜作为聚光灯下的常客，以她的穿搭惊艳了全场。当狗仔队们带着照片和问题涌向她时，她陶醉在关注的目光中，并因此明白这只是她天后生涯的开始阶段而已。"
+        },
+        {
+            "id": 246011,
+            "isBase": false,
+            "name": "女帝 奇亚娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/246/246011.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/246/246011.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/246/246011.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Qiyana/Skins/Skin11/QiyanaLoadScreen_11.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Qiyana/Skins/Skin11/QiyanaLoadscreen_11_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246011.png",
+            "chromas": [
+                {
+                    "id": 246012,
+                    "name": "女帝 奇亚娜 纹章之刻印·英勇",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246012.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 246013,
+                    "name": "女帝 奇亚娜 纹章之刻印·坚毅",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246013.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246014,
+                    "name": "女帝 奇亚娜 纹章·神圣加冕礼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246014.png",
+                    "colors": [
+                        "#FF80B1",
+                        "#9DFFEF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在女帝无双(2020)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 246015,
+                    "name": "女帝 奇亚娜 纹章之刻印·果决",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246015.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246016,
+                    "name": "女帝 奇亚娜 纹章之刻印·威风",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246016.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246017,
+                    "name": "女帝 奇亚娜 纹章之刻印·无我",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246017.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246018,
+                    "name": "女帝 奇亚娜 纹章之刻印·敏锐",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246018.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246019,
+                    "name": "女帝 奇亚娜 纹章之刻印·深谋",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246019.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 137
+                }
+            ],
+            "skinAugments": null,
+            "description": "奇亚娜在她的姐妹中最为年轻，而她们都在近期的大多数“神圣加冕礼”中成为了以绪塔尔的女帝。她一直在不耐烦地等待获得纹章和头衔的机会。现在，她的机会已经到了，她打算用她在锦标赛中获得的权能来重塑她愿景中的以绪塔尔。"
+        },
+        {
+            "id": 246020,
+            "isBase": false,
+            "name": "冲击之刃 奇亚娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/246/246020.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/246/246020.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/246/246020.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Qiyana/Skins/Skin20/QiyanaLoadScreen_20.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246020.png",
+            "chromas": [
+                {
+                    "id": 246022,
+                    "name": "冲击之刃 奇亚娜 红猿",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246022.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 246023,
+                    "name": "冲击之刃 奇亚娜 蓝狼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246023.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246024,
+                    "name": "冲击之刃 奇亚娜 黄熊",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246024.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246025,
+                    "name": "冲击之刃 奇亚娜 绿蛇",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246025.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246026,
+                    "name": "冲击之刃 奇亚娜 粉猫",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246026.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 246027,
+                    "name": "冲击之刃 奇亚娜 紫鸦",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246027.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246028,
+                    "name": "冲击之刃 奇亚娜 白鹤",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246028.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246029,
+                    "name": "冲击之刃 奇亚娜 黑蟾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246029.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 155
+                }
+            ],
+            "skinAugments": null,
+            "description": "就像“风暴”本身一样，奇亚娜勇敢地接受了云霄仪式，即使有人警告说多年来没有人能从中幸存下来。也许是她表现出了“风暴”认为值得的顽强勇气，或者别的什么；不管怎样，她现在是慎的学生，决心像掌握其他元素一样掌握闪电。"
+        },
+        {
+            "id": 246021,
+            "isBase": false,
+            "name": "至臻 真实伤害 奇亚娜 (2022)",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/246/246021.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/246/246021.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/246/246021.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Qiyana/Skins/Skin21/QiyanaLoadScreen_21.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 120
+                }
+            ],
+            "skinAugments": null,
+            "description": "在“真实伤害”那场一票难求的巴黎演唱会中，奇亚娜作为聚光灯下的常客，以她的穿搭惊艳了全场。当狗仔队们带着照片和问题涌向她时，她陶醉在关注的目光中，并因此明白这只是她天后生涯的开始阶段而已。"
+        },
+        {
+            "id": 246030,
+            "isBase": false,
+            "name": "春晖神女 奇亚娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/246/246030.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/246/246030.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/246/246030.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Qiyana/Skins/Skin30/QiyanaLoadScreen_30.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Qiyana/Skins/Skin30/QiyanaLoadscreen_30_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246030.png",
+            "chromas": [
+                {
+                    "id": 246031,
+                    "name": "春晖神女 奇亚娜 恭喜发财",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246031.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 246032,
+                    "name": "春晖神女 奇亚娜 日进斗金",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246032.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246033,
+                    "name": "春晖神女 奇亚娜 阖家安康",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246033.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246034,
+                    "name": "春晖神女 奇亚娜 龙马精神",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246034.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246035,
+                    "name": "春晖神女 奇亚娜 年年有余",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246035.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246036,
+                    "name": "春晖神女 奇亚娜 前程似锦",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246036.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 246037,
+                    "name": "春晖神女 奇亚娜 团团圆圆",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246037.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246038,
+                    "name": "春晖神女 奇亚娜 吉祥如意",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246038.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246039,
+                    "name": "春晖神女 奇亚娜 灿烂辉煌",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246039.png",
+                    "colors": [
+                        "#3766D5",
+                        "#C6EB6E"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在春节(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 55
+                }
+            ],
+            "skinAugments": null,
+            "description": "对于某些人来说，宽恕是一种祝福； 而对于奇亚娜女皇来说，宽恕是一种必需品。虽然她的帝国与大海帝国的敌对是她姐妹们的错，但她想在今年的宴会上对此进行补偿。与艾希女皇和解的唯一障碍是她的骄傲……以及她的守护神墨菲特和一条重新露面的蛟龙之间长达数百年的积怨。"
+        },
+        {
+            "id": 246040,
+            "isBase": false,
+            "name": "灵之菊 奇亚娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/246/246040.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/246/246040.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/246/246040.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Qiyana/Skins/Skin40/QiyanaLoadScreen_40.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Qiyana/Skins/Skin40/QiyanaLoadscreen_40_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246040.png",
+            "chromas": [
+                {
+                    "id": 246041,
+                    "name": "灵之菊 奇亚娜 信念之火",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246041.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 246042,
+                    "name": "灵之菊 奇亚娜 引路之花",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246042.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246043,
+                    "name": "灵之菊 奇亚娜 告慰之饮",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246043.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246044,
+                    "name": "灵之菊 奇亚娜 庆典之饰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246044.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246045,
+                    "name": "灵之菊 奇亚娜 生命之源",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246045.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246046,
+                    "name": "灵之菊 奇亚娜 家人之爱",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246046.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 246047,
+                    "name": "灵之菊 奇亚娜 送别之礼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246047.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246048,
+                    "name": "灵之菊 奇亚娜 智慧之物",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246048.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 246049,
+                    "name": "灵之菊 奇亚娜 生如夏花",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/246/246049.png",
+                    "colors": [
+                        "#EE3B93",
+                        "#055939"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 198
+                }
+            ],
+            "skinAugments": null,
+            "description": "奇亚娜是一位非常以自我为中心的运动员，但在一场锦标赛中毫无征兆地去世后，她的家人陷入了充满关爱的悲伤，而这种悲伤将她变成了生之灵。奇亚娜仍然为自己的失败感到羞愧，但她意识到她的家人从来不关心她做了什么，只关心她是谁。在因他们的关爱而充满干劲后，她准备守护他们直到最后一刻。"
+        }
+    ],
+    "passive": {
+        "name": "凌人贵气",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Qiyana/HUD/Icons2D/Qiyana_Passive.png",
+        "abilityVideoPath": "champion-abilities/0246/ability_0246_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0246/ability_0246_P1.jpg",
+        "description": "奇亚娜对每名敌人发起的第一次普攻或技能会造成额外伤害。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "元素之怒 / 以绪塔尔之锋",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Qiyana/HUD/Icons2D/Qiyana_Q2_Red.png",
+            "abilityVideoPath": "champion-abilities/0246/ability_0246_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0246/ability_0246_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "奇亚娜挥舞她的武器，造成伤害和基于她元素的额外效果。",
+            "dynamicDescription": "如果奇亚娜并未拥有一个<keywordMajor>附魔</keywordMajor>，那么她会进行斩击，对小范围内的敌人们造成<physicalDamage>@VanillaDamage@物理伤害</physicalDamage>。如果她已有一个<keywordMajor>附魔</keywordMajor>，那么这个技能会获得额外距离并基于<keywordMajor>附魔</keywordMajor>类型获得一个额外效果：<li><keywordMajor>寒冰附魔</keywordMajor>：暂时<status>禁锢</status>，然后是持续@SlowDuration@秒的@SlowPotency*-100@%<status>减速</status>。<li><keywordMajor>岩石附魔</keywordMajor>：对低于@CritThreshold*100@%生命值的敌人们造成额外的<physicalDamage>@TremorDamage@物理伤害</physicalDamage>。<li><keywordMajor>荒野附魔</keywordMajor>：留下一条小径，来使奇亚娜<keywordStealth>隐形</keywordStealth>并提供<speed>@Haste*100@%移动速度</speed>。<br>@SpellModifierDescriptionAppend@",
+            "range": [
+                525.0000,
+                525.0000,
+                525.0000,
+                525.0000,
+                525.0000,
+                525.0000
+            ],
+            "costCoefficients": [
+                35.0000,
+                35.0000,
+                35.0000,
+                35.0000,
+                35.0000,
+                35.0000
+            ],
+            "cooldownCoefficients": [
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.4000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "方圆塑令",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Qiyana/HUD/Icons2D/Qiyana_W.png",
+            "abilityVideoPath": "champion-abilities/0246/ability_0246_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0246/ability_0246_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "奇亚娜突进到一个位置并用一种元素为她的武器附魔。当武器有附魔时，她的攻击和技能会造成额外伤害。",
+            "dynamicDescription": "<spellPassive>被动：</spellPassive>当奇亚娜的武器已被<keywordMajor>附魔</keywordMajor>时，她会获得<attackSpeed>@AttackSpeed*100@%攻击速度</attackSpeed>并且她的攻击造成额外的<magicDamage>@OnHitDamage@魔法伤害</magicDamage>。她还会在相应地形类型附近获得非战斗状态下的<speed>@PassiveMS*100@%移动速度</speed>。<br><br><spellActive>主动：</spellActive>奇亚娜突进向一个附近的草丛、地形或河流，然后用该地形类型来<keywordMajor>附魔</keywordMajor>她的武器。这会刷新<spellName>元素之怒 / 以绪塔尔之锋</spellName>的冷却时间。@SpellModifierDescriptionAppend@",
+            "range": [
+                1100.0000,
+                1100.0000,
+                1100.0000,
+                1100.0000,
+                1100.0000,
+                1100.0000
+            ],
+            "costCoefficients": [
+                25.0000,
+                30.0000,
+                35.0000,
+                40.0000,
+                45.0000,
+                50.0000
+            ],
+            "cooldownCoefficients": [
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "天纵之勇",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Qiyana/HUD/Icons2D/Qiyana_E.png",
+            "abilityVideoPath": "champion-abilities/0246/ability_0246_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0246/ability_0246_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "奇亚娜突进至一名敌人处，并对其造成伤害。",
+            "dynamicDescription": "奇亚娜冲刺并经过一名敌人，并对其造成<physicalDamage>@Damage@物理伤害</physicalDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000
+            ],
+            "costCoefficients": [
+                40.0000,
+                45.0000,
+                50.0000,
+                55.0000,
+                60.0000,
+                60.0000
+            ],
+            "cooldownCoefficients": [
+                11.0000,
+                10.0000,
+                9.0000,
+                8.0000,
+                7.0000,
+                7.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.4000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "惊才绝景",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Qiyana/HUD/Icons2D/Qiyana_R.png",
+            "abilityVideoPath": "champion-abilities/0246/ability_0246_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0246/ability_0246_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "奇亚娜发出一道冲击波来引爆沿途命中的任何元素，对元素附近的敌人造成伤害和晕眩效果。",
+            "dynamicDescription": "奇亚娜放出一道冲击波来<status>击退</status>敌人们并在它命中墙体时爆炸。爆炸会沿着地形的完整边缘行进，<status>晕眩</status>0.5到@StunDuration@秒并造成<physicalDamage>@Damage@</physicalDamage>外加<physicalDamage>@MissingHealthDamageRock@最大生命值的物理伤害</physicalDamage>。 <status>晕眩</status>时长会随着爆炸的移动距离而缩短。<br><br>冲击波途经的任何河流与草丛也会在短暂延迟后爆炸，造成等值的伤害和<status>晕眩</status>。@SpellModifierDescriptionAppend@",
+            "range": [
+                950.0000,
+                950.0000,
+                950.0000,
+                950.0000,
+                950.0000,
+                950.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                120.0000,
+                120.0000,
+                120.0000,
+                120.0000,
+                120.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

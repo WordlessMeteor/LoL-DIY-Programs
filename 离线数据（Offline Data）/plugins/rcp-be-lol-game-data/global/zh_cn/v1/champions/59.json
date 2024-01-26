@@ -1,0 +1,1576 @@
+{
+    "id": 59,
+    "name": "德玛西亚皇子",
+    "alias": "JarvanIV",
+    "title": "嘉文四世",
+    "shortBio": "皇子嘉文四世身负王家血脉，极有可能便是德玛西亚的下一任国王。他自小被寄予厚望，有朝一日能够成为德玛西亚的楷模，可如此沉重的负担却令他的心中充满了挣扎。在战场上，他英勇无畏的气势和一往无前的决心鼓舞着全军上下，显现出身为人主的真实才干。",
+    "tacticalInfo": {
+        "style": 6,
+        "difficulty": 1,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 2,
+        "crowdControl": 2,
+        "mobility": 2,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/59.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/59.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/59.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/59.ogg",
+    "roles": [
+        "tank",
+        "fighter"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 59000,
+            "isBase": true,
+            "name": "德玛西亚皇子",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/59/59000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/59/59000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/59/59000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/JarvanIV/Skins/Base/JarvanIVLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 59001,
+            "isBase": false,
+            "name": "孤胆英豪 嘉文四世",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/59/59001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/59/59001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/59/59001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/JarvanIV/Skins/Skin01/JarvanIVLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Emperor",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/32.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/32.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 3,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/3_large.png",
+            "skinLines": [
+                {
+                    "id": 104
+                }
+            ],
+            "skinAugments": null,
+            "description": "是的，那些就是绑在嘉文的手臂和腿上的枪。不，他不会发射它们。"
+        },
+        {
+            "id": 59002,
+            "isBase": false,
+            "name": "屠龙勇士 嘉文四世",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/59/59002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/59/59002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/59/59002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/JarvanIV/Skins/Skin02/JarvanIVLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 13
+                }
+            ],
+            "skinAugments": null,
+            "description": "屠龙勇士的阵营欢迎各个阶级的加盟，无论是最卑微的农夫还是最高贵的国王，在巨龙的怒火面前众生平等。嘉文四世放弃了他的王位，加入了这支凶险无比的冒险队伍，只为阻止那些邪恶怪兽的重生。"
+        },
+        {
+            "id": 59003,
+            "isBase": false,
+            "name": "龙骑统帅 嘉文四世",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/59/59003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/59/59003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/59/59003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/JarvanIV/Skins/Skin03/JarvanIVLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 59004,
+            "isBase": false,
+            "name": "凯旋英雄 嘉文四世",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/59/59004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/59/59004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/59/59004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/JarvanIV/Skins/Skin04/JarvanIVLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 7
+                }
+            ],
+            "skinAugments": null,
+            "description": "凯旋英雄嘉文四世是给2011赛季达到黄金段位或更高的玩家的奖励。作为第一个黄金段位奖励皮肤，嘉文身披银色铠甲，饰以华丽的黄金封边。因中国服务器公测时间晚于第一赛季开启，因此该皮肤向全部玩家开放购买。"
+        },
+        {
+            "id": 59005,
+            "isBase": false,
+            "name": "吕布 奉先",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/59/59005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/59/59005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/59/59005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/JarvanIV/Skins/Skin05/JarvanIVLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59005.png",
+            "chromas": [
+                {
+                    "id": 59010,
+                    "name": "吕布 奉先 炫金战神",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59010.png",
+                    "colors": [
+                        "#FFC948",
+                        "#FFC948"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 53
+                }
+            ],
+            "skinAugments": null,
+            "description": "一个武力天下无双的战士。吕布奉先横扫三国难逢敌手。所有不自量力挑战他的人都被他无情诛杀。在吕布出招的时候，连他脚下的大地都会被他撼天动地的力量所击碎。"
+        },
+        {
+            "id": 59006,
+            "isBase": false,
+            "name": "Fnatic 嘉文四世",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/59/59006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/59/59006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/59/59006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/JarvanIV/Skins/Skin06/JarvanIVLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 1
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此致敬Cyanide在2011全球总决赛中使用嘉文四世的夺胜表现。"
+        },
+        {
+            "id": 59007,
+            "isBase": false,
+            "name": "暗星 嘉文四世",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/59/59007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/59/59007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/59/59007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/JarvanIV/Skins/Skin07/JarvanIVLoadScreen_7.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59007.png",
+            "chromas": [
+                {
+                    "id": 59012,
+                    "name": "暗星 嘉文四世 万神殿之陷",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59012.png",
+                    "colors": [
+                        "#000000",
+                        "#A50031"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020银河战争事件期间作为战利品专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 44
+                }
+            ],
+            "skinAugments": null,
+            "description": "随着世界的毁灭，这位凡人的帝王也解开了束缚。嘉文已被黑暗空间中上古久远的气息所侵袭。他的人性已经和他的人民一起消失了，现在他静静等待这死兆星的入侵，最终迎来万物的终结。"
+        },
+        {
+            "id": 59008,
+            "isBase": false,
+            "name": "SSG 嘉文四世",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/59/59008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/59/59008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/59/59008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/JarvanIV/Skins/Skin08/JarvanIVLoadScreen_8.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/JarvanIV/Skins/Skin08/JarvanIVLoadScreen_8_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 75
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此致敬Ambition在2017全球总决赛中使用嘉文四世的夺胜表现。 "
+        },
+        {
+            "id": 59009,
+            "isBase": false,
+            "name": "海克斯科技 嘉文四世",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/59/59009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/59/59009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/59/59009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/JarvanIV/Skins/Skin09/JarvanIVLoadScreen_9.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Hextech Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/43.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/43.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 40
+                }
+            ],
+            "skinAugments": null,
+            "description": "海克斯科技复兴不但迎合了那些拥有科学背景的人，也迎合了那些想要从日复一日的生活中逃离的人。对年轻的嘉文皇子来说，它提供了增强他武艺的机会——藉由从未被他父亲的王国所接受的科技。"
+        },
+        {
+            "id": 59011,
+            "isBase": false,
+            "name": "泳池派对 嘉文四世",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/59/59011.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/59/59011.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/59/59011.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/JarvanIV/Skins/Skin11/JarvanIVLoadScreen_11.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59011.png",
+            "chromas": [
+                {
+                    "id": 59013,
+                    "name": "泳池派对 嘉文四世“樱桃甜酒”专供",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59013.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020年作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 59014,
+                    "name": "泳池派对 嘉文四世“贝利尼”专供",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59014.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 59015,
+                    "name": "泳池派对 嘉文四世“蓝色夏威夷”专供",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59015.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 59016,
+                    "name": "泳池派对 嘉文四世“紫色恋人”专供",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59016.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 59017,
+                    "name": "泳池派对 嘉文四世“草莓圣代”专供",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59017.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 59018,
+                    "name": "泳池派对 嘉文四世“椰林飘香”专供",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59018.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 59019,
+                    "name": "泳池派对 嘉文四世“黑色天鹅绒”专供",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59019.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 59020,
+                    "name": "泳池派对 嘉文四世“西瓜玛格丽特”专供",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59020.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 15
+                }
+            ],
+            "skinAugments": null,
+            "description": "对于嘉文来说，没有什么比在海滩闲逛更放松的了。不需要管理国事，不需要端坐于王座（除了他最爱的沙滩椅），只有海浪的声音，如果他仔细听，还会听到一个排球直接扣向他的微弱呼啸声……"
+        },
+        {
+            "id": 59021,
+            "isBase": false,
+            "name": "福牛守护者 嘉文四世",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/59/59021.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/59/59021.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/59/59021.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/JarvanIV/Skins/Skin21/JarvanIVLoadScreen_21.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/JarvanIV/Skins/Skin21/JarvanIVLoadscreen_21_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59021.png",
+            "chromas": [
+                {
+                    "id": 59022,
+                    "name": "福牛守护者 嘉文四世 贺岁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59022.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 59023,
+                    "name": "福牛守护者 嘉文四世 招财",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59023.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 59024,
+                    "name": "福牛守护者 嘉文四世 团圆",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59024.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 59025,
+                    "name": "福牛守护者 嘉文四世 纳福",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59025.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 59026,
+                    "name": "福牛守护者 嘉文四世 如意",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59026.png",
+                    "colors": [
+                        "#88FF00",
+                        "#9B1520"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在福牛守护者(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 59027,
+                    "name": "福牛守护者 嘉文四世 吉祥",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59027.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 59028,
+                    "name": "福牛守护者 嘉文四世 进宝",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59028.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Year of Ox",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/61.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/61.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 142
+                }
+            ],
+            "skinAugments": null,
+            "description": "嘉文四世对加入福牛守护者一族的倔强拒绝，妥协于他父亲的倔强坚持。尽管嘉文尽其所能地逃避这一角色所带来的名望，但他出身于慈善世家，并且发现他自己被一种冲动所吸引，想要给今年最盛大的社交盛世带来商务级的高效。"
+        },
+        {
+            "id": 59030,
+            "isBase": false,
+            "name": "2021 全球总决赛 嘉文四世",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/59/59030.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/59/59030.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/59/59030.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/JarvanIV/Skins/Skin30/JarvanIVLoadScreen_30.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/JarvanIV/Skins/Skin30/JarvanIVLoadscreen_30_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59030.png",
+            "chromas": [
+                {
+                    "id": 59031,
+                    "name": "2021 全球总决赛 嘉文四世 不破不立",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59031.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 59032,
+                    "name": "2021 全球总决赛 嘉文四世 所向披靡",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59032.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2021)事件期间发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 59033,
+                    "name": "2021 全球总决赛 嘉文四世 一鸣惊人",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59033.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2021)事件期间发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 59034,
+                    "name": "2021 全球总决赛 嘉文四世 锐不可当",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59034.png",
+                    "colors": [
+                        "#201B17",
+                        "#911A1A"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2021)事件期间作为不破/不立试炼专属战利品发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "2021 Worlds Final",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/65.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/65.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 8
+                }
+            ],
+            "skinAugments": null,
+            "description": "用来纪念在雷克雅未克举办的全球总决赛(2021)。"
+        },
+        {
+            "id": 59035,
+            "isBase": false,
+            "name": "黑夜使者 嘉文四世",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/59/59035.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/59/59035.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/59/59035.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/JarvanIV/Skins/Skin35/JarvanIVLoadScreen_35.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59035.png",
+            "chromas": [
+                {
+                    "id": 59036,
+                    "name": "黑夜使者 嘉文四世 血夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59036.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 59037,
+                    "name": "黑夜使者 嘉文四世 森夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59037.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 59038,
+                    "name": "黑夜使者 嘉文四世 梦夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59038.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 59039,
+                    "name": "黑夜使者 嘉文四世 寒夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59039.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 59040,
+                    "name": "黑夜使者 嘉文四世 夕夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59040.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 59041,
+                    "name": "黑夜使者 嘉文四世 宁夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59041.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 59042,
+                    "name": "黑夜使者 嘉文四世 寂夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59042.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 59043,
+                    "name": "黑夜使者 嘉文四世 白夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/59/59043.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 193
+                }
+            ],
+            "skinAugments": null,
+            "description": "嘉文是真正的混沌磁石。就像飓风眼一样，他的毁灭不可避免地席卷了他前进道路上的任何人和任何东西。对他来说，混沌是造就真神的熔炉，只有那些在战争中幸存下来的人才有资格生活在接下来的全新创世时代。"
+        }
+    ],
+    "passive": {
+        "name": "战争律动",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/JarvanIV/HUD/Icons2D/JarvanIVP.png",
+        "abilityVideoPath": "champion-abilities/0059/ability_0059_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0059/ability_0059_P1.jpg",
+        "description": "嘉文四世对一名敌人发起的第一次普攻会造成基于目标当前生命值的额外物理伤害。这个效果在数秒内无法重复作用于同一目标。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "巨龙撞击",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/JarvanIV/HUD/Icons2D/JarvanIVQ.png",
+            "abilityVideoPath": "champion-abilities/0059/ability_0059_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0059/ability_0059_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "嘉文四世的长矛穿透敌人，对沿途的敌人造成物理伤害和护甲击碎效果。如果嘉文四世该技能指向德邦军旗，那么他将会被导向军旗，并击飞沿途所有敌人。",
+            "dynamicDescription": "嘉文延伸他的长枪，造成<physicalDamage>@TotalDamage@物理伤害</physicalDamage>并移除<scaleArmor>@Effect2Amount@%护甲</scaleArmor>，持续@Effect3Amount@秒。<br><br>如果长枪与<spellName>德邦军旗</spellName>连接，那么嘉文会将自己拉向它，将沿途的敌人<status>击飞</status>0.75秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                770.0000,
+                770.0000,
+                770.0000,
+                770.0000,
+                770.0000,
+                770.0000
+            ],
+            "costCoefficients": [
+                45.0000,
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                10.0000,
+                9.5000,
+                9.0000,
+                8.5000,
+                8.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.4000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    70.0000,
+                    80.0000,
+                    120.0000,
+                    160.0000,
+                    200.0000,
+                    240.0000,
+                    250.0000
+                ],
+                "Effect2Amount": [
+                    6.0000,
+                    10.0000,
+                    14.0000,
+                    18.0000,
+                    22.0000,
+                    26.0000,
+                    30.0000
+                ],
+                "Effect3Amount": [
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "黄金圣盾",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/JarvanIV/HUD/Icons2D/JarvanIVW.png",
+            "abilityVideoPath": "champion-abilities/0059/ability_0059_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0059/ability_0059_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "嘉文四世召唤古德玛西亚国王保护自己，护盾吸收伤害并减速附近敌人。",
+            "dynamicDescription": "嘉文召唤一个圣盾，对附近的敌人造成持续@Effect5Amount@秒的@Effect2Amount@%<status>减速</status>并为他提供<shield>@BaseShield@护盾值</shield>，每命中一个敌方英雄会提升<shield>@BonusShield@</shield>护盾值。@SpellModifierDescriptionAppend@",
+            "range": [
+                625.0000,
+                625.0000,
+                625.0000,
+                625.0000,
+                625.0000,
+                625.0000
+            ],
+            "costCoefficients": [
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000
+            ],
+            "cooldownCoefficients": [
+                9.0000,
+                9.0000,
+                9.0000,
+                9.0000,
+                9.0000,
+                9.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.8000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    60.0000,
+                    60.0000,
+                    80.0000,
+                    100.0000,
+                    120.0000,
+                    140.0000,
+                    160.0000
+                ],
+                "Effect2Amount": [
+                    10.0000,
+                    15.0000,
+                    20.0000,
+                    25.0000,
+                    30.0000,
+                    35.0000,
+                    40.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    10.0000,
+                    20.0000,
+                    30.0000,
+                    40.0000,
+                    50.0000,
+                    60.0000
+                ],
+                "Effect4Amount": [
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000
+                ],
+                "Effect5Amount": [
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000
+                ],
+                "Effect6Amount": [
+                    0.0130,
+                    0.0130,
+                    0.0130,
+                    0.0130,
+                    0.0130,
+                    0.0130,
+                    0.0130
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "德邦军旗",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/JarvanIV/HUD/Icons2D/JarvanIVE.png",
+            "abilityVideoPath": "champion-abilities/0059/ability_0059_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0059/ability_0059_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "嘉文四世携带着德玛西亚的骄傲，能被动地给予他额外的攻击速度。激活德邦军旗会使嘉文四世放置一面德玛西亚军旗，在军旗的着陆点造成魔法伤害，并强化军旗附近的队友们的攻击速度。",
+            "dynamicDescription": "<spellPassive>被动：</spellPassive>嘉文获得<attackSpeed>@PermanentAttackSpeed*100@%攻击速度</attackSpeed>。<br><br><spellActive>主动：</spellActive>嘉文将一面军旗投掷到地上，造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>并为附近的友军们提供持续@Effect4Amount@秒的<attackSpeed>@Effect3Amount*100@%攻击速度</attackSpeed>。@SpellModifierDescriptionAppend@",
+            "range": [
+                860.0000,
+                860.0000,
+                860.0000,
+                860.0000,
+                860.0000,
+                860.0000
+            ],
+            "costCoefficients": [
+                55.0000,
+                55.0000,
+                55.0000,
+                55.0000,
+                55.0000,
+                55.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                11.5000,
+                11.0000,
+                10.5000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.8000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    7.0000,
+                    10.0000,
+                    13.0000,
+                    16.0000,
+                    19.0000,
+                    22.0000,
+                    25.0000
+                ],
+                "Effect2Amount": [
+                    80.0000,
+                    80.0000,
+                    120.0000,
+                    160.0000,
+                    200.0000,
+                    240.0000,
+                    280.0000
+                ],
+                "Effect3Amount": [
+                    0.1750,
+                    0.2000,
+                    0.2250,
+                    0.2500,
+                    0.2750,
+                    0.3000,
+                    0.3250
+                ],
+                "Effect4Amount": [
+                    8.0000,
+                    8.0000,
+                    8.0000,
+                    8.0000,
+                    8.0000,
+                    8.0000,
+                    8.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "天崩地裂",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/JarvanIV/HUD/Icons2D/JarvanIVR.png",
+            "abilityVideoPath": "champion-abilities/0059/ability_0059_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0059/ability_0059_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "嘉文四世勇猛地跃向目标敌方英雄，对其造成物理伤害，并在敌人周围形成环形障碍，持续数秒。在嘉文四世着陆时，目标附近的敌人也会受到伤害。",
+            "dynamicDescription": "嘉文勇猛地跃向一名敌方英雄，对目标及周围的敌人造成<physicalDamage>@DamageCalc@物理伤害</physicalDamage>，并在目标周围生成一个由不可通过地形构成的竞技场，持续@WallDuration@秒。<br><br>嘉文可以<recast>再次施放</recast>来使该地形倒塌。@SpellModifierDescriptionAppend@",
+            "range": [
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                700.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                105.0000,
+                90.0000,
+                8.0000,
+                5.0000,
+                0.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

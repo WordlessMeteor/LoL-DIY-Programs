@@ -1,0 +1,2592 @@
+[
+    {
+        "name": "Loadouts/TFTPlaybooks/AurelionSol",
+        "itemId": 27,
+        "contentId": "50fd8b01-9ae7-4f5b-8b8d-442dd690c27b",
+        "capTypeId": "",
+        "offerId": "7884cecb-11c4-4528-a34e-792e16f6ab88",
+        "alternateOfferId": "",
+        "translatedName": "奥瑞利安·索尔：远古大师",
+        "translatedDescription": "升到高等级并登场酷炫弈子！",
+        "earlyAugments": [
+            {
+                "name": "走捷径",
+                "description": "升级所需的经验值减少@Experience@。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Cutting-Corners-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Experience",
+                        "value": 3.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "耐心学习",
+                "description": "在与玩家的战斗后，如果你赢了则获得@winxp@经验，如果你输了则获得@lossxp@经验。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Learning-From-Experience-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "WinXP",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LossXP",
+                        "value": 3.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "升级咯！",
+                "description": "在你购买经验值的时候，获得额外的@XP@经验值。立刻获得@InitialXP@经验值。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/LevelUp3.png",
+                "effectAmounts": [
+                    {
+                        "name": "XP",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "InitialXP",
+                        "value": 8.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "知识下载 I",
+                "description": "获得@Experience@经验值。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Knowledge-Download-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Experience",
+                        "value": 12.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "知识下载 II",
+                "description": "获得@Experience@经验值。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Knowledge-Download-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "Experience",
+                        "value": 22.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "知识下载 III",
+                "description": "获得@Experience@经验值。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Knowledge-Download-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "Experience",
+                        "value": 36.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "学有所成",
+                "description": "获得@XP@经验值和@Gold@金币。 ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/It-Pays-To-Learn-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "XP",
+                        "value": 10.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 8.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "学有所成 II",
+                "description": "获得@XP@经验值和@Gold@金币。 ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/It-Pays-To-Learn-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "XP",
+                        "value": 16.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 12.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "学有所成 III",
+                "description": "获得@XP@经验值和@Gold@金币。 ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/It-Pays-To-Learn-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "XP",
+                        "value": 24.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 16.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_AurelionSol.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_AurelionSol.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_AurelionSol.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_AurelionSol.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/Bard",
+        "itemId": 28,
+        "contentId": "1488b4ca-ec3e-407c-9db6-53942a64ea84",
+        "capTypeId": "",
+        "offerId": "5dcabc56-c2d1-41b8-9162-3d988d26378d",
+        "alternateOfferId": "",
+        "translatedName": "巴德：漫游大师",
+        "translatedDescription": "在你升级时获得更多强度！",
+        "earlyAugments": [
+            {
+                "name": "游神的盟友",
+                "description": "即刻获得1个随机的@UnitTier@费弈子。在你每次升级时，再次获得一个相同弈子。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Caretaker_s-Chosen-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "UnitTier",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "游神的眷顾",
+                "description": "在你达到@levelreqa@级、@levelreqb@级、@levelreqc@级和@levelreqd@级时获得1个【基础装备锻造器】。<br><br><rules>这个锻造器提供4个选项。</rules>",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Caretaker_s-Chosen-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "LevelReqA",
+                        "value": 5.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LevelReqC",
+                        "value": 7.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LevelReqB",
+                        "value": 6.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LevelReqD",
+                        "value": 8.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "游神的神选",
+                "description": "随着你的升级，获得更强力的装备。<br>@levelreqa@级 - 基础装备锻造器<br>@levelreqb@级 - 成装锻造器<br>@levelreqc@级 - 从5件光明武器中选出1件",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Caretaker_s-Chosen-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "LevelReqA",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LevelReqB",
+                        "value": 6.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LevelReqC",
+                        "value": 8.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "小型锻炉",
+                "description": "获得1个【基础装备锻造器】和@gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Forge-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Anvils",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "中型锻炉",
+                "description": "获得1个【成装锻造器】和@gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Forge-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "大型锻炉",
+                "description": "提供1个【神器锻造器】和1个【基础装备锻造器】。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Forge-III.png",
+                "effectAmounts": []
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "成群结队 I",
+                "description": "获得@NumComponents@件随机基础装备和@NumChamps@个随机3阶英雄。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Teaming-Up-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumChamps",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumComponents",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "成群结队 II",
+                "description": "获得@NumItems@件随机辅助装和@NumUnits@个随机4阶弈子。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Teaming-Up-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumComponents",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumUnits",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "成群结队 III",
+                "description": "获得@NumItems@个【辅助装锻造器】、@NumComponents@件随机基础装备、和@NumUnits@个随机4阶弈子。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Teaming-Up-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumComponents",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumUnits",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Bard.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Bard.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_Bard.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_Bard.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/Caitlyn",
+        "itemId": 23,
+        "contentId": "d3b2b452-0559-4113-a9de-4c5326337dfe",
+        "capTypeId": "",
+        "offerId": "179f0d77-cd64-49f3-aa7c-6cc04b6a9726",
+        "alternateOfferId": "",
+        "translatedName": "凯特琳：和平卫士",
+        "translatedDescription": "在对局开始时获得强力的弈子们！",
+        "earlyAugments": [
+            {
+                "name": "一二二三",
+                "description": "获得@tier1champs@个1费弈子，@numchamps@个2费弈子和1个3费弈子。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Threes-Company-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumChamps",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Tier1Champs",
+                        "value": 3.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "天生二星",
+                "description": "你购买的第一个1费和2费弈子将立刻升到2星。获得@Gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Stars-are-born-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "Gold",
+                        "value": 5.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "入门套件",
+                "description": "获得1个随机4费弈子，和1个与该弈子拥有一个相同羁绊的2星1费弈子。<br><br>在接下来的@FutureChampionCount@个阶段，再次获得这个4费弈子。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Starter-Kit-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "FutureChampionCount",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "知识下载 I",
+                "description": "获得@Experience@经验值。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Knowledge-Download-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Experience",
+                        "value": 12.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "知识下载 II",
+                "description": "获得@Experience@经验值。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Knowledge-Download-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "Experience",
+                        "value": 22.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "知识下载 III",
+                "description": "获得@Experience@经验值。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Knowledge-Download-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "Experience",
+                        "value": 36.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "D个痛快！ I",
+                "description": "获得@Numrolls@次免费且没有时限的商店刷新。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Rolling-For-Days-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumRolls",
+                        "value": 9.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "D个痛快！ II",
+                "description": "获得@Numrolls@次免费且没有时限的商店刷新。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Rolling-For-Days-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumRolls",
+                        "value": 15.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "D个痛快！ III",
+                "description": "获得@Numrolls@次免费且没有时限的商店刷新。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Rolling-For-Days-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumRolls",
+                        "value": 25.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Caitlyn.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Caitlyn.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_Caitlyn.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_Caitlyn.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/Draven",
+        "itemId": 19,
+        "contentId": "a42205d2-0877-4f06-8a92-29596481ce2a",
+        "capTypeId": "",
+        "offerId": "eb34e7f6-9036-4946-95fe-4c9b4b3846a5",
+        "alternateOfferId": "",
+        "translatedName": "德莱文：处决大师",
+        "translatedDescription": "赢得大胜并且获得更大的回报！",
+        "earlyAugments": [
+            {
+                "name": "战争财宝 I",
+                "description": "敌人在被击杀时有@LootDropChance*100@%几率掉落战利品。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Spoils-Of-War-Legend-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "TableRollOdds",
+                        "value": 0.25,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LootDropChance",
+                        "value": 0.25,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "战争财宝 II",
+                "description": "敌人在被击杀时有@LootDropChance*100@%几率掉落战利品。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Spoils-Of-War-Legend-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "TableRollOdds",
+                        "value": 0.30000001192092898,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LootDropChance",
+                        "value": 0.30000001192092898,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "战争财宝 III",
+                "description": "敌人在被击杀时有@LootDropChance*100@%几率掉落战利品。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Spoils-Of-War-Legend-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "TableRollOdds",
+                        "value": 0.4000000059604645,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LootDropChance",
+                        "value": 0.4000000059604645,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "平衡预算",
+                "description": "接下来的@rounds@个回合在开始时都会获得@gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Balanced-Budget-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Rounds",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 4.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "平衡预算",
+                "description": "接下来的@rounds@个回合在开始时都会获得@gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Balanced-Budget-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "Rounds",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 7.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "平衡预算 III",
+                "description": "接下来的@rounds@个回合在开始时都会获得@gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Balanced-Budget-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "Rounds",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 11.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "D个痛快！ I",
+                "description": "获得@Numrolls@次免费且没有时限的商店刷新。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Rolling-For-Days-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumRolls",
+                        "value": 9.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "D个痛快！ II",
+                "description": "获得@Numrolls@次免费且没有时限的商店刷新。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Rolling-For-Days-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumRolls",
+                        "value": 15.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "D个痛快！ III",
+                "description": "获得@Numrolls@次免费且没有时限的商店刷新。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Rolling-For-Days-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumRolls",
+                        "value": 25.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Draven.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Draven.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_Draven.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_Draven.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/Ezreal",
+        "itemId": 18,
+        "contentId": "b2e722e4-a2d9-43a2-b312-ecf2a7997288",
+        "capTypeId": "",
+        "offerId": "90f4e671-9adf-4cbc-9e88-0d341ceaa4f2",
+        "alternateOfferId": "",
+        "translatedName": "伊泽瑞尔：装备大师",
+        "translatedDescription": "装备越多，表现越好！",
+        "earlyAugments": [
+            {
+                "name": "珍藏财宝 I",
+                "description": "接下来的@roundsofbonusitems@个回合(包括这个回合)在开始时都会获得一件随机的基础装备。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Buried-Treasures-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "RoundsOfBonusItems",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 0.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "珍藏财宝 II",
+                "description": "接下来的@roundsofbonusitems@个回合(包括这个回合)在开始时都会获得一件随机的基础装备。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Buried-Treasures-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "RoundsOfBonusItems",
+                        "value": 3.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 0.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "珍藏财宝 III",
+                "description": "接下来的@roundsofbonusitems@个回合(包括这个回合)在开始时都会获得一件随机的基础装备。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Buried-Treasures-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "RoundsOfBonusItems",
+                        "value": 6.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 0.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "微小百宝袋",
+                "description": "获得1件随机基础装备，@Gold@金币和1个【装备拆卸器】。 ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Grab-Bag-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumFullitems",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DuplicatorAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "SpatulaAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "大百宝袋",
+                "description": "获得@NumItems@件随机基础装备、@Gold@金币和1个【装备重铸器】。<br><br><rules>【装备重铸器】允许你将任一装备随机成另一件装备。</rules>",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Grab-Bag-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 3.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "巨大百宝袋",
+                "description": "获得@NumItems@件随机基础装备、@Gold@金币和1个【次级英雄复制器】。 ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Grab-Bag-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 3.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LesserDuplicatorAmount",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "应得的享受 I",
+                "description": "你的弈子们获得@Health@x已携带装备数的生命值。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Well-Earned-Comforts-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Health",
+                        "value": 70.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "应得的享受 II",
+                "description": "你的弈子们获得@Health@x已携带装备数的生命值。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Well-Earned-Comforts-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "Health",
+                        "value": 111.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "应得的享受 III",
+                "description": "你的弈子们获得@Health@x已携带装备数的生命值和@AttackSpeed*100@%x已携带装备数的攻击速度。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Well-Earned-Comforts-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "Health",
+                        "value": 120.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "AttackSpeed",
+                        "value": 0.05999999865889549,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Ezreal.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Ezreal.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_Ezreal.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_Ezreal.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/LeeSin",
+        "itemId": 26,
+        "contentId": "ac167be6-e6ff-48cb-8ee3-0eea9c149994",
+        "capTypeId": "",
+        "offerId": "304648ed-08c9-48e2-a0ff-ceb503a2cbf3",
+        "alternateOfferId": "",
+        "translatedName": "李青：制胜大师",
+        "translatedDescription": "刷新你的商店来获得完美的弈子们！",
+        "earlyAugments": [
+            {
+                "name": "白银门票",
+                "description": "在每@RollNumber@次商店刷新之后获得1次免费的商店刷新。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/GoldenTicket1.png",
+                "effectAmounts": [
+                    {
+                        "name": "RollNumber",
+                        "value": 4.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "DD街区",
+                "description": "每回合获得1次免费的商店刷新。获得@Gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Trade2.png",
+                "effectAmounts": [
+                    {
+                        "name": "Gold",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "大买特买",
+                "description": "每回合获得@gold@金币。在你升级时，获得相当于你等级数的免费商店刷新，这些刷新可保留至后续回合使用。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Trade3.png",
+                "effectAmounts": [
+                    {
+                        "name": "CheapRollLevel",
+                        "value": 8.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "训练奖励",
+                "description": "获得@Gold@金币和1个【次级英雄复制器】。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Training-Reward-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Gold",
+                        "value": 5.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LesserDuplicatorAmount",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "训练奖励 II",
+                "description": "获得@Gold@金币和1个【次级英雄复制器】。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Training-Reward-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "Gold",
+                        "value": 12.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LesserDuplicatorAmount",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "训练奖励 III",
+                "description": "获得@Gold@金币和1个【英雄复制器】。 ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Training-Reward-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "Gold",
+                        "value": 24.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DuplicatorAmount",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "钱！",
+                "description": "获得@gold@金币。@Numberofcombats@回合后，再次获得@gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Money-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumberOfCombats",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 11.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "钱钱！",
+                "description": "获得@gold@金币。@Numberofcombats@回合后，再次获得@gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Money-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumberOfCombats",
+                        "value": 3.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 16.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "钱钱钱！",
+                "description": "获得@gold@金币。@Numberofcombats@回合后，再次获得@gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Money-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumberOfCombats",
+                        "value": 3.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 25.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_LeeSin.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_LeeSin.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_LeeSin.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_LeeSin.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/MasterYi",
+        "itemId": 25,
+        "contentId": "3e53c1d3-4088-475f-80bf-656f69f05237",
+        "capTypeId": "",
+        "offerId": "5ae90e54-3403-4e6f-afbc-2ad16d2d71f8",
+        "alternateOfferId": "",
+        "translatedName": "易：无极大师",
+        "translatedDescription": "每场战斗成长得越来越强！",
+        "earlyAugments": [
+            {
+                "name": "打气 I",
+                "description": "你的弈子们即刻获得@BaseAS@%攻击速度。之后的每个回合，他们额外获得@IncreasePerRound@%攻击速度。(当前攻击速度：@TFTUnitProperty.item:TFT9_PumpingUpRounds@%)",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Pumping-Up-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "IncreasePerRound",
+                        "value": 0.5,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "BaseAS",
+                        "value": 8.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "打气 II",
+                "description": "你的弈子们即刻获得@BaseAS@%攻击速度。之后的每个回合，他们额外获得@IncreasePerRound@%攻击速度。(当前攻击速度：@TFTUnitProperty.item:TFT9_PumpingUp2Rounds@%)",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Pumping-Up-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "IncreasePerRound",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "BaseAS",
+                        "value": 8.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "打气 III",
+                "description": "你的弈子们即刻获得@BaseAS@%攻击速度。之后的每个回合，他们额外获得@IncreasePerRound@%攻击速度。(当前攻击速度：@TFTUnitProperty.item:TFT9_PumpingUp3Rounds@%)",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Pumping-Up-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "IncreasePerRound",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "BaseAS",
+                        "value": 12.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "战斗准备",
+                "description": "你的队伍造成@BonusDamage@%额外伤害，所受伤害降低@DR@%。 ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Battle-Ready-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "BonusDamage",
+                        "value": 3.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DR",
+                        "value": 3.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "战斗准备 II",
+                "description": "你的队伍造成@BonusDamage@%额外伤害，所受伤害降低@DR@%。 ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Battle-Ready-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "BonusDamage",
+                        "value": 6.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DR",
+                        "value": 6.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "战斗准备 III",
+                "description": "你的队伍造成@BonusDamage@%额外伤害，所受伤害降低@DR@%。 ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Battle-Ready-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "BonusDamage",
+                        "value": 8.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DR",
+                        "value": 8.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "开飙！",
+                "description": "你的单位们多生成@PercentMana@%法力值并且移动速度快@BonusMovementSpeed@%。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Gotta-Go-Fast-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "PercentMana",
+                        "value": 10.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "BonusMovementSpeed",
+                        "value": 35.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "ActualMovementSpeed",
+                        "value": 300.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "开飙！II",
+                "description": "你的单位们多生成@PercentMana@%法力值并且移动速度快@BonusMovementSpeed@%。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Gotta-Go-Fast-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "PercentMana",
+                        "value": 20.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "BonusMovementSpeed",
+                        "value": 60.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "ActualMovementSpeed",
+                        "value": 450.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "开飙！！！III",
+                "description": "你的单位们多生成@PercentMana@%法力值并且移动速度快@BonusMovementSpeed@%。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Gotta-Go-Fast-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "PercentMana",
+                        "value": 30.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "BonusMovementSpeed",
+                        "value": 100.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "ActualMovementSpeed",
+                        "value": 750.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_MasterYi.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_MasterYi.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_MasterYi.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_MasterYi.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/Ornn",
+        "itemId": 22,
+        "contentId": "6fae50b8-5d6e-4ca3-b712-14a419101874",
+        "capTypeId": "",
+        "offerId": "e97a7983-fadf-4894-91df-b1a69aeddc13",
+        "alternateOfferId": "",
+        "translatedName": "奥恩：锻炉大师",
+        "translatedDescription": "获得奥恩造物的力量！",
+        "earlyAugments": [
+            {
+                "name": "休眠锻炉",
+                "description": "在@NumberOfCombats@个玩家对战后，获得1个【神器锻造器】。<br><br><rules>这个锻造器提供4个选项。神器是可以提供独特效果的强力装备。</rules>",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Long-time-Crafting-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumberOfCombats",
+                        "value": 8.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "便携锻炉",
+                "description": "从@ArmoryChoiceCount@件神器中选出1件。<br><br><rules>神器是可以提供独特效果的强力装备。</rules>",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/PortableForge2.png",
+                "effectAmounts": [
+                    {
+                        "name": "ArmoryChoiceCount",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "活体锻炉",
+                "description": "立刻以及之后的每@NumberOfCombats@个玩家对战回合后获得1个【神器锻造器】。<br><br><rules>神器是可以提供独特效果的强力装备。</rules>",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Living-Forge-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumberOfCombats",
+                        "value": 10.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "小型锻炉",
+                "description": "获得1个【基础装备锻造器】和@gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Forge-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Anvils",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "中型锻炉",
+                "description": "获得1个【成装锻造器】和@gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Forge-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "大型锻炉",
+                "description": "提供1个【神器锻造器】和1个【基础装备锻造器】。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Forge-III.png",
+                "effectAmounts": []
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "完活",
+                "description": "获得@anvils@个【基础装备锻造器】和@RandomComponents@个随机基础装备。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Job_s-Done-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Anvils",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "RandomComponents",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "活干得不错",
+                "description": "获得1个【成装锻造器】和@RandomComponents@个随机基础装备。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Job_s-Done-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumAnvils",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "RandomComponents",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "精湛作品",
+                "description": "提供1个【神器锻造器】和1个【成装锻造器】。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Job_s-Done-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "Gold",
+                        "value": 5.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Ornn.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Ornn.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_Ornn.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_Ornn.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/Pengu",
+        "itemId": 24,
+        "contentId": "9b0c2ca4-301a-42c0-bc4f-d8122ae674f0",
+        "capTypeId": "",
+        "offerId": "c455dbd4-efeb-4a9b-83b4-181f7b35d117",
+        "alternateOfferId": "",
+        "translatedName": "企鹅：小小英雄大师",
+        "translatedDescription": "安全行事！非常适合新手！",
+        "earlyAugments": [
+            {
+                "name": "小巨人",
+                "description": "使你的当前玩家生命值和最大玩家生命值都提升@heal@。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Tiny-Titans-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Heal",
+                        "value": 30.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "代谢增速器",
+                "description": "在每个玩家对战回合后获得@Heal@玩家生命值。你的小小英雄还会移动得更快。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/MetabolicAccel2.png",
+                "effectAmounts": [
+                    {
+                        "name": "Heal",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "最小巨人",
+                "description": "在每个玩家对战回合后获得@Heal@玩家生命值和@Gold@金币。你的小小英雄还会移动得更快。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Tiniest-TitanIII.png",
+                "effectAmounts": [
+                    {
+                        "name": "Heal",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "百宝袋 I",
+                "description": "提供@NumItems@件随机成装。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ItemGrabBag1.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "装备百宝袋 II",
+                "description": "获得1件随机成装、1件随机基础装备和@Gold@金币。 ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ItemGrabBag2.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumFullitems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DuplicatorAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "SpatulaAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "装备百宝袋 III",
+                "description": "获得@NumFullItems@件随机成装和@Gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ItemGrabBag3.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumFullitems",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DuplicatorAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "SpatulaAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "终极百宝袋",
+                "description": "获得1件随机基础装备、@Gold@金币和1个【装备重铸器】。 ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Final-Grab-Bag-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 10.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 0.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "终极百宝袋 II",
+                "description": "获得@NumItems@件随机基础装备、@Gold@金币和1个【装备拆卸器】。 ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Final-Grab-Bag-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 12.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "阿福的百宝袋",
+                "description": "获得@NumItems@件随机基础装备、1个【英雄复制器】和1个【金铲铲】。 ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Final-Grab-Bag-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DuplicatorAmount",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "SpatulaAmount",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Pengu.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Pengu.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_Pengu.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_Pengu.png",
+        "isDisabledInDoubleUp": true
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/Poro",
+        "itemId": 1,
+        "contentId": "dfb8fed0-e28f-4f03-ae2f-3d1ba59574ca",
+        "capTypeId": "",
+        "offerId": "6ea5bee5-e4c9-480f-9c56-35fa2a09ccdd",
+        "alternateOfferId": "",
+        "translatedName": "魄罗：不思议大师 ",
+        "translatedDescription": "没有定制，来一局经典模式的【云顶之弈】！",
+        "earlyAugments": [],
+        "midAugments": [],
+        "lateAugments": [],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Poro.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Poro.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_Poro.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_Poro.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/TahmKench",
+        "itemId": 16,
+        "contentId": "324e0bd0-8a1c-4696-83ef-dad14d9a0fe5",
+        "capTypeId": "",
+        "offerId": "c5b65f0b-9ed7-44af-906d-d96f41fe1b4b",
+        "alternateOfferId": "",
+        "translatedName": "塔姆：贪财大师",
+        "translatedDescription": "尽可能搞更多的金币！",
+        "earlyAugments": [
+            {
+                "name": "开摆",
+                "description": "你在接下来的@RoundsToSkip@回合里无法采取任何行动。在此之后，获得@Gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/AFK-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Gold",
+                        "value": 18.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "RoundsToSkip",
+                        "value": 3.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "利滚利",
+                "description": "获得@Gold@金币。你的最大利息提升至@InterestCap@金币。<br><br><rules>利息是你每储存10金币时获得的额外金币。</rules>",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/RichGetRicher2.png",
+                "effectAmounts": [
+                    {
+                        "name": "Gold",
+                        "value": 12.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "InterestCap",
+                        "value": 7.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "对冲基金",
+                "description": "获得@Gold@金币。你的最大利息提升至@InterestCap@金币。<br><br><rules>利息是你每储存10金币时获得的额外金币。</rules>",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/RichGetRicher3.png",
+                "effectAmounts": [
+                    {
+                        "name": "Gold",
+                        "value": 20.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "InterestCap",
+                        "value": 10.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "平衡预算",
+                "description": "接下来的@rounds@个回合在开始时都会获得@gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Balanced-Budget-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Rounds",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 4.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "平衡预算",
+                "description": "接下来的@rounds@个回合在开始时都会获得@gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Balanced-Budget-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "Rounds",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 7.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "平衡预算 III",
+                "description": "接下来的@rounds@个回合在开始时都会获得@gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Balanced-Budget-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "Rounds",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 11.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "钱！",
+                "description": "获得@gold@金币。@Numberofcombats@回合后，再次获得@gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Money-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumberOfCombats",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 11.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "钱钱！",
+                "description": "获得@gold@金币。@Numberofcombats@回合后，再次获得@gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Money-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumberOfCombats",
+                        "value": 3.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 16.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "钱钱钱！",
+                "description": "获得@gold@金币。@Numberofcombats@回合后，再次获得@gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Money-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumberOfCombats",
+                        "value": 3.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 25.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_TahmKench.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_TahmKench.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_TahmKench.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_TahmKench.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/TwistedFate",
+        "itemId": 20,
+        "contentId": "90a7c0b7-5d07-4c6a-bc99-9df582a7237d",
+        "capTypeId": "",
+        "offerId": "cca450ec-6a8c-4652-9da8-ca6307007993",
+        "alternateOfferId": "",
+        "translatedName": "崔斯特：好运来",
+        "translatedDescription": "获得你刚好需要的那些装备！",
+        "earlyAugments": [
+            {
+                "name": "潘朵拉的装备",
+                "description": "回合开始时：你备战席上的装备会随机变化（【金铲铲冠冕】和【金铲铲】除外）。<br><br>获得@NumComponents@件随机基础装备。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Pandora1.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumComponents",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "潘朵拉的装备 II",
+                "description": "回合开始时：你备战席上的装备会随机变化（【金铲铲冠冕】和【金铲铲】除外）。<br><br>获得@NumCompletedItems@件随机的成装。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Pandora2.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumComponents",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumCompletedItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "潘朵拉的装备 III",
+                "description": "回合开始时：你备战席上的装备会随机变化（【金铲铲冠冕】和【金铲铲】除外）。提供1件随机光明武器。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Pandora3.png",
+                "effectAmounts": []
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "百宝袋 I",
+                "description": "提供@NumItems@件随机成装。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ItemGrabBag1.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "装备百宝袋 II",
+                "description": "获得1件随机成装、1件随机基础装备和@Gold@金币。 ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ItemGrabBag2.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumFullitems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DuplicatorAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "SpatulaAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "装备百宝袋 III",
+                "description": "获得@NumFullItems@件随机成装和@Gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ItemGrabBag3.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumFullitems",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DuplicatorAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "SpatulaAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "成群结队 I",
+                "description": "获得@NumComponents@件随机基础装备和@NumChamps@个随机3阶英雄。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Teaming-Up-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumChamps",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumComponents",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "成群结队 II",
+                "description": "获得@NumItems@件随机辅助装和@NumUnits@个随机4阶弈子。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Teaming-Up-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumComponents",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumUnits",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "成群结队 III",
+                "description": "获得@NumItems@个【辅助装锻造器】、@NumComponents@件随机基础装备、和@NumUnits@个随机4阶弈子。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Teaming-Up-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumComponents",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumUnits",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_TwistedFate.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_TwistedFate.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_TwistedFate.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_TwistedFate.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/Urf",
+        "itemId": 21,
+        "contentId": "a537b812-b5d1-433c-9835-b59c123f93fd",
+        "capTypeId": "",
+        "offerId": "177029e0-743f-467b-8702-9457f61537f4",
+        "alternateOfferId": "",
+        "translatedName": "海牛阿福：纹章大师",
+        "translatedDescription": "献给那些喜爱纹章的玩家！",
+        "earlyAugments": [
+            {
+                "name": "节外生枝",
+                "description": "提供1个随机【纹章】和1个【装备重铸器】。<br><br><rules>【装备重铸器】允许你将任一装备随机成另一件装备。</rules>",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Branching-Out-I.png",
+                "effectAmounts": []
+            },
+            {
+                "name": "古代档案 I",
+                "description": "提供@NumTomes@个【纹章之书】和@Gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/AncientArchives2.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumTomes",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 3.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "古代档案 II",
+                "description": "提供@NumTomes@个【纹章之书】和@Gold@金币。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/AncientArchives3.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumTomes",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 5.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "微小百宝袋",
+                "description": "获得1件随机基础装备，@Gold@金币和1个【装备拆卸器】。 ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Grab-Bag-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumFullitems",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DuplicatorAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "SpatulaAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "大百宝袋",
+                "description": "获得@NumItems@件随机基础装备、@Gold@金币和1个【装备重铸器】。<br><br><rules>【装备重铸器】允许你将任一装备随机成另一件装备。</rules>",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Grab-Bag-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 3.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "巨大百宝袋",
+                "description": "获得@NumItems@件随机基础装备、@Gold@金币和1个【次级英雄复制器】。 ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Grab-Bag-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 3.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LesserDuplicatorAmount",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "终极百宝袋",
+                "description": "获得1件随机基础装备、@Gold@金币和1个【装备重铸器】。 ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Final-Grab-Bag-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 10.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 0.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "终极百宝袋 II",
+                "description": "获得@NumItems@件随机基础装备、@Gold@金币和1个【装备拆卸器】。 ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Final-Grab-Bag-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 12.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "阿福的百宝袋",
+                "description": "获得@NumItems@件随机基础装备、1个【英雄复制器】和1个【金铲铲】。 ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Final-Grab-Bag-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DuplicatorAmount",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "SpatulaAmount",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Urf.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Urf.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_Urf.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_Urf.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/Veigar",
+        "itemId": 15,
+        "contentId": "769eaf83-e357-4bd2-97c1-6babfa5c781f",
+        "capTypeId": "",
+        "offerId": "38383e49-32f5-45f6-a56c-0ac25f2af2e0",
+        "alternateOfferId": "",
+        "translatedName": "维迦：施法大师",
+        "translatedDescription": "用你的英雄们的技能造成大数字的伤害！",
+        "earlyAugments": [
+            {
+                "name": "珠光莲花 I",
+                "description": "战斗开始时：你最强大的那个弈子获得@CritChance@%暴击几率并且其技能可以暴击。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Jeweled-Lotus-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "CritChance",
+                        "value": 40.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "珠光莲花 II",
+                "description": "你的弈子们获得@critchance@%暴击几率，并且其技能可以暴击。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Jeweled-Lotus-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "CritChance",
+                        "value": 15.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "珠光莲花 III",
+                "description": "你的弈子们获得@critchance@%暴击几率，并且其技能可以暴击。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Jeweled-Lotus-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "CritChance",
+                        "value": 40.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "小小之力 I",
+                "description": "你的单位们获得@ap@%攻击力、法术强度和攻击速度。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Tiny-Power-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "AD",
+                        "value": 6.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "AP",
+                        "value": 6.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "AS",
+                        "value": 6.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "小小之力 II",
+                "description": "你的单位们获得@ap@%攻击力、法术强度和攻击速度。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Tiny-Power-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "AD",
+                        "value": 10.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "AP",
+                        "value": 10.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "AS",
+                        "value": 10.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "小小之力 III",
+                "description": "你的单位们获得@ap@%攻击力、法术强度和攻击速度。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Tiny-Power-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "AD",
+                        "value": 15.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "AP",
+                        "value": 15.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "AS",
+                        "value": 15.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "部分飞升",
+                "description": "在战斗环节开始@Delay@秒后，你的弈子们造成的伤害提升 @DamageAmp@%。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Ascension1.png",
+                "effectAmounts": [
+                    {
+                        "name": "Delay",
+                        "value": 15.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DamageAmp",
+                        "value": 30.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "飞升",
+                "description": "在战斗环节开始@Delay@秒后，你的弈子们造成的伤害提升 @DamageAmp@%。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Ascension2.png",
+                "effectAmounts": [
+                    {
+                        "name": "Delay",
+                        "value": 15.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DamageAmp",
+                        "value": 50.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "终极飞升",
+                "description": "你的弈子们多造成@damageamp@%伤害。在@delay@秒后，他们多造成@AscendedAmpTOOLTIPONLY@%伤害。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Ascension3.png",
+                "effectAmounts": [
+                    {
+                        "name": "Delay",
+                        "value": 15.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DamageAmp",
+                        "value": 15.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "AscendedAmpTOOLTIPONLY",
+                        "value": 45.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Veigar.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Veigar.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_Veigar.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_Veigar.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/Vladamir",
+        "itemId": 17,
+        "contentId": "b6caaf87-7616-4b62-a1f1-c4d5b81f6da8",
+        "capTypeId": "",
+        "offerId": "1586a642-e4ef-4d6c-84e4-a125b02f2b88",
+        "alternateOfferId": "",
+        "translatedName": "弗拉基米尔：控血大师",
+        "translatedDescription": "将你的生命值换成强度！",
+        "earlyAugments": [
+            {
+                "name": "鲜血转换 I",
+                "description": "你的弈子们获得@BaseHP@生命值，外加@BonusHPPerMissingHealth@x小小英雄已损失生命值的生命值。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Transfusion-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "BaseHP",
+                        "value": 20.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "BonusHPPerMissingHealth",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "鲜血转换 II",
+                "description": "你的弈子们获得@BaseHP@生命值，外加@BonusHPPerMissingHealth@x小小英雄已损失生命值的生命值。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Transfusion-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "BaseHP",
+                        "value": 40.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "BonusHPPerMissingHealth",
+                        "value": 3.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "鲜血转换 III",
+                "description": "你的弈子们获得@BaseHP@生命值，外加@BonusHPPerMissingHealth@x小小英雄已损失生命值的生命值。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Transfusion-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "BaseHP",
+                        "value": 50.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "BonusHPPerMissingHealth",
+                        "value": 5.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "战斗准备",
+                "description": "你的队伍造成@BonusDamage@%额外伤害，所受伤害降低@DR@%。 ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Battle-Ready-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "BonusDamage",
+                        "value": 3.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DR",
+                        "value": 3.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "战斗准备 II",
+                "description": "你的队伍造成@BonusDamage@%额外伤害，所受伤害降低@DR@%。 ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Battle-Ready-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "BonusDamage",
+                        "value": 6.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DR",
+                        "value": 6.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "战斗准备 III",
+                "description": "你的队伍造成@BonusDamage@%额外伤害，所受伤害降低@DR@%。 ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Battle-Ready-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "BonusDamage",
+                        "value": 8.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DR",
+                        "value": 8.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "部分飞升",
+                "description": "在战斗环节开始@Delay@秒后，你的弈子们造成的伤害提升 @DamageAmp@%。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Ascension1.png",
+                "effectAmounts": [
+                    {
+                        "name": "Delay",
+                        "value": 15.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DamageAmp",
+                        "value": 30.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "飞升",
+                "description": "在战斗环节开始@Delay@秒后，你的弈子们造成的伤害提升 @DamageAmp@%。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Ascension2.png",
+                "effectAmounts": [
+                    {
+                        "name": "Delay",
+                        "value": 15.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DamageAmp",
+                        "value": 50.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "终极飞升",
+                "description": "你的弈子们多造成@damageamp@%伤害。在@delay@秒后，他们多造成@AscendedAmpTOOLTIPONLY@%伤害。",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Ascension3.png",
+                "effectAmounts": [
+                    {
+                        "name": "Delay",
+                        "value": 15.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DamageAmp",
+                        "value": 15.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "AscendedAmpTOOLTIPONLY",
+                        "value": 45.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Vladimir.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Vladimir.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_Vladimir.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_Vladimir.png",
+        "isDisabledInDoubleUp": false
+    }
+]

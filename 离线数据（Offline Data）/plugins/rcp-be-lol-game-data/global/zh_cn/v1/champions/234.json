@@ -1,0 +1,1237 @@
+{
+    "id": 234,
+    "name": "破败之王",
+    "alias": "Viego",
+    "title": "佛耶戈",
+    "shortBio": "这位失落千年的王国之主——佛耶戈，为了让亡妻死而复生，引发了一场被后世称为“破败之咒”的魔灾，自己也不幸因此殒命。如今的佛耶戈已经变成了一个强大的亡魂怨灵，依然执着地迷恋着几百年前便已死去的王后。他号称破败之王，操纵着夺命的蚀魂夜，在符文之地上不懈地搜寻着，希望有朝一日能将她追回。无穷无尽的黑雾从他早已支离的心中涌出，扫除他面前的一切阻碍。",
+    "tacticalInfo": {
+        "style": 3,
+        "difficulty": 3,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 2,
+        "mobility": 2,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/234.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/234.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/234.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/234.ogg",
+    "roles": [
+        "assassin",
+        "fighter"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 234000,
+            "isBase": true,
+            "name": "破败之王",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/234/234000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/234/234000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/234/234000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Viego/Skins/Base/ViegoLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 234001,
+            "isBase": false,
+            "name": "福牛守护者 佛耶戈",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/234/234001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/234/234001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/234/234001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Viego/Skins/Skin01/ViegoLoadscreen_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Viego/Skins/Skin01/ViegoLoadscreen_1_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234001.png",
+            "chromas": [
+                {
+                    "id": 234002,
+                    "name": "福牛守护者 佛耶戈 贺喜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 234003,
+                    "name": "福牛守护者 佛耶戈 桃灯",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234003.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 234004,
+                    "name": "福牛守护者 佛耶戈 进宝",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234004.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234005,
+                    "name": "福牛守护者 佛耶戈 元灯",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234005.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234006,
+                    "name": "福牛守护者 佛耶戈 祈福",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234006.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234007,
+                    "name": "福牛守护者 佛耶戈 除岁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234007.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234008,
+                    "name": "福牛守护者 佛耶戈 如意",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234008.png",
+                    "colors": [
+                        "#88FF00",
+                        "#9B1520"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在福牛守护者(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 142
+                }
+            ],
+            "skinAugments": null,
+            "description": "佛耶戈曾是以前的一支福牛守护者小队的队长。他做出决定，他们要与年兽作战并最终击败它。他的计划以悲剧收场：他眼睁睁地看着他的队友们被吞噬——包括他的妻子。多年来，佛耶戈一直对这些损失耿耿于怀，怪罪着除他自己之外的所有人——包括今年的福牛守护者小队。"
+        },
+        {
+            "id": 234010,
+            "isBase": false,
+            "name": "五杀摇滚之噪音 佛耶戈",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/234/234010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/234/234010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/234/234010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Viego/Skins/Skin10/ViegoLoadScreen_10.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234010.png",
+            "chromas": [
+                {
+                    "id": 234011,
+                    "name": "五杀摇滚之噪音 佛耶戈 热血",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234011.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 234012,
+                    "name": "五杀摇滚之噪音 佛耶戈 叛逆",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234012.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234013,
+                    "name": "五杀摇滚之噪音 佛耶戈 自在",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234013.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234014,
+                    "name": "五杀摇滚之噪音 佛耶戈 迷幻",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234014.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 234015,
+                    "name": "五杀摇滚之噪音 佛耶戈 前卫",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234015.png",
+                    "colors": [
+                        "#DED6B0",
+                        "#DED6B0"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234016,
+                    "name": "五杀摇滚之噪音 佛耶戈 澎湃",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234016.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234017,
+                    "name": "五杀摇滚之噪音 佛耶戈 硬核",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234017.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234018,
+                    "name": "五杀摇滚之噪音 佛耶戈 黑暗",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234018.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 151
+                }
+            ],
+            "skinAugments": null,
+            "description": "只有心碎之人才知道悲痛的真谛，那就是其他人闻所未闻的对完美的向往。 佛耶戈生活在一个充满了灰烬和阴影的世界里，而它本该充满光明，而现在，他的目光穿越了这些灰色的天际线，想要寻找新的声音和影像来实现它……"
+        },
+        {
+            "id": 234019,
+            "isBase": false,
+            "name": "EDG 佛耶戈",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/234/234019.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/234/234019.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/234/234019.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Viego/Skins/Skin19/ViegoLoadScreen_19.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Viego/Skins/Skin19/ViegoLoadscreen_19_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234019.png",
+            "chromas": [
+                {
+                    "id": 234020,
+                    "name": "EDG 佛耶戈 破军",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234020.png",
+                    "colors": [
+                        "#131521",
+                        "#9E1517"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在季中冠军赛(2022)期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Champion Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/54.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/54.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 158
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此致敬Jiejie在2021全球总决赛中使用佛耶戈的夺胜表现。"
+        },
+        {
+            "id": 234021,
+            "isBase": false,
+            "name": "国王 佛耶戈",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/234/234021.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/234/234021.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/234/234021.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Viego/Skins/Skin21/ViegoLoadScreen_21.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234021.png",
+            "chromas": [
+                {
+                    "id": 234022,
+                    "name": "国王 佛耶戈 红鸾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234022.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 234023,
+                    "name": "国王 佛耶戈 金风",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234023.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234024,
+                    "name": "国王 佛耶戈 玉露",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234024.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234025,
+                    "name": "国王 佛耶戈 碧海",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234025.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234026,
+                    "name": "国王 佛耶戈 同心",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234026.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234027,
+                    "name": "国王 佛耶戈 月下",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234027.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 234028,
+                    "name": "国王 佛耶戈 白露",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234028.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234029,
+                    "name": "国王 佛耶戈 锦瑟",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234029.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 164
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为卡玛维亚的继承人，王者之刃的持有者，佛耶戈渴望追随他父亲的脚步。当裁决圣所中回荡起剑刃的低语，他的参谋卡莉丝塔在他加冕之前就已经看穿了他心中的犹疑。然而，佛耶戈还是戴上了烁银王冠，握住了王者之刃“穆清”。他将让卡玛维亚的一切敌人畏惧臣服。"
+        },
+        {
+            "id": 234030,
+            "isBase": false,
+            "name": "斗魂觉醒 佛耶戈",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/234/234030.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/234/234030.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/234/234030.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Viego/Skins/Skin30/ViegoLoadScreen_30.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Viego/Skins/Skin30/ViegoLoadScreen_30_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234030.png",
+            "chromas": [
+                {
+                    "id": 234031,
+                    "name": "斗魂觉醒 佛耶戈 烈之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234031.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 234032,
+                    "name": "斗魂觉醒 佛耶戈 韧之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234032.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234033,
+                    "name": "斗魂觉醒 佛耶戈 毅之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234033.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234034,
+                    "name": "斗魂觉醒 佛耶戈 狡之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234034.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234035,
+                    "name": "斗魂觉醒 佛耶戈 燃之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234035.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234036,
+                    "name": "斗魂觉醒 佛耶戈 无限斗志",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234036.png",
+                    "colors": [
+                        "#C8D0CE",
+                        "#AF65D1"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在斗魂觉醒(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "SaverLimited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/79.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/79.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 196
+                }
+            ],
+            "skinAugments": null,
+            "description": "彬彬有礼——但过分深居简出——的斗魂武道大会举办人欢迎所有人来到他的竞技场！看呀，他现在就在擂台上方，在他的王座之室里注视着比赛！他的孤寂有没有让你们生起一丝悲伤呢，伙计们？真希望他从那座塔上跳下来，然后把这种伤感变成无拘无束的怒火！佛——耶——戈——！"
+        }
+    ],
+    "passive": {
+        "name": "君命已决",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Viego/HUD/Icons2D/Viego_Passive.png",
+        "abilityVideoPath": "champion-abilities/0234/ability_0234_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0234/ability_0234_P1.jpg",
+        "description": "倒在佛耶戈面前的敌方英雄们会变为幽魂。通过攻击一个幽魂，佛耶戈可以暂时夺取该英雄躯体的控制权，获得相当于他目标一部分最大生命值的治疗效果并获得该英雄的基础技能和装备的使用权。他会将其终极技能替换为他自己终极技能的一次免费施放。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "破败王剑",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Viego/HUD/Icons2D/Viego_Q.png",
+            "abilityVideoPath": "champion-abilities/0234/ability_0234_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0234/ability_0234_Q1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "佛耶戈的鬼魅之刃会在被动地在命中时造成额外的百分比当前生命值伤害<OnHit>攻击特效</OnHit>，并对近期被他用一个技能袭击过的敌人进行两次打击，同时窃取生命值。<br><br>佛耶戈可以激活这个技能来向前刺出他的双手巨剑，穿刺他前方的所有敌人们。",
+            "dynamicDescription": "<spellPassive>被动：</spellPassive>佛耶戈的攻击造成额外的<physicalDamage>@TotalPercentHealthOnHit@当前生命值的物理伤害</physicalDamage>。如果敌人近期被他用一个技能伤害过，那么他对该敌人的第一次攻击会进行两次打击，造成<physicalDamage>@SecondAttackDamage@物理伤害</physicalDamage>并回复<healing>@HealModVsChamps*100%@%实际伤害值的生命值</healing>。这些被动加成会在<keywordMajor>占据</keywordMajor>期间保留。<br><br><spellActive>主动：</spellActive>佛耶戈向前戳刺，造成<physicalDamage>@TotalDamage@物理伤害</physicalDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                5.0000,
+                4.5000,
+                4.0000,
+                3.5000,
+                3.0000,
+                3.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "千载幽咽",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Viego/HUD/Icons2D/Viego_W.png",
+            "abilityVideoPath": "champion-abilities/0234/ability_0234_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0234/ability_0234_W1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "佛耶戈蓄力然后向前冲刺，并释放一个浓缩黑雾之球，来使命中的第一个敌人晕眩。",
+            "dynamicDescription": "<charge>开始蓄力：</charge>佛耶戈开始聚集黑雾，自身<status>减速</status>@SelfSlowPercent*100@%。<br><br><release>释放：</release>佛耶戈向前冲刺并将已聚集的黑雾猛掷出去。对命中的第一个敌人造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>，并基于蓄力时间对其造成@Stunduration@到@MaxStunTT@秒<status>晕眩</status> 。<br>@SpellModifierDescriptionAppend@",
+            "range": [
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "茫茫焦土",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Viego/HUD/Icons2D/Viego_E.png",
+            "abilityVideoPath": "champion-abilities/0234/ability_0234_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0234/ability_0234_E1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "佛耶戈命令黑雾去萦绕并笼罩一块地形。佛耶戈可以如幽魂一般隐藏在黑雾中，获得【伪装】状态、移动速度和攻击速度。",
+            "dynamicDescription": "佛耶戈向前派出一个幽鬼去萦绕命中的第一个地形，用黑雾将其笼罩@MistDuration@秒。佛耶戈在黑雾中时会获得<keywordStealth>伪装</keywordStealth>，<speed>@TotalMoveSpeed@移动速度</speed>，和<attackSpeed>@AttackSpeed*100@%攻击速度</attackSpeed>。@SpellModifierDescriptionAppend@",
+            "range": [
+                750.0000,
+                750.0000,
+                750.0000,
+                750.0000,
+                750.0000,
+                750.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                14.0000,
+                12.0000,
+                10.0000,
+                8.0000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "痛贯天灵",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Viego/HUD/Icons2D/Viego_R.png",
+            "abilityVideoPath": "champion-abilities/0234/ability_0234_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0234/ability_0234_R1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "佛耶戈传送到一个附近的位置并在抵达时处决一名敌方英雄，将其心脏击碎并在其周围引发一阵毁灭性的冲击波来击退其友军。",
+            "dynamicDescription": "佛耶戈遗弃他当前<keywordMajor>占据</keywordMajor>的任一灵魂并传送。在抵达时，他会攻击当前生命值百分比最低的英雄，暂时使其<status>减速</status>@SlowPercent*100@%并造成<physicalDamage>@TotalDamage@+@TotalPercentHealth@%已损失生命值的物理伤害</physicalDamage>。附近的其他敌人会被<status>击退</status>并受到<physicalDamage>@TotalDamage@物理伤害</physicalDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                500.0000,
+                500.0000,
+                500.0000,
+                500.0000,
+                500.0000,
+                500.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                100.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

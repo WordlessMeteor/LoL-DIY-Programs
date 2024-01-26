@@ -1,0 +1,2026 @@
+{
+    "id": 92,
+    "name": "放逐之刃",
+    "alias": "Riven",
+    "title": "锐雯",
+    "shortBio": "曾担任诺克萨斯军队剑士长的锐雯，正在那片她一度想要征服的土地上流浪。她在军中以无匹的信念和蛮悍的行事风格不断获得晋升，并得到一把传奇的符文之刃和属于自己的战团作为奖赏——然而在征战艾欧尼亚的前线上，锐雯对祖国的信仰遭到了考验。最终，信仰粉碎的锐雯，切断了与帝国的一切关联，在分崩离析的世界中找寻自己的归宿。即便谣言纷传，说诺克萨斯已经重铸……",
+    "tacticalInfo": {
+        "style": 8,
+        "difficulty": 2,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 2,
+        "crowdControl": 2,
+        "mobility": 3,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/92.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/92.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/92.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/92.ogg",
+    "roles": [
+        "fighter",
+        "assassin"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 92000,
+            "isBase": true,
+            "name": "放逐之刃",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/92/92000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/92/92000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/92/92000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Base/RivenLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 92001,
+            "isBase": false,
+            "name": "刺客信条 锐雯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/92/92001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/92/92001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/92/92001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin01/RivenLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 180
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 92002,
+            "isBase": false,
+            "name": "血色精锐 锐雯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/92/92002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/92/92002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/92/92002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin02/RivenLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 122
+                }
+            ],
+            "skinAugments": null,
+            "description": "尽管这个带着断剑的叛变特工被官方列为“在行动中阵亡”，但她却在战友们最危急的关头弃他们而去，而且对这件事情毫无悔意。之后，她从背叛者变成了雇佣兵，行走于文明社会的边缘，带着她的剑服务于出价最高的人。"
+        },
+        {
+            "id": 92003,
+            "isBase": false,
+            "name": "兔女郎 锐雯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/92/92003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/92/92003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/92/92003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin03/RivenLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92003.png",
+            "chromas": [
+                {
+                    "id": 92008,
+                    "name": "流光之刃 锐雯",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92008.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 92009,
+                    "name": "雾雨之刃 锐雯",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92009.png",
+                    "colors": [
+                        "#85827F",
+                        "#85827F"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 92010,
+                    "name": "森岚之刃 锐雯",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92010.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 92011,
+                    "name": "幻星之刃 锐雯",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92011.png",
+                    "colors": [
+                        "#FF3CFF",
+                        "#FF3CFF"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 92012,
+                    "name": "夜空之刃 锐雯",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92012.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 92013,
+                    "name": "红莲之刃 锐雯",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92013.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 92014,
+                    "name": "魅影之刃 锐雯",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92014.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 92015,
+                    "name": "梦蝶之刃 锐雯",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92015.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 100
+                }
+            ],
+            "skinAugments": null,
+            "description": "再说一遍“疯兔子”。有种你就说给她听。"
+        },
+        {
+            "id": 92004,
+            "isBase": false,
+            "name": "冠军之刃 锐雯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/92/92004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/92/92004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/92/92004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin04/RivenLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 8
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此庆祝2012年在北美举办的全球总决赛。"
+        },
+        {
+            "id": 92005,
+            "isBase": false,
+            "name": "替父从军 花木兰",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/92/92005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/92/92005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/92/92005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin05/RivenLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92005.png",
+            "chromas": [
+                {
+                    "id": 92017,
+                    "name": "替父从军 花木兰 炫金龙刃",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92017.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Year of the Horse",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/14.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/14.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 53
+                }
+            ],
+            "skinAugments": null,
+            "description": "王国中流传着一个关于花木兰替父从军讨伐巨龙的传说，她的剑是在巨龙的火焰中铸造而成的，随后她用这把剑杀进了敌人的领地，救回了被关押在那里的俘虏。从此花木兰的怒气回荡在整个王国，誓要诛杀所有奴役无辜者的恶人。"
+        },
+        {
+            "id": 92006,
+            "isBase": false,
+            "name": "电玩勇者 锐雯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/92/92006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/92/92006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/92/92006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin06/RivenLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92006.png",
+            "chromas": [
+                {
+                    "id": 92021,
+                    "name": "电玩勇者 锐雯 K.O.",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92021.png",
+                    "colors": [
+                        "#A5FFF8",
+                        "#D87BFF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "2019电玩事件期间的战利品专属道具。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "4 Year Celebration",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/37.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/37.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 10
+                }
+            ],
+            "skinAugments": null,
+            "description": "锐雯在回家之后还有一份兼职工作，在世界上最先进的跳舞模拟街机中扮演动作模拟器，即使被可怕的Boss送进街机的世界，她仍可以使用她的舞步(以及一些来自她最喜爱RPG的装备)来摧毁维迦的邪恶大军，一刀一个。"
+        },
+        {
+            "id": 92007,
+            "isBase": false,
+            "name": "冠军之刃 锐雯 2016",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/92/92007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/92/92007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/92/92007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin07/RivenLoadscreen_7.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin07/RivenLoadscreen_7_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92007.png",
+            "chromas": [
+                {
+                    "id": 92019,
+                    "name": "冠军之刃 锐雯 2016",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92019.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在一个全球总决赛事件期间作为战利品专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 8
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此庆祝2016年在北美举办的全球总决赛。"
+        },
+        {
+            "id": 92016,
+            "isBase": false,
+            "name": "黎明使者 锐雯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/92/92016.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/92/92016.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/92/92016.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin16/RivenLoadscreen_16.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin16/RivenLoadscreen_16_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92016.png",
+            "chromas": [
+                {
+                    "id": 92024,
+                    "name": "黎明使者 锐雯 圣辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92024.png",
+                    "colors": [
+                        "#6FFDFF",
+                        "#2377FF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 92056,
+                    "name": "黎明使者 锐雯 黑夜使者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92056.png",
+                    "colors": [
+                        "#8C1517",
+                        "#2E2630"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 4
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 193
+                }
+            ],
+            "skinAugments": null,
+            "description": "生于造物之破晓的旋涡能量，锐雯是星界里秩序能量的鲜活具象。她的宿命就是与黑夜使者永远对抗下去，而她正在等待着，终有一日，她的光明将完全击破他的黑暗。"
+        },
+        {
+            "id": 92018,
+            "isBase": false,
+            "name": "未来战士 锐雯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/92/92018.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/92/92018.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/92/92018.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin18/RivenLoadScreen_18.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92018.png",
+            "chromas": [
+                {
+                    "id": 92025,
+                    "name": "未来战士 锐雯 无尽永前",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92025.png",
+                    "colors": [
+                        "#162D57",
+                        "#A50031"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在未来战士(2020)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 36
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为崇尚时空纯洁性的信徒，锐雯知道世间有太多人愿意看到时间以利己的方式被操控。﻿这些异端赋予她的剑刃以目标——她真正的慰藉源自消灭所有企图打乱自然秩序的人。"
+        },
+        {
+            "id": 92020,
+            "isBase": false,
+            "name": "玉剑传说 武剑仙",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/92/92020.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/92/92020.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/92/92020.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin20/RivenLoadScreen_20.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin20/RivenLoadscreen_20_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 81
+                }
+            ],
+            "skinAugments": null,
+            "description": "武剑仙曾与苍鸾一起修行了许多年的道法和功法，武剑仙踏入了正道，而苍鸾则憧憬着一个只由诸神统治的世界——并且最终击败了她们的师父并篡夺了仙宫之主的名号。现在，为了达成让她好友伏法的任务，武剑仙必须与苍鸾兵戎相见……或者同流合污。"
+        },
+        {
+            "id": 92022,
+            "isBase": false,
+            "name": "至臻 玉剑传说 武剑仙",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/92/92022.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/92/92022.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/92/92022.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin22/RivenLoadscreen_22.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin22/RivenLoadscreen_22_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 81
+                }
+            ],
+            "skinAugments": null,
+            "description": "武剑仙的宿命远比她所知的要伟大。终有一天，她将决定天界、大地和海洋的命运，并唤醒她体内沉睡着的神龙之力。"
+        },
+        {
+            "id": 92023,
+            "isBase": false,
+            "name": "灵魂莲华 锐雯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/92/92023.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/92/92023.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/92/92023.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin23/RivenLoadScreen_23.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin23/RivenLoadscreen_23_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92023.png",
+            "chromas": [
+                {
+                    "id": 92026,
+                    "name": "灵魂莲华 锐雯 雪落",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92026.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92027,
+                    "name": "灵魂莲华 锐雯 流火",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92027.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 92028,
+                    "name": "灵魂莲华 锐雯 雁来",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92028.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92029,
+                    "name": "灵魂莲华 锐雯 云开",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92029.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92030,
+                    "name": "灵魂莲华 锐雯 月升",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92030.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92031,
+                    "name": "灵魂莲华 锐雯 春晓",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92031.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 92032,
+                    "name": "灵魂莲华 锐雯 星回",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92032.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92033,
+                    "name": "灵魂莲华 锐雯 霜见",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92033.png",
+                    "colors": [
+                        "#0C0C0F",
+                        "#B2D1E4"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在灵魂莲华(2020)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 171
+                }
+            ],
+            "skinAugments": null,
+            "description": "锐雯是来自远古土地的一位勇敢的战士，在几千年之前的一场激烈战斗中被残忍地击败，而她的剑则在这个过程中四分五裂。由于无法寻得安宁，她执迷不悟地在另一个世界的战场上搜寻着她破碎的剑片，被可怕的黑暗所控制，逐步走向湮灭。"
+        },
+        {
+            "id": 92034,
+            "isBase": false,
+            "name": "光明哨兵 锐雯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/92/92034.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/92/92034.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/92/92034.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin34/RivenLoadScreen_34.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin34/RivenLoadscreen_34_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92034.png",
+            "chromas": [
+                {
+                    "id": 92035,
+                    "name": "光明哨兵 锐雯 帝国抗击者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92035.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 92036,
+                    "name": "光明哨兵 锐雯 山峰抗击者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92036.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92037,
+                    "name": "光明哨兵 锐雯 森林抗击者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92037.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92038,
+                    "name": "光明哨兵 锐雯 虚无抗击者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92038.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92039,
+                    "name": "光明哨兵 锐雯 海港抗击者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92039.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92040,
+                    "name": "光明哨兵 锐雯 灵岛抗击者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92040.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 92041,
+                    "name": "光明哨兵 锐雯 丛林抗击者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92041.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92042,
+                    "name": "光明哨兵 锐雯 极地抗击者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92042.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92043,
+                    "name": "光明哨兵 锐雯 坚定抗击者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92043.png",
+                    "colors": [
+                        "#080808",
+                        "#8E0A38"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在光明哨兵(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 147
+                }
+            ],
+            "skinAugments": null,
+            "description": "锐雯加入了哨兵队，希望为她在诺克萨斯入侵艾欧尼亚中所扮演的角色赎罪。在奋力逃出一座正在急速崩解的诺克萨斯主城后，她意识到自己可能没剩多少时间了。不过，她相信她的生命只是弥补过错的小小代价。"
+        },
+        {
+            "id": 92044,
+            "isBase": false,
+            "name": "幻灵战斗兔 锐雯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/92/92044.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/92/92044.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/92/92044.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin44/RivenLoadScreen_44.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin44/RivenLoadscreen_44_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92044.png",
+            "chromas": [
+                {
+                    "id": 92046,
+                    "name": "幻灵战斗兔 锐雯 勇气赞歌",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92046.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 92047,
+                    "name": "幻灵战斗兔 锐雯 梦幻强袭",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92047.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 92048,
+                    "name": "幻灵战斗兔 锐雯 炫目突击",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92048.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92049,
+                    "name": "幻灵战斗兔 锐雯 坚韧阻击",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92049.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92050,
+                    "name": "幻灵战斗兔 锐雯 华丽冲阵",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92050.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92051,
+                    "name": "幻灵战斗兔 锐雯 冷酷侧袭",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92051.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92052,
+                    "name": "幻灵战斗兔 锐雯 钢铁守备",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92052.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92053,
+                    "name": "幻灵战斗兔 锐雯 魅影闪击",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92053.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92054,
+                    "name": "幻灵战斗兔 锐雯 隐秘夜影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92054.png",
+                    "colors": [
+                        "#2B7CFF",
+                        "#FF930E"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在幻灵战队(2022)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 156
+                }
+            ],
+            "skinAugments": null,
+            "description": "在原初星人入侵的初期失去了许多同伴后，锐雯自愿加入并最终成为了幻灵小队的一员。在一连串的胜利之后，她声名鹊起：一个人人敬仰的战争英雄。……那么，为什么在这个世界最需要她的时候，她却突然消失了？"
+        },
+        {
+            "id": 92045,
+            "isBase": false,
+            "name": "至臻 玉剑传说 武剑仙 (2022)",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/92/92045.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/92/92045.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/92/92045.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin45/RivenLoadScreen_45.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 81
+                }
+            ],
+            "skinAugments": null,
+            "description": "武剑仙的宿命远比她所知的要伟大。终有一天，她将决定天界、大地和海洋的命运，并唤醒她体内沉睡着的神龙之力。"
+        },
+        {
+            "id": 92055,
+            "isBase": false,
+            "name": "绝息圣堂 锐雯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/92/92055.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/92/92055.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/92/92055.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin55/RivenLoadScreen_55.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin55/RivenLoadscreen_55_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92055.png",
+            "chromas": [
+                {
+                    "id": 92057,
+                    "name": "绝息圣堂 锐雯 残阳圆舞曲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92057.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 92058,
+                    "name": "绝息圣堂 锐雯 日冕摇篮曲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92058.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92059,
+                    "name": "绝息圣堂 锐雯 灵息变奏曲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92059.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92060,
+                    "name": "绝息圣堂 锐雯 苏生回旋曲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92060.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92061,
+                    "name": "绝息圣堂 锐雯 黑昼交响曲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92061.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92062,
+                    "name": "绝息圣堂 锐雯 纯净赋格曲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92062.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 190
+                }
+            ],
+            "skinAugments": null,
+            "description": "锐雯生来就是一个灵息教众，从来没有怀疑过教众也会有恶行，直到她发现魔腾对绝息者们进行折磨并将他们喂给科加斯。尽管受了致命伤害，她依然与一个囚犯逃了出来，而这个囚犯为了拯救她的生命而将她转变成了绝息者。现在，作为一个有着无尽饥饿感的被放逐者，锐雯为了救赎她自己和她的腐化家庭而奋战着。"
+        },
+        {
+            "id": 92063,
+            "isBase": false,
+            "name": "伏虎之力 锐雯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/92/92063.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/92/92063.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/92/92063.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin63/RivenLoadScreen_63.PIE_C_14_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Riven/Skins/Skin63/RivenLoadScreen_63_LE.PIE_C_14_2.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92063.png",
+            "chromas": [
+                {
+                    "id": 92064,
+                    "name": "伏虎之力 锐雯 旺盛战意",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92064.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 92065,
+                    "name": "伏虎之力 锐雯 兽王威仪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92065.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92066,
+                    "name": "伏虎之力 锐雯 虎啸风生",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92066.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92067,
+                    "name": "伏虎之力 锐雯 瑞兽灵光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92067.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 92068,
+                    "name": "伏虎之力 锐雯 如虎添翼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92068.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92069,
+                    "name": "伏虎之力 锐雯 霸气虎步",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92069.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92070,
+                    "name": "伏虎之力 锐雯 原初直觉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92070.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 92071,
+                    "name": "伏虎之力 锐雯 独行傲影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/92/92071.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 200
+                }
+            ],
+            "skinAugments": null,
+            "description": "在与蔚的一场激烈交锋后，锐雯的武器和信心都被击溃了，被迫回到她的家乡。由于她不屈不挠的勇气——即使是在面对失败时——她的社群赠予了她一个强大的狂野虎纹，可以在需要时重铸她的剑刃。她不知疲倦地训练，只为了有一天能证明自己配得上他们的礼物。"
+        }
+    ],
+    "passive": {
+        "name": "符文之刃",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Riven/HUD/Icons2D/RivenRunicBlades.png",
+        "abilityVideoPath": "champion-abilities/0092/ability_0092_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0092/ability_0092_P1.jpg",
+        "description": "锐雯的技能会为她的剑刃充能，并且她的普通攻击会消耗充能来造成额外伤害。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "折翼之舞",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Riven/HUD/Icons2D/RivenBrokenWings.png",
+            "abilityVideoPath": "champion-abilities/0092/ability_0092_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0092/ability_0092_Q1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "锐雯斩出一套猛烈的剑式。在短时间内，这个技能最多可以重新激活3次，并且第三次会将周围的所有敌人击飞。",
+            "dynamicDescription": "锐雯向前冲刺，造成<physicalDamage>@FirstSlashDamage@物理伤害</physicalDamage>。她可以<recast>再次施放</recast>这个技能两次。第一次<recast>再次施放</recast>和初始效果相同，但第二次会有不同的效果：<br><br><recast>再次施放</recast>: 锐雯向前跃起并猛劈，对附近的敌人们造成<physicalDamage>@FirstSlashDamage@物理伤害</physicalDamage>和0.75秒<status>击飞</status>。@SpellModifierDescriptionAppend@",
+            "range": [
+                275.0000,
+                275.0000,
+                275.0000,
+                275.0000,
+                275.0000,
+                275.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                13.0000,
+                13.0000,
+                13.0000,
+                13.0000,
+                13.0000,
+                13.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.7500,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    15.0000,
+                    35.0000,
+                    55.0000,
+                    75.0000,
+                    95.0000,
+                    115.0000
+                ],
+                "Effect2Amount": [
+                    5.0000,
+                    30.0000,
+                    55.0000,
+                    80.0000,
+                    105.0000,
+                    130.0000,
+                    155.0000
+                ],
+                "Effect3Amount": [
+                    75.0000,
+                    150.0000,
+                    225.0000,
+                    300.0000,
+                    375.0000,
+                    450.0000,
+                    525.0000
+                ],
+                "Effect4Amount": [
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000
+                ],
+                "Effect5Amount": [
+                    50.0000,
+                    50.0000,
+                    55.0000,
+                    60.0000,
+                    65.0000,
+                    70.0000,
+                    70.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "震魂怒吼",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Riven/HUD/Icons2D/RivenKiShout.png",
+            "abilityVideoPath": "champion-abilities/0092/ability_0092_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0092/ability_0092_W1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "锐雯爆发斗气，对附近敌人造成伤害和晕眩效果。",
+            "dynamicDescription": "锐雯的剑爆发出一股符文能量，造成<physicalDamage>@TotalDamage@物理伤害</physicalDamage>和@Effect5Amount@秒<status>晕眩</status>。@SpellModifierDescriptionAppend@",
+            "range": [
+                260.0000,
+                260.0000,
+                260.0000,
+                260.0000,
+                260.0000,
+                260.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                11.0000,
+                10.0000,
+                9.0000,
+                8.0000,
+                7.0000,
+                7.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    30.0000,
+                    65.0000,
+                    95.0000,
+                    125.0000,
+                    155.0000,
+                    185.0000,
+                    215.0000
+                ],
+                "Effect2Amount": [
+                    10.0000,
+                    40.0000,
+                    70.0000,
+                    100.0000,
+                    130.0000,
+                    160.0000,
+                    190.0000
+                ],
+                "Effect3Amount": [
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000
+                ],
+                "Effect4Amount": [
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500
+                ],
+                "Effect5Amount": [
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "勇往直前",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Riven/HUD/Icons2D/RivenPathoftheExile.png",
+            "abilityVideoPath": "champion-abilities/0092/ability_0092_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0092/ability_0092_E1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "锐雯向前冲锋一小段距离，并格挡即将到来的伤害。",
+            "dynamicDescription": "锐雯快速冲刺并获得持续1.5秒的<shield>@TotalShield@护盾值</shield>。@SpellModifierDescriptionAppend@",
+            "range": [
+                250.0000,
+                250.0000,
+                250.0000,
+                250.0000,
+                250.0000,
+                250.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                10.0000,
+                9.0000,
+                8.0000,
+                7.0000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.1000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    50.0000,
+                    80.0000,
+                    105.0000,
+                    130.0000,
+                    155.0000,
+                    180.0000,
+                    235.0000
+                ],
+                "Effect2Amount": [
+                    50.0000,
+                    80.0000,
+                    105.0000,
+                    130.0000,
+                    155.0000,
+                    180.0000,
+                    235.0000
+                ],
+                "Effect3Amount": [
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000
+                ],
+                "Effect4Amount": [
+                    800.0000,
+                    800.0000,
+                    800.0000,
+                    800.0000,
+                    800.0000,
+                    800.0000,
+                    800.0000
+                ],
+                "Effect5Amount": [
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "放逐之锋",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Riven/HUD/Icons2D/RivenBladeoftheExile.png",
+            "abilityVideoPath": "champion-abilities/0092/ability_0092_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0092/ability_0092_R1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "锐雯将能量灌入她那残破不堪的武器中，使攻击力和攻击范围都得到提高。在这段时间里，她还能使用一次疾风斩（一次强大的远程打击）。",
+            "dynamicDescription": "锐雯的武器激荡着灵体能量，为她提供<physicalDamage>@BonusAD@攻击力</physicalDamage>，并且伤害型技能和攻击获得距离提升，持续@Duration@秒。在此期间，她可以进行<recast>再次施放</recast>。<br><br><recast>再次施放</recast>：锐雯发射一道疾风斩来造成<physicalDamage>@MinDamage@</physicalDamage>到<physicalDamage>@MaxDamage@物理伤害</physicalDamage>，基于目标们的已损失生命值。@SpellModifierDescriptionAppend@",
+            "range": [
+                200.0000,
+                200.0000,
+                200.0000,
+                200.0000,
+                200.0000,
+                200.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                90.0000,
+                60.0000,
+                60.0000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.6000,
+                "coefficient2": 1.8000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    100.0000,
+                    100.0000,
+                    150.0000,
+                    200.0000,
+                    200.0000,
+                    200.0000,
+                    200.0000
+                ],
+                "Effect2Amount": [
+                    300.0000,
+                    300.0000,
+                    450.0000,
+                    600.0000,
+                    600.0000,
+                    600.0000,
+                    600.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    15.0000,
+                    15.0000,
+                    15.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    25.0000,
+                    25.0000,
+                    25.0000,
+                    25.0000,
+                    25.0000,
+                    25.0000,
+                    25.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

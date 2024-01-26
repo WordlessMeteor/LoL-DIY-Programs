@@ -1,0 +1,427 @@
+[
+    {
+        "id": 10,
+        "hidden": false,
+        "displayName": "Harrowing",
+        "description": "",
+        "wards": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            38,
+            70
+        ]
+    },
+    {
+        "id": 11,
+        "hidden": false,
+        "displayName": "Heartbreakers",
+        "description": "",
+        "wards": [
+            18,
+            40,
+            54,
+            75,
+            99,
+            123
+        ]
+    },
+    {
+        "id": 12,
+        "hidden": false,
+        "displayName": "Hextech",
+        "description": "",
+        "wards": [
+            55
+        ]
+    },
+    {
+        "id": 13,
+        "hidden": false,
+        "displayName": "Honor",
+        "description": "",
+        "wards": [
+            93,
+            94,
+            95,
+            125,
+            126,
+            127
+        ]
+    },
+    {
+        "id": 14,
+        "hidden": false,
+        "displayName": "Immortal Heroes",
+        "description": "",
+        "wards": [
+            91
+        ]
+    },
+    {
+        "id": 15,
+        "hidden": false,
+        "displayName": "Luchador",
+        "description": "",
+        "wards": [
+            58
+        ]
+    },
+    {
+        "id": 16,
+        "hidden": false,
+        "displayName": "Lunar Revel",
+        "description": "",
+        "wards": [
+            53,
+            102,
+            103
+        ]
+    },
+    {
+        "id": 17,
+        "hidden": false,
+        "displayName": "Lunar Revel: Firecracker",
+        "description": "",
+        "wards": [
+            8,
+            9,
+            16,
+            17,
+            39,
+            72,
+            128,
+            129
+        ]
+    },
+    {
+        "id": 18,
+        "hidden": false,
+        "displayName": "Mecha",
+        "description": "",
+        "wards": [
+            24,
+            57
+        ]
+    },
+    {
+        "id": 19,
+        "hidden": false,
+        "displayName": "Omega Squad",
+        "description": "",
+        "wards": [
+            84
+        ]
+    },
+    {
+        "id": 1,
+        "hidden": false,
+        "displayName": "All-Star",
+        "description": "",
+        "wards": [
+            22,
+            50,
+            51,
+            73
+        ]
+    },
+    {
+        "id": 20,
+        "hidden": false,
+        "displayName": "PROJECT",
+        "description": "",
+        "wards": [
+            44,
+            61
+        ]
+    },
+    {
+        "id": 21,
+        "hidden": false,
+        "displayName": "Pentakill",
+        "description": "",
+        "wards": [
+            81
+        ]
+    },
+    {
+        "id": 22,
+        "hidden": false,
+        "displayName": "Pool Party",
+        "description": "",
+        "wards": [
+            60,
+            112,
+            113,
+            114
+        ]
+    },
+    {
+        "id": 23,
+        "hidden": false,
+        "displayName": "Pulsefire",
+        "description": "",
+        "wards": [
+            77,
+            107
+        ]
+    },
+    {
+        "id": 24,
+        "hidden": false,
+        "displayName": "Snow Day",
+        "description": "",
+        "wards": [
+            33,
+            34,
+            35,
+            52
+        ]
+    },
+    {
+        "id": 25,
+        "hidden": false,
+        "displayName": "Snowdown Showdown",
+        "description": "",
+        "wards": [
+            6,
+            7,
+            15,
+            71,
+            98,
+            131,
+            130
+        ]
+    },
+    {
+        "id": 26,
+        "hidden": false,
+        "displayName": "Soccer Cup",
+        "description": "",
+        "wards": [
+            23
+        ]
+    },
+    {
+        "id": 27,
+        "hidden": false,
+        "displayName": "Star Guardian Season 1",
+        "description": "",
+        "wards": [
+            63,
+            120,
+            86
+        ]
+    },
+    {
+        "id": 28,
+        "hidden": false,
+        "displayName": "Star Guardian Season 2",
+        "description": "",
+        "wards": [
+            88
+        ]
+    },
+    {
+        "id": 29,
+        "hidden": false,
+        "displayName": "Starter Pack",
+        "description": "",
+        "wards": [
+            0
+        ]
+    },
+    {
+        "id": 2,
+        "hidden": false,
+        "displayName": "Arcade",
+        "description": "",
+        "wards": [
+            62,
+            85
+        ]
+    },
+    {
+        "id": 30,
+        "hidden": false,
+        "displayName": "Steel Valkyries",
+        "description": "",
+        "wards": [
+            104
+        ]
+    },
+    {
+        "id": 31,
+        "hidden": false,
+        "displayName": "Versus",
+        "description": "",
+        "wards": [
+            78,
+            79,
+            109,
+            110
+        ]
+    },
+    {
+        "id": 32,
+        "hidden": false,
+        "displayName": "Victorious",
+        "description": "",
+        "wards": [
+            13,
+            29,
+            30,
+            31,
+            46,
+            47,
+            48,
+            66,
+            67,
+            68,
+            97
+        ]
+    },
+    {
+        "id": 33,
+        "hidden": false,
+        "displayName": "World Champions: 2013",
+        "description": "",
+        "wards": [
+            20
+        ]
+    },
+    {
+        "id": 34,
+        "hidden": false,
+        "displayName": "World Champions: 2016",
+        "description": "",
+        "wards": [
+            87
+        ]
+    },
+    {
+        "id": 35,
+        "hidden": false,
+        "displayName": "World Championship",
+        "description": "",
+        "wards": [
+            14,
+            28,
+            45,
+            64,
+            89,
+            90,
+            118,
+            121,
+            190
+        ]
+    },
+    {
+        "id": 3,
+        "hidden": false,
+        "displayName": "Battlecast",
+        "description": "",
+        "wards": [
+            32,
+            36
+        ]
+    },
+    {
+        "id": 4,
+        "hidden": false,
+        "displayName": "Bilgewater: Burning Tides",
+        "description": "",
+        "wards": [
+            42,
+            43
+        ]
+    },
+    {
+        "id": 5,
+        "hidden": false,
+        "displayName": "Blood Moon",
+        "description": "",
+        "wards": [
+            74,
+            132
+        ]
+    },
+    {
+        "id": 62,
+        "hidden": false,
+        "displayName": "Odyssey",
+        "description": "",
+        "wards": [
+            115,
+            117
+        ]
+    },
+    {
+        "id": 0,
+        "hidden": false,
+        "displayName": "Tales From the Rift",
+        "description": "",
+        "wards": [
+            119,
+            100,
+            194
+        ]
+    },
+    {
+        "id": 64,
+        "hidden": false,
+        "displayName": "Battle Academia",
+        "description": "",
+        "wards": [
+            136,
+            138
+        ]
+    },
+    {
+        "id": 6,
+        "hidden": false,
+        "displayName": "Culinary Masters",
+        "description": "",
+        "wards": [
+            105
+        ]
+    },
+    {
+        "id": 7,
+        "hidden": false,
+        "displayName": "Dark Star",
+        "description": "",
+        "wards": [
+            59,
+            82
+        ]
+    },
+    {
+        "id": 8,
+        "hidden": false,
+        "displayName": "Dragon World",
+        "description": "",
+        "wards": [
+            21,
+            37,
+            49,
+            76,
+            122
+        ]
+    },
+    {
+        "id": 9,
+        "hidden": false,
+        "displayName": "Events",
+        "description": "",
+        "wards": [
+            25,
+            26,
+            27,
+            41,
+            56
+        ]
+    }
+]

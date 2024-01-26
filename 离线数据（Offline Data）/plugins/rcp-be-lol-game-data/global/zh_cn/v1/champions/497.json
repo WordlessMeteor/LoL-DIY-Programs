@@ -1,0 +1,1487 @@
+{
+    "id": 497,
+    "name": "幻翎",
+    "alias": "Rakan",
+    "title": "洛",
+    "shortBio": "对洛特兰部落而言，瓦斯塔亚的洛是臭名远播的捣蛋鬼，同时也是有史以来最为出色的战舞舞者。他风流潇洒，魅力无穷，同时却令人难以捉摸。在艾欧尼亚高地的居民眼中，“洛”这个名字一旦出现，就一定会带来热闹非凡的节日庆典、热火朝天的狂欢派对和杂乱无章的音乐。很少人知道，这个精力充沛的浪荡子和叛逆的霞是一对儿，而他的一举一动就是为了全力配合她的行动。",
+    "tacticalInfo": {
+        "style": 9,
+        "difficulty": 2,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 1,
+        "durability": 2,
+        "crowdControl": 3,
+        "mobility": 3,
+        "utility": 3
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/497.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/497.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/497.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/497.ogg",
+    "roles": [
+        "support"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 497000,
+            "isBase": true,
+            "name": "幻翎",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/497/497000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/497/497000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/497/497000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rakan/Skins/Base/RakanLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 497001,
+            "isBase": false,
+            "name": "晨星之翎 洛",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/497/497001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/497/497001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/497/497001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rakan/Skins/Skin01/RakanLoadscreen_1.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 43
+                }
+            ],
+            "skinAugments": null,
+            "description": "黄昏在晚上的海平面上追赶夜幕，两个爱人在群星之间翩翩起舞。虽然洛的步子并非跟不上霞，他闪烁的光芒却总能扫清她内心的阴霾。"
+        },
+        {
+            "id": 497002,
+            "isBase": false,
+            "name": "甜心之翎 洛",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/497/497002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/497/497002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/497/497002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rakan/Skins/Skin02/RakanLoadscreen_2.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Valentine",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/8.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/8.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 64
+                }
+            ],
+            "skinAugments": null,
+            "description": "爱意弥漫在空中，这一次洛有了一个计划。﻿他发誓，这一次，一定、几乎、确定、绝对会发生。﻿他已经想到每一个诗句，每一个梦幻般的舞步——但是他依然没法决定最完美的礼物应该是什么：﻿巧克力还是鲜花呢？"
+        },
+        {
+            "id": 497003,
+            "isBase": false,
+            "name": "SSG 洛",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/497/497003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/497/497003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/497/497003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rakan/Skins/Skin03/RakanLoadScreen_3.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Rakan/Skins/Skin03/RakanLoadScreen_3_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 75
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此致敬CoreJJ在2017全球总决赛中使用洛的夺胜表现。 "
+        },
+        {
+            "id": 497004,
+            "isBase": false,
+            "name": "iG 洛",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/497/497004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/497/497004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/497/497004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rakan/Skins/Skin04/RakanLoadScreen_4.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Rakan/Skins/Skin04/RakanLoadscreen_4_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Champion Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/54.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/54.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 107
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此致敬Baolan在2018全球总决赛中使用洛的夺胜表现。"
+        },
+        {
+            "id": 497005,
+            "isBase": false,
+            "name": "星之守护者 洛",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/497/497005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/497/497005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/497/497005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rakan/Skins/Skin05/RakanLoadScreen_5.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Rakan/Skins/Skin05/RakanLoadscreen_5_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497005.png",
+            "chromas": [
+                {
+                    "id": 497006,
+                    "name": "星之守护者 洛 烈翎",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497006.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 497007,
+                    "name": "星之守护者 洛 寒翎",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497007.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 497008,
+                    "name": "星之守护者 洛 魅翎",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497008.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 119
+                }
+            ],
+            "skinAugments": null,
+            "description": "多年以前，洛曾在对抗佐伊的战斗中与爱人一起遇害。随后，这对眷侣被复活并转而对抗他们的盟友——洛似乎敏锐地意识到了这个事实。他在耐心等待出击时机的同时，心底有了一个净化霞黑暗内心的计划——尽管代价可能会是他自己永远地堕入邪恶。"
+        },
+        {
+            "id": 497009,
+            "isBase": false,
+            "name": "永恒之森 洛",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/497/497009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/497/497009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/497/497009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rakan/Skins/Skin09/RakanLoadScreen_9.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Rakan/Skins/Skin09/RakanLoadscreen_9_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497009.png",
+            "chromas": [
+                {
+                    "id": 497010,
+                    "name": "永恒之森 洛 辉瓣",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497010.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 497011,
+                    "name": "永恒之森 洛 永茂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497011.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 497012,
+                    "name": "永恒之森 洛 昙夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497012.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 497013,
+                    "name": "永恒之森 洛 冰桦",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497013.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 497014,
+                    "name": "永恒之森 洛 樱落",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497014.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 497015,
+                    "name": "永恒之森 洛 寒楹",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497015.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 497016,
+                    "name": "永恒之森 洛 余烬重生",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497016.png",
+                    "colors": [
+                        "#27211C",
+                        "#971458"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在女帝无双(2020)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 497017,
+                    "name": "永恒之森 洛 焰枫",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497017.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 58
+                }
+            ],
+            "skinAugments": null,
+            "description": "在永恒之森的阴影树冠深处，精怪王子洛和精怪公主霞共同主持着一个王庭，管辖着两个彼此敌对的仙子之国。这对时运不济的恋人对凡人的事情不感兴趣，他们顽皮的浪漫已将他们的人民从降临于外部世界的恐怖中隔绝。"
+        },
+        {
+            "id": 497018,
+            "isBase": false,
+            "name": "比翼之心 洛",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/497/497018.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/497/497018.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/497/497018.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rakan/Skins/Skin18/RakanLoadScreen_18.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497018.png",
+            "chromas": [
+                {
+                    "id": 497019,
+                    "name": "比翼之心 洛 斗志",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497019.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 497020,
+                    "name": "比翼之心 洛 财富",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497020.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 497021,
+                    "name": "比翼之心 洛 学识",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497021.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 497022,
+                    "name": "比翼之心 洛 忠诚",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497022.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 497023,
+                    "name": "比翼之心 洛 权威",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497023.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 497024,
+                    "name": "比翼之心 洛 丰足",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497024.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 497025,
+                    "name": "比翼之心 洛 均衡",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497025.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 497026,
+                    "name": "比翼之心 洛 哀伤",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497026.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 146
+                }
+            ],
+            "skinAugments": null,
+            "description": "尚未比翼齐飞的洛命中注定的爱情，却不在低位世界，而在高高在上的高位命运位面。当两人在他们的出生地之间匆匆相见时，命运就开始翻滚沸腾——一种新的秩序可能从一个沸腾之海中产生。"
+        },
+        {
+            "id": 497027,
+            "isBase": false,
+            "name": "绝息圣堂 洛",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/497/497027.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/497/497027.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/497/497027.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rakan/Skins/Skin27/RakanLoadScreen_27.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Rakan/Skins/Skin27/RakanLoadscreen_27_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497027.png",
+            "chromas": [
+                {
+                    "id": 497028,
+                    "name": "绝息圣堂 洛 残阳圆舞曲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497028.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 497029,
+                    "name": "绝息圣堂 洛 昼梦狂想曲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497029.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 497030,
+                    "name": "绝息圣堂 洛 永生前奏曲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497030.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 497031,
+                    "name": "绝息圣堂 洛 灵息变奏曲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497031.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 497032,
+                    "name": "绝息圣堂 洛 日冕摇篮曲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497032.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 497033,
+                    "name": "绝息圣堂 洛 苏生回旋曲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497033.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 497034,
+                    "name": "绝息圣堂 洛 白夜奏鸣曲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497034.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 497035,
+                    "name": "绝息圣堂 洛 黑昼交响曲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497035.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 190
+                }
+            ],
+            "skinAugments": null,
+            "description": "洛的嘴巴总是让他惹上麻烦。在偷窃弗拉基米尔被当场抓获并且几乎被杀之后，他醒来时发现自己成了一个刚被转化的绝息者，而这多亏了他心爱的霞。在霞偿还债务而彼此分开的这段时间里，洛能感觉到他的渴望在增长，并且担心让他的伴侣看到，他正在成为他所害怕的怪物。"
+        },
+        {
+            "id": 497036,
+            "isBase": false,
+            "name": "星之守护者 净化之翎 洛",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/497/497036.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/497/497036.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/497/497036.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rakan/Skins/Skin36/RakanLoadScreen_36.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Rakan/Skins/Skin36/RakanLoadscreen_36_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 161
+                }
+            ],
+            "skinAugments": null,
+            "description": "黑暗和洛永不相容——无论混沌魔法如何，始源之星的光芒都更能衬映出他亮丽的羽裳。更何况，阴谋诡计实在不符合洛的风格。如今，洛再次成为了星之守护者，他大可小憩一刻，或再与霞共舞几曲。"
+        },
+        {
+            "id": 497037,
+            "isBase": false,
+            "name": "神龙尊者 比翼之龙 洛",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/497/497037.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/497/497037.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/497/497037.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rakan/Skins/Skin37/RakanLoadScreen_37.PIE_C_14_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Rakan/Skins/Skin37/RakanLoadScreen_37_LE.PIE_C_14_1.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497037.png",
+            "chromas": [
+                {
+                    "id": 497039,
+                    "name": "神龙尊者 比翼之龙 洛 登龙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497039.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2024年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 497040,
+                    "name": "神龙尊者 比翼之龙 洛 玄黄",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497040.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 497041,
+                    "name": "神龙尊者 比翼之龙 洛 摘星",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497041.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 497042,
+                    "name": "神龙尊者 比翼之龙 洛 碧漪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497042.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 497043,
+                    "name": "神龙尊者 比翼之龙 洛 望霞",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497043.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 497044,
+                    "name": "神龙尊者 比翼之龙 洛 柏露",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497044.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 497045,
+                    "name": "神龙尊者 比翼之龙 洛 朝云",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497045.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 497046,
+                    "name": "神龙尊者 比翼之龙 洛 松峦",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/497/497046.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 135
+                }
+            ],
+            "skinAugments": null,
+            "description": "洛希望与他心爱的霞并肩作战，并在她获得凤凰的赐福后，发誓要与她比翼齐飞。这个誓言将他带向内心世界，前往他的噩梦之境，去面对他已形成的恐惧。在精神和身体的战斗中毫不退缩，对他的心与爱的纯洁拼死捍卫，洛因而获得了比翼之龙神的恩典。"
+        },
+        {
+            "id": 497038,
+            "isBase": false,
+            "name": "至臻 神龙尊者 比翼之龙 洛",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/497/497038.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/497/497038.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/497/497038.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rakan/Skins/Skin38/RakanLoadScreen_38.PIE_C_14_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Rakan/Skins/Skin38/RakanLoadScreen_38_LE.PIE_C_14_1.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 135
+                }
+            ],
+            "skinAugments": null,
+            "description": "受到龙神赐福的洛穿着一身纹理鲜明、线条锐利的盔甲，以突显他的各个最佳角度。他的魅力通过他优雅、自然的合身服装而闪耀——并且他对伸展台的专情是无与伦比的。"
+        }
+    ],
+    "passive": {
+        "name": "异色羽裳",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Rakan/HUD/Icons2D/Rakan_P.png",
+        "abilityVideoPath": "champion-abilities/0497/ability_0497_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0497/ability_0497_P1.jpg",
+        "description": "洛会周期性地获得一层护盾。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "微光飞翎",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Rakan/HUD/Icons2D/Rakan_Q.png",
+            "abilityVideoPath": "champion-abilities/0497/ability_0497_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0497/ability_0497_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "掷出一片神奇羽毛以造成魔法伤害。用在一名敌方英雄或史诗级野怪上时，会使洛有能力治疗他的友军。",
+            "dynamicDescription": "洛掷出一支魔羽，对命中的第一个敌人造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>。<br><br>如果魔羽命中了一个英雄或史诗级野怪，洛会在@HealDelay@秒后或触碰到一名友方英雄后，为自己和附近的友方回复<healing>@TotalHeal@生命值</healing>。@SpellModifierDescriptionAppend@",
+            "range": [
+                850.0000,
+                850.0000,
+                850.0000,
+                850.0000,
+                850.0000,
+                850.0000
+            ],
+            "costCoefficients": [
+                45.0000,
+                45.0000,
+                45.0000,
+                45.0000,
+                45.0000,
+                45.0000
+            ],
+            "cooldownCoefficients": [
+                11.0000,
+                10.0000,
+                9.0000,
+                8.0000,
+                7.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "盛大登场",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Rakan/HUD/Icons2D/Rakan_W.png",
+            "abilityVideoPath": "champion-abilities/0497/ability_0497_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0497/ability_0497_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "冲到一个位置，在到达时击飞附近的敌人。",
+            "dynamicDescription": "洛进行冲刺，然后旋至空中，<status>击飞</status>@KnockupDuration@秒并造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                60.0000,
+                70.0000,
+                80.0000,
+                90.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                16.0000,
+                14.5000,
+                13.0000,
+                11.5000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.7000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    70.0000,
+                    70.0000,
+                    120.0000,
+                    170.0000,
+                    220.0000,
+                    270.0000,
+                    320.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "轻舞成双",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Rakan/HUD/Icons2D/Rakan_E.png",
+            "abilityVideoPath": "champion-abilities/0497/ability_0497_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0497/ability_0497_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@f2@秒%i:cooldown%",
+            "description": "飞向一名友方英雄，并提供给该英雄一层护盾。能在短时间内再次免费施放。",
+            "dynamicDescription": "洛冲向一名友方英雄，为其提供<shield>@TotalShield@护盾值</shield>，持续@Effect3Amount@秒。<br><br>洛可以在@Effect2Amount@秒内<recast>再次施放</recast>一次这个技能。@SpellModifierDescriptionAppend@",
+            "range": [
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000
+            ],
+            "costCoefficients": [
+                40.0000,
+                45.0000,
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000
+            ],
+            "cooldownCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000
+                ],
+                "Effect3Amount": [
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000
+                ],
+                "Effect4Amount": [
+                    20.0000,
+                    20.0000,
+                    18.0000,
+                    16.0000,
+                    14.0000,
+                    12.0000,
+                    12.0000
+                ],
+                "Effect5Amount": [
+                    40.0000,
+                    40.0000,
+                    45.0000,
+                    50.0000,
+                    55.0000,
+                    60.0000,
+                    110.0000
+                ],
+                "Effect6Amount": [
+                    700.0000,
+                    700.0000,
+                    700.0000,
+                    700.0000,
+                    700.0000,
+                    700.0000,
+                    700.0000
+                ],
+                "Effect7Amount": [
+                    1000.0000,
+                    1000.0000,
+                    1000.0000,
+                    1000.0000,
+                    1000.0000,
+                    1000.0000,
+                    1000.0000
+                ],
+                "Effect8Amount": [
+                    1150.0000,
+                    1150.0000,
+                    1150.0000,
+                    1150.0000,
+                    1150.0000,
+                    1150.0000,
+                    1150.0000
+                ],
+                "Effect9Amount": [
+                    1250.0000,
+                    1250.0000,
+                    1250.0000,
+                    1250.0000,
+                    1250.0000,
+                    1250.0000,
+                    1250.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    20.0000,
+                    18.0000,
+                    16.0000,
+                    14.0000,
+                    12.0000,
+                    12.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "惊鸿过隙",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Rakan/HUD/Icons2D/Rakan_R.png",
+            "abilityVideoPath": "champion-abilities/0497/ability_0497_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0497/ability_0497_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "获得移动速度，对触碰到的敌人造成魅惑和魔法伤害。",
+            "dynamicDescription": "洛获得<speed>@Effect5Amount@%移动速度</speed>，持续@Effect2Amount@秒。洛触碰到敌人时会造成<magicDamage>@TotalDamageTooltip@魔法伤害</magicDamage>，并在首次命中时造成持续@Effect3Amount@秒的<status>魅惑</status>效果。被触碰的首个敌方英雄，会为洛提供<speed>持续衰减的@Effect6Amount@%移动速度</speed>。@SpellModifierDescriptionAppend@",
+            "range": [
+                150.0000,
+                150.0000,
+                150.0000,
+                150.0000,
+                150.0000,
+                150.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                130.0000,
+                110.0000,
+                90.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.5000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    100.0000,
+                    100.0000,
+                    200.0000,
+                    300.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000
+                ],
+                "Effect3Amount": [
+                    1.0000,
+                    1.0000,
+                    1.2500,
+                    1.5000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.2500,
+                    0.2500,
+                    0.2500,
+                    0.2500,
+                    0.2500,
+                    0.2500,
+                    0.2500
+                ],
+                "Effect5Amount": [
+                    75.0000,
+                    75.0000,
+                    75.0000,
+                    75.0000,
+                    75.0000,
+                    75.0000,
+                    75.0000
+                ],
+                "Effect6Amount": [
+                    150.0000,
+                    150.0000,
+                    150.0000,
+                    150.0000,
+                    150.0000,
+                    150.0000,
+                    150.0000
+                ],
+                "Effect7Amount": [
+                    150.0000,
+                    150.0000,
+                    150.0000,
+                    150.0000,
+                    150.0000,
+                    150.0000,
+                    150.0000
+                ],
+                "Effect8Amount": [
+                    130.0000,
+                    130.0000,
+                    110.0000,
+                    90.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

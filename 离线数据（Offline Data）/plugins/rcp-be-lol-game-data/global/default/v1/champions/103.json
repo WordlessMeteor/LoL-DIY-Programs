@@ -1,0 +1,2201 @@
+{
+    "id": 103,
+    "name": "Ahri",
+    "alias": "Ahri",
+    "title": "the Nine-Tailed Fox",
+    "shortBio": "Innately connected to the magic of the spirit realm, Ahri is a fox-like vastaya who can manipulate her prey's emotions and consume their essence—receiving flashes of their memory and insight from each soul she consumes. Once a powerful yet wayward predator, Ahri is now traveling the world in search of remnants of her ancestors while also trying to replace her stolen memories with ones of her own making.",
+    "tacticalInfo": {
+        "style": 10,
+        "difficulty": 2,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 2,
+        "mobility": 3,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/103.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/103.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/103.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/103.ogg",
+    "roles": [
+        "mage",
+        "assassin"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 103000,
+            "isBase": true,
+            "name": "Ahri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Base/AhriLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 103001,
+            "isBase": false,
+            "name": "Dynasty Ahri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin01/AhriLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103001.png",
+            "chromas": [
+                {
+                    "id": 103052,
+                    "name": "Dynasty Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103052.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released in the 2021 Ahri-versary event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 99
+                }
+            ],
+            "skinAugments": null,
+            "description": "Though Ahri's royal blood is obvious in her fashion and poise, she much prefers running across rooftops and causing general mischief to being locked up in a castle. Life's more fun with laughter, don't you think?"
+        },
+        {
+            "id": 103002,
+            "isBase": false,
+            "name": "Midnight Ahri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin02/AhriLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103002.png",
+            "chromas": [
+                {
+                    "id": 103053,
+                    "name": "Midnight Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103053.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released in the 2021 Ahri-versary event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": "Deep in the snowy forests bordering the kingdom, villagers tell tales of a mysterious icefox who, under the light of the midnight moon, becomes human. What they don't know is that this fox, Ahri, was once a princess. Cursed to live a life as wild as her heart, she runs through the forests during the day, hoping to find someone to break her eternal curse."
+        },
+        {
+            "id": 103003,
+            "isBase": false,
+            "name": "Foxfire Ahri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin03/AhriLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103003.png",
+            "chromas": [
+                {
+                    "id": 103054,
+                    "name": "Foxfire Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103054.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released in the 2021 Ahri-versary event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103075,
+                    "name": "Foxfire Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103075.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "Obtained through Influencer audience giveaways."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 86
+                }
+            ],
+            "skinAugments": null,
+            "description": "A young, talented pyromancer from the Shadowfire Temple, Ahri gave up her quiet life when a faction of extremists unleashed the burning horrors of the Ashen Lord. Now she uses her fire magic to fight against them, even though all hope seems lost."
+        },
+        {
+            "id": 103004,
+            "isBase": false,
+            "name": "Popstar Ahri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin04/AhriLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103004.png",
+            "chromas": [
+                {
+                    "id": 103008,
+                    "name": "Popstar Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103008.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 103009,
+                    "name": "Popstar Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103009.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 103010,
+                    "name": "Popstar Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103010.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 103011,
+                    "name": "Popstar Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103011.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 103012,
+                    "name": "Popstar Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103012.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 103013,
+                    "name": "Popstar Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103013.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 103055,
+                    "name": "Popstar Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103055.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released in the 2021 Ahri-versary event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 174
+                }
+            ],
+            "skinAugments": null,
+            "description": "Discovered by her record label when she was still a teen, Ahri took the music world by storm when her first five singles hit the Top 100, winning Most Talented New K-pop Artist at the 2013 Pop Shine Awards. She's been stealing hearts and sweeping awards ever since. However, underneath that perfect exterior, Ahri is feeling trapped by increasing demands..."
+        },
+        {
+            "id": 103005,
+            "isBase": false,
+            "name": "Challenger Ahri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin05/AhriLoadScreen_5.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin05/AhriLoadscreen_5_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103005.png",
+            "chromas": [
+                {
+                    "id": 103018,
+                    "name": "Challenger Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103018.png",
+                    "colors": [
+                        "#FFC948",
+                        "#FFC948"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "Loot exclusive gained during the 2019 MSI Event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 103056,
+                    "name": "Challenger Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103056.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released in the 2021 Ahri-versary event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 9
+                }
+            ],
+            "skinAugments": null,
+            "description": "Commemorating the 2015 Season 5 start."
+        },
+        {
+            "id": 103006,
+            "isBase": false,
+            "name": "Academy Ahri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin06/AhriLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103006.png",
+            "chromas": [
+                {
+                    "id": 103057,
+                    "name": "Academy Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103057.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released in the 2021 Ahri-versary event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 22
+                }
+            ],
+            "skinAugments": null,
+            "description": "NOTICE FROM THE DEAN: Ahri is henceforth suspended from Academy grounds for behavior including (but not limited to): use of her phone during class, use of her phone during disciplinary hearings about her phone, and escaping disciplinary hearings about her phone."
+        },
+        {
+            "id": 103007,
+            "isBase": false,
+            "name": "Arcade Ahri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin07/AhriLoadscreen_7.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103007.png",
+            "chromas": [
+                {
+                    "id": 103058,
+                    "name": "Arcade Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103058.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released in the 2021 Ahri-versary event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 10
+                }
+            ],
+            "skinAugments": null,
+            "description": "Owner of the mysterious six-million-point high score in the infamously difficult beat-em-up Demacia Vice, Ahri is a force of nature on the retro battlefields of Arcadia. Dashing between bosses before ripping them apart with her 8-bit magic, she's already earned the nickname “Queen of the Arcade.”"
+        },
+        {
+            "id": 103014,
+            "isBase": false,
+            "name": "Star Guardian Ahri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103014.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103014.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103014.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin14/AhriLoadScreen_14.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin14/AhriLoadScreen_14_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103014.png",
+            "chromas": [
+                {
+                    "id": 103059,
+                    "name": "Star Guardian Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103059.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released in the 2021 Ahri-versary event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 20
+                }
+            ],
+            "skinAugments": null,
+            "description": "Ahri is a charismatic team captain who leads her group of Star Guardians from the outer cosmos, with the authority of a queen bee and the sly cunning of a fox. She's effortlessly popular, with an irresistible charm that disarms friends and foes alike."
+        },
+        {
+            "id": 103015,
+            "isBase": false,
+            "name": "K/DA Ahri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103015.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103015.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103015.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin15/AhriLoadScreen_15.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103015.png",
+            "chromas": [
+                {
+                    "id": 103060,
+                    "name": "K/DA Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103060.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released in the 2021 Ahri-versary event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 91
+                }
+            ],
+            "skinAugments": null,
+            "description": "Setting her old bubblegum pop persona aside, Ahri was determined to shake up her image and reinvent herself as an unstoppable force within the music industry. Five years later, she has returned with a sleek new look and a killer sound—and this time she's not alone."
+        },
+        {
+            "id": 103016,
+            "isBase": false,
+            "name": "Prestige K/DA Ahri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103016.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103016.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103016.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin16/AhriLoadscreen_16_LE.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin16/AhriLoadscreen_16_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 91
+                }
+            ],
+            "skinAugments": null,
+            "description": "Decked out to dazzle, K/DA Ahri charms her audience in a glittering, golden ensemble specially made for her band's 2019 Pop Shine Awards performance. Her Prestige Edition outfit celebrates the golden success of POP/STARS. Can you feel the rush now?"
+        },
+        {
+            "id": 103017,
+            "isBase": false,
+            "name": "Elderwood Ahri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103017.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103017.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103017.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin17/AhriLoadScreen_17.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin17/AhriLoadscreen_17_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103017.png",
+            "chromas": [
+                {
+                    "id": 103019,
+                    "name": "Elderwood Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103019.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2019."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103020,
+                    "name": "Elderwood Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103020.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103021,
+                    "name": "Elderwood Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103021.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103022,
+                    "name": "Elderwood Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103022.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103023,
+                    "name": "Elderwood Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103023.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103024,
+                    "name": "Elderwood Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103024.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103025,
+                    "name": "Elderwood Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103025.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103026,
+                    "name": "Elderwood Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103026.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103061,
+                    "name": "Elderwood Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103061.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released in the 2021 Ahri-versary event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 58
+                }
+            ],
+            "skinAugments": null,
+            "description": "Fables of the trickster spirit Ahri have been part of mankind's history for countless generations. Radiant and eternally youthful, she is portrayed as a curious, quizzical member of the Elderwood's feyfolk… though in recent years her heart has hardened, as she fights a growing corruption within her ancestral home."
+        },
+        {
+            "id": 103027,
+            "isBase": false,
+            "name": "Spirit Blossom Ahri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103027.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103027.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103027.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin27/AhriLoadScreen_27.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin27/AhriLoadscreen_27_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103027.png",
+            "chromas": [
+                {
+                    "id": 103029,
+                    "name": "Spirit Blossom Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103029.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103030,
+                    "name": "Spirit Blossom Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103030.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103031,
+                    "name": "Spirit Blossom Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103031.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2020."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103032,
+                    "name": "Spirit Blossom Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103032.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103033,
+                    "name": "Spirit Blossom Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103033.png",
+                    "colors": [
+                        "#0C0C0F",
+                        "#B2D1E4"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2020 Spirit Blossom event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103062,
+                    "name": "Spirit Blossom Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103062.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released in the 2021 Ahri-versary event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 171
+                }
+            ],
+            "skinAugments": null,
+            "description": "The famed Spirit of Salvation, and the fox all mortals are beckoned towards when their souls arrive to the spirit realm. A capricious, whimsical spirit who sees the fate of the living as a game of chase, she offers the chance for souls to find their final rest… but will not intervene if they stray from the path."
+        },
+        {
+            "id": 103028,
+            "isBase": false,
+            "name": "K/DA ALL OUT Ahri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103028.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103028.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103028.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin28/AhriLoadScreen_28.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin28/AhriLoadscreen_28_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103028.png",
+            "chromas": [
+                {
+                    "id": 103034,
+                    "name": "K/DA ALL OUT Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103034.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2020."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103035,
+                    "name": "K/DA ALL OUT Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103035.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103036,
+                    "name": "K/DA ALL OUT Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103036.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103037,
+                    "name": "K/DA ALL OUT Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103037.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103038,
+                    "name": "K/DA ALL OUT Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103038.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103039,
+                    "name": "K/DA ALL OUT Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103039.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103040,
+                    "name": "K/DA ALL OUT Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103040.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103041,
+                    "name": "K/DA ALL OUT Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103041.png",
+                    "colors": [
+                        "#0C0C0F",
+                        "#272A3F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2020 Worlds event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103063,
+                    "name": "K/DA ALL OUT Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103063.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released in the 2021 Ahri-versary event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 91
+                }
+            ],
+            "skinAugments": null,
+            "description": "When Ahri steps onto the stage to perform with K/DA, she knows she's surrounded by the best of the best—different women with different personalities, all at the top of their craft. As their leader and as their friend, Ahri is poised to guide these divas to even greater heights and leave their audiences breathless for more."
+        },
+        {
+            "id": 103042,
+            "isBase": false,
+            "name": "Coven Ahri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103042.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103042.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103042.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin42/AhriLoadScreen_42.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin42/AhriLoadscreen_42_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103042.png",
+            "chromas": [
+                {
+                    "id": 103043,
+                    "name": "Coven Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103043.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2021."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103044,
+                    "name": "Coven Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103044.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103045,
+                    "name": "Coven Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103045.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103046,
+                    "name": "Coven Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103046.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103047,
+                    "name": "Coven Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103047.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103048,
+                    "name": "Coven Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103048.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103049,
+                    "name": "Coven Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103049.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103050,
+                    "name": "Coven Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103050.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103051,
+                    "name": "Coven Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103051.png",
+                    "colors": [
+                        "#162B30",
+                        "#8E0A38"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2021 Coven event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103064,
+                    "name": "Coven Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103064.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released in the 2021 Ahri-versary event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 92
+                }
+            ],
+            "skinAugments": null,
+            "description": "They came to Ahri at the first stirrings of dusk—the laughter of the Half-Light Jackal, ever stalking the world as it turned towards its own inevitable entropy. A vicious predator and powerful witch, Ahri sucks the life from all she lures close, siphoning it towards her lord within the gloom."
+        },
+        {
+            "id": 103065,
+            "isBase": false,
+            "name": "Prestige K/DA Ahri (2022)",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103065.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103065.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103065.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin65/AhriLoadscreen_65_LE.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin65/AhriLoadscreen_65_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 91
+                }
+            ],
+            "skinAugments": null,
+            "description": "Decked out to dazzle, K/DA Ahri charms her audience in a glittering, golden ensemble specially made for her band's 2019 Pop Shine Awards performance. Her Prestige Edition outfit celebrates the golden success of POP/STARS. Can you feel the rush now?"
+        },
+        {
+            "id": 103066,
+            "isBase": false,
+            "name": "Arcana Ahri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103066.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103066.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103066.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin66/AhriLoadScreen_66.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103066.png",
+            "chromas": [
+                {
+                    "id": 103067,
+                    "name": "Arcana Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103067.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103068,
+                    "name": "Arcana Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103068.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103069,
+                    "name": "Arcana Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103069.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103070,
+                    "name": "Arcana Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103070.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103071,
+                    "name": "Arcana Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103071.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103072,
+                    "name": "Arcana Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103072.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103073,
+                    "name": "Arcana Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103073.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103074,
+                    "name": "Arcana Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103074.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 146
+                }
+            ],
+            "skinAugments": null,
+            "description": "A trickster and magician whose power is drawn from the grinning moon, Ahri plies her trade rearranging patterns and allowing the Lower World insight into the Higher. Having already set the fated pair Xayah and Rakan careening towards each other, she awaits the resulting chaos with a cynical bemusement."
+        },
+        {
+            "id": 103076,
+            "isBase": false,
+            "name": "Snow Moon Ahri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103076.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103076.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103076.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin76/AhriLoadScreen_76.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103076.png",
+            "chromas": [
+                {
+                    "id": 103077,
+                    "name": "Snow Moon Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103077.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103078,
+                    "name": "Snow Moon Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103078.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103079,
+                    "name": "Snow Moon Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103079.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103080,
+                    "name": "Snow Moon Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103080.png",
+                    "colors": [
+                        "#9F4A25",
+                        "#9F4A25"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103081,
+                    "name": "Snow Moon Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103081.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103082,
+                    "name": "Snow Moon Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103082.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103083,
+                    "name": "Snow Moon Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103083.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103084,
+                    "name": "Snow Moon Ahri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103084.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 160
+                }
+            ],
+            "skinAugments": null,
+            "description": "An ancient and powerful arctic fox spirit, Ahri has been around since the founding of the Snow Moon order. It is a symbiotic arrangement: agents purify themselves by sacrificing their emotions and memories to her appetite. Ahri is the keeper of their lost memories, experiencing the outside world through her devotees, their eyes now vacant and cold."
+        }
+    ],
+    "passive": {
+        "name": "Essence Theft",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/HUD/Icons2D/Icons_Ahri_Passive.png",
+        "abilityVideoPath": "champion-abilities/0103/ability_0103_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0103/ability_0103_P1.jpg",
+        "description": "After killing 9 minions or monsters, Ahri heals.<br>After taking down an enemy champion, Ahri heals for a greater amount."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Orb of Deception",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/HUD/Icons2D/Icons_Ahri_Q.png",
+            "abilityVideoPath": "champion-abilities/0103/ability_0103_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0103/ability_0103_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Ahri sends out and pulls back her orb, dealing magic damage on the way out and true damage on the way back. ",
+            "dynamicDescription": "Ahri throws then pulls back her orb, dealing <magicDamage>@TotalDamage@ magic damage</magicDamage> on the way out and <trueDamage>@TotalDamage@ true damage</trueDamage> on the way back.@SpellModifierDescriptionAppend@",
+            "range": [
+                970.0000,
+                970.0000,
+                970.0000,
+                970.0000,
+                970.0000,
+                970.0000
+            ],
+            "costCoefficients": [
+                55.0000,
+                65.0000,
+                75.0000,
+                85.0000,
+                95.0000,
+                95.0000
+            ],
+            "cooldownCoefficients": [
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Fox-Fire",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/HUD/Icons2D/Icons_Ahri_W.png",
+            "abilityVideoPath": "champion-abilities/0103/ability_0103_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0103/ability_0103_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Ahri gains a brief burst of Move Speed and releases three fox-fires, that lock onto and attack nearby enemies.",
+            "dynamicDescription": "Ahri releases 3 fox-fires that seek nearby enemies and deal <magicDamage>@SingleFireDamage@ magic damage</magicDamage>, reduced to <magicDamage>@MultiFireDamage@ damage</magicDamage> beyond the first. She also gains <speed>@MovementSpeed*100@% Move Speed</speed> decaying over @MovementSpeedDuration@ seconds.@SpellModifierDescriptionAppend@",
+            "range": [
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000
+            ],
+            "costCoefficients": [
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000
+            ],
+            "cooldownCoefficients": [
+                9.0000,
+                8.0000,
+                7.0000,
+                6.0000,
+                5.0000,
+                4.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Charm",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/HUD/Icons2D/Icons_Ahri_E.png",
+            "abilityVideoPath": "champion-abilities/0103/ability_0103_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0103/ability_0103_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Ahri blows a kiss that damages and charms an enemy it encounters, instantly stopping movement abilities and causing them to walk harmlessly towards her.",
+            "dynamicDescription": "Ahri blows a kiss that <status>Charms</status> the first enemy hit for @CharmDuration@ seconds and deals <magicDamage>@TotalDamage@ magic damage</magicDamage>.@SpellModifierDescriptionAppend@",
+            "range": [
+                975.0000,
+                975.0000,
+                975.0000,
+                975.0000,
+                975.0000,
+                975.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Spirit Rush",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/HUD/Icons2D/Icons_Ahri_R.png",
+            "abilityVideoPath": "champion-abilities/0103/ability_0103_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0103/ability_0103_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Ahri dashes forward and fires essence bolts, damaging nearby enemies. Spirit Rush can be cast up to three times before going on cooldown, and gains additional recasts when taking down enemy champions.",
+            "dynamicDescription": "Ahri nimbly dashes, firing @RMaxTargetsPerCast@ essence bolts at nearby enemies, prioritizing champions. These bolts deal <magicDamage>@RCalculatedDamage@ magic damage</magicDamage> each. Spirit Rush can be recast up to 2 more times within @RRecastWindow@ seconds.<br><br>Consuming a champion's Essence with Essence Theft during this period extends the recast window by up to @PDurationExtension@ seconds and grants an additional recast of Spirit Rush (up to @RMaxCasts@ stored).@SpellModifierDescriptionAppend@",
+            "range": [
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                130.0000,
+                105.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

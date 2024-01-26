@@ -1,0 +1,1144 @@
+{
+    "id": 360,
+    "name": "沙漠玫瑰",
+    "alias": "Samira",
+    "title": "莎弥拉",
+    "shortBio": "莎弥拉以寸步不让的自信直视死亡，无论走到哪里都要寻找刺激。生于恕瑞玛的她在很小的时候就被摧毁了家园，后来受到了诺克萨斯的感召，在那里，她成为了英姿飒爽的孤胆女将，专门处理最高规格的凶险任务。莎弥拉使用黑火药双枪外加一把特殊制程工艺的大刀，她在生死存亡的关头尤为勇猛，以闪钢与烈焰终结任何拦路者。",
+    "tacticalInfo": {
+        "style": 1,
+        "difficulty": 2,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 2,
+        "crowdControl": 1,
+        "mobility": 3,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/360.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/360.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/360.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/360.ogg",
+    "roles": [
+        "marksman"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 360000,
+            "isBase": true,
+            "name": "沙漠玫瑰",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/360/360000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/360/360000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/360/360000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Samira/Skins/Base/SamiraLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 360001,
+            "isBase": false,
+            "name": "灵能特工 莎弥拉",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/360/360001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/360/360001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/360/360001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Samira/Skins/Skin01/SamiraLoadscreen_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Samira/Skins/Skin01/SamiraLoadscreen_1_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360001.png",
+            "chromas": [
+                {
+                    "id": 360002,
+                    "name": "灵能特工 莎弥拉 代号：龙焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 360003,
+                    "name": "灵能特工 莎弥拉 代号：银翼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360003.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 360004,
+                    "name": "灵能特工 莎弥拉 代号：猫眼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360004.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 360005,
+                    "name": "灵能特工 莎弥拉 代号：女王",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360005.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 360006,
+                    "name": "灵能特工 莎弥拉 代号：天狼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360006.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "tencent",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 360007,
+                    "name": "灵能特工 莎弥拉 代号：飓风",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360007.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 360008,
+                    "name": "灵能特工 莎弥拉 代号：猎人",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360008.png",
+                    "colors": [
+                        "#B2D1E4",
+                        "#3CABFF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在灵能特工(2020)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 360009,
+                    "name": "灵能特工 莎弥拉 代号：蜘蛛",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360009.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 134
+                }
+            ],
+            "skinAugments": null,
+            "description": "无惧且致命的莎弥拉曾经是一位有名的雇佣兵。她是一个天生的寻求刺激的人，她战斗不是为了名利，而是为了推动她的技能的极限。通过高强度的训练，她与生俱来的精神力量被充分释放，让她把每一个任务和每一次杀戮都变成了一次对时尚天资的动人展示。"
+        },
+        {
+            "id": 360010,
+            "isBase": false,
+            "name": "太空律动 “音浪狂舞” 莎弥拉",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/360/360010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/360/360010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/360/360010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Samira/Skins/Skin10/SamiraLoadScreen_10.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Samira/Skins/Skin10/SamiraLoadscreen_10_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360010.png",
+            "chromas": [
+                {
+                    "id": 360011,
+                    "name": "“音浪狂舞” 莎弥拉 开团没关系",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360011.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 360012,
+                    "name": "“音浪狂舞” 莎弥拉 走错没关系",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360012.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 360013,
+                    "name": "“音浪狂舞” 莎弥拉 探草没关系",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360013.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 360014,
+                    "name": "“音浪狂舞” 莎弥拉 消失没关系",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360014.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 360015,
+                    "name": "“音浪狂舞” 莎弥拉 越塔没关系",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360015.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 360016,
+                    "name": "“音浪狂舞” 莎弥拉 空大没关系",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360016.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 360017,
+                    "name": "“音浪狂舞” 莎弥拉 补车没关系",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360017.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 360018,
+                    "name": "“音浪狂舞” 莎弥拉 大意没关系",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360018.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 360019,
+                    "name": "“音浪狂舞” 莎弥拉 发呆没关系",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360019.png",
+                    "colors": [
+                        "#9DFFEF",
+                        "#AA55FF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在太空律动(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 144
+                }
+            ],
+            "skinAugments": null,
+            "description": "莎弥拉是来自“热浴盆”星云的一名动感、追求刺激的保镖和精英战士。她直接从三派对女神那里接了个活儿，目标是将拉克丝从正常世界的一场即将到来的入侵中拯救出来。现在，在这对搭档穿梭星系解救星球的途中，莎弥拉必须尽她所能地保护拉克丝的安全——既要防备丽桑卓，又要防备拉克丝那缺乏自我保护的本能。"
+        },
+        {
+            "id": 360020,
+            "isBase": false,
+            "name": "西部魔影 持枪女巫 莎弥拉",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/360/360020.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/360/360020.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/360/360020.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Samira/Skins/Skin20/SamiraLoadScreen_20.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Samira/Skins/Skin20/SamiraLoadscreen_20_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360020.png",
+            "chromas": [
+                {
+                    "id": 360021,
+                    "name": "西部魔影 持枪女巫 莎弥拉 温和",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360021.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 360022,
+                    "name": "西部魔影 持枪女巫 莎弥拉 忠诚",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360022.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 360023,
+                    "name": "西部魔影 持枪女巫 莎弥拉 节制",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360023.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 360024,
+                    "name": "西部魔影 持枪女巫 莎弥拉 善良",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360024.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 360025,
+                    "name": "西部魔影 持枪女巫 莎弥拉 诚实",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360025.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 360026,
+                    "name": "西部魔影 持枪女巫 莎弥拉 慷慨",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360026.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 360027,
+                    "name": "西部魔影 持枪女巫 莎弥拉 谦卑",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360027.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 360028,
+                    "name": "西部魔影 持枪女巫 莎弥拉 恭敬",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360028.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 360029,
+                    "name": "西部魔影 持枪女巫 莎弥拉 虔信",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/360/360029.png",
+                    "colors": [
+                        "#95ECFF",
+                        "#C33C3E"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在季中冠军赛(2022)西部魔影期间作为战利品专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "海报很直截了当：“通缉：塔姆 - 恶魔，生死不论”，然后是一笔慷慨的巨款。只有机械恶魔可以给出这么多钱。莎弥拉不确定是什么原因，其他赏金猎人们好像被这么一次小小的恶魔狩猎给吓坏了。好吧，让他们靠边站吧。这个火药女巫可没那么容易被吓到。"
+        },
+        {
+            "id": 360030,
+            "isBase": false,
+            "name": "斗魂觉醒 莎弥拉",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/360/360030.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/360/360030.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/360/360030.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Samira/Skins/Skin30/SamiraLoadScreen_30.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Samira/Skins/Skin30/SamiraLoadScreen_30_LE.jpg",
+            "skinType": "",
+            "rarity": "kUltimate",
+            "isLegacy": false,
+            "splashVideoPath": "/lol-game-data/assets/ASSETS/Characters/Samira/Skins/Skin30/AnimatedSplash/Samira_Skin30_centered.webm",
+            "collectionSplashVideoPath": "/lol-game-data/assets/ASSETS/Characters/Samira/Skins/Skin30/AnimatedSplash/Samira_Skin30_uncentered.webm",
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Forge of the Guardian",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/77.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/77.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 9,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/9_large.png",
+            "skinLines": [
+                {
+                    "id": 196
+                }
+            ],
+            "skinAugments": null,
+            "description": "一位坐不住的著名赏金猎人，因为她总是在追寻她的下一次刺激挑战！这位武器大师可以使用她的武器库之内（以及之外！）的每一件危险工具，在斗魂武道大会中酷炫地进行战斗！我们亲切的主办人最好睁着一只眼睛睡觉，因为有传言说这位女王想要收集他的王冠！莎弥拉驾到，统统让开！"
+        }
+    ],
+    "passive": {
+        "name": "悍勇本色",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Samira/HUD/Icons2D/SamiraP.png",
+        "abilityVideoPath": "champion-abilities/0360/ability_0360_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0360/ability_0360_P1.jpg",
+        "description": "莎弥拉可通过用不同的技能或攻击命中敌人来构建一次连招。莎弥拉在近战距离的攻击会造成额外的魔法伤害。莎弥拉在对被<status>定身</status>的敌人进行攻击时，将冲刺到她的最大攻击距离处。如果该敌人已被<status>击飞</status>，她还会使其短暂保持<status>击飞</status>状态。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "交火",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Samira/HUD/Icons2D/SamiraQ.png",
+            "abilityVideoPath": "champion-abilities/0360/ability_0360_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0360/ability_0360_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "莎弥拉进行一次射击或斩击，造成伤害。如果在【狂飙】期间施放，那么会在完成时打击沿途的所有敌人。",
+            "dynamicDescription": "莎弥拉进行一次射击，对命中的第一个敌人造成<physicalDamage>@DamageCalc@物理伤害</physicalDamage>。如果朝着近战距离内的一名敌人施放这个技能，那么莎弥拉会转而用她的剑进行斩击，造成<physicalDamage>@DamageCalc@物理伤害</physicalDamage>。 @SpellModifierDescriptionAppend@",
+            "range": [
+                950.0000,
+                950.0000,
+                950.0000,
+                950.0000,
+                950.0000,
+                950.0000
+            ],
+            "costCoefficients": [
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000
+            ],
+            "cooldownCoefficients": [
+                6.0000,
+                5.0000,
+                4.0000,
+                3.0000,
+                2.0000,
+                2.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.9000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "锋旋",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Samira/HUD/Icons2D/SamiraW.png",
+            "abilityVideoPath": "champion-abilities/0360/ability_0360_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0360/ability_0360_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "莎弥拉斩击她的周围，对敌人造成伤害并摧毁敌人的飞行道具。",
+            "dynamicDescription": "莎弥拉斩击她的周围@SlashDuration@秒，对敌人造成2段伤害，每段为<physicalDamage>@DamageCalc@物理伤害</physicalDamage>并摧毁任何进入该区域的敌方飞行道具。<br><br>@SpellModifierDescriptionAppend@",
+            "range": [
+                325.0000,
+                325.0000,
+                325.0000,
+                325.0000,
+                325.0000,
+                325.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000
+            ],
+            "cooldownCoefficients": [
+                30.0000,
+                28.0000,
+                26.0000,
+                24.0000,
+                22.0000,
+                20.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "狂飙",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Samira/HUD/Icons2D/SamiraE.png",
+            "abilityVideoPath": "champion-abilities/0360/ability_0360_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0360/ability_0360_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "莎弥拉冲刺并越过一名敌人（包含建筑物），斩击沿途的敌人并获得攻击速度。击杀一名敌方英雄会刷新这个技能的冷却时间。",
+            "dynamicDescription": "莎弥拉冲刺并越过一名敌人（包含建筑物），斩击沿途的敌人来造成<magicDamage>@DashDamage@魔法伤害</magicDamage>并获得<attackSpeed>@BonusAttackSpeed*100@%攻击速度</attackSpeed>，持续3秒。<br><br>如果一名敌方英雄在受到莎弥拉的伤害后的3秒内阵亡，那么【E狂飙】的冷却时间会重置。@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000
+            ],
+            "cooldownCoefficients": [
+                20.0000,
+                18.0000,
+                16.0000,
+                14.0000,
+                12.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.6000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "炼狱扳机",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Samira/HUD/Icons2D/SamiraR1.png",
+            "abilityVideoPath": "champion-abilities/0360/ability_0360_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0360/ability_0360_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "莎弥拉的武器倾泻出大量的子弹，狂野地射击她周围的所有敌人。",
+            "dynamicDescription": "莎弥拉只能在她当前的<keywordMajor>评价等级</keywordMajor>为S时使用这个技能。使用这个技能会消耗掉所有<keywordMajor>评价等级</keywordMajor>。<br><br>莎弥拉的武器倾泻出大量的子弹，狂野地在2秒里持续对她周围的所有敌人进行10次射击，每次射击造成<physicalDamage>@DamageCalc@物理伤害</physicalDamage>并施加@LifestealMod*100@%效能的生命偷取。这些射击也可以产生暴击。<br><br>@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                5.0000,
+                5.0000,
+                5.0000,
+                5.0000,
+                5.0000,
+                5.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.9000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

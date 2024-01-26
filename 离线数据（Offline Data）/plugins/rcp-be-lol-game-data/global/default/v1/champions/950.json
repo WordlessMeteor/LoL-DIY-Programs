@@ -1,0 +1,808 @@
+{
+    "id": 950,
+    "name": "Naafiri",
+    "alias": "Naafiri",
+    "title": "the Hound of a Hundred Bites",
+    "shortBio": "Across the sands of Shurima, a chorus of howls rings out. It is the call of the dune hounds, voracious predators who form packs and compete for the right to hunt in these barren lands. Among them, one pack stands above all, for they are driven not only by canine instincts, but by the ancient power of the Darkin.",
+    "tacticalInfo": {
+        "style": 7,
+        "difficulty": 1,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 1,
+        "mobility": 3,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/950.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/950.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/950.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/950.ogg",
+    "roles": [
+        "assassin"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 950000,
+            "isBase": true,
+            "name": "Naafiri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/950/950000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/950/950000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/950/950000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Naafiri/Skins/Base/NaafiriLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 950001,
+            "isBase": false,
+            "name": "Soul Fighter Naafiri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/950/950001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/950/950001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/950/950001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Naafiri/Skins/Skin01/NaafiriLoadScreen_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Naafiri/Skins/Skin01/NaafiriLoadScreen_1_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950001.png",
+            "chromas": [
+                {
+                    "id": 950002,
+                    "name": "Soul Fighter Naafiri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 950003,
+                    "name": "Soul Fighter Naafiri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950003.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 950004,
+                    "name": "Soul Fighter Naafiri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950004.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 950005,
+                    "name": "Soul Fighter Naafiri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950005.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 950006,
+                    "name": "Soul Fighter Naafiri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950006.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 950007,
+                    "name": "Soul Fighter Naafiri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950007.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 950008,
+                    "name": "Soul Fighter Naafiri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950008.png",
+                    "colors": [
+                        "#9F4A25",
+                        "#9F4A25"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 950009,
+                    "name": "Soul Fighter Naafiri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950009.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 950010,
+                    "name": "Soul Fighter Naafiri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950010.png",
+                    "colors": [
+                        "#C8D0CE",
+                        "#AF65D1"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2023 Soul Fighter event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 196
+                }
+            ],
+            "skinAugments": null,
+            "description": "Failed experiment! DEMA DOG! The Four-legged Fighter! This... creature... has almost as many titles as it does separate entities it can summon! Does it want revenge on its former masters? To take over the world? I don't know! I'm no dog mind reader! It's.... Naafiri!  "
+        }
+    ],
+    "passive": {
+        "name": "We Are More",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Naafiri/HUD/Icons2D/Icons_Naafiri_P.png",
+        "abilityVideoPath": "champion-abilities/0950/ability_0950_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0950/ability_0950_P1.jpg",
+        "description": "Naafiri spawns packmates that attack the targets of her attacks and abilities."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Darkin Daggers",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Naafiri/HUD/Icons2D/Icons_Naafiri_Q.png",
+            "abilityVideoPath": "champion-abilities/0950/ability_0950_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0950/ability_0950_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Naafiri hurls up to two daggers, each inflicting bleed, or each inflicting bonus damage if the target is already bleeding.<br><br>Packmates leap to attack champions hit by this skill.<br>",
+            "dynamicDescription": "Naafiri hurls Darkin-tainted blades, dealing <physicalDamage>@spell.NaafiriQ:TotalDamageFirstCast@ physical damage</physicalDamage> and inflicting a bleed, dealing <physicalDamage>@spell.NaafiriQ:TotalBleedDamage@ physical damage</physicalDamage> over @spell.NaafiriQ:BleedDuration@ seconds.<br><br>Naafiri can <recast>Recast</recast> this Ability. If enemies hit are already bleeding from this Ability, it instead deals the remaining bleed damage plus between <physicalDamage>@spell.NaafiriQ:TotalMinDamageSecondCast@</physicalDamage> and <physicalDamage>@spell.NaafiriQ:TotalMaxDamageSecondCast@ physical damage</physicalDamage>, based on their missing Health. If that target was a champion, Naafiri restores <healing>@spell.NaafiriQ:TotalHealSecondCast@ Health</healing>.<br><br><keywordMajor>Packmates</keywordMajor> will leap at the first champion hit and attack them for @spell.NaafiriP:PackmateTauntDuration@ seconds. <br><br>@SpellModifierDescriptionAppend@",
+            "range": [
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000
+            ],
+            "costCoefficients": [
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000,
+                80.0000
+            ],
+            "cooldownCoefficients": [
+                11.0000,
+                10.0000,
+                9.0000,
+                8.0000,
+                7.0000,
+                7.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Hounds' Pursuit",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Naafiri/HUD/Icons2D/Icons_Naafiri_W.png",
+            "abilityVideoPath": "champion-abilities/0950/ability_0950_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0950/ability_0950_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Naafiri and her packmates dash at an enemy, colliding with the first champion hit and dealing damage.",
+            "dynamicDescription": "Naafiri dashes at an enemy, stopping at the first champion she hits, dealing <physicalDamage>@TotalDamage@ physical damage</physicalDamage> and briefly <status>Slowing</status> them.<br><br><keywordMajor>Packmates</keywordMajor> become Untargetable and dash alongside Naafiri, dealing <physicalDamage>@PackmateDamage@ physical damage</physicalDamage> per <keywordMajor>Packmate</keywordMajor>.<br><br>This Ability gains range based on Ultimate rank. Current Bonus: @spell.NaafiriR:WRangeIncrease@<br>@SpellModifierDescriptionAppend@",
+            "range": [
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                60.0000,
+                50.0000,
+                40.0000,
+                30.0000,
+                20.0000
+            ],
+            "cooldownCoefficients": [
+                22.0000,
+                20.0000,
+                18.0000,
+                16.0000,
+                14.0000,
+                14.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Eviscerate",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Naafiri/HUD/Icons2D/Icons_Naafiri_E.png",
+            "abilityVideoPath": "champion-abilities/0950/ability_0950_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0950/ability_0950_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Naafiri dashes and damages enemies in an area around her, recalling her packmates and fully healing them.",
+            "dynamicDescription": "Naafiri surges forward, dealing <physicalDamage>@TotalDamageFirstSlash@ physical damage</physicalDamage>, then explodes in a flurry of blades, dealing <physicalDamage>@TotalDamageSecondSlash@ physical damage.</physicalDamage><br><br><keywordMajor>Packmates</keywordMajor> are recalled to Naafiri and <healing>restore 100% Health</healing>. <br>@SpellModifierDescriptionAppend@",
+            "range": [
+                350.0000,
+                350.0000,
+                350.0000,
+                350.0000,
+                350.0000,
+                350.0000
+            ],
+            "costCoefficients": [
+                35.0000,
+                35.0000,
+                35.0000,
+                35.0000,
+                35.0000,
+                35.0000
+            ],
+            "cooldownCoefficients": [
+                10.0000,
+                9.5000,
+                9.0000,
+                8.5000,
+                8.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "The Call of the Pack",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Naafiri/HUD/Icons2D/Icons_Naafiri_R.png",
+            "abilityVideoPath": "champion-abilities/0950/ability_0950_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0950/ability_0950_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Naafiri empowers her pack and spawns additional packmates, instantly receiving a burst of speed and vision and gaining a shield the first time she hits another champion.<br><br>After killing another champion for the first time, all effects are refreshed.<br>",
+            "dynamicDescription": "<spellPassive>Passive:</spellPassive><spellActive> Hounds' Pursuit</spellActive> gains @WRangeIncrease@ range.<br><br><spellActive>Active:</spellActive> Naafiri prepares to hunt, gaining <physicalDamage>@BonusAD@ Attack Damage</physicalDamage>, <keywordMajor>empowering her pack</keywordMajor>, and spawning <keywordMajor>@PackmatesToAdd@ additional Packmates</keywordMajor> for @Duration@ seconds. <br><br>Naafiri also gains vision of her surroundings and <speed>@MoveSpeedOOCTootlip*100@% Decaying Move Speed for @MoveSpeedDuration@ seconds, reduced to @MoveSpeedAmount*100@% on taking damage.</speed> The first time she hits a champion, she gains <shield>@ShieldTotal@ Shield</shield> for @ShieldDuration@ seconds. <br><br>On first champion takedown, all effects are refreshed.@SpellModifierDescriptionAppend@",
+            "range": [
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                110.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

@@ -1,0 +1,1700 @@
+{
+    "id": 76,
+    "name": "狂野女猎手",
+    "alias": "Nidalee",
+    "title": "奈德丽",
+    "shortBio": "在密林深处长大的奈德丽是一位追猎大师，她可以变换形态，成为一只凶猛的美洲狮。她既不是真正的人类，也不是真正的野兽，但她会用精心布置的陷阱和灵活自如的标枪，凶狠地捍卫自己的领地不被任何人侵犯。她会先打击猎物的行动能力，然后再以大猫的形态上前扑杀。只有很少数人曾侥幸逃脱并活下来讲述一个狂野女猎手的故事，讲述她锐利的猎手本能，以及更加锐利的爪子。",
+    "tacticalInfo": {
+        "style": 8,
+        "difficulty": 3,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 1,
+        "mobility": 3,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/76.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/76.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/76.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/76.ogg",
+    "roles": [
+        "assassin",
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 76000,
+            "isBase": true,
+            "name": "狂野女猎手",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Base/nidaleeLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 76001,
+            "isBase": false,
+            "name": "雪装 奈德丽",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin01/nidaleeLoadScreen_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin01/nidaleeLoadScreen_1_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Snowdown",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/9.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/9.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 48
+                }
+            ],
+            "skinAugments": null,
+            "description": "奈德丽是一位以冬季森林为家的凶猛战士，对冰雪节派对没什么兴趣。相反，她更喜欢花时间保护快乐的林地生物免受捕猎者和闯入者的伤害，从而让她的毛茸茸的朋友们有理由过这个季节。"
+        },
+        {
+            "id": 76002,
+            "isBase": false,
+            "name": "丛林猎豹 奈德丽",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin02/nidaleeLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": "奈德丽在她家的高草丛和冒泡的柏油坑中漫游。她的家是一片充满自然魔法的史前大草原。她通过伪装成猎人的样子，用她的野性技能去欺骗和消除人类的威胁，保护她的豹群之跃。"
+        },
+        {
+            "id": 76003,
+            "isBase": false,
+            "name": "法国女仆 奈德丽",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin03/nidaleeLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 100
+                }
+            ],
+            "skinAugments": null,
+            "description": "在令人快乐的女仆装、阳光明媚的性格和广博的清洁技术知识的武装下，奈德丽对她的那些富人顾客们施以妙手，并且丝毫不会被他们察觉。她所做的一切都是为了她的小猫们，因为它们已经用惯了一些高品质磨爪器。"
+        },
+        {
+            "id": 76004,
+            "isBase": false,
+            "name": "艳后 奈德丽",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin04/nidaleeLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 67
+                }
+            ],
+            "skinAugments": null,
+            "description": "奈德丽被尊为大沙漠的“神后”，是光荣的猫神西帕卡的化身。当战争席卷这片土地时，奈德丽将竭尽全力保护她的城市和神殿免受那些胆敢来犯之人的侵扰。"
+        },
+        {
+            "id": 76005,
+            "isBase": false,
+            "name": "魅惑女巫 奈德丽",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin05/nidaleeLoadScreen_5.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin05/nidaleeLoadScreen_5_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Halloween_b",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/11.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/11.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 172
+                }
+            ],
+            "skinAugments": null,
+            "description": "她是一只猫。那是一顶帽。法律上来说，我们并不被允许将那两种想法拼凑到一起。"
+        },
+        {
+            "id": 76006,
+            "isBase": false,
+            "name": "铁血猎手 奈德丽",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin06/NidaleeLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 30
+                }
+            ],
+            "skinAugments": null,
+            "description": "有一些人还在问：更好的猎手，是人类还是兽类？ 凭借着外星生物体，铁血猎手奈德丽得以兼具这二者，并且她对这个问题的答案是，“是我”。"
+        },
+        {
+            "id": 76007,
+            "isBase": false,
+            "name": "枭姬 孙尚香",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin07/NidaleeLoadScreen_7.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 53
+                }
+            ],
+            "skinAugments": null,
+            "description": "在关于奈德丽的传说中，很难知道哪些是真事，哪些只是神话。在纷争国度中，有人说她打仗猛如白虎，心有虎气。其他人认为她就是白虎，可以变成那头猛虎。"
+        },
+        {
+            "id": 76008,
+            "isBase": false,
+            "name": "勇者 奈德丽",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin08/NidaleeLoadScreen_8.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin08/NidaleeLoadscreen_8_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76008.png",
+            "chromas": [
+                {
+                    "id": 76010,
+                    "name": "勇者 奈德丽 炫金",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76010.png",
+                    "colors": [
+                        "#FFC948",
+                        "#FFC948"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 9
+                }
+            ],
+            "skinAugments": null,
+            "description": "纪念2016赛季开始。"
+        },
+        {
+            "id": 76009,
+            "isBase": false,
+            "name": "银河魔装机神 奈德丽",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin09/nidaleeLoadScreen_9.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 21
+                }
+            ],
+            "skinAugments": null,
+            "description": "在银河魔装机神学员的新班级中，奈德丽——凭借她在零重力下进行投掷的非凡技能——最被看好。随着蜘蛛女王继续她的恐怖统治，如果他们这支小队想要拯救银河系的话，将需要奈德丽那些巧妙的战术和敏锐的狩猎本能。"
+        },
+        {
+            "id": 76011,
+            "isBase": false,
+            "name": "黎明使者 奈德丽",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76011.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76011.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76011.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin11/NidaleeLoadScreen_11.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin11/NidaleeLoadscreen_11_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76011.png",
+            "chromas": [
+                {
+                    "id": 76012,
+                    "name": "黎明使者 奈德丽 阳辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76012.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76013,
+                    "name": "黎明使者 奈德丽 祥辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76013.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76014,
+                    "name": "黎明使者 奈德丽 灵辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76014.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76015,
+                    "name": "黎明使者 奈德丽 圣辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76015.png",
+                    "colors": [
+                        "#6FFDFF",
+                        "#2377FF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76016,
+                    "name": "黎明使者 奈德丽 霞辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76016.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76017,
+                    "name": "黎明使者 奈德丽 雪辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76017.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 193
+                }
+            ],
+            "skinAugments": null,
+            "description": "奈德丽既是一只星兽，又是一个行走于黎明的原初存在，掌管着自然世界的带有恢复能力的宁静。她守护着这片土地上仅存的和平之地，将光明和秩序带给她照看的凡间生物。"
+        },
+        {
+            "id": 76018,
+            "isBase": false,
+            "name": "狮子星神 奈德丽",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76018.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76018.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76018.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin18/NidaleeLoadScreen_18.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76018.png",
+            "chromas": [
+                {
+                    "id": 76019,
+                    "name": "狮子星神 奈德丽 战神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76019.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76020,
+                    "name": "狮子星神 奈德丽 光神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76020.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76021,
+                    "name": "狮子星神 奈德丽 主神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76021.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76022,
+                    "name": "狮子星神 奈德丽 猎神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76022.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76023,
+                    "name": "狮子星神 奈德丽 夜神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76023.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76024,
+                    "name": "狮子星神 奈德丽 美神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76024.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76025,
+                    "name": "狮子星神 奈德丽 冥神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76025.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76026,
+                    "name": "狮子星神 奈德丽 天神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76026.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 43
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为一名星界追踪者和凶猛的猎手，奈德丽在永恒的狩猎中穿梭于银河系，改变她的形体以隐匿在天空的流浪群星中。她的任务是寻找和照顾新生的恒星，致力于保护他们免受饥饿的暗星腐化者们的侵害。"
+        },
+        {
+            "id": 76027,
+            "isBase": false,
+            "name": "DWG 奈德丽",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76027.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76027.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76027.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin27/NidaleeLoadScreen_27.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin27/NidaleeLoadscreen_27_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76027.png",
+            "chromas": [
+                {
+                    "id": 76028,
+                    "name": "DWG 奈德丽 精锐",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76028.png",
+                    "colors": [
+                        "#050B19",
+                        "#0055FF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在季中冠军赛(2021)期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 145
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此致敬Canyon在2020全球总决赛中使用奈德丽的夺胜表现。"
+        },
+        {
+            "id": 76029,
+            "isBase": false,
+            "name": "海之歌 奈德丽",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76029.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76029.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76029.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin29/NidaleeLoadScreen_29.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76029.png",
+            "chromas": [
+                {
+                    "id": 76030,
+                    "name": "海之歌 奈德丽 迷人晚霞",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76030.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76031,
+                    "name": "海之歌 奈德丽 逐浪流沙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76031.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76032,
+                    "name": "海之歌 奈德丽 浪漫氛围",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76032.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76033,
+                    "name": "海之歌 奈德丽 清凉海风",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76033.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76034,
+                    "name": "海之歌 奈德丽 葱郁椰林",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76034.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76035,
+                    "name": "海之歌 奈德丽 幻彩夜空",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76035.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76036,
+                    "name": "海之歌 奈德丽 冰爽浪花",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76036.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76037,
+                    "name": "海之歌 奈德丽 月夜潮汐",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76037.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 159
+                }
+            ],
+            "skinAugments": null,
+            "description": "海之歌音乐节有幸请到奈德丽作为表演造型师。她的时尚指南的销量几乎与她的专辑一样多，而实际上她是永恩节目的重要部分。她是永恩歌词的第一个读者，并且有幸用自己的声音唱出这些歌词。"
+        },
+        {
+            "id": 76039,
+            "isBase": false,
+            "name": "喵大力",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76039.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76039.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76039.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin39/NidaleeLoadScreen_39.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76039.png",
+            "chromas": [
+                {
+                    "id": 76040,
+                    "name": "喵大力 萌爪红",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76040.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76041,
+                    "name": "喵大力 虎斑黄",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76041.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76042,
+                    "name": "喵大力 三加灰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76042.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76043,
+                    "name": "喵大力 对勾绿",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76043.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76044,
+                    "name": "喵大力 方块黑",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76044.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76045,
+                    "name": "喵大力 条纹紫",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76045.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76046,
+                    "name": "喵大力 爱心粉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76046.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76047,
+                    "name": "喵大力 三色白",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76047.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 98
+                }
+            ],
+            "skinAugments": null,
+            "description": "可爱的磨牙玩具还是致命的武器？在喵大力的爪下，一条“友好的鱼”(商标)可以二者兼得！"
+        },
+        {
+            "id": 76048,
+            "isBase": false,
+            "name": "灵之菊 奈德丽",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76048.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76048.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76048.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin48/NidaleeLoadScreen_48.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin48/NidaleeLoadscreen_48_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76048.png",
+            "chromas": [
+                {
+                    "id": 76049,
+                    "name": "灵之菊 奈德丽 信念之火",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76049.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76050,
+                    "name": "灵之菊 奈德丽 迎接之烛",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76050.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76051,
+                    "name": "灵之菊 奈德丽 告慰之饮",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76051.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76052,
+                    "name": "灵之菊 奈德丽 祈祷之香",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76052.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76053,
+                    "name": "灵之菊 奈德丽 送别之礼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76053.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76054,
+                    "name": "灵之菊 奈德丽 家人之爱",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76054.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76055,
+                    "name": "灵之菊 奈德丽 生命之源",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76055.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76056,
+                    "name": "灵之菊 奈德丽 智慧之物",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76056.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76057,
+                    "name": "灵之菊 奈德丽 生如夏花",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76057.png",
+                    "colors": [
+                        "#EE3B93",
+                        "#055939"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 198
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为美洲虎族群的首领，奈德丽受到邻近人类的敬畏和尊重。当她因保护家人而落入一群猎人手中时，一种共同的关爱——不仅来自她的族群，也来自她的邻居们——使奈德丽转变成了生之灵。现在，她拥有了能够变成美洲虎形态和人类形态的能力，从远处守护着她的亲属。"
+        }
+    ],
+    "passive": {
+        "name": "寻觅",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/HUD/Icons2D/Nidalee_Passive.png",
+        "abilityVideoPath": "champion-abilities/0076/ability_0076_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0076/ability_0076_P1.jpg",
+        "description": "在穿越草丛进行移动时，奈德丽的移动速度会提升10%，持续2秒，并在朝着1400码内的出现在己方视野内的敌方英雄进行移动时，移动速度加成会提升至30%。<br><br>在【Q标枪投掷】或【W丛林伏击】对敌方英雄或野怪造成伤害后，奈德丽会开始<font color='#FFF673'>捕猎</font>目标英雄，提供其<font color='#ee91d7'>真实视野</font>，持续4秒。在此期间，奈德丽获得10%移动速度加成（在她朝着<font color='#FFF673'>被捕猎</font>的目标移动时，这个加成会提升至30%）并且她的【Q推倒】和【W猛扑】会对这些目标造成强化伤害。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "标枪投掷 / 推倒",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/HUD/Icons2D/Nidalee_Q1.png",
+            "abilityVideoPath": "champion-abilities/0076/ability_0076_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0076/ability_0076_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "人类形态下，奈德丽向她的目标投掷标枪，飞行中击中目标造成伤害。美洲狮形态下，她的下一次攻击会试图对目标造成致命伤害，目标的生命值越低，造成的伤害越大。",
+            "dynamicDescription": "<keywordMajor>人类形态：</keywordMajor>奈德丽投掷她的标枪，造成<magicDamage>@HumanMinimumDamage@魔法伤害</magicDamage>，基于标枪飞行距离至多提升至<magicDamage>@HumanMaximumDamage@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                1500.0000,
+                1500.0000,
+                1500.0000,
+                1500.0000,
+                1500.0000,
+                1500.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000
+            ],
+            "cooldownCoefficients": [
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.5000,
+                "coefficient2": 0.5000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    50.0000,
+                    70.0000,
+                    90.0000,
+                    110.0000,
+                    130.0000,
+                    150.0000,
+                    170.0000
+                ],
+                "Effect2Amount": [
+                    150.0000,
+                    210.0000,
+                    270.0000,
+                    330.0000,
+                    390.0000,
+                    450.0000,
+                    510.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.4000,
+                    0.4000,
+                    0.4000,
+                    0.4000,
+                    0.4000,
+                    0.4000,
+                    0.4000
+                ],
+                "Effect6Amount": [
+                    1.2000,
+                    1.2000,
+                    1.2000,
+                    1.2000,
+                    1.2000,
+                    1.2000,
+                    1.2000
+                ],
+                "Effect7Amount": [
+                    525.0000,
+                    525.0000,
+                    525.0000,
+                    525.0000,
+                    525.0000,
+                    525.0000,
+                    525.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "丛林伏击 / 猛扑",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/HUD/Icons2D/Nidalee_W1.png",
+            "abilityVideoPath": "champion-abilities/0076/ability_0076_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0076/ability_0076_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "人类形态下， 奈德丽会对指定位置放置一个陷阱，踩中陷阱的单位的视野将会被暴露给奈德丽，并持续受到伤害。美洲狮形态下，她会猛扑向目标，落地时造成伤害。",
+            "dynamicDescription": "<keywordMajor>人类形态：</keywordMajor>奈德丽放置一个持续2分钟的隐形陷阱。当有一个敌人走到它上面时，该敌人会每秒受到<magicDamage>@DamagePerSecond@魔法伤害</magicDamage>，持续@Effect3Amount@秒。<br><br>最多可以有@MaxTraps@个陷阱同时存在。@SpellModifierDescriptionAppend@",
+            "range": [
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000
+            ],
+            "costCoefficients": [
+                30.0000,
+                35.0000,
+                40.0000,
+                45.0000,
+                50.0000,
+                55.0000
+            ],
+            "cooldownCoefficients": [
+                13.0000,
+                12.0000,
+                11.0000,
+                10.0000,
+                9.0000,
+                9.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0500,
+                "coefficient2": 0.2000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000
+                ],
+                "Effect4Amount": [
+                    14.0000,
+                    13.0000,
+                    12.0000,
+                    11.0000,
+                    10.0000,
+                    9.0000,
+                    9.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    10.0000,
+                    20.0000,
+                    30.0000,
+                    40.0000,
+                    50.0000,
+                    60.0000
+                ],
+                "Effect6Amount": [
+                    120.0000,
+                    120.0000,
+                    120.0000,
+                    120.0000,
+                    120.0000,
+                    120.0000,
+                    120.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    40.0000,
+                    80.0000,
+                    120.0000,
+                    160.0000,
+                    200.0000,
+                    240.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    -1.0000,
+                    -1.0000,
+                    -1.0000,
+                    -1.0000,
+                    -1.0000,
+                    -1.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "野性奔腾 / 挥击",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/HUD/Icons2D/Nidalee_E1.png",
+            "abilityVideoPath": "champion-abilities/0076/ability_0076_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0076/ability_0076_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "人类形态下，奈德丽引导美洲狮的灵魂以治疗友方单位，并且短暂提升他们的攻击速度。美洲狮形态下，她迅速的挥爪攻击她面前的敌人。",
+            "dynamicDescription": "<keywordMajor>人类形态：</keywordMajor>奈德丽为目标回复<healing>@TotalHealing@生命值</healing>，这个数额基于已损失生命值至多提升至<healing>@MaxHealing@</healing>，并为目标提供持续@ASDuration@秒的<attackSpeed>@BonusAS*100@%攻击速度</attackSpeed>。@SpellModifierDescriptionAppend@",
+            "range": [
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "美洲狮形态",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/HUD/Icons2D/Nidalee_R1.png",
+            "abilityVideoPath": "champion-abilities/0076/ability_0076_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0076/ability_0076_R1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "奈德丽转变成美洲狮形态，获得全新技能。",
+            "dynamicDescription": "<spellPassive>被动：</spellPassive>在<keywordMajor>人类形态</keywordMajor>下，施加<keywordMajor>捕猎</keywordMajor>效果会刷新这个技能的冷却时间。<br><br><keywordMajor>人类形态：</keywordMajor>奈德丽变形为<keywordMajor>美洲狮形态</keywordMajor>，获得近战攻击并替换她的主动技能。<br><br><keywordMajor>美洲狮形态：</keywordMajor>奈德丽变形为<keywordMajor>人类形态</keywordMajor>，获得远程攻击并替换她的主动技能。@SpellModifierDescriptionAppend@",
+            "range": [
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                3.0000,
+                3.0000,
+                3.0000,
+                3.0000,
+                3.0000,
+                3.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.7500,
+                "coefficient2": 0.4000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

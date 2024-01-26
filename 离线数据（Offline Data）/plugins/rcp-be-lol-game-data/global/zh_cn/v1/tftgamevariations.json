@@ -1,0 +1,68 @@
+[
+    {
+        "game_variation_display_name": "活跃元素：炼狱",
+        "game_variation_decorated_name": "FireElement",
+        "game_variation_description": "在每场对局开始时，会从4种元素中随机选择1种作为本场对局的元素。每种元素都有一个不同的效果。<br><br>【炼狱格】中的英雄会在战斗环节开始时拥有30%攻击速度提升。<br>奇亚娜在本场对局中是一个【炼狱】元素英雄。",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TFT/StageIcons/Type_Inferno.png"
+    },
+    {
+        "game_variation_display_name": "活跃元素：山脉",
+        "game_variation_decorated_name": "MountainElement",
+        "game_variation_description": "在每场对局开始时，会从4种元素中随机选择1种作为本场对局的元素。每种元素都有一个不同的效果。<br><br>【山脉格】中的英雄会在每个备战环节结束时永久获得30最大生命值。<br>奇亚娜在本场对局中是一个【山脉】元素英雄。",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TFT/StageIcons/Type_Mountain.png"
+    },
+    {
+        "game_variation_display_name": "活跃元素：海洋",
+        "game_variation_decorated_name": "OceanElement",
+        "game_variation_description": "在每场对局开始时，会从4种元素中随机选择1种作为本场对局的元素。每种元素都有一个不同的效果。<br><br>【海洋格】中的英雄会在每个战斗环节开始时带有额外的30法力值。<br>奇亚娜在本场对局中是一个【海洋】元素英雄。",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TFT/StageIcons/Type_Ocean.png"
+    },
+    {
+        "game_variation_display_name": "活跃元素：云霄",
+        "game_variation_decorated_name": "WindElement",
+        "game_variation_description": "在每场对局开始时，会从4种元素中随机选择1种作为本场对局的元素。每种元素都有一个不同的效果。<br><br>【云霄格】中的英雄会获得15%闪避几率以躲闪敌人的攻击。<br>奇亚娜在本场对局中是一个【云霄】元素英雄。",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TFT/StageIcons/Type_Wind.png"
+    },
+    {
+        "game_variation_display_name": "大大英雄星系",
+        "game_variation_decorated_name": "TFT3_GameVariation_BigLittleLegends",
+        "game_variation_description": "小小英雄体型更大并且拥有+25初始生命值。",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TFT/StageIcons/Galaxy_Small_BigLegends.png"
+    },
+    {
+        "game_variation_display_name": "紫晶星系",
+        "game_variation_decorated_name": "TFT3_GameVariation_FourCostFirstCarousel",
+        "game_variation_description": "首次选秀包含四费单位。",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TFT/StageIcons/Galaxy_Small_LilacNebula.png"
+    },
+    {
+        "game_variation_display_name": "化整为零星系",
+        "game_variation_decorated_name": "TFT3_GameVariation_ItemsBreak",
+        "game_variation_description": "出售英雄时也会将其身上的成装拆为基础装备。",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TFT/StageIcons/Galaxy_Small_SalvageWorld.png"
+    },
+    {
+        "game_variation_display_name": "小小小小英雄星系",
+        "game_variation_decorated_name": "TFT3_GameVariation_LittlerLegends",
+        "game_variation_description": "小小英雄们体型更小、速度更快，但初始生命值只有85。",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TFT/StageIcons/Galaxy_Small_LittleLittleLegends.png"
+    },
+    {
+        "game_variation_display_name": "常规对局",
+        "game_variation_decorated_name": "TFT3_GameVariation_None",
+        "game_variation_description": "无特殊规则",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TFT/StageIcons/Type_Normal.png"
+    },
+    {
+        "game_variation_display_name": "压缩饼干星系",
+        "game_variation_decorated_name": "TFT3_GameVariation_SmallerBoards",
+        "game_variation_description": "每个棋盘相距最近和相距最远的一排都是不可通行的。<br><br><rules>不可通行的格子上无法放置任何单位(在备战环节中)，也无法被任何单位进入(在战斗环节中)</rules>",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TFT/StageIcons/Galaxy_Small_DwarfPlanet.png"
+    },
+    {
+        "game_variation_display_name": "装备限持星系",
+        "game_variation_decorated_name": "TFT3_GameVariation_TwoItemMax",
+        "game_variation_description": "英雄们只能携带2件装备。",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TFT/StageIcons/Galaxy_Small_BinaryStar.png"
+    }
+]

@@ -1,0 +1,1853 @@
+{
+    "id": 53,
+    "name": "Blitzcrank",
+    "alias": "Blitzcrank",
+    "title": "the Great Steam Golem",
+    "shortBio": "Blitzcrank is an enormous, near-indestructible automaton from Zaun, originally built to dispose of hazardous waste. However, he found this primary purpose too restricting, and modified his own form to better serve the fragile people of the Sump. Blitzcrank selflessly uses his strength and durability to protect others, extending a helpful metal fist or burst of energy to subdue any troublemakers.",
+    "tacticalInfo": {
+        "style": 9,
+        "difficulty": 1,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 1,
+        "durability": 2,
+        "crowdControl": 3,
+        "mobility": 1,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/53.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/53.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/53.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/53.ogg",
+    "roles": [
+        "tank",
+        "fighter"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 53000,
+            "isBase": true,
+            "name": "Blitzcrank",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Base/BlitzcrankLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53000.png",
+            "chromas": [
+                {
+                    "id": 53008,
+                    "name": "Blitzcrank Steel",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53008.png",
+                    "colors": [
+                        "#DFC764",
+                        "#AD3333"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 53009,
+                    "name": "Blitzcrank Steel",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53009.png",
+                    "colors": [
+                        "#DFC764",
+                        "#446188"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 53010,
+                    "name": "Blitzcrank Steel",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53010.png",
+                    "colors": [
+                        "#9C9C9C",
+                        "#585858"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 53001,
+            "isBase": false,
+            "name": "Rusty Blitzcrank",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin01/BlitzcrankLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 53002,
+            "isBase": false,
+            "name": "Goalkeeper Blitzcrank",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin02/BlitzcrankLoadScreen_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin02/BlitzcrankLoadScreen_2_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 31
+                }
+            ],
+            "skinAugments": null,
+            "description": "One of the all time greatest keepers for Chaos FC, Blitzcrank has finally taken their place in the Sports Hall of Fame. Their image rests proudly with the likes of Volleyball Dragon, Women's Tennis Scuttle Crab, and Badminton Baron Nashor."
+        },
+        {
+            "id": 53003,
+            "isBase": false,
+            "name": "Boom Boom Blitzcrank",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin03/BlitzcrankLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 100
+                }
+            ],
+            "skinAugments": null,
+            "description": "Their fists are named “boom” and “boom,” proving that robots are a perfect facsimile of human life."
+        },
+        {
+            "id": 53004,
+            "isBase": false,
+            "name": "Piltover Customs Blitzcrank",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin04/BlitzcrankLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 42
+                }
+            ],
+            "skinAugments": null,
+            "description": "Your robot's legs were busted, so we replaced them with a vintage '32 hot rod, and eight-cylinder external mounted coal engine. Plus we painted flames on his fists. The flames cost extra."
+        },
+        {
+            "id": 53005,
+            "isBase": false,
+            "name": "Definitely Not Blitzcrank",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin05/BlitzcrankLoadScreen_5.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin05/BlitzcrankLoadScreen_5_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 101
+                }
+            ],
+            "skinAugments": null,
+            "description": "I, not a robot."
+        },
+        {
+            "id": 53006,
+            "isBase": false,
+            "name": "iBlitzcrank",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin06/BlitzcrankLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 17
+                }
+            ],
+            "skinAugments": null,
+            "description": "Built as household assistance automata, thousands of iBlitzcranks were corrupted by Program during a routine software update. With their human owners oblivious to this fact, they continue to help, waiting patiently for the time their new command lines are initiated."
+        },
+        {
+            "id": 53007,
+            "isBase": false,
+            "name": "Riot Blitzcrank",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin07/BlitzcrankLoadScreen_7.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 37
+                }
+            ],
+            "skinAugments": null,
+            "description": "A Riot Games skin obtained by either meeting a Rioter or attending an official Riot event in 2013."
+        },
+        {
+            "id": 53011,
+            "isBase": false,
+            "name": "Battle Boss Blitzcrank",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53011.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53011.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53011.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin11/BlitzcrankLoadScreen_11.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53011.png",
+            "chromas": [
+                {
+                    "id": 53012,
+                    "name": "Battle Boss Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53012.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 53013,
+                    "name": "Battle Boss Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53013.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 53014,
+                    "name": "Battle Boss Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53014.png",
+                    "colors": [
+                        "#DF9117",
+                        "#E99117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 53015,
+                    "name": "Battle Boss Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53015.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 53016,
+                    "name": "Battle Boss Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53016.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 53017,
+                    "name": "Battle Boss Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53017.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 53018,
+                    "name": "Battle Boss Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53018.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 53019,
+                    "name": "Battle Boss Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53019.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 11
+                }
+            ],
+            "skinAugments": null,
+            "description": "A boss hailing from a popular science fiction shooter, Blitzcrank is well known in the gaming community for cheap mechanics, powerful attacks, and a massive health pool. Veigar fittingly made them the gatekeeper of his personal fortress, because Veigar hates fun."
+        },
+        {
+            "id": 53020,
+            "isBase": false,
+            "name": "Lancer Rogue Blitzcrank",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53020.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53020.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53020.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin20/BlitzcrankLoadScreen_20.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 69
+                }
+            ],
+            "skinAugments": null,
+            "description": "An ancient sentinel corrupted by mysterious black lightning, Rogue Lancer Blitzcrank mercilessly crushes provincial armies, destroying entire castles with kings still on their thrones. What caused its rampage is still uncertain, but for now it seems to be following its dread protocol to the letter."
+        },
+        {
+            "id": 53021,
+            "isBase": false,
+            "name": "Lancer Paragon Blitzcrank",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53021.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53021.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53021.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin21/BlitzcrankLoadScreen_21.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 69
+                }
+            ],
+            "skinAugments": null,
+            "description": "A silent protector of the masses, the artificial paladin Blitzcrank was aroused from the earth by a bolt of mysterious white lighting. It now serves all honorable subjects, defending with true and calculated precision."
+        },
+        {
+            "id": 53022,
+            "isBase": false,
+            "name": "Witch's Brew Blitzcrank",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53022.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53022.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53022.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin22/BlitzcrankLoadScreen_22.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin22/BlitzcrankLoadscreen_22_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53022.png",
+            "chromas": [
+                {
+                    "id": 53023,
+                    "name": "Witch's Brew Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53023.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2019."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 53024,
+                    "name": "Witch's Brew Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53024.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53025,
+                    "name": "Witch's Brew Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53025.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53026,
+                    "name": "Witch's Brew Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53026.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53027,
+                    "name": "Witch's Brew Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53027.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53028,
+                    "name": "Witch's Brew Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53028.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 88
+                }
+            ],
+            "skinAugments": null,
+            "description": "Once nothing but a simple cauldron, Blitzcrank was enchanted, brought to life in order to assist Miss Fortune in her beguiling bewitchments."
+        },
+        {
+            "id": 53029,
+            "isBase": false,
+            "name": "Space Groove Blitz & Crank",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53029.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53029.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53029.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin29/BlitzcrankLoadScreen_29.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin29/BlitzcrankLoadscreen_29_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53029.png",
+            "chromas": [
+                {
+                    "id": 53030,
+                    "name": "Space Groove Blitz & Crank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53030.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2021."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53031,
+                    "name": "Space Groove Blitz & Crank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53031.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53032,
+                    "name": "Space Groove Blitz & Crank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53032.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53033,
+                    "name": "Space Groove Blitz & Crank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53033.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53034,
+                    "name": "Space Groove Blitz & Crank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53034.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53035,
+                    "name": "Space Groove Blitz & Crank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53035.png",
+                    "colors": [
+                        "#9DFFEF",
+                        "#AA55FF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2021 Space Groove event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 144
+                }
+            ],
+            "skinAugments": null,
+            "description": "Blitz and Crank are Cat Planet's fiercest warriors, and work together seamlessly (mostly) to pilot their mech, Blitzcrank. While Crank believes that he can overcome his lack of rhythm with the help of his exuberant copilot, Blitz is… well… he's busy dancing to his own beat. Together they plan to take over Dog Planet and claim its sunbeams for themselves."
+        },
+        {
+            "id": 53036,
+            "isBase": false,
+            "name": "Victorious Blitzcrank",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53036.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53036.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53036.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin36/BlitzcrankLoadScreen_36.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53036.png",
+            "chromas": [
+                {
+                    "id": 53037,
+                    "name": "Victorious Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53037.png",
+                    "colors": [
+                        "#26854C",
+                        "#26854C"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This Chroma was awarded to players who reached Platinum rank in Solo/Duo ranked queue"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53038,
+                    "name": "Victorious Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53038.png",
+                    "colors": [
+                        "#65337F",
+                        "#65337F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This Chroma was awarded to players who reached Diamond rank in Solo/Duo ranked queue"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 53039,
+                    "name": "Victorious Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53039.png",
+                    "colors": [
+                        "#9D228D",
+                        "#9D228D"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This Chroma was awarded to players who reached Master rank in Solo/Duo ranked queue"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 3
+                        }
+                    ]
+                },
+                {
+                    "id": 53040,
+                    "name": "Victorious Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53040.png",
+                    "colors": [
+                        "#B31316",
+                        "#B31316"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This Chroma was awarded to players who reached Grandmaster rank in Solo/Duo ranked queue"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 4
+                        }
+                    ]
+                },
+                {
+                    "id": 53041,
+                    "name": "Victorious Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53041.png",
+                    "colors": [
+                        "#1D62C8",
+                        "#1D62C8"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This Chroma was awarded to players who reached Challenger rank in Solo/Duo ranked queue"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 5
+                        }
+                    ]
+                },
+                {
+                    "id": 53042,
+                    "name": "Victorious Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53042.png",
+                    "colors": [
+                        "#26854C",
+                        "#7BDDA9"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This Chroma was awarded to players who reached Platinum rank in Flex ranked queue"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53043,
+                    "name": "Victorious Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53043.png",
+                    "colors": [
+                        "#65337F",
+                        "#6F587F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This Chroma was awarded to players who reached Diamond rank in Flex ranked queue"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 53044,
+                    "name": "Victorious Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53044.png",
+                    "colors": [
+                        "#9D228D",
+                        "#9D5B92"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This Chroma was awarded to players who reached Master rank in Flex ranked queue"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 3
+                        }
+                    ]
+                },
+                {
+                    "id": 53045,
+                    "name": "Victorious Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53045.png",
+                    "colors": [
+                        "#B31316",
+                        "#B35556"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This Chroma was awarded to players who reached Grandmaster rank in Flex ranked queue"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 4
+                        }
+                    ]
+                },
+                {
+                    "id": 53046,
+                    "name": "Victorious Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53046.png",
+                    "colors": [
+                        "#1D62C8",
+                        "#638BC8"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This Chroma was awarded to players who reached Challenger rank in Flex ranked queue"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 5
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 7
+                }
+            ],
+            "skinAugments": null,
+            "description": "Victorious Blitzcrank was awarded to players who reached Gold or higher in the 2021 season. "
+        },
+        {
+            "id": 53047,
+            "isBase": false,
+            "name": "Zenith Games Blitzcrank",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53047.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53047.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53047.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin47/BlitzcrankLoadScreen_47.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53047.png",
+            "chromas": [
+                {
+                    "id": 53048,
+                    "name": "Zenith Games Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53048.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53049,
+                    "name": "Zenith Games Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53049.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53050,
+                    "name": "Zenith Games Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53050.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53051,
+                    "name": "Zenith Games Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53051.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53052,
+                    "name": "Zenith Games Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53052.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53053,
+                    "name": "Zenith Games Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53053.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53054,
+                    "name": "Zenith Games Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53054.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53055,
+                    "name": "Zenith Games Blitzcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53055.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 165
+                }
+            ],
+            "skinAugments": null,
+            "description": "Originally a bomb defusal robot, Blitzcrank was made a referee because of their ability to make split-second adjustments to stay ahead of the prodigious athletes. Only later did everyone realize that the bot's background made them unusually effective in defusing the intense... disagreements that often arise."
+        },
+        {
+            "id": 53056,
+            "isBase": false,
+            "name": "Beezcrank",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53056.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53056.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53056.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin56/BlitzcrankLoadScreen_56.PIE_C_13_23.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53056.png",
+            "chromas": [
+                {
+                    "id": 53057,
+                    "name": "Beezcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53057.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53058,
+                    "name": "Beezcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53058.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53059,
+                    "name": "Beezcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53059.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53060,
+                    "name": "Beezcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53060.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53061,
+                    "name": "Beezcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53061.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53062,
+                    "name": "Beezcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53062.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53063,
+                    "name": "Beezcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53063.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53064,
+                    "name": "Beezcrank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53064.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 143
+                }
+            ],
+            "skinAugments": null,
+            "description": "Beezcrank has a reputation for getting his bee-infantry into sticky situations. Probably because of that giant honey-comb mech-arm."
+        }
+    ],
+    "passive": {
+        "name": "Mana Barrier",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/HUD/Icons2D/BlitzcrankP.png",
+        "abilityVideoPath": "champion-abilities/0053/ability_0053_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0053/ability_0053_P1.jpg",
+        "description": "Blitzcrank gains a shield based on their mana when dropping to low health."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Rocket Grab",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/HUD/Icons2D/BlitzcrankQ.png",
+            "abilityVideoPath": "champion-abilities/0053/ability_0053_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0053/ability_0053_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Blitzcrank fires their right hand to grab an opponent on its path, dealing damage and dragging it back to them.",
+            "dynamicDescription": "Blitzcrank fires their right hand, <status>Pulling</status> the first enemy hit towards them and dealing <magicDamage>@TotalDamage@ magic damage</magicDamage>.@SpellModifierDescriptionAppend@",
+            "range": [
+                1079.0000,
+                1079.0000,
+                1079.0000,
+                1079.0000,
+                1079.0000,
+                1079.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                20.0000,
+                19.0000,
+                18.0000,
+                17.0000,
+                16.0000,
+                16.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    40.0000,
+                    90.0000,
+                    140.0000,
+                    190.0000,
+                    240.0000,
+                    290.0000,
+                    340.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Overdrive",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/HUD/Icons2D/BlitzcrankW.png",
+            "abilityVideoPath": "champion-abilities/0053/ability_0053_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0053/ability_0053_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Blitzcrank super charges themself to get dramatically increased Move and Attack Speed. They are temporarily slowed after the effect ends.",
+            "dynamicDescription": "Blitzcrank supercharges themself, gaining <speed>@MoveSpeedMod*100@% decaying Move Speed</speed> and <attackSpeed>@AttackSpeedMod*100@% Attack Speed</attackSpeed> for @Duration@ seconds.<br><br>Afterwards, Blitzcrank is <status>Slowed</status> by @MoveSpeedModReduction*100@% for @SlowDuration@ seconds.@SpellModifierDescriptionAppend@",
+            "range": [
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000
+            ],
+            "costCoefficients": [
+                75.0000,
+                75.0000,
+                75.0000,
+                75.0000,
+                75.0000,
+                75.0000
+            ],
+            "cooldownCoefficients": [
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Power Fist",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/HUD/Icons2D/BlitzcrankE.png",
+            "abilityVideoPath": "champion-abilities/0053/ability_0053_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0053/ability_0053_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Blitzcrank charges up their fist to make the next attack deal double damage and pop their target up in the air.",
+            "dynamicDescription": "Blitzcrank charges up their fist, causing their next Attack to <status>Knock Up</status> for @CCDuration@ second(s) and deal <physicalDamage>@TotalDamage@ physical damage</physicalDamage>.@SpellModifierDescriptionAppend@",
+            "range": [
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000
+            ],
+            "costCoefficients": [
+                25.0000,
+                25.0000,
+                25.0000,
+                25.0000,
+                25.0000,
+                25.0000
+            ],
+            "cooldownCoefficients": [
+                9.0000,
+                8.0000,
+                7.0000,
+                6.0000,
+                5.0000,
+                5.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.8000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Static Field",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/HUD/Icons2D/BlitzcrankR.png",
+            "abilityVideoPath": "champion-abilities/0053/ability_0053_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0053/ability_0053_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Enemies attacked by Blitzcrank are marked and take lightning damage after 1 second. Additionally, Blitzcrank can activate this ability to remove nearby enemies' shields, damage them, and silence them briefly.",
+            "dynamicDescription": "<spellPassive>Passive: </spellPassive>While this ability is available, lightning charges Blitzcrank's fists, marking those  Attacked. After 1 second, they are shocked for <magicDamage>@PassiveDamage@ magic damage</magicDamage>.<br><br><spellActive>Active: </spellActive>Blitzcrank overcharges, dealing <magicDamage>@ActiveDamage@ magic damage</magicDamage> and <status>Silencing</status> nearby enemies for @SilenceDuration@ seconds. Their shields are also destroyed.@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                150.0000,
+                150.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                60.0000,
+                40.0000,
+                20.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

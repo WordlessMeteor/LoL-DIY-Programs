@@ -1,0 +1,2038 @@
+{
+    "id": 81,
+    "name": "探险家",
+    "alias": "Ezreal",
+    "title": "伊泽瑞尔",
+    "shortBio": "永远神采奕奕的冒险家伊泽瑞尔，拥有一种自己也不清楚因何而来的魔法天赋。他搜刮失落已久的古墓，触碰古老的诅咒，还总是举重若轻地挑战常人不可能完成的极限。他的勇气和壮举难以计数，总能随机应对一路上的各种状况——虽然一定程度上是因为他的小聪明，但更主要的是依赖于神秘的恕瑞玛护手——这件装备能在他的操控下射出破坏性的奥术爆弹。有一件事可以肯定——只要伊泽瑞尔出现，那么麻烦一定会接踵而至，虽迟不远，随时随地。",
+    "tacticalInfo": {
+        "style": 1,
+        "difficulty": 1,
+        "damageType": "kMixed"
+    },
+    "playstyleInfo": {
+        "damage": 1,
+        "durability": 1,
+        "crowdControl": 1,
+        "mobility": 1,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/81.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/81.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/81.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/81.ogg",
+    "roles": [
+        "marksman",
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 81000,
+            "isBase": true,
+            "name": "探险家",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Base/EzrealLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 81001,
+            "isBase": false,
+            "name": "冒险精神 伊泽瑞尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin01/EzrealLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 97
+                }
+            ],
+            "skinAugments": null,
+            "description": "伊泽瑞尔是一名充满冒险精神的精灵，来自边远的森林王国。他喜欢把自己当作一个名为贾洛·轻羽的“英俊的游侠骑士”。极少有人相信他自称的骑士身份，但这些身份在他的每次悲惨的失败冒险之间起到了足够体面的消遣作用。"
+        },
+        {
+            "id": 81002,
+            "isBase": false,
+            "name": "足球先生 伊泽瑞尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin02/EzrealLoadScreen_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin02/EzrealLoadScreen_2_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 31
+                }
+            ],
+            "skinAugments": null,
+            "description": "年轻且闪耀的奇才，伊泽瑞尔是秩联俱乐部中最受欢迎的球员。至少说他曾经是，直到一系列与传送相关的犯规让他在监督委员会中陷入麻烦。"
+        },
+        {
+            "id": 81003,
+            "isBase": false,
+            "name": "冰川勇者 伊泽瑞尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin03/EzrealLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 128
+                }
+            ],
+            "skinAugments": null,
+            "description": "伊泽瑞尔偶尔会发现他身处弗雷尔卓德，搜寻着这样那样的远古宝物。但勇敢面对零度以下的气温、可怕的冰雪怪物、以及愤怒的弗雷尔卓德各部族无疑是一个离谱的要求，即使对于他来说——那就是他要乔装打扮的原因。他几乎成了一个完全不同的人！"
+        },
+        {
+            "id": 81004,
+            "isBase": false,
+            "name": "失落的世界 伊泽瑞尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin04/EzrealLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": "伊泽瑞尔近乎自杀般地痴迷于勇闯陵墓、废墟、禁入的寺庙、以及废弃的城市，使他得到了相当多的无价圣物。大多数圣物都被卖出，用以支付探险相关的医疗账单，但总有一天……"
+        },
+        {
+            "id": 81005,
+            "isBase": false,
+            "name": "未来战士 伊泽瑞尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin05/EzrealLoadScreen_5.jpg",
+            "skinType": "Ultimate",
+            "rarity": "kUltimate",
+            "isLegacy": false,
+            "splashVideoPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin05/AnimatedSplash/Ezreal_Skin5_centered.webm",
+            "collectionSplashVideoPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin05/AnimatedSplash/Ezreal_Skin5_uncentered.webm",
+            "featuresText": "<ul><li>- 全新的技能特效和动画效果</li><li>- 自成长型作战服（共4种形态）</li><li>- 未来战士及人工智能音效</li><li>- 造成夺命一击时的专属特效</li><li>- 召唤师图标</li><li>- 召唤师生涯旗帜</li></ul>",
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Ultimate",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/44.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/44.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 9,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/9_large.png",
+            "skinLines": [
+                {
+                    "id": 36
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为可以随时逝去的逃亡者，时间跳跃者和非凡的探险家，伊泽瑞尔在多个时空中来回穿梭搜寻有趣的科技。他的行为已经造成了多起时空悖论，目前正在被反乌托邦铭记者组织所通缉。"
+        },
+        {
+            "id": 81006,
+            "isBase": false,
+            "name": "暗杀星 伊泽瑞尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin06/EzrealLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 2
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此致敬BeBe在2012全球总决赛中使用伊泽瑞尔的夺胜表现。"
+        },
+        {
+            "id": 81007,
+            "isBase": false,
+            "name": "光执事 伊泽瑞尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin07/EzrealLoadScreen_7.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81007.png",
+            "chromas": [
+                {
+                    "id": 81010,
+                    "name": "名侦探 伊泽瑞尔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81010.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 81011,
+                    "name": "怪盗 伊泽瑞尔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81011.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 81012,
+                    "name": "鬼才漫画家 伊泽瑞尔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81012.png",
+                    "colors": [
+                        "#DED6B0",
+                        "#DED6B0"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 81013,
+                    "name": "皇家特工 伊泽瑞尔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81013.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 81014,
+                    "name": "学生会长 伊泽瑞尔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81014.png",
+                    "colors": [
+                        "#5DF1FF",
+                        "#5DF1FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 81015,
+                    "name": "夜王 伊泽瑞尔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81015.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 81016,
+                    "name": "天团 伊泽瑞尔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81016.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 81017,
+                    "name": "搜查一课 伊泽瑞尔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81017.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 23
+                }
+            ],
+            "skinAugments": null,
+            "description": "定制西服，合身背心，以及一枚优雅的手套，这让人们能够轻易分辨伊泽瑞尔与普罗大众的区别。他看起来光鲜亮丽，而其他人则……没有。"
+        },
+        {
+            "id": 81008,
+            "isBase": false,
+            "name": "黑桃皇牌 伊泽瑞尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin08/EzrealLoadScreen_8.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 41
+                }
+            ],
+            "skinAugments": null,
+            "description": "皇牌是第一，步伐迅又激，<br>兼具天赋与活力，<br>高注场中炫牌技，<br>皆因万事已备齐。"
+        },
+        {
+            "id": 81009,
+            "isBase": false,
+            "name": "电玩勇者 伊泽瑞尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin09/EzrealLoadscreen_9.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 10
+                }
+            ],
+            "skinAugments": null,
+            "description": "一名高水平的游戏玩家被维迦传送到了街机世界，伊泽瑞尔使用自己的特制手柄，以45秒的成绩成为全世界超级水晶地下城的通关记录保持者。维迦这次真的大错特错了。"
+        },
+        {
+            "id": 81018,
+            "isBase": false,
+            "name": "星之守护者 伊泽瑞尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81018.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81018.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81018.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin18/EzrealLoadScreen_18.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin18/EzrealLoadScreen_18_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "6 Year Celebration",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/42.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/42.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 20
+                }
+            ],
+            "skinAugments": null,
+            "description": "带着对宇宙的无尽好奇，伊泽瑞尔是天生的探险家，成为星之守护者以后他对探索未知的胃口更大了。虽然他经常离队闲逛，但总是能在最需要的时候回来，而他的队伍尤其现在最需要他，因为某个来自另一支队伍的粉色头发星之守护者吸引了他的注意……"
+        },
+        {
+            "id": 81019,
+            "isBase": false,
+            "name": "SSG 伊泽瑞尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81019.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81019.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81019.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin19/EzrealLoadScreen_19.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin19/EzrealLoadScreen_19_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 75
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此致敬Haru在2017全球总决赛中使用伊泽瑞尔的夺胜表现。 "
+        },
+        {
+            "id": 81020,
+            "isBase": false,
+            "name": "睡衣守护者 伊泽瑞尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81020.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81020.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81020.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin20/EzrealLoadScreen_20.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin18/EzrealLoadScreen_18_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 20
+                }
+            ],
+            "skinAugments": null,
+            "description": "始源之星已经给伊泽瑞尔加了很多重担。责任。命运的重量。耀眼的制服（他已经习惯它了）。“去参加一场睡衣派对”之前也绝对不在预期的星界重任清单上。他倒不介意，真的……只要她们不是真的要给他编辫子。"
+        },
+        {
+            "id": 81021,
+            "isBase": false,
+            "name": "战斗学院 伊泽瑞尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81021.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81021.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81021.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin21/EzrealLoadScreen_21.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin21/EzrealLoadscreen_21_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81021.png",
+            "chromas": [
+                {
+                    "id": 81032,
+                    "name": "战斗学院 伊泽瑞尔 白金学长",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81032.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 4
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 113
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为一个起先被认为毫无任何超人类能力的年轻孤儿，伊泽瑞尔曾经在他中学毕业时听任自己去过平凡的一生。但与一次致命威胁的遭遇，使他沉睡的潜能得以觉醒，并且现在，他已成为了著名的杜朗德尔神之武器学院的一年级学生，并在那里加入了杂乱无章的战斗俱乐部。"
+        },
+        {
+            "id": 81022,
+            "isBase": false,
+            "name": "灵能特工 伊泽瑞尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81022.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81022.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81022.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin22/EzrealLoadScreen_22.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin22/EzrealLoadscreen_22_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 133
+                }
+            ],
+            "skinAugments": null,
+            "description": "伊泽瑞尔是一位年轻的新秀和精英灵能特工组织的最新成员，他的原生灵能技能与他极度膨胀的自我极其匹配。他已经成功地惹恼了他的团队的其他成员，以至于他们直接给他指派了一些困难的目标，并希望他赔上性命。"
+        },
+        {
+            "id": 81023,
+            "isBase": false,
+            "name": "至臻 灵能特工 伊泽瑞尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81023.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81023.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81023.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin23/EzrealLoadscreen_23.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin23/EzrealLoadscreen_23_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 133
+                }
+            ],
+            "skinAugments": null,
+            "description": "伊泽瑞尔对灵能军事战斗的专精已将他带到了新的高度，吸引了他在最高指挥部中的上级的注意。他稍微冷静了一些，并从他的队友那里获得了一些尊重……但还不够。他的冷静永远都不够。"
+        },
+        {
+            "id": 81025,
+            "isBase": false,
+            "name": "青花瓷 伊泽瑞尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81025.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81025.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81025.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin25/EzrealLoadScreen_25.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin25/EzrealLoadscreen_25_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81025.png",
+            "chromas": [
+                {
+                    "id": 81026,
+                    "name": "青花瓷 伊泽瑞尔 牡丹",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81026.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81027,
+                    "name": "青花瓷 伊泽瑞尔 含苞",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81027.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81028,
+                    "name": "青花瓷 伊泽瑞尔 天青",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81028.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81029,
+                    "name": "青花瓷 伊泽瑞尔 芭蕉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81029.png",
+                    "colors": [
+                        "#FF9D13",
+                        "#B9FFC1"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在春节(2022)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81030,
+                    "name": "青花瓷 伊泽瑞尔 月色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81030.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81031,
+                    "name": "青花瓷 伊泽瑞尔 檀香",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81031.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 154
+                }
+            ],
+            "skinAugments": null,
+            "description": "伊泽瑞尔在大学档案馆做研究时不小心释放了一个古老的邪恶女巫，当拉克丝和虎生肖圣物之灵出手救他时，伊泽瑞尔堪堪逃脱了死亡。虽然他新到魔法世界，但伊泽瑞尔已经加入了生肖神卫——决心帮助解决他（无意中）造成的问题。"
+        },
+        {
+            "id": 81033,
+            "isBase": false,
+            "name": "花仙贵族 伊泽瑞尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81033.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81033.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81033.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin33/EzrealLoadScreen_33.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin33/EzrealLoadscreen_33_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81033.png",
+            "chromas": [
+                {
+                    "id": 81034,
+                    "name": "花仙贵族 伊泽瑞尔 红漪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81034.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81035,
+                    "name": "花仙贵族 伊泽瑞尔 荧光裳",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81035.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81036,
+                    "name": "花仙贵族 伊泽瑞尔 曙凤",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81036.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81037,
+                    "name": "花仙贵族 伊泽瑞尔 琉璃翠",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81037.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81038,
+                    "name": "花仙贵族 伊泽瑞尔 玫瑰水晶眼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81038.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81039,
+                    "name": "花仙贵族 伊泽瑞尔 蓝闪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81039.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81040,
+                    "name": "花仙贵族 伊泽瑞尔 翠蓝",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81040.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81041,
+                    "name": "花仙贵族 伊泽瑞尔 樟青",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81041.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81042,
+                    "name": "花仙贵族 伊泽瑞尔 迷人幻翼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81042.png",
+                    "colors": [
+                        "#866EFF",
+                        "#8AE1E8"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在花仙子(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 191
+                }
+            ],
+            "skinAugments": null,
+            "description": "虽然伊泽瑞尔是夏之庭的一名领主，但他更愿意研究古代魔法史，而不是忍受所有的尔虞我诈。然而，当他的研究揭示出关于花仙女王继承顺序的一些反常事情时，伊泽瑞尔发现有人可能出于自己的目的将卡尔玛置于王座之上......"
+        },
+        {
+            "id": 81043,
+            "isBase": false,
+            "name": "心之钢 伊泽瑞尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81043.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81043.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81043.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin43/EzrealLoadScreen_43.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin43/EzrealLoadscreen_43_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81043.png",
+            "chromas": [
+                {
+                    "id": 81045,
+                    "name": "心之钢 伊泽瑞尔 锐意曲风",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81045.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81046,
+                    "name": "心之钢 伊泽瑞尔 天纵才华",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81046.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81047,
+                    "name": "心之钢 伊泽瑞尔 超凡信心",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81047.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81048,
+                    "name": "心之钢 伊泽瑞尔 坚守决意",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81048.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81049,
+                    "name": "心之钢 伊泽瑞尔 华丽韵律",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81049.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81050,
+                    "name": "心之钢 伊泽瑞尔 本真风范",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81050.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81051,
+                    "name": "心之钢 伊泽瑞尔 典雅品味",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81051.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81052,
+                    "name": "心之钢 伊泽瑞尔 金声玉振",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81052.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81053,
+                    "name": "心之钢 伊泽瑞尔 摇滚明星",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81053.png",
+                    "colors": [
+                        "#CDE9EF",
+                        "#E9628F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 199
+                }
+            ],
+            "skinAugments": null,
+            "description": "一首精心制作的神曲让伊泽瑞尔成为万众瞩目的焦点，但在这张专辑遭到批评时，他又再次过气，于是伊泽瑞尔决定是时候收回一些创作控制权了。现在，伊泽瑞尔离开了他的旧厂牌，并将自己的明星影响力借给了心之钢，找到了一些准备与他一起复出翻红的音乐家和朋友。"
+        },
+        {
+            "id": 81044,
+            "isBase": false,
+            "name": "天龙之子 伊泽瑞尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81044.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81044.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81044.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin44/EzrealLoadScreen_44.PIE_C_14_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin44/EzrealLoadScreen_44_LE.PIE_C_14_2.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81044.png",
+            "chromas": [
+                {
+                    "id": 81055,
+                    "name": "天龙之子 伊泽瑞尔 龙马精神",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81055.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 81056,
+                    "name": "天龙之子 伊泽瑞尔 祥龙献瑞",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81056.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81057,
+                    "name": "天龙之子 伊泽瑞尔 龙飞凤翔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81057.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81058,
+                    "name": "天龙之子 伊泽瑞尔 蛟龙得水",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81058.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81059,
+                    "name": "天龙之子 伊泽瑞尔 矫若惊龙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81059.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81060,
+                    "name": "天龙之子 伊泽瑞尔 龙行虎步",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81060.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81061,
+                    "name": "天龙之子 伊泽瑞尔 龙行天下",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81061.png",
+                    "colors": [
+                        "#ECEAD3",
+                        "#DC7515"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 81062,
+                    "name": "天龙之子 伊泽瑞尔 龙凤呈祥",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81062.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81063,
+                    "name": "天龙之子 伊泽瑞尔 赫赫龙威",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81063.png",
+                    "colors": [
+                        "#DFA6DF",
+                        "#E0D7D7"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在天龙之子(2024)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 81064,
+                    "name": "天龙之子 伊泽瑞尔 云起龙骧",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81064.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Year of Loong 2024",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/83.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/83.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 201
+                }
+            ],
+            "skinAugments": null,
+            "description": "无论哪里出了状况，整个王国的龙都知道会听到伊泽瑞尔的淘气笑声。他的玩笑虽然无害，但不要让这个开心果欺骗了你：他是一位精明的皇家斥候，与卡莎并肩作战，而后者已经在他层出不穷的恶作剧之中勇敢地经历了许多次冒险。要穿得像个人类去参加派对？听着就像是他所憧憬的美好时光。"
+        },
+        {
+            "id": 81054,
+            "isBase": false,
+            "name": "至臻 天龙之子 伊泽瑞尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81054.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81054.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81054.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin54/EzrealLoadScreen_54.PIE_C_14_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin54/EzrealLoadScreen_54_LE.PIE_C_14_2.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 201
+                }
+            ],
+            "skinAugments": null,
+            "description": "伊泽瑞尔的镀金盛会晚礼服非常适合皇室成员。这位时尚引领者戴着手工制作的鳞片和水晶犄角，带着使命来盛会：让迎接新年的不仅是一声巨响，还有一声巨吼。"
+        }
+    ],
+    "passive": {
+        "name": "咒能高涨",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/HUD/Icons2D/Ezreal_Passive.png",
+        "abilityVideoPath": "champion-abilities/0081/ability_0081_P1.webm",
+        "abilityVideoImagePath": "",
+        "description": "伊泽瑞尔的任何技能在击中目标后，都会提升他的攻击速度（最多可叠加5次）。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "秘术射击",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/HUD/Icons2D/Ezreal_Q.png",
+            "abilityVideoPath": "champion-abilities/0081/ability_0081_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0081/ability_0081_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "伊泽瑞尔发射一枚能量弹，如果它击中一个敌方单位，那么它将略微减少伊泽瑞尔所有技能的冷却时间。",
+            "dynamicDescription": "伊泽瑞尔发射一支能量箭，对命中的第一个敌人造成<physicalDamage>@Damage@物理伤害</physicalDamage>并使他各个技能的冷却时间缩短@CDRefund@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000
+            ],
+            "costCoefficients": [
+                28.0000,
+                31.0000,
+                34.0000,
+                37.0000,
+                40.0000,
+                43.0000
+            ],
+            "cooldownCoefficients": [
+                5.5000,
+                5.2500,
+                5.0000,
+                4.7500,
+                4.5000,
+                3.5000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.1500
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "精华跃动",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/HUD/Icons2D/Ezreal_W.png",
+            "abilityVideoPath": "champion-abilities/0081/ability_0081_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0081/ability_0081_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "伊泽瑞尔发射一个法球，法球会附着在命中的第一个敌方英雄或战略点上。如果伊泽瑞尔用技能或攻击命中一个法球时，会将它引爆来造成伤害。",
+            "dynamicDescription": "伊泽瑞尔发射一团魔法球体，魔法球体会附着在命中的第一个敌方英雄、建筑物或史诗级野怪上，持续@DetonationTimeout@秒。如果伊泽瑞尔用技能或攻击命中该目标，就会将球体引爆，造成<magicDamage>@Damage@魔法伤害</magicDamage>。用技能引爆时会返还该技能的法力消耗外加<scaleMana>@ManaReturn@法力</scaleMana>。@SpellModifierDescriptionAppend@",
+            "range": [
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000
+            ],
+            "cooldownCoefficients": [
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "奥术跃迁",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/HUD/Icons2D/Ezreal_E.png",
+            "abilityVideoPath": "champion-abilities/0081/ability_0081_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0081/ability_0081_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "伊泽瑞尔传送到附近的目标区域，并向最近的敌人发射一束自动寻敌的魔法箭。优先选择被【精华跃动】击中的敌人。",
+            "dynamicDescription": "伊泽瑞尔传送然后向最近的敌人发射一支魔法箭，造成<magicDamage>@Damage@魔法伤害</magicDamage>。魔法箭会优先选择受<spellName>精华跃动</spellName>影响的目标。@SpellModifierDescriptionAppend@",
+            "range": [
+                475.0000,
+                475.0000,
+                475.0000,
+                475.0000,
+                475.0000,
+                475.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                26.0000,
+                23.0000,
+                20.0000,
+                17.0000,
+                14.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.7500,
+                "coefficient2": 0.5000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    30.0000,
+                    80.0000,
+                    130.0000,
+                    180.0000,
+                    230.0000,
+                    280.0000,
+                    330.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "精准弹幕",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/HUD/Icons2D/Ezreal_R.png",
+            "abilityVideoPath": "champion-abilities/0081/ability_0081_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0081/ability_0081_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "伊泽瑞尔蓄力然后向目标区域释放长程能量波，对穿过的敌人造成高额伤害（对小兵和非史诗级野怪的伤害会减少）。",
+            "dynamicDescription": "伊泽瑞尔发射一道大型能量圆弧，造成<magicDamage>@Damage@魔法伤害</magicDamage>。圆弧对小兵和非史诗级野怪造成@DamageReductionWaveclear.0*100@%伤害。@SpellModifierDescriptionAppend@",
+            "range": [
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                105.0000,
+                90.0000,
+                10.0000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.9000,
+                "coefficient2": 1.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

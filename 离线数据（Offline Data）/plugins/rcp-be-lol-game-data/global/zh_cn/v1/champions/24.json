@@ -1,0 +1,1395 @@
+{
+    "id": 24,
+    "name": "武器大师",
+    "alias": "Jax",
+    "title": "贾克斯",
+    "shortBio": "无论是各种兵器的攻防技法，还是挖苦嘲讽的刻薄口才，贾克斯都无人能及。他是目前已知的最后一名艾卡西亚武器大师。曾经，故土的人们因狂妄自大而引来了虚空，导致家园被夷为平地，在那之后，贾克斯和幸存的同胞们发誓要保护仅存的一切。如今，魔法再次涌起，沉睡的威胁也再次被触动，于是贾克斯开始在瓦洛兰大陆上四处漫游。他手握艾卡西亚最后的光明，考验他遇到的每一名战士，为的是寻找与自己不相伯仲的强者，并肩作战。",
+    "tacticalInfo": {
+        "style": 2,
+        "difficulty": 2,
+        "damageType": "kMixed"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 2,
+        "crowdControl": 2,
+        "mobility": 2,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/24.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/24.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/24.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/24.ogg",
+    "roles": [
+        "fighter",
+        "assassin"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 24000,
+            "isBase": true,
+            "name": "武器大师",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/24/24000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/24/24000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/24/24000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Jax/Skins/Base/JaxLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 24001,
+            "isBase": false,
+            "name": "冰球队员 贾克斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/24/24001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/24/24001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/24/24001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Jax/Skins/Skin01/JaxLoadScreen_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Jax/Skins/Skin01/JaxLoadScreen_1_LE.jpg",
+            "skinType": "",
+            "rarity": "kRare",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 28
+                }
+            ],
+            "skinAugments": null,
+            "description": "这名叫做贾克斯的冰球奇才在整个巡回赛上无人可挡，大家都惧怕他惊人的反应能力以及不需要任何武器就可以做掉对手的传闻。据说他曾是一名辩护律师，但是没人确定这是否属实。"
+        },
+        {
+            "id": 24002,
+            "isBase": false,
+            "name": "万夫莫开 贾克斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/24/24002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/24/24002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/24/24002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Jax/Skins/Skin02/JaxLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "PC Bang Championship",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/6.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/6.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 27
+                }
+            ],
+            "skinAugments": null,
+            "description": "贾克斯是一个游荡的战士，废土的很多漫游帮派都害怕他。他带着一块木板和几颗锈钉，漫步在一条破损的高速公路上，一旦遇到人就会拍打其脑袋。丑如其声。"
+        },
+        {
+            "id": 24003,
+            "isBase": false,
+            "name": "宗师级钓鱼训练师 贾克斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/24/24003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/24/24003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/24/24003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Jax/Skins/Skin03/JaxLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 100
+                }
+            ],
+            "skinAugments": null,
+            "description": "没什么能比得上在大自然的宁静中等待一次完美的咬钩——随后猛烈地将鱼拽出水面，然后用鱼竿击中它。"
+        },
+        {
+            "id": 24004,
+            "isBase": false,
+            "name": "卧虎藏龙 贾克斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/24/24004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/24/24004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/24/24004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Jax/Skins/Skin04/JaxLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 84
+                }
+            ],
+            "skinAugments": null,
+            "description": "一款特殊的事件皮肤，在PAX East2010,PAX Prime 2010和PAX East 2011上发放。"
+        },
+        {
+            "id": 24005,
+            "isBase": false,
+            "name": "百夫长 贾克斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/24/24005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/24/24005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/24/24005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Jax/Skins/Skin05/JaxLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": "在一个斗士竞技场中，贾克斯的屡次胜利受到了一位年轻的孩子和忠实粉丝——乔——的庆祝。贾克斯发现乔本人是一位令人难以置信的战士，比贾克斯遇到的任何人都勇敢得多。乔给贾克斯起了个绰号“百夫长贾克斯”，一个让他欣然接受的称号。“这是献给你的，孩子，”贾克斯在他冲进战斗时高声宣告，并高举灯光向乔致敬。"
+        },
+        {
+            "id": 24006,
+            "isBase": false,
+            "name": "少林武僧 贾克斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/24/24006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/24/24006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/24/24006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Jax/Skins/Skin06/JaxLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": "贾克斯对内心平静的寻求，让他拜访了许多寺庙并接受了各种武术大师的指导。他的暴躁态度经常给他带来麻烦，但贾克斯学会了感激指教。贾克斯以一种平静、战略层面的思维来磨练他的战斗能力，现在的他以一种心体技合为一体的新形态面对每场战斗。"
+        },
+        {
+            "id": 24007,
+            "isBase": false,
+            "name": "复仇武神 贾克斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/24/24007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/24/24007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/24/24007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Jax/Skins/Skin07/JaxLoadScreen_7.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24007.png",
+            "chromas": [
+                {
+                    "id": 24009,
+                    "name": "复仇武神 贾克斯 黄金蝮蛇",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24009.png",
+                    "colors": [
+                        "#E2D495",
+                        "#821434"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 24010,
+                    "name": "复仇武神 贾克斯 沙羽蛇鹫",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24010.png",
+                    "colors": [
+                        "#D8A100",
+                        "#282B20"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 24011,
+                    "name": "复仇武神 贾克斯 猩红毒蝎",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24011.png",
+                    "colors": [
+                        "#9A2D43",
+                        "#2F2B39"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": "没有人知道这个发光的面具下隐藏着什么。人类、怪物，或者更过分的东西，它挥舞着紫罗兰色的灯笼战棒，行进到一场又一场的冲突之中。然而，它似乎总是站在仁慈的那一边。通过流浪者和夜间商人所讲述的神话，它已经成为一个传奇人物：一个对抗黑暗的黑暗幻影。"
+        },
+        {
+            "id": 24008,
+            "isBase": false,
+            "name": "SKT T1 贾克斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/24/24008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/24/24008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/24/24008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Jax/Skins/Skin08/JaxLoadScreen_8.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 3
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此致敬Impact在2013全球总决赛中使用贾克斯的夺胜表现。"
+        },
+        {
+            "id": 24012,
+            "isBase": false,
+            "name": "光明骑士 贾克斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/24/24012.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/24/24012.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/24/24012.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Jax/Skins/Skin12/JaxLoadScreen_12.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 50
+                }
+            ],
+            "skinAugments": null,
+            "description": "贾克斯是一名孤独的守望者，自称从最初的护国军被灭亡起就一直活到现在。虽然少有记录可以支撑他的自称，但贾克斯相信，符文战争始于一个为了剥夺政治权利而创的法律主体的失败——当这次创立裹足不前时，所有命运就已被注定了。"
+        },
+        {
+            "id": 24013,
+            "isBase": false,
+            "name": "武神 贾克斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/24/24013.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/24/24013.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/24/24013.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Jax/Skins/Skin13/JaxLoadScreen_13.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 81
+                }
+            ],
+            "skinAugments": null,
+            "description": "这位神职人员曾是世俗的英雄，他曾徒劳地寻找配得上他力量的武器。在他生命垂危之时，他终于看到了一个闪烁着神力光芒的武器——这神力不仅让他获得了永生，还有更强大的力量。"
+        },
+        {
+            "id": 24014,
+            "isBase": false,
+            "name": "王国机神白虎 贾克斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/24/24014.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/24/24014.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/24/24014.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Jax/Skins/Skin14/JaxLoadScreen_14.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Jax/Skins/Skin14/JaxLoadscreen_14_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24014.png",
+            "chromas": [
+                {
+                    "id": 24015,
+                    "name": "王国机神白虎 贾克斯 炼狱",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24015.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 24016,
+                    "name": "王国机神白虎 贾克斯 森林",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24016.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 24017,
+                    "name": "王国机神白虎 贾克斯 水晶",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24017.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 24018,
+                    "name": "王国机神白虎 贾克斯 光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24018.png",
+                    "colors": [
+                        "#0C0E15",
+                        "#611B9E"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 24019,
+                    "name": "王国机神白虎 贾克斯 云霄",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24019.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Year of mouse",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/58.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/58.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 127
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为全大陆最负盛名的武器大师，贾克斯一直渴望着一件合适的武器，以及一场合适的战斗。当艾斯特王国的智囊们汇聚一堂——使用似乎是上天赐予的奇怪科技——以建造一台百折不挠的阿瓦隆时，贾克斯终于被打动了。他乐于见到利维坦的入侵，并希望这些巨大的敌人们能证明它们就是他毕生所寻的挑战。"
+        },
+        {
+            "id": 24020,
+            "isBase": false,
+            "name": "征服者 贾克斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/24/24020.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/24/24020.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/24/24020.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Jax/Skins/Skin20/JaxLoadScreen_20.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Jax/Skins/Skin20/JaxLoadscreen_20_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 109
+                }
+            ],
+            "skinAugments": null,
+            "description": "用来纪念在雷克雅未克举办的季中冠军赛(2021)。"
+        },
+        {
+            "id": 24021,
+            "isBase": false,
+            "name": "至臻 征服者 贾克斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/24/24021.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/24/24021.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/24/24021.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Jax/Skins/Skin21/JaxLoadScreen_21.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Jax/Skins/Skin21/JaxLoadscreen_21_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 109
+                }
+            ],
+            "skinAugments": null,
+            "description": "用来纪念在雷克雅未克举办的季中冠军赛(2021)。"
+        },
+        {
+            "id": 24022,
+            "isBase": false,
+            "name": "至高天 贾克斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/24/24022.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/24/24022.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/24/24022.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Jax/Skins/Skin22/JaxLoadScreen_22.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Jax/Skins/Skin22/JaxLoadscreen_22_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24022.png",
+            "chromas": [
+                {
+                    "id": 24023,
+                    "name": "至高天 贾克斯 狂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24023.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 24024,
+                    "name": "至高天 贾克斯 华耀",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24024.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 24025,
+                    "name": "至高天 贾克斯 青炬",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24025.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 24026,
+                    "name": "至高天 贾克斯 幻耀",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24026.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 24027,
+                    "name": "至高天 贾克斯 灵辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24027.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 24028,
+                    "name": "至高天 贾克斯 荧煌",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24028.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 24029,
+                    "name": "至高天 贾克斯 炫煌",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24029.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 24030,
+                    "name": "至高天 贾克斯 胧光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24030.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 24031,
+                    "name": "至高天 贾克斯 霓虹耀斑",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24031.png",
+                    "colors": [
+                        "#FF655B",
+                        "#95E237"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2022)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 186
+                }
+            ],
+            "skinAugments": null,
+            "description": "贾克斯来自一个位面，一个他未能保护他的王国免受覆灭的位面。他放任自流，直到一切都坍塌。他现在是至高天，知道在某个位面中，他的王国仍然完好无损。就算这么做会毁了他，他也会用尽所有的力量，再去他的家园看一次。"
+        },
+        {
+            "id": 24032,
+            "isBase": false,
+            "name": "新卧虎藏龙 贾克斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/24/24032.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/24/24032.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/24/24032.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Jax/Skins/Skin32/JaxLoadScreen_32.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Mythic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/68.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/68.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 84
+                }
+            ],
+            "skinAugments": null,
+            "description": "一个特殊的活动皮肤，用来纪念PAX游戏展和贾克斯的2023年视觉更新。"
+        }
+    ],
+    "passive": {
+        "name": "无情连打",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Jax/HUD/Icons2D/JaxP.png",
+        "abilityVideoPath": "champion-abilities/0024/ability_0024_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0024/ability_0024_P1.jpg",
+        "description": "贾克斯连续的普通攻击，会持续地提高他的攻击速度。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "跳斩",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Jax/HUD/Icons2D/JaxQ.png",
+            "abilityVideoPath": "champion-abilities/0024/ability_0024_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0024/ability_0024_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "贾克斯跳向一个单位。如果目标是敌人，贾克斯会用他的武器狠狠地抽打敌人的脸，造成额外伤害。",
+            "dynamicDescription": "贾克斯跳向一个友方或敌方单位或守卫，如果目标是敌人则会造成<physicalDamage>@TotalDamage@物理伤害</physicalDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000
+            ],
+            "costCoefficients": [
+                65.0000,
+                65.0000,
+                65.0000,
+                65.0000,
+                65.0000,
+                65.0000
+            ],
+            "cooldownCoefficients": [
+                8.0000,
+                7.5000,
+                7.0000,
+                6.5000,
+                6.0000,
+                5.5000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "蓄力一击",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Jax/HUD/Icons2D/JaxW.png",
+            "abilityVideoPath": "champion-abilities/0024/ability_0024_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0024/ability_0024_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "贾克斯为武器充能，使他的下次攻击能造成额外伤害。",
+            "dynamicDescription": "贾克斯给他的武器充能，使他的下次攻击或<spellName>跳斩</spellName>造成额外的<magicDamage>@TotalDamage@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000
+            ],
+            "costCoefficients": [
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000
+            ],
+            "cooldownCoefficients": [
+                7.0000,
+                6.0000,
+                5.0000,
+                4.0000,
+                3.0000,
+                3.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "反击风暴",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Jax/HUD/Icons2D/JaxE.png",
+            "abilityVideoPath": "champion-abilities/0024/ability_0024_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0024/ability_0024_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "贾克斯的武艺让他能够在短时间里躲闪掉所有即将到来的普通攻击，随后对所有周围的敌人快速发起反击，并将他们击晕。",
+            "dynamicDescription": "贾克斯进入一个最多持续@DodgeDuration@秒的防御姿态，能够躲闪掉一切即将到来的攻击，并且减少@AoEDamageReduction@%来自群体技能的伤害。在@DodgeDuration@秒后，或<recast>再次施放</recast>后，贾克斯会造成<magicDamage>@TotalDamage@ + @PercentHealthDamage@%最大生命值的魔法伤害</magicDamage>并使附近的敌人<status>晕眩</status>@StunDuration@秒。<br><br>贾克斯每躲掉一次攻击，这个伤害值就会提升@PercentIncreasedPerDodge*100@%，最多可提升至最大值<magicDamage>@MaxDamage@ + @MaxPercentHealthDamage@%最大生命值</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                60.0000,
+                70.0000,
+                80.0000,
+                90.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                15.0000,
+                13.5000,
+                12.0000,
+                10.5000,
+                9.0000,
+                9.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.5000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "武器大师",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Jax/HUD/Icons2D/JaxR.png",
+            "abilityVideoPath": "champion-abilities/0024/ability_0024_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0024/ability_0024_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "每连续攻击2次，第3次攻击就会造成额外的魔法伤害。另外，贾克斯可以激活这个技能来在他周围造成伤害并增强他的决心，从而暂时性地提升他的护甲和魔法抗性。",
+            "dynamicDescription": "<spellPassive>被动：</spellPassive>@PassiveFallOffTime@秒内的每第三次攻击造成额外的<magicDamage>@OnHitDamage@魔法伤害</magicDamage>。<br><br><spellActive>主动：</spellActive>贾克斯将他的灯柱砸落，对附近的敌人们造成<magicDamage>@SwingDamageTotal@魔法伤害</magicDamage>。如果他命中了一名英雄，那么他会获得<scaleArmor>@BaseArmor@护甲</scaleArmor>和<scaleMR>@BaseMR@魔法抗性</scaleMR>，并且每额外命中一个英雄就会获得额外的<scaleArmor>@BonusArmor@护甲</scaleArmor>和<scaleMR>@BonusMR@魔法抗性</scaleMR>，持续@Duration@秒。在此期间，他每第二次攻击（而非每第三次攻击）造成额外的<magicDamage>魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                260.0000,
+                260.0000,
+                260.0000,
+                260.0000,
+                260.0000,
+                260.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                100.0000,
+                90.0000,
+                80.0000,
+                8.0000,
+                7.0000,
+                7.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

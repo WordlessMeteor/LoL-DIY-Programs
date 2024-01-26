@@ -1,0 +1,2621 @@
+{
+    "id": 910,
+    "name": "Hwei",
+    "alias": "Hwei",
+    "title": "the Visionary",
+    "shortBio": "Hwei is a brooding painter who creates brilliant art in order to confront Ionia's criminals and comfort their victims. Beneath his melancholy roils a torn, emotional mind—haunted by both the vibrant visions of his imagination and the gruesome memories of his temple's massacre. Hwei seeks to understand this light and dark, which drives him inevitably toward the artist who unraveled him. With paintbrush and palette, Hwei shapes endless possibilities as he draws ever closer to earning closure or embracing despair.",
+    "tacticalInfo": {
+        "style": 9,
+        "difficulty": 3,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 3,
+        "mobility": 1,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/910.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/910.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/910.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/910.ogg",
+    "roles": [
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 910000,
+            "isBase": true,
+            "name": "Hwei",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/910/910000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/910/910000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/910/910000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/Skins/Skin0/HweiLoadScreen_0.Hwei_13_24.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 910001,
+            "isBase": false,
+            "name": "Winterblessed Hwei",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/910/910001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/910/910001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/910/910001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/Skins/Skin1/HweiLoadScreen_1.Hwei_13_24.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Hwei/Skins/Skin1/HweiLoadScreen_1_LE.Hwei_13_24.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/910/910001.png",
+            "chromas": [
+                {
+                    "id": 910002,
+                    "name": "Winterblessed Hwei",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/910/910002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 910003,
+                    "name": "Winterblessed Hwei",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/910/910003.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 910004,
+                    "name": "Winterblessed Hwei",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/910/910004.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 910005,
+                    "name": "Winterblessed Hwei",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/910/910005.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 910006,
+                    "name": "Winterblessed Hwei",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/910/910006.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 910007,
+                    "name": "Winterblessed Hwei",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/910/910007.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 910008,
+                    "name": "Winterblessed Hwei",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/910/910008.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 910009,
+                    "name": "Winterblessed Hwei",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/910/910009.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 910010,
+                    "name": "Winterblessed Hwei",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/910/910010.png",
+                    "colors": [
+                        "#BF2020",
+                        "#368B25"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2023 Winterblessed event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 187
+                }
+            ],
+            "skinAugments": null,
+            "description": "The herald of Polaris, Hwei, waited in a despondent mood. When Senna and Hecarim found him among the world of man, a violent blizzard raged overhead. As herald, he used his brush to paint the Aurora across the skies, bringing the first snow. At Hecarim's beckoning, he waved his brush, parting the clouds to reveal a barren sky. Where was the Aurora?"
+        }
+    ],
+    "passive": {
+        "name": "Signature of the Visionary",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiPassive.png",
+        "abilityVideoPath": "champion-abilities/0910/ability_0910_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0910/ability_0910_P1.jpg",
+        "description": "Hwei primes enemy champions he damages with his abilities for his signature finishing touch.<br><br>Hitting an enemy with a second damaging spell completes his signature, leaving it beneath them. The signature detonates after a short delay, dealing magic damage to all enemies in range."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Subject: Disaster",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiQ.png",
+            "abilityVideoPath": "champion-abilities/0910/ability_0910_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0910/ability_0910_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Hwei envisions a series of disasters, allowing him to paint a devastating blow.<br><br>This ability replaces Hwei's abilities with damaging abilities: Devastating Fire, Severing Bolt, and Molten Fissure.",
+            "dynamicDescription": "Hwei paints visions of disaster that deal large damage to enemies.<br><br><spellName>Devastating Fire</spellName><br>Hwei launches a blazing fast fireball that explodes on the first enemy hit, dealing <magicDamage>@Tooltip_QQDamage@ plus @Tooltip_QQBonusDamage@% max health magic damage</magicDamage>.<br><br><spellName>Severing Bolt</spellName><br>Hwei strikes over far distances with a delayed lightning bolt, dealing <magicDamage>@Tooltip_QWDamage@ magic damage</magicDamage>. Hitting an Isolated or <status>Immobilized</status> target increases the damage up to <magicDamage>@Tooltip_QWBonusDamage@ magic damage</magicDamage>, based on the target's missing health.<br><br><spellName>Molten Fissure</spellName><br>Hwei unleashes a path of eruptions, dealing <magicDamage>@Tooltip_QEDamage@ magic damage</magicDamage> in an area and leaving behind pools of lava that <status>Slow</status> enemies by @spell.HweiQE:SlowPercent@% and deal <magicDamage>@Tooltip_QEDamagePerSecond@ magic damage per second</magicDamage> for @spell.HweiQE:Duration@ seconds.@SpellModifierDescriptionAppend@",
+            "range": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "costCoefficients": [
+                80.0000,
+                90.0000,
+                100.0000,
+                110.0000,
+                120.0000,
+                120.0000
+            ],
+            "cooldownCoefficients": [
+                10.0000,
+                9.0000,
+                8.0000,
+                7.0000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Subject: Serenity",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiW.png",
+            "abilityVideoPath": "champion-abilities/0910/ability_0910_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0910/ability_0910_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Hwei envisions a series of serenities, allowing him to paint invigorating settings.<br><br>This ability replaces Hwei's abilities with utility abilities: Fleeting Current, Pool of Reflection, and Stirring Lights.",
+            "dynamicDescription": "Hwei paints visions of serenity that provide utility for himself and allied champions.<br><br><spellName>Fleeting Current</spellName><br>Hwei launches a current of swift waters in a line that grants allies <speed>@Tooltip_WQMoveSpeed@ Move Speed</speed>.<br><br><spellName>Pool of Reflection</spellName><br>Hwei forms a protective pool that grants <shield>@Tooltip_WWShieldAmount@ Shields</shield> over time to allied champions inside reduced by @spell.HweiWW:AllyMod*100@% for allies.<br><br><spellName>Stirring Lights</spellName><br>Hwei creates three swirling lights that empower his next three Abilities or Attacks to deal an additional <magicDamage>@Tooltip_WEOnHitDamage@ magic damage</magicDamage> and restore <scaleMana>@Tooltip_WEOnHitManaRestore@ Mana</scaleMana> each.@SpellModifierDescriptionAppend@",
+            "range": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "costCoefficients": [
+                90.0000,
+                95.0000,
+                100.0000,
+                105.0000,
+                110.0000,
+                110.0000
+            ],
+            "cooldownCoefficients": [
+                18.0000,
+                17.5000,
+                17.0000,
+                16.5000,
+                16.0000,
+                16.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Subject: Torment",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiE.png",
+            "abilityVideoPath": "champion-abilities/0910/ability_0910_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0910/ability_0910_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Hwei envisions a series of torments, allowing him to paint controlling visages.<br><br>This ability replaces Hwei's abilities with crowd control abilities: Grim Visage, Gaze of the Abyss, and Crushing Maw.",
+            "dynamicDescription": "Hwei paints visions of torment that control enemies.<br><br><spellName>Grim Visage</spellName><br>Hwei launches a terrifying face that causes the first enemy hit to <status>Flee</status> for @Tooltip_EQFleeDuration@ second(s) and take <magicDamage>@Tooltip_EQDamage@ magic damage</magicDamage>.<br><br><spellName>Gaze of the Abyss</spellName><br>Hwei forms an eye that lingers and provides vision locking onto the first enemy champion that enters and launching a homing missile that <status>Roots</status> the first enemy hit for @Tooltip_EWRootDuration@ seconds dealing <magicDamage>@Tooltip_EWDamage@ magic damage</magicDamage>.<br><br><spellName>Crushing Maw</spellName><br>Hwei paints a set of jaws at a target location that <status>Drags</status> enemies to the center dealing <magicDamage>@Tooltip_EEDamage@ magic damage</magicDamage> and <status>Slowing</status> enemies caught by @Tooltip_EESlowAmount@% decaying over 1.25 seconds.@SpellModifierDescriptionAppend@",
+            "range": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                11.5000,
+                11.0000,
+                10.5000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Spiraling Despair",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiR.png",
+            "abilityVideoPath": "champion-abilities/0910/ability_0910_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0910/ability_0910_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Hwei paints a vision of pure despair. The first enemy champion struck becomes the center of an expanding painting that slows and damages nearby enemies. The vision explodes after reaching its maximum size or when the champion dies.",
+            "dynamicDescription": "Hwei launches a vision of pure despair that sticks to an enemy champion for @Duration@ seconds. The vision expands over time applying a <status>Slow</status> to enemies for @SlowPercentPerStack@% stacking every 0.25 seconds, and dealing <magicDamage>@DamageOverTime@ magic damage per second</magicDamage>.<br><br>Upon completion, the vision shatters, dealing <magicDamage>@Damage@ magic damage</magicDamage>.@SpellModifierDescriptionAppend@",
+            "range": [
+                1300.0000,
+                1300.0000,
+                1300.0000,
+                1300.0000,
+                1300.0000,
+                1300.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                140.0000,
+                115.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ],
+    "spellbookOverride": [
+        [
+            {
+                "spellKey": "qq",
+                "name": "Devastating Fire",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiQQ.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_QQ1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_QQ1.jpg",
+                "cost": "@Cost@ @AbilityResourceName@",
+                "cooldown": "@Cooldown@s %i:cooldown%",
+                "description": "Hwei paints a blazing fireball that explodes upon hitting an enemy unit or at the end of its path.",
+                "dynamicDescription": "Hwei paints a blazing fireball that flies out in the target direction. It explodes on the first enemy hit, dealing <magicDamage>@spell.HweiQ:Tooltip_QQDamage@ plus @spell.HweiQ:Tooltip_QQBonusDamage@% max health magic damage</magicDamage> to all enemies in an area.@SpellModifierDescriptionAppend@",
+                "range": [
+                    800.0000,
+                    800.0000,
+                    800.0000,
+                    800.0000,
+                    800.0000,
+                    800.0000
+                ],
+                "costCoefficients": [
+                    80.0000,
+                    90.0000,
+                    100.0000,
+                    110.0000,
+                    120.0000,
+                    120.0000
+                ],
+                "cooldownCoefficients": [
+                    10.0000,
+                    9.0000,
+                    8.0000,
+                    7.0000,
+                    6.0000,
+                    6.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            },
+            {
+                "spellKey": "qw",
+                "name": "Severing Bolt",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiQW.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_QW1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_QW1.jpg",
+                "cost": "@Cost@ @AbilityResourceName@",
+                "cooldown": "@Cooldown@s %i:cooldown%",
+                "description": "Hwei paints a long-distance, long wind-up lightning bolt that deals extra damage to immobilized or isolated targets at low health.",
+                "dynamicDescription": "Hwei paints a long-range, delayed lightning bolt at the target location, dealing <magicDamage>@spell.HweiQ:Tooltip_QWDamage@ magic damage</magicDamage>. Isolated or <status>Immobilized</status> enemies take increased damage based on missing health, up to <magicDamage>@spell.HweiQ:Tooltip_QWBonusDamage@ magic damage</magicDamage>.@SpellModifierDescriptionAppend@",
+                "range": [
+                    1900.0000,
+                    1900.0000,
+                    1900.0000,
+                    1900.0000,
+                    1900.0000,
+                    1900.0000
+                ],
+                "costCoefficients": [
+                    80.0000,
+                    90.0000,
+                    100.0000,
+                    110.0000,
+                    120.0000,
+                    120.0000
+                ],
+                "cooldownCoefficients": [
+                    10.0000,
+                    9.0000,
+                    8.0000,
+                    7.0000,
+                    6.0000,
+                    6.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            },
+            {
+                "spellKey": "qe",
+                "name": "Molten Fissure",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiQE.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_QE1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_QE1.jpg",
+                "cost": "@Cost@ @AbilityResourceName@",
+                "cooldown": "@Cooldown@s %i:cooldown%",
+                "description": "Hwei paints a field of volcanic eruptions that leaves lava in its path.",
+                "dynamicDescription": "Hwei paints a field of exploding volcanic eruptions, creating lingering lava in its path. Every eruption deals <magicDamage>@spell.HweiQ:Tooltip_QEDamage@ magic damage</magicDamage> to enemies hit. Enemies in the lava area are dealt <magicDamage>@spell.HweiQ:Tooltip_QEDamagePerSecond@ magic damage per second</magicDamage> and <status>Slowed</status> by @spell.HweiQE:SlowPercent@%. Each lava pool lasts @spell.HweiQE:Duration@ seconds.@SpellModifierDescriptionAppend@",
+                "range": [
+                    1200.0000,
+                    1200.0000,
+                    1200.0000,
+                    1200.0000,
+                    1200.0000,
+                    1200.0000
+                ],
+                "costCoefficients": [
+                    80.0000,
+                    90.0000,
+                    100.0000,
+                    110.0000,
+                    120.0000,
+                    120.0000
+                ],
+                "cooldownCoefficients": [
+                    10.0000,
+                    9.0000,
+                    8.0000,
+                    7.0000,
+                    6.0000,
+                    6.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            },
+            {
+                "spellKey": "qr",
+                "name": "Wash Brush",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiWashBrush.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_QR1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_QR1.jpg",
+                "cost": "",
+                "cooldown": "",
+                "description": "Hwei clears his paintbrush and returns to base abilities without using mana or cooldowns. Only available while Subject: Disaster, Subject: Serenity, or Subject: Torment are active.",
+                "dynamicDescription": "Hwei clears his paintbrush and returns to base Abilities. Does not cost Mana or Cooldowns.@SpellModifierDescriptionAppend@",
+                "range": [
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000
+                ],
+                "costCoefficients": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "cooldownCoefficients": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            }
+        ],
+        [
+            {
+                "spellKey": "wq",
+                "name": "Fleeting Current",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiWQ.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_WQ1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_WQ1.jpg",
+                "cost": "@Cost@ @AbilityResourceName@",
+                "cooldown": "@Cooldown@s %i:cooldown%",
+                "description": "Hwei paints a current of swift waters in a line that grants movement speed to himself and allies.",
+                "dynamicDescription": "Hwei paints a current of swift waters in a line for @spell.HweiW:Tooltip_WQAreaDuration@ seconds that grants <speed>@spell.HweiW:Tooltip_WQMoveSpeed@ Move Speed</speed> to himself and allied champions.@SpellModifierDescriptionAppend@",
+                "range": [
+                    1200.0000,
+                    1200.0000,
+                    1200.0000,
+                    1200.0000,
+                    1200.0000,
+                    1200.0000
+                ],
+                "costCoefficients": [
+                    90.0000,
+                    95.0000,
+                    100.0000,
+                    105.0000,
+                    110.0000,
+                    110.0000
+                ],
+                "cooldownCoefficients": [
+                    18.0000,
+                    17.5000,
+                    17.0000,
+                    16.5000,
+                    16.0000,
+                    16.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            },
+            {
+                "spellKey": "ww",
+                "name": "Pool of Reflection",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiWW.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_WW1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_WW1.jpg",
+                "cost": "@Cost@ @AbilityResourceName@",
+                "cooldown": "@Cooldown@s %i:cooldown%",
+                "description": "Hwei paints a protective pool at a location that grants shields to allies.",
+                "dynamicDescription": "Hwei paints a protective pool at the target location that lasts for @spell.HweiWW:AreaDuration@ seconds granting an immediate <shield>@spell.HweiW:Tooltip_WWStartShieldAmount@ Shields</shield>, increasing up to <shield>@spell.HweiW:Tooltip_WWShieldAmount@ Shields</shield> over @spell.HweiWW:SecsToFullStack@ seconds to allied champions in the area reduced by @spell.HweiWW:AllyMod*100@% for allies.@SpellModifierDescriptionAppend@",
+                "range": [
+                    650.0000,
+                    650.0000,
+                    650.0000,
+                    650.0000,
+                    650.0000,
+                    650.0000
+                ],
+                "costCoefficients": [
+                    90.0000,
+                    95.0000,
+                    100.0000,
+                    105.0000,
+                    110.0000,
+                    110.0000
+                ],
+                "cooldownCoefficients": [
+                    18.0000,
+                    17.5000,
+                    17.0000,
+                    16.5000,
+                    16.0000,
+                    16.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            },
+            {
+                "spellKey": "we",
+                "name": "Stirring Lights",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiWE.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_WE1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_WE1.jpg",
+                "cost": "@Cost@ @AbilityResourceName@",
+                "cooldown": "@Cooldown@s %i:cooldown%",
+                "description": "Hwei paints three swirling lights that grant his next three spells or attacks bonus magic damage and mana restoration.",
+                "dynamicDescription": "Hwei paints three swirling lights that circle him causing his next three Abilities or Attacks to deal an additional <magicDamage>@spell.HweiW:Tooltip_WEOnHitDamage@ magic damage</magicDamage> and grant <scaleMana>@spell.HweiW:Tooltip_WEOnHitManaRestore@ Mana</scaleMana> on hit.@SpellModifierDescriptionAppend@",
+                "range": [
+                    500.0000,
+                    500.0000,
+                    500.0000,
+                    500.0000,
+                    500.0000,
+                    500.0000
+                ],
+                "costCoefficients": [
+                    90.0000,
+                    95.0000,
+                    100.0000,
+                    105.0000,
+                    110.0000,
+                    110.0000
+                ],
+                "cooldownCoefficients": [
+                    18.0000,
+                    17.5000,
+                    17.0000,
+                    16.5000,
+                    16.0000,
+                    16.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            },
+            {
+                "spellKey": "wr",
+                "name": "Wash Brush",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiWashBrush.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_WR1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_WR1.jpg",
+                "cost": "",
+                "cooldown": "",
+                "description": "Hwei clears his paintbrush and returns to base abilities without using mana or cooldowns. Only available while Subject: Disaster, Subject: Serenity, or Subject: Torment are active.",
+                "dynamicDescription": "Hwei clears his paintbrush and returns to base Abilities. Does not cost Mana or Cooldowns.@SpellModifierDescriptionAppend@",
+                "range": [
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000
+                ],
+                "costCoefficients": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "cooldownCoefficients": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            }
+        ],
+        [
+            {
+                "spellKey": "eq",
+                "name": "Grim Visage",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiEQ.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_EQ1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_EQ1.jpg",
+                "cost": "@Cost@ @AbilityResourceName@",
+                "cooldown": "@Cooldown@s %i:cooldown%",
+                "description": "Hwei paints a terrifying face that damages the first enemy it hits and causes them to flee.",
+                "dynamicDescription": "Hwei launches a terrifying face that strikes the first enemy hit, causing them to <status>Flee</status> for @spell.HweiEQ:FleeDuration@ second(s) and dealing <magicDamage>@spell.HweiE:Tooltip_EQDamage@ magic damage</magicDamage>.@SpellModifierDescriptionAppend@",
+                "range": [
+                    1100.0000,
+                    1100.0000,
+                    1100.0000,
+                    1100.0000,
+                    1100.0000,
+                    1100.0000
+                ],
+                "costCoefficients": [
+                    50.0000,
+                    55.0000,
+                    60.0000,
+                    65.0000,
+                    70.0000,
+                    70.0000
+                ],
+                "cooldownCoefficients": [
+                    12.0000,
+                    11.5000,
+                    11.0000,
+                    10.5000,
+                    10.0000,
+                    10.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            },
+            {
+                "spellKey": "ew",
+                "name": "Gaze of the Abyss",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiEW.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_EW1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_EW1.jpg",
+                "cost": "@Cost@ @AbilityResourceName@",
+                "cooldown": "@Cooldown@s %i:cooldown%",
+                "description": "Hwei paints an eye at the target location that grants vision and stares at the first enemy champion that enters its range. The eye then launches at them, rooting the first enemy hit.",
+                "dynamicDescription": "Hwei paints an abyssal eye at the target location that grants vision, locking onto the nearest enemy champion and launches a homing missile at them <status>Rooting</status> the first enemy in its path for @spell.HweiE:Tooltip_EWRootDuration@ seconds and dealing <magicDamage>@spell.HweiE:Tooltip_EWDamage@ magic damage</magicDamage>.@SpellModifierDescriptionAppend@",
+                "range": [
+                    900.0000,
+                    900.0000,
+                    900.0000,
+                    900.0000,
+                    900.0000,
+                    900.0000
+                ],
+                "costCoefficients": [
+                    50.0000,
+                    55.0000,
+                    60.0000,
+                    65.0000,
+                    70.0000,
+                    70.0000
+                ],
+                "cooldownCoefficients": [
+                    12.0000,
+                    11.5000,
+                    11.0000,
+                    10.5000,
+                    10.0000,
+                    10.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            },
+            {
+                "spellKey": "ee",
+                "name": "Crushing Maw",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiEE.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_EE1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_EE1.jpg",
+                "cost": "@Cost@ @AbilityResourceName@",
+                "cooldown": "@Cooldown@s %i:cooldown%",
+                "description": "Hwei paints a set of jaws that bites down on enemies, dragging them to the center and slowing them.",
+                "dynamicDescription": "Hwei paints crushing jaws that deal <magicDamage>@spell.HweiE:Tooltip_EEDamage@ magic damage</magicDamage> to enemies hit and <status>Drags</status> them toward the center, <status>Slowing</status> them by @spell.HweiE:Tooltip_EESlowAmount@% that decays over 1.25 seconds.@SpellModifierDescriptionAppend@",
+                "range": [
+                    800.0000,
+                    800.0000,
+                    800.0000,
+                    800.0000,
+                    800.0000,
+                    800.0000
+                ],
+                "costCoefficients": [
+                    50.0000,
+                    55.0000,
+                    60.0000,
+                    65.0000,
+                    70.0000,
+                    70.0000
+                ],
+                "cooldownCoefficients": [
+                    12.0000,
+                    11.5000,
+                    11.0000,
+                    10.5000,
+                    10.0000,
+                    10.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            },
+            {
+                "spellKey": "er",
+                "name": "Wash Brush",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiWashBrush.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_ER1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_ER1.jpg",
+                "cost": "",
+                "cooldown": "",
+                "description": "Hwei clears his paintbrush and returns to base abilities without using mana or cooldowns. Only available while Subject: Disaster, Subject: Serenity, or Subject: Torment are active.",
+                "dynamicDescription": "Hwei clears his paintbrush and returns to base Abilities. Does not cost Mana or Cooldowns.@SpellModifierDescriptionAppend@",
+                "range": [
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000
+                ],
+                "costCoefficients": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "cooldownCoefficients": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            }
+        ]
+    ]
+}

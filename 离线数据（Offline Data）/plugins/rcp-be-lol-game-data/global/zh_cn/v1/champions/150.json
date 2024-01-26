@@ -1,0 +1,1389 @@
+{
+    "id": 150,
+    "name": "迷失之牙",
+    "alias": "Gnar",
+    "title": "纳尔",
+    "shortBio": "纳尔是一个原始约德尔人，讨人喜爱的小个子突然发起脾气来，就会变成一头巨大的野兽，脑海中只剩下破坏的念头。纳尔被臻冰冻结了数千年，如今他重获自由。这个面目全非的世界，在他充满好奇的眼里处处都是新鲜奇妙。因为纳尔在危险中会特别兴奋，所以他会随便抓起任何东西丢向自己的敌人，无论是他的骨齿回力标，还是手边的大房子。",
+    "tacticalInfo": {
+        "style": 5,
+        "difficulty": 3,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 3,
+        "crowdControl": 2,
+        "mobility": 2,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/150.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/150.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/150.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/150.ogg",
+    "roles": [
+        "fighter",
+        "tank"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 150000,
+            "isBase": true,
+            "name": "迷失之牙",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/150/150000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/150/150000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/150/150000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Gnar/Skins/Base/GnarLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 150001,
+            "isBase": false,
+            "name": "最后一只恐龙 纳尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/150/150001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/150/150001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/150/150001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Gnar/Skins/Skin01/GnarLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150001.png",
+            "chromas": [
+                {
+                    "id": 150005,
+                    "name": "最后一只恐龙 纳尔 睿智蓝宝石龙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150005.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 150006,
+                    "name": "最后一只恐龙 纳尔 浪漫粉晶龙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150006.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 150007,
+                    "name": "最后一只恐龙 纳尔 好运猫眼石龙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150007.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 150008,
+                    "name": "最后一只恐龙 纳尔 吉祥珍珠龙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150008.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 150009,
+                    "name": "最后一只恐龙 纳尔 神秘星钻龙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150009.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 150010,
+                    "name": "最后一只恐龙 纳尔 驱邪橄榄石龙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150010.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 150011,
+                    "name": "最后一只恐龙 纳尔 福佑海蓝宝石龙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150011.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 150012,
+                    "name": "最后一只恐龙 纳尔 和谐紫水晶龙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150012.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 61
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 150002,
+            "isBase": false,
+            "name": "萌侦探 喵尔摩斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/150/150002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/150/150002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/150/150002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Gnar/Skins/Skin02/GnarLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 102
+                }
+            ],
+            "skinAugments": null,
+            "description": "有人相信纳尔的财富来自于他对经济学和语言学的开拓性研究。其他人质疑是否他的投资者们只是因为他那不可否认的魅力而纯粹地偏爱他。无论如何，他现在都发现自己在获得一个又一个大奖——最新的一个奖是一座雕塑，刻的是他在一块据说是永不融化的冰块里。"
+        },
+        {
+            "id": 150003,
+            "isBase": false,
+            "name": "冰雪兽 纳尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/150/150003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/150/150003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/150/150003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Gnar/Skins/Skin03/GnarLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Snowdown",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/9.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/9.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 46
+                }
+            ],
+            "skinAugments": null,
+            "description": "纳尔无法抗拒新雪的战斗召唤，但如果因此忘记纳尔的本性可就大错特错了。巨型纳尔一直都潜伏在表面之下，随时准备将打雪仗升级到下一个等级……并将人撕成两半。"
+        },
+        {
+            "id": 150004,
+            "isBase": false,
+            "name": "狂狮 纳尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/150/150004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/150/150004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/150/150004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Gnar/Skins/Skin04/GnarLoadscreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 34
+                }
+            ],
+            "skinAugments": null,
+            "description": "他大。他小。他将擂台拆卸，四处乱抛，让擂台像是用仙子尘和独角兽低语所造。他是狂狮摔跤手，世界的第八奇迹，并且他在此对对手们放出狂言：“呐啊！”"
+        },
+        {
+            "id": 150013,
+            "isBase": false,
+            "name": "银河魔装机神 纳尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/150/150013.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/150/150013.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/150/150013.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Gnar/Skins/Skin13/GnarLoadScreen_13.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 21
+                }
+            ],
+            "skinAugments": null,
+            "description": "看，纳尔依然在研究那把手枪，对吗？﻿只求你不要问他太多问题，不然你的手里可能会意想不到地出现一个机械纳尔，然后一拳把你的脸打到深邃的太空中。"
+        },
+        {
+            "id": 150014,
+            "isBase": false,
+            "name": "SSG 纳尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/150/150014.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/150/150014.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/150/150014.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Gnar/Skins/Skin14/GnarLoadScreen_14.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Gnar/Skins/Skin14/GnarLoadScreen_14_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 75
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此致敬CuVee在2017全球总决赛中使用纳尔的夺胜表现。 "
+        },
+        {
+            "id": 150015,
+            "isBase": false,
+            "name": "宇航员 纳尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/150/150015.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/150/150015.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/150/150015.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Gnar/Skins/Skin15/GnarLoadScreen_15.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Gnar/Skins/Skin15/GnarLoadscreen_15_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150015.png",
+            "chromas": [
+                {
+                    "id": 150016,
+                    "name": "宇航员 纳尔 平坦宇宙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150016.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 150017,
+                    "name": "宇航员 纳尔 重力弹弓",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150017.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 150018,
+                    "name": "宇航员 纳尔 万有引力",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150018.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 150019,
+                    "name": "宇航员 纳尔 月球漫步",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150019.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 150020,
+                    "name": "宇航员 纳尔 原行星盘",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150020.png",
+                    "colors": [
+                        "#85827F",
+                        "#85827F"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 150021,
+                    "name": "宇航员 纳尔 无尽永前",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150021.png",
+                    "colors": [
+                        "#162D57",
+                        "#A50031"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在未来战士(2020)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 94
+                }
+            ],
+            "skinAugments": null,
+            "description": "纳尔也知道他应该专注于手头上的任务，但他在这颗行星地表上遇到的陌生小生物们还是捕获住了他的注意力（并克制住了他的怒意……至少现在如此）。"
+        },
+        {
+            "id": 150022,
+            "isBase": false,
+            "name": "永恒之森 纳尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/150/150022.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/150/150022.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/150/150022.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Gnar/Skins/Skin22/GnarLoadScreen_22.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Gnar/Skins/Skin15/GnarLoadscreen_15_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150022.png",
+            "chromas": [
+                {
+                    "id": 150023,
+                    "name": "永恒之森 纳尔 焰枫",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150023.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 150024,
+                    "name": "永恒之森 纳尔 秋临",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150024.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 150025,
+                    "name": "永恒之森 纳尔 永茂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150025.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 150026,
+                    "name": "永恒之森 纳尔 昙夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150026.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 150027,
+                    "name": "永恒之森 纳尔 寒楹",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150027.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 150028,
+                    "name": "永恒之森 纳尔 樱落",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150028.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 150029,
+                    "name": "永恒之森 纳尔 冰桦",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150029.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 150030,
+                    "name": "永恒之森 纳尔 月见",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150030.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 58
+                }
+            ],
+            "skinAugments": null,
+            "description": "长久以来，很多故事都流传着：有一只怪兽在森林中徘徊着，能够赤手空拳地将巨大的橡树撕成碎片——但很少有人意识到，这个庞然大物也是一只好奇的小生物，会收集各种小玩意和骨头并叽叽喳喳地穿过树梢。智者会顺其自然。愚者？取决于他们遇见的是哪个纳尔。"
+        },
+        {
+            "id": 150031,
+            "isBase": false,
+            "name": "灵之菊 纳尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/150/150031.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/150/150031.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/150/150031.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Gnar/Skins/Skin31/GnarLoadScreen_31.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Gnar/Skins/Skin31/GnarLoadscreen_31_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150031.png",
+            "chromas": [
+                {
+                    "id": 150032,
+                    "name": "灵之菊 纳尔 信念之火",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150032.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 150033,
+                    "name": "灵之菊 纳尔 告慰之饮",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150033.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 150034,
+                    "name": "灵之菊 纳尔 家人之爱",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150034.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 150035,
+                    "name": "灵之菊 纳尔 生命之源",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150035.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 150036,
+                    "name": "灵之菊 纳尔 引路之花",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150036.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 150037,
+                    "name": "灵之菊 纳尔 送别之礼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150037.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 150038,
+                    "name": "灵之菊 纳尔 祈祷之香",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150038.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 150039,
+                    "name": "灵之菊 纳尔 智慧之物",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150039.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 150040,
+                    "name": "灵之菊 纳尔 生如夏花",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/150/150040.png",
+                    "colors": [
+                        "#EE3B93",
+                        "#055939"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 198
+                }
+            ],
+            "skinAugments": null,
+            "description": "纳尔被遗弃在街头，多年来一直在艰难度日，对自己的不幸咆哮，直到他被一个温柔的孤儿女孩发现。这段情谊始于赠送食物，然后发展成了一段充满爱的友谊，终于纳尔突然因病离世。由于他们的亲情，纳尔现在以生之灵的身份回归，准备保护他的家人免受危险。"
+        }
+    ],
+    "passive": {
+        "name": "狂怒基因",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Gnar/HUD/Icons2D/Gnar_Passive.png",
+        "abilityVideoPath": "champion-abilities/0150/ability_0150_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0150/ability_0150_P1.jpg",
+        "description": "在战斗时，纳尔会产生怒气。在怒气到达最大值时，他的下一个技能将使他变形成巨型纳尔，获得强化的生存能力并能使用新的技能。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "投掷回力标 / 投掷顽石",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Gnar/HUD/Icons2D/Gnar_Q.png",
+            "abilityVideoPath": "champion-abilities/0150/ability_0150_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0150/ability_0150_Q1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "纳尔扔出一个回力标，对敌人造成伤害和减速效果，直到开始折返为止。如果纳尔接住了折返的回力标，那么这个技能的冷却时间就会减少。<br><br>巨型纳尔扔出一颗石头，石头会在命中第一个敌人后停下，对这个敌人附近的所有敌方单位造成伤害和减速效果。巨型纳尔可以通过拾取这颗石头来减少这个技能的冷却时间。",
+            "dynamicDescription": "<keywordMajor>小型纳尔：</keywordMajor>纳尔投掷一个回力标，造成<physicalDamage>@spell.GnarQ:MiniTotalDamage@物理伤害</physicalDamage>和持续@spell.GnarQ:SlowDuration@秒的@spell.GnarQ:SlowAmount*100@%<status>减速</status>。回力标会在命中一名敌人后折返，对后续敌人造成较少伤害。每个敌人只会被命中一次。接住回力标会使这个技能的冷却时间缩短@spell.GnarQ:MiniCDRefund*100@%。@SpellModifierDescriptionAppend@",
+            "range": [
+                1100.0000,
+                1100.0000,
+                1100.0000,
+                1100.0000,
+                1100.0000,
+                1100.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                20.0000,
+                17.5000,
+                15.0000,
+                12.5000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "亢奋 /  痛殴",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Gnar/HUD/Icons2D/Gnar_W.png",
+            "abilityVideoPath": "champion-abilities/0150/ability_0150_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0150/ability_0150_W1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "纳尔的攻击和施法会让他亢奋起来，造成额外伤害并为他提供移动速度加成。<br><br>巨型纳尔已经过于暴怒，所以用不着亢奋了，因此他会用后脚暴跳，并猛击他面前的区域，使区域内的所有敌人晕眩。",
+            "dynamicDescription": "<keywordMajor>小型纳尔被动：</keywordMajor>对相同敌人的每第三次攻击或技能会造成<magicDamage>@spell.GnarW:MiniTotalDamage@外加@spell.GnarW:MiniPercentHPDamage*100@%最大生命值的魔法伤害</magicDamage>并提供在3秒里持续衰减的<speed>@spell.GnarR:RHyperMovementSpeedPercent@%移动速度</speed>。@SpellModifierDescriptionAppend@",
+            "range": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "轻跳 / 猛踏",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Gnar/HUD/Icons2D/Gnar_E.png",
+            "abilityVideoPath": "champion-abilities/0150/ability_0150_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0150/ability_0150_E1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "纳尔跳到一个区域，并在落到任何单位上后，弹跳到更远的区域。<br><br>巨型纳尔体积太大，无法弹跳，但落地后会使地面震颤，对区域内的敌人造成伤害。",
+            "dynamicDescription": "<keywordMajor>小型纳尔：</keywordMajor>纳尔进行跳跃，获得持续@spell.GnarE:MiniASDuration@秒的<attackSpeed>@spell.GnarE:MinibAS*100@%攻击速度</attackSpeed>。如果纳尔落到一个目标上，那么他会继续向更远处弹跳。弹跳一名敌人时会对其造成<physicalDamage>@spell.GnarE:MiniTotalDamage@物理伤害</physicalDamage>并使其暂时<status>减速</status>@spell.GnarE:MoveSpeedMod*-100@%。@SpellModifierDescriptionAppend@",
+            "range": [
+                475.0000,
+                475.0000,
+                475.0000,
+                475.0000,
+                475.0000,
+                475.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                22.0000,
+                19.5000,
+                17.0000,
+                14.5000,
+                12.0000,
+                12.0000
+            ],
+            "coefficients": {
+                "coefficient1": 6.0000,
+                "coefficient2": 6.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "呐啊！",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Gnar/HUD/Icons2D/GnarBig_R.png",
+            "abilityVideoPath": "champion-abilities/0150/ability_0150_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0150/ability_0150_R1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "巨型纳尔将身边的所有东西都朝着一个选定的方向投掷，对他们造成伤害和减速效果。被投到墙上的敌人会被晕眩，并承受额外的伤害。",
+            "dynamicDescription": "<keywordMajor>小型纳尔被动：</keywordMajor>提升<spellName>亢奋</spellName>的<speed>移动速度</speed>。<br><br><keywordMajor>巨型纳尔：</keywordMajor>纳尔猛掷附近的敌人们，造成<physicalDamage>@Damage@物理伤害</physicalDamage>，<status>击退</status>，以及持续@RCCDuration@秒的@RSlowPercent@%<status>减速</status>。与墙体产生碰撞的敌人们会转而受到<physicalDamage>@WallDamage@ 物理伤害</physicalDamage>并被<status>晕眩</status>。@SpellModifierDescriptionAppend@",
+            "range": [
+                590.0000,
+                590.0000,
+                590.0000,
+                590.0000,
+                590.0000,
+                590.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                90.0000,
+                60.0000,
+                30.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.2000,
+                "coefficient2": 0.5000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

@@ -1,0 +1,983 @@
+{
+    "id": 166,
+    "name": "影哨",
+    "alias": "Akshan",
+    "title": "阿克尚",
+    "shortBio": "面对天大的危险，阿克尚也只会轻轻挑起一边眉毛。他身手矫健，嫉恶如仇——而且显而易见，他对服饰兴趣不大。阿克尚非常善于潜行，能够避开敌人的耳目，出现在最令人出其不意的时机。他怀着强烈的正义感，带着一把可以逆转生死的传奇武器，在符文之地上主持公道，惩治邪祟。他以自己的生命践行着自己的信条：“不做混蛋。”",
+    "tacticalInfo": {
+        "style": 1,
+        "difficulty": 3,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 1,
+        "mobility": 3,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/166.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/166.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/166.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/166.ogg",
+    "roles": [
+        "marksman",
+        "assassin"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 166000,
+            "isBase": true,
+            "name": "影哨",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/166/166000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/166/166000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/166/166000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Akshan/Skins/Base/AkshanLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 166001,
+            "isBase": false,
+            "name": "赛博潮流 阿克尚",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/166/166001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/166/166001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/166/166001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Akshan/Skins/Skin01/AkshanLoadscreen_1.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/166/166001.png",
+            "chromas": [
+                {
+                    "id": 166002,
+                    "name": "赛博潮流 阿克尚 破墙之火",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/166/166002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 166003,
+                    "name": "赛博潮流 阿克尚 无形之沙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/166/166003.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 166004,
+                    "name": "赛博潮流 阿克尚 绿幕之林",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/166/166004.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 166005,
+                    "name": "赛博潮流 阿克尚 信息之潮",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/166/166005.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 166006,
+                    "name": "赛博潮流 阿克尚 神行之索",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/166/166006.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 166007,
+                    "name": "赛博潮流 阿克尚 浪漫之钩",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/166/166007.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 166008,
+                    "name": "赛博潮流 阿克尚 灭虫之眼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/166/166008.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 166009,
+                    "name": "赛博潮流 阿克尚 窥视之影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/166/166009.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 148
+                }
+            ],
+            "skinAugments": null,
+            "description": "声音城的霓虹侠盗已成为了地下世界的英雄，大部分是因为他的有勇有谋，还有他潜入高度戒备的公司大楼而不被发现的神奇能力。魅力四射也没什么坏处。"
+        },
+        {
+            "id": 166010,
+            "isBase": false,
+            "name": "水晶玫瑰 阿克尚",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/166/166010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/166/166010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/166/166010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Akshan/Skins/Skin10/AkshanLoadScreen_10.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/166/166010.png",
+            "chromas": [
+                {
+                    "id": 166011,
+                    "name": "水晶玫瑰 阿克尚 热烈花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/166/166011.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 166012,
+                    "name": "水晶玫瑰 阿克尚 含羞花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/166/166012.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 166013,
+                    "name": "水晶玫瑰 阿克尚 痴心花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/166/166013.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 166014,
+                    "name": "水晶玫瑰 阿克尚 浪漫花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/166/166014.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 166015,
+                    "name": "水晶玫瑰 阿克尚 忠贞花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/166/166015.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 166016,
+                    "name": "水晶玫瑰 阿克尚 倾慕花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/166/166016.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 166017,
+                    "name": "水晶玫瑰 阿克尚 甜蜜花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/166/166017.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 166018,
+                    "name": "水晶玫瑰 阿克尚 纯洁花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/166/166018.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 166019,
+                    "name": "水晶玫瑰 阿克尚 蒂芙尼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/166/166019.png",
+                    "colors": [
+                        "#6ECFCC",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Valentine New",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/67.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/67.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 140
+                }
+            ],
+            "skinAugments": null,
+            "description": "尽管阿克尚英俊潇洒，但他每年都会放弃自己大胆的冒险，前往庆典进行一次备受请求的亮相。人们可能会看到他在偷学一两支舞，但他在人群中只会盯着一个人看。他们的道德……差异无法与他们之间电光四射的化学反应相匹配。"
+        },
+        {
+            "id": 166020,
+            "isBase": false,
+            "name": "荣誉使者 阿克尚",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/166/166020.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/166/166020.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/166/166020.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Akshan/Skins/Skin20/AkshanLoadScreen_20.PIE_C_14_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 176
+                }
+            ],
+            "skinAugments": null,
+            "description": "当慰藉教团找到阿克尚时，他还是一个没有灵魂的死亡武器，陷入了导师被谋杀后的复仇轮回中。即使他感到绝望，教团的教义也能够填补阿克尚内心的无尽空洞，并使他恢复活力。现在，他作为三大荣誉的坚定支持者与玛尔扎哈站在一起，准备用和谐与俏皮对抗“实体”。"
+        }
+    ],
+    "passive": {
+        "name": "无所不用",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Akshan/HUD/Icons2D/akshan_p.png",
+        "abilityVideoPath": "champion-abilities/0166/ability_0166_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0166/ability_0166_P1.jpg",
+        "description": "来自阿克尚攻击或技能的每第三次命中会造成额外伤害，并且如果目标是英雄还会为他提供一层护盾。<br><br>在阿克尚攻击时，他会进行一次额外的射击，来造成较少伤害。如果他取消掉了这次额外射击，那么他会转而获得移动速度。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "去而复还",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Akshan/HUD/Icons2D/akshan_q.png",
+            "abilityVideoPath": "champion-abilities/0166/ability_0166_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0166/ability_0166_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "阿克尚掷出一个回旋镖，在去程和返程时造成伤害，会在它每次命中一名敌人时延长它的距离。",
+            "dynamicDescription": "阿克尚掷出一个回旋镖，造成<physicalDamage>@FinalDamage@物理伤害</physicalDamage>，每次命中一名敌人时会延长其距离。<br><br>命中英雄时会为阿克尚提供在@HasteDuration@秒里持续衰减的<speed>@TotalHaste@移动速度</speed>。@SpellModifierDescriptionAppend@",
+            "range": [
+                850.0000,
+                850.0000,
+                850.0000,
+                850.0000,
+                850.0000,
+                850.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000,
+                80.0000,
+                50.0000
+            ],
+            "cooldownCoefficients": [
+                8.0000,
+                7.2500,
+                6.5000,
+                5.7500,
+                5.0000,
+                13.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "赴险夺人",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Akshan/HUD/Icons2D/akshan_w.png",
+            "abilityVideoPath": "champion-abilities/0166/ability_0166_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0166/ability_0166_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "被动效果：敌方英雄在击杀了阿克尚的友方英雄时，会被标记为恶人。如果阿克尚击杀了一名恶人，那么他会复活被该恶人击杀的友方英雄，获得额外金币，并清除所有恶人标记。<br><br>主动施放时，阿克尚会进入伪装状态并在朝着恶人移动时获得移动速度和法力回复。在离开草丛或墙体附近后，阿克尚会失去伪装状态。",
+            "dynamicDescription": "{{ Spell_AkshanW_Tooltip_@GameModeInteger@ }}@SpellModifierDescriptionAppend@",
+            "range": [
+                5500.0000,
+                5500.0000,
+                5500.0000,
+                5500.0000,
+                5500.0000,
+                5500.0000
+            ],
+            "costCoefficients": [
+                40.0000,
+                30.0000,
+                20.0000,
+                10.0000,
+                0.0000,
+                30.0000
+            ],
+            "cooldownCoefficients": [
+                18.0000,
+                14.0000,
+                10.0000,
+                6.0000,
+                2.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "骄行荡寇",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Akshan/HUD/Icons2D/akshan_e.png",
+            "abilityVideoPath": "champion-abilities/0166/ability_0166_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0166/ability_0166_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "阿克尚发射一个钩爪来吸附住地形，然后围绕它进行摆荡，在摆荡时快速朝相距最近的敌人开火。他可以提前从绳索上荡下来，或在与一名敌方英雄或地形产生碰撞时落下。",
+            "dynamicDescription": "<spellActive>第一段施放：</spellActive>阿克尚发射一个钩爪，吸附在命中的第一个地形上。<br><br><spellActive>第二段施放：</spellActive>阿克尚在地形附近摆荡，朝相距最近的敌人进行快速射击，每次射击造成<physicalDamage>@ASModDamageToDeal@物理伤害</physicalDamage>。<br><br><spellActive>第三段施放：</spellActive>阿克尚从绳索上荡下来，并进行一次终极射击。<br><br>与一名敌方英雄或地形产生碰撞，会提前结束摆荡。<br><br>参与击杀敌方英雄后会刷新这个技能的冷却时间。@SpellModifierDescriptionAppend@",
+            "range": [
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                18.0000,
+                16.5000,
+                15.0000,
+                13.5000,
+                12.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "恩怨相抵",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Akshan/HUD/Icons2D/Akshan_R.png",
+            "abilityVideoPath": "champion-abilities/0166/ability_0166_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0166/ability_0166_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "阿克尚锁定一名敌方英雄并开始储存他的子弹。在释放时，他会发射所有已储存的子弹，对命中的第一个英雄、小兵或建筑物造成基于已损失生命值的伤害。",
+            "dynamicDescription": "阿克尚锁定一名敌方英雄并开始过载充能他的枪械至多@ChannelDuration@秒，至多可储存@NumberOfBullets@颗子弹。<br><br><recast>再次施放：</recast>阿克尚释放已储存的子弹，每颗子弹对命中的首个敌人或建筑物至少造成<physicalDamage>@DamagePerBulletWithCrit@物理伤害</physicalDamage>，基于已损失生命值至多提升至<physicalDamage>@MaxDamagePerBullet@物理伤害</physicalDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                2500.0000,
+                2500.0000,
+                2500.0000,
+                2500.0000,
+                2500.0000,
+                2500.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                100.0000,
+                85.0000,
+                70.0000,
+                5.0000,
+                4.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

@@ -1,0 +1,1653 @@
+{
+    "id": 1,
+    "name": "黑暗之女",
+    "alias": "Annie",
+    "title": "安妮",
+    "shortBio": "拥有危险夺命的能力，却长着一幅小大人儿的可爱模样，这就是掌握深不可测占火魔法的女孩——安妮。安妮生活在诺克萨斯北边的山脚下，但即便是在这种地方，她也依然是魔法师中的异类。她与火焰的紧密关系与生俱来——最初那些火焰是伴随着喜怒无常的冲动情绪出现的，后来她学会了如何掌握这些“好玩的小把戏”。其中，安妮最喜欢的就是她召唤亲爱的泰迪熊提伯斯——那头狂野的守护火兽。如今安妮已经迷失在了永恒的天真里，她在黑暗森林中游荡，寻觅着能陪自己玩耍的人。",
+    "tacticalInfo": {
+        "style": 10,
+        "difficulty": 1,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 3,
+        "mobility": 1,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/1.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/1.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/1.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/1.ogg",
+    "roles": [
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 1000,
+            "isBase": true,
+            "name": "黑暗之女",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/1/1000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/1/1000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/1/1000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Annie/Skins/Base/AnnieLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 1001,
+            "isBase": false,
+            "name": "哥特萝莉 安妮",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/1/1001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/1/1001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/1/1001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Annie/Skins/Skin01/AnnieLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Wisdom of Pioneer",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/28.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/28.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 110
+                }
+            ],
+            "skinAugments": null,
+            "description": "她的母亲死了。她的父亲死了。但安妮还活着，领会着暗中之美。"
+        },
+        {
+            "id": 1002,
+            "isBase": false,
+            "name": "小红帽 安妮",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/1/1002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/1/1002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/1/1002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Annie/Skins/Skin02/AnnieLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 71
+                }
+            ],
+            "skinAugments": null,
+            "description": "安妮要越过河流和丛林，赶往外婆家里，在路上想要阻止她的人可不止沃里克一个。当然，沃里克并不清楚安妮可以发射火球或召唤烈焰巨熊，所以这绝对是极大的交流问题。"
+        },
+        {
+            "id": 1003,
+            "isBase": false,
+            "name": "安妮梦游仙境",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/1/1003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/1/1003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/1/1003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Annie/Skins/Skin03/AnnieLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "1 Year Celebration",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/34.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/34.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 71
+                }
+            ],
+            "skinAugments": null,
+            "description": "安妮在兔子洞内不断下落，追着大白兔的踪迹一直走到河岸，直到她发现这个世界要比自己所在的世界有趣得多。“或许我应该留下来，”她这样对自己说道-而她也确实这么做了。"
+        },
+        {
+            "id": 1004,
+            "isBase": false,
+            "name": "舞会公主 安妮",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/1/1004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/1/1004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/1/1004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Annie/Skins/Skin04/AnnieLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "TGC",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/4.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/4.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 100
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 1005,
+            "isBase": false,
+            "name": "冰霜烈焰 安妮",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/1/1005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/1/1005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/1/1005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Annie/Skins/Skin05/AnnieLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 47
+                }
+            ],
+            "skinAugments": null,
+            "description": "安妮是冬季仙境的一个奇才；她的先天魔力和灵体守护神是与生俱来的，这在很多代同族中还是第一个。尽管仍然年轻，她却已经成为了魄罗王大厅中的欢乐使者。"
+        },
+        {
+            "id": 1006,
+            "isBase": false,
+            "name": "安伯斯与提妮",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/1/1006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/1/1006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/1/1006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Annie/Skins/Skin06/AnnieLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 1007,
+            "isBase": false,
+            "name": "科学怪熊的新娘 安妮",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/1/1007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/1/1007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/1/1007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Annie/Skins/Skin07/AnnieLoadScreen_7.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Annie/Skins/Skin07/AnnieLoadScreen_7_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 88
+                }
+            ],
+            "skinAugments": null,
+            "description": "他是科学和魔术混合的参天憎恶。她是一个留着蜂巢头并有尚未确诊的纵火癖。你能说出一个更有标志性的组合吗？我会一直等你的"
+        },
+        {
+            "id": 1008,
+            "isBase": false,
+            "name": "“你看见过我的熊猫吗？”安妮",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/1/1008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/1/1008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/1/1008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Annie/Skins/Skin08/AnnieLoadScreen_8.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Year of the Snake",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/16.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/16.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 54
+                }
+            ],
+            "skinAugments": null,
+            "description": "安妮在春节庆典活动中担任着重要的角色，那就是用她的控火术去发射大量的高强度烟花。她的熊猫熊提伯斯会将火箭甩给她，并暴力劝退那些想要顺走烟花的坏人，就连再小的烟花也不容顺走！"
+        },
+        {
+            "id": 1009,
+            "isBase": false,
+            "name": "甜心宝贝 安妮",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/1/1009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/1/1009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/1/1009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Annie/Skins/Skin09/AnnieLoadScreen_9.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Valentine",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/8.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/8.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 64
+                }
+            ],
+            "skinAugments": null,
+            "description": "糖果、香味、还有所有美好的东西：就是这些东西组成了甜心宝贝安妮！提伯斯则由抗火棉混纺和暗影熊的无尽饥渴所组成，但他仍然有能力来一两次熊抱。实际上，很多时候一次熊抱已经足够了。"
+        },
+        {
+            "id": 1010,
+            "isBase": false,
+            "name": "海克斯科技 安妮",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/1/1010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/1/1010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/1/1010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Annie/Skins/Skin10/AnnieLoadScreen_10.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Hextech Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/43.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/43.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 40
+                }
+            ],
+            "skinAugments": null,
+            "description": "即使在海克斯科技复兴运动的高智识人士中，安妮也称得上是一个科学天才。她美丽、鲜活的战熊们足以跻身于该纪元最有价值的发明。她最神秘的创造物“提伯斯”总是呆在她身边——作为她的知己、好友和凶暴的保镖。"
+        },
+        {
+            "id": 1011,
+            "isBase": false,
+            "name": "银河魔装机神 安妮",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/1/1011.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/1/1011.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/1/1011.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Annie/Skins/Skin11/AnnieLoadScreen_11.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 21
+                }
+            ],
+            "skinAugments": null,
+            "description": "那一天，安妮将她的泰迪熊改装成自律机器人，以此证明了她的实力，并成为了超级银河战队中最年轻的学员。﻿尽管人们对于机械泰迪那高度易燃的设计和极不稳定的程序设定表示严重担忧，安妮的机械泰迪还是投入了全面生产。﻿毕竟绝望的非常规时代也需要颇具毁灭性的非常规手段。"
+        },
+        {
+            "id": 1012,
+            "isBase": false,
+            "name": "十周年纪念 安妮",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/1/1012.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/1/1012.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/1/1012.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Annie/Skins/Skin12/AnnieLoadScreen_12.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Annie/Skins/Skin12/AnnieLoadscreen_12_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Dream Chaser",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/56.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/56.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 169
+                }
+            ],
+            "skinAugments": null,
+            "description": "十年之间，无数场经典战役、翻盘好戏和激烈厮杀，联盟因为每一位召唤师的加入而精彩纷呈。安妮已经准备好迎接庆典了，而站在她后面的……是大块头提莫？和安妮一起共庆十周年快乐吧！"
+        },
+        {
+            "id": 1013,
+            "isBase": false,
+            "name": "福牛守护者 安妮",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/1/1013.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/1/1013.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/1/1013.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Annie/Skins/Skin13/AnnieLoadScreen_13.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Annie/Skins/Skin13/AnnieLoadscreen_13_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1013.png",
+            "chromas": [
+                {
+                    "id": 1014,
+                    "name": "福牛守护者 安妮 贺岁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1014.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 1015,
+                    "name": "福牛守护者 安妮 如意",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1015.png",
+                    "colors": [
+                        "#88FF00",
+                        "#9B1520"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在福牛守护者(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 1016,
+                    "name": "福牛守护者 安妮 迎春",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1016.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 1017,
+                    "name": "福牛守护者 安妮 进宝",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1017.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 1018,
+                    "name": "福牛守护者 安妮 纳福",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1018.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 1019,
+                    "name": "福牛守护者 安妮 吉祥",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1019.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 1020,
+                    "name": "福牛守护者 安妮 团圆",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1020.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Year of Ox",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/61.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/61.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 142
+                }
+            ],
+            "skinAugments": null,
+            "description": "当安妮被选为福牛守护者的技术特工时，所有人都震惊了。安妮是一个早熟的神童，职责是团队的侦查战略家，确保巡游路线上没有平民。"
+        },
+        {
+            "id": 1022,
+            "isBase": false,
+            "name": "咖啡甜心 安妮",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/1/1022.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/1/1022.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/1/1022.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Annie/Skins/Skin22/AnnieLoadScreen_22.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Annie/Skins/Skin22/AnnieLoadscreen_22_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1022.png",
+            "chromas": [
+                {
+                    "id": 1023,
+                    "name": "咖啡甜心 安妮 草莓戚风",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1023.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 1024,
+                    "name": "咖啡甜心 安妮 吉子芝士",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1024.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 1025,
+                    "name": "咖啡甜心 安妮 抹茶巧克力",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1025.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 1026,
+                    "name": "咖啡甜心 安妮 蓝莓朱古力",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1026.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 1027,
+                    "name": "咖啡甜心 安妮 提子班戟",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1027.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 1028,
+                    "name": "咖啡甜心 安妮 酒醉樱桃",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1028.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 1029,
+                    "name": "咖啡甜心 安妮 核桃巴菲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1029.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 1030,
+                    "name": "咖啡甜心 安妮 焦糖布丁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1030.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 153
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为咖啡馆老板的女儿和一位多才多艺的糕点法师神童，安妮对甜食有着不容忽视的酷爱。虽然她偶尔因肚饿而发脾气时，会派她施了魔法的小熊软糖在咖啡馆里搜寻适合主人吃的任何食物，但饱餐后的安妮就像糖一样甜！"
+        },
+        {
+            "id": 1031,
+            "isBase": false,
+            "name": "魔域梦魇 安妮",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/1/1031.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/1/1031.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/1/1031.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Annie/Skins/Skin31/AnnieLoadScreen_31.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1031.png",
+            "chromas": [
+                {
+                    "id": 1032,
+                    "name": "魔域梦魇 安妮 红夜梦境",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1032.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 1033,
+                    "name": "魔域梦魇 安妮 糖果梦境",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1033.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 1034,
+                    "name": "魔域梦魇 安妮 荆棘梦境",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1034.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 1035,
+                    "name": "魔域梦魇 安妮 幽潭梦境",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1035.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 1036,
+                    "name": "魔域梦魇 安妮 舞会梦境",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1036.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 1037,
+                    "name": "魔域梦魇 安妮 惊情梦境",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1037.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 1038,
+                    "name": "魔域梦魇 安妮 歌影梦境",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1038.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 1039,
+                    "name": "魔域梦魇 安妮 飞帚梦境",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1039.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 170
+                }
+            ],
+            "skinAugments": null,
+            "description": "小安妮每天从学校回家<br>孤独少女没人一起玩耍<br>她的家人们都已不在啦<br>她靠提伯斯将新朋友留下！"
+        },
+        {
+            "id": 1040,
+            "isBase": false,
+            "name": "北极星使者 安妮",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/1/1040.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/1/1040.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/1/1040.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Annie/Skins/Skin40/AnnieLoadScreen_40.PIE_C_13_24.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Annie/Skins/Skin40/AnnieLoadScreen_40_LE.PIE_C_13_24.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1040.png",
+            "chromas": [
+                {
+                    "id": 1041,
+                    "name": "北极星使者 安妮 激昂脉冲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1041.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 1042,
+                    "name": "北极星使者 安妮 浪漫帘幕",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1042.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 1043,
+                    "name": "北极星使者 安妮 幸运漩涡",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1043.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 1044,
+                    "name": "北极星使者 安妮 祥和面纱",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1044.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 1045,
+                    "name": "北极星使者 安妮 智慧纽带",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1045.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 1046,
+                    "name": "北极星使者 安妮 聪颖光弧",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1046.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 1047,
+                    "name": "北极星使者 安妮 七彩光斑",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1047.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 1048,
+                    "name": "北极星使者 安妮 庄严光冕",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1048.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 1049,
+                    "name": "北极星使者 安妮 花冠极光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/1/1049.png",
+                    "colors": [
+                        "#BF2020",
+                        "#368B25"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在北极星(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Snowdown",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/9.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/9.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 187
+                }
+            ],
+            "skinAugments": null,
+            "description": "赛娜启程去寻找北极光，但首先遇到的是一个小女孩——安妮，她正独自站在自家门前。她最珍视的童年伙伴——家中的宠物熊，不久前死掉了。安妮希望北极星能复活他，但赛娜拒绝了，只是给了她一只小熊玩偶。“生离死别在所难免，但他的记忆将寄托在这份礼物身上。”"
+        }
+    ],
+    "passive": {
+        "name": "嗜火",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Annie/HUD/Icons2D/Annie_Passive.png",
+        "abilityVideoPath": "champion-abilities/0001/ability_0001_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0001/ability_0001_P1.jpg",
+        "description": "在施放4个技能后，安妮的下一次伤害类技能就会对目标造成短暂的晕眩效果。<br><br>安妮在游戏开始时和重生时，会带着满层的【嗜火】。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "碎裂之火",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Annie/HUD/Icons2D/Annie_Q.png",
+            "abilityVideoPath": "champion-abilities/0001/ability_0001_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0001/ability_0001_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "安妮向目标投出注入了法力值的火球，对目标造成魔法伤害。如果目标死于碎裂之火，则碎裂之火消耗的法力值会返还给安妮，且碎裂之火的冷却时间减半。",
+            "dynamicDescription": "安妮投出一团火球，造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>。如果目标阵亡，那么安妮会返还法力值并缩短50%冷却时间。@SpellModifierDescriptionAppend@",
+            "range": [
+                625.0000,
+                625.0000,
+                625.0000,
+                625.0000,
+                625.0000,
+                625.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000,
+                80.0000,
+                85.0000
+            ],
+            "cooldownCoefficients": [
+                4.0000,
+                4.0000,
+                4.0000,
+                4.0000,
+                4.0000,
+                4.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.8000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "焚烧",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Annie/HUD/Icons2D/Annie_W.png",
+            "abilityVideoPath": "champion-abilities/0001/ability_0001_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0001/ability_0001_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "安妮向锥形区域施放一道烈焰，对区域内的所有敌人造成伤害。",
+            "dynamicDescription": "安妮投射出一阵火焰波，造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                90.0000,
+                95.0000,
+                100.0000,
+                105.0000,
+                110.0000,
+                115.0000
+            ],
+            "cooldownCoefficients": [
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.8500,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "熔岩护盾",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Annie/HUD/Icons2D/Annie_E.png",
+            "abilityVideoPath": "champion-abilities/0001/ability_0001_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0001/ability_0001_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "为安妮或一名友军提供一层护盾、一个爆发性的移动速度加成并且对任何用攻击或技能袭击她的敌人造成伤害。",
+            "dynamicDescription": "安妮为一名友方英雄提供持续@ShieldDuration@秒的<shield>@ShieldBlockTotal@护盾值</shield>，以及在@MovementSpeedDuration@秒里持续衰减的<speed>@MoveSpeedCalc@移动速度</speed>。当护盾处于激活状态时，敌人用攻击或技能对护盾造成伤害时会受到<magicDamage>@DamageReturn@魔法伤害</magicDamage>，每个护盾受到一次伤害。<br><br>提伯斯在被召唤出来时总会获得<spellName>熔岩护盾</spellName>的效果。@SpellModifierDescriptionAppend@",
+            "range": [
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000,
+                80.0000,
+                85.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                11.5000,
+                11.0000,
+                10.5000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.2000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "提伯斯之怒",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Annie/HUD/Icons2D/Annie_R1.png",
+            "abilityVideoPath": "champion-abilities/0001/ability_0001_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0001/ability_0001_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "安妮召唤地狱火泰迪：提伯斯为其作战，对目标区域造成伤害，提伯斯也会攻击和烧伤站在它周围的敌人。",
+            "dynamicDescription": "召唤提伯斯，对目标范围内的敌人造成<magicDamage>@InitialBurstDamage@魔法伤害</magicDamage>。在接下来的@TibbersLifetime@秒里，提伯斯会灼烧附近的敌人，<magicDamage>每秒造成@TibbersAuraDamage@魔法伤害</magicDamage>。<br><br>提伯斯在以下情况下会变得暴怒：在被召唤出来时、在安妮晕眩一名敌方英雄时、以及在安妮阵亡时。在暴怒状态下，提伯斯获得<attackSpeed>275%攻击速度</attackSpeed>和在3秒里持续衰减的<speed>100%移动速度</speed>。<br><br><recast>再次施放：</recast>手动给提伯斯下达指令。@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                130.0000,
+                115.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

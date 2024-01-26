@@ -1,0 +1,2028 @@
+{
+    "id": 15,
+    "name": "战争女神",
+    "alias": "Sivir",
+    "title": "希维尔",
+    "shortBio": "希维尔是著名的宝藏猎人和雇佣兵队长，在恕瑞玛沙漠中进行频繁的契约交易。她的兵器是一柄颇具传奇色彩的十字刃，她曾赢得过无数次战斗，虽然她本人报价不菲，但却深得雇主青睐。她有着著名的无畏决心和无尽的野心，并且以自己的事业为傲——只要赏金够高，她就能从凶险的恕瑞玛古墓中寻回深埋于地下的宝藏。不过随着好几股远古的力量搅动着恕瑞玛的根骨，希维尔突然发现自己被裹挟着、拉扯着，卷入了截然不同的命运。",
+    "tacticalInfo": {
+        "style": 2,
+        "difficulty": 2,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 1,
+        "mobility": 1,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/15.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/15.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/15.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/15.ogg",
+    "roles": [
+        "marksman"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 15000,
+            "isBase": true,
+            "name": "战争女神",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Base/SivirLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 15001,
+            "isBase": false,
+            "name": "战场公主 希维尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin01/SivirLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 15002,
+            "isBase": false,
+            "name": "亮丽女神 希维尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin02/SivirLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Warrior",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/30.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/30.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 2,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/2_large.png",
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 15003,
+            "isBase": false,
+            "name": "女猎手 希维尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin03/SivirLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 32
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 15004,
+            "isBase": false,
+            "name": "钢铁之心 希维尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin04/SivirLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 15005,
+            "isBase": false,
+            "name": "创战纪 希维尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin05/SivirLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 84
+                }
+            ],
+            "skinAugments": null,
+            "description": "一款特殊的事件皮肤，在PAX Prime 2011上发放。"
+        },
+        {
+            "id": 15006,
+            "isBase": false,
+            "name": "冰雪风暴 希维尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin06/SivirLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15006.png",
+            "chromas": [
+                {
+                    "id": 15017,
+                    "name": "冰雪风暴 希维尔 炫金",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15017.png",
+                    "colors": [
+                        "#FFC948",
+                        "#FFC948"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "   "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Snowdown",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/9.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/9.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 47
+                }
+            ],
+            "skinAugments": null,
+            "description": "狂野而且急躁的战争女神希维尔只在乎两件事：战斗的律动和钱币的低语。她在冰原上无情地追猎赏金目标，用巨大的锋刃雪花砍倒对手，如同残酷凛冽的冰雪风暴。"
+        },
+        {
+            "id": 15007,
+            "isBase": false,
+            "name": "光明骑士 希维尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin07/SivirLoadScreen_7.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 50
+                }
+            ],
+            "skinAugments": null,
+            "description": "守望者们一如他们所保护的对象，他们不能如劫掠者那样依靠无数被征服的人民来补给自己的部队。希维尔，一个技艺娴熟的赏金猎人，宣誓加入守望者之序的行列，这是她在了解这个组织的真正目的之后深思熟虑之后认真做出的决定。"
+        },
+        {
+            "id": 15008,
+            "isBase": false,
+            "name": "胜利女神 希维尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin08/SivirLoadScreen_8.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 7
+                }
+            ],
+            "skinAugments": null,
+            "description": "胜利女神希维尔是给2015赛季达到黄金段位或以上的玩家的奖励。作为终极战争女神，希维尔穿戴着象征胜利的飞翼头冠，手拿金色战轮。"
+        },
+        {
+            "id": 15009,
+            "isBase": false,
+            "name": "新创战纪 希维尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin09/SivirLoadscreen_9.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Hextech Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/43.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/43.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 84
+                }
+            ],
+            "skinAugments": null,
+            "description": "一款特殊的事件皮肤，在PAX West 2017上发放。"
+        },
+        {
+            "id": 15010,
+            "isBase": false,
+            "name": "送披萨的小姐姐 希维尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin10/SivirLoadScreen_10.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15010.png",
+            "chromas": [
+                {
+                    "id": 15011,
+                    "name": "送腊肠披萨的小姐姐 希维尔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15011.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 15012,
+                    "name": "送海鲜披萨的小姐姐 希维尔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15012.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 15013,
+                    "name": "送田园披萨的小姐姐 希维尔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15013.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 15014,
+                    "name": "送肉片披萨的小姐姐 希维尔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15014.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 15015,
+                    "name": "送双拼披萨的小姐姐 希维尔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15015.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 26
+                }
+            ],
+            "skinAugments": null,
+            "description": "希维尔是速度最快的披萨递送少女。她已从公司总部那里连续获得了九次嘉奖，因为自从在线评论被发明以来，她就没有收到过一次差评。她和鸡里奥的恶性竞争也有据可查，并且这两位都会不顾一切地胜对手一筹。"
+        },
+        {
+            "id": 15016,
+            "isBase": false,
+            "name": "腥红之月 希维尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15016.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15016.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15016.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin16/SivirLoadScreen_16.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15016.png",
+            "chromas": [
+                {
+                    "id": 15018,
+                    "name": "不祥之月 希维尔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15018.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "  "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15019,
+                    "name": "幻惑之月 希维尔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15019.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15020,
+                    "name": "深寒之月 希维尔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15020.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15021,
+                    "name": "耀目之月 希维尔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15021.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15022,
+                    "name": "悲悯之月 希维尔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15022.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15023,
+                    "name": "狂乱之月 希维尔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15023.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15024,
+                    "name": "死亡之月 希维尔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15024.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 12
+                }
+            ],
+            "skinAugments": null,
+            "description": "希维尔是腥红之月邪教近期任命的一位女祭司。她使用的武器不但是一个杀戮机器，而且是一把钥匙，用以通往诞生了所有恶魔的地狱镜像世界。它缓慢而坚定地融合了她的双生自我，并且现在，人性终结和魔性起始的界线已不再清晰。"
+        },
+        {
+            "id": 15025,
+            "isBase": false,
+            "name": "奥德赛 希维尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15025.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15025.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15025.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin25/SivirLoadScreen_25.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin25/SivirLoadscreen_25_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15025.png",
+            "chromas": [
+                {
+                    "id": 15026,
+                    "name": "奥德赛 希维尔 宇宙探索者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15026.png",
+                    "colors": [
+                        "#0C0C0F",
+                        "#9B1520"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2020)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15027,
+                    "name": "奥德赛 希维尔 银河征服者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15027.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15028,
+                    "name": "奥德赛 希维尔 巨行星搬运者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15028.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15029,
+                    "name": "奥德赛 希维尔 虫洞穿行者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15029.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15030,
+                    "name": "奥德赛 希维尔 小行星带探险者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15030.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15031,
+                    "name": "奥德赛 希维尔 恒星游历者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15031.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15032,
+                    "name": "奥德赛 希维尔 星辉收割者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15032.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15033,
+                    "name": "奥德赛 希维尔 星盘遨游者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15033.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 73
+                }
+            ],
+            "skinAugments": null,
+            "description": "希维尔在银河系的边缘地带经营着自己的小型赏金狩猎机构。她白手起家，性格坚韧，多年前父母被德玛克斯帝国夺去了生命。尽管外表坚硬，她仍然保持着柔软和富有同情心的一面。希维尔曾被卡尔玛雇佣，和其他雇佣兵一起，去解救被俘获的圣堂武士。"
+        },
+        {
+            "id": 15034,
+            "isBase": false,
+            "name": "咖啡甜心 希维尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15034.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15034.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15034.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin34/SivirLoadScreen_34.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin34/SivirLoadscreen_34_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15034.png",
+            "chromas": [
+                {
+                    "id": 15035,
+                    "name": "咖啡甜心 希维尔 草莓戚风",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15035.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15036,
+                    "name": "咖啡甜心 希维尔 吉子芝士",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15036.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15037,
+                    "name": "咖啡甜心 希维尔 薄荷雪拔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15037.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15038,
+                    "name": "咖啡甜心 希维尔 酒醉樱桃",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15038.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15039,
+                    "name": "咖啡甜心 希维尔 抹茶巧克力",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15039.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15040,
+                    "name": "咖啡甜心 希维尔 海盐泡芙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15040.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15041,
+                    "name": "咖啡甜心 希维尔 提子班戟",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15041.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15042,
+                    "name": "咖啡甜心 希维尔 焦糖布丁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15042.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 153
+                }
+            ],
+            "skinAugments": null,
+            "description": "希维尔最初是一名糕点厨师，但后来转变为“前台防御专家”。她的保护性使她与不守规矩的顾客们发生了一些争执，但希维尔对她的工作、她的朋友们和咖啡馆的热爱才是她真正为之奋战的目标。如果你想和经理谈谈，她也有话要对你说。"
+        },
+        {
+            "id": 15043,
+            "isBase": false,
+            "name": "日蚀骑士 希维尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15043.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15043.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15043.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin43/SivirLoadScreen_43.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin43/SivirLoadscreen_43_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15043.png",
+            "chromas": [
+                {
+                    "id": 15044,
+                    "name": "日蚀骑士 希维尔 英勇",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15044.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15045,
+                    "name": "日蚀骑士 希维尔 荣誉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15045.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15046,
+                    "name": "日蚀骑士 希维尔 牺牲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15046.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15047,
+                    "name": "日蚀骑士 希维尔 无私",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15047.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15048,
+                    "name": "日蚀骑士 希维尔 浪漫",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15048.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15049,
+                    "name": "日蚀骑士 希维尔 无畏",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15049.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 93
+                }
+            ],
+            "skinAugments": null,
+            "description": "希维尔是一位拿钱办事的日蚀骑士，以她精良的战斗技艺和匮乏的骑士精神而闻名。她会收钱去消灭那些威胁乡村的女巫和怪物，并无视那些无利可图的威胁。尽管许多骑士们的既定目标都很高尚，但希维尔只在乎钱币，虽然承诺援助骑士团，但仅在他们的最终时刻到来时。"
+        },
+        {
+            "id": 15050,
+            "isBase": false,
+            "name": "剪纸仙灵 希维尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15050.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15050.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15050.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin50/SivirLoadScreen_50.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin50/SivirLoadscreen_50_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15050.png",
+            "chromas": [
+                {
+                    "id": 15052,
+                    "name": "剪纸仙灵 希维尔 恭喜发财",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15052.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 15053,
+                    "name": "剪纸仙灵 希维尔 财源滚滚",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15053.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15054,
+                    "name": "剪纸仙灵 希维尔 前程似锦",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15054.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15055,
+                    "name": "剪纸仙灵 希维尔 喜气洋洋",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15055.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15056,
+                    "name": "剪纸仙灵 希维尔 年年有余",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15056.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15057,
+                    "name": "剪纸仙灵 希维尔 阖家安康",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15057.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15058,
+                    "name": "剪纸仙灵 希维尔 团团圆圆",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15058.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15059,
+                    "name": "剪纸仙灵 希维尔 吉祥如意",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15059.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15060,
+                    "name": "剪纸仙灵 希维尔 金玉满堂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15060.png",
+                    "colors": [
+                        "#181818",
+                        "#DDAA0E"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在春节(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Year of Bunny",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/72.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/72.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 188
+                }
+            ],
+            "skinAugments": null,
+            "description": "希维尔曾经是《大年兽加里奥》故事中的英雄。在月之舞者们打断了她与加里奥的激战时，她的神话世界被永久地改变了，并且她发现她已不再是主角了。如果她不是那个拯救世界的人，那么她现在的角色是什么呢？希维尔现在必须在一个她的未来突然失去下文的故事中为自己开创出一个角色。"
+        },
+        {
+            "id": 15051,
+            "isBase": false,
+            "name": "至臻 剪纸仙灵 希维尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15051.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15051.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15051.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin51/SivirLoadScreen_51.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin51/SivirLoadscreen_51_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 188
+                }
+            ],
+            "skinAugments": null,
+            "description": "希维尔只追求豪华，她的那些漂亮服装象征着她个人的成功，同时也是她作为裁剪大师的骄傲。重要的是她看起来无可挑剔：毕竟新年已至，而一个好的新年，往往从时尚出行开始。"
+        },
+        {
+            "id": 15061,
+            "isBase": false,
+            "name": "伏虎之力 希维尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15061.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15061.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15061.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin61/SivirLoadScreen_61.PIE_C_14_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin61/SivirLoadScreen_61_LE.PIE_C_14_2.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15061.png",
+            "chromas": [
+                {
+                    "id": 15062,
+                    "name": "伏虎之力 希维尔 旺盛战意",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15062.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15063,
+                    "name": "伏虎之力 希维尔 瑞兽灵光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15063.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15064,
+                    "name": "伏虎之力 希维尔 原初直觉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15064.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15065,
+                    "name": "伏虎之力 希维尔 如虎添翼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15065.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15066,
+                    "name": "伏虎之力 希维尔 虎啸风生",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15066.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15067,
+                    "name": "伏虎之力 希维尔 兽王威仪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15067.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15068,
+                    "name": "伏虎之力 希维尔 霸气虎步",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15068.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15069,
+                    "name": "伏虎之力 希维尔 独行傲影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15069.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 200
+                }
+            ],
+            "skinAugments": null,
+            "description": "生来伟大的希维尔很快发现，她增强过的各项才能是获得更高佣兵报酬的关键。作为本能大师，她在无数次战斗中奋力前行，击倒了任何阻碍她前进的目标。不过，她目前的悬赏，神恩战爪的首领，也许会是一只就连她都不可企及的猛兽。"
+        }
+    ],
+    "passive": {
+        "name": "敏锐疾行",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/HUD/Icons2D/Sivir_Passive.png",
+        "abilityVideoPath": "champion-abilities/0015/ability_0015_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0015/ability_0015_P1.jpg",
+        "description": "希维尔在攻击一名敌方英雄时，会短暂地获得移动速度提升。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "回旋之刃",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/HUD/Icons2D/Sivir_Q.png",
+            "abilityVideoPath": "champion-abilities/0015/ability_0015_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0015/ability_0015_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "希维尔像挥舞回力标一样挥出她的十字刃，并在往返时造成伤害。",
+            "dynamicDescription": "希维尔像挥舞回力标一样挥出她的十字刃，对命中的所有敌人造成<physicalDamage>@TotalDamage@</physicalDamage>。命中非英雄单位时，会使对每个后续目标的伤害减少，减到@FallOffMinimum*100@%为止。@SpellModifierDescriptionAppend@",
+            "range": [
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000
+            ],
+            "costCoefficients": [
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                10.0000,
+                9.5000,
+                9.0000,
+                8.5000,
+                8.0000,
+                7.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "弹射",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/HUD/Icons2D/Sivir_W.png",
+            "abilityVideoPath": "champion-abilities/0015/ability_0015_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0015/ability_0015_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "希维尔的下几次普通攻击将获得额外攻击速度并弹射到周围的目标上，在弹射时造成削减过的伤害。",
+            "dynamicDescription": "在接下来的@BuffDuration@秒里，希维尔获得<attackSpeed>@RicochetAttackSpeed*100@%攻击速度</attackSpeed>并且她的普攻会获得强化，弹射到附近的其它敌人上，每次弹射造成<physicalDamage>@BounceDamage@物理伤害</physicalDamage>，至多弹射@MaxBounces@次。<br><br>如果生成弹射的那次攻击造成了暴击，那么该次普攻的所有弹射都会暴击。@SpellModifierDescriptionAppend@",
+            "range": [
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "法术护盾",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/HUD/Icons2D/Sivir_E.png",
+            "abilityVideoPath": "champion-abilities/0015/ability_0015_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0015/ability_0015_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "制造一层法术屏障，来格挡一次对着希维尔施放的敌方单体技能。如果希维尔成功格挡了一次技能，那么就会回复生命值并获得爆发性的移动速度加成。",
+            "dynamicDescription": "希维尔制造一层持续@Effect1Amount@秒的法术屏障，来格挡一次即将到来的敌方技能。如果希维尔成功格挡了一次技能，那么就会回复<healing>@TotalHeal@生命值</healing>并触发【敏锐疾行】。@SpellModifierDescriptionAppend@",
+            "range": [
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                24.0000,
+                22.5000,
+                21.0000,
+                19.5000,
+                18.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000
+                ],
+                "Effect2Amount": [
+                    55.0000,
+                    55.0000,
+                    55.0000,
+                    55.0000,
+                    55.0000,
+                    55.0000,
+                    55.0000
+                ],
+                "Effect3Amount": [
+                    60.0000,
+                    60.0000,
+                    60.0000,
+                    60.0000,
+                    60.0000,
+                    60.0000,
+                    60.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "狩猎",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/HUD/Icons2D/Sivir_R.png",
+            "abilityVideoPath": "champion-abilities/0015/ability_0015_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0015/ability_0015_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "希维尔在战斗中引领她的友军，为他们提供持续一段时间的爆发性移动速度加成。此外，希维尔的攻击会缩短她的技能的冷却时间。",
+            "dynamicDescription": "希维尔在战斗中引领附近的友军，为他们提供持续@UltDuration@秒的<speed>@MaxMS*100@%移动速度</speed>。<br><br>战争女神在【狩猎】激活期间，希维尔对英雄进行的攻击会使她的基础技能的冷却时间缩短0.5秒。<br><br>参与击杀近期造成过伤害的敌人会刷新【狩猎】的持续时长。@SpellModifierDescriptionAppend@",
+            "range": [
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                100.0000,
+                80.0000,
+                90.0000,
+                90.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

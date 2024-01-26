@@ -1,0 +1,1091 @@
+{
+    "id": 44,
+    "name": "瓦洛兰之盾",
+    "alias": "Taric",
+    "title": "塔里克",
+    "shortBio": "塔里克是保护者星灵，用超乎寻常的力量守护着符文之地的生命、仁爱以及万物之美。塔里克由于渎职而被放逐，离开了祖国德玛西亚，前去攀登巨神峰寻找救赎，但他找到的却是来自星界的更高层的召唤。现在的塔里克与古代巨神族的神力相融合，以瓦洛兰之盾的身份，永不疲倦地警惕着阴险狡诈的虚空腐化之力。",
+    "tacticalInfo": {
+        "style": 8,
+        "difficulty": 2,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 1,
+        "durability": 2,
+        "crowdControl": 2,
+        "mobility": 1,
+        "utility": 3
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/44.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/44.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/44.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/44.ogg",
+    "roles": [
+        "support",
+        "fighter"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 44000,
+            "isBase": true,
+            "name": "瓦洛兰之盾",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/44/44000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/44/44000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/44/44000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Taric/Skins/Base/TaricLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 44001,
+            "isBase": false,
+            "name": "绿水晶光辉 塔里克",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/44/44001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/44/44001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/44/44001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Taric/Skins/Skin01/TaricLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 58
+                }
+            ],
+            "skinAugments": null,
+            "description": "翡翠教堂的骑士们曾是人类，现在是永恒之森的管事们——这些男人和女人与这片土地立下誓约，并且作为回报，获得了不合自然规律的长寿。现在，在一个名叫塔里克的男人带领下，仍有少数人居住在那里，保护着森林免受各式各样的入侵。"
+        },
+        {
+            "id": 44002,
+            "isBase": false,
+            "name": "紫水晶意志 塔里克",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/44/44002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/44/44002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/44/44002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Taric/Skins/Skin02/TaricLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 117
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 44003,
+            "isBase": false,
+            "name": "血石诅咒 塔里克",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/44/44003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/44/44003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/44/44003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Taric/Skins/Skin03/TaricLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 126
+                }
+            ],
+            "skinAugments": null,
+            "description": "塔里克曾被认为是血石教派中最英俊和最诡诈的侍僧。他在前领导者开始狩猎之后篡夺了权力。现在，他完全控制着他的血石宝物，并用他的能量来维持他的青春和美貌，且不计任何代价——即使这意味着会让他的双手沾点血。"
+        },
+        {
+            "id": 44004,
+            "isBase": false,
+            "name": "泳池派对 塔里克",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/44/44004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/44/44004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/44/44004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Taric/Skins/Skin04/TaricLoadscreen_4.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44004.png",
+            "chromas": [
+                {
+                    "id": 44005,
+                    "name": "泳池派对 塔里克 “我正在游过来！”",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44005.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 44006,
+                    "name": "泳池派对 塔里克 “接住这个泳圈！”",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44006.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 44007,
+                    "name": "泳池派对 塔里克 “拉住我的手！”",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44007.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 44008,
+                    "name": "泳池派对 塔里克 “他需要人工呼吸！”",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44008.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 15
+                }
+            ],
+            "skinAugments": null,
+            "description": "救生员塔里克随时待命，但当有人需要帮助时，他总是像电影里的慢动作一样去救人。然而，塔里克却没能挽救一部分人。 "
+        },
+        {
+            "id": 44009,
+            "isBase": false,
+            "name": "塔里克 · 辉盾",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/44/44009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/44/44009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/44/44009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Taric/Skins/Skin09/TaricLoadScreen_9.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44009.png",
+            "chromas": [
+                {
+                    "id": 44010,
+                    "name": "塔里克 · 辉盾 白夜勇者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44010.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 44011,
+                    "name": "塔里克 · 辉盾 海洋勇者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44011.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 44012,
+                    "name": "塔里克 · 辉盾 大地勇者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44012.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 44013,
+                    "name": "塔里克 · 辉盾 烈焰勇者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44013.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 44014,
+                    "name": "塔里克 · 辉盾 水晶勇者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44014.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 44015,
+                    "name": "塔里克 · 辉盾 梦境勇者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44015.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 44016,
+                    "name": "塔里克 · 辉盾 彩虹勇者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44016.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 44017,
+                    "name": "塔里克 · 辉盾 森林勇者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44017.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 38
+                }
+            ],
+            "skinAugments": null,
+            "description": "塔里克 · 辉盾是一位不得不为了一对潜行者活宝而同时承担抗怪和治疗职责的战斗圣职者，并且也许是唯一在维持他的团队不被清桌（团灭）的人。在这个世界观中，他是塔贡琉丝女神的一名虔诚的勇士，但在这个世界观外，他宁愿去参加一场不同的战役。"
+        },
+        {
+            "id": 44018,
+            "isBase": false,
+            "name": "太空律动 “爱乐之子” 塔里克",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/44/44018.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/44/44018.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/44/44018.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Taric/Skins/Skin18/TaricLoadScreen_18.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44018.png",
+            "chromas": [
+                {
+                    "id": 44019,
+                    "name": "“爱乐之子” 塔里克 小蓝的红色舞台",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44019.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 44020,
+                    "name": "“爱乐之子” 塔里克 小紫的黄色舞台",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44020.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 44021,
+                    "name": "“爱乐之子” 塔里克 小青的粉色舞台",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44021.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 44022,
+                    "name": "“爱乐之子” 塔里克 小粉的青色舞台",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44022.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 44023,
+                    "name": "“爱乐之子” 塔里克 小黄的蓝色舞台",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44023.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 44024,
+                    "name": "“爱乐之子” 塔里克 小橙的绿色舞台",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44024.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 44025,
+                    "name": "“爱乐之子” 塔里克 小彤的黑色舞台",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44025.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 44026,
+                    "name": "“爱乐之子” 塔里克 小绿的彩虹舞台",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/44/44026.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 144
+                }
+            ],
+            "skinAugments": null,
+            "description": "塔里克总是发现自己不安于目前的生活，并梦想着去发现超出他所处的这个凡尘俗世的东西。当提莫抵达他的星球并带着他踏上冒险之旅时，他的愿望得以实现。他现在找到了自己的一席之地，那就是成为奥恩的学徒，努力理解律动的概念。"
+        }
+    ],
+    "passive": {
+        "name": "正气凌人",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Taric/HUD/Icons2D/Taric_Passive.png",
+        "abilityVideoPath": "champion-abilities/0044/ability_0044_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0044/ability_0044_P1.jpg",
+        "description": "每次施放技能会强化塔里克的下2次普攻，以造成额外魔法伤害，使他的基础技能的冷却时间减少，并且可以快速地连续攻击。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "星光之触",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Taric/HUD/Icons2D/Taric_Q.png",
+            "abilityVideoPath": "champion-abilities/0044/ability_0044_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0044/ability_0044_Q1.jpg",
+            "cost": "@Cost@法力值，所有充能数",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "基于已储存的充能来治疗附近的友方英雄。【正气凌人】的强化普攻会为这个技能提供一层充能。",
+            "dynamicDescription": "<spellPassive>被动：</spellPassive>每@StackCooldown@秒和打出一次<spellName>正气凌人</spellName>攻击时获得一层效果(最多@Effect6Amount@层)。<br><br><spellActive>主动：</spellActive>消耗所有层数来为附近的友方英雄们回复<healing>@HealingPerStack@x层数的生命值</healing>(在@Effect6Amount@层时回复<healing>@MaxStackHealing@生命值</healing>)。@SpellModifierDescriptionAppend@",
+            "range": [
+                325.0000,
+                325.0000,
+                325.0000,
+                325.0000,
+                325.0000,
+                325.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000
+            ],
+            "cooldownCoefficients": [
+                3.0000,
+                3.0000,
+                3.0000,
+                3.0000,
+                3.0000,
+                3.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.1500,
+                "coefficient2": 0.7500
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    25.0000,
+                    25.0000,
+                    25.0000,
+                    25.0000,
+                    25.0000,
+                    25.0000,
+                    25.0000
+                ],
+                "Effect2Amount": [
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000
+                ],
+                "Effect3Amount": [
+                    0.1500,
+                    0.1500,
+                    0.3000,
+                    0.4500,
+                    0.6000,
+                    0.7500,
+                    1.0000
+                ],
+                "Effect4Amount": [
+                    0.7500,
+                    0.7500,
+                    1.5000,
+                    2.2500,
+                    3.0000,
+                    3.7500,
+                    6.0000
+                ],
+                "Effect5Amount": [
+                    25.0000,
+                    25.0000,
+                    50.0000,
+                    75.0000,
+                    100.0000,
+                    125.0000,
+                    125.0000
+                ],
+                "Effect6Amount": [
+                    1.0000,
+                    1.0000,
+                    2.0000,
+                    3.0000,
+                    4.0000,
+                    5.0000,
+                    6.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    15.0000,
+                    15.0000,
+                    15.0000,
+                    15.0000,
+                    15.0000,
+                    15.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "坚毅壁垒",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Taric/HUD/Icons2D/Taric_W.png",
+            "abilityVideoPath": "champion-abilities/0044/ability_0044_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0044/ability_0044_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "被动提升塔里克和带有【坚毅壁垒】效果的友方英雄的护甲。<br><br>主动施放会为一名友方英雄提供护盾和【坚毅壁垒】效果，只要该英雄呆在塔里克身边，【坚毅壁垒】效果会一直持续。塔里克的技能也会从带有【坚毅壁垒】效果的友方英雄身上施放。",
+            "dynamicDescription": "<spellPassive>被动：</spellPassive>塔里克获得<scaleArmor>@BonusArmor@护甲</scaleArmor>并在他和被此技能绑定过的友方英雄之间形成一条灵链。只要他们在彼此附近，该友方英雄就会获得<scaleArmor>@BonusArmor@护甲</scaleArmor>并且塔里克的各个技能也会从他自己和该友方英雄处施放。<br><br><spellPassive>主动：</spellPassive>塔里克与一名友方英雄进行绑定，提供持续@Effect3Amount@秒的<shield>@Effect2Amount@%最大生命值的护盾值</shield>。@SpellModifierDescriptionAppend@",
+            "range": [
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000
+            ],
+            "cooldownCoefficients": [
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.3000,
+                "coefficient2": 0.1000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    8.0000,
+                    9.0000,
+                    10.0000,
+                    11.0000,
+                    12.0000,
+                    13.0000,
+                    14.0000
+                ],
+                "Effect2Amount": [
+                    6.0000,
+                    7.0000,
+                    8.0000,
+                    9.0000,
+                    10.0000,
+                    11.0000,
+                    12.0000
+                ],
+                "Effect3Amount": [
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000
+                ],
+                "Effect4Amount": [
+                    1000.0000,
+                    1000.0000,
+                    1000.0000,
+                    1000.0000,
+                    1000.0000,
+                    1000.0000,
+                    1000.0000
+                ],
+                "Effect5Amount": [
+                    1300.0000,
+                    1300.0000,
+                    1300.0000,
+                    1300.0000,
+                    1300.0000,
+                    1300.0000,
+                    1300.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "炫光",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Taric/HUD/Icons2D/Taric_E.png",
+            "abilityVideoPath": "champion-abilities/0044/ability_0044_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0044/ability_0044_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "塔里克准备施放一束星光，在短暂的延迟后，会对敌人造成魔法伤害和晕眩效果。",
+            "dynamicDescription": "塔里克投射一束星光，在@Effect3Amount@秒后爆裂，以造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>并使敌人们<status>晕眩</status>@Effect2Amount@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                610.0000,
+                610.0000,
+                610.0000,
+                610.0000,
+                610.0000,
+                610.0000
+            ],
+            "costCoefficients": [
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000
+            ],
+            "cooldownCoefficients": [
+                16.0000,
+                15.0000,
+                14.0000,
+                13.0000,
+                12.0000,
+                11.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.5000,
+                "coefficient2": 0.5000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    50.0000,
+                    90.0000,
+                    130.0000,
+                    170.0000,
+                    210.0000,
+                    250.0000,
+                    290.0000
+                ],
+                "Effect2Amount": [
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000
+                ],
+                "Effect3Amount": [
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "宇宙之辉",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Taric/HUD/Icons2D/Taric_R.png",
+            "abilityVideoPath": "champion-abilities/0044/ability_0044_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0044/ability_0044_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "在短暂的延迟后，放射一道宇宙能量到附近的友方英雄身上，让他们免疫伤害一段时间。",
+            "dynamicDescription": "塔里克召唤来自天堂的保护。在@InitialDelay@秒后，附近的所有友方英雄都会免疫伤害@InvulnDuration@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                180.0000,
+                150.0000,
+                120.0000,
+                90.0000,
+                60.0000,
+                30.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.5000,
+                "coefficient2": 0.5000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

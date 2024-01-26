@@ -1,0 +1,851 @@
+{
+    "id": 901,
+    "name": "Smolder",
+    "alias": "Smolder",
+    "title": "the Fiery Fledgling",
+    "shortBio": "Hidden amongst the craggy cliffs of the Noxian frontier, under the watchful eyes of his mother, a young dragon is learning what it means to be heir to the Camavoran imperial dragon lineage. Playful and eager to grow up, Smolder looks for any excuse to practice his burgeoning abilities. Though he's still a fledgling, his skills are nothing to sneeze at, easily setting fire to anything that burns.",
+    "tacticalInfo": {
+        "style": 4,
+        "difficulty": 1,
+        "damageType": "kMixed"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 1,
+        "mobility": 1,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/901.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/901.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/901.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/901.ogg",
+    "roles": [
+        "marksman"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 901000,
+            "isBase": true,
+            "name": "Smolder",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/901/901000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/901/901000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/901/901000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Smolder/Skins/Base/SmolderLoadScreen_0.Smolder.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 901001,
+            "isBase": false,
+            "name": "Heavenscale Smolder",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/901/901001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/901/901001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/901/901001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Smolder/Skins/Skin01/SmolderLoadScreen_1.Smolder.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Smolder/Skins/Skin01/SmolderLoadScreen_1_LE.Smolder.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/901/901001.png",
+            "chromas": [
+                {
+                    "id": 901002,
+                    "name": "Heavenscale Smolder",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/901/901002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2024."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 901003,
+                    "name": "Heavenscale Smolder",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/901/901003.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 901004,
+                    "name": "Heavenscale Smolder",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/901/901004.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 901005,
+                    "name": "Heavenscale Smolder",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/901/901005.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 901006,
+                    "name": "Heavenscale Smolder",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/901/901006.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 901007,
+                    "name": "Heavenscale Smolder",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/901/901007.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 901008,
+                    "name": "Heavenscale Smolder",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/901/901008.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 901009,
+                    "name": "Heavenscale Smolder",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/901/901009.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 901010,
+                    "name": "Heavenscale Smolder",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/901/901010.png",
+                    "colors": [
+                        "#DFA6DF",
+                        "#E0D7D7"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2024 Heavenscale event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 201
+                }
+            ],
+            "skinAugments": null,
+            "description": "The youngest member of the royal family and cousin to the prince, Smolder likes nothing more than to tag along on any adventures Lee Sin gets up to. He may have missed the part of the plan that involves disguising himself as a human, but hey—he will show them that dragons don't need to dress up to be the life of the party!"
+        }
+    ],
+    "passive": {
+        "name": "Dragon Practice",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Smolder/HUD/Icons2D/Icons_Smolder_Passive.png",
+        "abilityVideoPath": "champion-abilities/0901/ability_0901_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0901/ability_0901_P1.jpg",
+        "description": "Hitting champions with Abilities and killing enemies with Super Scorcher Breath grants a stack of Dragon Practice. Stacks increase the damage of Smolders basic Abilities."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Super Scorcher Breath",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Smolder/HUD/Icons2D/Icons_Smolder_Q1.png",
+            "abilityVideoPath": "champion-abilities/0901/ability_0901_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0901/ability_0901_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Smolder breathes fire on an enemy. As he gains more stacks, this ability becomes more powerful.",
+            "dynamicDescription": "Smolder belches flame, dealing <physicalDamage>@TooltipQDamage@ physical damage</physicalDamage> + <magicDamage>@Passive_Damage_Increase@ magic damage</magicDamage>.<br><br>Based on stacks of <spellName>Dragon Practice</spellName>, this Ability evolves to gain the following effects:<li><keywordMajor>@StackTier1@ Stacks</keywordMajor>: Damages all enemies surrounding the target.</li><li><keywordMajor>@StackTier2@ Stacks</keywordMajor>: Sends <spellName>@Tier2_NumberOfBlowback@</spellName> explosions beyond the target that deal @Tier2_BlowbackPercentageDamage@% of this Ability's damage.</li><li><keywordMajor>@StackTier3@ Stacks</keywordMajor>: Burns the target, dealing <trueDamage>@Tier3_TrueDamagePercent*100@% max Health true damage</trueDamage> over @Tier3_DotLength@ seconds. Enemy champions that drop below <trueDamage>@Tier3_ExecuteThreshold@</trueDamage> total health while burning are killed instantly.</li>@SpellModifierDescriptionAppend@",
+            "range": [
+                550.0000,
+                550.0000,
+                550.0000,
+                550.0000,
+                550.0000,
+                550.0000
+            ],
+            "costCoefficients": [
+                23.0000,
+                26.0000,
+                29.0000,
+                32.0000,
+                35.0000,
+                35.0000
+            ],
+            "cooldownCoefficients": [
+                5.5000,
+                5.0000,
+                4.5000,
+                4.0000,
+                3.5000,
+                3.5000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Achooo!",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Smolder/HUD/Icons2D/Icons_Smolder_W.png",
+            "abilityVideoPath": "champion-abilities/0901/ability_0901_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0901/ability_0901_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Smolder lets out an adorable flaming sneeze that explodes when hitting enemy champions.",
+            "dynamicDescription": "Smolder lets out an adorable flaming sneeze, dealing <physicalDamage>@InitialDamage@ physical damage</physicalDamage> and <status>Slowing</status> by @SlowAmount*100@% for @SlowDuration@ seconds.<br><br>Hitting champions causes an explosion, dealing <physicalDamage>@ExplosionDamage@ physical damage</physicalDamage> + <magicDamage>@Passive_Damage@ magic damage</magicDamage>.@SpellModifierDescriptionAppend@",
+            "range": [
+                1500.0000,
+                1500.0000,
+                1500.0000,
+                1500.0000,
+                1500.0000,
+                1500.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000
+            ],
+            "cooldownCoefficients": [
+                13.0000,
+                12.5000,
+                12.0000,
+                11.5000,
+                11.0000,
+                11.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Flap, Flap, Flap",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Smolder/HUD/Icons2D/Icons_Smolder_E.png",
+            "abilityVideoPath": "champion-abilities/0901/ability_0901_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0901/ability_0901_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Smolder takes flight ignoring terrain and attacking the lowest health enemy.",
+            "dynamicDescription": "Smolder takes flight, gaining <speed>@MoveSpeed*100@% Move Speed</speed> and ignoring terrain for @Duration@ seconds.<br><br>While flying, Smolder attacks the lowest Health enemy <spellName>@TotalNumberOfAttacks@</spellName> times for <physicalDamage>@DamagePerHit@ physical damage</physicalDamage> + <magicDamage>@Passive_Damage_Increase@ magic damage</magicDamage> each.@SpellModifierDescriptionAppend@",
+            "range": [
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000
+            ],
+            "costCoefficients": [
+                65.0000,
+                65.0000,
+                65.0000,
+                65.0000,
+                65.0000,
+                65.0000
+            ],
+            "cooldownCoefficients": [
+                24.0000,
+                22.0000,
+                20.0000,
+                18.0000,
+                16.0000,
+                16.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "MMOOOMMMM!",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Smolder/HUD/Icons2D/Icons_Smolder_R.png",
+            "abilityVideoPath": "champion-abilities/0901/ability_0901_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0901/ability_0901_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Smolder calls his mom to breath fire from above, dealing extra damage and slowing enemies in the center of her fire.",
+            "dynamicDescription": "Smolder's mom breathes fire from above, dealing <physicalDamage>@TotalDamage@ physical damage</physicalDamage>. Enemies in the center instead take <physicalDamage>@TooltipOnly_TotalSweetspotDamage@</physicalDamage> and are <status>Slowed</status> by @SlowAmount*100@% for @SlowDuration@ seconds.<br><br>Smolder's mom heals her son for <healing>@MomHealCalc@ Health</healing> if she hits him.@SpellModifierDescriptionAppend@",
+            "range": [
+                4200.0000,
+                4200.0000,
+                4200.0000,
+                4200.0000,
+                4200.0000,
+                4200.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                110.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

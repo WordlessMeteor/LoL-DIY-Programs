@@ -1,0 +1,1527 @@
+{
+    "id": 4,
+    "name": "卡牌大师",
+    "alias": "TwistedFate",
+    "title": "崔斯特",
+    "shortBio": "崔斯特是一名声名狼藉的诈骗惯犯，他让那些富人既羡慕又嫉恨，这世上任何有人烟之地都有过这位纸牌高手施展“魅力”与赌艺的足迹。他鲜少会认真干一件事，总是用一抹轻蔑的微笑和一副漫不经心的样子面对每一天。但无论什么情况，崔斯特的袖子里永远都会藏着一张王牌。",
+    "tacticalInfo": {
+        "style": 7,
+        "difficulty": 2,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 2,
+        "mobility": 2,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/4.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/4.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/4.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/4.ogg",
+    "roles": [
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 4000,
+            "isBase": true,
+            "name": "卡牌大师",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/4/4000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/4/4000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/4/4000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/skins/base/TwistedFateLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 4001,
+            "isBase": false,
+            "name": "蓝色忧郁 崔斯特",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/4/4001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/4/4001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/4/4001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/skins/Skin01/TwistedFateLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "QQ Blue Diamond",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/2.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/2.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 84
+                }
+            ],
+            "skinAugments": null,
+            "description": "一款特殊的事件皮肤，在PAX2009上发放。"
+        },
+        {
+            "id": 4002,
+            "isBase": false,
+            "name": "红桃杰克 崔斯特",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/4/4002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/4/4002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/4/4002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/skins/Skin02/TwistedFateLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "QQ Club",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/3.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/3.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 41
+                }
+            ],
+            "skinAugments": null,
+            "description": "第二是杰克，气势如电掣，<br>转瞬可将命喉扼！<br>算尽全场出胜策，<br>屡屡倾倒路过者。"
+        },
+        {
+            "id": 4003,
+            "isBase": false,
+            "name": "魔幻卡牌 崔斯特",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/4/4003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/4/4003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/4/4003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/skins/skin03/TwistedFateLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 4004,
+            "isBase": false,
+            "name": "探戈灵魂 崔斯特",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/4/4004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/4/4004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/4/4004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/skins/Skin04/TwistedFateLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 102
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 4005,
+            "isBase": false,
+            "name": "西部牛仔 崔斯特",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/4/4005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/4/4005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/4/4005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/skins/Skin05/TwistedFateLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Emperor",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/32.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/32.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 3,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/3_large.png",
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "在高境之边每一个骰子坊和赌棚里常驻的，是“逆命”托比亚斯·费利克斯。他喜欢在秃鹰峡谷或者更加文明的边境小镇浪掷时间。赌场里总会有亲切且天真的新面孔，而“逆命”的专长则是击碎这些人的心灵和银行账户，两者之间不分先后。 "
+        },
+        {
+            "id": 4006,
+            "isBase": false,
+            "name": "皇家火枪手 崔斯特",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/4/4006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/4/4006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/4/4006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/skins/skin06/TwistedFateLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 72
+                }
+            ],
+            "skinAugments": null,
+            "description": "崔斯特从来不应该属于火枪手卫队，尤其是因为他来自一个低微的家庭。但他的魅力和机智——以及他的战斗技巧——帮助他从一场卑鄙的阴谋中拯救了君主，为他赢得了精英阶层的一席之地。对他们来说很不幸的是，他更喜欢惊心动魄的冒险而不是他的实际职责。"
+        },
+        {
+            "id": 4007,
+            "isBase": false,
+            "name": "地底世界 崔斯特",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/4/4007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/4/4007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/4/4007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/skins/skin07/TwistedFateLoadScreen_7.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Superior Warrior Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/46.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/46.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 88
+                }
+            ],
+            "skinAugments": null,
+            "description": "对那些畏惧与死亡那不可避免的相遇的人来说，崔斯特提供了另一条路。如果赢了他的赌局，就会有奢华的生活等待着。如果输了，崔斯特就会欣然将又一张卡牌添加到他那日益增长的、由凄惨灵魂组成的牌组中。"
+        },
+        {
+            "id": 4008,
+            "isBase": false,
+            "name": "逆转裁判 崔斯特",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/4/4008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/4/4008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/4/4008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/skins/Skin08/TwistedFateLoadScreen_8.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 31
+                }
+            ],
+            "skinAugments": null,
+            "description": "托比尔斯花费了大量闲暇时间来充当秩联比赛的裁判。当然，你可以在玩纸牌时作弊，也可以在赌场诈骗，但这些都比不上一场激烈的球赛对抗。"
+        },
+        {
+            "id": 4009,
+            "isBase": false,
+            "name": "逍遥赌侠 崔斯特",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/4/4009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/4/4009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/4/4009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/skins/Skin09/TwistedFateLoadScreen_9.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 49
+                }
+            ],
+            "skinAugments": null,
+            "description": "准备找一些打手来扩展你的生意范围么？崔斯特和他的搭档格雷福斯就是你最好的选择，这二人只要价格合适(任何价格都行)，他们会对任何人(我指的是任何人)做出任何事(我指的是任何事)，详情请于店内咨询。"
+        },
+        {
+            "id": 4010,
+            "isBase": false,
+            "name": "腥红之月 崔斯特",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/4/4010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/4/4010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/4/4010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/skins/Skin10/TwistedFateLoadscreen_10.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 12
+                }
+            ],
+            "skinAugments": null,
+            "description": "血月教派的真正领导人一直隐藏于重重迷雾之中，他是史上通过面具试炼的第一人，献祭活人血肉来召唤恶魔实体的秘密也是由他散播的。无论他还是否算是人类，他注将永远隐藏于幕后，时刻注视着一切。"
+        },
+        {
+            "id": 4011,
+            "isBase": false,
+            "name": "未来战士 崔斯特",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/4/4011.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/4/4011.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/4/4011.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/skins/Skin11/TwistedFateLoadScreen_11.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4011.png",
+            "chromas": [
+                {
+                    "id": 4012,
+                    "name": "未来战士 崔斯特 无尽永前",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4012.png",
+                    "colors": [
+                        "#162D57",
+                        "#A50031"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在未来战士(2020)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 36
+                }
+            ],
+            "skinAugments": null,
+            "description": "通过欺骗时间执法者，崔斯特因其跨越多条时间线同时进行大规模抢劫而闻名。﻿他熟知逃生最快的时间胡同，因此总能在执法者到来的前一刻携带着偷来的财宝逃生……"
+        },
+        {
+            "id": 4013,
+            "isBase": false,
+            "name": "奥德赛 崔斯特",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/4/4013.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/4/4013.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/4/4013.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/skins/Skin13/TwistedFateLoadScreen_13.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/skins/Skin13/TwistedFateLoadscreen_13_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4013.png",
+            "chromas": [
+                {
+                    "id": 4014,
+                    "name": "奥德赛 崔斯特 银河征服者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4014.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 4015,
+                    "name": "奥德赛 崔斯特 宇宙探索者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4015.png",
+                    "colors": [
+                        "#0C0C0F",
+                        "#9B1520"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2020)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 4016,
+                    "name": "奥德赛 崔斯特 巨行星搬运者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4016.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 4017,
+                    "name": "奥德赛 崔斯特 彗星追赶者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4017.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 4018,
+                    "name": "奥德赛 崔斯特 小行星带探险者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4018.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 4019,
+                    "name": "奥德赛 崔斯特 星光守卫者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4019.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 4020,
+                    "name": "奥德赛 崔斯特 虫洞穿行者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4020.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 4021,
+                    "name": "奥德赛 崔斯特 星云环游者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4021.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 4022,
+                    "name": "奥德赛 崔斯特 恒星游历者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4022.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 73
+                }
+            ],
+            "skinAugments": null,
+            "description": "崔斯特是一个以谨慎而闻名的太空走私者。他与他那艘不太出名的飞船“万能牌号”，已被卡尔玛雇佣，前去从一些太空海盗手中解救一些圣堂武士。他才刚刚开始注意到，其他从事这项工作的雇佣兵更出名的是干湿活，而不是简单的盗宝……"
+        },
+        {
+            "id": 4023,
+            "isBase": false,
+            "name": "DWG 崔斯特",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/4/4023.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/4/4023.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/4/4023.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/skins/Skin23/TwistedFateLoadScreen_23.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/skins/Skin23/TwistedFateLoadscreen_23_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4023.png",
+            "chromas": [
+                {
+                    "id": 4024,
+                    "name": "DWG 崔斯特 精锐",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4024.png",
+                    "colors": [
+                        "#050B19",
+                        "#0055FF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在季中冠军赛(2021)期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 145
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此致敬ShowMaker在2020全球总决赛中使用崔斯特的夺胜表现。"
+        },
+        {
+            "id": 4025,
+            "isBase": false,
+            "name": "地下都市 梦魇 崔斯特",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/4/4025.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/4/4025.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/4/4025.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/skins/Skin25/TwistedFateLoadScreen_25.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4025.png",
+            "chromas": [
+                {
+                    "id": 4026,
+                    "name": "地下都市 梦魇 崔斯特 红莲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4026.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 4027,
+                    "name": "地下都市 梦魇 崔斯特 青木",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4027.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 4028,
+                    "name": "地下都市 梦魇 崔斯特 幻魅",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4028.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 4029,
+                    "name": "地下都市 梦魇 崔斯特 蓝霜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4029.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 4030,
+                    "name": "地下都市 梦魇 崔斯特 琥珀",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4030.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 4031,
+                    "name": "地下都市 梦魇 崔斯特 黛夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4031.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 4032,
+                    "name": "地下都市 梦魇 崔斯特 白影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4032.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 4033,
+                    "name": "地下都市 梦魇 崔斯特 黑曜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4033.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 4034,
+                    "name": "地下都市 梦魇 崔斯特 孽影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4034.png",
+                    "colors": [
+                        "#181121",
+                        "#53022D"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在魔女(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 149
+                }
+            ],
+            "skinAugments": null,
+            "description": "没人知道“神秘绅士”到底是人类还是其它的存在，但他以某种方式将自己注入了瓦洛兰城的每一个地下家族中。靠着甜言蜜语和骗子的笑容，他说服了他们所有人拥抱“超界”的恐怖之物……现在唯一要做的就是坐着看他们将彼此撕成碎片。"
+        },
+        {
+            "id": 4036,
+            "isBase": false,
+            "name": "太空律动 “万能舞王” 崔斯特",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/4/4036.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/4/4036.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/4/4036.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/skins/Skin36/TwistedFateLoadScreen_36.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4036.png",
+            "chromas": [
+                {
+                    "id": 4037,
+                    "name": "“万能舞王” 崔斯特 传送抢个红",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4037.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 4038,
+                    "name": "“万能舞王” 崔斯特 传送蹲草丛",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4038.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 4039,
+                    "name": "“万能舞王” 崔斯特 传送拆个家",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4039.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 4040,
+                    "name": "“万能舞王” 崔斯特 传送抢个车",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4040.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 4041,
+                    "name": "“万能舞王” 崔斯特 传送抢个蟹",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4041.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 4042,
+                    "name": "“万能舞王” 崔斯特 传送抢先锋",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4042.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 4043,
+                    "name": "“万能舞王” 崔斯特 传送抢男爵",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4043.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 4044,
+                    "name": "“万能舞王” 崔斯特 传送拆水晶",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/4/4044.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 144
+                }
+            ],
+            "skinAugments": null,
+            "description": "崔斯特可能是个无赖，但他因能够办好各种事情而闻名整个银河系。但即使是他也找不到他那位失散多年的搭档——格雷福斯——的踪迹。因此，当一些喵星人向他提供有关格雷福斯下落的情报，来换取传说中的地下迪斯科“酱酱舞会”的位置时，他高兴地答应了。不过，一些不速之客是什么意思？"
+        }
+    ],
+    "passive": {
+        "name": "灌铅骰子",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/HUD/Icons2D/Cardmaster_SealFate.png",
+        "abilityVideoPath": "champion-abilities/0004/ability_0004_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0004/ability_0004_P1.jpg",
+        "description": "在击杀了一名单位后，崔斯特会投掷他的“幸运”骰，随机获得1到6的额外赏金。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "万能牌",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/HUD/Icons2D/Cardmaster_PowerCard.png",
+            "abilityVideoPath": "champion-abilities/0004/ability_0004_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0004/ability_0004_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "崔斯特扔出三张卡牌，卡牌会对沿途的每个敌方单位造成伤害。",
+            "dynamicDescription": "崔斯特掷出三张牌，各造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                10000.0000,
+                10000.0000,
+                10000.0000,
+                10000.0000,
+                10000.0000,
+                10000.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                70.0000,
+                80.0000,
+                90.0000,
+                100.0000,
+                110.0000
+            ],
+            "cooldownCoefficients": [
+                6.0000,
+                5.7500,
+                5.5000,
+                5.2500,
+                5.0000,
+                5.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.9000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    20.0000,
+                    60.0000,
+                    100.0000,
+                    140.0000,
+                    180.0000,
+                    220.0000,
+                    260.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "选牌",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/HUD/Icons2D/CardMaster_FatesGambit.png",
+            "abilityVideoPath": "champion-abilities/0004/ability_0004_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0004/ability_0004_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "崔斯特挑选魔法卡牌，用于下次攻击，并附加额外效果。",
+            "dynamicDescription": "崔斯特开始洗牌，允许他<recast>再次施放</recast>来从3张牌中锁定一张，并且强化他的下次攻击。<br><li>蓝牌造成<magicDamage>@BlueDamage@魔法伤害</magicDamage>并回复<scaleMana>@Effect6Amount@法力</scaleMana>。<li>红牌对附近的敌人造成<magicDamage>@RedDamage@魔法伤害</magicDamage>和持续2.5秒的@Effect2Amount@%<status>减速</status>。<li>金牌造成<magicDamage>@GoldDamage@魔法伤害</magicDamage>和@Effect3Amount@秒<status>晕眩</status>。@SpellModifierDescriptionAppend@",
+            "range": [
+                200.0000,
+                200.0000,
+                200.0000,
+                200.0000,
+                200.0000,
+                200.0000
+            ],
+            "costCoefficients": [
+                30.0000,
+                40.0000,
+                50.0000,
+                60.0000,
+                70.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.5000,
+                "coefficient2": 1.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    20.0000,
+                    40.0000,
+                    60.0000,
+                    80.0000,
+                    100.0000,
+                    120.0000,
+                    140.0000
+                ],
+                "Effect2Amount": [
+                    25.0000,
+                    30.0000,
+                    35.0000,
+                    40.0000,
+                    45.0000,
+                    50.0000,
+                    55.0000
+                ],
+                "Effect3Amount": [
+                    0.7500,
+                    1.0000,
+                    1.2500,
+                    1.5000,
+                    1.7500,
+                    2.0000,
+                    2.2500
+                ],
+                "Effect4Amount": [
+                    15.0000,
+                    30.0000,
+                    45.0000,
+                    60.0000,
+                    75.0000,
+                    90.0000,
+                    105.0000
+                ],
+                "Effect5Amount": [
+                    7.5000,
+                    15.0000,
+                    22.5000,
+                    30.0000,
+                    37.5000,
+                    45.0000,
+                    52.5000
+                ],
+                "Effect6Amount": [
+                    25.0000,
+                    50.0000,
+                    75.0000,
+                    100.0000,
+                    125.0000,
+                    150.0000,
+                    175.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "卡牌骗术",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/HUD/Icons2D/Cardmaster_RapidToss.png",
+            "abilityVideoPath": "champion-abilities/0004/ability_0004_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0004/ability_0004_E1.jpg",
+            "cost": "<spellPassive>被动</spellPassive>",
+            "cooldown": "&nbsp;",
+            "description": "崔斯特每四次攻击附加一次额外伤害。另外，崔斯特的攻击速度得到被动提升。",
+            "dynamicDescription": "<spellPassive>被动：</spellPassive>崔斯特获得<attackSpeed>@AttackSpeedBonus@%攻击速度</attackSpeed>并且每第4次攻击造成额外的<magicDamage>@BonusDamage@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.5000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "命运",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/TwistedFate/HUD/Icons2D/Destiny_temp.png",
+            "abilityVideoPath": "champion-abilities/0004/ability_0004_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0004/ability_0004_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "崔斯特为他的敌人算卜命运，短时间内显示所有敌方英雄的位置，并可使用传送，让他在引导1.5秒后传送至目标位置。",
+            "dynamicDescription": "崔斯特专注于他的卡牌，提供地图上所有敌方英雄的<keywordStealth>真实视野</keywordStealth>，持续@Effect1Amount@秒，并允许他<recast>再次施放</recast>。<br><br><recast>再次施放</recast>：崔斯特传送到@Effect4Amount@码以内的任何地方。@SpellModifierDescriptionAppend@",
+            "range": [
+                5500.0000,
+                5500.0000,
+                5500.0000,
+                5500.0000,
+                5500.0000,
+                5500.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                115.0000,
+                130.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                180.0000,
+                150.0000,
+                120.0000,
+                10.0000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    6.0000,
+                    8.0000,
+                    10.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    180.0000,
+                    150.0000,
+                    120.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    150.0000,
+                    125.0000,
+                    100.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    5500.0000,
+                    5500.0000,
+                    5500.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

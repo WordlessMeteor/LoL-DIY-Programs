@@ -1,0 +1,1115 @@
+{
+    "id": 427,
+    "name": "翠神",
+    "alias": "Ivern",
+    "title": "艾翁",
+    "shortBio": "半人半树的艾翁•荆足常在符文之地的丛林中游荡，所经之处无不生机盎然。他知晓自然界的种种秘密，无论是飞禽走兽还是游鱼虫孑，都与他交谊深厚。在逍遥四野的途中，艾翁会向路遇的人传授奇特的智慧，或是培植丰茂的丛林。时不时地，他也会向口风不严的蝴蝶托付自己所知的秘密。",
+    "tacticalInfo": {
+        "style": 1,
+        "difficulty": 3,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 1,
+        "durability": 1,
+        "crowdControl": 3,
+        "mobility": 2,
+        "utility": 3
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/427.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/427.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/427.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/427.ogg",
+    "roles": [
+        "support",
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 427000,
+            "isBase": true,
+            "name": "翠神",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/427/427000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/427/427000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/427/427000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ivern/Skins/Base/IvernLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 427001,
+            "isBase": false,
+            "name": "糖果之王 艾翁",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/427/427001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/427/427001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/427/427001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ivern/Skins/Skin01/IvernLoadscreen_1.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 57
+                }
+            ],
+            "skinAugments": null,
+            "description": "艾翁是糖果王国的亮丽统治者，广受臣民的爱戴。然而，有些人看到了潜藏在他讨喜躯体内的怪物——并且他对糖果肉的饥饿永远不会得到满足。"
+        },
+        {
+            "id": 427002,
+            "isBase": false,
+            "name": "灌篮高手 艾翁",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/427/427002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/427/427002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/427/427002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ivern/Skins/Skin02/IvernLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427002.png",
+            "chromas": [
+                {
+                    "id": 427003,
+                    "name": "灌篮高手 艾翁 铁血怒焰0号",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427003.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "    "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 427004,
+                    "name": "灌篮高手 艾翁 幸运三叶草1号",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427004.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 427005,
+                    "name": "灌篮高手 艾翁 浪漫之星3号",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427005.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 427006,
+                    "name": "灌篮高手 艾翁 欢笑之颜18号",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427006.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427007,
+                    "name": "灌篮高手 艾翁 暴烈雷云6号",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427007.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427008,
+                    "name": "灌篮高手 艾翁 飘逸蝶舞66号",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427008.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427009,
+                    "name": "灌篮高手 艾翁 冷酷黑星07号",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427009.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427010,
+                    "name": "灌篮高手 艾翁 无限潜能22号",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427010.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 103
+                }
+            ],
+            "skinAugments": null,
+            "description": "小菊和艾翁第一次作为一个篮球双打组合是在库莽古丛林的穷街陋巷上——但随后有幸遇到了当时的LBA理事约翰·棘背并被其推到国民级的关注热点上。从那时起，职业巡回赛的球场就被他们掀翻了。"
+        },
+        {
+            "id": 427011,
+            "isBase": false,
+            "name": "古神 艾翁",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/427/427011.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/427/427011.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/427/427011.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ivern/Skins/Skin11/IvernLoadScreen_11.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ivern/Skins/Skin11/IvernLoadscreen_11_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427011.png",
+            "chromas": [
+                {
+                    "id": 427012,
+                    "name": "古神 艾翁 焰枫",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427012.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 427013,
+                    "name": "古神 艾翁 秋临",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427013.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427014,
+                    "name": "古神 艾翁 永茂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427014.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427015,
+                    "name": "古神 艾翁 寒楹",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427015.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427016,
+                    "name": "古神 艾翁 昙夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427016.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427017,
+                    "name": "古神 艾翁 樱落",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427017.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 427018,
+                    "name": "古神 艾翁 余烬重生",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427018.png",
+                    "colors": [
+                        "#27211C",
+                        "#971458"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在女帝无双(2020)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 427019,
+                    "name": "古神 艾翁 冰桦",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427019.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 92
+                }
+            ],
+            "skinAugments": null,
+            "description": "艾翁是一个由巫术和禁咒铸成的梦魇般的图腾。他曾跻身古神们之列，直到他们毁灭。在数百年的沉寂后，他已与他的同胞们一起复活，前去根除人类的那些微不足道的工作成果。"
+        },
+        {
+            "id": 427020,
+            "isBase": false,
+            "name": "宇航员 艾翁",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/427/427020.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/427/427020.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/427/427020.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ivern/Skins/Skin20/IvernLoadScreen_20.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427020.png",
+            "chromas": [
+                {
+                    "id": 427021,
+                    "name": "宇航员 艾翁 平坦宇宙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427021.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 427022,
+                    "name": "宇航员 艾翁 重力弹弓",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427022.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427023,
+                    "name": "宇航员 艾翁 月球漫步",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427023.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427024,
+                    "name": "宇航员 艾翁 万有引力",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427024.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 427025,
+                    "name": "宇航员 艾翁 自由落体",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427025.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 427026,
+                    "name": "宇航员 艾翁 亚空间",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427026.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427027,
+                    "name": "宇航员 艾翁 伽马射线",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427027.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427028,
+                    "name": "宇航员 艾翁 事件视界",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427028.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 94
+                }
+            ],
+            "skinAugments": null,
+            "description": "艾翁的养育天性为他照料的木灵们创造了一个安全的避风港。然而，泽拉斯引发的爆炸摧毁了他的飞船，让他漫无目的地漂浮在太空中。 在偶然遇到菲兹之后——菲兹意外撞到他并救了他——艾翁加入了他们的行列，以寻找任何需要他保护的流浪者。"
+        }
+    ],
+    "passive": {
+        "name": "森林之友",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ivern/HUD/Icons2D/IvernP.png",
+        "abilityVideoPath": "champion-abilities/0427/ability_0427_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0427/ability_0427_P1.jpg",
+        "description": "艾翁无法攻击非史诗野怪，也无法被非史诗野怪攻击。艾翁可以在野怪营地创造神奇的小植被，小植被可以持续成长。当小植被完全成长后，艾翁就可以送走野怪来获得金币和经验。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "根深敌固",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ivern/HUD/Icons2D/IvernQ.png",
+            "abilityVideoPath": "champion-abilities/0427/ability_0427_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0427/ability_0427_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "艾翁召唤出一束荆棘，对命中的敌方单位造成伤害和禁锢效果。艾翁的友军可以突进到禁锢目标附近。",
+            "dynamicDescription": "艾翁召唤一束荆棘，造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>并<status>禁锢</status>命中的第一个敌人@RootDuration@秒。友军在攻击<status>禁锢</status>的敌人时会冲刺到攻击距离处。<br><br><recast>再次施放：</recast>艾翁直接冲刺到这个被<status>禁锢</status>的敌人身边。<br><br><rules>命中非史诗级野怪会使<spellName>根深敌固</spellName>的冷却时间缩减50%。</rules>@SpellModifierDescriptionAppend@",
+            "range": [
+                1125.0000,
+                1125.0000,
+                1125.0000,
+                1125.0000,
+                1125.0000,
+                1125.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000
+            ],
+            "cooldownCoefficients": [
+                14.0000,
+                13.0000,
+                12.0000,
+                11.0000,
+                10.0000,
+                9.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "揠苗助攻",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ivern/HUD/Icons2D/IvernW.png",
+            "abilityVideoPath": "champion-abilities/0427/ability_0427_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0427/ability_0427_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@AmmoRechargeTime@秒冷却时间",
+            "description": "在草丛中，艾翁和他附近友军们的攻击将造成额外魔法伤害。艾翁可以激活这个技能来创造一块草丛。",
+            "dynamicDescription": "<spellPassive>被动：</spellPassive>在草丛中时或离开草丛后的@BuffDuration@秒内，艾翁的攻击造成额外的<magicDamage>@TotalDamage@魔法伤害</magicDamage>。附近的友军们将获得持续@AllyBuffDuration@秒的此效果，其攻击会因此造成额外的<magicDamage>@TotalAllyDamage@魔法伤害</magicDamage>。<br><br><spellActive>主动：</spellActive>艾翁生成一片草丛，从而将该区域显形@RevealDuration@秒。草丛会存留至艾翁的队伍失去它其中的视野，或至多至@MaxBrushDuration@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000
+            ],
+            "costCoefficients": [
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000
+            ],
+            "cooldownCoefficients": [
+                0.5000,
+                0.5000,
+                0.5000,
+                0.5000,
+                0.5000,
+                0.5000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000
+                ],
+                "maxAmmo": [
+                    3,
+                    3,
+                    3,
+                    3,
+                    3,
+                    3
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "种豆得瓜",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ivern/HUD/Icons2D/IvernE.png",
+            "abilityVideoPath": "champion-abilities/0427/ability_0427_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0427/ability_0427_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "艾翁在一个友军身上放置一个护盾，护盾会在短暂延迟后爆炸，减速并伤害敌人。护盾值会在没有命中敌人时刷新。",
+            "dynamicDescription": "艾翁为一名友方英雄或小菊提供<shield>@TotalShield@护盾值</shield>。@ShieldDuration@秒后，护盾会爆裂，对敌人们造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>和持续@SlowDuration@秒的@SlowAmount*100@%<status>减速</status>。<br><br>如果在护盾存留时引爆<spellName>种豆得瓜</spellName>且没有命中任何敌方英雄，那么该友军将获得持续@ShieldDuration@秒的<shield>@TotalShield@护盾值</shield>。@SpellModifierDescriptionAppend@",
+            "range": [
+                750.0000,
+                750.0000,
+                750.0000,
+                750.0000,
+                750.0000,
+                750.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                11.0000,
+                10.0000,
+                9.0000,
+                8.0000,
+                7.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "小菊！",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ivern/HUD/Icons2D/IvernR.png",
+            "abilityVideoPath": "champion-abilities/0427/ability_0427_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0427/ability_0427_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "艾翁召唤他的护卫好友小菊来与他并肩战斗。再次施放即可指挥小菊进行攻击或移动。",
+            "dynamicDescription": "艾翁召唤出他的护卫好友小菊跃入纷争，持续@DaisyDuration@秒。<br><br><spellActive>小菊，猛击！：</spellActive>小菊对相同英雄或史诗级野怪的每第3次连续的攻击将发出一道冲击波，对命中的所有敌人造成<magicDamage> @TotalShockwaveDamage@魔法伤害</magicDamage>和@ShockwaveCCDuration@秒<status>击飞</status>。这个效果每@ShockwaveCD@秒仅触发一次。<br><br><recast>再次施放：</recast>指示小菊进行攻击或移动。@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                140.0000,
+                130.0000,
+                120.0000,
+                110.0000,
+                100.0000,
+                90.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.3000,
+                "coefficient2": 0.5000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

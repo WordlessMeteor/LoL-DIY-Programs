@@ -1,0 +1,654 @@
+{
+    "BannerFlags": [
+        {
+            "level": 1,
+            "theme": "Bandle_City",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/BandleCity/LeagueClient/Flag_BandleCity_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/BandleCity/LeagueClient/Flag_BandleCity_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "Bandle_City",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/BandleCity/LeagueClient/Flag_BandleCity_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/BandleCity/LeagueClient/Flag_BandleCity_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "Bandle_City",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/BandleCity/LeagueClient/Flag_BandleCity_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/BandleCity/LeagueClient/Flag_BandleCity_3_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "Base",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Base/LeagueClient/Flag_Base_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Base/LeagueClient/Flag_Base_1_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "Bilgewater",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Bilgewater/LeagueClient/Flag_Bilgewater_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Bilgewater/LeagueClient/Flag_Bilgewater_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "Bilgewater",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Bilgewater/LeagueClient/Flag_Bilgewater_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Bilgewater/LeagueClient/Flag_Bilgewater_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "Bilgewater",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Bilgewater/LeagueClient/Flag_Bilgewater_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Bilgewater/LeagueClient/Flag_Bilgewater_3_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "CoPilot",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/CoPilot/LeagueClient/BannerFlag_CoPilot_01_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Base/LeagueClient/Flag_Base_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "CoPilot",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/CoPilot/LeagueClient/BannerFlag_CoPilot_02_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Base/LeagueClient/Flag_Base_1_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "CoPilot",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/CoPilot/LeagueClient/BannerFlag_CoPilot_03_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Base/LeagueClient/Flag_Base_1_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "Conqueror",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Conqueror/LeagueClient/Flag_Conqueror_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Conqueror/LeagueClient/Flag_Conqueror_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "Conqueror",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Conqueror/LeagueClient/Flag_Conqueror_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Conqueror/LeagueClient/Flag_Conqueror_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "Conqueror",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Conqueror/LeagueClient/Flag_Conqueror_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Conqueror/LeagueClient/Flag_Conqueror_3_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "Demacia",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Demacia/LeagueClient/Flag_Demacia_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Demacia/LeagueClient/Flag_Demacia_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "Demacia",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Demacia/LeagueClient/Flag_Demacia_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Demacia/LeagueClient/Flag_Demacia_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "Demacia",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Demacia/LeagueClient/Flag_Demacia_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Demacia/LeagueClient/Flag_Demacia_3_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "EOS2020",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2020/LeagueClient/Flag_EOS2020_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2020/LeagueClient/Flag_EOS2020_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "EOS2020",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2020/LeagueClient/Flag_EOS2020_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2020/LeagueClient/Flag_EOS2020_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "EOS2020",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2020/LeagueClient/Flag_EOS_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2020/LeagueClient/Flag_EOS2020_3_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "EOS2021",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2021/LeagueClient/Flag_EOS2021_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2021/LeagueClient/Flag_EOS2021_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "EOS2021",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2021/LeagueClient/Flag_EOS2021_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2021/LeagueClient/Flag_EOS2021_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "EOS2021",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2021/LeagueClient/Flag_EOS2021_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2021/LeagueClient/Flag_EOS2021_3_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "EOS2022",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2022/LeagueClient/Flag_EOS2022_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2022/LeagueClient/Flag_EOS2022_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "EOS2022",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2022/LeagueClient/Flag_EOS2022_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2022/LeagueClient/Flag_EOS2022_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "EOS2022",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2022/LeagueClient/Flag_EOS2022_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2022/LeagueClient/Flag_EOS2022_3_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "EOS2023",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2023/LeagueClient/Flag_EOS2022_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2023/LeagueClient/Flag_EOS2022_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "EOS2023",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2023/LeagueClient/Flag_EOS2022_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2023/LeagueClient/Flag_EOS2022_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "EOS2023",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2023/LeagueClient/Flag_EOS2022_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/EOS2023/LeagueClient/Flag_EOS2022_3_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "Freljord",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Freljord/LeagueClient/Flag_Freljord_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Freljord/LeagueClient/Flag_Freljord_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "Freljord",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Freljord/LeagueClient/Flag_Freljord_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Freljord/LeagueClient/Flag_Freljord_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "Freljord",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Freljord/LeagueClient/Flag_Freljord_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Freljord/LeagueClient/Flag_Freljord_3_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "Ionia",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Ionia/LeagueClient/Flag_Ionia_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Ionia/LeagueClient/Flag_Ionia_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "Ionia",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Ionia/LeagueClient/Flag_Ionia_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Ionia/LeagueClient/Flag_Ionia_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "Ionia",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Ionia/LeagueClient/Flag_Ionia_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Ionia/LeagueClient/Flag_Ionia_3_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "Ixtal",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Ixtal/LeagueClient/Flag_Ixtal_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Ixtal/LeagueClient/Flag_Ixtal_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "Ixtal",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Ixtal/LeagueClient/Flag_Ixtal_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Ixtal/LeagueClient/Flag_Ixtal_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "Ixtal",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Ixtal/LeagueClient/Flag_Ixtal_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Ixtal/LeagueClient/Flag_Ixtal_3_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "MSI2021",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/MSI2021/LeagueClient/Flag_MSI2021_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/MSI2021/LeagueClient/Flag_MSI2021_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "MSI2021",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/MSI2021/LeagueClient/Flag_MSI2021_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/MSI2021/LeagueClient/Flag_MSI2021_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "MSI2021",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/MSI2021/LeagueClient/Flag_MSI2021_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/MSI2021/LeagueClient/Flag_MSI2021_3_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "MSI2022",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/MSI2022/LeagueClient/Flag_MSI2022_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/MSI2022/LeagueClient/Flag_MSI2022_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "MSI2022",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/MSI2022/LeagueClient/Flag_MSI2022_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/MSI2022/LeagueClient/Flag_MSI2022_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "MSI2022",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/MSI2022/LeagueClient/Flag_MSI2022_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/MSI2022/LeagueClient/Flag_MSI2022_3_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "MSI2023",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/MSI2023/LeagueClient/Flag_MSI2023_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/MSI2023/LeagueClient/Flag_MSI2023_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "MSI2023",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/MSI2023/LeagueClient/Flag_MSI2023_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/MSI2023/LeagueClient/Flag_MSI2023_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "MSI2023",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/MSI2023/LeagueClient/Flag_MSI2023_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/MSI2023/LeagueClient/Flag_MSI2023_3_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "Mount_Targon",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Targon/LeagueClient/Flag_Targon_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Targon/LeagueClient/Flag_Targon_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "Mount_Targon",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Targon/LeagueClient/Flag_Targon_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Targon/LeagueClient/Flag_Targon_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "Mount_Targon",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Targon/LeagueClient/Flag_Targon_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Targon/LeagueClient/Flag_Targon_3_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "Noxus",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Noxus/LeagueClient/Flag_Noxus_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Noxus/LeagueClient/Flag_Noxus_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "Noxus",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Noxus/LeagueClient/Flag_Noxus_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Noxus/LeagueClient/Flag_Noxus_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "Noxus",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Noxus/LeagueClient/Flag_Noxus_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Noxus/LeagueClient/Flag_Noxus_3_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "Pilot",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Pilot/LeagueClient/BannerFlag_Pilot_01_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Pilot/LeagueClient/BannerFlag_Pilot_01_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "Pilot",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Pilot/LeagueClient/BannerFlag_Pilot_02_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Pilot/LeagueClient/BannerFlag_Pilot_02_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "Pilot",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Pilot/LeagueClient/BannerFlag_Pilot_03_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Pilot/LeagueClient/BannerFlag_Pilot_03_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "Piltover",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Piltover/LeagueClient/Flag_Piltover_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Piltover/LeagueClient/Flag_Piltover_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "Piltover",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Piltover/LeagueClient/Flag_Piltover_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Piltover/LeagueClient/Flag_Piltover_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "Piltover",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Piltover/LeagueClient/Flag_Piltover_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Piltover/LeagueClient/Flag_Piltover_3_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "Preseason2022",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Preseason2022/LeagueClient/Flag_Preseason2022_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Preseason2022/LeagueClient/Flag_Preseason2022_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "Preseason2022",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Preseason2022/LeagueClient/Flag_Preseason2022_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Preseason2022/LeagueClient/Flag_Preseason2022_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "Preseason2022",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Preseason2022/LeagueClient/Flag_Preseason2022_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Preseason2022/LeagueClient/Flag_Preseason2022_3_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "Shadow_Isles",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/ShadowIsles/LeagueClient/Flag_ShadowIsles_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/ShadowIsles/LeagueClient/Flag_ShadowIsles_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "Shadow_Isles",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/ShadowIsles/LeagueClient/Flag_ShadowIsles_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/ShadowIsles/LeagueClient/Flag_ShadowIsles_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "Shadow_Isles",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/ShadowIsles/LeagueClient/Flag_ShadowIsles_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/ShadowIsles/LeagueClient/Flag_ShadowIsles_3_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "Shurima",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Shurima/LeagueClient/Flag_Shurima_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Shurima/LeagueClient/Flag_Shurima_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "Shurima",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Shurima/LeagueClient/Flag_Shurima_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Shurima/LeagueClient/Flag_Shurima_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "Shurima",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Shurima/LeagueClient/Flag_Shurima_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Shurima/LeagueClient/Flag_Shurima_3_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "Void",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Void/LeagueClient/Flag_Void_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Void/LeagueClient/Flag_Void_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "Void",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Void/LeagueClient/Flag_Void_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Void/LeagueClient/Flag_Void_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "Void",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Void/LeagueClient/Flag_Void_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Void/LeagueClient/Flag_Void_3_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "Worlds2020",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2020/LeagueClient/Flag_Worlds2020_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2020/LeagueClient/Flag_Worlds2020_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "Worlds2020",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2020/LeagueClient/Flag_Worlds2020_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2020/LeagueClient/Flag_Worlds2020_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "Worlds2020",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2020/LeagueClient/Flag_Worlds2020_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2020/LeagueClient/Flag_Worlds2020_3_Profile.png"
+        },
+        {
+            "level": 4,
+            "theme": "Worlds2020",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2020/LeagueClient/Flag_Worlds2020_4_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2020/LeagueClient/Flag_Worlds2020_4_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "Worlds2021",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2021/LeagueClient/Flag_Worlds2021_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2021/LeagueClient/Flag_Worlds2021_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "Worlds2021",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2021/LeagueClient/Flag_Worlds2021_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2021/LeagueClient/Flag_Worlds2021_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "Worlds2021",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2021/LeagueClient/Flag_Worlds2021_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2021/LeagueClient/Flag_Worlds2021_3_Profile.png"
+        },
+        {
+            "level": 4,
+            "theme": "Worlds2021",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2021/LeagueClient/Flag_Worlds2021_4_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2021/LeagueClient/Flag_Worlds2021_4_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "Worlds2022",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2022/LeagueClient/Flag_Worlds2022_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2022/LeagueClient/Flag_Worlds2022_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "Worlds2022",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2022/LeagueClient/Flag_Worlds2022_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2022/LeagueClient/Flag_Worlds2022_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "Worlds2022",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2022/LeagueClient/Flag_Worlds2022_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2022/LeagueClient/Flag_Worlds2022_3_Profile.png"
+        },
+        {
+            "level": 4,
+            "theme": "Worlds2022",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2022/LeagueClient/Flag_Worlds2022_4_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2022/LeagueClient/Flag_Worlds2022_4_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "Worlds2023",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2023/LeagueClient/Flag_Worlds2023_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2023/LeagueClient/Flag_Worlds2022_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "Worlds2023",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2023/LeagueClient/Flag_Worlds2023_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2023/LeagueClient/Flag_Worlds2022_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "Worlds2023",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2023/LeagueClient/Flag_Worlds2023_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2023/LeagueClient/Flag_Worlds2022_3_Profile.png"
+        },
+        {
+            "level": 4,
+            "theme": "Worlds2023",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2023/LeagueClient/Flag_Worlds2023_4_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Worlds2023/LeagueClient/Flag_Worlds2022_4_Profile.png"
+        },
+        {
+            "level": 1,
+            "theme": "Zaun",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Zaun/LeagueClient/Flag_Zaun_1_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Zaun/LeagueClient/Flag_Zaun_1_Profile.png"
+        },
+        {
+            "level": 2,
+            "theme": "Zaun",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Zaun/LeagueClient/Flag_Zaun_2_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Zaun/LeagueClient/Flag_Zaun_2_Profile.png"
+        },
+        {
+            "level": 3,
+            "theme": "Zaun",
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Zaun/LeagueClient/Flag_Zaun_3_Inventory.png",
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Flags/Zaun/LeagueClient/Flag_Zaun_3_Profile.png"
+        }
+    ],
+    "BannerFrames": [
+        {
+            "level": 1,
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Frames/Base/LeagueClient/BannerFrame_01_Inventory.png"
+        },
+        {
+            "level": 2,
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Frames/Base/LeagueClient/BannerFrame_02_Inventory.png"
+        },
+        {
+            "level": 3,
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Frames/Base/LeagueClient/BannerFrame_03_Inventory.png"
+        },
+        {
+            "level": 4,
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Frames/Base/LeagueClient/BannerFrame_04_Inventory.png"
+        },
+        {
+            "level": 5,
+            "name": "",
+            "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerBanners/Frames/Base/LeagueClient/BannerFrame_05_Inventory.png"
+        }
+    ]
+}

@@ -1,0 +1,1104 @@
+{
+    "id": 26,
+    "name": "时光守护者",
+    "alias": "Zilean",
+    "title": "基兰",
+    "shortBio": "基兰曾是一位强大的艾卡西亚法师，在目睹了家园被虚空毁灭以后，他开始执迷于时间的流逝。他甚至没有时间为这场灾难感到悲哀，立刻就召唤了远古的时间魔法，预测全部的发展结局。从实际结果来说，他已成为不朽的存在。如今的基兰在过去、现在、未来之间漂泊，弯折、扭曲自己周围的时间，追寻那稍纵即逝的关键时刻，逆转时光，阻止艾卡西亚的毁灭。",
+    "tacticalInfo": {
+        "style": 10,
+        "difficulty": 2,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 1,
+        "crowdControl": 2,
+        "mobility": 2,
+        "utility": 3
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/26.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/26.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/26.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/26.ogg",
+    "roles": [
+        "support",
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 26000,
+            "isBase": true,
+            "name": "时光守护者",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/26/26000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/26/26000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/26/26000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Zilean/Skins/Base/ZileanLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 26001,
+            "isBase": false,
+            "name": "圣诞狂欢 基兰",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/26/26001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/26/26001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/26/26001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Zilean/Skins/Skin01/ZileanLoadScreen_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Zilean/Skins/Skin01/ZileanLoadScreen_1_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Snowdown",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/9.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/9.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 48
+                }
+            ],
+            "skinAugments": null,
+            "description": "虽然许多圣诞使者都比拼谁能派送更多的节庆欢乐，但基兰对于时间流动的掌握让他可以在一瞬间就送出巨额数量的礼物。目前为止这种做法还没有制造出毁灭现实的冰雪节悖论。"
+        },
+        {
+            "id": 26002,
+            "isBase": false,
+            "name": "嘻哈精神 基兰",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/26/26002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/26/26002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/26/26002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Zilean/Skins/Skin02/ZileanLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 100
+                }
+            ],
+            "skinAugments": null,
+            "description": "基兰一直处于一个凝视着时空连续体各处的近似昏迷状态。他最近的嗜好包括：在踢毽子时表现辣眼，多付很多钱来买一张糟糕音乐庆典的门票，以及订购过多披萨。他还拥有“新时代书店”，但这家书店在大多数日子里都是关着的。"
+        },
+        {
+            "id": 26003,
+            "isBase": false,
+            "name": "遗迹守护者 基兰",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/26/26003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/26/26003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/26/26003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Zilean/Skins/skin03/ZileanLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 178
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 26004,
+            "isBase": false,
+            "name": "时间机器 基兰",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/26/26004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/26/26004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/26/26004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Zilean/Skins/Skin04/ZileanLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 106
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 26005,
+            "isBase": false,
+            "name": "腥红之月 基兰",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/26/26005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/26/26005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/26/26005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Zilean/Skins/Skin05/ZileanLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 12
+                }
+            ],
+            "skinAugments": null,
+            "description": "通过人血来控制日月循环的周期，基兰已经成为血月教派的象征，这如同地狱一般贪婪的术士渴望着更加邪恶的力量。他的思维随着时间飞速流动，可以与远古、当前以及未来的恶魔进行沟通。"
+        },
+        {
+            "id": 26006,
+            "isBase": false,
+            "name": "糖果大战 基兰",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/26/26006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/26/26006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/26/26006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Zilean/Skins/Skin06/ZileanLoadscreen_6.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Zilean/Skins/Skin06/ZileanLoadscreen_6_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/26/26006.png",
+            "chromas": [
+                {
+                    "id": 26007,
+                    "name": "糖果大战 基兰 草莓流心曲奇",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/26/26007.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 26008,
+                    "name": "糖果大战 基兰 樱桃流心曲奇",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/26/26008.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 26009,
+                    "name": "糖果大战 基兰 奇异果流心曲奇",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/26/26009.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 26010,
+                    "name": "糖果大战 基兰 蓝莓流心曲奇",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/26/26010.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 26011,
+                    "name": "糖果大战 基兰 奶酪流心曲奇",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/26/26011.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 26012,
+                    "name": "糖果大战 基兰 榛子流心曲奇",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/26/26012.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 26013,
+                    "name": "糖果大战 基兰 嗜甜之齿",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/26/26013.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#6FFDFF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 57
+                }
+            ],
+            "skinAugments": null,
+            "description": "对糖果王国的绝大部分居民来说，永远没有足够的时间来吃完所有的糖果。对基兰来说，永远没有足够的糖果来填补所有的时间。"
+        },
+        {
+            "id": 26014,
+            "isBase": false,
+            "name": "北极星圣贤 基兰",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/26/26014.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/26/26014.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/26/26014.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Zilean/Skins/Skin14/ZileanLoadScreen_14.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Zilean/Skins/Skin14/ZileanLoadscreen_14_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/26/26014.png",
+            "chromas": [
+                {
+                    "id": 26015,
+                    "name": "北极星圣贤 基兰 激昂脉冲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/26/26015.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 26016,
+                    "name": "北极星圣贤 基兰 辉煌光焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/26/26016.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 26017,
+                    "name": "北极星圣贤 基兰 智慧纽带",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/26/26017.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 26018,
+                    "name": "北极星圣贤 基兰 祥和面纱",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/26/26018.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 26019,
+                    "name": "北极星圣贤 基兰 圣洁光带",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/26/26019.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 26020,
+                    "name": "北极星圣贤 基兰 庄严光冕",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/26/26020.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 26021,
+                    "name": "北极星圣贤 基兰 希望辉光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/26/26021.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 26022,
+                    "name": "北极星圣贤 基兰 浪漫帘幕",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/26/26022.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 26023,
+                    "name": "北极星圣贤 基兰 花冠极光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/26/26023.png",
+                    "colors": [
+                        "#BF2020",
+                        "#368B25"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023赛季事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Snowdown",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/9.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/9.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 187
+                }
+            ],
+            "skinAugments": null,
+            "description": "“圣贤”基兰替代掉了“猎人”在极光之法官前的位置，垂首恳求。他的请求是获得更多的力量来帮助安抚他的追随者们的心灵。 当他说话时，他没有注意到北极星在看着他溢于言表的谦恭时，她的头发闪烁着红色的极光光泽。某种东西在她内心搅动，一场翻腾的凛冬风暴。"
+        }
+    ],
+    "passive": {
+        "name": "瓶中时光",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Zilean/HUD/Icons2D/Zilean_Passive.png",
+        "abilityVideoPath": "champion-abilities/0026/ability_0026_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0026/ability_0026_P1.jpg",
+        "description": "基兰将时光储存为经验值并能将其提供给他的友军。当他拥有足够的经验值来使一名友方英雄升级时，他就能通过右键点击来传授经验值。基兰自身也会获得等值的经验值。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "定时炸弹",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Zilean/HUD/Icons2D/Zilean_Q.png",
+            "abilityVideoPath": "champion-abilities/0026/ability_0026_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0026/ability_0026_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "将一颗炸弹扔向目标区域，炸弹会附着在靠近它的单位身上（英雄优先）。炸弹会在3秒后爆炸，造成范围魔法伤害。如果炸弹被另一颗定时炸弹给提前引爆，那么还会使敌人晕眩。",
+            "dynamicDescription": "基兰在目标地点上投掷一个定时炸弹。炸弹会附着在第一个靠近它周围小范围内的单位身上。<br><br>@Effect2Amount@秒后炸弹会爆炸，造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>。<br><br>对已被附着了一颗炸弹的单位放置第二颗炸弹时，就会立刻引爆第一个炸弹，并使爆炸范围内的所有敌人<status>晕眩</status>@Effect4Amount@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000,
+                80.0000,
+                85.0000
+            ],
+            "cooldownCoefficients": [
+                10.0000,
+                9.5000,
+                9.0000,
+                8.5000,
+                8.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.9000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    30.0000,
+                    75.0000,
+                    115.0000,
+                    165.0000,
+                    230.0000,
+                    300.0000,
+                    380.0000
+                ],
+                "Effect2Amount": [
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000
+                ],
+                "Effect3Amount": [
+                    7.0000,
+                    7.0000,
+                    7.0000,
+                    7.0000,
+                    7.0000,
+                    7.0000,
+                    7.0000
+                ],
+                "Effect4Amount": [
+                    1.0000,
+                    1.1000,
+                    1.2000,
+                    1.3000,
+                    1.4000,
+                    1.5000,
+                    1.6000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "穿梭未来",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Zilean/HUD/Icons2D/Zilean_W.png",
+            "abilityVideoPath": "champion-abilities/0026/ability_0026_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0026/ability_0026_W1.jpg",
+            "cost": "@Effect3Amount@ 法力",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "基兰为未来的对抗做准备，减少他所有其它基础技能的冷却时间。",
+            "dynamicDescription": "基兰倒转时间，使他其它基础技能的冷却时间缩短@Effect2Amount@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                35.0000,
+                35.0000,
+                35.0000,
+                35.0000,
+                35.0000,
+                35.0000
+            ],
+            "cooldownCoefficients": [
+                14.0000,
+                12.0000,
+                10.0000,
+                8.0000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    10.0000,
+                    20.0000,
+                    30.0000,
+                    40.0000,
+                    50.0000,
+                    60.0000,
+                    70.0000
+                ],
+                "Effect2Amount": [
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000
+                ],
+                "Effect3Amount": [
+                    35.0000,
+                    35.0000,
+                    35.0000,
+                    35.0000,
+                    35.0000,
+                    35.0000,
+                    35.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "时光发条",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Zilean/HUD/Icons2D/Zilean_E.png",
+            "abilityVideoPath": "champion-abilities/0026/ability_0026_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0026/ability_0026_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "基兰扭曲任意单位的时光，短时间内提升友方单位移动速度或减少敌方单位移动速度。",
+            "dynamicDescription": "基兰使一名敌方英雄<status>减速</status>@Effect2Amount@%或为一名友方英雄提供<speed>@Effect2Amount@%移动速度</speed>，持续@Effect1Amount@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                550.0000,
+                550.0000,
+                550.0000,
+                550.0000,
+                550.0000,
+                550.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000
+            ],
+            "cooldownCoefficients": [
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000
+                ],
+                "Effect2Amount": [
+                    25.0000,
+                    40.0000,
+                    55.0000,
+                    70.0000,
+                    85.0000,
+                    99.0000,
+                    114.0000
+                ],
+                "Effect3Amount": [
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000
+                ],
+                "Effect4Amount": [
+                    8.0000,
+                    8.0000,
+                    8.0000,
+                    8.0000,
+                    8.0000,
+                    8.0000,
+                    8.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "时光倒流",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Zilean/HUD/Icons2D/Zilean_R.png",
+            "abilityVideoPath": "champion-abilities/0026/ability_0026_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0026/ability_0026_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "基兰对友方英雄施放时光结界，若目标死亡，则时光倒流，救活目标。",
+            "dynamicDescription": "基兰提供一个保护性的时间符文给一名友方英雄，持续@RDuration@秒。如果该目标将要阵亡，那么符文会回溯其时间线，使其凝滞@ReviveStateDuration@秒，然后将其复活并回复<healing>@RTotalHeal@生命值</healing>。@SpellModifierDescriptionAppend@",
+            "range": [
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000
+            ],
+            "costCoefficients": [
+                125.0000,
+                150.0000,
+                175.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                90.0000,
+                60.0000,
+                0.0000,
+                0.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 2.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

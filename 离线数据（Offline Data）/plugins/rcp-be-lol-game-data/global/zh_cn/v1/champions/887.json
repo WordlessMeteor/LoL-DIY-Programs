@@ -1,0 +1,1099 @@
+{
+    "id": 887,
+    "name": "灵罗娃娃",
+    "alias": "Gwen",
+    "title": "格温",
+    "shortBio": "格温是一个被魔法赋予了生命的玩偶，而她所挥使的正是当初创造了她自己的工具。格温无比珍惜这份机缘，踏出的每一步都承载着曾经主人的爱意。格温拥有控制“圣霭”的能力。这是一种来自远古的庇护性法术，她的剪刀、衣针和缝线都因圣霭而得到了庇佑。即便有这么多新奇的事物等待着格温，她既感到兴奋，但又带着强烈的使命感，决心拯救在这个破碎世界里艰难挣扎的人们。",
+    "tacticalInfo": {
+        "style": 5,
+        "difficulty": 2,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 2,
+        "crowdControl": 1,
+        "mobility": 3,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/887.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/887.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/887.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/887.ogg",
+    "roles": [
+        "fighter",
+        "assassin"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 887000,
+            "isBase": true,
+            "name": "灵罗娃娃",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/887/887000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/887/887000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/887/887000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Gwen/Skins/Base/GwenLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 887001,
+            "isBase": false,
+            "name": "太空律动 “百万调音” 格温",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/887/887001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/887/887001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/887/887001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Gwen/Skins/Skin01/GwenLoadScreen_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Gwen/Skins/Skin01/GwenLoadscreen_1_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887001.png",
+            "chromas": [
+                {
+                    "id": 887002,
+                    "name": "“百万调音” 格温 我也来开团",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 887003,
+                    "name": "“百万调音” 格温 我也来探草",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887003.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 887004,
+                    "name": "“百万调音” 格温 我也来补车",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887004.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 887005,
+                    "name": "“百万调音” 格温 我也来游走",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887005.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 887006,
+                    "name": "“百万调音” 格温 我也来推塔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887006.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 887007,
+                    "name": "“百万调音” 格温 我也来空大",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887007.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 887008,
+                    "name": "“百万调音” 格温 我也来回城",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887008.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 887009,
+                    "name": "“百万调音” 格温 我也来发呆",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887009.png",
+                    "colors": [
+                        "#9DFFEF",
+                        "#AA55FF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在太空律动(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 887010,
+                    "name": "“百万调音” 格温 我也来走错",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887010.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 144
+                }
+            ],
+            "skinAugments": null,
+            "description": "发生了一件出奇的事情，那就是格温申请担任拉克丝和莎弥拉的军需官——毕竟，没有人这么做过。她兴致勃勃地把悦耳颤音缝进漂亮的衣服里，并用她精致的丝线增幅迪斯科能量。尽管她对这场星系英雄演出来说是个新人，但有一件事情是可以确认的：格温绝不会让她的朋友们穿着未达星级的服装去解救这个星系。"
+        },
+        {
+            "id": 887011,
+            "isBase": false,
+            "name": "咖啡甜心 格温",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/887/887011.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/887/887011.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/887/887011.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Gwen/Skins/Skin11/GwenLoadScreen_11.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Gwen/Skins/Skin11/GwenLoadscreen_11_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887011.png",
+            "chromas": [
+                {
+                    "id": 887012,
+                    "name": "咖啡甜心 格温 草莓戚风",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887012.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 887013,
+                    "name": "咖啡甜心 格温 吉子芝士",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887013.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 887014,
+                    "name": "咖啡甜心 格温 抹茶巧克力",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887014.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 887015,
+                    "name": "咖啡甜心 格温 香草忌廉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887015.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 887016,
+                    "name": "咖啡甜心 格温 薄荷雪拔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887016.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 887017,
+                    "name": "咖啡甜心 格温 酒醉樱桃",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887017.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 887018,
+                    "name": "咖啡甜心 格温 焦糖布丁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887018.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 887019,
+                    "name": "咖啡甜心 格温 核桃巴菲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887019.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 153
+                }
+            ],
+            "skinAugments": null,
+            "description": "格温是咖啡馆顾客服务的友善面容，总是面带微笑和一尘不染的糕点欢迎顾客。不过不要被愚弄了——当无赖顾客威胁她的朋友们时，她并不怕用她的切糖剪子来做些其他事情。"
+        },
+        {
+            "id": 887020,
+            "isBase": false,
+            "name": "斗魂觉醒 格温",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/887/887020.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/887/887020.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/887/887020.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Gwen/Skins/Skin20/GwenLoadScreen_20.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Gwen/Skins/Skin20/GwenLoadScreen_20_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887020.png",
+            "chromas": [
+                {
+                    "id": 887021,
+                    "name": "斗魂觉醒 格温 烈之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887021.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 887022,
+                    "name": "斗魂觉醒 格温 毅之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887022.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 887023,
+                    "name": "斗魂觉醒 格温 狡之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887023.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 887024,
+                    "name": "斗魂觉醒 格温 韧之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887024.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 887025,
+                    "name": "斗魂觉醒 格温 飒之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887025.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 887026,
+                    "name": "斗魂觉醒 格温 魅之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887026.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 887027,
+                    "name": "斗魂觉醒 格温 幻之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887027.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 887028,
+                    "name": "斗魂觉醒 格温 灵之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887028.png",
+                    "colors": [
+                        "#DED6B0",
+                        "#DED6B0"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 887029,
+                    "name": "斗魂觉醒 格温 无限斗志",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/887/887029.png",
+                    "colors": [
+                        "#C8D0CE",
+                        "#AF65D1"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在斗魂觉醒(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 196
+                }
+            ],
+            "skinAugments": null,
+            "description": "她去过世界的尽头……以及彼岸……去拯救她的朋友！根据我现在看到的排名表，她必须和这个朋友一决高下才能赢得这次武道大会！噢！我发誓，这不是故意安排的，伙计们。这可是实况电视节目！一个心怀友谊的少女拿着能够起死回生的剪子：有请格温！"
+        }
+    ],
+    "passive": {
+        "name": "千穿百孔",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Gwen/HUD/Icons2D/Gwen_Passive.png",
+        "abilityVideoPath": "champion-abilities/0887/ability_0887_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0887/ability_0887_P1.jpg",
+        "description": "格温的攻击会造成基于目标生命值的额外魔法伤害。她自身会获得治疗效果，数额相当于这个效果对英雄造成的一部分伤害值。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "快刀剪乱",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Gwen/HUD/Icons2D/Gwen_Q.png",
+            "abilityVideoPath": "champion-abilities/0887/ability_0887_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0887/ability_0887_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "格温在一个锥形区域剪切她的剪刀至多6次，来造成魔法伤害。格温的每次剪切会对中心区域的敌人造成真实伤害并对它们施加她的被动技能。",
+            "dynamicDescription": "<spellPassive>被动</spellPassive>：格温的每次攻击在命中敌人时会获得1层充能， (最大4层，持续@BuffDuration@秒)。<br><br><spellActive>主动</spellActive>：消耗全部充能。格温进行(1+充能层数)次剪切，每次剪切造成<magicDamage>@MiniSwipeDamage@魔法伤害</magicDamage>，然后进行最终剪切来造成<magicDamage>@FinalSwipeDamage@魔法伤害</magicDamage>。<br><br>对每次剪切的中心区域的敌人们造成的伤害将有@TrueDamageConversion*100@%转化为<trueDamage>真实伤害</trueDamage>，并对其施加<spellName>千穿百孔</spellName>。<br><rules><br>对小兵造成@MinionMod*100@%伤害。<br>低于@ExecuteThreshold*100@%生命值的小兵们会受到@ExecuteBonus@%额外伤害而非削减过的伤害。</rules>@SpellModifierDescriptionAppend@",
+            "range": [
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000
+            ],
+            "costCoefficients": [
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000
+            ],
+            "cooldownCoefficients": [
+                6.5000,
+                5.7500,
+                5.0000,
+                4.2500,
+                3.5000,
+                3.5000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "丝缕缠流",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Gwen/HUD/Icons2D/Gwen_W.png",
+            "abilityVideoPath": "champion-abilities/0887/ability_0887_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0887/ability_0887_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "格温召唤圣霭来保护她免受圣霭外敌人的进攻。她只会被进入圣霭内的敌人们选为目标。",
+            "dynamicDescription": "格温召唤圣霭结界，使她对结界之外的所有敌人(防御塔除外)来说处于无法被选取状态，持续@ZoneDuration@秒或直到她离开结界为止。在结界中，格温获得@TotalResists@<scaleArmor>护甲</scaleArmor>和<scaleMR>魔法抗性</scaleMR>。<br><br>格温可以<recast>再次施放</recast>这个技能，来将结界召唤到她所在的位置，但只有1次机会。格温在第一次尝试离开结界时会自动进行<recast>再次施放</recast>。@SpellModifierDescriptionAppend@",
+            "range": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000
+            ],
+            "cooldownCoefficients": [
+                22.0000,
+                21.0000,
+                20.0000,
+                19.0000,
+                18.0000,
+                18.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "断续疾走",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Gwen/HUD/Icons2D/Gwen_E.png",
+            "abilityVideoPath": "champion-abilities/0887/ability_0887_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0887/ability_0887_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "格温冲刺一小段距离然后获得攻击速度、攻击距离和魔法伤害<OnHit>攻击特效</OnHit>，持续若干秒。如果她在此期间命中了一个敌人，那么这个技能的冷却时间会获得部分返还。",
+            "dynamicDescription": "格温冲刺并强化她的攻击@BuffDuration@秒。<br><br>强化攻击获得<attackSpeed>@BonusAttackSpeed@攻击速度</attackSpeed>，<magicDamage>@OnHitDamage@附加魔法伤害</magicDamage>%i:OnHit% <OnHit>攻击特效</OnHit>，@BonusAttackRange@攻击距离，并且首次攻击在命中一名敌人时会返还此技能@CDRefund*100@%冷却时间。@SpellModifierDescriptionAppend@",
+            "range": [
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000
+            ],
+            "costCoefficients": [
+                35.0000,
+                35.0000,
+                35.0000,
+                35.0000,
+                35.0000,
+                35.0000
+            ],
+            "cooldownCoefficients": [
+                13.0000,
+                12.5000,
+                12.0000,
+                11.5000,
+                11.0000,
+                11.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "引针簇射",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Gwen/HUD/Icons2D/Gwen_R.png",
+            "abilityVideoPath": "champion-abilities/0887/ability_0887_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0887/ability_0887_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "格温掷出一根针来对命中的敌人们造成减速、魔法伤害，并对命中的英雄们施加【千穿百孔】。<br><br>这个技能至多可进行2段再次施放，每一段再次施放都会投掷更多的针，并造成更多伤害。格温必须在每段施放之间用攻击或技能命中一名敌人才能解锁下一段施放。",
+            "dynamicDescription": "<spellActive>第一段施放：</spellActive>掷出一根针来对命中的所有敌人造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>，以及持续@DebuffDuration@秒的@InitialSlow*-100@%<status>减速</status>，并施加<spellName>千穿百孔</spellName>。格温可以在6秒内<recast>再次施放</recast>这个技能至多2次(每次施放之间的冷却时间为@LockoutTime@秒)。<br><br><recast>第二段施放：</recast>发射3根针来造成<magicDamage>@TotalDamage3@魔法伤害</magicDamage><br><recast>第三段施放：</recast>发射5根针来造成<magicDamage>@TotalDamage5@魔法伤害</magicDamage>@SpellModifierDescriptionAppend@",
+            "range": [
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                100.0000,
+                80.0000,
+                8.5000,
+                8.0000,
+                7.5000
+            ],
+            "coefficients": {
+                "coefficient1": 0.6000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

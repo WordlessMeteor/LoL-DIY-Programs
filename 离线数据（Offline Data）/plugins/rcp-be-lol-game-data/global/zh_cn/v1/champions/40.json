@@ -1,0 +1,1942 @@
+{
+    "id": 40,
+    "name": "风暴之怒",
+    "alias": "Janna",
+    "title": "迦娜",
+    "shortBio": "风暴是她的武器，符文之地是她的家园。神秘的迦娜是风元素的精灵，保护着祖安城内无依无靠的人们。有人相信她的诞生是源于符文之地水手们的祈愿，他们会祈祷友善的风伴他们渡过险恶的海域，战胜无情的风暴。后来她的眷顾和庇护被召唤到了祖安深处，在那里，迦娜成为了无助之人的希望灯塔。没人知道她会在何时何地出现，但大多数时候，她的到来都意味着援手。",
+    "tacticalInfo": {
+        "style": 10,
+        "difficulty": 1,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 1,
+        "durability": 1,
+        "crowdControl": 3,
+        "mobility": 1,
+        "utility": 3
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/40.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/40.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/40.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/40.ogg",
+    "roles": [
+        "support",
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 40000,
+            "isBase": true,
+            "name": "风暴之怒",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/40/40000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/40/40000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/40/40000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Base/JannaLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 40001,
+            "isBase": false,
+            "name": "暴风女神 迦娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/40/40001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/40/40001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/40/40001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Skin01/JannaLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 40002,
+            "isBase": false,
+            "name": "海克斯科技 迦娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/40/40002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/40/40002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/40/40002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Skin02/JannaLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 40
+                }
+            ],
+            "skinAugments": null,
+            "description": "海克斯科技科学的实践者们从历史上而言受益于来自核心晶状矩阵的更加深奥的属性。迦娜因为长期暴露在原材料中获得了有限的飞行能力，以及控制暴风的力量。"
+        },
+        {
+            "id": 40003,
+            "isBase": false,
+            "name": "寒冰女皇 迦娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/40/40003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/40/40003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/40/40003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Skin03/JannaLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 128
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 40004,
+            "isBase": false,
+            "name": "胜利女神 迦娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/40/40004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/40/40004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/40/40004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Skin04/JannaLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 7
+                }
+            ],
+            "skinAugments": null,
+            "description": "胜利女神迦娜是给2012赛季达到黄金段位或更高的玩家的奖励。装备了水晶法杖和德玛西亚精良铠甲的，胜利女神迦娜将释放史诗般的强风，将敌人吹散。"
+        },
+        {
+            "id": 40005,
+            "isBase": false,
+            "name": "女主播 迦娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/40/40005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/40/40005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/40/40005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Skin05/JannaLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 100
+                }
+            ],
+            "skinAugments": null,
+            "description": "迦娜已经在电视新闻业的市场衰落中活过了至少上个十年，但即使是在她那相对轻松的位置上，观众们的岁数也在不断增长，并且天气也在变得反常。也许是时候让她的气象学学位得以运用，然后……与天相斗了！"
+        },
+        {
+            "id": 40006,
+            "isBase": false,
+            "name": "Fnatic 迦娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/40/40006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/40/40006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/40/40006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Skin06/JannaLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 1
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此致敬Mellisan在2011全球总决赛上使用迦娜的夺胜表现。"
+        },
+        {
+            "id": 40007,
+            "isBase": false,
+            "name": "星之守护者 迦娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/40/40007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/40/40007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/40/40007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Skin07/JannaLoadscreen_7.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Skin07/JannaLoadscreen_7_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 19
+                }
+            ],
+            "skinAugments": null,
+            "description": "轻声细语、甚至有时孤高冷漠的迦娜是年轻队友们的导师，耐心地引导她们理解自己真正的命运。尽管她很少提起自己神秘的过去，但她坚定且无声的力量让其他星之守护者队员深深敬佩。"
+        },
+        {
+            "id": 40008,
+            "isBase": false,
+            "name": "玉剑传说 风仙子",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/40/40008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/40/40008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/40/40008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Skin08/JannaLoadScreen_8.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40008.png",
+            "chromas": [
+                {
+                    "id": 40009,
+                    "name": "玉剑传说 风仙子 毕方",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40009.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 40010,
+                    "name": "玉剑传说 风仙子 仙鹤",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40010.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 40011,
+                    "name": "玉剑传说 风仙子 丹凤",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40011.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 40012,
+                    "name": "玉剑传说 风仙子 青鸾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40012.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 81
+                }
+            ],
+            "skinAugments": null,
+            "description": "迦娜是一把上古纯玉之剑的守护者，玉剑藏于静湖之底。传说挥舞玉剑之人可获得永生，因此为了保护玉剑，迦娜必须意志坚定。 "
+        },
+        {
+            "id": 40013,
+            "isBase": false,
+            "name": "魅惑女巫 迦娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/40/40013.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/40/40013.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/40/40013.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Skin13/JannaLoadScreen_13.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Skin13/JannaLoadScreen_13_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40013.png",
+            "chromas": [
+                {
+                    "id": 40014,
+                    "name": "魅惑女巫 迦娜 克莱提卡魔女",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40014.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 40015,
+                    "name": "魅惑女巫 迦娜 所里塔利魔女",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40015.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 40016,
+                    "name": "魅惑女巫 迦娜 克莱米纳魔女",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40016.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 40017,
+                    "name": "魅惑女巫 迦娜 埃克提克魔女",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40017.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 40018,
+                    "name": "魅惑女巫 迦娜 维克康尼魔女",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40018.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 40019,
+                    "name": "魅惑女巫 迦娜 炫金",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40019.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Halloween_b",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/11.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/11.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 172
+                }
+            ],
+            "skinAugments": null,
+            "description": "迦娜最爱的季节又来了——这个时节里，黑暗的灵体从地上升起，并且隐藏的糖果宝藏将被所有人享用。做出你最棒的乔装，然后驰骋入黑夜中，因为巫聚时分即将来临！"
+        },
+        {
+            "id": 40020,
+            "isBase": false,
+            "name": "沙之守护 迦娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/40/40020.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/40/40020.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/40/40020.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Skin20/JannaLoadScreen_20.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Skin13/JannaLoadScreen_13_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40020.png",
+            "chromas": [
+                {
+                    "id": 40021,
+                    "name": "沙之守护 迦娜 凯旋守护神",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40021.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 40022,
+                    "name": "沙之守护 迦娜 爱情守护神",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40022.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 40023,
+                    "name": "沙之守护 迦娜 智慧守护神",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40023.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 40024,
+                    "name": "沙之守护 迦娜 丰饶守护神",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40024.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 40025,
+                    "name": "沙之守护 迦娜 梦境守护神",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40025.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 40026,
+                    "name": "沙之守护 迦娜 甘霖守护神",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40026.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 66
+                }
+            ],
+            "skinAugments": null,
+            "description": "迦娜，沙漠之狂风——远古的沙之守护，我们唤醒它们来保护我们免受恶灵——一个由我们亲手创造的恶灵——的荼毒。让这片圣土无人踏足，以免他们被你的沙漠风暴彻底吞噬。"
+        },
+        {
+            "id": 40027,
+            "isBase": false,
+            "name": "女帝 迦娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/40/40027.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/40/40027.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/40/40027.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Skin27/JannaLoadScreen_27.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Skin27/JannaLoadscreen_27_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40027.png",
+            "chromas": [
+                {
+                    "id": 40028,
+                    "name": "女帝 迦娜 纹章之刻印·英勇",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40028.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 40029,
+                    "name": "女帝 迦娜 纹章之刻印·坚毅",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40029.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 40030,
+                    "name": "女帝 迦娜 纹章之刻印·慈悲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40030.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 40031,
+                    "name": "女帝 迦娜 纹章之刻印·博学",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40031.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 40032,
+                    "name": "女帝 迦娜 纹章之刻印·高洁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40032.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 40033,
+                    "name": "女帝 迦娜 纹章·神圣加冕礼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40033.png",
+                    "colors": [
+                        "#FF80B1",
+                        "#9DFFEF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在女帝无双(2020)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 40034,
+                    "name": "女帝 迦娜 纹章之刻印·敏锐",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40034.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 40035,
+                    "name": "女帝 迦娜 纹章之刻印·深谋",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40035.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 137
+                }
+            ],
+            "skinAugments": null,
+            "description": "女帝迦娜来自奥莱，高高在上地飘在锦标赛的上方，俯视着整个战局。但是，如果没有“神圣加冕礼”的冠军，就会因魔力的衰退而无法使奥莱的隐居者们延续长生，因此迦娜再次降落，只当是再次展示她的权能。她愿为保护她的人民而倾尽一切。"
+        },
+        {
+            "id": 40036,
+            "isBase": false,
+            "name": "水晶玫瑰 迦娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/40/40036.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/40/40036.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/40/40036.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Skin36/JannaLoadScreen_36.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40036.png",
+            "chromas": [
+                {
+                    "id": 40037,
+                    "name": "水晶玫瑰 迦娜 热烈花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40037.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 40038,
+                    "name": "水晶玫瑰 迦娜 憧憬花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40038.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 40039,
+                    "name": "水晶玫瑰 迦娜 痴心花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40039.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 40040,
+                    "name": "水晶玫瑰 迦娜 浪漫花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40040.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 40041,
+                    "name": "水晶玫瑰 迦娜 梦幻花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40041.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 40042,
+                    "name": "水晶玫瑰 迦娜 忠贞花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40042.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 40043,
+                    "name": "水晶玫瑰 迦娜 纯洁花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40043.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 40044,
+                    "name": "水晶玫瑰 迦娜 甜蜜花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40044.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Valentine New",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/67.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/67.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 140
+                }
+            ],
+            "skinAugments": null,
+            "description": "对安宁的渴望带来的不仅仅是一年一度的庆典。从这个普遍的愿望中诞生了精灵迦娜，她的魔力就像花环一样挂在夜空。尽管她被大多数人视为一个传奇人物，但客人们有时会说他们看到一位美丽的女士飘过。或许这就是水晶玫瑰之光的一个小把戏……"
+        },
+        {
+            "id": 40045,
+            "isBase": false,
+            "name": "海珀利安小队 X09-星环灵风 迦娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/40/40045.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/40/40045.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/40/40045.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Skin45/JannaLoadScreen_45.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Skin45/JannaLoadscreen_45_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40045.png",
+            "chromas": [
+                {
+                    "id": 40047,
+                    "name": "海珀利安小队 X09-星环灵风 迦娜 赤红突袭",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40047.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 40048,
+                    "name": "海珀利安小队 X09-星环灵风 迦娜 冰封预言",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40048.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 40049,
+                    "name": "海珀利安小队 X09-星环灵风 迦娜 翱翔笑语",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40049.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 40050,
+                    "name": "海珀利安小队 X09-星环灵风 迦娜 神佑先驱",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40050.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 40051,
+                    "name": "海珀利安小队 X09-星环灵风 迦娜 神圣玫瑰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40051.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 40052,
+                    "name": "海珀利安小队 X09-星环灵风 迦娜 紫色长剑",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40052.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 40053,
+                    "name": "海珀利安小队 X09-星环灵风 迦娜 圣洁赞歌",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40053.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 40054,
+                    "name": "海珀利安小队 X09-星环灵风 迦娜 不朽巨蛇",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40054.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 40055,
+                    "name": "海珀利安小队 X09-星环灵风 迦娜 暗夜王牌",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40055.png",
+                    "colors": [
+                        "#FF70BA",
+                        "#464646"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在钢铁瓦尔基里(2022)事件期间作为战利品专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 65
+                }
+            ],
+            "skinAugments": null,
+            "description": "迦娜来自皇家太空军研发部门的一个实验品，也是皇家太空军历史上唯一成功驾驶战斗服的智能机人。也许是因为她看起来很像人类，以至于很容易忘记她所指挥的一阵阵的“风”实际上是一支纳米机器人舰队，它们直接连接到“X09-星环灵风”战斗服以及她的中央处理核心。"
+        },
+        {
+            "id": 40046,
+            "isBase": false,
+            "name": "至臻 海珀利安小队 X09-星环灵风 迦娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/40/40046.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/40/40046.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/40/40046.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Skin46/JannaLoadScreen_46.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Skin46/JannaLoadscreen_46_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 65
+                }
+            ],
+            "skinAugments": null,
+            "description": "迦娜总会为时尚世界带来一股新风。她冒着风险与一位新设计师合作，打造她的高科技红毯造型。这种风险是值得的：时尚的未来就在这里，而且看起来很光明。"
+        },
+        {
+            "id": 40056,
+            "isBase": false,
+            "name": "天龙之子 迦娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/40/40056.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/40/40056.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/40/40056.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Skin56/JannaLoadScreen_56.PIE_C_14_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Janna/Skins/Skin56/JannaLoadScreen_56_LE.PIE_C_14_2.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40056.png",
+            "chromas": [
+                {
+                    "id": 40057,
+                    "name": "天龙之子 迦娜 龙马精神",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40057.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 40058,
+                    "name": "天龙之子 迦娜 苍龙出海",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40058.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 40059,
+                    "name": "天龙之子 迦娜 龙行虎步",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40059.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 40060,
+                    "name": "天龙之子 迦娜 龙飞凤翔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40060.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 40061,
+                    "name": "天龙之子 迦娜 祥龙献瑞",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40061.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 40062,
+                    "name": "天龙之子 迦娜 矫若惊龙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40062.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 40063,
+                    "name": "天龙之子 迦娜 蛟龙得水",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40063.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 40064,
+                    "name": "天龙之子 迦娜 云起龙骧",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40064.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 40065,
+                    "name": "天龙之子 迦娜 赫赫龙威",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/40/40065.png",
+                    "colors": [
+                        "#DFA6DF",
+                        "#E0D7D7"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在天龙之子(2024)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Year of Loong 2024",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/83.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/83.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 201
+                }
+            ],
+            "skinAugments": null,
+            "description": "迦娜是王国中最擅长魔法的龙（也许除了国王本人），能够腾云驾雾，呼风唤雨。龙太子曾经问过迦娜是否可以收他为徒，而迦娜高兴地接受了；但她期待着给他展示龙族力量更加奇思妙想的用法。毕竟，他们要去参加庆典了。"
+        }
+    ],
+    "passive": {
+        "name": "顺风而行",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Janna/HUD/Icons2D/JannaP.png",
+        "abilityVideoPath": "champion-abilities/0040/ability_0040_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0040/ability_0040_P1.jpg",
+        "description": "迦娜的友军在朝她移动时获得移动速度。<br><br>迦娜的普攻和【和风守护】会附带一部分额外移动速度的额外魔法伤害。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "飓风呼啸",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Janna/HUD/Icons2D/JannaQ.png",
+            "abilityVideoPath": "champion-abilities/0040/ability_0040_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0040/ability_0040_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "迦娜改变气压和温度，在目标区域召唤小型风暴，风暴体积随时间增大。她可以再次施放该技能来释放风暴。风暴会朝向施放方向飞行，对沿途的所有单位造成伤害和击飞效果。",
+            "dynamicDescription": "迦娜召唤一道在@MaxDuration@秒里持续聚集的飓风，随后沿路猛刮出去。飓风对目标造成<magicDamage>@MinimumDamage@ - @MaxDamage@魔法伤害</magicDamage>和@BaseKnockup@ - @MaxKnockup@秒<status>击飞</status>。移动距离、伤害和<status>击飞</status>时长都基于飓风聚集的时长。迦娜可以<recast>再次施放</recast>来提前将飓风刮出去。@SpellModifierDescriptionAppend@",
+            "range": [
+                1075.0000,
+                1075.0000,
+                1075.0000,
+                1075.0000,
+                1075.0000,
+                1075.0000
+            ],
+            "costCoefficients": [
+                90.0000,
+                95.0000,
+                100.0000,
+                105.0000,
+                110.0000,
+                110.0000
+            ],
+            "cooldownCoefficients": [
+                14.0000,
+                14.0000,
+                14.0000,
+                14.0000,
+                14.0000,
+                14.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "和风守护",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Janna/HUD/Icons2D/JannaW.png",
+            "abilityVideoPath": "champion-abilities/0040/ability_0040_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0040/ability_0040_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "迦娜召唤出一个空气元素灵体，来被动地提升她的移动速度，并使她能够穿越单位。她也可以主动激活这个技能，来对一个敌人造成伤害和减速效果。",
+            "dynamicDescription": "<spellPassive>被动：</spellPassive>迦娜获得<speed>@TotalMS@移动速度</speed>并处在幽灵状态。<br><br><spellActive>主动：</spellActive>迦娜的风灵打击一名敌人，对其造成持续@SlowDuration@秒的@TotalSlow@<status>减速</status>和<magicDamage>@TotalDamage@ + @spell.TailwindSelf:BonusDamage@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                -1.0000,
+                -1.0000,
+                -1.0000,
+                -1.0000,
+                -1.0000,
+                -1.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                8.0000,
+                7.5000,
+                7.0000,
+                6.5000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "风暴之眼",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Janna/HUD/Icons2D/JannaE.png",
+            "abilityVideoPath": "champion-abilities/0040/ability_0040_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0040/ability_0040_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "迦娜制造出一阵防御性的气旋，来为目标友军或防御塔吸收即将到来的伤害，并提高目标的攻击力。",
+            "dynamicDescription": "迦娜为一个友军或防御塔提供持续@ShieldDuration@秒的<shield>@TotalShield@护盾值</shield>。在护盾存在时，该友军目标获得<scaleAD>@TotalAD@攻击力</scaleAD>。<br><br>迦娜在每次用一个技能使一名敌方英雄的移动速度受损时，会使这个冷却时间缩短@ECDRefundforCC*100@%。@SpellModifierDescriptionAppend@",
+            "range": [
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                75.0000,
+                80.0000,
+                85.0000,
+                90.0000,
+                90.0000
+            ],
+            "cooldownCoefficients": [
+                16.0000,
+                15.0000,
+                14.0000,
+                13.0000,
+                12.0000,
+                12.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "复苏季风",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Janna/HUD/Icons2D/JannaR.png",
+            "abilityVideoPath": "champion-abilities/0040/ability_0040_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0040/ability_0040_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "迦娜召唤魔法风暴围绕自己，将敌人击退。在风暴平息后，当技能仍处在激活状态时，和风将治疗附近的友军。",
+            "dynamicDescription": "迦娜召唤一阵魔法季风，<status>击退</status>附近的敌人们然后在@Effect3Amount@秒里持续治疗附近的友军共<healing>@TotalHeal@生命值</healing>。移动或使用技能都会提前结束这阵季风。@SpellModifierDescriptionAppend@",
+            "range": [
+                725.0000,
+                725.0000,
+                725.0000,
+                725.0000,
+                725.0000,
+                725.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                130.0000,
+                115.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.5000,
+                "coefficient2": 1.5000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    300.0000,
+                    450.0000,
+                    600.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    700.0000,
+                    700.0000,
+                    700.0000,
+                    700.0000,
+                    700.0000,
+                    700.0000,
+                    700.0000
+                ],
+                "Effect5Amount": [
+                    875.0000,
+                    875.0000,
+                    875.0000,
+                    875.0000,
+                    875.0000,
+                    875.0000,
+                    875.0000
+                ],
+                "Effect6Amount": [
+                    875.0000,
+                    875.0000,
+                    875.0000,
+                    875.0000,
+                    875.0000,
+                    875.0000,
+                    875.0000
+                ],
+                "Effect7Amount": [
+                    1200.0000,
+                    1200.0000,
+                    1200.0000,
+                    1200.0000,
+                    1200.0000,
+                    1200.0000,
+                    1200.0000
+                ],
+                "Effect8Amount": [
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000
+                ],
+                "Effect9Amount": [
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

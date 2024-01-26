@@ -1,0 +1,1780 @@
+{
+    "id": 134,
+    "name": "暗黑元首",
+    "alias": "Syndra",
+    "title": "辛德拉",
+    "shortBio": "辛德拉是一位令人胆寒的艾欧尼亚魔法师，操纵着难以置信的力量。她在孩童时期就因为狂暴而不受控制的魔法而让村庄的长老们深感不安。长老们把她送到外地接受严密的监管和训练，但她发现所谓的训练其实是对自己能力的限制。辛德拉将自己感受到的背叛与痛楚融入暗黑法球，并发誓消灭所有想要控制她的人。",
+    "tacticalInfo": {
+        "style": 10,
+        "difficulty": 2,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 2,
+        "mobility": 1,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/134.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/134.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/134.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/134.ogg",
+    "roles": [
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 134000,
+            "isBase": true,
+            "name": "暗黑元首",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/134/134000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/134/134000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/134/134000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Syndra/Skins/Base/SyndraLoadScreen_0.PIE_C_13_24.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 134001,
+            "isBase": false,
+            "name": "仲裁圣女 辛德拉",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/134/134001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/134/134001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/134/134001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Syndra/Skins/Skin01/SyndraLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 33
+                }
+            ],
+            "skinAugments": null,
+            "description": "弧光的中心屹立着司法官与哨卫，他们是正义与秩序的活化身。辛德拉的存在体现着知识，如果她没有神的智慧，又有谁能引导这个世界呢？"
+        },
+        {
+            "id": 134002,
+            "isBase": false,
+            "name": "亚特兰蒂斯 辛德拉",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/134/134002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/134/134002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/134/134002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Syndra/Skins/Skin02/SyndraLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 108
+                }
+            ],
+            "skinAugments": null,
+            "description": "“亚特兰蒂斯人曾精于魔法，我们知道这是真的。但他们的魔力确实高深莫测……至今为止，我们也无法知道他们是否存在于世界的某些被遗忘的角落，运用某种夺走他们曾经不可一世的城市的黑暗之物复苏了过来。”"
+        },
+        {
+            "id": 134003,
+            "isBase": false,
+            "name": "方块王后 辛德拉",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/134/134003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/134/134003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/134/134003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Syndra/Skins/Skin03/SyndraLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 41
+                }
+            ],
+            "skinAugments": null,
+            "description": "第四是女皇，忧郁又安详，<br>静中深藏真锋芒。<br>一人即可平万邦……<br>或将此言变寻常。"
+        },
+        {
+            "id": 134004,
+            "isBase": false,
+            "name": "冰雪女神 辛德拉",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/134/134004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/134/134004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/134/134004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Syndra/Skins/Skin04/SyndraLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Snowdown",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/9.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/9.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 46
+                }
+            ],
+            "skinAugments": null,
+            "description": "难以置信的强大魔法也可以用来打雪仗，辛德拉被解放的魔力对于所有眼里容不得雪花的人都意味着毁灭。每个人都有轻松的一面，黑暗元首也不例外。"
+        },
+        {
+            "id": 134005,
+            "isBase": false,
+            "name": "SKT T1 辛德拉",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/134/134005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/134/134005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/134/134005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Syndra/Skins/Skin05/SyndraLoadscreen_5.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 6
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此致敬Faker在2016年全球总决赛中使用辛德拉的夺胜表现。这是Faker第三个世界冠军皮肤。前两次是2013和2015年全球总决赛SKT夺冠。"
+        },
+        {
+            "id": 134006,
+            "isBase": false,
+            "name": "星之守护者 辛德拉",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/134/134006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/134/134006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/134/134006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Syndra/Skins/Skin06/SyndraLoadScreen_6.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Syndra/Skins/Skin06/SyndraLoadScreen_6_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134006.png",
+            "chromas": [
+                {
+                    "id": 134035,
+                    "name": "星之守护者 辛德拉 热情之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134035.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 134036,
+                    "name": "星之守护者 辛德拉 爱之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134036.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134037,
+                    "name": "星之守护者 辛德拉 勇气之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134037.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134038,
+                    "name": "星之守护者 辛德拉 智慧之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134038.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134039,
+                    "name": "星之守护者 辛德拉 重生之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134039.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134040,
+                    "name": "星之守护者 辛德拉 未来之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134040.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 134041,
+                    "name": "星之守护者 辛德拉 正义之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134041.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134042,
+                    "name": "星之守护者 辛德拉 守护之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134042.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134043,
+                    "name": "星之守护者 辛德拉 希望之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134043.png",
+                    "colors": [
+                        "#FDA4DA",
+                        "#9DE5FF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在星之守护者(2022)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 20
+                }
+            ],
+            "skinAugments": null,
+            "description": "令人敬畏的辛德拉是一位来自古老时代的星之守护者，她的过去隐藏在阴影中。她是阿狸小队的智囊，虽然深得队长的信任，但也有些成员怀疑辛德拉为了自己的个人野心可以不惜任何代价。"
+        },
+        {
+            "id": 134007,
+            "isBase": false,
+            "name": "泳池派对 辛德拉",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/134/134007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/134/134007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/134/134007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Syndra/Skins/Skin07/SyndraLoadscreen_7.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134007.png",
+            "chromas": [
+                {
+                    "id": 134008,
+                    "name": "泳池派对 辛德拉 车厘厘晃跳",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134008.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020年作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 0
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 134009,
+                    "name": "泳池派对 辛德拉 白桃桃扣杀",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134009.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 134010,
+                    "name": "泳池派对 辛德拉 菠萝萝轻扣",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134010.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134011,
+                    "name": "泳池派对 辛德拉 蓝莓莓突破",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134011.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134012,
+                    "name": "泳池派对 辛德拉 西瓜瓜鱼跃",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134012.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134013,
+                    "name": "泳池派对 辛德拉 荔枝枝连击",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134013.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134014,
+                    "name": "泳池派对 辛德拉 葡萄萄游动",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134014.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134015,
+                    "name": "泳池派对 辛德拉 水果糖跳发",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134015.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 15
+                }
+            ],
+            "skinAugments": null,
+            "description": "现在，辛德拉已经战胜了所有的对手，是时候进行最后的考验了：防止任何游离的排球击中她的朋友们。再来一次。"
+        },
+        {
+            "id": 134016,
+            "isBase": false,
+            "name": "幽梦玫瑰 辛德拉",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/134/134016.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/134/134016.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/134/134016.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Syndra/Skins/Skin16/SyndraLoadScreen_16.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134016.png",
+            "chromas": [
+                {
+                    "id": 134017,
+                    "name": "幽梦玫瑰 辛德拉 热烈花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134017.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 134018,
+                    "name": "幽梦玫瑰 辛德拉 倾心花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134018.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134019,
+                    "name": "幽梦玫瑰 辛德拉 痴心花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134019.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134020,
+                    "name": "幽梦玫瑰 辛德拉 真挚花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134020.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134021,
+                    "name": "幽梦玫瑰 辛德拉 憧憬花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134021.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134022,
+                    "name": "幽梦玫瑰 辛德拉 浪漫花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134022.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 134023,
+                    "name": "幽梦玫瑰 辛德拉 甜蜜花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134023.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134024,
+                    "name": "幽梦玫瑰 辛德拉 纯洁花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134024.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Valentine",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/8.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/8.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 141
+                }
+            ],
+            "skinAugments": null,
+            "description": "辛德拉已经被这个节庆给故意避开了很多年，因为她支持蒙羞的劫。她再也不能忍受这种轻蔑了，决定渗透到这场盛事中，用她那甘甜的毒液去毒害水晶玫瑰的心脏。"
+        },
+        {
+            "id": 134025,
+            "isBase": false,
+            "name": "魅惑女巫 辛德拉",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/134/134025.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/134/134025.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/134/134025.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Syndra/Skins/Skin25/SyndraLoadScreen_25.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Syndra/Skins/Skin25/SyndraLoadscreen_25_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134025.png",
+            "chromas": [
+                {
+                    "id": 134026,
+                    "name": "魅惑女巫 辛德拉 热情化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134026.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 134027,
+                    "name": "魅惑女巫 辛德拉 清新化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134027.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 134028,
+                    "name": "魅惑女巫 辛德拉 青春化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134028.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 134029,
+                    "name": "魅惑女巫 辛德拉 浪漫化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134029.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 134030,
+                    "name": "魅惑女巫 辛德拉 典雅化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134030.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 134031,
+                    "name": "魅惑女巫 辛德拉 知性化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134031.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 134032,
+                    "name": "魅惑女巫 辛德拉 纯真化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134032.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 134033,
+                    "name": "魅惑女巫 辛德拉 高冷化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134033.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Halloween_b",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/11.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/11.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 172
+                }
+            ],
+            "skinAugments": null,
+            "description": "没有“南瓜灯的进军”，任何庆祝活动都是不完整的！ 辛德拉召唤出数百个巨大的瓜从天而降，它们歪歪扭扭的笑容逗乐了下方的孩子们。"
+        },
+        {
+            "id": 134034,
+            "isBase": false,
+            "name": "至臻 星之守护者 辛德拉",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/134/134034.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/134/134034.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/134/134034.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Syndra/Skins/Skin34/SyndraLoadScreen_34.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Syndra/Skins/Skin34/SyndraLoadscreen_34_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 161
+                }
+            ],
+            "skinAugments": null,
+            "description": "辛德拉包裹在丝绸和暗影中，不需要成群的崇拜者（虽然她有），也不需要数百个急切地为她设计的工作室（虽然她也有），因为她总是在她自己轨道的中心。她的秘诀？星光永远不会过时。"
+        },
+        {
+            "id": 134044,
+            "isBase": false,
+            "name": "灵魂莲华 辛德拉",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/134/134044.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/134/134044.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/134/134044.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Syndra/Skins/Skin44/SyndraLoadScreen_44.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Syndra/Skins/Skin44/SyndraLoadscreen_44_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134044.png",
+            "chromas": [
+                {
+                    "id": 134045,
+                    "name": "灵魂莲华 辛德拉 流火",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134045.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 134046,
+                    "name": "灵魂莲华 辛德拉 风起",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134046.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134047,
+                    "name": "灵魂莲华 辛德拉 雁来",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134047.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134048,
+                    "name": "灵魂莲华 辛德拉 雪落",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134048.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134049,
+                    "name": "灵魂莲华 辛德拉 春晓",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134049.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 134050,
+                    "name": "灵魂莲华 辛德拉 星回",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134050.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134051,
+                    "name": "灵魂莲华 辛德拉 朝花",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134051.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134052,
+                    "name": "灵魂莲华 辛德拉 月升",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134052.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134053,
+                    "name": "灵魂莲华 辛德拉 绽夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134053.png",
+                    "colors": [
+                        "#0C0C0F",
+                        "#B2D1E4"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2022)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 171
+                }
+            ],
+            "skinAugments": null,
+            "description": "孩子们听着关于迷失灵魂们的救世主——永远隐居的自在之灵——的故事。有一个这样的故事，一棵树用它的根须包裹住了一个闲逛的小精魂。这个小精魂独自挣扎——直到辛德拉扯掉它的束缚，就像她对所有生物所做的那样，以免它们永远迷失。 "
+        },
+        {
+            "id": 134054,
+            "isBase": false,
+            "name": "魔女 辛德拉",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/134/134054.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/134/134054.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/134/134054.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Syndra/Skins/Skin54/SyndraLoadScreen_54.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Syndra/Skins/Skin54/SyndraLoadScreen_54_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134054.png",
+            "chromas": [
+                {
+                    "id": 134055,
+                    "name": "魔女 辛德拉 愤怒",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134055.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 134056,
+                    "name": "魔女 辛德拉 贪婪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134056.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 134057,
+                    "name": "魔女 辛德拉 欺骗",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134057.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134058,
+                    "name": "魔女 辛德拉 嫉妒",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134058.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134059,
+                    "name": "魔女 辛德拉 霸道",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134059.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134060,
+                    "name": "魔女 辛德拉 饕餮",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134060.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134061,
+                    "name": "魔女 辛德拉 猜忌",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134061.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134062,
+                    "name": "魔女 辛德拉 傲慢",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134062.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 134063,
+                    "name": "魔女 辛德拉 不畏",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/134/134063.png",
+                    "colors": [
+                        "#429184",
+                        "#942861"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 92
+                }
+            ],
+            "skinAugments": null,
+            "description": "它们来到辛德拉身边，在腐肉飞翼雷鸣般的扑动中，召唤她从凡性的桎梏中自我解脱。跟随飞翼的污风来到一个仪式场所，她和另一个女巫一起将“长角王”从他的腐烂坟墓中唤醒。她现在力求对所有反对魔女集会或古神的人进行报复。"
+        }
+    ],
+    "passive": {
+        "name": "卓尔不凡",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Syndra/HUD/Icons2D/Syndra_P1.png",
+        "abilityVideoPath": "champion-abilities/0134/ability_0134_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0134/ability_0134_P1.jpg",
+        "description": "辛德拉可通过提升等级和伤害敌人来收集【怒法碎晶】，用来使她的各技能获得强化。<br><br><font color='#FF9900'>暗黑法球</font>：辛德拉可以持有额外一层充能。<br><font color='#FF9900'>驱使念力</font>：额外真实伤害。<br><font color='#FF9900'>弱者退散</font>：提升宽度并减速所有目标。<br><font color='#FF9900'>能量倾泻</font>：处决低生命值的目标。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "暗黑法球",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Syndra/HUD/Icons2D/Syndra_Q1.png",
+            "abilityVideoPath": "champion-abilities/0134/ability_0134_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0134/ability_0134_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "辛德拉幻化出一个造成魔法伤害的暗黑法球。法球会存留，并且被她的其它能力所操纵。",
+            "dynamicDescription": "辛德拉幻化出一颗<keywordMajor>暗黑法球</keywordMajor>，造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>。这个<keywordMajor>暗黑法球</keywordMajor>可以存留@SphereDuration@秒，并且能被辛德拉的其它技能所操纵。<br><br><evolve>@spell.SyndraPassive:Q1UpgradeThreshold@块怒法碎晶</evolve>：辛德拉可以储存@Upgrade1MaxAmmo@个<keywordMajor>暗黑法球</keywordMajor>充能。@SpellModifierDescriptionAppend@",
+            "range": [
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000
+            ],
+            "costCoefficients": [
+                40.0000,
+                45.0000,
+                50.0000,
+                55.0000,
+                60.0000,
+                60.0000
+            ],
+            "cooldownCoefficients": [
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "驱使念力",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Syndra/HUD/Icons2D/Syndra_W1.png",
+            "abilityVideoPath": "champion-abilities/0134/ability_0134_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0134/ability_0134_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "辛德拉抓取并投掷一名敌方小兵或者暗黑法球，来对敌人造成魔法伤害，并减少他们的移动速度。",
+            "dynamicDescription": "辛德拉抓取一颗<keywordMajor>暗黑法球</keywordMajor>、一个敌方小兵或一只非史诗级野怪。她在抓取后的至多5秒内可以<recast>再次施放</recast>这个技能。<br><br><recast>再次施放</recast>：辛德拉将物体猛掷出去，造成<magicDamage>@ThrowDamage@魔法伤害</magicDamage>和持续@f2@秒的@TotalSlowAmount@%<status>减速</status>效果。<br><br><evolve>@spell.SyndraPassive:WUpgradeThreshold@块怒法碎晶</evolve>：这个技能造成额外的<trueDamage>@TOOLTIPONLYPassiveBonusPercent@真实伤害</trueDamage>。<br>@SpellModifierDescriptionAppend@",
+            "range": [
+                925.0000,
+                925.0000,
+                925.0000,
+                925.0000,
+                925.0000,
+                925.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                70.0000,
+                80.0000,
+                90.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                11.0000,
+                10.0000,
+                9.0000,
+                8.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "弱者退散",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Syndra/HUD/Icons2D/Syndra_E1.png",
+            "abilityVideoPath": "champion-abilities/0134/ability_0134_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0134/ability_0134_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "辛德拉将敌人和暗黑法球击退，并造成魔法伤害。被暗黑法球命中的敌人会被晕眩。",
+            "dynamicDescription": "辛德拉投出一道原力波，<status>击退</status>敌人们和<keywordMajor>暗黑法球</keywordMajor>并造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>。<br><br>被推挤的<keywordMajor>暗黑法球</keywordMajor>会<status>晕眩</status>敌人@StunDuration@秒并造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>。<br><br><evolve>@spell.SyndraPassive:EUpgradeThreshold@块怒法碎晶</evolve>：这个技能的宽度得到提升并且还会对敌人们造成持续@UpgradedSlowDuration@秒的<status>@UpgradedSlowAmount*100@%</status><status>减速</status>。@SpellModifierDescriptionAppend@",
+            "range": [
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000
+            ],
+            "cooldownCoefficients": [
+                17.0000,
+                17.0000,
+                17.0000,
+                17.0000,
+                17.0000,
+                17.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "能量倾泻",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Syndra/HUD/Icons2D/Syndra_R1.png",
+            "abilityVideoPath": "champion-abilities/0134/ability_0134_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0134/ability_0134_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "辛德拉用她的所有暗黑法球来轰击一名敌方英雄。",
+            "dynamicDescription": "<spellPassive>被动</spellPassive>：每级<spellName>能量倾泻</spellName>都会为<spellName>暗黑法球</spellName>提供额外的@QHastePerRank@技能急速。<br><br>辛德拉动用她洪流般的能量，将环绕于她的3颗<keywordMajor>暗黑法球</keywordMajor>外加至多4颗附近的<keywordMajor>暗黑法球</keywordMajor>轰在一名敌方英雄身上。每颗暗黑法球造成<magicDamage>@DamageCalc@魔法伤害</magicDamage>(最大<magicDamage>@MaxDamageCalc@魔法伤害</magicDamage>)。<br><br><evolve>@spell.SyndraPassive:RUpgradeThreshold@块怒法碎晶</evolve>：这个技能会<danger>处决</danger>低于@UpgradeExecuteThreshold*100@%生命值的敌人。@SpellModifierDescriptionAppend@",
+            "range": [
+                675.0000,
+                675.0000,
+                675.0000,
+                675.0000,
+                675.0000,
+                675.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                115.0000,
+                130.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                100.0000,
+                80.0000,
+                3.5000,
+                3.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

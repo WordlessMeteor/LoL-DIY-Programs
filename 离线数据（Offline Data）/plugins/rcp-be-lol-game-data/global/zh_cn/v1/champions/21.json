@@ -1,0 +1,1723 @@
+{
+    "id": 21,
+    "name": "赏金猎人",
+    "alias": "MissFortune",
+    "title": "厄运小姐",
+    "shortBio": "以美貌闻名，但却以无情立命的莎拉是一位比尔吉沃特的船长，她在这座彪悍港城的犯罪集团中塑造了不容轻视的形象。在她还是个孩子的时候，曾亲眼目睹海盗之王普朗克谋杀了自己的家人。多年以后，她残忍地报仇雪恨，将普朗克连人带舰一同炸飞。所有低估她的人都会发现，自己面对的是一个极具欺骗性的狡黠对手，一不留神就得处理几颗射进肚子里的子弹。",
+    "tacticalInfo": {
+        "style": 4,
+        "difficulty": 1,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 1,
+        "mobility": 1,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/21.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/21.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/21.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/21.ogg",
+    "roles": [
+        "marksman"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 21000,
+            "isBase": true,
+            "name": "赏金猎人",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/21/21000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/21/21000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/21/21000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Base/MissFortuneLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 21001,
+            "isBase": false,
+            "name": "西部牛仔 厄运小姐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/21/21001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/21/21001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/21/21001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin01/MissFortuneLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "草原上没有哪个赏金猎人比莎拉·厄运的技术更加娴熟，但她却从不接受钱少的活。在高境之边造成了足够的麻烦，并且，是的，她会响应征召，带着两把闪闪发光的手枪，以及刻有悬赏者名字的子弹。 "
+        },
+        {
+            "id": 21002,
+            "isBase": false,
+            "name": "法国皇室 厄运小姐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/21/21002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/21/21002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/21/21002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin02/MissFortuneLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 21003,
+            "isBase": false,
+            "name": "特工狂花 厄运小姐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/21/21003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/21/21003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/21/21003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin03/MissFortuneLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 121
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 21004,
+            "isBase": false,
+            "name": "圣诞糖果棒 厄运小姐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/21/21004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/21/21004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/21/21004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin04/MissFortuneLoadScreen_4.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin04/MissFortuneLoadScreen_4_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Snowdown",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/9.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/9.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 48
+                }
+            ],
+            "skinAugments": null,
+            "description": "厄运小姐不在乎谁是乖孩子——淘气包全都出来欢庆冰雪节了，这就意味着赏金猎人的大买卖来了。枪不离手的她准备好接下各种不论死活的悬赏令，她这个礼物你真的不要打开。"
+        },
+        {
+            "id": 21005,
+            "isBase": false,
+            "name": "荒野女警 厄运小姐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/21/21005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/21/21005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/21/21005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin05/MissFortuneLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 70
+                }
+            ],
+            "skinAugments": null,
+            "description": "厄运小姐是一个以公路为家的独行骑手。她会亲手处理废土的麻烦，然后继续前进——总会有新的工作，总会有新的城镇。不久前，她与暴走帮产生了冲突，而她非常乐于将这些恶名昭彰的无赖们打趴下。"
+        },
+        {
+            "id": 21006,
+            "isBase": false,
+            "name": "黑帮狂花 厄运小姐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/21/21006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/21/21006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/21/21006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin06/MissFortuneLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 51
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为一名前雇佣枪手，莎拉·厄运小姐最近将她的犯罪集团拆分开来拓展业务，从武器走私到贴身保镖应有尽有。﻿在破坏了图奇和格雷福斯之间的关系后，她正着手于巩固自己的帝国，以防两者意识到她的野心。  "
+        },
+        {
+            "id": 21007,
+            "isBase": false,
+            "name": "电玩女神 厄运小姐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/21/21007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/21/21007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/21/21007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin07/MissFortuneLoadScreen_7.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21007.png",
+            "chromas": [
+                {
+                    "id": 21010,
+                    "name": "蓝蔷薇女神",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21010.png",
+                    "colors": [
+                        "#AAFFFF",
+                        "#FF55FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 21011,
+                    "name": "紫罗兰女神",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21011.png",
+                    "colors": [
+                        "#592AB5",
+                        "#6FCAD4"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 21012,
+                    "name": "橙玫瑰女神",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21012.png",
+                    "colors": [
+                        "#BC7E11",
+                        "#2298CA"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 21013,
+                    "name": "绿牡丹女神",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21013.png",
+                    "colors": [
+                        "#BDDF5D",
+                        "#CA37BE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 21014,
+                    "name": "红丁香女神",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21014.png",
+                    "colors": [
+                        "#B51717",
+                        "#222DC8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 21019,
+                    "name": "电玩女神 厄运小姐 K.O.",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21019.png",
+                    "colors": [
+                        "#A5FFF8",
+                        "#D87BFF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "2019电玩事件期间的战利品专属道具。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "3 Year Celebration",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/36.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/36.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 10
+                }
+            ],
+            "skinAugments": null,
+            "description": "厄运女郎(朋友们都叫她莎拉)在现实生活中的最大功绩是射爆他们游戏的最高分记录。在街机世界中，她可以在所有必须的情况下射爆所有敌人，将所有的目标都转化为自己的积分。"
+        },
+        {
+            "id": 21008,
+            "isBase": false,
+            "name": "女船长 厄运小姐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/21/21008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/21/21008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/21/21008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin08/MissFortuneLoadScreen_8.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 49
+                }
+            ],
+            "skinAugments": null,
+            "description": "在另一个世界中，莎拉·厄运是一位备受尊敬的船长，拥有来自她母亲的爱和城市的敬意，但是被比尔吉沃特夺走的东西，你可不一定总能要回来。这个美梦在很久之前就已经消逝了。"
+        },
+        {
+            "id": 21009,
+            "isBase": false,
+            "name": "泳池派对 厄运小姐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/21/21009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/21/21009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/21/21009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin09/MissFortuneLoadscreen_9.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 15
+                }
+            ],
+            "skinAugments": null,
+            "description": "她可是公认的自拍女王以及双手水枪大师，莎拉·厄运能在泼水战中打败所有挑战者并且保证自己仪态优雅。而她之后晒出来的照片则更加美丽。这其实有点让人失望。  "
+        },
+        {
+            "id": 21015,
+            "isBase": false,
+            "name": "星之守护者 厄运小姐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/21/21015.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/21/21015.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/21/21015.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin15/MissFortuneLoadScreen_15.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin15/MissFortuneLoadScreen_15_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 20
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为阿狸的副手，厄运小姐是一位来自银河边际的火辣星之守护者。她永远都会手持双枪第一个冲进战斗，常常为了击杀视线所及的每个敌人而忽视自己的安危。"
+        },
+        {
+            "id": 21016,
+            "isBase": false,
+            "name": "武装战姬 厄运小姐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/21/21016.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/21/21016.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/21/21016.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin16/MissFortuneLoadScreen_16.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin16/MissFortuneLoadscreen_16_LE.jpg",
+            "skinType": "Ultimate",
+            "rarity": "kUltimate",
+            "isLegacy": false,
+            "splashVideoPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin16/AnimatedSplash/MissFortune_Skin16_centered.webm",
+            "collectionSplashVideoPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin16/AnimatedSplash/MissFortune_Skin16_uncentered.webm",
+            "featuresText": "<ul><li>- 四套搭配了智能战甲的致命枪械</li><li>- 每套智能战甲都有独立的视效和声效</li><li>- 可在己方基地中无限切换各种武器</li><li>- 四个附带动态生涯背景的专属召唤师图标</li></ul>",
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Ultimate",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/44.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/44.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 9,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/9_large.png",
+            "skinLines": [
+                {
+                    "id": 65
+                }
+            ],
+            "skinAugments": null,
+            "description": "莎拉 · 厄运是一个鲜活的武器，蕴含着大量毁灭之力；还是一个传奇般的赏金猎人，在满是盗贼的银河系中寻求复仇。她现在驾驶着已知太空中最致命的机甲四处肆虐——并且她会不遗余力地将暴力审判带给她那张击杀名单上的人。"
+        },
+        {
+            "id": 21017,
+            "isBase": false,
+            "name": "睡衣守护者 厄运小姐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/21/21017.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/21/21017.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/21/21017.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin17/MissFortuneLoadscreen_17.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin15/MissFortuneLoadScreen_15_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 20
+                }
+            ],
+            "skinAugments": null,
+            "description": "莎拉·厄运通常不参加睡衣派对。也不穿毛绒睡衣。也不玩真心话大冒险。但璐璐非常坚持，而且拉克丝的邀请是如此盛情，以至于莎拉发现她自己把这三样都做了。至少她的睡衣带有枪套——以防……以防有些星界敌人现身。世事难料。防微杜渐。"
+        },
+        {
+            "id": 21018,
+            "isBase": false,
+            "name": "魅惑女巫 厄运小姐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/21/21018.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/21/21018.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/21/21018.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin18/MissFortuneLoadScreen_18.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin18/MissFortuneLoadscreen_18_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Halloween_b",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/11.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/11.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 172
+                }
+            ],
+            "skinAugments": null,
+            "description": "厄运小姐是一位强大的女巫，具有戏剧才华，并且钟爱迷途的怪物们。她已带着可怕的姐妹们为了一个充满冒险的夜晚而重新现身。"
+        },
+        {
+            "id": 21020,
+            "isBase": false,
+            "name": "至臻 魅惑女巫 厄运小姐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/21/21020.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/21/21020.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/21/21020.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin20/MissFortuneLoadscreen_20.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin20/MissFortuneLoadscreen_20_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 172
+                }
+            ],
+            "skinAugments": null,
+            "description": "厄运小姐是一位强大的女巫，具有戏剧才华，并且钟爱迷途的怪物们。她已带着可怕的姐妹们为了一个充满冒险的夜晚而重新现身。"
+        },
+        {
+            "id": 21021,
+            "isBase": false,
+            "name": "破败军团 厄运小姐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/21/21021.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/21/21021.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/21/21021.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin21/MissFortuneLoadScreen_21.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin21/MissFortuneLoadscreen_21_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21021.png",
+            "chromas": [
+                {
+                    "id": 21022,
+                    "name": "破败军团 厄运小姐 帝国征伐使",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21022.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 21023,
+                    "name": "破败军团 厄运小姐 海港征伐使",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21023.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 21024,
+                    "name": "破败军团 厄运小姐 王城征伐使",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21024.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 21025,
+                    "name": "破败军团 厄运小姐 都市征伐使",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21025.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 21026,
+                    "name": "破败军团 厄运小姐 灵岛征伐使",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21026.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 21027,
+                    "name": "破败军团 厄运小姐 森林征伐使",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21027.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 21028,
+                    "name": "破败军团 厄运小姐 极地征伐使",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21028.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 21029,
+                    "name": "破败军团 厄运小姐 星界征伐使",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21029.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 21030,
+                    "name": "破败军团 厄运小姐 咒缚征伐使",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21030.png",
+                    "colors": [
+                        "#050B19",
+                        "#ECC124"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在光明哨兵(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 138
+                }
+            ],
+            "skinAugments": null,
+            "description": "厄运小姐曾以为当比尔吉沃特的海盗女王就足够了。尽管完成了复仇，但莎拉现在又面临着比尔吉沃特各派系争夺控制权的乱局。佛耶戈的驾临为她提供了一个能够把任何人踩在脚下的机会，即使这是有代价的。"
+        },
+        {
+            "id": 21031,
+            "isBase": false,
+            "name": "幻灵战斗队长 厄运小姐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/21/21031.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/21/21031.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/21/21031.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin31/MissFortuneLoadScreen_31.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin31/MissFortuneLoadscreen_31_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21031.png",
+            "chromas": [
+                {
+                    "id": 21034,
+                    "name": "幻灵战斗队长 厄运小姐 勇气赞歌",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21034.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 21035,
+                    "name": "幻灵战斗队长 厄运小姐 活力奔袭",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21035.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 21036,
+                    "name": "幻灵战斗队长 厄运小姐 梦幻强袭",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21036.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 21037,
+                    "name": "幻灵战斗队长 厄运小姐 灿烂轰击",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21037.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 21038,
+                    "name": "幻灵战斗队长 厄运小姐 钢铁守备",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21038.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 21039,
+                    "name": "幻灵战斗队长 厄运小姐 隐秘夜影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21039.png",
+                    "colors": [
+                        "#2B7CFF",
+                        "#FF930E"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在幻灵战队(2022)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 156
+                }
+            ],
+            "skinAugments": null,
+            "description": "在前任队长锐雯神秘失踪后，莎拉 · 厄运是第二位担负“幻灵战斗队长”头衔的人。考虑到锐雯作为战争英雄的地位，这个头衔就好比一双大一码的兔靴，但莎拉聪明、老练并且勇敢，足以在为了人类的战斗中创造她自己的传奇。"
+        },
+        {
+            "id": 21033,
+            "isBase": false,
+            "name": "至臻 魅惑女巫 厄运小姐 (2022)",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/21/21033.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/21/21033.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/21/21033.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin33/MissFortuneLoadScreen_33.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 172
+                }
+            ],
+            "skinAugments": null,
+            "description": "厄运小姐是一位强大的女巫，具有戏剧才华，并且钟爱迷途的怪物们。她已带着可怕的姐妹们为了一个充满冒险的夜晚而重新现身。"
+        },
+        {
+            "id": 21040,
+            "isBase": false,
+            "name": "绝息圣堂 厄运小姐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/21/21040.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/21/21040.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/21/21040.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin40/MissFortuneLoadScreen_40.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin40/MissFortuneLoadscreen_40_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21040.png",
+            "chromas": [
+                {
+                    "id": 21042,
+                    "name": "绝息圣堂 厄运小姐 残阳圆舞曲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21042.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 21043,
+                    "name": "绝息圣堂 厄运小姐 昼梦狂想曲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21043.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 21044,
+                    "name": "绝息圣堂 厄运小姐 朝霞幻想曲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21044.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 21045,
+                    "name": "绝息圣堂 厄运小姐 日冕摇篮曲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21045.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 21046,
+                    "name": "绝息圣堂 厄运小姐 灵息变奏曲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21046.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 21047,
+                    "name": "绝息圣堂 厄运小姐 苏生回旋曲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21047.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 21048,
+                    "name": "绝息圣堂 厄运小姐 永生前奏曲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21048.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 21049,
+                    "name": "绝息圣堂 厄运小姐 白夜奏鸣曲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21049.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 190
+                }
+            ],
+            "skinAugments": null,
+            "description": "厄运小姐是一个虔诚的灵息教众，并且是教会的代言人。她一心一意地专注于对绝息者们的报复，不单是为了她被谋杀的双亲，也是为了被腐化的锐雯。莎拉不能相信她的挚友帮助过敌人，并且也不后悔对她开枪，因为只要绝息者还活着，邪恶就会逐步加深。"
+        },
+        {
+            "id": 21041,
+            "isBase": false,
+            "name": "至臻 绝息圣堂 厄运小姐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/21/21041.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/21/21041.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/21/21041.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin41/MissFortuneLoadScreen_41.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/Skins/Skin41/MissFortuneLoadscreen_41_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "PrestigeCrystalsmall",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/73.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/73.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 190
+                }
+            ],
+            "skinAugments": null,
+            "description": "每年都有成千上万的人前来盛会进行参观，希望一睹厄运小姐的最新风采。她从不热衷于回避她的忠实信徒，总是像对待家人一样对待每一位信徒。即便如此，她的对手们也知道不要惹她生气，以免他们感受到她的怒火。"
+        }
+    ],
+    "passive": {
+        "name": "厄运的眷顾",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/HUD/Icons2D/MissFortune_W.png",
+        "abilityVideoPath": "champion-abilities/0021/ability_0021_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0021/ability_0021_P1.jpg",
+        "description": "在对一个新目标进行普攻时，厄运小姐会造成额外物理伤害。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "一箭双雕",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/HUD/Icons2D/MissFortune_Q.png",
+            "abilityVideoPath": "champion-abilities/0021/ability_0021_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0021/ability_0021_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "厄运小姐向敌人发射子弹，伤害他们以及他们后面的目标。两次攻击都可以施加【厄运的眷顾】。",
+            "dynamicDescription": "厄运小姐发射一次弹跳射击，对一个敌人及其身后的另一个敌人造成<physicalDamage>@TotalDamageTooltip@物理伤害</physicalDamage>。<br><br>第二段射击可以暴击。如果第一段射击击杀了它的目标，那么第二段射击就必定暴击。@SpellModifierDescriptionAppend@",
+            "range": [
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000
+            ],
+            "costCoefficients": [
+                43.0000,
+                46.0000,
+                49.0000,
+                52.0000,
+                55.0000,
+                58.0000
+            ],
+            "cooldownCoefficients": [
+                7.0000,
+                6.0000,
+                5.0000,
+                4.0000,
+                3.0000,
+                3.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.3500,
+                "coefficient2": 1.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    20.0000,
+                    45.0000,
+                    70.0000,
+                    95.0000,
+                    120.0000,
+                    120.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    40.0000,
+                    40.0000,
+                    40.0000,
+                    40.0000,
+                    40.0000,
+                    40.0000,
+                    40.0000
+                ],
+                "Effect6Amount": [
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000
+                ],
+                "Effect7Amount": [
+                    40.0000,
+                    40.0000,
+                    40.0000,
+                    40.0000,
+                    40.0000,
+                    40.0000,
+                    40.0000
+                ],
+                "Effect8Amount": [
+                    110.0000,
+                    110.0000,
+                    110.0000,
+                    110.0000,
+                    110.0000,
+                    110.0000,
+                    110.0000
+                ],
+                "Effect9Amount": [
+                    160.0000,
+                    160.0000,
+                    160.0000,
+                    160.0000,
+                    160.0000,
+                    160.0000,
+                    160.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "大步流星",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/HUD/Icons2D/MissFortune_Passive.png",
+            "abilityVideoPath": "champion-abilities/0021/ability_0021_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0021/ability_0021_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "厄运小姐在不被攻击时会被动获得移动速度加成。可以主动施放这个技能来获得短时间的攻击速度加成。在【大步流星】尚未冷却完毕时，【厄运的眷顾】可减少【大步流星】的剩余持续时间。",
+            "dynamicDescription": "<passive>被动：</passive>如果@PassiveBaseMSOOC@秒内没有受到伤害，厄运小姐就会获得<speed>@PassiveBaseMS@移动速度</speed>。再过@PassiveMaxMSExtraOOC@秒后，这个加成会提升至<speed>@PassiveMaxMS@</speed>。<br><br><active>主动：</active>获得被动效果的全额<speed>移动速度</speed>加成并提供<attackSpeed>@ActiveAS*100@%攻击速度</attackSpeed>，持续@ActiveDuration@ 秒。<br><br><spellName>厄运的眷顾</spellName>会使这个技能的冷却时间缩短@LoveTapRefund@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                45.0000,
+                45.0000,
+                45.0000,
+                45.0000,
+                45.0000,
+                45.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "枪林弹雨",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/HUD/Icons2D/MissFortune_E.png",
+            "abilityVideoPath": "champion-abilities/0021/ability_0021_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0021/ability_0021_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "厄运小姐发射一阵弹雨来获得目标区域的视野，对敌人造成几波伤害，并减缓他们的移动速度。",
+            "dynamicDescription": "厄运小姐发射一阵弹雨，来显形一个区域，造成@TotalSlowAmount@<status>减速</status>和每秒<magicDamage>@TotalDamagePerSecond@魔法伤害</magicDamage>，持续@BaseDuration@秒(总共<magicDamage>@TotalDamage@魔法伤害</magicDamage>)。@SpellModifierDescriptionAppend@",
+            "range": [
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000
+            ],
+            "costCoefficients": [
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
+            ],
+            "cooldownCoefficients": [
+                18.0000,
+                17.0000,
+                16.0000,
+                15.0000,
+                14.0000,
+                13.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "弹幕时间",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/MissFortune/HUD/Icons2D/MissFortune_R.png",
+            "abilityVideoPath": "champion-abilities/0021/ability_0021_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0021/ability_0021_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "厄运小姐向她面前的锥形范围内引导一阵子弹风暴，对敌人造成大量伤害。这个技能的每波子弹都可以暴击。",
+            "dynamicDescription": "厄运小姐向前方锥形地带引导一阵弹幕，在@TotalChannelDuration@秒里持续发射共@TotalWaves@波，每波弹幕造成<physicalDamage>@PhysicalDamagePerWave@物理伤害</physicalDamage>(总共<physicalDamage>@TotalPhysicalDamage@物理伤害</physicalDamage>)。<br><br>每一波都可以暴击来造成%i:scaleCrit% <physicalDamage>@PhysicalCritPerWave@物理伤害</physicalDamage>(总共%i:scaleCrit%<physicalDamage>@TotalPhysicalCritDamage@物理伤害</physicalDamage>)。@SpellModifierDescriptionAppend@",
+            "range": [
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                110.0000,
+                100.0000,
+                90.0000,
+                80.0000,
+                70.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

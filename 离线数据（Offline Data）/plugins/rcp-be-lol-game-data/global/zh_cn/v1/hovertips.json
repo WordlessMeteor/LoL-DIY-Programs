@@ -1,0 +1,46 @@
+[
+    {
+        "key": "LinkTooltip_Description_Adaptive",
+        "value": "将提供攻击力或法术强度，取决于你在游戏过程中这两个属性哪个更高。可通过购买装备来影响。 "
+    },
+    {
+        "key": "LinkTooltip_Description_MS",
+        "value": "移动速度"
+    },
+    {
+        "key": "LinkTooltip_Description_ImpairAct",
+        "value": "包括致盲、近视、沉默、减速、变形、缚地、压制、晕眩、禁锢、击飞、击退、魅惑、昏睡、嘲讽和恐惧效果"
+    },
+    {
+        "key": "LinkTooltip_Description_ImpairMov",
+        "value": "包括减速、变形、缚地、压制、晕眩、禁锢、击飞、击退、魅惑、昏睡、嘲讽和恐惧效果"
+    },
+    {
+        "key": "LinkTooltip_Description_Immobilize",
+        "value": "包括压制、晕眩、禁锢、击飞、击退、魅惑、昏睡、嘲讽和恐惧效果"
+    },
+    {
+        "key": "LinkTooltip_Description_Takedown",
+        "value": "击杀或助攻"
+    },
+    {
+        "key": "LinkTooltip_Description_AoE",
+        "value": "群体目标"
+    },
+    {
+        "key": "LinkTooltip_Description_CDR",
+        "value": "冷却缩减"
+    },
+    {
+        "key": "LinkTooltip_Description_AdaptiveDmg",
+        "value": "将造成物理或魔法伤害，取决于哪个属性（攻击力或法术强度）的贡献更大。基本上，会更倾向于你的英雄造成的主要伤害类型。"
+    },
+    {
+        "key": "LinkTooltip_Description_Stasis",
+        "value": "使你自己变得不可被选取并且免疫伤害，但在此期间无法移动、攻击、施放技能或使用物品。"
+    },
+    {
+        "key": "LinkTooltip_Description_EnemyTerritory",
+        "value": "敌方领土是指己方基地对面的半个地图。这不包括召唤师峡谷上的河道。"
+    }
+]

@@ -1,0 +1,1219 @@
+{
+    "id": 234,
+    "name": "Viego",
+    "alias": "Viego",
+    "title": "The Ruined King",
+    "shortBio": "Once ruler of a long-lost kingdom, Viego perished over a thousand years ago when his attempt to bring his wife back from the dead triggered the magical catastrophe known as the Ruination. Transformed into a powerful, unliving wraith tortured by an obsessive longing for his centuries-dead queen, Viego now stands as the Ruined King, controlling the deadly Harrowings as he scours Runeterra for anything that might one day restore her, and destroying all in his path as the Black Mist pours endlessly from his cruel, broken heart.",
+    "tacticalInfo": {
+        "style": 3,
+        "difficulty": 3,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 2,
+        "mobility": 2,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/234.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/234.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/234.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/234.ogg",
+    "roles": [
+        "assassin",
+        "fighter"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 234000,
+            "isBase": true,
+            "name": "Viego",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/234/234000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/234/234000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/234/234000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Viego/Skins/Base/ViegoLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 234001,
+            "isBase": false,
+            "name": "Lunar Beast Viego",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/234/234001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/234/234001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/234/234001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Viego/Skins/Skin01/ViegoLoadscreen_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Viego/Skins/Skin01/ViegoLoadscreen_1_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234001.png",
+            "chromas": [
+                {
+                    "id": 234002,
+                    "name": "Lunar Beast Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2021."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 234003,
+                    "name": "Lunar Beast Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234003.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 234004,
+                    "name": "Lunar Beast Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234004.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234005,
+                    "name": "Lunar Beast Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234005.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234006,
+                    "name": "Lunar Beast Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234006.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234007,
+                    "name": "Lunar Beast Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234007.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234008,
+                    "name": "Lunar Beast Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234008.png",
+                    "colors": [
+                        "#88FF00",
+                        "#9B1520"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the Lunar Beast 2021 event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 142
+                }
+            ],
+            "skinAugments": null,
+            "description": "Former leader of a past Lunar Ox Squad, Viego decided that they would fight the Lunar Beast and actually defeat it. His plan ended in tragedy as he watched the rest of his squad be devoured-- including his wife. Viego has stewed in bitterness over these losses for years, blaming everyone but himself -- including this year's Lunar Ox Squad."
+        },
+        {
+            "id": 234010,
+            "isBase": false,
+            "name": "Dissonance of Pentakill Viego",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/234/234010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/234/234010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/234/234010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Viego/Skins/Skin10/ViegoLoadScreen_10.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234010.png",
+            "chromas": [
+                {
+                    "id": 234011,
+                    "name": "Dissonance of Pentakill Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234011.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2021."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 234012,
+                    "name": "Dissonance of Pentakill Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234012.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234013,
+                    "name": "Dissonance of Pentakill Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234013.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234014,
+                    "name": "Dissonance of Pentakill Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234014.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 234015,
+                    "name": "Dissonance of Pentakill Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234015.png",
+                    "colors": [
+                        "#DED6B0",
+                        "#DED6B0"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234016,
+                    "name": "Dissonance of Pentakill Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234016.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234017,
+                    "name": "Dissonance of Pentakill Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234017.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234018,
+                    "name": "Dissonance of Pentakill Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234018.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 151
+                }
+            ],
+            "skinAugments": null,
+            "description": "Only the broken-hearted can know the true sound of grief, that yearning for perfection that goes unheard by all others. Viego exists in a world of ashes and shadow, when it ought to be filled with light, and now looks beyond these grey horizons for new sounds and visions to make it so..."
+        },
+        {
+            "id": 234019,
+            "isBase": false,
+            "name": "EDG Viego",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/234/234019.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/234/234019.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/234/234019.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Viego/Skins/Skin19/ViegoLoadScreen_19.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Viego/Skins/Skin19/ViegoLoadscreen_19_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234019.png",
+            "chromas": [
+                {
+                    "id": 234020,
+                    "name": "EDG Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234020.png",
+                    "colors": [
+                        "#131521",
+                        "#9E1517"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive during MSI 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 158
+                }
+            ],
+            "skinAugments": null,
+            "description": "Honoring Jiejie's winning performance as Viego during the 2021 World Championship."
+        },
+        {
+            "id": 234021,
+            "isBase": false,
+            "name": "King Viego",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/234/234021.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/234/234021.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/234/234021.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Viego/Skins/Skin21/ViegoLoadScreen_21.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234021.png",
+            "chromas": [
+                {
+                    "id": 234022,
+                    "name": "King Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234022.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 234023,
+                    "name": "King Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234023.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234024,
+                    "name": "King Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234024.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234025,
+                    "name": "King Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234025.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234026,
+                    "name": "King Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234026.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234027,
+                    "name": "King Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234027.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 234028,
+                    "name": "King Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234028.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234029,
+                    "name": "King Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234029.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 164
+                }
+            ],
+            "skinAugments": null,
+            "description": "The heir of Camavor, wielder of the Blade of the King, Viego longs to follow in his father's footsteps. To his advisor Kalista, his doubts were clear long before his coronation, as whispers of the sword's bond echoed throughout the Sanctum of Judgement. But he wears the Argent Crown, and with his blade, Sanctity, Viego will strike fear into the enemies of his nation."
+        },
+        {
+            "id": 234030,
+            "isBase": false,
+            "name": "Soul Fighter Viego",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/234/234030.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/234/234030.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/234/234030.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Viego/Skins/Skin30/ViegoLoadScreen_30.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Viego/Skins/Skin30/ViegoLoadScreen_30_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234030.png",
+            "chromas": [
+                {
+                    "id": 234031,
+                    "name": "Soul Fighter Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234031.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 234032,
+                    "name": "Soul Fighter Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234032.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234033,
+                    "name": "Soul Fighter Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234033.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234034,
+                    "name": "Soul Fighter Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234034.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234035,
+                    "name": "Soul Fighter Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234035.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 234036,
+                    "name": "Soul Fighter Viego",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/234/234036.png",
+                    "colors": [
+                        "#C8D0CE",
+                        "#AF65D1"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2023 Soul Fighter event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 196
+                }
+            ],
+            "skinAugments": null,
+            "description": "The gracious—if needlessly reclusive—host of the Tournament of Souls welcomes all to his arena! Look at him now, eyeing the competition from his throne room high above the ring! Doesn't his solitude just make ya sad, folks? Here's hoping he hops down from that tower and turns that sorrow into UNBRIDLED RAGE! Viiiiieeeeeeegoooooo!"
+        }
+    ],
+    "passive": {
+        "name": "Sovereign's Domination",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Viego/HUD/Icons2D/Viego_Passive.png",
+        "abilityVideoPath": "champion-abilities/0234/ability_0234_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0234/ability_0234_P1.jpg",
+        "description": "Enemies who fall before Viego become wraiths. By attacking a wraith, Viego temporarily seizes control of the dead enemy's body, healing for a percentage of his target's max health and gaining access to their basic abilities and items. He replaces their Ultimate with a free cast of his own."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Blade of the Ruined King",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Viego/HUD/Icons2D/Viego_Q.png",
+            "abilityVideoPath": "champion-abilities/0234/ability_0234_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0234/ability_0234_Q1.jpg",
+            "cost": "No Cost",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Viego's spectral blade passively deals bonus percent current Health damage <OnHit>On-Hit</OnHit> and strikes twice vs. enemies he recently hit with an Ability, stealing Health.<br><br>Viego can activate this Ability to thrust his zweihander forward, impaling enemies in front of him.",
+            "dynamicDescription": " <spellPassive>Passive:</spellPassive> Viego's Attacks deal an additional <physicalDamage>@TotalPercentHealthOnHit@ current Health physical damage</physicalDamage>. His first Attack against an enemy he has recently damaged with an Ability hits a second time, dealing <physicalDamage>@SecondAttackDamage@ physical damage</physicalDamage> and restoring <healing>@HealModVsChamps*100%@% of damage dealt as Health</healing>. These bonuses are kept during <keywordMajor>Possession</keywordMajor>.<br><br><spellActive>Active: </spellActive>Viego stabs forward, dealing <physicalDamage>@TotalDamage@ physical damage</physicalDamage>.@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                5.0000,
+                4.5000,
+                4.0000,
+                3.5000,
+                3.0000,
+                3.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Spectral Maw",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Viego/HUD/Icons2D/Viego_W.png",
+            "abilityVideoPath": "champion-abilities/0234/ability_0234_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0234/ability_0234_W1.jpg",
+            "cost": "No Cost",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Viego charges up before dashing forward, releasing a ball of concentrated Black Mist that stuns the first enemy hit.",
+            "dynamicDescription": "<charge>Begin Charging:</charge> Viego begins gathering Mist, <status>Slowing</status> himself by @SelfSlowPercent*100@%.<br><br><release>Release:</release> Viego dashes forward and hurls the gathered Mist. Deals <magicDamage>@TotalDamage@ magic damage</magicDamage> and <status>Stuns</status> the first enemy hit for @Stunduration@ to @MaxStunTT@ seconds based on charge time.<br>@SpellModifierDescriptionAppend@",
+            "range": [
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Harrowed Path",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Viego/HUD/Icons2D/Viego_E.png",
+            "abilityVideoPath": "champion-abilities/0234/ability_0234_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0234/ability_0234_E1.jpg",
+            "cost": "No Cost",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Viego commands the Black Mist to haunt and surround a piece of terrain. Viego can hide in the Mist as a wraith, gaining camouflage, Move Speed, and Attack Speed.",
+            "dynamicDescription": "Viego sends forth a spectre to haunt the first terrain hit, surrounding it with Mist for @MistDuration@ seconds. Viego gains <keywordStealth>Camouflage</keywordStealth>, <speed>@TotalMoveSpeed@ Move Speed</speed>, and <attackSpeed>@AttackSpeed*100@% Attack Speed</attackSpeed> while inside the Mist.@SpellModifierDescriptionAppend@",
+            "range": [
+                750.0000,
+                750.0000,
+                750.0000,
+                750.0000,
+                750.0000,
+                750.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                14.0000,
+                12.0000,
+                10.0000,
+                8.0000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Heartbreaker",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Viego/HUD/Icons2D/Viego_R.png",
+            "abilityVideoPath": "champion-abilities/0234/ability_0234_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0234/ability_0234_R1.jpg",
+            "cost": "No Cost",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Viego teleports to a nearby location and executes an enemy champion on arrival, piercing their heart and causing a destructive shockwave around them that knocks away their allies.",
+            "dynamicDescription": "Viego discards any souls he is currently <keywordMajor>Possessing</keywordMajor> and teleports. On arrival he Attacks the champion with the lowest percent Health, briefly <status>Slowing</status> them by @SlowPercent*100@% and dealing <physicalDamage>@TotalDamage@ + @TotalPercentHealth@% missing Health physical damage</physicalDamage>. Other nearby enemies are <status>Knocked Back</status> and take <physicalDamage>@TotalDamage@ physical damage</physicalDamage>.@SpellModifierDescriptionAppend@",
+            "range": [
+                500.0000,
+                500.0000,
+                500.0000,
+                500.0000,
+                500.0000,
+                500.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                100.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

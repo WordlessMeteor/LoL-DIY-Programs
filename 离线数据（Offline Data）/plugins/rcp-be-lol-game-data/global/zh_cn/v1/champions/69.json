@@ -1,0 +1,1294 @@
+{
+    "id": 69,
+    "name": "魔蛇之拥",
+    "alias": "Cassiopeia",
+    "title": "卡西奥佩娅",
+    "shortBio": "卡西奥佩娅是个夺命的生物，决心要操纵其他人屈服于自己的阴险意志之下。身为诺克萨斯贵族杜·克卡奥家族的最年轻、最漂亮的女儿，她冒险深入恕瑞玛古代墓穴找寻远古的力量。在墓穴中，她被恐怖的墓穴守卫咬中，在毒液的作用下变成了毒蛇外形的掠食者。狡猾而敏捷的卡西奥佩娅如今在夜幕的掩护下蜿蜒滑行，用阴森的凝视让敌人石化。",
+    "tacticalInfo": {
+        "style": 10,
+        "difficulty": 3,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 3,
+        "mobility": 1,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/69.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/69.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/69.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/69.ogg",
+    "roles": [
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 69000,
+            "isBase": true,
+            "name": "魔蛇之拥",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/69/69000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/69/69000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/69/69000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Cassiopeia/Skins/Base/CassiopeiaLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69000.png",
+            "chromas": [
+                {
+                    "id": 69005,
+                    "name": "魔蛇之拥 卡西奥佩娅 灼热诅咒",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69005.png",
+                    "colors": [
+                        "#323A31",
+                        "#B37740"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 69006,
+                    "name": "魔蛇之拥 卡西奥佩娅 深寒诅咒",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69006.png",
+                    "colors": [
+                        "#94CBEE",
+                        "#243F4B"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 69007,
+                    "name": "魔蛇之拥 卡西奥佩娅 石化诅咒",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69007.png",
+                    "colors": [
+                        "#DF6C2F",
+                        "#39111E"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 69001,
+            "isBase": false,
+            "name": "荒漠之咬 卡西奥佩娅",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/69/69001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/69/69001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/69/69001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Cassiopeia/Skins/Skin01/CassiopeiaLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "在旧西部，拥有进取心的生物通常能加入更成功的匪帮，成为无惧暴力的噩梦杀手。卡西奥佩娅也因此成为了恶名昭著的法外之徒。在一次血腥的政变后，她更是拥有了自己的领地。 "
+        },
+        {
+            "id": 69002,
+            "isBase": false,
+            "name": "深海妖姬 卡西奥佩娅",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/69/69002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/69/69002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/69/69002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Cassiopeia/Skins/Skin02/CassiopeiaLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 72
+                }
+            ],
+            "skinAugments": null,
+            "description": "蛇发女妖一直以引诱水手走向他们的死亡而闻名，卡西奥佩娅在大众眼中的名声很差，她希望能改变这一局面。当然她必须不再把所有的采访者变成石像，不过至少她已经在努力了。"
+        },
+        {
+            "id": 69003,
+            "isBase": false,
+            "name": "蛇发女妖 卡西奥佩娅",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/69/69003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/69/69003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/69/69003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Cassiopeia/Skins/Skin03/CassiopeiaLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 72
+                }
+            ],
+            "skinAugments": null,
+            "description": "在俯瞰大海的悬崖上，孤独的蛇发女妖卡西奥佩娅在她自己制作的雕像花园中安家。朋友、敌人和爱人的记忆已成过去，在石头中成为不朽，许多人永远在痛苦中尖叫。来自当地村庄的传闻警告着人们不要进入她的领地，但仍然有游客不断前来，都是为了迎接同样的命运。"
+        },
+        {
+            "id": 69004,
+            "isBase": false,
+            "name": "碧玉之牙 卡西奥佩娅",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/69/69004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/69/69004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/69/69004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Cassiopeia/Skins/Skin04/CassiopeiaLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Year of the Snake",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/16.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/16.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 55
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为一名传说中的玉龙的簇拥，卡西奥佩娅将远古仪式的秘密和她的真实面目隐藏于阴影之中，她已一步步获得了这个生物的力量，等到有一天定会将整个世界拖入黑暗。"
+        },
+        {
+            "id": 69008,
+            "isBase": false,
+            "name": "上古魔蛇 卡西奥佩娅",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/69/69008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/69/69008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/69/69008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Cassiopeia/Skins/Skin08/CassiopeiaLoadScreen_8.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 59
+                }
+            ],
+            "skinAugments": null,
+            "description": "在一个被外星机器过度运转的世界中，这一个似乎尤其好奇于你的出现。它易弯曲的金属形态朝你滑过来，乞求着你的注意。你看了一眼，然后——"
+        },
+        {
+            "id": 69009,
+            "isBase": false,
+            "name": "灵魂莲华 卡西奥佩娅",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/69/69009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/69/69009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/69/69009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Cassiopeia/Skins/Skin09/CassiopeiaLoadScreen_9.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Cassiopeia/Skins/Skin09/CassiopeiaLoadscreen_9_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69009.png",
+            "chromas": [
+                {
+                    "id": 69010,
+                    "name": "灵魂莲华 卡西奥佩娅 流火",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69010.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 69011,
+                    "name": "灵魂莲华 卡西奥佩娅 鸣蜩",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69011.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 69012,
+                    "name": "灵魂莲华 卡西奥佩娅 月升",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69012.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 69013,
+                    "name": "灵魂莲华 卡西奥佩娅 春晓",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69013.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 69014,
+                    "name": "灵魂莲华 卡西奥佩娅 雪落",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69014.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 69015,
+                    "name": "灵魂莲华 卡西奥佩娅 风起",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69015.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 69016,
+                    "name": "灵魂莲华 卡西奥佩娅 朝花",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69016.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 69017,
+                    "name": "灵魂莲华 卡西奥佩娅 霜见",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69017.png",
+                    "colors": [
+                        "#0C0C0F",
+                        "#B2D1E4"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在灵魂莲华(2020)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 171
+                }
+            ],
+            "skinAugments": null,
+            "description": "据传，卡西奥佩娅曾经是一位美丽的郡主。相传她的姐姐上演了一场斗争，她就被放逐到群山之中，再也没有回来。她是如此的美丽，并且她的诡诈是如此的被人们所熟知，以至于人们建造了一座神社来纪念这位“诱惑之灵”，直到她的故事被流行的民间传说所接受。"
+        },
+        {
+            "id": 69018,
+            "isBase": false,
+            "name": "魔女 卡西奥佩娅",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/69/69018.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/69/69018.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/69/69018.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Cassiopeia/Skins/Skin18/CassiopeiaLoadScreen_18.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Cassiopeia/Skins/Skin18/CassiopeiaLoadscreen_18_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69018.png",
+            "chromas": [
+                {
+                    "id": 69019,
+                    "name": "魔女 卡西奥佩娅 愤怒",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69019.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 69020,
+                    "name": "魔女 卡西奥佩娅 欺骗",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69020.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 69021,
+                    "name": "魔女 卡西奥佩娅 欲望",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69021.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 69022,
+                    "name": "魔女 卡西奥佩娅 嫉妒",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69022.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 69023,
+                    "name": "魔女 卡西奥佩娅 贪婪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69023.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 69024,
+                    "name": "魔女 卡西奥佩娅 虚荣",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69024.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 69025,
+                    "name": "魔女 卡西奥佩娅 倦怠",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69025.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 69026,
+                    "name": "魔女 卡西奥佩娅 饕餮",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69026.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 69027,
+                    "name": "魔女 卡西奥佩娅 狂信",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69027.png",
+                    "colors": [
+                        "#162B30",
+                        "#8E0A38"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在魔女(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 92
+                }
+            ],
+            "skinAugments": null,
+            "description": "它们来到卡西奥佩娅身边，如同雾中之影——银白眼镜蛇之形，从无数远古逝者的坟墓中滑出。 她现在追猎着人类的各个掌权家族，她的雕塑花园里到处都是任性的灵魂——他们曾经过于远离城墙的安全，现在则被永恒地冻结在恐怖的困境中。"
+        },
+        {
+            "id": 69028,
+            "isBase": false,
+            "name": "魅惑女巫 卡西奥佩娅",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/69/69028.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/69/69028.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/69/69028.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Cassiopeia/Skins/Skin28/CassiopeiaLoadScreen_28.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Cassiopeia/Skins/Skin28/CassiopeiaLoadscreen_28_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69028.png",
+            "chromas": [
+                {
+                    "id": 69029,
+                    "name": "魅惑女巫 卡西奥佩娅 热情化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69029.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 69030,
+                    "name": "魅惑女巫 卡西奥佩娅 知性化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69030.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 69031,
+                    "name": "魅惑女巫 卡西奥佩娅 青春化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69031.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 69032,
+                    "name": "魅惑女巫 卡西奥佩娅 清新化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69032.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 69033,
+                    "name": "魅惑女巫 卡西奥佩娅 浪漫化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69033.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 69034,
+                    "name": "魅惑女巫 卡西奥佩娅 典雅化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69034.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 69035,
+                    "name": "魅惑女巫 卡西奥佩娅 纯真化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69035.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 69036,
+                    "name": "魅惑女巫 卡西奥佩娅 高冷化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/69/69036.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Halloween_b",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/11.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/11.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 172
+                }
+            ],
+            "skinAugments": null,
+            "description": "卡西奥佩娅发现自己喝了一瓶出了问题的药水，问题出在熬制时被一条毒蛇滑入了她冒泡的坩埚里。再也不能骑扫帚的她躲在派对上，希望能抓住那些毫无戒心的社交名流们的眼睛。伴随着蛇尾而来的……是蛇的食欲。"
+        }
+    ],
+    "passive": {
+        "name": "优雅蛇行",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Cassiopeia/HUD/Icons2D/Cassiopeia_Passive.png",
+        "abilityVideoPath": "champion-abilities/0069/ability_0069_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0069/ability_0069_P1.jpg",
+        "description": "卡西奥佩娅随等级获得移动速度，但她无法购买鞋子类装备。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "瘟毒爆炸",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Cassiopeia/HUD/Icons2D/Cassiopeia_Q.png",
+            "abilityVideoPath": "champion-abilities/0069/ability_0069_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0069/ability_0069_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "在短暂的延迟后，卡西奥佩娅用毒素引爆一片区域，并且如果命中了一名敌方英雄，就会获得移动速度加成。",
+            "dynamicDescription": "卡西奥佩娅引爆毒性气体，使敌人<keywordMajor>中毒</keywordMajor>并且在@Effect2Amount@秒内造成<magicDamage>@TooltipTotalDamage@魔法伤害</magicDamage>。命中一名英雄会为卡西奥佩娅提供在@Effect4Amount@秒里持续衰减的<speed>@Effect3Amount@%移动速度</speed>。@SpellModifierDescriptionAppend@",
+            "range": [
+                850.0000,
+                850.0000,
+                850.0000,
+                850.0000,
+                850.0000,
+                850.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                60.0000,
+                70.0000,
+                80.0000,
+                90.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                3.5000,
+                3.5000,
+                3.5000,
+                3.5000,
+                3.5000,
+                3.5000
+            ],
+            "coefficients": {
+                "coefficient1": 0.9000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    30.0000,
+                    75.0000,
+                    110.0000,
+                    145.0000,
+                    180.0000,
+                    215.0000,
+                    250.0000
+                ],
+                "Effect2Amount": [
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000
+                ],
+                "Effect3Amount": [
+                    25.0000,
+                    30.0000,
+                    35.0000,
+                    40.0000,
+                    45.0000,
+                    50.0000,
+                    50.0000
+                ],
+                "Effect4Amount": [
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000
+                ],
+                "Effect5Amount": [
+                    7.0000,
+                    7.0000,
+                    7.0000,
+                    7.0000,
+                    7.0000,
+                    7.0000,
+                    7.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "剧毒迷雾",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Cassiopeia/HUD/Icons2D/Cassiopeia_W.png",
+            "abilityVideoPath": "champion-abilities/0069/ability_0069_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0069/ability_0069_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "卡西奥佩娅释放出若干团毒云，对经过毒云的敌人造成减速效果、缚地效果和轻量伤害。被缚地的敌人无法使用位移技能。",
+            "dynamicDescription": "卡西奥佩娅吐出毒液，留下一团持续@Effect4Amount@秒的毒云。毒云内的敌人们每秒受到<magicDamage>@DamagePerSecond@魔法伤害</magicDamage>，<keywordMajor>中毒</keywordMajor>，<status>缚地</status>，以及<status>减速</status>@Effect2Amount@%。@SpellModifierDescriptionAppend@",
+            "range": [
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                80.0000,
+                90.0000,
+                100.0000,
+                110.0000,
+                120.0000
+            ],
+            "cooldownCoefficients": [
+                24.0000,
+                22.0000,
+                20.0000,
+                18.0000,
+                16.0000,
+                14.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.1500,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    20.0000,
+                    20.0000,
+                    25.0000,
+                    30.0000,
+                    35.0000,
+                    40.0000,
+                    45.0000
+                ],
+                "Effect2Amount": [
+                    30.0000,
+                    40.0000,
+                    50.0000,
+                    60.0000,
+                    70.0000,
+                    80.0000,
+                    90.0000
+                ],
+                "Effect3Amount": [
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000
+                ],
+                "Effect4Amount": [
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "双生毒牙",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Cassiopeia/HUD/Icons2D/Cassiopeia_E.png",
+            "abilityVideoPath": "champion-abilities/0069/ability_0069_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0069/ability_0069_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "卡西奥佩娅释放一次攻击，可对中毒的目标造成额外伤害并且基于实际伤害值为她提供治疗效果。如果目标死于这次攻击，卡西奥佩娅会回复法力值。",
+            "dynamicDescription": "卡西奥佩娅发射致命的毒牙，造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>。如果敌人已经<keywordMajor>中毒</keywordMajor>，那么还会受到额外的<magicDamage>@BousPoisonedDamage@魔法伤害</magicDamage>并且卡西奥佩娅回复<healing>@HealCalc@生命值</healing>。<br><br>如果这个技能击杀了目标，那么卡西奥佩娅回复<scaleMana>@Cost@法力值</scaleMana>。<br><br>@SpellModifierDescriptionAppend@",
+            "range": [
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                48.0000,
+                46.0000,
+                44.0000,
+                42.0000,
+                40.0000
+            ],
+            "cooldownCoefficients": [
+                0.7500,
+                0.7500,
+                0.7500,
+                0.7500,
+                0.7500,
+                0.7500
+            ],
+            "coefficients": {
+                "coefficient1": 0.1000,
+                "coefficient2": 0.6000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    20.0000,
+                    40.0000,
+                    60.0000,
+                    80.0000,
+                    100.0000,
+                    120.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.1000,
+                    0.1000,
+                    0.1000,
+                    0.1000,
+                    0.1000,
+                    0.1000,
+                    0.1000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "石化凝视",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Cassiopeia/HUD/Icons2D/Cassiopeia_R.png",
+            "abilityVideoPath": "champion-abilities/0069/ability_0069_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0069/ability_0069_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "卡西奥佩娅从眼中放出一团魔法能量，对她前方的任何面对她的敌人造成晕眩效果并对其它背对她的敌人造成减速效果。",
+            "dynamicDescription": "卡西奥佩娅释放一道震慑敌人的凝视，造成<magicDamage>@RDamage@魔法伤害</magicDamage>并将面朝她的敌人们<status>晕眩</status>@RCCDuration@秒。作为替代，未面朝她的敌人们会被<status>减速</status>@RSlowPercent@%，在相同时长内持续衰减。@SpellModifierDescriptionAppend@",
+            "range": [
+                825.0000,
+                825.0000,
+                825.0000,
+                825.0000,
+                825.0000,
+                700.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                100.0000,
+                80.0000,
+                10.0000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.5000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

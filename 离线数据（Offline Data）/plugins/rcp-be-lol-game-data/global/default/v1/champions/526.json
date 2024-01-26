@@ -1,0 +1,951 @@
+{
+    "id": 526,
+    "name": "Rell",
+    "alias": "Rell",
+    "title": "the Iron Maiden",
+    "shortBio": "The product of brutal experimentation at the hands of the Black Rose, Rell is a defiant, living weapon determined to topple Noxus. Her childhood was one of misery and horror, enduring unspeakable procedures to perfect and weaponize her magical control over metal... until she staged a violent escape, killing many of her captors in the process. Now branded as a criminal, Rell attacks Noxian soldiers on sight as she searches for survivors of her old “academy,” defending the meek while delivering violent death to her former overseers.",
+    "tacticalInfo": {
+        "style": 9,
+        "difficulty": 2,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 1,
+        "durability": 3,
+        "crowdControl": 3,
+        "mobility": 2,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/526.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/526.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/526.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/526.ogg",
+    "roles": [
+        "tank",
+        "support"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 526000,
+            "isBase": true,
+            "name": "Rell",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/526/526000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/526/526000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/526/526000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rell/Skins/Base/RellLoadscreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 526001,
+            "isBase": false,
+            "name": "Battle Queen Rell",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/526/526001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/526/526001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/526/526001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rell/Skins/Skin01/RellLoadScreen_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Rell/Skins/Skin01/RellLoadscreen_1_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526001.png",
+            "chromas": [
+                {
+                    "id": 526002,
+                    "name": "Battle Queen Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2020."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 526003,
+                    "name": "Battle Queen Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526003.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526004,
+                    "name": "Battle Queen Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526004.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526005,
+                    "name": "Battle Queen Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526005.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526006,
+                    "name": "Battle Queen Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526006.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526007,
+                    "name": "Battle Queen Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526007.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526008,
+                    "name": "Battle Queen Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526008.png",
+                    "colors": [
+                        "#FF80B1",
+                        "#9DFFEF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2020 Battle Queens event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 526009,
+                    "name": "Battle Queen Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526009.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 137
+                }
+            ],
+            "skinAugments": null,
+            "description": "A young woman from the magic-starved Queendom of Calamity, volunteered for the coronation by a shadowy cabal of aristocrats after a series of magical experiments. Having now won the crown and the power of her crest, Rell has discovered her powers were stolen from the people of her country, and she has vowed revenge on her puppeteers."
+        },
+        {
+            "id": 526010,
+            "isBase": false,
+            "name": "Star Guardian Rell",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/526/526010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/526/526010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/526/526010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rell/Skins/Skin10/RellLoadScreen_10.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Rell/Skins/Skin10/RellLoadscreen_10_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526010.png",
+            "chromas": [
+                {
+                    "id": 526011,
+                    "name": "Star Guardian Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526011.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 526012,
+                    "name": "Star Guardian Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526012.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526013,
+                    "name": "Star Guardian Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526013.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526014,
+                    "name": "Star Guardian Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526014.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526015,
+                    "name": "Star Guardian Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526015.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 526016,
+                    "name": "Star Guardian Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526016.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526017,
+                    "name": "Star Guardian Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526017.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526018,
+                    "name": "Star Guardian Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526018.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526019,
+                    "name": "Star Guardian Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526019.png",
+                    "colors": [
+                        "#FDA4DA",
+                        "#9DE5FF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2022 Star Guardian event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 161
+                }
+            ],
+            "skinAugments": null,
+            "description": "Hailing from a sister city along with Quinn, Rell is a delinquent loner who does what she wants, when she wants, and avoids making friends by pushing everyone away. In battle she rides atop her mighty steed Sebastien, her simmering rage transforming her into a starlit knight who defends the meek from harm."
+        }
+    ],
+    "passive": {
+        "name": "Break the Mold",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Rell/HUD/Icons2D/RellP.png",
+        "abilityVideoPath": "champion-abilities/0526/ability_0526_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0526/ability_0526_P1.jpg",
+        "description": "Rell's Attacks and Abilities steal Armor and Magic Resist on hit."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Shattering Strike",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Rell/HUD/Icons2D/RellQ.png",
+            "abilityVideoPath": "champion-abilities/0526/ability_0526_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0526/ability_0526_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Rell deals magic damage to units in a line, breaking their shields and stunning them. ",
+            "dynamicDescription": "Rell thrusts her lance, <status>Stunning</status> targets for @StunDuration@ seconds, destroying all <shield>Shields</shield>, and dealing <magicDamage>@Damage@ magic damage.</magicDamage>@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000
+            ],
+            "cooldownCoefficients": [
+                11.0000,
+                10.5000,
+                10.0000,
+                9.5000,
+                9.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Ferromancy: Crash Down",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Rell/HUD/Icons2D/RellW.png",
+            "abilityVideoPath": "champion-abilities/0526/ability_0526_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0526/ability_0526_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Mounted: Rell Dismounts, crashing down in her armor, Knocking enemies up and gaining a large Shield. While dismounted, she gains Armor, Magic Resist, Attack Speed, and Attack Range, but is Slowed.<br><br>Dismounted: Rell forms her Mount, gaining a burst of speed and Knocking Up the next enemy she attacks.<br><br>",
+            "dynamicDescription": "Rell leaps off her mount, <status>Knocking Up</status> enemies for @spell.RellW_Dismount:StunDuration@ second and dealing <magicDamage>@spell.RellW_Dismount:DismountDamage@ magic damage</magicDamage>. Rell gains <shield>@spell.RellW_Dismount:Shield@ Shield</shield>, which lasts until she remounts. <br><br>Rell then enters armored form, gaining <scaleArmor>@spell.RellW_Dismount:ResistanceIncrease*100@% bonus Armor</scaleArmor> and <scaleMR>Magic Resist</scaleMR>, <attackSpeed>@spell.RellW_Dismount:DismountedASBoost*100@% Attack Speed</attackSpeed> and @spell.RellW_Dismount:DismountedRangeBoost@ Attack Range, but is <status>Slowed</status> by <slow>@spell.RellW_Dismount:DismountedMSPenalty*-100@%</slow>. In this form, she can use <spellName>Ferromancy: Mount Up</spellName>.@SpellModifierDescriptionAppend@",
+            "range": [
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000
+            ],
+            "costCoefficients": [
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000
+            ],
+            "cooldownCoefficients": [
+                11.0000,
+                11.0000,
+                11.0000,
+                11.0000,
+                11.0000,
+                11.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Full Tilt",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Rell/HUD/Icons2D/RellE.png",
+            "abilityVideoPath": "champion-abilities/0526/ability_0526_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0526/ability_0526_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Passive: Rell gains out of combat Move Speed.<br><br>Active: Rell and an ally gain ramping Move Speed, doubled toward enemies and each other. Her next Attack explodes, dealing magic damage.<br>",
+            "dynamicDescription": "<spellPassive>Passive - Mounted Alacrity:</spellPassive> Rell gains <speed>@PassiveMovespeed@ Move Speed</speed> while mounted, reduced to <speed>@CombatMSTooltipOnly@</speed> in combat. <br><br><spellActive>Active - Full Tilt:</spellActive> Rell and an ally charge, gaining ramping <speed>Move Speed up to @BaseMS*100@%</speed> over @Duration@ seconds, this is doubled to <speed>@MaxMS*100@%</speed> toward enemies or your targeted ally.<br><br>Additionally, Rell's next Attack or <spellName>Shattering Strike</spellName> explode in an area for <magicDamage>@Damage@ plus @PercentHealthDamage*100@% max Health magic damage</magicDamage>.@SpellModifierDescriptionAppend@",
+            "range": [
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000
+            ],
+            "costCoefficients": [
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000
+            ],
+            "cooldownCoefficients": [
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Magnet Storm",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Rell/HUD/Icons2D/RellR.png",
+            "abilityVideoPath": "champion-abilities/0526/ability_0526_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0526/ability_0526_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Rell explodes in a magnetic fury, violently Pulling nearby enemies toward herself. Then Rell constantly Drags nearby enemies toward herself for a short while, dealing magic damage over time.",
+            "dynamicDescription": "Rell explodes in a magnetic fury, violently <status>Pulling</status> nearby enemies towards herself. Then Rell constantly <status>Drags</status> nearby enemies towards herself and deals <magicDamage>@TotalDamage@ magic damage</magicDamage> over the next @Duration@ seconds.@SpellModifierDescriptionAppend@",
+            "range": [
+                200.0000,
+                200.0000,
+                200.0000,
+                200.0000,
+                200.0000,
+                200.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                100.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

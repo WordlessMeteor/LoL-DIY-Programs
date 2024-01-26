@@ -1,0 +1,1072 @@
+{
+    "id": 163,
+    "name": "岩雀",
+    "alias": "Taliyah",
+    "title": "塔莉垭",
+    "shortBio": "塔莉垭是一位来自恕瑞玛的游牧民族的法师，孩子的好奇与大人的责任两股力量同时拉扯着她。她曾踏遍瓦洛兰的山山水水，只为寻得控制己身异能的法门，不过最近，她已经回到了故乡，保护生她养她的部族。有些人把她的温柔善意当做是懦弱的表现，最终也为自己的愚鲁付出了代价。塔莉垭青春稚嫩的举止背后，是一颗敢于移山填海的雄心，和一个堪能倾世的灵魂。",
+    "tacticalInfo": {
+        "style": 10,
+        "difficulty": 2,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 2,
+        "mobility": 1,
+        "utility": 3
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/163.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/163.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/163.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/163.ogg",
+    "roles": [
+        "mage",
+        "support"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 163000,
+            "isBase": true,
+            "name": "岩雀",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/163/163000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/163/163000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/163/163000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Taliyah/Skins/Base/TaliyahLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 163001,
+            "isBase": false,
+            "name": "弗雷尔卓德 塔莉垭",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/163/163001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/163/163001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/163/163001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Taliyah/Skins/Skin01/TaliyahLoadscreen_1.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 128
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 163002,
+            "isBase": false,
+            "name": "SSG 塔莉垭",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/163/163002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/163/163002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/163/163002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Taliyah/Skins/Skin02/TaliyahLoadScreen_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Taliyah/Skins/Skin02/TaliyahLoadScreen_2_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 75
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此致敬Crown在2017全球总决赛中使用塔莉垭的夺胜表现。"
+        },
+        {
+            "id": 163003,
+            "isBase": false,
+            "name": "泳池派对 塔莉垭",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/163/163003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/163/163003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/163/163003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Taliyah/Skins/Skin03/TaliyahLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/163/163003.png",
+            "chromas": [
+                {
+                    "id": 163004,
+                    "name": "泳池派对 塔莉垭 珊瑚城堡",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/163/163004.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020年作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 163005,
+                    "name": "泳池派对 塔莉垭 水母星空",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/163/163005.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 163006,
+                    "name": "泳池派对 塔莉垭 海星乐园",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/163/163006.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 163007,
+                    "name": "泳池派对 塔莉垭 螃蟹竞技场",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/163/163007.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 163008,
+                    "name": "泳池派对 塔莉垭 海草森林",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/163/163008.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 163009,
+                    "name": "泳池派对 塔莉垭 海豚剧院",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/163/163009.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 163010,
+                    "name": "泳池派对 塔莉垭 贝壳平原",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/163/163010.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 15
+                }
+            ],
+            "skinAugments": null,
+            "description": "有一次，塔利亚试图向迷惘的嘉文描述冲浪运动，用了一些术语，如“陷入浪中”、“管浪”和“骑乘浪桶”。她很肯定他仍然不知道她在说什么。"
+        },
+        {
+            "id": 163011,
+            "isBase": false,
+            "name": "星之守护者 塔莉垭",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/163/163011.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/163/163011.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/163/163011.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Taliyah/Skins/Skin11/TaliyahLoadScreen_11.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Taliyah/Skins/Skin11/TaliyahLoadscreen_11_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/163/163011.png",
+            "chromas": [
+                {
+                    "id": 163012,
+                    "name": "星之守护者 塔莉垭 热情之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/163/163012.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 163013,
+                    "name": "星之守护者 塔莉垭 爱之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/163/163013.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 163014,
+                    "name": "星之守护者 塔莉垭 勇气之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/163/163014.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 163015,
+                    "name": "星之守护者 塔莉垭 重生之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/163/163015.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 163016,
+                    "name": "星之守护者 塔莉垭 智慧之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/163/163016.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 163017,
+                    "name": "星之守护者 塔莉垭 沉默之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/163/163017.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 163018,
+                    "name": "星之守护者 塔莉垭 正义之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/163/163018.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 163019,
+                    "name": "星之守护者 塔莉垭 守护之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/163/163019.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 163020,
+                    "name": "星之守护者 塔莉垭 希望之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/163/163020.png",
+                    "colors": [
+                        "#FDA4DA",
+                        "#9DE5FF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在星之守护者(2022)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Courage of the Guardian",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/69.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/69.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 161
+                }
+            ],
+            "skinAugments": null,
+            "description": "塔莉垭晚上是一个粗暴喧闹的战士，白天则是一个有点矜持的一年级学生。她与星之守护者们的各种任务对她来说，是一次发现自己想成为什么样的人的机会。在巨大的星光浪潮中冲浪并穿过城市，对她来说是个不错的消遣方式。"
+        },
+        {
+            "id": 163021,
+            "isBase": false,
+            "name": "水晶圣骑 塔莉垭",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/163/163021.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/163/163021.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/163/163021.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Taliyah/Skins/Skin21/TaliyahLoadScreen_21.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Taliyah/Skins/Skin21/TaliyahLoadscreen_21_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/163/163021.png",
+            "chromas": [
+                {
+                    "id": 163022,
+                    "name": "水晶圣骑 塔莉垭 感化之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/163/163022.png",
+                    "colors": [
+                        "#AAD4EB",
+                        "#23211D"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 4
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Mythic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/68.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/68.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 195
+                }
+            ],
+            "skinAugments": null,
+            "description": "当灵棱水晶开始出现时，莫图斯上的每个人都有不同的反应。塔莉垭的族群被困在岛上，并不将它们视为威胁，而是将它们视为自然的一种延伸。现在，塔莉垭的族群与他们身上的水晶和谐共生，比以往任何时候都更加强大，并且她冒险前往大陆测试自己的力量。"
+        }
+    ],
+    "passive": {
+        "name": "浮石冲",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Taliyah/HUD/Icons2D/Taliyah_Passive.png",
+        "abilityVideoPath": "champion-abilities/0163/ability_0163_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0163/ability_0163_P1.jpg",
+        "description": "塔莉垭在墙体附近时会获得移动速度。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "石穿",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Taliyah/HUD/Icons2D/Taliyah_Q.png",
+            "abilityVideoPath": "champion-abilities/0163/ability_0163_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0163/ability_0163_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "塔莉垭朝目标方向扔出一串岩石，同时自身可自由移动。这个技能会在她脚下生成【掘石场】。如果塔莉垭在【掘石场】上使用【Q石穿】，她将消耗掉【掘石场】来投掷一颗更强大的岩石来减速敌人。",
+            "dynamicDescription": "塔莉垭挥出5块石头，每块会在命中的第一个敌人的附近区域内造成<magicDamage>@RockDamage@魔法伤害</magicDamage>并在该区域生成【掘石场】。对相同敌人的后续命中造成的伤害降低@ExtraMissileReducedDamagePercent@%。<br><br>在掘石场上施放时会消耗@Effect7Amount@法力并且冷却时间缩短@WorkedGroundCDR*100@%，消耗掉【掘石场】，并挥出一块巨石来对命中的敌人们造成持续@SlowDuration@秒的@SlowPercent*100@%<status>减速</status>，对首要目标造成<magicDamage>@BigRockDamage@魔法伤害</magicDamage>。被巨石命中的野怪会被<status>晕眩</status>@MonsterStunDuration@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000
+            ],
+            "costCoefficients": [
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000,
+                75.0000
+            ],
+            "cooldownCoefficients": [
+                7.0000,
+                6.0000,
+                5.0000,
+                4.0000,
+                3.0000,
+                2.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.4500,
+                "coefficient2": 1.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    30.0000,
+                    30.0000,
+                    30.0000,
+                    30.0000,
+                    30.0000,
+                    30.0000,
+                    30.0000
+                ],
+                "Effect7Amount": [
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000
+                ],
+                "Effect8Amount": [
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "岩突",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Taliyah/HUD/Icons2D/Taliyah_W.png",
+            "abilityVideoPath": "champion-abilities/0163/ability_0163_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0163/ability_0163_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "塔莉垭在目标区域引发岩突，并将区域内的敌人们扔向她所选的方向。",
+            "dynamicDescription": "塔莉垭动摇大地，将一个区域内的敌人们<status>强制位移</status>至一个所选方向。@SpellModifierDescriptionAppend@",
+            "range": [
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000
+            ],
+            "costCoefficients": [
+                40.0000,
+                30.0000,
+                20.0000,
+                10.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                14.0000,
+                12.5000,
+                11.0000,
+                9.5000,
+                8.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.4000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000
+                ],
+                "Effect3Amount": [
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "撒石阵",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Taliyah/HUD/Icons2D/Taliyah_E.png",
+            "abilityVideoPath": "champion-abilities/0163/ability_0163_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0163/ability_0163_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "塔莉垭创造一个可减速的雷区。如果敌人在使用冲刺技能途径雷区或是被强制位移效果途经雷区，石雷就会爆炸并晕眩该敌人。",
+            "dynamicDescription": "塔莉垭在一个区域内布下碎石阵，对命中的敌人造成<magicDamage>@ScatterDamage@魔法伤害</magicDamage>和@SlowPercent*100@%<status>减速</status>。碎石会在敌人冲刺或被<status>强制位移</status>途经它们时爆炸，造成剩余位移时长+@StunDuration@秒<status>晕眩</status>和<magicDamage>@DetonationDamage@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                950.0000,
+                950.0000,
+                950.0000,
+                950.0000,
+                950.0000,
+                950.0000
+            ],
+            "costCoefficients": [
+                90.0000,
+                95.0000,
+                100.0000,
+                105.0000,
+                110.0000,
+                110.0000
+            ],
+            "cooldownCoefficients": [
+                16.0000,
+                15.5000,
+                15.0000,
+                14.5000,
+                14.0000,
+                14.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.4000,
+                "coefficient2": -0.0400
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000
+                ],
+                "Effect4Amount": [
+                    85.0000,
+                    85.0000,
+                    85.0000,
+                    85.0000,
+                    85.0000,
+                    85.0000,
+                    85.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "墙幔",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Taliyah/HUD/Icons2D/Taliyah_R.png",
+            "abilityVideoPath": "champion-abilities/0163/ability_0163_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0163/ability_0163_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "塔莉垭创造出一个非常长的石墙，然后在石墙上冲浪。",
+            "dynamicDescription": "塔莉垭生成一道巨型土墙，持续@Effect1Amount@秒。如果她立刻<recast>再次施放</recast>，那么她将踏上土墙随其一路骑行。移动或受到定身都将结束这段骑行。<br><br>如果塔莉垭在@DamageLockoutTime@秒内曾受到过来自英雄或建筑物的伤害，那么她将不能施放这个技能。@SpellModifierDescriptionAppend@",
+            "range": [
+                2500.0000,
+                4500.0000,
+                6500.0000,
+                3000.0000,
+                3000.0000,
+                3000.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                180.0000,
+                150.0000,
+                120.0000,
+                0.0000,
+                0.0000,
+                140.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000
+                ],
+                "Effect2Amount": [
+                    2500.0000,
+                    2500.0000,
+                    4500.0000,
+                    6500.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.1000,
+                    0.1000,
+                    0.1000,
+                    0.1000,
+                    0.1000,
+                    0.1000,
+                    0.1000
+                ],
+                "Effect4Amount": [
+                    2500.0000,
+                    2500.0000,
+                    2500.0000,
+                    2500.0000,
+                    2500.0000,
+                    2500.0000,
+                    2500.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

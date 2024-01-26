@@ -1,0 +1,1631 @@
+{
+    "": [],
+    "12": [
+        {
+            "isDefault": true,
+            "description": "嚎哭深渊是一个无底裂隙，位于弗雷尔卓德最为寒冷、最为残酷的部分。传说在很久以前，一场宏大的战役就发生在横跨这道天堑的一座狭窄桥梁上。没有人记得谁在此战斗，为何而战斗，但有传言说，如果你仔细聆听风声的话，仍然可以听见那些葬身于深渊之中的败亡者们在嚎哭不停。",
+            "mapStringId": "HA",
+            "gameMode": "ARAM",
+            "gameModeName": "极地大乱斗",
+            "gameModeShortName": "极地大乱斗",
+            "gameModeDescription": "五人一队，在极地的窄桥上用随机到的英雄战胜对手并摧毁沿途的一切。",
+            "name": "嚎哭深渊",
+            "gameMutator": "",
+            "isRGM": false,
+            "properties": {
+                "suppressRunesMasteriesPerks": false
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/champ-select-flyout-background.png",
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/game-select-icon-default.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/game-select-icon-disabled.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/game-select-icon-hover.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-empty.png",
+                "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-hover.png",
+                "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-leaver.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-victory.png",
+                "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/parties-background.jpg",
+                "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/social-icon-leaver.png",
+                "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/social-icon-victory.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/game-select-icon-active.png",
+                "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/ready-check-background.png",
+                "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/gameflow-background.jpg",
+                "icon-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-v2.png",
+                "icon-defeat-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-defeat-v2.png",
+                "icon-loss-forgiven-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-loss-forgiven-v2.png",
+                "icon-leaver-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-leaver-v2.png",
+                "gameflow-background-dark": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/gameflow-background-dark.jpg",
+                "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/sound/music-cs-allrandom-howlingabyss.ogg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/sound/music-inqueue-loop-howlingabyss.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/sound/sfx-ambience-loop-howlingabyss.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/sound/sfx-ambience-loop-howlingabyss.ogg",
+                "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/sound/sfx-readycheck-ha-portal.ogg",
+                "champ-select-banphase-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/sound/music-cs-allrandom-banphase-howlingabyss.ogg",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/video/game-select-icon-active.webm",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/video/game-select-icon-intro.webm",
+                "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/video/icon-defeat.webm",
+                "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/video/icon-victory.webm"
+            },
+            "locStrings": {},
+            "categorizedContentBundles": {},
+            "tutorialCards": []
+        },
+        {
+            "isDefault": false,
+            "description": "嚎哭深渊是一个无底裂隙，位于弗雷尔卓德最为寒冷、最为残酷的部分。传说在很久以前，一场宏大的战役就发生在横跨这道天堑的一座狭窄桥梁上。没有人记得谁在此战斗，为何而战斗，但有传言说，如果你仔细聆听风声的话，仍然可以听见那些葬身于深渊之中的败亡者们在嚎哭不停。",
+            "mapStringId": "HA",
+            "gameMode": "KINGPORO",
+            "gameModeName": "魄罗大乱斗",
+            "gameModeShortName": "魄罗大乱斗",
+            "gameModeDescription": "互相投掷魄罗，冲入敌阵怒秀操作，召唤传说中的魄罗之王向敌方基地推进，然后夺取比赛的胜利！",
+            "name": "嚎哭深渊",
+            "gameMutator": "",
+            "isRGM": true,
+            "properties": {
+                "suppressRunesMasteriesPerks": false
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/champ-select-flyout-background.png",
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-disabled.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
+                "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/parties-background.jpg",
+                "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
+                "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/ready-check-background.png",
+                "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/gameflow-background.jpg",
+                "notification-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/KingPoro/img/notification-background.jpg",
+                "notification-icon": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/sound/music-cs-allrandom-howlingabyss.ogg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/sound/music-inqueue-loop-howlingabyss.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/sound/sfx-ambience-loop-howlingabyss.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/sound/sfx-ambience-loop-howlingabyss.ogg",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-active.webm",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-intro.webm",
+                "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-defeat.webm",
+                "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-victory.webm"
+            },
+            "locStrings": {},
+            "categorizedContentBundles": {},
+            "tutorialCards": []
+        },
+        {
+            "isDefault": false,
+            "description": "嚎哭深渊是一个无底裂隙，位于弗雷尔卓德最为寒冷、最为残酷的部分。传说在很久以前，一场宏大的战役就发生在横跨这道天堑的一座狭窄桥梁上。没有人记得谁在此战斗，为何而战斗，但有传言说，如果你仔细聆听风声的话，仍然可以听见那些葬身于深渊之中的败亡者们在嚎哭不停。",
+            "mapStringId": "HA",
+            "gameMode": "ARAM",
+            "gameModeName": "极地大乱斗",
+            "gameModeShortName": "极地大乱斗",
+            "gameModeDescription": "五人一队，在比尔吉沃特中心地带的窄桥上用随机到的英雄战胜对手并摧毁沿途的一切。",
+            "name": "屠夫之桥",
+            "gameMutator": "Event_Bilgewater",
+            "isRGM": false,
+            "properties": {
+                "suppressRunesMasteriesPerks": false
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/champ-select-flyout-background.png",
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/game-select-icon-default.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/game-select-icon-disabled.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/game-select-icon-hover.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-empty.png",
+                "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-hover.png",
+                "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-leaver.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-victory.png",
+                "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Bilgewater/img/parties-background.jpg",
+                "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/social-icon-leaver.png",
+                "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/social-icon-victory.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/game-select-icon-active.png",
+                "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Bilgewater/img/ready-check-background.png",
+                "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Bilgewater/img/gameflow-background.jpg",
+                "notification-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Bilgewater/img/notification-background.jpg",
+                "notification-icon": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Bilgewater/sound/music-cs-allrandom-butchersbridge.ogg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Bilgewater/sound/sfx-ambience-loop-butchersbridge.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Bilgewater/sound/sfx-ambience-loop-butchersbridge.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Bilgewater/sound/sfx-ambience-loop-butchersbridge.ogg",
+                "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/sound/sfx-readycheck-ha-portal.ogg",
+                "champ-select-banphase-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Bilgewater/sound/music-cs-allrandom-banphase-butchersbridge.ogg"
+            },
+            "locStrings": {},
+            "categorizedContentBundles": {},
+            "tutorialCards": []
+        },
+        {
+            "isDefault": false,
+            "description": "嚎哭深渊是一个无底裂隙，位于弗雷尔卓德最为寒冷、最为残酷的部分。传说在很久以前，一场宏大的战役就发生在横跨这道天堑的一座狭窄桥梁上。没有人记得谁在此战斗，为何而战斗，但有传言说，如果你仔细聆听风声的话，仍然可以听见那些葬身于深渊之中的败亡者们在嚎哭不停。",
+            "mapStringId": "HA",
+            "gameMode": "FIRSTBLOOD",
+            "gameModeName": "大对决",
+            "gameModeShortName": "大对决",
+            "gameModeDescription": "",
+            "name": "嚎哭深渊",
+            "gameMutator": "",
+            "isRGM": false,
+            "properties": {
+                "suppressRunesMasteriesPerks": false
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/champ-select-flyout-background.png",
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-disabled.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
+                "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/parties-background.jpg",
+                "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
+                "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/ready-check-background.png",
+                "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/gameflow-background.jpg",
+                "notification-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/KingPoro/img/notification-background.jpg",
+                "notification-icon": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/sound/music-cs-allrandom-howlingabyss.ogg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/sound/music-inqueue-loop-howlingabyss.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/sound/sfx-ambience-loop-howlingabyss.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/sound/sfx-ambience-loop-howlingabyss.ogg",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-active.webm",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-intro.webm",
+                "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-defeat.webm",
+                "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-victory.webm"
+            },
+            "locStrings": {},
+            "categorizedContentBundles": {},
+            "tutorialCards": []
+        }
+    ],
+    "11": [
+        {
+            "isDefault": true,
+            "description": "正义之地最新潮最威严的战场当属召唤师峡谷。无数对立的召唤师们在这片战场上延续着战斗，这片战场也因此而得名。有三条不同的道路贯穿整个战场。与友军一起攻击敌人最脆弱的地方，摧毁他们的基地！",
+            "mapStringId": "SR",
+            "gameMode": "CLASSIC",
+            "gameModeName": "召唤师峡谷",
+            "gameModeShortName": "召唤师峡谷",
+            "gameModeDescription": "五人一队，在核心竞技模式中战胜对手并摧毁敌方水晶枢纽。",
+            "name": "召唤师峡谷",
+            "gameMutator": "",
+            "isRGM": false,
+            "properties": {
+                "suppressRunesMasteriesPerks": false
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-flyout-background.jpg",
+                "champ-select-planning-intro": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-planning-intro.jpg",
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-default.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-disabled.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-hover.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-empty.png",
+                "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-hover.png",
+                "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-leaver.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-victory.png",
+                "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/parties-background.jpg",
+                "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/social-icon-leaver.png",
+                "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/social-icon-victory.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-active.png",
+                "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/ready-check-background.png",
+                "map-north": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/map-north.png",
+                "map-south": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/map-south.png",
+                "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/gameflow-background.jpg",
+                "icon-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-v2.png",
+                "icon-defeat-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-defeat-v2.png",
+                "icon-loss-forgiven-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-loss-forgiven-v2.png",
+                "icon-leaver-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-leaver-v2.png",
+                "gameflow-background-dark": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/gameflow-background-dark.jpg",
+                "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/music-cs-blindpick-default.ogg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/music-inqueue-loop-summonersrift.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-readycheck-sr-portal.ogg",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/game-select-icon-active.webm",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/game-select-icon-intro.webm",
+                "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/icon-defeat.webm",
+                "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/icon-victory.webm"
+            },
+            "locStrings": {},
+            "categorizedContentBundles": {},
+            "tutorialCards": []
+        },
+        {
+            "isDefault": false,
+            "description": "正义之地最新潮最威严的战场当属召唤师峡谷。无数对立的召唤师们在这片战场上延续着战斗，这片战场也因此而得名。有三条不同的道路贯穿整个战场。与友军一起攻击敌人最脆弱的地方，摧毁他们的基地！",
+            "mapStringId": "SR",
+            "gameMode": "ASSASSINATE",
+            "gameModeName": "红月决",
+            "gameModeShortName": "红月决",
+            "gameModeDescription": "选择你最爱的刺客型英雄，然后在这个特殊游戏模式中一路杀到胜利。",
+            "name": "召唤师峡谷",
+            "gameMutator": "",
+            "isRGM": true,
+            "properties": {
+                "suppressRunesMasteriesPerks": false
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-flyout-background.jpg",
+                "champ-select-planning-intro": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-planning-intro.jpg",
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-disabled.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
+                "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Assassinate/img/parties-background.jpg",
+                "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
+                "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Assassinate/img/ready-check-background.png",
+                "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Assassinate/img/gameflow-background.jpg",
+                "notification-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Assassinate/img/notification-background.jpg",
+                "notification-icon": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Assassinate/sound/music-cs-assassinate-bloodmoon.ogg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/music-inqueue-loop-summonersrift.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-readycheck-sr-portal.ogg",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-active.webm",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-intro.webm",
+                "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-defeat.webm",
+                "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-victory.webm"
+            },
+            "locStrings": {},
+            "categorizedContentBundles": {},
+            "tutorialCards": []
+        },
+        {
+            "isDefault": false,
+            "description": "正义之地最新潮最威严的战场当属召唤师峡谷。无数对立的召唤师们在这片战场上延续着战斗，这片战场也因此而得名。有三条不同的道路贯穿整个战场。与友军一起攻击敌人最脆弱的地方，摧毁他们的基地！",
+            "mapStringId": "SR",
+            "gameMode": "URF",
+            "gameModeName": "无限火力",
+            "gameModeShortName": "无限火力",
+            "gameModeDescription": "在这个火力无限的游戏模式中，尽情倾泻你的技能，不要停下来。",
+            "name": "召唤师峡谷",
+            "gameMutator": "ARURF",
+            "isRGM": true,
+            "properties": {
+                "suppressRunesMasteriesPerks": false
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-flyout-background.jpg",
+                "champ-select-planning-intro": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-planning-intro.jpg",
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-disabled.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
+                "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/img/parties-background.jpg",
+                "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
+                "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/img/ready-check-background.png",
+                "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/img/gameflow-background.jpg",
+                "notification-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/img/notification-background.jpg",
+                "notification-icon": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/sound/music-cs-allrandom-urf.ogg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/sound/music-inqueue-loop-urf.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-readycheck-sr-portal.ogg",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-active.webm",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-intro.webm",
+                "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-defeat.webm",
+                "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-victory.webm"
+            },
+            "locStrings": {},
+            "categorizedContentBundles": {},
+            "tutorialCards": []
+        },
+        {
+            "isDefault": false,
+            "description": "正义之地最新潮最威严的战场当属召唤师峡谷。无数对立的召唤师们在这片战场上延续着战斗，这片战场也因此而得名。有三条不同的道路贯穿整个战场。与友军一起攻击敌人最脆弱的地方，摧毁他们的基地！",
+            "mapStringId": "SR",
+            "gameMode": "ARSR",
+            "gameModeName": "",
+            "gameModeShortName": "",
+            "gameModeDescription": "使用一个随机选择到的英雄来打爆对线的敌人，冲进史诗级的五对五团战，然后摧毁敌方的水晶枢纽。",
+            "name": "召唤师峡谷",
+            "gameMutator": "",
+            "isRGM": true,
+            "properties": {
+                "suppressRunesMasteriesPerks": false
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-flyout-background.jpg",
+                "champ-select-planning-intro": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-planning-intro.jpg",
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-disabled.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
+                "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/parties-background.jpg",
+                "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
+                "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/ready-check-background.png",
+                "map-north": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/map-north.png",
+                "map-south": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/map-south.png",
+                "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/gameflow-background.jpg",
+                "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/music-cs-blindpick-default.ogg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/music-inqueue-loop-summonersrift.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-readycheck-sr-portal.ogg",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-active.webm",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-intro.webm",
+                "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-defeat.webm",
+                "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-victory.webm"
+            },
+            "locStrings": {},
+            "categorizedContentBundles": {},
+            "tutorialCards": []
+        },
+        {
+            "isDefault": false,
+            "description": "正义之地最新潮最威严的战场当属召唤师峡谷。无数对立的召唤师们在这片战场上延续着战斗，这片战场也因此而得名。有三条不同的道路贯穿整个战场。与友军一起攻击敌人最脆弱的地方，摧毁他们的基地！",
+            "mapStringId": "SR",
+            "gameMode": "DOOMBOTSTEEMO",
+            "gameModeName": "末日人工智能",
+            "gameModeShortName": "末日人工智能",
+            "gameModeDescription": "在这个快节奏的生存类游戏模式中，和好友一起对抗末日人工智能以及它们的邪恶魔王。",
+            "name": "召唤师峡谷",
+            "gameMutator": "",
+            "isRGM": true,
+            "properties": {
+                "suppressRunesMasteriesPerks": false
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-flyout-background.jpg",
+                "champ-select-planning-intro": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-planning-intro.jpg",
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-disabled.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
+                "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/DoomBots/img/parties-background.jpg",
+                "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
+                "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/DoomBots/img/ready-check-background.png",
+                "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/DoomBots/img/gameflow-background.jpg",
+                "notification-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/DoomBots/img/notification-background.jpg",
+                "notification-icon": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/music-cs-blindpick-default.ogg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/music-inqueue-loop-summonersrift.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-readycheck-sr-portal.ogg",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-active.webm",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-intro.webm",
+                "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-defeat.webm",
+                "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-victory.webm"
+            },
+            "locStrings": {},
+            "categorizedContentBundles": {},
+            "tutorialCards": []
+        },
+        {
+            "isDefault": false,
+            "description": "正义之地最新潮最威严的战场当属召唤师峡谷。无数对立的召唤师们在这片战场上延续着战斗，这片战场也因此而得名。有三条不同的道路贯穿整个战场。与友军一起攻击敌人最脆弱的地方，摧毁他们的基地！",
+            "mapStringId": "SR",
+            "gameMode": "LCURGMDISABLED",
+            "gameModeName": "",
+            "gameModeShortName": "",
+            "gameModeDescription": "",
+            "name": "召唤师峡谷",
+            "gameMutator": "",
+            "isRGM": false,
+            "properties": {
+                "suppressRunesMasteriesPerks": false
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-disabled.png",
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg"
+            },
+            "locStrings": {},
+            "categorizedContentBundles": {},
+            "tutorialCards": []
+        },
+        {
+            "isDefault": false,
+            "description": "正义之地最新潮最威严的战场当属召唤师峡谷。无数对立的召唤师们在这片战场上延续着战斗，这片战场也因此而得名。有三条不同的道路贯穿整个战场。与友军一起攻击敌人最脆弱的地方，摧毁他们的基地！",
+            "mapStringId": "SR",
+            "gameMode": "SNOWURF",
+            "gameModeName": "冰雪无限火力",
+            "gameModeShortName": "冰雪无限火力",
+            "gameModeDescription": "酷寒的命运在等待着你们！使用那些最酷的英雄们在冰雪无限火力中疯狂投掷技能和雪球吧！",
+            "name": "召唤师峡谷",
+            "gameMutator": "",
+            "isRGM": true,
+            "properties": {
+                "suppressRunesMasteriesPerks": false
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-flyout-background.jpg",
+                "champ-select-planning-intro": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-planning-intro.jpg",
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-disabled.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
+                "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARURF_Snowdown_2017/img/parties-background-ARURF_Snowdown_2017.jpg",
+                "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
+                "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARURF_Snowdown_2017/img/ready-check-background-ARURF_Snowdown_2017.png",
+                "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARURF_Snowdown_2017/img/gameflow-background-ARURF_Snowdown_2017.jpg",
+                "notification-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARURF_Snowdown_2017/img/Queue_Notifications-ARURF_Snowdown_2017.jpg",
+                "notification-icon": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/SNOWURF/music-cs-blindpick-snowdownurf.ogg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/music-inqueue-loop-summonersrift.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-readycheck-sr-portal.ogg",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-active.webm",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-intro.webm",
+                "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-defeat.webm",
+                "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-victory.webm"
+            },
+            "locStrings": {},
+            "categorizedContentBundles": {},
+            "tutorialCards": []
+        },
+        {
+            "isDefault": false,
+            "description": "正义之地最新潮最威严的战场当属召唤师峡谷。无数对立的召唤师们在这片战场上延续着战斗，这片战场也因此而得名。有三条不同的道路贯穿整个战场。与友军一起攻击敌人最脆弱的地方，摧毁他们的基地！",
+            "mapStringId": "SR",
+            "gameMode": "CLASSIC",
+            "gameModeName": "召唤师峡谷",
+            "gameModeShortName": "召唤师峡谷",
+            "gameModeDescription": "五人一队，在核心竞技模式中战胜对手并摧毁敌方水晶枢纽。",
+            "name": "召唤师峡谷",
+            "gameMutator": "Event_Snowdown",
+            "isRGM": false,
+            "properties": {
+                "suppressRunesMasteriesPerks": false
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-flyout-background.jpg",
+                "champ-select-planning-intro": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-planning-intro.jpg",
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-default.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-disabled.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-hover.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-empty.png",
+                "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-hover.png",
+                "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-leaver.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-victory.png",
+                "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Snowdown/img/parties-background-Snowdown_2017.jpg",
+                "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/social-icon-leaver.png",
+                "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/social-icon-victory.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-active.png",
+                "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Snowdown/img/ready-check-background-Snowdown_2017.png",
+                "map-north": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/map-north.png",
+                "map-south": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/map-south.png",
+                "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Snowdown/img/gameflow-background-Snowdown_2017.jpg",
+                "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/music-cs-blindpick-default.ogg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/music-inqueue-loop-summonersrift.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-readycheck-sr-portal.ogg",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/game-select-icon-active.webm",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/game-select-icon-intro.webm",
+                "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/icon-defeat.webm",
+                "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/icon-victory.webm"
+            },
+            "locStrings": {},
+            "categorizedContentBundles": {},
+            "tutorialCards": []
+        },
+        {
+            "isDefault": false,
+            "description": "正义之地最新潮最威严的战场当属召唤师峡谷。无数对立的召唤师们在这片战场上延续着战斗，这片战场也因此而得名。有三条不同的道路贯穿整个战场。与友军一起攻击敌人最脆弱的地方，摧毁他们的基地！",
+            "mapStringId": "SR",
+            "gameMode": "ONEFORALL",
+            "gameModeName": "克隆大作战",
+            "gameModeShortName": "克隆大作战",
+            "gameModeDescription": "投票选出一名英雄，并且使用该英雄的5名克隆体来作战！如果没有英雄以多票当选，那么就会在投票名单中随机选择一名英雄。",
+            "name": "召唤师峡谷",
+            "gameMutator": "",
+            "isRGM": true,
+            "properties": {
+                "suppressRunesMasteriesPerks": false
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-flyout-background.jpg",
+                "champ-select-planning-intro": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-planning-intro.jpg",
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-disabled.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
+                "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/parties-background.jpg",
+                "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
+                "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/ready-check-background.png",
+                "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/gameflow-background.jpg",
+                "notification-icon": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "map-north": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/map-north.png",
+                "map-south": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/map-south.png",
+                "notification-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/OneForAll/img/notification-background.jpg",
+                "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/music-cs-blindpick-default.ogg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/music-inqueue-loop-summonersrift.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-readycheck-sr-portal.ogg",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-active.webm",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-intro.webm",
+                "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-defeat.webm",
+                "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-victory.webm"
+            },
+            "locStrings": {},
+            "categorizedContentBundles": {},
+            "tutorialCards": []
+        },
+        {
+            "isDefault": false,
+            "description": "正义之地最新潮最威严的战场当属召唤师峡谷。无数对立的召唤师们在这片战场上延续着战斗，这片战场也因此而得名。有三条不同的道路贯穿整个战场。与友军一起攻击敌人最脆弱的地方，摧毁他们的基地！",
+            "mapStringId": "SR",
+            "gameMode": "TUTORIAL_MODULE_1",
+            "gameModeName": "新手教程 第一部分",
+            "gameModeShortName": "新手教程 第一部分",
+            "gameModeDescription": "新手教程 第一部分",
+            "name": "召唤师峡谷",
+            "gameMutator": "",
+            "isRGM": false,
+            "properties": {
+                "suppressRunesMasteriesPerks": true
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-flyout-background.jpg",
+                "champ-select-planning-intro": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-planning-intro.jpg",
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-default.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-disabled.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-hover.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-empty.png",
+                "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-hover.png",
+                "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-leaver.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-victory.png",
+                "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/parties-background.jpg",
+                "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/social-icon-leaver.png",
+                "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/social-icon-victory.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-active.png",
+                "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/ready-check-background.png",
+                "map-north": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/map-north.png",
+                "map-south": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/map-south.png",
+                "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/gameflow-background.jpg",
+                "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/music-cs-blindpick-default.ogg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/music-inqueue-loop-summonersrift.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-readycheck-sr-portal.ogg",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/game-select-icon-active.webm",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/game-select-icon-intro.webm",
+                "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/icon-defeat.webm",
+                "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/icon-victory.webm"
+            },
+            "locStrings": {},
+            "categorizedContentBundles": {},
+            "tutorialCards": []
+        },
+        {
+            "isDefault": false,
+            "description": "正义之地最新潮最威严的战场当属召唤师峡谷。无数对立的召唤师们在这片战场上延续着战斗，这片战场也因此而得名。有三条不同的道路贯穿整个战场。与友军一起攻击敌人最脆弱的地方，摧毁他们的基地！",
+            "mapStringId": "SR",
+            "gameMode": "TUTORIAL_MODULE_2",
+            "gameModeName": "新手教程 第二部分",
+            "gameModeShortName": "新手教程 第二部分",
+            "gameModeDescription": "新手教程 第二部分",
+            "name": "召唤师峡谷",
+            "gameMutator": "",
+            "isRGM": false,
+            "properties": {
+                "suppressRunesMasteriesPerks": true
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-flyout-background.jpg",
+                "champ-select-planning-intro": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-planning-intro.jpg",
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-default.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-disabled.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-hover.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-empty.png",
+                "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-hover.png",
+                "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-leaver.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-victory.png",
+                "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/parties-background.jpg",
+                "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/social-icon-leaver.png",
+                "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/social-icon-victory.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-active.png",
+                "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/ready-check-background.png",
+                "map-north": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/map-north.png",
+                "map-south": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/map-south.png",
+                "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/gameflow-background.jpg",
+                "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/music-cs-blindpick-default.ogg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/music-inqueue-loop-summonersrift.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-readycheck-sr-portal.ogg",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/game-select-icon-active.webm",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/game-select-icon-intro.webm",
+                "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/icon-defeat.webm",
+                "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/icon-victory.webm"
+            },
+            "locStrings": {},
+            "categorizedContentBundles": {},
+            "tutorialCards": []
+        },
+        {
+            "isDefault": false,
+            "description": "正义之地最新潮最威严的战场当属召唤师峡谷。无数对立的召唤师们在这片战场上延续着战斗，这片战场也因此而得名。有三条不同的道路贯穿整个战场。与友军一起攻击敌人最脆弱的地方，摧毁他们的基地！",
+            "mapStringId": "SR",
+            "gameMode": "TUTORIAL_MODULE_3",
+            "gameModeName": "新手教程 第三部分",
+            "gameModeShortName": "新手教程 第三部分",
+            "gameModeDescription": "新手教程 第三部分",
+            "name": "召唤师峡谷",
+            "gameMutator": "",
+            "isRGM": false,
+            "properties": {
+                "suppressRunesMasteriesPerks": true
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-flyout-background.jpg",
+                "champ-select-planning-intro": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-planning-intro.jpg",
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-default.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-disabled.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-hover.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-empty.png",
+                "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-hover.png",
+                "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-leaver.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-victory.png",
+                "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/parties-background.jpg",
+                "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/social-icon-leaver.png",
+                "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/social-icon-victory.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-active.png",
+                "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/ready-check-background.png",
+                "map-north": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/map-north.png",
+                "map-south": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/map-south.png",
+                "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/gameflow-background.jpg",
+                "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/music-cs-blindpick-default.ogg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/music-inqueue-loop-summonersrift.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-readycheck-sr-portal.ogg",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/game-select-icon-active.webm",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/game-select-icon-intro.webm",
+                "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/icon-defeat.webm",
+                "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/icon-victory.webm"
+            },
+            "locStrings": {},
+            "categorizedContentBundles": {},
+            "tutorialCards": []
+        },
+        {
+            "isDefault": false,
+            "description": "正义之地最新潮最威严的战场当属召唤师峡谷。无数对立的召唤师们在这片战场上延续着战斗，这片战场也因此而得名。有三条不同的道路贯穿整个战场。与友军一起攻击敌人最脆弱的地方，摧毁他们的基地！",
+            "mapStringId": "SR",
+            "gameMode": "PRACTICETOOL",
+            "gameModeName": "训练模式",
+            "gameModeShortName": "训练模式",
+            "gameModeDescription": "在这个召唤师峡谷的单人健身房中练习你最爱的英雄。",
+            "name": "召唤师峡谷",
+            "gameMutator": "",
+            "isRGM": false,
+            "properties": {
+                "suppressRunesMasteriesPerks": false
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-flyout-background.jpg",
+                "champ-select-planning-intro": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-planning-intro.jpg",
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-default.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-disabled.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-hover.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-empty.png",
+                "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-hover.png",
+                "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-leaver.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-victory.png",
+                "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/parties-background.jpg",
+                "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/social-icon-leaver.png",
+                "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/social-icon-victory.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-active.png",
+                "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/ready-check-background.png",
+                "map-north": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/map-north.png",
+                "map-south": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/map-south.png",
+                "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/gameflow-background.jpg",
+                "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/music-cs-blindpick-default.ogg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/music-inqueue-loop-summonersrift.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-readycheck-sr-portal.ogg",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/game-select-icon-active.webm",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/game-select-icon-intro.webm",
+                "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/icon-defeat.webm",
+                "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/icon-victory.webm"
+            },
+            "locStrings": {},
+            "categorizedContentBundles": {},
+            "tutorialCards": []
+        },
+        {
+            "isDefault": false,
+            "description": "正义之地最新潮最威严的战场当属召唤师峡谷。无数对立的召唤师们在这片战场上延续着战斗，这片战场也因此而得名。有三条不同的道路贯穿整个战场。与友军一起攻击敌人最脆弱的地方，摧毁他们的基地！",
+            "mapStringId": "SR",
+            "gameMode": "ULTBOOK",
+            "gameModeName": "终极魔典",
+            "gameModeShortName": "终极魔典",
+            "gameModeDescription": "用一个其他英雄的终极技能替换掉你的一个召唤师技能，并用它创造精妙的连招来让你的敌人大吃一惊！",
+            "name": "召唤师峡谷",
+            "gameMutator": "",
+            "isRGM": true,
+            "properties": {
+                "suppressRunesMasteriesPerks": false
+            },
+            "perPositionRequiredSummonerSpells": {
+                "any": {
+                    "spells": [
+                        54
+                    ]
+                },
+                "jungle": {
+                    "spells": [
+                        55
+                    ]
+                }
+            },
+            "perPositionDisallowedSummonerSpells": {
+                "utility": {
+                    "spells": [
+                        55
+                    ]
+                },
+                "bottom": {
+                    "spells": [
+                        55
+                    ]
+                },
+                "jungle": {
+                    "spells": [
+                        54
+                    ]
+                },
+                "top": {
+                    "spells": [
+                        55
+                    ]
+                },
+                "middle": {
+                    "spells": [
+                        55
+                    ]
+                }
+            },
+            "assets": {
+                "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-flyout-background.jpg",
+                "champ-select-planning-intro": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-planning-intro.jpg",
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-disabled.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
+                "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/parties-background.jpg",
+                "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
+                "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/ready-check-background.png",
+                "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/gameflow-background.jpg",
+                "notification-icon": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "map-north": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/map-north.png",
+                "map-south": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/map-south.png",
+                "notification-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/OneForAll/img/notification-background.jpg",
+                "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/music-cs-blindpick-default.ogg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/music-inqueue-loop-summonersrift.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-readycheck-sr-portal.ogg",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-active.webm",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-intro.webm",
+                "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-defeat.webm",
+                "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-victory.webm"
+            },
+            "locStrings": {},
+            "categorizedContentBundles": {},
+            "tutorialCards": [
+                {
+                    "header": "这就是终极魔典",
+                    "footer": "一种全新的游玩方式！",
+                    "description": "召唤师峡谷陷入扭曲！从3个随机的终极技能中选择1个来作为召唤师技能之一。",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/UltBook/TutorialImage_1.png"
+                },
+                {
+                    "header": "受控的混沌",
+                    "footer": "",
+                    "description": "一个节奏更快的游戏模式，时长更短、金币更多、经验更多并且终极技能也更多！",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/UltBook/TutorialImage_2.png"
+                },
+                {
+                    "header": "为打野而设的全新工具！",
+                    "footer": "",
+                    "description": "【自动惩戒】会关注霸符野怪和史诗级野怪，打野英雄终于可以换别的召唤师技能了！",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/UltBook/TutorialImage_3.png"
+                }
+            ]
+        },
+        {
+            "isDefault": false,
+            "description": "正义之地最新潮最威严的战场当属召唤师峡谷。无数对立的召唤师们在这片战场上延续着战斗，这片战场也因此而得名。有三条不同的道路贯穿整个战场。与友军一起攻击敌人最脆弱的地方，摧毁他们的基地！",
+            "mapStringId": "SR",
+            "gameMode": "URF",
+            "gameModeName": "无限火力",
+            "gameModeShortName": "无限火力",
+            "gameModeDescription": "在这个火力无限的游戏模式中，尽情倾泻你的技能，不要停下来。",
+            "name": "召唤师峡谷",
+            "gameMutator": "PICKURF",
+            "isRGM": true,
+            "properties": {
+                "suppressRunesMasteriesPerks": false
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-flyout-background.jpg",
+                "champ-select-planning-intro": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-planning-intro.jpg",
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-disabled.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
+                "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/img/parties-background.jpg",
+                "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
+                "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/img/ready-check-background.png",
+                "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/img/gameflow-background.jpg",
+                "notification-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/img/notification-background.jpg",
+                "notification-icon": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/sound/music-cs-allrandom-urf.ogg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/sound/music-inqueue-loop-urf.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-readycheck-sr-portal.ogg",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-active.webm",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-intro.webm",
+                "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-defeat.webm",
+                "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-victory.webm"
+            },
+            "locStrings": {},
+            "categorizedContentBundles": {},
+            "tutorialCards": []
+        }
+    ],
+    "22": [
+        {
+            "isDefault": true,
+            "description": "集结一个英雄小队来为你作战。在与七位对手的轮番激战中坚持到仅存你一方为止。",
+            "mapStringId": "TFT",
+            "gameMode": "TFT",
+            "gameModeName": "云顶之弈",
+            "gameModeShortName": "",
+            "gameModeDescription": "集结一个英雄小队来为你作战。在与七位对手的轮番激战中坚持到仅存你一方为止。",
+            "name": "云顶之弈",
+            "gameMutator": "",
+            "isRGM": false,
+            "properties": {
+                "suppressRunesMasteriesPerks": true
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-default.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-hover.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-active.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-disabled.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-victory.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-empty.png",
+                "parties-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/lobby.TFT_Set10.jpg",
+                "gameflow-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/gameflow.jpg",
+                "champ-select-skip-bg": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/gameflow.jpg",
+                "ready-check-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/ready-check.TFT_Set10.jpg",
+                "set-announcement-right-panel-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/set-announcement-right-panel.png",
+                "set-announcement-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/set-announcement-background.jpg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-tft-set10.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/music-inqueue-loop-teamfighttactics.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-tft-set10.ogg",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/video/game-select-icon-intro.webm",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/video/game-select-icon-active.webm"
+            },
+            "locStrings": {
+                "tutorial_title": "欢迎来到云顶之弈！",
+                "tutorial_subheader": "【云顶之弈】是一个各自为战的征召策略模式，你需要招募英雄、部署英雄、进行战斗，并努力成为笑到最后的玩家。以下是一个速成攻略。",
+                "set_announcement_set_name": "强音争霸已开始",
+                "set_announcement_confirm_button": "登上舞台",
+                "set_announcement_splash_footer": "最佳音响体验"
+            },
+            "categorizedContentBundles": {
+                "set_announcement_modal": {
+                    "item1": {
+                        "header": "赛季之星",
+                        "body": "从商店购买的2星弈子，可提供+1至一个羁绊并拥有一个独特加成！",
+                        "footer": "",
+                        "imagePath": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/set-announcement-item1-icon.png"
+                    },
+                    "item2": {
+                        "header": "名单",
+                        "body": "从【K/DA】和【五杀摇滚】等标志性的《英雄联盟》乐团以及一些新乐团中组建强大的阵容！",
+                        "footer": "",
+                        "imagePath": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/set-announcement-item3-icon.png"
+                    },
+                    "item3": {
+                        "header": "传送门",
+                        "body": "在每局游戏开始时给传送门进行投票，来让规则变得对你有利！",
+                        "footer": "",
+                        "imagePath": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/set-announcement-item2-icon.png"
+                    }
+                }
+            },
+            "tutorialCards": [
+                {
+                    "header": "招募。",
+                    "footer": "",
+                    "description": "从商店里选择一名英雄并用金币将其招募。随后，将其从替补席上拖到战场来进行部署。<br><br>3个相同的1星英雄可合成该英雄的1个2星版本，其更加强大。",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_Tutorial_Lobby_1.png"
+                },
+                {
+                    "header": "部署。",
+                    "footer": "",
+                    "description": "英雄拥有特质，并在与其他拥有相同特质的英雄一起部署在战场上时，会获得该特质的加成效果。<br><br>阵型非常重要！多试试不同的布局来寻求最好的战果。",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_Tutorial_Lobby_2.png"
+                },
+                {
+                    "header": "战斗。",
+                    "footer": "",
+                    "description": "每一回合，你的队伍会传送到敌方的棋盘（反之亦然）。英雄们会自动战斗，并且如果你的队伍悉数阵亡，你的小小英雄就会受到伤害。<br><br>当你的小小英雄的生命值跌到0时，你就出局了。",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_Tutorial_Lobby_3.png"
+                }
+            ]
+        },
+        {
+            "isDefault": false,
+            "description": "集结一个英雄小队来为你作战。在与七位对手的轮番激战中坚持到仅存你一方为止。",
+            "mapStringId": "TFT",
+            "gameMode": "TFT",
+            "gameModeName": "云顶之弈",
+            "gameModeShortName": "",
+            "gameModeDescription": "集结一个英雄小队来为你作战。在与七位对手的轮番激战中坚持到仅存你一方为止。",
+            "name": "云顶之弈",
+            "gameMutator": "TFTTURBO",
+            "isRGM": false,
+            "properties": {
+                "suppressRunesMasteriesPerks": true
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "game-select-icon-default": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/GameSelect/icon-default.png",
+                "game-select-icon-hover": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/GameSelect/icon-hover.png",
+                "game-select-icon-active": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/GameSelect/icon-active.png",
+                "game-select-icon-disabled": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/GameSelect/icon-disabled.png",
+                "icon-victory": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/GameSelect/icon-victory.png",
+                "icon-defeat": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/GameSelect/icon-defeat.png",
+                "icon-empty": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/GameSelect/icon-empty.png",
+                "parties-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/lobby.TFT_Set10.jpg",
+                "gameflow-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/gameflow.jpg",
+                "champ-select-skip-bg": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/gameflow.jpg",
+                "ready-check-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/ready-check.TFT_Set10.jpg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-tft-set10.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/music-inqueue-loop-teamfighttactics.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-tft-set10.ogg",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/video/game-select-icon-intro.webm",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/video/game-select-icon-active.webm"
+            },
+            "locStrings": {
+                "tutorial_title": "欢迎来到狂暴模式",
+                "tutorial_subheader": "【狂暴模式】也是云顶之弈，但更加简短！每个回合的风险都很高！"
+            },
+            "categorizedContentBundles": {},
+            "tutorialCards": [
+                {
+                    "header": "更快速的玩法",
+                    "footer": "",
+                    "description": "你在开始时拥有20生命值；每次失败将使你损失2生命值。但随着对局的进行，失败将损失越来越多的生命值！",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_Turbo_Modal_Asset_1.png"
+                },
+                {
+                    "header": "全新的升级系统",
+                    "footer": "",
+                    "description": "不再能花金币购买经验值 - 作为替代，你将在每个阶段开始时升级",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_Turbo_Modal_Asset_2.png"
+                },
+                {
+                    "header": "专注打造你的队伍",
+                    "footer": "",
+                    "description": "在【狂暴模式】中，不会有金币利息，并且也没有连胜/连败额外金币 - 尽你所能地专注打造你的最强队伍！",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_Turbo_Modal_Asset_3.png"
+                }
+            ]
+        },
+        {
+            "isDefault": false,
+            "description": "集结一个英雄小队来为你作战。在与七位对手的轮番激战中坚持到仅存你一方为止。",
+            "mapStringId": "TFT",
+            "gameMode": "TFT",
+            "gameModeName": "云顶之弈",
+            "gameModeShortName": "",
+            "gameModeDescription": "集结一个英雄小队来为你作战。在与七位对手的轮番激战中坚持到仅存你一方为止。",
+            "name": "云顶之弈",
+            "gameMutator": "TFT_PAIRS",
+            "isRGM": false,
+            "properties": {
+                "suppressRunesMasteriesPerks": true
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-default.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-hover.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-active.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-disabled.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-victory.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-empty.png",
+                "parties-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/lobby.TFT_Set10.jpg",
+                "gameflow-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/gameflow.jpg",
+                "champ-select-skip-bg": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/gameflow.jpg",
+                "ready-check-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/ready-check.TFT_Set10.jpg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-tft-set10.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/music-inqueue-loop-teamfighttactics.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-tft-set10.ogg",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/video/game-select-icon-intro.webm",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/video/game-select-icon-active.webm"
+            },
+            "locStrings": {
+                "tutorial_title": "隆重介绍",
+                "tutorial_subheader": "【云顶之弈】的全新2v2v2v2实验室！"
+            },
+            "categorizedContentBundles": {},
+            "tutorialCards": [
+                {
+                    "header": "一起组队",
+                    "footer": "",
+                    "description": "邀请一位好友，或单人进入队列。你和你的搭档将共用一个生命池并一起击败其他的3对搭档。坚持到最后的队伍将获胜！",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_Pairs_Modal_Asset_1.png"
+                },
+                {
+                    "header": "派出增援",
+                    "footer": "",
+                    "description": "如果你先于你的搭档击败了对手，你的小队就会传送到你搭档的棋盘去帮忙。",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_Pairs_Modal_Asset_2.png"
+                },
+                {
+                    "header": "分享财富",
+                    "footer": "",
+                    "description": "使用【援助武器库】来向你的搭档赠送诸如金币和基础装备等东西。拖拽一个【忠诚符文】到一名英雄身上即可将该英雄派到搭档处。 ",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_Pairs_Modal_Asset_3.png"
+                }
+            ]
+        },
+        {
+            "isDefault": false,
+            "description": "集结一个英雄小队来为你作战。在与七位对手的轮番激战中坚持到仅存你一方为止。",
+            "mapStringId": "TFT",
+            "gameMode": "TFT",
+            "gameModeName": "云顶之弈",
+            "gameModeShortName": "",
+            "gameModeDescription": "集结一个英雄小队来为你作战。在与七位对手的轮番激战中坚持到仅存你一方为止。",
+            "name": "云顶之弈",
+            "gameMutator": "TFT_Event_SF",
+            "isRGM": false,
+            "properties": {
+                "suppressRunesMasteriesPerks": true
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-default.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-hover.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-active.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-disabled.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-victory.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-empty.png",
+                "parties-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/lobby.TFT_Set10.jpg",
+                "gameflow-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/gameflow.jpg",
+                "champ-select-skip-bg": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/gameflow.jpg",
+                "ready-check-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/ready-check.TFT_Set10.jpg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-tft-set10.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/music-inqueue-loop-teamfighttactics.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-tft-set10.ogg",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/video/game-select-icon-intro.webm",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/video/game-select-icon-active.webm"
+            },
+            "locStrings": {
+                "tutorial_title": "准备前往【斗魂锦标赛】",
+                "tutorial_subheader": "通过训练变强并打赢淘汰赛！"
+            },
+            "categorizedContentBundles": {},
+            "tutorialCards": [
+                {
+                    "header": "通过训练变强",
+                    "footer": "",
+                    "description": "【生命值】已被替换为【灵魂能量】！你在训练阶段期间不会阵亡。在【斗魂觉醒 格温】和【斗魂觉醒 瑟提】的帮助下专心积攒你的【灵魂能量】。",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_SFGame_Modal_1.png"
+                },
+                {
+                    "header": "灵魂王冠",
+                    "footer": "",
+                    "description": "获得【灵魂王冠】的弈子将获得强度提升和额外的羁绊贡献计数。淘汰赛会解锁第三个灵魂技能！",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_SFGame_Modal_2.png"
+                },
+                {
+                    "header": "淘汰赛时间",
+                    "footer": "",
+                    "description": "在淘汰赛阶段全力以赴。每一轮都会与你的对手进行三局两胜制的比赛，仅有胜者能继续前行！",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_SFGame_Modal_3.png"
+                }
+            ]
+        },
+        {
+            "isDefault": false,
+            "description": "集结一个英雄小队来为你作战。在与七位对手的轮番激战中坚持到仅存你一方为止。",
+            "mapStringId": "TFT",
+            "gameMode": "TFT",
+            "gameModeName": "云顶之弈",
+            "gameModeShortName": "",
+            "gameModeDescription": "集结一个英雄小队来为你作战。在与七位对手的轮番激战中坚持到仅存你一方为止。",
+            "name": "云顶之弈",
+            "gameMutator": "TFT_Event_CT",
+            "isRGM": false,
+            "properties": {
+                "suppressRunesMasteriesPerks": true
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-default.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-hover.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-active.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-disabled.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-victory.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-empty.png",
+                "parties-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/lobby.TFT_Set10.jpg",
+                "gameflow-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/gameflow.jpg",
+                "champ-select-skip-bg": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/gameflow.jpg",
+                "ready-check-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/ready-check.TFT_Set10.jpg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-teamfighttactics.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/music-inqueue-loop-teamfighttactics.ogg",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/video/game-select-icon-intro.webm",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/video/game-select-icon-active.webm"
+            },
+            "locStrings": {
+                "tutorial_title": "欢迎来到【恭喜发财】",
+                "tutorial_subheader": "更多装备、更多金币、更多胖胖龙"
+            },
+            "categorizedContentBundles": {},
+            "tutorialCards": [
+                {
+                    "header": "强劲开局",
+                    "footer": "",
+                    "description": "发财时间到！开场时带着一个强力的4阶或5阶弈子来成为你的队伍核心。",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_CT_Modal_1.png"
+                },
+                {
+                    "header": "胖胖龙的救援",
+                    "footer": "",
+                    "description": "胖胖龙前来救场！在你生命值跌到一定程度时，【胖胖龙】将带着一个爱心包裹来为你提供助力！",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_CT_Modal_2.png"
+                },
+                {
+                    "header": "更多财宝",
+                    "footer": "",
+                    "description": "装备成堆！在每个选秀回合之后，【胖胖龙】将前来拜访并赠送一份越来越丰厚的礼物。",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_CT_Modal_3.png"
+                }
+            ]
+        },
+        {
+            "isDefault": false,
+            "description": "集结一个英雄小队来为你作战。在与七位对手的轮番激战中坚持到仅存你一方为止。",
+            "mapStringId": "TFT",
+            "gameMode": "TFT",
+            "gameModeName": "云顶之弈",
+            "gameModeShortName": "",
+            "gameModeDescription": "集结一个英雄小队来为你作战。在与七位对手的轮番激战中坚持到仅存你一方为止。",
+            "name": "云顶之弈",
+            "gameMutator": "TFT_Set3",
+            "isRGM": false,
+            "properties": {
+                "suppressRunesMasteriesPerks": true
+            },
+            "perPositionRequiredSummonerSpells": {},
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-default.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-hover.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-active.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-disabled.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-victory.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-empty.png",
+                "parties-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/lobby-background-TFT-LNY24.jpg",
+                "gameflow-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/gameflow.jpg",
+                "champ-select-skip-bg": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/gameflow.jpg",
+                "ready-check-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/ready-check-TFT-LNY24.png",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-tft-set3.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/music-inqueue-loop-teamfighttactics.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-tft-set3.ogg",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/video/game-select-icon-intro.webm",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/video/game-select-icon-active.webm"
+            },
+            "locStrings": {
+                "tutorial_title": "迎接第3.5赛季回归:再战星海!",
+                "tutorial_subheader": "欢庆龙起云涌2024，尽在【银河战争：再战星海】。"
+            },
+            "categorizedContentBundles": {},
+            "tutorialCards": [
+                {
+                    "header": "宇宙弈子",
+                    "footer": "",
+                    "description": "游玩这个经典赛季，各种机械化的怪物和奇怪的太空人在银河系级别的战斗中你来我往。",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_LNY24_Modal_1.TFT_Set3_5_Revival.png"
+                },
+                {
+                    "header": "新年新挑战",
+                    "footer": "",
+                    "description": "经验丰富的宇宙弈士们，准备好迎接新的宇宙边疆吧！新的装备、新的强化符文以及平衡性改动意味着各种新的战略战术。",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_LNY24_Modal_2.TFT_Set3_5_Revival.png"
+                },
+                {
+                    "header": "银河传送门",
+                    "footer": "",
+                    "description": "星系现在通过投票来决定！通过这些改变游戏规则的宇宙传送门来解锁浩瀚银河般的可能性。",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_LNY24_Modal_3.TFT_Set3_5_Revival.png"
+                }
+            ]
+        }
+    ],
+    "21": [
+        {
+            "isDefault": true,
+            "description": "极限闪击",
+            "mapStringId": "NB",
+            "gameMode": "NEXUSBLITZ",
+            "gameModeName": "极限闪击",
+            "gameModeShortName": "极限闪击",
+            "gameModeDescription": "前往一个被遗忘已久的艾欧尼亚神庙探险，在摧毁敌方水晶枢纽前完成一系列的疯狂挑战——得快点战胜对手，否则水晶枢纽将替你这么做！",
+            "name": "极限闪击",
+            "gameMutator": "",
+            "isRGM": true,
+            "properties": {
+                "suppressRunesMasteriesPerks": false
+            },
+            "perPositionRequiredSummonerSpells": {
+                "jungle": {
+                    "spells": [
+                        11
+                    ]
+                }
+            },
+            "perPositionDisallowedSummonerSpells": {
+                "top": {
+                    "spells": [
+                        11
+                    ]
+                },
+                "middle": {
+                    "spells": [
+                        11
+                    ]
+                },
+                "utility": {
+                    "spells": [
+                        11
+                    ]
+                },
+                "bottom": {
+                    "spells": [
+                        11
+                    ]
+                },
+                "lane": {
+                    "spells": [
+                        11
+                    ]
+                }
+            },
+            "assets": {
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-disabled.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
+                "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
+                "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
+                "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/parties-background.jpg",
+                "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/social-icon-leaver.png",
+                "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/social-icon-victory.png",
+                "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/ready-check-background.png",
+                "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/gameflow-background.jpg",
+                "notification-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/notification-background.jpg",
+                "notification-icon": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
+                "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/champ-select-flyout-background.jpg",
+                "generic-event-icon": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/EventIcons/event.png",
+                "icon-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/icon-v2.png",
+                "icon-defeat-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/icon-defeat-v2.png",
+                "icon-loss-forgiven-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/icon-loss-forgiven-v2.png",
+                "icon-leaver-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/icon-leaver-v2.png",
+                "gameflow-background-dark": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/gameflow-background-dark.jpg",
+                "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/music-cs-blindpick-default.ogg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/music-inqueue-loop-summonersrift.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-readycheck-sr-portal.ogg",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-active.webm",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-intro.webm",
+                "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-victory.webm",
+                "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-defeat.webm"
+            },
+            "locStrings": {},
+            "categorizedContentBundles": {
+                "GameEventInfoCards": {
+                    "0": {
+                        "header": "迅捷蟹竞速",
+                        "body": "驱使你的峡谷迅捷蟹至终点线！",
+                        "footer": "",
+                        "imagePath": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/EventIcons/Scuttle-Race.png"
+                    },
+                    "1": {
+                        "header": "决斗之王",
+                        "body": "在一系列决斗中与敌方对抗！",
+                        "footer": "",
+                        "imagePath": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/EventIcons/Prize-Fight.png"
+                    },
+                    "2": {
+                        "header": "无限火力荣耀竞赛",
+                        "body": "在敌人干掉你之前干掉敌人！",
+                        "footer": "",
+                        "imagePath": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/EventIcons/Urf-Deathmatch.png"
+                    },
+                    "3": {
+                        "header": "无尽死亡轮盘",
+                        "body": "在一个随机的无尽缩圈之战事件中为生存而战！",
+                        "footer": "",
+                        "imagePath": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/EventIcons/Bardle-Royale.png"
+                    },
+                    "IconSubtext": {
+                        "header": "第一个事件",
+                        "body": "",
+                        "footer": "",
+                        "imagePath": "lol-game-data/assets/"
+                    },
+                    "4": {
+                        "header": "守护索拉卡",
+                        "body": "在敌人击败己方的索拉卡之前击败敌人的索拉卡！",
+                        "footer": "",
+                        "imagePath": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/EventIcons/Protect-Soraka.png"
+                    },
+                    "5": {
+                        "header": "输出大比拼",
+                        "body": "对目标假人造成比敌方更多的伤害！",
+                        "footer": "",
+                        "imagePath": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/EventIcons/DPS-Rush.png"
+                    },
+                    "6": {
+                        "header": "战利品 提莫",
+                        "body": "击杀战利品提莫来赚取他的悬赏！",
+                        "footer": "",
+                        "imagePath": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/EventIcons/Loot-Event.png"
+                    }
+                }
+            },
+            "tutorialCards": [
+                {
+                    "header": "这就是极限闪击",
+                    "footer": "预估游戏时间：15分钟",
+                    "description": "战斗连绵不断地在这张轴对称的地图上爆发，还有随机事件及奖励让局势变得更加刺激。",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/GameModeX/tutorial-gamemodex-card-1.png"
+                },
+                {
+                    "header": "联合加入野区吧",
+                    "footer": "",
+                    "description": "两位打野英雄在共同清野时会分享金币、经验和增益效果。",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/GameModeX/tutorial-gamemodex-card-2.png"
+                },
+                {
+                    "header": "好好打，打到火力全开",
+                    "footer": "",
+                    "description": "连续的击杀和助攻会让你进入火力全开状态，使你更加强大——但更易被击杀。",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/GameModeX/tutorial-gamemodex-card-3.png"
+                }
+            ]
+        }
+    ],
+    "30": [
+        {
+            "isDefault": true,
+            "description": "单人或与你的好友组成搭档进入这个多队互斗模式。与各队对手们在不同的竞技场中轮番展开激战。",
+            "mapStringId": "RoW",
+            "gameMode": "CHERRY",
+            "gameModeName": "北极星竞技场",
+            "gameModeShortName": "北极星竞技场",
+            "gameModeDescription": "单人或与你的好友组成搭档进入这个多队互斗模式。与各队对手们在不同的竞技场中轮番展开激战。",
+            "name": "北极星竞技场",
+            "gameMutator": "",
+            "isRGM": false,
+            "properties": {
+                "suppressRunesMasteriesPerks": true
+            },
+            "perPositionRequiredSummonerSpells": {
+                "any": {
+                    "spells": [
+                        2201
+                    ]
+                }
+            },
+            "perPositionDisallowedSummonerSpells": {},
+            "assets": {
+                "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/game-select-icon-default.png",
+                "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/game-select-icon-disabled.png",
+                "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/game-select-icon-hover.png",
+                "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/icon-defeat.png",
+                "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/game-select-icon-default.png",
+                "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/game-select-icon-hover.png",
+                "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/icon-leaver.png",
+                "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/icon-victory.png",
+                "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/parties-background.jpg",
+                "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/icon-leaver.png",
+                "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/icon-victory.png",
+                "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/ready-check-background.png",
+                "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/gameflow-background.jpg",
+                "notification-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/notification-background.jpg",
+                "notification-icon": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/game-select-icon-active.png",
+                "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/game-select-icon-active.png",
+                "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/champ-select-flyout-background.jpg",
+                "icon-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/icon-v2.png",
+                "icon-defeat-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/icon-defeat.png",
+                "icon-loss-forgiven-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/icon-loss-forgiven.png",
+                "icon-leaver-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/icon-leaver.png",
+                "gameflow-background-dark": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/gameflow-background-dark.jpg",
+                "tutorial-bg": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/one-page-tutorial-bg.jpg",
+                "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/music-cs-blindpick-default.ogg",
+                "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+                "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/sound/music-inqueue-loop-cherry.ogg",
+                "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+                "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-readycheck-sr-portal.ogg",
+                "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/video/game-select-icon-active.webm",
+                "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/video/game-select-icon-intro.webm",
+                "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/video/icon-victory.webm",
+                "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/video/icon-defeat.webm"
+            },
+            "locStrings": {
+                "tutorial_title": "北极星竞技场",
+                "tutorial_subheader": "我们期待已久的游戏模式终于来了！"
+            },
+            "categorizedContentBundles": {},
+            "tutorialCards": [
+                {
+                    "header": "组成搭档",
+                    "footer": "",
+                    "description": "你可以单人进入队列，也可以与你关系最铁的几名好友在全新的8人房间中共同进入队列。然后你就能在这个多队互斗模式中打爆你的敌人或你的好友了。",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/Cherry/tutorial-card-bg-1.jpg"
+                },
+                {
+                    "header": "强化符文！",
+                    "footer": "",
+                    "description": "通过超过150个改变游戏规则的强化符文来构建你的武器库。混搭不同的组合来击垮其它多个队伍或增强你自己的队伍。",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/Cherry/tutorial-card-bg-2.jpg"
+                },
+                {
+                    "header": "制定战略",
+                    "footer": "",
+                    "description": "在【北极星竞技场】中扩展你的战略部署。争夺能量花卉来治疗自身，将阵亡队友复活，用海克斯飞门快速穿行，以及更多！你和你的友军能够夺取胜利吗？",
+                    "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/Cherry/tutorial-card-bg-3.jpg"
+                }
+            ]
+        }
+    ]
+}

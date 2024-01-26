@@ -237,16 +237,16 @@ async def search_profile(connection):
             Arena_url = "https://raw.communitydragon.org/%s/cdragon/arena/%s.json" %(URLPatch, language_code.lower())
             #下面声明离线数据资源的默认地址（The following code declare the default paths of offline data resources）
             patches_local_default = "离线数据（Offline Data）\\versions.json"
-            spell_local_default = "离线数据（Offline Data）\\summoner.json"
-            LoLItem_local_default = "离线数据（Offline Data）\\items.json"
-            perk_local_default = "离线数据（Offline Data）\\perks.json"
-            perkstyle_local_default = "离线数据（Offline Data）\\perkstyles.json"
-            TFT_local_default = "离线数据（Offline Data）\\TFT.json"
-            TFTChampion_local_default = "离线数据（Offline Data）\\tftchampions.json"
-            TFTItem_local_default = "离线数据（Offline Data）\\tftitems.json"
-            TFTCompanion_local_default = "离线数据（Offline Data）\\companions.json"
-            TFTTrait_local_default = "离线数据（Offline Data）\\tfttraits.json"
-            Arena_local_default = "离线数据（Offline Data）\\Arena.json"
+            spell_local_default = "离线数据（Offline Data）\\plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\summoner-spells.json"
+            LoLItem_local_default = "离线数据（Offline Data）\\plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\items.json"
+            perk_local_default = "离线数据（Offline Data）\\plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\perks.json"
+            perkstyle_local_default = "离线数据（Offline Data）\\plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\perkstyles.json"
+            TFT_local_default = "离线数据（Offline Data）\\cdragon\\tft\\zh_cn.json"
+            TFTChampion_local_default = "离线数据（Offline Data）\\plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\tftchampions.json"
+            TFTItem_local_default = "离线数据（Offline Data）\\plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\tftitems.json"
+            TFTCompanion_local_default = "离线数据（Offline Data）\\plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\companions.json"
+            TFTTrait_local_default = "离线数据（Offline Data）\\plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\tfttraits.json"
+            Arena_local_default = "离线数据（Offline Data）\\cdragon\\arena\\zh_cn.json"
             print("请选择数据资源获取模式：\nPlease select the data resource capture mode:\n1\t在线模式（Online）\n2\t离线模式（Offline）")
             prepareMode = input()
             switch_language = False
@@ -717,7 +717,7 @@ async def search_profile(connection):
                     break
                 else:
                     switch_prepare_mode = False
-                    print('请在浏览器中打开以下网页，待加载完成后按Ctrl + S保存网页json文件至同目录的“离线数据（Offline Data）”文件夹下，并根据括号内的提示命名文件。\nPlease open the following URLs in a browser, then press Ctrl + S to save the online json files into the folder "离线数据（Offline Data）" under the same directory after the website finishes loading and rename the downloaded files according to the hints in the circle brackets.\n版本信息（versions.json）： %s\n召唤师技能（summoner.json）： %s\n英雄联盟装备（items.json）： %s\n基石符文（perks.json）： %s\n符文系（perkstyles.json）： %s\n云顶之弈基础信息（TFT.json）： %s\n云顶之弈棋子（tftchampions.json）： %s\n云顶之弈装备（tftitems.json）： %s\n云顶之弈小小英雄（companions.json）： %s\n云顶之弈羁绊（tfttraits.json）： %s\n斗魂竞技场强化符文（Arena.json）： %s' %(patches_url, spell_url, LoLItem_url, perk_url, perkstyle_url, TFT_url, TFTChampion_url, TFTItem_url, TFTCompanion_url, TFTTrait_url, Arena_url))
+                    print('请在浏览器中打开以下网页，待加载完成后按Ctrl + S保存网页json文件至同目录的“离线数据（Offline Data）”文件夹下，并根据括号内的提示放置和命名文件。\nPlease open the following URLs in a browser, then press Ctrl + S to save the online json files into the folder "离线数据（Offline Data）" under the same directory after the website finishes loading and organize and rename the downloaded files according to the hints in the circle brackets.\n版本信息（versions.json）： %s\n召唤师技能（summoner.json）： %s\n英雄联盟装备（items.json）： %s\n基石符文（plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\perks.json）： %s\n符文系（plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\perkstyles.json）： %s\n云顶之弈基础信息（cdragon\\tft\\zh_cn.json）： %s\n云顶之弈棋子（plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\tftchampions.json）： %s\n云顶之弈装备（plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\tftitems.json）： %s\n云顶之弈小小英雄（plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\companions.json）： %s\n云顶之弈羁绊（plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\tfttraits.json）： %s\n斗魂竞技场强化符文（cdragon\\arena\\zh_cn.json）： %s' %(patches_url, spell_url, LoLItem_url, perk_url, perkstyle_url, TFT_url, TFTChampion_url, TFTItem_url, TFTCompanion_url, TFTTrait_url, Arena_url))
                     offline_files_loaded = {"patch": False, "spell": False, "LoLItem": False, "perk": False, "perkstyle": False, "TFT": False, "TFTChampion": False, "TFTItem": False, "TFTCompanion": False, "TFTTrait": False, "Arena": False}
                     offline_files = {"patch": {"file": patches_local_default, "URL": patches_url, "content": "版本信息"}, "spell": {"file": spell_local_default, "URL": spell_url, "content": "召唤师技能"}, "LoLItem": {"file": LoLItem_local_default, "URL": LoLItem_url, "content": "英雄联盟装备"}, "perk": {"file": perk_local_default, "URL": perk_url, "content": "基石符文"}, "perkstyle": {"file": perkstyle_local_default, "URL": perkstyle_url, "content": "符文系"}, "TFT": {"file": TFT_local_default, "URL": TFT_url, "content": "云顶之弈基础信息"}, "TFTChampion": {"file": TFTChampion_local_default, "URL": TFTChampion_url, "content": "云顶之弈英雄"}, "TFTItem": {"file": TFTItem_local_default, "URL": TFTItem_url, "content": "云顶之弈装备"}, "TFTCompanion": {"file": TFTCompanion_local_default, "URL": TFTCompanion_url, "content": "云顶之弈小小英雄"}, "TFTTrait": {"file": TFTTrait_local_default, "URL": TFTTrait_url, "content": "云顶之弈羁绊"}, "Arena": {"file": Arena_local_default, "URL": Arena_url, "content": "斗魂竞技场强化符文"}}
                     print('请按任意键以加载离线数据。输入“1”以转为在线模式。输入“0”以退出程序。\nPlease input anything to load offline data. Input "1" to switch to online mode. Submit "0" to exit.')

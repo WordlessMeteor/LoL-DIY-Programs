@@ -1,0 +1,960 @@
+{
+    "id": 526,
+    "name": "镕铁少女",
+    "alias": "Rell",
+    "title": "芮尔",
+    "shortBio": "芮尔是黑色玫瑰用凶残的试验一手制造出来的产物，她是狂妄的活体武器，决心要颠覆诺克萨斯。她的童年悲惨且惊悚，那些不可言说的处理过程将她的魔法塑造成完美的武器，让她可以任意控制金属。直到最后她展开了一场暴力的逃离，从数量众多的看管者中杀出一条血路。如今，被认定为逃犯的芮尔对诺克萨斯士兵进行无差别攻击，同时寻找着曾经“学院”里的幸存者，保护柔弱者，对曾经的那些教员送去无情的死亡。",
+    "tacticalInfo": {
+        "style": 9,
+        "difficulty": 2,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 1,
+        "durability": 3,
+        "crowdControl": 3,
+        "mobility": 2,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/526.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/526.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/526.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/526.ogg",
+    "roles": [
+        "tank",
+        "support"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 526000,
+            "isBase": true,
+            "name": "镕铁少女",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/526/526000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/526/526000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/526/526000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rell/Skins/Base/RellLoadscreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 526001,
+            "isBase": false,
+            "name": "女帝 芮尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/526/526001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/526/526001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/526/526001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rell/Skins/Skin01/RellLoadScreen_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Rell/Skins/Skin01/RellLoadscreen_1_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526001.png",
+            "chromas": [
+                {
+                    "id": 526002,
+                    "name": "女帝 芮尔 纹章之刻印·英勇",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 526003,
+                    "name": "女帝 芮尔 纹章之刻印·果决",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526003.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526004,
+                    "name": "女帝 芮尔 纹章之刻印·博学",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526004.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526005,
+                    "name": "女帝 芮尔 纹章之刻印·威风",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526005.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526006,
+                    "name": "女帝 芮尔 纹章之刻印·坚毅",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526006.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526007,
+                    "name": "女帝 芮尔 纹章之刻印·飒爽",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526007.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526008,
+                    "name": "女帝 芮尔 纹章·神圣加冕礼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526008.png",
+                    "colors": [
+                        "#FF80B1",
+                        "#9DFFEF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在女帝无双(2020)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 526009,
+                    "name": "女帝 芮尔 纹章之刻印·深谋",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526009.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 137
+                }
+            ],
+            "skinAugments": null,
+            "description": "芮尔是一名来自魔力贫瘠的女帝之国“卡蕾末缇”(意为灾难)的年轻女战士。在经历了一系列魔法实验后，她自愿被一个由贵族组成的暗影阴谋团给加冕。现在，芮尔已经赢得了纹章和她纹章的权能，并发现她的权能已被人从她国家的人民那里给偷走了，因此她发誓要报复把她当傀儡的那些傀儡师们。"
+        },
+        {
+            "id": 526010,
+            "isBase": false,
+            "name": "星之守护者 芮尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/526/526010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/526/526010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/526/526010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rell/Skins/Skin10/RellLoadScreen_10.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Rell/Skins/Skin10/RellLoadscreen_10_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526010.png",
+            "chromas": [
+                {
+                    "id": 526011,
+                    "name": "星之守护者 芮尔 热情之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526011.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 526012,
+                    "name": "星之守护者 芮尔 爱之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526012.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526013,
+                    "name": "星之守护者 芮尔 智慧之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526013.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526014,
+                    "name": "星之守护者 芮尔 勇气之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526014.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526015,
+                    "name": "星之守护者 芮尔 未来之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526015.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 526016,
+                    "name": "星之守护者 芮尔 拥抱之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526016.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526017,
+                    "name": "星之守护者 芮尔 正义之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526017.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526018,
+                    "name": "星之守护者 芮尔 守护之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526018.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526019,
+                    "name": "星之守护者 芮尔 希望之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526019.png",
+                    "colors": [
+                        "#FDA4DA",
+                        "#9DE5FF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在星之守护者(2022)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Esports Manager Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/70.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/70.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 161
+                }
+            ],
+            "skinAugments": null,
+            "description": "从姊妹城市搬来的不只有奎因，还有芮尔。她是一个我行我素、令人头大的独行者，不想交朋友，所以和所有人都不对付。在战斗中，她骑着她强大的骏马塞巴斯蒂安，她翻腾的怒火将她变成一位星光骑士，保护温顺之人免受伤害。"
+        }
+    ],
+    "passive": {
+        "name": "溃敌沉力",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Rell/HUD/Icons2D/RellP.png",
+        "abilityVideoPath": "champion-abilities/0526/ability_0526_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0526/ability_0526_P1.jpg",
+        "description": "芮尔的攻击和技能会在命中时窃取护甲和魔法抗性。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "裂阵",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Rell/HUD/Icons2D/RellQ.png",
+            "abilityVideoPath": "champion-abilities/0526/ability_0526_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0526/ability_0526_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "芮尔对一条直线上的单位们造成魔法伤害，打破他们的护盾并造成晕眩效果。 ",
+            "dynamicDescription": "芮尔戳刺她的骑枪，使目标们<status>晕眩</status>@StunDuration@秒、摧毁所有<shield>护盾</shield>，并造成<magicDamage>@Damage@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000
+            ],
+            "cooldownCoefficients": [
+                11.0000,
+                10.5000,
+                10.0000,
+                9.5000,
+                9.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "驭铁术：轰落",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Rell/HUD/Icons2D/RellW.png",
+            "abilityVideoPath": "champion-abilities/0526/ability_0526_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0526/ability_0526_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "骑乘状态：芮尔化马为甲，以披甲状态向下轰落，击飞敌人们并获得高额护盾值。在披甲状态下，她获得护甲、魔法抗性、攻击速度和攻击距离，但移动速度缓慢。<br><br>披甲状态：芮尔化甲为马，提供爆发性的移动速度并且她的下一次攻击会对敌人造成击飞效果。<br><br>",
+            "dynamicDescription": "芮尔化马为甲，<status>击飞</status>敌人@spell.RellW_Dismount:StunDuration@秒并造成<magicDamage>@spell.RellW_Dismount:DismountDamage@魔法伤害</magicDamage>。芮尔获得<shield>@spell.RellW_Dismount:Shield@护盾值</shield>，持续到她再次上马为止。<br><br>芮尔随后进入披甲形态，获得<scaleArmor>@spell.RellW_Dismount:ResistanceIncrease*100@%额外护甲</scaleArmor>和<scaleMR>魔法抗性</scaleMR>、<attackSpeed>@spell.RellW_Dismount:DismountedASBoost*100@%攻击速度</attackSpeed>和@spell.RellW_Dismount:DismountedRangeBoost@攻击距离，但移动速度<status>减缓</status><slow>@spell.RellW_Dismount:DismountedMSPenalty*-100@%</slow>。在这个形态中，她可以使用<spellName>驭铁术：驾临</spellName>。@SpellModifierDescriptionAppend@",
+            "range": [
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000
+            ],
+            "costCoefficients": [
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000
+            ],
+            "cooldownCoefficients": [
+                11.0000,
+                11.0000,
+                11.0000,
+                11.0000,
+                11.0000,
+                11.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "全速冲锋",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Rell/HUD/Icons2D/RellE.png",
+            "abilityVideoPath": "champion-abilities/0526/ability_0526_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0526/ability_0526_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "被动：芮尔获得非战斗状态下的移动速度。<br><br>主动：芮尔和一名友军获得不断升温的移动速度，这个加成会在朝着敌人们和彼此移动时提升至双倍。她的下次攻击会爆炸，造成魔法伤害。<br>",
+            "dynamicDescription": "<spellPassive>被动 - 铁骑疾行：</spellPassive>芮尔在骑乘状态时获得<speed>@PassiveMovespeed@移动速度</speed>，这个加成在战斗中会削减至<speed>@CombatMSTooltipOnly@</speed>。<br><br><spellActive>主动 - 全速冲锋：</spellActive>芮尔和一名友军进行冲锋，获得在@Duration@秒里持续升温的<speed>至多@BaseMS*100@%移动速度</speed>，这个加成会在朝着敌人们或与你的目标友军移动时翻倍至<speed>@MaxMS*100@%</speed>。<br><br>此外，芮尔的下次攻击或<spellName>裂阵</spellName>会在一个区域内爆炸，造成<magicDamage>@Damage@外加@PercentHealthDamage*100@%最大生命值的魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000
+            ],
+            "costCoefficients": [
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000
+            ],
+            "cooldownCoefficients": [
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "极涌",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Rell/HUD/Icons2D/RellR.png",
+            "abilityVideoPath": "champion-abilities/0526/ability_0526_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0526/ability_0526_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "芮尔喷发出有磁性的怒火，粗暴地将附近敌方英雄向她拉拽。随后芮尔会持续将附近敌人向她拖曳一小段时间，并持续造成魔法伤害。",
+            "dynamicDescription": "芮尔喷发出有磁性的怒火，粗暴地将附近敌方英雄向她<status>拉拽</status>。随后芮尔会持续将附近敌人向她<status>拖曳</status>并在接来的@Duration@秒里持续造成共<magicDamage>@TotalDamage@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                200.0000,
+                200.0000,
+                200.0000,
+                200.0000,
+                200.0000,
+                200.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                100.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

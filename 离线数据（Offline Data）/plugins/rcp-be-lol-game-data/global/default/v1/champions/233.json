@@ -1,0 +1,792 @@
+{
+    "id": 233,
+    "name": "Briar",
+    "alias": "Briar",
+    "title": "the Restrained Hunger",
+    "shortBio": "A failed experiment by the Black Rose, Briar's uncontrollable bloodlust required a special pillory to focus her frenzied mind. After years of confinement, this living weapon broke free from her restraints and unleashed herself into the world. Now she's controlled by no one—following only her hunger for knowledge and blood—and relishes the opportunities to let loose, even if reining back the frenzy isn't easy.",
+    "tacticalInfo": {
+        "style": 2,
+        "difficulty": 2,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 2,
+        "crowdControl": 3,
+        "mobility": 3,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/233.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/233.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/233.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/233.ogg",
+    "roles": [
+        "fighter",
+        "assassin"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 233000,
+            "isBase": true,
+            "name": "Briar",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/233/233000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/233/233000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/233/233000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Briar/Skins/Base/BriarLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 233001,
+            "isBase": false,
+            "name": "Street Demons Briar",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/233/233001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/233/233001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/233/233001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Briar/Skins/Skin01/BriarLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/233/233001.png",
+            "chromas": [
+                {
+                    "id": 233002,
+                    "name": "Street Demons Briar",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/233/233002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 233003,
+                    "name": "Street Demons Briar",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/233/233003.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 233004,
+                    "name": "Street Demons Briar",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/233/233004.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 233005,
+                    "name": "Street Demons Briar",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/233/233005.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 233006,
+                    "name": "Street Demons Briar",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/233/233006.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 233007,
+                    "name": "Street Demons Briar",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/233/233007.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 233008,
+                    "name": "Street Demons Briar",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/233/233008.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 233009,
+                    "name": "Street Demons Briar",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/233/233009.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 197
+                }
+            ],
+            "skinAugments": null,
+            "description": "Whether you see her violently in-your-face tags that inspire audiences to get WILD, or her more relaxed art rife with cheeky humor, Briar's work makes an impression. As a jiangshi, she feeds off of the energy her art creates, so which style she uses really just depends on how hungry Briar is."
+        }
+    ],
+    "passive": {
+        "name": "Crimson Curse",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Briar/HUD/Icons2D/BriarP.png",
+        "abilityVideoPath": "champion-abilities/0233/ability_0233_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0233/ability_0233_P1.jpg",
+        "description": "Briar's attacks and abilities apply a stacking bleed that heals her for a portion of the damage it deals. Perpetually hungry, she gains increased healing based on her missing Health, but lacks innate Health Regeneration."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Head Rush",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Briar/HUD/Icons2D/BriarQ.png",
+            "abilityVideoPath": "champion-abilities/0233/ability_0233_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0233/ability_0233_Q1.jpg",
+            "cost": "Costs <font color='#CC3300'>@Spell.BriarP:CurrentHealthPercentCost*100@% of current Health</font>",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Briar leaps to a unit and hits enemies with The Heel Wheel (of Pain), stunning them and breaking their Armor.",
+            "dynamicDescription": "Briar leaps to a target, <status>Stunning</status> it for @StunDuration@ seconds, dealing <magicDamage>@TotalDamage@ magic damage</magicDamage> and reducing @ShredPercent*100@% <scaleArmor>Armor</scaleArmor> and <scaleMR>Magic Resist</scaleMR> for @ShredDuration@ seconds.<br><br><rules>Briar will stop prioritizing champions if she casts this Ability on a minion or monster during <keywordMajor>Blood Frenzy</keywordMajor>.</rules>@SpellModifierDescriptionAppend@",
+            "range": [
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                13.0000,
+                12.0000,
+                11.0000,
+                10.0000,
+                9.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Blood Frenzy / Snack Attack",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Briar/HUD/Icons2D/BriarW.png",
+            "abilityVideoPath": "champion-abilities/0233/ability_0233_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0233/ability_0233_W1.jpg",
+            "cost": "Costs <font color='#CC3300'>@Spell.BriarP:CurrentHealthPercentCost*100@% of current Health</font>",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Briar leaps forward and shatters her pillory, entering a Blood Frenzy that causes her to relentlessly pursue the nearest enemy (prioritizing champions). While frenzied, she gains increased Attack Speed and Move Speed, and her attacks deal damage in an area around her target.<br><br>Briar can reactivate this ability while frenzied to take a CHOMP out of her target on her next attack, dealing additional damage based on their missing Health, and healing Briar based on the damage she deals.",
+            "dynamicDescription": "Briar leaps and enters a <keywordMajor>Blood Frenzy</keywordMajor>, self-taunting to the nearest enemy for @BerserkDuration@ seconds, prioritizing Champions. While in <keywordMajor>Blood Frenzy</keywordMajor> she gains <attackSpeed>@BerserkAS*100@% Attack Speed</attackSpeed> and <speed>@BerserkMS*100@% Move Speed</speed>, and her Attacks deal <physicalDamage>@TotalAoEDamage@ physical damage</physicalDamage> to enemies surrounding her target.<br><br>Briar can <recast>Recast</recast> this Ability to empower her next Attack. It deals <physicalDamage>@TotalAttackBonusDamage@ + @TotalAttackPercentMissingHealth@% missing Health physical damage</physicalDamage> and <healing>heals Briar for @AttackMaxHPHeal@ + @AttackHealPercent*100@% of the damage dealt</healing>.<br>@SpellModifierDescriptionAppend@",
+            "range": [
+                350.0000,
+                350.0000,
+                350.0000,
+                350.0000,
+                350.0000,
+                350.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                14.0000,
+                13.0000,
+                12.0000,
+                11.0000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Chilling Scream",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Briar/HUD/Icons2D/BriarE.png",
+            "abilityVideoPath": "champion-abilities/0233/ability_0233_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0233/ability_0233_E1.jpg",
+            "cost": "Costs <font color='#CC3300'>@Spell.BriarP:CurrentHealthPercentCost*100@% of current Health</font>",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Briar refocuses her mind, removing Blood Frenzy and channeling energy into a powerful scream that damages and slows enemies. While charging, she takes reduced damage and heals for a portion of her max Health. A fully charged scream knocks foes back, dealing additional damage and stunning those who collide with a wall.",
+            "dynamicDescription": "<charge>Begin Charging:</charge> Briar removes <keywordMajor>Blood Frenzy</keywordMajor> and gathers energy, gaining @DRPercent@% damage reduction and restoring <healing>@PercentMaxHPHeal@ Health</healing> over 1 second.<br><br><release>Release:</release> Briar unleashes a scream that deals up to <magicDamage>@Damage@ magic damage</magicDamage> based on time charged, and <status>Slows</status> by @SlowPercent*100@% for @SlowDuration@ seconds. When fully charged, the scream <status>Knocks Back</status> enemies, dealing <magicDamage>@WallHitDamage@ magic damage</magicDamage> to those who hit a wall and <status>Stunning</status> them for @WallStunDuration@ seconds.@SpellModifierDescriptionAppend@",
+            "range": [
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                16.0000,
+                16.0000,
+                16.0000,
+                16.0000,
+                16.0000,
+                16.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Certain Death",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Briar/HUD/Icons2D/BriarR.png",
+            "abilityVideoPath": "champion-abilities/0233/ability_0233_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0233/ability_0233_R1.jpg",
+            "cost": "Costs <font color='#CC3300'>@Spell.BriarP:CurrentHealthPercentCost*100@% of current Health</font>",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Briar kicks her pillory's hemolith gemstone, marking the first champion it hits as her prey. She then beelines straight to them, fearing other surrounding enemies upon arriving at her target, and enters a state of complete hemomania. She will pursue her prey until death, gaining the benefits of Blood Frenzy as well as additional Armor, Magic Resistance, Life Steal, and Move Speed.",
+            "dynamicDescription": "Briar kicks her pillory's hemolith gemstone and flies to the location of the first champion it hits, marking them as her prey. On landing, she deals <magicDamage>@Damage@ magic damage</magicDamage> to everything nearby and causes enemies who are not her prey to <status>Flee</status> for @FearDuration@ seconds. She then enters an empowered <keywordMajor>Blood Frenzy</keywordMajor> and will pursue her prey until death. During this time, she gains @TotalResists@ <scaleArmor>Armor</scaleArmor> and <scaleMR>Magic Resist</scaleMR>, @LifeStealPercent*100@% Lifesteal, and an additional <speed>@ExtraMoveSpeedPercent*100@% Move Speed</speed>.@SpellModifierDescriptionAppend@",
+            "range": [
+                10000.0000,
+                10000.0000,
+                10000.0000,
+                10000.0000,
+                10000.0000,
+                10000.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                100.0000,
+                80.0000,
+                70.0000,
+                70.0000,
+                70.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

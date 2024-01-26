@@ -1,0 +1,922 @@
+{
+    "id": 200,
+    "name": "虚空女皇",
+    "alias": "Belveth",
+    "title": "卑尔维斯",
+    "shortBio": "一座被吞噬的城市，哺育了一位噩梦般的女皇。卑尔维斯就是符文之地的终结……也是她亲手规划的可怖现实的开端。地上世界无数世代的历史、知识和记忆驱使着她不知餍足地吞食所过之处的一切体验和情感。然而，区区一个世界完全不能满足她的胃口。卑尔维斯将眼光投向了虚空曾经的主人……",
+    "tacticalInfo": {
+        "style": 1,
+        "difficulty": 2,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 2,
+        "mobility": 3,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/200.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/200.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/200.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/200.ogg",
+    "roles": [
+        "fighter"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 200000,
+            "isBase": true,
+            "name": "虚空女皇",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/200/200000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/200/200000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/200/200000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Belveth/Skins/Base/BelvethLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 200001,
+            "isBase": false,
+            "name": "战场BOSS 卑尔维斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/200/200001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/200/200001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/200/200001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Belveth/Skins/Skin01/BelvethLoadscreen_1.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200001.png",
+            "chromas": [
+                {
+                    "id": 200002,
+                    "name": "战场BOSS 卑尔维斯 乱舞之翼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 200003,
+                    "name": "战场BOSS 卑尔维斯 流转之鳍",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200003.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 200004,
+                    "name": "战场BOSS 卑尔维斯 不屈之尾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200004.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 200005,
+                    "name": "战场BOSS 卑尔维斯 追风之鳍",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200005.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 200006,
+                    "name": "战场BOSS 卑尔维斯 轮舞之翼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200006.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 200007,
+                    "name": "战场BOSS 卑尔维斯 悦乐之羽",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200007.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 200008,
+                    "name": "战场BOSS 卑尔维斯 天罚之羽",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200008.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 200009,
+                    "name": "战场BOSS 卑尔维斯 拒绝之尾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200009.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 11
+                }
+            ],
+            "skinAugments": null,
+            "description": "卑尔维斯是1998年热门角色扮演游戏《最初梦幻 VIII》的真正最终BOSS。由于粉丝热度和她将所有现实融入自己的故事情节，她已成为该系列的重要人物。她被维迦招募到电玩世界的战争中，决定无视他的命令，歼灭途中的一切，并将整个街机世界都吸纳进她自身。谁能预见到它的到来？"
+        },
+        {
+            "id": 200010,
+            "isBase": false,
+            "name": "星界女神 卑尔维斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/200/200010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/200/200010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/200/200010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Belveth/Skins/Skin10/BelvethLoadScreen_10.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200010.png",
+            "chromas": [
+                {
+                    "id": 200011,
+                    "name": "星界女神 卑尔维斯 战神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200011.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 200012,
+                    "name": "星界女神 卑尔维斯 美神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200012.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 200013,
+                    "name": "星界女神 卑尔维斯 爱神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200013.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 200014,
+                    "name": "星界女神 卑尔维斯 海神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200014.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 200015,
+                    "name": "星界女神 卑尔维斯 猎神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200015.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 200016,
+                    "name": "星界女神 卑尔维斯 天神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200016.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 200017,
+                    "name": "星界女神 卑尔维斯 冥神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200017.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 200018,
+                    "name": "星界女神 卑尔维斯 梦神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200018.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 43
+                }
+            ],
+            "skinAugments": null,
+            "description": "卑尔维斯是群星中的一个孤独的生命摇篮，在星界神廷毁灭后的荒废太空中徘徊。她拒绝让暗星的熵进一步扩散，因此开始从垂死的世界中挑出神选生物，赋予其与她并肩作战的力量，并遏制住腐化好让事态不会发展到无可挽回的地步。"
+        }
+    ],
+    "passive": {
+        "name": "溶烛化紫 ",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Belveth/HUD/Icons2D/Belveth_Passive.png",
+        "abilityVideoPath": "champion-abilities/0200/ability_0200_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0200/ability_0200_P1.jpg",
+        "description": "每当卑尔维斯击杀大型小兵和野怪和英雄时，都会获得永久的额外攻速加成。她还会在使用一个技能后获得暂时的攻击速度加成。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "虚空激流",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Belveth/HUD/Icons2D/BV_Q_1.png",
+            "abilityVideoPath": "champion-abilities/0200/ability_0200_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0200/ability_0200_Q1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "卑尔维斯朝选定方向进行突进，对途经的所有敌人造成伤害。",
+            "dynamicDescription": "卑尔维斯进行冲刺，对她途经的敌人们造成<physicalDamage>@BaseDamage@物理伤害</physicalDamage>。<br><br>每个方向都有为期@f1@秒的独立冷却时间 ，这些冷却时间随她的<attackSpeed>攻击速度</attackSpeed>的提升而缩短。<br>@SpellModifierDescriptionAppend@",
+            "range": [
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "上觐沉渊",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Belveth/HUD/Icons2D/BelvethW.png",
+            "abilityVideoPath": "champion-abilities/0200/ability_0200_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0200/ability_0200_W1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "卑尔维斯甩尾重击，对命中的敌人造成伤害、击飞和减速。",
+            "dynamicDescription": "卑尔维斯甩尾重击，对敌人们造成<magicDamage>@Damage@魔法伤害</magicDamage>、@Duration@秒<status>击飞</status>和持续@SlowDuration@秒的@SlowPercent*100@%<status>减速</status>。如果这个技能击中了一名敌方英雄，则刷新该英雄所在方向的<spellName>虚空激流</spellName>的冷却时间。@SpellModifierDescriptionAppend@",
+            "range": [
+                715.0000,
+                715.0000,
+                715.0000,
+                715.0000,
+                715.0000,
+                715.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                11.0000,
+                10.0000,
+                9.0000,
+                8.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "搠面皇锋",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Belveth/HUD/Icons2D/BelvethE.png",
+            "abilityVideoPath": "champion-abilities/0200/ability_0200_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0200/ability_0200_E1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "卑尔维斯将她自身禁锢在原地，引导一阵切割风暴环绕自身，这个风暴会以生命值最低的敌人为目标并为她提供生命偷取和伤害减免。",
+            "dynamicDescription": "卑尔维斯引导并斩击她自身的周围区域，获得@DRPercent*100@%伤害减免、@TotalLifesteal@生命偷取、并在@TotalDuration@秒持续攻击@f2.0@次，攻击次数可通过<attackSpeed>攻击速度</attackSpeed>来提升。每次攻击都会打击生命值最低的敌人，基于目标的已损失生命值造成<physicalDamage>@DamagePerStrike@</physicalDamage>至<physicalDamage>@MaxDamagePerStrikeTooltip@物理伤害</physicalDamage>。<br><br>使用另一个技能或<recast>再次施放</recast>这个技能会使这个技能提前结束。<br>@SpellModifierDescriptionAppend@",
+            "range": [
+                500.0000,
+                500.0000,
+                500.0000,
+                500.0000,
+                500.0000,
+                500.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                20.0000,
+                19.0000,
+                18.0000,
+                17.0000,
+                16.0000,
+                16.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "万载豪筵",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Belveth/HUD/Icons2D/BelvethR.png",
+            "abilityVideoPath": "champion-abilities/0200/ability_0200_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0200/ability_0200_R1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "卑尔维斯消耗【虚空珊瑚残片】，转化为她的真实形态并提升她的最大生命值、攻击距离、攻击速度和非战斗状态下的移动速度。消耗来自虚空史诗级野怪的【虚空珊瑚残片】将为她提供更久的终极技能持续时长，以及召唤【虚空鱼】的能量。",
+            "dynamicDescription": "<spellPassive>被动：</spellPassive>对相同目标的每第二次攻击会造成额外的<trueDamage>@FinalOnHitDamage@真实伤害</trueDamage>，可无限叠加。参与击杀英雄和史诗级野怪后会留下一片【虚空珊瑚】。<br><br><spellActive>主动：</spellActive>消耗【虚空珊瑚】来提供<keywordMajor>@PassiveStacksOnDevour@层【溶烛化紫】</keywordMajor>并激活卑尔维斯的真实形态，持续@SteroidDuration@秒。来自虚空史诗级野怪的【虚空珊瑚】会将持续时长提升至@VoidDuration@秒并使附近阵亡的小兵们变为【虚空鱼】。在施放时，卑尔维斯<status>减速</status>附近的敌人们然后爆炸，造成<trueDamage>@TotalExplosionDamage@ + @MissingHealthDamage*100@%已损失生命值的真实伤害</trueDamage>。<br><br>在她的真实形态下，卑尔维斯获得<healing>@MaxHealthOnDevour@最大生命值</healing>、非战斗状态的<speed>@OOCMS@移动速度</speed>、@BonusAARange@攻击距离、<attackSpeed>@TotalASMod*100@%总攻击速度</attackSpeed>、并且<spellName>虚空激流</spellName>可以穿过墙体。<br><br><br>@SpellModifierDescriptionAppend@",
+            "range": [
+                275.0000,
+                275.0000,
+                275.0000,
+                275.0000,
+                275.0000,
+                275.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

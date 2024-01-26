@@ -1,0 +1,1664 @@
+{
+    "id": 235,
+    "name": "涤魂圣枪",
+    "alias": "Senna",
+    "title": "赛娜",
+    "shortBio": "自幼便遭遇诅咒的赛娜，注定会被那些超自然的诡秘黑雾不断侵扰，后来她加入了神圣的“光明哨兵”教团，对黑雾发起了勇猛的反击。可惜，最后她却牺牲在战场上，灵魂则被囚禁在残忍的怨灵——锤石的灯笼中。身陷囹圄的赛娜并没有放弃希望，而是学会了利用黑雾的力量，把握机会重获新生，也因此而面目全非。如今的赛娜可以同时操纵黑暗和光明的力量，动用黑雾的力量来终结黑雾——圣石武器的每一发炮火，都能救赎黑雾中迷失的灵魂。",
+    "tacticalInfo": {
+        "style": 3,
+        "difficulty": 2,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 1,
+        "crowdControl": 2,
+        "mobility": 1,
+        "utility": 3
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/235.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/235.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/235.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/235.ogg",
+    "roles": [
+        "marksman",
+        "support"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 235000,
+            "isBase": true,
+            "name": "涤魂圣枪",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/235/235000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/235/235000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/235/235000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Base/SennaLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 235001,
+            "isBase": false,
+            "name": "真实伤害 赛娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/235/235001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/235/235001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/235/235001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin01/SennaLoadscreen_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin01/SennaLoadscreen_1_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235001.png",
+            "chromas": [
+                {
+                    "id": 235002,
+                    "name": "真实伤害 赛娜 即兴说唱",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235002.png",
+                    "colors": [
+                        "#BD1357",
+                        "#19182A"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235003,
+                    "name": "真实伤害 赛娜 华丽之韵",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235003.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235004,
+                    "name": "真实伤害 赛娜 孤高之傲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235004.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235005,
+                    "name": "真实伤害 赛娜 敏锐之识",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235005.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235006,
+                    "name": "真实伤害 赛娜 超凡之心",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235006.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235007,
+                    "name": "真实伤害 赛娜 锐意之风",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235007.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235008,
+                    "name": "真实伤害 赛娜 本真之范",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235008.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 120
+                }
+            ],
+            "skinAugments": null,
+            "description": "赛娜曾凭借着令人称奇的音域和独树一帜的时尚感而声名鹊起，但之后一个阴险的对手用一张独占性合约夺走了她的创作自主权，因此让她从聚光灯中消失了。在阴影之中蛰伏数年后，她以“真实伤害”的主唱身份再次出现，一心想以自己的主张来定义她的传世之作。"
+        },
+        {
+            "id": 235009,
+            "isBase": false,
+            "name": "至臻 真实伤害 赛娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/235/235009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/235/235009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/235/235009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin09/SennaLoadscreen_9.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin09/SennaLoadscreen_9_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 120
+                }
+            ],
+            "skinAugments": null,
+            "description": "再次荣登榜首之后，赛娜发现自己进入了一个满是名望和名声的熟悉空间。在化妆品代言和时装秀之间，她向粉丝和黑粉们传达了一个明确的讯息：不要把它称为回归。赛娜已在此很多年了。"
+        },
+        {
+            "id": 235010,
+            "isBase": false,
+            "name": "西部天使 赛娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/235/235010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/235/235010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/235/235010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin10/SennaLoadScreen_10.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin10/SennaLoadscreen_10_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235010.png",
+            "chromas": [
+                {
+                    "id": 235011,
+                    "name": "西部天使 赛娜 贝列之锐",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235011.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235012,
+                    "name": "西部天使 赛娜 路西法之逆",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235012.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235013,
+                    "name": "西部天使 赛娜 布耶尔之疗",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235013.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235014,
+                    "name": "西部天使 赛娜 贝利尔之怠",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235014.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235015,
+                    "name": "西部天使 赛娜 加麦基之礼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235015.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235037,
+                    "name": "西部天使 赛娜 神选天使长",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235037.png",
+                    "colors": [
+                        "#CFC0A7",
+                        "#59C3F2"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 4
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "赛娜曾经是大陆板块上最伟大的枪手。她的生命因被恶魔撕扯出她的心脏而告终——但更高的存在介入了。她带着一名天使的心脏和一匹恶魔骏马神秘地复活了，回到了西部，打算恢复天堂和地狱的平衡……到她认为合适的程度。"
+        },
+        {
+            "id": 235016,
+            "isBase": false,
+            "name": "源计划：魅灵 赛娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/235/235016.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/235/235016.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/235/235016.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin16/SennaLoadScreen_16.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin16/SennaLoadscreen_16_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235016.png",
+            "chromas": [
+                {
+                    "id": 235017,
+                    "name": "源计划：魅灵 赛娜 裂变",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235017.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235018,
+                    "name": "源计划：魅灵 赛娜 震击",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235018.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235019,
+                    "name": "源计划：魅灵 赛娜 破障",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235019.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235020,
+                    "name": "源计划：魅灵 赛娜 地覆",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235020.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235021,
+                    "name": "源计划：魅灵 赛娜 暴走",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235021.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235022,
+                    "name": "源计划：魅灵 赛娜 幻灭",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235022.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235023,
+                    "name": "源计划：魅灵 赛娜 雪崩",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235023.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235024,
+                    "name": "源计划：魅灵 赛娜 燎原",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235024.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235025,
+                    "name": "源计划：魅灵 赛娜 惩戒",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235025.png",
+                    "colors": [
+                        "#FF5500",
+                        "#162B30"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在源计划(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 18
+                }
+            ],
+            "skinAugments": null,
+            "description": "赛娜是一位源计划的支援者，她的躯体在她的意识上升期间死亡，而她的心灵则与物理世界分离，并遁入网络空间，成了一位数码幽灵。在莫德凯撒夺取了这座城市的控制权时，她栖息在自己设计的躯体里，并且她是了解他那不断扩张的指令的真正威胁的少数几个人之一。"
+        },
+        {
+            "id": 235026,
+            "isBase": false,
+            "name": "月蚀骑士 赛娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/235/235026.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/235/235026.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/235/235026.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin26/SennaLoadScreen_26.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235026.png",
+            "chromas": [
+                {
+                    "id": 235028,
+                    "name": "月蚀骑士 赛娜 英勇",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235028.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235029,
+                    "name": "月蚀骑士 赛娜 公正",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235029.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235030,
+                    "name": "月蚀骑士 赛娜 灵性",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235030.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235031,
+                    "name": "月蚀骑士 赛娜 诚实",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235031.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235032,
+                    "name": "月蚀骑士 赛娜 牺牲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235032.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235033,
+                    "name": "月蚀骑士 赛娜 浪漫",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235033.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235034,
+                    "name": "月蚀骑士 赛娜 无私",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235034.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235035,
+                    "name": "月蚀骑士 赛娜 怜悯",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235035.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 93
+                }
+            ],
+            "skinAugments": null,
+            "description": "赛娜是一位被认为早已阵亡的远古骑士。在凯尔开始从她古老的沉睡中苏醒时，赛娜正好从日月之蚀大教堂的地下墓穴中脱身。赛娜现在援助她的骑士同袍们对抗魔女团的新威胁，尽她所能地从复苏的古神那里救人……她始终保持警惕，因为食日天使的归来已然不可避免。"
+        },
+        {
+            "id": 235027,
+            "isBase": false,
+            "name": "至臻 月蚀骑士 赛娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/235/235027.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/235/235027.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/235/235027.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin27/SennaLoadScreen_27.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin27/SennaLoadscreen_27_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 93
+                }
+            ],
+            "skinAugments": null,
+            "description": "凭借着由魔法骑士团古老风尚所启发的造型，赛娜引燃全场，并为巡礼仪式带来了冷静决绝的能量。邪恶之物要当心了——这些造型不但令人倾心……还很致命。"
+        },
+        {
+            "id": 235036,
+            "isBase": false,
+            "name": "魅惑女巫 赛娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/235/235036.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/235/235036.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/235/235036.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin36/SennaLoadScreen_36.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin36/SennaLoadscreen_36_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235036.png",
+            "chromas": [
+                {
+                    "id": 235038,
+                    "name": "魅惑女巫 赛娜 热情化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235038.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235039,
+                    "name": "魅惑女巫 赛娜 明艳化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235039.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235040,
+                    "name": "魅惑女巫 赛娜 青春化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235040.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235041,
+                    "name": "魅惑女巫 赛娜 知性化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235041.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235042,
+                    "name": "魅惑女巫 赛娜 典雅化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235042.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235043,
+                    "name": "魅惑女巫 赛娜 浪漫化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235043.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235044,
+                    "name": "魅惑女巫 赛娜 纯真化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235044.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235045,
+                    "name": "魅惑女巫 赛娜 高冷化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235045.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Halloween_b",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/11.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/11.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 172
+                }
+            ],
+            "skinAugments": null,
+            "description": "当赛娜还是一个年轻的女巫时，一位术士将她的灵魂束缚在一本咒语典籍上，希望能让他自己摆脱她不断上升的力量。但她在无实体状态中度过的时间只会让她变得更强大。当其他人参加派对时，极度严肃的赛娜搜寻着食尸鬼们和幽灵们，打算将它们再次送入坟墓。"
+        },
+        {
+            "id": 235046,
+            "isBase": false,
+            "name": "星之守护者 赛娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/235/235046.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/235/235046.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/235/235046.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin46/SennaLoadScreen_46.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin46/SennaLoadScreen_46_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235046.png",
+            "chromas": [
+                {
+                    "id": 235048,
+                    "name": "星之守护者 赛娜 热情之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235048.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235049,
+                    "name": "星之守护者 赛娜 爱之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235049.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235050,
+                    "name": "星之守护者 赛娜 勇气之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235050.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235051,
+                    "name": "星之守护者 赛娜 智慧之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235051.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235052,
+                    "name": "星之守护者 赛娜 正义之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235052.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235053,
+                    "name": "星之守护者 赛娜 守护之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235053.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235054,
+                    "name": "星之守护者 赛娜 重生之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235054.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235055,
+                    "name": "星之守护者 赛娜 月虹之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235055.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 161
+                }
+            ],
+            "skinAugments": null,
+            "description": "独自与黑暗斗争的岁月磨练了赛娜的意志，也坚定了她的决心。毕竟，星之守护者们都明白，失去所爱之人的宿命是不可避免的。但赛娜仍在继续战斗，甚至比以往更加努力。让新朋友霞和她已堕入黑暗的爱人早日重聚，是她努力战斗的强大的动力。  "
+        },
+        {
+            "id": 235056,
+            "isBase": false,
+            "name": "北极星神 赛娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/235/235056.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/235/235056.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/235/235056.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin56/SennaLoadScreen_56.PIE_C_13_24.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin56/SennaLoadScreen_56_LE.PIE_C_13_24.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235056.png",
+            "chromas": [
+                {
+                    "id": 235057,
+                    "name": "北极星神 赛娜 激昂脉冲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235057.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235058,
+                    "name": "北极星神 赛娜 幸运漩涡",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235058.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235059,
+                    "name": "北极星神 赛娜 浪漫帘幕",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235059.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235060,
+                    "name": "北极星神 赛娜 七彩光斑",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235060.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235061,
+                    "name": "北极星神 赛娜 典雅光帷",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235061.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235062,
+                    "name": "北极星神 赛娜 花冠极光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235062.png",
+                    "colors": [
+                        "#BF2020",
+                        "#368B25"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在北极星(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Snowdown",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/9.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/9.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 187
+                }
+            ],
+            "skinAugments": null,
+            "description": "赛娜醒来，发现自己身在如梦似幻的北极光中。她不认识自己身上雍容华贵的长裙，也不记得自己如何来到此处——记忆里一片空白，只有片刻温暖的闪回：一生的挚爱，遗失在暗影中。她不禁自问：“我是谁？”"
+        }
+    ],
+    "passive": {
+        "name": "赦除",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Senna/HUD/Icons2D/Senna_Passive.png",
+        "abilityVideoPath": "champion-abilities/0235/ability_0235_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0235/ability_0235_P1.jpg",
+        "description": "当赛娜附近有单位死亡时，这些单位的灵魂会周期性地被黑雾所捕获。赛娜可以攻击这些灵魂来解脱他们，并吸收使他们困在死界的黑雾。黑雾会为她的圣枪提供燃料，提升她的攻击力、攻击距离和暴击几率。<br><br>赛娜的圣物火炮需要更长的射击时间，造成额外伤害，并暂时为她提供她目标的一部分移动速度。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "黑暗洞灭",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Senna/HUD/Icons2D/Senna_Q.png",
+            "abilityVideoPath": "champion-abilities/0235/ability_0235_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0235/ability_0235_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "赛娜从她的圣物火炮的双生炮管中射出一道光影相生之芒来洞穿一个目标，治疗友军并伤害敌人。",
+            "dynamicDescription": "赛娜发射一束洞灭之影来洞穿一名友军或一名敌人，对敌人造成<physicalDamage>@TotalDamage@物理伤害</physicalDamage>和持续@SlowDuration@秒的@TotalSlow@<status>减速</status>。给友方英雄回复<healing>@TotalHeal@生命值</healing>。<br><br>攻击会使这个技能的冷却时间缩短@CDReductionOnHit@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                80.0000,
+                90.0000,
+                100.0000,
+                110.0000,
+                110.0000
+            ],
+            "cooldownCoefficients": [
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "无尽厮守",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Senna/HUD/Icons2D/Senna_W.png",
+            "abilityVideoPath": "champion-abilities/0235/ability_0235_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0235/ability_0235_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "赛娜向前发射一道黑雾。如果它命中了一名敌人，它就会饥渴地纠缠住该敌人，在短暂的延迟后对该敌人及其附近的单位造成禁锢效果。",
+            "dynamicDescription": "赛娜向前发射一道黑雾，对命中的第一个敌人造成 <physicalDamage>@Damage@物理伤害</physicalDamage>。在@DelayTime@秒的延迟后，对目标及目标附近的其它敌人造成@RootDuration@秒<status>禁锢</status>效果。@SpellModifierDescriptionAppend@",
+            "range": [
+                1250.0000,
+                1250.0000,
+                1250.0000,
+                1250.0000,
+                1250.0000,
+                1250.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                11.0000,
+                11.0000,
+                11.0000,
+                11.0000,
+                11.0000,
+                11.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "黑雾咒附",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Senna/HUD/Icons2D/Senna_E.png",
+            "abilityVideoPath": "champion-abilities/0235/ability_0235_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0235/ability_0235_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "赛娜将她存在武器内的黑雾抽出，在她四周形成一团风暴，然后投身于黑暗并变成幽魂。进入黑雾区域的友军会变成伪装状态，并且在被黑雾笼罩时也会呈现出幽灵的外观。幽魂会获得移动速度提升，无法被选中，并且隐藏自身的身份。",
+            "dynamicDescription": "赛娜融入一团黑雾，持续@BuffDuration@秒，并变成幽魂。进入黑雾的友方英雄会变成<keywordStealth>伪装状态</keywordStealth>，并在离开时变成幽魂。幽魂获得<speed>@TotalMS@移动速度</speed>，无法被选中，并且在附近没有敌方英雄时会隐藏自己的身份。@SpellModifierDescriptionAppend@",
+            "range": [
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                26.0000,
+                24.5000,
+                23.0000,
+                21.5000,
+                20.0000,
+                20.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.7500,
+                "coefficient2": 0.5000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "暗影燎原",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Senna/HUD/Icons2D/Senna_R.png",
+            "abilityVideoPath": "champion-abilities/0235/ability_0235_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0235/ability_0235_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "赛娜召唤陨落哨兵们的圣石，将她的圣物火炮拆分成一座光与影的神圣阵列。她随后会发射一道不限距离的光束，来为命中的友军提供护盾，并对中心区域内的敌人造成伤害。",
+            "dynamicDescription": "赛娜发射一道光束，对命中的所有敌方英雄造成<physicalDamage>@TotalDamage@物理伤害</physicalDamage>。在更广范围内被命中的友方英雄会获得<shield>@TotalShield@护盾值</shield>，持续@ShieldDuration@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                140.0000,
+                120.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.9000,
+                "coefficient2": 1.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

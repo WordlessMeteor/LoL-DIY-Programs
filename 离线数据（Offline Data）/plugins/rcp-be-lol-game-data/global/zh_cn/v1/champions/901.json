@@ -1,0 +1,860 @@
+{
+    "id": 901,
+    "name": "炽炎雏龙",
+    "alias": "Smolder",
+    "title": "斯莫德",
+    "shortBio": "在诺克萨斯边境的嶙峋峭壁间，有一条幼龙正在龙母的密切注视下，学习领悟着作为卡玛维亚帝巨龙血脉继承者的意义。调皮的斯莫德每天都盼着长大，他总是寻找各式各样的借口，磨炼自己日益强大的能力。虽然他还年幼，可别对他的能力嗤之以鼻——只要打个喷嚏，他就能点燃整片森林。",
+    "tacticalInfo": {
+        "style": 4,
+        "difficulty": 1,
+        "damageType": "kMixed"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 1,
+        "mobility": 1,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/901.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/901.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/901.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/901.ogg",
+    "roles": [
+        "marksman"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 901000,
+            "isBase": true,
+            "name": "炽炎雏龙",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/901/901000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/901/901000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/901/901000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Smolder/Skins/Base/SmolderLoadScreen_0.Smolder.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 901001,
+            "isBase": false,
+            "name": "天龙之子 斯莫德",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/901/901001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/901/901001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/901/901001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Smolder/Skins/Skin01/SmolderLoadScreen_1.Smolder.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Smolder/Skins/Skin01/SmolderLoadScreen_1_LE.Smolder.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/901/901001.png",
+            "chromas": [
+                {
+                    "id": 901002,
+                    "name": "天龙之子 斯莫德 龙马精神",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/901/901002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 901003,
+                    "name": "天龙之子 斯莫德 龙飞凤翔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/901/901003.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 901004,
+                    "name": "天龙之子 斯莫德 龙驹凤雏",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/901/901004.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 901005,
+                    "name": "天龙之子 斯莫德 龙腾四海",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/901/901005.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 901006,
+                    "name": "天龙之子 斯莫德 苍龙出海",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/901/901006.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 901007,
+                    "name": "天龙之子 斯莫德 玉龙舞夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/901/901007.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 901008,
+                    "name": "天龙之子 斯莫德 龙行虎步",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/901/901008.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 901009,
+                    "name": "天龙之子 斯莫德 云起龙骧",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/901/901009.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 901010,
+                    "name": "天龙之子 斯莫德 赫赫龙威",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/901/901010.png",
+                    "colors": [
+                        "#DFA6DF",
+                        "#E0D7D7"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在天龙之子(2024)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Year of Loong 2024",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/83.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/83.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 201
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为王族中最年轻的成员和龙太子的族弟，斯莫德最喜欢的就是跟随李青去进行各种冒险。他可能错过了计划中将自己假扮成人类的部分，不过嘛——他会向他们展示，龙族不需要盛装打扮也能成为派对的主角！"
+        }
+    ],
+    "passive": {
+        "name": "龙之研习",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Smolder/HUD/Icons2D/Icons_Smolder_Passive.png",
+        "abilityVideoPath": "champion-abilities/0901/ability_0901_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0901/ability_0901_P1.jpg",
+        "description": "用技能命中英雄和用超级灼热龙息 击杀敌人时会提供一层龙之研习。层数会提升斯莫德各基础技能的伤害。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "超级灼热龙息",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Smolder/HUD/Icons2D/Icons_Smolder_Q1.png",
+            "abilityVideoPath": "champion-abilities/0901/ability_0901_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0901/ability_0901_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "斯莫德在一名敌人身上喷吐烈焰。随着他获得更多层数，这个技能会变得更加强力。",
+            "dynamicDescription": "斯莫德喷出烈焰，造成<physicalDamage>@TooltipQDamage@物理伤害</physicalDamage> + <magicDamage>@Passive_Damage_Increase@魔法伤害</magicDamage>。<br><br>基于<spellName>龙之研习</spellName>的层数，这个技能会不断进化以获得以下效果：<li><keywordMajor>@StackTier1@层</keywordMajor>：伤害目标周围的所有敌人。</li><li><keywordMajor>@StackTier2@层</keywordMajor>：在目标后侧引发<spellName>@Tier2_NumberOfBlowback@</spellName>次爆炸，造成@Tier2_BlowbackPercentageDamage@%此技能伤害。</li><li><keywordMajor>@StackTier3@层</keywordMajor>：灼烧目标，在@Tier3_DotLength@秒里持续造成共<trueDamage>@Tier3_TrueDamagePercent*100@%最大生命值的真实伤害</trueDamage>。 敌方英雄如果在灼烧期间跌到<trueDamage>@Tier3_ExecuteThreshold@</trueDamage>总生命值以下，则会被立刻击杀。</li>@SpellModifierDescriptionAppend@",
+            "range": [
+                550.0000,
+                550.0000,
+                550.0000,
+                550.0000,
+                550.0000,
+                550.0000
+            ],
+            "costCoefficients": [
+                23.0000,
+                26.0000,
+                29.0000,
+                32.0000,
+                35.0000,
+                35.0000
+            ],
+            "cooldownCoefficients": [
+                5.5000,
+                5.0000,
+                4.5000,
+                4.0000,
+                3.5000,
+                3.5000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "阿嚏！",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Smolder/HUD/Icons2D/Icons_Smolder_W.png",
+            "abilityVideoPath": "champion-abilities/0901/ability_0901_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0901/ability_0901_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "斯莫德发出一个萌萌的烈焰喷嚏，喷嚏会在命中敌人时爆炸。",
+            "dynamicDescription": "斯莫德发出一个萌萌的烈焰喷嚏，造成<physicalDamage>@InitialDamage@物理伤害</physicalDamage>和持续@SlowDuration@秒的@SlowAmount*100@%<status>减速</status>。<br><br>命中英雄时会引发一次爆炸，造成<physicalDamage>@ExplosionDamage@物理伤害</physicalDamage> + <magicDamage>@Passive_Damage@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                1500.0000,
+                1500.0000,
+                1500.0000,
+                1500.0000,
+                1500.0000,
+                1500.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000
+            ],
+            "cooldownCoefficients": [
+                13.0000,
+                12.5000,
+                12.0000,
+                11.5000,
+                11.0000,
+                11.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "扑棱，扑棱，扑棱！",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Smolder/HUD/Icons2D/Icons_Smolder_E.png",
+            "abilityVideoPath": "champion-abilities/0901/ability_0901_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0901/ability_0901_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "斯莫德展翅高飞，无视地形并攻击生命值最低的那个敌人。",
+            "dynamicDescription": "斯莫德展翅高飞，获得<speed>@MoveSpeed*100@%移动速度</speed>并无视地形，持续@Duration@秒。<br><br>在飞行时，斯莫德攻击生命值最低的那个敌方英雄<spellName>@TotalNumberOfAttacks@</spellName>次，每次造成<physicalDamage>@DamagePerHit@物理伤害</physicalDamage> + <magicDamage>@Passive_Damage_Increase@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000
+            ],
+            "costCoefficients": [
+                65.0000,
+                65.0000,
+                65.0000,
+                65.0000,
+                65.0000,
+                65.0000
+            ],
+            "cooldownCoefficients": [
+                24.0000,
+                22.0000,
+                20.0000,
+                18.0000,
+                16.0000,
+                16.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "妈----！",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Smolder/HUD/Icons2D/Icons_Smolder_R.png",
+            "abilityVideoPath": "champion-abilities/0901/ability_0901_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0901/ability_0901_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "斯莫德召唤他的妈妈从天空喷吐烈焰，对她的烈焰中心的敌人们造成额外伤害和减速。",
+            "dynamicDescription": "斯莫德的妈妈从天空喷吐烈焰，造成<physicalDamage>@TotalDamage@物理伤害</physicalDamage>。中心的敌人们会转而受到<physicalDamage>@TooltipOnly_TotalSweetspotDamage@</physicalDamage>伤害和持续@SlowDuration@秒的@SlowAmount*100@%<status>减速</status>。<br><br>斯莫德的妈妈如果命中了她的儿子，则会为他治疗<healing>@MomHealCalc@生命值</healing>。@SpellModifierDescriptionAppend@",
+            "range": [
+                4200.0000,
+                4200.0000,
+                4200.0000,
+                4200.0000,
+                4200.0000,
+                4200.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                110.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

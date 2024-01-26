@@ -78,7 +78,7 @@ if source != "" and (source[0] == "0" or source[0] == "2" or source[0] == "3"):
             patches_url = "https://ddragon.leagueoflegends.com/api/versions.json"
             #下面声明离线数据资源的默认地址（The following code declare the default paths of offline data resources）
             patches_local_default = "离线数据（Offline Data）\\versions.json"
-            champion_local_default = "离线数据（Offline Data）\\champion.json"
+            champion_local_default = "离线数据（Offline Data）\\ddragon\\zh_CN\\champion.json"
             break
         else:
             print("语言选项输入错误！请重新输入：\nERROR input of language option! Please try again:")

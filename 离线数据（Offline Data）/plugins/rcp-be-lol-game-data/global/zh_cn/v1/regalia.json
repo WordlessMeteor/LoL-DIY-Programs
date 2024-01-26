@@ -1,0 +1,992 @@
+[
+    {
+        "id": "3",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/lny2023.png",
+        "isSelectable": true,
+        "regaliaType": "kBanner",
+        "localizedName": "2023春节",
+        "localizedDescription": ""
+    },
+    {
+        "id": "4",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/sf2023.png",
+        "isSelectable": true,
+        "regaliaType": "kBanner",
+        "localizedName": "斗魂觉醒旗帜皮肤",
+        "localizedDescription": ""
+    },
+    {
+        "id": "5",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/bee2023.ACCESSORIES_13_24.png",
+        "isSelectable": true,
+        "regaliaType": "kBanner",
+        "localizedName": "蓝色精萃商店2023旗帜",
+        "localizedDescription": ""
+    },
+    {
+        "id": "6",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/wn2023.ACCESSORIES_13_24.png",
+        "isSelectable": true,
+        "regaliaType": "kBanner",
+        "localizedName": "北极星(2023)贵族旗帜",
+        "localizedDescription": ""
+    },
+    {
+        "id": "7",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/wr2023.ACCESSORIES_13_24.png",
+        "isSelectable": true,
+        "regaliaType": "kBanner",
+        "localizedName": "北极星(2023)皇家旗帜",
+        "localizedDescription": ""
+    },
+    {
+        "id": "8",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/wa2023.ACCESSORIES_13_24.png",
+        "isSelectable": true,
+        "regaliaType": "kBanner",
+        "localizedName": "北极星(2023)极光旗帜",
+        "localizedDescription": ""
+    },
+    {
+        "id": "2",
+        "idSecondary": "UNRANKED",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/default.png",
+        "isSelectable": true,
+        "regaliaType": "kBanner",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "2",
+        "idSecondary": "IRON",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/iron.png",
+        "isSelectable": true,
+        "regaliaType": "kBanner",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "2",
+        "idSecondary": "BRONZE",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/bronze.png",
+        "isSelectable": true,
+        "regaliaType": "kBanner",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "2",
+        "idSecondary": "SILVER",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/silver.png",
+        "isSelectable": true,
+        "regaliaType": "kBanner",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "2",
+        "idSecondary": "GOLD",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/gold.png",
+        "isSelectable": true,
+        "regaliaType": "kBanner",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "2",
+        "idSecondary": "PLATINUM",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/platinum.png",
+        "isSelectable": true,
+        "regaliaType": "kBanner",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "2",
+        "idSecondary": "DIAMOND",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/diamond.png",
+        "isSelectable": true,
+        "regaliaType": "kBanner",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "2",
+        "idSecondary": "EMERALD",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/emerald.png",
+        "isSelectable": true,
+        "regaliaType": "kBanner",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "2",
+        "idSecondary": "MASTER",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/master.png",
+        "isSelectable": true,
+        "regaliaType": "kBanner",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "2",
+        "idSecondary": "GRANDMASTER",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/grandmaster.png",
+        "isSelectable": true,
+        "regaliaType": "kBanner",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "2",
+        "idSecondary": "CHALLENGER",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/challenger.png",
+        "isSelectable": true,
+        "regaliaType": "kBanner",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "1",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/default.png",
+        "isSelectable": true,
+        "regaliaType": "kBanner",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    },
+    {
+        "id": "",
+        "idSecondary": "",
+        "assetPath": "/lol-game-data/assets/",
+        "isSelectable": false,
+        "regaliaType": "kNone",
+        "localizedName": "",
+        "localizedDescription": ""
+    }
+]

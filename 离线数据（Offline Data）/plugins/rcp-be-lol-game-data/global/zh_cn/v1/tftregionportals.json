@@ -1,0 +1,800 @@
+[
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Augments_GoldFirst",
+        "displayName": "",
+        "description": "黄金前奏"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Augments_GoldThird",
+        "displayName": "",
+        "description": "黄金终章"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Augments_PrismaticFirst",
+        "displayName": "",
+        "description": "棱彩前奏"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Augments_PrismaticGoldSilver",
+        "displayName": "",
+        "description": "彩金银乐章"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Augments_PrismaticThird",
+        "displayName": "",
+        "description": "棱彩终章"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Augments_SilverGoldPrismatic",
+        "displayName": "",
+        "description": "银金彩乐章"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Augments_TripleGold",
+        "displayName": "",
+        "description": "三金交响乐"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Augments_TriplePrismatic",
+        "displayName": "",
+        "description": "三彩交响乐"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Augments_TripleSilver",
+        "displayName": "",
+        "description": "三银交响曲"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Champions_ChampionStart",
+        "displayName": "",
+        "description": "3费弈子"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Champions_DuplicatorStart",
+        "displayName": "",
+        "description": "英雄复制器"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Champions_RandomChampion",
+        "displayName": "",
+        "description": "弈子投送"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Champions_RandomChampion_HR",
+        "displayName": "",
+        "description": "弈子投送"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Champions_TripleStart",
+        "displayName": "",
+        "description": "3弈子"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Champions_UpgradedChampions",
+        "displayName": "",
+        "description": "2星开局"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Combat_KillCounter",
+        "displayName": "",
+        "description": "击杀统计"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Combat_TrainingDummy",
+        "displayName": "",
+        "description": "训练假人"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Combat_WanderingTrainers",
+        "displayName": "",
+        "description": "漫游训练师"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Combat_ZoomZone",
+        "displayName": "",
+        "description": "弈子增速器"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Gold_Cashout",
+        "displayName": "",
+        "description": "梦幻金罐"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Gold_Cashout_HR",
+        "displayName": "",
+        "description": "梦幻金罐"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Gold_GoldPerAugment",
+        "displayName": "",
+        "description": "强化符文赠金"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Gold_GoldPerItem",
+        "displayName": "",
+        "description": "装备赠金"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Gold_MaxInterest",
+        "displayName": "",
+        "description": "最大利息"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Headliner_Entourage",
+        "displayName": "",
+        "description": "明星风采"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Headliner_Showtime",
+        "displayName": "",
+        "description": "好戏开场"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Headliner_Superstar",
+        "displayName": "",
+        "description": "多才多艺"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Items_ArtifactAnvil",
+        "displayName": "",
+        "description": "神器锻造器"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Items_CompletedAnvil",
+        "displayName": "",
+        "description": "成装锻造器"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Items_ComponentAnvil",
+        "displayName": "",
+        "description": "基础装备锻造器"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Items_RadiantItem",
+        "displayName": "",
+        "description": "光明武器"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Items_RadiantItem_HR",
+        "displayName": "",
+        "description": "光明武器"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Items_SupportAnvil",
+        "displayName": "",
+        "description": "辅助装锻造器"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Items_TacticiansCrown",
+        "displayName": "",
+        "description": "金铲铲冠冕"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Items_TomeOfTraits",
+        "displayName": "",
+        "description": "纹章之书"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_CrabRave",
+        "displayName": "",
+        "description": "蟹之狂欢"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_DoubleItemCarousel",
+        "displayName": "",
+        "description": "灌铅选秀"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_LootSubscription",
+        "displayName": "",
+        "description": "战利品订阅"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_LootSubscription_HR",
+        "displayName": "",
+        "description": "战利品订阅"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_MaxHealthDecrease",
+        "displayName": "",
+        "description": "玩家生命值降低"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_MaxHealthIncrease",
+        "displayName": "",
+        "description": "大大英雄"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_RadiantBlessing",
+        "displayName": "",
+        "description": "光明赐福"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_RadiantBlessing_HR",
+        "displayName": "",
+        "description": "光明赐福"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_ScuttlePuddle",
+        "displayName": "",
+        "description": "迅捷蟹水潭"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_Spatula",
+        "displayName": "",
+        "description": "金铲铲"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_TreasureArmory",
+        "displayName": "",
+        "description": "秘宝武器库"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_TreasureArmory_HR",
+        "displayName": "",
+        "description": "秘宝武器库"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Targon.png",
+        "nameId": "TFT9_RegionPortals_MarusOmegnum_SF",
+        "displayName": "巨神峰",
+        "description": "癸亥玛吕寺"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT3_RegionPortals_Bonanza",
+        "displayName": "",
+        "description": "战利品星系"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT3_RegionPortals_Dreadnova",
+        "displayName": "",
+        "description": "爆金币星系"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT3_RegionPortals_Finale",
+        "displayName": "",
+        "description": "爽歪歪星系"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT3_RegionPortals_FreeNeekos",
+        "displayName": "",
+        "description": "妮蔻星系"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT3_RegionPortals_FreeRerolls",
+        "displayName": "",
+        "description": "DD星系"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT3_RegionPortals_FreeSpatula",
+        "displayName": "",
+        "description": "金铲铲星系 "
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT3_RegionPortals_MidGameFoN",
+        "displayName": "",
+        "description": "金铲铲冠冕星系"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT3_RegionPortals_StartingItems",
+        "displayName": "",
+        "description": "银河军械库星系"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT3_RegionPortals_TwoStarCarousels",
+        "displayName": "",
+        "description": "2星选秀星系"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_BandleCity.png",
+        "nameId": "TFT9_RegionPortals_BandleCafeteria",
+        "displayName": "班德尔城",
+        "description": "班德尔自助餐厅"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_BandleCity.png",
+        "nameId": "TFT9_RegionPortals_BandleCafeteria_HR",
+        "displayName": "班德尔城",
+        "description": "班德尔自助餐厅"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Zaun.png",
+        "nameId": "TFT9_RegionPortals_EclipticVaults",
+        "displayName": "祖安",
+        "description": "黄道地库"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Zaun.png",
+        "nameId": "TFT9_RegionPortals_GlascIndustries",
+        "displayName": "祖安",
+        "description": "戈拉斯克工业"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ionia.png",
+        "nameId": "TFT9_RegionPortals_GodWillowsGrove",
+        "displayName": "艾欧尼亚",
+        "description": "帝柳的树丛"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Freljord.png",
+        "nameId": "TFT9_RegionPortals_HearthHome",
+        "displayName": "弗雷尔卓德",
+        "description": "炉乡"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Freljord.png",
+        "nameId": "TFT9_RegionPortals_HearthHome_HR",
+        "displayName": "弗雷尔卓德",
+        "description": "炉乡"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Demacia.png",
+        "nameId": "TFT9_RegionPortals_HouseLightshield",
+        "displayName": "德玛西亚",
+        "description": "光盾家族"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Demacia.png",
+        "nameId": "TFT9_RegionPortals_HouseLightshield_HR",
+        "displayName": "德玛西亚",
+        "description": "光盾家族"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Noxus.png",
+        "nameId": "TFT9_RegionPortals_ImmortalBastion",
+        "displayName": "诺克萨斯",
+        "description": "不朽堡垒"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Noxus.png",
+        "nameId": "TFT9_RegionPortals_ImmortalBastion_HR",
+        "displayName": "诺克萨斯",
+        "description": "不朽堡垒"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Piltover.png",
+        "nameId": "TFT9_RegionPortals_JaycesWorkshop",
+        "displayName": "皮尔特沃夫",
+        "description": "杰斯的武器工坊"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Targon.png",
+        "nameId": "TFT9_RegionPortals_MarusOmegnum",
+        "displayName": "巨神峰",
+        "description": "癸亥玛吕寺"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Targon.png",
+        "nameId": "TFT9_RegionPortals_MarusOmegnum_HR",
+        "displayName": "巨神峰",
+        "description": "癸亥玛吕寺"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Noxus.png",
+        "nameId": "TFT9_RegionPortals_Noxkraya",
+        "displayName": "诺克萨斯",
+        "description": "诺克斯卡里亚角斗场"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Freljord.png",
+        "nameId": "TFT9_RegionPortals_OrnnsForge",
+        "displayName": "弗雷尔卓德",
+        "description": "奥恩的锻炉"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Freljord.png",
+        "nameId": "TFT9_RegionPortals_OrnnsForge_HR",
+        "displayName": "弗雷尔卓德",
+        "description": "奥恩的锻炉"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Demacia.png",
+        "nameId": "TFT9_RegionPortals_PetriciteForest",
+        "displayName": "德玛西亚",
+        "description": "埃仁蒙特"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ionia.png",
+        "nameId": "TFT9_RegionPortals_PlacidiumLibrary",
+        "displayName": "艾欧尼亚",
+        "description": "普雷西典书库"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ionia.png",
+        "nameId": "TFT9_RegionPortals_PlacidiumLibrary_HR",
+        "displayName": "艾欧尼亚",
+        "description": "普雷西典书库"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_BandleCity.png",
+        "nameId": "TFT9_RegionPortals_ScuttlePuddle",
+        "displayName": "班德尔城",
+        "description": "迅捷蟹水潭"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Shurima.png",
+        "nameId": "TFT9_RegionPortals_ShiftingSands",
+        "displayName": "恕瑞玛",
+        "description": "移形流沙"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Shurima.png",
+        "nameId": "TFT9_RegionPortals_ShurimanBazaar",
+        "displayName": "恕瑞玛",
+        "description": "恕瑞玛集市"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Piltover.png",
+        "nameId": "TFT9_RegionPortals_StillwaterHold",
+        "displayName": "皮尔特沃夫",
+        "description": "静水监狱"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Targon.png",
+        "nameId": "TFT9_RegionPortals_TargonPrime",
+        "displayName": "巨神峰",
+        "description": "巨神主域"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Targon.png",
+        "nameId": "TFT9_RegionPortals_TargonPrime_HR",
+        "displayName": "巨神峰",
+        "description": "巨神主域"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ionia.png",
+        "nameId": "TFT9_RegionPortals_TheDreamingPool",
+        "displayName": "艾欧尼亚",
+        "description": "幻梦池"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Void.png",
+        "nameId": "TFT9_RegionPortals_TheHallOfTheNine",
+        "displayName": "虚空之地",
+        "description": "九尊之厅"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Void.png",
+        "nameId": "TFT9_RegionPortals_TheHallOfTheNine_HR",
+        "displayName": "虚空之地",
+        "description": "九尊之厅"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Void.png",
+        "nameId": "TFT9_RegionPortals_TheRupture",
+        "displayName": "虚空之地",
+        "description": "地疝"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Targon.png",
+        "nameId": "TFT9_RegionPortals_TheSummit",
+        "displayName": "巨神峰",
+        "description": "峰顶"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Targon.png",
+        "nameId": "TFT9_RegionPortals_TheSummit_HR",
+        "displayName": "巨神峰",
+        "description": "峰顶"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Zaun.png",
+        "nameId": "TFT9_RegionPortals_TheSump",
+        "displayName": "祖安",
+        "description": "地沟"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Piltover.png",
+        "nameId": "TFT9_RegionPortals_TheUniversity",
+        "displayName": "皮尔特沃夫",
+        "description": "皮城大学"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_ShadowIsles.png",
+        "nameId": "TFT9_RegionPortals_ThreshsSanctum",
+        "displayName": "暗影岛",
+        "description": "锤石的圣所"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_ShadowIsles.png",
+        "nameId": "TFT9_RegionPortals_ThreshsSanctum_HR",
+        "displayName": "暗影岛",
+        "description": "锤石的圣所"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Void.png",
+        "nameId": "TFT9_RegionPortals_UnstableRift",
+        "displayName": "虚空之地",
+        "description": "不稳定裂隙"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Shurima.png",
+        "nameId": "TFT9_RegionPortals_WarlordsPalace",
+        "displayName": "恕瑞玛",
+        "description": "督军宫殿"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Shurima.png",
+        "nameId": "TFT9_RegionPortals_WarlordsPalace_HR",
+        "displayName": "恕瑞玛",
+        "description": "督军宫殿"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Noxus.png",
+        "nameId": "TFT9_RegionPortals_YordlePordles",
+        "displayName": "诺克萨斯",
+        "description": "绞肉机角斗场"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Noxus.png",
+        "nameId": "TFT9_RegionPortals_YordlePordles_HR",
+        "displayName": "诺克萨斯",
+        "description": "绞肉机角斗场"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_ShadowIsles.png",
+        "nameId": "TFT9_RegionPortals_YoricksGraveyard",
+        "displayName": "暗影岛",
+        "description": "约里克的坟场"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_BandleCity.png",
+        "nameId": "TFT9_RegionPortals_YuumisZoomZone",
+        "displayName": "班德尔城",
+        "description": "悠米的飙速地带"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Zaun.png",
+        "nameId": "TFT9_RegionPortals_BasementShow",
+        "displayName": "祖安",
+        "description": "地下室演出"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Piltover.png",
+        "nameId": "TFT9_RegionPortals_BeatsByScuttle",
+        "displayName": "皮尔特沃夫",
+        "description": "迅捷蟹节拍"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_CardinalArcology",
+        "displayName": "以绪塔尔",
+        "description": "中心巨塔"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Demacia.png",
+        "nameId": "TFT9_RegionPortals_CenterStage",
+        "displayName": "德玛西亚",
+        "description": "中心舞台"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Freljord.png",
+        "nameId": "TFT9_RegionPortals_ChillBeats",
+        "displayName": "弗雷尔卓德",
+        "description": "寒颤节拍"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Zaun.png",
+        "nameId": "TFT9_RegionPortals_Crescendo",
+        "displayName": "祖安",
+        "description": "狂舞终乐章"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Bilgewater.png",
+        "nameId": "TFT9_RegionPortals_FinnsMarket",
+        "displayName": "比尔吉沃特",
+        "description": "芬恩的市场"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_BandleCity.png",
+        "nameId": "TFT9_RegionPortals_FoodfightTactics",
+        "displayName": "班德尔城",
+        "description": "美食之弈"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Bilgewater.png",
+        "nameId": "TFT9_RegionPortals_HighNotes",
+        "displayName": "比尔吉沃特",
+        "description": "清籁穿云"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ionia.png",
+        "nameId": "TFT9_RegionPortals_IonianDuet",
+        "displayName": "艾欧尼亚",
+        "description": "艾欧尼亚二重奏"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_Ixaocan",
+        "displayName": "以绪塔尔",
+        "description": "以绪奥肯"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Demacia.png",
+        "nameId": "TFT9_RegionPortals_OpeningAct",
+        "displayName": "德玛西亚",
+        "description": "开场表演"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_ShadowIsles.png",
+        "nameId": "TFT9_RegionPortals_ProcessionalDirge",
+        "displayName": "暗影岛",
+        "description": "行列挽歌"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Bilgewater.png",
+        "nameId": "TFT9_RegionPortals_RatTown",
+        "displayName": "比尔吉沃特",
+        "description": "鼠镇"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Bilgewater.png",
+        "nameId": "TFT9_RegionPortals_RatTown_HR",
+        "displayName": "比尔吉沃特",
+        "description": "鼠镇"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_RollingStone",
+        "displayName": "以绪塔尔",
+        "description": "摇滚"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Void.png",
+        "nameId": "TFT9_RegionPortals_RupturedHarmony",
+        "displayName": "虚空之地",
+        "description": "地疝和弦"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_SerpentineRiver",
+        "displayName": "以绪塔尔",
+        "description": "蟒河"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_SerpentineRiver_Component",
+        "displayName": "",
+        "description": "基础装备锻造器"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_SerpentineRiver_Gold",
+        "displayName": "",
+        "description": "金币"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_SerpentineRiver_Health",
+        "displayName": "",
+        "description": "生命值"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_SerpentineRiver_LootOrb",
+        "displayName": "",
+        "description": "神秘宝盒"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_SerpentineRiver_Rerolls",
+        "displayName": "",
+        "description": "刷新次数"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_SerpentineRiver_Spatula",
+        "displayName": "",
+        "description": "金铲铲"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_SerpentineRiver_SupportItem",
+        "displayName": "",
+        "description": "辅助装"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_SerpentineRiver_Tome",
+        "displayName": "",
+        "description": "纹章之书"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Bilgewater.png",
+        "nameId": "TFT9_RegionPortals_SlaughterDocks",
+        "displayName": "比尔吉沃特",
+        "description": "屠宰码头"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Bilgewater.png",
+        "nameId": "TFT9_RegionPortals_SlaughterDocks_HR",
+        "displayName": "比尔吉沃特",
+        "description": "屠宰码头"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Shurima.png",
+        "nameId": "TFT9_RegionPortals_TheGoldenEra",
+        "displayName": "恕瑞玛",
+        "description": "黄金时代"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Noxus.png",
+        "nameId": "TFT9_RegionPortals_TheRudeSandstorm",
+        "displayName": "诺克萨斯",
+        "description": "沙漠之战"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Bilgewater.png",
+        "nameId": "TFT9_RegionPortals_VIPLounge",
+        "displayName": "比尔吉沃特",
+        "description": "VIP包房"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Freljord.png",
+        "nameId": "TFT9_RegionPortals_ValarsHollow",
+        "displayName": "弗雷尔卓德",
+        "description": "瓦拉尔山谷"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Freljord.png",
+        "nameId": "TFT9_RegionPortals_ValarsHollow_HR",
+        "displayName": "弗雷尔卓德",
+        "description": "瓦拉尔山谷"
+    }
+]

@@ -1,0 +1,962 @@
+[
+    {
+        "id": 205,
+        "nameTRA": "物理转魔法",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/ADAPt_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 1,
+        "nameTRA": "加速巫术",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/AcceleratingSorcery_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 141,
+        "nameTRA": "全心为你",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/AllForYou_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 2,
+        "nameTRA": "尖端发明家",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/ApexInventor_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 210,
+        "nameTRA": "背刺",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Mythical_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 4,
+        "nameTRA": "回归基本功",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/BackToBasics_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 5,
+        "nameTRA": "号令之旗",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/BannerOfCommand_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 180,
+        "nameTRA": "超强大脑",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/BigBrain_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 6,
+        "nameTRA": "利刃华尔兹",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/BladeWaltz_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 200,
+        "nameTRA": "血亲兄弟",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/BloodBrother_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 7,
+        "nameTRA": "大力",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/BluntForce_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 103,
+        "nameTRA": "面包和黄油",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/BreadAndButter_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 151,
+        "nameTRA": "面包和奶酪",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/BreadAndCheese_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 150,
+        "nameTRA": "面包和果酱",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/BreadAndJam_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 8,
+        "nameTRA": "雪橇战术",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/BuckleUp_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 9,
+        "nameTRA": "霸符兄弟",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/BuffBuddies_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 10,
+        "nameTRA": "炮灰",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/CannonFodder_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 11,
+        "nameTRA": "你摸不到",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/CantTouchThis_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 12,
+        "nameTRA": "王车易位",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Castle_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 13,
+        "nameTRA": "星界躯体",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/CelestialBody_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 193,
+        "nameTRA": "星原之准",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/CenterOfTheUniverse_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 166,
+        "nameTRA": "连锁闪电",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/ChainLightning_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 14,
+        "nameTRA": "专属司机",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Chauffeur_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 15,
+        "nameTRA": "生机绽放",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/CircleOfDeath_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 110,
+        "nameTRA": "晾衣绳",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Clothesline_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 16,
+        "nameTRA": "连招大师",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/ComboMaster_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 17,
+        "nameTRA": "职业杀手",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/ContractKiller_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 18,
+        "nameTRA": "巨像的勇气",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/CourageOfTheColossus_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 118,
+        "nameTRA": "会心治疗",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/CriticalHealing_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 215,
+        "nameTRA": "黑暗赐福",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/DarkBlessing_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 19,
+        "nameTRA": "全凭身法",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Dashing_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 20,
+        "nameTRA": "黎明使者的坚决",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/DawnbringersResolve_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 217,
+        "nameTRA": "死亡触摸",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Deathtouch_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 21,
+        "nameTRA": "防御计略",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/DefensiveManeuvers_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 22,
+        "nameTRA": "灵巧",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Deft_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 171,
+        "nameTRA": "去质",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Dematerialize_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 23,
+        "nameTRA": "魔鬼之舞",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/DemonsDance_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 218,
+        "nameTRA": "亵渎者",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Desecrator_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 24,
+        "nameTRA": "择日赴死",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/DieAnotherDay_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 25,
+        "nameTRA": "俯冲轰炸",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/DiveBomber_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 26,
+        "nameTRA": "唯快不破",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/DontBlink_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 102,
+        "nameTRA": "请勿追击",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/DontChase_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 219,
+        "nameTRA": "末日预言者",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Doomsayer_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 134,
+        "nameTRA": "亮出你的剑",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/DrawYourSword_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 27,
+        "nameTRA": "大地苏醒",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Earthwake_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 28,
+        "nameTRA": "侵蚀",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Erosion_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 29,
+        "nameTRA": "虚幻武器",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/EtherealWeapon_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 30,
+        "nameTRA": "尤里卡",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Eureka_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 31,
+        "nameTRA": "活力焕发",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Evocation_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 32,
+        "nameTRA": "裁决使",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Executioner_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 33,
+        "nameTRA": "弹簧飞爪",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/ExtendoArm_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 34,
+        "nameTRA": "堕落圣盾",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/FallenAegis_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 35,
+        "nameTRA": "感受燃烧",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/FeelTheBurn_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 194,
+        "nameTRA": "精怪魔法",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/FeyMagic_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 36,
+        "nameTRA": "火上浇油",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Firebrand_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 37,
+        "nameTRA": "急救用具",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/FirstAidKit_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 187,
+        "nameTRA": "闪光弹",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Flashbang_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 116,
+        "nameTRA": "闪现向前",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Flashy_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 38,
+        "nameTRA": "有始有终",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/FromBeginningToEnd_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 39,
+        "nameTRA": "冰霜 幽灵",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/FrostWraith_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 40,
+        "nameTRA": "冰封地基",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/FrozenFoundations_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 213,
+        "nameTRA": "完全自动化",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/FullyAutomated_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 195,
+        "nameTRA": "巨人杀手",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/GiantSlayer_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 41,
+        "nameTRA": "歌利亚巨人",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Goliath_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 138,
+        "nameTRA": "渴血",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/GoreDrink_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 42,
+        "nameTRA": "恶趣味",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/GuiltyPleasure_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 181,
+        "nameTRA": "重量级打击手",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/HeavyHitter_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 207,
+        "nameTRA": "纹丝不动",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/HoldVeryStill_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 198,
+        "nameTRA": "圣火",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/HolyFire_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 105,
+        "nameTRA": "家园卫士",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Homeguard_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 44,
+        "nameTRA": "冰寒",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/IceCold_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 149,
+        "nameTRA": "不动如山",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Impassable_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 45,
+        "nameTRA": "炼狱导管",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/InfernalConduit_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 46,
+        "nameTRA": "炼狱龙魂",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/InfernalSoul_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 110,
+        "nameTRA": "配装小能手",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/MidnightExpress_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 47,
+        "nameTRA": "关键暴击",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/ItsCritical_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 211,
+        "nameTRA": "杀戮时间到了",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/ItsKillingTime_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 48,
+        "nameTRA": "珠光护手",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/JeweledGauntlet_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 49,
+        "nameTRA": "果汁盒",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/JuiceBox_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 50,
+        "nameTRA": "基石法师",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/KeystoneConjurer_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 174,
+        "nameTRA": "镭射眼",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/LaserEyes_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 51,
+        "nameTRA": "点亮他们！",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/LightEmUp_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 52,
+        "nameTRA": "闪电打击",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/LightningStrikes_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 53,
+        "nameTRA": "科学狂人",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/MadScientist_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 133,
+        "nameTRA": "魔法飞弹",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/MagicMissile_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 129,
+        "nameTRA": "神射法师",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Marksmage_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 54,
+        "nameTRA": "物法皆修",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/MasterOfDuality_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 55,
+        "nameTRA": "午夜快递",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/MidnightExpress_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 56,
+        "nameTRA": "由心及物",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/MindToMatter_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 104,
+        "nameTRA": "仆从大师",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Minionmancer_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 172,
+        "nameTRA": "镜花水月",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/MirrorImage_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 57,
+        "nameTRA": "山脉龙魂",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/MountainSoul_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 58,
+        "nameTRA": "秘术冲拳",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/MysticPunch_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 59,
+        "nameTRA": "神话化身",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Mythical_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 177,
+        "nameTRA": "套娃",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/NestingDoll_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 43,
+        "nameTRA": "位移魔术",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/NowYouSeeMe_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 109,
+        "nameTRA": "誓约者",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Oathsworn_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 60,
+        "nameTRA": "海洋龙魂",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/OceanSoul_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 61,
+        "nameTRA": "回力OK镖",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/OKBoomerang_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 62,
+        "nameTRA": "全能龙魂",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/OmniSoul_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 208,
+        "nameTRA": "轨道镭射",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/OrbitalLaser_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 63,
+        "nameTRA": "狂徒豪气",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/OutlawsGrit_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 175,
+        "nameTRA": "寄生关系",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/ParasiticRelationship_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 64,
+        "nameTRA": "坚韧",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Perseverance_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 65,
+        "nameTRA": "超凡邪恶",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/PhenomenalEvil_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 216,
+        "nameTRA": "疫病使者",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Plaguebearer_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 66,
+        "nameTRA": "量子计算",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/QuantumComputing_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 192,
+        "nameTRA": "任务：惩戒天使",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Quest_AngelOfRetribution_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 152,
+        "nameTRA": "任务：钢化你心",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Quest_SteelYourHeart_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 154,
+        "nameTRA": "任务：海牛阿福的勇士",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Quest_UrfsChampion_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 156,
+        "nameTRA": "任务：沃格勒特的巫师帽",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Quest_WoogletsWitchcap_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 67,
+        "nameTRA": "古式佳酿",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/RabbleRousing_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 125,
+        "nameTRA": "副本BOSS",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/RaidBoss_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 68,
+        "nameTRA": "循环往复",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Recursion_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 69,
+        "nameTRA": "退敌力场",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Repulsor_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 165,
+        "nameTRA": "重启",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Restart_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 70,
+        "nameTRA": "无休回复",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/RestlessRestoration_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 170,
+        "nameTRA": "万用瞄准镜",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/ScopedWeapons_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 71,
+        "nameTRA": "更万用的瞄准镜",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/ScopierWeapons_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 115,
+        "nameTRA": "最万用的瞄准镜",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/ScopiestWeapons_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 72,
+        "nameTRA": "炽烈黎明",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/SearingDawn_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 108,
+        "nameTRA": "自我毁灭",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/SelfDestruct_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 120,
+        "nameTRA": "超越死亡的效劳",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/ServeBeyondDeath_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 73,
+        "nameTRA": "暗影疾奔",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/ShadowRunner_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 74,
+        "nameTRA": "缩小射线",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/ShrinkRay_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 113,
+        "nameTRA": "老练狙神",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/SkilledSniper_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 136,
+        "nameTRA": "扇巴掌",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/SlapAround_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 75,
+        "nameTRA": "慢炖",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/SlowCooker_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 176,
+        "nameTRA": "雪球大战！",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/SnowballFight_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 76,
+        "nameTRA": "天音爆",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/SonicBoom_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 77,
+        "nameTRA": "灵魂虹吸",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/SoulSiphon_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 135,
+        "nameTRA": "法术苏醒",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/SpellWake_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 214,
+        "nameTRA": "旋转至胜",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/SpinToWin_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 78,
+        "nameTRA": "灵魂连接",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/SpiritLink_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 204,
+        "nameTRA": "叠角龙",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/StackosaurusRex_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 123,
+        "nameTRA": "召唤师峡谷的轮盘",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/SummonersRoulette_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 79,
+        "nameTRA": "战争交响乐",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/SymphonyOfWar_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 80,
+        "nameTRA": "会心防守",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/TankItOrLeaveIt_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 81,
+        "nameTRA": "踢踏舞",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/TapDancer_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 82,
+        "nameTRA": "残暴之力",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/TheBrutalizer_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 83,
+        "nameTRA": "窃贼手套",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/ThiefsGloves_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 84,
+        "nameTRA": "穿针引线",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/ThreadTheNeedle_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 85,
+        "nameTRA": "折磨之叉",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Tormentor_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 86,
+        "nameTRA": "精准奇才",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/TrueshotProdigy_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 107,
+        "nameTRA": "接二连三",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/TwiceThrice_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 87,
+        "nameTRA": "台风",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Typhoon_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 88,
+        "nameTRA": "终极刷新",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/UltimateRevolution_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 112,
+        "nameTRA": "终极不可阻挡",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/UltimateUnstoppable_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 89,
+        "nameTRA": "遁入暗影",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Vanish_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 90,
+        "nameTRA": "复仇",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Vengeance_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 91,
+        "nameTRA": "良性循环",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/VirtuousCycle_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 92,
+        "nameTRA": "易损",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Vulnerability_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 93,
+        "nameTRA": "热身动作",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/WarmupRoutine_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 94,
+        "nameTRA": "自愿牺牲",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/WillingSacrifice_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 95,
+        "nameTRA": "风语者的祝福",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/WindspeakersBlessing_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 96,
+        "nameTRA": "时光之智慧",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/WisdomOfAges_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 97,
+        "nameTRA": "巫师式思考",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/WitchfulThinking_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    },
+    {
+        "id": 98,
+        "nameTRA": "急急小子",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/WithHaste_small.Arena_Augments_V2.png",
+        "rarity": "kGold"
+    },
+    {
+        "id": 99,
+        "nameTRA": "中娅显灵",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/ZhonyasEpiphany_small.Arena_Augments_V2.png",
+        "rarity": "kPrismatic"
+    },
+    {
+        "id": 206,
+        "nameTRA": "魔法转物理",
+        "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Escapade_small.Arena_Augments_V2.png",
+        "rarity": "kSilver"
+    }
+]

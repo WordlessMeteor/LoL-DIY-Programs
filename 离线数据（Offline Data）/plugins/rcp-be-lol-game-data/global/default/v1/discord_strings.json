@@ -1,0 +1,17 @@
+{
+    "Disc_Pres_Map_10": "Twisted Treeline",
+    "Disc_Pres_Map_11": "Summoner's Rift",
+    "Disc_Pres_Map_12": "Howling Abyss",
+    "Disc_Pres_Map_22": "Teamfight Tactics",
+    "Disc_Pres_QueueType_ARAM": "ARAM",
+    "Disc_Pres_QueueType_BOT": "Co-op vs. AI",
+    "Disc_Pres_QueueType_CUSTOM": "Custom",
+    "Disc_Pres_QueueType_NORMAL": "Normal",
+    "Disc_Pres_QueueType_RANKED": "Ranked",
+    "Disc_Pres_State_championSelect": "In Champion Select",
+    "Disc_Pres_State_hosting": "In Lobby",
+    "Disc_Pres_State_hosting_Custom": "Hosting custom game",
+    "Disc_Pres_State_inGame": "In Game",
+    "Disc_Pres_State_inQueue": "In Queue",
+    "Disc_Pres_State_outOfGame": "Out of game"
+}

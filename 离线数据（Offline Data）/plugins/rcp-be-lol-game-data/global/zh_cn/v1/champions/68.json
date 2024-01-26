@@ -1,0 +1,1230 @@
+{
+    "id": 68,
+    "name": "机械公敌",
+    "alias": "Rumble",
+    "title": "兰博",
+    "shortBio": "兰博是一个有脾气的约德尔青年发明家。他仅用自己的双手和一堆废铁，就造出了一架巨大的机甲，上面还搭载了电击鱼叉和燃烧火箭弹等超常规武器。虽然其他人可能对他的垃圾场发明嗤之以鼻，但兰博根本不在乎——毕竟，喷出铄金之火的枪口，在他自己手里。",
+    "tacticalInfo": {
+        "style": 9,
+        "difficulty": 3,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 2,
+        "crowdControl": 2,
+        "mobility": 1,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/68.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/68.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/68.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/68.ogg",
+    "roles": [
+        "fighter",
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 68000,
+            "isBase": true,
+            "name": "机械公敌",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/68/68000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/68/68000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/68/68000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rumble/Skins/Base/RumbleLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 68001,
+            "isBase": false,
+            "name": "热带丛林 兰博",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/68/68001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/68/68001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/68/68001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rumble/Skins/Skin01/RumbleLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 68002,
+            "isBase": false,
+            "name": "独眼海盗 兰博",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/68/68002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/68/68002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/68/68002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rumble/Skins/Skin02/RumbleLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 49
+                }
+            ],
+            "skinAugments": null,
+            "description": "当发明的重担对于一个年轻约德尔人的肩膀来说太过沉重时，就没有比航海更好的选择了！当兰博在各个海岸实施恐怖统治时，没有什么比掠夺和劫掠更能让他重获新生了。"
+        },
+        {
+            "id": 68003,
+            "isBase": false,
+            "name": "银河魔装机神 兰博",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/68/68003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/68/68003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/68/68003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rumble/Skins/skin03/RumbleLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 21
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为超级银河护卫军的创始人，兰博一直梦想着拯救世界……﻿依靠他的“爆炸性面部融化器”﻿以及“勇猛的千兆护卫”。﻿到今天，他的同伴也不清楚这两个术语到底指什么，但是他们也不问——因为一个操控着火焰喷射机甲的约德尔人可是极其不稳定的。"
+        },
+        {
+            "id": 68004,
+            "isBase": false,
+            "name": "废土男爵 兰博",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/68/68004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/68/68004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/68/68004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rumble/Skins/Skin04/RumbleLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68004.png",
+            "chromas": [
+                {
+                    "id": 68005,
+                    "name": "废土男爵 兰博 狂飙烈焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68005.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 68006,
+                    "name": "废土男爵 兰博 漆黑霸主",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68006.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 68007,
+                    "name": "废土男爵 兰博 碧蓝幻影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68007.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 68008,
+                    "name": "废土男爵 兰博 白纹凶虎",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68008.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 68009,
+                    "name": "废土男爵 兰博 音波爆裂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68009.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 68010,
+                    "name": "废土男爵 兰博 死亡使者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68010.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 68011,
+                    "name": "废土男爵 兰博 荒漠渣客",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68011.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 68012,
+                    "name": "废土男爵 兰博 丛林特攻",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68012.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 70
+                }
+            ],
+            "skinAugments": null,
+            "description": "没有什么东西能如同看见远方的兰博那般让旅行者心凉的了。他的钢铁死亡越野车散发的辐射浓烟，意味着有人已经引起的他的注意，并且但凡引起兰博注意的人，都有一个坏习惯，那就是死得透透的。"
+        },
+        {
+            "id": 68013,
+            "isBase": false,
+            "name": "太空律动 “串烧大师” 兰博",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/68/68013.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/68/68013.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/68/68013.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rumble/Skins/Skin13/RumbleLoadScreen_13.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Rumble/Skins/Skin13/RumbleLoadscreen_13_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68013.png",
+            "chromas": [
+                {
+                    "id": 68014,
+                    "name": "“串烧大师” 兰博 免费果汁机-苹果汁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68014.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 68015,
+                    "name": "“串烧大师” 兰博 免费果汁机-桃汁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68015.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 68016,
+                    "name": "“串烧大师” 兰博 免费果汁机-菠萝汁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68016.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 68017,
+                    "name": "“串烧大师” 兰博 免费果汁机-芒果汁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68017.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 68018,
+                    "name": "“串烧大师” 兰博 免费果汁机-猕猴桃汁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68018.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 68019,
+                    "name": "“串烧大师” 兰博 免费果汁机-蓝莓汁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68019.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 68020,
+                    "name": "“串烧大师” 兰博 免费果汁机-樱桃汁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68020.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 68021,
+                    "name": "“串烧大师” 兰博 免费果汁机-酸梅汁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68021.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 68022,
+                    "name": "“串烧大师” 兰博 免费果汁机-葡萄汁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68022.png",
+                    "colors": [
+                        "#9DFFEF",
+                        "#AA55FF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在太空律动(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 144
+                }
+            ],
+            "skinAugments": null,
+            "description": "“怀古未来风”星球厌倦了收听丽桑卓的邪恶影响力带来的枯燥音乐。现在，在精心打造了一套由他自己设计的机甲后，兰博在他自己挑选的家园世界的各地踏着舞步，并对想让人们远离舞蹈的任何势力释放强大的火箭集群和一条动感低音音轨。"
+        },
+        {
+            "id": 68023,
+            "isBase": false,
+            "name": "咖啡甜心 兰博",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/68/68023.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/68/68023.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/68/68023.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rumble/Skins/Skin23/RumbleLoadScreen_23.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68023.png",
+            "chromas": [
+                {
+                    "id": 68024,
+                    "name": "咖啡甜心 兰博 草莓戚风",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68024.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 68025,
+                    "name": "咖啡甜心 兰博 吉子芝士",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68025.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 68026,
+                    "name": "咖啡甜心 兰博 抹茶巧克力",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68026.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 68027,
+                    "name": "咖啡甜心 兰博 海盐泡芙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68027.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 68028,
+                    "name": "咖啡甜心 兰博 酒醉樱桃",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68028.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 68029,
+                    "name": "咖啡甜心 兰博 提子班戟",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68029.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 68030,
+                    "name": "咖啡甜心 兰博 焦糖布丁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68030.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 68031,
+                    "name": "咖啡甜心 兰博 核桃巴菲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/68/68031.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 153
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为咖啡馆的得力咖啡师，兰博总是提供热气腾腾的美味！他那套值得信赖的咖啡师制服虽然不是传统形制，却能有效满足任何一家咖啡馆的需求。在品尝他的饮品之前一定要检查一下温度——他的创意之作就是因偶尔失控而闻名的！"
+        }
+    ],
+    "passive": {
+        "name": "机械重组",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Rumble/HUD/Icons2D/Rumble_JunkyardTitan1.png",
+        "abilityVideoPath": "champion-abilities/0068/ability_0068_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0068/ability_0068_P1.jpg",
+        "description": "兰博的技能都能使其获得热量。当兰博的热量达到50%时，他会处于危险温度状态，所有基础技能都会获得额外效果。当热量达到100%时，他会进入过热状态，获得额外的攻击速度并让他的普通攻击造成额外伤害，但也会让他在数秒内无法施放技能。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "纵火盛宴",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Rumble/HUD/Icons2D/Rumble_Flamespitter.png",
+            "abilityVideoPath": "champion-abilities/0068/ability_0068_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0068/ability_0068_Q1.jpg",
+            "cost": "@Effect2Amount@热量",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "兰博朝敌人放火，每秒对前方锥形范围内的敌人造成伤害，持续3秒。在危险温度时，兰博增加对其造成的伤害。",
+            "dynamicDescription": "兰博点燃他的火焰喷射器，在@FlamespitterDuration@秒里持续造成共<magicDamage>@FlatDamage@外加@HealthDamage*100@%最大生命值的魔法伤害</magicDamage>，对小兵降低至<attention>@MinionMod*100@%</attention>。<br><br><keywordMajor>危险温度：</keywordMajor>提升至<magicDamage>@EmpoweredDamage@外加@EmpoweredHealth@最大生命值的魔法伤害</magicDamage>。<br><br><rules>对野怪的百分比伤害的上限为@MonsterCap@。</rules>@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                10.0000,
+                9.0000,
+                8.0000,
+                7.0000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.1000,
+                "coefficient2": 0.1000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    180.0000,
+                    180.0000,
+                    220.0000,
+                    260.0000,
+                    300.0000,
+                    340.0000,
+                    380.0000
+                ],
+                "Effect2Amount": [
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.6000,
+                    0.6000,
+                    0.6500,
+                    0.7000,
+                    0.7500,
+                    0.8000,
+                    0.8500
+                ],
+                "Effect5Amount": [
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000
+                ],
+                "Effect6Amount": [
+                    12.0000,
+                    12.0000,
+                    12.0000,
+                    12.0000,
+                    12.0000,
+                    12.0000,
+                    12.0000
+                ],
+                "Effect7Amount": [
+                    0.2500,
+                    0.2500,
+                    0.2500,
+                    0.2500,
+                    0.2500,
+                    0.2500,
+                    0.2500
+                ],
+                "Effect8Amount": [
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000
+                ],
+                "Effect9Amount": [
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "破碎护盾",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Rumble/HUD/Icons2D/Rumble_ScrapShield.png",
+            "abilityVideoPath": "champion-abilities/0068/ability_0068_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0068/ability_0068_W1.jpg",
+            "cost": "@HeatCost@热量",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "兰博制造一个护盾，保护自己免受伤害，并短时间内增加移动速度。在危险温度时，兰博增加护盾强度和速度加成。",
+            "dynamicDescription": "兰博开启一道屏障，获得持续@ShieldDuration.1@秒的<shield>@TotalShield@护盾值</shield>和持续@MoveSpeedDuration@秒的<speed>@MoveSpeed*100@%移动速度</speed>。<br><br><keywordMajor>危险温度：</keywordMajor>屏障转而提供<shield>@EmpoweredShield@护盾值</shield>和<speed>@EmpoweredMS@移动速度</speed>。@SpellModifierDescriptionAppend@",
+            "range": [
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.3000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    60.0000,
+                    60.0000,
+                    90.0000,
+                    120.0000,
+                    150.0000,
+                    180.0000,
+                    210.0000
+                ],
+                "Effect2Amount": [
+                    10.0000,
+                    10.0000,
+                    15.0000,
+                    20.0000,
+                    25.0000,
+                    30.0000,
+                    30.0000
+                ],
+                "Effect3Amount": [
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000
+                ],
+                "Effect6Amount": [
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "电子鱼叉",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Rumble/HUD/Icons2D/Rumble_ElectroHarpoon.png",
+            "abilityVideoPath": "champion-abilities/0068/ability_0068_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0068/ability_0068_E1.jpg",
+            "cost": " @FirstCastHeatCost@ 热量",
+            "cooldown": "@AmmoRechargeTime@秒充能时间(最大充能数：@MaxAmmo@)",
+            "description": "兰博发射一把鱼叉，对敌人造成魔法伤害、减速效果和魔法抗性击碎效果。兰博可同时持有2发鱼叉。在危险温度时，兰博增加其伤害和减速百分比。",
+            "dynamicDescription": "兰博发射一柄电子鱼叉，造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>、持续@SlowDuration@秒的@BaseSlowAmount@%<status>减速</status>、以及持续@ShredDuration@秒的@PercMagicPen*100@%<scaleMR>魔抗</scaleMR>击碎效果。<br><br>命中一名已被此技能<status>减速</status>的敌人时，会将<status>减速</status>提升至@EmpoweredSlowAmount@%并使敌人的<scaleMR>魔抗</scaleMR>降低@EnhancedMagicPen*100@%。<br><br><keywordMajor>危险温度：</keywordMajor>鱼叉转而造成<magicDamage>@EmpDamage@魔法伤害</magicDamage>并且<status>减速</status>和<scaleMR>魔抗击碎</scaleMR>效果提升50%。@SpellModifierDescriptionAppend@",
+            "range": [
+                850.0000,
+                850.0000,
+                850.0000,
+                850.0000,
+                850.0000,
+                850.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                0.5000,
+                0.5000,
+                0.5000,
+                0.5000,
+                0.5000,
+                0.5000
+            ],
+            "coefficients": {
+                "coefficient1": 0.4000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000
+                ],
+                "maxAmmo": [
+                    2,
+                    2,
+                    2,
+                    2,
+                    2,
+                    2
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "恒温灼烧",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Rumble/HUD/Icons2D/Rumble_R.png",
+            "abilityVideoPath": "champion-abilities/0068/ability_0068_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0068/ability_0068_R1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "兰博朝目标区域发射火箭，形成一堵火焰之墙，对范围内的敌人造成伤害并减速。",
+            "dynamicDescription": "兰博发射一列火箭，生成一道燃烧小径，造成@SlowAmount@%<status>减速</status>并在@TrailDuration@秒里持续造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>。<br><br>兰博可以在施放这个技能时，通过点击并拖拽来控制燃烧小径的方向。@SpellModifierDescriptionAppend@",
+            "range": [
+                1750.0000,
+                1750.0000,
+                1750.0000,
+                1750.0000,
+                1750.0000,
+                1750.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                130.0000,
+                105.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.5000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

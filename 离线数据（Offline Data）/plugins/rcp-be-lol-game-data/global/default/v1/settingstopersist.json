@@ -1,0 +1,182 @@
+{
+    "files": [
+        {
+            "name": "Game.cfg",
+            "persisted": false,
+            "sections": [
+                {
+                    "name": "General",
+                    "persisted": false,
+                    "settings": [
+                        {
+                            "name": "CfgVersion",
+                            "persisted": true
+                        },
+                        {
+                            "name": "PredictMovement",
+                            "persisted": true
+                        },
+                        {
+                            "name": "RecommendJunglePaths",
+                            "persisted": true
+                        },
+                        {
+                            "name": "GameMouseSpeed",
+                            "persisted": true
+                        },
+                        {
+                            "name": "SnapCameraOnRespawn",
+                            "persisted": true
+                        },
+                        {
+                            "name": "RelativeTeamColors",
+                            "persisted": true
+                        },
+                        {
+                            "name": "EnableTargetedAttackMove",
+                            "persisted": true
+                        },
+                        {
+                            "name": "AutoAcquireTarget",
+                            "persisted": true
+                        },
+                        {
+                            "name": "ShowTurretRangeIndicators",
+                            "persisted": true
+                        },
+                        {
+                            "name": "OSXMouseAcceleration",
+                            "persisted": true
+                        },
+                        {
+                            "name": "ThemeMusic",
+                            "persisted": true
+                        },
+                        {
+                            "name": "EnableAudio",
+                            "persisted": true
+                        },
+                        {
+                            "name": "LanguageIndex",
+                            "persisted": true
+                        },
+                        {
+                            "name": "LanguageLocaleRegion",
+                            "persisted": true
+                        },
+                        {
+                            "name": "EnableLeftMouseButtonAttackMove",
+                            "persisted": true
+                        },
+                        {
+                            "name": "TargetChampionsOnlyAsToggle",
+                            "persisted": true
+                        },
+                        {
+                            "name": "AlwaysShowExtendedTooltips",
+                            "persisted": true
+                        },
+                        {
+                            "name": "CursorOverride",
+                            "persisted": true
+                        },
+                        {
+                            "name": "CursorScale",
+                            "persisted": true
+                        },
+                        {
+                            "name": "EnableScreenShake",
+                            "persisted": true
+                        }
+                    ]
+                },
+                {
+                    "name": "Performance",
+                    "persisted": false,
+                    "settings": [
+                        {
+                            "name": "EnableHUDAnimations",
+                            "persisted": true
+                        }
+                    ]
+                },
+                {
+                    "name": "HUD",
+                    "persisted": true
+                },
+                {
+                    "name": "TFTHUD",
+                    "persisted": true
+                },
+                {
+                    "name": "Voice",
+                    "persisted": false,
+                    "settings": [
+                        {
+                            "name": "ShowVoicePanelWithScoreboard",
+                            "persisted": true
+                        },
+                        {
+                            "name": "ShowVoiceChatHalos",
+                            "persisted": true
+                        }
+                    ]
+                },
+                {
+                    "name": "ItemShop",
+                    "persisted": true
+                },
+                {
+                    "name": "Volume",
+                    "persisted": true
+                },
+                {
+                    "name": "FloatingText",
+                    "persisted": true
+                },
+                {
+                    "name": "LossOfControl",
+                    "persisted": true
+                },
+                {
+                    "name": "ColorPalette",
+                    "persisted": true
+                },
+                {
+                    "name": "Chat",
+                    "persisted": true
+                },
+                {
+                    "name": "TFTChat",
+                    "persisted": true
+                },
+                {
+                    "name": "Accessibility",
+                    "persisted": false,
+                    "settings": [
+                        {
+                            "name": "ColorLevel",
+                            "persisted": true
+                        },
+                        {
+                            "name": "ColorGamma",
+                            "persisted": true
+                        },
+                        {
+                            "name": "ColorBrightness",
+                            "persisted": true
+                        },
+                        {
+                            "name": "ColorContrast",
+                            "persisted": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Input.ini",
+            "persisted": true
+        }
+    ]
+}
