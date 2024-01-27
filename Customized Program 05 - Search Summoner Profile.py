@@ -1504,7 +1504,7 @@ async def search_profile(connection):
                                     LoLItem = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[language_code])).json()
                                 except requests.exceptions.JSONDecodeError:
                                     LoLItemPatch_deserted = LoLItemPatch_adopted
-                                    LoLItemPatch_adopted = FindPostPatch(LolItemPatch_adopted, bigPatches)
+                                    LoLItemPatch_adopted = FindPostPatch(LoLItemPatch_adopted, bigPatches)
                                     LoLItem_recapture = 1
                                     print("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItemPatch_deserted, LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_deserted, LoLItemPatch_adopted, LoLItem_recapture))
                                 except requests.exceptions.RequestException:
@@ -1832,7 +1832,7 @@ async def search_profile(connection):
                                                     LoLItem = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[language_code])).json()
                                                 except requests.exceptions.JSONDecodeError:
                                                     LoLItemPatch_deserted = LoLItemPatch_adopted
-                                                    LolItemPatch_adopted = FindPostPatch(LolItemPatch_adopted, bigPatches)
+                                                    LoLItemPatch_adopted = FindPostPatch(LoLItemPatch_adopted, bigPatches)
                                                     LoLItem_recapture = 1
                                                     print("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItemPatch_deserted, LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_deserted, LoLItemPatch_adopted, LoLItem_recapture))
                                                 except requests.exceptions.RequestException:
@@ -2131,7 +2131,7 @@ async def search_profile(connection):
                                                                 LoLItem = requests.get("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[language_code])).json()
                                                             except requests.exceptions.JSONDecodeError:
                                                                 LoLItemPatch_deserted = LoLItemPatch_adopted
-                                                                LolItemPatch_adopted = FindPostPatch(LolItemPatch_adopted, bigPatches)
+                                                                LoLItemPatch_adopted = FindPostPatch(LoLItemPatch_adopted, bigPatches)
                                                                 LoLItem_recapture = 1
                                                                 print("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItemPatch_deserted, LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_deserted, LoLItemPatch_adopted, LoLItem_recapture))
                                                             except requests.exceptions.RequestException:

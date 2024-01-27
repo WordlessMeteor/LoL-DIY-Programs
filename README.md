@@ -41,8 +41,9 @@ The following explanations only apply to the current branch. For other details (
 	- 本程序设置了默认的检测上下限。如有需要，请自行修改上下限。
 4. 本程序集中的`get_lobby_information.py`提供**反复**获取房间信息的功能。
 5. 本程序集提供了离线数据资源，用于降低资源获取时间。
-	- 该部分资源预期跟随版本定期更新。
-	- 考虑到程序集可能在美测服运行，这里默认提供美测服的资源。
+	- 离线数据资源包含*CommunityDragon*数据库的<u>pbe</u>文件夹下的<u>cdragon</u>文件夹和<u>plugins/rcp-be-lol-game-data</u>文件夹下的所有**中文和英文json文件**和*DataDragon*数据库的*dragontail存档压缩包*的<u>data</u>文件夹下的所有**中文和英文文件**。
+		- 考虑到程序集可能在美测服运行，这里默认提供CommunityDragon数据库中的美测服的资源。
+		- CommunityDragon数据库的数据资源将跟随<u>美测服的每一次调整</u>而更新，更新周期以**天**计；DataDragon数据库将跟随<u>正式服的每一次停机更新</u>而更新，更新周期以**朔望**计。
 6. 本程序集起源于主目录下的`create_custom_lobby.py`。
 # 注意事项
 1. 本程序集全部为Python程序，需要从[Python官网中](www.python.org)下载最新版本的Python。（不是最新版本也可，但不要太古早～）
@@ -288,9 +289,10 @@ For details about customized programs that is beyond the scope of creating a cus
 	- In both programs, ranges for check have been set to some values by default. For users' own requirements, please modify the ranges.
 4. In this program set, `get_lobby_information.py` allows repeatedly getting lobby information.
 5. This program set provides offline data resources to save the time of preparing data.
-	- The data resources will follow the patch update.
-	- Considering that the program set might be used when PBE client is running, the data resources of PBE version are provided by default here.
-7. The program set is adapted from `create_custom_lobby.py` in the home directory.
+	- The data resources include all **Chinese and English json files** under both <u>cdragon</u> and <u>plugins/rcp-be-lol-game-data</u> folders under <u>pbe</u> folder of *CommunityDragon* database and all **Chinese and English files** under <u>data</u> folder of the *dragontail archived file* of *DataDragon* database.
+		- Considering that the program set might be used when PBE client is running, the data resources of PBE version are provided by default here.
+		- The update of data resources in CommunityDragon database will follow <u>each adjustment of PBE</u> **daily**, and the update of data resources in DataDragon database will follow <u>each patch mainteinance of live servers </u> **about every fortnight**.
+6. The program set is adapted from `create_custom_lobby.py` in the home directory.
 # Notes on Instructions
 1. The whole program set is made of Python programs. Users are highly suggested to download the latest version of Python from [Python official website](www.python.org). (A version that isn't latest is also OK, but please make sure it's not too early, either [xD])
 	- For this first time of installation of Python, please tick on `Add Python to PATH` option.

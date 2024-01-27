@@ -7891,7 +7891,7 @@
     {
         "display_name": "刺客",
         "trait_id": "TFTTutorial_Assassin",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Assassin.png",
         "tooltip_text": "固有：在战斗环节开始时，刺客们会跃至敌方后排。<br><br>刺客们会获得额外的暴击伤害和暴击几率。<br><br><expandRow>(@MinUnits@) +@CritAmpPercent@%暴击伤害和+@CritChanceAmpPercent@%暴击几率</expandRow><br>",
         "innate_trait_sets": [
@@ -7940,7 +7940,7 @@
     {
         "display_name": "剑士",
         "trait_id": "TFTTutorial_Blademaster",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Blademaster.png",
         "tooltip_text": "(@MinUnits@) 剑士们的普通攻击在命中时有@ProcChance@%几率对目标触发1次额外的瞬间攻击。",
         "innate_trait_sets": [],
@@ -7967,7 +7967,7 @@
     {
         "display_name": "斗士",
         "trait_id": "TFTTutorial_Brawler",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Brawler.png",
         "tooltip_text": "斗士获得额外的生命值。<br><br><expandRow>(@MinUnits@) @BonusHealth@额外生命值</expandRow><br>",
         "innate_trait_sets": [],
@@ -8002,7 +8002,7 @@
     {
         "display_name": "恶魔",
         "trait_id": "TFTTutorial_Demon",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Demon.png",
         "tooltip_text": "(@MinUnits@) 【恶魔】们的攻击有@ManaDrainProcChance@%几率减少目标@ManaDrainBurn@法力并回复自身@ManaDrainDrain@法力值。<br>",
         "innate_trait_sets": [],
@@ -8034,7 +8034,7 @@
     {
         "display_name": "极地",
         "trait_id": "TFTTutorial_Glacial",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Glacial.png",
         "tooltip_text": "(@MinUnits@) 来自【极地】英雄们的攻击有@ProcPercent@%几率使其目标晕眩@StunDuration@秒。<br>",
         "innate_trait_sets": [],
@@ -8061,7 +8061,7 @@
     {
         "display_name": "枪手",
         "trait_id": "TFTTutorial_Gunslinger",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Gunslinger.png",
         "tooltip_text": "【枪手】们的普通攻击有@ProcPercent@%几率对距离内的其他敌人发射额外的子弹，每颗子弹对目标造成该【枪手】100%攻击力的伤害。<br><br><row>(@MinUnits@) 攻击@ExtraTargetsHit@名额外的敌人</row><br><row>(@MinUnits@) 攻击@ExtraTargetsHit@名额外的敌人</row>",
         "innate_trait_sets": [],
@@ -8116,7 +8116,7 @@
     {
         "display_name": "海克斯科技",
         "trait_id": "TFTTutorial_Hextech",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Hextech.png",
         "tooltip_text": "在战斗环节开始时，一名友方【海克斯】英雄对一名随机敌人发射一颗脉冲炸弹。在炸弹爆炸时，附近敌人会被降低@AttackSpeedReductionPercent@%攻击速度，持续若干秒。<br><br><expandRow>(@MinUnits@) @HexSize@格半径。@DebuffDuration@秒。</expandRow>",
         "innate_trait_sets": [],
@@ -8181,7 +8181,7 @@
     {
         "display_name": "帝国",
         "trait_id": "TFTTutorial_Imperial",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Imperial.png",
         "tooltip_text": "(@MinUnits@) 在战斗环节开始时，所有【帝国英雄】都会获得强化以造成双倍伤害。",
         "innate_trait_sets": [],
@@ -8203,7 +8203,7 @@
     {
         "display_name": "骑士",
         "trait_id": "TFTTutorial_Knight",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Knight.png",
         "tooltip_text": "所有友军都会格挡固定数额的伤害（所有来源）。<br><br><expandRow>(@MinUnits@) 格挡@BlockAmount@伤害</expandRow>",
         "innate_trait_sets": [],
@@ -8252,7 +8252,7 @@
     {
         "display_name": "忍者",
         "trait_id": "TFTTutorial_Ninja",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Ninja.png",
         "tooltip_text": "(@MinUnits@) 【忍者】们获得@ADValue@攻击力和@APValue@%法术强度。",
         "innate_trait_sets": [],
@@ -8279,7 +8279,7 @@
     {
         "display_name": "海盗",
         "trait_id": "TFTTutorial_Pirate",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Pirate.png",
         "tooltip_text": "(@MinUnits@) 在与另一名玩家的战斗环节结束时，你的棋盘上会出现一个财宝箱，最多提供4枚金币。",
         "innate_trait_sets": [],
@@ -8296,7 +8296,7 @@
     {
         "display_name": "游侠",
         "trait_id": "TFTTutorial_Ranger",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Ranger.png",
         "tooltip_text": "(@MinUnits@) 每过@DelayBetweenBuffs@秒，【游侠】们获得持续@BuffDuration@秒的@AttackSpeed@%攻击速度提升。这个效果会在战斗环节开始后的@InitialDelay@秒时启动。<br>",
         "innate_trait_sets": [],
@@ -8333,7 +8333,7 @@
     {
         "display_name": "机器人",
         "trait_id": "TFTTutorial_Robot",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Robot.png",
         "tooltip_text": "(@MinUnits@) 机器人在开始战斗时就有满额的法力值。",
         "innate_trait_sets": [],
@@ -8350,7 +8350,7 @@
     {
         "display_name": "换形师",
         "trait_id": "TFTTutorial_Shapeshifter",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Shapeshifter.png",
         "tooltip_text": "(@MinUnits@) 【换形师】们会在他们变形时获得@HPPercent@%额外最大生命值。<br>",
         "innate_trait_sets": [],
@@ -8372,7 +8372,7 @@
     {
         "display_name": "法师",
         "trait_id": "TFTTutorial_Sorcerer",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Sorcerer.png",
         "tooltip_text": "固有：法师们的攻击提供双倍法力值。<br><br>所有友军的法术强度得到提升。<br><br><expandRow>(@MinUnits@) +@AP@%法术强度</expandRow><br>",
         "innate_trait_sets": [],
@@ -8407,7 +8407,7 @@
     {
         "display_name": "典范",
         "trait_id": "TFTTutorial_TutorialPrimary",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_4_Exemplar.png",
         "tooltip_text": "在战斗环节开始时，【典范】会被正义强化，获得@AttackDamage@攻击力并减免来自敌人的@DamageReductionPercent@%伤害。<br><br><row>(@MinUnits@) 一个随机的【典范】获得强化</row><br><row>(@MinUnits@) 所有【典范】获得强化</row><br><row>(@MinUnits@) 【典范】结合他们的力量召唤一名【正义化身】！</row>",
         "innate_trait_sets": [],
@@ -8470,7 +8470,7 @@
     {
         "display_name": "守护者",
         "trait_id": "TFTTutorial_TutorialSecondary",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Knight.png",
         "tooltip_text": "【守护者】们获得额外生命值并减免来自所有来源的伤害。<br><br><expandRow>(@MinUnits@) @BlockAmount@伤害格挡。@BonusHealth@生命值</expandRow>",
         "innate_trait_sets": [],
@@ -8515,7 +8515,7 @@
     {
         "display_name": "虚空",
         "trait_id": "TFTTutorial_Void",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Void.png",
         "tooltip_text": "(@MinUnits@) 【虚空】英雄们的攻击和技能造成真实伤害。",
         "innate_trait_sets": [],
@@ -8531,7 +8531,7 @@
     {
         "display_name": "狂野",
         "trait_id": "TFTTutorial_Wild",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Wild.png",
         "tooltip_text": "(@MinUnits@) 【狂野】英雄们在每次攻击后获得@AttackSpeedPercent@%额外攻击速度(至多叠加@MaxStacks@层)。",
         "innate_trait_sets": [],
@@ -8558,7 +8558,7 @@
     {
         "display_name": "约德尔",
         "trait_id": "TFTTutorial_Yordle",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Yordle.png",
         "tooltip_text": "(@MinUnits@) 【约德尔人】获得+@MissPercent@%额外闪避几率。<br>",
         "innate_trait_sets": [],

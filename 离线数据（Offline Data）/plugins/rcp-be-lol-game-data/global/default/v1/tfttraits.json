@@ -7891,7 +7891,7 @@
     {
         "display_name": "Assassin",
         "trait_id": "TFTTutorial_Assassin",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Assassin.png",
         "tooltip_text": "Innate: When combat starts, Assassins leap to the enemy backline.<br><br>Assassins gain bonus Critical Strike Damage and Chance.<br><br><expandRow>(@MinUnits@) +@CritAmpPercent@% Critical Strike Damage & +@CritChanceAmpPercent@% Critical Strike Chance</expandRow><br>",
         "innate_trait_sets": [
@@ -7940,7 +7940,7 @@
     {
         "display_name": "Blademaster",
         "trait_id": "TFTTutorial_Blademaster",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Blademaster.png",
         "tooltip_text": "(@MinUnits@) Blademasters' attacks have a @ProcChance@% chance to trigger an additional instant attack against their target.",
         "innate_trait_sets": [],
@@ -7967,7 +7967,7 @@
     {
         "display_name": "Brawler",
         "trait_id": "TFTTutorial_Brawler",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Brawler.png",
         "tooltip_text": "Brawlers gain bonus Health.<br><br><expandRow>(@MinUnits@) @BonusHealth@ Health</expandRow><br>",
         "innate_trait_sets": [],
@@ -8002,7 +8002,7 @@
     {
         "display_name": "Demon",
         "trait_id": "TFTTutorial_Demon",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Demon.png",
         "tooltip_text": "(@MinUnits@) Attacks from Demons have a @ManaDrainProcChance@% chance to reduce their target's Mana by @ManaDrainBurn@ and restore @ManaDrainDrain@ Mana to the Demon.<br>",
         "innate_trait_sets": [],
@@ -8034,7 +8034,7 @@
     {
         "display_name": "Glacial",
         "trait_id": "TFTTutorial_Glacial",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Glacial.png",
         "tooltip_text": "(@MinUnits@) Attacks from Glacial champions have a @ProcPercent@% chance to stun their target for @StunDuration@ seconds.<br>",
         "innate_trait_sets": [],
@@ -8061,7 +8061,7 @@
     {
         "display_name": "Gunslinger",
         "trait_id": "TFTTutorial_Gunslinger",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Gunslinger.png",
         "tooltip_text": "Gunslinger attacks have a @ProcPercent@% chance to fire additional bullets at other enemies within range, each dealing 100% of the Gunslingers Attack Damage to the target.<br><br><row>(@MinUnits@) Attack @ExtraTargetsHit@ extra enemies</row><br><row>(@MinUnits@) Attack @ExtraTargetsHit@ extra enemies</row>",
         "innate_trait_sets": [],
@@ -8116,7 +8116,7 @@
     {
         "display_name": "Hextech",
         "trait_id": "TFTTutorial_Hextech",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Hextech.png",
         "tooltip_text": "At the start of combat an allied Hextech champion launches a pulse bomb at a random enemy. When it detonates nearby enemies have @AttackSpeedReductionPercent@% reduced Attack Speed for a few seconds.<br><br><expandRow>(@MinUnits@) @HexSize@ Hex Radius. @DebuffDuration@ seconds</expandRow>",
         "innate_trait_sets": [],
@@ -8181,7 +8181,7 @@
     {
         "display_name": "Imperial",
         "trait_id": "TFTTutorial_Imperial",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Imperial.png",
         "tooltip_text": "(@MinUnits@) At the start of combat, all Imperial champions are empowered to deal double damage.",
         "innate_trait_sets": [],
@@ -8203,7 +8203,7 @@
     {
         "display_name": "Knight",
         "trait_id": "TFTTutorial_Knight",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Knight.png",
         "tooltip_text": "All allies block a flat amount of damage from all sources.<br><br><expandRow>(@MinUnits@) @BlockAmount@ Damage Blocked</expandRow>",
         "innate_trait_sets": [],
@@ -8252,7 +8252,7 @@
     {
         "display_name": "Ninja",
         "trait_id": "TFTTutorial_Ninja",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Ninja.png",
         "tooltip_text": "(@MinUnits@) Ninjas gain @ADValue@ Attack Damage & @APValue@% Ability Power.",
         "innate_trait_sets": [],
@@ -8279,7 +8279,7 @@
     {
         "display_name": "Pirate",
         "trait_id": "TFTTutorial_Pirate",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Pirate.png",
         "tooltip_text": "(@MinUnits@) At the end of each combat against another player, a treasure chest spawns on your board containing up to 4 gold.",
         "innate_trait_sets": [],
@@ -8296,7 +8296,7 @@
     {
         "display_name": "Ranger",
         "trait_id": "TFTTutorial_Ranger",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Ranger.png",
         "tooltip_text": "(@MinUnits@) Every @DelayBetweenBuffs@ seconds Rangers gain +@AttackSpeed@% Attack Speed that lasts @BuffDuration@ seconds. This effect begins @InitialDelay@ seconds after combat starts.<br>",
         "innate_trait_sets": [],
@@ -8333,7 +8333,7 @@
     {
         "display_name": "Robot",
         "trait_id": "TFTTutorial_Robot",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Robot.png",
         "tooltip_text": "(@MinUnits@) Robots start combat at full Mana.",
         "innate_trait_sets": [],
@@ -8350,7 +8350,7 @@
     {
         "display_name": "Shapeshifter",
         "trait_id": "TFTTutorial_Shapeshifter",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Shapeshifter.png",
         "tooltip_text": "(@MinUnits@) Shapeshifters gain @HPPercent@% bonus maximum Health when they transform.<br>",
         "innate_trait_sets": [],
@@ -8372,7 +8372,7 @@
     {
         "display_name": "Sorcerer",
         "trait_id": "TFTTutorial_Sorcerer",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Sorcerer.png",
         "tooltip_text": "Innate: Sorcerers gain double Mana from attacks.<br><br>All allies have increased Ability Power.<br><br><expandRow>(@MinUnits@) +@AP@% Ability Power</expandRow><br>",
         "innate_trait_sets": [],
@@ -8407,7 +8407,7 @@
     {
         "display_name": "Exemplar",
         "trait_id": "TFTTutorial_TutorialPrimary",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_4_Exemplar.png",
         "tooltip_text": "At the start of combat select Exemplars become empowered by Justice, gaining @AttackDamage@ Attack Damage and take @DamageReductionPercent@% reduced damage from enemies.<br><br><row>(@MinUnits@) One random Exemplar is empowered</row><br><row>(@MinUnits@) All Exemplars are empowered</row><br><row>(@MinUnits@) Exemplars combine their powers to call upon an Avatar of Justice!</row>",
         "innate_trait_sets": [],
@@ -8470,7 +8470,7 @@
     {
         "display_name": "Guardian",
         "trait_id": "TFTTutorial_TutorialSecondary",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Knight.png",
         "tooltip_text": "Guardians gain bonus Health and take reduced damage from all sources.<br><br><expandRow>(@MinUnits@) @BlockAmount@ Damage Blocked. @BonusHealth@ Health</expandRow>",
         "innate_trait_sets": [],
@@ -8515,7 +8515,7 @@
     {
         "display_name": "Void",
         "trait_id": "TFTTutorial_Void",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Void.png",
         "tooltip_text": "(@MinUnits@) Void champions' attacks and abilities deal true damage.",
         "innate_trait_sets": [],
@@ -8531,7 +8531,7 @@
     {
         "display_name": "Wild",
         "trait_id": "TFTTutorial_Wild",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Wild.png",
         "tooltip_text": "(@MinUnits@) Wild Champions gain @AttackSpeedPercent@% Bonus Attack Speed after every attack (stacks up to @MaxStacks@ times).",
         "innate_trait_sets": [],
@@ -8558,7 +8558,7 @@
     {
         "display_name": "Yordle",
         "trait_id": "TFTTutorial_Yordle",
-        "set": "TFTTutorialSet",
+        "set": "TFTSetTutorial",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Yordle.png",
         "tooltip_text": "(@MinUnits@) Yordles gain +@MissPercent@% bonus Dodge chance.<br>",
         "innate_trait_sets": [],

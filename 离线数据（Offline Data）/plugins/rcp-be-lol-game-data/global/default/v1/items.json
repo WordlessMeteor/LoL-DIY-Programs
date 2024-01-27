@@ -2919,7 +2919,7 @@
     {
         "id": 3042,
         "name": "Muramana",
-        "description": "GeneratedTip_Item_3042_ExternalDescription",
+        "description": "<mainText><stats><attention> 35</attention> Attack Damage<br><attention> 860</attention> Mana<br><attention> 15</attention> Ability Haste</stats><br><br><passive>Awe</passive><br>Gain bonus Attack Damage based on Mana.<br><br><passive>Shock</passive><br>Attacks and damaging abilities against champions deal additional physical damage.</mainText>",
         "active": false,
         "inStore": false,
         "from": [],
@@ -3721,8 +3721,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 200,
-        "priceTotal": 2800,
+        "price": 100,
+        "priceTotal": 2700,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3087_Statikk_Shiv.png"
     },
     {
@@ -3813,7 +3813,7 @@
     {
         "id": 3095,
         "name": "Stormrazor",
-        "description": "<mainText><stats><attention> 60</attention> Attack Damage<br><attention> 20%</attention> Attack Speed<br><attention> 20%</attention> Critical Strike Chance</stats><br><br><passive>Bolt</passive><br>Your Energized Attack applies bonus magic damage and grants Move Speed.</mainText>",
+        "description": "<mainText><stats><attention> 60</attention> Attack Damage<br><attention> 15%</attention> Attack Speed<br><attention> 20%</attention> Critical Strike Chance</stats><br><br><passive>Bolt</passive><br>Your Energized Attack applies bonus magic damage and grants Move Speed.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7957,7 +7957,7 @@
     {
         "id": 6672,
         "name": "Kraken Slayer",
-        "description": "<mainText><stats><attention> 45</attention> Attack Damage<br><attention> 35%</attention> Attack Speed<br><attention> 20%</attention> Critical Strike Chance</stats><br><br><br><li><passive>Bring It Down:</passive> Every third basic attack deals additional physical damage on-hit, increasing when hitting the same target repeatedly.</mainText>",
+        "description": "<mainText><stats><attention> 40</attention> Attack Damage<br><attention> 35%</attention> Attack Speed<br><attention> 20%</attention> Critical Strike Chance</stats><br><br><br><li><passive>Bring It Down:</passive> Every third basic attack deals additional physical damage on-hit, increasing when hitting the same target repeatedly.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9595,7 +9595,7 @@
     {
         "id": 7041,
         "name": " Wyrmfallen Sacrifice",
-        "description": "<mainText><stats><ornnBonus> 65</ornnBonus> Attack Damage<br><ornnBonus> 45%</ornnBonus> Attack Speed<br><attention> 20%</attention> Critical Strike Chance</stats><br><br><br><li><passive>Bring It Down:</passive> Every third basic attack deals additional physical damage on-hit, increasing when hitting the same target repeatedly.</mainText>",
+        "description": "<mainText><stats><ornnBonus> 60</ornnBonus> Attack Damage<br><ornnBonus> 45%</ornnBonus> Attack Speed<br><attention> 20%</attention> Critical Strike Chance</stats><br><br><br><li><passive>Bring It Down:</passive> Every third basic attack deals additional physical damage on-hit, increasing when hitting the same target repeatedly.</mainText>",
         "active": false,
         "inStore": true,
         "from": [

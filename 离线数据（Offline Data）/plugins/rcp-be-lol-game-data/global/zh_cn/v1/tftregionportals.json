@@ -282,12 +282,6 @@
         "description": "秘宝武器库"
     },
     {
-        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Targon.png",
-        "nameId": "TFT9_RegionPortals_MarusOmegnum_SF",
-        "displayName": "巨神峰",
-        "description": "癸亥玛吕寺"
-    },
-    {
         "iconPath": "/lol-game-data/assets/",
         "nameId": "TFT3_RegionPortals_Bonanza",
         "displayName": "",
@@ -796,5 +790,11 @@
         "nameId": "TFT9_RegionPortals_ValarsHollow_HR",
         "displayName": "弗雷尔卓德",
         "description": "瓦拉尔山谷"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Targon.png",
+        "nameId": "TFT9_RegionPortals_MarusOmegnum_SF",
+        "displayName": "巨神峰",
+        "description": "癸亥玛吕寺"
     }
 ]

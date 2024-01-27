@@ -2919,7 +2919,7 @@
     {
         "id": 3042,
         "name": "魔切",
-        "description": "GeneratedTip_Item_3042_ExternalDescription",
+        "description": "<mainText><stats><attention>35</attention>攻击力<br><attention>860</attention>法力<br><attention>15</attention>技能急速</stats><br><br>Item_3042_TooltipExternal</mainText>",
         "active": false,
         "inStore": false,
         "from": [],
@@ -3721,8 +3721,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 200,
-        "priceTotal": 2800,
+        "price": 100,
+        "priceTotal": 2700,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3087_Statikk_Shiv.png"
     },
     {
@@ -3813,7 +3813,7 @@
     {
         "id": 3095,
         "name": "岚切",
-        "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>20%</attention>攻击速度<br><attention>20%</attention>暴击几率</stats><br><br><passive>弩箭</passive><br>你的盈能攻击附带额外魔法伤害并提供移动速度。</mainText>",
+        "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>15%</attention>攻击速度<br><attention>20%</attention>暴击几率</stats><br><br><passive>弩箭</passive><br>你的盈能攻击附带额外魔法伤害并提供移动速度。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7957,7 +7957,7 @@
     {
         "id": 6672,
         "name": "海妖杀手",
-        "description": "<mainText><stats><attention>45</attention>攻击力<br><attention>35%</attention>攻击速度<br><attention>20%</attention>暴击几率</stats><br><br><br><li><passive>放倒它</passive>每第三次普攻造成额外物理伤害，在重复命中相同目标时提升。</mainText>",
+        "description": "<mainText><stats><attention>40</attention>攻击力<br><attention>35%</attention>攻击速度<br><attention>20%</attention>暴击几率</stats><br><br><br><li><passive>放倒它</passive>每第三次普攻造成额外物理伤害，在重复命中相同目标时提升。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9595,7 +9595,7 @@
     {
         "id": 7041,
         "name": " 堕蛟祭品",
-        "description": "<mainText><stats><ornnBonus>65</ornnBonus>攻击力<br><ornnBonus>45%</ornnBonus>攻击速度<br><attention>20%</attention>暴击几率</stats><br><br><br><li><passive>放倒它</passive>每第三次普攻造成额外物理伤害，在重复命中相同目标时提升。</mainText>",
+        "description": "<mainText><stats><ornnBonus>60</ornnBonus>攻击力<br><ornnBonus>45%</ornnBonus>攻击速度<br><attention>20%</attention>暴击几率</stats><br><br><br><li><passive>放倒它</passive>每第三次普攻造成额外物理伤害，在重复命中相同目标时提升。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
