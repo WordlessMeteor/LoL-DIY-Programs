@@ -4423,7 +4423,7 @@
         "trait_id": "StarGuardian",
         "set": "TFTSet3",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_StarGuardian.png",
-        "tooltip_text": "每当一个【星之守护者】在施放技能时，所有其它【星之守护者】都会获得法力值。<br><br><expandRow>(@MinUnits@) @ManaRestore@ %i:scaleMana%</expandRow>",
+        "tooltip_text": "每当一个【星之守护者】在施放技能时，就会有一定数量的法力值均分给所有其它的【星之守护者】。<br><br><expandRow>(@MinUnits@) @ManaRestore@ %i:scaleMana%</expandRow>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
             {

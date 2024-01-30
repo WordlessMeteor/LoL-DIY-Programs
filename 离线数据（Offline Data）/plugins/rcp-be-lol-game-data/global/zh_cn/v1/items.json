@@ -397,7 +397,6 @@
             3035,
             3077,
             6671,
-            3124,
             3071,
             3004,
             3044,
@@ -438,6 +437,7 @@
             3181,
             3039,
             6676,
+            3124,
             3031,
             3053,
             3153,
@@ -584,6 +584,7 @@
         ],
         "to": [
             3115,
+            3124,
             3085,
             3091,
             3153,
@@ -2156,7 +2157,7 @@
     {
         "id": 2403,
         "name": "小兵去质器",
-        "description": "<mainText><stats></stats><br><br><active>主动 - 消耗：</active>击杀目标线上小兵(10 (0秒))。</mainText>",
+        "description": "<mainText><stats></stats><br><br><active>主动 - 消耗：</active>击杀目标线上小兵。 (0秒)</mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -2431,7 +2432,7 @@
     {
         "id": 3003,
         "name": "大天使之杖",
-        "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br>Item_3003_TooltipExternal</mainText>",
+        "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得相当于你的额外法力值的法术强度。<br><br><passive>法力流</passive><br>用一个技能或攻击击中一个目标时，会消耗一层充能并获得额外法力值。至多提供360法力值，且此时这个装备会转变为<rarityLegendary>炽天使之拥</rarityLegendary>。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -2459,7 +2460,7 @@
     {
         "id": 3004,
         "name": "魔宗",
-        "description": "<mainText><stats><attention>35</attention>攻击力<br><attention>500</attention>法力<br><attention>15</attention>技能急速</stats><br><br>Item_3004_TooltipExternal</mainText>",
+        "description": "<mainText><stats><attention>35</attention>攻击力<br><attention>500</attention>法力<br><attention>15</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得基于法力值的额外攻击力。<br><br><passive>法力流</passive><br>用一个技能或攻击击中一个目标时会获得额外法力值。在提供的法力值达到最大值时，这个装备会转变为<rarityLegendary>魔切</rarityLegendary>。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -2919,7 +2920,7 @@
     {
         "id": 3042,
         "name": "魔切",
-        "description": "<mainText><stats><attention>35</attention>攻击力<br><attention>860</attention>法力<br><attention>15</attention>技能急速</stats><br><br>Item_3042_TooltipExternal</mainText>",
+        "description": "<mainText><stats><attention>35</attention>攻击力<br><attention>860</attention>法力<br><attention>15</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得基于法力值的攻击力。<br><br><passive>冲击</passive><br>攻击和伤害型技能会对英雄造成额外物理伤害。</mainText>",
         "active": false,
         "inStore": false,
         "from": [],
@@ -3069,7 +3070,6 @@
             1042
         ],
         "to": [
-            3124,
             3073,
             3078
         ],
@@ -3142,8 +3142,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 750,
-        "priceTotal": 1000,
+        "price": 650,
+        "priceTotal": 900,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3057_Fighter_T2_Sheen.png"
     },
     {
@@ -3284,7 +3284,7 @@
     {
         "id": 3070,
         "name": "女神之泪",
-        "description": "<mainText><stats><attention>240</attention>法力</stats><br><br>Item_3070_TooltipExternal</mainText>",
+        "description": "<mainText><stats><attention>240</attention>法力</stats><br><br><br><li><passive>专注：</passive>攻击会对小兵造成额外的物理伤害。<li><passive>法力流：</passive>用一个技能击中一个目标时，会消耗一层充能并获得<scaleMana>3法力值</scaleMana>，如果目标是英雄，则该次提供的额外法力值翻倍。至多至360法力值。<br><br><rules>每8秒获得一层新的<passive>法力积攒</passive>(至多至4层)。</rules></mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -3373,7 +3373,7 @@
     {
         "id": 3073,
         "name": "海克斯注力刚壁",
-        "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>25%</attention>攻击速度<br><attention>300</attention>生命值</stats><br><br><passive>海克斯充能</passive><br>获得终极技能急速。<br><br><passive>过载</passive> <br>在施放你的终极技能后，获得短期持续的攻击速度和额外移动速度。<br></mainText>",
+        "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>25%</attention>攻击速度<br><attention>300</attention>生命值</stats><br><br><passive>海克斯充能</passive><br>你的终极技能获得技能急速。<br><br><passive>过载</passive> <br>在施放你的终极技能后，获得短暂持续的攻击速度和移动速度。<br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -3546,7 +3546,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 33,
+        "price": 133,
         "priceTotal": 3333,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3078_Fighter_T4_TrinityForce.png"
     },
@@ -3866,7 +3866,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 150,
+        "price": 250,
         "priceTotal": 3100,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3100_Mage_T3_Lichbane.png"
     },
@@ -4256,7 +4256,7 @@
     {
         "id": 3118,
         "name": "残疫",
-        "description": "<mainText><stats><attention>90</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>蔑视</passive><br>获得终极技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
+        "description": "<mainText><stats><attention>90</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>蔑视</passive><br>你的终极技能获得技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4285,7 +4285,7 @@
     {
         "id": 3119,
         "name": "凛冬之临",
-        "description": "<mainText><stats><attention>400</attention>生命值<br><attention>500</attention>法力<br><attention>15</attention>技能急速</stats><br><br>Item_3119_TooltipExternal</mainText>",
+        "description": "<mainText><stats><attention>400</attention>生命值<br><attention>500</attention>法力<br><attention>15</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得额外<scaleHealth>生命值，相当于0</scaleHealth>。<br><br><passive>法力流</passive><br>用一个技能或攻击击中一个目标时，会消耗一层充能并获得额外法力值。至多提供法力值，且此时这个装备会转变为<rarityLegendary>末日寒冬</rarityLegendary>。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4364,13 +4364,13 @@
     {
         "id": 3124,
         "name": "鬼索的狂暴之刃",
-        "description": "<mainText><stats><attention>30</attention>攻击力<br><attention>30</attention>法术强度<br><attention>25%</attention>攻击速度</stats><br><br><passive>怨怒</passive><br>攻击附带<magicDamage>30魔法伤害<OnHit>攻击特效</OnHit></magicDamage>。<br><br><passive>沸腾打击</passive><br>普通攻击会提供<attackSpeed>8%攻击速度</attackSpeed>，至多可叠加4次并至多提供<attackSpeed>0攻击速度</attackSpeed>。在满层状态下，每第三次攻击会附带2次<OnHit>攻击特效</OnHit>。</mainText>",
+        "description": "<mainText><stats><attention>35</attention>攻击力<br><attention>35</attention>法术强度<br><attention>25%</attention>攻击速度</stats><br><br><passive>怨怒</passive><br>攻击附带<magicDamage>30魔法伤害<OnHit>攻击特效</OnHit></magicDamage>。<br><br><passive>沸腾打击</passive><br>普通攻击会提供<attackSpeed>8%攻击速度</attackSpeed>，至多可叠加4次并至多提供<attackSpeed>0攻击速度</attackSpeed>。在满层状态下，每第三次攻击会附带2次<OnHit>攻击特效</OnHit>。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
             1052,
-            3051,
-            1036
+            1043,
+            1037
         ],
         "to": [
             7030
@@ -4386,7 +4386,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 1050,
+        "price": 1025,
         "priceTotal": 3000,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3124_Marksman_T3_GuinsoosRageblade.png"
     },
@@ -4642,7 +4642,7 @@
     {
         "id": 3142,
         "name": "幽梦之灵",
-        "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>18</attention>穿甲</stats><br><br><passive>鬼影萦绕</passive><br>提供非战斗状态下的<speed>40移动速度</speed>。<br><br> <active>主动</active>  (0秒)<br><active>鬼魂步伐：</active><br>提供<speed>移动速度</speed>和<keyword>幽灵状态</keyword>。</mainText>",
+        "description": "GeneratedTip_Item_3142_ExternalDescription",
         "active": true,
         "inStore": true,
         "from": [
@@ -5280,7 +5280,7 @@
     {
         "id": 3302,
         "name": "界弓",
-        "description": "<mainText><stats><attention>40</attention>攻击力<br><attention>30%</attention>攻击速度</stats><br><br><passive>晦影</passive><br>攻击附带<magicDamage>30魔法伤害</magicDamage> <OnHit>攻击特效</OnHit><br><br><passive>交相</passive><br>攻击英雄时，在<keywordMajor>光明</keywordMajor>特效和<keywordMajor>黑暗</keywordMajor>特效之间轮换：<li>附带<keywordMajor>光明</keywordMajor>特效的攻击提供持续5秒的0 <scaleArmor>护甲</scaleArmor>和<scaleMR>魔抗</scaleMR>(至多至0)。<li>附带<keywordMajor>黑暗</keywordMajor>特效的攻击提供持续5秒的6%<scaleArmor>护甲穿透</scaleArmor>和<scaleMR>法术穿透</scaleMR>(至多至30%)。 </mainText>",
+        "description": "<mainText><stats><attention>40</attention>攻击力<br><attention>30%</attention>攻击速度</stats><br><br><passive>晦影</passive>附带<magicDamage>30魔法伤害</magicDamage> <OnHit>攻击特效</OnHit>。<br><br><passive>交相</passive><br>攻击英雄时在<keywordMajor>光明</keywordMajor>特效和<keywordMajor>黑暗</keywordMajor>特效之间轮换：<li>附带<keywordMajor>光明</keywordMajor>特效的攻击提供持续5秒的0 <scaleArmor>护甲</scaleArmor>和<scaleMR>魔抗</scaleMR>(至多至0)。<li>附带<keywordMajor>黑暗</keywordMajor>特效的攻击提供持续5秒的6%<scaleArmor>护甲穿透</scaleArmor>和<scaleMR>法术穿透</scaleMR>(至多至330%)。 </mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -5537,7 +5537,7 @@
     {
         "id": 3508,
         "name": "夺萃之镰",
-        "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>20</attention>技能急速</stats><br><br><passive>咒刃</passive><br>施放一个技能后，你的下一次普通攻击附带额外伤害并回复法力值。</mainText>",
+        "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>20</attention>技能急速</stats><br><br><passive>咒刃</passive><br>施放一个技能后，你的下一次普通攻击附带额外伤害并回复法力值。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -5561,7 +5561,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 200,
+        "price": 300,
         "priceTotal": 2900,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3508_Marksman_T3_EssenceReaver.png"
     },
@@ -7366,7 +7366,7 @@
     {
         "id": 6610,
         "name": "焚天",
-        "description": "<mainText><stats><attention>45</attention>攻击力<br><attention>450</attention>生命值<br><attention>15</attention>技能急速</stats><br><br><passive>光盾打击</passive><br>对一个英雄打出的第一次普攻会暴击并治疗你自身。溢出的治疗效果会被提供为一个临时的额外生命值。</mainText>",
+        "description": "<mainText><stats><attention>45</attention>攻击力<br><attention>450</attention>生命值<br><attention>15</attention>技能急速</stats><br><br><passive>光盾打击</passive><br>对一个英雄打出的第一次攻击会暴击并治疗你自身。<br><br><rules>溢出的治疗效果会被提供为一个临时的额外生命值。</rules></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7611,7 +7611,7 @@
         "specialRecipe": 0,
         "isEnchantment": false,
         "price": 700,
-        "priceTotal": 3600,
+        "priceTotal": 3500,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6632_Fighter_T4_DivineDevourer.png"
     },
     {
@@ -7794,14 +7794,14 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 400,
+        "price": 500,
         "priceTotal": 2600,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6662_Tank_T3_IcebornGauntlet.png"
     },
     {
         "id": 6664,
         "name": "璀璨回响",
-        "description": "<mainText><stats><attention>600</attention>生命值<br><attention>40</attention>魔法抗性<br><attention>100%</attention>基础生命回复</stats><br><br><passive>献祭</passive><br>承受或造成伤害时会使你开始每秒对附近敌人造成<magicDamage>0魔法伤害</magicDamage>(对小兵提升25%)，持续3秒。承受或造成伤害会刷新效果的持续时长。<br><br><passive>荒弃</passive><br>击杀一个敌人时会在其周围的一个区域内造成<magicDamage>0魔法伤害</magicDamage>。<br><br></mainText>",
+        "description": "<mainText><stats><attention>600</attention>生命值<br><attention>40</attention>魔法抗性<br><attention>100%</attention>基础生命回复</stats><br><br><passive>献祭</passive><br>承受或造成伤害时会使你开始每秒对附近敌人造成<magicDamage>0魔法伤害</magicDamage>(对小兵提升25%)，持续3秒。<br><br><passive>荒弃</passive><br>击杀一个敌人时会在其周围的一个区域内造成<magicDamage>0魔法伤害</magicDamage>。<br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8048,7 +8048,7 @@
     {
         "id": 6676,
         "name": "收集者",
-        "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>16</attention>穿甲</stats><br><br><passive>死</passive><br>你的伤害会处决低于5%生命值的英雄。<br><br><passive>税</passive><br>击杀英雄时提供额外的<gold>25金币</gold>。</mainText>",
+        "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>16</attention>穿甲</stats><br><br><passive>死</passive><br>你的伤害会处决低于5%生命值的英雄。<br><br><passive>税</passive><br>击杀英雄时提供额外的<gold>25金币</gold>。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8307,7 +8307,7 @@
     {
         "id": 6697,
         "name": "狂妄",
-        "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>18</attention>穿甲<br><attention>15</attention>技能急速</stats><br><br><passive>唯我</passive><br>击杀时获得一座你自己的雕像，这座雕像可不断升级。<br><br><passive>盛名</passive><br>击杀时获得基于你雕像等级的临时攻击力。</mainText>",
+        "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>18</attention>穿甲<br><attention>15</attention>技能急速</stats><br><br><passive>盛名</passive><br>击杀英雄时获得基于英雄击杀数的临时攻击力。<br><br><passive>唯我</passive><br>击杀时获得一座你自己的雕像，这座雕像可不断升级。<br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8565,7 +8565,7 @@
     {
         "id": 7004,
         "name": " 万众之恨意",
-        "description": "<mainText><stats><ornnBonus>120</ornnBonus>法术强度<br><ornnBonus>800</ornnBonus>法力<br><ornnBonus>30</ornnBonus>技能急速</stats><br><br><passive>蔑视</passive><br>获得终极技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
+        "description": "<mainText><stats><ornnBonus>120</ornnBonus>法术强度<br><ornnBonus>800</ornnBonus>法力<br><ornnBonus>30</ornnBonus>技能急速</stats><br><br><passive>蔑视</passive><br>你的终极技能获得技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8953,7 +8953,7 @@
         "specialRecipe": 0,
         "isEnchantment": false,
         "price": 0,
-        "priceTotal": 3600,
+        "priceTotal": 3500,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6632_Fighter_T4_DivineDevourer.png"
     },
     {
@@ -9267,7 +9267,7 @@
     {
         "id": 7029,
         "name": " 幽梦之苏醒",
-        "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>26</ornnBonus>穿甲</stats><br><br><passive>鬼影萦绕</passive><br>提供非战斗状态下的<speed>40移动速度</speed>。<br><br> <active>主动</active>  (0秒)<br><active>鬼魂步伐：</active><br>提供<speed>移动速度</speed>和<keyword>幽灵状态</keyword>。</mainText>",
+        "description": "GeneratedTip_Item_7029_ExternalDescription",
         "active": true,
         "inStore": true,
         "from": [
@@ -9294,7 +9294,7 @@
     {
         "id": 7030,
         "name": " 沸腾悲伤",
-        "description": "<mainText><stats><ornnBonus>40</ornnBonus>攻击力<br><ornnBonus>50</ornnBonus>法术强度<br><ornnBonus>35%</ornnBonus>攻击速度</stats><br><br><passive>怨怒</passive><br>攻击附带<magicDamage>30魔法伤害<OnHit>攻击特效</OnHit></magicDamage>。<br><br><passive>沸腾打击</passive><br>普通攻击会提供<attackSpeed>8%攻击速度</attackSpeed>，至多可叠加4次并至多提供<attackSpeed>0攻击速度</attackSpeed>。在满层状态下，每第三次攻击会附带2次<OnHit>攻击特效</OnHit>。</mainText>",
+        "description": "<mainText><stats><ornnBonus>45</ornnBonus>攻击力<br><ornnBonus>55</ornnBonus>法术强度<br><ornnBonus>35%</ornnBonus>攻击速度</stats><br><br><passive>怨怒</passive><br>攻击附带<magicDamage>30魔法伤害<OnHit>攻击特效</OnHit></magicDamage>。<br><br><passive>沸腾打击</passive><br>普通攻击会提供<attackSpeed>8%攻击速度</attackSpeed>，至多可叠加4次并至多提供<attackSpeed>0攻击速度</attackSpeed>。在满层状态下，每第三次攻击会附带2次<OnHit>攻击特效</OnHit>。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -10256,7 +10256,7 @@
     {
         "id": 223050,
         "name": "基克的聚合",
-        "description": "<mainText><stats><buffedStat>400</buffedStat>生命值<br><attention>250</attention>法力<br><buffedStat>40</buffedStat>护甲<br><attention>20</attention>技能急速</stats><br><br><br><li><passive>聚合：</passive>在你<status>定身</status>一名敌人后，你的<attention>帮手</attention>的技能和攻击对这个敌人附带额外伤害。<br><br><rules>同一个英雄同一时间只能被一个【基克的聚合】所连接。</rules></mainText>",
+        "description": "<mainText><stats><buffedStat>400</buffedStat>生命值<br><attention>250</attention>法力<br><buffedStat>40</buffedStat>护甲<br><attention>20</attention>技能急速</stats><br><br><br><li><passive>聚合：</passive>在你<status>定身</status>一名敌人后的8秒里，你的<attention>帮手</attention>的技能和攻击(<OnHit>攻击特效</OnHit>)对这个敌人附带额外的<buffedStat>0魔法伤害</buffedStat>。<br><br><rules>同一个英雄同一时间只能被一个【基克的聚合】所连接。</rules></mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -10322,8 +10322,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 750,
-        "priceTotal": 1000,
+        "price": 650,
+        "priceTotal": 900,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3057_Fighter_T2_Sheen.png"
     },
     {
@@ -13346,7 +13346,7 @@
     {
         "id": 227029,
         "name": " 幽梦之苏醒",
-        "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>26</ornnBonus>穿甲</stats><br><br><passive>鬼影萦绕</passive><br>提供非战斗状态下的<speed>40移动速度</speed>。<br><br> <active>主动</active>  (0秒)<br><active>鬼魂步伐：</active><br>提供<speed>移动速度</speed>和<keyword>幽灵状态</keyword>。</mainText>",
+        "description": "GeneratedTip_Item_227029_ExternalDescription",
         "active": true,
         "inStore": false,
         "from": [

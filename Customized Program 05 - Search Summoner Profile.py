@@ -2539,11 +2539,15 @@ async def search_profile(connection):
                     version_re = re.compile("\d*\.\d*\.\d*\.\d*") #云顶之弈的对局版本信息是一串字符串，从中识别四位对局版本（TFT match version is a long string, from which the 4-number version is identified）
                     TFTGamePatches = [] #这里设定小版本号，以便后续切换云顶之弈相关数据的版本（Here a shorter patch is extracted, in case TFT data version needs changing）
                     for game in TFTHistory:
+                        TFT_main_player_found = False
                         try:
                             for i in range(len(game["json"]["participants"])):
                                 if game["json"]["participants"][i]["puuid"] == current_puuid:
+                                    TFT_main_player_found = True
                                     TFT_main_player_indices.append(i)
                                     break
+                            if not TFT_main_player_found: #在美测服的对局序号为4420772721的对局中，不存在Volibear  PBE6玩家。这是极少见的情况，如果没有此处的判断，一旦发生这种情况，就会引起下标越界的错误（Player "Volibear  PBE6" is absent from a PBE match with matchId 4420772721, which is quite rare. Nevertheless, once it happens, an IndexError that list index out of range will be definitely thrown）
+                                TFT_main_player_indices.append(-1)
                         except TypeError: #在艾欧尼亚的对局序号为8346130449的对局中，不存在玩家。这可能是因为系统维护的原因，所有人未正常进入对局，但是对局确实创建了（There doesn't exist any player in an HN1 match with matchID 8346130499. This may be due to system mainteinance, which causes all players to fail to start the game, even if the match itself has been created）
                             TFT_main_player_indices.append(-1) #当主玩家索引为-1时，表示本场对局存在异常（Main player index being -1 represents an abnormal match）
                     for i in range(len(TFTHistory_header)): #云顶之弈对局信息各项目初始化（Initialize every feature / column of TFT match information）

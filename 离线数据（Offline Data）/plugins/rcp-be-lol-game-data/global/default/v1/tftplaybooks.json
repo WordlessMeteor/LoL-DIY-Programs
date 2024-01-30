@@ -379,12 +379,17 @@
             },
             {
                 "name": "Starter Kit",
-                "description": "Gain a 4-cost champion and a 2-star 1-cost champion that shares a trait with them. <br><br>At the start of the next @FutureChampionCount@ stages, gain that 4-cost champion again.",
+                "description": "Gain a 4-cost champion, a 2-star 1-cost champion that shares a trait with them, and @Gold@ gold.<br><br>At the start of the next @FutureChampionCount@ stages, gain that 4-cost champion again.",
                 "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Starter-Kit-III.png",
                 "effectAmounts": [
                     {
                         "name": "FutureChampionCount",
                         "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 4.0,
                         "formatString": ""
                     }
                 ]

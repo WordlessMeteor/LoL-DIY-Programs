@@ -379,12 +379,17 @@
             },
             {
                 "name": "入门套件",
-                "description": "获得1个随机4费弈子，和1个与该弈子拥有一个相同羁绊的2星1费弈子。<br><br>在接下来的@FutureChampionCount@个阶段，再次获得这个4费弈子。",
+                "description": "获得1个随机4费弈子、1个与该弈子拥有一个相同羁绊的2星1费弈子和@Gold@金币。<br><br>在接下来的@FutureChampionCount@个阶段开始时，再次获得该4费弈子。",
                 "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Starter-Kit-III.png",
                 "effectAmounts": [
                     {
                         "name": "FutureChampionCount",
                         "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 4.0,
                         "formatString": ""
                     }
                 ]

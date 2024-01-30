@@ -527,6 +527,12 @@
         "description": "Arena",
         "detailedDescription": "Arena"
     },
+    "6040": {
+        "name": "Set Queue 1",
+        "shortName": "Set Queue 1",
+        "description": "Set Queue 1",
+        "detailedDescription": "Set Queue 1"
+    },
     "1701": {
         "name": "1v0 (Arena)",
         "shortName": "1v0 (Arena)",
@@ -539,11 +545,23 @@
         "description": "Arena",
         "detailedDescription": "Arena"
     },
+    "6050": {
+        "name": "Set Queue 2",
+        "shortName": "Set Queue 2",
+        "description": "Set Queue 2",
+        "detailedDescription": "Set Queue 2"
+    },
     "1090": {
         "name": "Teamfight Tactics (Normal)",
         "shortName": "Teamfight Tactics (Normal)",
         "description": "Normal",
         "detailedDescription": "Teamfight Tactics (Normal)"
+    },
+    "6020": {
+        "name": "Set Queue 2",
+        "shortName": "Set Queue 2",
+        "description": "Set Queue 2",
+        "detailedDescription": "Set Queue 2"
     },
     "1091": {
         "name": "1v0",
@@ -586,6 +604,12 @@
         "shortName": "ARAM",
         "description": "ARAM",
         "detailedDescription": ""
+    },
+    "6030": {
+        "name": "Set Queue 3",
+        "shortName": "Set Queue 3",
+        "description": "Set Queue 3",
+        "detailedDescription": "Set Queue 3"
     },
     "400": {
         "name": "Normal",
@@ -1145,6 +1169,12 @@
         "description": "Blood Moon",
         "detailedDescription": ""
     },
+    "6060": {
+        "name": "Set Queue 3",
+        "shortName": "Set Queue 3",
+        "description": "Set Queue 3",
+        "detailedDescription": "Set Queue 3"
+    },
     "6002": {
         "name": "2v0 (Set 3.5 Revival: Galaxies)",
         "shortName": "2v0 (Set 3.5 Revival: Galaxies)",
@@ -1180,5 +1210,11 @@
         "shortName": "1v7 Bots (Set 3.5 Revival: Galaxies)",
         "description": "1v7 Bots (Set 3.5 Revival: Galaxies)",
         "detailedDescription": "1v7 Bots (Set 3.5 Revival: Galaxies)"
+    },
+    "6010": {
+        "name": "Set Queue 1",
+        "shortName": "Set Queue 1",
+        "description": "Set Queue 1",
+        "detailedDescription": "Set Queue 1"
     }
 }

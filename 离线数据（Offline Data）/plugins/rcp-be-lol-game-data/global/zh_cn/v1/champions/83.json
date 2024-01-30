@@ -685,7 +685,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "约里克的下次攻击造成额外伤害并治疗自身。如果目标死亡，则会留下一个坟墓。",
-            "dynamicDescription": "你的下一次普通攻击造成额外的<physicalDamage>@BonusDamage@物理伤害</physicalDamage>并回复<healing>@QHeal@外加他的@MissingHealthRatio@%已损失生命值</healing>，对抗小兵时会削减@HealReduction@%。如果这个攻击击杀了目标，就会留下一座坟墓。<br><br>当附近有3个或以上的坟墓时，如果这个技能已被使用，那么约里克就能<recast>再次施放</recast>来从附近的所有坟墓中唤起<keywordMajor>雾行者</keywordMajor>。@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "约里克的下一次普通攻击造成额外的<physicalDamage>@BonusDamage@物理伤害</physicalDamage>并回复<healing>@QHeal@外加他的@MissingHealthRatio@%已损失生命值</healing>，对抗非英雄单位时会削减@HealReduction@%。如果这个攻击击杀了目标，就会留下一座坟墓。<br><br>当附近有3个或以上的坟墓时，如果这个技能已被使用，那么约里克就能<recast>再次施放</recast>来从附近的所有坟墓中唤起<keywordMajor>雾行者</keywordMajor>。@SpellModifierDescriptionAppend@",
             "range": [
                 0.0000,
                 0.0000,
