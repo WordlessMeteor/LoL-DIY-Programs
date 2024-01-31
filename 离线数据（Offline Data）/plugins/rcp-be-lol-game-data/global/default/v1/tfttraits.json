@@ -1916,7 +1916,7 @@
                     },
                     {
                         "name": "BonusAP",
-                        "value": 10.0000,
+                        "value": 20.0000,
                         "format_string": ""
                     }
                 ],
@@ -1956,7 +1956,7 @@
                 "effect_amounts": [
                     {
                         "name": "CRIT_PERCENT",
-                        "value": 1.0000,
+                        "value": 0.8000,
                         "format_string": ""
                     },
                     {
@@ -1974,7 +1974,7 @@
                 "effect_amounts": [
                     {
                         "name": "CRIT_PERCENT",
-                        "value": 2.0000,
+                        "value": 1.6000,
                         "format_string": ""
                     },
                     {
@@ -2710,7 +2710,7 @@
                     },
                     {
                         "name": "HeartsPerKillStage5",
-                        "value": 2.0000,
+                        "value": 1.0000,
                         "format_string": ""
                     },
                     {
@@ -2720,7 +2720,7 @@
                     },
                     {
                         "name": "HeartsPerKillStage6",
-                        "value": 2.0000,
+                        "value": 1.0000,
                         "format_string": ""
                     },
                     {
@@ -2890,7 +2890,7 @@
                 "effect_amounts": [
                     {
                         "name": "PercentHeartRate",
-                        "value": 10.0000,
+                        "value": 18.0000,
                         "format_string": ""
                     },
                     {
@@ -2973,12 +2973,12 @@
                 "effect_amounts": [
                     {
                         "name": "BONUS_HEALTH",
-                        "value": 450.0000,
+                        "value": 420.0000,
                         "format_string": ""
                     },
                     {
                         "name": "BONUS_AD_AP",
-                        "value": 0.4500,
+                        "value": 0.4200,
                         "format_string": ""
                     }
                 ],
@@ -3489,7 +3489,7 @@
                 "effect_amounts": [
                     {
                         "name": "HealOrDamageAmount",
-                        "value": 800.0000,
+                        "value": 1000.0000,
                         "format_string": ""
                     }
                 ],
@@ -3630,12 +3630,12 @@
                 "effect_amounts": [
                     {
                         "name": "HealthAmp",
-                        "value": 250.0000,
+                        "value": 300.0000,
                         "format_string": ""
                     },
                     {
                         "name": "ADAmp",
-                        "value": 0.2000,
+                        "value": 0.2500,
                         "format_string": ""
                     }
                 ],
@@ -3648,12 +3648,12 @@
                 "effect_amounts": [
                     {
                         "name": "HealthAmp",
-                        "value": 550.0000,
+                        "value": 650.0000,
                         "format_string": ""
                     },
                     {
                         "name": "ADAmp",
-                        "value": 0.4500,
+                        "value": 0.5000,
                         "format_string": ""
                     }
                 ],
@@ -3715,7 +3715,7 @@
                 "effect_amounts": [
                     {
                         "name": "ADandSP",
-                        "value": 50.0000,
+                        "value": 45.0000,
                         "format_string": ""
                     }
                 ],
@@ -4282,7 +4282,7 @@
                 "effect_amounts": [
                     {
                         "name": "AP",
-                        "value": 20.0000,
+                        "value": 25.0000,
                         "format_string": ""
                     }
                 ],
@@ -4295,7 +4295,7 @@
                 "effect_amounts": [
                     {
                         "name": "AP",
-                        "value": 40.0000,
+                        "value": 45.0000,
                         "format_string": ""
                     }
                 ],
@@ -4308,7 +4308,7 @@
                 "effect_amounts": [
                     {
                         "name": "AP",
-                        "value": 70.0000,
+                        "value": 75.0000,
                         "format_string": ""
                     }
                 ],

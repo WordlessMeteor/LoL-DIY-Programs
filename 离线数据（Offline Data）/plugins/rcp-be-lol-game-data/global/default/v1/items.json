@@ -2348,7 +2348,7 @@
     {
         "id": 2504,
         "name": "Kaenic Rookern",
-        "description": "<mainText><stats><attention> 400</attention> Health<br><attention> 80</attention> Magic Resist<br><attention> 150%</attention> Base Health Regen</stats><br><br><passive>Magebane</passive><br>After not taking <magicDamage>magic damage</magicDamage> for 12 seconds, gain a <magicDamage>magic shield for 0</magicDamage>. <br><br></mainText>",
+        "description": "<mainText><stats><attention> 400</attention> Health<br><attention> 80</attention> Magic Resist<br><attention> 150%</attention> Base Health Regen</stats><br><br><passive>Magebane</passive><br>After not taking <magicDamage>magic damage</magicDamage> for 15 seconds, gain a <magicDamage>magic shield for 0</magicDamage>. <br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -2453,8 +2453,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 500,
-        "priceTotal": 3000,
+        "price": 400,
+        "priceTotal": 2900,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3003_Mage_T3_ArchangelStaff.png"
     },
     {
@@ -2887,8 +2887,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 3003,
         "isEnchantment": false,
-        "price": 3000,
-        "priceTotal": 3000,
+        "price": 2900,
+        "priceTotal": 2900,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3048_Mage_T3_SeraphsEmbrace.png"
     },
     {
@@ -3033,7 +3033,7 @@
     {
         "id": 3050,
         "name": "Zeke's Convergence",
-        "description": "<mainText><stats><attention> 200</attention> Health<br><attention> 250</attention> Mana<br><attention> 30</attention> Armor<br><attention> 20</attention> Ability Haste</stats><br><br><passive>Frostfire Tempest</passive>  (0s)<br>Casting your Ultimate summons a storm around you for 5 seconds, dealing <magicDamage>50 magic damage</magicDamage> per second and <keyword>Slows</keyword> enemies by 30%.</mainText>",
+        "description": "<mainText><stats><attention> 200</attention> Health<br><attention> 250</attention> Mana<br><attention> 30</attention> Armor<br><attention> 20</attention> Ability Haste</stats><br><br><passive>Frostfire Tempest</passive>  (0s)<br>Casting your Ultimate summons a storm around you for 5 seconds. The storm deals <magicDamage>50 magic damage</magicDamage> per second to enemy Champions and <keyword>Slows</keyword> them by 30%.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4256,7 +4256,7 @@
     {
         "id": 3118,
         "name": "Malignance",
-        "description": "<mainText><stats><attention> 90</attention> Ability Power<br><attention> 600</attention> Mana<br><attention> 20</attention> Ability Haste</stats><br><br><passive>Scorn</passive><br>Your Ultimate spells gain Ability Haste.<br><br><passive>Hatefog</passive><br>Damaging a champion with your Ultimate burns the ground beneath them, dealing damage and reducing their Magic Resist. <br></mainText>",
+        "description": "<mainText><stats><attention> 80</attention> Ability Power<br><attention> 600</attention> Mana<br><attention> 20</attention> Ability Haste</stats><br><br><passive>Scorn</passive><br>Your Ultimate spells gain Ability Haste.<br><br><passive>Hatefog</passive><br>Damaging a champion with your Ultimate burns the ground beneath them, dealing damage and reducing their Magic Resist. <br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4278,8 +4278,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 700,
-        "priceTotal": 2800,
+        "price": 600,
+        "priceTotal": 2700,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3118_Malignance.png"
     },
     {
@@ -5102,7 +5102,7 @@
     {
         "id": 3181,
         "name": "Hullbreaker",
-        "description": "<mainText><stats><attention> 65</attention> Attack Damage<br><attention> 350</attention> Health<br><attention> 5%</attention> Move Speed</stats><br><br><passive>Skipper</passive><br>Every fifth basic attack against Champions and Epic Monsters deals bonus physical damage, increased against Structures.<br><br><passive>Boarding Party</passive><br>Nearby allied Siege and Super Minions gain bonus Armor and Magic Resist. <br><br><rules>Item performance differs for  melee and  ranged users.</rules></mainText>",
+        "description": "<mainText><stats><attention> 65</attention> Attack Damage<br><attention> 350</attention> Health<br><attention> 5%</attention> Move Speed</stats><br><br><passive>Skipper</passive><br>Every fifth Attack against Champions and Epic Monsters deals bonus physical damage, increased against Structures.<br><br><passive>Boarding Party</passive><br>Nearby allied Siege and Super Minions gain Armor and Magic Resist. <br><br><rules>Item performance differs for  melee and  ranged users.</rules></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7550,7 +7550,7 @@
     {
         "id": 6631,
         "name": "Stridebreaker",
-        "description": "<mainText><stats><attention> 50</attention> Attack Damage<br><attention> 30%</attention> Attack Speed<br><attention> 450</attention> Health</stats><br><br><passive>Temper</passive><br>Dealing <physicalDamage>physical damage</physicalDamage> grants <speed>20 Move Speed</speed> for 2 seconds.<br><br> <active>ACTIVE</active><br><active>Breaking Shockwave</active><br><status>Slow</status> nearby enemies by 35% and gain <speed>35% bonus Move Speed</speed> per champion hit that decays over 3 seconds. Can move while casting.</mainText>",
+        "description": "GeneratedTip_Item_6631_ExternalDescription",
         "active": true,
         "inStore": true,
         "from": [
@@ -7645,7 +7645,7 @@
     {
         "id": 6655,
         "name": "Luden's Companion",
-        "description": "<mainText><stats><attention> 100</attention> Ability Power<br><attention> 600</attention> Mana<br><attention> 20</attention> Ability Haste</stats><br><br><passive>Load</passive><br>Gain a Shot Charge every few seconds.<br><br><passive>Fire</passive><br>Damaging Abilities consume all Shot Charges to deal an additional magic damage to the target and one additional nearby target per charge. If there are insufficient targets in range, for each remaining shot, repeat the damage on the primary target.</mainText>",
+        "description": "<mainText><stats><attention> 95</attention> Ability Power<br><attention> 600</attention> Mana<br><attention> 20</attention> Ability Haste</stats><br><br><passive>Load</passive><br>Gain a Shot Charge every few seconds.<br><br><passive>Fire</passive><br>Damaging Abilities consume all Shot Charges to deal an additional magic damage to the target and one additional nearby target per charge. If there are insufficient targets in range, for each remaining shot, repeat the damage on the primary target.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7668,8 +7668,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 700,
-        "priceTotal": 3000,
+        "price": 600,
+        "priceTotal": 2900,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6655_CastersCompanion.png"
     },
     {
@@ -7709,7 +7709,7 @@
     {
         "id": 6657,
         "name": "Rod of Ages",
-        "description": "<mainText><stats><attention> 50</attention> Ability Power<br><attention> 350</attention> Health<br><attention> 300</attention> Mana</stats><br><br><passive>Timeless</passive><br>This item gains Health, Mana and Ability Power every 60 seconds. Upon reaching max stacks, gain a level.<br><br><passive>Eternity</passive><br>Taking damage from champions restores Mana.Casting an ability heals for a % of Mana spent.</mainText>",
+        "description": "<mainText><stats><attention> 50</attention> Ability Power<br><attention> 400</attention> Health<br><attention> 400</attention> Mana</stats><br><br><passive>Timeless</passive><br>This item gains Health, Mana and Ability Power every 60 seconds. Upon reaching max stacks, gain a level.<br><br><passive>Eternity</passive><br>Taking damage from champions restores Mana.Casting an ability heals for a % of Mana spent.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8565,7 +8565,7 @@
     {
         "id": 7004,
         "name": " Enmity of the Masses",
-        "description": "<mainText><stats><ornnBonus> 120</ornnBonus> Ability Power<br><ornnBonus> 800</ornnBonus> Mana<br><ornnBonus> 30</ornnBonus> Ability Haste</stats><br><br><passive>Scorn</passive><br>Your Ultimate spells gain Ability Haste.<br><br><passive>Hatefog</passive><br>Damaging a champion with your Ultimate burns the ground beneath them, dealing damage and reducing their Magic Resist. <br></mainText>",
+        "description": "<mainText><stats><ornnBonus> 110</ornnBonus> Ability Power<br><ornnBonus> 800</ornnBonus> Mana<br><ornnBonus> 30</ornnBonus> Ability Haste</stats><br><br><passive>Scorn</passive><br>Your Ultimate spells gain Ability Haste.<br><br><passive>Hatefog</passive><br>Damaging a champion with your Ultimate burns the ground beneath them, dealing damage and reducing their Magic Resist. <br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8585,7 +8585,7 @@
         "specialRecipe": 0,
         "isEnchantment": false,
         "price": 0,
-        "priceTotal": 2800,
+        "priceTotal": 2700,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3118_Malignance.png"
     },
     {
@@ -8813,7 +8813,7 @@
     {
         "id": 7013,
         "name": " Force of Arms",
-        "description": "<mainText><stats><ornnBonus> 125</ornnBonus> Ability Power<br><ornnBonus> 950</ornnBonus> Mana<br><ornnBonus> 30</ornnBonus> Ability Haste</stats><br><br><passive>Load</passive><br>Gain a Shot Charge every few seconds.<br><br><passive>Fire</passive><br>Damaging Abilities consume all Shot Charges to deal an additional magic damage to the target and one additional nearby target per charge. If there are insufficient targets in range, for each remaining shot, repeat the damage on the primary target.</mainText>",
+        "description": "<mainText><stats><ornnBonus> 120</ornnBonus> Ability Power<br><ornnBonus> 950</ornnBonus> Mana<br><ornnBonus> 30</ornnBonus> Ability Haste</stats><br><br><passive>Load</passive><br>Gain a Shot Charge every few seconds.<br><br><passive>Fire</passive><br>Damaging Abilities consume all Shot Charges to deal an additional magic damage to the target and one additional nearby target per charge. If there are insufficient targets in range, for each remaining shot, repeat the damage on the primary target.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8834,7 +8834,7 @@
         "specialRecipe": 0,
         "isEnchantment": false,
         "price": 0,
-        "priceTotal": 3000,
+        "priceTotal": 2900,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6655_CastersCompanion.png"
     },
     {
@@ -8900,7 +8900,7 @@
     {
         "id": 7016,
         "name": " Dreamshatter",
-        "description": "<mainText><stats><ornnBonus> 60</ornnBonus> Attack Damage<br><ornnBonus> 40%</ornnBonus> Attack Speed<br><ornnBonus> 600</ornnBonus> Health</stats><br><br><passive>Temper</passive><br>Dealing <physicalDamage>physical damage</physicalDamage> grants <speed>20 Move Speed</speed> for 2 seconds.<br><br> <active>ACTIVE</active><br><active>Breaking Shockwave</active><br><status>Slow</status> nearby enemies by 35% and gain <speed>35% bonus Move Speed</speed> per champion hit that decays over 3 seconds. Can move while casting.</mainText>",
+        "description": "GeneratedTip_Item_7016_ExternalDescription",
         "active": true,
         "inStore": true,
         "from": [
@@ -9239,7 +9239,7 @@
     {
         "id": 7028,
         "name": " Infinite Convergence",
-        "description": "<mainText><stats><ornnBonus> 70</ornnBonus> Ability Power<br><ornnBonus> 500</ornnBonus> Health<br><ornnBonus> 550</ornnBonus> Mana</stats><br><br><passive>Timeless</passive><br>This item gains Health, Mana and Ability Power every 60 seconds. Upon reaching max stacks, gain a level.<br><br><passive>Eternity</passive><br>Taking damage from champions restores Mana.Casting an ability heals for a % of Mana spent.</mainText>",
+        "description": "<mainText><stats><ornnBonus> 70</ornnBonus> Ability Power<br><ornnBonus> 550</ornnBonus> Health<br><ornnBonus> 650</ornnBonus> Mana</stats><br><br><passive>Timeless</passive><br>This item gains Health, Mana and Ability Power every 60 seconds. Upon reaching max stacks, gain a level.<br><br><passive>Eternity</passive><br>Taking damage from champions restores Mana.Casting an ability heals for a % of Mana spent.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -10174,8 +10174,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 223003,
         "isEnchantment": false,
-        "price": 3000,
-        "priceTotal": 3000,
+        "price": 2900,
+        "priceTotal": 2900,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3048_Mage_T3_SeraphsEmbrace.png"
     },
     {
@@ -12135,7 +12135,7 @@
     {
         "id": 226631,
         "name": "Stridebreaker",
-        "description": "<mainText><stats><nerfedStat> 60</nerfedStat> Attack Damage<br><attention> 20%</attention> Attack Speed<br><attention> 375</attention> Health</stats><br><br><br><li><passive>Heroic Gait:</passive> Dealing physical damage grants Move Speed.<br><br><rarityMythic>Mythic Passive:</rarityMythic> Grants all other <rarityLegendary>Legendary</rarityLegendary> items Move Speed.<br><br> <active>ACTIVE</active><br><active>Breaking Shockwave</active><br><status>Slow</status> nearby enemies by 40% and gain <speed>40% bonus Move Speed</speed> per champion hit that decays over 3 seconds. Can move while casting.</mainText>",
+        "description": "<mainText><stats><nerfedStat> 60</nerfedStat> Attack Damage<br><attention> 20%</attention> Attack Speed<br><attention> 375</attention> Health</stats><br><br><br><li><passive>Heroic Gait:</passive> Dealing physical damage grants <speed>20 Move Speed</speed> for 3 seconds.<br><br><rarityMythic>Mythic Passive:</rarityMythic> Grants all other <rarityLegendary>Legendary</rarityLegendary> items <attention> 2%</attention> Move Speed.<br><br> <active>ACTIVE</active>  (0s)<br><active>Breaking Shockwave</active><br>Deal <physicalDamage>0 phyiscal damage</physicalDamage> and <status>Slow</status> nearby enemies by 40% and gain <speed>40% bonus Move Speed</speed> per champion hit that decays over 3 seconds. Can move while casting.</mainText>",
         "active": true,
         "inStore": true,
         "from": [],
@@ -12276,7 +12276,7 @@
     {
         "id": 226657,
         "name": "Rod of Ages",
-        "description": "<mainText><stats><buffedStat> 70</buffedStat> Ability Power<br><attention> 350</attention> Health<br><attention> 300</attention> Mana</stats><br><br><passive>Timeless</passive><br>This item gains Health, Mana and Ability Power every 60 seconds. Upon reaching max stacks, gain a level.<br><br><passive>Eternity</passive><br>Taking damage from champions restores Mana.Casting an ability heals for a % of Mana spent.</mainText>",
+        "description": "<mainText><stats><buffedStat> 70</buffedStat> Ability Power<br><attention> 400</attention> Health<br><attention> 400</attention> Mana</stats><br><br><passive>Timeless</passive><br>This item gains Health, Mana and Ability Power every 60 seconds. Upon reaching max stacks, gain a level.<br><br><passive>Eternity</passive><br>Taking damage from champions restores Mana.Casting an ability heals for a % of Mana spent.</mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -12329,32 +12329,6 @@
         "price": 3000,
         "priceTotal": 3000,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6662_Tank_T3_IcebornGauntlet.png"
-    },
-    {
-        "id": 226664,
-        "name": "Turbo Chemtank",
-        "description": "<mainText><stats><buffedStat> 600</buffedStat> Health<br><attention> 40</attention> Magic Resist<br><attention> 100%</attention> Base Health Regen</stats><br><br><br><br> <active>Active -</active> <active>Supercharged:</active> Grants <speed>80% Move Speed</speed> towards enemies or enemy turrets for 4 seconds. Once near an enemy (or after 4 seconds) a shockwave is emitted that <status>Slows</status> nearby champions by -50% for 1.5 seconds (30 (0s)).</mainText>",
-        "active": false,
-        "inStore": true,
-        "from": [],
-        "to": [],
-        "categories": [
-            "Health",
-            "SpellBlock",
-            "HealthRegen",
-            "Aura",
-            "MagicResist"
-        ],
-        "maxStacks": 1,
-        "requiredChampion": "",
-        "requiredAlly": "",
-        "requiredBuffCurrencyName": "",
-        "requiredBuffCurrencyCost": 0,
-        "specialRecipe": 0,
-        "isEnchantment": false,
-        "price": 3000,
-        "priceTotal": 3000,
-        "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6664_Tank_T4_AcceleratedChemtank.png"
     },
     {
         "id": 226665,
@@ -13006,7 +12980,7 @@
     {
         "id": 227016,
         "name": " Dreamshatter",
-        "description": "<mainText><stats><nerfedStat> 60</nerfedStat> Attack Damage<br><ornnBonus> 30%</ornnBonus> Attack Speed<br><ornnBonus> 400</ornnBonus> Health</stats><br><br><br><li><passive>Heroic Gait:</passive> Dealing physical damage grants Move Speed.<br><br><rarityMythic>Mythic Passive:</rarityMythic> Grants all other <rarityLegendary>Legendary</rarityLegendary> items Move Speed.<br><br> <active>ACTIVE</active><br><active>Breaking Shockwave</active><br><status>Slow</status> nearby enemies by 40% and gain <speed>40% bonus Move Speed</speed> per champion hit that decays over 3 seconds. Can move while casting.</mainText>",
+        "description": "<mainText><stats><nerfedStat> 60</nerfedStat> Attack Damage<br><ornnBonus> 30%</ornnBonus> Attack Speed<br><ornnBonus> 400</ornnBonus> Health</stats><br><br><br><li><passive>Heroic Gait:</passive> Dealing physical damage grants <speed>20 Move Speed</speed> for 3 seconds.<br><br><rarityMythic>Mythic Passive:</rarityMythic> Grants all other <rarityLegendary>Legendary</rarityLegendary> items <attention> 2%</attention> Move Speed.<br><br> <active>ACTIVE</active>  (0s)<br><active>Breaking Shockwave</active><br>Deal <physicalDamage>0 phyiscal damage</physicalDamage> and <status>Slow</status> nearby enemies by 40% and gain <speed>40% bonus Move Speed</speed> per champion hit that decays over 3 seconds. Can move while casting.</mainText>",
         "active": true,
         "inStore": false,
         "from": [

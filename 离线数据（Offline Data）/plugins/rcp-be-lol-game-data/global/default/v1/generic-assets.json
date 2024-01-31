@@ -3312,7 +3312,9 @@
         "0355e604-eb0a-47a9-b045-8312d03109ed-active": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Home/Promotions/PC_Hub_StoreOffers_Pass_LNY2024_ACTIVE.png",
         "0355e604-eb0a-47a9-b045-8312d03109ed-hover": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Home/Promotions/PC_Hub_StoreOffers_Pass_LNY2024_HOVER.png",
         "9f2460eb-8319-4f28-9e55-497456d4597d-active": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Home/Promotions/PC_EventButton_PrimeRedirect_MatchaBoom_Active.png",
-        "9f2460eb-8319-4f28-9e55-497456d4597d-hover": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Home/Promotions/PC_EventButton_PrimeRedirect_MatchaBoom_Hover.png"
+        "9f2460eb-8319-4f28-9e55-497456d4597d-hover": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Home/Promotions/PC_EventButton_PrimeRedirect_MatchaBoom_Hover.png",
+        "55fe215e-6a2b-4942-80eb-b2c4483eb68b-active": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Home/Promotions/Hub_Tactician_Chibi_Porcelain_Lux_ACTIVE.png",
+        "55fe215e-6a2b-4942-80eb-b2c4483eb68b-hover": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Home/Promotions/Hub_Tactician_Chibi_Porcelain_Lux_HOVER.png"
     },
     "lcu-assets-tft-eventpass-soulfighter": {
         "background--loading": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/sf-loading.jpg",

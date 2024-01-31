@@ -2348,7 +2348,7 @@
     {
         "id": 2504,
         "name": "败魔",
-        "description": "<mainText><stats><attention>400</attention>生命值<br><attention>80</attention>魔法抗性<br><attention>150%</attention>基础生命回复</stats><br><br><passive>法师之祸</passive><br>如果连续12秒没有受到<magicDamage>魔法伤害</magicDamage>，获得<magicDamage>0魔法护盾</magicDamage>。<br><br></mainText>",
+        "description": "<mainText><stats><attention>400</attention>生命值<br><attention>80</attention>魔法抗性<br><attention>150%</attention>基础生命回复</stats><br><br><passive>法师之祸</passive><br>如果连续15秒没有受到<magicDamage>魔法伤害</magicDamage>，获得<magicDamage>0魔法护盾</magicDamage>。<br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -2432,7 +2432,7 @@
     {
         "id": 3003,
         "name": "大天使之杖",
-        "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得相当于你的额外法力值的法术强度。<br><br><passive>法力流</passive><br>用一个技能或攻击击中一个目标时，会消耗一层充能并获得额外法力值。至多提供360法力值，且此时这个装备会转变为<rarityLegendary>炽天使之拥</rarityLegendary>。</mainText>",
+        "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得相当于你的额外法力值的法术强度。<br><br><passive>法力流</passive><br>用一个技能击中一个目标时，会消耗一层充能并获得额外法力值。至多提供360法力值，且此时这个装备会转变为<rarityLegendary>炽天使之拥</rarityLegendary>。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -2453,8 +2453,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 500,
-        "priceTotal": 3000,
+        "price": 400,
+        "priceTotal": 2900,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3003_Mage_T3_ArchangelStaff.png"
     },
     {
@@ -2887,8 +2887,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 3003,
         "isEnchantment": false,
-        "price": 3000,
-        "priceTotal": 3000,
+        "price": 2900,
+        "priceTotal": 2900,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3048_Mage_T3_SeraphsEmbrace.png"
     },
     {
@@ -3033,7 +3033,7 @@
     {
         "id": 3050,
         "name": "基克的聚合",
-        "description": "<mainText><stats><attention>200</attention>生命值<br><attention>250</attention>法力<br><attention>30</attention>护甲<br><attention>20</attention>技能急速</stats><br><br><passive>霜火风暴</passive>  (0秒)<br>施放你的终极技能时会召唤一个风暴环绕于你5秒，每秒对敌人们造成<magicDamage>50魔法伤害</magicDamage>和30%<keyword>减速</keyword>。</mainText>",
+        "description": "<mainText><stats><attention>200</attention>生命值<br><attention>250</attention>法力<br><attention>30</attention>护甲<br><attention>20</attention>技能急速</stats><br><br><passive>霜火风暴</passive>  (0秒)<br>施放你的终极技能时会召唤一个风暴环绕于你5秒。这个风暴对敌方英雄们造成每秒<magicDamage>50魔法伤害</magicDamage>和30%<keyword>减速</keyword>。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -3284,7 +3284,7 @@
     {
         "id": 3070,
         "name": "女神之泪",
-        "description": "<mainText><stats><attention>240</attention>法力</stats><br><br><br><li><passive>专注：</passive>攻击会对小兵造成额外的物理伤害。<li><passive>法力流：</passive>用一个技能击中一个目标时，会消耗一层充能并获得<scaleMana>3法力值</scaleMana>，如果目标是英雄，则该次提供的额外法力值翻倍。至多至360法力值。<br><br><rules>每8秒获得一层新的<passive>法力积攒</passive>(至多至4层)。</rules></mainText>",
+        "description": "<mainText><stats><attention>240</attention>法力</stats><br><br><br><li><passive>专注：</passive>攻击会对小兵造成额外的物理伤害。<li><passive>法力流：</passive>用一个技能击中一个目标时，会消耗一层充能并获得<scaleMana>3额外法力值</scaleMana>，如果目标是英雄，则该次提供的额外法力值翻倍。至多至360法力值。<br><br><rules>每8秒获得一层新的<passive>法力积攒</passive>(至多至4层)。</rules></mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -4256,7 +4256,7 @@
     {
         "id": 3118,
         "name": "残疫",
-        "description": "<mainText><stats><attention>90</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>蔑视</passive><br>你的终极技能获得技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
+        "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>蔑视</passive><br>你的终极技能获得技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4278,14 +4278,14 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 700,
-        "priceTotal": 2800,
+        "price": 600,
+        "priceTotal": 2700,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3118_Malignance.png"
     },
     {
         "id": 3119,
         "name": "凛冬之临",
-        "description": "<mainText><stats><attention>400</attention>生命值<br><attention>500</attention>法力<br><attention>15</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得额外<scaleHealth>生命值，相当于0</scaleHealth>。<br><br><passive>法力流</passive><br>用一个技能或攻击击中一个目标时，会消耗一层充能并获得额外法力值。至多提供法力值，且此时这个装备会转变为<rarityLegendary>末日寒冬</rarityLegendary>。</mainText>",
+        "description": "<mainText><stats><attention>400</attention>生命值<br><attention>500</attention>法力<br><attention>15</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得额外<scaleHealth>生命值，相当于0</scaleHealth>。<br><br><passive>法力流</passive><br>用一个技能或攻击击中一个目标时，会消耗一层充能并获得额外法力值。在提供的法力值达到最大值时，这个装备会转变为<rarityLegendary>末日寒冬</rarityLegendary>。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -5102,7 +5102,7 @@
     {
         "id": 3181,
         "name": "破舰者",
-        "description": "<mainText><stats><attention>65</attention>攻击力<br><attention>350</attention>生命值<br><attention>5%</attention>移动速度</stats><br><br><passive>船长</passive><br>对英雄和史诗级野怪的每第五次普攻造成额外物理伤害，对建筑物造成更多伤害。<br><br><passive>登舰小组</passive><br>附近的友军攻城兵和超级士兵获得额外护甲和魔法抗性。<br><br><rules>装备对近战携带者和远程携带者会有不同的性能。</rules></mainText>",
+        "description": "<mainText><stats><attention>65</attention>攻击力<br><attention>350</attention>生命值<br><attention>5%</attention>移动速度</stats><br><br><passive>船长</passive><br>对英雄和史诗级野怪的每第五次攻击造成额外物理伤害，对建筑物造成更多伤害。<br><br><passive>登舰小组</passive><br>附近的友军攻城兵和超级士兵获得护甲和魔法抗性。<br><br><rules>装备对近战携带者和远程携带者会有不同的性能。</rules></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -5280,7 +5280,7 @@
     {
         "id": 3302,
         "name": "界弓",
-        "description": "<mainText><stats><attention>40</attention>攻击力<br><attention>30%</attention>攻击速度</stats><br><br><passive>晦影</passive>附带<magicDamage>30魔法伤害</magicDamage> <OnHit>攻击特效</OnHit>。<br><br><passive>交相</passive><br>攻击英雄时在<keywordMajor>光明</keywordMajor>特效和<keywordMajor>黑暗</keywordMajor>特效之间轮换：<li>附带<keywordMajor>光明</keywordMajor>特效的攻击提供持续5秒的0 <scaleArmor>护甲</scaleArmor>和<scaleMR>魔抗</scaleMR>(至多至0)。<li>附带<keywordMajor>黑暗</keywordMajor>特效的攻击提供持续5秒的6%<scaleArmor>护甲穿透</scaleArmor>和<scaleMR>法术穿透</scaleMR>(至多至330%)。 </mainText>",
+        "description": "<mainText><stats><attention>40</attention>攻击力<br><attention>30%</attention>攻击速度</stats><br><br><passive>晦影</passive><br>攻击附带<magicDamage>30魔法伤害</magicDamage> <OnHit>攻击特效</OnHit>。<br><br><passive>交相</passive><br>攻击英雄时在<keywordMajor>光明</keywordMajor>特效和<keywordMajor>黑暗</keywordMajor>特效之间轮换：<li>附带<keywordMajor>光明</keywordMajor>特效的攻击提供持续5秒的0 <scaleArmor>护甲</scaleArmor>和<scaleMR>魔抗</scaleMR>(至多至0)。<li>附带<keywordMajor>黑暗</keywordMajor>特效的攻击提供持续5秒的6%<scaleArmor>护甲穿透</scaleArmor>和<scaleMR>法术穿透</scaleMR>(至多至330%)。 </mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7550,7 +7550,7 @@
     {
         "id": 6631,
         "name": "挺进破坏者",
-        "description": "<mainText><stats><attention>50</attention>攻击力<br><attention>30%</attention>攻击速度<br><attention>450</attention>生命值</stats><br><br><passive>回火</passive><br>造成<physicalDamage>物理伤害</physicalDamage>时为你提供持续2秒的<speed>20移动速度</speed>。<br><br> <active>主动</active> <br><active>破阵冲击波</active><br>对附近的敌人们造成35%<status>减速</status>并且每命中一个英雄就会获得<speed>35%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
+        "description": "GeneratedTip_Item_6631_ExternalDescription",
         "active": true,
         "inStore": true,
         "from": [
@@ -7645,7 +7645,7 @@
     {
         "id": 6655,
         "name": "卢登的伙伴",
-        "description": "<mainText><stats><attention>100</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>装填</passive><br>每若干秒获得一层【射击充能】。<br><br><passive>开火</passive><br>伤害型技能会消耗所有【射击充能】来对目标和目标附近的其它敌人(其它敌人的数量相当于【射击充能】层数)造成额外魔法伤害。如果距离内的目标数量不足，那么每剩余一次射击，就会对主要目标重复造成一次伤害。</mainText>",
+        "description": "<mainText><stats><attention>95</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>装填</passive><br>每若干秒获得一层【射击充能】。<br><br><passive>开火</passive><br>伤害型技能会消耗所有【射击充能】来对目标和目标附近的其它敌人(其它敌人的数量相当于【射击充能】层数)造成额外魔法伤害。如果距离内的目标数量不足，那么每剩余一次射击，就会对主要目标重复造成一次伤害。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7668,8 +7668,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 700,
-        "priceTotal": 3000,
+        "price": 600,
+        "priceTotal": 2900,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6655_CastersCompanion.png"
     },
     {
@@ -7709,7 +7709,7 @@
     {
         "id": 6657,
         "name": "时光之杖",
-        "description": "<mainText><stats><attention>50</attention>法术强度<br><attention>350</attention>生命值<br><attention>300</attention>法力</stats><br><br><passive>时无限</passive><br>这件装备每60秒获得生命值、法力值和法术强度。在达到最大层数时，还会使英雄等级提升1级。<br><br><passive>永恒</passive><br>在承受来自英雄的伤害时回复法力值。在施放一个技能时基于法力消耗治疗自身生命值。</mainText>",
+        "description": "<mainText><stats><attention>50</attention>法术强度<br><attention>400</attention>生命值<br><attention>400</attention>法力</stats><br><br><passive>时无限</passive><br>这件装备每60秒获得生命值、法力值和法术强度。在达到最大层数时，还会使英雄等级提升1级。<br><br><passive>永恒</passive><br>在承受来自英雄的伤害时回复法力值。在施放一个技能时基于法力消耗治疗自身生命值。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8565,7 +8565,7 @@
     {
         "id": 7004,
         "name": " 万众之恨意",
-        "description": "<mainText><stats><ornnBonus>120</ornnBonus>法术强度<br><ornnBonus>800</ornnBonus>法力<br><ornnBonus>30</ornnBonus>技能急速</stats><br><br><passive>蔑视</passive><br>你的终极技能获得技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
+        "description": "<mainText><stats><ornnBonus>110</ornnBonus>法术强度<br><ornnBonus>800</ornnBonus>法力<br><ornnBonus>30</ornnBonus>技能急速</stats><br><br><passive>蔑视</passive><br>你的终极技能获得技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8585,7 +8585,7 @@
         "specialRecipe": 0,
         "isEnchantment": false,
         "price": 0,
-        "priceTotal": 2800,
+        "priceTotal": 2700,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3118_Malignance.png"
     },
     {
@@ -8813,7 +8813,7 @@
     {
         "id": 7013,
         "name": " 武备之力",
-        "description": "<mainText><stats><ornnBonus>125</ornnBonus>法术强度<br><ornnBonus>950</ornnBonus>法力<br><ornnBonus>30</ornnBonus>技能急速</stats><br><br><passive>装填</passive><br>每若干秒获得一层【射击充能】。<br><br><passive>开火</passive><br>伤害型技能会消耗所有【射击充能】来对目标和目标附近的其它敌人(其它敌人的数量相当于【射击充能】层数)造成额外魔法伤害。如果距离内的目标数量不足，那么每剩余一次射击，就会对主要目标重复造成一次伤害。</mainText>",
+        "description": "<mainText><stats><ornnBonus>120</ornnBonus>法术强度<br><ornnBonus>950</ornnBonus>法力<br><ornnBonus>30</ornnBonus>技能急速</stats><br><br><passive>装填</passive><br>每若干秒获得一层【射击充能】。<br><br><passive>开火</passive><br>伤害型技能会消耗所有【射击充能】来对目标和目标附近的其它敌人(其它敌人的数量相当于【射击充能】层数)造成额外魔法伤害。如果距离内的目标数量不足，那么每剩余一次射击，就会对主要目标重复造成一次伤害。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8834,7 +8834,7 @@
         "specialRecipe": 0,
         "isEnchantment": false,
         "price": 0,
-        "priceTotal": 3000,
+        "priceTotal": 2900,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6655_CastersCompanion.png"
     },
     {
@@ -8900,7 +8900,7 @@
     {
         "id": 7016,
         "name": " 梦想击碎者",
-        "description": "<mainText><stats><ornnBonus>60</ornnBonus>攻击力<br><ornnBonus>40%</ornnBonus>攻击速度<br><ornnBonus>600</ornnBonus>生命值</stats><br><br><passive>回火</passive><br>造成<physicalDamage>物理伤害</physicalDamage>时为你提供持续2秒的<speed>20移动速度</speed>。<br><br> <active>主动</active> <br><active>破阵冲击波</active><br>对附近的敌人们造成35%<status>减速</status>并且每命中一个英雄就会获得<speed>35%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
+        "description": "GeneratedTip_Item_7016_ExternalDescription",
         "active": true,
         "inStore": true,
         "from": [
@@ -9239,7 +9239,7 @@
     {
         "id": 7028,
         "name": " 无限会聚",
-        "description": "<mainText><stats><ornnBonus>70</ornnBonus>法术强度<br><ornnBonus>500</ornnBonus>生命值<br><ornnBonus>550</ornnBonus>法力</stats><br><br><passive>时无限</passive><br>这件装备每60秒获得生命值、法力值和法术强度。在达到最大层数时，还会使英雄等级提升1级。<br><br><passive>永恒</passive><br>在承受来自英雄的伤害时回复法力值。在施放一个技能时基于法力消耗治疗自身生命值。</mainText>",
+        "description": "<mainText><stats><ornnBonus>70</ornnBonus>法术强度<br><ornnBonus>550</ornnBonus>生命值<br><ornnBonus>650</ornnBonus>法力</stats><br><br><passive>时无限</passive><br>这件装备每60秒获得生命值、法力值和法术强度。在达到最大层数时，还会使英雄等级提升1级。<br><br><passive>永恒</passive><br>在承受来自英雄的伤害时回复法力值。在施放一个技能时基于法力消耗治疗自身生命值。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -10174,8 +10174,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 223003,
         "isEnchantment": false,
-        "price": 3000,
-        "priceTotal": 3000,
+        "price": 2900,
+        "priceTotal": 2900,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3048_Mage_T3_SeraphsEmbrace.png"
     },
     {
@@ -12135,7 +12135,7 @@
     {
         "id": 226631,
         "name": "挺进破坏者",
-        "description": "<mainText><stats><nerfedStat>60</nerfedStat>攻击力<br><attention>20%</attention>攻击速度<br><attention>375</attention>生命值</stats><br><br><br><li><passive>英勇步态：</passive>造成物理伤害时会提供移动速度。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得移动速度。<br><br> <active>主动</active> <br><active>破阵冲击波</active><br>对附近的敌人们造成40%<status>减速</status>并且每命中一个英雄就会获得<speed>40%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
+        "description": "<mainText><stats><nerfedStat>60</nerfedStat>攻击力<br><attention>20%</attention>攻击速度<br><attention>375</attention>生命值</stats><br><br><br><li><passive>英勇步态：</passive>造成物理伤害时会提供<speed>20移动速度</speed>，持续3秒。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得<attention>2%</attention>移动速度。<br><br> <active>主动</active>  (0秒)<br><active>破阵冲击波</active><br>对附近的敌人们造成<physicalDamage>0物理伤害</physicalDamage>和40%<status>减速</status>并且每命中一个英雄就会获得<speed>40%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
         "active": true,
         "inStore": true,
         "from": [],
@@ -12276,7 +12276,7 @@
     {
         "id": 226657,
         "name": "时光之杖",
-        "description": "<mainText><stats><buffedStat> 70</buffedStat>法术强度<br><attention>350</attention>生命值<br><attention>300</attention>法力</stats><br><br><passive>时无限</passive><br>这件装备每60秒获得生命值、法力值和法术强度。在达到最大层数时，还会使英雄等级提升1级。<br><br><passive>永恒</passive><br>在承受来自英雄的伤害时回复法力值。在施放一个技能时基于法力消耗治疗自身生命值。</mainText>",
+        "description": "<mainText><stats><buffedStat> 70</buffedStat>法术强度<br><attention>400</attention>生命值<br><attention>400</attention>法力</stats><br><br><passive>时无限</passive><br>这件装备每60秒获得生命值、法力值和法术强度。在达到最大层数时，还会使英雄等级提升1级。<br><br><passive>永恒</passive><br>在承受来自英雄的伤害时回复法力值。在施放一个技能时基于法力消耗治疗自身生命值。</mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -12329,32 +12329,6 @@
         "price": 3000,
         "priceTotal": 3000,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6662_Tank_T3_IcebornGauntlet.png"
-    },
-    {
-        "id": 226664,
-        "name": "涡轮炼金罐",
-        "description": "<mainText><stats><buffedStat>600</buffedStat>生命值<br><attention>40</attention>魔法抗性<br><attention>100%</attention>基础生命回复</stats><br><br><br><br><active>主动 - </active> <active>极限超载：</active>在朝着敌方英雄或敌方防御塔移动时会提供<speed>80%移动速度</speed>，持续4秒。一旦贴近一名敌方英雄(或在4秒后)，你就会放出一道冲击波，使附近敌方英雄<status>减速</status>-50%，持续1.5秒(30 (0秒))。</mainText>",
-        "active": false,
-        "inStore": true,
-        "from": [],
-        "to": [],
-        "categories": [
-            "Health",
-            "SpellBlock",
-            "HealthRegen",
-            "Aura",
-            "MagicResist"
-        ],
-        "maxStacks": 1,
-        "requiredChampion": "",
-        "requiredAlly": "",
-        "requiredBuffCurrencyName": "",
-        "requiredBuffCurrencyCost": 0,
-        "specialRecipe": 0,
-        "isEnchantment": false,
-        "price": 3000,
-        "priceTotal": 3000,
-        "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6664_Tank_T4_AcceleratedChemtank.png"
     },
     {
         "id": 226665,
@@ -13006,7 +12980,7 @@
     {
         "id": 227016,
         "name": " 梦想击碎者",
-        "description": "<mainText><stats><nerfedStat>60</nerfedStat>攻击力<br><ornnBonus>30%</ornnBonus>攻击速度<br><ornnBonus>400</ornnBonus>生命值</stats><br><br><br><li><passive>英勇步态：</passive>造成物理伤害时会提供移动速度。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得移动速度。<br><br> <active>主动</active> <br><active>破阵冲击波</active><br>对附近的敌人们造成40%<status>减速</status>并且每命中一个英雄就会获得<speed>40%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
+        "description": "<mainText><stats><nerfedStat>60</nerfedStat>攻击力<br><ornnBonus>30%</ornnBonus>攻击速度<br><ornnBonus>400</ornnBonus>生命值</stats><br><br><br><li><passive>英勇步态：</passive>造成物理伤害时会提供<speed>20移动速度</speed>，持续3秒。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得<attention>2%</attention>移动速度。<br><br> <active>主动</active>  (0秒)<br><active>破阵冲击波</active><br>对附近的敌人们造成<physicalDamage>0物理伤害</physicalDamage>和40%<status>减速</status>并且每命中一个英雄就会获得<speed>40%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
         "active": true,
         "inStore": false,
         "from": [

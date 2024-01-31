@@ -611,7 +611,7 @@
         {
             "apiName": "CenterOfTheUniverse",
             "calculations": {
-                "{199e269c}": {
+                "StarDamage": {
                     "__type": "GameCalculation",
                     "mFormulaParts": [
                         {
@@ -1199,7 +1199,7 @@
                         }
                     ]
                 },
-                "{e1574e54}": {
+                "BurnDamageTooltip": {
                     "__type": "GameCalculationModified",
                     "mModifiedGameCalculation": "BurnDamage",
                     "mMultiplier": {
@@ -1263,7 +1263,7 @@
                         },
                         {
                             "__type": "StatByNamedDataValueCalculationPart",
-                            "mDataValue": "{57e364d3}",
+                            "mDataValue": "HealPercentage",
                             "mStat": 11
                         }
                     ],
@@ -1467,7 +1467,7 @@
                         }
                     ]
                 },
-                "{e1574e54}": {
+                "BurnDamageTooltip": {
                     "__type": "GameCalculationModified",
                     "mModifiedGameCalculation": "BurnDamage",
                     "mMultiplier": {
@@ -2362,14 +2362,14 @@
                         }
                     ]
                 },
-                "{f985dcf2}": {
+                "TotalDamageOverTimeTooltip": {
                     "__type": "GameCalculationModified",
                     "mModifiedGameCalculation": "DamagePerTick",
                     "mMultiplier": {
                         "__type": "ProductOfSubPartsCalculationPart",
                         "mPart1": {
                             "__type": "NamedDataValueCalculationPart",
-                            "mDataValue": "{56003912}"
+                            "mDataValue": "GroundDuration"
                         },
                         "mPart2": {
                             "__type": "NumberCalculationPart",
@@ -2628,7 +2628,7 @@
                         }
                     ]
                 },
-                "{31b37575}": {
+                "LaserEyesTooltip": {
                     "__type": "GameCalculation",
                     "mFormulaParts": [
                         {
@@ -2867,7 +2867,7 @@
         {
             "apiName": "Flashbang",
             "calculations": {
-                "{6290bda5}": {
+                "ExplosiveDamage": {
                     "__type": "GameCalculation",
                     "mFormulaParts": [
                         {
