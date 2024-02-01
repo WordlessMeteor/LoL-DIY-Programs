@@ -311,7 +311,7 @@
         "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/HUD/Icons2D/Udyr_P.png",
         "abilityVideoPath": "champion-abilities/0077/ability_0077_P1.webm",
         "abilityVideoImagePath": "champion-abilities/0077/ability_0077_P1.jpg",
-        "description": "乌迪尔的四个基础技能会让他在四种姿态之间来回转换，并且再次施放同一技能会提供觉醒效果，带来额外的助益。此外，在使用一个技能后，乌迪尔的下两次攻击获得攻击速度。"
+        "description": "乌迪尔的四个基础技能会让他在四种姿态之间来回转换，并且再次施放同一技能会带来终极技能助益。此外，在使用一个技能后，乌迪尔的下两次攻击获得攻击速度。"
     },
     "spells": [
         {

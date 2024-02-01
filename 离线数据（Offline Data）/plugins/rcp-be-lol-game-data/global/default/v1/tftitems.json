@@ -1820,6 +1820,19 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT10_GamblersBlade.TFT_Set10.png"
     },
     {
+        "guid": "266bff25-573d-4682-8812-337cd6275bcf",
+        "name": "Damage Amp",
+        "nameId": "TFT_Item_DebugDamageAmp",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 0,
+            "G": 0,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Augments/DU_Augment_BulkShipping.png"
+    },
+    {
         "guid": "5c208d2b-737f-40f3-bb28-4a74842bc5df",
         "name": "Punk Emblem",
         "nameId": "TFT10_Item_PunkEmblem",
@@ -7540,6 +7553,19 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT10_GamblersBlade.TFT_Set10.png"
     },
     {
+        "guid": "266bff25-573d-4682-8812-337cd6275bcf",
+        "name": "Damage Amp",
+        "nameId": "TFT_Item_DebugDamageAmp",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 0,
+            "G": 0,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Augments/DU_Augment_BulkShipping.png"
+    },
+    {
         "guid": "5c208d2b-737f-40f3-bb28-4a74842bc5df",
         "name": "Punk Emblem",
         "nameId": "TFT10_Item_PunkEmblem",
@@ -12662,6 +12688,19 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT10_GamblersBlade.TFT_Set10.png"
     },
     {
+        "guid": "266bff25-573d-4682-8812-337cd6275bcf",
+        "name": "Damage Amp",
+        "nameId": "TFT_Item_DebugDamageAmp",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 0,
+            "G": 0,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Augments/DU_Augment_BulkShipping.png"
+    },
+    {
         "guid": "66de2339-de0b-43a1-9fb6-fbab8148d461",
         "name": "Blademaster Emblem",
         "nameId": "TFT3_Item_BlademasterEmblem",
@@ -16378,6 +16417,19 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Ornn_Items/TFT10_GamblersBlade.TFT_Set10.png"
+    },
+    {
+        "guid": "266bff25-573d-4682-8812-337cd6275bcf",
+        "name": "Damage Amp",
+        "nameId": "TFT_Item_DebugDamageAmp",
+        "id": 0,
+        "color": {
+            "R": 0,
+            "B": 0,
+            "G": 0,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Augments/DU_Augment_BulkShipping.png"
     },
     {
         "guid": "5c208d2b-737f-40f3-bb28-4a74842bc5df",
