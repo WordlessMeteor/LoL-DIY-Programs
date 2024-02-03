@@ -4927,6 +4927,19 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Little-Buddies-II.TFT_Set10.png"
     },
     {
+        "guid": "59140ff3-14b1-4f17-9180-13238d562db0",
+        "name": "Balanced Budget+",
+        "nameId": "TFT9_Augment_BalancedBudgetPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Balanced-Budget-II.png"
+    },
+    {
         "guid": "5871910d-3b49-4369-b3f8-4a0dd2811f2b",
         "name": "Raise the Tempo",
         "nameId": "TFT10_Augment_SpellweaverHalftimeShow",
@@ -10049,6 +10062,19 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Little-Buddies-II.TFT_Set10.png"
     },
     {
+        "guid": "59140ff3-14b1-4f17-9180-13238d562db0",
+        "name": "Balanced Budget+",
+        "nameId": "TFT9_Augment_BalancedBudgetPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Balanced-Budget-II.png"
+    },
+    {
         "guid": "543031e7-fb54-4559-a686-c9d53b593fda",
         "name": "The Golden Egg",
         "nameId": "TFT6_Augment_TheGoldenEggHR",
@@ -14716,6 +14742,19 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Little-Buddies-II.TFT_Set10.png"
     },
     {
+        "guid": "59140ff3-14b1-4f17-9180-13238d562db0",
+        "name": "Balanced Budget+",
+        "nameId": "TFT9_Augment_BalancedBudgetPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Balanced-Budget-II.png"
+    },
+    {
         "guid": "12f5140e-6617-4a9c-8305-96e38b63f8f8",
         "name": "Champion Duplicator",
         "nameId": "TFT_Consumable_NeekosHelp",
@@ -19303,6 +19342,19 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Little-Buddies-II.TFT_Set10.png"
+    },
+    {
+        "guid": "59140ff3-14b1-4f17-9180-13238d562db0",
+        "name": "Balanced Budget+",
+        "nameId": "TFT9_Augment_BalancedBudgetPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Balanced-Budget-II.png"
     },
     {
         "guid": "5871910d-3b49-4369-b3f8-4a0dd2811f2b",

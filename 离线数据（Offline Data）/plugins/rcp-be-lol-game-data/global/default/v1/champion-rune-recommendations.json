@@ -22347,18 +22347,18 @@
                 "isDefaultPosition": true,
                 "minSummonerLevel": 1,
                 "perkIds": [
-                    8008,
+                    8021,
                     8009,
-                    9104,
+                    9103,
                     8017,
-                    8139,
-                    8106,
+                    8304,
+                    8345,
                     5005,
                     5008,
-                    5002
+                    5011
                 ],
                 "primaryPerkStyleId": 8000,
-                "secondaryPerkStyleId": 8100,
+                "secondaryPerkStyleId": 8300,
                 "summonerSpellIds": [
                     4,
                     7
@@ -22373,13 +22373,13 @@
                 "perkIds": [
                     8005,
                     8009,
-                    9104,
-                    8017,
+                    9103,
+                    8014,
                     8226,
-                    8236,
+                    8210,
                     5005,
                     5008,
-                    5002
+                    5011
                 ],
                 "primaryPerkStyleId": 8000,
                 "secondaryPerkStyleId": 8200,
