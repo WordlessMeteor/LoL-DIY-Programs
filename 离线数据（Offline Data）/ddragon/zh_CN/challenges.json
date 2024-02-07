@@ -8348,8 +8348,8 @@
     {
         "id": 302103,
         "name": "跨线奇袭",
-        "description": "作为线上英雄，10分钟前在你的战线之外拿到击杀（你的同线对手除外）",
-        "shortDescription": "作为线上英雄，在10分钟之前，在你的战线之外拿到击杀",
+        "description": "作为线上英雄，在单场对局中，10分钟前在你的战线之外拿到击杀（你的同线对手除外）",
+        "shortDescription": "作为线上英雄，在单场对局的前10分钟在你的战线外拿到击杀",
         "hasLeaderboard": true,
         "levelToIconPath": {
             "IRON": "/challenges-images/302103-IRON.png",
@@ -8363,29 +8363,23 @@
             "CHALLENGER": "/challenges-images/302103-CHALLENGER.png"
         },
         "thresholds": {
-            "BRONZE": {
+            "GOLD": {
                 "value": 1
             },
-            "SILVER": {
-                "value": 3
-            },
-            "GOLD": {
-                "value": 5
-            },
             "PLATINUM": {
-                "value": 10
+                "value": 2
             },
             "DIAMOND": {
-                "value": 15
+                "value": 3
             },
             "MASTER": {
-                "value": 20
+                "value": 4
             },
             "GRANDMASTER": {
-                "value": 30
+                "value": 5
             },
             "CHALLENGER": {
-                "value": 40
+                "value": 6
             }
         }
     },
@@ -8573,7 +8567,7 @@
     {
         "id": 302201,
         "name": "冲啊，壳壳，冲！",
-        "description": "用同一个峡谷先锋拿下2座防御塔",
+        "description": "与同一个峡谷先锋一起参与拆毁2座防御塔",
         "shortDescription": "用同一个峡谷先锋拿下2座防御塔",
         "hasLeaderboard": true,
         "levelToIconPath": {
@@ -12452,7 +12446,7 @@
     {
         "id": 402202,
         "name": "“用壳撞他们，壳壳！”",
-        "description": "用峡谷先锋拆毁防御塔",
+        "description": "与峡谷先锋一起参与拆毁防御塔",
         "shortDescription": "用峡谷先锋拆毁防御塔",
         "hasLeaderboard": true,
         "levelToIconPath": {

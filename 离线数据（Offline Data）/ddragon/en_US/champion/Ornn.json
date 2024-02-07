@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.2.1",
+    "version": "14.3.1",
     "data": {
         "Ornn": {
             "id": "Ornn",
@@ -635,7 +635,7 @@
             ],
             "passive": {
                 "name": "Living Forge",
-                "description": "Ornn gains an additional bonus Armor and Magic Resistance from all sources.<br><br>Ornn can spend gold to forge non-consumable items anywhere.<br><br>Additionally, he can create masterwork items for himself and for his allies.",
+                "description": "Ornn gains an additional bonus Armor and Magic Resist from all sources.<br><br>Ornn can spend gold to forge non-consumable items anywhere.<br><br>Additionally, he can create masterwork items for himself and for his allies.",
                 "image": {
                     "full": "OrnnP.png",
                     "sprite": "passive3.png",

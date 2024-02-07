@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.2.1",
+    "version": "14.3.1",
     "data": {
         "Zeri": {
             "id": "Zeri",
@@ -74,7 +74,7 @@
                 "mpregenperlevel": 0.8,
                 "crit": 0,
                 "critperlevel": 0,
-                "attackdamage": 53,
+                "attackdamage": 56,
                 "attackdamageperlevel": 2,
                 "attackspeedperlevel": 2,
                 "attackspeed": 0.658
@@ -528,11 +528,11 @@
                     },
                     "maxrank": 3,
                     "cooldown": [
-                        100,
-                        85,
+                        80,
+                        75,
                         70
                     ],
-                    "cooldownBurn": "100/85/70",
+                    "cooldownBurn": "80/75/70",
                     "cost": [
                         100,
                         100,

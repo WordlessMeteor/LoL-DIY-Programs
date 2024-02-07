@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.2.1",
+    "version": "14.3.1",
     "data": {
         "AurelionSol": {
             "id": "AurelionSol",
@@ -115,13 +115,13 @@
                     ],
                     "cooldownBurn": "3",
                     "cost": [
+                        30,
+                        35,
+                        40,
                         45,
-                        50,
-                        55,
-                        60,
-                        65
+                        50
                     ],
-                    "costBurn": "45/50/55/60/65",
+                    "costBurn": "30/35/40/45/50",
                     "datavalues": {},
                     "effect": [
                         null,
@@ -243,7 +243,7 @@
                             "冷却时间"
                         ],
                         "effect": [
-                            "{{ truedamagebonus*100.000000 }} -> {{ truedamagebonusnl*100.000000 }}",
+                            "{{ truedamagebonus*100.000000 }}% -> {{ truedamagebonusnl*100.000000 }}%",
                             "{{ cost }} -> {{ costNL }}",
                             "{{ cd }} -> {{ cdNL }}"
                         ]
@@ -258,13 +258,13 @@
                     ],
                     "cooldownBurn": "0",
                     "cost": [
-                        80,
-                        85,
-                        90,
-                        95,
-                        100
+                        50,
+                        55,
+                        60,
+                        65,
+                        70
                     ],
-                    "costBurn": "80/85/90/95/100",
+                    "costBurn": "50/55/60/65/70",
                     "datavalues": {},
                     "effect": [
                         null,

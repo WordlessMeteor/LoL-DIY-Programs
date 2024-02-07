@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.2.1",
+    "version": "14.3.1",
     "data": {
         "Yorick": {
             "id": "Yorick",
@@ -117,15 +117,17 @@
                     "id": "YorickQ",
                     "name": "临终仪式",
                     "description": "约里克的下次攻击造成额外伤害并治疗自身。如果目标死亡，则会留下一个坟墓。",
-                    "tooltip": "约里克的下次攻击将造成<physicalDamage>{{ totaldamage }}物理伤害</physicalDamage>并回复<healing>{{ qheal }}生命值</healing>，或在约里克低于50%生命值时回复<healing>{{ empoweredqheal }}生命值</healing>。如果这个攻击击杀了目标，就会留下一座坟墓。<br /><br />当附近有3个或以上的坟墓时，如果这个技能已被使用，那么约里克就能<recast>再次施放</recast>来从附近的所有坟墓中唤起<keywordMajor>雾行者</keywordMajor>。<br /><br /><rules>这个技能会在造成伤害时触发技能特效。</rules>{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "约里克的下一次普通攻击造成额外的<physicalDamage>{{ bonusdamage }}物理伤害</physicalDamage>并回复<healing>{{ qheal }}外加他的{{ missinghealthratio }}%已损失生命值</healing>，对抗非英雄单位时会削减{{ healreduction }}%。如果这个攻击击杀了目标，就会留下一座坟墓。<br /><br />当附近有3个或以上的坟墓时，如果这个技能已被使用，那么约里克就能<recast>再次施放</recast>来从附近的所有坟墓中唤起<keywordMajor>雾行者</keywordMajor>。{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "冷却时间",
-                            "伤害"
+                            "伤害",
+                            "已损失生命值%"
                         ],
                         "effect": [
                             "{{ cooldown }} -> {{ cooldownNL }}",
-                            "{{ e1 }} -> {{ e1NL }}"
+                            "{{ basedamage }} -> {{ basedamageNL }}",
+                            "{{ missinghealthratio }} -> {{ missinghealthratioNL }}"
                         ]
                     },
                     "maxrank": 5,
@@ -138,29 +140,29 @@
                     ],
                     "cooldownBurn": "7/6.25/5.5/4.75/4",
                     "cost": [
-                        25,
-                        25,
-                        25,
-                        25,
-                        25
+                        20,
+                        20,
+                        20,
+                        20,
+                        20
                     ],
-                    "costBurn": "25",
+                    "costBurn": "20",
                     "datavalues": {},
                     "effect": [
                         null,
                         [
-                            30,
-                            55,
-                            80,
-                            105,
-                            130
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
                         ],
                         [
-                            5,
-                            5,
-                            5,
-                            5,
-                            5
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
                         ],
                         [
                             0,
@@ -221,8 +223,8 @@
                     ],
                     "effectBurn": [
                         null,
-                        "30/55/80/105/130",
-                        "5",
+                        "0",
+                        "0",
                         "0",
                         "0",
                         "0",
@@ -542,7 +544,7 @@
                     "id": "YorickR",
                     "name": "海屿悼词",
                     "description": "约里克召唤迷雾室女，来让约里克的攻击对室女锁定的目标造成额外伤害。室女也会自动从死亡的敌人身上唤起雾行者。",
-                    "tooltip": "约里克召唤<keywordMajor>迷雾室女</keywordMajor>和{{ rghoulnumbers }}个<keywordMajor>雾行者</keywordMajor>。<keywordMajor>室女</keywordMajor>会自动从附近阵亡的敌人身上唤起更多<keywordMajor>雾行者</keywordMajor>。<br /><br />当约里克对<keywordMajor>室女</keywordMajor>的目标造成伤害时，他将造成<magicDamage>{{ rmarkdamagepercent }}%最大生命值的魔法伤害</magicDamage>。这个效果有{{ rproccd }}秒的冷却时间。<br /><br />10秒后，约里克可以<recast>再次施放</recast>这个技能来放走<keywordMajor>室女</keywordMajor>，派她去相距最近的一条战线。{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "约里克召唤<keywordMajor>迷雾室女</keywordMajor>和{{ rghoulnumbers }}个<keywordMajor>雾行者</keywordMajor>。<keywordMajor>室女</keywordMajor>会自动从附近阵亡的敌人身上唤起<keywordMajor>雾行者</keywordMajor>。<br /><br />当约里克对<keywordMajor>室女</keywordMajor>的目标造成伤害时，他将额外造成<magicDamage>{{ rmarkdamagepercent }}%最大生命值的魔法伤害</magicDamage>。<br /><br />10秒后，约里克可以<recast>再次施放</recast>这个技能来放走<keywordMajor>室女</keywordMajor>，派她去相距最近的一条战线。{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "雾行者数量",

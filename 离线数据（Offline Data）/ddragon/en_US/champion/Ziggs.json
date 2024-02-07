@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.2.1",
+    "version": "14.3.1",
     "data": {
         "Ziggs": {
             "id": "Ziggs",
@@ -119,8 +119,8 @@
                 "mp": 480,
                 "mpperlevel": 23.5,
                 "movespeed": 325,
-                "armor": 18,
-                "armorperlevel": 4.5,
+                "armor": 21,
+                "armorperlevel": 4.7,
                 "spellblock": 30,
                 "spellblockperlevel": 1.3,
                 "attackrange": 550,
@@ -298,13 +298,13 @@
                     },
                     "maxrank": 5,
                     "cooldown": [
-                        24,
-                        21,
+                        20,
                         18,
-                        15,
+                        16,
+                        14,
                         12
                     ],
-                    "cooldownBurn": "24/21/18/15/12",
+                    "cooldownBurn": "20/18/16/14/12",
                     "cost": [
                         80,
                         80,

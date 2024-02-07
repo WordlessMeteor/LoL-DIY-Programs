@@ -1,6 +1,6 @@
 {
     "type": "tft-tactician",
-    "version": "14.2.1",
+    "version": "14.3.1",
     "data": {
         "13010": {
             "id": "13010",
@@ -3339,7 +3339,7 @@
             "tier": "1",
             "name": "爆裂鼓手 胖胖龙",
             "image": {
-                "full": "Tooltip_Choncc_Band_Band1_Tier1.LL_Choncc_Band_DripDrummer.png",
+                "full": "Tooltip_Choncc_Band_Band1_Tier1.png",
                 "sprite": "tft-tactician7.png",
                 "group": "tft-tactician",
                 "x": 384,
@@ -3353,7 +3353,7 @@
             "tier": "2",
             "name": "爆裂鼓手 胖胖龙",
             "image": {
-                "full": "Tooltip_Choncc_Band_Band1_Tier2.LL_Choncc_Band_DripDrummer.png",
+                "full": "Tooltip_Choncc_Band_Band1_Tier2.png",
                 "sprite": "tft-tactician7.png",
                 "group": "tft-tactician",
                 "x": 432,
@@ -3367,7 +3367,7 @@
             "tier": "3",
             "name": "爆裂鼓手 胖胖龙",
             "image": {
-                "full": "Tooltip_Choncc_Band_Band1_Tier3.LL_Choncc_Band_DripDrummer.png",
+                "full": "Tooltip_Choncc_Band_Band1_Tier3.png",
                 "sprite": "tft-tactician8.png",
                 "group": "tft-tactician",
                 "x": 0,
@@ -14917,7 +14917,7 @@
             "tier": "1",
             "name": "魄罗团团",
             "image": {
-                "full": "Tooltip_PoroFluft_Base_Classic_Tier1.LL_PoroFluft_Base.png",
+                "full": "Tooltip_PoroFluft_Base_Classic_Tier1.png",
                 "sprite": "tft-tactician35.png",
                 "group": "tft-tactician",
                 "x": 240,

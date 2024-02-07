@@ -727,7 +727,7 @@
     {
         "id": 101205,
         "name": "Free Ticket to Base",
-        "description": "Successfully Execute to the outer tower before 10 minutes in ARAM",
+        "description": "Successfully Execute to the outer turret before 10 minutes in ARAM",
         "shortDescription": "Execute to turret before 10 min",
         "hasLeaderboard": true,
         "levelToIconPath": {
@@ -6010,8 +6010,8 @@
     {
         "id": 203304,
         "name": "Splitpush Strategy",
-        "description": "Destroy side lane towers solo (majority damage dealt by you) after 14 minutes without dying",
-        "shortDescription": "Take side lane towers solo without dying",
+        "description": "Destroy side lane turrets solo (majority damage dealt by you) after 14 minutes without dying",
+        "shortDescription": "Take side lane turrets solo without dying",
         "hasLeaderboard": true,
         "levelToIconPath": {
             "IRON": "/challenges-images/203304-IRON.png",
@@ -8348,8 +8348,8 @@
     {
         "id": 302103,
         "name": "Overwhelming Presence",
-        "description": "As a laner, get kills before 10 minutes outside your lane (anyone but your lane opponent)",
-        "shortDescription": "As a laner, get kills outside your lane before 10 min",
+        "description": "As a laner, in a single game, get kills before 10 minutes outside your lane (anyone but your lane opponent)",
+        "shortDescription": "As a laner, in 1 game, get kills outside your lane before 10 min",
         "hasLeaderboard": true,
         "levelToIconPath": {
             "IRON": "/challenges-images/302103-IRON.png",
@@ -8363,29 +8363,23 @@
             "CHALLENGER": "/challenges-images/302103-CHALLENGER.png"
         },
         "thresholds": {
-            "BRONZE": {
+            "GOLD": {
                 "value": 1
             },
-            "SILVER": {
-                "value": 3
-            },
-            "GOLD": {
-                "value": 5
-            },
             "PLATINUM": {
-                "value": 10
+                "value": 2
             },
             "DIAMOND": {
-                "value": 15
+                "value": 3
             },
             "MASTER": {
-                "value": 20
+                "value": 4
             },
             "GRANDMASTER": {
-                "value": 30
+                "value": 5
             },
             "CHALLENGER": {
-                "value": 40
+                "value": 6
             }
         }
     },
@@ -8573,7 +8567,7 @@
     {
         "id": 302201,
         "name": "Go Shelly Go!",
-        "description": "Take 2 turrets with the same Rift Herald",
+        "description": "Participate in taking 2 turrets with the same Rift Herald",
         "shortDescription": "Take 2 turrets with the same Rift Herald",
         "hasLeaderboard": true,
         "levelToIconPath": {
@@ -12452,7 +12446,7 @@
     {
         "id": 402202,
         "name": "Give 'em Shell, Shelly",
-        "description": "Take turrets with Rift Herald",
+        "description": "Participate in taking turrets with Rift Herald",
         "shortDescription": "Take turrets with Rift Herald",
         "hasLeaderboard": true,
         "levelToIconPath": {

@@ -3133,7 +3133,8 @@
             6632
         ],
         "categories": [
-            "OnHit"
+            "OnHit",
+            "AbilityHaste"
         ],
         "maxStacks": 1,
         "requiredChampion": "",
@@ -7565,7 +7566,6 @@
             "Health",
             "Damage",
             "AttackSpeed",
-            "CooldownReduction",
             "Slow",
             "NonbootsMovement"
         ],
@@ -8911,7 +8911,6 @@
             "Health",
             "Damage",
             "AttackSpeed",
-            "CooldownReduction",
             "Slow",
             "NonbootsMovement"
         ],
@@ -10313,7 +10312,8 @@
         ],
         "to": [],
         "categories": [
-            "OnHit"
+            "OnHit",
+            "AbilityHaste"
         ],
         "maxStacks": 1,
         "requiredChampion": "",
@@ -12146,7 +12146,6 @@
             "Health",
             "Damage",
             "AttackSpeed",
-            "CooldownReduction",
             "Slow",
             "NonbootsMovement"
         ],
@@ -12991,7 +12990,6 @@
             "Health",
             "Damage",
             "AttackSpeed",
-            "CooldownReduction",
             "Slow",
             "NonbootsMovement"
         ],

@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.2.1",
+    "version": "14.3.1",
     "data": {
         "Corki": {
             "id": "Corki",
@@ -288,20 +288,20 @@
                     "maxrank": 5,
                     "cooldown": [
                         20,
-                        19,
                         18,
-                        17,
-                        16
+                        16,
+                        14,
+                        12
                     ],
-                    "cooldownBurn": "20/19/18/17/16",
+                    "cooldownBurn": "20/18/16/14/12",
                     "cost": [
-                        100,
-                        100,
-                        100,
-                        100,
-                        100
+                        80,
+                        80,
+                        80,
+                        80,
+                        80
                     ],
-                    "costBurn": "100",
+                    "costBurn": "80",
                     "datavalues": {},
                     "effect": [
                         null,

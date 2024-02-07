@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.2.1",
+    "version": "14.3.1",
     "data": {
         "Udyr": {
             "id": "Udyr",
@@ -728,7 +728,7 @@
             ],
             "passive": {
                 "name": "Bridge Between",
-                "description": "Udyr has four basic Abilities that swap between Stances and can Recast an Ability to renew it with additional benefits. Additionally, after using an Ability, Udyr's next two Attacks gain Attack Speed.",
+                "description": "Udyr has four basic Abilities that swap between Stances and can Recast an Ability to renew it with Ultimate benefits. Additionally, after using an Ability, Udyr's next two Attacks gain Attack Speed.",
                 "image": {
                     "full": "Udyr_P.png",
                     "sprite": "passive4.png",

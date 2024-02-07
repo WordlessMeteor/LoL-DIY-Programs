@@ -503,6 +503,121 @@
             ],
             "skinAugments": null,
             "description": "An ancient spirit that has been making contracts with mortals through tattoos for centuries, Aurelion Sol grants inhuman power in exchange for the life force of his pawns, letting them slowly waste away until they inevitably succumb to his appetite. There is always another conflict, another war—so he has grown powerful on their deals, ever feeding."
+        },
+        {
+            "id": 136031,
+            "isBase": false,
+            "name": "",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/136/136031.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/136/136031.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/136/136031.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/AurelionSol/Skins/Skin31/AurelionSolLoadScreen_31.PIE_C_14_4.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/AurelionSol/Skins/Skin31/AurelionSolLoadScreen_31_LE.PIE_C_14_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136031.png",
+            "chromas": [
+                {
+                    "id": 136032,
+                    "name": "",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136032.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": ""
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 136033,
+                    "name": "",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136033.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136034,
+                    "name": "",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136034.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136035,
+                    "name": "",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136035.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136036,
+                    "name": "",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136036.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 136037,
+                    "name": "",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136037.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 154
+                }
+            ],
+            "skinAugments": null,
+            "description": null
         }
     ],
     "passive": {

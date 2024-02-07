@@ -1,10 +1,4 @@
 {
-    "6080": {
-        "name": "赛季队列2",
-        "shortName": "赛季队列2",
-        "description": "赛季队列2",
-        "detailedDescription": "赛季队列2"
-    },
     "1021": {
         "name": "1v1",
         "shortName": "1v1",
@@ -16,12 +10,6 @@
         "shortName": "克隆大作战",
         "description": "克隆大作战",
         "detailedDescription": ""
-    },
-    "6090": {
-        "name": "赛季队列3",
-        "shortName": "赛季队列3",
-        "description": "赛季队列3",
-        "detailedDescription": "赛季队列3"
     },
     "1023": {
         "name": "2v2",
@@ -539,12 +527,6 @@
         "description": "北极星竞技场",
         "detailedDescription": "北极星竞技场"
     },
-    "6040": {
-        "name": "赛季队列1",
-        "shortName": "赛季队列1",
-        "description": "赛季队列1",
-        "detailedDescription": "赛季队列1"
-    },
     "1701": {
         "name": "1v0 (北极星竞技场)",
         "shortName": "1v0 (北极星竞技场)",
@@ -556,12 +538,6 @@
         "shortName": "北极星竞技场",
         "description": "北极星竞技场",
         "detailedDescription": "北极星竞技场"
-    },
-    "6050": {
-        "name": "赛季队列2",
-        "shortName": "赛季队列2",
-        "description": "赛季队列2",
-        "detailedDescription": "赛季队列2"
     },
     "1090": {
         "name": "云顶之弈（匹配模式）",
@@ -1181,12 +1157,6 @@
         "description": "红月决",
         "detailedDescription": ""
     },
-    "6060": {
-        "name": "赛季队列3",
-        "shortName": "赛季队列3",
-        "description": "赛季队列3",
-        "detailedDescription": "赛季队列3"
-    },
     "6002": {
         "name": "2v0 (第3.5赛季回归:再战星海)",
         "shortName": "2v0 (第3.5赛季回归:再战星海)",
@@ -1216,12 +1186,6 @@
         "shortName": "1v0 (第3.5赛季回归:再战星海)",
         "description": "1v0 (第3.5赛季回归:再战星海)",
         "detailedDescription": "1v0 (第3.5赛季回归:再战星海)"
-    },
-    "6070": {
-        "name": "赛季队列1",
-        "shortName": "赛季队列1",
-        "description": "赛季队列1",
-        "detailedDescription": "赛季队列1"
     },
     "6005": {
         "name": "1v7 (第3.5赛季回归:再战星海)",

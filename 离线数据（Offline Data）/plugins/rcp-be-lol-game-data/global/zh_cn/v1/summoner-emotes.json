@@ -9510,6 +9510,36 @@
         "description": ""
     },
     {
+        "id": 4478,
+        "name": "game_summoner_emote_name_4478",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Esports/DigitalEsports/4478_Remix_Rumble_Pengu_Inventory.ACCESSORIES_14_4.png",
+        "description": "game_summoner_emote_description_4478"
+    },
+    {
+        "id": 4479,
+        "name": "game_summoner_emote_name_4479",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Esports/DigitalEsports/4479_Remix_Rumble_Choncc_Inventory.ACCESSORIES_14_4.png",
+        "description": "game_summoner_emote_description_4479"
+    },
+    {
+        "id": 4480,
+        "name": "game_summoner_emote_name_4480",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/4480_Cozy_Guqin_Inventory.ACCESSORIES_14_4.png",
+        "description": "game_summoner_emote_description_4480"
+    },
+    {
+        "id": 4481,
+        "name": "game_summoner_emote_name_4481",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/4481_Investigator_Inventory.ACCESSORIES_14_4.png",
+        "description": "game_summoner_emote_description_4481"
+    },
+    {
+        "id": 4482,
+        "name": "game_summoner_emote_name_4482",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/4482_Chonccs_Joyful_Dance_Inventory.ACCESSORIES_14_4.png",
+        "description": "game_summoner_emote_description_4482"
+    },
+    {
         "id": 5,
         "name": "成就 5级",
         "inventoryIcon": "/lol-game-data/assets/",

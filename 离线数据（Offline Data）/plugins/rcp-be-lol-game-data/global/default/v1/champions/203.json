@@ -578,6 +578,32 @@
             ],
             "skinAugments": null,
             "description": "Honoring Pyosik's winning performance as Kindred during the 2022 World Championship."
+        },
+        {
+            "id": 203033,
+            "isBase": false,
+            "name": "",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/203/203033.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/203/203033.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/203/203033.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kindred/skins/Skin33/KindredLoadScreen_33.SKINS_Kindred_Skin33.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 154
+                }
+            ],
+            "skinAugments": null,
+            "description": null
         }
     ],
     "passive": {

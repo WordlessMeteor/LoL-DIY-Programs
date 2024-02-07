@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.2.1",
+    "version": "14.3.1",
     "data": {
         "Taliyah": {
             "id": "Taliyah",
@@ -407,13 +407,13 @@
                     },
                     "maxrank": 5,
                     "cooldown": [
-                        16,
-                        15.5,
-                        15,
-                        14.5,
+                        14,
+                        14,
+                        14,
+                        14,
                         14
                     ],
-                    "cooldownBurn": "16/15.5/15/14.5/14",
+                    "cooldownBurn": "14",
                     "cost": [
                         90,
                         95,

@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.2.1",
+    "version": "14.3.1",
     "data": {
         "Udyr": {
             "id": "Udyr",
@@ -728,7 +728,7 @@
             ],
             "passive": {
                 "name": "众灵纽带",
-                "description": "乌迪尔的四个基础技能会让他在四种姿态之间来回转换，并且再次施放同一技能会提供觉醒效果，带来额外的助益。此外，在使用一个技能后，乌迪尔的下两次攻击获得攻击速度。",
+                "description": "乌迪尔的四个基础技能会让他在四种姿态之间来回转换，并且再次施放同一技能会带来终极技能助益。此外，在使用一个技能后，乌迪尔的下两次攻击获得攻击速度。",
                 "image": {
                     "full": "Udyr_P.png",
                     "sprite": "passive4.png",

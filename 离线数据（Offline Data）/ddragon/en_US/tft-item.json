@@ -1,6 +1,6 @@
 {
     "type": "tft-item",
-    "version": "14.2.1",
+    "version": "14.3.1",
     "data": {
         "TFT_Consumable_NeekosHelp": {
             "id": "TFT_Consumable_NeekosHelp",
@@ -1705,6 +1705,19 @@
                 "h": 48
             }
         },
+        "TFT_Item_DebugDamageAmp": {
+            "id": "TFT_Item_DebugDamageAmp",
+            "name": "Damage Amp",
+            "image": {
+                "full": "TFT_Item_DebugDamageAmp.png",
+                "sprite": "tft-item4.png",
+                "group": "tft-item",
+                "x": 48,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
         "TFT10_EmblemItems/TFT10_Item_PunkEmblem": {
             "id": "TFT10_Item_PunkEmblem",
             "name": "Punk Emblem",
@@ -1712,7 +1725,7 @@
                 "full": "TFT10_Item_PunkEmblem.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 48,
+                "x": 96,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -1725,7 +1738,7 @@
                 "full": "TFT10_Item_EmoEmblem.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 96,
+                "x": 144,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -1738,7 +1751,7 @@
                 "full": "TFT10_Item_KDAEmblem.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 144,
+                "x": 192,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -1751,7 +1764,7 @@
                 "full": "TFT10_Item_PentakillEmblem.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 192,
+                "x": 240,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -1764,7 +1777,7 @@
                 "full": "TFT10_Item_SpellweaverEmblem.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 240,
+                "x": 288,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -1777,7 +1790,7 @@
                 "full": "TFT10_Item_BigShotEmblem.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 288,
+                "x": 336,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -1790,7 +1803,7 @@
                 "full": "TFT10_Item_PBJEmblem.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 336,
+                "x": 384,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -1803,7 +1816,7 @@
                 "full": "TFT10_Item_ExecutionerEmblem.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 384,
+                "x": 432,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -1816,8 +1829,8 @@
                 "full": "TFT10_Item_DiscoEmblem.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 432,
-                "y": 48,
+                "x": 0,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -1829,7 +1842,7 @@
                 "full": "TFT10_Item_BrawlerEmblem.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 0,
+                "x": 48,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -1842,7 +1855,7 @@
                 "full": "TFT10_Item_SuperfanEmblem.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 48,
+                "x": 96,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -1855,7 +1868,7 @@
                 "full": "TFT10_Item_RapidfireEmblem.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 96,
+                "x": 144,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -1868,7 +1881,7 @@
                 "full": "TFT10_Desperado_Deal_ComponentBounty.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 144,
+                "x": 192,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -1881,7 +1894,7 @@
                 "full": "TFT10_Desperado_Deal_FutureSight.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 192,
+                "x": 240,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -1894,7 +1907,7 @@
                 "full": "TFT10_Desperado_Deal_Stats.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 240,
+                "x": 288,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -1907,7 +1920,7 @@
                 "full": "TFT10_Item_DJ_Mode1.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 288,
+                "x": 336,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -1920,7 +1933,7 @@
                 "full": "TFT10_Item_DJ_Mode2.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 336,
+                "x": 384,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -1933,7 +1946,7 @@
                 "full": "TFT10_Item_DJ_Mode3.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 384,
+                "x": 432,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -1944,10 +1957,10 @@
             "name": "8-bit Emblem",
             "image": {
                 "full": "TFT10_Item_8bitEmblem.png",
-                "sprite": "tft-item4.png",
+                "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 432,
-                "y": 96,
+                "x": 0,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -1959,7 +1972,7 @@
                 "full": "TFT10_Item_JazzEmblem.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 0,
+                "x": 48,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -1972,7 +1985,7 @@
                 "full": "TFT10_Item_TrueDamageEmblem.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 48,
+                "x": 96,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -1985,7 +1998,7 @@
                 "full": "TFT10_Consumable_KaynBlue.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 96,
+                "x": 144,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -1998,7 +2011,7 @@
                 "full": "TFT10_Consumable_KaynRed.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 144,
+                "x": 192,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2011,7 +2024,7 @@
                 "full": "TFT_Assist_Gold_2.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 192,
+                "x": 240,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2024,7 +2037,7 @@
                 "full": "TFT_Assist_Gold_10.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 240,
+                "x": 288,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2037,7 +2050,7 @@
                 "full": "TFT_Assist_ChampionDuplicator.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 288,
+                "x": 336,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2050,7 +2063,7 @@
                 "full": "TFT_Assist_Gold_3.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 336,
+                "x": 384,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2063,7 +2076,7 @@
                 "full": "TFT_Assist_Gold_4.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 384,
+                "x": 432,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2076,8 +2089,8 @@
                 "full": "TFT_Assist_Gold_5.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 432,
-                "y": 0,
+                "x": 0,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -2089,7 +2102,7 @@
                 "full": "TFT_Assist_Gold_6.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 0,
+                "x": 48,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2102,7 +2115,7 @@
                 "full": "TFT_Assist_Gold_7.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 48,
+                "x": 96,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2115,7 +2128,7 @@
                 "full": "TFT_Assist_Gold_8.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 96,
+                "x": 144,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2128,7 +2141,7 @@
                 "full": "TFT_Assist_Gold_100.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 144,
+                "x": 192,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2141,7 +2154,7 @@
                 "full": "TFT_Assist_Gold_12.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 192,
+                "x": 240,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2154,7 +2167,7 @@
                 "full": "TFT_Assist_Gold_126.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 240,
+                "x": 288,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2167,7 +2180,7 @@
                 "full": "TFT_Assist_Gold_154.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 288,
+                "x": 336,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2180,7 +2193,7 @@
                 "full": "TFT_Assist_Gold_16.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 336,
+                "x": 384,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2193,7 +2206,7 @@
                 "full": "TFT_Assist_Gold_18.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 384,
+                "x": 432,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2206,8 +2219,8 @@
                 "full": "TFT_Assist_Gold_20.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 432,
-                "y": 48,
+                "x": 0,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -2219,7 +2232,7 @@
                 "full": "TFT_Assist_Gold_22.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 0,
+                "x": 48,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2232,7 +2245,7 @@
                 "full": "TFT_Assist_Gold_24.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 48,
+                "x": 96,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2245,7 +2258,7 @@
                 "full": "TFT_Assist_Gold_25.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 96,
+                "x": 144,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2258,7 +2271,7 @@
                 "full": "TFT_Assist_Gold_26.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 144,
+                "x": 192,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2271,7 +2284,7 @@
                 "full": "TFT_Assist_Gold_30.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 192,
+                "x": 240,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2284,7 +2297,7 @@
                 "full": "TFT_Assist_Gold_34.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 240,
+                "x": 288,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2297,7 +2310,7 @@
                 "full": "TFT_Assist_Gold_36.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 288,
+                "x": 336,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2310,7 +2323,7 @@
                 "full": "TFT_Assist_Gold_40.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 336,
+                "x": 384,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2323,7 +2336,7 @@
                 "full": "TFT_Assist_Gold_44.png",
                 "sprite": "tft-item5.png",
                 "group": "tft-item",
-                "x": 384,
+                "x": 432,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2334,10 +2347,10 @@
             "name": "54 gold",
             "image": {
                 "full": "TFT_Assist_Gold_54.png",
-                "sprite": "tft-item5.png",
+                "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 432,
-                "y": 96,
+                "x": 0,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -2349,7 +2362,7 @@
                 "full": "TFT_Assist_Gold_64.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 0,
+                "x": 48,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2362,7 +2375,7 @@
                 "full": "TFT_Assist_Gold_76.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 48,
+                "x": 96,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2375,7 +2388,7 @@
                 "full": "TFT10_Item_CountryEmblem.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 96,
+                "x": 144,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2388,7 +2401,7 @@
                 "full": "TFT10_Item_CrowdDiverEmblem.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 144,
+                "x": 192,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2401,7 +2414,7 @@
                 "full": "TFT10_Item_DazzlerEmblem.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 192,
+                "x": 240,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2414,7 +2427,7 @@
                 "full": "TFT10_Item_EdgelordEmblem.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 240,
+                "x": 288,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2427,7 +2440,7 @@
                 "full": "TFT10_Item_FighterEmblem.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 288,
+                "x": 336,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2440,7 +2453,7 @@
                 "full": "TFT10_Item_GuardianEmblem.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 336,
+                "x": 384,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2453,7 +2466,7 @@
                 "full": "TFT10_Item_WardenEmblem.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 384,
+                "x": 432,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2466,8 +2479,8 @@
                 "full": "TFT10_Consumable_EDM_Selector.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 432,
-                "y": 0,
+                "x": 0,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -2479,7 +2492,7 @@
                 "full": "TFT10_Item_HyperPopEmblem.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 0,
+                "x": 48,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2492,7 +2505,7 @@
                 "full": "TFT_Item_GrantComponentAnvil.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 48,
+                "x": 96,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2505,7 +2518,7 @@
                 "full": "TFT10_Heartsteel_Cashout.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 96,
+                "x": 144,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2518,7 +2531,7 @@
                 "full": "TFT10_Heartsteel_PushYourLuck.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 144,
+                "x": 192,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2531,7 +2544,7 @@
                 "full": "TFT10_Heartsteel_ReallyPushYourLuck.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 192,
+                "x": 240,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2544,7 +2557,7 @@
                 "full": "TFT7_Item_TreasureDragonBlankSlot.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 240,
+                "x": 288,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2557,7 +2570,7 @@
                 "full": "TFT7_Item_TreasureDragonGold20.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 288,
+                "x": 336,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2570,7 +2583,7 @@
                 "full": "TFT7_Item_TreasureDragonGold3.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 336,
+                "x": 384,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2583,7 +2596,7 @@
                 "full": "TFT7_Item_TreasureDragonGold4.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 384,
+                "x": 432,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2596,8 +2609,8 @@
                 "full": "TFT7_Item_TreasureDragonGold9.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 432,
-                "y": 48,
+                "x": 0,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -2609,7 +2622,7 @@
                 "full": "TFT_Assist_Gold_16.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 0,
+                "x": 48,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2622,7 +2635,7 @@
                 "full": "TFT_Assist_Gold_34.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 48,
+                "x": 96,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2635,7 +2648,7 @@
                 "full": "TFT_Assist_Gold_18.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 96,
+                "x": 144,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2648,7 +2661,7 @@
                 "full": "TFT_Assist_Gold_22.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 144,
+                "x": 192,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2661,7 +2674,7 @@
                 "full": "TFT_Assist_Gold_54.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 192,
+                "x": 240,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2674,7 +2687,7 @@
                 "full": "TFT_Assist_Gold_12.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 240,
+                "x": 288,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2687,7 +2700,7 @@
                 "full": "TFT_Assist_Gold_20.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 288,
+                "x": 336,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2700,7 +2713,7 @@
                 "full": "TFT_Assist_Gold_24.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 336,
+                "x": 384,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2713,7 +2726,7 @@
                 "full": "TFT_Assist_Gold_36.png",
                 "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 384,
+                "x": 432,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2724,10 +2737,10 @@
             "name": "76 gold",
             "image": {
                 "full": "TFT_Assist_Gold_76.png",
-                "sprite": "tft-item6.png",
+                "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 432,
-                "y": 96,
+                "x": 0,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -2739,7 +2752,7 @@
                 "full": "TFT_Assist_Gold_30.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 0,
+                "x": 48,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2752,7 +2765,7 @@
                 "full": "TFT_Assist_Gold_25.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 48,
+                "x": 96,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2765,7 +2778,7 @@
                 "full": "TFT_Assist_Gold_40.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 96,
+                "x": 144,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2778,7 +2791,7 @@
                 "full": "TFT_Assist_Gold_100.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 144,
+                "x": 192,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2791,7 +2804,7 @@
                 "full": "TFT_Assist_Gold_26.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 192,
+                "x": 240,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2804,7 +2817,7 @@
                 "full": "TFT_Assist_Gold_126.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 240,
+                "x": 288,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2817,7 +2830,7 @@
                 "full": "TFT_Assist_Gold_44.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 288,
+                "x": 336,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2830,7 +2843,7 @@
                 "full": "TFT_Assist_Gold_64.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 336,
+                "x": 384,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2843,7 +2856,7 @@
                 "full": "TFT_Assist_Gold_154.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 384,
+                "x": 432,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2856,8 +2869,8 @@
                 "full": "TFT_Random_5_Cost.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 432,
-                "y": 0,
+                "x": 0,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -2869,7 +2882,7 @@
                 "full": "TFT_Random_Two_Star_4_Cost.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 0,
+                "x": 48,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2882,7 +2895,7 @@
                 "full": "TFT_Item_GrantCompletedAnvil.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 48,
+                "x": 96,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2895,7 +2908,7 @@
                 "full": "TFT_Item_GrantComponentAnvil.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 96,
+                "x": 144,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2908,7 +2921,7 @@
                 "full": "TFT_Item_GrantTomeOfTraits.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 144,
+                "x": 192,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2921,7 +2934,7 @@
                 "full": "TFT_Item_GrantCompletedItem1.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 192,
+                "x": 240,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2934,7 +2947,7 @@
                 "full": "TFT_Item_GrantCompletedItem2.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 240,
+                "x": 288,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2947,7 +2960,7 @@
                 "full": "TFT_Item_GrantCompletedItem3.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 288,
+                "x": 336,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2960,7 +2973,7 @@
                 "full": "TFT_Item_GrantComponent1.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 336,
+                "x": 384,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2973,7 +2986,7 @@
                 "full": "TFT_Item_GrantComponent2.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 384,
+                "x": 432,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2986,8 +2999,8 @@
                 "full": "TFT_Item_GrantCompletedItem3.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 432,
-                "y": 48,
+                "x": 0,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -2999,7 +3012,7 @@
                 "full": "TFT_Item_GrantComponent1.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 0,
+                "x": 48,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -3012,7 +3025,7 @@
                 "full": "TFT_Item_GrantComponent2.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 48,
+                "x": 96,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -3025,7 +3038,7 @@
                 "full": "TFT_Item_GrantComponent3.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 96,
+                "x": 144,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -3038,7 +3051,7 @@
                 "full": "TFT_Item_GrantComponent4.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 144,
+                "x": 192,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -3051,7 +3064,7 @@
                 "full": "TFT_Item_GrantComponent5.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 192,
+                "x": 240,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -3064,7 +3077,7 @@
                 "full": "TFT_Item_GrantComponent6.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 240,
+                "x": 288,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -3077,7 +3090,7 @@
                 "full": "TFT_Item_GrantComponent7.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 288,
+                "x": 336,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -3090,7 +3103,7 @@
                 "full": "TFT_Item_GrantComponent8.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 336,
+                "x": 384,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -3103,7 +3116,7 @@
                 "full": "TFT_Item_GrantComponent9.png",
                 "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 384,
+                "x": 432,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -3114,10 +3127,10 @@
             "name": "1 loot orb",
             "image": {
                 "full": "TFT_Item_GrantOrbs1.png",
-                "sprite": "tft-item7.png",
+                "sprite": "tft-item8.png",
                 "group": "tft-item",
-                "x": 432,
-                "y": 96,
+                "x": 0,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -3129,7 +3142,7 @@
                 "full": "TFT_Item_GrantOrbs2.png",
                 "sprite": "tft-item8.png",
                 "group": "tft-item",
-                "x": 0,
+                "x": 48,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -3142,7 +3155,7 @@
                 "full": "TFT_Item_GrantOrbs3.png",
                 "sprite": "tft-item8.png",
                 "group": "tft-item",
-                "x": 48,
+                "x": 96,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -3155,7 +3168,7 @@
                 "full": "TFT_Item_GrantOrbs4.png",
                 "sprite": "tft-item8.png",
                 "group": "tft-item",
-                "x": 96,
+                "x": 144,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -3168,7 +3181,7 @@
                 "full": "TFT_Item_GrantOrbs5.png",
                 "sprite": "tft-item8.png",
                 "group": "tft-item",
-                "x": 144,
+                "x": 192,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -3181,7 +3194,7 @@
                 "full": "TFT_Item_GrantOrbs6.png",
                 "sprite": "tft-item8.png",
                 "group": "tft-item",
-                "x": 192,
+                "x": 240,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -3194,7 +3207,7 @@
                 "full": "TFT_Item_GrantOrbs7.png",
                 "sprite": "tft-item8.png",
                 "group": "tft-item",
-                "x": 240,
+                "x": 288,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -3207,7 +3220,7 @@
                 "full": "TFT_Item_GrantOrbs8.png",
                 "sprite": "tft-item8.png",
                 "group": "tft-item",
-                "x": 288,
+                "x": 336,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -3220,7 +3233,7 @@
                 "full": "TFT_Item_GrantOrbs9.png",
                 "sprite": "tft-item8.png",
                 "group": "tft-item",
-                "x": 336,
+                "x": 384,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -3233,7 +3246,7 @@
                 "full": "TFT_Item_GrantOrnnAnvil.png",
                 "sprite": "tft-item8.png",
                 "group": "tft-item",
-                "x": 384,
+                "x": 432,
                 "y": 0,
                 "w": 48,
                 "h": 48

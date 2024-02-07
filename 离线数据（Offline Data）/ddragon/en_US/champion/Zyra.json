@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.2.1",
+    "version": "14.3.1",
     "data": {
         "Zyra": {
             "id": "Zyra",
@@ -123,8 +123,8 @@
                 "attackrange": 575,
                 "hpregen": 5.5,
                 "hpregenperlevel": 0.5,
-                "mpregen": 13,
-                "mpregenperlevel": 0.4,
+                "mpregen": 7,
+                "mpregenperlevel": 0.8,
                 "crit": 0,
                 "critperlevel": 0,
                 "attackdamage": 53,
@@ -158,13 +158,13 @@
                     ],
                     "cooldownBurn": "7/6.5/6/5.5/5",
                     "cost": [
-                        70,
-                        70,
-                        70,
-                        70,
-                        70
+                        55,
+                        55,
+                        55,
+                        55,
+                        55
                     ],
-                    "costBurn": "70",
+                    "costBurn": "55",
                     "datavalues": {},
                     "effect": [
                         null,
@@ -308,11 +308,11 @@
                     "effect": [
                         null,
                         [
-                            20,
-                            20,
-                            20,
-                            20,
-                            20
+                            35,
+                            35,
+                            35,
+                            35,
+                            35
                         ],
                         [
                             100,
@@ -380,7 +380,7 @@
                     ],
                     "effectBurn": [
                         null,
-                        "20",
+                        "35",
                         "100",
                         "2",
                         "0",

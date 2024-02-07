@@ -1,6 +1,6 @@
 {
     "type": "item",
-    "version": "14.2.1",
+    "version": "14.3.1",
     "basic": {
         "name": "",
         "rune": {
@@ -665,7 +665,6 @@
                 "6690",
                 "3077",
                 "3123",
-                "3124",
                 "3134",
                 "6670",
                 "6692"
@@ -713,12 +712,12 @@
                 "6676",
                 "3053",
                 "3039",
+                "3124",
                 "3181",
                 "3139",
                 "3161",
                 "6029",
                 "6035",
-                "6631",
                 "6673",
                 "6675",
                 "6692",
@@ -939,6 +938,7 @@
                 "3091",
                 "3153",
                 "3085",
+                "3124",
                 "3302"
             ],
             "image": {
@@ -4031,10 +4031,10 @@
                 "h": 48
             },
             "gold": {
-                "base": 3000,
+                "base": 2900,
                 "purchasable": false,
-                "total": 3000,
-                "sell": 2100
+                "total": 2900,
+                "sell": 2030
             },
             "tags": [
                 "SpellDamage",
@@ -4197,7 +4197,7 @@
         },
         "223050": {
             "name": "基克的聚合",
-            "description": "<mainText><stats><buffedStat>400</buffedStat>生命值<br><attention>250</attention>法力<br><buffedStat>40</buffedStat>护甲<br><attention>20</attention>技能急速</stats><br><br><br><li><passive>聚合：</passive>在你<status>定身</status>一名敌人后，你的<attention>帮手</attention>的技能和攻击对这个敌人附带额外伤害。<br><br><rules>同一个英雄同一时间只能被一个【基克的聚合】所连接。</rules></mainText>",
+            "description": "<mainText><stats><buffedStat>400</buffedStat>生命值<br><attention>250</attention>法力<br><buffedStat>40</buffedStat>护甲<br><attention>20</attention>技能急速</stats><br><br><br><li><passive>聚合：</passive>在你<status>定身</status>一名敌人后的8秒里，你的<attention>帮手</attention>的技能和攻击(<OnHit>攻击特效</OnHit>)对这个敌人附带额外的<buffedStat>0魔法伤害</buffedStat>。<br><br><rules>同一个英雄同一时间只能被一个【基克的聚合】所连接。</rules></mainText>",
             "colloq": "",
             "plaintext": "",
             "image": {
@@ -4289,10 +4289,10 @@
                 "h": 48
             },
             "gold": {
-                "base": 750,
+                "base": 650,
                 "purchasable": false,
-                "total": 1000,
-                "sell": 700
+                "total": 900,
+                "sell": 630
             },
             "tags": [
                 "OnHit"
@@ -4663,8 +4663,7 @@
             },
             "tags": [
                 "Health",
-                "HealthRegen",
-                "AbilityHaste"
+                "HealthRegen"
             ],
             "maps": {
                 "11": false,
@@ -6607,7 +6606,7 @@
         },
         "224628": {
             "name": "视界专注",
-            "description": "<mainText><stats><attention>100</attention>法术强度<br><attention>150</attention>生命值<br><attention>15</attention>技能急速</stats><br><br><br><li><passive>亢奋射击：</passive>用一个无目标类技能对相距700码之外的一名英雄造成伤害、或将一名英雄<status>减速或定身</status>时，会使该英雄<keywordStealth>显形</keywordStealth>并使你对其造成的伤害提升<buffedStat>10%</buffedStat>，持续6秒。<br><br><rules>触发<passive>亢奋射击</passive>的该次技能也会享受到这个伤害提升效果。宠物和非定身类陷阱不会触发这个效果。领域类技能只有在初始放置时会触发这个效果。距离是从技能施放位置处进行测量的。</rules></mainText>",
+            "description": "<mainText><stats><attention>100</attention>法术强度<br><attention>150</attention>生命值<br><attention>15</attention>技能急速</stats><br><br><br><li><passive>亢奋射击：</passive>用一个无目标类技能对相距700码之外的一名英雄造成<status>减速或定身</status>时，会使该英雄<keywordStealth>显形</keywordStealth>并使你对其造成的伤害提升。<br><br><rules>触发<passive>亢奋射击</passive>的该次技能也会享受到这个伤害提升效果。宠物和非定身类陷阱不会触发这个效果。领域类技能只有在初始放置时会触发这个效果。距离是从技能施放位置处进行测量的。</rules></mainText>",
             "colloq": "",
             "plaintext": "",
             "image": {
@@ -7167,7 +7166,7 @@
         },
         "226631": {
             "name": "挺进破坏者",
-            "description": "<mainText><stats><nerfedStat>60</nerfedStat>攻击力<br><attention>20%</attention>攻击速度<br><attention>375</attention>生命值</stats><br><br><br><li><passive>英勇步态：</passive>造成物理伤害时会提供移动速度。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得移动速度。<br><br><active>主动</active> <br><active>破阵冲击波</active><br>对附近的敌人们造成40%<status>减速</status>并且每命中一个英雄就会获得<speed>40%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
+            "description": "<mainText><stats><nerfedStat>60</nerfedStat>攻击力<br><attention>20%</attention>攻击速度<br><attention>375</attention>生命值</stats><br><br><br><li><passive>英勇步态：</passive>造成物理伤害时会提供<speed>20移动速度</speed>，持续3秒。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得<attention>2%</attention>移动速度。<br><br><active>主动</active> (0秒)<br><active>破阵冲击波</active><br>对附近的敌人们造成<physicalDamage>0物理伤害</physicalDamage>和40%<status>减速</status>并且每命中一个英雄就会获得<speed>40%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
             "colloq": "",
             "plaintext": "",
             "into": [
@@ -7192,6 +7191,7 @@
                 "Health",
                 "Damage",
                 "AttackSpeed",
+                "CooldownReduction",
                 "Slow",
                 "NonbootsMovement"
             ],
@@ -7206,13 +7206,6 @@
                 "FlatHPPoolMod": 375,
                 "FlatPhysicalDamageMod": 60,
                 "PercentAttackSpeedMod": 0.2
-            },
-            "effect": {
-                "Effect1Amount": "0.5",
-                "Effect2Amount": "0",
-                "Effect3Amount": "90",
-                "Effect4Amount": "0",
-                "Effect5Amount": "10"
             }
         },
         "226632": {
@@ -7387,7 +7380,7 @@
         },
         "226657": {
             "name": "时光之杖",
-            "description": "<mainText><stats><buffedStat>70</buffedStat>法术强度<br><attention>350</attention>生命值<br><attention>300</attention>法力</stats><br><br><passive>时无限</passive><br>这件装备每60秒获得生命值、法力值和法术强度。在达到最大层数时，还会使英雄等级提升1级。<br><br><passive>永恒</passive><br>在承受来自英雄的伤害时回复法力值。在施放一个技能时基于法力消耗治疗自身生命值。</mainText>",
+            "description": "<mainText><stats><buffedStat>70</buffedStat>法术强度<br><attention>400</attention>生命值<br><attention>400</attention>法力</stats><br><br><passive>时无限</passive><br>这件装备每60秒获得生命值、法力值和法术强度。在达到最大层数时，还会使英雄等级提升1级。<br><br><passive>永恒</passive><br>在承受来自英雄的伤害时回复法力值。在施放一个技能时基于法力消耗治疗自身生命值。</mainText>",
             "colloq": "",
             "plaintext": "",
             "into": [
@@ -7423,8 +7416,8 @@
                 "30": true
             },
             "stats": {
-                "FlatMPPoolMod": 300,
-                "FlatHPPoolMod": 350,
+                "FlatMPPoolMod": 400,
+                "FlatHPPoolMod": 400,
                 "FlatMagicDamageMod": 70
             }
         },
@@ -7471,45 +7464,6 @@
                 "FlatArmorMod": 50
             }
         },
-        "226664": {
-            "name": "涡轮炼金罐",
-            "description": "<mainText><stats><buffedStat>600</buffedStat>生命值<br><attention>40</attention>魔法抗性<br><attention>100%</attention>基础生命回复</stats><br><br><br><br><active>主动 - </active> <active>极限超载：</active>在朝着敌方英雄或敌方防御塔移动时会提供<speed>80%移动速度</speed>，持续4秒。一旦贴近一名敌方英雄(或在4秒后)，你就会放出一道冲击波，使附近敌方英雄<status>减速</status>-50%，持续1.5秒(30(0秒))。</mainText>",
-            "colloq": "",
-            "plaintext": "",
-            "image": {
-                "full": "226664.png",
-                "sprite": "item1.png",
-                "group": "item",
-                "x": 48,
-                "y": 384,
-                "w": 48,
-                "h": 48
-            },
-            "gold": {
-                "base": 3000,
-                "purchasable": true,
-                "total": 3000,
-                "sell": 2100
-            },
-            "tags": [
-                "Health",
-                "SpellBlock",
-                "HealthRegen",
-                "Aura",
-                "MagicResist"
-            ],
-            "maps": {
-                "11": false,
-                "12": false,
-                "21": false,
-                "22": false,
-                "30": true
-            },
-            "stats": {
-                "FlatSpellBlockMod": 40,
-                "FlatHPPoolMod": 600
-            }
-        },
         "226665": {
             "name": "千变者贾修",
             "description": "<mainText><stats><nerfedStat>300</nerfedStat>生命值<br><attention>30</attention>护甲<br><attention>30</attention>魔法抗性</stats><br><br><br><li><passive>虚空生物的复原力：</passive>在与英雄的战斗中，每经过1秒就会提供 <scaleArmor>护甲</scaleArmor>和<scaleMR>魔法抗性</scaleMR>，至多可叠加8层。在满层时会获得强化，立刻汲取你周围的敌人们、造成魔法伤害、治疗你自身、并使你的额外双抗提升，持续到战斗结束为止。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得 <attention>护甲和 魔法抗性</attention>。</mainText>",
@@ -7522,7 +7476,7 @@
                 "full": "226665.png",
                 "sprite": "item1.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -7564,7 +7518,7 @@
                 "full": "226667.png",
                 "sprite": "item1.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -7608,7 +7562,7 @@
                 "full": "226671.png",
                 "sprite": "item1.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -7649,7 +7603,7 @@
                 "full": "226672.png",
                 "sprite": "item1.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -7688,7 +7642,7 @@
                 "full": "226673.png",
                 "sprite": "item1.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -7729,7 +7683,7 @@
                 "full": "226675.png",
                 "sprite": "item1.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -7773,7 +7727,7 @@
                 "full": "226676.png",
                 "sprite": "item1.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -7813,7 +7767,7 @@
                 "full": "226691.png",
                 "sprite": "item1.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -7856,8 +7810,8 @@
                 "full": "226692.png",
                 "sprite": "item1.png",
                 "group": "item",
-                "x": 0,
-                "y": 432,
+                "x": 432,
+                "y": 384,
                 "w": 48,
                 "h": 48
             },
@@ -7892,7 +7846,7 @@
                 "full": "226693.png",
                 "sprite": "item1.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -7929,7 +7883,7 @@
                 "full": "226694.png",
                 "sprite": "item1.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -7966,7 +7920,7 @@
                 "full": "226695.png",
                 "sprite": "item1.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -8001,7 +7955,7 @@
                 "full": "226696.png",
                 "sprite": "item1.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -8041,7 +7995,7 @@
                 "full": "227001.png",
                 "sprite": "item1.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -8082,7 +8036,7 @@
                 "full": "227002.png",
                 "sprite": "item1.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -8127,7 +8081,7 @@
                 "full": "227005.png",
                 "sprite": "item1.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -8172,7 +8126,7 @@
                 "full": "227006.png",
                 "sprite": "item1.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -8218,7 +8172,7 @@
                 "full": "227009.png",
                 "sprite": "item1.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -8259,10 +8213,10 @@
             "inStore": false,
             "image": {
                 "full": "227010.png",
-                "sprite": "item2.png",
+                "sprite": "item1.png",
                 "group": "item",
-                "x": 0,
-                "y": 0,
+                "x": 432,
+                "y": 432,
                 "w": 48,
                 "h": 48
             },
@@ -8305,7 +8259,7 @@
                 "full": "227011.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -8350,7 +8304,7 @@
                 "full": "227012.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -8392,7 +8346,7 @@
                 "full": "227013.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -8435,7 +8389,7 @@
                 "full": "227014.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -8482,7 +8436,7 @@
                 "full": "227015.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -8517,7 +8471,7 @@
         },
         "227016": {
             "name": "梦想击碎者",
-            "description": "<mainText><stats><nerfedStat>60</nerfedStat>攻击力<br><ornnBonus>30%</ornnBonus>攻击速度<br><ornnBonus>400</ornnBonus>生命值</stats><br><br><br><li><passive>英勇步态：</passive>造成物理伤害时会提供移动速度。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得移动速度。<br><br><active>主动</active> <br><active>破阵冲击波</active><br>对附近的敌人们造成40%<status>减速</status>并且每命中一个英雄就会获得<speed>40%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
+            "description": "<mainText><stats><nerfedStat>60</nerfedStat>攻击力<br><ornnBonus>30%</ornnBonus>攻击速度<br><ornnBonus>400</ornnBonus>生命值</stats><br><br><br><li><passive>英勇步态：</passive>造成物理伤害时会提供<speed>20移动速度</speed>，持续3秒。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得<attention>2%</attention>移动速度。<br><br><active>主动</active> (0秒)<br><active>破阵冲击波</active><br>对附近的敌人们造成<physicalDamage>0物理伤害</physicalDamage>和40%<status>减速</status>并且每命中一个英雄就会获得<speed>40%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -8528,7 +8482,7 @@
                 "full": "227016.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -8543,6 +8497,7 @@
                 "Health",
                 "Damage",
                 "AttackSpeed",
+                "CooldownReduction",
                 "Slow",
                 "NonbootsMovement"
             ],
@@ -8557,13 +8512,6 @@
                 "FlatHPPoolMod": 400,
                 "FlatPhysicalDamageMod": 60,
                 "PercentAttackSpeedMod": 0.3
-            },
-            "effect": {
-                "Effect1Amount": "0.5",
-                "Effect2Amount": "0",
-                "Effect3Amount": "90",
-                "Effect4Amount": "0",
-                "Effect5Amount": "10"
             },
             "depth": 2
         },
@@ -8580,7 +8528,7 @@
                 "full": "227017.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -8626,7 +8574,7 @@
                 "full": "227018.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -8680,7 +8628,7 @@
                 "full": "227019.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -8727,8 +8675,8 @@
                 "full": "227020.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 0,
-                "y": 48,
+                "x": 432,
+                "y": 0,
                 "w": 48,
                 "h": 48
             },
@@ -8773,7 +8721,7 @@
                 "full": "227021.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -8817,7 +8765,7 @@
                 "full": "227023.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -8861,7 +8809,7 @@
                 "full": "227024.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -8906,7 +8854,7 @@
                 "full": "227025.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -8919,8 +8867,7 @@
             },
             "tags": [
                 "Health",
-                "HealthRegen",
-                "AbilityHaste"
+                "HealthRegen"
             ],
             "maps": {
                 "11": false,
@@ -8947,7 +8894,7 @@
                 "full": "227026.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -8991,7 +8938,7 @@
                 "full": "227027.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -9037,7 +8984,7 @@
                 "full": "227028.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -9071,7 +9018,7 @@
         },
         "227029": {
             "name": "幽梦之苏醒",
-            "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>26</ornnBonus>穿甲</stats><br><br><passive>鬼影萦绕</passive><br>提供非战斗状态下的<speed>40移动速度</speed>。<br><br><active>主动</active> (0秒)<br><active>鬼魂步伐：</active><br>提供<speed>移动速度</speed>和<keyword>幽灵状态</keyword>。</mainText>",
+            "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>26</ornnBonus>穿甲</stats><br><br><passive>鬼影萦绕</passive><br>提供非战斗状态下的<speed>{{Item_Melee_Ranged_Split_Dynamic}}移动速度</speed>。<br>{{ Item_OnActivation }} {{ Item_Cooldown }}<br><active>鬼魂步伐：</active><br>提供<speed>移动速度</speed>和<keyword>幽灵状态</keyword>。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -9083,7 +9030,7 @@
                 "full": "227029.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -9113,7 +9060,7 @@
             "effect": {
                 "Effect1Amount": "45",
                 "Effect2Amount": "0",
-                "Effect3Amount": "0.2",
+                "Effect3Amount": "0",
                 "Effect4Amount": "0",
                 "Effect5Amount": "6",
                 "Effect6Amount": "40"
@@ -9134,7 +9081,7 @@
                 "full": "227030.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -9192,8 +9139,8 @@
                 "full": "227031.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 0,
-                "y": 96,
+                "x": 432,
+                "y": 48,
                 "w": 48,
                 "h": 48
             },
@@ -9234,7 +9181,7 @@
                 "full": "227032.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -9284,7 +9231,7 @@
                 "full": "227033.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -9324,7 +9271,7 @@
                 "full": "228001.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -9361,7 +9308,7 @@
                 "full": "228002.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -9404,7 +9351,7 @@
                 "full": "228003.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -9442,7 +9389,7 @@
                 "full": "228004.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -9483,7 +9430,7 @@
                 "full": "228005.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -9537,7 +9484,7 @@
                 "full": "228006.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -9578,7 +9525,7 @@
                 "full": "228008.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -9631,8 +9578,8 @@
                 "full": "228020.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 0,
-                "y": 144,
+                "x": 432,
+                "y": 96,
                 "w": 48,
                 "h": 48
             },
@@ -9664,7 +9611,7 @@
         },
         "2403": {
             "name": "小兵去质器",
-            "description": "<mainText><stats></stats><br><br><active>主动 - 消耗：</active>击杀目标线上小兵(10(0秒))。</mainText>",
+            "description": "<mainText><stats></stats><br><br><active>主动 - 消耗：</active>击杀目标线上小兵。(0秒)</mainText>",
             "colloq": ";",
             "plaintext": "",
             "stacks": 10,
@@ -9675,7 +9622,7 @@
                 "full": "2403.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -9711,7 +9658,7 @@
                 "full": "2419.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -9752,7 +9699,7 @@
                 "full": "2420.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -9790,7 +9737,6 @@
             "description": "<mainText><stats><attention>45</attention>法术强度<br><attention>25</attention>护甲</stats><br><br><passive>支离破碎的时间</passive><br>【护臂】目前是破碎状态，但仍然可以用于升级。<br><br><rules>在打破一个【护臂】后，商店主人就只会卖给你<rarityGeneric>碎裂的护臂</rarityGeneric>了。</rules><br><br></mainText>",
             "colloq": ";",
             "plaintext": "升级为秒表",
-            "inStore": false,
             "hideFromAll": true,
             "into": [
                 "3157"
@@ -9799,14 +9745,14 @@
                 "full": "2421.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 144,
                 "w": 48,
                 "h": 48
             },
             "gold": {
                 "base": 1600,
-                "purchasable": false,
+                "purchasable": true,
                 "total": 1600,
                 "sell": 640
             },
@@ -9849,7 +9795,7 @@
                 "full": "2422.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -9893,7 +9839,7 @@
                 "full": "2423.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -9943,7 +9889,7 @@
                 "full": "2502.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -9975,7 +9921,7 @@
         },
         "2504": {
             "name": "败魔",
-            "description": "<mainText><stats><attention>400</attention>生命值<br><attention>80</attention>魔法抗性<br><attention>150%</attention>基础生命回复</stats><br><br><passive>法师之祸</passive><br>如果连续12秒没有受到<magicDamage>魔法伤害</magicDamage>，获得<magicDamage>0魔法护盾</magicDamage>。<br><br></mainText>",
+            "description": "<mainText><stats><attention>400</attention>生命值<br><attention>80</attention>魔法抗性<br><attention>150%</attention>基础生命回复</stats><br><br><passive>法师之祸</passive><br>如果连续15秒没有受到<magicDamage>魔法伤害</magicDamage>，获得<magicDamage>0魔法护盾</magicDamage>。<br><br></mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -9986,7 +9932,7 @@
                 "full": "2504.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -10032,7 +9978,7 @@
                 "full": "3001.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -10076,8 +10022,8 @@
                 "full": "3002.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 0,
-                "y": 192,
+                "x": 432,
+                "y": 144,
                 "w": 48,
                 "h": 48
             },
@@ -10108,7 +10054,7 @@
         },
         "3003": {
             "name": "大天使之杖",
-            "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得相当于你的额外法力值的法术强度。<br><passive>法力积攒</passive><br>用一个技能击中一个目标时，会消耗一层充能并获得额外法力值。至多提供360法力值，且此时这个装备会转变为<rarityLegendary>炽天使之拥</rarityLegendary>。</mainText>",
+            "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得相当于你的额外法力值的法术强度。<br><br><passive>法力流</passive><br>用一个技能击中一个目标时，会消耗一层充能并获得额外法力值。至多提供360法力值，且此时这个装备会转变为<rarityLegendary>炽天使之拥</rarityLegendary>。</mainText>",
             "colloq": "",
             "plaintext": "基于最大法力值提升法术强度",
             "from": [
@@ -10120,16 +10066,16 @@
                 "full": "3003.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 192,
                 "w": 48,
                 "h": 48
             },
             "gold": {
-                "base": 500,
+                "base": 400,
                 "purchasable": true,
-                "total": 3000,
-                "sell": 2100
+                "total": 2900,
+                "sell": 2030
             },
             "tags": [
                 "SpellDamage",
@@ -10151,7 +10097,7 @@
         },
         "3004": {
             "name": "魔宗",
-            "description": "<mainText><stats><attention>35</attention>攻击力<br><attention>500</attention>法力<br><attention>15</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得基于法力值的额外攻击力。<br><br><passive>法力积攒</passive><br>用一个技能或攻击击中一个目标时会获得额外法力值。在提供的法力值达到最大值时，这个装备会转变为<rarityLegendary>魔切</rarityLegendary>。</mainText>",
+            "description": "<mainText><stats><attention>35</attention>攻击力<br><attention>500</attention>法力<br><attention>15</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得基于法力值的额外攻击力。<br><br><passive>法力流</passive><br>用一个技能或攻击击中一个目标时会获得额外法力值。在提供的法力值达到最大值时，这个装备会转变为<rarityLegendary>魔切</rarityLegendary>。</mainText>",
             "colloq": "",
             "plaintext": "基于最大法力值提升攻击力",
             "from": [
@@ -10163,7 +10109,7 @@
                 "full": "3004.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -10206,7 +10152,7 @@
                 "full": "3005.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -10245,7 +10191,7 @@
                 "full": "3006.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -10285,7 +10231,7 @@
                 "full": "3009.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -10328,7 +10274,7 @@
                 "full": "3011.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -10370,7 +10316,7 @@
                 "full": "3012.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -10409,7 +10355,7 @@
                 "full": "3020.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -10456,7 +10402,7 @@
                 "full": "3023.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -10502,8 +10448,8 @@
                 "full": "3024.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 0,
-                "y": 240,
+                "x": 432,
+                "y": 192,
                 "w": 48,
                 "h": 48
             },
@@ -10545,7 +10491,7 @@
                 "full": "3026.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -10596,7 +10542,7 @@
                 "full": "3031.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -10638,7 +10584,7 @@
                 "full": "3033.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -10685,7 +10631,7 @@
                 "full": "3035.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -10725,7 +10671,7 @@
                 "full": "3036.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -10770,7 +10716,7 @@
                 "full": "3039.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -10812,16 +10758,16 @@
                 "full": "3040.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 240,
                 "w": 48,
                 "h": 48
             },
             "gold": {
-                "base": 3000,
+                "base": 2900,
                 "purchasable": false,
-                "total": 3000,
-                "sell": 2100
+                "total": 2900,
+                "sell": 2030
             },
             "tags": [
                 "SpellDamage",
@@ -10852,7 +10798,7 @@
                 "full": "3041.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -10883,7 +10829,7 @@
         },
         "3042": {
             "name": "魔切",
-            "description": "<mainText><stats><attention>35</attention>攻击力<br><attention>860</attention>法力<br><attention>15</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得基于法力值的额外攻击力。<br><br><passive>冲击：</passive><br>攻击会对英雄造成额外的<physicalDamage>0物理伤害</physicalDamage> (<OnHit>攻击特效</OnHit>)。伤害型技能会对英雄造成额外的<physicalDamage>{{ Item_Melee_Ranged_Split }}物理伤害</physicalDamage>。</mainText>",
+            "description": "<mainText><stats><attention>35</attention>攻击力<br><attention>860</attention>法力<br><attention>15</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得基于法力值的攻击力。<br><br><passive>冲击</passive><br>攻击和伤害型技能会对英雄造成额外物理伤害。</mainText>",
             "colloq": "",
             "plaintext": "",
             "specialRecipe": 3004,
@@ -10892,7 +10838,7 @@
                 "full": "3042.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -10941,8 +10887,8 @@
                 "full": "3044.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 0,
-                "y": 288,
+                "x": 432,
+                "y": 240,
                 "w": 48,
                 "h": 48
             },
@@ -10993,7 +10939,7 @@
                 "full": "3046.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -11059,7 +11005,7 @@
                 "full": "3047.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -11092,7 +11038,7 @@
         },
         "3050": {
             "name": "基克的聚合",
-            "description": "<mainText><stats><attention>200</attention>生命值<br><attention>250</attention>法力<br><attention>30</attention>护甲<br><attention>20</attention>技能急速</stats><br><br><passive>霜火风暴</passive> (0秒)<br>施放你的终极技能时会召唤一个风暴环绕于你5秒，每秒对敌人们造成<magicDamage>50魔法伤害</magicDamage>和30%<keyword>减速</keyword>。</mainText>",
+            "description": "<mainText><stats><attention>200</attention>生命值<br><attention>250</attention>法力<br><attention>30</attention>护甲<br><attention>20</attention>技能急速</stats><br><br><passive>霜火风暴</passive> (0秒)<br>施放你的终极技能时会召唤一个风暴环绕于你5秒。这个风暴对敌方英雄们造成每秒<magicDamage>50魔法伤害</magicDamage>和30%<keyword>减速</keyword>。</mainText>",
             "colloq": ";jikedexianqu;jkdxq",
             "plaintext": "在你施放终极技能时，为你和你的队友提供加成。",
             "from": [
@@ -11103,7 +11049,7 @@
                 "full": "3050.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -11146,14 +11092,13 @@
             ],
             "into": [
                 "3078",
-                "3073",
-                "3124"
+                "3073"
             ],
             "image": {
                 "full": "3051.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -11195,7 +11140,7 @@
                 "full": "3053.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -11242,16 +11187,16 @@
                 "full": "3057.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 288,
                 "w": 48,
                 "h": 48
             },
             "gold": {
-                "base": 750,
+                "base": 650,
                 "purchasable": true,
-                "total": 1000,
-                "sell": 700
+                "total": 900,
+                "sell": 630
             },
             "tags": [
                 "OnHit"
@@ -11279,7 +11224,7 @@
                 "full": "3065.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -11328,7 +11273,7 @@
                 "full": "3066.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -11392,7 +11337,7 @@
                 "full": "3067.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -11433,8 +11378,8 @@
                 "full": "3068.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 0,
-                "y": 336,
+                "x": 432,
+                "y": 288,
                 "w": 48,
                 "h": 48
             },
@@ -11464,7 +11409,7 @@
         },
         "3070": {
             "name": "女神之泪",
-            "description": "<mainText><stats><attention>240</attention>法力</stats><br><br><br><li><passive>专注：</passive>攻击对小兵附带额外的物理伤害。<li><passive>法力积攒：</passive>用一个技能击中一个目标时，会消耗一层充能并提供<scaleMana>3额外法力值</scaleMana>，如果目标是英雄，则该次提供的额外法力值翻倍。至多提供360额外法力值。<br><br><rules>每8秒获得一层新的<passive>法力积攒</passive>充能(至多4层)。</rules></mainText>",
+            "description": "<mainText><stats><attention>240</attention>法力</stats><br><br><br><li><passive>专注：</passive>攻击会对小兵造成额外的物理伤害。<li><passive>法力流：</passive>用一个技能击中一个目标时，会消耗一层充能并获得<scaleMana>3额外法力值</scaleMana>，如果目标是英雄，则该次提供的额外法力值翻倍。至多至360法力值。<br><br><rules>每8秒获得一层新的<passive>法力积攒</passive>(至多至4层)。</rules></mainText>",
             "colloq": "",
             "plaintext": "在花费法力时提升最大法力值",
             "into": [
@@ -11476,7 +11421,7 @@
                 "full": "3070.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -11519,7 +11464,7 @@
                 "full": "3071.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -11578,7 +11523,7 @@
                 "full": "3072.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -11610,7 +11555,7 @@
         },
         "3073": {
             "name": "海克斯注力刚壁",
-            "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>25%</attention>攻击速度<br><attention>300</attention>生命值</stats><br><br><passive>海克斯充能</passive><br>获得终极技能急速。<br><br><passive>过载</passive> <br>在施放你的终极技能后，获得短期持续的攻击速度和额外移动速度。<br></mainText>",
+            "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>25%</attention>攻击速度<br><attention>300</attention>生命值</stats><br><br><passive>海克斯充能</passive><br>你的终极技能获得技能急速。<br><br><passive>过载</passive> <br>在施放你的终极技能后，获得短暂持续的攻击速度和移动速度。<br></mainText>",
             "colloq": ";nvshenzhilei;nszl",
             "plaintext": "在花费法力时提升最大法力值",
             "from": [
@@ -11624,7 +11569,7 @@
                 "full": "3073.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -11671,7 +11616,7 @@
                 "full": "3074.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -11715,7 +11660,7 @@
                 "full": "3075.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -11759,7 +11704,7 @@
                 "full": "3076.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -11797,13 +11742,14 @@
             "into": [
                 "3074",
                 "3748",
-                "6698"
+                "6698",
+                "6631"
             ],
             "image": {
                 "full": "3077.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -11847,13 +11793,13 @@
                 "full": "3078.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 336,
                 "w": 48,
                 "h": 48
             },
             "gold": {
-                "base": 33,
+                "base": 133,
                 "purchasable": true,
                 "total": 3333,
                 "sell": 2333
@@ -11905,8 +11851,8 @@
                 "full": "3082.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 0,
-                "y": 384,
+                "x": 432,
+                "y": 336,
                 "w": 48,
                 "h": 48
             },
@@ -11945,7 +11891,7 @@
                 "full": "3083.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -11991,7 +11937,7 @@
                 "full": "3084.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -12004,8 +11950,7 @@
             },
             "tags": [
                 "Health",
-                "HealthRegen",
-                "AbilityHaste"
+                "HealthRegen"
             ],
             "maps": {
                 "11": true,
@@ -12032,7 +11977,7 @@
                 "full": "3085.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -12091,7 +12036,7 @@
                 "full": "3086.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -12135,16 +12080,16 @@
                 "full": "3087.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 384,
                 "w": 48,
                 "h": 48
             },
             "gold": {
-                "base": 400,
+                "base": 100,
                 "purchasable": true,
-                "total": 3000,
-                "sell": 2100
+                "total": 2700,
+                "sell": 1890
             },
             "tags": [
                 "Damage",
@@ -12182,7 +12127,7 @@
                 "full": "3089.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -12222,7 +12167,7 @@
                 "full": "3091.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -12266,7 +12211,7 @@
                 "full": "3094.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -12315,7 +12260,7 @@
                 "full": "3095.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -12360,13 +12305,13 @@
                 "full": "3100.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 0,
-                "y": 432,
+                "x": 432,
+                "y": 384,
                 "w": 48,
                 "h": 48
             },
             "gold": {
-                "base": 150,
+                "base": 250,
                 "purchasable": true,
                 "total": 3100,
                 "sell": 2170
@@ -12403,7 +12348,7 @@
                 "full": "3102.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -12458,7 +12403,7 @@
                 "full": "3105.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -12501,7 +12446,7 @@
                 "full": "3107.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -12557,7 +12502,7 @@
                 "full": "3108.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -12601,7 +12546,7 @@
                 "full": "3109.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -12647,7 +12592,7 @@
                 "full": "3110.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -12691,7 +12636,7 @@
                 "full": "3111.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -12729,7 +12674,7 @@
                 "full": "3112.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -12780,7 +12725,7 @@
                 "full": "3113.png",
                 "sprite": "item2.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -12825,10 +12770,10 @@
             ],
             "image": {
                 "full": "3114.png",
-                "sprite": "item3.png",
+                "sprite": "item2.png",
                 "group": "item",
-                "x": 0,
-                "y": 0,
+                "x": 432,
+                "y": 432,
                 "w": 48,
                 "h": 48
             },
@@ -12868,7 +12813,7 @@
                 "full": "3115.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -12912,7 +12857,7 @@
                 "full": "3116.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -12961,7 +12906,7 @@
                 "full": "3117.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -12999,7 +12944,7 @@
         },
         "3118": {
             "name": "残疫",
-            "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>蔑视</passive><br>获得终极技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
+            "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>蔑视</passive><br>你的终极技能获得技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
             "colloq": ";",
             "plaintext": "与一名友方英雄搭档来保护彼此",
             "from": [
@@ -13013,16 +12958,16 @@
                 "full": "3118.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 0,
                 "w": 48,
                 "h": 48
             },
             "gold": {
-                "base": 700,
+                "base": 600,
                 "purchasable": true,
-                "total": 2800,
-                "sell": 1960
+                "total": 2700,
+                "sell": 1890
             },
             "tags": [
                 "SpellDamage",
@@ -13044,7 +12989,7 @@
         },
         "3119": {
             "name": "凛冬之临",
-            "description": "<mainText><stats><attention>400</attention>生命值<br><attention>500</attention>法力<br><attention>15</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得额外<scaleHealth>生命值，相当于0</scaleHealth>。<br><br><passive>法力积攒</passive><br>用一个技能或攻击击中一个目标时，会消耗一层充能并获得额外法力值。在提供的法力值达到最大值时，这个装备会转变为<rarityLegendary>末日寒冬</rarityLegendary>。</mainText>",
+            "description": "<mainText><stats><attention>400</attention>生命值<br><attention>500</attention>法力<br><attention>15</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得额外<scaleHealth>生命值，相当于0</scaleHealth>。<br><br><passive>法力流</passive><br>用一个技能或攻击击中一个目标时，会消耗一层充能并获得额外法力值。在提供的法力值达到最大值时，这个装备会转变为<rarityLegendary>末日寒冬</rarityLegendary>。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -13056,7 +13001,7 @@
                 "full": "3119.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -13096,7 +13041,7 @@
                 "full": "3121.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -13140,7 +13085,7 @@
                 "full": "3123.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -13171,13 +13116,13 @@
         },
         "3124": {
             "name": "鬼索的狂暴之刃",
-            "description": "<mainText><stats><attention>30</attention>攻击力<br><attention>30</attention>法术强度<br><attention>25%</attention>攻击速度</stats><br><br><passive>怨怒</passive><br>攻击附带<magicDamage>30魔法伤害<OnHit>攻击特效</OnHit></magicDamage>。<br><br><passive>沸腾打击</passive><br>普通攻击会提供<attackSpeed>8%攻击速度</attackSpeed>，至多可叠加4次并至多提供<attackSpeed>0攻击速度</attackSpeed>。在满层状态下，每第三次攻击会附带2次<OnHit>攻击特效</OnHit>。</mainText>",
+            "description": "<mainText><stats><attention>35</attention>攻击力<br><attention>35</attention>法术强度<br><attention>25%</attention>攻击速度</stats><br><br><passive>怨怒</passive><br>攻击附带<magicDamage>30魔法伤害<OnHit>攻击特效</OnHit></magicDamage>。<br><br><passive>沸腾打击</passive><br>普通攻击会提供<attackSpeed>8%攻击速度</attackSpeed>，至多可叠加4次并至多提供<attackSpeed>0攻击速度</attackSpeed>。在满层状态下，每第三次攻击会附带2次<OnHit>攻击特效</OnHit>。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
                 "1052",
-                "3051",
-                "1036"
+                "1043",
+                "1037"
             ],
             "into": [
                 "7030"
@@ -13186,13 +13131,13 @@
                 "full": "3124.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 0,
                 "w": 48,
                 "h": 48
             },
             "gold": {
-                "base": 1050,
+                "base": 1025,
                 "purchasable": true,
                 "total": 3000,
                 "sell": 2100
@@ -13209,8 +13154,8 @@
                 "30": false
             },
             "stats": {
-                "FlatMagicDamageMod": 30,
-                "FlatPhysicalDamageMod": 30,
+                "FlatMagicDamageMod": 35,
+                "FlatPhysicalDamageMod": 35,
                 "PercentAttackSpeedMod": 0.25
             },
             "effect": {
@@ -13243,7 +13188,7 @@
                 "full": "3128.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -13284,8 +13229,8 @@
                 "full": "3131.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 0,
-                "y": 48,
+                "x": 432,
+                "y": 0,
                 "w": 48,
                 "h": 48
             },
@@ -13353,7 +13298,7 @@
                 "full": "3133.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -13408,7 +13353,7 @@
                 "full": "3134.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -13451,7 +13396,7 @@
                 "full": "3135.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -13491,7 +13436,7 @@
                 "full": "3137.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -13533,7 +13478,7 @@
                 "full": "3139.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -13587,7 +13532,7 @@
                 "full": "3140.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -13616,7 +13561,7 @@
         },
         "3142": {
             "name": "幽梦之灵",
-            "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>18</attention>穿甲</stats><br><br><passive>鬼影萦绕</passive><br>提供非战斗状态下的<speed>40移动速度</speed>。<br><br><active>主动</active> (0秒)<br><active>鬼魂步伐：</active><br>提供<speed>移动速度</speed>和<keyword>幽灵状态</keyword>。</mainText>",
+            "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>18</attention>穿甲</stats><br><br><passive>鬼影萦绕</passive><br>提供非战斗状态下的<speed>{{Item_Melee_Ranged_Split_Dynamic}}移动速度</speed>。<br>{{ Item_OnActivation }} {{ Item_Cooldown }}<br><active>鬼魂步伐：</active><br>提供<speed>移动速度</speed>和<keyword>幽灵状态</keyword>。</mainText>",
             "colloq": ";youmengzhiling;ymzl;穿甲",
             "plaintext": "主动施放来显著提升移动速度",
             "from": [
@@ -13630,7 +13575,7 @@
                 "full": "3142.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -13660,7 +13605,7 @@
             "effect": {
                 "Effect1Amount": "45",
                 "Effect2Amount": "0",
-                "Effect3Amount": "0.2",
+                "Effect3Amount": "0",
                 "Effect4Amount": "0",
                 "Effect5Amount": "6",
                 "Effect6Amount": "40"
@@ -13680,7 +13625,7 @@
                 "full": "3143.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -13732,7 +13677,7 @@
                 "full": "3145.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -13771,8 +13716,8 @@
                 "full": "3146.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 0,
-                "y": 96,
+                "x": 432,
+                "y": 48,
                 "w": 48,
                 "h": 48
             },
@@ -13819,7 +13764,7 @@
                 "full": "3147.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -13863,7 +13808,7 @@
                 "full": "3152.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -13909,7 +13854,7 @@
                 "full": "3153.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -13959,7 +13904,7 @@
                 "full": "3155.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -14002,7 +13947,7 @@
                 "full": "3156.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -14043,7 +13988,7 @@
                 "full": "3157.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -14090,7 +14035,7 @@
                 "full": "3158.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -14134,7 +14079,7 @@
                 "full": "3161.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -14176,7 +14121,7 @@
                 "full": "3165.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -14218,8 +14163,8 @@
                 "full": "3172.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 0,
-                "y": 144,
+                "x": 432,
+                "y": 96,
                 "w": 48,
                 "h": 48
             },
@@ -14258,7 +14203,7 @@
                 "full": "3177.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -14303,7 +14248,7 @@
                 "full": "3179.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -14340,7 +14285,7 @@
         },
         "3181": {
             "name": "破舰者",
-            "description": "<mainText><stats><attention>65</attention>攻击力<br><attention>350</attention>生命值<br><attention>5%</attention>移动速度</stats><br><br><passive>船长</passive><br>对英雄和史诗级野怪的每第五次普攻造成额外物理伤害，对建筑物造成更多伤害。<br><br><passive>登舰小组</passive><br>附近的友军攻城兵和超级士兵获得额外护甲和魔法抗性。<br><br><rules>装备对近战携带者和远程携带者会有不同的性能。</rules></mainText>",
+            "description": "<mainText><stats><attention>65</attention>攻击力<br><attention>350</attention>生命值<br><attention>5%</attention>移动速度</stats><br><br><passive>船长</passive><br>对英雄和史诗级野怪的每第五次攻击造成额外物理伤害，对建筑物造成更多伤害。<br><br><passive>登舰小组</passive><br>附近的友军攻城兵和超级士兵获得护甲和魔法抗性。<br><br><rules>装备对近战携带者和远程携带者会有不同的性能。</rules></mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -14352,7 +14297,7 @@
                 "full": "3181.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -14391,7 +14336,7 @@
                 "full": "3184.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -14438,7 +14383,7 @@
                 "full": "3190.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -14487,7 +14432,7 @@
                 "full": "3193.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -14536,7 +14481,7 @@
                 "full": "3211.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -14578,7 +14523,7 @@
                 "full": "3222.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -14611,7 +14556,7 @@
         },
         "3302": {
             "name": "界弓",
-            "description": "<mainText><stats><attention>40</attention>攻击力<br><attention>30%</attention>攻击速度</stats><br><br><passive>晦影</passive><br>攻击附带<magicDamage>30魔法伤害</magicDamage> <OnHit>攻击特效</OnHit><br><br><passive>交相</passive><br>攻击英雄时，在<keywordMajor>光明</keywordMajor>特效和<keywordMajor>黑暗</keywordMajor>特效之间轮换：<li>附带<keywordMajor>光明</keywordMajor>特效的攻击提供持续5秒的0 <scaleArmor>护甲</scaleArmor>和<scaleMR>魔抗</scaleMR>(至多至0)。<li>附带<keywordMajor>黑暗</keywordMajor>特效的攻击提供持续5秒的6%<scaleArmor>护甲穿透</scaleArmor>和<scaleMR>法术穿透</scaleMR>(至多至30%)。 </mainText>",
+            "description": "<mainText><stats><attention>40</attention>攻击力<br><attention>30%</attention>攻击速度</stats><br><br><passive>晦影</passive><br>攻击附带<magicDamage>30魔法伤害</magicDamage> <OnHit>攻击特效</OnHit>。<br><br><passive>交相</passive><br>攻击英雄时在<keywordMajor>光明</keywordMajor>特效和<keywordMajor>黑暗</keywordMajor>特效之间轮换：<li>附带<keywordMajor>光明</keywordMajor>特效的攻击提供持续5秒的0 <scaleArmor>护甲</scaleArmor>和<scaleMR>魔抗</scaleMR>(至多至0)。<li>附带<keywordMajor>黑暗</keywordMajor>特效的攻击提供持续5秒的6%<scaleArmor>护甲穿透</scaleArmor>和<scaleMR>法术穿透</scaleMR>(至多至330%)。 </mainText>",
             "colloq": ";",
             "plaintext": "周期性击杀敌方小兵来为一名附近友军提供治疗和金币",
             "from": [
@@ -14623,7 +14568,7 @@
                 "full": "3302.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -14664,8 +14609,8 @@
                 "full": "3330.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 0,
-                "y": 192,
+                "x": 432,
+                "y": 144,
                 "w": 48,
                 "h": 48
             },
@@ -14710,7 +14655,7 @@
                 "full": "3340.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -14757,7 +14702,7 @@
                 "full": "3348.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -14794,7 +14739,7 @@
                 "full": "3349.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -14830,7 +14775,7 @@
                 "full": "3363.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -14881,7 +14826,7 @@
                 "full": "3364.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -14929,7 +14874,7 @@
                 "full": "3400.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -14962,7 +14907,7 @@
                 "full": "3430.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -15003,7 +14948,7 @@
                 "full": "3504.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -15035,7 +14980,7 @@
         },
         "3508": {
             "name": "夺萃之镰",
-            "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>20</attention>技能急速</stats><br><br><passive>咒刃</passive><br>施放一个技能后，你的下一次普通攻击附带额外伤害并回复法力值。</mainText>",
+            "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>20</attention>技能急速</stats><br><br><passive>咒刃</passive><br>施放一个技能后，你的下一次普通攻击附带额外伤害并回复法力值。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -15047,13 +14992,13 @@
                 "full": "3508.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 192,
                 "w": 48,
                 "h": 48
             },
             "gold": {
-                "base": 200,
+                "base": 300,
                 "purchasable": true,
                 "total": 2900,
                 "sell": 2030
@@ -15075,7 +15020,7 @@
             },
             "stats": {
                 "FlatCritChanceMod": 0.2,
-                "FlatPhysicalDamageMod": 55
+                "FlatPhysicalDamageMod": 60
             },
             "depth": 3
         },
@@ -15090,8 +15035,8 @@
                 "full": "3513.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 0,
-                "y": 240,
+                "x": 432,
+                "y": 192,
                 "w": 48,
                 "h": 48
             },
@@ -15130,7 +15075,7 @@
                 "full": "3599.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -15163,7 +15108,7 @@
                 "full": "3600.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -15200,7 +15145,7 @@
                 "full": "3742.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -15233,7 +15178,7 @@
         },
         "3748": {
             "name": "巨型九头蛇",
-            "description": "<mainText><stats><attention>50</attention>攻击力<br><attention>500</attention>生命值</stats><br><br><passive>顺劈</passive><br>攻击附带额外伤害，并生成一道冲击波来对目标身后的敌人们造成物理伤害。<br><br><active>主动</active><br><active>刚斩</active><br>在你的下一次攻击，<passive>顺劈</passive>将对你的目标和一个附近的冲击波内造成额外物理伤害。</mainText>",
+            "description": "<mainText><stats><attention>50</attention>攻击力<br><attention>550</attention>生命值</stats><br><br><passive>顺劈</passive><br>攻击附带额外伤害，并生成一道冲击波来对目标身后的敌人们造成物理伤害。<br><br><active>主动</active><br><active>刚斩</active><br>在你的下一次攻击，<passive>顺劈</passive>将对你的目标和一个附近的冲击波内造成额外物理伤害。</mainText>",
             "colloq": ";zhongzhuang;zz",
             "plaintext": "造成基于携带者最大生命值的群体伤害",
             "from": [
@@ -15245,7 +15190,7 @@
                 "full": "3748.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -15270,7 +15215,7 @@
                 "30": false
             },
             "stats": {
-                "FlatHPPoolMod": 500,
+                "FlatHPPoolMod": 550,
                 "FlatPhysicalDamageMod": 50
             },
             "depth": 3
@@ -15292,7 +15237,7 @@
                 "full": "3801.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -15340,7 +15285,7 @@
                 "full": "3802.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -15388,7 +15333,7 @@
                 "full": "3803.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -15432,7 +15377,7 @@
                 "full": "3814.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -15476,7 +15421,7 @@
                 "full": "3850.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -15527,8 +15472,8 @@
                 "full": "3851.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 0,
-                "y": 288,
+                "x": 432,
+                "y": 240,
                 "w": 48,
                 "h": 48
             },
@@ -15576,7 +15521,7 @@
                 "full": "3853.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -15617,7 +15562,7 @@
                 "full": "3854.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -15667,7 +15612,7 @@
                 "full": "3855.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -15715,7 +15660,7 @@
                 "full": "3857.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -15756,7 +15701,7 @@
                 "full": "3858.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -15806,7 +15751,7 @@
                 "full": "3859.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -15854,7 +15799,7 @@
                 "full": "3860.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -15895,7 +15840,7 @@
                 "full": "3862.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -15946,7 +15891,7 @@
                 "full": "3863.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -15995,8 +15940,8 @@
                 "full": "3864.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 0,
-                "y": 336,
+                "x": 432,
+                "y": 288,
                 "w": 48,
                 "h": 48
             },
@@ -16036,7 +15981,7 @@
                 "full": "3865.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -16080,7 +16025,7 @@
                 "full": "3866.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -16129,7 +16074,7 @@
                 "full": "3867.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -16172,7 +16117,7 @@
                 "full": "3869.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -16217,7 +16162,7 @@
                 "full": "3870.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -16262,7 +16207,7 @@
                 "full": "3871.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -16307,7 +16252,7 @@
                 "full": "3876.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -16352,7 +16297,7 @@
                 "full": "3877.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -16398,7 +16343,7 @@
                 "full": "3901.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -16432,8 +16377,8 @@
                 "full": "3902.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 0,
-                "y": 384,
+                "x": 432,
+                "y": 336,
                 "w": 48,
                 "h": 48
             },
@@ -16466,7 +16411,7 @@
                 "full": "3903.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -16504,7 +16449,7 @@
                 "full": "3916.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -16546,7 +16491,7 @@
                 "full": "4003.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -16586,7 +16531,7 @@
                 "full": "4004.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -16626,7 +16571,7 @@
                 "full": "4005.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -16664,7 +16609,7 @@
                 "full": "4010.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -16703,7 +16648,7 @@
                 "full": "4011.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -16742,7 +16687,7 @@
                 "full": "4012.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -16781,7 +16726,7 @@
                 "full": "4013.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -16820,8 +16765,8 @@
                 "full": "4014.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 0,
-                "y": 432,
+                "x": 432,
+                "y": 384,
                 "w": 48,
                 "h": 48
             },
@@ -16858,7 +16803,7 @@
                 "full": "4015.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -16898,7 +16843,7 @@
                 "full": "4016.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -16934,7 +16879,7 @@
                 "full": "4017.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -16976,7 +16921,7 @@
                 "full": "4401.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -17019,7 +16964,7 @@
                 "full": "4402.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -17073,7 +17018,7 @@
                 "full": "4403.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -17122,7 +17067,7 @@
         },
         "4628": {
             "name": "视界专注",
-            "description": "<mainText><stats><attention>90</attention>法术强度<br><attention>20</attention>技能急速</stats><br><br><passive>高能射击</passive><br>在你用技能对600码或更远的英雄造成伤害时，将其<keywordStealth>显形</keywordStealth>6秒。对被高能射击<keywordStealth>显形</keywordStealth>的敌人们造成10%提升伤害。<br><br><passive>专注</passive> (0秒)<br>在<passive>高能射击</passive>触发时，<keywordStealth>显形</keywordStealth>目标1400码内的所有其它敌方英雄3秒。</mainText>",
+            "description": "<mainText><stats><attention>90</attention>法术强度<br><attention>20</attention>技能急速</stats><br><br><br><li><passive>亢奋射击：</passive>用一个无目标类技能对相距600码之外的一名英雄造成<status>减速或定身</status>时，会使该英雄<keywordStealth>显形</keywordStealth>并使你对其造成的伤害提升。<br><br><rules>触发<passive>亢奋射击</passive>的该次技能也会享受到这个伤害提升效果。宠物和非定身类陷阱不会触发这个效果。领域类技能只有在初始放置时会触发这个效果。距离是从技能施放位置处进行测量的。</rules></mainText>",
             "colloq": "",
             "plaintext": "定身一名英雄时会引发闪电袭击该英雄",
             "from": [
@@ -17133,7 +17078,7 @@
                 "full": "4628.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -17174,7 +17119,7 @@
                 "full": "4629.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -17221,7 +17166,7 @@
                 "full": "4630.png",
                 "sprite": "item3.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -17263,10 +17208,10 @@
             ],
             "image": {
                 "full": "4632.png",
-                "sprite": "item4.png",
+                "sprite": "item3.png",
                 "group": "item",
-                "x": 0,
-                "y": 0,
+                "x": 432,
+                "y": 432,
                 "w": 48,
                 "h": 48
             },
@@ -17309,7 +17254,7 @@
                 "full": "4633.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -17353,7 +17298,7 @@
                 "full": "4635.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -17399,7 +17344,7 @@
                 "full": "4636.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -17445,7 +17390,7 @@
                 "full": "4637.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -17487,7 +17432,7 @@
                 "full": "4638.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -17532,7 +17477,7 @@
                 "full": "4641.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -17585,7 +17530,7 @@
                 "full": "4642.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -17627,7 +17572,7 @@
                 "full": "4643.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -17679,7 +17624,7 @@
                 "full": "4644.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -17724,8 +17669,8 @@
                 "full": "4645.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 0,
-                "y": 48,
+                "x": 432,
+                "y": 0,
                 "w": 48,
                 "h": 48
             },
@@ -17753,7 +17698,7 @@
         },
         "4646": {
             "name": "风暴狂涌",
-            "description": "<mainText><stats><attention>90</attention>法术强度<br><attention>10</attention>法术穿透<br><attention>5%</attention>移动速度</stats><br><br><passive>风暴掠袭</passive><br>在短时间内对一个英雄造成相当于其35%最大生命值的伤害时，对其施加<passive>风啸</passive>并提供移动速度。<br><br><passive>风啸</passive><br>在若干秒后，打击该目标，造成魔法伤害。如果一个敌人在打击前阵亡，那么它会立刻引爆，在一个大范围内造成伤害并提供额外金币。 </mainText>",
+            "description": "<mainText><stats><attention>95</attention>法术强度<br><attention>10</attention>法术穿透<br><attention>5%</attention>移动速度</stats><br><br><passive>风暴掠袭</passive><br>在短时间内对一个英雄造成相当于其35%最大生命值的伤害时，对其施加<passive>风啸</passive>并提供移动速度。<br><br><passive>风啸</passive><br>在若干秒后，打击该目标，造成魔法伤害。如果一个敌人在打击前阵亡，那么它会立刻引爆，在一个大范围内造成伤害并提供额外金币。 </mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -17764,7 +17709,7 @@
                 "full": "4646.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -17789,7 +17734,7 @@
                 "30": false
             },
             "stats": {
-                "FlatMagicDamageMod": 90,
+                "FlatMagicDamageMod": 95,
                 "PercentMovementSpeedMod": 0.05
             },
             "depth": 3
@@ -17810,7 +17755,7 @@
                 "full": "6029.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -17852,7 +17797,7 @@
                 "full": "6035.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -17903,7 +17848,7 @@
                 "full": "6333.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -17946,7 +17891,7 @@
                 "full": "6609.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -17978,7 +17923,7 @@
         },
         "6610": {
             "name": "焚天",
-            "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>300</attention>生命值<br><attention>15</attention>技能急速</stats><br><br><passive>光盾打击</passive><br>对一个英雄打出的第一次普攻会暴击并治疗你自身。溢出的治疗效果会被提供为一个临时的额外生命值。</mainText>",
+            "description": "<mainText><stats><attention>45</attention>攻击力<br><attention>450</attention>生命值<br><attention>15</attention>技能急速</stats><br><br><passive>光盾打击</passive><br>对一个英雄打出的第一次攻击会暴击并治疗你自身。<br><br><rules>溢出的治疗效果会被提供为一个临时的额外生命值。</rules></mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -17992,7 +17937,7 @@
                 "full": "6610.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -18017,8 +17962,8 @@
                 "30": false
             },
             "stats": {
-                "FlatHPPoolMod": 300,
-                "FlatPhysicalDamageMod": 55
+                "FlatHPPoolMod": 450,
+                "FlatPhysicalDamageMod": 45
             },
             "depth": 3
         },
@@ -18035,7 +17980,7 @@
                 "full": "6616.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -18080,7 +18025,7 @@
                 "full": "6617.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -18127,7 +18072,7 @@
                 "full": "6620.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -18174,8 +18119,8 @@
                 "full": "6621.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 0,
-                "y": 96,
+                "x": 432,
+                "y": 48,
                 "w": 48,
                 "h": 48
             },
@@ -18221,7 +18166,7 @@
                 "full": "6630.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -18256,12 +18201,12 @@
         },
         "6631": {
             "name": "挺进破坏者",
-            "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>30%</attention>攻击速度<br><attention>400</attention>生命值</stats><br><br><passive>回火</passive><br>造成<physicalDamage>物理伤害</physicalDamage>时为你提供持续2秒的<speed>20移动速度</speed>。<br><br><active>主动</active> <br><active>破阵冲击波</active><br>对附近的敌人们造成35%<status>减速</status>并且每命中一个英雄就会获得<speed>35%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
+            "description": "<mainText><stats><attention>50</attention>攻击力<br><attention>30%</attention>攻击速度<br><attention>450</attention>生命值</stats><br><br><passive>顺劈</passive><br>攻击会对附近的敌人们造成<physicalDamage>{{ Item_Melee_Ranged_Split_Dynamic }}物理伤害</physicalDamage>。<br><br><passive>回火</passive><br>造成<physicalDamage>物理伤害</physicalDamage>时为你提供持续2秒的<speed>20移动速度</speed>。{{ Item_OnActivation }} {{ Item_Cooldown }}<br><active>破阵冲击波</active><br>对附近的敌人们造成<physicalDamage>0物理伤害</physicalDamage>和35%<status>减速</status>并且每命中一个英雄就会获得<speed>35%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
+                "3077",
                 "3044",
-                "1037",
                 "1042"
             ],
             "into": [
@@ -18271,21 +18216,22 @@
                 "full": "6631.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 96,
                 "w": 48,
                 "h": 48
             },
             "gold": {
-                "base": 725,
+                "base": 700,
                 "purchasable": true,
-                "total": 3000,
-                "sell": 2100
+                "total": 3300,
+                "sell": 2310
             },
             "tags": [
                 "Health",
                 "Damage",
                 "AttackSpeed",
+                "CooldownReduction",
                 "Slow",
                 "NonbootsMovement"
             ],
@@ -18297,16 +18243,9 @@
                 "30": false
             },
             "stats": {
-                "FlatHPPoolMod": 400,
-                "FlatPhysicalDamageMod": 55,
+                "FlatHPPoolMod": 450,
+                "FlatPhysicalDamageMod": 50,
                 "PercentAttackSpeedMod": 0.3
-            },
-            "effect": {
-                "Effect1Amount": "0.5",
-                "Effect2Amount": "0",
-                "Effect3Amount": "90",
-                "Effect4Amount": "0",
-                "Effect5Amount": "10"
             },
             "depth": 3
         },
@@ -18328,7 +18267,7 @@
                 "full": "6632.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -18336,8 +18275,8 @@
             "gold": {
                 "base": 700,
                 "purchasable": false,
-                "total": 3600,
-                "sell": 2520
+                "total": 3500,
+                "sell": 2450
             },
             "tags": [
                 "Health",
@@ -18377,7 +18316,7 @@
                 "full": "6653.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -18407,7 +18346,7 @@
         },
         "6655": {
             "name": "卢登的伙伴",
-            "description": "<mainText><stats><attention>90</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>装填</passive><br>每若干秒获得一层【射击充能】。<br><br><passive>开火</passive><br>伤害型技能会消耗所有【射击充能】来对目标和目标附近的其它敌人(其它敌人的数量相当于【射击充能】层数)造成额外魔法伤害。如果距离内的目标数量不足，那么每剩余一次射击，就会对主要目标重复造成一次伤害。</mainText>",
+            "description": "<mainText><stats><attention>95</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>装填</passive><br>每若干秒获得一层【射击充能】。<br><br><passive>开火</passive><br>伤害型技能会消耗所有【射击充能】来对目标和目标附近的其它敌人(其它敌人的数量相当于【射击充能】层数)造成额外魔法伤害。如果距离内的目标数量不足，那么每剩余一次射击，就会对主要目标重复造成一次伤害。</mainText>",
             "colloq": "",
             "plaintext": "高额爆发伤害，擅长对抗脆皮型敌人",
             "from": [
@@ -18421,16 +18360,16 @@
                 "full": "6655.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 96,
                 "w": 48,
                 "h": 48
             },
             "gold": {
-                "base": 700,
+                "base": 600,
                 "purchasable": true,
-                "total": 3000,
-                "sell": 2100
+                "total": 2900,
+                "sell": 2030
             },
             "tags": [
                 "SpellDamage",
@@ -18447,7 +18386,7 @@
             },
             "stats": {
                 "FlatMPPoolMod": 600,
-                "FlatMagicDamageMod": 90
+                "FlatMagicDamageMod": 95
             },
             "depth": 3
         },
@@ -18469,7 +18408,7 @@
                 "full": "6656.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -18505,7 +18444,7 @@
         },
         "6657": {
             "name": "时光之杖",
-            "description": "<mainText><stats><attention>50</attention>法术强度<br><attention>350</attention>生命值<br><attention>300</attention>法力</stats><br><br><passive>时无限</passive><br>这件装备每60秒获得生命值、法力值和法术强度。在达到最大层数时，还会使英雄等级提升1级。<br><br><passive>永恒</passive><br>在承受来自英雄的伤害时回复法力值。在施放一个技能时基于法力消耗治疗自身生命值。</mainText>",
+            "description": "<mainText><stats><attention>50</attention>法术强度<br><attention>400</attention>生命值<br><attention>400</attention>法力</stats><br><br><passive>时无限</passive><br>这件装备每60秒获得生命值、法力值和法术强度。在达到最大层数时，还会使英雄等级提升1级。<br><br><passive>永恒</passive><br>在承受来自英雄的伤害时回复法力值。在施放一个技能时基于法力消耗治疗自身生命值。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -18519,7 +18458,7 @@
                 "full": "6657.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -18545,8 +18484,8 @@
                 "30": false
             },
             "stats": {
-                "FlatMPPoolMod": 300,
-                "FlatHPPoolMod": 350,
+                "FlatMPPoolMod": 400,
+                "FlatHPPoolMod": 400,
                 "FlatMagicDamageMod": 50
             },
             "depth": 3
@@ -18568,7 +18507,7 @@
                 "full": "6660.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -18611,13 +18550,13 @@
                 "full": "6662.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 96,
                 "w": 48,
                 "h": 48
             },
             "gold": {
-                "base": 400,
+                "base": 500,
                 "purchasable": true,
                 "total": 2600,
                 "sell": 1820
@@ -18645,7 +18584,7 @@
         },
         "6664": {
             "name": "璀璨回响",
-            "description": "<mainText><stats><attention>600</attention>生命值<br><attention>40</attention>魔法抗性<br><attention>100%</attention>基础生命回复</stats><br><br><passive>献祭</passive><br>承受或造成伤害时会使你开始每秒对附近敌人造成<magicDamage>0魔法伤害</magicDamage>(对小兵提升25%)，持续3秒。承受或造成伤害会刷新效果的持续时长。<br><br><passive>荒弃</passive><br>击杀一个敌人时会在其周围的一个区域内造成<magicDamage>0魔法伤害</magicDamage>。<br><br></mainText>",
+            "description": "<mainText><stats><attention>600</attention>生命值<br><attention>40</attention>魔法抗性<br><attention>100%</attention>基础生命回复</stats><br><br><passive>献祭</passive><br>承受或造成伤害时会使你开始每秒对附近敌人造成<magicDamage>0魔法伤害</magicDamage>(对小兵提升25%)，持续3秒。<br><br><passive>荒弃</passive><br>击杀一个敌人时会在其周围的一个区域内造成<magicDamage>0魔法伤害</magicDamage>。<br><br></mainText>",
             "colloq": "",
             "plaintext": "定身敌人以获得一层护盾。激活以更快跑向敌人。",
             "from": [
@@ -18656,8 +18595,8 @@
                 "full": "6664.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 0,
-                "y": 144,
+                "x": 432,
+                "y": 96,
                 "w": 48,
                 "h": 48
             },
@@ -18704,7 +18643,7 @@
                 "full": "6665.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -18752,7 +18691,7 @@
                 "full": "6667.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -18804,7 +18743,7 @@
                 "full": "6670.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -18851,7 +18790,7 @@
                 "full": "6671.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -18901,7 +18840,7 @@
                 "full": "6672.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -18946,7 +18885,7 @@
                 "full": "6673.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -18993,7 +18932,7 @@
                 "full": "6675.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -19031,7 +18970,7 @@
         },
         "6676": {
             "name": "收集者",
-            "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>16</attention>穿甲</stats><br><br><passive>死</passive><br>你的伤害会处决低于5%生命值的英雄。<br><br><passive>税</passive><br>击杀英雄时提供额外的<gold>25金币</gold>。</mainText>",
+            "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>16</attention>穿甲</stats><br><br><passive>死</passive><br>你的伤害会处决低于5%生命值的英雄。<br><br><passive>税</passive><br>击杀英雄时提供额外的<gold>25金币</gold>。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -19043,7 +18982,7 @@
                 "full": "6676.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -19068,7 +19007,7 @@
             },
             "stats": {
                 "FlatCritChanceMod": 0.2,
-                "FlatPhysicalDamageMod": 60
+                "FlatPhysicalDamageMod": 55
             },
             "depth": 3
         },
@@ -19086,7 +19025,7 @@
                 "full": "6677.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -19132,8 +19071,8 @@
                 "full": "6690.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 0,
-                "y": 192,
+                "x": 432,
+                "y": 144,
                 "w": 48,
                 "h": 48
             },
@@ -19177,7 +19116,7 @@
                 "full": "6691.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -19226,7 +19165,7 @@
                 "full": "6692.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -19271,7 +19210,7 @@
                 "full": "6693.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -19313,7 +19252,7 @@
                 "full": "6694.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -19355,7 +19294,7 @@
                 "full": "6695.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -19395,7 +19334,7 @@
                 "full": "6696.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -19425,7 +19364,7 @@
         },
         "6697": {
             "name": "狂妄",
-            "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>18</attention>穿甲<br><attention>15</attention>技能急速</stats><br><br><passive>唯我</passive><br>击杀时获得一座你自己的雕像，这座雕像可不断升级。<br><br><passive>盛名</passive><br>击杀时获得基于你雕像等级的临时攻击力。</mainText>",
+            "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>18</attention>穿甲<br><attention>15</attention>技能急速</stats><br><br><passive>盛名</passive><br>击杀英雄时获得基于英雄击杀数的临时攻击力。<br><br><passive>唯我</passive><br>击杀时获得一座你自己的雕像，这座雕像可不断升级。<br></mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -19439,7 +19378,7 @@
                 "full": "6697.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -19482,7 +19421,7 @@
                 "full": "6698.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -19528,7 +19467,7 @@
                 "full": "6699.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -19572,8 +19511,8 @@
                 "full": "6700.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 0,
-                "y": 240,
+                "x": 432,
+                "y": 192,
                 "w": 48,
                 "h": 48
             },
@@ -19621,7 +19560,7 @@
                 "full": "6701.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -19665,7 +19604,7 @@
                 "full": "7000.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -19707,7 +19646,7 @@
                 "full": "7001.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -19749,7 +19688,7 @@
                 "full": "7002.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -19794,7 +19733,7 @@
                 "full": "7003.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -19822,7 +19761,7 @@
         },
         "7004": {
             "name": "万众之恨意",
-            "description": "<mainText><stats><ornnBonus>110</ornnBonus>法术强度<br><ornnBonus>800</ornnBonus>法力<br><ornnBonus>30</ornnBonus>技能急速</stats><br><br><passive>蔑视</passive><br>获得终极技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
+            "description": "<mainText><stats><ornnBonus>110</ornnBonus>法术强度<br><ornnBonus>800</ornnBonus>法力<br><ornnBonus>30</ornnBonus>技能急速</stats><br><br><passive>蔑视</passive><br>你的终极技能获得技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -19833,7 +19772,7 @@
                 "full": "7004.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -19841,8 +19780,8 @@
             "gold": {
                 "base": 0,
                 "purchasable": true,
-                "total": 2800,
-                "sell": 1960
+                "total": 2700,
+                "sell": 1890
             },
             "tags": [
                 "SpellDamage",
@@ -19875,7 +19814,7 @@
                 "full": "7005.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -19921,7 +19860,7 @@
                 "full": "7006.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -19967,7 +19906,7 @@
                 "full": "7007.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -20010,8 +19949,8 @@
                 "full": "7008.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 0,
-                "y": 288,
+                "x": 432,
+                "y": 240,
                 "w": 48,
                 "h": 48
             },
@@ -20053,7 +19992,7 @@
                 "full": "7009.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -20097,7 +20036,7 @@
                 "full": "7010.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -20141,7 +20080,7 @@
                 "full": "7011.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -20186,7 +20125,7 @@
                 "full": "7012.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -20216,7 +20155,7 @@
         },
         "7013": {
             "name": "武备之力",
-            "description": "<mainText><stats><ornnBonus>115</ornnBonus>法术强度<br><ornnBonus>950</ornnBonus>法力<br><ornnBonus>30</ornnBonus>技能急速</stats><br><br><passive>装填</passive><br>每若干秒获得一层【射击充能】。<br><br><passive>开火</passive><br>伤害型技能会消耗所有【射击充能】来对目标和目标附近的其它敌人(其它敌人的数量相当于【射击充能】层数)造成额外魔法伤害。如果距离内的目标数量不足，那么每剩余一次射击，就会对主要目标重复造成一次伤害。</mainText>",
+            "description": "<mainText><stats><ornnBonus>120</ornnBonus>法术强度<br><ornnBonus>950</ornnBonus>法力<br><ornnBonus>30</ornnBonus>技能急速</stats><br><br><passive>装填</passive><br>每若干秒获得一层【射击充能】。<br><br><passive>开火</passive><br>伤害型技能会消耗所有【射击充能】来对目标和目标附近的其它敌人(其它敌人的数量相当于【射击充能】层数)造成额外魔法伤害。如果距离内的目标数量不足，那么每剩余一次射击，就会对主要目标重复造成一次伤害。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -20227,7 +20166,7 @@
                 "full": "7013.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -20235,8 +20174,8 @@
             "gold": {
                 "base": 0,
                 "purchasable": true,
-                "total": 3000,
-                "sell": 2100
+                "total": 2900,
+                "sell": 2030
             },
             "tags": [
                 "SpellDamage",
@@ -20253,7 +20192,7 @@
             },
             "stats": {
                 "FlatMPPoolMod": 950,
-                "FlatMagicDamageMod": 115
+                "FlatMagicDamageMod": 120
             },
             "depth": 4
         },
@@ -20271,7 +20210,7 @@
                 "full": "7014.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -20319,7 +20258,7 @@
                 "full": "7015.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -20354,7 +20293,7 @@
         },
         "7016": {
             "name": "梦想击碎者",
-            "description": "<mainText><stats><ornnBonus>70</ornnBonus>攻击力<br><ornnBonus>40%</ornnBonus>攻击速度<br><ornnBonus>475</ornnBonus>生命值</stats><br><br><passive>回火</passive><br>造成<physicalDamage>物理伤害</physicalDamage>时为你提供持续2秒的<speed>20移动速度</speed>。<br><br><active>主动</active> <br><active>破阵冲击波</active><br>对附近的敌人们造成35%<status>减速</status>并且每命中一个英雄就会获得<speed>35%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
+            "description": "<mainText><stats><ornnBonus>60</ornnBonus>攻击力<br><ornnBonus>40%</ornnBonus>攻击速度<br><ornnBonus>600</ornnBonus>生命值</stats><br><br><passive>顺劈</passive><br>攻击会对附近的敌人们造成<physicalDamage>{{ Item_Melee_Ranged_Split_Dynamic }}物理伤害</physicalDamage>。<br><br><passive>回火</passive><br>造成<physicalDamage>物理伤害</physicalDamage>时为你提供持续2秒的<speed>20移动速度</speed>。{{ Item_OnActivation }} {{ Item_Cooldown }}<br><active>破阵冲击波</active><br>对附近的敌人们造成<physicalDamage>0物理伤害</physicalDamage>和35%<status>减速</status>并且每命中一个英雄就会获得<speed>35%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -20365,7 +20304,7 @@
                 "full": "7016.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -20373,13 +20312,14 @@
             "gold": {
                 "base": 0,
                 "purchasable": true,
-                "total": 3000,
-                "sell": 2100
+                "total": 3300,
+                "sell": 2310
             },
             "tags": [
                 "Health",
                 "Damage",
                 "AttackSpeed",
+                "CooldownReduction",
                 "Slow",
                 "NonbootsMovement"
             ],
@@ -20391,16 +20331,9 @@
                 "30": true
             },
             "stats": {
-                "FlatHPPoolMod": 475,
-                "FlatPhysicalDamageMod": 70,
+                "FlatHPPoolMod": 600,
+                "FlatPhysicalDamageMod": 60,
                 "PercentAttackSpeedMod": 0.4
-            },
-            "effect": {
-                "Effect1Amount": "0.5",
-                "Effect2Amount": "0",
-                "Effect3Amount": "90",
-                "Effect4Amount": "0",
-                "Effect5Amount": "10"
             },
             "depth": 4
         },
@@ -20418,7 +20351,7 @@
                 "full": "7017.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -20426,8 +20359,8 @@
             "gold": {
                 "base": 0,
                 "purchasable": false,
-                "total": 3600,
-                "sell": 2520
+                "total": 3500,
+                "sell": 2450
             },
             "tags": [
                 "Health",
@@ -20464,8 +20397,8 @@
                 "full": "7018.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 0,
-                "y": 336,
+                "x": 432,
+                "y": 288,
                 "w": 48,
                 "h": 48
             },
@@ -20518,7 +20451,7 @@
                 "full": "7019.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -20564,7 +20497,7 @@
                 "full": "7020.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -20609,7 +20542,7 @@
                 "full": "7021.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -20653,7 +20586,7 @@
                 "full": "7022.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -20697,7 +20630,7 @@
                 "full": "7023.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -20742,7 +20675,7 @@
                 "full": "7024.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -20787,7 +20720,7 @@
                 "full": "7025.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -20800,8 +20733,7 @@
             },
             "tags": [
                 "Health",
-                "HealthRegen",
-                "AbilityHaste"
+                "HealthRegen"
             ],
             "maps": {
                 "11": true,
@@ -20828,7 +20760,7 @@
                 "full": "7026.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -20872,7 +20804,7 @@
                 "full": "7027.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -20907,7 +20839,7 @@
         },
         "7028": {
             "name": "无限会聚",
-            "description": "<mainText><stats><ornnBonus>70</ornnBonus>法术强度<br><ornnBonus>500</ornnBonus>生命值<br><ornnBonus>550</ornnBonus>法力</stats><br><br><passive>时无限</passive><br>这件装备每60秒获得生命值、法力值和法术强度。在达到最大层数时，还会使英雄等级提升1级。<br><br><passive>永恒</passive><br>在承受来自英雄的伤害时回复法力值。在施放一个技能时基于法力消耗治疗自身生命值。</mainText>",
+            "description": "<mainText><stats><ornnBonus>70</ornnBonus>法术强度<br><ornnBonus>550</ornnBonus>生命值<br><ornnBonus>650</ornnBonus>法力</stats><br><br><passive>时无限</passive><br>这件装备每60秒获得生命值、法力值和法术强度。在达到最大层数时，还会使英雄等级提升1级。<br><br><passive>永恒</passive><br>在承受来自英雄的伤害时回复法力值。在施放一个技能时基于法力消耗治疗自身生命值。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -20918,8 +20850,8 @@
                 "full": "7028.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 0,
-                "y": 384,
+                "x": 432,
+                "y": 336,
                 "w": 48,
                 "h": 48
             },
@@ -20944,15 +20876,15 @@
                 "30": true
             },
             "stats": {
-                "FlatMPPoolMod": 550,
-                "FlatHPPoolMod": 500,
+                "FlatMPPoolMod": 650,
+                "FlatHPPoolMod": 550,
                 "FlatMagicDamageMod": 70
             },
             "depth": 4
         },
         "7029": {
             "name": "幽梦之苏醒",
-            "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>26</ornnBonus>穿甲</stats><br><br><passive>鬼影萦绕</passive><br>提供非战斗状态下的<speed>40移动速度</speed>。<br><br><active>主动</active> (0秒)<br><active>鬼魂步伐：</active><br>提供<speed>移动速度</speed>和<keyword>幽灵状态</keyword>。</mainText>",
+            "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>26</ornnBonus>穿甲</stats><br><br><passive>鬼影萦绕</passive><br>提供非战斗状态下的<speed>{{Item_Melee_Ranged_Split_Dynamic}}移动速度</speed>。<br>{{ Item_OnActivation }} {{ Item_Cooldown }}<br><active>鬼魂步伐：</active><br>提供<speed>移动速度</speed>和<keyword>幽灵状态</keyword>。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -20963,7 +20895,7 @@
                 "full": "7029.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -20993,7 +20925,7 @@
             "effect": {
                 "Effect1Amount": "45",
                 "Effect2Amount": "0",
-                "Effect3Amount": "0.2",
+                "Effect3Amount": "0",
                 "Effect4Amount": "0",
                 "Effect5Amount": "6",
                 "Effect6Amount": "40"
@@ -21002,7 +20934,7 @@
         },
         "7030": {
             "name": "沸腾悲伤",
-            "description": "<mainText><stats><ornnBonus>40</ornnBonus>攻击力<br><ornnBonus>50</ornnBonus>法术强度<br><ornnBonus>35%</ornnBonus>攻击速度</stats><br><br><passive>怨怒</passive><br>攻击附带<magicDamage>30魔法伤害<OnHit>攻击特效</OnHit></magicDamage>。<br><br><passive>沸腾打击</passive><br>普通攻击会提供<attackSpeed>8%攻击速度</attackSpeed>，至多可叠加4次并至多提供<attackSpeed>0攻击速度</attackSpeed>。在满层状态下，每第三次攻击会附带2次<OnHit>攻击特效</OnHit>。</mainText>",
+            "description": "<mainText><stats><ornnBonus>45</ornnBonus>攻击力<br><ornnBonus>55</ornnBonus>法术强度<br><ornnBonus>35%</ornnBonus>攻击速度</stats><br><br><passive>怨怒</passive><br>攻击附带<magicDamage>30魔法伤害<OnHit>攻击特效</OnHit></magicDamage>。<br><br><passive>沸腾打击</passive><br>普通攻击会提供<attackSpeed>8%攻击速度</attackSpeed>，至多可叠加4次并至多提供<attackSpeed>0攻击速度</attackSpeed>。在满层状态下，每第三次攻击会附带2次<OnHit>攻击特效</OnHit>。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -21013,7 +20945,7 @@
                 "full": "7030.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -21036,8 +20968,8 @@
                 "30": true
             },
             "stats": {
-                "FlatMagicDamageMod": 50,
-                "FlatPhysicalDamageMod": 40,
+                "FlatMagicDamageMod": 55,
+                "FlatPhysicalDamageMod": 45,
                 "PercentAttackSpeedMod": 0.35
             },
             "effect": {
@@ -21070,7 +21002,7 @@
                 "full": "7031.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -21112,7 +21044,7 @@
                 "full": "7032.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -21161,7 +21093,7 @@
                 "full": "7033.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -21205,7 +21137,7 @@
                 "full": "7034.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -21248,7 +21180,7 @@
                 "full": "7035.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -21290,7 +21222,7 @@
                 "full": "7036.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 384,
+                "x": 336,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -21337,7 +21269,7 @@
                 "full": "7037.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 432,
+                "x": 384,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -21395,8 +21327,8 @@
                 "full": "7038.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 0,
-                "y": 432,
+                "x": 432,
+                "y": 384,
                 "w": 48,
                 "h": 48
             },
@@ -21427,7 +21359,7 @@
         },
         "7039": {
             "name": "天殒",
-            "description": "<mainText><stats><ornnBonus>65</ornnBonus>攻击力<br><ornnBonus>500</ornnBonus>生命值<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br><passive>光盾打击</passive><br>对一个英雄打出的第一次普攻会暴击并治疗你自身。溢出的治疗效果会被提供为一个临时的额外生命值。</mainText>",
+            "description": "<mainText><stats><ornnBonus>60</ornnBonus>攻击力<br><ornnBonus>600</ornnBonus>生命值<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br><passive>光盾打击</passive><br>对一个英雄打出的第一次普攻会暴击并治疗你自身。溢出的治疗效果会被提供为一个临时的额外生命值。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -21438,7 +21370,7 @@
                 "full": "7039.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 48,
+                "x": 0,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -21463,8 +21395,8 @@
                 "30": true
             },
             "stats": {
-                "FlatHPPoolMod": 500,
-                "FlatPhysicalDamageMod": 65
+                "FlatHPPoolMod": 600,
+                "FlatPhysicalDamageMod": 60
             },
             "depth": 4
         },
@@ -21481,7 +21413,7 @@
                 "full": "7040.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 96,
+                "x": 48,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -21525,7 +21457,7 @@
                 "full": "7041.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 144,
+                "x": 96,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -21568,7 +21500,7 @@
                 "full": "7042.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 192,
+                "x": 144,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -21613,7 +21545,7 @@
                 "full": "7050.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 240,
+                "x": 192,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -21647,7 +21579,7 @@
                 "full": "8001.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 288,
+                "x": 240,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -21689,7 +21621,7 @@
                 "full": "8020.png",
                 "sprite": "item4.png",
                 "group": "item",
-                "x": 336,
+                "x": 288,
                 "y": 432,
                 "w": 48,
                 "h": 48

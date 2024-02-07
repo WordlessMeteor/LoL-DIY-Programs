@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.2.1",
+    "version": "14.3.1",
     "data": {
         "Trundle": {
             "id": "Trundle",
@@ -90,7 +90,7 @@
                 "difficulty": 5
             },
             "stats": {
-                "hp": 686,
+                "hp": 650,
                 "hpperlevel": 110,
                 "mp": 340,
                 "mpperlevel": 45,

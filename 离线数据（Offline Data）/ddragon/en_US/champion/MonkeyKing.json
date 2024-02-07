@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.2.1",
+    "version": "14.3.1",
     "data": {
         "MonkeyKing": {
             "id": "MonkeyKing",
@@ -427,12 +427,12 @@
                     "maxrank": 5,
                     "cooldown": [
                         10,
-                        9.5,
-                        9,
+                        9.25,
                         8.5,
-                        8
+                        7.75,
+                        7
                     ],
-                    "cooldownBurn": "10/9.5/9/8.5/8",
+                    "cooldownBurn": "10/9.25/8.5/7.75/7",
                     "cost": [
                         30,
                         35,

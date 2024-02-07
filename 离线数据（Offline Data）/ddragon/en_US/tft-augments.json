@@ -1,6 +1,6 @@
 {
     "type": "tft-augment",
-    "version": "14.2.1",
+    "version": "14.3.1",
     "augment-container": {
         "name": "Boombox Augment",
         "image": {
@@ -2198,6 +2198,19 @@
                 "h": 48
             }
         },
+        "TFT9_Augment_BalancedBudgetPlus": {
+            "id": "TFT9_Augment_BalancedBudgetPlus",
+            "name": "Balanced Budget+",
+            "image": {
+                "full": "Balanced-Budget-II.png",
+                "sprite": "tft-augment5.png",
+                "group": "tft-augment",
+                "x": 432,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
         "TFT10_Augment_SpellweaverHalftimeShow": {
             "id": "TFT10_Augment_SpellweaverHalftimeShow",
             "name": "Raise the Tempo",
@@ -2205,8 +2218,8 @@
                 "full": "Raise-The-Tempo-II.TFT_Set10.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 432,
-                "y": 48,
+                "x": 0,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -2218,7 +2231,7 @@
                 "full": "Remember-Your-Roots-II.TFT_Set10.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 0,
+                "x": 48,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2231,7 +2244,7 @@
                 "full": "Talent-Search-III.TFT_Set10.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 48,
+                "x": 96,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2244,7 +2257,7 @@
                 "full": "Emotional-Connection-II.TFT_Set10.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 96,
+                "x": 144,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2257,7 +2270,7 @@
                 "full": "Metalheads-II.TFT_Set10.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 144,
+                "x": 192,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2270,7 +2283,7 @@
                 "full": "Hologram-III.TFT_Set10.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 192,
+                "x": 240,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2283,7 +2296,7 @@
                 "full": "Ramping-Rhythm-II.TFT_Set10.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 240,
+                "x": 288,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2296,7 +2309,7 @@
                 "full": "Bigger-Shot-II.TFT_Set10.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 288,
+                "x": 336,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2309,7 +2322,7 @@
                 "full": "Cold-Steel-II.TFT_Set10.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 336,
+                "x": 384,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2322,7 +2335,7 @@
                 "full": "Too-Big-To-Fail-II.TFT_Set10.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 384,
+                "x": 432,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2333,10 +2346,10 @@
             "name": "Double the Funk",
             "image": {
                 "full": "Double-The-Funk-II.TFT_Set10.png",
-                "sprite": "tft-augment5.png",
+                "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 432,
-                "y": 96,
+                "x": 0,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -2348,7 +2361,7 @@
                 "full": "Heroic-Presence-II.png",
                 "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 0,
+                "x": 48,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2361,7 +2374,7 @@
                 "full": "The-Ole-Razzle-Dazzle-II.TFT_Set10.png",
                 "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 48,
+                "x": 96,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2374,7 +2387,7 @@
                 "full": "Repetitive-Riffing-II.TFT_Set10.png",
                 "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 96,
+                "x": 144,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2387,7 +2400,7 @@
                 "full": "Heart-Collector-II.TFT_Set10.png",
                 "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 144,
+                "x": 192,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2400,7 +2413,7 @@
                 "full": "Thats-Jazz-Baby-II.TFT_Set10.png",
                 "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 192,
+                "x": 240,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2413,7 +2426,7 @@
                 "full": "Submit-To-The-Pit-II.TFT_Set10.png",
                 "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 240,
+                "x": 288,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2426,7 +2439,7 @@
                 "full": "Bounty-Hunters-II.TFT_Set10.png",
                 "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 288,
+                "x": 336,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2439,7 +2452,7 @@
                 "full": "For-The-Fans-II.TFT_Set10.png",
                 "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 336,
+                "x": 384,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2452,7 +2465,7 @@
                 "full": "Expose-Weakness-II.TFT_Set10.png",
                 "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 384,
+                "x": 432,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2465,8 +2478,8 @@
                 "full": "Insert-Coin-II.TFT_Set10.png",
                 "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 432,
-                "y": 0,
+                "x": 0,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -2478,7 +2491,7 @@
                 "full": "Blinged-Out-II.TFT_Set10.png",
                 "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 0,
+                "x": 48,
                 "y": 48,
                 "w": 48,
                 "h": 48

@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.2.1",
+    "version": "14.3.1",
     "data": {
         "Yorick": {
             "id": "Yorick",
@@ -117,15 +117,17 @@
                     "id": "YorickQ",
                     "name": "Last Rites",
                     "description": "Yorick deals bonus damage on his next attack and heals himself. If the target dies a grave will be dug.",
-                    "tooltip": "Yorick's next Attack deals an additional <physicalDamage>{{ totaldamage }} physical damage</physicalDamage> and restores <healing>{{ qheal }} Health</healing>, or <healing>{{ empoweredqheal }} Health</healing> if Yorick is below 50% Health. If this Attack kills the target, it leaves a grave.<br /><br />When there are 3 or more graves nearby and this Ability has already been used, Yorick can <recast>Recast</recast> to raise <keywordMajor>Mist Walkers</keywordMajor> from all nearby graves.<br /><br /><rules>This Ability triggers spell effects upon dealing damage.</rules>{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "Yorick's next Attack deals an additional <physicalDamage>{{ bonusdamage }} physical damage</physicalDamage> and restores <healing>{{ qheal }} plus {{ missinghealthratio }}% of his missing Health</healing>, reduced by {{ healreduction }}% against non-Champions. If this Attack kills the target, it leaves a grave.<br /><br />When there are 3 or more graves nearby and this Ability has already been used, Yorick can <recast>Recast</recast> to raise <keywordMajor>Mist Walkers</keywordMajor> from all nearby graves.{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "Cooldown",
-                            "Damage"
+                            "Damage",
+                            "Missing Health %"
                         ],
                         "effect": [
                             "{{ cooldown }} -> {{ cooldownNL }}",
-                            "{{ e1 }} -> {{ e1NL }}"
+                            "{{ basedamage }} -> {{ basedamageNL }}",
+                            "{{ missinghealthratio }} -> {{ missinghealthratioNL }}"
                         ]
                     },
                     "maxrank": 5,
@@ -138,29 +140,29 @@
                     ],
                     "cooldownBurn": "7/6.25/5.5/4.75/4",
                     "cost": [
-                        25,
-                        25,
-                        25,
-                        25,
-                        25
+                        20,
+                        20,
+                        20,
+                        20,
+                        20
                     ],
-                    "costBurn": "25",
+                    "costBurn": "20",
                     "datavalues": {},
                     "effect": [
                         null,
                         [
-                            30,
-                            55,
-                            80,
-                            105,
-                            130
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
                         ],
                         [
-                            5,
-                            5,
-                            5,
-                            5,
-                            5
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
                         ],
                         [
                             0,
@@ -221,8 +223,8 @@
                     ],
                     "effectBurn": [
                         null,
-                        "30/55/80/105/130",
-                        "5",
+                        "0",
+                        "0",
                         "0",
                         "0",
                         "0",
@@ -542,7 +544,7 @@
                     "id": "YorickR",
                     "name": "Eulogy of the Isles",
                     "description": "Yorick summons the Maiden of the Mist that causes Yorick's attacks against the Maiden's target to deal bonus damage. The Maiden will also automatically raise Walkers from dead enemies.",
-                    "tooltip": "Yorick summons the <keywordMajor>Maiden of the Mist</keywordMajor> and {{ rghoulnumbers }} <keywordMajor>Mist Walkers</keywordMajor>. The <keywordMajor>Maiden</keywordMajor> automatically raises more <keywordMajor>Mist Walkers</keywordMajor> from nearby enemy deaths.<br /><br />When Yorick damages the <keywordMajor>Maiden's</keywordMajor> target, he will deal <magicDamage>{{ rmarkdamagepercent }}% max Health magic damage</magicDamage>. This effect has a {{ rproccd }} second Cooldown.<br /><br />After 10 seconds, Yorick can <recast>Recast</recast> this Ability to free the <keywordMajor>Maiden</keywordMajor>, sending her down the nearest lane.{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "Yorick summons the <keywordMajor>Maiden of the Mist</keywordMajor> and {{ rghoulnumbers }} <keywordMajor>Mist Walkers</keywordMajor>. The <keywordMajor>Maiden</keywordMajor> automatically raises <keywordMajor>Mist Walkers</keywordMajor> from nearby enemy deaths.<br /><br />When Yorick damages the <keywordMajor>Maiden's</keywordMajor> target, he deals <magicDamage>{{ rmarkdamagepercent }}% max Health magic damage</magicDamage>.<br /><br />After 10 seconds, Yorick can <recast>Recast</recast> this Ability to free the <keywordMajor>Maiden</keywordMajor>, sending her down the nearest lane.{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "Mist Walkers",

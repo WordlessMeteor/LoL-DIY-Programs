@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.2.1",
+    "version": "14.3.1",
     "data": {
         "Shaco": {
             "id": "Shaco",
@@ -138,7 +138,7 @@
                 "hpregen": 8.5,
                 "hpregenperlevel": 0.55,
                 "mpregen": 6,
-                "mpregenperlevel": 0.45,
+                "mpregenperlevel": 0.35,
                 "crit": 0,
                 "critperlevel": 0,
                 "attackdamage": 63,
@@ -299,12 +299,14 @@
                         "label": [
                             "Damage",
                             "Fear Duration",
-                            "Bonus Monster Damage"
+                            "Bonus Monster Damage",
+                            "@AbilityResourceName@ Cost"
                         ],
                         "effect": [
                             "{{ stbasedamage }} -> {{ stbasedamageNL }}",
                             "{{ fearduration }} -> {{ feardurationNL }}",
-                            "{{ monsterbonusdamage }} -> {{ monsterbonusdamageNL }}"
+                            "{{ monsterbonusdamage }} -> {{ monsterbonusdamageNL }}",
+                            "{{ cost }} -> {{ costNL }}"
                         ]
                     },
                     "maxrank": 5,
@@ -318,12 +320,12 @@
                     "cooldownBurn": "15",
                     "cost": [
                         70,
-                        70,
-                        70,
-                        70,
-                        70
+                        65,
+                        60,
+                        55,
+                        50
                     ],
-                    "costBurn": "70",
+                    "costBurn": "70/65/60/55/50",
                     "datavalues": {},
                     "effect": [
                         null,
@@ -458,13 +460,13 @@
                     ],
                     "cooldownBurn": "8",
                     "cost": [
-                        65,
-                        65,
-                        65,
-                        65,
-                        65
+                        75,
+                        75,
+                        75,
+                        75,
+                        75
                     ],
-                    "costBurn": "65",
+                    "costBurn": "75",
                     "datavalues": {},
                     "effect": [
                         null,

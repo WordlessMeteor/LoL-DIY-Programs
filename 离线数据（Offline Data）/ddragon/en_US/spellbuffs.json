@@ -4873,32 +4873,8 @@
             "name": "Rupture"
         },
         {
-            "id": 2081351379,
-            "name": "Granite Shield"
-        },
-        {
             "id": 782602165,
             "name": "Demacian Standard"
-        },
-        {
-            "id": 189455072,
-            "name": "Ace in the Hole: Targeted"
-        },
-        {
-            "id": 3653244381,
-            "name": "Ace in the Hole: Targeted"
-        },
-        {
-            "id": 3093464893,
-            "name": "Ace in the Hole: Targeted"
-        },
-        {
-            "id": 3076687274,
-            "name": "Ace in the Hole: Targeted"
-        },
-        {
-            "id": 1834750255,
-            "name": "Ace in the Hole: Targeted"
         },
         {
             "id": 3679487548,
@@ -4946,10 +4922,6 @@
         },
         {
             "id": 1434187025,
-            "name": "Satchel Charge"
-        },
-        {
-            "id": 214895110,
             "name": "Satchel Charge"
         },
         {
@@ -6569,10 +6541,6 @@
             "name": "Hasted"
         },
         {
-            "id": 2647417376,
-            "name": "Overdrive"
-        },
-        {
             "id": 2548139416,
             "name": "Overdrive"
         },
@@ -7003,14 +6971,6 @@
         {
             "id": 2357601600,
             "name": "Serylda's Grudge"
-        },
-        {
-            "id": 1671568191,
-            "name": "Overdrive"
-        },
-        {
-            "id": 1888090219,
-            "name": "Overdrive"
         },
         {
             "id": 3121125761,

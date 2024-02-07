@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.2.1",
+    "version": "14.3.1",
     "data": {
         "Seraphine": {
             "id": "Seraphine",
@@ -403,7 +403,7 @@
                     "id": "SeraphineE",
                     "name": "Beat Drop",
                     "description": "Seraphine deals damage and impairs the movement of enemies in a line.",
-                    "tooltip": "Seraphine unleashes a heavy soundwave, dealing <magicDamage>{{ finaldamage }} Magic Damage</magicDamage> to enemies in a line and <status>Slowing</status> them by {{ slowvalue }}% for {{ slowduration }} seconds.<br /><br />Enemies that are already <status>Slowed</status> are <status>Rooted</status> instead, and <status>Immobilized</status> enemies are <status>Stunned</status>.{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "Seraphine unleashes a heavy soundwave, dealing <magicDamage>{{ finaldamage }} magic damage</magicDamage> to enemies in a line and <status>Slowing</status> them by {{ slowvalue }}% for {{ slowduration }} seconds.<br /><br />Enemies that are already <status>Slowed</status> are <status>Rooted</status> instead, and <status>Immobilized</status> enemies are <status>Stunned</status>.{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "@AbilityResourceName@ Cost",
