@@ -3696,6 +3696,241 @@
                             "offerCategory": "Chromas"
                         }
                     ]
+                },
+                {
+                    "patch": "14.4",
+                    "activationDate": "2024-02-22T19:00:00Z",
+                    "offers": [
+                        {
+                            "id": "defea199-cda7-49e7-8827-f93059698ea1",
+                            "localizedTitle": "青花瓷 伊泽瑞尔 天青 炫彩",
+                            "localizedDescription": "包含炫彩图标！",
+                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2022_PorcelainProtector_EzrealChroma.png",
+                            "promotionType": "kNone",
+                            "offerCategory": "Chromas",
+                            "items": [
+                                {
+                                    "itemId": "81029",
+                                    "inventoryType": "CHAMPION_SKIN",
+                                    "price": 250,
+                                    "quantity": 1
+                                },
+                                {
+                                    "itemId": "5250",
+                                    "inventoryType": "SUMMONER_ICON",
+                                    "price": 50,
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "id": "35aad335-be3f-4586-a148-a6f91c83e87e",
+                            "localizedTitle": "青花瓷 阿木木 天青 炫彩",
+                            "localizedDescription": "包含炫彩图标！",
+                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2022_Porcelain_AmumuChroma.png",
+                            "promotionType": "kNone",
+                            "offerCategory": "Chromas",
+                            "items": [
+                                {
+                                    "itemId": "32043",
+                                    "inventoryType": "CHAMPION_SKIN",
+                                    "price": 250,
+                                    "quantity": 1
+                                },
+                                {
+                                    "itemId": "5249",
+                                    "inventoryType": "SUMMONER_ICON",
+                                    "price": 50,
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "id": "24fe2522-5862-4d20-9997-a0065682ab9c",
+                            "localizedTitle": "青花瓷 千珏 天青 炫彩",
+                            "localizedDescription": "包含炫彩图标！",
+                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2022_Porcelain_KindredChroma.png",
+                            "promotionType": "kNone",
+                            "offerCategory": "Chromas",
+                            "items": [
+                                {
+                                    "itemId": "203021",
+                                    "inventoryType": "CHAMPION_SKIN",
+                                    "price": 250,
+                                    "quantity": 1
+                                },
+                                {
+                                    "itemId": "5251",
+                                    "inventoryType": "SUMMONER_ICON",
+                                    "price": 50,
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "id": "97e3ef8e-deda-4693-86b0-59f41da1523a",
+                            "localizedTitle": "青花瓷 丽桑卓 天青 炫彩",
+                            "localizedDescription": "包含炫彩图标！",
+                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2022_Porcelain_LissandraChroma.png",
+                            "promotionType": "kNone",
+                            "offerCategory": "Chromas",
+                            "items": [
+                                {
+                                    "itemId": "127032",
+                                    "inventoryType": "CHAMPION_SKIN",
+                                    "price": 250,
+                                    "quantity": 1
+                                },
+                                {
+                                    "itemId": "5252",
+                                    "inventoryType": "SUMMONER_ICON",
+                                    "price": 50,
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "id": "3e5d3e73-ec1c-422c-bbe6-ee6cb7fc8813",
+                            "localizedTitle": "青花瓷 拉克丝 天青 炫彩",
+                            "localizedDescription": "包含炫彩图标！",
+                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2022_Porcelain_LuxChroma.png",
+                            "promotionType": "kNone",
+                            "offerCategory": "Chromas",
+                            "items": [
+                                {
+                                    "itemId": "99041",
+                                    "inventoryType": "CHAMPION_SKIN",
+                                    "price": 250,
+                                    "quantity": 1
+                                },
+                                {
+                                    "itemId": "5253",
+                                    "inventoryType": "SUMMONER_ICON",
+                                    "price": 50,
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "id": "33fcf25d-7384-44a3-bc45-bbbd115f6adf",
+                            "localizedTitle": "eventshop_offer_title_Border_Aurelion_Sol",
+                            "localizedDescription": "包含边框图标！",
+                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_HS_BorderIconBundle_Diana.png",
+                            "promotionType": "kNone",
+                            "offerCategory": "Borders",
+                            "items": [
+                                {
+                                    "itemId": "6556",
+                                    "inventoryType": "SUMMONER_ICON",
+                                    "price": 250,
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "id": "2d0c6894-32b8-477b-bbf7-ba3e0cb90985",
+                            "localizedTitle": "eventshop_offer_title_Border_Darius",
+                            "localizedDescription": "包含边框图标！",
+                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_HS_BorderIconBundle_Diana.png",
+                            "promotionType": "kNone",
+                            "offerCategory": "Borders",
+                            "items": [
+                                {
+                                    "itemId": "6545",
+                                    "inventoryType": "SUMMONER_ICON",
+                                    "price": 250,
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "id": "07de933e-17a3-413d-8396-9d5f8ff30bcd",
+                            "localizedTitle": "eventshop_offer_title_Border_Graves",
+                            "localizedDescription": "包含边框图标！",
+                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_HS_BorderIconBundle_Diana.png",
+                            "promotionType": "kNone",
+                            "offerCategory": "Borders",
+                            "items": [
+                                {
+                                    "itemId": "6547",
+                                    "inventoryType": "SUMMONER_ICON",
+                                    "price": 250,
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "id": "5d7ef32e-26d0-4fb6-b1fd-90b0cdbc956b",
+                            "localizedTitle": "eventshop_offer_title_Border_Irelia",
+                            "localizedDescription": "包含边框图标！",
+                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_HS_BorderIconBundle_Diana.png",
+                            "promotionType": "kNone",
+                            "offerCategory": "Borders",
+                            "items": [
+                                {
+                                    "itemId": "6549",
+                                    "inventoryType": "SUMMONER_ICON",
+                                    "price": 250,
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "id": "faac9b3a-7568-453d-8fb7-084f01dbf135",
+                            "localizedTitle": "eventshop_offer_title_Border_Miss_Fortune",
+                            "localizedDescription": "包含边框图标！",
+                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_HS_BorderIconBundle_Diana.png",
+                            "promotionType": "kNone",
+                            "offerCategory": "Borders",
+                            "items": [
+                                {
+                                    "itemId": "6551",
+                                    "inventoryType": "SUMMONER_ICON",
+                                    "price": 250,
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "id": "034b5044-bd50-47e5-a2aa-e504f1872228",
+                            "localizedTitle": "eventshop_offer_title_Border_Morgana",
+                            "localizedDescription": "包含边框图标！",
+                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_HS_BorderIconBundle_Diana.png",
+                            "promotionType": "kNone",
+                            "offerCategory": "Borders",
+                            "items": [
+                                {
+                                    "itemId": "6553",
+                                    "inventoryType": "SUMMONER_ICON",
+                                    "price": 250,
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "id": "3854a4db-e40d-40c8-85ac-0bef9e511bd6",
+                            "localizedTitle": "占位",
+                            "localizedDescription": "占位",
+                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_Heavenscale_EPE_Orb.png",
+                            "promotionType": "kFeatured",
+                            "offerCategory": "Loot",
+                            "items": [
+                                {
+                                    "itemId": "677",
+                                    "inventoryType": "HEXTECH_CRAFTING",
+                                    "price": 200,
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "id": "61732754-dd31-48ab-b11d-7fd925f497cc",
+                            "localizedTitle": "新的炫彩 - 敬请期待",
+                            "image": "/lol-game-data/assets/ASSETS/Loot/Chroma_QuestionMark_446x372px.png",
+                            "promotionType": "kNone",
+                            "offerCategory": "Chromas"
+                        }
+                    ]
                 }
             ],
             "tokenBundlesCatalogEntry": [
