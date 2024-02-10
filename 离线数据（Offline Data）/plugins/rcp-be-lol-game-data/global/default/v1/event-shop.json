@@ -3957,6 +3957,30 @@
                     "itemId": 69900903,
                     "offerId": "9cb8f60d-f7ad-495e-8ed0-befa8cae1858",
                     "typeId": ""
+                },
+                {
+                    "contentId": "0c9b8bed-5492-4fad-b0a0-15803d0ffe07",
+                    "itemId": 69900916,
+                    "offerId": "781eb490-950c-4a2d-9db2-49c69b6c962a",
+                    "typeId": ""
+                },
+                {
+                    "contentId": "962a524c-6130-4e42-885c-48950c55543f",
+                    "itemId": 69900915,
+                    "offerId": "6738363f-6520-4085-965c-7033beb43a59",
+                    "typeId": ""
+                },
+                {
+                    "contentId": "97acbca5-9a55-4603-8322-7bbf41ccd0e8",
+                    "itemId": 69900914,
+                    "offerId": "25f5f59e-ff9f-4737-923d-fa4d3727bacb",
+                    "typeId": ""
+                },
+                {
+                    "contentId": "2752c388-5b01-4936-a7ec-b1d97a714aa5",
+                    "itemId": 69900913,
+                    "offerId": "b336dba4-0bb9-419a-82c0-c269be9a3434",
+                    "typeId": ""
                 }
             ]
         },

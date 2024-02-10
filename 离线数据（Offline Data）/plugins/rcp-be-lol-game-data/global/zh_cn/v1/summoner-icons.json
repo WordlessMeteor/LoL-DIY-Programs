@@ -87453,6 +87453,66 @@
         "disabledRegions": []
     },
     {
+        "id": 6545,
+        "title": "summoner_icon_title_6545",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6545.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": ""
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6547,
+        "title": "summoner_icon_title_6547",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6547.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": ""
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6549,
+        "title": "summoner_icon_title_6549",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6549.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": ""
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
         "id": 654,
         "title": "2014 无限火力 模式",
         "yearReleased": 2014,
@@ -87462,6 +87522,46 @@
             {
                 "region": "riot",
                 "description": " "
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6551,
+        "title": "summoner_icon_title_6551",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6551.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": ""
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6553,
+        "title": "summoner_icon_title_6553",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6553.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": ""
             }
         ],
         "rarities": [
@@ -87488,6 +87588,26 @@
             {
                 "region": "riot",
                 "rarity": 4
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6556,
+        "title": "summoner_icon_title_6556",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6556.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": ""
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
             }
         ],
         "disabledRegions": []

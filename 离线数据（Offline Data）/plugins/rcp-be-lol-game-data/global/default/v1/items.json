@@ -556,8 +556,7 @@
             3006,
             3131,
             3091,
-            6677,
-            3302
+            6677
         ],
         "categories": [
             "AttackSpeed"
@@ -5287,7 +5286,7 @@
         "from": [
             1043,
             1038,
-            1042
+            1043
         ],
         "to": [],
         "categories": [
@@ -5304,7 +5303,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 700,
+        "price": 300,
         "priceTotal": 3000,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3302_Terminus.png"
     },

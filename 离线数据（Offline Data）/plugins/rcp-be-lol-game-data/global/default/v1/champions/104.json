@@ -896,7 +896,30 @@
             "splashVideoPath": null,
             "collectionSplashVideoPath": null,
             "featuresText": null,
-            "chromaPath": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/104/104045.png",
+            "chromas": [
+                {
+                    "id": 104049,
+                    "name": "",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/104/104049.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": ""
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
             "emblems": null,
             "regionRarityId": 0,
             "rarityGemPath": null,
