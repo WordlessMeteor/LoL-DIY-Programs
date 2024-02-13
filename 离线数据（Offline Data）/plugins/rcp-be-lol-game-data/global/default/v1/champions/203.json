@@ -582,7 +582,7 @@
         {
             "id": 203033,
             "isBase": false,
-            "name": "",
+            "name": "Prestige Porcelain Kindred",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/203/203033.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/203/203033.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/203/203033.jpg",
@@ -603,7 +603,7 @@
                 }
             ],
             "skinAugments": null,
-            "description": null
+            "description": "The hunter and the hound stalk the runway in white-feathered armor with cerulean plating. The refractions of images that dance in the crystals embossed on both bow and headdress dare the audience to reflect on the past year, their fashion feats, and faux pas."
         }
     ],
     "passive": {

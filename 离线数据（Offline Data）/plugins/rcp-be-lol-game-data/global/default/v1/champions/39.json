@@ -873,7 +873,7 @@
         {
             "id": 39045,
             "isBase": false,
-            "name": "",
+            "name": "Porcelain Irelia",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/39/39045.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/39/39045.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/39/39045.jpg",
@@ -895,7 +895,7 @@
                 }
             ],
             "skinAugments": null,
-            "description": null
+            "description": "Irelia was dedicated to the preservation of ancient relics long before she became a protector. Her first year at university, she interned at the renowned Archeology Institute. It was the highlight of her short life... until she was granted mythical powers by the Ox Relic and thrust into a centuries-old war. Schoolwork sort of pales in comparison."
         }
     ],
     "passive": {

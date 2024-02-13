@@ -1277,7 +1277,7 @@
         {
             "id": 25070,
             "isBase": false,
-            "name": "",
+            "name": "青花瓷 莫甘娜",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/25/25070.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/25/25070.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/25/25070.jpg",
@@ -1299,7 +1299,7 @@
                 }
             ],
             "skinAugments": null,
-            "description": null
+            "description": "没有人比莫甘娜更了解女巫丽桑卓的力量。将丽桑卓束缚在她的圣物上的那个魔法，是有代价的：说出这段咒语的生肖神卫也会被困住。莫甘娜牺牲了自己，而她的鸡生肖圣物的双翼将她包裹在瓷茧中长达数千年。再次醒来后，她要加倍奉还。"
         }
     ],
     "passive": {

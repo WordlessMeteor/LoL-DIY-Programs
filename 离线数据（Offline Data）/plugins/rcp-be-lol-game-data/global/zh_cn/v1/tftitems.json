@@ -20554,7 +20554,7 @@
     },
     {
         "guid": "0016311c-1233-4f1c-a639-1cbd87888b60",
-        "name": "3件基础装备",
+        "name": "2件基础装备",
         "nameId": "TFT_Assist_RandomComponent_3",
         "id": 0,
         "color": {
@@ -20580,7 +20580,7 @@
     },
     {
         "guid": "0ecb0936-7794-4190-b20a-16b8d71e5b61",
-        "name": "2个【训练假人】",
+        "name": "1个训练假人",
         "nameId": "TFT_Assist_TrainingDummy",
         "id": 0,
         "color": {

@@ -884,7 +884,7 @@
         {
             "id": 104045,
             "isBase": false,
-            "name": "",
+            "name": "Porcelain Graves",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/104/104045.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/104/104045.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/104/104045.jpg",
@@ -900,7 +900,7 @@
             "chromas": [
                 {
                     "id": 104049,
-                    "name": "",
+                    "name": "Porcelain Graves",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/104/104049.png",
                     "colors": [
                         "#2DA130",
@@ -909,7 +909,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "Obtained through Influencer audience giveaways."
                         }
                     ],
                     "rarities": [
@@ -929,7 +929,7 @@
                 }
             ],
             "skinAugments": null,
-            "description": null
+            "description": "Not long after gunpowder was invented, the Zodiac searched for a new protector of the Dragon Relic. Though ancient and wise, the gods struggled to find someone worthy, so they settled for Malcolm Graves. Eventually his expertise in firepower was pointed in the right direction (away from all the breakable vases)."
         }
     ],
     "passive": {

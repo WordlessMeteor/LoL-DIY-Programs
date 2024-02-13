@@ -1269,7 +1269,7 @@
         "id": 8437,
         "name": "不灭之握",
         "majorChangePatchVersion": "",
-        "tooltip": "在战斗中每过4秒，你对一个英雄发起的下一次普攻将会：<li>造成相当于你3.5%最大生命值的魔法伤害</li><li>治疗你3 + 1.2%的最大生命值</li><li>你的生命值永久提升7</li><br><rules><i>远程英雄：</i>伤害、治疗效果和提升的永久生命值减少40%。</rules><br><br>对英雄的伤害：<scaleHealth>@f1@</scaleHealth><br>总治疗效果：<scaleHealth>@f2@</scaleHealth><br>已使用的次数：@f3@",
+        "tooltip": "在战斗中每过4秒，你对一个英雄发起的下一次普攻将会：<li>造成相当于你3.5%最大生命值的魔法伤害</li><li>治疗你3 + 1.2%的最大生命值</li><li>你的生命值永久提升7</li><br><rules><i>远程英雄：</i>伤害、治疗效果和提升的永久生命值减少40%。</rules><br><br>已获得的最大生命值：<scaleHealth>@f4@</scaleHealth><br>对英雄的伤害：<scaleHealth>@f1@</scaleHealth><br>治疗效果总和：<scaleHealth>@f2@</scaleHealth><br>已使用的次数：@f3@",
         "shortDesc": "在战斗中每过4秒，你对一个英雄发起的下一次普攻将会造成额外魔法伤害、治疗你、并永久提升你的生命值。",
         "longDesc": "在战斗中每过4秒，你对一个英雄发起的下一次普攻将会：<li>造成相当于你3.5%最大生命值的魔法伤害</li><li>治疗你3 + 1.2%的最大生命值</li><li>你的生命值永久提升7</li><br><rules><i>远程英雄：</i>伤害、治疗效果和提升的永久生命值减少40%。</rules><br>",
         "recommendationDescriptor": "汲取对手",

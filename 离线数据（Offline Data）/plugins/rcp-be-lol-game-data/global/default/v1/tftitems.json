@@ -20554,7 +20554,7 @@
     },
     {
         "guid": "0016311c-1233-4f1c-a639-1cbd87888b60",
-        "name": "3 Components",
+        "name": "2 Components",
         "nameId": "TFT_Assist_RandomComponent_3",
         "id": 0,
         "color": {
@@ -20580,7 +20580,7 @@
     },
     {
         "guid": "0ecb0936-7794-4190-b20a-16b8d71e5b61",
-        "name": "2 Training Dummies",
+        "name": "1 Training Dummy",
         "nameId": "TFT_Assist_TrainingDummy",
         "id": 0,
         "color": {

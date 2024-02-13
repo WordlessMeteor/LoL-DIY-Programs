@@ -947,7 +947,7 @@
         {
             "id": 104045,
             "isBase": false,
-            "name": "",
+            "name": "青花瓷 格雷福斯",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/104/104045.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/104/104045.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/104/104045.jpg",
@@ -963,7 +963,7 @@
             "chromas": [
                 {
                     "id": 104049,
-                    "name": "",
+                    "name": "青花瓷 格雷福斯 芭蕉",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/104/104049.png",
                     "colors": [
                         "#2DA130",
@@ -972,7 +972,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": " "
                         }
                     ],
                     "rarities": [
@@ -992,7 +992,7 @@
                 }
             ],
             "skinAugments": null,
-            "description": null
+            "description": "在火药被发明后不久，生肖神卫就开始寻找龙生肖圣物的新守护者了。众神虽然古老而睿智，却很难找到值得托付的人，因此他们选择了马尔科姆·格雷福斯。最终，他在火力方面的专长指出了正确的方向(远离所有易碎花瓶)。"
         }
     ],
     "passive": {

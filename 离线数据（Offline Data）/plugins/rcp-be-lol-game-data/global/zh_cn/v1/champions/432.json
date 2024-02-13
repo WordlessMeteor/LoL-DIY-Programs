@@ -670,7 +670,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "巴德发射一束能量弹，减速命中的第一个敌人，并继续向前。如果能量弹命中墙体，它还会使首个目标晕眩；如果它命中了另一个敌人，那么它会让这两个敌人都晕眩。",
-            "dynamicDescription": "巴德发射一束能量弹，对命中的头两个敌人造成<magicDamage>@TotalDamage@魔法伤害</magicDamage> 。第一个被命中的敌人会被施加持续@Effect4Amount@秒的@Effect3Amount@%<status>减速</status>。<br><br>如果该能量弹命中了第二个敌人或一个墙体，那么被命中的敌人都会被<status>晕眩</status>@Effect2Amount@秒。<br>@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "巴德发射一束能量弹，对命中的头两个敌人造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>。第一个被命中的敌人会被施加持续@SlowDuration@秒的@SlowAmountPercentage@%<status>减速</status>。<br><br>如果该能量弹命中了第二个敌人或一个墙体，那么被命中的敌人都会被<status>晕眩</status>@StunDuration@秒。<br>@SpellModifierDescriptionAppend@",
             "range": [
                 25000.0000,
                 25000.0000,

@@ -1003,7 +1003,7 @@
         {
             "id": 122054,
             "isBase": false,
-            "name": "",
+            "name": "Porcelain Darius",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/122/122054.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/122/122054.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/122/122054.jpg",
@@ -1024,7 +1024,7 @@
                 }
             ],
             "skinAugments": null,
-            "description": null
+            "description": "Darius has watched the modern-day protector of the Tiger Relic from afar, silently judging his descendant. Back when he was protector, the Tiger was a symbol of pride... Now it seems the Zodiac will hand off the duty to anyone with a minor in archeology. Returned to physical form, Darius believes he can show this kid a thing or two."
         }
     ],
     "passive": {

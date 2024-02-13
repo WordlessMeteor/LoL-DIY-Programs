@@ -1078,7 +1078,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@s %i:cooldown%",
             "description": "Xin Zhao slashes in front of himself with his spear, then thrusts it forward, slowing affected enemies and marking them as Challenged.",
-            "dynamicDescription": "Xin Zhao slashes, dealing <physicalDamage>@SlashDamage@</physicalDamage> physical damage, then thrusts, dealing <physicalDamage>@ThrustDamage@</physicalDamage>. Enemies hit by the thrust are <status>Slowed</status> by @Effect6Amount*-100@% for @Effect7Amount@ seconds. <br><br>Champions and Large Monsters hit by the thrust are marked as <keywordMajor>Challenged</keywordMajor> for @MarkDuration@ seconds.@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "Xin Zhao slashes, dealing <physicalDamage>@SlashDamage@</physicalDamage> physical damage, then thrusts, dealing <physicalDamage>@ThrustDamage@</physicalDamage>. Enemies hit by the thrust are <status>Slowed</status> by @Effect6Amount*-100@% for @Effect7Amount@ seconds. <br><br>Champions and Large Monsters hit by the thrust are marked as <keywordMajor>Challenged</keywordMajor> for @MarkDuration@ seconds and revealed unless <keywordStealth>stealthed</keywordStealth>.@SpellModifierDescriptionAppend@",
             "range": [
                 1000.0000,
                 1000.0000,

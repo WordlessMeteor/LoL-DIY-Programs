@@ -1066,7 +1066,7 @@
         {
             "id": 122054,
             "isBase": false,
-            "name": "",
+            "name": "青花瓷 德莱厄斯",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/122/122054.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/122/122054.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/122/122054.jpg",
@@ -1087,7 +1087,7 @@
                 }
             ],
             "skinAugments": null,
-            "description": null
+            "description": "德莱厄斯从远处观望着虎生肖圣物的当代神卫，默默地评判着他的后裔。在他还是神卫时，虎生肖可是骄傲的象征……现在，生肖神卫似乎要把这个职责托付给任何一个辅修考古学的人。在重回物理状态后，德莱厄斯相信他可以给这个孩子露一两手。"
         }
     ],
     "passive": {

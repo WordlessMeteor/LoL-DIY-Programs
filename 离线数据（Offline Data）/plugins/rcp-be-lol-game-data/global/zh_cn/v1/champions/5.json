@@ -1132,7 +1132,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "赵信用他的长枪斩击他的前方，之后将长枪向前刺击，并使被击中的敌人减速并对其施加被挑战印记。",
-            "dynamicDescription": "赵信进行斩击，造成<physicalDamage>@SlashDamage@</physicalDamage>物理伤害，随后进行刺击，造成<physicalDamage>@ThrustDamage@</physicalDamage>物理伤害。被刺击命中的敌人们还会被施加持续@Effect7Amount@秒的@Effect6Amount*-100@%<status>减速</status>效果。<br><br>英雄和野怪被刺中时会被施加<keywordMajor>被挑战</keywordMajor>标记，持续@MarkDuration@秒。@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "赵信进行斩击，造成<physicalDamage>@SlashDamage@</physicalDamage>物理伤害，随后进行刺击，造成物理伤害<physicalDamage>@ThrustDamage@</physicalDamage>。被这次刺击命中的敌人们会受到@Effect7Amount@秒的@Effect6Amount*-100@%<status>减速</status>。<br><br>被这次刺击命中的英雄和大型野怪会被施加持续@MarkDuration@秒的<keywordMajor>被挑战</keywordMajor>标记并且如果不在<keywordStealth>潜行</keywordStealth>状态还会被显形。@SpellModifierDescriptionAppend@",
             "range": [
                 1000.0000,
                 1000.0000,

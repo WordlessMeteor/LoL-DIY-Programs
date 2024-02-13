@@ -1005,7 +1005,7 @@
         {
             "id": 21050,
             "isBase": false,
-            "name": "",
+            "name": "Porcelain Miss Fortune",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/21/21050.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/21/21050.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/21/21050.jpg",
@@ -1027,7 +1027,7 @@
                 }
             ],
             "skinAugments": null,
-            "description": null
+            "description": "Through the centuries, humans have tried to replicate the power of dragon's breath. With gunpowder came the cannon, which was finessed into smaller and more refined variants until it was ultimately perfected by Sarah Fortune's mother. Her dual dragon-pistols carry on the legacy of not only her own family, but of the creatures of myth themselves."
         }
     ],
     "passive": {

@@ -557,7 +557,7 @@
         {
             "id": 23027,
             "isBase": false,
-            "name": "",
+            "name": "Victorious Tryndamere",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/23/23027.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/23/23027.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/23/23027.jpg",
@@ -572,7 +572,7 @@
             "chromas": [
                 {
                     "id": 23028,
-                    "name": "",
+                    "name": "Victorious Tryndamere",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23028.png",
                     "colors": [
                         "#764D43",
@@ -581,14 +581,14 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "This Chroma was awarded to players who accumulated at least 1600 Split Points and reached Bronze rank in any Summoner's Rift ranked queue in Season 2024 - Split 1"
                         }
                     ],
                     "rarities": []
                 },
                 {
                     "id": 23029,
-                    "name": "",
+                    "name": "Victorious Tryndamere",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23029.png",
                     "colors": [
                         "#AAB5BA",
@@ -597,14 +597,14 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "This Chroma was awarded to players who accumulated at least 1600 Split Points and reached Silver rank in any Summoner's Rift ranked queue in Season 2024 - Split 1"
                         }
                     ],
                     "rarities": []
                 },
                 {
                     "id": 23030,
-                    "name": "",
+                    "name": "Victorious Tryndamere",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23030.png",
                     "colors": [
                         "#D9C445",
@@ -613,14 +613,14 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "This Chroma was awarded to players who accumulated at least 80 Split Points and reached Gold rank in any Summoner's Rift ranked queue in Season 2024 - Split 1"
                         }
                     ],
                     "rarities": []
                 },
                 {
                     "id": 23031,
-                    "name": "",
+                    "name": "Victorious Tryndamere",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23031.png",
                     "colors": [
                         "#55CDE5",
@@ -629,7 +629,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "This Chroma was awarded to players who accumulated at least 80 Split Points and reached Platinum rank in any Summoner's Rift ranked queue in Season 2024 - Split 1"
                         }
                     ],
                     "rarities": [
@@ -641,7 +641,7 @@
                 },
                 {
                     "id": 23032,
-                    "name": "",
+                    "name": "Victorious Tryndamere",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23032.png",
                     "colors": [
                         "#26854C",
@@ -650,7 +650,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "This Chroma was awarded to players who accumulated at least 80 Split Points and reached Emerald rank in any Summoner's Rift ranked queue in Season 2024 - Split 1"
                         }
                     ],
                     "rarities": [
@@ -662,7 +662,7 @@
                 },
                 {
                     "id": 23033,
-                    "name": "",
+                    "name": "Victorious Tryndamere",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23033.png",
                     "colors": [
                         "#65337F",
@@ -671,7 +671,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "This Chroma was awarded to players who accumulated at least 80 Split Points and reached Diamond rank in any Summoner's Rift ranked queue in Season 2024 - Split 1"
                         }
                     ],
                     "rarities": [
@@ -683,7 +683,7 @@
                 },
                 {
                     "id": 23034,
-                    "name": "",
+                    "name": "Victorious Tryndamere",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23034.png",
                     "colors": [
                         "#9D228D",
@@ -692,7 +692,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "This Chroma was awarded to players who accumulated at least 80 Split Points and reached Master rank in any Summoner's Rift ranked queue in Season 2024 - Split 1"
                         }
                     ],
                     "rarities": [
@@ -704,7 +704,7 @@
                 },
                 {
                     "id": 23035,
-                    "name": "",
+                    "name": "Victorious Tryndamere",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23035.png",
                     "colors": [
                         "#B31316",
@@ -713,7 +713,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "This Chroma was awarded to players who accumulated at least 80 Split Points and reached Grandmaster rank in any Summoner's Rift ranked queue in Season 2024 - Split 1"
                         }
                     ],
                     "rarities": [
@@ -725,7 +725,7 @@
                 },
                 {
                     "id": 23036,
-                    "name": "",
+                    "name": "Victorious Tryndamere",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23036.png",
                     "colors": [
                         "#1D62C8",
@@ -734,7 +734,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "This Chroma was awarded to players who accumulated at least 80 Split Points and reached Challenger rank in any Summoner's Rift ranked queue in Season 2024 - Split 1"
                         }
                     ],
                     "rarities": [
@@ -754,7 +754,7 @@
                 }
             ],
             "skinAugments": null,
-            "description": null
+            "description": "Victorious Tryndamere was earned by players who accumulated enough split points in Ranked. The last thing Tryndamere's challengers would ever see was the unbridled wrath in his eyes as he decided they would be the next to meet his blade."
         }
     ],
     "passive": {

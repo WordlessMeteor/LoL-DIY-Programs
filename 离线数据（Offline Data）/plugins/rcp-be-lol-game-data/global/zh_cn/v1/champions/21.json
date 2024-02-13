@@ -1113,7 +1113,7 @@
         {
             "id": 21050,
             "isBase": false,
-            "name": "",
+            "name": "青花瓷 厄运小姐",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/21/21050.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/21/21050.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/21/21050.jpg",
@@ -1135,7 +1135,7 @@
                 }
             ],
             "skinAugments": null,
-            "description": null
+            "description": "几个世纪以来，人类一直在尝试复制龙息的力量。随着火药的出现，大炮被巧妙地加工成更小更精致的形态，直到莎拉·厄运的母亲最终将其完善。她的双龙手枪延续的不仅是她自己家族的传承，而且是神话生物们本身的传承。"
         }
     ],
     "passive": {

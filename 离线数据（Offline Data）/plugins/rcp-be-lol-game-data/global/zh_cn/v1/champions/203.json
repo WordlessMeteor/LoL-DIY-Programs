@@ -609,7 +609,7 @@
         {
             "id": 203033,
             "isBase": false,
-            "name": "",
+            "name": "至臻 青花瓷 千珏",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/203/203033.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/203/203033.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/203/203033.jpg",
@@ -621,16 +621,25 @@
             "collectionSplashVideoPath": null,
             "featuresText": null,
             "chromaPath": null,
-            "emblems": null,
-            "regionRarityId": 0,
-            "rarityGemPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
             "skinLines": [
                 {
                     "id": 154
                 }
             ],
             "skinAugments": null,
-            "description": null
+            "description": "猎人和猎犬身穿带有天青镀层的白羽盔甲在伸展台上行走。 在弓和头饰上凸印的水晶中舞动的图像折射，激发着观众去反思过去的一年、他们的时尚壮举、以及社死行为。"
         }
     ],
     "passive": {

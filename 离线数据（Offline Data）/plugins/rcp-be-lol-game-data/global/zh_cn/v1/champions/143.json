@@ -1171,7 +1171,7 @@
             "cost": "1颗种子",
             "cooldown": "无冷却时间",
             "description": "婕拉播下一颗种子，最多持续60秒。在种子附近施放【Q致命棘刺】或【E缠绕之根】会让种子长成植物，与婕拉并肩作战。婕拉可以同时存有多个种子，并且击杀敌人会减少【W狂野生长】的充能时间。",
-            "dynamicDescription": "婕拉种下一颗持续@Effect6Amount@秒的<keywordMajor>种子</keywordMajor>。这些<keywordMajor>种子</keywordMajor>在被敌方英雄踩到后会提供该英雄的<keywordStealth>真实视野</keywordStealth>，持续@Effect3Amount@秒，但仍然会被摧毁。<br><br>这个技能有2层充能，充能时间为@AmmoRechargeTime@秒。击杀一个敌人会使充能时间缩短@Effect1Amount*100@%。参与击杀英雄、击杀大型野怪和击杀大型小兵会转而使充能时间缩短@Effect2Amount*100@%。@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "婕拉种下一颗持续@Effect6Amount@秒的<keywordMajor>种子</keywordMajor>。这些<keywordMajor>种子</keywordMajor>在被敌方英雄踩到后会提供该英雄的<keywordStealth>真实视野</keywordStealth>，持续@Effect3Amount@秒，但仍然会被摧毁。<br><br>这个技能有2层充能，充能时间为@AmmoRechargeTime@秒。击杀一个敌方小兵或野怪会使充能时间缩短@Effect1Amount*100@%。参与击杀英雄会转而使充能时间缩短@Effect2Amount*100@%。@SpellModifierDescriptionAppend@",
             "range": [
                 850.0000,
                 850.0000,

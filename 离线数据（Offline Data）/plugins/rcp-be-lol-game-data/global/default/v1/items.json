@@ -222,6 +222,7 @@
             3803,
             3012,
             3211,
+            3071,
             2502,
             3044,
             3053,
@@ -397,7 +398,6 @@
             3035,
             3077,
             6671,
-            3071,
             3004,
             3044,
             4003,
@@ -3032,7 +3032,7 @@
     {
         "id": 3050,
         "name": "Zeke's Convergence",
-        "description": "<mainText><stats><attention> 200</attention> Health<br><attention> 250</attention> Mana<br><attention> 30</attention> Armor<br><attention> 20</attention> Ability Haste</stats><br><br><passive>Frostfire Tempest</passive>  (0s)<br>Casting your Ultimate summons a storm around you for 5 seconds. The storm deals <magicDamage>50 magic damage</magicDamage> per second to enemy Champions and <keyword>Slows</keyword> them by 30%.</mainText>",
+        "description": "<mainText><stats><attention> 200</attention> Health<br><attention> 250</attention> Mana<br><attention> 30</attention> Armor<br><attention> 20</attention> Ability Haste</stats><br><br><passive>Frostfire Tempest</passive> <br>Casting your Ultimate summons a storm around you. The storm deals magic damage to enemy Champions and <keyword>Slows</keyword> them.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -3223,7 +3223,6 @@
             4644,
             6630,
             6620,
-            3071,
             2502,
             3050,
             3065,
@@ -3316,8 +3315,8 @@
         "inStore": true,
         "from": [
             3044,
-            3067,
-            1036
+            3133,
+            1028
         ],
         "to": [
             7037
@@ -3338,7 +3337,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 750,
+        "price": 400,
         "priceTotal": 3000,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3071_Fighter_T3_BlackCleaver.png"
     },
@@ -3405,7 +3404,7 @@
     {
         "id": 3074,
         "name": "Ravenous Hydra",
-        "description": "<mainText><stats><attention> 70</attention> Attack Damage<br><attention> 20</attention> Ability Haste<br><attention> 12%</attention> Life Steal</stats><br><br><passive>Cleave</passive><br>Attacks deal physical damage to nearby enemies.<br><br> <active>ACTIVE</active>  (0s)<br><active>Ravenous Crescent</active><br>Deal physical damage to enemies around you.</mainText>",
+        "description": "<mainText><stats><attention> 70</attention> Attack Damage<br><attention> 20</attention> Ability Haste<br><attention> 12%</attention> Life Steal</stats><br><br><passive>Cleave</passive><br>Attacks deal physical damage to nearby enemies.<br><br> <active>ACTIVE</active>  (0s)<br><active>Ravenous Crescent</active><br>Deal physical damage to enemies around you that Lifesteals.</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -3844,7 +3843,7 @@
     {
         "id": 3100,
         "name": "Lich Bane",
-        "description": "<mainText><stats><attention> 100</attention> Ability Power<br><attention> 8%</attention> Move Speed<br><attention> 15</attention> Ability Haste</stats><br><br><passive>Spellblade</passive>  (0s)<br>After using an Ability, your next Attack is enhanced with an additional <magicDamage>0 magic damage</magicDamage>  <OnHit>On-Hit</OnHit>.</mainText>",
+        "description": "<mainText><stats><attention> 100</attention> Ability Power<br><attention> 8%</attention> Move Speed<br><attention> 15</attention> Ability Haste</stats><br><br><passive>Spellblade</passive><br>After using an Ability, your next Attack is enhanced with additional magic damage  <OnHit>On-Hit</OnHit>.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -3932,7 +3931,7 @@
     {
         "id": 3107,
         "name": "Redemption",
-        "description": "<mainText><stats><attention> 200</attention> Health<br><attention> 15</attention> Ability Haste<br><attention> 100%</attention> Base Mana Regen<br><attention> 15%</attention> Heal and Shield Power</stats><br><br> <active>ACTIVE</active>  (0s)<br><active>Intervention</active><br>Target an area to restore Health to allied champions and deal true damage to enemy champions.</mainText>",
+        "description": "<mainText><stats><attention> 200</attention> Health<br><attention> 15</attention> Ability Haste<br><attention> 100%</attention> Base Mana Regen<br><attention> 15%</attention> Heal and Shield Power</stats><br><br> <active>ACTIVE</active><br><active>Intervention</active><br>Target an area to restore Health to allied champions and deal true damage to enemy champions.</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -4173,7 +4172,7 @@
     {
         "id": 3115,
         "name": "Nashor's Tooth",
-        "description": "<mainText><stats><attention> 90</attention> Ability Power<br><attention> 50%</attention> Attack Speed<br><attention> 15</attention> Ability Haste</stats><br><br><passive>Icathian Bite</passive><br>Attacks apply <magicDamage>0 magic damage</magicDamage>  <OnHit>On-Hit</OnHit>.</mainText>",
+        "description": "<mainText><stats><attention> 90</attention> Ability Power<br><attention> 50%</attention> Attack Speed<br><attention> 15</attention> Ability Haste</stats><br><br><passive>Icathian Bite</passive><br>Attacks apply <magicDamage>magic damage</magicDamage>  <OnHit>On-Hit</OnHit>.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4464,6 +4463,7 @@
             6691,
             3074,
             6697,
+            3071,
             3004,
             4402,
             3508,
@@ -4642,7 +4642,7 @@
     {
         "id": 3142,
         "name": "Youmuu's Ghostblade",
-        "description": "GeneratedTip_Item_3142_ExternalDescription",
+        "description": "<mainText><stats><attention> 60</attention> Attack Damage<br><attention> 18</attention> Lethality</stats><br><br><passive>Haunt</passive> <br>Gain <speed>Move Speed</speed> while out of combat.<br><br><br> <active>ACTIVE</active>  (0s)<br><active>Wraith Step</active><br>Gain <speed>Move Speed</speed> and <keyword>Ghosting</keyword>.</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -4791,7 +4791,7 @@
     {
         "id": 3152,
         "name": "Hextech Rocketbelt",
-        "description": "<mainText><stats><attention> 60</attention> Ability Power<br><attention> 300</attention> Health<br><attention> 15</attention> Ability Haste</stats><br><br> <active>ACTIVE</active>}  (0s)<br><active>Supersonic</active><br>Dash in target direction, unleashing an arc of magic missiles that deal magic damage.</mainText>",
+        "description": "<mainText><stats><attention> 60</attention> Ability Power<br><attention> 300</attention> Health<br><attention> 15</attention> Ability Haste</stats><br><br> <active>ACTIVE</active>}<br><active>Supersonic</active><br>Dash in target direction, unleashing an arc of magic missiles that deal magic damage.</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -5280,7 +5280,7 @@
     {
         "id": 3302,
         "name": "Terminus",
-        "description": "<mainText><stats><attention> 40</attention> Attack Damage<br><attention> 30%</attention> Attack Speed</stats><br><br><passive>Shadow</passive><br>Attacks apply <magicDamage>30 magic damage</magicDamage>  <OnHit>On-Hit</OnHit>.<br><br><passive>Juxtaposition</passive><br>Alternate between <keywordMajor>Light</keywordMajor> and <keywordMajor>Dark</keywordMajor> on-hits when attacking champions: <li><keywordMajor>Light</keywordMajor> attacks grant 0 <scaleArmor>Armor</scaleArmor> and <scaleMR>Magic Resist</scaleMR> (up to 0) for 5s. <li><keywordMajor>Dark</keywordMajor> attacks grant 6% <scaleArmor>Armor Penetration</scaleArmor> and <scaleMR>Magic Penetration</scaleMR> (up to 30%) for 5s. </mainText>",
+        "description": "<mainText><stats><attention> 40</attention> Attack Damage<br><attention> 30%</attention> Attack Speed</stats><br><br><passive>Shadow</passive><br>Attacks apply magic damage  <OnHit>On-Hit</OnHit>.<br><br><passive>Juxtaposition</passive><br>Alternate between <keywordMajor>Light</keywordMajor> and <keywordMajor>Dark</keywordMajor> on-hits when attacking champions: <li><keywordMajor>Light</keywordMajor> attacks grant <scaleArmor>Armor</scaleArmor> and <scaleMR>Magic Resist</scaleMR>.<li><keywordMajor>Dark</keywordMajor> attacks grant <scaleArmor>Armor Penetration</scaleArmor> and <scaleMR>Magic Penetration</scaleMR>.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -6151,7 +6151,7 @@
     {
         "id": 3866,
         "name": "Runic Compass",
-        "description": "<mainText><stats><attention> 5</attention> Gold Per 10 Seconds<br><attention> 50%</attention> Base Health Regen<br><attention> 50%</attention> Base Mana Regen<br><attention> 100</attention> Health</stats><br><br><br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. <br><br><br><br><passive>Quest</passive> <br>Earn 1000 gold from this item to transform it into <rarityGeneric>Runic Compass</rarityGeneric>. Gain a charge every <passive>18</passive> seconds, up to <passive>3</passive> charges. While nearby an ally champion, consume a charge to earn gold:<br><li>Damaging Abilities and Attacks against champions or buildings grant <keywordMajor>34</keywordMajor> (melee) / <keywordMajor>32</keywordMajor> (ranged) gold;<li>Killing a minion by any means grants you <keywordMajor>28</keywordMajor> gold and the nearest allied champion kill gold.<br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. </mainText>",
+        "description": "<mainText><stats><attention> 4</attention> Gold Per 10 Seconds<br><attention> 50%</attention> Base Health Regen<br><attention> 50%</attention> Base Mana Regen<br><attention> 100</attention> Health</stats><br><br><br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. <br><br><br><br><passive>Quest</passive> <br>Earn 1000 gold from this item to transform it into <rarityGeneric>Runic Compass</rarityGeneric>. Gain a charge every <passive>23</passive> seconds, up to <passive>3</passive> charges. While nearby an ally champion, consume a charge to earn gold:<br><li>Damaging Abilities and Attacks against champions or buildings grant <keywordMajor>38</keywordMajor> (melee) / <keywordMajor>36</keywordMajor> (ranged) gold;<li>Killing a minion by any means grants you <keywordMajor>32</keywordMajor> gold and the nearest allied champion kill gold.<br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. </mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -6176,7 +6176,7 @@
     {
         "id": 3867,
         "name": "Bounty of Worlds",
-        "description": "<mainText><stats><attention> 5</attention> Gold Per 10 Seconds<br><attention> 50%</attention> Base Health Regen<br><attention> 50%</attention> Base Mana Regen<br><attention> 100</attention> Health</stats><br><br><br><li><passive>Upgrade</passive> <br>This item can be upgraded into <rarityLegendary>Bloodsong</rarityLegendary>, <rarityLegendary>Celestial Opposition</rarityLegendary>, <rarityLegendary>Dream Maker</rarityLegendary>, <rarityLegendary>Zaz'Zak's Realmspike</rarityLegendary>, or <rarityLegendary>Solstice Sleigh</rarityLegendary> for free.<br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. <br><br></mainText>",
+        "description": "<mainText><stats><attention> 5</attention> Gold Per 10 Seconds<br><attention> 75%</attention> Base Health Regen<br><attention> 75%</attention> Base Mana Regen<br><attention> 200</attention> Health</stats><br><br><br><li><passive>Upgrade</passive> <br>This item can be upgraded into <rarityLegendary>Bloodsong</rarityLegendary>, <rarityLegendary>Celestial Opposition</rarityLegendary>, <rarityLegendary>Dream Maker</rarityLegendary>, <rarityLegendary>Zaz'Zak's Realmspike</rarityLegendary>, or <rarityLegendary>Solstice Sleigh</rarityLegendary> for free.<br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. <br><br></mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -7550,7 +7550,7 @@
     {
         "id": 6631,
         "name": "Stridebreaker",
-        "description": "GeneratedTip_Item_6631_ExternalDescription",
+        "description": "<mainText><stats><attention> 50</attention> Attack Damage<br><attention> 30%</attention> Attack Speed<br><attention> 450</attention> Health</stats><br><br><passive>Cleave</passive><br>Attacks deal physical damage to nearby enemies.<br><br><passive>Temper</passive><br>Dealing <physicalDamage>physical damage</physicalDamage> grants Move Speed.<br><br> <active>ACTIVE</active><br><active>Breaking Shockwave</active><br>Deal physical damage and <status>Slow</status> nearby enemies and gain Move Speed per champion. Can move while casting.</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -7767,7 +7767,7 @@
     {
         "id": 6662,
         "name": "Iceborn Gauntlet",
-        "description": "<mainText><stats><attention> 300</attention> Health<br><attention> 50</attention> Armor<br><attention> 15</attention> Ability Haste</stats><br><br><passive>Spellblade</passive>  (0s)<br>After using an Ability, your next Attack is enhanced with additional damage and creates a frost field for 2s. Enemies that move across the field are <status>Slowed</status>.</mainText>",
+        "description": "<mainText><stats><attention> 300</attention> Health<br><attention> 50</attention> Armor<br><attention> 15</attention> Ability Haste</stats><br><br><passive>Spellblade</passive><br>After using an Ability, your next Attack is enhanced with additional damage and creates a frost field for 2s. Enemies that move across the field are <status>Slowed</status>.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7800,7 +7800,7 @@
     {
         "id": 6664,
         "name": "Hollow Radiance",
-        "description": "<mainText><stats><attention> 600</attention> Health<br><attention> 40</attention> Magic Resist<br><attention> 100%</attention> Base Health Regen</stats><br><br><passive>Immolate</passive><br>Taking or dealing damage causes you to begin dealing <magicDamage>0 magic damage</magicDamage> per second to nearby enemies (increased by 25% against minions) for 3 seconds.<br><br><passive>Desolate</passive><br>Killing an enemy deals <magicDamage>0 magic damage</magicDamage> in an area around them.<br><br></mainText>",
+        "description": "<mainText><stats><attention> 600</attention> Health<br><attention> 40</attention> Magic Resist<br><attention> 100%</attention> Base Health Regen</stats><br><br><passive>Immolate</passive><br>Taking or dealing damage causes you to begin dealing magic damage to nearby enemies.<br><br><passive>Desolate</passive><br>Killing an enemy deals magic damage in an area around them.<br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -7987,7 +7987,7 @@
     {
         "id": 6673,
         "name": "Immortal Shieldbow",
-        "description": "<mainText><stats><attention> 50</attention> Attack Damage<br><attention> 20%</attention> Critical Strike Chance<br><attention> 12%</attention> Life Steal</stats><br><br><passive>Lifeline</passive>  (0s)<br>When taking damage that would reduce you below 30% Health, gain a <shield>0 Shield</shield> for 3s.</mainText>",
+        "description": "<mainText><stats><attention> 50</attention> Attack Damage<br><attention> 20%</attention> Critical Strike Chance<br><attention> 12%</attention> Life Steal</stats><br><br><passive>Lifeline</passive><br>When taking damage that would reduce you below a certain amount of Health, gain a Shield.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8195,7 +8195,7 @@
     {
         "id": 6693,
         "name": "Prowler's Claw",
-        "description": "<mainText><stats><attention> 55</attention> Attack Damage<br><attention> 22</attention> Lethality<br><attention> 15</attention> Ability Haste</stats><br><br><passive>Preparation</passive><br>Gain Lethality outside of combat. <br><br><passive>Extraction</passive><br>Gain Move Speed after killing champions.</mainText>",
+        "description": "<mainText><stats><attention> 55</attention> Attack Damage<br><attention> 22</attention> Lethality<br><attention> 15</attention> Ability Haste</stats><br><br><passive>Eminence</passive><br>When a champion that you have damaged dies, gain Attack Damage.<br><br><passive>Ego</passive><br>Killing champions creates a statue of yourself, if you already have a statue it upgrades.</mainText>",
         "active": false,
         "inStore": false,
         "from": [
@@ -8306,7 +8306,7 @@
     {
         "id": 6697,
         "name": "Hubris",
-        "description": "<mainText><stats><attention> 60</attention> Attack Damage<br><attention> 18</attention> Lethality<br><attention> 15</attention> Ability Haste</stats><br><br><passive>Eminence</passive><br>Gain temporary AD based on champion kills on kill.<br><br><passive>Ego</passive><br>Gain an upgrading statue of yourself on kill.</mainText>",
+        "description": "<mainText><stats><attention> 60</attention> Attack Damage<br><attention> 18</attention> Lethality<br><attention> 15</attention> Ability Haste</stats><br><br><passive>Eminence</passive><br>Gain temporary AD based on champion kills on kill.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8427,7 +8427,7 @@
     {
         "id": 6701,
         "name": "Opportunity",
-        "description": "<mainText><stats><attention> 55</attention> Attack Damage<br><attention> 18</attention> Lethality<br><attention> 5%</attention> Move Speed</stats><br><br><passive>Preparation</passive><br>Gain Lethality outside of combat. <br><br><passive>Extraction</passive><br>Gain Move Speed after killing champions.</mainText>",
+        "description": "<mainText><stats><attention> 55</attention> Attack Damage<br><attention> 18</attention> Lethality<br><attention> 5%</attention> Move Speed</stats><br><br><passive>Eminence</passive><br>When a champion that you have damaged dies, gain Attack Damage.<br><br><passive>Ego</passive><br>Killing champions creates a statue of yourself, if you already have a statue it upgrades.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8457,7 +8457,7 @@
     {
         "id": 7000,
         "name": " Sandshrike's Claw",
-        "description": "<mainText><stats><ornnBonus> 75</ornnBonus> Attack Damage<br><ornnBonus> 26</ornnBonus> Lethality<br><ornnBonus> 25</ornnBonus> Ability Haste</stats><br><br><passive>Preparation</passive><br>Gain Lethality outside of combat. <br><br><passive>Extraction</passive><br>Gain Move Speed after killing champions.</mainText>",
+        "description": "<mainText><stats><ornnBonus> 75</ornnBonus> Attack Damage<br><ornnBonus> 26</ornnBonus> Lethality<br><ornnBonus> 25</ornnBonus> Ability Haste</stats><br><br><passive>Eminence</passive><br>When a champion that you have damaged dies, gain Attack Damage.<br><br><passive>Ego</passive><br>Killing champions creates a statue of yourself, if you already have a statue it upgrades.</mainText>",
         "active": false,
         "inStore": false,
         "from": [
@@ -8590,7 +8590,7 @@
     {
         "id": 7005,
         "name": " Frozen Fist",
-        "description": "<mainText><stats><ornnBonus> 400</ornnBonus> Health<br><ornnBonus> 60</ornnBonus> Armor<br><ornnBonus> 25</ornnBonus> Ability Haste</stats><br><br><passive>Spellblade</passive>  (0s)<br>After using an Ability, your next Attack is enhanced with additional damage and creates a frost field for 2s. Enemies that move across the field are <status>Slowed</status>.</mainText>",
+        "description": "<mainText><stats><ornnBonus> 400</ornnBonus> Health<br><ornnBonus> 60</ornnBonus> Armor<br><ornnBonus> 25</ornnBonus> Ability Haste</stats><br><br><passive>Spellblade</passive><br>After using an Ability, your next Attack is enhanced with additional damage and creates a frost field for 2s. Enemies that move across the field are <status>Slowed</status>.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8675,7 +8675,7 @@
     {
         "id": 7008,
         "name": " Ataraxia",
-        "description": "<mainText><stats><ornnBonus> 75</ornnBonus> Attack Damage<br><ornnBonus> 27</ornnBonus> Lethality<br><ornnBonus> 20</ornnBonus> Ability Haste</stats><br><br><passive>Preparation</passive><br>Gain Lethality outside of combat. <br><br><passive>Extraction</passive><br>Gain Move Speed after killing champions.</mainText>",
+        "description": "<mainText><stats><ornnBonus> 75</ornnBonus> Attack Damage<br><ornnBonus> 27</ornnBonus> Lethality<br><ornnBonus> 20</ornnBonus> Ability Haste</stats><br><br><passive>Eminence</passive><br>When a champion that you have damaged dies, gain Attack Damage.<br><br><passive>Ego</passive><br>Killing champions creates a statue of yourself, if you already have a statue it upgrades.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8758,7 +8758,7 @@
     {
         "id": 7011,
         "name": " Upgraded Aeropack",
-        "description": "<mainText><stats><ornnBonus> 85</ornnBonus> Ability Power<br><ornnBonus> 450</ornnBonus> Health<br><ornnBonus> 20</ornnBonus> Ability Haste</stats><br><br> <active>ACTIVE</active>}  (0s)<br><active>Supersonic</active><br>Dash in target direction, unleashing an arc of magic missiles that deal magic damage.</mainText>",
+        "description": "<mainText><stats><ornnBonus> 85</ornnBonus> Ability Power<br><ornnBonus> 450</ornnBonus> Health<br><ornnBonus> 20</ornnBonus> Ability Haste</stats><br><br> <active>ACTIVE</active>}<br><active>Supersonic</active><br>Dash in target direction, unleashing an arc of magic missiles that deal magic damage.</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -8899,7 +8899,7 @@
     {
         "id": 7016,
         "name": " Dreamshatter",
-        "description": "GeneratedTip_Item_7016_ExternalDescription",
+        "description": "<mainText><stats><ornnBonus> 60</ornnBonus> Attack Damage<br><ornnBonus> 40%</ornnBonus> Attack Speed<br><ornnBonus> 600</ornnBonus> Health</stats><br><br><passive>Cleave</passive><br>Attacks deal physical damage to nearby enemies.<br><br><passive>Temper</passive><br>Dealing <physicalDamage>physical damage</physicalDamage> grants Move Speed.<br><br> <active>ACTIVE</active><br><active>Breaking Shockwave</active><br>Deal physical damage and <status>Slow</status> nearby enemies and gain Move Speed per champion. Can move while casting.</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -9073,7 +9073,7 @@
     {
         "id": 7022,
         "name": " Certainty",
-        "description": "<mainText><stats><ornnBonus> 70</ornnBonus> Attack Damage<br><ornnBonus> 27</ornnBonus> Lethality<br><ornnBonus> 8%</ornnBonus> Move Speed</stats><br><br><passive>Preparation</passive><br>Gain Lethality outside of combat. <br><br><passive>Extraction</passive><br>Gain Move Speed after killing champions.</mainText>",
+        "description": "<mainText><stats><ornnBonus> 70</ornnBonus> Attack Damage<br><ornnBonus> 27</ornnBonus> Lethality<br><ornnBonus> 8%</ornnBonus> Move Speed</stats><br><br><passive>Eminence</passive><br>When a champion that you have damaged dies, gain Attack Damage.<br><br><passive>Ego</passive><br>Killing champions creates a statue of yourself, if you already have a statue it upgrades.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9265,7 +9265,7 @@
     {
         "id": 7029,
         "name": " Youmuu's Wake",
-        "description": "GeneratedTip_Item_7029_ExternalDescription",
+        "description": "<mainText><stats><ornnBonus> 75</ornnBonus> Attack Damage<br><ornnBonus> 26</ornnBonus> Lethality</stats><br><br><passive>Haunt</passive> <br>Gain <speed>Move Speed</speed> while out of combat.<br><br><br> <active>ACTIVE</active>  (0s)<br><active>Wraith Step</active><br>Gain <speed>Move Speed</speed> and <keyword>Ghosting</keyword>.</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -9619,7 +9619,7 @@
     {
         "id": 7042,
         "name": " The Baron's Gift",
-        "description": "<mainText><stats><ornnBonus> 120</ornnBonus> Ability Power<br><ornnBonus> 60%</ornnBonus> Attack Speed<br><ornnBonus> 20</ornnBonus> Ability Haste</stats><br><br><passive>Icathian Bite</passive><br>Attacks apply <magicDamage>0 magic damage</magicDamage>  <OnHit>On-Hit</OnHit>.</mainText>",
+        "description": "<mainText><stats><ornnBonus> 120</ornnBonus> Ability Power<br><ornnBonus> 60%</ornnBonus> Attack Speed<br><ornnBonus> 20</ornnBonus> Ability Haste</stats><br><br><passive>Icathian Bite</passive><br>Attacks apply <magicDamage>magic damage</magicDamage>  <OnHit>On-Hit</OnHit>.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9666,7 +9666,7 @@
     {
         "id": 8001,
         "name": "Anathema's Chains",
-        "description": "<mainText><stats><attention> 650</attention> Health<br><attention> 20</attention> Ability Haste</stats><br><br><passive>Vendetta</passive><br>You gain Vendetta stacks over time Each stack of Vendetta grants you 1% reduced damage from your Nemesis.<br><br><passive>Vengeance</passive><br>At maximum stacks, your Nemesis has reduced Tenacity while near you.<br><br> <active>ACTIVE</active>  (0s)<br><active>Vow</active><br>Choose your <passive>Nemesis</passive>.</mainText>",
+        "description": "<mainText><stats><attention> 650</attention> Health<br><attention> 20</attention> Ability Haste</stats><br><br><passive>Vendetta</passive><br>You gain Vendetta stacks over time Each stack of Vendetta grants you 1% reduced damage from your Nemesis.<br><br><passive>Vengeance</passive><br>At maximum stacks, your Nemesis has reduced Tenacity while near you. <active>Active -</active><active>Vow</active><br>Choose a Nemesis to start building a Vendetta.</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -10254,7 +10254,7 @@
     {
         "id": 223050,
         "name": "Zeke's Convergence",
-        "description": "<mainText><stats><buffedStat> 400</buffedStat> Health<br><attention> 250</attention> Mana<br><buffedStat> 40</buffedStat> Armor<br><attention> 20</attention> Ability Haste</stats><br><br><br><li><passive>Convergence:</passive> For 8 seconds after you <status>Immobilize</status> an enemy, your <attention>Accomplice's</attention> Attacks ( <OnHit>On-Hit</OnHit>) and Ability hits apply an additional <buffedStat>0 magic damage</buffedStat> to that enemy.<br><br><rules>Champions can only be linked by one Zeke's Convergence at a time.</rules></mainText>",
+        "description": "<mainText><stats><buffedStat> 400</buffedStat> Health<br><attention> 250</attention> Mana<br><buffedStat> 40</buffedStat> Armor<br><attention> 20</attention> Ability Haste</stats><br><br><passive>Frostfire Tempest</passive> <br>Casting your Ultimate summons a storm around you. The storm deals magic damage to enemy Champions and <keyword>Slows</keyword> them.</mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -10454,7 +10454,7 @@
     {
         "id": 223074,
         "name": "Ravenous Hydra",
-        "description": "<mainText><stats><attention> 70</attention> Attack Damage<br><attention> 20</attention> Ability Haste<br><buffedStat> 15%</buffedStat> Life Steal</stats><br><br><br><li><passive>Cleave:</passive> Attacks and Abilities deal physical damage to other nearby enemies.<br><br><br> <active>ACTIVE</active>  (0s)<br><active>Ravenous Crescent</active><br>Deal physical damage to enemies around you.</mainText>",
+        "description": "<mainText><stats><attention> 70</attention> Attack Damage<br><attention> 20</attention> Ability Haste<br><buffedStat> 15%</buffedStat> Life Steal</stats><br><br><br><li><passive>Cleave:</passive> Attacks and Abilities deal physical damage to other nearby enemies.<br><br><br> <active>ACTIVE</active>  (0s)<br><active>Ravenous Crescent</active><br>Deal physical damage to enemies around you that Lifesteals.</mainText>",
         "active": true,
         "inStore": true,
         "from": [],
@@ -11079,7 +11079,7 @@
     {
         "id": 223142,
         "name": "Youmuu's Ghostblade",
-        "description": "GeneratedTip_Item_223142_ExternalDescription",
+        "description": "<mainText><stats><attention> 60</attention> Attack Damage<br><buffedStat> 22</buffedStat> Lethality<br><attention> 15</attention> Ability Haste</stats><br><br><passive>Haunt</passive> <br>Gain <speed>Move Speed</speed> while out of combat.<br><br><br> <active>Active -</active> <active>Wraith Step:</active> Gain Move Speed and Ghosting.</mainText>",
         "active": true,
         "inStore": true,
         "from": [],
@@ -12134,7 +12134,7 @@
     {
         "id": 226631,
         "name": "Stridebreaker",
-        "description": "<mainText><stats><nerfedStat> 60</nerfedStat> Attack Damage<br><attention> 20%</attention> Attack Speed<br><attention> 375</attention> Health</stats><br><br><br><li><passive>Heroic Gait:</passive> Dealing physical damage grants <speed>20 Move Speed</speed> for 3 seconds.<br><br><rarityMythic>Mythic Passive:</rarityMythic> Grants all other <rarityLegendary>Legendary</rarityLegendary> items <attention> 2%</attention> Move Speed.<br><br> <active>ACTIVE</active>  (0s)<br><active>Breaking Shockwave</active><br>Deal <physicalDamage>0 phyiscal damage</physicalDamage> and <status>Slow</status> nearby enemies by 40% and gain <speed>40% bonus Move Speed</speed> per champion hit that decays over 3 seconds. Can move while casting.</mainText>",
+        "description": "<mainText><stats><nerfedStat> 60</nerfedStat> Attack Damage<br><attention> 20%</attention> Attack Speed<br><attention> 375</attention> Health</stats><br><br><passive>Cleave</passive><br>Attacks deal physical damage to nearby enemies.<br><br><passive>Temper</passive><br>Dealing <physicalDamage>physical damage</physicalDamage> grants Move Speed.<br><br> <active>ACTIVE</active><br><active>Breaking Shockwave</active><br>Deal physical damage and <status>Slow</status> nearby enemies and gain Move Speed per champion. Can move while casting.</mainText>",
         "active": true,
         "inStore": true,
         "from": [],
@@ -12978,7 +12978,7 @@
     {
         "id": 227016,
         "name": " Dreamshatter",
-        "description": "<mainText><stats><nerfedStat> 60</nerfedStat> Attack Damage<br><ornnBonus> 30%</ornnBonus> Attack Speed<br><ornnBonus> 400</ornnBonus> Health</stats><br><br><br><li><passive>Heroic Gait:</passive> Dealing physical damage grants <speed>20 Move Speed</speed> for 3 seconds.<br><br><rarityMythic>Mythic Passive:</rarityMythic> Grants all other <rarityLegendary>Legendary</rarityLegendary> items <attention> 2%</attention> Move Speed.<br><br> <active>ACTIVE</active>  (0s)<br><active>Breaking Shockwave</active><br>Deal <physicalDamage>0 phyiscal damage</physicalDamage> and <status>Slow</status> nearby enemies by 40% and gain <speed>40% bonus Move Speed</speed> per champion hit that decays over 3 seconds. Can move while casting.</mainText>",
+        "description": "<mainText><stats><nerfedStat> 60</nerfedStat> Attack Damage<br><ornnBonus> 30%</ornnBonus> Attack Speed<br><ornnBonus> 400</ornnBonus> Health</stats><br><br><passive>Cleave</passive><br>Attacks deal physical damage to nearby enemies.<br><br><passive>Temper</passive><br>Dealing <physicalDamage>physical damage</physicalDamage> grants Move Speed.<br><br> <active>ACTIVE</active><br><active>Breaking Shockwave</active><br>Deal physical damage and <status>Slow</status> nearby enemies and gain Move Speed per champion. Can move while casting.</mainText>",
         "active": true,
         "inStore": false,
         "from": [
@@ -13317,7 +13317,7 @@
     {
         "id": 227029,
         "name": " Youmuu's Wake",
-        "description": "GeneratedTip_Item_227029_ExternalDescription",
+        "description": "<mainText><stats><ornnBonus> 75</ornnBonus> Attack Damage<br><ornnBonus> 26</ornnBonus> Lethality</stats><br><br><passive>Haunt</passive> <br>Gain <speed>Move Speed</speed> while out of combat.<br><br><br> <active>ACTIVE</active>  (0s)<br><active>Wraith Step</active><br>Gain <speed>Move Speed</speed> and <keyword>Ghosting</keyword>.</mainText>",
         "active": true,
         "inStore": false,
         "from": [
@@ -13450,7 +13450,7 @@
     {
         "id": 228001,
         "name": "Anathema's Chains",
-        "description": "<mainText><stats><attention> 650</attention> Health<br><attention> 20</attention> Ability Haste</stats><br><br><br><li><passive>Vendetta:</passive> Take reduced damage against your Nemesis. They have reduced Tenacity while near you.<br><br><rules>Active can be cast at global range.</rules><br><br><flavorText>\"She swore to dedicate her life to his destruction...\"</flavorText><br><br> <active>Active -</active> <active>Vow:</active> Choose a Nemesis (90 (0s)).</mainText>",
+        "description": "<mainText><stats><attention> 650</attention> Health<br><attention> 20</attention> Ability Haste</stats><br><br><br><li><passive>Vendetta:</passive> Take reduced damage against your Nemesis. They have reduced Tenacity while near you.<br><br><rules>Active can be cast at global range.</rules><br><br><flavorText>\"She swore to dedicate her life to his destruction...\"</flavorText> <active>Active -</active><active>Vow</active><br>Choose a Nemesis to start building a Vendetta.</mainText>",
         "active": true,
         "inStore": true,
         "from": [],

@@ -3705,7 +3705,7 @@
                             "id": "defea199-cda7-49e7-8827-f93059698ea1",
                             "localizedTitle": "青花瓷 伊泽瑞尔 天青 炫彩",
                             "localizedDescription": "包含炫彩图标！",
-                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2022_PorcelainProtector_EzrealChroma.png",
+                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_Porcelain_IconBundleCard_Ezreal.png",
                             "promotionType": "kNone",
                             "offerCategory": "Chromas",
                             "items": [
@@ -3727,7 +3727,7 @@
                             "id": "35aad335-be3f-4586-a148-a6f91c83e87e",
                             "localizedTitle": "青花瓷 阿木木 天青 炫彩",
                             "localizedDescription": "包含炫彩图标！",
-                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2022_Porcelain_AmumuChroma.png",
+                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_Porcelain_IconBundleCard_Amumu.png",
                             "promotionType": "kNone",
                             "offerCategory": "Chromas",
                             "items": [
@@ -3749,7 +3749,7 @@
                             "id": "24fe2522-5862-4d20-9997-a0065682ab9c",
                             "localizedTitle": "青花瓷 千珏 天青 炫彩",
                             "localizedDescription": "包含炫彩图标！",
-                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2022_Porcelain_KindredChroma.png",
+                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_Porcelain_IconBundleCard_Kindred.png",
                             "promotionType": "kNone",
                             "offerCategory": "Chromas",
                             "items": [
@@ -3771,7 +3771,7 @@
                             "id": "97e3ef8e-deda-4693-86b0-59f41da1523a",
                             "localizedTitle": "青花瓷 丽桑卓 天青 炫彩",
                             "localizedDescription": "包含炫彩图标！",
-                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2022_Porcelain_LissandraChroma.png",
+                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_Porcelain_IconBundleCard_Lissandra.png",
                             "promotionType": "kNone",
                             "offerCategory": "Chromas",
                             "items": [
@@ -3793,7 +3793,7 @@
                             "id": "3e5d3e73-ec1c-422c-bbe6-ee6cb7fc8813",
                             "localizedTitle": "青花瓷 拉克丝 天青 炫彩",
                             "localizedDescription": "包含炫彩图标！",
-                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2022_Porcelain_LuxChroma.png",
+                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_Porcelain_IconBundleCard_Lux.png",
                             "promotionType": "kNone",
                             "offerCategory": "Chromas",
                             "items": [
@@ -3813,7 +3813,7 @@
                         },
                         {
                             "id": "33fcf25d-7384-44a3-bc45-bbbd115f6adf",
-                            "localizedTitle": "eventshop_offer_title_Border_Aurelion_Sol",
+                            "localizedTitle": "青花瓷 奥瑞利安 · 索尔 边框",
                             "localizedDescription": "包含边框图标！",
                             "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_HS_BorderIconBundle_Diana.png",
                             "promotionType": "kNone",
@@ -3829,7 +3829,7 @@
                         },
                         {
                             "id": "2d0c6894-32b8-477b-bbf7-ba3e0cb90985",
-                            "localizedTitle": "eventshop_offer_title_Border_Darius",
+                            "localizedTitle": "青花瓷 德莱厄斯 边框",
                             "localizedDescription": "包含边框图标！",
                             "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_HS_BorderIconBundle_Diana.png",
                             "promotionType": "kNone",
@@ -3845,7 +3845,7 @@
                         },
                         {
                             "id": "07de933e-17a3-413d-8396-9d5f8ff30bcd",
-                            "localizedTitle": "eventshop_offer_title_Border_Graves",
+                            "localizedTitle": "青花瓷 格雷福斯 边框",
                             "localizedDescription": "包含边框图标！",
                             "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_HS_BorderIconBundle_Diana.png",
                             "promotionType": "kNone",
@@ -3861,7 +3861,7 @@
                         },
                         {
                             "id": "5d7ef32e-26d0-4fb6-b1fd-90b0cdbc956b",
-                            "localizedTitle": "eventshop_offer_title_Border_Irelia",
+                            "localizedTitle": "青花瓷 艾瑞莉娅 边框",
                             "localizedDescription": "包含边框图标！",
                             "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_HS_BorderIconBundle_Diana.png",
                             "promotionType": "kNone",
@@ -3877,7 +3877,7 @@
                         },
                         {
                             "id": "faac9b3a-7568-453d-8fb7-084f01dbf135",
-                            "localizedTitle": "eventshop_offer_title_Border_Miss_Fortune",
+                            "localizedTitle": "青花瓷 厄运小姐 边框",
                             "localizedDescription": "包含边框图标！",
                             "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_HS_BorderIconBundle_Diana.png",
                             "promotionType": "kNone",
@@ -3893,7 +3893,7 @@
                         },
                         {
                             "id": "034b5044-bd50-47e5-a2aa-e504f1872228",
-                            "localizedTitle": "eventshop_offer_title_Border_Morgana",
+                            "localizedTitle": "青花瓷 莫甘娜 边框",
                             "localizedDescription": "包含边框图标！",
                             "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_HS_BorderIconBundle_Diana.png",
                             "promotionType": "kNone",
@@ -3909,9 +3909,9 @@
                         },
                         {
                             "id": "3854a4db-e40d-40c8-85ac-0bef9e511bd6",
-                            "localizedTitle": "占位",
-                            "localizedDescription": "占位",
-                            "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_Heavenscale_EPE_Orb.png",
+                            "localizedTitle": "青花瓷(2024)法球",
+                            "localizedDescription": "开启以获得1个随机皮肤碎片，且有几率掉落一个【青花瓷(2024)福袋】。",
+                            "image": "/lol-game-data/assets/ASSETS/Loot/Porcelain2024_EPE_Orb.png",
                             "promotionType": "kFeatured",
                             "offerCategory": "Loot",
                             "items": [

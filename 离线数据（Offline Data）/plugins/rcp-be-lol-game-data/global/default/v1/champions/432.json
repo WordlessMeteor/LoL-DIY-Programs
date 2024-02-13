@@ -652,7 +652,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@s %i:cooldown%",
             "description": "Bard fires a missile which will slow the first enemy struck, and continue onward. If it strikes a wall, it will stun the initial target; if it strikes another enemy, it will stun them both.",
-            "dynamicDescription": "Bard fires an energy bolt, dealing <magicDamage>@TotalDamage@ magic damage</magicDamage> to the first two enemies hit. The first target hit is <status>Slowed</status> by @Effect3Amount@% for @Effect4Amount@ second(s).<br><br>If the bolt hits a second enemy or a wall, any enemies hit are <status>Stunned</status> for @Effect2Amount@ second(s).<br>@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "Bard fires an energy bolt, dealing <magicDamage>@TotalDamage@ magic damage</magicDamage> to the first two enemies hit. The first target hit is <status>Slowed</status> by @SlowAmountPercentage@% for @SlowDuration@s.<br><br>If the bolt hits a second enemy or a wall, any enemies hit are <status>Stunned</status> for @StunDuration@s.<br>@SpellModifierDescriptionAppend@",
             "range": [
                 25000.0000,
                 25000.0000,

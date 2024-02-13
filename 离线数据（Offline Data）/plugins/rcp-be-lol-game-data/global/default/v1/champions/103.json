@@ -2056,7 +2056,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@s %i:cooldown%",
             "description": "Ahri dashes forward and fires essence bolts, damaging nearby enemies. Spirit Rush can be cast up to three times before going on cooldown, and gains additional recasts when taking down enemy champions.",
-            "dynamicDescription": "Ahri nimbly dashes, firing @RMaxTargetsPerCast@ essence bolts at nearby enemies, prioritizing champions. These bolts deal <magicDamage>@RCalculatedDamage@ magic damage</magicDamage> each. Spirit Rush can be recast up to 2 more times within @RRecastWindow@ seconds.<br><br>Consuming a champion's Essence with Essence Theft during this period extends the recast window by up to @PDurationExtension@ seconds and grants an additional recast of Spirit Rush (up to @RMaxCasts@ stored).@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "Ahri nimbly dashes, firing @RMaxTargetsPerCast@ essence bolts at nearby enemies, prioritizing champions. These bolts deal <magicDamage>@RCalculatedDamage@ magic damage</magicDamage> each. <spellName>Spirit Rush</spellName> can be <recast>Recast</recast> up to 2 more times within @RRecastWindow@ seconds.<br><br>Consuming a champion's Essence with <spellName>Essence Theft</spellName> during this period extends the recast window by up to @PDurationExtension@ seconds and grants an additional recast of <spellName>Spirit Rush</spellName> (up to @RMaxCasts@ stored).@SpellModifierDescriptionAppend@",
             "range": [
                 450.0000,
                 450.0000,

@@ -611,7 +611,7 @@
         {
             "id": 23027,
             "isBase": false,
-            "name": "",
+            "name": "胜利之王 泰达米尔",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/23/23027.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/23/23027.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/23/23027.jpg",
@@ -626,7 +626,7 @@
             "chromas": [
                 {
                     "id": 23028,
-                    "name": "",
+                    "name": "胜利之王 泰达米尔 英勇黄铜",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23028.png",
                     "colors": [
                         "#764D43",
@@ -635,14 +635,14 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "这个炫彩曾奖励给那些在2024赛季 - 第1赛段中累积获得至少1600赛段点，并在任一【召唤师峡谷】排位队列中达到【英勇黄铜】段位的玩家。"
                         }
                     ],
                     "rarities": []
                 },
                 {
                     "id": 23029,
-                    "name": "",
+                    "name": "胜利之王 泰达米尔 不屈白银",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23029.png",
                     "colors": [
                         "#AAB5BA",
@@ -651,14 +651,14 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "这个炫彩曾奖励给那些在2024赛季 - 第1赛段中累积获得至少1600赛段点，并在任一【召唤师峡谷】排位队列中达到【不屈白银】段位的玩家。"
                         }
                     ],
                     "rarities": []
                 },
                 {
                     "id": 23030,
-                    "name": "",
+                    "name": "胜利之王 泰达米尔 荣耀黄金",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23030.png",
                     "colors": [
                         "#D9C445",
@@ -667,14 +667,14 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "这个炫彩曾奖励给那些在2024赛季 - 第1赛段中累积获得至少80赛段点，并在任一【召唤师峡谷】排位队列中达到【荣耀黄金】段位的玩家。"
                         }
                     ],
                     "rarities": []
                 },
                 {
                     "id": 23031,
-                    "name": "",
+                    "name": "胜利之王 泰达米尔 华贵铂金",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23031.png",
                     "colors": [
                         "#55CDE5",
@@ -683,7 +683,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "这个炫彩曾奖励给那些在2024赛季 - 第1赛段中累积获得至少80赛段点，并在任一【召唤师峡谷】排位队列中达到【华贵铂金】段位的玩家。"
                         }
                     ],
                     "rarities": [
@@ -695,7 +695,7 @@
                 },
                 {
                     "id": 23032,
-                    "name": "",
+                    "name": "胜利之王 泰达米尔 流光翡翠",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23032.png",
                     "colors": [
                         "#26854C",
@@ -704,7 +704,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "这个炫彩曾奖励给那些在2024赛季 - 第1赛段中累积获得至少80赛段点，并在任一【召唤师峡谷】排位队列中达到【流光翡翠】段位的玩家。"
                         }
                     ],
                     "rarities": [
@@ -716,7 +716,7 @@
                 },
                 {
                     "id": 23033,
-                    "name": "",
+                    "name": "胜利之王 泰达米尔 璀璨钻石",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23033.png",
                     "colors": [
                         "#65337F",
@@ -725,7 +725,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "这个炫彩曾奖励给那些在2024赛季 - 第1赛段中累积获得至少80赛段点，并在任一【召唤师峡谷】排位队列中达到【璀璨钻石】段位的玩家。"
                         }
                     ],
                     "rarities": [
@@ -737,7 +737,7 @@
                 },
                 {
                     "id": 23034,
-                    "name": "",
+                    "name": "胜利之王 泰达米尔 超凡大师",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23034.png",
                     "colors": [
                         "#9D228D",
@@ -746,7 +746,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "这个炫彩曾奖励给那些在2024赛季 - 第1赛段中累积获得至少80赛段点，并在任一【召唤师峡谷】排位队列中达到【超凡大师】段位的玩家。"
                         }
                     ],
                     "rarities": [
@@ -758,7 +758,7 @@
                 },
                 {
                     "id": 23035,
-                    "name": "",
+                    "name": "胜利之王 泰达米尔 傲世宗师",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23035.png",
                     "colors": [
                         "#B31316",
@@ -767,7 +767,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "这个炫彩曾奖励给那些在2024赛季 - 第1赛段中累积获得至少80赛段点，并在任一【召唤师峡谷】排位队列中达到【傲世宗师】段位的玩家。"
                         }
                     ],
                     "rarities": [
@@ -779,7 +779,7 @@
                 },
                 {
                     "id": 23036,
-                    "name": "",
+                    "name": "胜利之王 泰达米尔 最强王者",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23036.png",
                     "colors": [
                         "#1D62C8",
@@ -788,7 +788,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "这个炫彩曾奖励给那些在2024赛季 - 第1赛段中累积获得至少80赛段点，并在任一【召唤师峡谷】排位队列中达到【最强王者】段位的玩家。"
                         }
                     ],
                     "rarities": [
@@ -799,16 +799,25 @@
                     ]
                 }
             ],
-            "emblems": null,
-            "regionRarityId": 0,
-            "rarityGemPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
             "skinLines": [
                 {
                     "id": 7
                 }
             ],
             "skinAugments": null,
-            "description": null
+            "description": "玩家们在排位赛中积累了足够赛段点后，就会获得【胜利之王 泰达米尔】作为奖励。泰达米尔的挑战者们最后看到的东西，就是他眼中肆无忌惮的怒火，因为他决定接下来就让他们迎接他的刀刃。"
         }
     ],
     "passive": {

@@ -653,7 +653,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "斯维因释放多道恶魔之力，这种力量可以穿透命中的目标。被一道以上的恶魔之力所命中的敌人，会受到基于恶魔之力数量的更多伤害。",
-            "dynamicDescription": "斯维因释放多道恶魔之力，造成<magicDamage>@InitialDamage@魔法伤害</magicDamage>，第一道之后的每道恶魔之力造成<magicDamage>@ExtraBoltDamage@魔法伤害</magicDamage>(最大伤害为<magicDamage>@MaxDamage@魔法伤害</magicDamage>)。@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "斯维因释放5道恶魔之力，造成<magicDamage>@InitialDamage@魔法伤害</magicDamage>，第一道之后的每道恶魔之力造成<magicDamage>@ExtraBoltDamage@魔法伤害</magicDamage>(最大伤害为<magicDamage>@MaxDamage@魔法伤害</magicDamage>)。@SpellModifierDescriptionAppend@",
             "range": [
                 750.0000,
                 750.0000,

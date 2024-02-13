@@ -450,7 +450,7 @@
             "cost": "无消耗",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "雷克塞的下3次普攻会对身边的敌人造成额外物理伤害。<br><br>在地底时，雷克塞发射一道充满虚空能量的冲击波，对命中的敌人造成物理伤害并暴露目标。",
-            "dynamicDescription": "<keywordMajor>位于地表：</keywordMajor>雷克塞在@Effect7Amount@秒内的下3次普攻会对附近的敌人造成额外的<physicalDamage>@spell.RekSaiQ:TotalDamageTooltip@物理伤害</physicalDamage>。普攻会刷新这个技能的持续时长。 @SpellModifierDescriptionAppend@",
+            "dynamicDescription": "<keywordMajor>位于地表</keywordMajor>：雷克塞在@BuffDuration@秒内的下3次普攻会获得<attackSpeed>@AttackSpeed*100@%攻击速度</attackSpeed>并对附近的敌人造成额外的<physicalDamage>@TotalDamageTooltip@物理伤害</physicalDamage>。普攻会刷新这个技能的持续时长。@SpellModifierDescriptionAppend@",
             "range": [
                 325.0000,
                 325.0000,
@@ -600,7 +600,7 @@
             "cost": "无消耗",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "雷克塞遁入地下，提供新的技能并提升移动速度。她的视野会被降低并且无法进行普攻。<br><br>在地底时，雷克塞可以施放破土而出，来击飞并伤害身边的敌人。",
-            "dynamicDescription": "<keywordMajor>位于地表：</keywordMajor>雷克塞遁入地下，获得全新的一套技能，以及<speed>@spell.RekSaiW:SpeedBonus@移动速度</speed>，但不能攻击。她的视野距离会被降低，但附近不可见的敌人在移动时会将其位置显形给雷克塞和她的友军。@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "<keywordMajor>位于地表：</keywordMajor>雷克塞遁入地下，获得全新的一套技能但不能攻击。她获得<speed>@BurrowedMoveSpeed@移动速度</speed>，视野距离被降低@VisionRadiusMod*-100@%，并且附近不可见的敌人在移动时会将其位置显形给雷克塞和她的友军。@SpellModifierDescriptionAppend@",
             "range": [
                 1650.0000,
                 1650.0000,
@@ -750,7 +750,7 @@
             "cost": "无消耗",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "雷克塞噬咬她的目标，可在满怒时造成双倍真实伤害。<br><br>在地底时，雷克塞挖掘出一个可重复使用、长期存在的隧道。敌人可以通过踩在任一入口上来摧毁整条隧道。",
-            "dynamicDescription": "<scaleAD>位于地表：</scaleAD>雷克塞撕咬一个目标，造成<physicalDamage>@spell.RekSaiE:BaseDamageTooltip@ 物理伤害</physicalDamage>。在满额<keywordMajor>怒气</keywordMajor>时，撕咬会转而造成<trueDamage>@spell.RekSaiE:EmpoweredDamageTooltip@真实伤害</trueDamage>。@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "<scaleAD>位于地表：</scaleAD>雷克塞撕咬一个目标，造成<physicalDamage>@spell.RekSaiE:BaseDamageTooltip@物理伤害</physicalDamage>。在满额<keywordMajor>怒气</keywordMajor>时，这次撕咬会造成额外的<physicalDamage>@spell.RekSaiE:FuryMaxHealthDamage*100@%最大生命值物理伤害</physicalDamage>。@SpellModifierDescriptionAppend@",
             "range": [
                 250.0000,
                 250.0000,

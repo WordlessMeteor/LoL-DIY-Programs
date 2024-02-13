@@ -945,7 +945,7 @@
         {
             "id": 39045,
             "isBase": false,
-            "name": "",
+            "name": "青花瓷 艾瑞莉娅",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/39/39045.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/39/39045.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/39/39045.jpg",
@@ -967,7 +967,7 @@
                 }
             ],
             "skinAugments": null,
-            "description": null
+            "description": "艾瑞莉娅早在成为生肖神卫之前就致力于保护古代圣物了。大学的第一年，她就在著名的考古研究所实习。这是她短暂一生的亮点……直到她被牛生肖圣物赋予了神话力量，并被卷入了一场长达数百年的战争。与之相比，学业就略显苍白了。"
         }
     ],
     "passive": {

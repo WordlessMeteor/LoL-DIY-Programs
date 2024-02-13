@@ -1205,7 +1205,7 @@
         {
             "id": 25070,
             "isBase": false,
-            "name": "",
+            "name": "Porcelain Morgana",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/25/25070.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/25/25070.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/25/25070.jpg",
@@ -1227,7 +1227,7 @@
                 }
             ],
             "skinAugments": null,
-            "description": null
+            "description": "There is no one who comprehends the power of the sorceress Lissandra more than Morgana. The magic that bound Lissandra to her relic came at a cost: the protector who uttered the words would be trapped as well. Morgana made this sacrifice, the wings of her Rooster Relic wrapping her in a porcelain cocoon for millennia. Awake once more, she seeks revenge."
         }
     ],
     "passive": {
