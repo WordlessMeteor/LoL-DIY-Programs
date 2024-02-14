@@ -162,7 +162,9 @@ async def search_summoner_online(connection):
                     continue
                 #查询前的数据结构准备（Data structure prepared for query）
                 matches_found = []
+                gameCount = gameIndexEnd - gameIndexBegin + 1
                 for matchID in range(gameIndexBegin, gameIndexEnd + 1):
+                    currentProcess = matchID - gameIndexBegin + 1
                     matchID = str(matchID)
                     game_info = await (await connection.request("GET", "/lol-match-history/v1/games/" + matchID)).json()
                     error_occurred = False
@@ -171,61 +173,68 @@ async def search_summoner_online(connection):
                     if "errorCode" in game_info:
                         count = 0
                         if game_info["httpStatus"] == 404:
-                            message = "未找到序号为" + matchID + "的回放文件！将忽略该序号。\nMatch file with matchID " + matchID + " not found! The program will ignore this matchID."
+                            message = "（%d/%d）" %(currentProcess, gameCount) + "未找到序号为" + matchID + "的回放文件！将忽略该序号。\nMatch file with matchID " + matchID + " not found! The program will ignore this matchID."
                             print(message)
                             message_save(message, folder, displayName, "【异常信息】")
                             continue
                         if "500 Internal Server Error" in game_info["message"]:
                             if error_occurred == False:
                                 error_occurred = True
-                                message = "您所在大区的对局记录服务异常。尝试重新获取数据……\nThe match history service provided on your server isn't in place. Trying to recapture the history data ..."
+                                message = "（%d/%d）" %(currentProcess, gameCount) + "您所在大区的对局记录服务异常。尝试重新获取数据……\nThe match history service provided on your server isn't in place. Trying to recapture the history data ..."
                                 print(message)
                                 message_save(message, folder, displayName, "【异常信息】")
                             while "errorCode" in game_info and "500 Internal Server Error" in game_info["message"] and count <= 3:
                                 count += 1
-                                message = "正在第%d次尝试获取对局%s信息……\nTimes trying to capture Match %s: No. %d ..." %(count, matchID, matchID, count)
+                                message = "（%d/%d）" %(currentProcess, gameCount) + "正在第%d次尝试获取对局%s信息……\nTimes trying to capture Match %s: No. %d ..." %(count, matchID, matchID, count)
                                 print(message)
                                 message_save(message, folder, displayName, "【异常处理】")
                                 game_info = await (await connection.request("GET", "/lol-match-history/v1/games/" + matchID)).json()
                         elif "Connection timed out after " in game_info["message"]:
                             fetched_info = False
-                            message = "对局信息保存超时！请检查网速状况！\nGame information saving operation timed out after 20000 milliseconds with 0 bytes received! Please check the netspeed!"
+                            message = "（%d/%d）" %(currentProcess, gameCount) + "对局信息保存超时！请检查网速状况！\nGame information saving operation timed out after 20000 milliseconds with 0 bytes received! Please check the netspeed!"
                             print(message)
                             message_save(message, folder, displayName, "【异常信息】")
                         elif "Service Unavailable - Connection retries limit exceeded. Response timed out" in game_info["message"]:
                             if error_occurred == False:
                                 error_occurred = True
-                                message = "访问频繁。尝试重新获取数据……\nConnection retries limit exceeded! Trying to recapture the match data ..."
+                                message = "（%d/%d）" %(currentProcess, gameCount) + "访问频繁。尝试重新获取数据……\nConnection retries limit exceeded! Trying to recapture the match data ..."
                                 print(message)
                                 message_save(message, folder, displayName, "【异常处理】")
                             while "errorCode" in game_info and "Service Unavailable - Connection retries limit exceeded. Response timed out" in game_info["message"] and count <= 3:
                                 count += 1
-                                message = "正在第%d次尝试获取对局%s信息……\nTimes trying to capture Match %s: No. %d ..." %(count, matchID, matchID, count)
+                                message = "（%d/%d）" %(currentProcess, gameCount) + "正在第%d次尝试获取对局%s信息……\nTimes trying to capture Match %s: No. %d ..." %(count, matchID, matchID, count)
                                 print(message)
                                 message_save(message, folder, displayName, "【异常处理】")
                                 game_info = await (await connection.request("GET", "/lol-match-history/v1/games/" + matchID)).json()
                         if count > 3:
                             fetched_info = False
-                            message = "对局%s信息获取失败！\nMatch %s information capture failure!" %(matchID, matchID)
+                            message = "（%d/%d）" %(currentProcess, gameCount) + "对局%s信息获取失败！\nMatch %s information capture failure!" %(matchID, matchID)
                             print(message)
                             message_save(message, folder, displayName, "【异常信息】")
                             continue
                     if "errorCode" in game_info:
                         fetched_info = False
-                        message = "对局%s信息获取失败！\nMatch %s information capture failure!" %(matchID, matchID)
+                        message = "（%d/%d）" %(currentProcess, gameCount) + "对局%s信息获取失败！\nMatch %s information capture failure!" %(matchID, matchID)
                         print(message)
                         message_save(message + "\n" + str(game_info), folder, displayName, "【异常信息】")
                         print(game_info)
                         continue
                     else:
+                        main_player_found = False
                         players = []
                         for participant in game_info["participantIdentities"]:
                             if participant["player"]["puuid"] == puuid:
-                                message = "对局%s包含该玩家。已将其加入列表。\nMatch %s contains this summoner and has been added to the matches_found list." %(matchID, matchID)
-                                print("【√】" + message)
-                                message_save(message, folder, displayName, "【找到对局】")
-                                matches_found.append(matchID)
+                                main_player_found = True
                                 break
+                        if main_player_found:
+                            message = "（%d/%d）" %(currentProcess, gameCount) + "【√】对局%s包含该玩家。已将其加入列表。\nMatch %s contains this summoner and has been added to the matches_found list." %(matchID, matchID)
+                            print(message)
+                            message_save(message, folder, displayName, "【找到对局】")
+                            matches_found.append(matchID)
+                        else:
+                            message = "（%d/%d）" %(currentProcess, gameCount) + "对局%s不包含该玩家。\nMatch %s doesn't contain this summoner." %(matchID, matchID)
+                            print(message)
+                            message_save(message, folder, displayName, "【跳过对局】")
                 #保存数据到本地文件（Saved data to a local file）
                 print(matches_found)
                 print('共找到%d场对局！对局序号已保存到“%s”文件夹下的日志文件。\nMatches found: %d. MatchIDs have been saved into the log file in directory "%s": "Matches of Summoners.log".' %(len(matches_found), folder, len(matches_found), folder))

@@ -2844,7 +2844,7 @@
                 "effect_amounts": [
                     {
                         "name": "PercentHeartRate",
-                        "value": 2.2500,
+                        "value": 2.0000,
                         "format_string": ""
                     },
                     {
@@ -3028,7 +3028,7 @@
                 "effect_amounts": [
                     {
                         "name": "PercentAS",
-                        "value": 0.0800,
+                        "value": 0.0900,
                         "format_string": ""
                     },
                     {
@@ -3046,7 +3046,7 @@
                 "effect_amounts": [
                     {
                         "name": "PercentAS",
-                        "value": 0.1400,
+                        "value": 0.1600,
                         "format_string": ""
                     },
                     {
@@ -3200,12 +3200,12 @@
                 "effect_amounts": [
                     {
                         "name": "BonusAP",
-                        "value": 3.0000,
+                        "value": 4.0000,
                         "format_string": ""
                     },
                     {
                         "name": "AP",
-                        "value": 70.0000,
+                        "value": 80.0000,
                         "format_string": ""
                     }
                 ],
@@ -3218,12 +3218,12 @@
                 "effect_amounts": [
                     {
                         "name": "BonusAP",
-                        "value": 4.0000,
+                        "value": 6.0000,
                         "format_string": ""
                     },
                     {
                         "name": "AP",
-                        "value": 120.0000,
+                        "value": 130.0000,
                         "format_string": ""
                     }
                 ],
@@ -3630,12 +3630,12 @@
                 "effect_amounts": [
                     {
                         "name": "HealthAmp",
-                        "value": 300.0000,
+                        "value": 350.0000,
                         "format_string": ""
                     },
                     {
                         "name": "ADAmp",
-                        "value": 0.2500,
+                        "value": 0.3000,
                         "format_string": ""
                     }
                 ],
@@ -3648,12 +3648,12 @@
                 "effect_amounts": [
                     {
                         "name": "HealthAmp",
-                        "value": 650.0000,
+                        "value": 700.0000,
                         "format_string": ""
                     },
                     {
                         "name": "ADAmp",
-                        "value": 0.5000,
+                        "value": 0.6000,
                         "format_string": ""
                     }
                 ],
@@ -4097,7 +4097,7 @@
                 "effect_amounts": [
                     {
                         "name": "ProcChance",
-                        "value": 35.0000,
+                        "value": 30.0000,
                         "format_string": ""
                     },
                     {
@@ -4115,7 +4115,7 @@
                 "effect_amounts": [
                     {
                         "name": "ProcChance",
-                        "value": 35.0000,
+                        "value": 30.0000,
                         "format_string": ""
                     },
                     {

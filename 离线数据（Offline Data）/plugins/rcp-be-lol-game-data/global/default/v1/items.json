@@ -2431,7 +2431,7 @@
     {
         "id": 3003,
         "name": "Archangel's Staff",
-        "description": "<mainText><stats><attention> 80</attention> Ability Power<br><attention> 600</attention> Mana<br><attention> 20</attention> Ability Haste</stats><br><br><passive>Awe</passive><br>Gain Ability Power equal to your bonus Mana.<br><br><passive>Manaflow</passive><br>Strike a target with an Ability to consume a charge and gain bonus Mana. Grants a maximum of 360 Mana at which point this item transforms into <rarityLegendary>Seraph's Embrace</rarityLegendary>.<br><br></mainText>",
+        "description": "<mainText><stats><attention> 80</attention> Ability Power<br><attention> 600</attention> Mana<br><attention> 25</attention> Ability Haste</stats><br><br><passive>Awe</passive><br>Gain Ability Power equal to your bonus Mana.<br><br><passive>Manaflow</passive><br>Strike a target with an Ability to consume a charge and gain bonus Mana. Grants a maximum of 360 Mana at which point this item transforms into <rarityLegendary>Seraph's Embrace</rarityLegendary>.<br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -2869,7 +2869,7 @@
     {
         "id": 3040,
         "name": "Seraph's Embrace",
-        "description": "<mainText><stats><attention> 80</attention> Ability Power<br><attention> 1000</attention> Mana<br><attention> 20</attention> Ability Haste</stats><br><br><passive>Awe</passive> Gain Ability Power equal to <scaleMana>2% bonus Mana</scaleMana>.<br><passive>Lifeline</passive> (90 (0s))<br>Upon taking damage that would reduce your Health below 30%, gain a <shield>250 + 20% current Mana Shield</shield> for 3s.</mainText>",
+        "description": "<mainText><stats><attention> 80</attention> Ability Power<br><attention> 1000</attention> Mana<br><attention> 25</attention> Ability Haste</stats><br><br><passive>Awe</passive> Gain Ability Power equal to <scaleMana>2% bonus Mana</scaleMana>.<br><passive>Lifeline</passive> (90 (0s))<br>Upon taking damage that would reduce your Health below 30%, gain a <shield>250 + 20% current Mana Shield</shield> for 3s.</mainText>",
         "active": false,
         "inStore": false,
         "from": [],
@@ -4255,7 +4255,7 @@
     {
         "id": 3118,
         "name": "Malignance",
-        "description": "<mainText><stats><attention> 80</attention> Ability Power<br><attention> 600</attention> Mana<br><attention> 20</attention> Ability Haste</stats><br><br><passive>Scorn</passive><br>Your Ultimate spells gain Ability Haste.<br><br><passive>Hatefog</passive><br>Damaging a champion with your Ultimate burns the ground beneath them, dealing damage and reducing their Magic Resist. <br></mainText>",
+        "description": "<mainText><stats><attention> 80</attention> Ability Power<br><attention> 600</attention> Mana<br><attention> 25</attention> Ability Haste</stats><br><br><passive>Scorn</passive><br>Your Ultimate spells gain Ability Haste.<br><br><passive>Hatefog</passive><br>Damaging a champion with your Ultimate burns the ground beneath them, dealing damage and reducing their Magic Resist. <br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -6151,7 +6151,7 @@
     {
         "id": 3866,
         "name": "Runic Compass",
-        "description": "<mainText><stats><attention> 4</attention> Gold Per 10 Seconds<br><attention> 50%</attention> Base Health Regen<br><attention> 50%</attention> Base Mana Regen<br><attention> 100</attention> Health</stats><br><br><br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. <br><br><br><br><passive>Quest</passive> <br>Earn 1000 gold from this item to transform it into <rarityGeneric>Runic Compass</rarityGeneric>. Gain a charge every <passive>23</passive> seconds, up to <passive>3</passive> charges. While nearby an ally champion, consume a charge to earn gold:<br><li>Damaging Abilities and Attacks against champions or buildings grant <keywordMajor>38</keywordMajor> (melee) / <keywordMajor>36</keywordMajor> (ranged) gold;<li>Killing a minion by any means grants you <keywordMajor>32</keywordMajor> gold and the nearest allied champion kill gold.<br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. </mainText>",
+        "description": "<mainText><stats><attention> 5</attention> Gold Per 10 Seconds<br><attention> 50%</attention> Base Health Regen<br><attention> 50%</attention> Base Mana Regen<br><attention> 100</attention> Health</stats><br><br><br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. <br><br><br><br><passive>Quest</passive> <br>Earn 1000 gold from this item to transform it into <rarityGeneric>Runic Compass</rarityGeneric>. Gain a charge every <passive>20</passive> seconds, up to <passive>3</passive> charges. While nearby an ally champion, consume a charge to earn gold:<br><li>Damaging Abilities and Attacks against champions or buildings grant <keywordMajor>34</keywordMajor> (melee) / <keywordMajor>32</keywordMajor> (ranged) gold;<li>Killing a minion by any means grants you <keywordMajor>28</keywordMajor> gold and the nearest allied champion kill gold.<br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. </mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -7644,7 +7644,7 @@
     {
         "id": 6655,
         "name": "Luden's Companion",
-        "description": "<mainText><stats><attention> 95</attention> Ability Power<br><attention> 600</attention> Mana<br><attention> 20</attention> Ability Haste</stats><br><br><passive>Load</passive><br>Gain a Shot Charge every few seconds.<br><br><passive>Fire</passive><br>Damaging Abilities consume all Shot Charges to deal an additional magic damage to the target and one additional nearby target per charge. If there are insufficient targets in range, for each remaining shot, repeat the damage on the primary target.</mainText>",
+        "description": "<mainText><stats><attention> 95</attention> Ability Power<br><attention> 600</attention> Mana<br><attention> 25</attention> Ability Haste</stats><br><br><passive>Load</passive><br>Gain a Shot Charge every few seconds.<br><br><passive>Fire</passive><br>Damaging Abilities consume all Shot Charges to deal an additional magic damage to the target and one additional nearby target per charge. If there are insufficient targets in range, for each remaining shot, repeat the damage on the primary target.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8564,7 +8564,7 @@
     {
         "id": 7004,
         "name": " Enmity of the Masses",
-        "description": "<mainText><stats><ornnBonus> 110</ornnBonus> Ability Power<br><ornnBonus> 800</ornnBonus> Mana<br><ornnBonus> 30</ornnBonus> Ability Haste</stats><br><br><passive>Scorn</passive><br>Your Ultimate spells gain Ability Haste.<br><br><passive>Hatefog</passive><br>Damaging a champion with your Ultimate burns the ground beneath them, dealing damage and reducing their Magic Resist. <br></mainText>",
+        "description": "<mainText><stats><ornnBonus> 110</ornnBonus> Ability Power<br><ornnBonus> 800</ornnBonus> Mana<br><ornnBonus> 35</ornnBonus> Ability Haste</stats><br><br><passive>Scorn</passive><br>Your Ultimate spells gain Ability Haste.<br><br><passive>Hatefog</passive><br>Damaging a champion with your Ultimate burns the ground beneath them, dealing damage and reducing their Magic Resist. <br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8812,7 +8812,7 @@
     {
         "id": 7013,
         "name": " Force of Arms",
-        "description": "<mainText><stats><ornnBonus> 120</ornnBonus> Ability Power<br><ornnBonus> 950</ornnBonus> Mana<br><ornnBonus> 30</ornnBonus> Ability Haste</stats><br><br><passive>Load</passive><br>Gain a Shot Charge every few seconds.<br><br><passive>Fire</passive><br>Damaging Abilities consume all Shot Charges to deal an additional magic damage to the target and one additional nearby target per charge. If there are insufficient targets in range, for each remaining shot, repeat the damage on the primary target.</mainText>",
+        "description": "<mainText><stats><ornnBonus> 120</ornnBonus> Ability Power<br><ornnBonus> 950</ornnBonus> Mana<br><ornnBonus> 35</ornnBonus> Ability Haste</stats><br><br><passive>Load</passive><br>Gain a Shot Charge every few seconds.<br><br><passive>Fire</passive><br>Damaging Abilities consume all Shot Charges to deal an additional magic damage to the target and one additional nearby target per charge. If there are insufficient targets in range, for each remaining shot, repeat the damage on the primary target.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9871,7 +9871,7 @@
     {
         "id": 223003,
         "name": "Archangel's Staff",
-        "description": "<mainText><stats><nerfedStat> 60</nerfedStat> Ability Power<br><attention> 600</attention> Mana<br><attention> 20</attention> Ability Haste</stats><br><br><br><li><passive>Awe:</passive> Gain Ability Power equal to bonus Mana.<li><passive>Mana Charge:</passive> <buffedStat>After 2 combat rounds</buffedStat>, this item transforms into <rarityLegendary>Seraph's Embrace</rarityLegendary>.</mainText>",
+        "description": "<mainText><stats><nerfedStat> 60</nerfedStat> Ability Power<br><attention> 600</attention> Mana<br><attention> 25</attention> Ability Haste</stats><br><br><br><li><passive>Awe:</passive> Gain Ability Power equal to bonus Mana.<li><passive>Mana Charge:</passive> <buffedStat>After 2 combat rounds</buffedStat>, this item transforms into <rarityLegendary>Seraph's Embrace</rarityLegendary>.</mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -10155,7 +10155,7 @@
     {
         "id": 223040,
         "name": "Seraph's Embrace",
-        "description": "<mainText><stats><attention> 80</attention> Ability Power<br><attention> 1000</attention> Mana<br><attention> 20</attention> Ability Haste</stats><br><br><br><li><passive>Awe:</passive> Gain Ability Power based on Mana.<li><passive>Lifeline:</passive> Upon taking damage that would reduce your Health below 30%, gain a Shield based on your current Mana.</mainText>",
+        "description": "<mainText><stats><attention> 80</attention> Ability Power<br><attention> 1000</attention> Mana<br><attention> 25</attention> Ability Haste</stats><br><br><br><li><passive>Awe:</passive> Gain Ability Power based on Mana.<li><passive>Lifeline:</passive> Upon taking damage that would reduce your Health below 30%, gain a Shield based on your current Mana.</mainText>",
         "active": false,
         "inStore": false,
         "from": [],

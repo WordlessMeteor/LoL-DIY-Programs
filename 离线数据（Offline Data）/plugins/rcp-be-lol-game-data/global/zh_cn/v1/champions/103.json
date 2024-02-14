@@ -2137,7 +2137,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "阿狸向前猛冲，并放出元气弹，对周围的数个敌人造成伤害。灵魄突袭在进入冷却阶段以前最多可被施放三次，并在参与击杀敌方英雄后获得额外的再次施放次数。",
-            "dynamicDescription": "阿狸灵活地突进，并对附近的敌人们发射@RMaxTargetsPerCast@颗灵魄弹，优先选择英雄。这些灵魄弹每颗造成<magicDamage>@RCalculatedDamage@魔法伤害</magicDamage>。<spellName>灵魄突袭</spellName>可以在@RRecastWindow@秒内<recast>再次施放</recast>至多2次。<br><br>在此期间，用<spellName>灵魄突袭</spellName>吞噬一名英雄的魂魄时，会使再次施放的窗口期至多延长至@PDurationExtension@秒并为<spellName>灵魄突袭</spellName>提供一次额外的再次施放(至多可储存至@RMaxCasts@次)。@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "阿狸灵活地突进，并对附近的敌人们发射@RMaxTargetsPerCast@颗灵魄弹，优先选择英雄。这些灵魄弹每颗造成<magicDamage>@RCalculatedDamage@魔法伤害</magicDamage>。<spellName>灵魄突袭</spellName>可以在@RRecastWindow@秒内<recast>再次施放</recast>至多2次。<br><br>在此期间，用<spellName>摄魂夺魄</spellName>吞噬一名英雄的魂魄时，会使再次施放的窗口期至多延长至@PDurationExtension@秒并为<spellName>灵魄突袭</spellName>提供一次额外的再次施放(至多可储存至@RMaxCasts@次)。@SpellModifierDescriptionAppend@",
             "range": [
                 450.0000,
                 450.0000,

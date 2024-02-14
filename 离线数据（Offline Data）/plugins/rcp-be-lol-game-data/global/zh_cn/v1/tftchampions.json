@@ -2216,17 +2216,6 @@
         }
     },
     {
-        "name": "TFT10_DesperadoProp",
-        "character_record": {
-            "path": "Characters/TFT10_DesperadoProp/CharacterRecords/Root",
-            "character_id": "TFT10_DesperadoProp",
-            "rarity": 9,
-            "display_name": "侦察守卫",
-            "traits": [],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_ItemUnknown/Skins/Skin0/TFT_Item_Unknown.png"
-        }
-    },
-    {
         "name": "TFT10_CountryHecarim",
         "character_record": {
             "path": "Characters/TFT10_CountryHecarim/CharacterRecords/Root",
@@ -3637,17 +3626,6 @@
                 }
             ],
             "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Ziggs/HUD/TFT10_Ziggs_Square.TFT_Set10.png"
-        }
-    },
-    {
-        "name": "TFT10_DesperadoProp",
-        "character_record": {
-            "path": "Characters/TFT10_DesperadoProp/CharacterRecords/Root",
-            "character_id": "TFT10_DesperadoProp",
-            "rarity": 9,
-            "display_name": "侦察守卫",
-            "traits": [],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_ItemUnknown/Skins/Skin0/TFT_Item_Unknown.png"
         }
     },
     {
@@ -6352,17 +6330,6 @@
                 }
             ],
             "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Ziggs/HUD/TFT10_Ziggs_Square.TFT_Set10.png"
-        }
-    },
-    {
-        "name": "TFT10_DesperadoProp",
-        "character_record": {
-            "path": "Characters/TFT10_DesperadoProp/CharacterRecords/Root",
-            "character_id": "TFT10_DesperadoProp",
-            "rarity": 9,
-            "display_name": "侦察守卫",
-            "traits": [],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_ItemUnknown/Skins/Skin0/TFT_Item_Unknown.png"
         }
     },
     {

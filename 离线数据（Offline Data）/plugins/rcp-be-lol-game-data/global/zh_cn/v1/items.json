@@ -2431,7 +2431,7 @@
     {
         "id": 3003,
         "name": "大天使之杖",
-        "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得相当于你的额外法力值的法术强度。<br><br><passive>法力流</passive><br>用一个技能击中一个目标时，会消耗一层充能并获得额外法力值。至多提供360法力值，且此时这个装备会转变为<rarityLegendary>炽天使之拥</rarityLegendary>。</mainText>",
+        "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>600</attention>法力<br><attention>25</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得相当于你的额外法力值的法术强度。<br><br><passive>法力流</passive><br>用一个技能击中一个目标时，会消耗一层充能并获得额外法力值。至多提供360法力值，且此时这个装备会转变为<rarityLegendary>炽天使之拥</rarityLegendary>。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -2869,7 +2869,7 @@
     {
         "id": 3040,
         "name": "炽天使之拥",
-        "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>1000</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>敬畏</passive>获得相当于<scaleMana>2%额外法力值</scaleMana>的法术强度。<br><passive>救主灵刃</passive> (90 (0秒))<br>在受到将使你的生命值跌到30%以下的伤害时，获得持续3秒的<shield>250+20%当前法力值的护盾值</shield>。</mainText>",
+        "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>1000</attention>法力<br><attention>25</attention>技能急速</stats><br><br><passive>敬畏</passive>获得相当于<scaleMana>2%额外法力值</scaleMana>的法术强度。<br><passive>救主灵刃</passive> (90 (0秒))<br>在受到将使你的生命值跌到30%以下的伤害时，获得持续3秒的<shield>250+20%当前法力值的护盾值</shield>。</mainText>",
         "active": false,
         "inStore": false,
         "from": [],
@@ -3404,7 +3404,7 @@
     {
         "id": 3074,
         "name": "贪欲九头蛇",
-        "description": "<mainText><stats><attention>70</attention>攻击力<br><attention>20</attention>技能急速<br><attention>12%</attention>生命偷取</stats><br><br><passive>顺劈</passive><br>攻击会对附近的敌人们造成物理伤害。Item_3074_ActiveExternal</mainText>",
+        "description": "<mainText><stats><attention>70</attention>攻击力<br><attention>20</attention>技能急速<br><attention>12%</attention>生命偷取</stats><br><br><passive>顺劈</passive><br>攻击会对附近的敌人们造成物理伤害。<br><br> <active>主动</active><br><active>血斩</active><br>对你周围的敌人们造成附带生命偷取的物理伤害。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -4255,7 +4255,7 @@
     {
         "id": 3118,
         "name": "残疫",
-        "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>蔑视</passive><br>你的终极技能获得技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
+        "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>600</attention>法力<br><attention>25</attention>技能急速</stats><br><br><passive>蔑视</passive><br>你的终极技能获得技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -6151,7 +6151,7 @@
     {
         "id": 3866,
         "name": "符文罗盘",
-        "description": "<mainText><stats><attention>4</attention>金币/10秒<br><attention>50%</attention>基础生命回复<br><attention>50%</attention>基础法力回复<br><attention>100</attention>生命值</stats><br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 <br><br><br><br><passive>任务</passive><br>使用这个装备赚取1000金币来将其转变为<rarityGeneric>符文罗盘</rarityGeneric>。每<passive>23</passive>秒获得1层充能，至多至<passive>3</passive>层。当附近有一个友方英雄时，消耗一层充能来赚取金币：<br><li>对英雄或建筑物进行的伤害型技能和攻击会提供<keywordMajor>38</keywordMajor> (近战) / <keywordMajor>36</keywordMajor> (远程) 金币；<li>以任意方式击杀一个小兵会为你提供<keywordMajor>32</keywordMajor>金币并为相距最近的友方英雄提供击杀金币。<br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
+        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>50%</attention>基础生命回复<br><attention>50%</attention>基础法力回复<br><attention>100</attention>生命值</stats><br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 <br><br><br><br><passive>任务</passive><br>使用这个装备赚取1000金币来将其转变为<rarityGeneric>符文罗盘</rarityGeneric>。每<passive>20</passive>秒获得1层充能，至多至<passive>3</passive>层。当附近有一个友方英雄时，消耗一层充能来赚取金币：<br><li>对英雄或建筑物进行的伤害型技能和攻击会提供<keywordMajor>34</keywordMajor> (近战) / <keywordMajor>32</keywordMajor> (远程) 金币；<li>以任意方式击杀一个小兵会为你提供<keywordMajor>28</keywordMajor>金币并为相距最近的友方英雄提供击杀金币。<br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -7644,7 +7644,7 @@
     {
         "id": 6655,
         "name": "卢登的配枪",
-        "description": "<mainText><stats><attention>95</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>装填</passive><br>每若干秒获得一层【射击充能】。<br><br><passive>开火</passive><br>伤害型技能会消耗所有【射击充能】来对目标和目标附近的其它敌人(其它敌人的数量相当于【射击充能】层数)造成额外魔法伤害。如果距离内的目标数量不足，那么每剩余一次射击，就会对主要目标重复造成一次伤害。</mainText>",
+        "description": "<mainText><stats><attention>95</attention>法术强度<br><attention>600</attention>法力<br><attention>25</attention>技能急速</stats><br><br><passive>装填</passive><br>每若干秒获得一层【射击充能】。<br><br><passive>开火</passive><br>伤害型技能会消耗所有【射击充能】来对目标和目标附近的其它敌人(其它敌人的数量相当于【射击充能】层数)造成额外魔法伤害。如果距离内的目标数量不足，那么每剩余一次射击，就会对主要目标重复造成一次伤害。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8564,7 +8564,7 @@
     {
         "id": 7004,
         "name": " 万众之恨意",
-        "description": "<mainText><stats><ornnBonus>110</ornnBonus>法术强度<br><ornnBonus>800</ornnBonus>法力<br><ornnBonus>30</ornnBonus>技能急速</stats><br><br><passive>蔑视</passive><br>你的终极技能获得技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
+        "description": "<mainText><stats><ornnBonus>110</ornnBonus>法术强度<br><ornnBonus>800</ornnBonus>法力<br><ornnBonus>35</ornnBonus>技能急速</stats><br><br><passive>蔑视</passive><br>你的终极技能获得技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8812,7 +8812,7 @@
     {
         "id": 7013,
         "name": " 武备之力",
-        "description": "<mainText><stats><ornnBonus>120</ornnBonus>法术强度<br><ornnBonus>950</ornnBonus>法力<br><ornnBonus>30</ornnBonus>技能急速</stats><br><br><passive>装填</passive><br>每若干秒获得一层【射击充能】。<br><br><passive>开火</passive><br>伤害型技能会消耗所有【射击充能】来对目标和目标附近的其它敌人(其它敌人的数量相当于【射击充能】层数)造成额外魔法伤害。如果距离内的目标数量不足，那么每剩余一次射击，就会对主要目标重复造成一次伤害。</mainText>",
+        "description": "<mainText><stats><ornnBonus>120</ornnBonus>法术强度<br><ornnBonus>950</ornnBonus>法力<br><ornnBonus>35</ornnBonus>技能急速</stats><br><br><passive>装填</passive><br>每若干秒获得一层【射击充能】。<br><br><passive>开火</passive><br>伤害型技能会消耗所有【射击充能】来对目标和目标附近的其它敌人(其它敌人的数量相当于【射击充能】层数)造成额外魔法伤害。如果距离内的目标数量不足，那么每剩余一次射击，就会对主要目标重复造成一次伤害。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9871,7 +9871,7 @@
     {
         "id": 223003,
         "name": "大天使之杖",
-        "description": "<mainText><stats><nerfedStat> 60</nerfedStat>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><br><li><passive>敬畏：</passive>获得相当于额外法力值的法术强度。<li><passive>法力积攒：</passive><buffedStat>在2个战斗回合后</buffedStat>，这个装备会转变为<rarityLegendary>炽天使之拥</rarityLegendary>。</mainText>",
+        "description": "<mainText><stats><nerfedStat> 60</nerfedStat>法术强度<br><attention>600</attention>法力<br><attention>25</attention>技能急速</stats><br><br><br><li><passive>敬畏：</passive>获得相当于额外法力值的法术强度。<li><passive>法力积攒：</passive><buffedStat>在2个战斗回合后</buffedStat>，这个装备会转变为<rarityLegendary>炽天使之拥</rarityLegendary>。</mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -10155,7 +10155,7 @@
     {
         "id": 223040,
         "name": "炽天使之拥",
-        "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>1000</attention>法力<br><attention>20</attention>技能急速</stats><br><br><br><li><passive>敬畏：</passive>获得基于法力值的法术强度。<li><passive>救主灵刃：</passive>在受到将使你的生命值跌到30%以下的伤害时，基于你的当前法力值提供护盾值。</mainText>",
+        "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>1000</attention>法力<br><attention>25</attention>技能急速</stats><br><br><br><li><passive>敬畏：</passive>获得基于法力值的法术强度。<li><passive>救主灵刃：</passive>在受到将使你的生命值跌到30%以下的伤害时，基于你的当前法力值提供护盾值。</mainText>",
         "active": false,
         "inStore": false,
         "from": [],
@@ -10454,7 +10454,7 @@
     {
         "id": 223074,
         "name": "贪欲九头蛇",
-        "description": "<mainText><stats><attention>70</attention>攻击力<br><attention>20</attention>技能急速<br><buffedStat>15%</buffedStat>生命偷取</stats><br><br><br><li><passive>顺劈：</passive>攻击和技能会对附近的其它敌人造成物理伤害。<br>Item_3074_ActiveExternal</mainText>",
+        "description": "<mainText><stats><attention>70</attention>攻击力<br><attention>20</attention>技能急速<br><buffedStat>15%</buffedStat>生命偷取</stats><br><br><br><li><passive>顺劈：</passive>攻击和技能会对附近的其它敌人造成物理伤害。<br><br><br> <active>主动</active><br><active>血斩</active><br>对你周围的敌人们造成附带生命偷取的物理伤害。</mainText>",
         "active": true,
         "inStore": true,
         "from": [],

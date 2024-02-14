@@ -1802,7 +1802,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "菲奥娜在短时间内对所有即将到来的伤害和限制效果进行招架，然后朝着一个方向进行刺击。这个刺击会减速命中的第一个敌方英雄，如果菲奥娜用这个技能格挡掉一个禁锢类效果，那么刺击会造成晕眩效果而非减速效果。",
-            "dynamicDescription": "Spell_FioraW_Tooltip@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "菲奥娜招架即将到来的所有伤害、限制效果和有害效果，持续@ParryDuration@秒，然后刺击。刺击会对命中的第一个敌方英雄造成<magicDamage>@StabDamage@魔法伤害</magicDamage>，并<status>减速</status>目标的@MSSlowPercent*-100@%<speed>移动速度</speed><attackSpeed>和@AttackSlowPercent*-100@%攻击速度</attackSpeed>，持续@CCDuration@秒。如果菲奥娜招架掉一个<status>定身</status>效果，那么被刺击的敌人会被<status>晕眩</status>而非<status>减速</status>。@SpellModifierDescriptionAppend@",
             "range": [
                 750.0000,
                 750.0000,

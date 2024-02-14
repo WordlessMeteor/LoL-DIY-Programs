@@ -5109,32 +5109,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/The-Ole-Razzle-Dazzle-II.TFT_Set10.png"
     },
     {
-        "guid": "c681a2f6-fc73-4431-bd18-8be6eba88880",
-        "name": "扩展播放",
-        "nameId": "TFT10_Augment_RepetitiveRiffing",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Repetitive-Riffing-II.TFT_Set10.png"
-    },
-    {
-        "guid": "7ba90a63-0e44-4f3b-acf2-7f0e99fc0554",
-        "name": "怦然心动",
-        "nameId": "TFT10_Augment_HeartCollector",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Heart-Collector-II.TFT_Set10.png"
-    },
-    {
         "guid": "ff19fd1b-dc86-4ff0-b784-d51498e7e0db",
         "name": "这就是爵士乐！",
         "nameId": "TFT10_Augment_ThatsJazzBaby",
@@ -10255,32 +10229,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/The-Ole-Razzle-Dazzle-II.TFT_Set10.png"
-    },
-    {
-        "guid": "c681a2f6-fc73-4431-bd18-8be6eba88880",
-        "name": "扩展播放",
-        "nameId": "TFT10_Augment_RepetitiveRiffing",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Repetitive-Riffing-II.TFT_Set10.png"
-    },
-    {
-        "guid": "7ba90a63-0e44-4f3b-acf2-7f0e99fc0554",
-        "name": "怦然心动",
-        "nameId": "TFT10_Augment_HeartCollector",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Heart-Collector-II.TFT_Set10.png"
     },
     {
         "guid": "ff19fd1b-dc86-4ff0-b784-d51498e7e0db",
@@ -19524,32 +19472,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/The-Ole-Razzle-Dazzle-II.TFT_Set10.png"
-    },
-    {
-        "guid": "c681a2f6-fc73-4431-bd18-8be6eba88880",
-        "name": "扩展播放",
-        "nameId": "TFT10_Augment_RepetitiveRiffing",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Repetitive-Riffing-II.TFT_Set10.png"
-    },
-    {
-        "guid": "7ba90a63-0e44-4f3b-acf2-7f0e99fc0554",
-        "name": "怦然心动",
-        "nameId": "TFT10_Augment_HeartCollector",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Heart-Collector-II.TFT_Set10.png"
     },
     {
         "guid": "ff19fd1b-dc86-4ff0-b784-d51498e7e0db",
