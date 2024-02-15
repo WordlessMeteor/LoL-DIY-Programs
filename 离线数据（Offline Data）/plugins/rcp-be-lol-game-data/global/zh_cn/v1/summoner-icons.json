@@ -87473,6 +87473,26 @@
         "disabledRegions": []
     },
     {
+        "id": 6546,
+        "title": "青花瓷 德莱厄斯 炫彩图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6546.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "1个由事件商城专属炫彩附赠的图标。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
         "id": 6547,
         "title": "青花瓷 格雷福斯 边框图标",
         "yearReleased": 2024,
@@ -87488,6 +87508,26 @@
             {
                 "region": "riot",
                 "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6548,
+        "title": "青花瓷 格雷福斯 炫彩图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6548.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "1个由事件商城专属炫彩附赠的图标。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
             }
         ],
         "disabledRegions": []
@@ -87533,6 +87573,26 @@
         "disabledRegions": []
     },
     {
+        "id": 6550,
+        "title": "青花瓷 艾瑞莉娅 炫彩图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6550.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "1个由事件商城专属炫彩附赠的图标。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
         "id": 6551,
         "title": "青花瓷 厄运小姐 边框图标",
         "yearReleased": 2024,
@@ -87553,6 +87613,26 @@
         "disabledRegions": []
     },
     {
+        "id": 6552,
+        "title": "青花瓷 厄运小姐 炫彩图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6552.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "1个由事件商城专属炫彩附赠的图标。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
         "id": 6553,
         "title": "青花瓷 莫甘娜 边框图标",
         "yearReleased": 2024,
@@ -87568,6 +87648,26 @@
             {
                 "region": "riot",
                 "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6554,
+        "title": "青花瓷 莫甘娜 炫彩图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6554.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "1个由事件商城专属炫彩附赠的图标。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
             }
         ],
         "disabledRegions": []
@@ -87608,6 +87708,26 @@
             {
                 "region": "riot",
                 "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6557,
+        "title": "青花瓷 奥瑞利安 · 索尔 炫彩图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6557.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "1个由事件商城专属炫彩附赠的图标。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
             }
         ],
         "disabledRegions": []

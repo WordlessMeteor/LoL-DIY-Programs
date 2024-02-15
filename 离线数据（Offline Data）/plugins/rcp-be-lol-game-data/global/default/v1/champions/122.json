@@ -1014,7 +1014,128 @@
             "splashVideoPath": null,
             "collectionSplashVideoPath": null,
             "featuresText": null,
-            "chromaPath": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/122/122054.png",
+            "chromas": [
+                {
+                    "id": 122055,
+                    "name": "Porcelain Darius",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/122/122055.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2024."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 122056,
+                    "name": "Porcelain Darius",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/122/122056.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 122057,
+                    "name": "Porcelain Darius",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/122/122057.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 122058,
+                    "name": "Porcelain Darius",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/122/122058.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 122059,
+                    "name": "Porcelain Darius",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/122/122059.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 122060,
+                    "name": "Porcelain Darius",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/122/122060.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 122061,
+                    "name": "Porcelain Darius",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/122/122061.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 122062,
+                    "name": "Porcelain Darius",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/122/122062.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 122063,
+                    "name": "",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/122/122063.png",
+                    "colors": [
+                        "#000000",
+                        "#000000"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
             "emblems": null,
             "regionRarityId": 0,
             "rarityGemPath": null,

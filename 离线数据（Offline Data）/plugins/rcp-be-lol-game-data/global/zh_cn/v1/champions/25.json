@@ -1289,7 +1289,128 @@
             "splashVideoPath": null,
             "collectionSplashVideoPath": null,
             "featuresText": null,
-            "chromaPath": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25070.png",
+            "chromas": [
+                {
+                    "id": 25071,
+                    "name": "青花瓷 莫甘娜 牡丹",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25071.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2024年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 25072,
+                    "name": "青花瓷 莫甘娜 芭蕉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25072.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25073,
+                    "name": "青花瓷 莫甘娜 天青",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25073.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25074,
+                    "name": "青花瓷 莫甘娜 釉色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25074.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25075,
+                    "name": "青花瓷 莫甘娜 含苞",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25075.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 25076,
+                    "name": "青花瓷 莫甘娜 墨色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25076.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25077,
+                    "name": "青花瓷 莫甘娜 月色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25077.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25078,
+                    "name": "青花瓷 莫甘娜 金辉玉洁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25078.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 25079,
+                    "name": "",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25079.png",
+                    "colors": [
+                        "#000000",
+                        "#000000"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
             "emblems": null,
             "regionRarityId": 0,
             "rarityGemPath": null,

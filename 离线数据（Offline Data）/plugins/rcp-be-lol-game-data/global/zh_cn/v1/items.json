@@ -3404,7 +3404,7 @@
     {
         "id": 3074,
         "name": "贪欲九头蛇",
-        "description": "<mainText><stats><attention>70</attention>攻击力<br><attention>20</attention>技能急速<br><attention>12%</attention>生命偷取</stats><br><br><passive>顺劈</passive><br>攻击会对附近的敌人们造成物理伤害。<br><br> <active>主动</active><br><active>血斩</active><br>对你周围的敌人们造成附带生命偷取的物理伤害。</mainText>",
+        "description": "<mainText><stats><attention>70</attention>攻击力<br><attention>20</attention>技能急速<br><attention>12%</attention>生命偷取</stats><br><br><passive>顺劈</passive><br>攻击会对附近的敌人们造成物理伤害。<br><br> <active>主动</active>  (0秒)<br><active>血斩</active><br>对你周围的敌人们造成附带生命偷取的物理伤害。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -10454,7 +10454,7 @@
     {
         "id": 223074,
         "name": "贪欲九头蛇",
-        "description": "<mainText><stats><attention>70</attention>攻击力<br><attention>20</attention>技能急速<br><buffedStat>15%</buffedStat>生命偷取</stats><br><br><br><li><passive>顺劈：</passive>攻击和技能会对附近的其它敌人造成物理伤害。<br><br><br> <active>主动</active><br><active>血斩</active><br>对你周围的敌人们造成附带生命偷取的物理伤害。</mainText>",
+        "description": "<mainText><stats><attention>70</attention>攻击力<br><attention>20</attention>技能急速<br><buffedStat>15%</buffedStat>生命偷取</stats><br><br><br><li><passive>顺劈：</passive>攻击和技能会对附近的其它敌人造成物理伤害。<br><br><br> <active>主动</active>  (0秒)<br><active>血斩</active><br>对你周围的敌人们造成附带生命偷取的物理伤害。</mainText>",
         "active": true,
         "inStore": true,
         "from": [],

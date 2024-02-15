@@ -322,7 +322,7 @@
         "majorChangePatchVersion": "",
         "tooltip": "在你攻击一名敌方英雄时，提供持续6秒的%i:scaleAS% (%i:meleeActive% @ASMelee@ || %i:rangedActive% @ASRanged@)攻击速度。这个效果至多可叠加6次。<br><br>在这个效果叠满后，你的攻击速度可以溢出2.5并且你还会获得50攻击距离。<br><hr><br>顶层运行时间：@f1@秒",
         "shortDesc": "在攻击一名敌方英雄时提供攻击速度，至多可叠加6层。在满层时，提供攻击距离并移除你的攻击速度上限。",
-        "longDesc": "在你攻击一名敌方英雄时，提供持续6秒的[54% - 81%] (近战) 或 [21% - 48%] (远程)攻击速度。这个效果至多可叠加6次。<br><br>在这个效果叠满后，你的攻击速度可以溢出2.5并且你还会获得50攻击距离。",
+        "longDesc": "在你攻击一名敌方英雄时，提供持续6秒的[30% - 96%] (近战) 或 [21% - 48%] (远程)攻击速度。这个效果至多可叠加6次。<br><br>在这个效果叠满后，你的攻击速度可以溢出2.5并且你还会获得50攻击距离。",
         "recommendationDescriptor": "不断提升攻击速度",
         "iconPath": "/lol-game-data/assets/v1/perk-images/Styles/Precision/LethalTempo/LethalTempoTemp.png",
         "endOfGameStatDescs": [

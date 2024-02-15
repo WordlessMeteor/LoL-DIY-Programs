@@ -87473,6 +87473,26 @@
         "disabledRegions": []
     },
     {
+        "id": 6546,
+        "title": "Porcelain Darius Chroma Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6546.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "An icon that comes with the Event Shop-exclusive chroma."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
         "id": 6547,
         "title": "Porcelain Graves Border Icon",
         "yearReleased": 2024,
@@ -87488,6 +87508,26 @@
             {
                 "region": "riot",
                 "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6548,
+        "title": "Porcelain Graves Chroma Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6548.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "An icon that comes with the Event Shop-exclusive chroma."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
             }
         ],
         "disabledRegions": []
@@ -87533,6 +87573,26 @@
         "disabledRegions": []
     },
     {
+        "id": 6550,
+        "title": "Porcelain Irelia Chroma Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6550.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "An icon that comes with the Event Shop-exclusive chroma."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
         "id": 6551,
         "title": "Porcelain Miss Fortune Border Icon",
         "yearReleased": 2024,
@@ -87553,6 +87613,26 @@
         "disabledRegions": []
     },
     {
+        "id": 6552,
+        "title": "Porcelain Miss Fortune Chroma Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6552.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "An icon that comes with the Event Shop-exclusive chroma."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
         "id": 6553,
         "title": "Porcelain Morgana Border Icon",
         "yearReleased": 2024,
@@ -87568,6 +87648,26 @@
             {
                 "region": "riot",
                 "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6554,
+        "title": "Porcelain Morgana Chroma Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6554.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "An icon that comes with the Event Shop-exclusive chroma."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
             }
         ],
         "disabledRegions": []
@@ -87608,6 +87708,26 @@
             {
                 "region": "riot",
                 "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6557,
+        "title": "Porcelain Protector Aurelion Sol Chroma Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6557.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "An icon that comes with the Event Shop-exclusive chroma."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
             }
         ],
         "disabledRegions": []

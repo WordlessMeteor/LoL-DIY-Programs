@@ -322,7 +322,7 @@
         "majorChangePatchVersion": "",
         "tooltip": "Gain %i:scaleAS% (%i:meleeActive% @ASMelee@ || %i:rangedActive% @ASRanged@) Attack Speed for 6 seconds when you attack an enemy champion. This effect stacks up to 6 times.<br><br>While this effect is fully stacked, your Attack Speed can exceed 2.5 and you also gain 50 Attack Range.<br><hr><br>Capstone Uptime: @f1@s",
         "shortDesc": "Gain Attack Speed when attacking an enemy champion, stacking up to 6 times. At max stacks, gain Attack Range and remove your Attack Speed limit.",
-        "longDesc": "Gain [54% - 81%] (Melee) or [21% - 48%] (Ranged) Attack Speed for 6 seconds when you attack an enemy champion. This effect stacks up to 6 times.<br><br>While this effect fully stacked, your Attack Speed can exceed 2.5 and you gain 50 Attack Range.",
+        "longDesc": "Gain [30% - 96%] (Melee) or [21% - 48%] (Ranged) Attack Speed for 6 seconds when you attack an enemy champion. This effect stacks up to 6 times.<br><br>While this effect fully stacked, your Attack Speed can exceed 2.5 and you gain 50 Attack Range.",
         "recommendationDescriptor": "Ramping Attack Speed",
         "iconPath": "/lol-game-data/assets/v1/perk-images/Styles/Precision/LethalTempo/LethalTempoTemp.png",
         "endOfGameStatDescs": [

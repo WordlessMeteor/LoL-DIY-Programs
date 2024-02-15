@@ -1125,7 +1125,128 @@
             "splashVideoPath": null,
             "collectionSplashVideoPath": null,
             "featuresText": null,
-            "chromaPath": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21050.png",
+            "chromas": [
+                {
+                    "id": 21051,
+                    "name": "青花瓷 厄运小姐 牡丹",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21051.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2024年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 21052,
+                    "name": "青花瓷 厄运小姐 含苞",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21052.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 21053,
+                    "name": "青花瓷 厄运小姐 釉色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21053.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 21054,
+                    "name": "青花瓷 厄运小姐 墨色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21054.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 21055,
+                    "name": "青花瓷 厄运小姐 初妆",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21055.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 21056,
+                    "name": "青花瓷 厄运小姐 天青",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21056.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 21057,
+                    "name": "青花瓷 厄运小姐 月色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21057.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 21058,
+                    "name": "青花瓷 厄运小姐 金辉玉洁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21058.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 21059,
+                    "name": "",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21059.png",
+                    "colors": [
+                        "#000000",
+                        "#000000"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
             "emblems": null,
             "regionRarityId": 0,
             "rarityGemPath": null,

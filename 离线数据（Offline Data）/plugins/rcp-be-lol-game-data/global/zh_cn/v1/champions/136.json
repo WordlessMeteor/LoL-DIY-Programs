@@ -528,7 +528,95 @@
             "splashVideoPath": null,
             "collectionSplashVideoPath": null,
             "featuresText": null,
-            "chromaPath": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136031.png",
+            "chromas": [
+                {
+                    "id": 136032,
+                    "name": "青花瓷 奥瑞利安 · 索尔 牡丹",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136032.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2024年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 136033,
+                    "name": "青花瓷 奥瑞利安 · 索尔 飘逸",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136033.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136034,
+                    "name": "青花瓷 奥瑞利安 · 索尔 天青",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136034.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136035,
+                    "name": "青花瓷 奥瑞利安 · 索尔 墨色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136035.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136036,
+                    "name": "青花瓷 奥瑞利安 · 索尔 含苞",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136036.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 136037,
+                    "name": "青花瓷 奥瑞利安 · 索尔 金辉玉洁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136037.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
             "emblems": [
                 {
                     "name": "Legend",

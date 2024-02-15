@@ -962,6 +962,54 @@
             "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/104/104045.png",
             "chromas": [
                 {
+                    "id": 104046,
+                    "name": "青花瓷 格雷福斯 牡丹",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/104/104046.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2024年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 104047,
+                    "name": "青花瓷 格雷福斯 含苞",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/104/104047.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 104048,
+                    "name": "青花瓷 格雷福斯 月色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/104/104048.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
                     "id": 104049,
                     "name": "青花瓷 格雷福斯 芭蕉",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/104/104049.png",
@@ -981,6 +1029,66 @@
                             "rarity": 1
                         }
                     ]
+                },
+                {
+                    "id": 104050,
+                    "name": "青花瓷 格雷福斯 墨色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/104/104050.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 104051,
+                    "name": "青花瓷 格雷福斯 天青",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/104/104051.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 104052,
+                    "name": "青花瓷 格雷福斯 釉色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/104/104052.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 104053,
+                    "name": "青花瓷 格雷福斯 金辉玉洁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/104/104053.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 104054,
+                    "name": "",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/104/104054.png",
+                    "colors": [
+                        "#000000",
+                        "#000000"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
                 }
             ],
             "emblems": null,
