@@ -554,17 +554,6 @@
                     "rarities": []
                 },
                 {
-                    "id": 136034,
-                    "name": "Porcelain Protector Aurelion Sol",
-                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136034.png",
-                    "colors": [
-                        "#73BFBE",
-                        "#73BFBE"
-                    ],
-                    "descriptions": [],
-                    "rarities": []
-                },
-                {
                     "id": 136035,
                     "name": "Porcelain Protector Aurelion Sol",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136035.png",

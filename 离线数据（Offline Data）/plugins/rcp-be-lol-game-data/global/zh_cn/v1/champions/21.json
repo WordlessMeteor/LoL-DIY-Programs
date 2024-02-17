@@ -1234,17 +1234,6 @@
                             "rarity": 1
                         }
                     ]
-                },
-                {
-                    "id": 21059,
-                    "name": "",
-                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/21/21059.png",
-                    "colors": [
-                        "#000000",
-                        "#000000"
-                    ],
-                    "descriptions": [],
-                    "rarities": []
                 }
             ],
             "emblems": null,
