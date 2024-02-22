@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "data": {
         "Graves": {
             "id": "Graves",
@@ -95,6 +95,12 @@
                     "num": 42,
                     "name": "EDG Graves",
                     "chromas": true
+                },
+                {
+                    "id": "104045",
+                    "num": 45,
+                    "name": "Porcelain Graves",
+                    "chromas": false
                 }
             ],
             "lore": "Malcolm Graves is a renowned mercenary, gambler, and thief—a wanted man in every city and empire he has visited. Even though he has an explosive temper, he possesses a strict sense of criminal honor, often enforced at the business end of his double-barreled shotgun Destiny. In recent years, he has reconciled a troubled partnership with Twisted Fate, and together they have prospered once more in the turmoil of Bilgewater's criminal underbelly.",

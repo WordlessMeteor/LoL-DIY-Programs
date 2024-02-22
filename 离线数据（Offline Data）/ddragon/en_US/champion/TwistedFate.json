@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "data": {
         "TwistedFate": {
             "id": "TwistedFate",
@@ -155,7 +155,7 @@
                 "critperlevel": 0,
                 "attackdamage": 52,
                 "attackdamageperlevel": 3.3,
-                "attackspeedperlevel": 3,
+                "attackspeedperlevel": 2.5,
                 "attackspeed": 0.625
             },
             "spells": [

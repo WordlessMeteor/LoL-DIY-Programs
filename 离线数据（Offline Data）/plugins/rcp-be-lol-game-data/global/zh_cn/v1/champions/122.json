@@ -1071,6 +1071,7 @@
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/122/122054.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/122/122054.jpg",
             "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Darius/Skins/Skin54/DariusLoadScreen_54.PIE_C_14_4.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Darius/Skins/Skin54/DariusLoadScreen_54_LE.PIE_C_14_4.jpg",
             "skinType": "",
             "rarity": "kEpic",
             "isLegacy": false,
@@ -1183,6 +1184,27 @@
                     "rarities": [
                         {
                             "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 122063,
+                    "name": "",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/122/122063.png",
+                    "colors": [
+                        "#3AC8B1",
+                        "#B0412A"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": ""
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
                             "rarity": 1
                         }
                     ]

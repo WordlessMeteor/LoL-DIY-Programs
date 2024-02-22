@@ -1,7 +1,17 @@
 {
     "type": "tft-augment",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "augment-container": {
+        "name": "Hexcore Augments",
+        "image": {
+            "full": "gear.png",
+            "sprite": "tft-augment0.png",
+            "group": "tft-augment",
+            "x": 0,
+            "y": 0,
+            "w": 48,
+            "h": 48
+        },
         "name": "Boombox Augment",
         "image": {
             "full": "EOG_AugmentProp_Set10.TFT_Set10.png",
@@ -11,9 +21,117 @@
             "y": 0,
             "w": 48,
             "h": 48
+        },
+        "name": "Boombox Augment",
+        "image": {
+            "full": "EOG_AugmentProp_Set10.TFT_Set10.png",
+            "sprite": "tft-augment0.png",
+            "group": "tft-augment",
+            "x": 0,
+            "y": 0,
+            "w": 48,
+            "h": 48
+        },
+        "name": "Galaxy Augment",
+        "image": {
+            "full": "EOG_AugmentProp_Set3.png",
+            "sprite": "tft-augment0.png",
+            "group": "tft-augment",
+            "x": 0,
+            "y": 0,
+            "w": 48,
+            "h": 48
+        },
+        "name": "Boombox Augment",
+        "image": {
+            "full": "gear.png",
+            "sprite": "tft-augment0.png",
+            "group": "tft-augment",
+            "x": 0,
+            "y": 0,
+            "w": 48,
+            "h": 48
         }
     },
     "data": {
+        "TFTTutorial_Augment_BackRowAS1": {
+            "id": "TFTTutorial_Augment_BackRowAS1",
+            "name": "Swift Strike",
+            "image": {
+                "full": "Tutorial-Swift-Strike-I.png",
+                "sprite": "tft-augment0.png",
+                "group": "tft-augment",
+                "x": 48,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFTTutorial_Augment_FrontRowHealth1": {
+            "id": "TFTTutorial_Augment_FrontRowHealth1",
+            "name": "Bulwark",
+            "image": {
+                "full": "Tutorial-Bulwark-I.png",
+                "sprite": "tft-augment0.png",
+                "group": "tft-augment",
+                "x": 96,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFTTutorial_Augment_FrontRowMana1": {
+            "id": "TFTTutorial_Augment_FrontRowMana1",
+            "name": "Splash Zone",
+            "image": {
+                "full": "Tutorial-Splash-Zone-I.png",
+                "sprite": "tft-augment0.png",
+                "group": "tft-augment",
+                "x": 144,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFTTutorial_Augment_WithItemAS2": {
+            "id": "TFTTutorial_Augment_WithItemAS2",
+            "name": "Elite Vanguard",
+            "image": {
+                "full": "Tutorial-Elite-Vanguard-II.png",
+                "sprite": "tft-augment0.png",
+                "group": "tft-augment",
+                "x": 192,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFTTutorial_Augment_WithItemHealth2": {
+            "id": "TFTTutorial_Augment_WithItemHealth2",
+            "name": "Cybernetic Mass",
+            "image": {
+                "full": "Cybernetic-Bulk-II.png",
+                "sprite": "tft-augment0.png",
+                "group": "tft-augment",
+                "x": 240,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFTTutorial_Augment_WithoutItemAS2": {
+            "id": "TFTTutorial_Augment_WithoutItemAS2",
+            "name": "Unhindered",
+            "image": {
+                "full": "Unladen-Airspeed-Velocity-II.png",
+                "sprite": "tft-augment0.png",
+                "group": "tft-augment",
+                "x": 288,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
         "TFT6_Augment_SalvageBin": {
             "id": "TFT6_Augment_SalvageBin",
             "name": "Salvage Bin",
@@ -21,7 +139,7 @@
                 "full": "Salvage2.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 48,
+                "x": 336,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -34,7 +152,7 @@
                 "full": "SlowAndSteady3.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 96,
+                "x": 384,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -47,7 +165,7 @@
                 "full": "PortableForge2.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 144,
+                "x": 432,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -60,8 +178,8 @@
                 "full": "BinaryAirdrop3.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 192,
-                "y": 0,
+                "x": 0,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -73,8 +191,8 @@
                 "full": "Recombobulator-I.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 240,
-                "y": 0,
+                "x": 48,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -86,8 +204,8 @@
                 "full": "Jeweled-Lotus-II.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 288,
-                "y": 0,
+                "x": 96,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -99,8 +217,8 @@
                 "full": "Sacrificial-Pact-III.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 336,
-                "y": 0,
+                "x": 144,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -112,8 +230,8 @@
                 "full": "Threes-Company-II.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 384,
-                "y": 0,
+                "x": 192,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -125,8 +243,8 @@
                 "full": "Living-Forge-III.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 432,
-                "y": 0,
+                "x": 240,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -138,7 +256,7 @@
                 "full": "AFK-I.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 0,
+                "x": 288,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -151,7 +269,7 @@
                 "full": "Last-Stand-II.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 48,
+                "x": 336,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -164,7 +282,7 @@
                 "full": "RichGetRicher2.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 96,
+                "x": 384,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -177,7 +295,7 @@
                 "full": "RichGetRicher2.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 144,
+                "x": 432,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -190,8 +308,8 @@
                 "full": "Golden-Gifts-III.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 192,
-                "y": 48,
+                "x": 0,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -203,8 +321,8 @@
                 "full": "GoldenTicket3.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 240,
-                "y": 48,
+                "x": 48,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -216,8 +334,8 @@
                 "full": "GoldenTicket2.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 288,
-                "y": 48,
+                "x": 96,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -229,8 +347,8 @@
                 "full": "Young-and-wild-and-free-I.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 336,
-                "y": 48,
+                "x": 144,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -242,8 +360,8 @@
                 "full": "Cybernetic-Bulk-II.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 384,
-                "y": 48,
+                "x": 192,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -255,8 +373,8 @@
                 "full": "Phreaky-Friday-III.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 432,
-                "y": 48,
+                "x": 240,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -268,7 +386,7 @@
                 "full": "Cybernetic-Bulk-I.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 0,
+                "x": 288,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -281,7 +399,7 @@
                 "full": "Prototype-Forge-II.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 48,
+                "x": 336,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -294,7 +412,7 @@
                 "full": "Cybernetic-Bulk-III.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 96,
+                "x": 384,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -307,7 +425,7 @@
                 "full": "Starter-Kit-III.png",
                 "sprite": "tft-augment0.png",
                 "group": "tft-augment",
-                "x": 144,
+                "x": 432,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -318,10 +436,10 @@
             "name": "Cybernetic Uplink I",
             "image": {
                 "full": "Cybernetic-Uplink-I.png",
-                "sprite": "tft-augment0.png",
+                "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 192,
-                "y": 96,
+                "x": 0,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -331,10 +449,10 @@
             "name": "Cybernetic Uplink II",
             "image": {
                 "full": "Cybernetic-Uplink-II.png",
-                "sprite": "tft-augment0.png",
+                "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 240,
-                "y": 96,
+                "x": 48,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -344,10 +462,10 @@
             "name": "Latent Forge",
             "image": {
                 "full": "Long-time-Crafting-I.png",
-                "sprite": "tft-augment0.png",
+                "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 288,
-                "y": 96,
+                "x": 96,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -357,10 +475,10 @@
             "name": "Cybernetic Uplink III",
             "image": {
                 "full": "Cybernetic-Uplink-III.png",
-                "sprite": "tft-augment0.png",
+                "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 336,
-                "y": 96,
+                "x": 144,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -370,10 +488,10 @@
             "name": "Unified Resistance II",
             "image": {
                 "full": "Red-Rover-II.png",
-                "sprite": "tft-augment0.png",
+                "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 384,
-                "y": 96,
+                "x": 192,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -383,10 +501,10 @@
             "name": "Tons of Stats!",
             "image": {
                 "full": "Tons-of-Stats-II.png",
-                "sprite": "tft-augment0.png",
+                "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 432,
-                "y": 96,
+                "x": 240,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -398,7 +516,7 @@
                 "full": "Red-Rover-I.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 0,
+                "x": 288,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -411,7 +529,7 @@
                 "full": "Silver-Spoon-I.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 48,
+                "x": 336,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -424,7 +542,7 @@
                 "full": "The-customer-is-always-right-I.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 96,
+                "x": 384,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -437,7 +555,7 @@
                 "full": "Iron-Assets-I.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 144,
+                "x": 432,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -450,8 +568,8 @@
                 "full": "On-a-Roll-I.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 192,
-                "y": 0,
+                "x": 0,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -463,8 +581,8 @@
                 "full": "Stars-are-born-II.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 240,
-                "y": 0,
+                "x": 48,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -476,8 +594,8 @@
                 "full": "Impromptu-Invention-II.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 288,
-                "y": 0,
+                "x": 96,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -489,8 +607,8 @@
                 "full": "Threes-Company-I.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 336,
-                "y": 0,
+                "x": 144,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -502,8 +620,8 @@
                 "full": "Indomitable-Will-I.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 384,
-                "y": 0,
+                "x": 192,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -515,8 +633,8 @@
                 "full": "Final-Reserves-III.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 432,
-                "y": 0,
+                "x": 240,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -528,7 +646,7 @@
                 "full": "Missed-Connections-I.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 0,
+                "x": 288,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -541,7 +659,7 @@
                 "full": "Infusion-II.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 48,
+                "x": 336,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -554,7 +672,7 @@
                 "full": "Roll-the-Dice-III.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 96,
+                "x": 384,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -567,7 +685,7 @@
                 "full": "What-The-Forge-III.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 144,
+                "x": 432,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -580,8 +698,8 @@
                 "full": "Sleight-of-Hand-II.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 192,
-                "y": 48,
+                "x": 0,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -593,8 +711,8 @@
                 "full": "Blood-Money-I.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 240,
-                "y": 48,
+                "x": 48,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -606,8 +724,8 @@
                 "full": "A-Cut-Above-II.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 288,
-                "y": 48,
+                "x": 96,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -619,8 +737,8 @@
                 "full": "Idealism-II.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 336,
-                "y": 48,
+                "x": 144,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -632,8 +750,8 @@
                 "full": "Healing-Orbs-I.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 384,
-                "y": 48,
+                "x": 192,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -645,8 +763,8 @@
                 "full": "Healing-Orbs-II.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 432,
-                "y": 48,
+                "x": 240,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -658,7 +776,7 @@
                 "full": "Gargantuan-Resolve-II.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 0,
+                "x": 288,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -671,7 +789,7 @@
                 "full": "Gifts-from-the-Fallen-II.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 48,
+                "x": 336,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -684,7 +802,7 @@
                 "full": "RichGetRicher3.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 96,
+                "x": 384,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -697,7 +815,7 @@
                 "full": "RichGetRicher3.png",
                 "sprite": "tft-augment1.png",
                 "group": "tft-augment",
-                "x": 144,
+                "x": 432,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -708,10 +826,10 @@
             "name": "Martyr",
             "image": {
                 "full": "Martyr-II.png",
-                "sprite": "tft-augment1.png",
+                "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 192,
-                "y": 96,
+                "x": 0,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -721,10 +839,10 @@
             "name": "Long Distance Pals",
             "image": {
                 "full": "Long-Distance-Relationship-II.png",
-                "sprite": "tft-augment1.png",
+                "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 240,
-                "y": 96,
+                "x": 48,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -734,10 +852,10 @@
             "name": "Contagion",
             "image": {
                 "full": "Contagion-II.png",
-                "sprite": "tft-augment1.png",
+                "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 288,
-                "y": 96,
+                "x": 96,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -747,10 +865,10 @@
             "name": "Jeweled Lotus III",
             "image": {
                 "full": "Jeweled-Lotus-III.png",
-                "sprite": "tft-augment1.png",
+                "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 336,
-                "y": 96,
+                "x": 144,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -760,10 +878,10 @@
             "name": "Silver Ticket",
             "image": {
                 "full": "GoldenTicket1.png",
-                "sprite": "tft-augment1.png",
+                "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 384,
-                "y": 96,
+                "x": 192,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -773,10 +891,10 @@
             "name": "Buried Treasures I",
             "image": {
                 "full": "Buried-Treasures-I.png",
-                "sprite": "tft-augment1.png",
+                "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 432,
-                "y": 96,
+                "x": 240,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -788,7 +906,7 @@
                 "full": "Buried-Treasures-II.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 0,
+                "x": 288,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -801,7 +919,7 @@
                 "full": "Buried-Treasures-III.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 48,
+                "x": 336,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -814,7 +932,7 @@
                 "full": "Know-Your-Enemy-II.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 96,
+                "x": 384,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -827,7 +945,7 @@
                 "full": "Tiny-Titans-I.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 144,
+                "x": 432,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -840,8 +958,8 @@
                 "full": "MetabolicAccel2.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 192,
-                "y": 0,
+                "x": 0,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -853,8 +971,8 @@
                 "full": "Harmacist-1-2-3-I.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 240,
-                "y": 0,
+                "x": 48,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -866,8 +984,8 @@
                 "full": "Harmacist-1-2-3-II.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 288,
-                "y": 0,
+                "x": 96,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -879,8 +997,8 @@
                 "full": "Harmacist-1-2-3-III.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 336,
-                "y": 0,
+                "x": 144,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -892,8 +1010,8 @@
                 "full": "Pandora1.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 384,
-                "y": 0,
+                "x": 192,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -905,8 +1023,8 @@
                 "full": "Pandora3.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 432,
-                "y": 0,
+                "x": 240,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -918,7 +1036,7 @@
                 "full": "Pandora2.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 0,
+                "x": 288,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -931,7 +1049,7 @@
                 "full": "What-Doesn_t-Kill-You-II.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 48,
+                "x": 336,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -944,7 +1062,7 @@
                 "full": "Building-an-army-I.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 96,
+                "x": 384,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -957,7 +1075,7 @@
                 "full": "Risky-Moves-I.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 144,
+                "x": 432,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -970,8 +1088,8 @@
                 "full": "Not-Today-II.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 192,
-                "y": 48,
+                "x": 0,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -983,8 +1101,8 @@
                 "full": "One-Two-Five-I.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 240,
-                "y": 48,
+                "x": 48,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -996,8 +1114,8 @@
                 "full": "GoldReserves2.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 288,
-                "y": 48,
+                "x": 96,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -1009,8 +1127,8 @@
                 "full": "Spoils-Of-War-Legend-I.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 336,
-                "y": 48,
+                "x": 144,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -1022,8 +1140,8 @@
                 "full": "Spoils-Of-War-Legend-II.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 384,
-                "y": 48,
+                "x": 192,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -1035,8 +1153,8 @@
                 "full": "Spoils-Of-War-Legend-III.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 432,
-                "y": 48,
+                "x": 240,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -1048,7 +1166,7 @@
                 "full": "Pumping-Up-I.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 0,
+                "x": 288,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -1061,7 +1179,7 @@
                 "full": "Pumping-Up-II.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 48,
+                "x": 336,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -1074,7 +1192,7 @@
                 "full": "Pumping-Up-III.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 96,
+                "x": 384,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -1087,7 +1205,7 @@
                 "full": "Tiniest-TitanIII.png",
                 "sprite": "tft-augment2.png",
                 "group": "tft-augment",
-                "x": 144,
+                "x": 432,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -1098,10 +1216,10 @@
             "name": "Trade Sector",
             "image": {
                 "full": "Trade2.png",
-                "sprite": "tft-augment2.png",
+                "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 192,
-                "y": 96,
+                "x": 0,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -1111,10 +1229,10 @@
             "name": "Level Up!",
             "image": {
                 "full": "LevelUp3.png",
-                "sprite": "tft-augment2.png",
+                "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 240,
-                "y": 96,
+                "x": 48,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -1124,10 +1242,10 @@
             "name": "Parting Gifts",
             "image": {
                 "full": "It_s-Dangerous-to-Go-Alone-I.png",
-                "sprite": "tft-augment2.png",
+                "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 288,
-                "y": 96,
+                "x": 96,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -1137,10 +1255,10 @@
             "name": "You Have My Sword",
             "image": {
                 "full": "You-Have-My-Sword-II.png",
-                "sprite": "tft-augment2.png",
+                "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 336,
-                "y": 96,
+                "x": 144,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -1150,10 +1268,10 @@
             "name": "You Have My Bow",
             "image": {
                 "full": "You-Have-My-Bow-II.png",
-                "sprite": "tft-augment2.png",
+                "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 384,
-                "y": 96,
+                "x": 192,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -1163,10 +1281,10 @@
             "name": "Magic Wand",
             "image": {
                 "full": "Old-Man_s-Walking-Stick-II.png",
-                "sprite": "tft-augment2.png",
+                "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 432,
-                "y": 96,
+                "x": 240,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -1178,7 +1296,7 @@
                 "full": "Escort-Quest-II.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 0,
+                "x": 288,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -1191,7 +1309,7 @@
                 "full": "Three_s-a-Crowd-II.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 48,
+                "x": 336,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -1204,7 +1322,7 @@
                 "full": "Two-Healthy-II.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 96,
+                "x": 384,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -1217,7 +1335,7 @@
                 "full": "Red-Buff-I.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 144,
+                "x": 432,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -1230,8 +1348,8 @@
                 "full": "Money-Heals-all-Wounds-III.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 192,
-                "y": 0,
+                "x": 0,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -1243,8 +1361,8 @@
                 "full": "Learning-From-Experience-II.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 240,
-                "y": 0,
+                "x": 48,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -1256,8 +1374,8 @@
                 "full": "RadiantRelic-III.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 288,
-                "y": 0,
+                "x": 96,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -1269,8 +1387,8 @@
                 "full": "ItemGrabBag1.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 336,
-                "y": 0,
+                "x": 144,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -1282,8 +1400,8 @@
                 "full": "Combat-Caster-II.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 384,
-                "y": 0,
+                "x": 192,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -1295,8 +1413,8 @@
                 "full": "Berserk-III.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 432,
-                "y": 0,
+                "x": 240,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -1308,7 +1426,7 @@
                 "full": "StandBehind3.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 0,
+                "x": 288,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -1321,7 +1439,7 @@
                 "full": "LifelongLearner3.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 48,
+                "x": 336,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -1334,7 +1452,7 @@
                 "full": "Eagle-Eye-III.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 96,
+                "x": 384,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -1347,7 +1465,7 @@
                 "full": "Late-Game-Specialist-I.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 144,
+                "x": 432,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -1360,8 +1478,8 @@
                 "full": "CursedCrown-III.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 192,
-                "y": 48,
+                "x": 0,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -1373,8 +1491,8 @@
                 "full": "The-Golden-Egg-III.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 240,
-                "y": 48,
+                "x": 48,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -1386,8 +1504,8 @@
                 "full": "Trade3.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 288,
-                "y": 48,
+                "x": 96,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -1399,8 +1517,8 @@
                 "full": "Caretaker_s-Chosen-I.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 336,
-                "y": 48,
+                "x": 144,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -1412,8 +1530,8 @@
                 "full": "Caretaker_s-Chosen-II.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 384,
-                "y": 48,
+                "x": 192,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -1425,8 +1543,8 @@
                 "full": "Caretaker_s-Chosen-III.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 432,
-                "y": 48,
+                "x": 240,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -1438,7 +1556,7 @@
                 "full": "Phreaky-Friday-III.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 0,
+                "x": 288,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -1451,7 +1569,7 @@
                 "full": "Infernal-Contract-III.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 48,
+                "x": 336,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -1464,7 +1582,7 @@
                 "full": "Cutting-Corners-I.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 96,
+                "x": 384,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -1477,7 +1595,7 @@
                 "full": "RichGetRicher3.png",
                 "sprite": "tft-augment3.png",
                 "group": "tft-augment",
-                "x": 144,
+                "x": 432,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -1488,10 +1606,10 @@
             "name": "Salvage Bin+",
             "image": {
                 "full": "Salvage2.png",
-                "sprite": "tft-augment3.png",
+                "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 192,
-                "y": 96,
+                "x": 0,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -1501,10 +1619,10 @@
             "name": "Endless Hordes",
             "image": {
                 "full": "100-Duck-Sized-Horses-III.png",
-                "sprite": "tft-augment3.png",
+                "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 240,
-                "y": 96,
+                "x": 48,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -1514,10 +1632,10 @@
             "name": "Crash Test Dummies",
             "image": {
                 "full": "Crash-Test-Dummies-II.TFT_Set10.png",
-                "sprite": "tft-augment3.png",
+                "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 288,
-                "y": 96,
+                "x": 96,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -1527,10 +1645,10 @@
             "name": "Lucky Streak",
             "image": {
                 "full": "Lucky-Streak-II.TFT_Set10.png",
-                "sprite": "tft-augment3.png",
+                "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 336,
-                "y": 96,
+                "x": 144,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -1540,10 +1658,10 @@
             "name": "Blank Slate",
             "image": {
                 "full": "Blank-Slate-II.TFT_Set10.png",
-                "sprite": "tft-augment3.png",
+                "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 384,
-                "y": 96,
+                "x": 192,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -1553,10 +1671,10 @@
             "name": "Determined Investors",
             "image": {
                 "full": "A-Determined-Investor-III.TFT_Set10.png",
-                "sprite": "tft-augment3.png",
+                "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 432,
-                "y": 96,
+                "x": 240,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -1568,7 +1686,7 @@
                 "full": "Best-Friends-I.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 0,
+                "x": 288,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -1581,7 +1699,7 @@
                 "full": "Twin-Terror-II.TFT_Set10.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 48,
+                "x": 336,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -1594,7 +1712,7 @@
                 "full": "Best-Friends-II.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 96,
+                "x": 384,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -1607,7 +1725,7 @@
                 "full": "Twin-Terror-III.TFT_Set10.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 144,
+                "x": 432,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -1620,8 +1738,8 @@
                 "full": "Learning-To-Spell-II.TFT_Set10.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 192,
-                "y": 0,
+                "x": 0,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -1633,8 +1751,8 @@
                 "full": "Keepers-I.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 240,
-                "y": 0,
+                "x": 48,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -1646,8 +1764,8 @@
                 "full": "Heavy-Hitters-II.TFT_Set10.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 288,
-                "y": 0,
+                "x": 96,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -1659,8 +1777,8 @@
                 "full": "Keepers-II.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 336,
-                "y": 0,
+                "x": 144,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -1672,8 +1790,8 @@
                 "full": "Big-Gains-II.TFT_Set10.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 384,
-                "y": 0,
+                "x": 192,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -1685,8 +1803,8 @@
                 "full": "Inspiring-Epitaph-II.TFT_Set10.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 432,
-                "y": 0,
+                "x": 240,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -1698,7 +1816,7 @@
                 "full": "Vampirism-I.TFT_Set10.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 0,
+                "x": 288,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -1711,7 +1829,7 @@
                 "full": "Vampirism-II.TFT_Set10.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 48,
+                "x": 336,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -1724,7 +1842,7 @@
                 "full": "NewRecruit3.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 96,
+                "x": 384,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -1737,7 +1855,7 @@
                 "full": "Shock-Treatment-II.TFT_Set10.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 144,
+                "x": 432,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -1750,8 +1868,8 @@
                 "full": "Low-Interest-Rates-II.TFT_Set10.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 192,
-                "y": 48,
+                "x": 0,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -1763,8 +1881,8 @@
                 "full": "Switching-Gears-I.TFT_Set10.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 240,
-                "y": 48,
+                "x": 48,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -1776,8 +1894,8 @@
                 "full": "Heroic-Grab-Bag-II.TFT_Set10.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 288,
-                "y": 48,
+                "x": 96,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -1789,8 +1907,8 @@
                 "full": "Reach-The-Summit-I.TFT_Set10.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 336,
-                "y": 48,
+                "x": 144,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -1802,8 +1920,8 @@
                 "full": "Fully-Adapted-II.TFT_Set10.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 384,
-                "y": 48,
+                "x": 192,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -1815,8 +1933,8 @@
                 "full": "Ascension3.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 432,
-                "y": 48,
+                "x": 240,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -1828,7 +1946,7 @@
                 "full": "Ascension1.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 0,
+                "x": 288,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -1841,7 +1959,7 @@
                 "full": "Ascension2.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 48,
+                "x": 336,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -1854,7 +1972,7 @@
                 "full": "ClearMind2.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 96,
+                "x": 384,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -1867,7 +1985,7 @@
                 "full": "Dizzy-II.png",
                 "sprite": "tft-augment4.png",
                 "group": "tft-augment",
-                "x": 144,
+                "x": 432,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -1878,10 +1996,10 @@
             "name": "Good For Something II",
             "image": {
                 "full": "Good-For-Something-II.TFT_Set10.png",
-                "sprite": "tft-augment4.png",
+                "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 192,
-                "y": 96,
+                "x": 0,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -1891,10 +2009,10 @@
             "name": "Going Long",
             "image": {
                 "full": "Going-Long-III.TFT_Set10.png",
-                "sprite": "tft-augment4.png",
+                "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 240,
-                "y": 96,
+                "x": 48,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -1904,10 +2022,10 @@
             "name": "Sticks And Stones",
             "image": {
                 "full": "Sticks-And-Stones-I.TFT_Set10.png",
-                "sprite": "tft-augment4.png",
+                "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 288,
-                "y": 96,
+                "x": 96,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -1917,10 +2035,10 @@
             "name": "Scapegoat",
             "image": {
                 "full": "The-Scapegoat-II.TFT_Set10.png",
-                "sprite": "tft-augment4.png",
+                "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 336,
-                "y": 96,
+                "x": 144,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -1930,10 +2048,10 @@
             "name": "Good For Something I",
             "image": {
                 "full": "Good-For-Something-I.TFT_Set10.png",
-                "sprite": "tft-augment4.png",
+                "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 384,
-                "y": 96,
+                "x": 192,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -1943,10 +2061,10 @@
             "name": "Crown Guarded",
             "image": {
                 "full": "Crown-Guarded-II.TFT_Set10.png",
-                "sprite": "tft-augment4.png",
+                "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 432,
-                "y": 96,
+                "x": 240,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -1958,7 +2076,7 @@
                 "full": "The-Silver-Veil-I.TFT_Set10.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 0,
+                "x": 288,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -1971,7 +2089,7 @@
                 "full": "Help-Is-On-The-Way-I.TFT_Set10.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 48,
+                "x": 336,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -1984,7 +2102,7 @@
                 "full": "Stimpack-I.TFT_Set10.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 96,
+                "x": 384,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -1997,7 +2115,7 @@
                 "full": "Support-Cache-II.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 144,
+                "x": 432,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2010,8 +2128,8 @@
                 "full": "Stationary-Support-II.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 192,
-                "y": 0,
+                "x": 0,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -2023,8 +2141,8 @@
                 "full": "Lucky-Gloves-III.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 240,
-                "y": 0,
+                "x": 48,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -2036,8 +2154,8 @@
                 "full": "Lucky-Gloves-III.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 288,
-                "y": 0,
+                "x": 96,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -2049,8 +2167,8 @@
                 "full": "Stationary-Support-III.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 336,
-                "y": 0,
+                "x": 144,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -2062,8 +2180,8 @@
                 "full": "Tiniest-TitanIII.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 384,
-                "y": 0,
+                "x": 192,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -2075,8 +2193,8 @@
                 "full": "Balanced-Budget-II.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 432,
-                "y": 0,
+                "x": 240,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -2088,7 +2206,7 @@
                 "full": "Teaming-Up-II.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 0,
+                "x": 288,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2101,7 +2219,7 @@
                 "full": "PortableForge2.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 48,
+                "x": 336,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2114,7 +2232,7 @@
                 "full": "PortableForge2.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 96,
+                "x": 384,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2127,7 +2245,7 @@
                 "full": "Teaming-Up-I.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 144,
+                "x": 432,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2140,8 +2258,8 @@
                 "full": "Stationary-Support-I.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 192,
-                "y": 48,
+                "x": 0,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -2153,8 +2271,8 @@
                 "full": "Rolling-For-Days-I.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 240,
-                "y": 48,
+                "x": 48,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -2166,8 +2284,8 @@
                 "full": "Grab-Bag-II.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 288,
-                "y": 48,
+                "x": 96,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -2179,8 +2297,8 @@
                 "full": "Pirates2.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 336,
-                "y": 48,
+                "x": 144,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -2192,8 +2310,8 @@
                 "full": "Little-Buddies-II.TFT_Set10.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 384,
-                "y": 48,
+                "x": 192,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -2205,8 +2323,8 @@
                 "full": "Balanced-Budget-II.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 432,
-                "y": 48,
+                "x": 240,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -2218,7 +2336,7 @@
                 "full": "Raise-The-Tempo-II.TFT_Set10.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 0,
+                "x": 288,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2231,7 +2349,7 @@
                 "full": "Remember-Your-Roots-II.TFT_Set10.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 48,
+                "x": 336,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2244,7 +2362,7 @@
                 "full": "Talent-Search-III.TFT_Set10.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 96,
+                "x": 384,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2257,7 +2375,7 @@
                 "full": "Emotional-Connection-II.TFT_Set10.png",
                 "sprite": "tft-augment5.png",
                 "group": "tft-augment",
-                "x": 144,
+                "x": 432,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -2268,10 +2386,10 @@
             "name": "Metalheads",
             "image": {
                 "full": "Metalheads-II.TFT_Set10.png",
-                "sprite": "tft-augment5.png",
+                "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 192,
-                "y": 96,
+                "x": 0,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -2281,10 +2399,10 @@
             "name": "Hologram",
             "image": {
                 "full": "Hologram-III.TFT_Set10.png",
-                "sprite": "tft-augment5.png",
+                "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 240,
-                "y": 96,
+                "x": 48,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -2294,10 +2412,10 @@
             "name": "Ramping Rhythm",
             "image": {
                 "full": "Ramping-Rhythm-II.TFT_Set10.png",
-                "sprite": "tft-augment5.png",
+                "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 288,
-                "y": 96,
+                "x": 96,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -2307,10 +2425,10 @@
             "name": "Bigger Shot",
             "image": {
                 "full": "Bigger-Shot-II.TFT_Set10.png",
-                "sprite": "tft-augment5.png",
+                "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 336,
-                "y": 96,
+                "x": 144,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -2320,10 +2438,10 @@
             "name": "Live for Danger",
             "image": {
                 "full": "Cold-Steel-II.TFT_Set10.png",
-                "sprite": "tft-augment5.png",
+                "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 384,
-                "y": 96,
+                "x": 192,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -2333,10 +2451,10 @@
             "name": "Too Big to Fail",
             "image": {
                 "full": "Too-Big-To-Fail-II.TFT_Set10.png",
-                "sprite": "tft-augment5.png",
+                "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 432,
-                "y": 96,
+                "x": 240,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -2348,7 +2466,7 @@
                 "full": "Double-The-Funk-II.TFT_Set10.png",
                 "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 0,
+                "x": 288,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2361,7 +2479,7 @@
                 "full": "Heroic-Presence-II.png",
                 "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 48,
+                "x": 336,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2374,33 +2492,7 @@
                 "full": "The-Ole-Razzle-Dazzle-II.TFT_Set10.png",
                 "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 96,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Augment_RepetitiveRiffing": {
-            "id": "TFT10_Augment_RepetitiveRiffing",
-            "name": "Extended Play",
-            "image": {
-                "full": "Repetitive-Riffing-II.TFT_Set10.png",
-                "sprite": "tft-augment6.png",
-                "group": "tft-augment",
-                "x": 144,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Augment_HeartCollector": {
-            "id": "TFT10_Augment_HeartCollector",
-            "name": "Heartthrobs",
-            "image": {
-                "full": "Heart-Collector-II.TFT_Set10.png",
-                "sprite": "tft-augment6.png",
-                "group": "tft-augment",
-                "x": 192,
+                "x": 384,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2413,7 +2505,7 @@
                 "full": "Thats-Jazz-Baby-II.TFT_Set10.png",
                 "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 240,
+                "x": 432,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -2426,8 +2518,8 @@
                 "full": "Submit-To-The-Pit-II.TFT_Set10.png",
                 "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 288,
-                "y": 0,
+                "x": 0,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -2439,8 +2531,8 @@
                 "full": "Bounty-Hunters-II.TFT_Set10.png",
                 "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 336,
-                "y": 0,
+                "x": 48,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -2452,8 +2544,8 @@
                 "full": "For-The-Fans-II.TFT_Set10.png",
                 "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 384,
-                "y": 0,
+                "x": 96,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -2465,8 +2557,8 @@
                 "full": "Expose-Weakness-II.TFT_Set10.png",
                 "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 432,
-                "y": 0,
+                "x": 144,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -2478,7 +2570,7 @@
                 "full": "Insert-Coin-II.TFT_Set10.png",
                 "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 0,
+                "x": 192,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -2491,8 +2583,125 @@
                 "full": "Blinged-Out-II.TFT_Set10.png",
                 "sprite": "tft-augment6.png",
                 "group": "tft-augment",
-                "x": 48,
+                "x": 240,
                 "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT7_Augment_LivingForgeHR": {
+            "id": "TFT7_Augment_LivingForgeHR",
+            "name": "Living Forge",
+            "image": {
+                "full": "Living-Forge-III.png",
+                "sprite": "tft-augment6.png",
+                "group": "tft-augment",
+                "x": 288,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT9_Augment_PhreakyFridayHR": {
+            "id": "TFT9_Augment_PhreakyFridayHR",
+            "name": "Phreaky Friday",
+            "image": {
+                "full": "Phreaky-Friday-III.png",
+                "sprite": "tft-augment6.png",
+                "group": "tft-augment",
+                "x": 336,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT9_Augment_LongTimeCraftingHR": {
+            "id": "TFT9_Augment_LongTimeCraftingHR",
+            "name": "Latent Forge",
+            "image": {
+                "full": "Long-time-Crafting-I.png",
+                "sprite": "tft-augment6.png",
+                "group": "tft-augment",
+                "x": 384,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT9_Augment_ACutAboveHR": {
+            "id": "TFT9_Augment_ACutAboveHR",
+            "name": "A Cut Above",
+            "image": {
+                "full": "A-Cut-Above-II.png",
+                "sprite": "tft-augment6.png",
+                "group": "tft-augment",
+                "x": 432,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT9_Augment_ArmyBuildingHR": {
+            "id": "TFT9_Augment_ArmyBuildingHR",
+            "name": "Team Building",
+            "image": {
+                "full": "Building-an-army-I.png",
+                "sprite": "tft-augment6.png",
+                "group": "tft-augment",
+                "x": 0,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT9_Augment_ReturnOnInvestmentHR": {
+            "id": "TFT9_Augment_ReturnOnInvestmentHR",
+            "name": "Return on Investment",
+            "image": {
+                "full": "GoldReserves2.png",
+                "sprite": "tft-augment6.png",
+                "group": "tft-augment",
+                "x": 48,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT9_Augment_PhreakyFridayPlusHR": {
+            "id": "TFT9_Augment_PhreakyFridayPlusHR",
+            "name": "Phreaky Friday +",
+            "image": {
+                "full": "Phreaky-Friday-III.png",
+                "sprite": "tft-augment6.png",
+                "group": "tft-augment",
+                "x": 96,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT10_Augment_LuckyStreak_HR": {
+            "id": "TFT10_Augment_LuckyStreak_HR",
+            "name": "Lucky Streak",
+            "image": {
+                "full": "Lucky-Streak-II.TFT_Set10.png",
+                "sprite": "tft-augment6.png",
+                "group": "tft-augment",
+                "x": 144,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT6_Augment_TheGoldenEggHR": {
+            "id": "TFT6_Augment_TheGoldenEggHR",
+            "name": "The Golden Egg",
+            "image": {
+                "full": "The-Golden-Egg-III.png",
+                "sprite": "tft-augment6.png",
+                "group": "tft-augment",
+                "x": 192,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }

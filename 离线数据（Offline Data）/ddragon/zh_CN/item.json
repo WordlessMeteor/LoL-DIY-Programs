@@ -1,6 +1,6 @@
 {
     "type": "item",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "basic": {
         "name": "",
         "rune": {
@@ -407,6 +407,7 @@
             "into": [
                 "3742",
                 "1011",
+                "3071",
                 "6662",
                 "2021",
                 "3012",
@@ -649,7 +650,6 @@
             "into": [
                 "2015",
                 "1053",
-                "3071",
                 "3094",
                 "2019",
                 "2021",
@@ -890,7 +890,6 @@
                 "3131",
                 "3006",
                 "3051",
-                "3302",
                 "6631",
                 "6670",
                 "6677"
@@ -3563,7 +3562,7 @@
         },
         "223003": {
             "name": "大天使之杖",
-            "description": "<mainText><stats><nerfedStat>60</nerfedStat>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><br><li><passive>敬畏：</passive>获得相当于额外法力值的法术强度。<li><passive>法力积攒：</passive><buffedStat>在2个战斗回合后</buffedStat>，这个装备会转变为<rarityLegendary>炽天使之拥</rarityLegendary>。</mainText>",
+            "description": "<mainText><stats><nerfedStat>60</nerfedStat>法术强度<br><attention>600</attention>法力<br><attention>25</attention>技能急速</stats><br><br><br><li><passive>敬畏：</passive>获得相当于额外法力值的法术强度。<li><passive>法力积攒：</passive><buffedStat>在2个战斗回合后</buffedStat>，这个装备会转变为<rarityLegendary>炽天使之拥</rarityLegendary>。</mainText>",
             "colloq": "",
             "plaintext": "",
             "image": {
@@ -4016,7 +4015,7 @@
         },
         "223040": {
             "name": "炽天使之拥",
-            "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>1000</attention>法力<br><attention>20</attention>技能急速</stats><br><br><br><li><passive>敬畏：</passive>获得基于法力值的法术强度。<li><passive>救主灵刃：</passive>在受到将使你的生命值跌到30%以下的伤害时，基于你的当前法力值提供护盾值。</mainText>",
+            "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>1000</attention>法力<br><attention>25</attention>技能急速</stats><br><br><br><li><passive>敬畏：</passive>获得基于法力值的法术强度。<li><passive>救主灵刃：</passive>在受到将使你的生命值跌到30%以下的伤害时，基于你的当前法力值提供护盾值。</mainText>",
             "colloq": "",
             "plaintext": "",
             "specialRecipe": 223003,
@@ -4197,7 +4196,7 @@
         },
         "223050": {
             "name": "基克的聚合",
-            "description": "<mainText><stats><buffedStat>400</buffedStat>生命值<br><attention>250</attention>法力<br><buffedStat>40</buffedStat>护甲<br><attention>20</attention>技能急速</stats><br><br><br><li><passive>聚合：</passive>在你<status>定身</status>一名敌人后的8秒里，你的<attention>帮手</attention>的技能和攻击(<OnHit>攻击特效</OnHit>)对这个敌人附带额外的<buffedStat>0魔法伤害</buffedStat>。<br><br><rules>同一个英雄同一时间只能被一个【基克的聚合】所连接。</rules></mainText>",
+            "description": "<mainText><stats><buffedStat>400</buffedStat>生命值<br><attention>250</attention>法力<br><buffedStat>40</buffedStat>护甲<br><attention>20</attention>技能急速</stats><br><br><passive>霜火风暴</passive> <br>施放你的终极技能时会召唤一个风暴环绕于你。这个风暴对敌方英雄们造成魔法伤害和<keyword>减速</keyword>。</mainText>",
             "colloq": "",
             "plaintext": "",
             "image": {
@@ -4295,7 +4294,8 @@
                 "sell": 630
             },
             "tags": [
-                "OnHit"
+                "OnHit",
+                "AbilityHaste"
             ],
             "maps": {
                 "11": false,
@@ -4462,10 +4462,10 @@
             },
             "effect": {
                 "Effect1Amount": "-0.2",
-                "Effect2Amount": "0.04",
+                "Effect2Amount": "0.05",
                 "Effect3Amount": "6",
-                "Effect4Amount": "6",
-                "Effect5Amount": "0.24",
+                "Effect4Amount": "5",
+                "Effect5Amount": "0.25",
                 "Effect6Amount": "0",
                 "Effect7Amount": "0",
                 "Effect8Amount": "0",
@@ -4513,7 +4513,7 @@
         },
         "223074": {
             "name": "贪欲九头蛇",
-            "description": "<mainText><stats><attention>70</attention>攻击力<br><attention>20</attention>技能急速<br><buffedStat>15%</buffedStat>生命偷取</stats><br><br><br><li><passive>顺劈：</passive>攻击和技能会对附近的其它敌人造成物理伤害。<br><br><br><active>主动</active><br><active>血斩</active><br>对你周围的敌人们造成物理伤害。</mainText>",
+            "description": "<mainText><stats><attention>70</attention>攻击力<br><attention>20</attention>技能急速<br><buffedStat>15%</buffedStat>生命偷取</stats><br><br><br><li><passive>顺劈：</passive>攻击和技能会对附近的其它敌人造成物理伤害。<br><br><br><active>主动</active> (0秒)<br><active>血斩</active><br>对你周围的敌人们造成附带生命偷取的物理伤害。</mainText>",
             "colloq": "",
             "plaintext": "",
             "image": {
@@ -5527,7 +5527,7 @@
         },
         "223142": {
             "name": "幽梦之灵",
-            "description": "<mainText><stats><attention>60</attention>攻击力<br><buffedStat>22</buffedStat>穿甲<br><attention>15</attention>技能急速</stats><br><br><br><li><passive>鬼影萦绕：</passive>在移动时提供至多100块幽魂碎片。在非战斗状态下，基于幽魂碎片的数量提供<speed>40移动速度</speed>。在碎片数量达到最大时，提供<scaleAD>{{ Item_Melee_Ranged_Split_B }}穿甲</scaleAD>。碎片会在对一名敌方英雄造成伤害的3秒后重置。<br><br>{{ Item_Mythic_Passive }} <attention>7</attention>攻击力。<br><br><rules>{{ Item_Ghosting }}</rules><br><br><flavorText>那些相亲相爱的人已经相聚，但很快将有更多哀悼的人。</flavorText><br><br>{{ Item_Active_Named }} <active>鬼魂步伐：</active>提供移动速度和幽灵状态。</mainText>",
+            "description": "<mainText><stats><attention>60</attention>攻击力<br><buffedStat>22</buffedStat>穿甲<br><attention>15</attention>技能急速</stats><br><br><passive>鬼影萦绕</passive><br>获得非战斗状态下的<speed>移动速度</speed>。<br><br><br><active>主动 - </active> <active>鬼魂步伐：</active>提供移动速度和幽灵状态。</mainText>",
             "colloq": "",
             "plaintext": "",
             "into": [
@@ -7166,7 +7166,7 @@
         },
         "226631": {
             "name": "挺进破坏者",
-            "description": "<mainText><stats><nerfedStat>60</nerfedStat>攻击力<br><attention>20%</attention>攻击速度<br><attention>375</attention>生命值</stats><br><br><br><li><passive>英勇步态：</passive>造成物理伤害时会提供<speed>20移动速度</speed>，持续3秒。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得<attention>2%</attention>移动速度。<br><br><active>主动</active> (0秒)<br><active>破阵冲击波</active><br>对附近的敌人们造成<physicalDamage>0物理伤害</physicalDamage>和40%<status>减速</status>并且每命中一个英雄就会获得<speed>40%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
+            "description": "<mainText><stats><nerfedStat>60</nerfedStat>攻击力<br><attention>20%</attention>攻击速度<br><attention>375</attention>生命值</stats><br><br><passive>顺劈</passive><br>攻击会对附近的敌人们造成物理伤害。<br><br><passive>回火</passive><br>造成<physicalDamage>物理伤害</physicalDamage>时提供持移动速度。<br><br><active>主动</active><br><active>破阵冲击波</active><br>对附近的敌人们造成物理伤害和<status>减速</status>并且每命中一个英雄就会获得移动速度。可在施放时移动。</mainText>",
             "colloq": "",
             "plaintext": "",
             "into": [
@@ -7191,7 +7191,6 @@
                 "Health",
                 "Damage",
                 "AttackSpeed",
-                "CooldownReduction",
                 "Slow",
                 "NonbootsMovement"
             ],
@@ -8471,7 +8470,7 @@
         },
         "227016": {
             "name": "梦想击碎者",
-            "description": "<mainText><stats><nerfedStat>60</nerfedStat>攻击力<br><ornnBonus>30%</ornnBonus>攻击速度<br><ornnBonus>400</ornnBonus>生命值</stats><br><br><br><li><passive>英勇步态：</passive>造成物理伤害时会提供<speed>20移动速度</speed>，持续3秒。<br><br><rarityMythic>神话被动：</rarityMythic>你每装备一件<rarityLegendary>传说</rarityLegendary>装备，就会获得<attention>2%</attention>移动速度。<br><br><active>主动</active> (0秒)<br><active>破阵冲击波</active><br>对附近的敌人们造成<physicalDamage>0物理伤害</physicalDamage>和40%<status>减速</status>并且每命中一个英雄就会获得<speed>40%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
+            "description": "<mainText><stats><nerfedStat>60</nerfedStat>攻击力<br><ornnBonus>30%</ornnBonus>攻击速度<br><ornnBonus>400</ornnBonus>生命值</stats><br><br><passive>顺劈</passive><br>攻击会对附近的敌人们造成物理伤害。<br><br><passive>回火</passive><br>造成<physicalDamage>物理伤害</physicalDamage>时提供持移动速度。<br><br><active>主动</active><br><active>破阵冲击波</active><br>对附近的敌人们造成物理伤害和<status>减速</status>并且每命中一个英雄就会获得移动速度。可在施放时移动。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -8497,7 +8496,6 @@
                 "Health",
                 "Damage",
                 "AttackSpeed",
-                "CooldownReduction",
                 "Slow",
                 "NonbootsMovement"
             ],
@@ -9018,7 +9016,7 @@
         },
         "227029": {
             "name": "幽梦之苏醒",
-            "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>26</ornnBonus>穿甲</stats><br><br><passive>鬼影萦绕</passive><br>提供非战斗状态下的<speed>{{Item_Melee_Ranged_Split_Dynamic}}移动速度</speed>。<br>{{ Item_OnActivation }} {{ Item_Cooldown }}<br><active>鬼魂步伐：</active><br>提供<speed>移动速度</speed>和<keyword>幽灵状态</keyword>。</mainText>",
+            "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>26</ornnBonus>穿甲</stats><br><br><passive>鬼影萦绕</passive><br>获得非战斗状态下的<speed>移动速度</speed>。<br><br><br><active>主动</active> (0秒)<br><active>鬼魂步伐：</active><br>提供<speed>移动速度</speed>和<keyword>幽灵状态</keyword>。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -9264,7 +9262,7 @@
         },
         "228001": {
             "name": "厌恨锁链",
-            "description": "<mainText><stats><attention>650</attention>生命值<br><attention>20</attention>技能急速</stats><br><br><br><li><passive>复仇令：</passive>减免来自你的【仇敌】的伤害。你的【仇敌】在你附近时会降低韧性。<br><br><rules>主动效果的施放距离无限。</rules><br><br><flavorText>“她曾发誓要用她的一生来毁灭他……”</flavorText><br><br><active>主动 - </active> <active>起誓：</active>选择一名【仇敌】(90(0秒))。</mainText>",
+            "description": "<mainText><stats><attention>650</attention>生命值<br><attention>20</attention>技能急速</stats><br><br><br><li><passive>复仇令：</passive>减免来自你的【仇敌】的伤害。你的【仇敌】在你附近时会降低韧性。<br><br><rules>主动效果的施放距离无限。</rules><br><br><flavorText>“她曾发誓要用她的一生来毁灭他……”</flavorText><br><br><active>主动 - </active> <active>起誓</active><br>选择一名【仇敌】以开始积攒一个【复仇令】。</mainText>",
             "colloq": "",
             "plaintext": "",
             "image": {
@@ -9465,7 +9463,7 @@
                 "Effect1Amount": "-0.2",
                 "Effect2Amount": "0.07",
                 "Effect3Amount": "6",
-                "Effect4Amount": "6",
+                "Effect4Amount": "5",
                 "Effect5Amount": "0.42",
                 "Effect6Amount": "0",
                 "Effect7Amount": "0",
@@ -9476,7 +9474,7 @@
         },
         "228006": {
             "name": "血色之刃",
-            "description": "<mainText><stats><ornnBonus>130</ornnBonus>攻击力<br><ornnBonus>40%</ornnBonus>攻击速度<br><ornnBonus>20</ornnBonus>技能急速<br><ornnBonus>30%</ornnBonus>生命偷取</stats><br><br><br><li><passive>顺劈：</passive>攻击和技能会对目标600码内的其它敌人造成<physicalDamage>{{ Item_Melee_Ranged_Split }}物理伤害</physicalDamage>并触发附带的攻击特效。<br><li><passive>雾之锋：</passive>攻击施加额外的<nerfedStat>{{ Item_Melee_Ranged_Split_B }}敌人当前生命值的物理伤害</nerfedStat> {{ Item_Keyword_OnHit }}。<li><passive>虹吸：</passive>攻击一名敌方英雄3次后，会造成<magicDamage>0魔法伤害</magicDamage>并偷取其<speed>25%移动速度</speed>，持续2秒(30{{ Item_Cooldown }})。<br><rules><passive>雾之锋</passive>对野怪和小兵的最大伤害为60。<br>{{ Item_Melee_Ranged_Rules }}</rules>{{ Item_OnActivation }}<br><active>血斩</active><br>对你周围的敌人们造成物理伤害。</mainText>",
+            "description": "<mainText><stats><ornnBonus>130</ornnBonus>攻击力<br><ornnBonus>40%</ornnBonus>攻击速度<br><ornnBonus>20</ornnBonus>技能急速<br><ornnBonus>30%</ornnBonus>生命偷取</stats><br><br><br><li><passive>顺劈：</passive>攻击和技能会对目标600码内的其它敌人造成<physicalDamage>{{ Item_Melee_Ranged_Split }}物理伤害</physicalDamage>并触发附带的攻击特效。<br><li><passive>雾之锋：</passive>攻击施加额外的<nerfedStat>{{ Item_Melee_Ranged_Split_B }}敌人当前生命值的物理伤害</nerfedStat> {{ Item_Keyword_OnHit }}。<li><passive>虹吸：</passive>攻击一名敌方英雄3次后，会造成<magicDamage>0魔法伤害</magicDamage>并偷取其<speed>25%移动速度</speed>，持续2秒(30{{ Item_Cooldown }})。<br><rules><passive>雾之锋</passive>对野怪和小兵的最大伤害为60。<br>{{ Item_Melee_Ranged_Rules }}</rules>{{ Item_OnActivation }} {{ Item_Cooldown }}<br><active>血斩</active><br>对你周围的敌人们造成附带生命偷取的物理伤害。</mainText>",
             "colloq": "",
             "plaintext": "",
             "inStore": false,
@@ -10054,7 +10052,7 @@
         },
         "3003": {
             "name": "大天使之杖",
-            "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得相当于你的额外法力值的法术强度。<br><br><passive>法力流</passive><br>用一个技能击中一个目标时，会消耗一层充能并获得额外法力值。至多提供360法力值，且此时这个装备会转变为<rarityLegendary>炽天使之拥</rarityLegendary>。</mainText>",
+            "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>600</attention>法力<br><attention>25</attention>技能急速</stats><br><br><passive>敬畏</passive><br>获得相当于你的额外法力值的法术强度。<br><br><passive>法力流</passive><br>用一个技能击中一个目标时，会消耗一层充能并获得额外法力值。至多提供360法力值，且此时这个装备会转变为<rarityLegendary>炽天使之拥</rarityLegendary>。</mainText>",
             "colloq": "",
             "plaintext": "基于最大法力值提升法术强度",
             "from": [
@@ -10749,7 +10747,7 @@
         },
         "3040": {
             "name": "炽天使之拥",
-            "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>1000</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>敬畏</passive>获得相当于<scaleMana>2%额外法力值</scaleMana>的法术强度。<br><passive>救主灵刃</passive> (90(0秒))<br>在受到将使你的生命值跌到30%以下的伤害时，获得持续3秒的<shield>250+20%当前法力值的护盾值</shield>。</mainText>",
+            "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>1000</attention>法力<br><attention>25</attention>技能急速</stats><br><br><passive>敬畏</passive>获得相当于<scaleMana>2%额外法力值</scaleMana>的法术强度。<br><passive>救主灵刃</passive> (90(0秒))<br>在受到将使你的生命值跌到30%以下的伤害时，获得持续3秒的<shield>250+20%当前法力值的护盾值</shield>。</mainText>",
             "colloq": "",
             "plaintext": "",
             "specialRecipe": 3003,
@@ -11038,7 +11036,7 @@
         },
         "3050": {
             "name": "基克的聚合",
-            "description": "<mainText><stats><attention>200</attention>生命值<br><attention>250</attention>法力<br><attention>30</attention>护甲<br><attention>20</attention>技能急速</stats><br><br><passive>霜火风暴</passive> (0秒)<br>施放你的终极技能时会召唤一个风暴环绕于你5秒。这个风暴对敌方英雄们造成每秒<magicDamage>50魔法伤害</magicDamage>和30%<keyword>减速</keyword>。</mainText>",
+            "description": "<mainText><stats><attention>200</attention>生命值<br><attention>250</attention>法力<br><attention>30</attention>护甲<br><attention>20</attention>技能急速</stats><br><br><passive>霜火风暴</passive> <br>施放你的终极技能时会召唤一个风暴环绕于你。这个风暴对敌方英雄们造成魔法伤害和<keyword>减速</keyword>。</mainText>",
             "colloq": ";jikedexianqu;jkdxq",
             "plaintext": "在你施放终极技能时，为你和你的队友提供加成。",
             "from": [
@@ -11199,7 +11197,8 @@
                 "sell": 630
             },
             "tags": [
-                "OnHit"
+                "OnHit",
+                "AbilityHaste"
             ],
             "maps": {
                 "11": true,
@@ -11311,7 +11310,6 @@
                 "2022"
             ],
             "into": [
-                "3071",
                 "8020",
                 "6620",
                 "3050",
@@ -11454,8 +11452,8 @@
             "plaintext": "对敌人造成物理伤害时会减少目标的护甲",
             "from": [
                 "3044",
-                "3067",
-                "1036"
+                "3133",
+                "1028"
             ],
             "into": [
                 "7037"
@@ -11470,7 +11468,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 750,
+                "base": 400,
                 "purchasable": true,
                 "total": 3000,
                 "sell": 2100
@@ -11497,10 +11495,10 @@
             },
             "effect": {
                 "Effect1Amount": "-0.2",
-                "Effect2Amount": "0.04",
+                "Effect2Amount": "0.05",
                 "Effect3Amount": "6",
-                "Effect4Amount": "6",
-                "Effect5Amount": "0.24",
+                "Effect4Amount": "5",
+                "Effect5Amount": "0.25",
                 "Effect6Amount": "0",
                 "Effect7Amount": "0",
                 "Effect8Amount": "0",
@@ -11604,7 +11602,7 @@
         },
         "3074": {
             "name": "贪欲九头蛇",
-            "description": "<mainText><stats><attention>70</attention>攻击力<br><attention>20</attention>技能急速<br><attention>12%</attention>生命偷取</stats><br><br><passive>顺劈</passive><br>攻击会对附近的敌人们造成物理伤害。<br><br><active>主动</active><br><active>血斩</active><br>对你周围的敌人们造成物理伤害。</mainText>",
+            "description": "<mainText><stats><attention>70</attention>攻击力<br><attention>20</attention>技能急速<br><attention>12%</attention>生命偷取</stats><br><br><passive>顺劈</passive><br>攻击会对附近的敌人们造成物理伤害。<br><br><active>主动</active> (0秒)<br><active>血斩</active><br>对你周围的敌人们造成附带生命偷取的物理伤害。</mainText>",
             "colloq": ";tanyujiutoushe;tyjts",
             "plaintext": "近战攻击会命中身边的敌人，造成伤害并回复生命值",
             "from": [
@@ -12293,7 +12291,7 @@
         },
         "3100": {
             "name": "巫妖之祸",
-            "description": "<mainText><stats><attention>100</attention>法术强度<br><attention>8%</attention>移动速度<br><attention>15</attention>技能急速</stats><br><br><passive>咒刃</passive> (0秒)<br>施放技能后，你的下一次普通攻击因强化而附带额外的<magicDamage>0魔法伤害</magicDamage><OnHit>攻击特效</OnHit>。</mainText>",
+            "description": "<mainText><stats><attention>100</attention>法术强度<br><attention>8%</attention>移动速度<br><attention>15</attention>技能急速</stats><br><br><passive>咒刃</passive><br>施放技能后，你的下一次普通攻击因强化而附带额外魔法伤害 <OnHit>攻击特效</OnHit>。</mainText>",
             "colloq": ";wuyaozhihuo;wyzh",
             "plaintext": "在施法后，为下次普攻提供加成效果",
             "from": [
@@ -12435,7 +12433,7 @@
         },
         "3107": {
             "name": "救赎",
-            "description": "<mainText><stats><attention>200</attention>生命值<br><attention>15</attention>技能急速<br><attention>100%</attention>基础法力回复<br><attention>15%</attention>治疗和护盾强度</stats><br><br><active>主动</active> (0秒)<br><active>干涉</active><br>选择一个区域来为友方英雄们回复生命值并对敌方英雄们造成真实伤害。</mainText>",
+            "description": "<mainText><stats><attention>200</attention>生命值<br><attention>15</attention>技能急速<br><attention>100%</attention>基础法力回复<br><attention>15%</attention>治疗和护盾强度</stats><br><br><active>主动</active><br><active>干涉</active><br>选择一个区域来为友方英雄们回复生命值并对敌方英雄们造成真实伤害。</mainText>",
             "colloq": ";",
             "plaintext": "主动使用以在一个区域内治愈友军和伤害敌军",
             "from": [
@@ -12798,7 +12796,7 @@
         },
         "3115": {
             "name": "纳什之牙",
-            "description": "<mainText><stats><attention>90</attention>法术强度<br><attention>50%</attention>攻击速度<br><attention>15</attention>技能急速</stats><br><br><passive>艾卡西亚之咬</passive><br>攻击附带<magicDamage>0额外魔法伤害</magicDamage><OnHit>攻击特效</OnHit>。</mainText>",
+            "description": "<mainText><stats><attention>90</attention>法术强度<br><attention>50%</attention>攻击速度<br><attention>15</attention>技能急速</stats><br><br><passive>艾卡西亚之咬</passive><br>攻击附带<magicDamage>魔法伤害</magicDamage><OnHit>攻击特效</OnHit>。</mainText>",
             "colloq": ";nashizhiya;nszy",
             "plaintext": "提升攻击力，法术强度和冷却缩减",
             "from": [
@@ -12944,7 +12942,7 @@
         },
         "3118": {
             "name": "残疫",
-            "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>蔑视</passive><br>你的终极技能获得技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
+            "description": "<mainText><stats><attention>80</attention>法术强度<br><attention>600</attention>法力<br><attention>25</attention>技能急速</stats><br><br><passive>蔑视</passive><br>你的终极技能获得技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
             "colloq": ";",
             "plaintext": "与一名友方英雄搭档来保护彼此",
             "from": [
@@ -13277,6 +13275,7 @@
                 "1036"
             ],
             "into": [
+                "3071",
                 "6333",
                 "6696",
                 "6693",
@@ -13561,7 +13560,7 @@
         },
         "3142": {
             "name": "幽梦之灵",
-            "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>18</attention>穿甲</stats><br><br><passive>鬼影萦绕</passive><br>提供非战斗状态下的<speed>{{Item_Melee_Ranged_Split_Dynamic}}移动速度</speed>。<br>{{ Item_OnActivation }} {{ Item_Cooldown }}<br><active>鬼魂步伐：</active><br>提供<speed>移动速度</speed>和<keyword>幽灵状态</keyword>。</mainText>",
+            "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>18</attention>穿甲</stats><br><br><passive>鬼影萦绕</passive><br>获得非战斗状态下的<speed>移动速度</speed>。<br><br><br><active>主动</active> (0秒)<br><active>鬼魂步伐：</active><br>提供<speed>移动速度</speed>和<keyword>幽灵状态</keyword>。</mainText>",
             "colloq": ";youmengzhiling;ymzl;穿甲",
             "plaintext": "主动施放来显著提升移动速度",
             "from": [
@@ -13794,7 +13793,7 @@
         },
         "3152": {
             "name": "海克斯科技火箭腰带",
-            "description": "<mainText><stats><attention>60</attention>法术强度<br><attention>300</attention>生命值<br><attention>15</attention>技能急速</stats><br><br><active>主动</active> (0秒)<br><active>超音速</active><br>朝着目标方向冲刺，释放一道魔法弹圆弧，造成魔法伤害。</mainText>",
+            "description": "<mainText><stats><attention>60</attention>法术强度<br><attention>300</attention>生命值<br><attention>15</attention>技能急速</stats><br><br><active>主动</active> <br><active>超音速</active><br>朝着目标方向冲刺，释放一道魔法弹圆弧，造成魔法伤害。</mainText>",
             "colloq": "huojianyaodai;",
             "plaintext": "主动施放来向前冲刺并释放一阵炫目的轰炸",
             "from": [
@@ -14556,13 +14555,13 @@
         },
         "3302": {
             "name": "界弓",
-            "description": "<mainText><stats><attention>40</attention>攻击力<br><attention>30%</attention>攻击速度</stats><br><br><passive>晦影</passive><br>攻击附带<magicDamage>30魔法伤害</magicDamage> <OnHit>攻击特效</OnHit>。<br><br><passive>交相</passive><br>攻击英雄时在<keywordMajor>光明</keywordMajor>特效和<keywordMajor>黑暗</keywordMajor>特效之间轮换：<li>附带<keywordMajor>光明</keywordMajor>特效的攻击提供持续5秒的0 <scaleArmor>护甲</scaleArmor>和<scaleMR>魔抗</scaleMR>(至多至0)。<li>附带<keywordMajor>黑暗</keywordMajor>特效的攻击提供持续5秒的6%<scaleArmor>护甲穿透</scaleArmor>和<scaleMR>法术穿透</scaleMR>(至多至330%)。 </mainText>",
+            "description": "<mainText><stats><attention>40</attention>攻击力<br><attention>30%</attention>攻击速度</stats><br><br><passive>晦影</passive><br>攻击附带魔法伤害 <OnHit>攻击特效</OnHit>。<br><br><passive>交相</passive><br>攻击英雄时在<keywordMajor>光明</keywordMajor>特效和<keywordMajor>黑暗</keywordMajor>特效之间轮换：<li>附带<keywordMajor>光明</keywordMajor>特效的攻击提供<scaleArmor> 护甲</scaleArmor>和<scaleMR>魔抗</scaleMR>。<li>附带<keywordMajor>黑暗</keywordMajor>特效的攻击提供<scaleArmor>护甲穿透</scaleArmor>和<scaleMR>法术穿透</scaleMR>。</mainText>",
             "colloq": ";",
             "plaintext": "周期性击杀敌方小兵来为一名附近友军提供治疗和金币",
             "from": [
                 "1043",
                 "1038",
-                "1042"
+                "1043"
             ],
             "image": {
                 "full": "3302.png",
@@ -14574,7 +14573,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 700,
+                "base": 300,
                 "purchasable": true,
                 "total": 3000,
                 "sell": 2100
@@ -16016,7 +16015,7 @@
         },
         "3866": {
             "name": "符文罗盘",
-            "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>50%</attention>基础生命回复<br><attention>50%</attention>基础法力回复<br><attention>100</attention>生命值</stats><br><br><br><br><active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 <br><br><br><br><passive>任务</passive><br>使用这个装备赚取1000金币来将其转变为<rarityGeneric>符文罗盘</rarityGeneric>。每<passive>18</passive>秒获得1层充能，至多至<passive>3</passive>层。当附近有一个友方英雄时，消耗一层充能来赚取金币：<br><li>对英雄或建筑物进行的伤害型技能和攻击会提供<keywordMajor>34</keywordMajor> (近战) / <keywordMajor>32</keywordMajor> (远程) 金币；<li>以任意方式击杀一个小兵会为你提供<keywordMajor>28</keywordMajor>金币并为相距最近的友方英雄提供击杀金币。<br><br><active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
+            "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>50%</attention>基础生命回复<br><attention>50%</attention>基础法力回复<br><attention>100</attention>生命值</stats><br><br><br><br><active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 <br><br><br><br><passive>任务</passive><br>使用这个装备赚取1000金币来将其转变为<rarityGeneric>符文罗盘</rarityGeneric>。每<passive>20</passive>秒获得1层充能，至多至<passive>3</passive>层。当附近有一个友方英雄时，消耗一层充能来赚取金币：<br><li>对英雄或建筑物进行的伤害型技能和攻击会提供<keywordMajor>34</keywordMajor> (近战) / <keywordMajor>32</keywordMajor> (远程) 金币；<li>以任意方式击杀一个小兵会为你提供<keywordMajor>28</keywordMajor>金币并为相距最近的友方英雄提供击杀金币。<br><br><active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
             "colloq": "",
             "plaintext": "",
             "specialRecipe": 3865,
@@ -16058,7 +16057,7 @@
         },
         "3867": {
             "name": "异世珍藏",
-            "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>50%</attention>基础生命回复<br><attention>50%</attention>基础法力回复<br><attention>100</attention>生命值</stats><br><br><br><li><passive>升级：</passive> <br>这件装备可被免费升级为<rarityLegendary>血鸣</rarityLegendary>、<rarityLegendary>星界据守</rarityLegendary>、<rarityLegendary>圆梦使者</rarityLegendary>、<rarityLegendary>扎兹沙克的溃口</rarityLegendary>或<rarityLegendary>摩天雪橇</rarityLegendary>。<br><br><active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 <br><br></mainText>",
+            "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><br><li><passive>升级：</passive> <br>这件装备可被免费升级为<rarityLegendary>血鸣</rarityLegendary>、<rarityLegendary>星界据守</rarityLegendary>、<rarityLegendary>圆梦使者</rarityLegendary>、<rarityLegendary>扎兹沙克的溃口</rarityLegendary>或<rarityLegendary>摩天雪橇</rarityLegendary>。<br><br><active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 <br><br></mainText>",
             "colloq": "",
             "plaintext": "",
             "specialRecipe": 3866,
@@ -16099,7 +16098,7 @@
                 "30": false
             },
             "stats": {
-                "FlatHPPoolMod": 100
+                "FlatHPPoolMod": 200
             },
             "effect": {
                 "Effect1Amount": "5"
@@ -18201,7 +18200,7 @@
         },
         "6631": {
             "name": "挺进破坏者",
-            "description": "<mainText><stats><attention>50</attention>攻击力<br><attention>30%</attention>攻击速度<br><attention>450</attention>生命值</stats><br><br><passive>顺劈</passive><br>攻击会对附近的敌人们造成<physicalDamage>{{ Item_Melee_Ranged_Split_Dynamic }}物理伤害</physicalDamage>。<br><br><passive>回火</passive><br>造成<physicalDamage>物理伤害</physicalDamage>时为你提供持续2秒的<speed>20移动速度</speed>。{{ Item_OnActivation }} {{ Item_Cooldown }}<br><active>破阵冲击波</active><br>对附近的敌人们造成<physicalDamage>0物理伤害</physicalDamage>和35%<status>减速</status>并且每命中一个英雄就会获得<speed>35%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
+            "description": "<mainText><stats><attention>50</attention>攻击力<br><attention>30%</attention>攻击速度<br><attention>450</attention>生命值</stats><br><br><passive>顺劈</passive><br>攻击会对附近的敌人们造成物理伤害。<br><br><passive>回火</passive><br>造成<physicalDamage>物理伤害</physicalDamage>时提供持移动速度。<br><br><active>主动</active><br><active>破阵冲击波</active><br>对附近的敌人们造成物理伤害和<status>减速</status>并且每命中一个英雄就会获得移动速度。可在施放时移动。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -18231,7 +18230,6 @@
                 "Health",
                 "Damage",
                 "AttackSpeed",
-                "CooldownReduction",
                 "Slow",
                 "NonbootsMovement"
             ],
@@ -18345,8 +18343,8 @@
             "depth": 3
         },
         "6655": {
-            "name": "卢登的伙伴",
-            "description": "<mainText><stats><attention>95</attention>法术强度<br><attention>600</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>装填</passive><br>每若干秒获得一层【射击充能】。<br><br><passive>开火</passive><br>伤害型技能会消耗所有【射击充能】来对目标和目标附近的其它敌人(其它敌人的数量相当于【射击充能】层数)造成额外魔法伤害。如果距离内的目标数量不足，那么每剩余一次射击，就会对主要目标重复造成一次伤害。</mainText>",
+            "name": "卢登的配枪",
+            "description": "<mainText><stats><attention>95</attention>法术强度<br><attention>600</attention>法力<br><attention>25</attention>技能急速</stats><br><br><passive>装填</passive><br>每若干秒获得一层【射击充能】。<br><br><passive>开火</passive><br>伤害型技能会消耗所有【射击充能】来对目标和目标附近的其它敌人(其它敌人的数量相当于【射击充能】层数)造成额外魔法伤害。如果距离内的目标数量不足，那么每剩余一次射击，就会对主要目标重复造成一次伤害。</mainText>",
             "colloq": "",
             "plaintext": "高额爆发伤害，擅长对抗脆皮型敌人",
             "from": [
@@ -18535,7 +18533,7 @@
         },
         "6662": {
             "name": "冰脉护手",
-            "description": "<mainText><stats><attention>300</attention>生命值<br><attention>50</attention>护甲<br><attention>15</attention>技能急速</stats><br><br><passive>咒刃</passive> (0秒)<br>施放技能后，你的下一次普通攻击会因强化而附带额外伤害并生成一个持续2秒的冰冷地带。经过该地带的敌人会被<status>减速</status>。</mainText>",
+            "description": "<mainText><stats><attention>300</attention>生命值<br><attention>50</attention>护甲<br><attention>15</attention>技能急速</stats><br><br><passive>咒刃</passive><br>施放技能后，你的下一次普通攻击会因强化而附带额外伤害并生成一个持续2秒的冰冷地带。经过该地带的敌人会被<status>减速</status>。</mainText>",
             "colloq": "",
             "plaintext": "高魔法抗性。被动减速附近敌人。当附近有技能释放时，释放一道能量波来造成伤害和减速。",
             "from": [
@@ -18584,7 +18582,7 @@
         },
         "6664": {
             "name": "璀璨回响",
-            "description": "<mainText><stats><attention>600</attention>生命值<br><attention>40</attention>魔法抗性<br><attention>100%</attention>基础生命回复</stats><br><br><passive>献祭</passive><br>承受或造成伤害时会使你开始每秒对附近敌人造成<magicDamage>0魔法伤害</magicDamage>(对小兵提升25%)，持续3秒。<br><br><passive>荒弃</passive><br>击杀一个敌人时会在其周围的一个区域内造成<magicDamage>0魔法伤害</magicDamage>。<br><br></mainText>",
+            "description": "<mainText><stats><attention>600</attention>生命值<br><attention>40</attention>魔法抗性<br><attention>100%</attention>基础生命回复</stats><br><br><passive>献祭</passive><br>承受或造成伤害时会使你开始对附近敌人造成魔法伤害。<br><br><passive>荒弃</passive><br>击杀一个敌人时会在其周围的一个区域内造成魔法伤害。<br><br></mainText>",
             "colloq": "",
             "plaintext": "定身敌人以获得一层护盾。激活以更快跑向敌人。",
             "from": [
@@ -18873,7 +18871,7 @@
         },
         "6673": {
             "name": "不朽盾弓",
-            "description": "<mainText><stats><attention>50</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>12%</attention>生命偷取</stats><br><br><passive>救主灵刃</passive> (0秒)<br>在受到将使你的生命值跌到30%以下的伤害时，获得持续3秒的<shield>0护盾值</shield>。</mainText>",
+            "description": "<mainText><stats><attention>50</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>12%</attention>生命偷取</stats><br><br><passive>救主灵刃</passive><br>在受到将使你的生命值跌到一定数额以下的伤害时，获得护盾值。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -19195,7 +19193,7 @@
         },
         "6693": {
             "name": "暗行者之爪",
-            "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>22</attention>穿甲<br><attention>15</attention>技能急速</stats><br><br><passive>伺机待发</passive><br>在脱离与英雄的战斗状态8秒后获得穿甲。<br><br><passive>险境脱身</passive><br>击杀英雄后获得移动速度。</mainText>",
+            "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>22</attention>穿甲<br><attention>15</attention>技能急速</stats><br><br><passive>盛名</passive><br>如果一名曾被你造成过伤害的英雄阵亡，则获得攻击力。<br><br><passive>唯我</passive><br>击杀英雄时会生成一座你自己的雕像，如果你已拥有一座雕像，则它会升级。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -19364,7 +19362,7 @@
         },
         "6697": {
             "name": "狂妄",
-            "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>18</attention>穿甲<br><attention>15</attention>技能急速</stats><br><br><passive>盛名</passive><br>击杀英雄时获得基于英雄击杀数的临时攻击力。<br><br><passive>唯我</passive><br>击杀时获得一座你自己的雕像，这座雕像可不断升级。<br></mainText>",
+            "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>18</attention>穿甲<br><attention>15</attention>技能急速</stats><br><br><passive>盛名</passive><br>击杀英雄时获得基于英雄击杀数的临时攻击力。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -19452,7 +19450,7 @@
             "depth": 3
         },
         "6699": {
-            "name": "感电三轮刃",
+            "name": "电震涡流剑",
             "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>18</attention>穿甲<br><attention>15</attention>技能急速</stats><br><br><passive>激电</passive><br>冲刺和潜行会使盈能的叠层加快。<br><br><passive>苍穹</passive><br>你的盈能攻击会造成额外物理伤害并且如果你是近战，还会对敌人们造成减速。</mainText>",
             "colloq": "",
             "plaintext": "",
@@ -19546,7 +19544,7 @@
         },
         "6701": {
             "name": "禁忌时机",
-            "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>18</attention>穿甲<br><attention>5%</attention>移动速度</stats><br><br><passive>伺机待发</passive><br>在脱离与英雄的战斗状态8秒后获得穿甲。<br><br><passive>险境脱身</passive><br>击杀英雄后获得移动速度。</mainText>",
+            "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>18</attention>穿甲<br><attention>5%</attention>移动速度</stats><br><br><passive>盛名</passive><br>如果一名曾被你造成过伤害的英雄阵亡，则获得攻击力。<br><br><passive>唯我</passive><br>击杀英雄时会生成一座你自己的雕像，如果你已拥有一座雕像，则它会升级。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -19592,7 +19590,7 @@
         },
         "7000": {
             "name": "沙雀之爪",
-            "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>26</ornnBonus>穿甲<br><ornnBonus>25</ornnBonus>技能急速</stats><br><br><passive>伺机待发</passive><br>在脱离与英雄的战斗状态8秒后获得穿甲。<br><br><passive>险境脱身</passive><br>击杀英雄后获得移动速度。</mainText>",
+            "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>26</ornnBonus>穿甲<br><ornnBonus>25</ornnBonus>技能急速</stats><br><br><passive>盛名</passive><br>如果一名曾被你造成过伤害的英雄阵亡，则获得攻击力。<br><br><passive>唯我</passive><br>击杀英雄时会生成一座你自己的雕像，如果你已拥有一座雕像，则它会升级。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -19761,7 +19759,7 @@
         },
         "7004": {
             "name": "万众之恨意",
-            "description": "<mainText><stats><ornnBonus>110</ornnBonus>法术强度<br><ornnBonus>800</ornnBonus>法力<br><ornnBonus>30</ornnBonus>技能急速</stats><br><br><passive>蔑视</passive><br>你的终极技能获得技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
+            "description": "<mainText><stats><ornnBonus>110</ornnBonus>法术强度<br><ornnBonus>800</ornnBonus>法力<br><ornnBonus>35</ornnBonus>技能急速</stats><br><br><passive>蔑视</passive><br>你的终极技能获得技能急速。<br><br><passive>憎恨之雾</passive><br>在用你的终极技能对一个英雄造成伤害时，灼烧其脚下的地面，造成伤害并削减其魔法抗性。<br></mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -19803,7 +19801,7 @@
         },
         "7005": {
             "name": "冰霜之拳",
-            "description": "<mainText><stats><ornnBonus>400</ornnBonus>生命值<br><ornnBonus>60</ornnBonus>护甲<br><ornnBonus>25</ornnBonus>技能急速</stats><br><br><passive>咒刃</passive> (0秒)<br>施放技能后，你的下一次普通攻击会因强化而附带额外伤害并生成一个持续2秒的冰冷地带。经过该地带的敌人会被<status>减速</status>。</mainText>",
+            "description": "<mainText><stats><ornnBonus>400</ornnBonus>生命值<br><ornnBonus>60</ornnBonus>护甲<br><ornnBonus>25</ornnBonus>技能急速</stats><br><br><passive>咒刃</passive><br>施放技能后，你的下一次普通攻击会因强化而附带额外伤害并生成一个持续2秒的冰冷地带。经过该地带的敌人会被<status>减速</status>。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -19938,7 +19936,7 @@
         },
         "7008": {
             "name": "无我",
-            "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>27</ornnBonus>穿甲<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br><passive>伺机待发</passive><br>在脱离与英雄的战斗状态8秒后获得穿甲。<br><br><passive>险境脱身</passive><br>击杀英雄后获得移动速度。</mainText>",
+            "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>27</ornnBonus>穿甲<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br><passive>盛名</passive><br>如果一名曾被你造成过伤害的英雄阵亡，则获得攻击力。<br><br><passive>唯我</passive><br>击杀英雄时会生成一座你自己的雕像，如果你已拥有一座雕像，则它会升级。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -20069,7 +20067,7 @@
         },
         "7011": {
             "name": "升级版飞行包",
-            "description": "<mainText><stats><ornnBonus>85</ornnBonus>法术强度<br><ornnBonus>450</ornnBonus>生命值<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br><active>主动</active> (0秒)<br><active>超音速</active><br>朝着目标方向冲刺，释放一道魔法弹圆弧，造成魔法伤害。</mainText>",
+            "description": "<mainText><stats><ornnBonus>85</ornnBonus>法术强度<br><ornnBonus>450</ornnBonus>生命值<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br><active>主动</active> <br><active>超音速</active><br>朝着目标方向冲刺，释放一道魔法弹圆弧，造成魔法伤害。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -20155,7 +20153,7 @@
         },
         "7013": {
             "name": "武备之力",
-            "description": "<mainText><stats><ornnBonus>120</ornnBonus>法术强度<br><ornnBonus>950</ornnBonus>法力<br><ornnBonus>30</ornnBonus>技能急速</stats><br><br><passive>装填</passive><br>每若干秒获得一层【射击充能】。<br><br><passive>开火</passive><br>伤害型技能会消耗所有【射击充能】来对目标和目标附近的其它敌人(其它敌人的数量相当于【射击充能】层数)造成额外魔法伤害。如果距离内的目标数量不足，那么每剩余一次射击，就会对主要目标重复造成一次伤害。</mainText>",
+            "description": "<mainText><stats><ornnBonus>120</ornnBonus>法术强度<br><ornnBonus>950</ornnBonus>法力<br><ornnBonus>35</ornnBonus>技能急速</stats><br><br><passive>装填</passive><br>每若干秒获得一层【射击充能】。<br><br><passive>开火</passive><br>伤害型技能会消耗所有【射击充能】来对目标和目标附近的其它敌人(其它敌人的数量相当于【射击充能】层数)造成额外魔法伤害。如果距离内的目标数量不足，那么每剩余一次射击，就会对主要目标重复造成一次伤害。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -20293,7 +20291,7 @@
         },
         "7016": {
             "name": "梦想击碎者",
-            "description": "<mainText><stats><ornnBonus>60</ornnBonus>攻击力<br><ornnBonus>40%</ornnBonus>攻击速度<br><ornnBonus>600</ornnBonus>生命值</stats><br><br><passive>顺劈</passive><br>攻击会对附近的敌人们造成<physicalDamage>{{ Item_Melee_Ranged_Split_Dynamic }}物理伤害</physicalDamage>。<br><br><passive>回火</passive><br>造成<physicalDamage>物理伤害</physicalDamage>时为你提供持续2秒的<speed>20移动速度</speed>。{{ Item_OnActivation }} {{ Item_Cooldown }}<br><active>破阵冲击波</active><br>对附近的敌人们造成<physicalDamage>0物理伤害</physicalDamage>和35%<status>减速</status>并且每命中一个英雄就会获得<speed>35%额外移动速度</speed>，在3秒内持续衰减。可在施放时移动。</mainText>",
+            "description": "<mainText><stats><ornnBonus>60</ornnBonus>攻击力<br><ornnBonus>40%</ornnBonus>攻击速度<br><ornnBonus>600</ornnBonus>生命值</stats><br><br><passive>顺劈</passive><br>攻击会对附近的敌人们造成物理伤害。<br><br><passive>回火</passive><br>造成<physicalDamage>物理伤害</physicalDamage>时提供持移动速度。<br><br><active>主动</active><br><active>破阵冲击波</active><br>对附近的敌人们造成物理伤害和<status>减速</status>并且每命中一个英雄就会获得移动速度。可在施放时移动。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -20319,7 +20317,6 @@
                 "Health",
                 "Damage",
                 "AttackSpeed",
-                "CooldownReduction",
                 "Slow",
                 "NonbootsMovement"
             ],
@@ -20575,7 +20572,7 @@
         },
         "7022": {
             "name": "必然",
-            "description": "<mainText><stats><ornnBonus>70</ornnBonus>攻击力<br><ornnBonus>27</ornnBonus>穿甲<br><ornnBonus>8%</ornnBonus>移动速度</stats><br><br><passive>伺机待发</passive><br>在脱离与英雄的战斗状态8秒后获得穿甲。<br><br><passive>险境脱身</passive><br>击杀英雄后获得移动速度。</mainText>",
+            "description": "<mainText><stats><ornnBonus>70</ornnBonus>攻击力<br><ornnBonus>27</ornnBonus>穿甲<br><ornnBonus>8%</ornnBonus>移动速度</stats><br><br><passive>盛名</passive><br>如果一名曾被你造成过伤害的英雄阵亡，则获得攻击力。<br><br><passive>唯我</passive><br>击杀英雄时会生成一座你自己的雕像，如果你已拥有一座雕像，则它会升级。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -20884,7 +20881,7 @@
         },
         "7029": {
             "name": "幽梦之苏醒",
-            "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>26</ornnBonus>穿甲</stats><br><br><passive>鬼影萦绕</passive><br>提供非战斗状态下的<speed>{{Item_Melee_Ranged_Split_Dynamic}}移动速度</speed>。<br>{{ Item_OnActivation }} {{ Item_Cooldown }}<br><active>鬼魂步伐：</active><br>提供<speed>移动速度</speed>和<keyword>幽灵状态</keyword>。</mainText>",
+            "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>26</ornnBonus>穿甲</stats><br><br><passive>鬼影萦绕</passive><br>获得非战斗状态下的<speed>移动速度</speed>。<br><br><br><active>主动</active> (0秒)<br><active>鬼魂步伐：</active><br>提供<speed>移动速度</speed>和<keyword>幽灵状态</keyword>。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -21302,10 +21299,10 @@
             },
             "effect": {
                 "Effect1Amount": "-0.2",
-                "Effect2Amount": "0.04",
+                "Effect2Amount": "0.05",
                 "Effect3Amount": "6",
-                "Effect4Amount": "6",
-                "Effect5Amount": "0.24",
+                "Effect4Amount": "5",
+                "Effect5Amount": "0.25",
                 "Effect6Amount": "0",
                 "Effect7Amount": "0",
                 "Effect8Amount": "0",
@@ -21489,7 +21486,7 @@
         },
         "7042": {
             "name": "男爵赠礼",
-            "description": "<mainText><stats><ornnBonus>120</ornnBonus>法术强度<br><ornnBonus>60%</ornnBonus>攻击速度<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br><passive>艾卡西亚之咬</passive><br>攻击附带<magicDamage>0额外魔法伤害</magicDamage><OnHit>攻击特效</OnHit>。</mainText>",
+            "description": "<mainText><stats><ornnBonus>120</ornnBonus>法术强度<br><ornnBonus>60%</ornnBonus>攻击速度<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br><passive>艾卡西亚之咬</passive><br>攻击附带<magicDamage>魔法伤害</magicDamage><OnHit>攻击特效</OnHit>。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -21568,7 +21565,7 @@
         },
         "8001": {
             "name": "厌恨锁链",
-            "description": "<mainText><stats><attention>650</attention>生命值<br><attention>20</attention>技能急速</stats><br><br><passive>复仇令</passive><br>你随时间持续获得【复仇令】层数。每层【复仇令】会为你提供针对【仇敌】的1%伤害减免。<br><br><passive>报复</passive><br>在满层时，你的【仇敌】在你附近时会降低%韧性。<br><br><active>主动</active> (0秒)<br><active>起誓</active><br>选择你的<passive>仇敌</passive>。</mainText>",
+            "description": "<mainText><stats><attention>650</attention>生命值<br><attention>20</attention>技能急速</stats><br><br><passive>复仇令</passive><br>你随时间持续获得【复仇令】层数。每层【复仇令】会为你提供针对【仇敌】的1%伤害减免。<br><br><passive>报复</passive><br>在满层时，你的【仇敌】在你附近时会降低%韧性。<br><br><active>主动 - </active> <active>起誓</active><br>选择一名【仇敌】以开始积攒一个【复仇令】。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [

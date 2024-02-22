@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "data": {
         "Smolder": {
             "id": "Smolder",
@@ -237,13 +237,13 @@
                     },
                     "maxrank": 5,
                     "cooldown": [
+                        14,
                         13,
-                        12.5,
                         12,
-                        11.5,
-                        11
+                        11,
+                        10
                     ],
-                    "cooldownBurn": "13/12.5/12/11.5/11",
+                    "cooldownBurn": "14/13/12/11/10",
                     "cost": [
                         60,
                         60,

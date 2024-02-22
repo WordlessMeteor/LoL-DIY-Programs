@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "data": {
         "Swain": {
             "id": "Swain",
@@ -118,7 +118,7 @@
                     "id": "SwainQ",
                     "name": "Death's Hand",
                     "description": "Swain unleashes several bolts of eldritch power that pierce through enemies. Enemies hit take more damage for each bolt they are struck by.",
-                    "tooltip": "Swain unleashes eldritch bolts, dealing <magicDamage>{{ initialdamage }} magic damage</magicDamage> plus <magicDamage>{{ extraboltdamage }} magic damage</magicDamage> per bolt past the first (max <magicDamage>{{ maxdamage }} magic damage</magicDamage>).{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "Swain unleashes 5 eldritch bolts, dealing <magicDamage>{{ initialdamage }} magic damage</magicDamage> plus <magicDamage>{{ extraboltdamage }} magic damage</magicDamage> per bolt past the first (max <magicDamage>{{ maxdamage }} magic damage</magicDamage>).{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "Bolt Damage",

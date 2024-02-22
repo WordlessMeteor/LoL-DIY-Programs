@@ -1833,6 +1833,19 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Augments/DU_Augment_BulkShipping.png"
     },
     {
+        "guid": "4943e362-1f65-4fda-8177-7d5d10bdb914",
+        "name": "杰作升级",
+        "nameId": "TFT_Consumable_MasterworkUpgrade",
+        "id": 0,
+        "color": {
+            "R": 29,
+            "B": 157,
+            "G": 71,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/MasterworkUpgrade.png"
+    },
+    {
         "guid": "5c208d2b-737f-40f3-bb28-4a74842bc5df",
         "name": "朋克纹章",
         "nameId": "TFT10_Item_PunkEmblem",
@@ -7553,6 +7566,19 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Augments/DU_Augment_BulkShipping.png"
     },
     {
+        "guid": "4943e362-1f65-4fda-8177-7d5d10bdb914",
+        "name": "杰作升级",
+        "nameId": "TFT_Consumable_MasterworkUpgrade",
+        "id": 0,
+        "color": {
+            "R": 29,
+            "B": 157,
+            "G": 71,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/MasterworkUpgrade.png"
+    },
+    {
         "guid": "5c208d2b-737f-40f3-bb28-4a74842bc5df",
         "name": "朋克纹章",
         "nameId": "TFT10_Item_PunkEmblem",
@@ -12675,6 +12701,19 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Augments/DU_Augment_BulkShipping.png"
     },
     {
+        "guid": "4943e362-1f65-4fda-8177-7d5d10bdb914",
+        "name": "杰作升级",
+        "nameId": "TFT_Consumable_MasterworkUpgrade",
+        "id": 0,
+        "color": {
+            "R": 29,
+            "B": 157,
+            "G": 71,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/MasterworkUpgrade.png"
+    },
+    {
         "guid": "66de2339-de0b-43a1-9fb6-fbab8148d461",
         "name": "剑士纹章",
         "nameId": "TFT3_Item_BlademasterEmblem",
@@ -16417,6 +16456,19 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Augments/DU_Augment_BulkShipping.png"
+    },
+    {
+        "guid": "4943e362-1f65-4fda-8177-7d5d10bdb914",
+        "name": "杰作升级",
+        "nameId": "TFT_Consumable_MasterworkUpgrade",
+        "id": 0,
+        "color": {
+            "R": 29,
+            "B": 157,
+            "G": 71,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/MasterworkUpgrade.png"
     },
     {
         "guid": "5c208d2b-737f-40f3-bb28-4a74842bc5df",

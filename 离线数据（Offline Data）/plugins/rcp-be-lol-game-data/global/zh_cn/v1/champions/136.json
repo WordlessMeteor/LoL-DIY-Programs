@@ -563,6 +563,27 @@
                     "rarities": []
                 },
                 {
+                    "id": 136034,
+                    "name": "青花瓷 奥瑞利安 · 索尔 天青",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136034.png",
+                    "colors": [
+                        "#3AC8B1",
+                        "#B0412A"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": ""
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
                     "id": 136035,
                     "name": "青花瓷 奥瑞利安 · 索尔 墨色",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136035.png",

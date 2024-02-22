@@ -587,6 +587,7 @@
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/203/203033.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/203/203033.jpg",
             "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kindred/skins/Skin33/KindredLoadScreen_33.SKINS_Kindred_Skin33.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Kindred/skins/Skin33/KindredLoadScreen_33_LE.PIE_C_14_4.jpg",
             "skinType": "",
             "rarity": "kMythic",
             "isLegacy": false,

@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "data": {
         "AurelionSol": {
             "id": "AurelionSol",
@@ -46,6 +46,12 @@
                     "id": "136021",
                     "num": 21,
                     "name": "墨影之灵 奥瑞利安 · 索尔",
+                    "chromas": false
+                },
+                {
+                    "id": "136031",
+                    "num": 31,
+                    "name": "青花瓷 奥瑞利安 · 索尔",
                     "chromas": false
                 }
             ],
@@ -234,7 +240,7 @@
                 {
                     "id": "AurelionSolW",
                     "name": "星穹流丽",
-                    "description": "奥瑞利安·索尔向指定的目的位置飞行，途中可以越过地形。奥瑞利安·索尔在飞行时可以施放其他技能。飞行期间，星河冲荡没有冷却时间，也没有最长蓄力时间，并且造成的伤害会提升。如果有敌方英雄因为奥瑞利安·索尔造成的伤害阵亡，星穹流丽的冷却时间会缩短。星尘会提升星穹流丽的最大飞行距离。",
+                    "description": "奥瑞利安 · 索尔沿着目标方向飞越地形。在这个状态下，他可以施放其它技能。飞行期间，星河冲荡没有冷却时间，也没有最长蓄力时间，并且造成的伤害会提升。<br><br>如果有敌方英雄因为奥瑞利安 · 索尔近期造成的伤害阵亡，星穹流丽的冷却时间会缩短。<br><br>星尘会提升星穹流丽的最大飞行距离。",
                     "tooltip": "奥瑞利安·索尔向一个方向飞行。在飞行时，<spellName>星河冲荡</spellName>没有冷却时间，没有最大引导时长，并且它的固定伤害提升{{ truedamagebonus*100 }}%。<br /><br />参与击杀那些在{{ resetwindow }}秒内被你造成过伤害的英雄后，会返还这个技能{{ tooltiptakedowncooldownmultiplier }}%的冷却时间。<br /><br /><recast>再次施放：</recast>提前结束飞行。{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
@@ -518,7 +524,7 @@
                 {
                     "id": "AurelionSolR",
                     "name": "星天落瀑",
-                    "description": "星落：奥瑞利安·索尔将一颗星星撞入大地中。这个撞击会对敌人们造成魔法伤害和晕眩效果，并且每命中一名敌方英雄还会提供【星尘】。收集足够的【星尘】还会使奥瑞利安·索尔的下一个【星落】转变为【天瀑】。天瀑：奥瑞利安·索尔从诸天拖下一颗巨型星星，在一个更大的撞击区域造成更多伤害，并对敌人造成击飞效果而非晕眩效果。随后会有一道冲击波从撞击地带的边缘开始扩散，在命中敌人们时造成伤害和减速效果。【星尘】会提升【星落】和【天瀑】的撞击区域。",
+                    "description": "星落：奥瑞利安 · 索尔召唤一颗星辰坠落地面。这次冲击造成魔法伤害并眩晕敌人，并且每命中一个敌方英雄还会提供星尘。收集足够的星尘后，奥瑞利安·索尔的下一次星落将会升级为天瀑。<br><br>天瀑：奥瑞利安 · 索尔从诸天拽下一颗巨大的星辰撞击地面，拥有提升过的冲击范围和提升过的伤害，并且会对敌人们造成击飞而非晕眩。随后会有一道冲击波从冲击范围的边缘散播出去，对命中的敌人们造成伤害和减速。星尘会提升【星落】和【天瀑】的冲击范围。",
                     "tooltip": "奥瑞利安·索尔从诸天摘取一颗巨型星星并将其砸入大地中，对敌人造成<magicDamage>{{ maxdamagetooltip }}魔法伤害</magicDamage>、{{ stunduration }}秒<status>晕眩</status>并且每命中一名英雄就会吸收<span class=\"color3458eb\">{{ massstolen }}星尘</span>。<br /><br />收集<span class=\"color3458eb\">{{ calamitystacks }}星尘</span>时会使下一个<spellName>星落</spellName>转变为<spellName>天瀑</spellName>。<br /><br /><spellName>天瀑</spellName>：奥瑞利安·索尔从宇宙中拖来一个星座的怒火，在一个更大的区域造成<magicDamage>{{ r2damage }}魔法伤害</magicDamage>，对命中的敌人们造成{{ stunduration }}秒<status>击飞</status>，并释放一道巨型冲击波，对英雄和史诗级野怪造成<magicDamage>{{ shockwavedamage }}魔法伤害</magicDamage>并对命中的所有敌人造成持续1秒的{{ shockwaveslow*100 }}%<status>减速</status>。{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [

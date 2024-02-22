@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "data": {
         "AurelionSol": {
             "id": "AurelionSol",
@@ -46,6 +46,12 @@
                     "id": "136021",
                     "num": 21,
                     "name": "Inkshadow Aurelion Sol",
+                    "chromas": false
+                },
+                {
+                    "id": "136031",
+                    "num": 31,
+                    "name": "Porcelain Protector Aurelion Sol",
                     "chromas": false
                 }
             ],
@@ -234,7 +240,7 @@
                 {
                     "id": "AurelionSolW",
                     "name": "Astral Flight",
-                    "description": "Aurelion Sol flies over terrain in a targeted direction. While in this state, he can cast other abilities. Breath of Light no longer has a cooldown or maximum channel duration and deals increased damage while flying.\\n\\nAstral Flight's remaining cooldown is reduced whenever an enemy champion dies after being recently damaged by Aurelion Sol.\\n\\nStardust increases Astral Flight's maximum range.",
+                    "description": "Aurelion Sol flies over terrain in a targeted direction. While in this state, he can cast other abilities. Breath of Light no longer has a cooldown or maximum channel duration and deals increased damage while flying.<br><br>Astral Flight's remaining cooldown is reduced whenever an enemy champion dies after being recently damaged by Aurelion Sol.<br><br>Stardust increases Astral Flight's maximum range.",
                     "tooltip": "Aurelion Sol flies in a direction. While flying, <spellName>Breath of Light</spellName> has no Cooldown, no max channel duration, and its flat damage is increased by {{ truedamagebonus*100 }}%.<br /><br />Takedowns on champions within {{ resetwindow }} seconds of damaging them refunds {{ tooltiptakedowncooldownmultiplier }}% of this Ability's Cooldown.<br /><br /><recast>Recast:</recast> End flight early.{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
@@ -518,7 +524,7 @@
                 {
                     "id": "AurelionSolR",
                     "name": "Falling Star / The Skies Descend",
-                    "description": "Falling Star: Aurelion Sol crashes a star into the earth. This impact deals magic damage and stuns enemies while also granting Stardust for each enemy champion it hits. Gathering enough Stardust transforms Aurelion Sol's next Falling Star into The Skies Descend. The Skies Descend: Aurelion Sol drags a giant star down from the heavens with an increased impact zone and increased damage, knocking up enemies rather than stunning them. A shockwave then spreads from the edge of the impact zone, which damages and slows the enemies it hits. Stardust increases the impact area of both Falling Star and The Skies Descend.",
+                    "description": "Falling Star: Aurelion Sol crashes a star into the earth. This impact deals magic damage and stuns enemies while also granting Stardust for each enemy champion it hits. Gathering enough Stardust transforms Aurelion Sol's next Falling Star into The Skies Descend.<br><br>The Skies Descend: Aurelion Sol drags a giant star down from the heavens with an increased impact zone and increased damage, knocking up enemies rather than stunning them. A shockwave then spreads from the edge of the impact zone, which damages and slows the enemies it hits. Stardust increases the impact area of both Falling Star and The Skies Descend.",
                     "tooltip": "Aurelion Sol plucks a star from the heavens and crashes it into the earth, dealing <magicDamage>{{ maxdamagetooltip }} magic damage</magicDamage>, <status>Stunning</status> enemies {{ stunduration }} second, and absorbing <span class=\"color3458eb\">{{ massstolen }} Stardust</span> for each champion hit.<br /><br />Gathering <span class=\"color3458eb\">{{ calamitystacks }} Stardust</span> transforms the next <spellName>Falling Star</spellName> into <spellName>The Skies Descend</spellName>.<br /><br /><spellName>The Skies Descend</spellName>: Aurelion Sol drags a constellation's worth of fury down from the cosmos, dealing <magicDamage>{{ r2damage }} magic damage</magicDamage> in a larger area, <status>Knocking Up</status> enemies hit for {{ stunduration }} second, and unleashing a massive shockwave that deals <magicDamage>{{ shockwavedamage }} magic damage</magicDamage> to champions and Epic Monsters and <status>Slows</status> all enemies hit by {{ shockwaveslow*100 }}% for 1 second.{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [

@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "data": {
         "XinZhao": {
             "id": "XinZhao",
@@ -274,7 +274,7 @@
                     "id": "XinZhaoW",
                     "name": "Wind Becomes Lightning",
                     "description": "Xin Zhao slashes in front of himself with his spear, then thrusts it forward, slowing affected enemies and marking them as Challenged.",
-                    "tooltip": "Xin Zhao slashes, dealing <physicalDamage>{{ slashdamage }}</physicalDamage> physical damage, then thrusts, dealing <physicalDamage>{{ thrustdamage }}</physicalDamage>. Enemies hit by the thrust are <status>Slowed</status> by {{ e6 }}% for {{ e7 }} seconds. <br /><br />Champions and Large Monsters hit by the thrust are marked as <keywordMajor>Challenged</keywordMajor> for {{ markduration }} seconds.{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "Xin Zhao slashes, dealing <physicalDamage>{{ slashdamage }}</physicalDamage> physical damage, then thrusts, dealing <physicalDamage>{{ thrustdamage }}</physicalDamage>. Enemies hit by the thrust are <status>Slowed</status> by {{ e6 }}% for {{ e7 }} seconds. <br /><br />Champions and Large Monsters hit by the thrust are marked as <keywordMajor>Challenged</keywordMajor> for {{ markduration }} seconds and revealed unless <keywordStealth>stealthed</keywordStealth>.{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "Slash Damage",

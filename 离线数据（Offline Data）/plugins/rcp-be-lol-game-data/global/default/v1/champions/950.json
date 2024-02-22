@@ -194,6 +194,142 @@
             ],
             "skinAugments": null,
             "description": "Failed experiment! DEMA DOG! The Four-legged Fighter! This... creature... has almost as many titles as it does separate entities it can summon! Does it want revenge on its former masters? To take over the world? I don't know! I'm no dog mind reader! It's.... Naafiri!  "
+        },
+        {
+            "id": 950011,
+            "isBase": false,
+            "name": "PROJECT: Naafiri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/950/950011.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/950/950011.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/950/950011.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Naafiri/Skins/Skin11/NaafiriLoadScreen_11.SKINS_Naafiri_Skin11.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950011.png",
+            "chromas": [
+                {
+                    "id": 950012,
+                    "name": "PROJECT: Naafiri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950012.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2024."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 950013,
+                    "name": "PROJECT: Naafiri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950013.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 950014,
+                    "name": "PROJECT: Naafiri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950014.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 950015,
+                    "name": "PROJECT: Naafiri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950015.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 950016,
+                    "name": "PROJECT: Naafiri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950016.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 950017,
+                    "name": "PROJECT: Naafiri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950017.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 950018,
+                    "name": "PROJECT: Naafiri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950018.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 950019,
+                    "name": "PROJECT: Naafiri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950019.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 18
+                }
+            ],
+            "skinAugments": null,
+            "description": "PROJECT's experiments permanently altered the canine Naafiri, allowing her to assimilate her targets' consciousness into her own. Sensing potential in this ability, Mordekaiser infected her programming with a new mission: erase all of humanity's free will. Now she'll prove to any survivors that resistance is futile."
         }
     ],
     "passive": {

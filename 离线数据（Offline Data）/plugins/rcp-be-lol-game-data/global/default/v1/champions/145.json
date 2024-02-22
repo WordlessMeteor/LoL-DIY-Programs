@@ -1686,12 +1686,12 @@
             "description": "Kai'Sa dashes near an enemy champion.",
             "dynamicDescription": "Kai'Sa warps near an enemy champion affected by <keywordMajor>Plasma</keywordMajor> and gains <shield>@RCalculatedShieldValue@ Shield</shield> for @RShieldDuration@ seconds.@SpellModifierDescriptionAppend@",
             "range": [
-                1500.0000,
-                2250.0000,
+                2000.0000,
+                2500.0000,
                 3000.0000,
-                3750.0000,
-                4500.0000,
-                5250.0000
+                3500.0000,
+                4000.0000,
+                4500.0000
             ],
             "costCoefficients": [
                 100.0000,

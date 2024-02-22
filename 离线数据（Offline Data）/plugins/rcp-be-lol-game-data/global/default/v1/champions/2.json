@@ -969,7 +969,7 @@
             "abilityVideoImagePath": "champion-abilities/0002/ability_0002_W1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@s %i:cooldown%",
-            "description": "Olaf's Attack Speed is increased, he reduces incoming damage, and he gains a Shield.",
+            "description": "Olaf's Attack Speed is increased and he gains a Shield.",
             "dynamicDescription": "Olaf gains <attackSpeed>@Attackspeed*100@% Attack Speed</attackSpeed> for @Duration@ seconds, and <shield>@BaseShield@ plus @ShieldPercMissingHP*100@% missing Health Shield (up to a maximum of @MaxShieldCalc@ Shield below @ThresholdForMax*100@% Health)</shield> for @ShieldDuration@ seconds.@SpellModifierDescriptionAppend@",
             "range": [
                 700.0000,

@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "data": {
         "Ahri": {
             "id": "Ahri",
@@ -151,7 +151,7 @@
             },
             "stats": {
                 "hp": 590,
-                "hpperlevel": 96,
+                "hpperlevel": 104,
                 "mp": 418,
                 "mpperlevel": 25,
                 "movespeed": 330,
@@ -599,7 +599,7 @@
                     "id": "AhriR",
                     "name": "Spirit Rush",
                     "description": "Ahri dashes forward and fires essence bolts, damaging nearby enemies. Spirit Rush can be cast up to three times before going on cooldown, and gains additional recasts when taking down enemy champions.",
-                    "tooltip": "Ahri nimbly dashes, firing {{ rmaxtargetspercast }} essence bolts at nearby enemies, prioritizing champions. These bolts deal <magicDamage>{{ rcalculateddamage }} magic damage</magicDamage> each. Spirit Rush can be recast up to 2 more times within {{ rrecastwindow }} seconds.<br /><br />Consuming a champion's Essence with Essence Theft during this period extends the recast window by up to {{ pdurationextension }} seconds and grants an additional recast of Spirit Rush (up to {{ rmaxcasts }} stored).{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "Ahri nimbly dashes, firing {{ rmaxtargetspercast }} essence bolts at nearby enemies, prioritizing champions. These bolts deal <magicDamage>{{ rcalculateddamage }} magic damage</magicDamage> each. <spellName>Spirit Rush</spellName> can be <recast>Recast</recast> up to 2 more times within {{ rrecastwindow }} seconds.<br /><br />Consuming a champion's Essence with <spellName>Essence Theft</spellName> during this period extends the recast window by up to {{ pdurationextension }} seconds and grants an additional recast of <spellName>Spirit Rush</spellName> (up to {{ rmaxcasts }} stored).{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "Damage",

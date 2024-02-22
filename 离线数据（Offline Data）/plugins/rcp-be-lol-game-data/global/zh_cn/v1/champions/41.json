@@ -696,6 +696,142 @@
             ],
             "skinAugments": null,
             "description": "普朗克被一个封印着卡玛维亚的佛耶戈的神秘护身符激发了力量并挥舞着破败王剑。当他愤怒地寻找失散已久的伊苏尔德时，他的自我人格爆发了。尽管最终被一群英雄解除了破败王的影响，但他却带着与他同在的经历……也许，是为了提醒自己何为真正的力量。"
+        },
+        {
+            "id": 41033,
+            "isBase": false,
+            "name": "",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/41/41033.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/41/41033.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/41/41033.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Gangplank/Skins/Skin33/GangplankLoadScreen_33.SKINS_Gangplank_Skin33.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41033.png",
+            "chromas": [
+                {
+                    "id": 41034,
+                    "name": "",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41034.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": ""
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 41035,
+                    "name": "",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41035.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 41036,
+                    "name": "",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41036.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 41037,
+                    "name": "",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41037.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 41038,
+                    "name": "",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41038.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 41039,
+                    "name": "",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41039.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 41040,
+                    "name": "",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41040.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 41041,
+                    "name": "",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41041.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 18
+                }
+            ],
+            "skinAugments": null,
+            "description": null
         }
     ],
     "passive": {

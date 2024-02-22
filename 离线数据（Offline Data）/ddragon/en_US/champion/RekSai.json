@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "data": {
         "RekSai": {
             "id": "RekSai",
@@ -76,14 +76,14 @@
                 "hpperlevel": 99,
                 "mp": 100,
                 "mpperlevel": 0,
-                "movespeed": 335,
+                "movespeed": 340,
                 "armor": 36,
                 "armorperlevel": 4.95,
                 "spellblock": 32,
                 "spellblockperlevel": 2.05,
                 "attackrange": 175,
-                "hpregen": 7.5,
-                "hpregenperlevel": 0.65,
+                "hpregen": 2.5,
+                "hpregenperlevel": 0.5,
                 "mpregen": 0,
                 "mpregenperlevel": 0,
                 "crit": 0,
@@ -98,19 +98,17 @@
                     "id": "RekSaiQ",
                     "name": "Queen's Wrath / Prey Seeker",
                     "description": "Rek'Sai's next 3 basic attacks deal bonus Physical Damage to nearby enemies.<br><br>While Burrowed, Rek'Sai launches a burst of void-charged earth that deals Physical Damage and reveals enemies hit.",
-                    "tooltip": "<keywordMajor>Un-Burrowed</keywordMajor>: Rek'Sai's next 3 Attacks within {{ e7 }} seconds deal an additional <physicalDamage>{{ spell.reksaiq:totaldamagetooltip }} physical damage</physicalDamage> to nearby enemies. Basic attacks refresh the duration of this ability. {{ spellmodifierdescriptionappend }}",
+                    "tooltip": "<keywordMajor>Un-Burrowed</keywordMajor>: Rek'Sai's next 3 Attacks within {{ buffduration }} seconds gain <attackSpeed>{{ attackspeed*100 }}% Attack Speed</attackSpeed> and deal an additional <physicalDamage>{{ totaldamagetooltip }} physical damage</physicalDamage> to nearby enemies. Basic attacks refresh the duration of this ability.{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
-                            "Queen's Wrath Damage",
-                            "Prey Seeker Damage",
-                            "Prey Seeker Cooldown",
-                            "Cooldown"
+                            "Queen's Wrath AD Ratio",
+                            "Queen's Wrath Cooldown",
+                            "Prey Seeker Damage"
                         ],
                         "effect": [
                             "{{ unburrowedadratio*100.000000 }}% -> {{ unburrowedadrationl*100.000000 }}%",
-                            "{{ e4 }} -> {{ e4NL }}",
-                            "{{ e5 }} -> {{ e5NL }}",
-                            "{{ cooldown }} -> {{ cooldownNL }}"
+                            "{{ cooldown }} -> {{ cooldownNL }}",
+                            "{{ burrowedbasedamage }} -> {{ burrowedbasedamageNL }}"
                         ]
                     },
                     "maxrank": 5,
@@ -155,18 +153,18 @@
                             0
                         ],
                         [
-                            60,
-                            95,
-                            130,
-                            165,
-                            200
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
                         ],
                         [
                             12,
-                            11.5,
                             11,
-                            10.5,
-                            10
+                            10,
+                            9,
+                            8
                         ],
                         [
                             5,
@@ -209,8 +207,8 @@
                         "0",
                         "0",
                         "0",
-                        "60/95/130/165/200",
-                        "12/11.5/11/10.5/10",
+                        "0",
+                        "12/11/10/9/8",
                         "5",
                         "3",
                         "300",
@@ -243,13 +241,15 @@
                     "id": "RekSaiW",
                     "name": "Burrow / Un-burrow",
                     "description": "Rek'Sai burrows into the ground, gaining new abilities and increased Move Speed. Her vision range is reduced and she cannot use basic attacks.<br><br>While Burrowed, Rek'Sai may cast Un-burrow to knock up and damage nearby enemies.",
-                    "tooltip": "<keywordMajor>Un-Burrowed:</keywordMajor> Rek'sai burrows into the ground, gaining access to new Abilities, and <speed>{{ spell.reksaiw:speedbonus }} Move Speed</speed>, but cannot Attack. She has reduced vision range, but nearby enemies that move and are otherwise unseen will have their positions revealed to Rek'sai and her allies.{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "<keywordMajor>Unburrowed:</keywordMajor> Rek'sai burrows into the ground, gaining access to new Abilities but cannot Attack. She gains <speed>{{ burrowedmovespeed }} Move Speed</speed>, {{ visionradiusmod*-100 }}% reduced vision range, and nearby enemies that move and are otherwise unseen will have their positions revealed to Rek'sai and her allies.{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
-                            "Un-burrow Damage"
+                            "Unburrow Damage",
+                            "Burrowed Move Speed"
                         ],
                         "effect": [
-                            "{{ e2 }} -> {{ e2NL }}"
+                            "{{ basedamage }} -> {{ basedamageNL }}",
+                            "{{ burrowedmovespeed }} -> {{ burrowedmovespeedNL }}"
                         ]
                     },
                     "maxrank": 5,
@@ -382,28 +382,28 @@
                     "id": "RekSaiE",
                     "name": "Furious Bite / Tunnel",
                     "description": "Rek'Sai bites her target, dealing double and True Damage if she has max Fury.<br><br>While Burrowed, Rek'Sai creates a re-usable, long lasting tunnel. Enemies can destroy it by standing on top of either entrance.",
-                    "tooltip": "<scaleAD>Un-Burrowed:</scaleAD> Rek'Sai bites a target, dealing <physicalDamage>{{ spell.reksaie:basedamagetooltip }} physical damage</physicalDamage>. At max <keywordMajor>Fury</keywordMajor>, the bite deals <trueDamage>{{ spell.reksaie:empowereddamagetooltip }} true damage</trueDamage> instead.{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "<scaleAD>Un-Burrowed:</scaleAD> Rek'Sai bites a target, dealing <physicalDamage>{{ spell.reksaie:basedamagetooltip }} physical damage</physicalDamage>. At max <keywordMajor>Fury</keywordMajor>, the bite deals an additional <physicalDamage>{{ spell.reksaie:furymaxhealthdamage*100 }}% max Health physical damage</physicalDamage>.{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
-                            "Furious Bite Damage",
+                            "Max Health %",
                             "Tunnel Cast Cooldown",
                             "Tunnel Use Cooldown"
                         ],
                         "effect": [
-                            "{{ e1 }} -> {{ e1NL }}",
-                            "{{ e9 }} -> {{ e9NL }}",
-                            "{{ e8 }} -> {{ e8NL }}"
+                            "{{ furymaxhealthdamage*100.000000 }}% -> {{ furymaxhealthdamagenl*100.000000 }}%",
+                            "{{ dashcooldown }} -> {{ dashcooldownNL }}",
+                            "{{ tunnelreusecooldown }} -> {{ tunnelreusecooldownNL }}"
                         ]
                     },
                     "maxrank": 5,
                     "cooldown": [
-                        12,
-                        12,
-                        12,
-                        12,
-                        12
+                        10,
+                        10,
+                        10,
+                        10,
+                        10
                     ],
-                    "cooldownBurn": "12",
+                    "cooldownBurn": "10",
                     "cost": [
                         0,
                         0,
@@ -416,11 +416,11 @@
                     "effect": [
                         null,
                         [
-                            5,
-                            10,
-                            15,
-                            20,
-                            25
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
                         ],
                         [
                             0,
@@ -430,11 +430,11 @@
                             0
                         ],
                         [
-                            12,
-                            12,
-                            12,
-                            12,
-                            12
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
                         ],
                         [
                             0,
@@ -444,18 +444,11 @@
                             0
                         ],
                         [
-                            10,
-                            10,
-                            10,
-                            10,
-                            10
-                        ],
-                        [
-                            8,
-                            8,
-                            8,
-                            8,
-                            8
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
                         ],
                         [
                             0,
@@ -465,18 +458,25 @@
                             0
                         ],
                         [
-                            10,
-                            8,
-                            6,
-                            4,
-                            2
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
                         ],
                         [
-                            26,
-                            24,
-                            22,
-                            20,
-                            18
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        [
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
                         ],
                         [
                             0,
@@ -488,15 +488,15 @@
                     ],
                     "effectBurn": [
                         null,
-                        "5/10/15/20/25",
                         "0",
-                        "12",
                         "0",
-                        "10",
-                        "8",
                         "0",
-                        "10/8/6/4/2",
-                        "26/24/22/20/18",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
                         "0"
                     ],
                     "vars": [],
@@ -529,13 +529,13 @@
                     "leveltip": {
                         "label": [
                             "Damage",
-                            "Missing Health Damage",
+                            "Percent Missing Health Damage",
                             "Cooldown"
                         ],
                         "effect": [
                             "{{ rbasedamage }} -> {{ rbasedamageNL }}",
                             "{{ percentmissinghealthdamage }}% -> {{ percentmissinghealthdamageNL }}%",
-                            "{{ rcooldown }} -> {{ rcooldownNL }}"
+                            "{{ cooldown }} -> {{ cooldownNL }}"
                         ]
                     },
                     "maxrank": 3,

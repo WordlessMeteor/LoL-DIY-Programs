@@ -1,10 +1,10 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "data": {
         "Aatrox": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Aatrox",
             "key": "266",
             "name": "暗裔剑魔",
@@ -54,7 +54,7 @@
             }
         },
         "Ahri": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Ahri",
             "key": "103",
             "name": "九尾妖狐",
@@ -82,7 +82,7 @@
             "partype": "法力",
             "stats": {
                 "hp": 590,
-                "hpperlevel": 96,
+                "hpperlevel": 104,
                 "mp": 418,
                 "mpperlevel": 25,
                 "movespeed": 330,
@@ -104,7 +104,7 @@
             }
         },
         "Akali": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Akali",
             "key": "84",
             "name": "离群之刺",
@@ -153,7 +153,7 @@
             }
         },
         "Akshan": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Akshan",
             "key": "166",
             "name": "影哨",
@@ -203,7 +203,7 @@
             }
         },
         "Alistar": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Alistar",
             "key": "12",
             "name": "牛头酋长",
@@ -253,7 +253,7 @@
             }
         },
         "Amumu": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Amumu",
             "key": "32",
             "name": "殇之木乃伊",
@@ -303,7 +303,7 @@
             }
         },
         "Anivia": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Anivia",
             "key": "34",
             "name": "冰晶凤凰",
@@ -353,7 +353,7 @@
             }
         },
         "Annie": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Annie",
             "key": "1",
             "name": "黑暗之女",
@@ -402,7 +402,7 @@
             }
         },
         "Aphelios": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Aphelios",
             "key": "523",
             "name": "残月之肃",
@@ -451,7 +451,7 @@
             }
         },
         "Ashe": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Ashe",
             "key": "22",
             "name": "寒冰射手",
@@ -501,7 +501,7 @@
             }
         },
         "AurelionSol": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "AurelionSol",
             "key": "136",
             "name": "铸星龙王",
@@ -550,7 +550,7 @@
             }
         },
         "Azir": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Azir",
             "key": "268",
             "name": "沙漠皇帝",
@@ -600,7 +600,7 @@
             }
         },
         "Bard": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Bard",
             "key": "432",
             "name": "星界游神",
@@ -633,7 +633,7 @@
                 "mpperlevel": 50,
                 "movespeed": 330,
                 "armor": 34,
-                "armorperlevel": 5.2,
+                "armorperlevel": 5,
                 "spellblock": 30,
                 "spellblockperlevel": 1.3,
                 "attackrange": 500,
@@ -646,11 +646,11 @@
                 "attackdamage": 52,
                 "attackdamageperlevel": 3,
                 "attackspeedperlevel": 2,
-                "attackspeed": 0.625
+                "attackspeed": 0.658
             }
         },
         "Belveth": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Belveth",
             "key": "200",
             "name": "虚空女皇",
@@ -699,7 +699,7 @@
             }
         },
         "Blitzcrank": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Blitzcrank",
             "key": "53",
             "name": "蒸汽机器人",
@@ -749,7 +749,7 @@
             }
         },
         "Brand": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Brand",
             "key": "63",
             "name": "复仇焰魂",
@@ -798,7 +798,7 @@
             }
         },
         "Braum": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Braum",
             "key": "201",
             "name": "弗雷尔卓德之心",
@@ -848,7 +848,7 @@
             }
         },
         "Briar": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Briar",
             "key": "233",
             "name": "狂厄蔷薇",
@@ -898,7 +898,7 @@
             }
         },
         "Caitlyn": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Caitlyn",
             "key": "51",
             "name": "皮城女警",
@@ -947,7 +947,7 @@
             }
         },
         "Camille": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Camille",
             "key": "164",
             "name": "青钢影",
@@ -997,7 +997,7 @@
             }
         },
         "Cassiopeia": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Cassiopeia",
             "key": "69",
             "name": "魔蛇之拥",
@@ -1046,7 +1046,7 @@
             }
         },
         "Chogath": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Chogath",
             "key": "31",
             "name": "虚空恐惧",
@@ -1096,7 +1096,7 @@
             }
         },
         "Corki": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Corki",
             "key": "42",
             "name": "英勇投弹手",
@@ -1145,7 +1145,7 @@
             }
         },
         "Darius": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Darius",
             "key": "122",
             "name": "诺克萨斯之手",
@@ -1195,7 +1195,7 @@
             }
         },
         "Diana": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Diana",
             "key": "131",
             "name": "皎月女神",
@@ -1245,7 +1245,7 @@
             }
         },
         "Draven": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Draven",
             "key": "119",
             "name": "荣耀行刑官",
@@ -1294,7 +1294,7 @@
             }
         },
         "DrMundo": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "DrMundo",
             "key": "36",
             "name": "祖安狂人",
@@ -1344,7 +1344,7 @@
             }
         },
         "Ekko": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Ekko",
             "key": "245",
             "name": "时间刺客",
@@ -1394,7 +1394,7 @@
             }
         },
         "Elise": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Elise",
             "key": "60",
             "name": "蜘蛛女皇",
@@ -1444,7 +1444,7 @@
             }
         },
         "Evelynn": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Evelynn",
             "key": "28",
             "name": "痛苦之拥",
@@ -1494,7 +1494,7 @@
             }
         },
         "Ezreal": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Ezreal",
             "key": "81",
             "name": "探险家",
@@ -1544,7 +1544,7 @@
             }
         },
         "Fiddlesticks": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Fiddlesticks",
             "key": "9",
             "name": "远古恐惧",
@@ -1594,7 +1594,7 @@
             }
         },
         "Fiora": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Fiora",
             "key": "114",
             "name": "无双剑姬",
@@ -1644,7 +1644,7 @@
             }
         },
         "Fizz": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Fizz",
             "key": "105",
             "name": "潮汐海灵",
@@ -1694,7 +1694,7 @@
             }
         },
         "Galio": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Galio",
             "key": "3",
             "name": "正义巨像",
@@ -1744,7 +1744,7 @@
             }
         },
         "Gangplank": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Gangplank",
             "key": "41",
             "name": "海洋之灾",
@@ -1793,7 +1793,7 @@
             }
         },
         "Garen": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Garen",
             "key": "86",
             "name": "德玛西亚之力",
@@ -1843,7 +1843,7 @@
             }
         },
         "Gnar": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Gnar",
             "key": "150",
             "name": "迷失之牙",
@@ -1893,7 +1893,7 @@
             }
         },
         "Gragas": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Gragas",
             "key": "79",
             "name": "酒桶",
@@ -1943,7 +1943,7 @@
             }
         },
         "Graves": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Graves",
             "key": "104",
             "name": "法外狂徒",
@@ -1992,7 +1992,7 @@
             }
         },
         "Gwen": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Gwen",
             "key": "887",
             "name": "灵罗娃娃",
@@ -2042,7 +2042,7 @@
             }
         },
         "Hecarim": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Hecarim",
             "key": "120",
             "name": "战争之影",
@@ -2092,7 +2092,7 @@
             }
         },
         "Heimerdinger": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Heimerdinger",
             "key": "74",
             "name": "大发明家",
@@ -2142,7 +2142,7 @@
             }
         },
         "Hwei": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Hwei",
             "key": "910",
             "name": "异画师",
@@ -2191,7 +2191,7 @@
             }
         },
         "Illaoi": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Illaoi",
             "key": "420",
             "name": "海兽祭司",
@@ -2241,7 +2241,7 @@
             }
         },
         "Irelia": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Irelia",
             "key": "39",
             "name": "刀锋舞者",
@@ -2291,7 +2291,7 @@
             }
         },
         "Ivern": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Ivern",
             "key": "427",
             "name": "翠神",
@@ -2341,7 +2341,7 @@
             }
         },
         "Janna": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Janna",
             "key": "40",
             "name": "风暴之怒",
@@ -2391,7 +2391,7 @@
             }
         },
         "JarvanIV": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "JarvanIV",
             "key": "59",
             "name": "德玛西亚皇子",
@@ -2441,7 +2441,7 @@
             }
         },
         "Jax": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Jax",
             "key": "24",
             "name": "武器大师",
@@ -2491,7 +2491,7 @@
             }
         },
         "Jayce": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Jayce",
             "key": "126",
             "name": "未来守护者",
@@ -2534,14 +2534,14 @@
                 "mpregenperlevel": 0.8,
                 "crit": 0,
                 "critperlevel": 0,
-                "attackdamage": 57,
+                "attackdamage": 59,
                 "attackdamageperlevel": 4.25,
                 "attackspeedperlevel": 3,
                 "attackspeed": 0.658
             }
         },
         "Jhin": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Jhin",
             "key": "202",
             "name": "戏命师",
@@ -2591,7 +2591,7 @@
             }
         },
         "Jinx": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Jinx",
             "key": "222",
             "name": "暴走萝莉",
@@ -2640,7 +2640,7 @@
             }
         },
         "Kaisa": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Kaisa",
             "key": "145",
             "name": "虚空之女",
@@ -2689,7 +2689,7 @@
             }
         },
         "Kalista": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Kalista",
             "key": "429",
             "name": "复仇之矛",
@@ -2738,7 +2738,7 @@
             }
         },
         "Karma": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Karma",
             "key": "43",
             "name": "天启者",
@@ -2788,7 +2788,7 @@
             }
         },
         "Karthus": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Karthus",
             "key": "30",
             "name": "死亡颂唱者",
@@ -2837,7 +2837,7 @@
             }
         },
         "Kassadin": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Kassadin",
             "key": "38",
             "name": "虚空行者",
@@ -2887,7 +2887,7 @@
             }
         },
         "Katarina": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Katarina",
             "key": "55",
             "name": "不祥之刃",
@@ -2937,7 +2937,7 @@
             }
         },
         "Kayle": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Kayle",
             "key": "10",
             "name": "正义天使",
@@ -2987,7 +2987,7 @@
             }
         },
         "Kayn": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Kayn",
             "key": "141",
             "name": "影流之镰",
@@ -3037,7 +3037,7 @@
             }
         },
         "Kennen": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Kennen",
             "key": "85",
             "name": "狂暴之心",
@@ -3087,7 +3087,7 @@
             }
         },
         "Khazix": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Khazix",
             "key": "121",
             "name": "虚空掠夺者",
@@ -3136,7 +3136,7 @@
             }
         },
         "Kindred": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Kindred",
             "key": "203",
             "name": "永猎双子",
@@ -3185,7 +3185,7 @@
             }
         },
         "Kled": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Kled",
             "key": "240",
             "name": "暴怒骑士",
@@ -3235,7 +3235,7 @@
             }
         },
         "KogMaw": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "KogMaw",
             "key": "96",
             "name": "深渊巨口",
@@ -3285,7 +3285,7 @@
             }
         },
         "KSante": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "KSante",
             "key": "897",
             "name": "纳祖芒荣耀",
@@ -3312,9 +3312,9 @@
             ],
             "partype": "法力",
             "stats": {
-                "hp": 570,
+                "hp": 625,
                 "hpperlevel": 115,
-                "mp": 290,
+                "mp": 320,
                 "mpperlevel": 60,
                 "movespeed": 330,
                 "armor": 33,
@@ -3335,7 +3335,7 @@
             }
         },
         "Leblanc": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Leblanc",
             "key": "7",
             "name": "诡术妖姬",
@@ -3385,7 +3385,7 @@
             }
         },
         "LeeSin": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "LeeSin",
             "key": "64",
             "name": "盲僧",
@@ -3435,7 +3435,7 @@
             }
         },
         "Leona": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Leona",
             "key": "89",
             "name": "曙光女神",
@@ -3485,7 +3485,7 @@
             }
         },
         "Lillia": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Lillia",
             "key": "876",
             "name": "含羞蓓蕾",
@@ -3535,7 +3535,7 @@
             }
         },
         "Lissandra": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Lissandra",
             "key": "127",
             "name": "冰霜女巫",
@@ -3584,7 +3584,7 @@
             }
         },
         "Lucian": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Lucian",
             "key": "236",
             "name": "圣枪游侠",
@@ -3633,7 +3633,7 @@
             }
         },
         "Lulu": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Lulu",
             "key": "117",
             "name": "仙灵女巫",
@@ -3683,7 +3683,7 @@
             }
         },
         "Lux": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Lux",
             "key": "99",
             "name": "光辉女郎",
@@ -3733,7 +3733,7 @@
             }
         },
         "Malphite": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Malphite",
             "key": "54",
             "name": "熔岩巨兽",
@@ -3783,7 +3783,7 @@
             }
         },
         "Malzahar": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Malzahar",
             "key": "90",
             "name": "虚空先知",
@@ -3833,7 +3833,7 @@
             }
         },
         "Maokai": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Maokai",
             "key": "57",
             "name": "扭曲树精",
@@ -3865,7 +3865,7 @@
                 "mp": 375,
                 "mpperlevel": 43,
                 "movespeed": 335,
-                "armor": 39,
+                "armor": 35,
                 "armorperlevel": 5.2,
                 "spellblock": 32,
                 "spellblockperlevel": 2.05,
@@ -3883,7 +3883,7 @@
             }
         },
         "MasterYi": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "MasterYi",
             "key": "11",
             "name": "无极剑圣",
@@ -3933,7 +3933,7 @@
             }
         },
         "Milio": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Milio",
             "key": "902",
             "name": "明烛",
@@ -3982,7 +3982,7 @@
             }
         },
         "MissFortune": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "MissFortune",
             "key": "21",
             "name": "赏金猎人",
@@ -4031,7 +4031,7 @@
             }
         },
         "MonkeyKing": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "MonkeyKing",
             "key": "62",
             "name": "齐天大圣",
@@ -4081,7 +4081,7 @@
             }
         },
         "Mordekaiser": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Mordekaiser",
             "key": "82",
             "name": "铁铠冥魂",
@@ -4130,7 +4130,7 @@
             }
         },
         "Morgana": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Morgana",
             "key": "25",
             "name": "堕落天使",
@@ -4180,7 +4180,7 @@
             }
         },
         "Naafiri": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Naafiri",
             "key": "950",
             "name": "百裂冥犬",
@@ -4229,7 +4229,7 @@
             }
         },
         "Nami": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Nami",
             "key": "267",
             "name": "唤潮鲛姬",
@@ -4279,7 +4279,7 @@
             }
         },
         "Nasus": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Nasus",
             "key": "75",
             "name": "沙漠死神",
@@ -4329,7 +4329,7 @@
             }
         },
         "Nautilus": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Nautilus",
             "key": "111",
             "name": "深海泰坦",
@@ -4379,7 +4379,7 @@
             }
         },
         "Neeko": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Neeko",
             "key": "518",
             "name": "万花通灵",
@@ -4429,7 +4429,7 @@
             }
         },
         "Nidalee": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Nidalee",
             "key": "76",
             "name": "狂野女猎手",
@@ -4479,7 +4479,7 @@
             }
         },
         "Nilah": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Nilah",
             "key": "895",
             "name": "不羁之悦",
@@ -4529,7 +4529,7 @@
             }
         },
         "Nocturne": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Nocturne",
             "key": "56",
             "name": "永恒梦魇",
@@ -4579,7 +4579,7 @@
             }
         },
         "Nunu": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Nunu",
             "key": "20",
             "name": "雪原双子",
@@ -4629,7 +4629,7 @@
             }
         },
         "Olaf": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Olaf",
             "key": "2",
             "name": "狂战士",
@@ -4679,7 +4679,7 @@
             }
         },
         "Orianna": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Orianna",
             "key": "61",
             "name": "发条魔灵",
@@ -4729,7 +4729,7 @@
             }
         },
         "Ornn": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Ornn",
             "key": "516",
             "name": "山隐之焰",
@@ -4779,7 +4779,7 @@
             }
         },
         "Pantheon": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Pantheon",
             "key": "80",
             "name": "不屈之枪",
@@ -4829,7 +4829,7 @@
             }
         },
         "Poppy": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Poppy",
             "key": "78",
             "name": "圣锤之毅",
@@ -4879,7 +4879,7 @@
             }
         },
         "Pyke": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Pyke",
             "key": "555",
             "name": "血港鬼影",
@@ -4929,7 +4929,7 @@
             }
         },
         "Qiyana": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Qiyana",
             "key": "246",
             "name": "元素女皇",
@@ -4979,7 +4979,7 @@
             }
         },
         "Quinn": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Quinn",
             "key": "133",
             "name": "德玛西亚之翼",
@@ -5029,7 +5029,7 @@
             }
         },
         "Rakan": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Rakan",
             "key": "497",
             "name": "幻翎",
@@ -5078,7 +5078,7 @@
             }
         },
         "Rammus": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Rammus",
             "key": "33",
             "name": "披甲龙龟",
@@ -5128,7 +5128,7 @@
             }
         },
         "RekSai": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "RekSai",
             "key": "421",
             "name": "虚空遁地兽",
@@ -5158,14 +5158,14 @@
                 "hpperlevel": 99,
                 "mp": 100,
                 "mpperlevel": 0,
-                "movespeed": 335,
+                "movespeed": 340,
                 "armor": 36,
                 "armorperlevel": 4.95,
                 "spellblock": 32,
                 "spellblockperlevel": 2.05,
                 "attackrange": 175,
-                "hpregen": 7.5,
-                "hpregenperlevel": 0.65,
+                "hpregen": 2.5,
+                "hpregenperlevel": 0.5,
                 "mpregen": 0,
                 "mpregenperlevel": 0,
                 "crit": 0,
@@ -5177,7 +5177,7 @@
             }
         },
         "Rell": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Rell",
             "key": "526",
             "name": "镕铁少女",
@@ -5227,7 +5227,7 @@
             }
         },
         "Renata": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Renata",
             "key": "888",
             "name": "炼金男爵",
@@ -5277,7 +5277,7 @@
             }
         },
         "Renekton": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Renekton",
             "key": "58",
             "name": "荒漠屠夫",
@@ -5327,7 +5327,7 @@
             }
         },
         "Rengar": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Rengar",
             "key": "107",
             "name": "傲之追猎者",
@@ -5377,7 +5377,7 @@
             }
         },
         "Riven": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Riven",
             "key": "92",
             "name": "放逐之刃",
@@ -5427,7 +5427,7 @@
             }
         },
         "Rumble": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Rumble",
             "key": "68",
             "name": "机械公敌",
@@ -5477,7 +5477,7 @@
             }
         },
         "Ryze": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Ryze",
             "key": "13",
             "name": "符文法师",
@@ -5527,7 +5527,7 @@
             }
         },
         "Samira": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Samira",
             "key": "360",
             "name": "沙漠玫瑰",
@@ -5576,7 +5576,7 @@
             }
         },
         "Sejuani": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Sejuani",
             "key": "113",
             "name": "北地之怒",
@@ -5626,7 +5626,7 @@
             }
         },
         "Senna": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Senna",
             "key": "235",
             "name": "涤魂圣枪",
@@ -5676,7 +5676,7 @@
             }
         },
         "Seraphine": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Seraphine",
             "key": "147",
             "name": "星籁歌姬",
@@ -5726,7 +5726,7 @@
             }
         },
         "Sett": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Sett",
             "key": "875",
             "name": "腕豪",
@@ -5776,7 +5776,7 @@
             }
         },
         "Shaco": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Shaco",
             "key": "35",
             "name": "恶魔小丑",
@@ -5825,7 +5825,7 @@
             }
         },
         "Shen": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Shen",
             "key": "98",
             "name": "暮光之眼",
@@ -5874,7 +5874,7 @@
             }
         },
         "Shyvana": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Shyvana",
             "key": "102",
             "name": "龙血武姬",
@@ -5924,7 +5924,7 @@
             }
         },
         "Singed": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Singed",
             "key": "27",
             "name": "炼金术士",
@@ -5974,7 +5974,7 @@
             }
         },
         "Sion": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Sion",
             "key": "14",
             "name": "亡灵战神",
@@ -6024,7 +6024,7 @@
             }
         },
         "Sivir": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Sivir",
             "key": "15",
             "name": "战争女神",
@@ -6073,7 +6073,7 @@
             }
         },
         "Skarner": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Skarner",
             "key": "72",
             "name": "水晶先锋",
@@ -6123,7 +6123,7 @@
             }
         },
         "Smolder": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Smolder",
             "key": "901",
             "name": "炽炎雏龙",
@@ -6172,7 +6172,7 @@
             }
         },
         "Sona": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Sona",
             "key": "37",
             "name": "琴瑟仙女",
@@ -6222,7 +6222,7 @@
             }
         },
         "Soraka": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Soraka",
             "key": "16",
             "name": "众星之子",
@@ -6272,7 +6272,7 @@
             }
         },
         "Swain": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Swain",
             "key": "50",
             "name": "诺克萨斯统领",
@@ -6322,7 +6322,7 @@
             }
         },
         "Sylas": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Sylas",
             "key": "517",
             "name": "解脱者",
@@ -6372,7 +6372,7 @@
             }
         },
         "Syndra": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Syndra",
             "key": "134",
             "name": "暗黑元首",
@@ -6421,7 +6421,7 @@
             }
         },
         "TahmKench": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "TahmKench",
             "key": "223",
             "name": "河流之王",
@@ -6471,7 +6471,7 @@
             }
         },
         "Taliyah": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Taliyah",
             "key": "163",
             "name": "岩雀",
@@ -6521,7 +6521,7 @@
             }
         },
         "Talon": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Talon",
             "key": "91",
             "name": "刀锋之影",
@@ -6570,7 +6570,7 @@
             }
         },
         "Taric": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Taric",
             "key": "44",
             "name": "瓦洛兰之盾",
@@ -6620,7 +6620,7 @@
             }
         },
         "Teemo": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Teemo",
             "key": "17",
             "name": "迅捷斥候",
@@ -6670,7 +6670,7 @@
             }
         },
         "Thresh": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Thresh",
             "key": "412",
             "name": "魂锁典狱长",
@@ -6702,7 +6702,7 @@
                 "mp": 274,
                 "mpperlevel": 44,
                 "movespeed": 330,
-                "armor": 28,
+                "armor": 31,
                 "armorperlevel": 0,
                 "spellblock": 30,
                 "spellblockperlevel": 1.3,
@@ -6720,7 +6720,7 @@
             }
         },
         "Tristana": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Tristana",
             "key": "18",
             "name": "麦林炮手",
@@ -6770,7 +6770,7 @@
             }
         },
         "Trundle": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Trundle",
             "key": "48",
             "name": "巨魔之王",
@@ -6820,7 +6820,7 @@
             }
         },
         "Tryndamere": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Tryndamere",
             "key": "23",
             "name": "蛮族之王",
@@ -6870,7 +6870,7 @@
             }
         },
         "TwistedFate": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "TwistedFate",
             "key": "4",
             "name": "卡牌大师",
@@ -6914,12 +6914,12 @@
                 "critperlevel": 0,
                 "attackdamage": 52,
                 "attackdamageperlevel": 3.3,
-                "attackspeedperlevel": 3,
+                "attackspeedperlevel": 2.5,
                 "attackspeed": 0.625
             }
         },
         "Twitch": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Twitch",
             "key": "29",
             "name": "瘟疫之源",
@@ -6969,7 +6969,7 @@
             }
         },
         "Udyr": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Udyr",
             "key": "77",
             "name": "兽灵行者",
@@ -7019,7 +7019,7 @@
             }
         },
         "Urgot": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Urgot",
             "key": "6",
             "name": "无畏战车",
@@ -7069,7 +7069,7 @@
             }
         },
         "Varus": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Varus",
             "key": "110",
             "name": "惩戒之箭",
@@ -7112,14 +7112,14 @@
                 "mpregenperlevel": 0.8,
                 "crit": 0,
                 "critperlevel": 0,
-                "attackdamage": 62,
+                "attackdamage": 60,
                 "attackdamageperlevel": 3.4,
                 "attackspeedperlevel": 4,
                 "attackspeed": 0.658
             }
         },
         "Vayne": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Vayne",
             "key": "67",
             "name": "暗夜猎手",
@@ -7169,7 +7169,7 @@
             }
         },
         "Veigar": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Veigar",
             "key": "45",
             "name": "邪恶小法师",
@@ -7218,7 +7218,7 @@
             }
         },
         "Velkoz": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Velkoz",
             "key": "161",
             "name": "虚空之眼",
@@ -7267,7 +7267,7 @@
             }
         },
         "Vex": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Vex",
             "key": "711",
             "name": "愁云使者",
@@ -7316,7 +7316,7 @@
             }
         },
         "Vi": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Vi",
             "key": "254",
             "name": "皮城执法官",
@@ -7366,7 +7366,7 @@
             }
         },
         "Viego": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Viego",
             "key": "234",
             "name": "破败之王",
@@ -7416,7 +7416,7 @@
             }
         },
         "Viktor": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Viktor",
             "key": "112",
             "name": "机械先驱",
@@ -7465,7 +7465,7 @@
             }
         },
         "Vladimir": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Vladimir",
             "key": "8",
             "name": "猩红收割者",
@@ -7514,7 +7514,7 @@
             }
         },
         "Volibear": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Volibear",
             "key": "106",
             "name": "不灭狂雷",
@@ -7564,7 +7564,7 @@
             }
         },
         "Warwick": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Warwick",
             "key": "19",
             "name": "祖安怒兽",
@@ -7614,7 +7614,7 @@
             }
         },
         "Xayah": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Xayah",
             "key": "498",
             "name": "逆羽",
@@ -7663,7 +7663,7 @@
             }
         },
         "Xerath": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Xerath",
             "key": "101",
             "name": "远古巫灵",
@@ -7712,7 +7712,7 @@
             }
         },
         "XinZhao": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "XinZhao",
             "key": "5",
             "name": "德邦总管",
@@ -7762,7 +7762,7 @@
             }
         },
         "Yasuo": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Yasuo",
             "key": "157",
             "name": "疾风剑豪",
@@ -7812,7 +7812,7 @@
             }
         },
         "Yone": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Yone",
             "key": "777",
             "name": "封魔剑魂",
@@ -7862,7 +7862,7 @@
             }
         },
         "Yorick": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Yorick",
             "key": "83",
             "name": "牧魂人",
@@ -7912,7 +7912,7 @@
             }
         },
         "Yuumi": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Yuumi",
             "key": "350",
             "name": "魔法猫咪",
@@ -7962,7 +7962,7 @@
             }
         },
         "Zac": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Zac",
             "key": "154",
             "name": "生化魔人",
@@ -8012,7 +8012,7 @@
             }
         },
         "Zed": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Zed",
             "key": "238",
             "name": "影流之主",
@@ -8061,7 +8061,7 @@
             }
         },
         "Zeri": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Zeri",
             "key": "221",
             "name": "祖安花火",
@@ -8110,7 +8110,7 @@
             }
         },
         "Ziggs": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Ziggs",
             "key": "115",
             "name": "爆破鬼才",
@@ -8159,7 +8159,7 @@
             }
         },
         "Zilean": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Zilean",
             "key": "26",
             "name": "时光守护者",
@@ -8209,7 +8209,7 @@
             }
         },
         "Zoe": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Zoe",
             "key": "142",
             "name": "暮光星灵",
@@ -8259,7 +8259,7 @@
             }
         },
         "Zyra": {
-            "version": "14.3.1",
+            "version": "14.4.1",
             "id": "Zyra",
             "key": "143",
             "name": "荆棘之兴",

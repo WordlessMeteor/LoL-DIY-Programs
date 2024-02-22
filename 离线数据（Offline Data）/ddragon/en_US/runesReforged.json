@@ -277,7 +277,7 @@
                         "icon": "perk-images/Styles/Precision/LethalTempo/LethalTempoTemp.png",
                         "name": "Lethal Tempo",
                         "shortDesc": "Gain Attack Speed when attacking an enemy champion, stacking up to 6 times. At max stacks, gain Attack Range and remove your Attack Speed limit.",
-                        "longDesc": "Gain [54% - 81%] (Melee) or [21% - 48%] (Ranged) Attack Speed for 6 seconds when you attack an enemy champion. This effect stacks up to 6 times.<br><br>While this effect fully stacked, your Attack Speed can exceed 2.5 and you gain 50 Attack Range."
+                        "longDesc": "Gain [30% - 96%] (Melee) or [21% - 48%] (Ranged) Attack Speed for 6 seconds when you attack an enemy champion. This effect stacks up to 6 times.<br><br>While this effect fully stacked, your Attack Speed can exceed 2.5 and you gain 50 Attack Range."
                     },
                     {
                         "id": 8021,

@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "data": {
         "Fiora": {
             "id": "Fiora",
@@ -302,7 +302,7 @@
                     "id": "FioraW",
                     "name": "Riposte",
                     "description": "Fiora parries all incoming damage and disables for a short time, then stabs in a direction. This stab slows the first enemy champion hit, or stuns them if Fiora blocked an immobilizing effect with this ability.",
-                    "tooltip": "Fiora parries all incoming damage, disables, and negative effects for {{ parryduration }} seconds, then stabs. The stab deals <magicDamage>{{ stabdamage }} magic damage</magicDamage> to the first champion hit and <status>Slows</status> both <speed>Move Speed</speed> and <attackSpeed>Attack Speed by {{ asmsslowpercent*-100 }}%</attackSpeed> for {{ ccduration }} seconds. If Fiora parries an <status>Immobilizing</status> effect, the stabbed enemy is <status>Stunned</status> rather than <status>Slowed</status>.{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "Fiora parries all incoming damage, disables, and negative effects for {{ parryduration }} seconds, then stabs. The stab deals <magicDamage>{{ stabdamage }} magic damage</magicDamage> to the first champion hit and <status>Slows</status> <speed>Move Speed</speed> by {{ msslowpercent*-100 }}%<attackSpeed> and Attack Speed by {{ attackslowpercent*-100 }}% </attackSpeed> for {{ ccduration }} seconds. If Fiora parries an <status>Immobilizing</status> effect, the stabbed enemy is <status>Stunned</status> rather than <status>Slowed</status>.{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "Damage",

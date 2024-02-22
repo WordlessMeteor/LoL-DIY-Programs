@@ -17674,6 +17674,411 @@
         "rewards": [
             {
                 "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            },
+            {
+                "media": null
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": null
+            },
+            {
+                "media": null
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": null
             }
         ]
     },

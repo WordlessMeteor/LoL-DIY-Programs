@@ -1740,12 +1740,12 @@
             "description": "卡莎突进到一个敌方英雄身边。",
             "dynamicDescription": "卡莎跃迁到一个位置上，该位置处于一名身上带有<keywordMajor>电浆</keywordMajor>效果的敌方英雄的附近，并获得持续@RShieldDuration@秒的<shield>@RCalculatedShieldValue@护盾值</shield>。@SpellModifierDescriptionAppend@",
             "range": [
-                1500.0000,
-                2250.0000,
+                2000.0000,
+                2500.0000,
                 3000.0000,
-                3750.0000,
-                4500.0000,
-                5250.0000
+                3500.0000,
+                4000.0000,
+                4500.0000
             ],
             "costCoefficients": [
                 100.0000,

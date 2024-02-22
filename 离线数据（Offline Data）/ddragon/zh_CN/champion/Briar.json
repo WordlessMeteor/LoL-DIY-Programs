@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "data": {
         "Briar": {
             "id": "Briar",
@@ -77,7 +77,7 @@
                     "leveltip": {
                         "label": [
                             "伤害",
-                            "护甲削减",
+                            "护甲和魔法抗性击碎",
                             "冷却时间"
                         ],
                         "effect": [

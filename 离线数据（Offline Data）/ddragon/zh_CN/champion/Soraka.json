@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "data": {
         "Soraka": {
             "id": "Soraka",
@@ -615,11 +615,11 @@
                     },
                     "maxrank": 3,
                     "cooldown": [
-                        160,
-                        145,
-                        130
+                        150,
+                        135,
+                        120
                     ],
-                    "cooldownBurn": "160/145/130",
+                    "cooldownBurn": "150/135/120",
                     "cost": [
                         100,
                         100,

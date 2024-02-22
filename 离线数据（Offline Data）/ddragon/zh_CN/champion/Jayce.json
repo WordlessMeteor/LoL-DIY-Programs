@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "data": {
         "Jayce": {
             "id": "Jayce",
@@ -113,7 +113,7 @@
                 "mpregenperlevel": 0.8,
                 "crit": 0,
                 "critperlevel": 0,
-                "attackdamage": 57,
+                "attackdamage": 59,
                 "attackdamageperlevel": 4.25,
                 "attackspeedperlevel": 3,
                 "attackspeed": 0.658

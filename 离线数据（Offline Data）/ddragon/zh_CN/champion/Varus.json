@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "data": {
         "Varus": {
             "id": "Varus",
@@ -137,7 +137,7 @@
                 "mpregenperlevel": 0.8,
                 "crit": 0,
                 "critperlevel": 0,
-                "attackdamage": 62,
+                "attackdamage": 60,
                 "attackdamageperlevel": 3.4,
                 "attackspeedperlevel": 4,
                 "attackspeed": 0.658

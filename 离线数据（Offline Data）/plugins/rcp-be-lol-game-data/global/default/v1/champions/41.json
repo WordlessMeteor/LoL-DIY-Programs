@@ -642,6 +642,142 @@
             ],
             "skinAugments": null,
             "description": "Energized by a mysterious amulet containing Viego of Camavor and wielding the Blade of the Ruined King, Gangplank's personality erupted as he raged in search of the long-lost Isolde. Though ultimately freed of the King's influence by a group of heroes, he carries the experience with him... a reminder, perhaps, of true power."
+        },
+        {
+            "id": 41033,
+            "isBase": false,
+            "name": "PROJECT: Gangplank",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/41/41033.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/41/41033.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/41/41033.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Gangplank/Skins/Skin33/GangplankLoadScreen_33.SKINS_Gangplank_Skin33.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41033.png",
+            "chromas": [
+                {
+                    "id": 41034,
+                    "name": "PROJECT: Gangplank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41034.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2024."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 41035,
+                    "name": "PROJECT: Gangplank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41035.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 41036,
+                    "name": "PROJECT: Gangplank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41036.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 41037,
+                    "name": "PROJECT: Gangplank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41037.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 41038,
+                    "name": "PROJECT: Gangplank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41038.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 41039,
+                    "name": "PROJECT: Gangplank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41039.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 41040,
+                    "name": "PROJECT: Gangplank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41040.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 41041,
+                    "name": "PROJECT: Gangplank",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41041.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 18
+                }
+            ],
+            "skinAugments": null,
+            "description": "Leader of the Command Line with a merciless reputation, Gangplank's access to dangerous PROJECT tech allows him to rule the city with a cybernetic fist. But when an insubordinate program wreaks havoc on his domain, he resorts to manipulating former Outcasts to protect his legacy and wipe the virus out for good."
         }
     ],
     "passive": {

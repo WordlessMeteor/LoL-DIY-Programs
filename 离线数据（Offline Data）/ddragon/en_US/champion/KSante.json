@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "data": {
         "KSante": {
             "id": "KSante",
@@ -67,9 +67,9 @@
                 "difficulty": 9
             },
             "stats": {
-                "hp": 570,
+                "hp": 625,
                 "hpperlevel": 115,
-                "mp": 290,
+                "mp": 320,
                 "mpperlevel": 60,
                 "movespeed": 330,
                 "armor": 33,
@@ -93,7 +93,7 @@
                     "id": "KSanteQ",
                     "name": "Ntofo Strikes",
                     "description": "Strike a weapon forward, damaging and slowing all enemies in a short line.<br><br>On hit, grants a stack for a few seconds. At 2 stacks, this skill fires a shockwave that pulls enemies in.",
-                    "tooltip": "K'Sante slams his weapon down, dealing <physicalDamage>{{ basedamage }} physical damage</physicalDamage> and briefly <status>Slowing</status> the enemies struck by {{ slowpercent*100 }}%.<br /><br />When an enemy is hit, K'Sante gains a stack of Ntofo Strikes for {{ recastwindow }} seconds. At 2 stacks, K'Sante instead fires a shockwave that <status>Stuns</status> and <status>Pulls</status> enemies for {{ stunduration }} second.<br /><br /><rules>Cooldown reduced by Bonus <scaleArmor>Armor</scaleArmor> and <scaleMR>Magic Resist</scaleMR>: {{ bonusresiststooltip }} / {{ defensecapforcooldown }}.<br />Cast time reduced by Bonus <healing>Health</healing>: {{ bonushealthtooltip }} / {{ healthcapforcasttime }}.</rules><br /><br /><keywordMajor>All Out</keywordMajor>: This Ability's Cooldown and cast time are further reduced.{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "K'Sante slams his weapon down, dealing <physicalDamage>{{ basedamage }} physical damage</physicalDamage> and briefly <status>Slowing</status> the enemies struck by {{ slowpercent*100 }}%.<br /><br />When an enemy is hit, K'Sante gains a stack of Ntofo Strikes for {{ recastwindow }} seconds. At 2 stacks, K'Sante instead fires a shockwave that <status>Stuns</status> and <status>Pulls</status> enemies for {{ stunduration }} second.<br /><br /><rules>Cooldown reduced by Bonus <scaleArmor>Armor</scaleArmor> and <scaleMR>Magic Resist</scaleMR>: {{ bonusresiststooltip }} / {{ defensecapforcooldown }}.<br />Cast time reduced by Bonus <healing>Health</healing>: {{ bonushealthtooltip }} / {{ healthcapforcasttime }}.</rules><br /><br /><keywordMajor>All Out</keywordMajor>: This Ability's Cooldown is reduced but no longer <status>slows</status>.{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "Damage",
@@ -234,7 +234,7 @@
                     "id": "KSanteW",
                     "name": "Path Maker",
                     "description": "K'Sante charges up before dashing. K'Sante is unstoppable and takes less damage while charging. Any targets hit by the dash are knocked to the end of the dash and stunned.<br><br>",
-                    "tooltip": "K'Sante raises his weapons defensively for {{ mindurationtooltip }} - {{ maxduration }}s, becoming Unstoppable and reducing incoming damage by {{ damagereductioncharlevel }}%.<br /><br />After charging, he rams forward, dealing <physicalDamage>{{ basedamagecalc }} + {{ maxhealthdamage*100 }}% max Health physical damage</physicalDamage>. K'Sante <status>Knocks Back</status> and <status>Stuns</status> enemies he rams into for {{ maxknockbackduration }} seconds.<br /><br /><keywordMajor>All Out:</keywordMajor> This Ability's Cooldown is refreshed. Damage reduction increases to {{ damagereductioncalcao }}%, it only requires {{ aomindurationtooltip }}s of charge, its dash speed increases, and its cooldown decreases. This Ability will no longer <status>Knock Back</status> or <status>Stun</status>.{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "K'Sante raises his weapons defensively for {{ mindurationtooltip }} - {{ maxduration }}s, becoming Unstoppable and reducing incoming damage by {{ damagereductioncharlevel }}%.<br /><br />After charging, he rams forward, dealing <physicalDamage>{{ basedamagecalc }} + {{ maxhealthdamage*100 }}% max Health physical damage</physicalDamage>. K'Sante <status>Knocks Back</status> and <status>Stuns</status> enemies he rams into for {{ maxknockbackduration }} seconds.<br /><br /><keywordMajor>All Out:</keywordMajor> This Ability's Cooldown is refreshed. Damage reduction increases to {{ damagereductioncalcao }}% and its dash speed increases but will no longer <status>Knock Back</status> or <status>Stun</status>.{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "Base Damage",

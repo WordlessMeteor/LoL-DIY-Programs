@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "data": {
         "KSante": {
             "id": "KSante",
@@ -67,9 +67,9 @@
                 "difficulty": 9
             },
             "stats": {
-                "hp": 570,
+                "hp": 625,
                 "hpperlevel": 115,
-                "mp": 290,
+                "mp": 320,
                 "mpperlevel": 60,
                 "movespeed": 330,
                 "armor": 33,
@@ -93,7 +93,7 @@
                     "id": "KSanteQ",
                     "name": "无双陀斧",
                     "description": "向前进行一次武器打击，对一条较短直线内的所有敌人造成伤害和减速效果。<br><br>命中敌人时会叠加1层持续数秒的效果。叠加至2层时，这个技能会放出一道冲击波来将敌人拉向奎桑提。",
-                    "tooltip": "奎桑提将他的武器猛砸下去，对击中的敌人们造成<physicalDamage>{{ basedamage }}物理伤害</physicalDamage>和短暂的{{ slowpercent*100 }}%<status>减速</status>。<br /><br />在命中一名敌人时，奎桑提会获得一层持续{{ recastwindow }}秒的【无双陀斧】效果。在2层时，奎桑提会转而发射一道冲击波来对敌人们造成持续{{ stunduration }}秒的<status>晕眩</status>和<status>拉拽</status>。<br /><br /><rules>冷却时间已根据额外<scaleArmor>护甲</scaleArmor>和<scaleMR>魔法抗性</scaleMR>缩短： {{ bonusresiststooltip }} / {{ defensecapforcooldown }}。<br />施放时间已根据额外<healing>生命值</healing>缩短：{{ bonushealthtooltip }} / {{ healthcapforcasttime }}。</rules><br /><br /><keywordMajor>全盛姿态</keywordMajor>：这个技能的冷却时间和施放时间已被进一步缩短。{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "奎桑提将他的武器猛砸下去，对击中的敌人们造成<physicalDamage>{{ basedamage }}物理伤害</physicalDamage>和短暂的{{ slowpercent*100 }}%<status>减速</status>。<br /><br />在命中一名敌人时，奎桑提会获得一层持续{{ recastwindow }}秒的【无双陀斧】效果。在2层时，奎桑提会转而发射一道冲击波来对敌人们造成持续{{ stunduration }}秒的<status>晕眩</status>和<status>拉拽</status>。<br /><br /><rules>冷却时间已通过额外<scaleArmor>护甲</scaleArmor>和<scaleMR>魔法抗性</scaleMR>缩短： {{ bonusresiststooltip }} / {{ defensecapforcooldown }}。<br />施放时间已通过额外<healing>生命值</healing>缩短：{{ bonushealthtooltip }} / {{ healthcapforcasttime }}。</rules><br /><br /><keywordMajor>全盛姿态</keywordMajor>：这个技能的冷却时间会缩短，但不再造成<status>减速</status>效果。{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "伤害",
@@ -234,7 +234,7 @@
                     "id": "KSanteW",
                     "name": "辟路先锋",
                     "description": "奎桑提蓄力然后冲刺。奎桑提在蓄力时处于不可阻挡状态并且所受伤害降低。任何被这个冲刺命中的目标都会被震到这个冲刺的终点并被晕眩。<br><br>",
-                    "tooltip": "奎桑提架起武器进行防御{{ mindurationtooltip }} - {{ maxduration }}秒，变为不可阻挡，并使即将到来的伤害降低{{ damagereductioncharlevel }}%。<br /><br />在蓄力后，他会向前猛撞，造成<physicalDamage>{{ basedamagecalc }} + {{ maxhealthdamage*100 }}%最大生命值的物理伤害</physicalDamage>。奎桑提将对被他撞到的敌人造成<status>击退</status>和{{ maxknockbackduration }}秒<status>晕眩</status>。<br /><br /><keywordMajor>全盛姿态：</keywordMajor>这个技能的冷却时间已经刷新。这个技能的伤害减免提升至{{ damagereductioncalcao }}%，它仅需要{{ aomindurationtooltip }}秒蓄力，它的冲刺速度提升，并且它的冷却时间缩短。这个技能将不再造成<status>击退</status>或<status>晕眩</status>。{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "奎桑提架起武器{{ mindurationtooltip }} - {{ maxduration }}秒，变为不可阻挡，并使即将到来的伤害降低{{ damagereductioncharlevel }}%。<br /><br />在蓄力后，他会向前猛撞，造成<physicalDamage>{{ basedamagecalc }} + {{ maxhealthdamage*100 }}%最大生命值的物理伤害</physicalDamage>。奎桑提将对被他撞到的敌人造成<status>击退</status>和{{ maxknockbackduration }}秒<status>晕眩</status>。<br /><br /><keywordMajor>全盛姿态：</keywordMajor>这个技能的冷却时间已经刷新。伤害减免提升至{{ damagereductioncalcao }}%并且它的冲刺速度提升，但将不再造成<status>击退</status>或<status>晕眩</status>。{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "基础伤害",

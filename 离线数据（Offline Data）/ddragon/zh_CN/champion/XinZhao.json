@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "data": {
         "XinZhao": {
             "id": "XinZhao",
@@ -274,7 +274,7 @@
                     "id": "XinZhaoW",
                     "name": "风斩电刺",
                     "description": "赵信用他的长枪斩击他的前方，之后将长枪向前刺击，并使被击中的敌人减速并对其施加被挑战印记。",
-                    "tooltip": "赵信进行斩击，造成<physicalDamage>{{ slashdamage }}</physicalDamage>物理伤害，随后进行刺击，造成<physicalDamage>{{ thrustdamage }}</physicalDamage>物理伤害。被刺击命中的敌人们还会被施加持续{{ e7 }}秒的{{ e6 }}%<status>减速</status>效果。<br /><br />英雄和野怪被刺中时会被施加<keywordMajor>被挑战</keywordMajor>标记，持续{{ markduration }}秒。{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "赵信进行斩击，造成<physicalDamage>{{ slashdamage }}</physicalDamage>物理伤害，随后进行刺击，造成物理伤害<physicalDamage>{{ thrustdamage }}</physicalDamage>。被这次刺击命中的敌人们会受到{{ e7 }}秒的{{ e6 }}%<status>减速</status>。<br /><br />被这次刺击命中的英雄和大型野怪会被施加持续{{ markduration }}秒的<keywordMajor>被挑战</keywordMajor>标记并且如果不在<keywordStealth>潜行</keywordStealth>状态还会被显形。{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "斩击伤害",

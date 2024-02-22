@@ -71104,7 +71104,7 @@
     },
     {
         "id": 5721,
-        "title": "觅心猫猫 悠米 月色真美 炫彩 周边 图标",
+        "title": "summoner_icon_title_5721",
         "yearReleased": 2023,
         "isLegacy": false,
         "imagePath": "/lol-game-data/assets/v1/profile-icons/5721.jpg",
@@ -74165,7 +74165,7 @@
     },
     {
         "id": 5862,
-        "title": "觅心猫猫 悠米 就想粘你 周边 图标",
+        "title": "summoner_icon_title_5862",
         "yearReleased": 2023,
         "isLegacy": false,
         "imagePath": "/lol-game-data/assets/v1/profile-icons/5862.jpg",
@@ -87865,6 +87865,66 @@
             {
                 "region": "riot",
                 "description": " "
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6564,
+        "title": "summoner_icon_title_6564",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6564.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": ""
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6565,
+        "title": "summoner_icon_title_6565",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6565.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": ""
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6566,
+        "title": "summoner_icon_title_6566",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6566.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": ""
             }
         ],
         "rarities": [

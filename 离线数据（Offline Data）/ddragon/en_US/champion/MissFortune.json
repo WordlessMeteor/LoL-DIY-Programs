@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "data": {
         "MissFortune": {
             "id": "MissFortune",
@@ -137,6 +137,12 @@
                     "num": 41,
                     "name": "Prestige Broken Covenant Miss Fortune",
                     "chromas": true
+                },
+                {
+                    "id": "21050",
+                    "num": 50,
+                    "name": "Porcelain Miss Fortune",
+                    "chromas": false
                 }
             ],
             "lore": "A Bilgewater captain famed for her looks but feared for her ruthlessness, Sarah Fortune paints a stark figure among the hardened criminals of the port city. As a child, she witnessed the reaver king Gangplank murder her family—an act she brutally avenged years later, blowing up his flagship while he was still aboard. Those who underestimate her will face a beguiling and unpredictable opponent… and, likely, a bullet or two in their guts.",

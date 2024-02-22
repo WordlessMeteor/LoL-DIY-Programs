@@ -86,6 +86,7 @@ def count_nonASCII(s: str): #统计一个字符串中占用命令行2个宽度�
     return sum([unicodedata.east_asian_width(character) in ("F", "W") for character in list(str(s))])
 
 def format_df(df: pandas.DataFrame): #按照每列最长字符串的命令行宽度加上2，再根据每个数据的中文字符数量决定最终格式化输出的字符串宽度（Get the width of the longest string of each column, add it by 2, and substract it by the number of each cell string's Chinese characters to get the final width for each cell to print using `format` function）
+    df = df.reset_index(drop = True) #这一步至关重要，因为下面的操作前提是行号是默认的（This step is crucial, for the following operations are based on the dataframe with the default row index）
     maxLens = {}
     maxWidth = shutil.get_terminal_size()[0]
     fields = df.columns.tolist()

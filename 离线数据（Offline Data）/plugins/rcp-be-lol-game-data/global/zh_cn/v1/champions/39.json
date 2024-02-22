@@ -1059,13 +1059,34 @@
                         "#FFEE59",
                         "#FFEE59"
                     ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 39054,
+                    "name": "",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39054.png",
+                    "colors": [
+                        "#3AC8B1",
+                        "#B0412A"
+                    ],
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": "这个炫彩曾在2024年期间作为礼包专属发布。"
+                            "description": ""
                         }
                     ],
-                    "rarities": []
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
                 }
             ],
             "emblems": null,

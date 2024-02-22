@@ -71104,7 +71104,7 @@
     },
     {
         "id": 5721,
-        "title": "Heartseeker Yuumi Chroma Merch Icon",
+        "title": "Heartseeker Yuumi Pearl Chroma Merch Icon",
         "yearReleased": 2023,
         "isLegacy": false,
         "imagePath": "/lol-game-data/assets/v1/profile-icons/5721.jpg",
@@ -74165,7 +74165,7 @@
     },
     {
         "id": 5862,
-        "title": "Heartseeker Ruby Chroma Yuumi Merch Icon",
+        "title": "Heartseeker Yuumi Ruby Chroma Merch Icon",
         "yearReleased": 2023,
         "isLegacy": false,
         "imagePath": "/lol-game-data/assets/v1/profile-icons/5862.jpg",
@@ -87865,6 +87865,66 @@
             {
                 "region": "riot",
                 "description": "This icon was released to thank you for having been part of the TFT Rising Legends Remix Rumble journey."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6564,
+        "title": "Pengu Cosplay Tristana Border Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6564.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "An icon that entitles the border for this champion."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6565,
+        "title": "Fae Dragon Ashe Merch Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6565.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "This icon was acquired by making a purchase from the merch store."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6566,
+        "title": "Battlecast Alpha Skarner Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6566.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "An icon that entitles the border for this champion."
             }
         ],
         "rarities": [

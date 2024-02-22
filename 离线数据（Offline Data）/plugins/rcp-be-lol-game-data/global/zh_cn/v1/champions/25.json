@@ -1398,6 +1398,27 @@
                             "rarity": 1
                         }
                     ]
+                },
+                {
+                    "id": 25079,
+                    "name": "",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25079.png",
+                    "colors": [
+                        "#3AC8B1",
+                        "#B0412A"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": ""
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
                 }
             ],
             "emblems": null,

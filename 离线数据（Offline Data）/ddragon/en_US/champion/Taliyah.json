@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "data": {
         "Taliyah": {
             "id": "Taliyah",
@@ -395,13 +395,11 @@
                         "label": [
                             "Damage",
                             "Detonation Damage",
-                            "Cooldown",
                             "@AbilityResourceName@ Cost"
                         ],
                         "effect": [
                             "{{ basedamage }} -> {{ basedamageNL }}",
                             "{{ basedetonationdamage }} -> {{ basedetonationdamageNL }}",
-                            "{{ cooldown }} -> {{ cooldownNL }}",
                             "{{ cost }} -> {{ costNL }}"
                         ]
                     },

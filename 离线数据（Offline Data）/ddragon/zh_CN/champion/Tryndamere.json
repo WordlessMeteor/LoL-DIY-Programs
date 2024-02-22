@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "data": {
         "Tryndamere": {
             "id": "Tryndamere",
@@ -88,6 +88,12 @@
                     "id": "23018",
                     "num": 18,
                     "name": "黑夜使者 泰达米尔",
+                    "chromas": true
+                },
+                {
+                    "id": "23027",
+                    "num": 27,
+                    "name": "胜利之王 泰达米尔",
                     "chromas": true
                 }
             ],

@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.3.1",
+    "version": "14.4.1",
     "data": {
         "Zyra": {
             "id": "Zyra",
@@ -278,7 +278,7 @@
                     "id": "ZyraW",
                     "name": "Rampant Growth",
                     "description": "Zyra plants a seed, lasting up to 60 seconds. Deadly Spines and Grasping Roots cast near seeds will turn them into plants who fight for Zyra. Zyra can store multiple seeds at once, and killing enemies reduces Rampant Growth's recharge time.",
-                    "tooltip": "Zyra plants a <keywordMajor>Seed</keywordMajor> that lasts {{ e6 }} seconds. These <keywordMajor>Seeds</keywordMajor> grant <keywordStealth>True Sight</keywordStealth> of enemy champions that step on them for {{ e3 }} seconds, but are still destroyed.<br /><br />This Ability has 2 charges with a {{ ammorechargetime }} second recharge time. Killing an enemy reduces the recharge time by {{ e1 }}%. Champion takedowns, large jungle monster kills, and large minion kills reduce the recharge time by {{ e2 }}% instead.{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "Zyra plants a <keywordMajor>Seed</keywordMajor> that lasts {{ e6 }} seconds. These <keywordMajor>Seeds</keywordMajor> grant <keywordStealth>True Sight</keywordStealth> of enemy champions that step on them for {{ e3 }} seconds, but are still destroyed.<br /><br />This Ability has 2 charges with a {{ ammorechargetime }} second recharge time. Killing an enemy minion or monster reduces the recharge time by {{ e1 }}%. Champion takedowns reduce the recharge time by {{ e2 }}% instead.{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "Seed Recharge Rate"

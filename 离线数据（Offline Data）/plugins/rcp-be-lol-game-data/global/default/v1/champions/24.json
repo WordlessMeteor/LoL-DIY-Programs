@@ -700,6 +700,147 @@
             ],
             "skinAugments": null,
             "description": "A special event Skin celebrating PAX and Jax's 2023 visual update."
+        },
+        {
+            "id": 24033,
+            "isBase": false,
+            "name": "PROJECT: Jax",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/24/24033.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/24/24033.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/24/24033.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Jax/Skins/Skin33/JaxLoadScreen_33.SKINS_Jax_Skin33.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24033.png",
+            "chromas": [
+                {
+                    "id": 24034,
+                    "name": "PROJECT: Jax",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24034.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2024."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 24035,
+                    "name": "PROJECT: Jax",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24035.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 24036,
+                    "name": "PROJECT: Jax",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24036.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "Obtained through Influencer audience giveaways."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 24037,
+                    "name": "PROJECT: Jax",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24037.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 24038,
+                    "name": "PROJECT: Jax",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24038.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 24039,
+                    "name": "PROJECT: Jax",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24039.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 24040,
+                    "name": "PROJECT: Jax",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24040.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 24041,
+                    "name": "PROJECT: Jax",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24041.png",
+                    "colors": [
+                        "#DED6B0",
+                        "#DED6B0"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 18
+                }
+            ],
+            "skinAugments": null,
+            "description": "An ancient warrior whose lifespan was extended through experimental tech, Jax once defended the city's outskirts from the horrors of PROJECT's control. His hopes for the future were crushed, however, when Mordekaiser's virus forced him to purge his own people. The only flame that now lights his path is revenge."
         }
     ],
     "passive": {
