@@ -4931,17 +4931,6 @@
         }
     },
     {
-        "name": "TFT3_5_Augment",
-        "character_record": {
-            "path": "Characters/TFT3_5_Augment/CharacterRecords/Root",
-            "character_id": "TFT3_5_Augment",
-            "rarity": 9,
-            "display_name": "Hexcore",
-            "traits": [],
-            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_BandleCity.png"
-        }
-    },
-    {
         "name": "TFT_VoidSpawn",
         "character_record": {
             "path": "Characters/TFT_VoidSpawn/CharacterRecords/Root",

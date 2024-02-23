@@ -791,7 +791,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@s %i:cooldown%",
             "description": "Seraphine deals damage in an area.",
-            "dynamicDescription": "Seraphine projects a pure note, dealing <magicDamage>@ExplosionDamage@ magic damage</magicDamage>, increased by the target's missing Health percentage up to <magicDamage>@TotalEmpoweredDamage@ damage</magicDamage> below @ExecuteThreshold*100@% Health.@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "Seraphine projects a pure note, dealing <magicDamage>@ExplosionDamage@ magic damage</magicDamage>, increased against champions by the target's missing Health percentage up to <magicDamage>@TotalEmpoweredDamage@ damage</magicDamage> below @ExecuteThreshold*100@% Health.@SpellModifierDescriptionAppend@",
             "range": [
                 900.0000,
                 900.0000,
