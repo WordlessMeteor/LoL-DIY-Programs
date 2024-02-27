@@ -837,7 +837,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "维克兹让一个区域爆炸，击飞敌人，并将近处的敌人略微击退。",
-            "dynamicDescription": "维克兹瓦解一个附近的区域，导致它爆炸，造成@StunDuration@秒<status>击飞</status>和<magicDamage>@TotalDamage@魔法伤害</magicDamage>。靠近维克兹的敌人们将被<status>击退</status>来替代<status>击飞</status>。@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "Spell_VelkozE_Tooltip@SpellModifierDescriptionAppend@",
             "range": [
                 810.0000,
                 810.0000,

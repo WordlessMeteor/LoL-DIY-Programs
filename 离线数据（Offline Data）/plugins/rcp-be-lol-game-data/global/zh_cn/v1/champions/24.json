@@ -785,7 +785,7 @@
         {
             "id": 24033,
             "isBase": false,
-            "name": "",
+            "name": "源计划：孤狼贾克斯",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/24/24033.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/24/24033.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/24/24033.jpg",
@@ -800,7 +800,7 @@
             "chromas": [
                 {
                     "id": 24034,
-                    "name": "",
+                    "name": "源计划：孤狼贾克斯",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24034.png",
                     "colors": [
                         "#D33528",
@@ -821,7 +821,7 @@
                 },
                 {
                     "id": 24035,
-                    "name": "",
+                    "name": "源计划：孤狼贾克斯",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24035.png",
                     "colors": [
                         "#FFEE59",
@@ -832,7 +832,7 @@
                 },
                 {
                     "id": 24036,
-                    "name": "",
+                    "name": "源计划：孤狼贾克斯",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24036.png",
                     "colors": [
                         "#2DA130",
@@ -841,7 +841,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "通过主播的赠予而获得。"
                         }
                     ],
                     "rarities": [
@@ -853,7 +853,7 @@
                 },
                 {
                     "id": 24037,
-                    "name": "",
+                    "name": "源计划：孤狼贾克斯",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24037.png",
                     "colors": [
                         "#73BFBE",
@@ -864,7 +864,7 @@
                 },
                 {
                     "id": 24038,
-                    "name": "",
+                    "name": "源计划：孤狼贾克斯",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24038.png",
                     "colors": [
                         "#9C68D7",
@@ -875,7 +875,7 @@
                 },
                 {
                     "id": 24039,
-                    "name": "",
+                    "name": "源计划：孤狼贾克斯",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24039.png",
                     "colors": [
                         "#2756CE",
@@ -891,7 +891,7 @@
                 },
                 {
                     "id": 24040,
-                    "name": "",
+                    "name": "源计划：孤狼贾克斯",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24040.png",
                     "colors": [
                         "#27211C",
@@ -902,7 +902,7 @@
                 },
                 {
                     "id": 24041,
-                    "name": "",
+                    "name": "源计划：孤狼贾克斯",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24041.png",
                     "colors": [
                         "#DED6B0",
@@ -921,7 +921,7 @@
                 }
             ],
             "skinAugments": null,
-            "description": null
+            "description": "贾克斯是一名古老的战士，他曾保卫过城市郊区，使其免遭源计划的恐怖控制。借助实验科技的力量，这位远古战士的寿命得以延长。然而，莫德凯撒的病毒迫使他屠戮自己的族人，他对未来的希望也就此破灭。如今，唯一照亮他前行之路的，便是他心中那复仇的怒火。"
         }
     ],
     "passive": {

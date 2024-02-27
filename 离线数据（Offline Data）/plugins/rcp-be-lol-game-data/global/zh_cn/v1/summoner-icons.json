@@ -71104,7 +71104,7 @@
     },
     {
         "id": 5721,
-        "title": "summoner_icon_title_5721",
+        "title": "觅心猫猫 悠米 月色真美 周边 图标",
         "yearReleased": 2023,
         "isLegacy": false,
         "imagePath": "/lol-game-data/assets/v1/profile-icons/5721.jpg",
@@ -74165,7 +74165,7 @@
     },
     {
         "id": 5862,
-        "title": "summoner_icon_title_5862",
+        "title": "觅心猫猫 悠米 就想粘你 周边 图标",
         "yearReleased": 2023,
         "isLegacy": false,
         "imagePath": "/lol-game-data/assets/v1/profile-icons/5862.jpg",
@@ -87877,14 +87877,14 @@
     },
     {
         "id": 6564,
-        "title": "summoner_icon_title_6564",
+        "title": "羽饰骑士 崔丝塔娜 边框图标",
         "yearReleased": 2024,
         "isLegacy": false,
         "imagePath": "/lol-game-data/assets/v1/profile-icons/6564.jpg",
         "descriptions": [
             {
                 "region": "riot",
-                "description": ""
+                "description": "1个包含了该皮肤边框的图标。"
             }
         ],
         "rarities": [
@@ -87897,14 +87897,14 @@
     },
     {
         "id": 6565,
-        "title": "summoner_icon_title_6565",
+        "title": "神龙尊者 苍龙艾希 周边 图标",
         "yearReleased": 2024,
         "isLegacy": false,
         "imagePath": "/lol-game-data/assets/v1/profile-icons/6565.jpg",
         "descriptions": [
             {
                 "region": "riot",
-                "description": ""
+                "description": "解锁方式：通过在游戏周边商城购买该图标解锁。"
             }
         ],
         "rarities": [
@@ -87924,7 +87924,7 @@
         "descriptions": [
             {
                 "region": "riot",
-                "description": ""
+                "description": "1个包含了该皮肤边框的图标。"
             }
         ],
         "rarities": [

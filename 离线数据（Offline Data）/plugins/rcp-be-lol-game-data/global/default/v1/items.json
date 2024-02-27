@@ -443,8 +443,7 @@
             3153,
             6695,
             6029,
-            6035,
-            6675
+            6035
         ],
         "categories": [
             "Damage"
@@ -475,7 +474,8 @@
             3031,
             3072,
             3302,
-            4403
+            4403,
+            6675
         ],
         "categories": [
             "Damage"
@@ -3637,7 +3637,7 @@
     {
         "id": 3085,
         "name": "Runaan's Hurricane",
-        "description": "<mainText><stats><attention> 40%</attention> Attack Speed<br><attention> 20%</attention> Critical Strike Chance<br><attention> 7%</attention> Move Speed</stats><br><br><passive>Peck</passive><br>Attacks apply bonus magic damage on-hit.<br><br><passive>Wind's Fury</passive><br>When Attacking, bolts are fired at up to 2 enemies near the target. Bolts apply On-Hit effects and can Critically Strike.<br><br><rules>Item is for  Ranged champions only.</rules></mainText>",
+        "description": "<mainText><stats><attention> 40%</attention> Attack Speed<br><attention> 20%</attention> Critical Strike Chance<br><attention> 7%</attention> Move Speed</stats><br><br><passive>Peck</passive><br>Attacks apply bonus magic damage on-hit.<br><br><passive>Wind's Fury</passive><br>When Attacking, bolts are fired at up to 2 enemies near the target. Bolts apply On-Hit effects and can Critically Strike.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4030,7 +4030,7 @@
     {
         "id": 3110,
         "name": "Frozen Heart",
-        "description": "<mainText><stats><attention> 70</attention> Armor<br><attention> 400</attention> Mana<br><attention> 20</attention> Ability Haste</stats><br><br><passive>Winter's Caress</passive><br>Reduce the <attackSpeed>Attack Speed</attackSpeed> of nearby enemies by 20%.<br><br><passive>Rock Solid</passive><br>Reduce incoming damage from Attacks by up to 0, capped at 0% of the Attack's damage.</mainText>",
+        "description": "<mainText><stats><attention> 65</attention> Armor<br><attention> 400</attention> Mana<br><attention> 20</attention> Ability Haste</stats><br><br><passive>Winter's Caress</passive><br>Reduce the <attackSpeed>Attack Speed</attackSpeed> of nearby enemies by 20%.<br><br><passive>Rock Solid</passive><br>Reduce incoming damage from Attacks by up to 0, capped at 0% of the Attack's damage.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4052,8 +4052,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 500,
-        "priceTotal": 2400,
+        "price": 600,
+        "priceTotal": 2500,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3110_Tank_T3_FrozenHeart.png"
     },
     {
@@ -8015,11 +8015,11 @@
     {
         "id": 6675,
         "name": "Navori Quickblades",
-        "description": "<mainText><stats><attention> 60</attention> Attack Damage<br><attention> 20%</attention> Critical Strike Chance<br><attention> 15</attention> Ability Haste</stats><br><br><passive>Transcendence</passive><br>Your Attacks reduce your non-Ultimate Ability cooldowns.<br><br><passive>Impermanence</passive><br>Your abilities deal increased damage based on Critical Strike Chance. </mainText>",
+        "description": "<mainText><stats><attention> 65</attention> Attack Damage<br><attention> 20%</attention> Critical Strike Chance<br><attention> 15</attention> Ability Haste</stats><br><br><passive>Transcendence</passive><br>Your Attacks reduce your non-Ultimate Ability cooldowns.<br><br><passive>Impermanence</passive><br>Your abilities deal increased damage based on Critical Strike Chance. </mainText>",
         "active": false,
         "inStore": true,
         "from": [
-            1037,
+            1038,
             3133,
             1018
         ],
@@ -8040,7 +8040,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 725,
+        "price": 300,
         "priceTotal": 3300,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6675_Marksman_T3_NavoriQuickblades.png"
     },

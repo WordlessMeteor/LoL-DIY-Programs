@@ -1023,7 +1023,7 @@
             "abilityVideoImagePath": "champion-abilities/0002/ability_0002_W1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
-            "description": "奥拉夫的攻击速度得到提升，他会减少即将到来的伤害，并且他会获得一层护盾。",
+            "description": "奥拉夫的攻击速度得到提升，并获得一层护盾。",
             "dynamicDescription": "奥拉夫获得持续@Duration@秒的<attackSpeed>@Attackspeed*100@%攻击速度</attackSpeed>，以及持续@ShieldDuration@秒的<shield>@BaseShield@外加@ShieldPercMissingHP*100@%已损失生命值的护盾值(最大值为@MaxShieldCalc@护盾值，在低于@ThresholdForMax*100@%时提供)</shield>。@SpellModifierDescriptionAppend@",
             "range": [
                 700.0000,

@@ -838,7 +838,7 @@
         "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Galio/HUD/Icons2D/Galio_Passive.png",
         "abilityVideoPath": "",
         "abilityVideoImagePath": "",
-        "description": "每过若干秒，加里奥的下次普攻就能在小范围内造成额外魔法伤害。"
+        "description": "Spell_GalioPassive_Summary"
     },
     "spells": [
         {

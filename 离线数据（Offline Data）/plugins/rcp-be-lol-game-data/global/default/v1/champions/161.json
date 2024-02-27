@@ -819,7 +819,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@s %i:cooldown%",
             "description": "Vel'Koz causes an area to explode, knocking up enemies, and knocking close enemies slightly away.",
-            "dynamicDescription": "Vel'Koz disrupts a nearby area, causing it to explode, <status>Knocking Up</status> for @StunDuration@ seconds and dealing <magicDamage>@TotalDamage@ magic damage</magicDamage>. Enemies close to Vel'koz will be <status>Knocked Back</status> instead of <status>Knocked Up</status>.@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "Vel'Koz disrupts a nearby area, causing it to explode, <status>Knocking Up</status> for @StunDuration@ seconds and dealing <magicDamage>@TotalDamage@ magic damage</magicDamage>. Enemies close to Vel'Koz will be <status>Knocked Back</status> instead of <status>Knocked Up</status>.@SpellModifierDescriptionAppend@",
             "range": [
                 810.0000,
                 810.0000,

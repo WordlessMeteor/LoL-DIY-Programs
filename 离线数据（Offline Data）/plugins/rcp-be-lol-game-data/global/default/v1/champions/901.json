@@ -256,7 +256,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@s %i:cooldown%",
             "description": "Smolder breathes fire on an enemy. As he gains more stacks, this ability becomes more powerful.",
-            "dynamicDescription": "Smolder belches flame, dealing <physicalDamage>@TooltipQDamage@ physical damage</physicalDamage> + <magicDamage>@Passive_Damage_Increase@ magic damage</magicDamage>.<br><br>Based on stacks of <spellName>Dragon Practice</spellName>, this Ability evolves to gain the following effects:<li><keywordMajor>@StackTier1@ Stacks</keywordMajor>: Damages all enemies surrounding the target.</li><li><keywordMajor>@StackTier2@ Stacks</keywordMajor>: Sends <spellName>@Tier2_NumberOfBlowback@</spellName> explosions beyond the target that deal @Tier2_BlowbackPercentageDamage@% of this Ability's damage.</li><li><keywordMajor>@StackTier3@ Stacks</keywordMajor>: Burns the target, dealing <trueDamage>@Tier3_TrueDamagePercent*100@% max Health true damage</trueDamage> over @Tier3_DotLength@ seconds. Enemy champions that drop below <trueDamage>@Tier3_ExecuteThreshold@</trueDamage> total health while burning are killed instantly.</li>@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "Smolder belches flame, dealing <physicalDamage>@TooltipQDamage@ physical damage</physicalDamage> + <magicDamage>@Passive_Damage_Increase@ magic damage</magicDamage>.<br><br>Based on stacks of <spellName>Dragon Practice</spellName>, this Ability evolves to gain the following effects:<li><keywordMajor>@StackTier1@ Stacks</keywordMajor>: Damages all enemies surrounding the target.</li><li><keywordMajor>@StackTier2@ Stacks</keywordMajor>: Sends <spellName>@Tier2_NumberOfBlowback@</spellName> explosions beyond the target that deal @Tier2_BlowbackPercentageDamage@% of this Ability's damage.</li><li><keywordMajor>@StackTier3@ Stacks</keywordMajor>: Burns the target, dealing <trueDamage>@Tier3_Burn@ max Health true damage</trueDamage> over @Tier3_DotLength@ seconds. Enemy champions that drop below <trueDamage>@Tier3_ExecuteThreshold@</trueDamage> total health while burning are killed instantly.</li>@SpellModifierDescriptionAppend@",
             "range": [
                 550.0000,
                 550.0000,
@@ -555,8 +555,8 @@
             "abilityVideoImagePath": "champion-abilities/0901/ability_0901_E1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@s %i:cooldown%",
-            "description": "Smolder takes flight ignoring terrain and attacking the lowest health enemy.",
-            "dynamicDescription": "Smolder takes flight, gaining <speed>@MoveSpeed*100@% Move Speed</speed> and ignoring terrain for @Duration@ seconds.<br><br>While flying, Smolder attacks the lowest Health enemy <spellName>@TotalNumberOfAttacks@</spellName> times for <physicalDamage>@DamagePerHit@ physical damage</physicalDamage> + <magicDamage>@Passive_Damage_Increase@ magic damage</magicDamage> each.@SpellModifierDescriptionAppend@",
+            "description": "Smolder takes flight ignoring terrain and bombarding the lowest health enemy.",
+            "dynamicDescription": "Smolder takes flight, gaining <speed>@MoveSpeed*100@% Move Speed</speed> and ignoring terrain for @Duration@ seconds.<br><br>While flying, Smolder bombards the lowest Health enemy <spellName>@TotalNumberOfAttacks@</spellName> times for <physicalDamage>@DamagePerHit@ physical damage</physicalDamage> + <magicDamage>@Passive_Damage_Increase@ magic damage</magicDamage> per hit.@SpellModifierDescriptionAppend@",
             "range": [
                 700.0000,
                 700.0000,

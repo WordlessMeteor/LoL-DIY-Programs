@@ -700,7 +700,7 @@
         {
             "id": 41033,
             "isBase": false,
-            "name": "",
+            "name": "源计划：铁腕普朗克",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/41/41033.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/41/41033.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/41/41033.jpg",
@@ -715,7 +715,7 @@
             "chromas": [
                 {
                     "id": 41034,
-                    "name": "",
+                    "name": "源计划：铁腕普朗克",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41034.png",
                     "colors": [
                         "#D33528",
@@ -736,7 +736,7 @@
                 },
                 {
                     "id": 41035,
-                    "name": "",
+                    "name": "源计划：铁腕普朗克",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41035.png",
                     "colors": [
                         "#DF9117",
@@ -747,7 +747,7 @@
                 },
                 {
                     "id": 41036,
-                    "name": "",
+                    "name": "源计划：铁腕普朗克",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41036.png",
                     "colors": [
                         "#B6E084",
@@ -758,7 +758,7 @@
                 },
                 {
                     "id": 41037,
-                    "name": "",
+                    "name": "源计划：铁腕普朗克",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41037.png",
                     "colors": [
                         "#2756CE",
@@ -774,7 +774,7 @@
                 },
                 {
                     "id": 41038,
-                    "name": "",
+                    "name": "源计划：铁腕普朗克",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41038.png",
                     "colors": [
                         "#E58BA5",
@@ -790,7 +790,7 @@
                 },
                 {
                     "id": 41039,
-                    "name": "",
+                    "name": "源计划：铁腕普朗克",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41039.png",
                     "colors": [
                         "#73BFBE",
@@ -801,7 +801,7 @@
                 },
                 {
                     "id": 41040,
-                    "name": "",
+                    "name": "源计划：铁腕普朗克",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41040.png",
                     "colors": [
                         "#9C68D7",
@@ -812,7 +812,7 @@
                 },
                 {
                     "id": 41041,
-                    "name": "",
+                    "name": "源计划：铁腕普朗克",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41041.png",
                     "colors": [
                         "#ECF9F8",
@@ -831,7 +831,7 @@
                 }
             ],
             "skinAugments": null,
-            "description": null
+            "description": "身为体系的领袖，普朗克以冷血无情闻名于世。他能够接触到危险的源计划科技，进而用机械铁拳统治这座城市。然而，叛变程序陡然现世，对他的领地大肆破坏。为了保护这座城市、将病毒彻底消灭，他只得开始操纵曾经的遗弃者。"
         }
     ],
     "passive": {

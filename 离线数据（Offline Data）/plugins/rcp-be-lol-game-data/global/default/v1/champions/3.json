@@ -793,7 +793,7 @@
         "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Galio/HUD/Icons2D/Galio_Passive.png",
         "abilityVideoPath": "",
         "abilityVideoImagePath": "",
-        "description": "Every few seconds, Galio's next basic attack deals bonus magic damage in an area."
+        "description": "Every few seconds, Galio's next basic attack deals bonus magic damage in an area. This cooldown is reduced when Galio hits enemy champions with abilities."
     },
     "spells": [
         {

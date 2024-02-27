@@ -198,7 +198,7 @@
         {
             "id": 950011,
             "isBase": false,
-            "name": "",
+            "name": "源计划：狂猎纳亚菲利",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/950/950011.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/950/950011.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/950/950011.jpg",
@@ -213,7 +213,7 @@
             "chromas": [
                 {
                     "id": 950012,
-                    "name": "",
+                    "name": "源计划：狂猎纳亚菲利",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950012.png",
                     "colors": [
                         "#D33528",
@@ -234,7 +234,7 @@
                 },
                 {
                     "id": 950013,
-                    "name": "",
+                    "name": "源计划：狂猎纳亚菲利",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950013.png",
                     "colors": [
                         "#2756CE",
@@ -245,7 +245,7 @@
                 },
                 {
                     "id": 950014,
-                    "name": "",
+                    "name": "源计划：狂猎纳亚菲利",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950014.png",
                     "colors": [
                         "#DF9117",
@@ -256,7 +256,7 @@
                 },
                 {
                     "id": 950015,
-                    "name": "",
+                    "name": "源计划：狂猎纳亚菲利",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950015.png",
                     "colors": [
                         "#E58BA5",
@@ -272,7 +272,7 @@
                 },
                 {
                     "id": 950016,
-                    "name": "",
+                    "name": "源计划：狂猎纳亚菲利",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950016.png",
                     "colors": [
                         "#2DA130",
@@ -283,7 +283,7 @@
                 },
                 {
                     "id": 950017,
-                    "name": "",
+                    "name": "源计划：狂猎纳亚菲利",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950017.png",
                     "colors": [
                         "#54209B",
@@ -294,7 +294,7 @@
                 },
                 {
                     "id": 950018,
-                    "name": "",
+                    "name": "源计划：狂猎纳亚菲利",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950018.png",
                     "colors": [
                         "#73BFBE",
@@ -310,7 +310,7 @@
                 },
                 {
                     "id": 950019,
-                    "name": "",
+                    "name": "源计划：狂猎纳亚菲利",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950019.png",
                     "colors": [
                         "#ECF9F8",
@@ -329,7 +329,7 @@
                 }
             ],
             "skinAugments": null,
-            "description": null
+            "description": "源计划的实验永远地改变了犬形英雄纳亚菲利，让她能够吸收猎物的意识，与自己的意识化为一体。莫德凯撒发现了这一能力背后的潜力，于是借由病毒感染为她的程序指派了新的任务：清除全人类的自由意志。现在，她将向所有幸存者证明：抵抗不过是白费力气。"
         }
     ],
     "passive": {

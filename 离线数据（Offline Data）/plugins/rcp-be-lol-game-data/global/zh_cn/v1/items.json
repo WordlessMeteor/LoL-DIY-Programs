@@ -443,8 +443,7 @@
             3153,
             6695,
             6029,
-            6035,
-            6675
+            6035
         ],
         "categories": [
             "Damage"
@@ -475,7 +474,8 @@
             3031,
             3072,
             3302,
-            4403
+            4403,
+            6675
         ],
         "categories": [
             "Damage"
@@ -3637,7 +3637,7 @@
     {
         "id": 3085,
         "name": "卢安娜的飓风",
-        "description": "<mainText><stats><attention>40%</attention>攻击速度<br><attention>20%</attention>暴击几率<br><attention>7%</attention>移动速度</stats><br><br><passive>啄击</passive><br>攻击附带额外魔法伤害 。<br><br><passive>风怒</passive><br>在攻击时，会朝目标附近至多2个敌人发射弩箭。这些弩箭能够附带攻击特效并且可以暴击。<br><br><rules>这件装备仅远程英雄可用。</rules></mainText>",
+        "description": "<mainText><stats><attention>40%</attention>攻击速度<br><attention>20%</attention>暴击几率<br><attention>7%</attention>移动速度</stats><br><br>Item_3085_TooltipExternal</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4030,7 +4030,7 @@
     {
         "id": 3110,
         "name": "冰霜之心",
-        "description": "<mainText><stats><attention>70</attention>护甲<br><attention>400</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>凛冬之抚</passive><br>使附近敌人的<attackSpeed>攻击速度</attackSpeed>降低20%。<br><br><passive>坚如磐石</passive><br>使所受的来自普攻的伤害至多降低0，上限为该次攻击伤害的0%。</mainText>",
+        "description": "<mainText><stats><attention>65</attention>护甲<br><attention>400</attention>法力<br><attention>20</attention>技能急速</stats><br><br><passive>凛冬之抚</passive><br>使附近敌人的<attackSpeed>攻击速度</attackSpeed>降低20%。<br><br><passive>坚如磐石</passive><br>使所受的来自普攻的伤害至多降低0，上限为该次攻击伤害的0%。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4052,8 +4052,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 500,
-        "priceTotal": 2400,
+        "price": 600,
+        "priceTotal": 2500,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3110_Tank_T3_FrozenHeart.png"
     },
     {
@@ -8015,11 +8015,11 @@
     {
         "id": 6675,
         "name": "纳沃利迅刃",
-        "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>15</attention>技能急速</stats><br><br><passive>超凡入圣</passive><br>你的攻击会使你的各个非终极技能的冷却时间缩短。<br><br><passive>无常</passive><br>你的技能可基于你的暴击几率造成提升伤害。 </mainText>",
+        "description": "<mainText><stats><attention>65</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>15</attention>技能急速</stats><br><br><passive>超凡入圣</passive><br>你的攻击会使你的各个非终极技能的冷却时间缩短。<br><br><passive>无常</passive><br>你的技能可基于你的暴击几率造成提升伤害。 </mainText>",
         "active": false,
         "inStore": true,
         "from": [
-            1037,
+            1038,
             3133,
             1018
         ],
@@ -8040,7 +8040,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 725,
+        "price": 300,
         "priceTotal": 3300,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6675_Marksman_T3_NavoriQuickblades.png"
     },
