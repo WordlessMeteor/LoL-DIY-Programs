@@ -3256,7 +3256,7 @@
     {
         "id": 3068,
         "name": "Sunfire Aegis",
-        "description": "<mainText><stats><attention> 450</attention> Health<br><attention> 50</attention> Armor</stats><br><br><br><li><passive>Immolate:</passive> Taking or dealing damage causes you to begin dealing <magicDamage> (12 + 1.75% bonus Health) magic damage</magicDamage> per second to nearby enemies (increased by 25% against minions) for 3 seconds. Damaging Champions or Epic Monsters with this effect adds a stack, increasing subsequent <passive>Immolate</passive> damage by 10% for 5 seconds (max stacks 6).<br></mainText>",
+        "description": "<mainText><stats><attention> 500</attention> Health<br><attention> 50</attention> Armor</stats><br><br><br><li><passive>Immolate:</passive> Taking or dealing damage causes you to begin dealing <magicDamage> (15 + 1.75% bonus Health) magic damage</magicDamage> per second to nearby enemies (increased by 25% against minions) for 3 seconds. Damaging Champions or Epic Monsters with this effect adds a stack, increasing subsequent <passive>Immolate</passive> damage by 10% for 5 seconds (max stacks 6).<br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -3637,7 +3637,7 @@
     {
         "id": 3085,
         "name": "Runaan's Hurricane",
-        "description": "<mainText><stats><attention> 40%</attention> Attack Speed<br><attention> 20%</attention> Critical Strike Chance<br><attention> 7%</attention> Move Speed</stats><br><br><passive>Peck</passive><br>Attacks apply bonus magic damage on-hit.<br><br><passive>Wind's Fury</passive><br>When Attacking, bolts are fired at up to 2 enemies near the target. Bolts apply On-Hit effects and can Critically Strike.</mainText>",
+        "description": "<mainText><stats><attention> 40%</attention> Attack Speed<br><attention> 20%</attention> Critical Strike Chance<br><attention> 7%</attention> Move Speed</stats><br><br><passive>Peck</passive><br>Attacks apply bonus magic damage on-hit.<br><br><passive>Wind's Fury</passive><br>When Attacking, bolts are fired at up to 2 enemies near the target. Bolts apply On-Hit effects and can Critically Strike.<br><br><rules>Item is for  Ranged champions only.</rules></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -10378,7 +10378,7 @@
     {
         "id": 223068,
         "name": "Sunfire Aegis",
-        "description": "<mainText><stats><attention> 450</attention> Health<br><attention> 50</attention> Armor</stats><br><br><br><li><passive>Immolate:</passive> Taking or dealing damage causes you to begin dealing <magicDamage> (12 + 2.5% bonus Health) magic damage</magicDamage> per second to nearby enemies (increased by 25% against minions) for 3 seconds. Damaging Champions or Epic Monsters with this effect adds a stack, increasing subsequent <passive>Immolate</passive> damage by 10% for 5 seconds (max stacks 10).<br></mainText>",
+        "description": "<mainText><stats><attention> 500</attention> Health<br><attention> 50</attention> Armor</stats><br><br><br><li><passive>Immolate:</passive> Taking or dealing damage causes you to begin dealing <magicDamage> (15 + 2.5% bonus Health) magic damage</magicDamage> per second to nearby enemies (increased by 25% against minions) for 3 seconds. Damaging Champions or Epic Monsters with this effect adds a stack, increasing subsequent <passive>Immolate</passive> damage by 10% for 5 seconds (max stacks 10).<br></mainText>",
         "active": false,
         "inStore": true,
         "from": [],

@@ -1762,7 +1762,7 @@
                 "effect_amounts": [
                     {
                         "name": "EDMstats",
-                        "value": 1.2500,
+                        "value": 1.2000,
                         "format_string": ""
                     },
                     {
@@ -1780,7 +1780,7 @@
                 "effect_amounts": [
                     {
                         "name": "EDMstats",
-                        "value": 1.4000,
+                        "value": 1.3500,
                         "format_string": ""
                     },
                     {
@@ -2057,6 +2057,24 @@
                     }
                 ],
                 "min_units": 6,
+                "max_units": 7,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "FighterAS",
+                        "value": 125.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "FighterVamp",
+                        "value": 30.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 8,
                 "style_idx": 4,
                 "style_name": "kGold"
             }

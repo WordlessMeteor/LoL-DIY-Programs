@@ -827,7 +827,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "萨勒芬妮在一个区域内造成伤害。",
-            "dynamicDescription": "Spell_SeraphineQ_Tooltip@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "萨勒芬妮放出一道清澈的音符，造成<magicDamage>@ExplosionDamage@魔法伤害</magicDamage>，对英雄的伤害会基于目标的已损失生命值而提升，最多可对@ExecuteThreshold*100@%生命值以下的目标造成<magicDamage>@TotalEmpoweredDamage@伤害</magicDamage>。@SpellModifierDescriptionAppend@",
             "range": [
                 900.0000,
                 900.0000,

@@ -1211,7 +1211,7 @@
         "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Vayne/HUD/Icons2D/Vayne_P.png",
         "abilityVideoPath": "champion-abilities/0067/ability_0067_P1.webm",
         "abilityVideoImagePath": "champion-abilities/0067/ability_0067_P1.jpg",
-        "description": "Vayne ruthlessly hunts evil-doers, gaining 45 Move Speed when moving toward nearby enemy champions."
+        "description": "Vayne ruthlessly hunts evil-doers, gaining Move Speed when moving toward nearby enemy champions."
     },
     "spells": [
         {
@@ -1241,10 +1241,10 @@
                 30.0000
             ],
             "cooldownCoefficients": [
+                6.0000,
+                5.0000,
                 4.0000,
-                3.5000,
                 3.0000,
-                2.5000,
                 2.0000,
                 2.0000
             ],

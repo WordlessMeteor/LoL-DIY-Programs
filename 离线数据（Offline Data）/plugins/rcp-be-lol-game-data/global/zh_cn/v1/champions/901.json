@@ -265,7 +265,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "斯莫德在一名敌人身上喷吐烈焰。随着他获得更多层数，这个技能会变得更加强力。",
-            "dynamicDescription": "Spell_SmolderQ_Tooltip2@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "斯莫德喷出烈焰，造成<physicalDamage>@TooltipQDamage@物理伤害</physicalDamage> + <magicDamage>@Passive_Damage_Increase@魔法伤害</magicDamage>。<br><br>基于<spellName>龙之研习</spellName>的层数，这个技能会不断进化以获得以下效果：<li><keywordMajor>@StackTier1@层</keywordMajor>：伤害目标周围的所有敌人。</li><li><keywordMajor>@StackTier2@层</keywordMajor>：在目标后侧引发<spellName>@Tier2_NumberOfBlowback@</spellName>次爆炸，造成@Tier2_BlowbackPercentageDamage@%此技能伤害。</li><li><keywordMajor>@StackTier3@层</keywordMajor>：灼烧目标，在@Tier3_DotLength@秒里持续造成共<trueDamage>@Tier3_Burn@最大生命值的真实伤害</trueDamage>。 敌方英雄如果在灼烧期间跌到<trueDamage>@Tier3_ExecuteThreshold@</trueDamage>总生命值以下，则会被立刻击杀。</li>@SpellModifierDescriptionAppend@",
             "range": [
                 550.0000,
                 550.0000,
@@ -564,8 +564,8 @@
             "abilityVideoImagePath": "champion-abilities/0901/ability_0901_E1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
-            "description": "Spell_SmolderE_Tooltip_Summary",
-            "dynamicDescription": "Spell_SmolderE_Tooltip@SpellModifierDescriptionAppend@",
+            "description": "斯莫德展翅高飞，无视地形并轰击生命值最低的敌人。",
+            "dynamicDescription": "斯莫德展翅高飞，获得<speed>@MoveSpeed*100@%移动速度</speed>并无视地形，持续@Duration@秒。<br><br>在飞行时，斯莫德轰击生命值最低的敌方英雄<spellName>@TotalNumberOfAttacks@</spellName>次，每次命中造成<physicalDamage>@DamagePerHit@物理伤害</physicalDamage> + <magicDamage>@Passive_Damage_Increase@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
             "range": [
                 700.0000,
                 700.0000,

@@ -785,7 +785,7 @@
         {
             "id": 24033,
             "isBase": false,
-            "name": "源计划：孤狼贾克斯",
+            "name": "源计划：孤狼 贾克斯",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/24/24033.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/24/24033.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/24/24033.jpg",
@@ -800,7 +800,7 @@
             "chromas": [
                 {
                     "id": 24034,
-                    "name": "源计划：孤狼贾克斯",
+                    "name": "源计划：孤狼 贾克斯 裂变",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24034.png",
                     "colors": [
                         "#D33528",
@@ -809,7 +809,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "这个炫彩曾在2024年期间作为礼包专属发布。"
                         }
                     ],
                     "rarities": [
@@ -821,7 +821,7 @@
                 },
                 {
                     "id": 24035,
-                    "name": "源计划：孤狼贾克斯",
+                    "name": "源计划：孤狼 贾克斯 震击",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24035.png",
                     "colors": [
                         "#FFEE59",
@@ -832,7 +832,7 @@
                 },
                 {
                     "id": 24036,
-                    "name": "源计划：孤狼贾克斯",
+                    "name": "源计划：孤狼 贾克斯 默化",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24036.png",
                     "colors": [
                         "#2DA130",
@@ -853,7 +853,7 @@
                 },
                 {
                     "id": 24037,
-                    "name": "源计划：孤狼贾克斯",
+                    "name": "源计划：孤狼 贾克斯 冥火",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24037.png",
                     "colors": [
                         "#73BFBE",
@@ -864,7 +864,7 @@
                 },
                 {
                     "id": 24038,
-                    "name": "源计划：孤狼贾克斯",
+                    "name": "源计划：孤狼 贾克斯 暴走",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24038.png",
                     "colors": [
                         "#9C68D7",
@@ -875,7 +875,7 @@
                 },
                 {
                     "id": 24039,
-                    "name": "源计划：孤狼贾克斯",
+                    "name": "源计划：孤狼 贾克斯 地覆",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24039.png",
                     "colors": [
                         "#2756CE",
@@ -891,7 +891,7 @@
                 },
                 {
                     "id": 24040,
-                    "name": "源计划：孤狼贾克斯",
+                    "name": "源计划：孤狼 贾克斯 燎原",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24040.png",
                     "colors": [
                         "#27211C",
@@ -902,7 +902,7 @@
                 },
                 {
                     "id": 24041,
-                    "name": "源计划：孤狼贾克斯",
+                    "name": "源计划：孤狼 贾克斯 飞沙",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/24/24041.png",
                     "colors": [
                         "#DED6B0",

@@ -198,7 +198,7 @@
         {
             "id": 950011,
             "isBase": false,
-            "name": "源计划：狂猎纳亚菲利",
+            "name": "源计划：狂猎 纳亚菲利",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/950/950011.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/950/950011.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/950/950011.jpg",
@@ -213,7 +213,7 @@
             "chromas": [
                 {
                     "id": 950012,
-                    "name": "源计划：狂猎纳亚菲利",
+                    "name": "源计划：狂猎 纳亚菲利 裂变",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950012.png",
                     "colors": [
                         "#D33528",
@@ -222,7 +222,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "这个炫彩曾在2024年期间作为礼包专属发布。"
                         }
                     ],
                     "rarities": [
@@ -234,7 +234,7 @@
                 },
                 {
                     "id": 950013,
-                    "name": "源计划：狂猎纳亚菲利",
+                    "name": "源计划：狂猎 纳亚菲利 地覆",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950013.png",
                     "colors": [
                         "#2756CE",
@@ -245,7 +245,7 @@
                 },
                 {
                     "id": 950014,
-                    "name": "源计划：狂猎纳亚菲利",
+                    "name": "源计划：狂猎 纳亚菲利 潜袭",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950014.png",
                     "colors": [
                         "#DF9117",
@@ -256,7 +256,7 @@
                 },
                 {
                     "id": 950015,
-                    "name": "源计划：狂猎纳亚菲利",
+                    "name": "源计划：狂猎 纳亚菲利 幻灭",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950015.png",
                     "colors": [
                         "#E58BA5",
@@ -272,7 +272,7 @@
                 },
                 {
                     "id": 950016,
-                    "name": "源计划：狂猎纳亚菲利",
+                    "name": "源计划：狂猎 纳亚菲利 默化",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950016.png",
                     "colors": [
                         "#2DA130",
@@ -283,7 +283,7 @@
                 },
                 {
                     "id": 950017,
-                    "name": "源计划：狂猎纳亚菲利",
+                    "name": "源计划：狂猎 纳亚菲利 失控",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950017.png",
                     "colors": [
                         "#54209B",
@@ -294,7 +294,7 @@
                 },
                 {
                     "id": 950018,
-                    "name": "源计划：狂猎纳亚菲利",
+                    "name": "源计划：狂猎 纳亚菲利 冥火",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950018.png",
                     "colors": [
                         "#73BFBE",
@@ -310,7 +310,7 @@
                 },
                 {
                     "id": 950019,
-                    "name": "源计划：狂猎纳亚菲利",
+                    "name": "源计划：狂猎 纳亚菲利 雪崩",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/950/950019.png",
                     "colors": [
                         "#ECF9F8",

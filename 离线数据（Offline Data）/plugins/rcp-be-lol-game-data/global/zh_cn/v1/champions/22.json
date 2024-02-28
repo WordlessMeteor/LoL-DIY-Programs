@@ -1329,7 +1329,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "艾希会在攻击时聚集【全神贯注】效果。在【全神贯注】到达最大值时，艾希就能施放【射手的专注】来消耗掉所有【全神贯注】效果，以临时提升她的攻击速度，并在持续期间将她的普攻转变为一阵强力的飓风箭阵。",
-            "dynamicDescription": "Spell_AsheQ_Tooltip@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "<spellPassive>被动：</spellPassive>艾希的攻击提供1层持续@Effect1Amount@秒的效果。在@Effect2Amount@层时，她就可以激活这个技能。<br><br><spellPassive>主动：</spellPassive>艾希获得<attackSpeed>@Effect4Amount@%攻击速度</attackSpeed>并且她的攻击转而造成<physicalDamage>@EmpoweredDamage@伤害</physicalDamage>，持续@Effect3Amount@秒。@SpellModifierDescriptionAppend@",
             "range": [
                 400.0000,
                 400.0000,
@@ -1629,7 +1629,7 @@
             "cost": "无消耗",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "艾希将她的猎鹰之灵派去执行侦查任务，可派往地图上的任意地点。",
-            "dynamicDescription": "Spell_AsheSpiritOfTheHawk_Tooltip@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "艾希派出一只鹰，在地图上的任一位置提供5秒的视野。它还会在飞行时显形附近的区域。<br><br>这个技能可持有2层充能（@ChargeCooldown@秒充能时间）。@SpellModifierDescriptionAppend@",
             "range": [
                 25000.0000,
                 25000.0000,
@@ -1779,7 +1779,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "艾希射出一支沿直线飞行的魔法水晶箭。如果水晶箭命中了一名敌方英雄，那么它会对该英雄造成伤害和晕眩效果，晕眩时长取决于水晶箭的飞行距离。此外，该英雄附近的敌方单位会受到伤害和减速效果。",
-            "dynamicDescription": "Spell_EnchantedCrystalArrow_Tooltip@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "艾希射出魔法水晶箭，<status>晕眩</status>命中的第一个敌方英雄，并造成<magicDamage>@RMainDamage@魔法伤害</magicDamage>。<status>晕眩</status>时长取决于飞行距离，至多@MaxStunDuration@秒。目标周围的敌人会受到<spellName>冰霜射击</spellName>的<status>减速</status>效果和一半伤害。@SpellModifierDescriptionAppend@",
             "range": [
                 25000.0000,
                 25000.0000,

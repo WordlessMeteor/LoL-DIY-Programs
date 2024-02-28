@@ -700,7 +700,7 @@
         {
             "id": 41033,
             "isBase": false,
-            "name": "源计划：铁腕普朗克",
+            "name": "源计划：铁腕 普朗克",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/41/41033.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/41/41033.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/41/41033.jpg",
@@ -715,7 +715,7 @@
             "chromas": [
                 {
                     "id": 41034,
-                    "name": "源计划：铁腕普朗克",
+                    "name": "源计划：铁腕 普朗克 裂变",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41034.png",
                     "colors": [
                         "#D33528",
@@ -724,7 +724,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "这个炫彩曾在2024年期间作为礼包专属发布。"
                         }
                     ],
                     "rarities": [
@@ -736,7 +736,7 @@
                 },
                 {
                     "id": 41035,
-                    "name": "源计划：铁腕普朗克",
+                    "name": "源计划：铁腕 普朗克 潜袭",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41035.png",
                     "colors": [
                         "#DF9117",
@@ -747,7 +747,7 @@
                 },
                 {
                     "id": 41036,
-                    "name": "源计划：铁腕普朗克",
+                    "name": "源计划：铁腕 普朗克 破障",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41036.png",
                     "colors": [
                         "#B6E084",
@@ -758,7 +758,7 @@
                 },
                 {
                     "id": 41037,
-                    "name": "源计划：铁腕普朗克",
+                    "name": "源计划：铁腕 普朗克 地覆",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41037.png",
                     "colors": [
                         "#2756CE",
@@ -774,7 +774,7 @@
                 },
                 {
                     "id": 41038,
-                    "name": "源计划：铁腕普朗克",
+                    "name": "源计划：铁腕 普朗克 幻灭",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41038.png",
                     "colors": [
                         "#E58BA5",
@@ -790,7 +790,7 @@
                 },
                 {
                     "id": 41039,
-                    "name": "源计划：铁腕普朗克",
+                    "name": "源计划：铁腕 普朗克 冥火",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41039.png",
                     "colors": [
                         "#73BFBE",
@@ -801,7 +801,7 @@
                 },
                 {
                     "id": 41040,
-                    "name": "源计划：铁腕普朗克",
+                    "name": "源计划：铁腕 普朗克 暴走",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41040.png",
                     "colors": [
                         "#9C68D7",
@@ -812,7 +812,7 @@
                 },
                 {
                     "id": 41041,
-                    "name": "源计划：铁腕普朗克",
+                    "name": "源计划：铁腕 普朗克 雪崩",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/41/41041.png",
                     "colors": [
                         "#ECF9F8",

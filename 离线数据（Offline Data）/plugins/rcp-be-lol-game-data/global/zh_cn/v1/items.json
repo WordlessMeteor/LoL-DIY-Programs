@@ -3256,7 +3256,7 @@
     {
         "id": 3068,
         "name": "日炎圣盾",
-        "description": "<mainText><stats><attention>450</attention>生命值<br><attention>50</attention>护甲</stats><br><br><br><li><passive>献祭：</passive>承受或造成伤害会使你开始每秒对附近敌人造成<magicDamage>(12 + 1.75%额外生命值)魔法伤害</magicDamage>(对小兵提升25%)，持续3秒。用这个效果对敌方英雄或史诗级野怪造成伤害时会添加一层效果，使后续的<passive>献祭</passive>伤害提升10%，持续5秒(最多6层)。<br></mainText>",
+        "description": "<mainText><stats><attention>500</attention>生命值<br><attention>50</attention>护甲</stats><br><br><br><li><passive>献祭：</passive>承受或造成伤害会使你开始每秒对附近敌人造成<magicDamage>(15 + 1.75%额外生命值)魔法伤害</magicDamage>(对小兵提升25%)，持续3秒。用这个效果对敌方英雄或史诗级野怪造成伤害时会添加一层效果，使后续的<passive>献祭</passive>伤害提升10%，持续5秒(最多6层)。<br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -3637,7 +3637,7 @@
     {
         "id": 3085,
         "name": "卢安娜的飓风",
-        "description": "<mainText><stats><attention>40%</attention>攻击速度<br><attention>20%</attention>暴击几率<br><attention>7%</attention>移动速度</stats><br><br>Item_3085_TooltipExternal</mainText>",
+        "description": "<mainText><stats><attention>40%</attention>攻击速度<br><attention>20%</attention>暴击几率<br><attention>7%</attention>移动速度</stats><br><br><passive>啄击</passive><br>攻击附带额外魔法伤害 。<br><br><passive>风怒</passive><br>在攻击时，会朝目标附近至多2个敌人发射弩箭。这些弩箭能够附带攻击特效并且可以暴击。<br><br><rules>这件装备仅远程英雄可用。</rules></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -10378,7 +10378,7 @@
     {
         "id": 223068,
         "name": "日炎圣盾",
-        "description": "<mainText><stats><attention>450</attention>生命值<br><attention>50</attention>护甲</stats><br><br><br><li><passive>献祭：</passive>承受或造成伤害时会使你开始每秒对附近敌人造成<magicDamage> (12 + 2.5%额外生命值) 魔法伤害</magicDamage>(对小兵提升25%)，持续3秒。使用该效果对英雄或史诗野怪造成伤害后，可获得一层效果，使后续<passive>献祭</passive>的伤害提升10%，持续5秒(最多叠加10层)。<br></mainText>",
+        "description": "<mainText><stats><attention>500</attention>生命值<br><attention>50</attention>护甲</stats><br><br><br><li><passive>献祭：</passive>承受或造成伤害时会使你开始每秒对附近敌人造成<magicDamage> (15 + 2.5%额外生命值) 魔法伤害</magicDamage>(对小兵提升25%)，持续3秒。使用该效果对英雄或史诗野怪造成伤害后，可获得一层效果，使后续<passive>献祭</passive>的伤害提升10%，持续5秒(最多叠加10层)。<br></mainText>",
         "active": false,
         "inStore": true,
         "from": [],
