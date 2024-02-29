@@ -443,7 +443,8 @@
             3153,
             6695,
             6029,
-            6035
+            6035,
+            6675
         ],
         "categories": [
             "Damage"
@@ -474,8 +475,7 @@
             3031,
             3072,
             3302,
-            4403,
-            6675
+            4403
         ],
         "categories": [
             "Damage"
@@ -4791,7 +4791,7 @@
     {
         "id": 3152,
         "name": "Hextech Rocketbelt",
-        "description": "<mainText><stats><attention> 60</attention> Ability Power<br><attention> 300</attention> Health<br><attention> 15</attention> Ability Haste</stats><br><br> <active>ACTIVE</active>}<br><active>Supersonic</active><br>Dash in target direction, unleashing an arc of magic missiles that deal magic damage.</mainText>",
+        "description": "<mainText><stats><attention> 70</attention> Ability Power<br><attention> 300</attention> Health<br><attention> 15</attention> Ability Haste</stats><br><br> <active>ACTIVE</active>}<br><active>Supersonic</active><br>Dash in target direction, unleashing an arc of magic missiles that deal magic damage.</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -4816,8 +4816,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 600,
-        "priceTotal": 2500,
+        "price": 700,
+        "priceTotal": 2600,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3152_Mage_T4_HextechRocketBelt.png"
     },
     {
@@ -7225,7 +7225,7 @@
     {
         "id": 4646,
         "name": "Stormsurge",
-        "description": "<mainText><stats><attention> 95</attention> Ability Power<br><attention> 10</attention> Magic Penetration<br><attention> 5%</attention> Move Speed</stats><br><br><passive>Stormraider</passive><br>Dealing 35% of a champion's maximum Health within a short duration applies <passive>Squall</passive> and grants Move Speed.<br><br><passive>Squall</passive><br>After a few seconds, strike the target, dealing magic damage. If the target dies before the strike, it detonates immediately, dealing damage in a large area and grants bonus gold.</mainText>",
+        "description": "<mainText><stats><attention> 95</attention> Ability Power<br><attention> 10</attention> Magic Penetration<br><attention> 8%</attention> Move Speed</stats><br><br><passive>Stormraider</passive><br>Dealing 35% of a champion's maximum Health within a short duration applies <passive>Squall</passive> and grants Move Speed.<br><br><passive>Squall</passive><br>After a few seconds, strike the target, dealing magic damage. If the target dies before the strike, it detonates immediately, dealing damage in a large area and grants bonus gold.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8015,11 +8015,11 @@
     {
         "id": 6675,
         "name": "Navori Quickblades",
-        "description": "<mainText><stats><attention> 65</attention> Attack Damage<br><attention> 20%</attention> Critical Strike Chance<br><attention> 15</attention> Ability Haste</stats><br><br><passive>Transcendence</passive><br>Your Attacks reduce your non-Ultimate Ability cooldowns.<br><br><passive>Impermanence</passive><br>Your abilities deal increased damage based on Critical Strike Chance. </mainText>",
+        "description": "<mainText><stats><attention> 60</attention> Attack Damage<br><attention> 20%</attention> Critical Strike Chance<br><attention> 15</attention> Ability Haste</stats><br><br><passive>Transcendence</passive><br>Your Attacks reduce your non-Ultimate Ability cooldowns.<br><br><passive>Impermanence</passive><br>Your abilities deal increased damage based on Critical Strike Chance. </mainText>",
         "active": false,
         "inStore": true,
         "from": [
-            1038,
+            1037,
             3133,
             1018
         ],
@@ -8040,7 +8040,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 300,
+        "price": 725,
         "priceTotal": 3300,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6675_Marksman_T3_NavoriQuickblades.png"
     },
@@ -8758,7 +8758,7 @@
     {
         "id": 7011,
         "name": " Upgraded Aeropack",
-        "description": "<mainText><stats><ornnBonus> 85</ornnBonus> Ability Power<br><ornnBonus> 450</ornnBonus> Health<br><ornnBonus> 20</ornnBonus> Ability Haste</stats><br><br> <active>ACTIVE</active>}<br><active>Supersonic</active><br>Dash in target direction, unleashing an arc of magic missiles that deal magic damage.</mainText>",
+        "description": "<mainText><stats><ornnBonus> 95</ornnBonus> Ability Power<br><ornnBonus> 450</ornnBonus> Health<br><ornnBonus> 20</ornnBonus> Ability Haste</stats><br><br> <active>ACTIVE</active>}<br><active>Supersonic</active><br>Dash in target direction, unleashing an arc of magic missiles that deal magic damage.</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -8781,7 +8781,7 @@
         "specialRecipe": 0,
         "isEnchantment": false,
         "price": 0,
-        "priceTotal": 2500,
+        "priceTotal": 2600,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3152_Mage_T4_HextechRocketBelt.png"
     },
     {

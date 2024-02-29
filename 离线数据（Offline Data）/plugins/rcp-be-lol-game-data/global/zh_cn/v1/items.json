@@ -443,7 +443,8 @@
             3153,
             6695,
             6029,
-            6035
+            6035,
+            6675
         ],
         "categories": [
             "Damage"
@@ -474,8 +475,7 @@
             3031,
             3072,
             3302,
-            4403,
-            6675
+            4403
         ],
         "categories": [
             "Damage"
@@ -4791,7 +4791,7 @@
     {
         "id": 3152,
         "name": "海克斯科技火箭腰带",
-        "description": "<mainText><stats><attention>60</attention>法术强度<br><attention>300</attention>生命值<br><attention>15</attention>技能急速</stats><br><br> <active>主动</active> <br><active>超音速</active><br>朝着目标方向冲刺，释放一道魔法弹圆弧，造成魔法伤害。</mainText>",
+        "description": "<mainText><stats><attention>70</attention>法术强度<br><attention>300</attention>生命值<br><attention>15</attention>技能急速</stats><br><br> <active>主动</active> <br><active>超音速</active><br>朝着目标方向冲刺，释放一道魔法弹圆弧，造成魔法伤害。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -4816,8 +4816,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 600,
-        "priceTotal": 2500,
+        "price": 700,
+        "priceTotal": 2600,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3152_Mage_T4_HextechRocketBelt.png"
     },
     {
@@ -7225,7 +7225,7 @@
     {
         "id": 4646,
         "name": "风暴狂涌",
-        "description": "<mainText><stats><attention>95</attention>法术强度<br><attention>10</attention>法术穿透<br><attention>5%</attention>移动速度</stats><br><br><passive>风暴掠袭</passive><br>在短时间内对一个英雄造成相当于其35%最大生命值的伤害时，对其施加<passive>风啸</passive>并提供移动速度。<br><br><passive>风啸</passive><br>在若干秒后，打击该目标，造成魔法伤害。如果一个敌人在打击前阵亡，那么它会立刻引爆，在一个大范围内造成伤害并提供额外金币。 </mainText>",
+        "description": "<mainText><stats><attention>95</attention>法术强度<br><attention>10</attention>法术穿透<br><attention>8%</attention>移动速度</stats><br><br><passive>风暴掠袭</passive><br>在短时间内对一个英雄造成相当于其35%最大生命值的伤害时，对其施加<passive>风啸</passive>并提供移动速度。<br><br><passive>风啸</passive><br>在若干秒后，打击该目标，造成魔法伤害。如果一个敌人在打击前阵亡，那么它会立刻引爆，在一个大范围内造成伤害并提供额外金币。 </mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8015,11 +8015,11 @@
     {
         "id": 6675,
         "name": "纳沃利迅刃",
-        "description": "<mainText><stats><attention>65</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>15</attention>技能急速</stats><br><br><passive>超凡入圣</passive><br>你的攻击会使你的各个非终极技能的冷却时间缩短。<br><br><passive>无常</passive><br>你的技能可基于你的暴击几率造成提升伤害。 </mainText>",
+        "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>15</attention>技能急速</stats><br><br><passive>超凡入圣</passive><br>你的攻击会使你的各个非终极技能的冷却时间缩短。<br><br><passive>无常</passive><br>你的技能可基于你的暴击几率造成提升伤害。 </mainText>",
         "active": false,
         "inStore": true,
         "from": [
-            1038,
+            1037,
             3133,
             1018
         ],
@@ -8040,7 +8040,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 300,
+        "price": 725,
         "priceTotal": 3300,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6675_Marksman_T3_NavoriQuickblades.png"
     },
@@ -8758,7 +8758,7 @@
     {
         "id": 7011,
         "name": " 升级版飞行包",
-        "description": "<mainText><stats><ornnBonus>85</ornnBonus>法术强度<br><ornnBonus>450</ornnBonus>生命值<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br> <active>主动</active> <br><active>超音速</active><br>朝着目标方向冲刺，释放一道魔法弹圆弧，造成魔法伤害。</mainText>",
+        "description": "<mainText><stats><ornnBonus>95</ornnBonus>法术强度<br><ornnBonus>450</ornnBonus>生命值<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br> <active>主动</active> <br><active>超音速</active><br>朝着目标方向冲刺，释放一道魔法弹圆弧，造成魔法伤害。</mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -8781,7 +8781,7 @@
         "specialRecipe": 0,
         "isEnchantment": false,
         "price": 0,
-        "priceTotal": 2500,
+        "priceTotal": 2600,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3152_Mage_T4_HextechRocketBelt.png"
     },
     {
