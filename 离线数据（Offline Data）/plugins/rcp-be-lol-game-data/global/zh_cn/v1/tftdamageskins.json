@@ -96,6 +96,18 @@
         "level": 1
     },
     {
+        "contentId": "9ffde8eb-9e7d-4300-84f8-7356d6d90ead",
+        "itemId": 116003,
+        "name": "雨后春笋击 TBD",
+        "description": "",
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_Bamboo.png",
+        "groupId": 0,
+        "groupName": "",
+        "rarity": "Epic",
+        "rarityValue": 1,
+        "level": 1
+    },
+    {
         "contentId": "05f3a460-8d13-49da-bb1f-39115b137466",
         "itemId": 100001,
         "name": "班德尔动感光波",
@@ -1176,6 +1188,18 @@
         "level": 3
     },
     {
+        "contentId": "d843ddc2-3a07-4bea-a45c-0ef748fe63d2",
+        "itemId": 120003,
+        "name": "玉剑传说小小莫甘娜  灵魂镣铐",
+        "description": "",
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_Chibi_Immortal_Morgana.png",
+        "groupId": 0,
+        "groupName": "",
+        "rarity": "Epic",
+        "rarityValue": 1,
+        "level": 1
+    },
+    {
         "contentId": "407243bc-747d-46b3-9f90-477d7171a7a4",
         "itemId": 13001,
         "name": "暗影缭乱",
@@ -1524,6 +1548,18 @@
         "level": 3
     },
     {
+        "contentId": "385e5460-856e-4de7-92a0-628f203887f0",
+        "itemId": 114003,
+        "name": "小小莫甘娜 灵魂镣铐",
+        "description": "",
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_Chibi_BaseMorgana.png",
+        "groupId": 0,
+        "groupName": "",
+        "rarity": "Epic",
+        "rarityValue": 1,
+        "level": 1
+    },
+    {
         "contentId": "cf2bea70-31f7-4e1f-a566-315aa6c7071c",
         "itemId": 74001,
         "name": "喵喵激光飞弹",
@@ -1786,6 +1822,18 @@
         "rarity": "Epic",
         "rarityValue": 1,
         "level": 3
+    },
+    {
+        "contentId": "65450b91-0a41-4dde-bc03-b01e8a3c39d0",
+        "itemId": 119003,
+        "name": "单羽之刃扇 TBD",
+        "description": "",
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_PapperFanAttack.png",
+        "groupId": 0,
+        "groupName": "",
+        "rarity": "Epic",
+        "rarityValue": 1,
+        "level": 1
     },
     {
         "contentId": "1bc5f57f-9372-4004-b10e-11f59c880752",

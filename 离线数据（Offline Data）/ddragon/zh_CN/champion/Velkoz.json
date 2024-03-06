@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.4.1",
+    "version": "14.5.1",
     "data": {
         "Velkoz": {
             "id": "Velkoz",
@@ -398,7 +398,7 @@
                     "id": "VelkozE",
                     "name": "构造分解",
                     "description": "维克兹让一个区域爆炸，击飞敌人，并将近处的敌人略微击退。",
-                    "tooltip": "维克兹瓦解一个附近的区域，导致它爆炸，造成{{ stunduration }}秒<status>击飞</status>和<magicDamage>{{ totaldamage }}魔法伤害</magicDamage>。靠近维克兹的敌人们将被<status>击退</status>来替代<status>击飞</status>。{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "维克兹瓦解一个附近的区域，导致它爆炸，造成{{ stunduration }}秒<status>击飞</status>和<magicDamage>{{ totaldamage }}魔法伤害</magicDamage>。靠近维克兹的敌人们将被<status>击退</status>，而不是<status>击飞</status>。{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "伤害",

@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.4.1",
+    "version": "14.5.1",
     "data": {
         "Smolder": {
             "id": "Smolder",
@@ -81,7 +81,7 @@
                     "id": "SmolderQ",
                     "name": "Super Scorcher Breath",
                     "description": "Smolder breathes fire on an enemy. As he gains more stacks, this ability becomes more powerful.",
-                    "tooltip": "Smolder belches flame, dealing <physicalDamage>{{ tooltipqdamage }} physical damage</physicalDamage> + <magicDamage>{{ passive_damage_increase }} magic damage</magicDamage>.<br /><br />Based on stacks of <spellName>Dragon Practice</spellName>, this Ability evolves to gain the following effects:<li><keywordMajor>{{ stacktier1 }} Stacks</keywordMajor>: Damages all enemies surrounding the target.</li><li><keywordMajor>{{ stacktier2 }} Stacks</keywordMajor>: Sends <spellName>{{ tier2_numberofblowback }}</spellName> explosions beyond the target that deal {{ tier2_blowbackpercentagedamage }}% of this Ability's damage.</li><li><keywordMajor>{{ stacktier3 }} Stacks</keywordMajor>: Burns the target, dealing <trueDamage>{{ tier3_truedamagepercent*100 }}% max Health true damage</trueDamage> over {{ tier3_dotlength }} seconds. Enemy champions that drop below <trueDamage>{{ tier3_executethreshold }}</trueDamage> total health while burning are killed instantly.</li>{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "Smolder belches flame, dealing <physicalDamage>{{ tooltipqdamage }} physical damage</physicalDamage> + <magicDamage>{{ passive_damage_increase }} magic damage</magicDamage>.<br /><br />Based on stacks of <spellName>Dragon Practice</spellName>, this Ability evolves to gain the following effects:<li><keywordMajor>{{ stacktier1 }} Stacks</keywordMajor>: Damages all enemies surrounding the target.</li><li><keywordMajor>{{ stacktier2 }} Stacks</keywordMajor>: Sends <spellName>{{ tier2_numberofblowback }}</spellName> explosions beyond the target that deal {{ tier2_blowbackpercentagedamage }}% of this Ability's damage.</li><li><keywordMajor>{{ stacktier3 }} Stacks</keywordMajor>: Burns the target, dealing <trueDamage>{{ tier3_burn }} max Health true damage</trueDamage> over {{ tier3_dotlength }} seconds. Enemy champions that drop below <trueDamage>{{ tier3_executethreshold }}</trueDamage> total health while burning are killed instantly.</li>{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "Cooldown",
@@ -364,8 +364,8 @@
                 {
                     "id": "SmolderE",
                     "name": "Flap, Flap, Flap",
-                    "description": "Smolder takes flight ignoring terrain and attacking the lowest health enemy.",
-                    "tooltip": "Smolder takes flight, gaining <speed>{{ movespeed*100 }}% Move Speed</speed> and ignoring terrain for {{ duration }} seconds.<br /><br />While flying, Smolder attacks the lowest Health enemy <spellName>{{ totalnumberofattacks }}</spellName> times for <physicalDamage>{{ damageperhit }} physical damage</physicalDamage> + <magicDamage>{{ passive_damage_increase }} magic damage</magicDamage> each.{{ spellmodifierdescriptionappend }}",
+                    "description": "Smolder takes flight ignoring terrain and bombarding the lowest health enemy.",
+                    "tooltip": "Smolder takes flight, gaining <speed>{{ movespeed*100 }}% Move Speed</speed> and ignoring terrain for {{ duration }} seconds.<br /><br />While flying, Smolder bombards the lowest Health enemy <spellName>{{ totalnumberofattacks }}</spellName> times for <physicalDamage>{{ damageperhit }} physical damage</physicalDamage> + <magicDamage>{{ passive_damage_increase }} magic damage</magicDamage> per hit.{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "Cooldown",

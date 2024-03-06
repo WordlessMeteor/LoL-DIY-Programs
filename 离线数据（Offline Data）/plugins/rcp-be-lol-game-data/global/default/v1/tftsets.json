@@ -9,20 +9,6 @@
                 "SetPortalSystemName": ""
             },
             {
-                "SetCoreName": "TFTSet10",
-                "SetDisplayName": "REMIX RUMBLE IS ON",
-                "SetAugmentName": "Boombox Augment",
-                "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set10.TFT_Set10.png",
-                "SetPortalSystemName": ""
-            },
-            {
-                "SetCoreName": "TFTSet10",
-                "SetDisplayName": "REMIX RUMBLE IS ON",
-                "SetAugmentName": "Boombox Augment",
-                "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set10.TFT_Set10.png",
-                "SetPortalSystemName": ""
-            },
-            {
                 "SetCoreName": "TFTSet3",
                 "SetDisplayName": "REMIX RUMBLE IS ON",
                 "SetAugmentName": "Galaxy Augment",
@@ -30,18 +16,32 @@
                 "SetPortalSystemName": "Galaxy"
             },
             {
-                "SetCoreName": "TFTSet10",
+                "SetCoreName": "TFTSet11",
                 "SetDisplayName": "REMIX RUMBLE IS ON",
-                "SetAugmentName": "Boombox Augment",
+                "SetAugmentName": "Hexcore Augments",
+                "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/gear.png",
+                "SetPortalSystemName": ""
+            },
+            {
+                "SetCoreName": "TFTSet11",
+                "SetDisplayName": "REMIX RUMBLE IS ON",
+                "SetAugmentName": "Hexcore Augments",
+                "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/gear.png",
+                "SetPortalSystemName": ""
+            },
+            {
+                "SetCoreName": "TFTSet11",
+                "SetDisplayName": "REMIX RUMBLE IS ON",
+                "SetAugmentName": "Hexcore Augments",
                 "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/gear.png",
                 "SetPortalSystemName": ""
             }
         ],
         "mDefaultSet": {
-            "SetCoreName": "TFTSet10",
+            "SetCoreName": "TFTSet11",
             "SetDisplayName": "REMIX RUMBLE IS ON",
-            "SetAugmentName": "Boombox Augment",
-            "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set10.TFT_Set10.png",
+            "SetAugmentName": "Hexcore Augments",
+            "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/gear.png",
             "SetPortalSystemName": ""
         }
     }

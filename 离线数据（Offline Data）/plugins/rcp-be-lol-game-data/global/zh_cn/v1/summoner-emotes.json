@@ -9032,25 +9032,25 @@
     {
         "id": 4397,
         "name": "企鹅躺模式",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/4397_PENGUMODE_Inventory.ACCESSORIES_13_22.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/4397_PENGUMODE_Inventory.png",
         "description": ""
     },
     {
         "id": 4398,
         "name": "混音大师",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/4398_Mixmasters_Inventory.ACCESSORIES_13_22.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/4398_Mixmasters_Inventory.png",
         "description": ""
     },
     {
         "id": 4399,
         "name": "心之钢 徽章",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/HeartSteel/4399_HEARTSTEEL_Insignia_Inventory.ACCESSORIES_13_22.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/HeartSteel/4399_HEARTSTEEL_Insignia_Inventory.png",
         "description": ""
     },
     {
         "id": 4400,
         "name": "突破界限",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Mythic/4400_Breakout_Inventory.ACCESSORIES_13_22.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Mythic/4400_Breakout_Inventory.png",
         "description": ""
     },
     {
@@ -9537,6 +9537,186 @@
         "id": 4482,
         "name": "胖胖龙的愉悦之舞",
         "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/4482_Chonccs_Joyful_Dance_Inventory.ACCESSORIES_14_4.png",
+        "description": ""
+    },
+    {
+        "id": 4483,
+        "name": "艺术之作",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4483_ITS_ART_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4484,
+        "name": "感激之情",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4484_Token_Of_Appreciation_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4485,
+        "name": "月光冲击",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4485_Moonbeam_Blast_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4486,
+        "name": "我很好",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4486_Im_Good_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4487,
+        "name": "放马过来",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4487_Test_Me_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4488,
+        "name": "蓄势待发",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4488_Ready_To_Strike_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4489,
+        "name": "尽在掌握",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4489_Within_My_Grasp_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4490,
+        "name": "云顶之弈 强音争霸 - 狂暴模式：翠绿",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/HyperRoll/4490_TFT_Remix_Rumble__Hyper_Roll_Green_Tier_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4491,
+        "name": "云顶之弈 强音争霸 - 狂暴模式：天蓝",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/HyperRoll/4491_TFT_Remix_Rumble___Hyper_Roll_Blue_Tier_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4492,
+        "name": "云顶之弈 强音争霸 - 狂暴模式：绛紫",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/HyperRoll/4492_TFT_Remix_Rumble___Hyper_Roll_Purple_Tier_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4493,
+        "name": "云顶之弈 强音争霸 - 狂暴模式：耀橙",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/HyperRoll/4493_TFT_Remix_Rumble___Hyper_Roll_Hyper_Tier_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4494,
+        "name": "云顶之弈 强音争霸 - 荣耀黄金",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/RankedRewards/4494_TFT_Remix_Rumble___Gold_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4495,
+        "name": "云顶之弈 强音争霸 - 华贵铂金",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/RankedRewards/4495_TFT_Remix_Rumble___Platinum_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4496,
+        "name": "云顶之弈 强音争霸 - 流光翡翠",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/RankedRewards/4496_TFT_Remix_Rumble___Emerald_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4497,
+        "name": "云顶之弈 强音争霸 - 璀璨钻石",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/RankedRewards/4497_TFT_Remix_Rumble___Diamond_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4498,
+        "name": "云顶之弈 强音争霸 - 超凡大师",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/RankedRewards/4498_TFT_Remix_Rumble___Master_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4499,
+        "name": "云顶之弈 强音争霸 - 傲世宗师",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/RankedRewards/4499_TFT_Remix_Rumble___Grandmaster_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4500,
+        "name": "云顶之弈 强音争霸 - 最强王者",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/RankedRewards/4500_TFT_Remix_Rumble___Challenger_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4501,
+        "name": "云顶之弈 强音争霸 - 双人作战：荣耀黄金",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/DoubleUp/4501_TFT_Remix_Rumble___Double_Up_Gold_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4502,
+        "name": "云顶之弈 强音争霸 - 双人作战：华贵铂金",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/DoubleUp/4502_TFT_Remix_Rumble___Double_Up_Platinum_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4503,
+        "name": "云顶之弈 强音争霸 - 双人作战：流光翡翠",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/DoubleUp/4503_TFT_Remix_Rumble___Double_Up_Emerald_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4504,
+        "name": "云顶之弈 强音争霸 - 双人作战：璀璨钻石",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/DoubleUp/4504_TFT_Remix_Rumble___Double_Up_Diamond_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4505,
+        "name": "云顶之弈 强音争霸 - 双人作战：超凡大师",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/DoubleUp/4505_TFT_Remix_Rumble___Double_Up_Master_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4506,
+        "name": "云顶之弈 强音争霸 - 双人作战：傲世宗师",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/DoubleUp/4506_TFT_Remix_Rumble___Double_Up_Grandmaster_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4507,
+        "name": "云顶之弈 强音争霸 - 双人作战：最强王者",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/DoubleUp/4507_TFT_Remix_Rumble___Double_Up_Challenger_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4508,
+        "name": "世界很美味",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Mythic/4508_World_Is_Delicious_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4509,
+        "name": "你是一个玩偶",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/HighNoon/4509_Youre_A_Doll_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4510,
+        "name": "阴沉老哥",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/HighNoon/4510_Dour_Dude_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4511,
+        "name": "大厅歌唱",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/HighNoon/4511_Saloon_Singin_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4512,
+        "name": "困惑牛仔",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/HighNoon/4512_Bewildered_Buckaroo_Inventory.ACCESSORIES_14_6.png",
         "description": ""
     },
     {

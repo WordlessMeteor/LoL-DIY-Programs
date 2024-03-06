@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.4.1",
+    "version": "14.5.1",
     "data": {
         "Olaf": {
             "id": "Olaf",
@@ -276,7 +276,7 @@
                 {
                     "id": "OlafFrenziedStrikes",
                     "name": "Tough It Out",
-                    "description": "Olaf's Attack Speed is increased, he reduces incoming damage, and he gains a Shield.",
+                    "description": "Olaf's Attack Speed is increased and he gains a Shield.",
                     "tooltip": "Olaf gains <attackSpeed>{{ attackspeed*100 }}% Attack Speed</attackSpeed> for {{ duration }} seconds, and <shield>{{ baseshield }} plus {{ shieldpercmissinghp*100 }}% missing Health Shield (up to a maximum of {{ maxshieldcalc }} Shield below {{ thresholdformax*100 }}% Health)</shield> for {{ shieldduration }} seconds.{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [

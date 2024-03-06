@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.4.1",
+    "version": "14.5.1",
     "data": {
         "Olaf": {
             "id": "Olaf",
@@ -276,7 +276,7 @@
                 {
                     "id": "OlafFrenziedStrikes",
                     "name": "挺过去",
-                    "description": "奥拉夫的攻击速度得到提升，他会减少即将到来的伤害，并且他会获得一层护盾。",
+                    "description": "奥拉夫的攻击速度得到提升，并获得一层护盾。",
                     "tooltip": "奥拉夫获得持续{{ duration }}秒的<attackSpeed>{{ attackspeed*100 }}%攻击速度</attackSpeed>，以及持续{{ shieldduration }}秒的<shield>{{ baseshield }}外加{{ shieldpercmissinghp*100 }}%已损失生命值的护盾值(最大值为{{ maxshieldcalc }}护盾值，在低于{{ thresholdformax*100 }}%时提供)</shield>。{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [

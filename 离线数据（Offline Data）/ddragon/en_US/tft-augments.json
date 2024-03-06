@@ -1,6 +1,6 @@
 {
     "type": "tft-augment",
-    "version": "14.4.1",
+    "version": "14.5.1",
     "augment-container": {
         "name": "Hexcore Augments",
         "image": {

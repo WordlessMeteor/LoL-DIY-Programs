@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.4.1",
+    "version": "14.5.1",
     "data": {
         "Vayne": {
             "id": "Vayne",
@@ -189,13 +189,13 @@
                     },
                     "maxrank": 5,
                     "cooldown": [
+                        6,
+                        5,
                         4,
-                        3.5,
                         3,
-                        2.5,
                         2
                     ],
-                    "cooldownBurn": "4/3.5/3/2.5/2",
+                    "cooldownBurn": "6/5/4/3/2",
                     "cost": [
                         30,
                         30,
@@ -717,7 +717,7 @@
             ],
             "passive": {
                 "name": "Night Hunter",
-                "description": "Vayne ruthlessly hunts evil-doers, gaining 45 Move Speed when moving toward nearby enemy champions.",
+                "description": "Vayne ruthlessly hunts evil-doers, gaining Move Speed when moving toward nearby enemy champions.",
                 "image": {
                     "full": "Vayne_NightHunter.png",
                     "sprite": "passive4.png",

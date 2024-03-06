@@ -983,5 +983,10 @@
         "id": 201,
         "name": "Heavenscale",
         "description": "In order to better know their kingdom's subjects, draconic royalty and retinue descend from their palace in the sky, taking on human forms and reveling with the mortals as they usher in the New Year."
+    },
+    {
+        "id": 202,
+        "name": "Crystalis Indomitus",
+        "description": "When the Prismae appeared, there were those that learned to hone their magic. But far to the north, the crystals' influence corrupts the very earth itself. Between the fractal undergrowth and iridescent air, creatures join forces with once-human inhabitants in a war against what remains of civilization. Everything will be reflected in the Prismae's image."
     }
 ]

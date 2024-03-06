@@ -1,6 +1,6 @@
 {
     "type": "item",
-    "version": "14.4.1",
+    "version": "14.5.1",
     "basic": {
         "name": "",
         "rune": {
@@ -4385,7 +4385,7 @@
         },
         "223068": {
             "name": "Sunfire Aegis",
-            "description": "<mainText><stats><attention>450</attention> Health<br><attention>50</attention> Armor</stats><br><br><br><li><passive>Immolate:</passive> Taking or dealing damage causes you to begin dealing <magicDamage> (12 + 2.5% bonus Health) magic damage</magicDamage> per second to nearby enemies (increased by 25% against minions) for 3 seconds. Damaging Champions or Epic Monsters with this effect adds a stack, increasing subsequent <passive>Immolate</passive> damage by 10% for 5 seconds (max stacks 10).<br></mainText>",
+            "description": "<mainText><stats><attention>500</attention> Health<br><attention>50</attention> Armor</stats><br><br><br><li><passive>Immolate:</passive> Taking or dealing damage causes you to begin dealing <magicDamage> (15 + 2.5% bonus Health) magic damage</magicDamage> per second to nearby enemies (increased by 25% against minions) for 3 seconds. Damaging Champions or Epic Monsters with this effect adds a stack, increasing subsequent <passive>Immolate</passive> damage by 10% for 5 seconds (max stacks 10).<br></mainText>",
             "colloq": "",
             "plaintext": "",
             "image": {
@@ -4416,7 +4416,7 @@
                 "30": true
             },
             "stats": {
-                "FlatHPPoolMod": 450,
+                "FlatHPPoolMod": 500,
                 "FlatArmorMod": 50
             }
         },
@@ -11365,7 +11365,7 @@
         },
         "3068": {
             "name": "Sunfire Aegis",
-            "description": "<mainText><stats><attention>450</attention> Health<br><attention>50</attention> Armor</stats><br><br><br><li><passive>Immolate:</passive> Taking or dealing damage causes you to begin dealing <magicDamage> (12 + 1.75% bonus Health) magic damage</magicDamage> per second to nearby enemies (increased by 25% against minions) for 3 seconds. Damaging Champions or Epic Monsters with this effect adds a stack, increasing subsequent <passive>Immolate</passive> damage by 10% for 5 seconds (max stacks 6).<br></mainText>",
+            "description": "<mainText><stats><attention>500</attention> Health<br><attention>50</attention> Armor</stats><br><br><br><li><passive>Immolate:</passive> Taking or dealing damage causes you to begin dealing <magicDamage> (15 + 1.75% bonus Health) magic damage</magicDamage> per second to nearby enemies (increased by 25% against minions) for 3 seconds. Damaging Champions or Epic Monsters with this effect adds a stack, increasing subsequent <passive>Immolate</passive> damage by 10% for 5 seconds (max stacks 6).<br></mainText>",
             "colloq": ";",
             "plaintext": "High armor. Constantly deals damage to nearby enemies. Immobilize enemies to release a wave of damaging flame",
             "from": [
@@ -11400,7 +11400,7 @@
                 "30": false
             },
             "stats": {
-                "FlatHPPoolMod": 450,
+                "FlatHPPoolMod": 500,
                 "FlatArmorMod": 50
             },
             "depth": 3
@@ -12579,7 +12579,7 @@
         },
         "3110": {
             "name": "Frozen Heart",
-            "description": "<mainText><stats><attention>70</attention> Armor<br><attention>400</attention> Mana<br><attention>20</attention> Ability Haste</stats><br><br><passive>Winter's Caress</passive><br>Reduce the <attackSpeed>Attack Speed</attackSpeed> of nearby enemies by 20%.<br><br><passive>Rock Solid</passive><br>Reduce incoming damage from Attacks by up to 0, capped at 0% of the Attack's damage.</mainText>",
+            "description": "<mainText><stats><attention>65</attention> Armor<br><attention>400</attention> Mana<br><attention>20</attention> Ability Haste</stats><br><br><passive>Winter's Caress</passive><br>Reduce the <attackSpeed>Attack Speed</attackSpeed> of nearby enemies by 20%.<br><br><passive>Rock Solid</passive><br>Reduce incoming damage from Attacks by up to 0, capped at 0% of the Attack's damage.</mainText>",
             "colloq": ";fh",
             "plaintext": "Massively increases Armor and slows enemy basic attacks",
             "from": [
@@ -12596,10 +12596,10 @@
                 "h": 48
             },
             "gold": {
-                "base": 500,
+                "base": 600,
                 "purchasable": true,
-                "total": 2400,
-                "sell": 1680
+                "total": 2500,
+                "sell": 1750
             },
             "tags": [
                 "Armor",
@@ -12617,7 +12617,7 @@
             },
             "stats": {
                 "FlatMPPoolMod": 400,
-                "FlatArmorMod": 70
+                "FlatArmorMod": 65
             },
             "depth": 3
         },
@@ -13793,7 +13793,7 @@
         },
         "3152": {
             "name": "Hextech Rocketbelt",
-            "description": "<mainText><stats><attention>60</attention> Ability Power<br><attention>300</attention> Health<br><attention>15</attention> Ability Haste</stats><br><br><active>ACTIVE</active>}<br><active>Supersonic</active><br>Dash in target direction, unleashing an arc of magic missiles that deal magic damage.</mainText>",
+            "description": "<mainText><stats><attention>70</attention> Ability Power<br><attention>300</attention> Health<br><attention>15</attention> Ability Haste</stats><br><br><active>ACTIVE</active>}<br><active>Supersonic</active><br>Dash in target direction, unleashing an arc of magic missiles that deal magic damage.</mainText>",
             "colloq": "rocket belt;",
             "plaintext": "Activate to dash forward and unleash a fiery explosion",
             "from": [
@@ -13813,10 +13813,10 @@
                 "h": 48
             },
             "gold": {
-                "base": 600,
+                "base": 700,
                 "purchasable": true,
-                "total": 2500,
-                "sell": 1750
+                "total": 2600,
+                "sell": 1820
             },
             "tags": [
                 "Health",
@@ -13835,7 +13835,7 @@
             },
             "stats": {
                 "FlatHPPoolMod": 300,
-                "FlatMagicDamageMod": 60
+                "FlatMagicDamageMod": 70
             },
             "depth": 3
         },
@@ -17697,7 +17697,7 @@
         },
         "4646": {
             "name": "Stormsurge",
-            "description": "<mainText><stats><attention>95</attention> Ability Power<br><attention>10</attention> Magic Penetration<br><attention>5%</attention> Move Speed</stats><br><br><passive>Stormraider</passive><br>Dealing 35% of a champion's maximum Health within a short duration applies <passive>Squall</passive> and grants Move Speed.<br><br><passive>Squall</passive><br>After a few seconds, strike the target, dealing magic damage. If the target dies before the strike, it detonates immediately, dealing damage in a large area and grants bonus gold.</mainText>",
+            "description": "<mainText><stats><attention>95</attention> Ability Power<br><attention>10</attention> Magic Penetration<br><attention>8%</attention> Move Speed</stats><br><br><passive>Stormraider</passive><br>Dealing 35% of a champion's maximum Health within a short duration applies <passive>Squall</passive> and grants Move Speed.<br><br><passive>Squall</passive><br>After a few seconds, strike the target, dealing magic damage. If the target dies before the strike, it detonates immediately, dealing damage in a large area and grants bonus gold.</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -17734,7 +17734,7 @@
             },
             "stats": {
                 "FlatMagicDamageMod": 95,
-                "PercentMovementSpeedMod": 0.05
+                "PercentMovementSpeedMod": 0.08
             },
             "depth": 3
         },
@@ -20067,7 +20067,7 @@
         },
         "7011": {
             "name": "Upgraded Aeropack",
-            "description": "<mainText><stats><ornnBonus>85</ornnBonus> Ability Power<br><ornnBonus>450</ornnBonus> Health<br><ornnBonus>20</ornnBonus> Ability Haste</stats><br><br><active>ACTIVE</active>}<br><active>Supersonic</active><br>Dash in target direction, unleashing an arc of magic missiles that deal magic damage.</mainText>",
+            "description": "<mainText><stats><ornnBonus>95</ornnBonus> Ability Power<br><ornnBonus>450</ornnBonus> Health<br><ornnBonus>20</ornnBonus> Ability Haste</stats><br><br><active>ACTIVE</active>}<br><active>Supersonic</active><br>Dash in target direction, unleashing an arc of magic missiles that deal magic damage.</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -20086,8 +20086,8 @@
             "gold": {
                 "base": 0,
                 "purchasable": true,
-                "total": 2500,
-                "sell": 1750
+                "total": 2600,
+                "sell": 1820
             },
             "tags": [
                 "Health",
@@ -20106,7 +20106,7 @@
             },
             "stats": {
                 "FlatHPPoolMod": 450,
-                "FlatMagicDamageMod": 85
+                "FlatMagicDamageMod": 95
             },
             "depth": 4
         },

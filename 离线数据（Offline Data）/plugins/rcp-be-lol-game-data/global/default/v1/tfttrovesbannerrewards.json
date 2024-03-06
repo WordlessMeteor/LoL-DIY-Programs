@@ -1801,6 +1801,15 @@
         "highlightRewardAssetPath": "/lol-game-data/assets/ASSETS/UX/TFT/Troves_BannerContent/DRXAatrox/TFT-TroveCelebration-ChaseContent-DRXAatrox.png"
     },
     {
+        "itemInstanceId": "127829e1-6a49-45f7-b59d-f63c3f8b6e58",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Chibi Spirit Blossom Ahri",
+        "starLevel": 1,
+        "rarity": "Mythic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/ChibiAhri/Loot_ChibiAhri_Blossom_Blossom1_Tier1.CHIBI_Ahri_Blossom.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/ASSETS/UX/TFT/Troves_BannerContent/ChibiSBAhri/TFT-TroveCelebration-ChaseContent-SpiritBlossomAhri.14_6_TFT_TR.png"
+    },
+    {
         "itemInstanceId": "138b870c-cd50-41eb-9409-3c405a5c487a",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
         "name": "Chibi Ahri",
@@ -2033,6 +2042,24 @@
         "rarity": "Mythic",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/ChibiMalphite/Loot_ChibiMalphite_Mecha_Mecha1_Tier1.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "bf8798fc-0194-4554-aebd-411e853d77be",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Chibi Morgana",
+        "starLevel": 1,
+        "rarity": "Default",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/ChibiMorgana/Loot_ChibiMorgana_Base_Classic_Tier1.CHIBI_Morgana_Base.dds",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "e2cb006f-de80-48e1-b234-8b565f002a70",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Chibi Majestic Empress Morgana",
+        "starLevel": 1,
+        "rarity": "Mythic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/ChibiMorgana/Loot_ChibiMorgana_Immortal_Immortal_Tier1.CHIBI_Morgana_Immortal.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/ASSETS/UX/TFT/Troves_BannerContent/ChibiMorgana/TFT-TroveCelebration-ChaseContent-ImmortalJourneyMorgana.14_6_TFT_TR.png"
     },
     {
         "itemInstanceId": "b677070f-448f-46ad-87fa-cbf308e94ea4",
@@ -2872,6 +2899,33 @@
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
+        "itemInstanceId": "a6bbbe31-6e70-48dd-b5ef-ffb4a87772dd",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Ink Squink",
+        "starLevel": 1,
+        "rarity": "Default",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/DSSquid/Loot_DSSquid_Ink_Ink1_Tier1.LL_DSSquid_Ink.dds",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "e7e5815f-4314-4048-9186-4fcfabd59d02",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Ink Squink",
+        "starLevel": 2,
+        "rarity": "Default",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/DSSquid/Loot_DSSquid_Ink_Ink1_Tier2.LL_DSSquid_Ink.dds",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "b042babd-def6-4bfc-b2cb-9d6f9ed4a04d",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Ink Squink",
+        "starLevel": 3,
+        "rarity": "Default",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/DSSquid/Loot_DSSquid_Ink_Ink1_Tier3.LL_DSSquid_Ink.dds",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
         "itemInstanceId": "ab920ecd-a7dc-42f5-a16f-e8555f7dc323",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
         "name": "K/DA ALL OUT Squink",
@@ -3679,6 +3733,114 @@
         "starLevel": 3,
         "rarity": "Default",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Dowsie/Loot_Dowsie_Base_Classic_Tier3.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "c5ccf603-621f-4bb3-9417-2ad35d7dd996",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Shan Hai Scrolls Dowsie",
+        "starLevel": 1,
+        "rarity": "Epic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Dowsie/Loot_Dowsie_Ink_Ink1_Tier1.LL_Dowsie_Ink.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "b40d7a8c-345f-4000-aee4-d2cde5d96e9a",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Shan Hai Scrolls Dowsie",
+        "starLevel": 2,
+        "rarity": "Epic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Dowsie/Loot_Dowsie_Ink_Ink1_Tier2.LL_Dowsie_Ink.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "3137f50f-3bde-4b20-a99c-3cf883c419a1",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Shan Hai Scrolls Dowsie",
+        "starLevel": 3,
+        "rarity": "Epic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Dowsie/Loot_Dowsie_Ink_Ink1_Tier3.LL_Dowsie_Ink.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "3af027f6-5067-430e-aac3-6fd3e74c86c6",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Spirit Blossom Kanmei Dowsie",
+        "starLevel": 1,
+        "rarity": "Legendary",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Dowsie/Loot_Dowsie_Ink_Ink2_Tier1.LL_Dowsie_Ink.dds",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "874c35bb-ceca-4fe1-a717-f5928834c142",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Spirit Blossom Kanmei Dowsie",
+        "starLevel": 2,
+        "rarity": "Legendary",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Dowsie/Loot_Dowsie_Ink_Ink2_Tier2.LL_Dowsie_Ink.dds",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "a9a140d8-e81b-479e-8818-5851386606b1",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Spirit Blossom Kanmei Dowsie",
+        "starLevel": 3,
+        "rarity": "Legendary",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Dowsie/Loot_Dowsie_Ink_Ink2_Tier3.LL_Dowsie_Ink.dds",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "1ef24ecf-03c1-46d7-98db-c8bef6712fb8",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Spirit Blossom Akana Dowsie",
+        "starLevel": 1,
+        "rarity": "Epic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Dowsie/Loot_Dowsie_Ink_Ink3_Tier1.LL_Dowsie_Ink.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "f2bd9bf9-ca28-477f-a41b-df77bb8ebd26",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Spirit Blossom Akana Dowsie",
+        "starLevel": 2,
+        "rarity": "Epic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Dowsie/Loot_Dowsie_Ink_Ink3_Tier2.LL_Dowsie_Ink.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "7e8ecab6-73f5-47c7-a349-14e6494675c4",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Spirit Blossom Akana Dowsie",
+        "starLevel": 3,
+        "rarity": "Epic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Dowsie/Loot_Dowsie_Ink_Ink3_Tier3.LL_Dowsie_Ink.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "84e6ac34-4041-4ba6-ace0-90f2625137d7",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Immortal Journey Dowsie",
+        "starLevel": 1,
+        "rarity": "Epic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Dowsie/Loot_Dowsie_Ink_Ink5_Tier1.LL_Dowsie_Ink.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "5a160639-a78c-4b06-9d7f-6a0070cc9093",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Immortal Journey Dowsie",
+        "starLevel": 2,
+        "rarity": "Epic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Dowsie/Loot_Dowsie_Ink_Ink5_Tier2.LL_Dowsie_Ink.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "356c3a32-37c0-4f31-ac9a-e2cdaf8fee93",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Immortal Journey Dowsie",
+        "starLevel": 3,
+        "rarity": "Epic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Dowsie/Loot_Dowsie_Ink_Ink5_Tier3.LL_Dowsie_Ink.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -7180,6 +7342,168 @@
         "starLevel": 1,
         "rarity": "Legendary",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/HextechBirb/Loot_HextechBirb_Set6RankedRewards_Victorious_Tier1.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "2a051d9c-f4f2-4060-95c8-6fe6b80731a8",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Hundun",
+        "starLevel": 1,
+        "rarity": "Default",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic_Tier1.LL_Hundun_Base.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "a7c66848-aabf-49da-afe0-a9b96dc3eab5",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Hundun",
+        "starLevel": 2,
+        "rarity": "Default",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic_Tier2.LL_Hundun_Base.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "494817df-2db4-41c5-808b-18b1df4a32f4",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Hundun",
+        "starLevel": 3,
+        "rarity": "Default",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic_Tier3.LL_Hundun_Base.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "24f340cd-40c8-4e06-ae46-c1339ef2fb45",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Divine Spring Hundun",
+        "starLevel": 1,
+        "rarity": "Default",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic2_Tier1.LL_Hundun_Base.dds",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "c090d2d7-0f6f-42eb-be58-5eada26d6caa",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Divine Spring Hundun",
+        "starLevel": 2,
+        "rarity": "Default",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic2_Tier2.LL_Hundun_Base.dds",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "9bdaa074-5883-425d-a7ea-93f1f87cb708",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Divine Spring Hundun",
+        "starLevel": 3,
+        "rarity": "Default",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic2_Tier3.LL_Hundun_Base.dds",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "72e48cc8-1785-4434-bcba-fcc36eb6d14e",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Blooming Hundun",
+        "starLevel": 1,
+        "rarity": "Epic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic3_Tier1.LL_Hundun_Base.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "d1e34ab8-1331-4616-89ec-c00e245ac152",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Blooming Hundun",
+        "starLevel": 2,
+        "rarity": "Epic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic3_Tier2.LL_Hundun_Base.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "40aac49e-4c41-44cd-89a9-fb6b914f5708",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Blooming Hundun",
+        "starLevel": 3,
+        "rarity": "Epic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic3_Tier3.LL_Hundun_Base.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "91893605-a44c-4ff9-8438-84bda8d6cd0d",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Twin Spirit Hundun",
+        "starLevel": 1,
+        "rarity": "Epic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic4_Tier1.LL_Hundun_Base.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "f7b1d1f5-96f4-453f-82e1-fc46605c7ba7",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Twin Spirit Hundun",
+        "starLevel": 2,
+        "rarity": "Epic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic4_Tier2.LL_Hundun_Base.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "bfdac6c6-70a4-4b9e-8731-f48d3f12747a",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Twin Spirit Hundun",
+        "starLevel": 3,
+        "rarity": "Epic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic4_Tier3.LL_Hundun_Base.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "c29d8984-2bc9-4d8c-9ea3-3e6d6bef02fa",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Nebulus Hundun",
+        "starLevel": 1,
+        "rarity": "Legendary",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic5_Tier1.LL_Hundun_Base.dds",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "f38927b0-dc96-4b2c-b5b1-dc257a1fc5fa",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Nebulus Hundun",
+        "starLevel": 2,
+        "rarity": "Legendary",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic5_Tier2.LL_Hundun_Base.dds",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "846fa9e6-cae6-47fc-829c-a46659c9d6b9",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Nebulus Hundun",
+        "starLevel": 3,
+        "rarity": "Legendary",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic5_Tier3.LL_Hundun_Base.dds",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "03466c1d-8c34-46a1-bd74-fd4b3c20ea17",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "All Seeing Hundun",
+        "starLevel": 1,
+        "rarity": "Epic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic6_Tier1.LL_Hundun_Base.dds",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "26fb79b0-dad7-42b1-942c-3f4f8a387536",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "All Seeing Hundun",
+        "starLevel": 2,
+        "rarity": "Epic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic6_Tier2.LL_Hundun_Base.dds",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "4b020da1-8434-4248-8654-9ad236ec4aa8",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "All Seeing Hundun",
+        "starLevel": 3,
+        "rarity": "Epic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic6_Tier3.LL_Hundun_Base.dds",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -11773,6 +12097,15 @@
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
+        "itemInstanceId": "4e79c791-2fc8-4b46-a3e3-6271c7142f8b",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Victorious Melisma",
+        "starLevel": 1,
+        "rarity": "Legendary",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/SennaBunny/Loot_SennaBunny_Ranked_Ranked1_Tier1.LL_SennaBunny_Ranked.dds",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
         "itemInstanceId": "693af9eb-8418-482b-90ef-b50f20697836",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
         "name": "Shadow Beat Melisma",
@@ -12727,6 +13060,15 @@
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
+        "itemInstanceId": "91410d0b-0fc9-4f3c-9ebc-ca94540f5e8c",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "",
+        "starLevel": 1,
+        "rarity": "Default",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/TFTAvatar/Loot_TFTAvatar_Set11UpdateBattlePass_Triumph_Tier1.LL_TFTAvatar_Set11UpdateBattlePass.dds",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
         "itemInstanceId": "3da7e2a2-ffdf-4676-9803-6e8784ec3316",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
         "name": "UFO Sprite",
@@ -12751,6 +13093,15 @@
         "starLevel": 1,
         "rarity": "Legendary",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/TFTAvatar/Loot_TFTAvatar_SuperFanVariant_Variant_Tier1.LL_TFTAvatar_SuperFanVariant.dds",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "e0dabd7f-6f9c-4b89-a73d-587c3493cea6",
+        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
+        "name": "Ink Sprite",
+        "starLevel": 1,
+        "rarity": "Default",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/TFTAvatar/Loot_TFTAvatar_Set11UpdateBattlePass_Victory_Tier1.LL_TFTAvatar_Set11UpdateBattlePass.dds",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -13798,6 +14149,15 @@
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
+        "itemInstanceId": "9ffde8eb-9e7d-4300-84f8-7356d6d90ead",
+        "itemTypeId": "2cad5e9d-183e-45ae-b787-eccb1e9efda2",
+        "name": "Bamboo Shoots",
+        "starLevel": 1,
+        "rarity": "Epic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_Bamboo.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
         "itemInstanceId": "05f3a460-8d13-49da-bb1f-39115b137466",
         "itemTypeId": "fccbb2f3-6d71-4b05-8322-7ec5757acb5d",
         "name": "Bandle Blast!",
@@ -14608,6 +14968,15 @@
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
+        "itemInstanceId": "d843ddc2-3a07-4bea-a45c-0ef748fe63d2",
+        "itemTypeId": "a6bdfd45-048a-4ab7-859e-f87abe7efab5",
+        "name": "Majestic Empress Soul Shackles",
+        "starLevel": 1,
+        "rarity": "Epic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_Chibi_Immortal_Morgana.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
         "itemInstanceId": "407243bc-747d-46b3-9f90-477d7171a7a4",
         "itemTypeId": "a6bdfd45-048a-4ab7-859e-f87abe7efab5",
         "name": "Shadow Scrawl",
@@ -14869,6 +15238,15 @@
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
+        "itemInstanceId": "385e5460-856e-4de7-92a0-628f203887f0",
+        "itemTypeId": "a6bdfd45-048a-4ab7-859e-f87abe7efab5",
+        "name": "Soul Shackles",
+        "starLevel": 1,
+        "rarity": "Epic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_Chibi_BaseMorgana.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
         "itemInstanceId": "cf2bea70-31f7-4e1f-a566-315aa6c7071c",
         "itemTypeId": "a6bdfd45-048a-4ab7-859e-f87abe7efab5",
         "name": "Cosmeows Beam",
@@ -15064,6 +15442,15 @@
         "starLevel": 3,
         "rarity": "Epic",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/boom_paper_pursuit_3.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
+        "itemInstanceId": "65450b91-0a41-4dde-bc03-b01e8a3c39d0",
+        "itemTypeId": "2cad5e9d-183e-45ae-b787-eccb1e9efda2",
+        "name": "Fans of a Feather",
+        "starLevel": 1,
+        "rarity": "Epic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_PapperFanAttack.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -16052,6 +16439,22 @@
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
+        "itemInstanceId": "29b4a7ef-f9c6-4563-9812-31c623504b15",
+        "itemTypeId": "b26717c6-87ec-43b0-b58f-fabc897c0b27",
+        "name": "Heaven's Celestial Court",
+        "rarity": "Mythic",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_ImmortalJourney.TFT_ArenaSkin_ImmortalJourney.dds",
+        "highlightRewardAssetPath": "/lol-game-data/assets/ASSETS/UX/TFT/Troves_BannerContent/HeavenCelestialCourtArena/TFT-TrovesCelebration-ChaseContent-ImmortalJourneyArena.14_6_TFT_TR.png"
+    },
+    {
+        "itemInstanceId": "49002bbd-3941-4f04-83f2-3075b0e4fe18",
+        "itemTypeId": "b26717c6-87ec-43b0-b58f-fabc897c0b27",
+        "name": "Shades of Sky",
+        "rarity": "Default",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_InkBiome_Sky.TFT_ArenaSkin_InkBiome.dds",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
+    },
+    {
         "itemInstanceId": "5072b171-1e89-4f27-bfc3-d492c90ab4e1",
         "itemTypeId": "b26717c6-87ec-43b0-b58f-fabc897c0b27",
         "name": "Destination",
@@ -16546,6 +16949,14 @@
         "rarity": "Mythic",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_StarGuardian_Classroom.dds",
         "highlightRewardAssetPath": "/lol-game-data/assets/ASSETS/UX/TFT/Troves_BannerContent/ArenaEverythingGoesOn/TFT-TrovesCelebration-ChaseContent-EverythingGoesOn.tft_14_4_bounties.png"
+    },
+    {
+        "itemInstanceId": "a268fa11-590c-4128-8963-a5dba6c29662",
+        "itemTypeId": "b26717c6-87ec-43b0-b58f-fabc897c0b27",
+        "name": "Dreams of Earth",
+        "rarity": "Legendary",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_TeaTerraces.TFT_ArenaSkin_TeaTerraces.dds",
+        "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
         "itemInstanceId": "f666718e-45b7-4784-b3f6-7d259820dafa",

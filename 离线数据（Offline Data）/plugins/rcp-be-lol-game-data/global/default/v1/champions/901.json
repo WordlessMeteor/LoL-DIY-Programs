@@ -556,7 +556,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@s %i:cooldown%",
             "description": "Smolder takes flight ignoring terrain and bombarding the lowest health enemy.",
-            "dynamicDescription": "Smolder takes flight, gaining <speed>@MoveSpeed*100@% Move Speed</speed> and ignoring terrain for @Duration@ seconds.<br><br>While flying, Smolder bombards the lowest Health enemy <spellName>@TotalNumberOfAttacks@</spellName> times for <physicalDamage>@DamagePerHit@ physical damage</physicalDamage> + <magicDamage>@Passive_Damage_Increase@ magic damage</magicDamage> per hit.@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "Smolder takes flight, gaining <speed>@MoveSpeed*100@% Move Speed</speed> and ignoring terrain for @Duration@ seconds.<br><br>While flying, Smolder bombards the lowest Health enemy <spellName>@TotalNumberOfAttacks@</spellName> (rounded down) times for <physicalDamage>@DamagePerHit@ physical damage</physicalDamage> + <magicDamage>@Passive_Damage_Increase@ magic damage</magicDamage> per hit.@SpellModifierDescriptionAppend@",
             "range": [
                 700.0000,
                 700.0000,

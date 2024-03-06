@@ -135,8 +135,10 @@ The following explanations only apply to the current branch. For other details (
 		- 对于非北美洲用户，即使使用了加速器，也要<u>在游戏大厅的PLAY按钮高亮3秒之后，再双击本程序</u>。否则会导致召唤师状态异常（实际为在线状态，却显示为正在排队，并有“正在匹配”的计时器）。这时只能通过<u>重启客户端</u>来解决。
 		- 从2023年8月27日开始，云顶之弈1V0模式不再可用。<u>请自行进入匹配对局并秒退来获取3000点券。</u>
 		- 目前云顶之弈不可用于获取3000点券，请尝试通过其它游戏模式获取。
-	- 自定义脚本7用于**获取商店中上架的商品信息**。
-		- 该程序将商品信息输出到`Store items.txt`中。
+	- 自定义脚本7用于**获取商店中上架的商品信息和主召唤师的藏品信息**。
+		- 该程序将商品和藏品信息输出到主召唤师文件夹下的`Store and Collections - {召唤师名称}.xlsx`中。
+		- 商品信息中的缩略图路径是与**LCU API**相关的网址，需要在**英雄联盟客户端启动**的情况下才能打开。初次打开网站需要输入用户名和密码，请在该脚本的输出的最开始部分找到<u>带有“riot”的一行</u>，用户名为<u>“riot”</u>，密码为<u>“riot”后面的一串字符串</u>。
+			- 缩略图路径标为<u>default.png</u>的商品的缩略图尚未找到。
 	- 自定义脚本8从来没有被寄予统计一个服务器上所有召唤师的数量的厚望。（因为人实在是太多了，并且遍历是最盲目的！）
 	- 自定义脚本9用于**查询和导出当前服务器存在的游戏模式**。
 		- 尝试在多个服务器上运行此程序，并比较开放的游戏模式。兴许你会发现自己可以在国测服玩到卡莎打一般难度的1v1人机的云顶之弈1v0狂暴模式。
@@ -171,7 +173,7 @@ The following explanations only apply to the current branch. For other details (
 	- 自定义脚本12用于**整理战利品信息**。
 		- 该脚本的最终结果是一个**包含部分字段的二维表**，保存在工作簿中。**工作簿的生成路径参照查战绩脚本**。
 		- 该脚本仅作数据的转换和整理，不作任何数据分析。如有需要，<u>请自行使用Excel软件进行分析</u>。
-	- `清除临时文件.bat`用于清除自定义脚本产生的临时文件。目前可以清除自定义脚本3、4、5、7和10产生的临时文件。
+	- `清除临时文件.bat`用于清除自定义脚本产生的临时文件。目前可以清除自定义脚本3、4、5、10和11产生的临时文件。
 	- `召唤师信息文件格式转换.bat`用于将自定义脚本5产生的数据文档在txt和json格式之间重命名。
 		- 大量数据文档的重命名可能导致文件资源管理器卡顿，因此请谨慎使用本脚本。
 		- 由于本脚本涉及中文字符，因此**请先在命令行中使用`chcp 65001`以切换代码活动页**，再运行本脚本。
@@ -225,6 +227,13 @@ The following explanations only apply to the current branch. For other details (
 				- 深蓝色代表`Key`作为`TFTHistory[gameIndex]["participants"][participantId]["units"][unitIndex]`的索引。
 					- 注意到其中不包含任何可直接作为索引的键。
 			- 相比之下，工作表`05 - TFTGame_info_header`和工作表`05 - TFTHistory_header`只差了前面9行内容。
+		- 下面对商品藏品信息整理脚本中的`catalog_header`的结构进行说明。
+			- 工作表`07 - catalog_header`的主要数据区域设置为白色。`item`是`catalogList`中的任意一个元素。
+				- `Key`可以直接作为`item`的索引。
+		- 下面对商品藏品信息整理脚本中的`collection_header`的结构进行说明。
+			- 工作表`07 - collection_header`的主要数据区域设置了2种颜色。`item`是`collection`中的任意一个元素。
+				- 无填充代表`Key`可以直接作为`item`的索引。
+				- 蓝色代表`Key`作为`item["payload"]`的索引。
 		- 下面对查模式脚本中的`queues_df`的结构进行说明。
 			- 工作表`09 - queues_header`的主要数据区域设置了4种颜色。
 				- 绿色代表`Key`可以直接作为`queues[id]`的索引。
@@ -260,7 +269,7 @@ For details about customized programs that is beyond the scope of creating a cus
 		- This workbook contains 3 sheets:
 			- Sheet1 contains information of bot players **officially available** in Practice Tool lobbies.
 			- Sheet2 contains information of bot players that **can be added** in Practice Tool lobbies.
-				- Compared with Sheet1, Sheet2 includes information of all bot players in *Co-op vs. Ai* matches of intermediate difficulty. Updates come from Customized Program 4.
+				- Compared with Sheet1, Sheet2 includes information of all bot players in *Co-op vs. Ai* matches of intermediate difficulty. Updates come from Customized Program 04.
 			- Sheet3 contains information of **all champions** in League of Legends.
 	- The online-data version takes <u>officially available bots</u> as the bot player information. Therefore, online-data version can't be used to add bot players in <u>Howling Abyss</u>, <u>Temple of Lily and Lotus</u> and <u>Convergence</u> lobbies.
 	- The simplified version exists in each mode. A simple **double-click** should be able to generate bot players randomly, hence simplifying lobby creation greatly.
@@ -383,20 +392,22 @@ For details about customized programs that is beyond the scope of creating a cus
 		- For users not in North America (in terms of location), despite any accerelator used, please don't double-click this program until several seconds after the PLAY button highlights. Otherwise, the summoner status will come into an unexpected state (the client will show that the summoner is in queue and display the "Finding Match" timer, but actually it's online). A **restart** for client is the only way to solve this problem.
 		- Since Aug. 27th, 2023, TFT 1V0 mode has been unavailable. <u>Please start a TFT normal game and quit the game as soon as you enter the game to acquite 3000 RP.</u>
 		- Currently, the Riot 3000 RP Bonus mission doesn't support TFT games. Please complete this mission by other game modes.
-	- Customized Program 07 is designed to **get information of items on sale in the store**.
-		- This program exports information to `Store items.txt`.
+	- Customized Program 07 is designed to **get information of items on sale in the store and collections of the main summoner**.
+		- This program exports the information of store items and collections to `Store and Collections - {召唤师名称}.xlsx` in the directory of the main summoner.
+		- The imagePath field of the store table refers to URLs related to **LCU API**, which can be accessed **only during when the League Client is running**. The first visit of these URLs requires a username and a password. Please look for <u>a line that starts with "riot"</u> at the beginning of this program's output. The username is <u>"riot"</u>, and the password is <u>a string that follows "riot"</u>.
+			- The imagePath temporarily marked as <u>default.png</u> is actually inaccessible.
 	- Customized Program 08 is never expected to count the number of summoners on a server. (since the number is too large, let alone the brute-force traversal of summonerId)!
 	- Customized Program 09 is designed to **search and export the existing game modes on the current server**.
 		- Try running this program on multiple servers, and compare the available game modes on different servers. If lucky, you may find that on Chinese PBE server, you'll use Kai'Sa to solo with a bot player of intermediate difficulty in TFT Turbo 1v0.
-	- Customized Program 10 is designed to **search for matches a specified summoner has played**. The user may combine its use with Customized Program 5.
+	- Customized Program 10 is designed to **search for matches a specified summoner has played**. The user may combine its use with Customized Program 05.
 	- Customized Program 11 is designed to **search summoners that have recently played with the specific summoner**.
-		- A large part of code in this program is inherited from Customized Program 5, including the scan mode. Nevertheless, this program only outputs the result and doesn't change any intermediate files (txt files) generated by Customized Program 5.
+		- A large part of code in this program is inherited from Customized Program 05, including the scan mode. Nevertheless, this program only outputs the result and doesn't change any intermediate files (txt files) generated by Customized Program 05.
 		- This program allows [Generate Mode] and [Detect Mode].
 			- Mode switch isn't supported during a life cycle of this program.
 			- [Generate Mode] **saves information** of players that a specific player have played with in recent matches into the Sheet "Recently Played Summoners" **in the workbook** whose name is prefixxed with "Summoner Profile" and save 9 **bar charts** with regard to players' <u>game time</u> and <u>match counts</u>.
 			- [Detect Mode] checks whether some players have been encountered before. Four situations are considered in this program. The core code **resemble** among different situations.
 				1. During champ select / In-game
-					- Information of <u>summoners that the user encounters during champ select or in-game</u> in past matches will be returned in this situation. The format of output refers to that of each record in the match infrrmation table generated by Customized Program 5.
+					- Information of <u>summoners that the user encounters during champ select or in-game</u> in past matches will be returned in this situation. The format of output refers to that of each record in the match infrrmation table generated by Customized Program 05.
 					- This mode **only** supports checking allies of the **user** (current summoner) during champ select. The user may not use it to check allies of other summoners during champ select.
 						**Note:** TFT matches do have champ select stage. Unfortunately, this stage lasts too shortly.
 					- Considering temporariness of champ select, this mode will only generate a temporary file in the home directory.
@@ -412,14 +423,14 @@ For details about customized programs that is beyond the scope of creating a cus
 					- Information of <u>players in a list input by user</u> in the past matches will be returned.
 						- Each element of the input player list may be a <u>summonerName</u> or a <u>puuid</u>.
 					- The program generates the temporary file "Recently Played Summoners in Specified Player List.xlsx" in this situation.
-			- Similar to Customized Program 5, the [Scan Mode] in this program only applies for **LoL** matches.
+			- Similar to Customized Program 05, the [Scan Mode] in this program only applies for **LoL** matches.
 			- If for some reason (like the CMD window pops up and disappears immediately, or the match history fails to be fetched), the user fails to get whether the allies have been encountered before using [Detect Mode], the user can still [Single Check] whether there's any recently played summoner by inputting the in-game summoner name by hand.
 				- Since PBE Patch 13.22, players on Riot servers can't be searches with only gameName. Because the loading screen only displays the gameName, the user may wait **until the game starts** to check the gameName and slogan on the **scoreboard**.
 	- Customized Program 12 is used to **sort out player loot information**.
-		- The final result of this program is a **2-dimension table including a part of the field** to be saved into a workbook. **To get the generation path, please refer to Customized Program 5.**
+		- The final result of this program is a **2-dimension table including a part of the field** to be saved into a workbook. **To get the generation path, please refer to Customized Program 05.**
 		- This program only transforms and sorts out data. No data analysis is involved. If you have further needs, <u>please analyze with Excel APP on your own</u>.
-	- `清除临时文件.bat` is used to remove temporary files generated by customized programs. At present it can delete temporary files from customized programs 3, 4, 5, 7 and 10.
-	- `召唤师信息文件格式转换.bat` is used to rename the format of data files generated by Customized Program 5 into ".txt" or ".json".
+	- `清除临时文件.bat` is used to remove temporary files generated by customized programs. At present it can delete temporary files from customized programs 03, 04, 05, 10 and 11.
+	- `召唤师信息文件格式转换.bat` is used to rename the format of data files generated by Customized Program 05 into ".txt" or ".json".
 		- Renaming a number of data files may results in the slow performance of Explorer, so please think twice to use this program.
 		- Since the scripts of this program contain Chinese characters, **please run `chcp 65001` in Command Prompt** before running this program.
 		- Within expectation, the prompt "1 files(s) moved" will constantly pop up in Command Prompt. [Everything App](https://www.voidtools.com/en-us/) is suggested for checking the number of txt files in the folder "召唤师信息（Summoner Information）".
@@ -442,28 +453,28 @@ For details about customized programs that is beyond the scope of creating a cus
 					- Currently, the purple area only contains `ally?`, a judgement whether the queried player is an ally of the main player. In the exported sheet, a tick means the queried player is the ally of the main player.
 			- Some keys are colored white. These keys don't belong to the indices of any variable in LCU API, but actually come from them. For example, `ornament` never occurs in the json object of the game information, but actually originates from `LoLGame_info["participants"][participantId]["stats]` and corresponds to the key `"item6"`.
 			- To obtain the statistics display order lists, all needed is to arrange the table acoording to the ascending order of `OutputOrder` and to copy the cells in `Index` column.
-		- `mastery_df` in Customized Program 5:
+		- `mastery_df` in Customized Program 05:
 			- 1 color is used to divide the main data area in the sheet `05 - mastery_header`.
 				- Data in the blue area mean `Key` is the direct index of the variable `mastery[champion_iter]`.
 				- Keys in white only include `champion` and `alias`, representing the titles and aliases of champions, respectively. Only championIds are provided in LCU API.
-		- `ranked_df` in Customized Program 5:
+		- `ranked_df` in Customized Program 05:
 			- `Key` in the sheet `05 - ranked_header` can all be the index of `ranked["queues"][id]`.
 			- Note that redundancy exists in the `OutputOrder` column. The essential reason for this is that the tier of TFT turbo and that of other rank modes are recorded into 2 variables separately, while the two tiers are expected to be stored in a single column. Therefore, the `OutputOrder` of some keys are the same.
-		- `LoLGame_info_df` in Customized Program 5:
+		- `LoLGame_info_df` in Customized Program 05:
 			- 5 colors are used to divide the main data area in the sheet `05 - LoLGame_info_header`.
 				- Data in the light blue area mean `Key` is the index of `LoLGame_info["participantIdentities"][participantId]`.
 				- Data in the dark blue area mean `Key` is the index of `LoLGame_info["participantIdentities"][participantId]["player"]`.
 				- Data in the green area mean `Key` is the index of `LoLGame_info["participants"][participantId]`.
 				- Data in the orange area mean `Key` is the index of `LoLGame_info["participants"][participantId]["stats"]`.
 				- Data in the purple area mean `Key` is the index of `LoLGame_info["teams"][teamId]`.
-		- `LoLGame_timeline_df` in Customized Program 5:
+		- `LoLGame_timeline_df` in Customized Program 05:
 			- 4 colors are used to divide the main data area in the sheet `05 - LoLGame_timeline_header`.
 				- Data in the blue area mean `Key` is the index of `frames[frameId]`.
 				- Data in the grey area mean the value corresponding to `Key` is generated automatically and isn't related to LCU API.
 				- Data in the green area mean `Key` comes from `LoLGame_info`.
 				- Data in the orange area mean `Key` is the index of `frames[frameId]["participantFrames"][participantId]`.
-		- `TFTHistory_df` in Customized Program 5:
-			- 5 colors are used to divide the main daa area in the sheet `05 - TFTHistory_df`.
+		- `TFTHistory_df` in Customized Program 05:
+			- 5 colors are used to divide the main data area in the sheet `05 - TFTHistory_df`.
 				- Data not filled with any color mean `Key` doesn't serve as the index of any variables of LCU API.
 				- Data in the sky blue area mean `Key` is the index of `TFTHistory[gameIndex]`.
 				- Data in the green area mean `Key` is the index of `TFTHistory[gameIndex]["participants"]`.
@@ -472,7 +483,14 @@ For details about customized programs that is beyond the scope of creating a cus
 				- Data in the deep blue area mean `Key` is the index of `TFTHistory[gameIndex]["units"][unitIndex]`.
 					- Note that no key in this area exists to be the direct index.
 			- The only difference of the contents between the sheet `05 - TFTGame_info_header` and the sheet `05 - TFTHistory_header` is the first 9 lines.
-		- `queues_df` in Customized Program 9:
+		- `catalog_header` in Customized Program 07:
+			- The main data area in the sheet `07 - catalog_header` is colored white. `Item` denodes any element in `catalogList`.
+				- `Key` is the direct index of the variable `item`.
+		- `collection_header` in Customized Program 07:
+			- 2 colors are used to divide the main data area in the sheet `07 - collection_header`. `Item` denodes any element in `catalogList`.
+				- Data not filled with any color mean `Key` is the direct index of the variable `item`.
+				- Data in the blue area mean `Key` is the index of `item["payload"]`.
+		- `queues_df` in Customized Program 09:
 			- 4 colors are used to divide the main data area in the sheet `09 - queues_header`.
 				- Data in the blue area mean `Key` is the directly index of the variable `queues[id]`.
 				- Data in the orange area mean `Key` is the directly index of the variable `queues[id]["gameTypeConfig"]`.
@@ -492,5 +510,5 @@ For details about customized programs that is beyond the scope of creating a cus
 7. Normally, text files generated by this program set are organized with indents. If the original dictionary variable in python runtime environment is required to recur, then simply pass a file pointer created by `open` function to the `load` function in `json` library, such as `fp = open("{filename}.txt", "r", encoding = "utf-8")` and `d = json.load(fp)`.
 	- If the user wants to transform a json string with indents generated by `dumps` function into a json string without indents just in the runtime environment, he/she only needs to pass the string generated by `dumps` functin into `loads` function, such as `formatted = json.dumps({dictvariable}, indent = 8, ensure_ascii = False)` and `d = json.loads(formatted)`.
 # Afterword
-As a beginner in programming, I've just learned some basic usage of Python, and each function is implemented based on structured programming, without using the concepts of classes and objects, which may explain the code redundancy and low level of integration. For example, in Customized Program 5, a number of lines of codes are actually **copied** from some other part of the code. Moreover, for long strings, I choose to write them **in single lines**, considering decreasing the number of code lines, which is not friendly for a glance, and I apologize for this. In addition, I realized that more annotations are needed for the codes. Last but not least, since I haven't learned anything about GUI (the only one I've ever used is Visual Basic 😂), I'm only capable of designing programs that interact with CMD. (Actually and sadly, I haven't planned to design the graphics interface for now and in the near future.)\
+As a beginner in programming, I've just learned some basic usage of Python, and each function is implemented based on structured programming, without using the concepts of classes and objects, which may explain the code redundancy and low level of integration. For example, in Customized Program 05, a number of lines of codes are actually **copied** from some other part of the code. Moreover, for long strings, I choose to write them **in single lines**, considering decreasing the number of code lines, which is not friendly for a glance, and I apologize for this. In addition, I realized that more annotations are needed for the codes. Last but not least, since I haven't learned anything about GUI (the only one I've ever used is Visual Basic 😂), I'm only capable of designing programs that interact with CMD. (Actually and sadly, I haven't planned to design the graphics interface for now and in the near future.)\
 To be honest, there're not any really innovative ideas besides ZhiHu Author XHXIAIEIN's perception and Riot's official API. The program set mainly crawls and sorts out data. If any interesting idea pops up in your mind, welcome to fork this repository, create your own branch and submit pull requests!

@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.4.1",
+    "version": "14.5.1",
     "data": {
         "Brand": {
             "id": "Brand",
@@ -582,11 +582,11 @@
                     },
                     "maxrank": 3,
                     "cooldown": [
-                        105,
-                        90,
-                        75
+                        110,
+                        100,
+                        90
                     ],
-                    "cooldownBurn": "105/90/75",
+                    "cooldownBurn": "110/100/90",
                     "cost": [
                         100,
                         100,

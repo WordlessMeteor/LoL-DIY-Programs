@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.4.1",
+    "version": "14.5.1",
     "data": {
         "Velkoz": {
             "id": "Velkoz",
@@ -398,7 +398,7 @@
                     "id": "VelkozE",
                     "name": "Tectonic Disruption",
                     "description": "Vel'Koz causes an area to explode, knocking up enemies, and knocking close enemies slightly away.",
-                    "tooltip": "Vel'Koz disrupts a nearby area, causing it to explode, <status>Knocking Up</status> for {{ stunduration }} seconds and dealing <magicDamage>{{ totaldamage }} magic damage</magicDamage>. Enemies close to Vel'koz will be <status>Knocked Back</status> instead of <status>Knocked Up</status>.{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "Vel'Koz disrupts a nearby area, causing it to explode, <status>Knocking Up</status> for {{ stunduration }} seconds and dealing <magicDamage>{{ totaldamage }} magic damage</magicDamage>. Enemies close to Vel'Koz will be <status>Knocked Back</status> instead of <status>Knocked Up</status>.{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "Damage",

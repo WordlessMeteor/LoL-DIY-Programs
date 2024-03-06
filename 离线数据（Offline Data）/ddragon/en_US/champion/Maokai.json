@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.4.1",
+    "version": "14.5.1",
     "data": {
         "Maokai": {
             "id": "Maokai",
@@ -113,7 +113,7 @@
                 "hpperlevel": 109,
                 "mp": 375,
                 "mpperlevel": 43,
-                "movespeed": 335,
+                "movespeed": 330,
                 "armor": 35,
                 "armorperlevel": 5.2,
                 "spellblock": 32,
@@ -295,13 +295,13 @@
                     },
                     "maxrank": 5,
                     "cooldown": [
+                        14,
                         13,
                         12,
                         11,
-                        10,
-                        9
+                        10
                     ],
-                    "cooldownBurn": "13/12/11/10/9",
+                    "cooldownBurn": "14/13/12/11/10",
                     "cost": [
                         60,
                         60,

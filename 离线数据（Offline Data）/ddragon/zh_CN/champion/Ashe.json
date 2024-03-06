@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.4.1",
+    "version": "14.5.1",
     "data": {
         "Ashe": {
             "id": "Ashe",
@@ -176,7 +176,7 @@
                     "id": "AsheQ",
                     "name": "射手的专注",
                     "description": "艾希会在攻击时聚集【全神贯注】效果。在【全神贯注】到达最大值时，艾希就能施放【射手的专注】来消耗掉所有【全神贯注】效果，以临时提升她的攻击速度，并在持续期间将她的普攻转变为一阵强力的飓风箭阵。",
-                    "tooltip": "<spellPassive>被动：</spellPassive>艾希的攻击提供一层持续{{ e1 }}秒的效果。在{{ e2 }}层时，她就可以激活这个技能。<br /><br /><spellPassive>主动：</spellPassive>艾希获得<attackSpeed>{{ e4 }}%攻击速度</attackSpeed>并且她的攻击转而造成<physicalDamage>{{ empowereddamage }}伤害</physicalDamage>，持续{{ e3 }}秒。{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "<spellPassive>被动：</spellPassive>艾希的攻击提供1层持续{{ e1 }}秒的效果。在{{ e2 }}层时，她就可以激活这个技能。<br /><br /><spellPassive>主动：</spellPassive>艾希获得<attackSpeed>{{ e4 }}%攻击速度</attackSpeed>并且她的攻击转而造成<physicalDamage>{{ empowereddamage }}伤害</physicalDamage>，持续{{ e3 }}秒。{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "攻击速度",
@@ -462,7 +462,7 @@
                     "id": "AsheSpiritOfTheHawk",
                     "name": "鹰击长空",
                     "description": "艾希将她的猎鹰之灵派去执行侦查任务，可派往地图上的任意地点。",
-                    "tooltip": "艾希派出一只鹰，来提供地图上任一位置的视野5秒。它还会在飞行时显形附近的区域。<br /><br />这个技能可持有2层充能({{ chargecooldown }}秒充能时间)。{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "艾希派出一只鹰，在地图上的任一位置提供5秒的视野。它还会在飞行时显形附近的区域。<br /><br />这个技能可持有2层充能（{{ chargecooldown }}秒充能时间）。{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "充能时间"
@@ -601,7 +601,7 @@
                     "id": "EnchantedCrystalArrow",
                     "name": "魔法水晶箭",
                     "description": "艾希射出一支沿直线飞行的魔法水晶箭。如果水晶箭命中了一名敌方英雄，那么它会对该英雄造成伤害和晕眩效果，晕眩时长取决于水晶箭的飞行距离。此外，该英雄附近的敌方单位会受到伤害和减速效果。",
-                    "tooltip": "艾希射出魔法水晶箭，<status>晕眩</status>命中的第一个敌方英雄，并造成<magicDamage>{{ rmaindamage }}魔法伤害</magicDamage>。<status>晕眩</status>时长取决于飞行距离，至多{{ maxstunduration }}秒。目标周围的敌人会被<spellName>冰霜射击</spellName>减速并受到一半伤害。{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "艾希射出魔法水晶箭，<status>晕眩</status>命中的第一个敌方英雄，并造成<magicDamage>{{ rmaindamage }}魔法伤害</magicDamage>。<status>晕眩</status>时长取决于飞行距离，至多{{ maxstunduration }}秒。目标周围的敌人会受到<spellName>冰霜射击</spellName>的<status>减速</status>效果和一半伤害。{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "伤害",

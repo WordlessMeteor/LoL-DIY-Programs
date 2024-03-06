@@ -2362,7 +2362,7 @@ async def search_recent_players(connection):
                                 try:
                                     jsonfile = open(os.path.join(folder, jsonname), "w", encoding = "utf-8")
                                 except FileNotFoundError:
-                                    os.makedirs(folder)
+                                    os.makedirs(folder, exist_ok = True)
                                 else:
                                     break
                             try:

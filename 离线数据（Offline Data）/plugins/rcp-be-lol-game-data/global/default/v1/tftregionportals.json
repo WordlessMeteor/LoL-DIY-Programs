@@ -79,6 +79,12 @@
     },
     {
         "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Champions_TailoredChampion",
+        "displayName": "",
+        "description": "Champion Conference"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
         "nameId": "TFT_Portals_Champions_TripleStart",
         "displayName": "",
         "description": "3 Champions"
@@ -97,6 +103,18 @@
     },
     {
         "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Combat_LethalLegends",
+        "displayName": "",
+        "description": "Lethal Legends"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Combat_MaxHealthIncrease",
+        "displayName": "",
+        "description": "Larger Legends"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
         "nameId": "TFT_Portals_Combat_TrainingDummy",
         "displayName": "",
         "description": "Training Dummy"
@@ -109,9 +127,21 @@
     },
     {
         "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Combat_WanderingVendors",
+        "displayName": "",
+        "description": "Wandering Vendors"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
         "nameId": "TFT_Portals_Combat_ZoomZone",
         "displayName": "",
         "description": "Unit Accelerator"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Default_NoPortal",
+        "displayName": "",
+        "description": "No portal this game."
     },
     {
         "iconPath": "/lol-game-data/assets/",
@@ -139,9 +169,27 @@
     },
     {
         "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Gold_GoldStart",
+        "displayName": "",
+        "description": "Gold Start"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Gold_GoldSubscription",
+        "displayName": "",
+        "description": "Gold Subscription"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
         "nameId": "TFT_Portals_Gold_MaxInterest",
         "displayName": "",
         "description": "Max Interest"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Gold_TreasureCrab",
+        "displayName": "",
+        "description": "Treasure Crab"
     },
     {
         "iconPath": "/lol-game-data/assets/",
@@ -178,6 +226,12 @@
         "nameId": "TFT_Portals_Items_ComponentAnvil",
         "displayName": "",
         "description": "Component Anvils"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Items_ComponentFeast",
+        "displayName": "",
+        "description": "Component Feast"
     },
     {
         "iconPath": "/lol-game-data/assets/",
@@ -238,12 +292,6 @@
         "nameId": "TFT_Portals_Unique_MaxHealthDecrease",
         "displayName": "",
         "description": "Player Health Decrease"
-    },
-    {
-        "iconPath": "/lol-game-data/assets/",
-        "nameId": "TFT_Portals_Unique_MaxHealthIncrease",
-        "displayName": "",
-        "description": "Larger Legends"
     },
     {
         "iconPath": "/lol-game-data/assets/",

@@ -352,6 +352,28 @@
         "rarityValue": 0
     },
     {
+        "contentId": "29b4a7ef-f9c6-4563-9812-31c623504b15",
+        "itemId": 119,
+        "name": "Heaven's Celestial Court",
+        "description": "",
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_ImmortalJourney.TFT_ArenaSkin_ImmortalJourney.png",
+        "groupId": 22,
+        "groupName": "TFT_MAPGROUP_INKWORLD",
+        "rarity": "Mythic",
+        "rarityValue": 3
+    },
+    {
+        "contentId": "49002bbd-3941-4f04-83f2-3075b0e4fe18",
+        "itemId": 120,
+        "name": "Shades of Sky",
+        "description": "",
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_InkBiome_Sky.TFT_ArenaSkin_InkBiome.png",
+        "groupId": 22,
+        "groupName": "TFT_MAPGROUP_INKWORLD",
+        "rarity": "Default",
+        "rarityValue": 0
+    },
+    {
         "contentId": "5072b171-1e89-4f27-bfc3-d492c90ab4e1",
         "itemId": 33,
         "name": "Destination",
@@ -1032,6 +1054,17 @@
         "groupName": "Monsters Attack!",
         "rarity": "Mythic",
         "rarityValue": 3
+    },
+    {
+        "contentId": "a268fa11-590c-4128-8963-a5dba6c29662",
+        "itemId": 123,
+        "name": "Dreams of Earth",
+        "description": "",
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_TeaTerraces.TFT_ArenaSkin_TeaTerraces.png",
+        "groupId": 22,
+        "groupName": "TFT_MAPGROUP_INKWORLD",
+        "rarity": "Legendary",
+        "rarityValue": 2
     },
     {
         "contentId": "f666718e-45b7-4784-b3f6-7d259820dafa",

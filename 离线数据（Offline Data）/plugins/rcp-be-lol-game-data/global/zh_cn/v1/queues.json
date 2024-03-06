@@ -1013,6 +1013,12 @@
         "description": "极地大乱斗",
         "detailedDescription": ""
     },
+    "880": {
+        "name": "新：新手级",
+        "shortName": "新：新手级",
+        "description": "新：新手级",
+        "detailedDescription": "新：新手级"
+    },
     "950": {
         "name": "100级铁手挑战",
         "shortName": "100级铁手挑战",
@@ -1042,6 +1048,12 @@
         "shortName": "枢纽攻防战",
         "description": "枢纽攻防战",
         "detailedDescription": ""
+    },
+    "890": {
+        "name": "新：一般级",
+        "shortName": "新：一般级",
+        "description": "新：一般级",
+        "detailedDescription": "新：一般级"
     },
     "940": {
         "name": "枢纽攻防战",
@@ -1114,6 +1126,12 @@
         "shortName": "2v2",
         "description": "2v2",
         "detailedDescription": ""
+    },
+    "870": {
+        "name": "新：入门级",
+        "shortName": "新：入门级",
+        "description": "新：入门级",
+        "detailedDescription": "新：入门级"
     },
     "1401": {
         "name": "1v1",

@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.4.1",
+    "version": "14.5.1",
     "data": {
         "Kaisa": {
             "id": "Kaisa",
@@ -674,11 +674,11 @@
                     "costType": " {{ abilityresourcename }}",
                     "maxammo": "-1",
                     "range": [
-                        1500,
-                        2250,
+                        2000,
+                        2500,
                         3000
                     ],
-                    "rangeBurn": "1500/2250/3000",
+                    "rangeBurn": "2000/2500/3000",
                     "image": {
                         "full": "KaisaR.png",
                         "sprite": "spell5.png",

@@ -145,8 +145,7 @@ async def check_available_queue(connection):
 # 创建自定义房间（Create a custom lobby）
 #-----------------------------------------------------------------------------
 async def create_custom_lobby(connection):
-    data = await connection.request("GET", "/lol-summoner/v1/current-summoner")
-    summoner = await data.json()
+    summoner = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     gameMode = ["CLASSIC","ARAM","PRACTICETOOL","NEXUSBLITZ","TUTORIAL"]
     gamemap = {8: "水晶之痕（Crystal Scar）", 10: "扭曲丛林（Twisted Treeline）", 11: "召唤师峡谷（Summoner's Rift）", 12: "嚎哭深渊（Howling Abyss）", 14: "屠夫之桥（Butcher's Bridge）", 16: "宇宙遗迹（Cosmic Ruins）", 18: "瓦罗兰城市公园（Valoran City Park）", 19: "第43区（Substructure 43）", 20: "失控地点（Crash Site）", 21: "百合与莲花的神庙（Temple of Lily and Lotus）", 22: "聚点危机（Convergence）", 30: "怒火角斗场（Rings of Wrath）"}
     spectatorPolicy = ["LobbyAllowed", "FriendsAllowed", "AllAllowed", "NotAllowed"]
@@ -211,8 +210,7 @@ async def create_custom_lobby(connection):
     print("对局名（Lobby Name）：", end = "")
     lobbyName = input()
     if lobbyName == "":
-        region = await connection.request("GET", "/riotclient/region-locale")
-        region_locale = await region.json()
+        region_locale = await (await connection.request("GET", "/riotclient/region-locale")).json()
         if region_locale["locale"] == "zh_CN":
             lobbyName = summoner["displayName"] + "的对局"
         elif region_locale["locale"] == "en_US":
@@ -284,8 +282,7 @@ async def create_queue_lobby(connection):
     print("请输入队列房间序号：（输入负数以退出创建）\nPlease enter the queueID: (Enter any negative number to exit the creation)")
     while True:
         try:
-            lobby = await connection.request("GET", "/lol-lobby/v2/lobby")
-            lobby_information = await lobby.json()
+            lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
             if "gameConfig" in lobby_information:
                 prequeueId = lobby_information["gameConfig"]["queueId"]
             else:
@@ -301,8 +298,7 @@ async def create_queue_lobby(connection):
                     }
             await connection.request("DELETE", "/lol-lobby/v2/lobby")
             await connection.request("POST", "/lol-lobby/v2/lobby", data=queue)
-            lobby = await connection.request("GET", "/lol-lobby/v2/lobby")
-            lobby_information = await lobby.json()
+            lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
             if "gameConfig" in lobby_information:
                 postqueueId = lobby_information["gameConfig"]["queueId"]
                 if prequeueId == postqueueId:
@@ -500,39 +496,33 @@ async def add_bots_team2(connection):
 # 获取房间信息（Get lobby information）
 #-----------------------------------------------------------------------------
 async def get_lobby_information(connection):
-    lobby_information = await connection.request("GET", "/lol-lobby/v2/lobby")
-    print(await lobby_information.json())
+    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json
+    print(lobby_information)
     print("创建完成！输入任意键开始游戏，否则继续获取房间信息。\nLobby created successfully! Please press any key to start the game, or null to continue getting lobby information:")
     while input() == "":
-        lobby_information = await connection.request("GET", "/lol-lobby/v2/lobby")
-        print(await lobby_information.json())
+        lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json
+        print(lobby_information)
 
 #-----------------------------------------------------------------------------
 # 开始游戏（Start Game）
 #-----------------------------------------------------------------------------
 async def start_game(connection):
     while True:
-        lobby = await connection.request("GET", "/lol-lobby/v2/lobby")
-        lobby_information = await lobby.json()
+        lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
         if lobby_information["gameConfig"]["isCustom"]:
-            start = await connection.request("POST", "/lol-lobby/v1/lobby/custom/start-champ-select")
-            start_game = await start.json()
+            start_game = await (await connection.request("POST", "/lol-lobby/v1/lobby/custom/start-champ-select")).json()
             #print("start_game = ", end = "")
             #print(start_game)
             if "success" in start_game and start_game["success"] == True:
-                gameflow = await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")
-                gameflow_phase = await gameflow.json() #gameflow_phase参数（parameters）：None、Lobby、Matchmaking、ReadyCheck、ChampSelect、InProgress、WaitingForStats、EndOfGame
+                gameflow_phase = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json() #gameflow_phase参数（parameters）：None、Lobby、Matchmaking、ReadyCheck、ChampSelect、InProgress、WaitingForStats、EndOfGame
                 while gameflow_phase != "ChampSelect":
-                    gameflow = await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")
-                    gameflow_phase = await gameflow.json()
+                    gameflow_phase = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
                     #print("gameflow-phase = ", end = "")
                     #print(gameflow_phase)
-                gamemode = await connection.request("GET", "/lol-gameflow/v1/session")
-                gamemode_info = await gamemode.json()
+                gamemode_info = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
                 print(gamemode_info)
                 while gameflow_phase == "ChampSelect":
-                    gameflow = await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")
-                    gameflow_phase = await gameflow.json()
+                    gameflow_phase = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
                 #print("gameflow-phase = ", end = "")
                 #print(gameflow_phase)
                 if gameflow_phase == "Lobby":
@@ -571,20 +561,16 @@ async def start_game(connection):
                             print(i[0] + "\t" + str(i[1]) + "\t" + "次选（Second）")
                     print("请确认各召唤师就绪后，按回车开始匹配。\nPlease start queue by pressing Enter after confirming all ready.")
                     input()
-                    lobby = await connection.request("GET", "/lol-lobby/v2/lobby")
-                    lobby_information = await lobby.json()
-            start = await connection.request("POST", "/lol-lobby/v2/lobby/matchmaking/search")
-            start_game = await start.json() # 对于一些点击“寻找对局”没有反应的房间，会给出以下信息：{'errorCode': 'RPC_ERROR', 'httpStatus': 400, 'implementationDetails': {}, 'message': 'NOT_A_MATCHMADE_QUEUE'}
-            search = await connection.request("GET", "/lol-lobby/v2/lobby/matchmaking/search-state")
-            search_state = await search.json()
+                    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+            start_game = await (await connection.request("POST", "/lol-lobby/v2/lobby/matchmaking/search")).json() # 对于一些点击“寻找对局”没有反应的房间，会给出以下信息：{'errorCode': 'RPC_ERROR', 'httpStatus': 400, 'implementationDetails': {}, 'message': 'NOT_A_MATCHMADE_QUEUE'}
+            search_state = await (await connection.request("GET", "/lol-lobby/v2/lobby/matchmaking/search-state")).json()
             print("start_game = ", end = "")
             print(start_game)
             count1 = 0
             while start_game != None:
                 #print(type(start_game))
                 count1 += 1 # count1为尝试次数，如果search_state没有及时得到更新，意味着房间内的“寻找对局”按钮不可用（count1 means times of trying. If search_state doesn't get updated in time, it means the "Find Queue" button isn't available）
-                search = await connection.request("GET", "/lol-lobby/v2/lobby/matchmaking/search-state")
-                search_state = await search.json() #已知问题：队列房间序号为700时，程序在该处陷入死循环，因为“寻找对局”按钮不可用，无法更新search_state（Known problem: When queueId is 700, program is stuck in an infinite loop here, because the "Find Queue" button isn't available, which prevents search_state from updating）
+                search_state = await (await connection.request("GET", "/lol-lobby/v2/lobby/matchmaking/search-state")).json() #已知问题：队列房间序号为700时，程序在该处陷入死循环，因为“寻找对局”按钮不可用，无法更新search_state（Known problem: When queueId is 700, program is stuck in an infinite loop here, because the "Find Queue" button isn't available, which prevents search_state from updating）
                 #print(search_state, end = "\n")
                 if count1 > 500 and search_state["errors"] == []:
                     print("该队列房间不可用！程序即将退出！\nThis queue lobby isn't available! The program will exit soon!")
@@ -607,25 +593,40 @@ async def start_game(connection):
                         penalty_time_remaining_text_en += str(penalty_minute) + " m "
                     penalty_time_remaining_text_zh += str(penalty_second) + "秒"
                     penalty_time_remaining_text_en += str(penalty_second) + " s"
-                    print("秒退计时器：由于你在英雄选择过程中退出了游戏，或者拒绝了过多场游戏，导致你无法加入队列。剩余时间：" + penalty_time_remaining_text_zh + "。\nQUEUE DODGE TIMER: Because you abandoned a recent game during champ selection or declined too many games, you're currently unable to join the queue. Penalty Time Remaining: " + penalty_time_remaining_text_en + ".")
+                    print("队列秒退计时器：由于你在英雄选择过程中退出了游戏，或者拒绝了过多场游戏，导致你无法加入队列。剩余时间：" + penalty_time_remaining_text_zh + "。\nQUEUE DODGE TIMER: Because you abandoned a recent game during champ selection or declined too many games, you're currently unable to join the queue. Penalty Time Remaining: " + penalty_time_remaining_text_en + ".")
                     input()
-                    start = await connection.request("POST", "/lol-lobby/v2/lobby/matchmaking/search")
-                    start_game = await start.json()
-                    search = await connection.request("GET", "/lol-lobby/v2/lobby/matchmaking/search-state")
-                    search_state = await search.json()
+                    start_game = await (await connection.request("POST", "/lol-lobby/v2/lobby/matchmaking/search")).json()
+                    search_state = await (await connection.request("GET", "/lol-lobby/v2/lobby/matchmaking/search-state")).json()
             print("队列中……\nIn Queue ...")
-            gameflow = await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")
-            gameflow_phase = await gameflow.json()
+            gameflow_phase = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
+            search_state = await (await connection.request("GET", "/lol-lobby/v2/lobby/matchmaking/search-state")).json()
+            while search_state["lowPriorityData"]["reason"] == "LEAVER_BUSTED":
+                print("search-state = ", end = "")
+                print(search_state, end = "\n")
+                penalty_time_remaining = int(search_state["lowPriorityData"]["penaltyTimeRemaining"])
+                penalty_time_remaining_text_zh = ""
+                penalty_time_remaining_text_en = ""
+                penalty_hour = penalty_time_remaining // 3600
+                penalty_minute = penalty_time_remaining % 3600 // 60
+                penalty_second = penalty_time_remaining % 60
+                if penalty_hour != 0:
+                    penalty_time_remaining_text_zh += str(penalty_hour) + "时"
+                    penalty_time_remaining_text_en += str(penalty_hour) + " h "
+                if penalty_minute != 0:
+                    penalty_time_remaining_text_zh += str(penalty_minute) + "分"
+                    penalty_time_remaining_text_en += str(penalty_minute) + " m "
+                penalty_time_remaining_text_zh += str(penalty_second) + "秒"
+                penalty_time_remaining_text_en += str(penalty_second) + " s"
+                print("低优先级队列：放弃比赛或是挂机，会导致你的队友进行一场不公平的对局，并且会被系统视为应受惩罚的恶劣行为。你的队伍已被放置在一条低优先级队列中。离开该队列、拒绝或未能接受对局将重置这个倒计时。剩余时间：" + penalty_time_remaining_text_zh + ".\nLow Priority Queue: Abandoning a match or being AFK results in a negarive experience for your teammates, and is a punishable offense in League of Legends. You've been placed in a lower priority queue. Leaving the queue, declining or failing to accept a match will reset the timer. Time Remaining: " + penalty_time_remaining_text_en + ".")
+                input()
+                search_state = await (await connection.request("GET", "/lol-lobby/v2/lobby/matchmaking/search-state")).json()
             while gameflow_phase == "Lobby":
-                gameflow = await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")
-                gameflow_phase = await gameflow.json()
+                gameflow_phase = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
             print("gameflow-phase = ", end = "")
             print(gameflow_phase)
             while search_state["searchState"] != "Found":
-                search = await connection.request("GET", "/lol-lobby/v2/lobby/matchmaking/search-state")
-                search_state = await search.json()
-                gameflow = await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")
-                gameflow_phase = await gameflow.json()
+                search_state = await (await connection.request("GET", "/lol-lobby/v2/lobby/matchmaking/search-state")).json()
+                gameflow_phase = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
                 #print("gameflow-phase = " & gameflow_phase)
                 if gameflow_phase == "Lobby": #这里可以考虑使用gameflow_phase进行替换。下同（It's alternative to substitute gameflow_phase for search_state here. So are the following code）
                     break
@@ -644,17 +645,13 @@ async def start_game(connection):
             else:
                 await connection.request("POST", "/lol-matchmaking/v1/ready-check/decline")
                 while search_state["searchState"] == "Found":
-                    search = await connection.request("GET", "/lol-lobby/v2/lobby/matchmaking/search-state")
-                    search_state = await search.json()
-            gameflow = await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")
-            gameflow_phase = await gameflow.json()
+                    search_state = await (await connection.request("GET", "/lol-lobby/v2/lobby/matchmaking/search-state")).json()
+            gameflow_phase = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
             count = 0 #这里count确保选英雄时游戏模式的信息只输出一次（Here the variable "count" makes sure that the game mode information will be output only once）
             while gameflow_phase == "ReadyCheck" or gameflow_phase == "ChampSelect":
-                gameflow = await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")
-                gameflow_phase = await gameflow.json()
+                gameflow_phase = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
                 if gameflow_phase == "ChampSelect" and count == 0:
-                    gamemode = await connection.request("GET", "/lol-gameflow/v1/session")
-                    gamemode_info = await gamemode.json()
+                    gamemode_info = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
                     print(gamemode_info)
                     count += 1
                 #print("gameflow-phase = ", end = "")

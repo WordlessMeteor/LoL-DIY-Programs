@@ -1,13 +1,13 @@
 {
     "type": "tft-queue-types",
-    "version": "14.4.1",
+    "version": "14.5.1",
     "data": {
         "1090": {
             "id": "1090",
             "name": "NORMAL",
             "queueType": "NORMAL_TFT",
             "image": {
-                "full": "1090.png",
+                "full": "TFTM_ModeIcon_Normal.png",
                 "sprite": "tft-queue-type0.png",
                 "group": "tft-queue-type",
                 "x": 0,
@@ -21,7 +21,7 @@
             "name": "RANKED",
             "queueType": "RANKED_TFT",
             "image": {
-                "full": "1100.png",
+                "full": "TFTM_ModeIcon_Ranked.png",
                 "sprite": "tft-queue-type0.png",
                 "group": "tft-queue-type",
                 "x": 48,
@@ -35,7 +35,7 @@
             "name": "TUTORIAL",
             "queueType": "TUTORIAL_TFT",
             "image": {
-                "full": "1110.png",
+                "full": "TFTM_ModeIcon_Tutorial.png",
                 "sprite": "tft-queue-type0.png",
                 "group": "tft-queue-type",
                 "x": 96,
@@ -49,7 +49,7 @@
             "name": "HYPER ROLL",
             "queueType": "RANKED_TFT_TURBO",
             "image": {
-                "full": "1130.png",
+                "full": "TFTM_ModeIcon_Turbo.png",
                 "sprite": "tft-queue-type0.png",
                 "group": "tft-queue-type",
                 "x": 144,
@@ -63,7 +63,7 @@
             "name": "DOUBLE UP (WORKSHOP)",
             "queueType": "RANKED_TFT_DOUBLE_UP",
             "image": {
-                "full": "1160.png",
+                "full": "TFTM_ModeIcon_DoubleUp.png",
                 "sprite": "tft-queue-type0.png",
                 "group": "tft-queue-type",
                 "x": 192,
@@ -77,38 +77,10 @@
             "name": "FORTUNE'S FAVOR",
             "queueType": "NORMAL_TFT",
             "image": {
-                "full": "1170.png",
+                "full": "TFTM_ModeIcon_LNY.png",
                 "sprite": "tft-queue-type0.png",
                 "group": "tft-queue-type",
                 "x": 240,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "1180": {
-            "id": "1180",
-            "name": "SOUL BRAWL",
-            "queueType": "SF_TFT",
-            "image": {
-                "full": "1180.png",
-                "sprite": "tft-queue-type0.png",
-                "group": "tft-queue-type",
-                "x": 288,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "1190": {
-            "id": "1190",
-            "name": "CHONCC'S TREASURE",
-            "queueType": "LNY23_TFT",
-            "image": {
-                "full": "1190.png",
-                "sprite": "tft-queue-type0.png",
-                "group": "tft-queue-type",
-                "x": 336,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -119,10 +91,10 @@
             "name": "SET 3.5 REVIVAL: GALAXIES",
             "queueType": "LNY24_TFT",
             "image": {
-                "full": "6000.png",
+                "full": "TFTM_ModeIcon_LNY.png",
                 "sprite": "tft-queue-type0.png",
                 "group": "tft-queue-type",
-                "x": 384,
+                "x": 288,
                 "y": 0,
                 "w": 48,
                 "h": 48

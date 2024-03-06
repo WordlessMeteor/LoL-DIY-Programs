@@ -1074,7 +1074,7 @@
     },
     {
         "display_name": "8-bit",
-        "trait_id": "Set10_8Bit",
+        "trait_id": "TFT10_8Bit",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_8Bit.TFT_Set10.png",
         "tooltip_text": "Keep score of your team's damage dealt. For each high score you beat, 8-bit champions gain Attack&nbsp;Damage.<br><br><row>(@MinUnits@) @AttackDamage@% %i:scaleAD%</row><br><row>(@MinUnits@) @AttackDamage@% %i:scaleAD%</row><br><row>(@MinUnits@) @AttackDamage@% %i:scaleAD% and unlock a final high score, that rewards you with a grand prize.</row><br><br>Bonus: @TFTUnitProperty.trait:TFT10_Trait_8bit_CurrentBonus@% %i:scaleAD% (@TFTUnitProperty.trait:TFT10_Trait_8bit_StackCount@/@NumHighScores@)",
@@ -1242,7 +1242,7 @@
     },
     {
         "display_name": "Bruiser",
-        "trait_id": "Set10_Brawler",
+        "trait_id": "TFT10_Brawler",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Brawler.png",
         "tooltip_text": "Your team gains @TeamFlatHealth@ Health. Bruisers gain bonus max Health.<br><br><expandRow>(@MinUnits@) @BonusPercentHealth*100@% max %i:scaleHealth%</expandRow>",
@@ -1305,7 +1305,7 @@
     },
     {
         "display_name": "Breakout",
-        "trait_id": "Set10_Breakout",
+        "trait_id": "TFT10_Breakout",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Breakout.TFT_Set10.png",
         "tooltip_text": "(unique) Akali is a member of K/DA or True Damage depending on which trait has more fielded champions. She gains a different Ability depending on which form she takes. ",
@@ -1321,7 +1321,7 @@
     },
     {
         "display_name": "Maestro",
-        "trait_id": "Set10_Classical",
+        "trait_id": "TFT10_Classical",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Classical.TFT_Set10.png",
         "tooltip_text": "(unique) The Maestro always attacks at a fixed pace, converting @BonusAttackSpeed@% bonus Attack Speed into @BonusAttackDamage@% Attack Damage. ",
@@ -1363,7 +1363,7 @@
     },
     {
         "display_name": "Country",
-        "trait_id": "Set10_Country",
+        "trait_id": "TFT10_Country",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Country.TFT_Set10.png",
         "tooltip_text": "When your team loses @HealthRatio*100@% of their Health, call a Dreadsteed that empowers your team. Each Country star&nbsp;level increases the Dreadsteed's Health and Attack&nbsp;Damage.<br><br><row>(@MinUnits@) Dreadsteed</row><br><row>(@MinUnits@) Midnight Dreadsteed</row><br><row>(@MinUnits@) Infernal Invocation Dreadsteed</row>",
@@ -1441,7 +1441,7 @@
     },
     {
         "display_name": "Crowd Diver",
-        "trait_id": "Set10_CrowdDive",
+        "trait_id": "TFT10_CrowdDive",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_CrowdDiver.TFT_Set10.png",
         "tooltip_text": "After Crowd Divers die, they leap onto the furthest enemy, dealing <magicDamage>@JumpDamage@</magicDamage> magic damage. Enemies within @StunRange@ hex are Stunned for @StunDuration@ seconds.<br><br>They also deal bonus damage, increased by @BonusPerSecond*100@% each second.<br><br><expandRow>(@MinUnits@) @BaseBonus*100@% bonus damage</expandRow>",
@@ -1514,7 +1514,7 @@
     },
     {
         "display_name": "Mixmaster",
-        "trait_id": "Set10_DJ",
+        "trait_id": "TFT10_DJ",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_DJ.TFT_Set10.png",
         "tooltip_text": "(unique) Choose a mode that changes the Mixmaster's attacks and Ability!",
@@ -1530,7 +1530,7 @@
     },
     {
         "display_name": "Dazzler",
-        "trait_id": "Set10_Dazzler",
+        "trait_id": "TFT10_Dazzler",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_4_Dazzler.png",
         "tooltip_text": "Dazzlers' Abilities reduce their target's damage by @DamageDecrease*100@% and deal bonus magic damage over @Duration@ seconds.<br><br><expandRow>(@MinUnits@) <magicDamage>@DOTPercent*100@%</magicDamage> magic damage</expandRow>",
@@ -1608,7 +1608,7 @@
     },
     {
         "display_name": "Big Shot",
-        "trait_id": "Set10_Deadeye",
+        "trait_id": "TFT10_Deadeye",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_BigShot.TFT_Set10.png",
         "tooltip_text": "Big Shots gain Attack Damage, which increases for @Duration@ seconds when they use their Ability.<br><br><expandRow>(@MinUnits@) @PercentAD*100@% %i:scaleAD%, @PercentADEmpowered*100@% after casting</expandRow>",
@@ -1681,7 +1681,7 @@
     },
     {
         "display_name": "EDM",
-        "trait_id": "Set10_EDM",
+        "trait_id": "TFT10_EDM",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_EDM.TFT_Set10.png",
         "tooltip_text": "Use the EDM selector item to choose an EDM champion and see the frequency for each.<br><br>At the selected champion's frequency, your EDM champions cast the selected Ability with modified effectiveness.<br><br><row>(@MinUnits@) @EDMstats*100@% effectiveness</row><br><row>(@MinUnits@) @EDMstats*100@% effectiveness</row><br><row>(@MinUnits@) @EDMstats*100@% effectiveness, -@EDMtimereduction@ second</row><br><row>(@MinUnits@) @EDMstats*100@% effectiveness, -@EDMtimereduction@ second</row>",
@@ -1797,7 +1797,7 @@
     },
     {
         "display_name": "Edgelord",
-        "trait_id": "Set10_Edgelord",
+        "trait_id": "TFT10_Edgelord",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Edgelord.TFT_Set10.png",
         "tooltip_text": "Edgelords gain Attack Speed, which doubles when their target drops below @HealthRatio*100@% Health. Edgelords with 1-hex range also dash through them on their next&nbsp;attack. <br><br><expandRow>(@MinUnits@) @AttackSpeed*100@% %i:scaleAS%</expandRow><br>",
@@ -1860,7 +1860,7 @@
     },
     {
         "display_name": "Emo",
-        "trait_id": "Set10_Emo",
+        "trait_id": "TFT10_Emo",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_BigSad.TFT_Set10.png",
         "tooltip_text": "Emo champions' Abilities cost less Mana to cast, and they gain Mana whenever an allied champion dies.<br><br><row>(@MinUnits@) @InitialMana@%&nbsp;less, gain @StackingMana@&nbsp;%i:scaleMana%</row><br><row>(@MinUnits@) @InitialMana@%&nbsp;less, gain @StackingMana@&nbsp;%i:scaleMana%</row><br><row>(@MinUnits@) @BonusAP@&nbsp;%i:scaleAP%; @InitialMana@% less, gain @StackingMana@&nbsp;%i:scaleMana% </row>",
@@ -1928,7 +1928,7 @@
     },
     {
         "display_name": "Executioner",
-        "trait_id": "Set10_Executioner",
+        "trait_id": "TFT10_Executioner",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_4_Executioner.png",
         "tooltip_text": "Executioner Abilities can critically strike and they gain Critical Strike Damage. Their Critical Strike Chance is increased based on their target's missing Health.<br><br><expandRow>(@MinUnits@) @CRIT_DAMAGE*100@% %i:scaleCritMult%. Up to @CRIT_PERCENT*100@% %i:scaleCrit%</expandRow>",
@@ -1991,7 +1991,7 @@
     },
     {
         "display_name": "Mosher",
-        "trait_id": "Set10_Fighter",
+        "trait_id": "TFT10_Fighter",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Mosher.TFT_Set10.png",
         "tooltip_text": "Moshers gain Attack Speed and <TFTKeyword>Omnivamp</TFTKeyword>, which increases up to @AmountIncrease*100@% based on their missing Health. <br><br><expandRow>(@MinUnits@) @FighterAS@% %i:scaleAS%, @FighterVamp@% Omnivamp </expandRow><br><br><rules>Omnivamp: Heal for percentage of damage dealt</rules>",
@@ -2082,7 +2082,7 @@
     },
     {
         "display_name": "Disco",
-        "trait_id": "Set10_Funk",
+        "trait_id": "TFT10_Funk",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Funk.TFT_Set10.png",
         "tooltip_text": "Summon a movable Disco Ball. <br><br>Combat start: Allies next to it gain Attack Speed and healing immediately and every @TickRate@ seconds.<br><br><row>(@MinUnits@) @AttackSpeed*100@% %i:scaleAS% and @Healing*100@% max %i:scaleHealth%</row><br><row>(@MinUnits@) @AttackSpeed*100@% %i:scaleAS% and @Healing*100@% max %i:scaleHealth%</row><br><row>(@MinUnits@) 2 Disco Balls, @AttackSpeed*100@% %i:scaleAS% and @Healing*100@% max %i:scaleHealth%</row><br><row>(@MinUnits@) @AttackSpeed*100@% %i:scaleAS% and @Healing*100@% max %i:scaleHealth%</row>",
@@ -2198,7 +2198,7 @@
     },
     {
         "display_name": "Guardian",
-        "trait_id": "Set10_Guardian",
+        "trait_id": "TFT10_Guardian",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_7_Guardian.png",
         "tooltip_text": "Once per combat at @PercentHealthThreshold@% Health, Guardians shield themselves and their closest ally for a percent of their max Health.<br><br><expandRow>(@MinUnits@) @ShieldPercentAmount@%</expandRow>",
@@ -2261,7 +2261,7 @@
     },
     {
         "display_name": "Hyperpop",
-        "trait_id": "Set10_Hyperpop",
+        "trait_id": "TFT10_Hyperpop",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Hyperpop.TFT_Set10.png",
         "tooltip_text": "When Hyperpop champions use an Ability, they grant Mana and @BuffDuration@ seconds of Attack Speed to their @NumOfAllies@ closest allies.<br><br><expandRow>(@MinUnits@) @Mana@ %i:scaleMana% and @AS*100@% %i:scaleAS%</expandRow>",
@@ -2357,7 +2357,7 @@
     },
     {
         "display_name": "ILLBEATS",
-        "trait_id": "Set10_IllBeats",
+        "trait_id": "TFT10_IllBeats",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_ILLBeats.TFT_Set10.png",
         "tooltip_text": "(unique) Gain @1Star@/@2Star@/@3Star@ placeable Spirit Tentacles, based on Illaoi's star level. Tentacles gain Illaoi's bonus Armor and Magic Resist.",
@@ -2394,7 +2394,7 @@
     },
     {
         "display_name": "Jazz",
-        "trait_id": "Set10_Jazz",
+        "trait_id": "TFT10_Jazz",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Jazz.TFT_Set10.png",
         "tooltip_text": "For each active trait (except uniques), your team gains bonus Health and deals bonus damage.<br><br><expandRow>(@MinUnits@) @BonusHealth*100@% %i:scaleHealth%, @BonusDamage*100@% Damage</expandRow><br><br>Bonus Health: @TFTUnitProperty.trait:TFT10_Trait_Jazz_TraitTracker_CurrentBonus@%<br>Bonus Damage: @TFTUnitProperty.trait:TFT10_Trait_Jazz_TraitTracker_CurrentBonus_Damage@%",
@@ -2457,7 +2457,7 @@
     },
     {
         "display_name": "K/DA",
-        "trait_id": "Set10_KDA",
+        "trait_id": "TFT10_KDA",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_KDA.TFT_Set10.png",
         "tooltip_text": "Your team gains max Health, Ability Power, and Attack Damage if they are in a lighted hex. K/DA champions gain double!<br><br><row>(@MinUnits@) @BonusMaxHealth*100@% max %i:scaleHealth%, @BonusAP@%&nbsp;%i:scaleAP%%i:scaleAD%</row><br><row>(@MinUnits@) @BonusMaxHealth*100@% max %i:scaleHealth%, @BonusAP@%&nbsp;%i:scaleAP%%i:scaleAD%</row><br><row>(@MinUnits@) @BonusMaxHealth*100@% max %i:scaleHealth%, @BonusAP@%&nbsp;%i:scaleAP%%i:scaleAD%</row><br><row>(@MinUnits@) @BonusMaxHealth*100@% max %i:scaleHealth%, @BonusAP@%&nbsp;%i:scaleAP%%i:scaleAD%, @ManaPerSecond@ mana per second </row>",
@@ -2578,7 +2578,7 @@
     },
     {
         "display_name": "Pentakill",
-        "trait_id": "Set10_Pentakill",
+        "trait_id": "TFT10_Pentakill",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Pentakill.TFT_Set10.png",
         "tooltip_text": "Pentakill champions reduce incoming damage by 15% and deal bonus damage. For each champion kill, a Pentakill champion rocks out and increases their damage bonus by @Kill_Bonus*100@%.<br><br>On the @Kill_Count@th kill, all Pentakill champions rock out and your team gains @Attack_Speed*100@% Attack Speed.<br><br><row>(@MinUnits@) @Bonus_Damage*100@% bonus damage</row><br><row>(@MinUnits@) @Bonus_Damage*100@% bonus damage</row><br><row>(@MinUnits@) @Bonus_Damage*100@% bonus damage</row><br><row>(@MinUnits@) 50% damage reduction and @Bonus_Damage*100@% bonus damage</row>",
@@ -2679,7 +2679,7 @@
     },
     {
         "display_name": "Heartsteel",
-        "trait_id": "Set10_PopBand",
+        "trait_id": "TFT10_PopBand",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Heartsteel.TFT_Set10.png",
         "tooltip_text": "Earn Hearts by killing enemies. Gain even more by losing player combat. Every @RoundCount@ player combats, convert Hearts into powerful rewards! <br><br><row>(@MinUnits@) @PercentHeartRate@x Hearts</row><br><row>(@MinUnits@) @PercentHeartRate@x Hearts</row><br><row>(@MinUnits@) @PercentHeartRate@x Hearts</row><br><row>(@MinUnits@) @PercentHeartRate@x Hearts, Gain rewards every round and keep @HeartKeepPercentage*100@% of your Hearts!</row>",
@@ -2930,7 +2930,7 @@
     },
     {
         "display_name": "Punk",
-        "trait_id": "Set10_PunkRock",
+        "trait_id": "TFT10_PunkRock",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Punk.TFT_Set10.png",
         "tooltip_text": "Punks gain bonus Health and Attack Damage, which increases by 1% every time you spend gold on a Shop reroll.<br><br>After Punks fight in combat, your 1st Shop reroll costs 1 gold and grants @FIRST_ROLL_BONUS@% bonus instead!<br><br><expandRow>(@MinUnits@) @BONUS_HEALTH@ %i:scaleHealth% and @BONUS_AD_AP*100@% %i:scaleAD%</expandRow><br><br>Current Bonus: @TFTUnitProperty.trait:TFT10_Punk_CurrentBonus@%<br>@TFTUnitProperty.trait:TFT10_Punk_CurrentHealthBonus@ %i:scaleHealth% and @TFTUnitProperty.trait:TFT10_Punk_CurrentADBonus@% %i:scaleAD%",
@@ -3008,7 +3008,7 @@
     },
     {
         "display_name": "Rapidfire",
-        "trait_id": "Set10_Quickshot",
+        "trait_id": "TFT10_Quickshot",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Rapidfire.TFT_Set10.png",
         "tooltip_text": "Your team gains @TeamwideAttackSpeed*100@% Attack Speed.<br><br>Rapidfire champions gain more on every attack, up to @MaxStacks@ stacks.<br><br><expandRow>(@MinUnits@) @PercentAS*100@% %i:scaleAS%</expandRow>",
@@ -3081,7 +3081,7 @@
     },
     {
         "display_name": "Sentinel",
-        "trait_id": "Set10_Sentinel",
+        "trait_id": "TFT10_Sentinel",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Warden.TFT_Set10.png",
         "tooltip_text": "Your team gains Armor and Magic Resist. Sentinels gain double.<br><br><expandRow>(@MinUnits@) @BonusArmor@ %i:scaleArmor%, @BonusArmor@ %i:scaleMR%</expandRow>",
@@ -3162,7 +3162,7 @@
     },
     {
         "display_name": "Spellweaver",
-        "trait_id": "Set10_Spellweaver",
+        "trait_id": "TFT10_Spellweaver",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_5_Sorcerer.png",
         "tooltip_text": "Your team gains @TeamwideAP@ Ability Power. Spellweavers gain more, plus extra Ability Power whenever a Spellweaver casts an Ability.<br><br><expandRow>(@MinUnits@) +@AP@ %i:scaleAP%, +@BonusAP@ %i:scaleAP% per cast</expandRow>",
@@ -3253,7 +3253,7 @@
     },
     {
         "display_name": "Superfan",
-        "trait_id": "Set10_Superfan",
+        "trait_id": "TFT10_Superfan",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Superfan.TFT_Set10.png",
         "tooltip_text": "Superfans improve your Headliner!<br><br><row> (@MinUnits@) Headliner gets a completed item</row><br><row> (@MinUnits@) Headliner gets @HealthBonus@ %i:scaleHealth% and @OmnivampBonus*100@% <TFTKeyword>Omnivamp</TFTKeyword></row><br><row> (@MinUnits@) Item upgrades to radiant</row><br><br><rules>Omnivamp: Heal for percentage of damage dealt</rules>",
@@ -3298,7 +3298,7 @@
     },
     {
         "display_name": "True Damage",
-        "trait_id": "Set10_TrueDamage",
+        "trait_id": "TFT10_TrueDamage",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_TrueDamage.TFT_Set10.png",
         "tooltip_text": "True Damage champions deal bonus true damage. If they are holding an item, they gain a unique Bling Bonus for their Ability.<br><br><row>(@MinUnits@) <trueDamage>@BONUS_DAMAGE*100@%</trueDamage> damage</row><br><row>(@MinUnits@) <trueDamage>@BONUS_DAMAGE*100@%</trueDamage> damage</row><br><row>(@MinUnits@) <trueDamage>@BONUS_DAMAGE*100@%</trueDamage> damage</row><br><row>(@MinUnits@) <trueDamage>@BONUS_DAMAGE*100@%</trueDamage> damage, Bling Bonuses go&nbsp;Platinum!</row>",
@@ -3403,7 +3403,7 @@
     },
     {
         "display_name": "Wildcard",
-        "trait_id": "Set10_TwoSides",
+        "trait_id": "TFT10_TwoSides",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Wildcard.TFT_Set10.png",
         "tooltip_text": "(unique) If you win player combat, Kayn becomes the Shadow Assassin. If not, he becomes Rhaast. You receive a reward based on his form every time he kills @NumOfKills@ enemy champions. <br><br><TFTBonus enabled=TFT10_WildcardShadowAssassin alternate=rules>Shadow Assassin: @AssassinGoldPerKill@g</TFTBonus><br><TFTBonus enabled=TFT10_WildcardRhaast alternate=rules>Rhaast: @RhaastPlayerHealthPerKill@ player health</TFTBonus>",
@@ -3430,6 +3430,2211 @@
                 "min_units": 1,
                 "style_idx": 6,
                 "style_name": "kUnique"
+            }
+        ]
+    },
+    {
+        "display_name": "Altruist",
+        "trait_id": "TFT11_Altruist",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Altruist.TFT_Set11.png",
+        "tooltip_text": "Altruists heal the lowest Health ally for @PercentDamageToHeal*100@% of damage they deal. Your team gains Armor and Magic Resist.<br><br><expandRow>(@MinUnits@) @Resists@&nbsp;%i:scaleArmor%%i:scaleMR%</expandRow>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PercentDamageToHeal",
+                        "value": 0.1500,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Resists",
+                        "value": 10.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 2,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Resists",
+                        "value": 25.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 3,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Resists",
+                        "value": 40.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "Arcanist",
+        "trait_id": "TFT11_Arcanist",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_6_Arcanist.png",
+        "tooltip_text": "Arcanists gain Ability&nbsp;Power and grant Ability&nbsp;Power to allies.<br><br><row>(@MinUnits@) @TeamAbilityPower@&nbsp;%i:scaleAP% to all allies.</row><br><row>(@MinUnits@) @ArcanistAbilityPower@&nbsp;%i:scaleAP% for Arcanists; @TeamAbilityPower@&nbsp;%i:scaleAP% for others</row><br><row>(@MinUnits@) @ArcanistAbilityPower@&nbsp;%i:scaleAP% for Arcanists; @TeamAbilityPower@&nbsp;%i:scaleAP% for others</row><br><row>(@MinUnits@) @ArcanistAbilityPower@&nbsp;%i:scaleAP% for Arcanists; @TeamAbilityPower@&nbsp;%i:scaleAP% for others</row>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ArcanistAbilityPower",
+                        "value": 20.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TeamAbilityPower",
+                        "value": 20.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ArcanistAbilityPower",
+                        "value": 40.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TeamAbilityPower",
+                        "value": 20.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ArcanistAbilityPower",
+                        "value": 80.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TeamAbilityPower",
+                        "value": 40.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 7,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ArcanistAbilityPower",
+                        "value": 120.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TeamAbilityPower",
+                        "value": 100.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 8,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "Artist",
+        "trait_id": "TFT11_Artist",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Artist.TFT_Set11.png",
+        "tooltip_text": "The Artist paints the champion you place in a special bench slot. Get a 1-star copy of the champion placed there when the Artist's work is complete.<br><br><TFTBonus>Rounds to Complete&nbsp;= Unit Cost</TFTBonus>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [],
+                "min_units": 1,
+                "style_idx": 6,
+                "style_name": "kUnique"
+            }
+        ]
+    },
+    {
+        "display_name": "Behemoth",
+        "trait_id": "TFT11_Behemoth",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Behemoth.TFT_Set11.png",
+        "tooltip_text": "Behemoths gain increased Armor and Magic&nbsp;Resist. Whenever a Behemoth dies, the nearest Behemoth gains @BonusPercent*100@% more for @Duration@ seconds.<br><br><expandRow>(@MinUnits@) @Defenses@&nbsp;%i:scaleArmor%%i:scaleMR%</expandRow><br>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "NearbyAllyEmpower",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Duration",
+                        "value": 5.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BonusPercent",
+                        "value": 0.5000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Defenses",
+                        "value": 30.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Defenses",
+                        "value": 45.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Defenses",
+                        "value": 80.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "Bruiser",
+        "trait_id": "TFT11_Bruiser",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_6_Bruiser.png",
+        "tooltip_text": "Your team gains @TeamBonusHealth@ maximum Health. Bruisers gain additional maximum Health. <br><br><row>(@MinUnits@) @BonusPercentHealth*100@%&nbsp;%i:scaleHealth%</row><br><row>(@MinUnits@) @BonusPercentHealth*100@%&nbsp;%i:scaleHealth%</row><br><row>(@MinUnits@) @BonusPercentHealth*100@%&nbsp;%i:scaleHealth%</row><br><row>(@MinUnits@) @BonusPercentHealth*100@%&nbsp;%i:scaleHealth%; Every @RefreshSeconds@&nbsp;seconds, Bruisers deal @SlamPercentHealth*100@%&nbsp;%i:scaleHealth% bonus physical&nbsp;damage on their next attack.</row>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "RefreshSeconds",
+                        "value": 4.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TeamBonusHealth",
+                        "value": 100.0000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "BonusPercentHealth",
+                        "value": 0.2000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "SlamPercentHealth",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "BonusPercentHealth",
+                        "value": 0.4000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "SlamPercentHealth",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "BonusPercentHealth",
+                        "value": 0.7000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "SlamPercentHealth",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 7,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "BonusPercentHealth",
+                        "value": 0.8500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "SlamPercentHealth",
+                        "value": 0.0600,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 8,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "Dragonlord",
+        "trait_id": "TFT11_Dragonlord",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Dragonlord.TFT_Set11.png",
+        "tooltip_text": "After @FirstDelay@ seconds of combat, the Dragon strikes the board, dealing true damage to enemies and granting all allies Attack Speed for the rest of combat.<br><br><row>(@MinUnits@) <trueDamage>@TrueDamageHPRatio*100@%&nbsp;%i:scaleHealth%</trueDamage> damage, @AttackSpeedBuff*100@% %i:scaleAS%.</row><br><row>(@MinUnits@) <trueDamage>@TrueDamageHPRatio*100@%&nbsp;%i:scaleHealth%</trueDamage> damage, @AttackSpeedBuff*100@% %i:scaleAS%.</row><br><row>(@MinUnits@) <trueDamage>@TrueDamageHPRatio*100@%&nbsp;%i:scaleHealth%</trueDamage> damage and Stuns for @StunDuration@ seconds.</row><br><row>(@MinUnits@) <trueDamage>@TrueDamageHPRatio*100@%&nbsp;%i:scaleHealth%</trueDamage> damage, @AttackSpeedBuff*100@% %i:scaleAS%.</row>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "FirstDelay",
+                        "value": 8.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TrueDamageHPRatio",
+                        "value": 0.0500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "AttackSpeedBuff",
+                        "value": 0.2000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ASDuration",
+                        "value": 60.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "StrikeLevel",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 2,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "FirstDelay",
+                        "value": 8.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TrueDamageHPRatio",
+                        "value": 0.1000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "StunDuration",
+                        "value": 1.2500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "AttackSpeedBuff",
+                        "value": 0.3000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ASDuration",
+                        "value": 60.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "StrikeLevel",
+                        "value": 2.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 3,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "FirstDelay",
+                        "value": 8.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TrueDamageHPRatio",
+                        "value": 0.1500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "StunDuration",
+                        "value": 1.5000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "AttackSpeedBuff",
+                        "value": 0.3000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ASDuration",
+                        "value": 60.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "StrikeLevel",
+                        "value": 3.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 4,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "FirstDelay",
+                        "value": 8.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TrueDamageHPRatio",
+                        "value": 0.2500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "StunDuration",
+                        "value": 1.5000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "AttackSpeedBuff",
+                        "value": 0.4000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ASDuration",
+                        "value": 60.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "StrikeLevel",
+                        "value": 3.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 5,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "Dryad",
+        "trait_id": "TFT11_Dryad",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Dryad.TFT_Set11.png",
+        "tooltip_text": "Dryads gain Ability Power and @StartingHealth@ Health. Each enemy death grants additional Health.<br><br><expandRow>(@MinUnits@) @AP@&nbsp;%i:scaleAP%; @HealthPerCompost@&nbsp;%i:scaleHealth% per enemy death</expandRow><br><br><TFTTrackerLabel>(Total health: @TFTUnitProperty.trait:TFT11_Trait_DryadHealth@&nbsp;%i:scaleHealth%)</TFTTrackerLabel><br><TFTTrackerLabel>(Enemies killed: @TFTUnitProperty.trait:TFT11_Trait_DryadCompost@)</TFTTrackerLabel><br>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Duration",
+                        "value": 4.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "StartingHealth",
+                        "value": 100.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "StartingHealthHR",
+                        "value": 100.0000,
+                        "format_string": ""
+                    }
+                ]
+            },
+            {
+                "effect_amounts": []
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HealthPerCompost",
+                        "value": 4.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "AP",
+                        "value": 10.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealthPerCompostHR",
+                        "value": 8.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HealthPerCompost",
+                        "value": 8.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "AP",
+                        "value": 20.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealthPerCompostHR",
+                        "value": 16.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HealthPerCompost",
+                        "value": 12.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "AP",
+                        "value": 40.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealthPerCompostHR",
+                        "value": 24.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "Duelist",
+        "trait_id": "TFT11_Duelist",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_8_Duelist.png",
+        "tooltip_text": "Duelists gain Attack&nbsp;Speed on each attack, stacking up to @MaxStacks@&nbsp;times.<br><br><row>(@MinUnits@) @AttackSpeedPercent*100@%&nbsp;%i:scaleAS%</row><br><row>(@MinUnits@) @AttackSpeedPercent*100@%&nbsp;%i:scaleAS%</row><br><row>(@MinUnits@) @AttackSpeedPercent*100@%&nbsp;%i:scaleAS%; Duelists take @DamageReduction*100@%&nbsp;less damage</row>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AttackSpeedPercent",
+                        "value": 0.0500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "MaxStacks",
+                        "value": 12.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DamageReduction",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AttackSpeedPercent",
+                        "value": 0.0900,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "MaxStacks",
+                        "value": 12.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DamageReduction",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AttackSpeedPercent",
+                        "value": 0.1300,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "MaxStacks",
+                        "value": 12.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DamageReduction",
+                        "value": 0.1300,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "Exalted",
+        "trait_id": "TFT11_Exalted",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Exalted.TFT_Set11.png",
+        "tooltip_text": "Your team gains @BaseDamageAmp@% bonus damage, plus more based on your level <br><br>After combat, store @BaseAmountXP@ XP in a Soul Core. Sell the Core to claim the XP.<br><br><expandRow>(@MinUnits@) @DamageAmpPerLevel@% damage per level</expandRow><br><br>(<TFTBonus>Current bonus: @TFTUnitProperty.trait:TFT11_Trait_Exalted_CurrentBonus@%</TFTBonus>). <br><br><rules>Each game a different set of units is Exalted.</rules>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "BaseAmountXP",
+                        "value": 2.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HRGold",
+                        "value": 2.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BaseDamageAmp",
+                        "value": 5.0000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DamageAmpPerLevel",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DamageAmpPerLevelHR",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 4,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DamageAmpPerLevel",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DamageAmpPerLevelHR",
+                        "value": 3.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 5,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "Fated",
+        "trait_id": "TFT11_Fated",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Fated.TFT_Set11.png",
+        "tooltip_text": "Hover one Fated unit over another to form a pair and unlock a <TFTBonus>Fated Bonus</TFTBonus>. Your pair gains @PairHPBonus*100@% %i:scaleHealth%.<br><br><row>(@MinUnits@) Pair gets the Fated Bonus. </row><br><row>(@MinUnits@) All Fated champions get @BondIncreasePercent*100@% of the Fated Bonus </row><br><row>(@MinUnits@) All Fated champions get @BondIncreasePercent*100@% of the Fated Bonus </row><br><row>(@MinUnits@) All Fated champions gain @BondIncreasePercent*100@% of EVERY Fated Bonus </row>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PairHPBonus",
+                        "value": 0.2000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "EmblemHPRegen",
+                        "value": 0.2000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PairCount",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BondIncreasePercent",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "GiveToAll",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 4,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PairCount",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BondIncreasePercent",
+                        "value": 1.5000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "GiveToAll",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 5,
+                "max_units": 6,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PairCount",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BondIncreasePercent",
+                        "value": 2.5000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "GiveToAll",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 7,
+                "max_units": 9,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PairCount",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BondIncreasePercent",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "GiveToAll",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 10,
+                "style_idx": 5,
+                "style_name": "kChromatic"
+            }
+        ]
+    },
+    {
+        "display_name": "Fortune",
+        "trait_id": "TFT11_Fortune",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_4_Fortune.png",
+        "tooltip_text": "When you lose a fight, gain Luck. The more fights in a row you lose, the more Luck you get.<br><br>Lose Luck when you win. <br><br><row>(@MinUnits@) Roll a die; in that many player combats, hold a Festival where you may convert your Luck into rewards.</row><br><row>(@MinUnits@) Heal @Heal@ player health at the start of each player combat. </row><br><row>@TFTUnitProperty.:TFT11_Trait_Fortune7Tooltip@</row><br><br><rules>Each Festival, roll a new die.</rules>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "LossValueStage2",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "LossValueStage3",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "LossValueStage4",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "LossValueStage5",
+                        "value": 4.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "LossValueStage6",
+                        "value": 4.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "LossValueStage7",
+                        "value": 5.0000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DieMinRoll",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DieMaxRoll",
+                        "value": 6.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "WinPenalty",
+                        "value": 0.3300,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "FlatHearts",
+                        "value": 0.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Heal",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 4,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DieMinRoll",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DieMaxRoll",
+                        "value": 6.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "WinPenalty",
+                        "value": 0.3300,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "FlatHearts",
+                        "value": 0.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Heal",
+                        "value": 2.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 5,
+                "max_units": 6,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DieMinRoll",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DieMaxRoll",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "WinPenalty",
+                        "value": 0.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "FlatLuck",
+                        "value": 30.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Heal",
+                        "value": 2.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 7,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "Ghostly",
+        "trait_id": "TFT11_Ghostly",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Ghostly.TFT_Set11.png",
+        "tooltip_text": "Upon dealing or taking damage @NumInstances@ times, Ghostly units send @NumSpectres@ spectres to haunt nearby enemies and heal @HealingPercent*100@%&nbsp;max Health every @TickRate@ seconds. <br><br>Haunted enemies take bonus damage for each spectre on them, and pass spectres on death.<br><br><expandRow>(@MinUnits@) @DamagePercent*100@% per spectre</expandRow>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "TickRate",
+                        "value": 2.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealingPercent",
+                        "value": 0.0300,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "NumInstances",
+                        "value": 7.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "NumSpectres",
+                        "value": 2.0000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DamagePercent",
+                        "value": 0.0600,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DamagePercent",
+                        "value": 0.0900,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DamagePercent",
+                        "value": 0.1500,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 7,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DamagePercent",
+                        "value": 0.3000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 8,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "Great",
+        "trait_id": "TFT11_Great",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Great.TFT_Set11.png",
+        "tooltip_text": "Every @CastCount@ casts, Wukong grows his weapon, modifying his Abilities.",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "CastCount",
+                        "value": 3.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 1,
+                "style_idx": 6,
+                "style_name": "kUnique"
+            }
+        ]
+    },
+    {
+        "display_name": "Heavenly",
+        "trait_id": "TFT11_Heavenly",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Heavenly.TFT_Set11.png",
+        "tooltip_text": "Heavenly champions grant a unique stat bonus to your team, increased by their star level and each Heavenly unit in play.<br><br><expandRow>(@MinUnits@) <TFTGuildActive>@HeavenlyBonus*100@%</TFTGuildActive>&nbsp;bonus.</expandRow><br><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveCrit alternate=TFTGuildInactive>Kha'Zix - </TFTGuildActive>&nbsp;%i:scaleCrit% <spellActive enabled=TFT11_Trait_Heavenly_ActiveCrit alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Crit@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveDefenses alternate=TFTGuildInactive>Malphite - </TFTGuildActive>&nbsp;%i:scaleArmor%&nbsp;%i:scaleMR% <spellActive enabled=TFT11_Trait_Heavenly_ActiveDefenses alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Defenses@</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveHealth alternate=TFTGuildInactive>Neeko - </TFTGuildActive>&nbsp;%i:scaleHealth% <spellActive enabled=TFT11_Trait_Heavenly_ActiveHealth alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Health@</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveAttackDamage alternate=TFTGuildInactive>Qiyana - </TFTGuildActive>&nbsp;%i:scaleAD% <spellActive enabled=TFT11_Trait_Heavenly_ActiveAttackDamage alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_AD@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveAP alternate=TFTGuildInactive>Soraka - </TFTGuildActive>&nbsp;%i:scaleAP% <spellActive enabled=TFT11_Trait_Heavenly_ActiveAP alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_AP@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveAttackSpeed alternate=TFTGuildInactive>Wukong - </TFTGuildActive>&nbsp;%i:scaleAS% <spellActive enabled=TFT11_Trait_Heavenly_ActiveAttackSpeed alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_AS@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveOmnivamp alternate=TFTGuildInactive>Emblem - &nbsp;Omnivamp </TFTGuildActive><spellActive enabled=TFT11_Trait_Heavenly_ActiveOmnivamp alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Omnivamp@%</spellActive><br><br><rules>2-stars grant 50% more.<br>3-stars grant 90%&nbsp;more.</rules>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DefensesOneStar",
+                        "value": 8.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "CritOneStar",
+                        "value": 10.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "APOneStar",
+                        "value": 10.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealthOneStar",
+                        "value": 60.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ASOneStar",
+                        "value": 12.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ADOneStar",
+                        "value": 10.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "OmnivampOneStar",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TwoStarMultiplier",
+                        "value": 1.5000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ThreeStarMultiplier",
+                        "value": 1.9000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HeavenlyBonus",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 2,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HeavenlyBonus",
+                        "value": 1.1500,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 3,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HeavenlyBonus",
+                        "value": 1.4000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 4,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HeavenlyBonus",
+                        "value": 1.6500,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 5,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HeavenlyBonus",
+                        "value": 1.9000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 6,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HeavenlyBonus",
+                        "value": 2.2000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 7,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "Inkshadow",
+        "trait_id": "TFT11_InkShadow",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Ink_Shadow.TFT_Set11.png",
+        "tooltip_text": "Gain unique Inkshadow items. Inkshadow champions gain bonus damage and damage reduction.<br><br><row>(@MinUnits@) @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item1@, @PercentBuff@% bonus damage and damage reduction </row><br><row>(@MinUnits@) @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item2@, @PercentBuff@% bonus damage and damage reduction </row><br><row>(@MinUnits@) @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item3@ and @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item4@, @PercentBuff@% bonus damage and damage reduction </row>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "NumOfTattoos",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "PercentBuff",
+                        "value": 5.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 4,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "NumOfTattoos",
+                        "value": 2.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "PercentBuff",
+                        "value": 7.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 5,
+                "max_units": 6,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "NumOfTattoos",
+                        "value": 4.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "PercentBuff",
+                        "value": 10.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 7,
+                "max_units": 8,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "Invoker",
+        "trait_id": "TFT11_Invoker",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Preserver.png",
+        "tooltip_text": "Every @TickRate@ seconds, your units gain Mana.<br><br><row>(@MinUnits@) @TeamMana@&nbsp;%i:scaleMana% to all allies.</row><br><row>(@MinUnits@) @InvokerMana@&nbsp;%i:scaleMana% to Invokers; @TeamMana@&nbsp;%i:scaleMana% to others.</row><br><row>(@MinUnits@) @InvokerMana@&nbsp;%i:scaleMana% to Invokers; @TeamMana@&nbsp;%i:scaleMana% to others.</row>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "TickRate",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TeamMana",
+                        "value": 5.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "InvokerMana",
+                        "value": 5.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TeamAP",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "TickRate",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TeamMana",
+                        "value": 5.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "InvokerMana",
+                        "value": 20.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TeamAP",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "TickRate",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TeamMana",
+                        "value": 15.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "InvokerMana",
+                        "value": 30.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TeamAP",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "Lovers",
+        "trait_id": "TFT11_Lovers",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Lovers.TFT_Set11.png",
+        "tooltip_text": "Change which Lover takes the field depending on whether they are placed in the front or back 2 rows. When the fielded Lover casts, the other provides a bonus&nbsp;effect.<br><br>Front: Trickshot Xayah<br>Back: Altruist Rakan",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": []
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "RakanHealOneStar",
+                        "value": 150.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "RakanHealTwoStar",
+                        "value": 200.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "RakanHealThreeStar",
+                        "value": 1000.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "RakanTargets",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "XayahDamageOneStar",
+                        "value": 200.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "XayahDamageTwoStar",
+                        "value": 300.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "XayahDamageThreeStar",
+                        "value": 1500.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 1,
+                "max_units": 1,
+                "style_idx": 6,
+                "style_name": "kUnique"
+            }
+        ]
+    },
+    {
+        "display_name": "Mythic",
+        "trait_id": "TFT11_Mythic",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Mythic.TFT_Set11.png",
+        "tooltip_text": "Mythic champions gain Health, Ability Power, and Attack Damage.<br><br>After 4 player combats, they become Epic, increasing the bonus by @Multiplier*100@%.<br><br><row>(@MinUnits@) +@HealthPct*100@%&nbsp;%i:scaleHealth%, @AP@%&nbsp;%i:scaleAP%%i:scaleAD%</row><br><row>(@MinUnits@) +@HealthPct*100@%&nbsp;%i:scaleHealth%, @AP@%&nbsp;%i:scaleAP%%i:scaleAD%</row><br><row>(@MinUnits@) +@HealthPct*100@%&nbsp;%i:scaleHealth%, @AP@%&nbsp;%i:scaleAP%%i:scaleAD%</row><br><row>(@MinUnits@) Instantly become Epic. The bonus is increased by @PrismaticMultiplier*100@% instead.</row>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": []
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AP",
+                        "value": 12.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealthPct",
+                        "value": 0.1000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Multiplier",
+                        "value": 0.5000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 4,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AP",
+                        "value": 20.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealthPct",
+                        "value": 0.1600,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Multiplier",
+                        "value": 0.5000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 5,
+                "max_units": 6,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AP",
+                        "value": 32.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealthPct",
+                        "value": 0.2400,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Multiplier",
+                        "value": 0.5000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 7,
+                "max_units": 9,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AP",
+                        "value": 32.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealthPct",
+                        "value": 0.2400,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Multiplier",
+                        "value": 0.5000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "PrismaticMultiplier",
+                        "value": 2.5000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 10,
+                "style_idx": 5,
+                "style_name": "kChromatic"
+            }
+        ]
+    },
+    {
+        "display_name": "Porcelain",
+        "trait_id": "TFT11_Porcelain",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Porcelain.TFT_Set11.png",
+        "tooltip_text": "After casting, Porcelain champions boil, gaining Attack Speed and taking less damage for @Duration@&nbsp;seconds.<br><br><expandRow>(@MinUnits@) @AS*100@%&nbsp;%i:scaleAS%; @DR*100@%&nbsp;reduced damage</expandRow><br>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DR",
+                        "value": 0.1500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "AS",
+                        "value": 0.3000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Duration",
+                        "value": 4.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DR",
+                        "value": 0.2000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "AS",
+                        "value": 0.6000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Duration",
+                        "value": 4.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DR",
+                        "value": 0.3500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "AS",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Duration",
+                        "value": 4.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "Reaper",
+        "trait_id": "TFT11_Reaper",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Reaper.TFT_Set11.png",
+        "tooltip_text": "<row>(@MinUnits@) Reapers' Abilities can critically strike and they gain @CritChance*100@% Critical Strike Chance.</row><br><row>(@MinUnits@) Additionally, Reapers' bleed enemies for @BleedDamage*100@% bonus true damage over @Duration@&nbsp;seconds.</row><br>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Duration",
+                        "value": 3.0000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "CritChance",
+                        "value": 0.2000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BleedDamage",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "CritChance",
+                        "value": 0.2000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BleedDamage",
+                        "value": 0.6000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "Sage",
+        "trait_id": "TFT11_Sage",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Sage.TFT_Set11.png",
+        "tooltip_text": "Combat start: Allies in the front 2&nbsp;rows gain Omnivamp. Allies in the back 2&nbsp;rows gain Ability&nbsp;Power.<br><br><expandRow>(@MinUnits@) @Omnivamp*100@%&nbsp;Omnivamp, @APAmount@&nbsp;%i:scaleAP%</expandRow>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": []
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Omnivamp",
+                        "value": 0.1500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "APAmount",
+                        "value": 15.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 2,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Omnivamp",
+                        "value": 0.2200,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "APAmount",
+                        "value": 30.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 3,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Omnivamp",
+                        "value": 0.3000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "APAmount",
+                        "value": 45.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 4,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Omnivamp",
+                        "value": 0.4500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "APAmount",
+                        "value": 70.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 5,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "Sniper",
+        "trait_id": "TFT11_Sniper",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_6_Sniper.png",
+        "tooltip_text": "Innate: Snipers gain @HexRangeIncrease@&nbsp;Attack&nbsp;Range. <br><br>Snipers deal more damage to targets farther away.<br><br><expandRow>(@MinUnits@) @PercentDamageIncrease@%&nbsp;damage per hex.</expandRow>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HexRangeIncrease",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PercentDamageIncrease",
+                        "value": 7.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PercentDamageIncrease",
+                        "value": 14.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PercentDamageIncrease",
+                        "value": 30.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "Spirit Walker",
+        "trait_id": "TFT11_SpiritWalker",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Spirit_Walker.TFT_Set11.png",
+        "tooltip_text": "The first time the Spirit Walker drops below @RevivePercent*100@% Health, he unleashes the rage within, healing to full Health, gaining increased movement speed, and changing his Ability from Ram Slam to Tiger Strikes.",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "OmnivampPercent",
+                        "value": 0.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "RevivePercent",
+                        "value": 0.5000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DamageReduction",
+                        "value": 100.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 1,
+                "style_idx": 6,
+                "style_name": "kUnique"
+            }
+        ]
+    },
+    {
+        "display_name": "Storyweaver",
+        "trait_id": "TFT11_Storyweaver",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Storyweaver.TFT_Set11.png",
+        "tooltip_text": "Storyweavers summon a Hero named Kayle and evolve her. Storyweavers gain max Health.<br><br><row>(@MinUnits@) Pick a supportive effect. @Health@&nbsp;%i:scaleHealth%</row><br><row>(@MinUnits@) Pick a combat effect. @Health@&nbsp;%i:scaleHealth%</row><br><row>(@MinUnits@) Pick a combat effect. @Health@&nbsp;%i:scaleHealth%</row><br><row>(@MinUnits@) Ascend. @Health@&nbsp;%i:scaleHealth%</row><br><br><rules>Each Storyweaver star level increases Kayles Health and Ability Power. Kayle gets @BonusASPerStage*100@% Attack Speed for each game Stage.</rules>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PercentHealthADPerStarLevel",
+                        "value": 0.1000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Storyweaver3CarryItemPercent",
+                        "value": 20.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Storyweaver3JazzItemPercent",
+                        "value": 10.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Storyweaver5TraitItemPercent",
+                        "value": 25.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Storyweaver3ChoiceCount",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Storyweaver5ChoiceCount",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Storyweaver7ChoiceCount",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealthPerChapter",
+                        "value": 100.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BonusASPerStage",
+                        "value": 0.1000,
+                        "format_string": ""
+                    }
+                ]
+            },
+            {
+                "effect_amounts": []
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Health",
+                        "value": 60.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 4,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Health",
+                        "value": 100.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 5,
+                "max_units": 6,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Health",
+                        "value": 150.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 7,
+                "max_units": 9,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Health",
+                        "value": 250.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 10,
+                "style_idx": 5,
+                "style_name": "kChromatic"
+            }
+        ]
+    },
+    {
+        "display_name": "Trickshot",
+        "trait_id": "TFT11_Trickshot",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_4_Sharpshooter.png",
+        "tooltip_text": "Trickshots' abilities ricochet. Each ricochet deals a percentage of the previous bounce's damage.<br><br><row>(@MinUnits@) @MaxBounces@&nbsp;ricochet; @PercentDamage*100@% of previous damage</row><br><row>(@MinUnits@) @MaxBounces@&nbsp;ricochets; @PercentDamage*100@% of previous damage</row>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "MaxBounces",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "PercentDamage",
+                        "value": 0.4000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "MaxBounces",
+                        "value": 2.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "PercentDamage",
+                        "value": 0.5000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "Trickshot/Altruist",
+        "trait_id": "TFT11_TrickshotAltruist",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Altruist_Trickshot.TFT_Set11.png",
+        "tooltip_text": "Place in the back two rows to get Trickshot, place in the front two rows to get Altruist!",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": []
+            }
+        ],
+        "conditional_trait_sets": []
+    },
+    {
+        "display_name": "Umbral",
+        "trait_id": "TFT11_Umbral",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Umbral.TFT_Set11.png",
+        "tooltip_text": "The moon illuminates hexes, Shielding units placed in them at the start of combat. <br><br>Umbral units in illuminated hexes execute low Health enemies.<br><br><row>(@MinUnits@) @ShieldAmount@&nbsp;Shield; @DesireExecuteThreshhold@% Health execute</row><br><row>(@MinUnits@) @ShieldAmount@&nbsp;Shield; @DesireExecuteThreshhold@% Health execute. More hexes are illuminated. </row><br><row>(@MinUnits@) @ShieldAmount@&nbsp;Shield and illuminate the whole board</row><br><row>(@MinUnits@) Executed enemies have a @DesireExecuteRewardPercent*100@% chance to drop loot; @DesireExecuteThreshhold@% Health execute </row>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": []
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DesireExecuteThreshhold",
+                        "value": 12.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DesireExecuteRewardPercent",
+                        "value": 0.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ShieldAmount",
+                        "value": 250.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DesireExecuteThreshhold",
+                        "value": 20.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DesireExecuteRewardPercent",
+                        "value": 0.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ShieldAmount",
+                        "value": 400.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DesireExecuteThreshhold",
+                        "value": 20.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DesireExecuteRewardPercent",
+                        "value": 0.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ShieldAmount",
+                        "value": 750.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 8,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DesireExecuteThreshhold",
+                        "value": 40.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DesireExecuteRewardPercent",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ItemPercent",
+                        "value": 0.2500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ShieldAmount",
+                        "value": 750.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DesireExecuteRewardPercentHR",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 9,
+                "style_idx": 5,
+                "style_name": "kChromatic"
+            }
+        ]
+    },
+    {
+        "display_name": "Warden",
+        "trait_id": "TFT11_Warden",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Warden.TFT_Set11.png",
+        "tooltip_text": "Wardens take less damage. For the first @Duration@&nbsp;seconds of combat, they take an additional @StartOfCombatDRPercent@% less damage. <br><br><expandRow>(@MinUnits@) @DRPercent@% less damage</expandRow>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Duration",
+                        "value": 10.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "StartOfCombatDRPercent",
+                        "value": 12.0000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DRPercent",
+                        "value": 15.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DRPercent",
+                        "value": 25.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DRPercent",
+                        "value": 40.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "style_idx": 4,
+                "style_name": "kGold"
             }
         ]
     },
@@ -4582,7 +6787,7 @@
     },
     {
         "display_name": "Juggernaut",
-        "trait_id": "Set9_Armorclad",
+        "trait_id": "TFT9_Armorclad",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Juggernaut.png",
         "tooltip_text": "Juggernaut champions take less damage as their Health decreases.<br><br><expandRow>(@MinUnits@) @MinDR*100@% to @MaxDR*100@% damage reduction</expandRow>",
@@ -4660,7 +6865,7 @@
     },
     {
         "display_name": "Yordle",
-        "trait_id": "Set9_BandleCity",
+        "trait_id": "TFT9_BandleCity",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_6_Yordle.png",
         "tooltip_text": "Your units gain @BonusAttackSpeed*100@% Attack Speed per star level.<br><br>If you have three 3-star champions, your Yordles can become 4-star, which gives their Ability a wacky upgrade!<br><br><row>(@MinUnits@) Your strongest 3-star Yordle</row><br><row>(@MinUnits@) Two 3-star Yordles</row><br><br><rules>Ties for most items are broken by the Yordle fielded most recently.</rules>",
@@ -4755,7 +6960,7 @@
     },
     {
         "display_name": "Bastion",
-        "trait_id": "Set9_Bastion",
+        "trait_id": "TFT9_Bastion",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Bastion.png",
         "tooltip_text": "Bastion champions gain Armor and Magic Resist. This is increased by @BonusPercent*100@% for the first @Duration@ seconds of combat.<br><br><expandRow>(@MinUnits@) +@BonusArmor@ %i:scaleArmor%, +@BonusArmor@ %i:scaleMR%</expandRow>",
@@ -4896,7 +7101,7 @@
     },
     {
         "display_name": "Bruiser",
-        "trait_id": "Set9_Bruiser",
+        "trait_id": "TFT9_Bruiser",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_6_Bruiser.png",
         "tooltip_text": "Your units gain @TeamFlatHealth@ Health. Bruisers gain additional maximum Health.<br><br><expandRow>(@MinUnits@) +@BonusPercentHealth*100@% max %i:scaleHealth%</expandRow>",
@@ -4977,7 +7182,7 @@
     },
     {
         "display_name": "Challenger",
-        "trait_id": "Set9_Challenger",
+        "trait_id": "TFT9_Challenger",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_6_Challenger.png",
         "tooltip_text": "Challengers gain bonus Attack Speed. When their target dies, Challengers dash to a new target and increase their Attack Speed bonus by @IncreasePct*100@% for @BurstDuration@ seconds.<br><br><expandRow>(@MinUnits@) @BonusAS@% %i:scaleAS%</expandRow>",
@@ -5078,7 +7283,7 @@
     },
     {
         "display_name": "Darkin",
-        "trait_id": "Set9_Darkin",
+        "trait_id": "TFT9_Darkin",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Darkin.png",
         "tooltip_text": "When Aatrox or the holder of the Darkin Blade dies, the Darkin Blade is equipped to the nearest allied champion, granting them @BonusHealth@ Health and @BonusOmnivamp*100@% Omnivamp.<br><br>After being equipped to a champion for @RespawnTimer@ seconds, Aatrox will revive upon their death instead.",
@@ -5110,7 +7315,7 @@
     },
     {
         "display_name": "Deadeye",
-        "trait_id": "Set9_Deadeye",
+        "trait_id": "TFT9_Deadeye",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Deadeye.png",
         "tooltip_text": "<spellPassive>Innate:</spellPassive> +@BonusRange@ Range<br><br>Every @ShotFrequency@ seconds, Deadeyes attack the enemy with the highest percent Health and deal bonus damage.<br><br><expandRow>(@MinUnits@) +@DamageAmp*100@% damage</expandRow>",
@@ -5183,7 +7388,7 @@
     },
     {
         "display_name": "Protector",
-        "trait_id": "Set9_DefTrait",
+        "trait_id": "TFT9_DefTrait",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_5_Vanquisher.png",
         "tooltip_text": "Protectors shield themselves for @Duration@ seconds whenever they cast an Ability. This shield doesn't stack.<br><br><expandRow> (@MinUnits@) @ShieldPercent@% maximum Health shield</expandRow>",
@@ -5246,7 +7451,7 @@
     },
     {
         "display_name": "Demacia",
-        "trait_id": "Set9_Demacia",
+        "trait_id": "TFT9_Demacia",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Demacia.png",
         "tooltip_text": "Your strongest Demacians become Elite and equip a Radiant item each combat. Elites grant Armor and Magic Resist to themselves and adjacent allies, but this does not stack.<br><br><row>(@MinUnits@) @NumElites@ Elite, +@BonusDefenses@ %i:scaleArmor%, +@BonusDefenses@ %i:scaleMR%</row><br><row>(@MinUnits@) @NumElites@ Elites, +@BonusDefenses@ %i:scaleArmor%, +@BonusDefenses@ %i:scaleMR%</row><br><row>(@MinUnits@) @NumElites@ Elites, +@BonusDefenses@ %i:scaleArmor%, +@BonusDefenses@ %i:scaleMR%</row><br><row>(@MinUnits@) @NumElites@ Elites, +@BonusDefenses@ %i:scaleArmor%, +@BonusDefenses@ %i:scaleMR%</row><br><br><rules>Radiant items are stronger versions of full items.</rules>",
@@ -5327,7 +7532,7 @@
     },
     {
         "display_name": "Empress",
-        "trait_id": "Set9_Empress",
+        "trait_id": "TFT9_Empress",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Empress.png",
         "tooltip_text": "When Bel'Veth kills an enemy, they leave behind Void Coral that she will consume. The first Coral increases her maximum Health by @PercentBonusMaxHealth*100@%, while further Coral heals her @PercentHealthHeal*100@% maximum Health.<br><br>When a Void Coral is consumed, she deals @PercentHealthMagicDamage*100@% maximum Health as magic damage to enemies within @HexRange@ hexes.",
@@ -5364,7 +7569,7 @@
     },
     {
         "display_name": "Forsaken",
-        "trait_id": "Set9_Forsaken",
+        "trait_id": "TFT9_Forsaken",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_5_Forgotten.png",
         "tooltip_text": "If a Forsaken has no adjacent allies at the start of combat, they gain penetration.<br><br><expandRow>(@MinUnits@) @Penetration@% armor and magic resistance penetration </expandRow>",
@@ -5412,7 +7617,7 @@
     },
     {
         "display_name": "Freljord",
-        "trait_id": "Set9_Freljord",
+        "trait_id": "TFT9_Freljord",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Freljord.png",
         "tooltip_text": "After @DelayTime@ seconds, an ice storm strikes the battlefield. Enemies take a percentage of their max Health as true damage and gain debuffs.<br><br><row>(@MinUnits@) @PercentHealthDamage@% %i:scaleHealth%, enemies are @ShredSunder@% <TFTKeyword>Sundered</TFTKeyword> and <TFTKeyword>Shredded</TFTKeyword></row> for @Duration@ seconds<br><row>(@MinUnits@) @PercentHealthDamage@% %i:scaleHealth%, enemies are also <TFTKeyword>Stunned</TFTKeyword> for @StunDuration@ seconds</row><br><br><rules><tftbold>Sunder</tftbold>: Reduce Armor<br><tftbold>Shred</tftbold>: Reduce Magic Resist</rules>",
@@ -5487,7 +7692,7 @@
     },
     {
         "display_name": "Ionia",
-        "trait_id": "Set9_Ionia",
+        "trait_id": "TFT9_Ionia",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Ionia.png",
         "tooltip_text": "Each Ionian has a unique bonus within their Ability. <br><br>Every @SpiritDuration@ seconds, a number of Ionians are enlightened to their spirit form, gaining @Mana@ mana and doubling stat bonuses for @SpiritDuration@ seconds.<br><br><expandRow>(@MinUnits@) @TooltipBonus*100@% Ionian bonus, @NumberOfSpirits@ enlightened</expandRow>",
@@ -5760,7 +7965,7 @@
     },
     {
         "display_name": "Gunner",
-        "trait_id": "Set9_Marksman",
+        "trait_id": "TFT9_Marksman",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Gunner.png",
         "tooltip_text": "When Gunner champions attack, they gain bonus Attack Damage, up to @MaxStacks@ stacks.<br><br><expandRow>(@MinUnits@) @PercentAD@% %i:scaleAD% per stack</expandRow>",
@@ -5823,7 +8028,7 @@
     },
     {
         "display_name": "Multicaster",
-        "trait_id": "Set9_Multicaster",
+        "trait_id": "TFT9_Multicaster",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Multicaster.png",
         "tooltip_text": "Multicasters cast their Ability 1 additional time. Bonus casts have reduced effectiveness.<br><br><row>(@MinUnits@) @DamageReduction*100@% reduction</row><br><row>(@MinUnits@) @DamageReduction*100@% reduction</row><br><row>(@MinUnits@) @DamageReduction*100@% reduction. Attacks grant @ManaPerAuto@ bonus Mana.</row>",
@@ -5901,7 +8106,7 @@
     },
     {
         "display_name": "Mutant",
-        "trait_id": "Set9_Mutant",
+        "trait_id": "TFT9_Mutant",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_6_Striker.png",
         "tooltip_text": "Kha'Zix's form changes based on his mutation. His mutation changes every day.<br><br>Current Mutation:<br><ShowIf.TFT9_Mutant_Claws>Reaper Claws: Kha�Zix�s spell executes isolated units below @ClawsExecuteThreshold*100@% health.</ShowIf.TFT9_Mutant_Claws><ShowIf.TFT9_Mutant_Spikes>Spike Racks: Kha�zix releases @SpikesNumSpikes@ spikes when he lands, each spike that hits an enemy heals Kha'Zix for @SpikesPercentHeal*100@% of his max health and applies his attack speed slow.</ShowIf.TFT9_Mutant_Spikes><ShowIf.TFT9_Mutant_Wings>Wings: Kha�Zix leaps to the backline at the start of combat, and gains @WingsManaRefund@ mana if his spell kills an enemy.</ShowIf.TFT9_Mutant_Wings><ShowIf.TFT9_Mutant_Carapace>Carapace: All allies deal @CarapaceBonusDamage*100@% bonus damage to isolated targets.</ShowIf.TFT9_Mutant_Carapace>",
@@ -5948,7 +8153,7 @@
     },
     {
         "display_name": "Noxus",
-        "trait_id": "Set9_Noxus",
+        "trait_id": "TFT9_Noxus",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Noxus.png",
         "tooltip_text": "Noxus champions gain Health, Ability Power and Attack Damage. This is increased by @BonusRatio*100@% for each different opponent that either you have conquered in combat or is dead.<br><br><expandRow>(@MinUnits@) @Health@ %i:scaleHealth%, @AP@ %i:scaleAP%, @AD@% %i:scaleAD%</expandRow><br><br><TFTTrackerLabel>Conquered bonus: @TFTUnitProperty.trait:TFT9_Trait_ConquerorBonus@% / @BonusRatio*700@%</TFTTrackerLabel>",
@@ -6069,7 +8274,7 @@
     },
     {
         "display_name": "Piltover",
-        "trait_id": "Set9_Piltover",
+        "trait_id": "TFT9_Piltover",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Piltover.png",
         "tooltip_text": "Gain the T-Hex. Every time you lose a player combat, the T-Hex gains Charges. Winning converts the Charges to Power for the T-Hex and grants you loot based on the number of Charges converted.<br><br><row>(@MinUnits@) Gain the T-Hex.</row><br><row>(@MinUnits@) Gain bonus loot every round. Each loss counts as 2 losses instead.</row>",
@@ -6114,7 +8319,7 @@
     },
     {
         "display_name": "Invoker",
-        "trait_id": "Set9_Preserver",
+        "trait_id": "TFT9_Preserver",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Preserver.png",
         "tooltip_text": "Every @TickRate@ seconds, your units gain Mana.<br><br><row>(@MinUnits@) @TeamMana@ %i:scaleMana% to all</row><br><row>(@MinUnits@) Additional @SelfBonusMana@ to Invokers</row><br><row>(@MinUnits@) @TeamMana@ %i:scaleMana% to all, additional @SelfBonusMana@ to Invokers</row><br><row>(@MinUnits@) @TeamMana@ %i:scaleMana% to all, and start with an additional @TeamAP@ Ability Power</row><br>",
@@ -6235,7 +8440,7 @@
     },
     {
         "display_name": "Quickdraw",
-        "trait_id": "Set9_Quickdraw",
+        "trait_id": "TFT9_Quickdraw",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Ranger.png",
         "tooltip_text": "Quickdraw champions gain bonus Attack Speed for @Duration@ seconds after they cast.<br><br><expandRow>(@MinUnits@) +@BonusAttackSpeed*100@% Attack Speed</expandRow>",
@@ -6316,7 +8521,7 @@
     },
     {
         "display_name": "Redeemer",
-        "trait_id": "Set9_Redeemer",
+        "trait_id": "TFT9_Redeemer",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Mistwalker.png",
         "tooltip_text": "Whenever an ally gains a Shield, Senna grants them @AttackSpeed*100@% stacking Attack Speed for the rest of combat.",
@@ -6338,7 +8543,7 @@
     },
     {
         "display_name": "Rogue",
-        "trait_id": "Set9_Rogue",
+        "trait_id": "TFT9_Rogue",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Rogue.png",
         "tooltip_text": "<row>(@MinUnits@) When a Rogue falls below @HealthThreshold*100@% Health, they briefly become untargetable and dash to an enemy within @HexRange@ hexes (preferring enemy backline).</row><br><row>(@MinUnits@) And a Rogue's damage bleeds their target for @BleedPct*100@% bonus magic damage over @BleedDuration@ seconds.</row>",
@@ -6423,7 +8628,7 @@
     },
     {
         "display_name": "Shadow Isles",
-        "trait_id": "Set9_ShadowIsles",
+        "trait_id": "TFT9_ShadowIsles",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_ShadowIsles.png",
         "tooltip_text": "After dealing or receiving damage @DamageInstances@ times, Shadow Isles champions gain a Shield for @Duration@ seconds and become Spectral for the rest of combat. Spectral champions gain Mana every second.<br><br><expandRow>(@MinUnits@) @MaxHealthShield@% %i:scaleHealth% Shield, @ManaRegen@ %i:scaleMana%</expandRow>",
@@ -6531,7 +8736,7 @@
     },
     {
         "display_name": "Shurima",
-        "trait_id": "Set9_Shurima",
+        "trait_id": "TFT9_Shurima",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Shurima.png",
         "tooltip_text": "Every @PulsePeriod@ seconds, Shurimans heal @HealthRegen*100@% maximum Health. After @SecondsToAscend@ seconds, select Shurimans Ascend and gain @BonusHealthPercent*100@% maximum Health and @BonusASPercent*100@% Attack Speed.<br><br><row>(@MinUnits@) The strongest Shuriman Ascends</row><br><row>(@MinUnits@) All Shurimans Ascend. +@AscensionStrengthBoost*100@% Ascension bonus</row><br><row>(@MinUnits@) Instead, Ascend at combat start. +@AscensionStrengthBoost*100@% Ascension bonus</row><br><row>(@MinUnits@) Ascend twice, at combat start and after @SecondsToAscend@ seconds. +@AscensionStrengthBoost*100@% Ascension bonus</row>",
@@ -6712,7 +8917,7 @@
     },
     {
         "display_name": "Slayer",
-        "trait_id": "Set9_Slayer",
+        "trait_id": "TFT9_Slayer",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_4_Slayer.png",
         "tooltip_text": "Slayers gain @Omnivamp@% Omnivamp.<br><br>Slayers deal bonus damage, doubled against units below @HealthThreshold*100@% Health.<br><br><expandRow>(@MinUnits@) +@BonusDamageBase@% bonus damage</expandRow>",
@@ -6790,7 +8995,7 @@
     },
     {
         "display_name": "Sorcerer",
-        "trait_id": "Set9_Sorcerer",
+        "trait_id": "TFT9_Sorcerer",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Sorcerer.png",
         "tooltip_text": "Sorcerers gain bonus Ability Power.<br><br>When an enemy dies after being damaged by a Sorcerer, they deal a percentage of that enemy's maximum Health to another enemy.<br><br><row>(@MinUnits@) @BonusAP@ %i:scaleAP%; @HealthPct*100@% max %i:scaleHealth%</row><br><row>(@MinUnits@) @BonusAP@ %i:scaleAP%; @HealthPct*100@% max %i:scaleHealth%</row><br><row>(@MinUnits@) @BonusAP@ %i:scaleAP%; @HealthPct*100@% max %i:scaleHealth% to @TargetNum@ enemies</row><br><row>(@MinUnits@) @BonusAP@ %i:scaleAP%; @HealthPct*100@% max %i:scaleHealth% to @TargetNum@ enemies</row>",
@@ -6911,7 +9116,7 @@
     },
     {
         "display_name": "Strategist",
-        "trait_id": "Set9_Strategist",
+        "trait_id": "TFT9_Strategist",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Strategist.png",
         "tooltip_text": "<spellPassive>Combat start:</spellPassive> Allies in the front 2 rows gain a Shield for @ShieldDuration@ seconds. Allies in the back 2 rows gain Ability Power.<br><br><expandRow>(@MinUnits@) @ShieldHP@ Shield; @BonusAP@ %i:scaleAP%</expandRow><br>",
@@ -7012,7 +9217,7 @@
     },
     {
         "display_name": "Targon",
-        "trait_id": "Set9_Targon",
+        "trait_id": "TFT9_Targon",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Targon.png",
         "tooltip_text": "All of your units' healing and shielding is improved.<br><br><expandRow>(@MinUnits@) @HealShieldIncrease*100@% increased healing and shielding </expandRow>",
@@ -7060,7 +9265,7 @@
     },
     {
         "display_name": "Technogenius",
-        "trait_id": "Set9_Technogenius",
+        "trait_id": "TFT9_Technogenius",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Technogenius.png",
         "tooltip_text": "Gain a placeable Apex Turret with 3 upgrade slots. Upgrades to the Apex Turret will show up in your shop for @GoldCost@ gold. The Apex Turret shares Heimerdinger's Attack Speed and Ability Power.<br><br><rules>You may only have 1 Apex Turret.</rules>",
@@ -7092,7 +9297,7 @@
     },
     {
         "display_name": "Void",
-        "trait_id": "Set9_Void",
+        "trait_id": "TFT9_Void",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Void.png",
         "tooltip_text": "Get a placeable void egg. At the start of combat, it hatches into an unspeakable horror and knocks up adjacent enemies.<br><br>Each Void star level increases the horror's Health and Ability Power by @PercentHealthAPPerStarLevel*100@%. <br><br><row>(@MinUnits@) Void Remora</row><br><row>(@MinUnits@) Rift Herald</row><br><row>(@MinUnits@) Baron Nashor</row>",
@@ -7155,7 +9360,7 @@
     },
     {
         "display_name": "Wanderer",
-        "trait_id": "Set9_Wanderer",
+        "trait_id": "TFT9_Wanderer",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Wanderer.png",
         "tooltip_text": "Ryze's ability changes depending on the Region Portal players voted for at the start of the game.",
@@ -7171,7 +9376,7 @@
     },
     {
         "display_name": "Zaun",
-        "trait_id": "Set9_Zaun",
+        "trait_id": "TFT9_Zaun",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Zaun.png",
         "tooltip_text": "Zaun champions create random chem-mods that only they can use. Champions can be modded once, and mods can be removed by benching or selling the champion.<br><br><row>(@MinUnits@) Gain 1 chem-mod</row><br><row>(@MinUnits@) Gain 2 chem-mods and Overcharge them</row><br><row>(@MinUnits@) Gain 5 chem-mods and Overcharge them</row><br>",

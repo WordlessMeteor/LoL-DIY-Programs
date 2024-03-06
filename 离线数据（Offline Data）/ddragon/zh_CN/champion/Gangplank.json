@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.4.1",
+    "version": "14.5.1",
     "data": {
         "Gangplank": {
             "id": "Gangplank",
@@ -88,6 +88,12 @@
                     "id": "41023",
                     "num": 23,
                     "name": "背叛之刃 普朗克",
+                    "chromas": true
+                },
+                {
+                    "id": "41033",
+                    "num": 33,
+                    "name": "源计划：铁腕 普朗克",
                     "chromas": true
                 }
             ],

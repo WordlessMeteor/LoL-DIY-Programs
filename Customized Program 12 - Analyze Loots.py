@@ -86,7 +86,7 @@ async def analyze_player_loots(connection): #导出玩家目前含有的战利�
         try:
             jsonfile = open(os.path.join(folder, jsonname), "w", encoding = "utf-8")
         except FileNotFoundError:
-            os.makedirs(folder)
+            os.makedirs(folder, exist_ok = True)
         else:
             break
     try:
@@ -136,19 +136,16 @@ async def analyze_player_loots(connection): #导出玩家目前含有的战利�
             with pandas.ExcelWriter(path = os.path.join(folder, excel_name), mode = "a", if_sheet_exists = "replace") as writer:
                 currentTime = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
                 player_loot_df.to_excel(excel_writer = writer, sheet_name = currentTime + " " + platformId + " " + locale)
-            print('玩家战利品信息已保存为“%s”！请按任意键退出。\nPlayer loot information is saved into "%s"! Press any key to exit ...' %(os.path.join(folder, excel_name), os.path.join(folder, excel_name)))
+            print('玩家战利品信息已保存为“%s”！请按任意键退出。\nPlayer loot information is saved as "%s"! Press any key to exit ...' %(os.path.join(folder, excel_name), os.path.join(folder, excel_name)))
         except PermissionError:
             print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
             input()
         except FileNotFoundError:
-            try:
-                os.makedirs(folder)
-            except FileExistsError:
-                pass
+            os.makedirs(folder, exist_ok = True)
             with pandas.ExcelWriter(path = os.path.join(folder, excel_name)) as writer:
                 currentTime = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
                 player_loot_df.to_excel(excel_writer = writer, sheet_name = currentTime + " " + platformId + " " + locale)
-            print('玩家战利品信息已保存为“%s”！请按任意键退出。\nPlayer loot information is saved into "%s"! Press any key to exit ...' %(os.path.join(folder, excel_name), os.path.join(folder, excel_name)))
+            print('玩家战利品信息已保存为“%s”！请按任意键退出。\nPlayer loot information is saved as "%s"! Press any key to exit ...' %(os.path.join(folder, excel_name), os.path.join(folder, excel_name)))
             break
         else:
             break

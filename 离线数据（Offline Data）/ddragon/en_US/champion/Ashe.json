@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.4.1",
+    "version": "14.5.1",
     "data": {
         "Ashe": {
             "id": "Ashe",
@@ -176,7 +176,7 @@
                     "id": "AsheQ",
                     "name": "Ranger's Focus",
                     "description": "Ashe builds up Focus by attacking. At maximum Focus, Ashe can cast Ranger's Focus to consume all stacks of Focus, temporarily increasing her Attack Speed and transforming her basic attack into a powerful flurry attack for the duration.",
-                    "tooltip": "<spellPassive>Passive: </spellPassive>Ashe's Attacks grant a stack for {{ e1 }} seconds. At {{ e2 }} stacks, she may activate this ability.<br /><br /><spellPassive>Active:</spellPassive> Ashe gains <attackSpeed>{{ e4 }}% Attack Speed</attackSpeed> and her Attacks deal <physicalDamage>{{ empowereddamage }} damage</physicalDamage> instead for {{ e3 }} seconds.{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "<spellPassive>Passive: </spellPassive>Ashe's Attacks grant a stack for {{ e1 }} seconds. At {{ e2 }} stacks, she may activate this Ability.<br /><br /><spellPassive>Active:</spellPassive> Ashe gains <attackSpeed>{{ e4 }}% Attack Speed</attackSpeed> and her Attacks deal <physicalDamage>{{ empowereddamage }} damage</physicalDamage> instead for {{ e3 }} seconds.{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "Attack Speed",
@@ -462,7 +462,7 @@
                     "id": "AsheSpiritOfTheHawk",
                     "name": "Hawkshot",
                     "description": "Ashe sends her Hawk Spirit on a scouting mission anywhere on the map.",
-                    "tooltip": "Ashe sends forth a hawk to grant vision for 5 seconds anywhere on the map. It also reveals the area around it as it flies.<br /><br />This ability has 2 charges ({{ chargecooldown }} second recharge).{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "Ashe sends forth a hawk to grant vision for 5 seconds anywhere on the map. It also reveals the area around it as it flies.<br /><br />This Ability has 2 charges ({{ chargecooldown }} second recharge).{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "Recharge Time"
@@ -601,7 +601,7 @@
                     "id": "EnchantedCrystalArrow",
                     "name": "Enchanted Crystal Arrow",
                     "description": "Ashe fires a missile of ice in a straight line. If the arrow collides with an enemy Champion, it deals damage and stuns the Champion, stunning for longer the farther arrow has traveled. In addition, surrounding enemy units take damage and are slowed.",
-                    "tooltip": "Ashe launches a crystal arrow of ice that <status>Stuns</status> the first champion hit and deals <magicDamage>{{ rmaindamage }} magic damage</magicDamage>. The <status>Stun</status> duration increases with distance travelled, up to {{ maxstunduration }} seconds. Surrounding enemies are slowed by <spellName>Frost Shot</spellName> and take half damage.{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "Ashe launches a crystal arrow of ice that <status>Stuns</status> the first champion hit and deals <magicDamage>{{ rmaindamage }} magic damage</magicDamage>. The <status>Stun</status> duration increases with distance travelled, up to {{ maxstunduration }} seconds. Surrounding enemies are <status>Slowed</status> by <spellName>Frost Shot</spellName> and take half damage.{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "Damage",

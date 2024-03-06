@@ -1131,6 +1131,45 @@
             ],
             "skinAugments": null,
             "description": "Kha'Zix stalked the waters of Crescent Bay, his teeth and claws greeting anyone foolish enough to wander near. But there was something different about the Empress Ashe: she desired the same, unattainable power he craved. So he swore fealty to her—something he hadn't done in centuries—ready to fight by her side for a taste at the life he once led."
+        },
+        {
+            "id": 121079,
+            "isBase": false,
+            "name": "Crystalis Indomitus Kha'zix",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/121/121079.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/121/121079.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/121/121079.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/KhaZix/Skins/Skin79/KhazixLoadScreen_79.SKINS_Khazix_Skin79.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/121/121079.png",
+            "chromas": [
+                {
+                    "id": 121080,
+                    "name": "Crystalis Indomitus Kha'zix",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/121/121080.png",
+                    "colors": [
+                        "#469FFC",
+                        "#8DDC26"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 202
+                }
+            ],
+            "skinAugments": null,
+            "description": "To citizens of Crystalis Motus, the being known as Kha'zix is a purely crystalline horror whose hunger to assimilate life knows no limits. To those in the north, however, it is a marvel: a being shaped by the crystals themselves into a near perfect form, and whose zeal to spread the Prismae's power is inspirational."
         }
     ],
     "passive": {

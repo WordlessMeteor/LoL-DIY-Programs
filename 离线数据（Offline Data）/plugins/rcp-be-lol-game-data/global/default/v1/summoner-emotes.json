@@ -9032,25 +9032,25 @@
     {
         "id": 4397,
         "name": "PENGUMODE",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/4397_PENGUMODE_Inventory.ACCESSORIES_13_22.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/4397_PENGUMODE_Inventory.png",
         "description": ""
     },
     {
         "id": 4398,
         "name": "Mixmasters",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/4398_Mixmasters_Inventory.ACCESSORIES_13_22.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/4398_Mixmasters_Inventory.png",
         "description": ""
     },
     {
         "id": 4399,
         "name": "HEARTSTEEL Insignia",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/HeartSteel/4399_HEARTSTEEL_Insignia_Inventory.ACCESSORIES_13_22.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/HeartSteel/4399_HEARTSTEEL_Insignia_Inventory.png",
         "description": ""
     },
     {
         "id": 4400,
         "name": "Breakout",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Mythic/4400_Breakout_Inventory.ACCESSORIES_13_22.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Mythic/4400_Breakout_Inventory.png",
         "description": ""
     },
     {
@@ -9537,6 +9537,186 @@
         "id": 4482,
         "name": "Choncc's Joyful Dance",
         "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/4482_Chonccs_Joyful_Dance_Inventory.ACCESSORIES_14_4.png",
+        "description": ""
+    },
+    {
+        "id": 4483,
+        "name": "IT'S ART",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4483_ITS_ART_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4484,
+        "name": "Token Of Appreciation",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4484_Token_Of_Appreciation_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4485,
+        "name": "Moonbeam Blast",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4485_Moonbeam_Blast_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4486,
+        "name": "I'm Good",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4486_Im_Good_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4487,
+        "name": "Test Me",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4487_Test_Me_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4488,
+        "name": "Ready To Strike",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4488_Ready_To_Strike_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4489,
+        "name": "Within My Grasp",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4489_Within_My_Grasp_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4490,
+        "name": "TFT Remix Rumble - Hyper Roll: Green Tier",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/HyperRoll/4490_TFT_Remix_Rumble__Hyper_Roll_Green_Tier_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4491,
+        "name": "TFT Remix Rumble  - Hyper Roll: Blue Tier",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/HyperRoll/4491_TFT_Remix_Rumble___Hyper_Roll_Blue_Tier_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4492,
+        "name": "TFT Remix Rumble  - Hyper Roll: Purple Tier",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/HyperRoll/4492_TFT_Remix_Rumble___Hyper_Roll_Purple_Tier_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4493,
+        "name": "TFT Remix Rumble  - Hyper Roll: Hyper Tier",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/HyperRoll/4493_TFT_Remix_Rumble___Hyper_Roll_Hyper_Tier_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4494,
+        "name": "TFT Remix Rumble  - Gold",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/RankedRewards/4494_TFT_Remix_Rumble___Gold_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4495,
+        "name": "TFT Remix Rumble  - Platinum",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/RankedRewards/4495_TFT_Remix_Rumble___Platinum_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4496,
+        "name": "TFT Remix Rumble  - Emerald",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/RankedRewards/4496_TFT_Remix_Rumble___Emerald_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4497,
+        "name": "TFT Remix Rumble  - Diamond",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/RankedRewards/4497_TFT_Remix_Rumble___Diamond_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4498,
+        "name": "TFT Remix Rumble  - Master",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/RankedRewards/4498_TFT_Remix_Rumble___Master_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4499,
+        "name": "TFT Remix Rumble  - Grandmaster",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/RankedRewards/4499_TFT_Remix_Rumble___Grandmaster_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4500,
+        "name": "TFT Remix Rumble  - Challenger",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/RankedRewards/4500_TFT_Remix_Rumble___Challenger_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4501,
+        "name": "TFT Remix Rumble  - Double Up: Gold",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/DoubleUp/4501_TFT_Remix_Rumble___Double_Up_Gold_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4502,
+        "name": "TFT Remix Rumble  - Double Up: Platinum",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/DoubleUp/4502_TFT_Remix_Rumble___Double_Up_Platinum_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4503,
+        "name": "TFT Remix Rumble  - Double Up: Emerald",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/DoubleUp/4503_TFT_Remix_Rumble___Double_Up_Emerald_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4504,
+        "name": "TFT Remix Rumble  - Double Up: Diamond",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/DoubleUp/4504_TFT_Remix_Rumble___Double_Up_Diamond_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4505,
+        "name": "TFT Remix Rumble  - Double Up: Master",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/DoubleUp/4505_TFT_Remix_Rumble___Double_Up_Master_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4506,
+        "name": "TFT Remix Rumble  - Double Up: Grandmaster",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/DoubleUp/4506_TFT_Remix_Rumble___Double_Up_Grandmaster_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4507,
+        "name": "TFT Remix Rumble  - Double Up: Challenger",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/DoubleUp/4507_TFT_Remix_Rumble___Double_Up_Challenger_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4508,
+        "name": "World Is Delicious",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Mythic/4508_World_Is_Delicious_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4509,
+        "name": "You're A Doll",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/HighNoon/4509_Youre_A_Doll_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4510,
+        "name": "Dour Dude",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/HighNoon/4510_Dour_Dude_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4511,
+        "name": "Saloon Singin'",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/HighNoon/4511_Saloon_Singin_Inventory.ACCESSORIES_14_6.png",
+        "description": ""
+    },
+    {
+        "id": 4512,
+        "name": "Bewildered Buckaroo",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/HighNoon/4512_Bewildered_Buckaroo_Inventory.ACCESSORIES_14_6.png",
         "description": ""
     },
     {

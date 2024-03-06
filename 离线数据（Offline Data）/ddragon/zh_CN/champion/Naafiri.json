@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.4.1",
+    "version": "14.5.1",
     "data": {
         "Naafiri": {
             "id": "Naafiri",
@@ -28,6 +28,12 @@
                     "id": "950001",
                     "num": 1,
                     "name": "斗魂觉醒 纳亚菲利",
+                    "chromas": true
+                },
+                {
+                    "id": "950011",
+                    "num": 11,
+                    "name": "源计划：狂猎 纳亚菲利",
                     "chromas": true
                 }
             ],

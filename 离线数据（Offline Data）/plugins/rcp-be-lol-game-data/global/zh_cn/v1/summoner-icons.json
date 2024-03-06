@@ -87936,6 +87936,66 @@
         "disabledRegions": []
     },
     {
+        "id": 6567,
+        "title": "水晶圣骑 卡兹克 边框图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6567.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "解锁方式：在2024年从【神话商城】中获取【水晶圣骑 卡兹克】皮肤。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 4
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6568,
+        "title": "水晶圣骑 卡兹克 破碎之光 炫彩图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6568.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "解锁方式：在2024年从【神话商城】中获取【水晶圣骑 卡兹克 破碎之光】皮肤。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 4
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6569,
+        "title": "西部魔影(2024) 徽章 图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6569.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "一个免费里程点专属的西部魔影(2024)图标。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
         "id": 656,
         "title": "OGN 2014 - Midas Fio",
         "yearReleased": 2014,
@@ -87959,6 +88019,206 @@
         "disabledRegions": []
     },
     {
+        "id": 6570,
+        "title": "西部魔影(2024) 烙印 图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6570.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "一个付费里程点专属的西部魔影(2024)图标。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6571,
+        "title": "西部魔影(2024) 封印 图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6571.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "一个付费里程点专属的西部魔影(2024)图标。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6572,
+        "title": "哥特式弹药 图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6572.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "一个在神话商店中合成125神话精萃的道具时附赠的图标。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6573,
+        "title": "西部魔影 永恩 边框图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6573.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "1个包含了该皮肤边框的图标。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6574,
+        "title": "西部魔影 永恩 炫彩图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6574.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "1个由事件商城专属炫彩附赠的图标。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6575,
+        "title": "至臻 西部魔影 伊芙琳 图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6575.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "解锁方式：在【西部魔影(2024)】活动期间获得【至臻 西部魔影 伊芙琳】。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 4
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6576,
+        "title": "西部魔影 伊芙琳 边框图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6576.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "1个包含了该皮肤边框的图标。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6577,
+        "title": "西部魔影 伊芙琳 炫彩图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6577.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "1个由事件商城专属炫彩附赠的图标。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6578,
+        "title": "西部魔影 古拉加斯 边框图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6578.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "1个包含了该皮肤边框的图标。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6579,
+        "title": "西部魔影 古拉加斯 炫彩图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6579.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "1个由事件商城专属炫彩附赠的图标。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
         "id": 657,
         "title": "阵容匹配 - 刺客",
         "yearReleased": 2014,
@@ -87968,6 +88228,106 @@
             {
                 "region": "riot",
                 "description": " "
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6580,
+        "title": "西部魔影 芮尔 边框图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6580.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "1个包含了该皮肤边框的图标。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6581,
+        "title": "西部魔影 芮尔 炫彩图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6581.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "1个由事件商城专属炫彩附赠的图标。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6582,
+        "title": "和平制造者 西部魔影 图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6582.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "解锁方式：在【西部魔影 永恩 (2024)】战利品里程碑中达到相应节点。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 4
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6583,
+        "title": "和平制造者 西部魔影 永恩 边框图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6583.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "解锁方式：在【西部魔影 永恩 (2024)】战利品里程碑中达到相应节点。"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 4
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6584,
+        "title": "帽子蟹 图标",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6584.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "这个图标曾在愚人节(2024)庆典期间发布。"
             }
         ],
         "rarities": [

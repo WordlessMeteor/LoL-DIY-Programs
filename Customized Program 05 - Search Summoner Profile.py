@@ -1082,7 +1082,7 @@ async def search_profile(connection):
                     try:
                         jsonfile1 = open(os.path.join(folder, json1name), "w", encoding = "utf-8")
                     except FileNotFoundError: #这里需要注意是否具有创建文件夹的权限。下同（Pay attention to the authority to create the folder. So are the following）
-                        os.makedirs(folder)
+                        os.makedirs(folder, exist_ok = True)
                     else:
                         break
                 try:
@@ -1114,7 +1114,7 @@ async def search_profile(connection):
                     try:
                         jsonfile2 = open(os.path.join(folder, json2name), "w", encoding = "utf-8")
                     except FileNotFoundError:
-                        os.makedirs(folder)
+                        os.makedirs(folder, exist_ok = True)
                     else:
                         break
                 try:
@@ -1171,7 +1171,7 @@ async def search_profile(connection):
                                 print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
                                 input()
                             except FileNotFoundError:
-                                os.makedirs(folder)
+                                os.makedirs(folder, exist_ok = True)
                             else:
                                 break
                     continue
@@ -1183,7 +1183,7 @@ async def search_profile(connection):
                     try:
                         jsonfile3 = open(os.path.join(folder, json3name), "w", encoding = "utf-8")
                     except FileNotFoundError:
-                        os.makedirs(folder)
+                        os.makedirs(folder, exist_ok = True)
                     else:
                         break
                 try:
@@ -1294,7 +1294,7 @@ async def search_profile(connection):
                                 try:
                                     jsonfile4 = open(os.path.join(folder, json4name), "w", encoding = "utf-8")
                                 except FileNotFoundError:
-                                    os.makedirs(folder)
+                                    os.makedirs(folder, exist_ok = True)
                                 else:
                                     break
                             try:
@@ -2004,7 +2004,7 @@ async def search_profile(connection):
                                             try:
                                                 jsonfile6 = open(os.path.join(folder, json6name), "w", encoding = "utf-8")
                                             except FileNotFoundError:
-                                                os.makedirs(folder)
+                                                os.makedirs(folder, exist_ok = True)
                                             else:
                                                 break
                                         try:
@@ -2022,7 +2022,7 @@ async def search_profile(connection):
                                             try:
                                                 jsonfile7 = open(os.path.join(folder, json7name), "w", encoding = "utf-8")
                                             except FileNotFoundError:
-                                                os.makedirs(folder)
+                                                os.makedirs(folder, exist_ok = True)
                                             else:
                                                 break
                                         try:
@@ -2489,7 +2489,7 @@ async def search_profile(connection):
                                 try:
                                     jsonfile5 = open(os.path.join(folder, json5name), "w", encoding = "utf-8")
                                 except FileNotFoundError:
-                                    os.makedirs(folder)
+                                    os.makedirs(folder, exist_ok = True)
                                 else:
                                     break
                             try:
@@ -2567,7 +2567,7 @@ async def search_profile(connection):
                                 try:
                                     jsonfile8 = open(os.path.join(folder, json8name), "w", encoding = "utf-8")
                                 except FileNotFoundError:
-                                    os.makedirs(folder)
+                                    os.makedirs(folder, exist_ok = True)
                                 else:
                                     break
                             try:
@@ -3106,10 +3106,7 @@ async def search_profile(connection):
                             input()
                         except FileNotFoundError:
                             workbook_exist = False
-                            try:
-                                os.makedirs(folder)
-                            except FileExistsError:
-                                pass
+                            os.makedirs(folder, exist_ok = True)
                             with pandas.ExcelWriter(path = os.path.join(folder, excel_name)) as writer:
                                 info_df.to_excel(excel_writer = writer, sheet_name = "Profile")
                                 print("召唤师生涯导出完成！\nSummoner profile exported!\n")

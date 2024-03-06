@@ -943,6 +943,210 @@
             ],
             "skinAugments": null,
             "description": "Most awaken their souls through hard work, but this fighter... no! All it took was a stop by the Department for the Eradication of Manifested Anomalies and boom! Cobra powers. SURE, apparently the procedure involves the \"worst pain one can possibly imagine.\" But look at her now! Here to hunt down a daughter with nowhere left to run... it's Evelynn!"
+        },
+        {
+            "id": 28052,
+            "isBase": false,
+            "name": "High Noon Evelynn",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/28/28052.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/28/28052.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/28/28052.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Evelynn/Skins/Skin52/EvelynnLoadScreen_52.SKINS_Evelynn_Skin52.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28052.png",
+            "chromas": [
+                {
+                    "id": 28054,
+                    "name": "High Noon Evelynn",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28054.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2024."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 28055,
+                    "name": "High Noon Evelynn",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28055.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 28056,
+                    "name": "High Noon Evelynn",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28056.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 28057,
+                    "name": "High Noon Evelynn",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28057.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 28058,
+                    "name": "High Noon Evelynn",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28058.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 28059,
+                    "name": "High Noon Evelynn",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28059.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 28060,
+                    "name": "High Noon Evelynn",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28060.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 28061,
+                    "name": "High Noon Evelynn",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28061.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 28062,
+                    "name": "High Noon Evelynn",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28062.png",
+                    "colors": [
+                        "#A8BFF1",
+                        "#CD5867"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2024 High Noon event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 28063,
+                    "name": "High Noon Evelynn",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28063.png",
+                    "colors": [
+                        "#D9C542",
+                        "#0B731C"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2024 High Noon event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "The poor man looks haunted. Perfect. Evelynn leans over the bar top towards him with a sweet smile curling her red lips: \"Tell me your woes, handsome.\" And he does. He tells her of his brother, and a raw deal, and how he thinks he might be dead now but ain't sure... and the devil drinks deep. \"It's alright, darlin',” she coos. “I've got you now."
+        },
+        {
+            "id": 28053,
+            "isBase": false,
+            "name": "Prestige High Noon Evelynn",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/28/28053.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/28/28053.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/28/28053.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Evelynn/Skins/Skin53/EvelynnLoadScreen_53.SKINS_Evelynn_Skin53.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "Ateliers near and far always ask Evelynn to wear their haute couture, but for this Gala, she's bringing her edgy elegance to a rowdier line of Western wear instead. What is fashion if not a wild new frontier? If there's anyone who knows how to take style by the reins and ride it into the sunset, it's this rodeo queen."
         }
     ],
     "passive": {

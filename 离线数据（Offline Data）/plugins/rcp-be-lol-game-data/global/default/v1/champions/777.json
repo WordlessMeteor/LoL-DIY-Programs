@@ -905,6 +905,146 @@
             ],
             "skinAugments": null,
             "description": "As an enigmatic music producer, Yone may say he doesn't enjoy the limelight, but he couldn't help but dress to impress for the band's chart-topping debut in a smart, sleek fit worthy of his sharp swordsmanship and even sharper style. It'd be a shame to hide behind a computer when you look this cool."
+        },
+        {
+            "id": 777055,
+            "isBase": false,
+            "name": "High Noon Yone",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/777/777055.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/777/777055.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/777/777055.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yone/Skins/Skin55/YoneLoadScreen_55.SKINS_Yone_Skin55.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777055.png",
+            "chromas": [
+                {
+                    "id": 777059,
+                    "name": "High Noon Yone",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777059.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 777060,
+                    "name": "High Noon Yone",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777060.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 777061,
+                    "name": "High Noon Yone",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777061.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 777062,
+                    "name": "High Noon Yone",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777062.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 777063,
+                    "name": "High Noon Yone",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777063.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 777064,
+                    "name": "High Noon Yone",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777064.png",
+                    "colors": [
+                        "#9DB3E1",
+                        "#CD5867"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "The haunted man doesn't breathe, just leans against the hitching post and squints into the frontier dusk—but it ain't him. Not really. The real Yone is shadow and gunsmoke, roiling as it sinks back into the stillness of his corporeal form. “How'd you wind up split like that?” the young Powder Witch asks. Yone sighs, “It's a long story, kid.”"
+        },
+        {
+            "id": 777058,
+            "isBase": false,
+            "name": "Peacemaker High Noon Yone",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/777/777058.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/777/777058.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/777/777058.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yone/Skins/Skin58/YoneLoadScreen_58.SKINS_Yone_Skin58.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "The haunted man doesn't breathe, just leans against the hitching post and squints into the frontier dusk—but it ain't him. Not really. The real Yone is shadow and gunsmoke, roiling as it sinks back into the stillness of his corporeal form. “How'd you wind up split like that?” the young Powder Witch asks. Yone sighs, “It's a long story, kid.”"
         }
     ],
     "passive": {

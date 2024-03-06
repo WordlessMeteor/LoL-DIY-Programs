@@ -888,7 +888,7 @@
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/267/267042.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/267/267042.jpg",
             "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nami/Skins/Skin42/NamiLoadScreen_42.jpg",
-            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Nami/Skins/Skin42/NamiLoadscreen_42_LE.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Nami/Skins/Skin42/NamiLoadScreen_42_LE.PIE_C_Legacy_Bugs_2024_February.jpg",
             "skinType": "",
             "rarity": "kMythic",
             "isLegacy": false,

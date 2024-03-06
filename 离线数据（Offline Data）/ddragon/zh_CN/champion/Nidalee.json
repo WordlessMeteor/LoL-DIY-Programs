@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.4.1",
+    "version": "14.5.1",
     "data": {
         "Nidalee": {
             "id": "Nidalee",
@@ -143,7 +143,7 @@
                 "hpperlevel": 109,
                 "mp": 295,
                 "mpperlevel": 45,
-                "movespeed": 340,
+                "movespeed": 335,
                 "armor": 32,
                 "armorperlevel": 5,
                 "spellblock": 30,

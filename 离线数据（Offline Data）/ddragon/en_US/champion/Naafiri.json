@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.4.1",
+    "version": "14.5.1",
     "data": {
         "Naafiri": {
             "id": "Naafiri",
@@ -28,6 +28,12 @@
                     "id": "950001",
                     "num": 1,
                     "name": "Soul Fighter Naafiri",
+                    "chromas": true
+                },
+                {
+                    "id": "950011",
+                    "num": 11,
+                    "name": "PROJECT: Naafiri",
                     "chromas": true
                 }
             ],
