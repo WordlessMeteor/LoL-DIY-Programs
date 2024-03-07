@@ -122,7 +122,7 @@ async def fetch_store(connection):
     catalog_header = {"active": "可用性", "description": "简介", "imagePath": "缩略图路径", "inactiveDate": "停止销售日期", "inventoryType": "道具类型", "itemId": "序号", "itemInstanceId": "识别码", "metadata": "元数据", "name": "名称", "offerId": "交易代码", "owned": "已拥有", "ownershipType": "拥有权", "prices": "价格", "purchaseDate": "购买日期", "questSkinInfo": "赠送皮肤信息", "releaseDate": "发布日期", "sale": "销售信息", "subInventoryType": "次级道具类型", "subTitle": "副标题", "tags": "搜索关键词"}
     catalog_data = {}
     catalog_header_keys = list(catalog_header.keys())
-    inventoryType_dict = {"AUGMENT": "AUGMENT", "AUGMENT_SLOT": "AUGMENT_SLOT", "BOOST": "加成道具", "BUNDLES": "道具包", "CHAMPION": "英雄", "CHAMPION_SKIN": "炫彩皮肤", "COMPANION": "小小英雄", "CURRENCY": "货币", "EMOTE": "表情", "EVENT_PASS": "事件通行证", "GIFT": "礼物", "HEXTECH_CRAFTING": "海克斯科技宝箱", "MODE_PROGRESSION_REWARD": "MODE_PROGRESSION_REWARD", "MYSTERY": "MYSTERY", "QUEUE_ENTRY": "队列通行证", "RP": "点券", "SPELL_BOOK_PAGE": "符文页", "STATSTONE": "永恒星碑", "SUMMONER_CUSTOMIZATION": "SUMMONER_CUSTOMIZATION", "SUMMONER_ICON": "召唤师图标", "TEAM_SKIN_PURCHASE": "TEAM_SKIN_PURCHASE", "TFT_DAMAGE_SKIN": "云顶之弈进攻特效", "TFT_MAP_SKIN": "云顶之弈棋盘皮肤", "TOURNAMENT_TROPHY": "赛事奖励", "TRANSFER": "转区项目", "WARD_SKIN": "守卫（眼）皮肤"}
+    inventoryType_dict = {"AUGMENT": "AUGMENT", "AUGMENT_SLOT": "AUGMENT_SLOT", "BOOST": "加成道具", "BUNDLES": "道具包", "CHAMPION": "英雄", "CHAMPION_SKIN": "皮肤", "COMPANION": "小小英雄", "CURRENCY": "货币", "EMOTE": "表情", "EVENT_PASS": "事件通行证", "GIFT": "礼物", "HEXTECH_CRAFTING": "海克斯科技宝箱", "MODE_PROGRESSION_REWARD": "MODE_PROGRESSION_REWARD", "MYSTERY": "MYSTERY", "QUEUE_ENTRY": "队列通行证", "RP": "点券", "SPELL_BOOK_PAGE": "符文页", "STATSTONE": "永恒星碑", "SUMMONER_CUSTOMIZATION": "SUMMONER_CUSTOMIZATION", "SUMMONER_ICON": "召唤师图标", "TEAM_SKIN_PURCHASE": "TEAM_SKIN_PURCHASE", "TFT_DAMAGE_SKIN": "云顶之弈进攻特效", "TFT_MAP_SKIN": "云顶之弈棋盘皮肤", "TOURNAMENT_TROPHY": "赛事奖励", "TRANSFER": "转区项目", "WARD_SKIN": "守卫（眼）皮肤"}
     ownershipType_dict = {None: "未拥有", "F2P": "免费使用", "RENTED": "租借中", "OWNED": "已拥有"}
     subInventoryType_dict = {"": "", "RECOLOR": "炫彩", "tft_star_fragments": "星之碎片"}
     for i in range(len(catalog_header)):
@@ -150,7 +150,9 @@ async def fetch_store(connection):
                     imagePath = connection.address + "/" + item[key]
                 catalog_data[key].append(imagePath)
             elif i in {3, 13, 15}:
-                if item[key] == 18446744073709551615:
+                if item[key] == 0:
+                    catalog_data[key].append("")
+                elif item[key] == 18446744073709551615:
                     catalog_data[key].append("∞")
                 else:
                     catalog_data[key].append(time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(item[key])))
