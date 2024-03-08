@@ -1180,11 +1180,12 @@
         {
             "id": 121079,
             "isBase": false,
-            "name": "水晶圣骑 卡兹克",
+            "name": "水晶掠夺者 卡兹克",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/121/121079.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/121/121079.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/121/121079.jpg",
             "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/KhaZix/Skins/Skin79/KhazixLoadScreen_79.SKINS_Khazix_Skin79.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/KhaZix/Skins/Skin79/KhazixLoadScreen_79_LE.SKINS_Khazix_Skin79.jpg",
             "skinType": "",
             "rarity": "kEpic",
             "isLegacy": false,
@@ -1195,7 +1196,7 @@
             "chromas": [
                 {
                     "id": 121080,
-                    "name": "水晶圣骑 卡兹克 破碎之光",
+                    "name": "水晶掠夺者 卡兹克 破碎之光",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/121/121080.png",
                     "colors": [
                         "#469FFC",
@@ -1205,9 +1206,18 @@
                     "rarities": []
                 }
             ],
-            "emblems": null,
-            "regionRarityId": 0,
-            "rarityGemPath": null,
+            "emblems": [
+                {
+                    "name": "Mythic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/68.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/68.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
             "skinLines": [
                 {
                     "id": 202

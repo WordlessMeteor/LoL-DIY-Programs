@@ -988,6 +988,7 @@
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/28/28052.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/28/28052.jpg",
             "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Evelynn/Skins/Skin52/EvelynnLoadScreen_52.SKINS_Evelynn_Skin52.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Evelynn/Skins/Skin52/EvelynnLoadScreen_52_LE.SKINS_Evelynn_Skin52.jpg",
             "skinType": "",
             "rarity": "kNoRarity",
             "isLegacy": false,
@@ -998,7 +999,7 @@
             "chromas": [
                 {
                     "id": 28054,
-                    "name": "西部魔影 伊芙琳",
+                    "name": "西部魔影 伊芙琳 (Ruby)",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28054.png",
                     "colors": [
                         "#D33528",
@@ -1019,7 +1020,7 @@
                 },
                 {
                     "id": 28055,
-                    "name": "西部魔影 伊芙琳",
+                    "name": "西部魔影 伊芙琳 (Emerald)",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28055.png",
                     "colors": [
                         "#2DA130",
@@ -1030,7 +1031,7 @@
                 },
                 {
                     "id": 28056,
-                    "name": "西部魔影 伊芙琳",
+                    "name": "西部魔影 伊芙琳 (Tanzanite)",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28056.png",
                     "colors": [
                         "#54209B",
@@ -1041,7 +1042,7 @@
                 },
                 {
                     "id": 28057,
-                    "name": "西部魔影 伊芙琳",
+                    "name": "西部魔影 伊芙琳 (Turquoise)",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28057.png",
                     "colors": [
                         "#73BFBE",
@@ -1052,7 +1053,7 @@
                 },
                 {
                     "id": 28058,
-                    "name": "西部魔影 伊芙琳",
+                    "name": "西部魔影 伊芙琳 (Sapphire)",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28058.png",
                     "colors": [
                         "#2756CE",
@@ -1068,7 +1069,7 @@
                 },
                 {
                     "id": 28059,
-                    "name": "西部魔影 伊芙琳",
+                    "name": "西部魔影 伊芙琳 (Rose Quartz)",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28059.png",
                     "colors": [
                         "#E58BA5",
@@ -1084,7 +1085,7 @@
                 },
                 {
                     "id": 28060,
-                    "name": "西部魔影 伊芙琳",
+                    "name": "西部魔影 伊芙琳 (Catseye)",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28060.png",
                     "colors": [
                         "#FFEE59",
@@ -1095,7 +1096,7 @@
                 },
                 {
                     "id": 28061,
-                    "name": "西部魔影 伊芙琳",
+                    "name": "西部魔影 伊芙琳 (Obsidian)",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28061.png",
                     "colors": [
                         "#27211C",
@@ -1106,7 +1107,7 @@
                 },
                 {
                     "id": 28062,
-                    "name": "西部魔影 伊芙琳",
+                    "name": "西部魔影 伊芙琳 (Noonday)",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28062.png",
                     "colors": [
                         "#A8BFF1",
@@ -1127,7 +1128,7 @@
                 },
                 {
                     "id": 28063,
-                    "name": "西部魔影 伊芙琳",
+                    "name": "西部魔影 伊芙琳 (Vendetta)",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28063.png",
                     "colors": [
                         "#D9C542",
@@ -1156,7 +1157,7 @@
                 }
             ],
             "skinAugments": null,
-            "description": "这个可怜人看上去忧心忡忡。完美。伊芙琳靠在吧台顶上，朝他倾身，弯起红唇甜蜜一笑：“给我讲一讲你的烦心事，帅哥。”并且他讲了。他给她讲了他的兄弟，以及一次不公平的交易，以及他如何觉得自己可能已经死了但又不确定……然后那个恶魔开始痛饮。“没事啦，亲爱的，”她柔声说。“你现在归我了。"
+            "description": "这个可怜人看上去魂不守舍。完美。伊芙琳靠在吧台顶上，朝他倾身，弯起红唇甜蜜一笑：“给我讲一讲你的烦心事，帅哥。”并且他讲了。他给她讲了他的兄弟，以及一次不公平的交易，以及他如何觉得自己可能已经死了但又不确定……然后那个恶魔开始痛饮。“没事啦，亲爱的，”她柔声说。“你现在归我了。"
         },
         {
             "id": 28053,
@@ -1166,6 +1167,7 @@
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/28/28053.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/28/28053.jpg",
             "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Evelynn/Skins/Skin53/EvelynnLoadScreen_53.SKINS_Evelynn_Skin53.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Evelynn/Skins/Skin53/EvelynnLoadScreen_53_LE.SKINS_Evelynn_Skin53.jpg",
             "skinType": "",
             "rarity": "kMythic",
             "isLegacy": false,
@@ -1173,9 +1175,18 @@
             "collectionSplashVideoPath": null,
             "featuresText": null,
             "chromaPath": null,
-            "emblems": null,
-            "regionRarityId": 0,
-            "rarityGemPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
             "skinLines": [
                 {
                     "id": 39

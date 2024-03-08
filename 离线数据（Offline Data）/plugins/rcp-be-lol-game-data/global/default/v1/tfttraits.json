@@ -3719,7 +3719,7 @@
                 "effect_amounts": [
                     {
                         "name": "BonusPercentHealth",
-                        "value": 0.7000,
+                        "value": 0.6000,
                         "format_string": ""
                     },
                     {
@@ -3737,7 +3737,7 @@
                 "effect_amounts": [
                     {
                         "name": "BonusPercentHealth",
-                        "value": 0.8500,
+                        "value": 0.7500,
                         "format_string": ""
                     },
                     {
@@ -3840,7 +3840,7 @@
                     },
                     {
                         "name": "TrueDamageHPRatio",
-                        "value": 0.1500,
+                        "value": 0.1200,
                         "format_string": ""
                     },
                     {
@@ -3878,7 +3878,7 @@
                     },
                     {
                         "name": "TrueDamageHPRatio",
-                        "value": 0.2500,
+                        "value": 0.1800,
                         "format_string": ""
                     },
                     {
@@ -3913,7 +3913,7 @@
         "trait_id": "TFT11_Dryad",
         "set": "TFTSet11",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Dryad.TFT_Set11.png",
-        "tooltip_text": "Dryads gain Ability Power and @StartingHealth@ Health. Each enemy death grants additional Health.<br><br><expandRow>(@MinUnits@) @AP@&nbsp;%i:scaleAP%; @HealthPerCompost@&nbsp;%i:scaleHealth% per enemy death</expandRow><br><br><TFTTrackerLabel>(Total health: @TFTUnitProperty.trait:TFT11_Trait_DryadHealth@&nbsp;%i:scaleHealth%)</TFTTrackerLabel><br><TFTTrackerLabel>(Enemies killed: @TFTUnitProperty.trait:TFT11_Trait_DryadCompost@)</TFTTrackerLabel><br>",
+        "tooltip_text": "Dryads gain Ability Power and @StartingHealth@ Health. Each enemy death grants permanent additional Health.<br><br><expandRow>(@MinUnits@) @AP@&nbsp;%i:scaleAP%; @HealthPerCompost@&nbsp;%i:scaleHealth% per enemy death</expandRow><br><br><TFTTrackerLabel>(Total health: @TFTUnitProperty.trait:TFT11_Trait_DryadHealth@&nbsp;%i:scaleHealth%)</TFTTrackerLabel><br><TFTTrackerLabel>(Enemies killed: @TFTUnitProperty.trait:TFT11_Trait_DryadCompost@)</TFTTrackerLabel><br>",
         "innate_trait_sets": [
             {
                 "effect_amounts": [
@@ -3924,12 +3924,12 @@
                     },
                     {
                         "name": "StartingHealth",
-                        "value": 100.0000,
+                        "value": 200.0000,
                         "format_string": ""
                     },
                     {
                         "name": "StartingHealthHR",
-                        "value": 100.0000,
+                        "value": 200.0000,
                         "format_string": ""
                     }
                 ]
@@ -3943,7 +3943,7 @@
                 "effect_amounts": [
                     {
                         "name": "HealthPerCompost",
-                        "value": 4.0000,
+                        "value": 2.0000,
                         "format_string": ""
                     },
                     {
@@ -3953,7 +3953,7 @@
                     },
                     {
                         "name": "HealthPerCompostHR",
-                        "value": 8.0000,
+                        "value": 4.0000,
                         "format_string": ""
                     }
                 ],
@@ -3966,17 +3966,17 @@
                 "effect_amounts": [
                     {
                         "name": "HealthPerCompost",
-                        "value": 8.0000,
+                        "value": 5.0000,
                         "format_string": ""
                     },
                     {
                         "name": "AP",
-                        "value": 20.0000,
+                        "value": 30.0000,
                         "format_string": ""
                     },
                     {
                         "name": "HealthPerCompostHR",
-                        "value": 16.0000,
+                        "value": 10.0000,
                         "format_string": ""
                     }
                 ],
@@ -3989,17 +3989,17 @@
                 "effect_amounts": [
                     {
                         "name": "HealthPerCompost",
-                        "value": 12.0000,
+                        "value": 9.0000,
                         "format_string": ""
                     },
                     {
                         "name": "AP",
-                        "value": 40.0000,
+                        "value": 60.0000,
                         "format_string": ""
                     },
                     {
                         "name": "HealthPerCompostHR",
-                        "value": 24.0000,
+                        "value": 18.0000,
                         "format_string": ""
                     }
                 ],
@@ -4067,7 +4067,7 @@
                 "effect_amounts": [
                     {
                         "name": "AttackSpeedPercent",
-                        "value": 0.1300,
+                        "value": 0.1500,
                         "format_string": ""
                     },
                     {
@@ -4077,7 +4077,7 @@
                     },
                     {
                         "name": "DamageReduction",
-                        "value": 0.1300,
+                        "value": 0.1500,
                         "format_string": ""
                     }
                 ],
@@ -4098,7 +4098,7 @@
                 "effect_amounts": [
                     {
                         "name": "BaseAmountXP",
-                        "value": 2.0000,
+                        "value": 1.0000,
                         "format_string": ""
                     },
                     {
@@ -4325,7 +4325,7 @@
                     },
                     {
                         "name": "WinPenalty",
-                        "value": 0.3300,
+                        "value": 0.2000,
                         "format_string": ""
                     },
                     {
@@ -4358,7 +4358,7 @@
                     },
                     {
                         "name": "WinPenalty",
-                        "value": 0.3300,
+                        "value": 0.2000,
                         "format_string": ""
                     },
                     {
@@ -4368,7 +4368,7 @@
                     },
                     {
                         "name": "Heal",
-                        "value": 2.0000,
+                        "value": 3.0000,
                         "format_string": ""
                     }
                 ],
@@ -4401,7 +4401,7 @@
                     },
                     {
                         "name": "Heal",
-                        "value": 2.0000,
+                        "value": 3.0000,
                         "format_string": ""
                     }
                 ],
@@ -4461,7 +4461,7 @@
                 "effect_amounts": [
                     {
                         "name": "DamagePercent",
-                        "value": 0.0900,
+                        "value": 0.1200,
                         "format_string": ""
                     }
                 ],
@@ -4474,7 +4474,7 @@
                 "effect_amounts": [
                     {
                         "name": "DamagePercent",
-                        "value": 0.1500,
+                        "value": 0.1800,
                         "format_string": ""
                     }
                 ],
@@ -4487,7 +4487,7 @@
                 "effect_amounts": [
                     {
                         "name": "DamagePercent",
-                        "value": 0.3000,
+                        "value": 0.3500,
                         "format_string": ""
                     }
                 ],
@@ -4607,7 +4607,7 @@
                 "effect_amounts": [
                     {
                         "name": "HeavenlyBonus",
-                        "value": 1.4000,
+                        "value": 1.3500,
                         "format_string": ""
                     }
                 ],
@@ -4633,7 +4633,7 @@
                 "effect_amounts": [
                     {
                         "name": "HeavenlyBonus",
-                        "value": 1.9000,
+                        "value": 1.9500,
                         "format_string": ""
                     }
                 ],
@@ -4646,7 +4646,7 @@
                 "effect_amounts": [
                     {
                         "name": "HeavenlyBonus",
-                        "value": 2.2000,
+                        "value": 2.2500,
                         "format_string": ""
                     }
                 ],
@@ -4770,7 +4770,7 @@
                     },
                     {
                         "name": "InvokerMana",
-                        "value": 20.0000,
+                        "value": 30.0000,
                         "format_string": ""
                     },
                     {
@@ -4798,7 +4798,7 @@
                     },
                     {
                         "name": "InvokerMana",
-                        "value": 30.0000,
+                        "value": 45.0000,
                         "format_string": ""
                     },
                     {
@@ -4992,7 +4992,7 @@
                 "effect_amounts": [
                     {
                         "name": "DR",
-                        "value": 0.1500,
+                        "value": 0.2000,
                         "format_string": ""
                     },
                     {
@@ -5015,7 +5015,7 @@
                 "effect_amounts": [
                     {
                         "name": "DR",
-                        "value": 0.2000,
+                        "value": 0.3000,
                         "format_string": ""
                     },
                     {
@@ -5038,7 +5038,7 @@
                 "effect_amounts": [
                     {
                         "name": "DR",
-                        "value": 0.3500,
+                        "value": 0.5000,
                         "format_string": ""
                     },
                     {
@@ -5063,7 +5063,7 @@
         "trait_id": "TFT11_Reaper",
         "set": "TFTSet11",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Reaper.TFT_Set11.png",
-        "tooltip_text": "<row>(@MinUnits@) Reapers' Abilities can critically strike and they gain @CritChance*100@% Critical Strike Chance.</row><br><row>(@MinUnits@) Additionally, Reapers' bleed enemies for @BleedDamage*100@% bonus true damage over @Duration@&nbsp;seconds.</row><br>",
+        "tooltip_text": "<row>(@MinUnits@) Reapers Abilities can critically strike and they gain @CritChance*100@% Critical Strike Chance.</row><br><row>(@MinUnits@) Additionally, Reapers' bleed enemies for @BleedDamage*100@% bonus true damage over @Duration@&nbsp;seconds.</row><br>",
         "innate_trait_sets": [
             {
                 "effect_amounts": [
@@ -5203,7 +5203,7 @@
         "trait_id": "TFT11_Sniper",
         "set": "TFTSet11",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_6_Sniper.png",
-        "tooltip_text": "Innate: Snipers gain @HexRangeIncrease@&nbsp;Attack&nbsp;Range. <br><br>Snipers deal more damage to targets farther away.<br><br><expandRow>(@MinUnits@) @PercentDamageIncrease@%&nbsp;damage per hex.</expandRow>",
+        "tooltip_text": "Innate: Snipers gain @HexRangeIncrease@&nbsp;Attack&nbsp;Range. <br><br>Snipers deal more damage to targets farther away.<br><br><row>(@MinUnits@) @PercentDamageIncrease@%&nbsp;damage per hex.</row><br><row>(@MinUnits@) @PercentDamageIncrease@%&nbsp;damage per hex.</row><br><row>(@MinUnits@) @PercentDamageIncrease@%&nbsp;damage per hex. Snipers gain an additional @BonusHexRangeIncrease@ Attack Range.</row>",
         "innate_trait_sets": [
             {
                 "effect_amounts": [
@@ -5222,6 +5222,11 @@
                         "name": "PercentDamageIncrease",
                         "value": 7.0000,
                         "format_string": ""
+                    },
+                    {
+                        "name": "BonusHexRangeIncrease",
+                        "value": 0.0000,
+                        "format_string": ""
                     }
                 ],
                 "min_units": 2,
@@ -5235,6 +5240,11 @@
                         "name": "PercentDamageIncrease",
                         "value": 14.0000,
                         "format_string": ""
+                    },
+                    {
+                        "name": "BonusHexRangeIncrease",
+                        "value": 0.0000,
+                        "format_string": ""
                     }
                 ],
                 "min_units": 4,
@@ -5247,6 +5257,11 @@
                     {
                         "name": "PercentDamageIncrease",
                         "value": 30.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BonusHexRangeIncrease",
+                        "value": 2.0000,
                         "format_string": ""
                     }
                 ],
@@ -5293,7 +5308,7 @@
         "trait_id": "TFT11_Storyweaver",
         "set": "TFTSet11",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Storyweaver.TFT_Set11.png",
-        "tooltip_text": "Storyweavers summon a Hero named Kayle and evolve her. Storyweavers gain max Health.<br><br><row>(@MinUnits@) Pick a supportive effect. @Health@&nbsp;%i:scaleHealth%</row><br><row>(@MinUnits@) Pick a combat effect. @Health@&nbsp;%i:scaleHealth%</row><br><row>(@MinUnits@) Pick a combat effect. @Health@&nbsp;%i:scaleHealth%</row><br><row>(@MinUnits@) Ascend. @Health@&nbsp;%i:scaleHealth%</row><br><br><rules>Each Storyweaver star level increases Kayles Health and Ability Power. Kayle gets @BonusASPerStage*100@% Attack Speed for each game Stage.</rules>",
+        "tooltip_text": "Storyweavers summon a Hero named Kayle and evolve her. Storyweavers gain max Health.<br><br><row>(@MinUnits@) Pick a supportive effect. @Health@&nbsp;%i:scaleHealth%</row><br><row>(@MinUnits@) Pick a combat effect. @Health@&nbsp;%i:scaleHealth%</row><br><row>(@MinUnits@) Pick a combat effect. @Health@&nbsp;%i:scaleHealth%</row><br><row>(@MinUnits@) Ascend. @Health@&nbsp;%i:scaleHealth%</row><br><br><rules>Each Storyweaver star level increases Kayle's Health and Ability Power. Kayle gets @BonusASPerStage*100@% Attack Speed for each game Stage.</rules>",
         "innate_trait_sets": [
             {
                 "effect_amounts": [
@@ -5476,7 +5491,7 @@
                 "effect_amounts": [
                     {
                         "name": "DesireExecuteThreshhold",
-                        "value": 12.0000,
+                        "value": 10.0000,
                         "format_string": ""
                     },
                     {
@@ -5486,7 +5501,7 @@
                     },
                     {
                         "name": "ShieldAmount",
-                        "value": 250.0000,
+                        "value": 200.0000,
                         "format_string": ""
                     }
                 ],
@@ -5499,7 +5514,7 @@
                 "effect_amounts": [
                     {
                         "name": "DesireExecuteThreshhold",
-                        "value": 20.0000,
+                        "value": 15.0000,
                         "format_string": ""
                     },
                     {
@@ -5509,7 +5524,7 @@
                     },
                     {
                         "name": "ShieldAmount",
-                        "value": 400.0000,
+                        "value": 450.0000,
                         "format_string": ""
                     }
                 ],
@@ -5522,7 +5537,7 @@
                 "effect_amounts": [
                     {
                         "name": "DesireExecuteThreshhold",
-                        "value": 20.0000,
+                        "value": 15.0000,
                         "format_string": ""
                     },
                     {

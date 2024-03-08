@@ -33,25 +33,25 @@
         "iconPath": "/lol-game-data/assets/",
         "nameId": "TFT_Portals_Augments_SilverGoldPrismatic",
         "displayName": "",
-        "description": "银金彩乐章"
+        "description": "银金彩之旅"
     },
     {
         "iconPath": "/lol-game-data/assets/",
         "nameId": "TFT_Portals_Augments_TripleGold",
         "displayName": "",
-        "description": "三金交响乐"
+        "description": "金金金之旅"
     },
     {
         "iconPath": "/lol-game-data/assets/",
         "nameId": "TFT_Portals_Augments_TriplePrismatic",
         "displayName": "",
-        "description": "三彩交响乐"
+        "description": "彩彩彩之旅"
     },
     {
         "iconPath": "/lol-game-data/assets/",
         "nameId": "TFT_Portals_Augments_TripleSilver",
         "displayName": "",
-        "description": "三银交响曲"
+        "description": "银银银之旅"
     },
     {
         "iconPath": "/lol-game-data/assets/",
@@ -176,6 +176,12 @@
     {
         "iconPath": "/lol-game-data/assets/",
         "nameId": "TFT_Portals_Gold_GoldSubscription",
+        "displayName": "",
+        "description": "金币订阅"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Gold_GoldSubscription_HR",
         "displayName": "",
         "description": "金币订阅"
     },

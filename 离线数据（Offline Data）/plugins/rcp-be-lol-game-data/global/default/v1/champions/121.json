@@ -1140,6 +1140,7 @@
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/121/121079.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/121/121079.jpg",
             "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/KhaZix/Skins/Skin79/KhazixLoadScreen_79.SKINS_Khazix_Skin79.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/KhaZix/Skins/Skin79/KhazixLoadScreen_79_LE.SKINS_Khazix_Skin79.jpg",
             "skinType": "",
             "rarity": "kEpic",
             "isLegacy": false,

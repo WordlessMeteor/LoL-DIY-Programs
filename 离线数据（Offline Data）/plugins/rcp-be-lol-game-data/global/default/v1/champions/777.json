@@ -914,6 +914,7 @@
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/777/777055.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/777/777055.jpg",
             "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yone/Skins/Skin55/YoneLoadScreen_55.SKINS_Yone_Skin55.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Yone/Skins/Skin55/YoneLoadScreen_55_LE.SKINS_Yone_Skin55.jpg",
             "skinType": "",
             "rarity": "kLegendary",
             "isLegacy": false,
@@ -933,7 +934,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": "This chroma was released as a bundle exclusive in 2023."
+                            "description": "This chroma was released as a bundle exclusive in 2024."
                         }
                     ],
                     "rarities": [
@@ -1028,6 +1029,7 @@
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/777/777058.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/777/777058.jpg",
             "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yone/Skins/Skin58/YoneLoadScreen_58.SKINS_Yone_Skin58.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Yone/Skins/Skin58/YoneLoadScreen_58_LE.SKINS_Yone_Skin58.jpg",
             "skinType": "",
             "rarity": "kMythic",
             "isLegacy": false,

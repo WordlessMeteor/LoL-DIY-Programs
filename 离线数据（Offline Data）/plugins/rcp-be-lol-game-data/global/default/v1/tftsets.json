@@ -2,7 +2,7 @@
     "LCTFTModeData": {
         "mActiveSets": [
             {
-                "SetCoreName": "TFTTutorial",
+                "SetCoreName": "TFTSetTutorial",
                 "SetDisplayName": "REMIX RUMBLE IS ON",
                 "SetAugmentName": "Hexcore Augments",
                 "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/gear.png",

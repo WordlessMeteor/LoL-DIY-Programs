@@ -3710,6 +3710,32 @@
         "rewards": [
             {
                 "media": {
+                    "image": "ASSETS/Challenges/Config/121000/Tokens/MASTER.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
                     "image": "ASSETS/Challenges/Config/201000/Tokens/MASTER.png"
                 }
             }
@@ -9124,6 +9150,204 @@
             {
                 "media": null
             },
+            {
+                "media": null
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": null
+            },
+            {
+                "media": null
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": null
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": null
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": null
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": null
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": null
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": null
+            },
+            {
+                "media": null
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
             {
                 "media": null
             }

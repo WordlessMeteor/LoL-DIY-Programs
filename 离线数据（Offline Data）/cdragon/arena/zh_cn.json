@@ -26,7 +26,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/vanish_small.arena_augments_v2.png",
             "id": 89,
             "name": "遁入暗影",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "进入<stealth>隐形</stealth>状态，持续@StealthDuration@秒或直到你进行攻击或施放技能为止。<br>这个潜行不会被【奥术探测器】饰品给显形。"
         },
         {
@@ -41,7 +41,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/chainlightning_small.arena_augments_v2.png",
             "id": 166,
             "name": "连锁闪电",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": " {{Cherry_ChainLightning_Summary}}<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
         },
         {
@@ -131,7 +131,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/quantumcomputing_small.arena_augments_v2.png",
             "id": 66,
             "name": "量子计算",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "每15秒<keywordMajor>自动</keywordMajor>在你周围进行环状斩击，外侧边缘造成额外伤害并治疗你自身。<br><br>已造成伤害的总和：@f1@<br>已造成的治疗效果总和：@f2@"
         },
         {
@@ -160,7 +160,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/demonsdance_small.arena_augments_v2.png",
             "id": 23,
             "name": "魔鬼之舞",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "获得<spellName>迅捷步法</spellName>和<spellName>不灭之握</spellName>基石符文。<br><br>这个回合已造成的治疗效果：@f1@<br>已造成的治疗效果总和：@f2@<br>已获得的最大生命值：@f3@"
         },
         {
@@ -193,7 +193,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/defensivemaneuvers_small.arena_augments_v2.png",
             "id": 21,
             "name": "防御计略",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "对你和你的友军施放<abilityName>屏障</abilityName>和<abilityName>治疗术</abilityName>。提供<shield>@BarrierAmount@护盾值</shield>，回复<healing>@HealAmount@生命值</healing>并提供持续1秒的<speed>30%移动速度</speed>。<br><br>已造成的治疗效果总和：@f1@<br>已生成的护盾值总和：@f2@"
         },
         {
@@ -208,7 +208,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/chauffeur_small.arena_augments_v2.png",
             "id": 14,
             "name": "专属司机",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "你附身于你的友军。你的额外移动速度还会提供给你的友军，并且你获得<scaleLevel>@Haste@技能急速</scaleLevel>和<attackSpeed>@AttackSpeed*100@%攻击速度</attackSpeed>。<br><br>使用一个冲刺类或闪烁类技能会使灵链被移除1.5秒，然后回链至你的友军。"
         },
         {
@@ -236,7 +236,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/marksmage_small.arena_augments_v2.png",
             "id": 129,
             "name": "神射法师",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "{{Cherry_Marksmage_Summary}}<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
         },
         {
@@ -274,7 +274,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/bladewaltz_small.arena_augments_v2.png",
             "id": 6,
             "name": "利刃华尔兹",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "<rules>让你进入不可被选取状态，在此期间对敌人进行突进并造成@Damage@伤害@TotalHits@次（可造成50%攻击特效伤害）。</rules><br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@<br>"
         },
         {
@@ -289,7 +289,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/willingsacrifice_small.arena_augments_v2.png",
             "id": 94,
             "name": "自愿牺牲",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "当你的友军跌到<health>@AllyHealthThreshold*100@%生命值</health>以下时，将<health>你的@CurrentHealthToDrain*100@%当前生命值</health>换成等额<shield>护盾值</shield>来提供给你的队友。<br><br>这个回合已生成的护盾值：@f1@<br>已生成的护盾值总和：@f2@"
         },
         {
@@ -333,7 +333,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/bannerofcommand_small.arena_augments_v2.png",
             "id": 5,
             "name": "号令之旗",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "你的搭档获得额外的@EmpowermentValue*100@%<scaleHealth>生命值</scaleHealth>、<scaleAD>攻击力</scaleAD>、<scaleAP>法术强度</scaleAP>和<attackSpeed>攻击速度</attackSpeed>，持续10秒。"
         },
         {
@@ -377,7 +377,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/quest_urfschampion_small.arena_augments_v2.png",
             "id": 154,
             "name": "任务：海牛阿福的勇士",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "需求：参与击杀@TakedownsNeeded@次。<br><br>奖励：【金铲铲】"
         },
         {
@@ -392,7 +392,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/vengeance_small.arena_augments_v2.png",
             "id": 90,
             "name": "复仇",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "在你的搭档阵亡后，获得@DamageAmp*100@%提升伤害和@Omnivamp*100@%全能吸血。<br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
         },
         {
@@ -447,7 +447,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/masterofduality_small.arena_augments_v2.png",
             "id": 54,
             "name": "物法皆修",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "你的每次攻击为你提供<scaleAP>@APGained@法术强度</scaleAP>，并且你的每次技能为你提供<scaleAD>@ADGained@攻击力</scaleAD>，可无限叠加，持续到战斗结束。"
         },
         {
@@ -534,7 +534,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/searingdawn_small.arena_augments_v2.png",
             "id": 72,
             "name": "炽烈黎明",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "你的技能会标记敌人，使其在被你的友军的下一个攻击或技能命中时会受到额外<magicDamage>@Damage@魔法伤害</magicDamage>。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
         },
         {
@@ -565,7 +565,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/magicmissile_small.arena_augments_v2.png",
             "id": 133,
             "name": "魔法飞弹",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "{{ Cherry_MagicMissile_Summary }}<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
         },
         {
@@ -605,7 +605,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/spellwake_small.arena_augments_v2.png",
             "id": 135,
             "name": "法术苏醒",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "用主动技能命中敌人时会从你的位置生成一道通向命中敌人位置的震波，来造成<magicDamage>@Damage@魔法伤害</magicDamage>。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
         },
         {
@@ -643,7 +643,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/centeroftheuniverse_small.arena_augments_v2.png",
             "id": 193,
             "name": "星原之准",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "卫星会以你的攻击距离为半径环绕于你，对途经的敌人们造成<magicDamage>@StarDamage@魔法伤害</magicDamage>。 <br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
         },
         {
@@ -659,7 +659,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/phenomenalevil_small.arena_augments_v2.png",
             "id": 65,
             "name": "超凡邪恶",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "在你用技能命中敌人时永久提供<scaleAP>@APPerProc@法术强度</scaleAP>。<br><br>1秒冷却时间。<br><br>如果是作为你的第二个强化符文，则自带@StartingAPIfSecondAugment@法术强度。<br><br>已获得的法术强度：@f1@"
         },
         {
@@ -684,7 +684,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/bigbrain_small.arena_augments_v2.png",
             "id": 180,
             "name": "超强大脑",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "在每个回合开始时，每拥有<attention>%i:scaleAP% @AP@</attention>法术强度就会获得<shield> @ShieldBase@护盾值</shield>。"
         },
         {
@@ -711,7 +711,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/cannonfodder_small.arena_augments_v2.png",
             "id": 10,
             "name": "炮灰",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "你会被一门大炮给发射进战斗中。"
         },
         {
@@ -730,7 +730,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/madscientist_small.arena_augments_v2.png",
             "id": 53,
             "name": "科学狂人",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "在回合开始时，你的体型要么变大(获得<scaleAD>@ADAmp*100@%适应之力</scaleAD>和<healing>@HealthAmp*100@%生命值</healing>)要么变小(获得<scaleLevel>@Haste@技能急速</scaleLevel>和<speed>@MovespeedAmp*100@%移动速度</speed>)。"
         },
         {
@@ -754,7 +754,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/ultimaterevolution_small.arena_augments_v2.png",
             "id": 88,
             "name": "终极刷新",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "每回合一次，在你施放终极技能后刷新你的终极技能。"
         },
         {
@@ -877,7 +877,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/symphonyofwar_small.arena_augments_v2.png",
             "id": 79,
             "name": "战争交响乐",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "获得<spellName>致命节奏</spellName>和<spellName>征服者</spellName>基石符文。"
         },
         {
@@ -916,7 +916,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/trueshotprodigy_small.arena_augments_v2.png",
             "id": 86,
             "name": "精准奇才",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "在你从@SnipeDistance@码外对一名敌人造成伤害时， 对其<keywordMajor>自动施放</keywordMajor>一道<abilityName>精准弹幕</abilityName>，造成不限距离的@Damage@伤害。@Cooldown@秒冷却时间。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
         },
         {
@@ -930,7 +930,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/eureka_small.arena_augments_v2.png",
             "id": 30,
             "name": "尤里卡",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "获得相当于<scaleAP>你@APToHasteConversion*100@%法术强度</scaleAP>的技能急速。"
         },
         {
@@ -957,7 +957,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/circleofdeath_small.arena_augments_v2.png",
             "id": 15,
             "name": "生机绽放",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "你造成的<health>治疗效果</health>和回复效果会对相距最近的那个敌方英雄造成<magicDamage>@HealToDamageConversion*100@%该数额的魔法伤害</magicDamage>。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
         },
         {
@@ -969,7 +969,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/quest_woogletswitchcap_small.arena_augments_v2.png",
             "id": 156,
             "name": "任务：沃格勒特的巫师帽",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "即刻：获得【无用大棒】。<br><br>需求：持有【无用大棒】、【灭世者的死亡之帽】和【中娅沙漏】。<br><br>奖励:获得【沃格勒特的巫师帽】"
         },
         {
@@ -1008,7 +1008,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/earthwake_small.arena_augments_v2.png",
             "id": 27,
             "name": "大地苏醒",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "你的冲刺、跳跃、闪烁或传送类技能会留下一条在1秒后爆炸的轨迹，造成@Damage@物理伤害。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
         },
         {
@@ -1038,7 +1038,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/breadandbutter_small.arena_augments_v2.png",
             "id": 103,
             "name": "面包和黄油",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "你的Q获得@QAbilityHaste@技能急速。"
         },
         {
@@ -1054,7 +1054,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/thebrutalizer_small.arena_augments_v2.png",
             "id": 82,
             "name": "残暴之力",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "获得<scaleAD>@AD@攻击力</scaleAD>、<scaleLevel>@AbilityHaste@技能急速</scaleLevel>和<scaleAD>@Lethality@穿甲</scaleAD>。"
         },
         {
@@ -1112,7 +1112,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/twicethrice_small.arena_augments_v2.png",
             "id": 107,
             "name": "接二连三",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "每第三次攻击，你附带的攻击特效会触发第二次。"
         },
         {
@@ -1127,7 +1127,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/celestialbody_small.arena_augments_v2.png",
             "id": 13,
             "name": "星界躯体",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "获得<health>@Health@生命值</health>，但你造成的伤害降低@DamageReduction*100@%。"
         },
         {
@@ -1141,7 +1141,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/breadandjam_small.arena_augments_v2.png",
             "id": 150,
             "name": "面包和果酱",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "你的W获得@WAbilityHaste@技能急速。"
         },
         {
@@ -1155,7 +1155,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/withhaste_small.arena_augments_v2.png",
             "id": 98,
             "name": "急急小子",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "获得<moveSpeed>移动速度</moveSpeed>，相当于你的@AbilityHasteToMSConversion@倍<scaleLevel>技能急速</scaleLevel>。"
         },
         {
@@ -1219,7 +1219,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/holyfire_small.arena_augments_v2.png",
             "id": 198,
             "name": "圣火",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": " {{Cherry_HolyFire_Summary}}<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
         },
         {
@@ -1247,7 +1247,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/feeltheburn_small.arena_augments_v2.png",
             "id": 35,
             "name": "感受燃烧",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "<rules>对附近的所有敌方英雄施放<spellName>引燃</spellName>和<spellName>虚弱</spellName>。</rules>"
         },
         {
@@ -1295,7 +1295,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/scopierweapons_small.arena_augments_v2.png",
             "id": 71,
             "name": "更万用的瞄准镜",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "获得@MeleeRangeIncrease@攻击距离，如果你是远程英雄则降低至@RangedRangeIncrease@攻击距离。"
         },
         {
@@ -1326,7 +1326,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/raidboss_small.arena_augments_v2.png",
             "id": 125,
             "name": "副本BOSS",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "你每个回合开始时都会被封印在竞技场中心，无法进行任何行动。在被封印的状态下，你拥有@DamageReductionMax*100@%伤害减免并持续获得体型、<healing>生命值</healing>、<physicalDamage>攻击力</physicalDamage>和<magicDamage>法术强度</magicDamage>(最大值为@StatIncrease*100@%)。在@ImprisonDuration@秒之后或在达到<healing>@BreakoutHealthThreshold*100@%生命值</healing>时，你会打破封印，<status>击退</status>敌人们并获得<shield>@ShieldHealthRatio*100@%最大生命值的护盾值</shield>。"
         },
         {
@@ -1341,7 +1341,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/outlawsgrit_small.arena_augments_v2.png",
             "id": 63,
             "name": "狂徒豪气",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "你的冲刺、跳跃、闪烁或传送类技能会为你提供<scaleArmor>@ResistsPerStack@护甲</scaleArmor>和<scaleMR>魔法抗性</scaleMR>。<br><br>这个效果至多可叠加至@MaxStacks@层。"
         },
         {
@@ -1418,7 +1418,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/infernalconduit_small.arena_augments_v2.png",
             "id": 45,
             "name": "炼狱导管",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "你的技能会施加一层可叠加的<keywordMajor>灼烧</keywordMajor>，在@BleedDuration@秒的持续时间里每秒造成<scaleAP>@BleedDamageTooltip@魔法伤害</scaleAP>。<keywordMajor>灼烧</keywordMajor>可无限叠加。<br><br>你的所有<keywordMajor>灼烧</keywordMajor>效果会在对敌人们造成伤害时使你的各基础技能的剩余冷却时间缩短@FlatCooldownRefundPerTick@秒。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@<br>"
         },
         {
@@ -1451,7 +1451,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/backtobasics_small.arena_augments_v2.png",
             "id": 4,
             "name": "回归基本功",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "你的终极技能已被封印。获得@DamageAmp*100@%<scaleLevel>伤害</scaleLevel>、<healing>治疗效果</healing>、<shield>护盾</shield>，和<scaleBonus>@Haste@技能急速</scaleBonus>。"
         },
         {
@@ -1503,7 +1503,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/thiefsgloves_small.arena_augments_v2.png",
             "id": 83,
             "name": "窃贼手套",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "每回合移除你当前的装备，然后获得随机的装备作为替代。额外属性和装备伤害提升@ItemStatAmp*100@%。"
         },
         {
@@ -1569,7 +1569,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/soulsiphon_small.arena_augments_v2.png",
             "id": 77,
             "name": "灵魂虹吸",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "获得<crit>@CritChance*100@%暴击几率</crit>和作用于<crit>暴击</crit>的@HealPercentage*100@%生命偷取。<br><br>这个回合已造成的治疗效果：@f1@<br>已造成的治疗效果总和：@f2@"
         },
         {
@@ -1583,7 +1583,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/threadtheneedle_small.arena_augments_v2.png",
             "id": 84,
             "name": "穿针引线",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "获得@PercentPen*100@%<scaleAD>护甲穿透</scaleAD>和<scaleAP>法术穿透</scaleAP>。"
         },
         {
@@ -1597,7 +1597,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/breadandcheese_small.arena_augments_v2.png",
             "id": 151,
             "name": "面包和奶酪",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "你的E获得@EAbilityHaste@技能急速。"
         },
         {
@@ -1639,7 +1639,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/impassable_small.arena_augments_v2.png",
             "id": 149,
             "name": "不动如山",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "获<keywordMajor>余震</keywordMajor>和<keywordMajor>冰川增幅</keywordMajor>基石符文。"
         },
         {
@@ -1653,7 +1653,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/extendoarm_small.arena_augments_v2.png",
             "id": 33,
             "name": "弹簧飞爪",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "每12秒<keywordMajor>自动</keywordMajor>朝一个附近的敌方英雄发射一个布里茨的飞爪。<br><br>飞爪命中次数：@f1@"
         },
         {
@@ -1690,7 +1690,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/slowcooker_small.arena_augments_v2.png",
             "id": 75,
             "name": "慢炖",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "每一秒，对@Range@码内的敌方英雄们施加一层可叠加的<keywordMajor>灼烧</keywordMajor>，这个效果在@BleedDuration@秒的持续时间里每秒造成<health>@BleedDamageTooltip@<scaleAP>魔法伤害</scaleAP></health>。<keywordMajor>灼烧</keywordMajor>可无限叠加。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
         },
         {
@@ -1704,7 +1704,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/dieanotherday_small.arena_augments_v2.png",
             "id": 24,
             "name": "择日赴死",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "赐福你脚下的大地4秒，防止其中的任一单位跌到10%最大生命值以下。在效果结束时，其中的单位们都会被治疗<healing>@HealFlatTooltip@生命值</healing>。 "
         },
         {
@@ -1719,7 +1719,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/spiritlink_small.arena_augments_v2.png",
             "id": 78,
             "name": "灵魂连接",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "你的友军受到的@DamageRedirectPercentage*100@%实际伤害值将被转移给你，并且其所受的@HealCopyPercentage*100@%<healing>治疗效果</healing>也会转移给你。<br><br>已转移的伤害总和：@f1@<br>已造成的治疗效果总和：@f2@<br>"
         },
         {
@@ -1749,7 +1749,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/quest_angelofretribution_small.arena_augments_v2.png",
             "id": 192,
             "name": "任务：惩戒天使",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "{{Cherry_QuestAngelofRetribution_Summary}}<br><br>已治疗或阻挡的伤害：@f1@<br>已造成的伤害：@f2@"
         },
         {
@@ -1828,7 +1828,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/okboomerang_small.arena_augments_v2.png",
             "id": 61,
             "name": "回力OK镖",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "每7秒朝着一个附近的敌人<keywordMajor>自动施放</keywordMajor>一个回力镖，对命中的敌人们造成@Damage@自适应伤害。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
         },
         {
@@ -1855,7 +1855,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/scopiestweapons_small.arena_augments_v2.png",
             "id": 115,
             "name": "最万用的瞄准镜",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "获得@MeleeRangeIncrease@攻击距离，如果你是远程英雄则降低至@RangedRangeIncrease@攻击距离。"
         },
         {
@@ -1901,7 +1901,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/feymagic_small.arena_augments_v2.png",
             "id": 194,
             "name": "精怪魔法",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "你的终极技能的伤害会对敌人造成@PolyDuration@秒<status>变形</status>效果(@PolyCooldown@秒冷却时间)。"
         },
         {
@@ -1916,7 +1916,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/firebrand_small.arena_augments_v2.png",
             "id": 36,
             "name": "火上浇油",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "你的攻击还会<keywordMajor>灼烧</keywordMajor>敌人，在@BleedDuration@秒的持续时间里每秒持续造成<scaleAP>@PercentMaxHPDamagePer5Seconds*20@%最大生命值的魔法伤害</scaleAP>。<keywordMajor>灼烧</keywordMajor>可无限叠加。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
         },
         {
@@ -1948,7 +1948,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/nestingdoll_small.arena_augments_v2.png",
             "id": 177,
             "name": "套娃",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "在你首次阵亡时，复活为你自己的一个小型版本，拥有@ReviveMod*100@%最大生命值并造成@ReviveMod*100@%伤害。如果你再次阵亡，复活为你自己的一个更加小型的版本，拥有@SecondReviveMod*100@%最大生命值并造成@SecondReviveMod*100@%伤害。<br><br>在你复活时，<status>击退</status>你周围的敌人们。"
         },
         {
@@ -1963,7 +1963,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/tapdancer_small.arena_augments_v2.png",
             "id": 81,
             "name": "踢踏舞",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "你的攻击会为你提供<moveSpeed>@MSPerHit@移动速度</moveSpeed>，可无限叠加。获得相当于你@MSToASConversion*10000@%移动速度的攻击速度。"
         },
         {
@@ -1994,7 +1994,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/minionmancer_small.arena_augments_v2.png",
             "id": 104,
             "name": "仆从大师",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "你的召唤物获得@MinionSizeIncrease*100@%体型提升、生命值和伤害。"
         },
         {
@@ -2006,7 +2006,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/etherealweapon_small.arena_augments_v2.png",
             "id": 29,
             "name": "虚幻武器",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "你的各个技能都会附带特效。(每个目标有1秒冷却时间)。<br><br>这个回合的触发次数。@f1@<br>触发次数总和：@f2@"
         },
         {
@@ -2018,7 +2018,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/omnisoul_small.arena_augments_v2.png",
             "id": 62,
             "name": "全能龙魂",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "获得3个随机龙魂。"
         },
         {
@@ -2052,7 +2052,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/dawnbringersresolve_small.arena_augments_v2.png",
             "id": 20,
             "name": "黎明使者的坚决",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "在跌到@HealthThreshold*100@%生命值以下时，在3秒里持续回复共@HealAmount*100@%最大生命值。<br><br>这个回合已造成的治疗效果：@f1@<br>已造成的治疗效果总和：@f2@"
         },
         {
@@ -2175,7 +2175,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/frombeginningtoend_small.arena_augments_v2.png",
             "id": 38,
             "name": "有始有终",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "获得<spellName>先攻</spellName>和<spellName>黑暗收割</spellName>基石符文。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@<br>已获得的金币总和：@f3@"
         },
         {
@@ -2190,7 +2190,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/canttouchthis_small.arena_augments_v2.png",
             "id": 11,
             "name": "你摸不到",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "在施放你的终极技能后，还会使你进入持续@InvulnDuration@秒的<status>免疫伤害</status>状态。@Cooldown@秒冷却时间。"
         },
         {
@@ -2218,7 +2218,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/itscritical_small.arena_augments_v2.png",
             "id": 47,
             "name": "关键暴击",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "获得<crit>@CritChance*100@%暴击几率</crit>。"
         },
         {
@@ -2272,7 +2272,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/bloodbrother_small.arena_augments_v2.png",
             "id": 200,
             "name": "血亲兄弟",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "获得德莱厄斯的<spellName>出血</spellName>被动。<br><br><rules>攻击和伤害型技能会使目标<keywordMajor>出血</keywordMajor>，在@BleedDuration@秒里持续造成共<physicalDamage>@BleedDamagePerStack@物理伤害</physicalDamage>，至多可叠加@MaxStacks@层。<br><br>德莱文在<keywordMajor>出血</keywordMajor>达到@MaxStacks@层时会获得<scaleAD>@NoxianMightBonusAD@攻击力</scaleAD>。</rules><br><br>"
         },
         {
@@ -2301,7 +2301,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/recursion_small.arena_augments_v2.png",
             "id": 68,
             "name": "循环往复",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "获得<scaleLevel>@AbilityHaste@技能急速</scaleLevel>。"
         },
         {
@@ -2332,7 +2332,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/goliath_small.arena_augments_v2.png",
             "id": 41,
             "name": "歌利亚巨人",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "体型变大，获得@HealthAmp*100@%<scaleHealth>生命值</scaleHealth>和@ADAmp*100@% <scaleAP>适应之力</scaleAP>。"
         },
         {
@@ -2346,7 +2346,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/acceleratingsorcery_small.arena_augments_v2.png",
             "id": 1,
             "name": "加速巫术",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "使用一个技能时提供<scaleBonus>@HastePerCast@技能急速</scaleBonus>，可无限叠加。"
         },
         {
@@ -2393,7 +2393,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/orbitallaser_small.arena_augments_v2.png",
             "id": 208,
             "name": "轨道镭射",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": " {{Cherry_OrbitalLaser_Summary}}<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
         },
         {
@@ -2407,7 +2407,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/mysticpunch_small.arena_augments_v2.png",
             "id": 58,
             "name": "秘术冲拳",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "你的攻击会使你的各个冷却时间缩短@CooldownRefund@秒。"
         },
         {
@@ -2478,7 +2478,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/rabblerousing_small.arena_augments_v2.png",
             "id": 67,
             "name": "古式佳酿",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "在使用一个技能时治疗自身<healing>@HealAmount@生命值</healing>。<br><br>这个回合已造成的治疗效果：@f1@<br>已造成的治疗效果总和：@f2@"
         },
         {
@@ -2497,7 +2497,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/giantslayer_small.arena_augments_v2.png",
             "id": 195,
             "name": "巨人杀手",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "体型变小，获得<speed>@MovespeedMod*100@%移动速度</speed>，并基于敌方英雄体型大于你的程度造成@SmallBonusDamage*100@%到@XLargeBonusDamage*100@%额外伤害。<br><br>这个回合已造成的伤害：@f1@<br>这局游戏的伤害：@f2@"
         },
         {
@@ -2529,7 +2529,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/criticalhealing_small.arena_augments_v2.png",
             "id": 118,
             "name": "会心治疗",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "你的治疗和护盾可以暴击，获得@CritHeal*100@%额外数额的效果。获得@CritChance*100@%暴击几率。<br><br>额外治疗：@f1@<br>额外护盾：@f2@"
         },
         {
@@ -2544,7 +2544,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/apexinventor_small.arena_augments_v2.png",
             "id": 2,
             "name": "尖端发明家",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "提供<scaleBonus>@ItemHaste@装备急速</scaleBonus>(相当于@TooltipCDR@%装备冷却缩减)。<br><br><rules>装备急速可缩减所有装备技能的冷却时间。</rules>"
         },
         {
@@ -2575,7 +2575,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/allforyou_small.arena_augments_v2.png",
             "id": 141,
             "name": "全心为你",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "{{ Cherry_AllForYou_Summary }}<br><br>额外治疗效果：@f1@<br>额外护盾：@f2@"
         },
         {
@@ -2603,7 +2603,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/keystoneconjurer_small.arena_augments_v2.png",
             "id": 50,
             "name": "基石法师",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "获得<spellName>召唤：艾黎</spellName>和<spellName>奥术彗星</spellName>基石符文。<br><br>已造成的伤害总和：@f1@<br>已生成的护盾值总和：@f2@"
         },
         {
@@ -2665,7 +2665,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/lasereyes_small.arena_augments_v2.png",
             "id": 174,
             "name": "镭射眼",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "你正在面对的方向会出现一道镭射光束，可每秒造成<magicDamage>@LaserEyesTooltip@魔法伤害</magicDamage>。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
         },
         {
@@ -2677,7 +2677,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/mythical_small.arena_augments_v2.png",
             "id": 59,
             "name": "神话化身",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "你可以购买任意数量的神话装备。"
         },
         {
@@ -2691,7 +2691,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/dashing_small.arena_augments_v2.png",
             "id": 19,
             "name": "全凭身法",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "你的冲刺、跳跃、闪烁或传送类技能获得<scaleLevel>@Haste@技能急速</scaleLevel>。"
         },
         {
@@ -2705,7 +2705,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/lightningstrikes_small.arena_augments_v2.png",
             "id": 52,
             "name": "闪电打击",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "每<attackSpeed>0.1攻击速度</attackSpeed>提供<scaleAD>@ASToADConversion*.1@攻击力</scaleAD>。"
         },
         {
@@ -2737,7 +2737,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/skilledsniper_small.arena_augments_v2.png",
             "id": 113,
             "name": "老练狙神",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "用一个非终极技能命中一个@SnipeDistance@码外的敌人时，将这个技能的冷却时间缩短@ReducedCooldown@秒。"
         },
         {
@@ -2751,7 +2751,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/parasiticrelationship_small.arena_augments_v2.png",
             "id": 175,
             "name": "寄生关系",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "{{ Cherry_ParasiticRelationship_Summary }}<br><br>这个回合的治疗效果：@f1@<br>治疗效果总和：@f2@"
         },
         {
@@ -2765,7 +2765,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/restart_small.arena_augments_v2.png",
             "id": 165,
             "name": "重启",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "你的非终极技能每@CoolDown@秒<keywordMajor>自动</keywordMajor>刷新一次。"
         },
         {
@@ -2787,7 +2787,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/drawyoursword_small.arena_augments_v2.png",
             "id": 134,
             "name": "亮出你的剑",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "你现在是近战状态。获得<physicalDamage>@BonusAD*100@%攻击力</physicalDamage>、<healing>@BonusHP*100@%生命值</healing>、<attackSpeed>@BonusAS*100@%攻击速度</attackSpeed>、<lifesteal>@BonusLifesteal*100@%生命偷取</lifesteal>和<speed>@BonusMS*100@%移动速度</speed> (每个属性都已基于攻击距离的损失而进一步提升)。"
         },
         {
@@ -2820,7 +2820,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/restlessrestoration_small.arena_augments_v2.png",
             "id": 70,
             "name": "无休回复",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "你每移动1000码距离就会获得@HealCalcPer1000Units@治疗效果。<br><br>这个回合已造成的治疗效果：@f1@<br>已造成的治疗效果总和：@f2@"
         },
         {
@@ -2835,7 +2835,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/divebomber_small.arena_augments_v2.png",
             "id": 25,
             "name": "俯冲轰炸",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "你的队伍在每回合的第一次阵亡会爆炸，对附近的敌人们造成<trueDamage>目标@PercentMaxHPDamage*100@%最大生命值的真实伤害</trueDamage>。<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
         },
         {
@@ -2861,7 +2861,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/oathsworn_small.arena_augments_v2.png",
             "id": 109,
             "name": "誓约者",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "将召唤师技能【闪人】替换为<spellName>命运的召唤</spellName>。<br><br><rules><spellName>命运的召唤</spellName>会将你的搭档拉到你的体内至多4秒，让其变为不可被选取状态。搭档可以点击来将自己投放出去，<status>击退</status>命中的第一个英雄和所有附近的敌人。</rules><br>"
         },
         {
@@ -2910,7 +2910,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/summonersroulette_small.arena_augments_v2.png",
             "id": 123,
             "name": "召唤师峡谷的轮盘",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "将你的召唤师技能替换为随机一个召唤师技能。在你在战斗状态下使用一个召唤师技能时，将其换成另一个随机的召唤师技能，并设置@Cooldown@秒的冷却时间。"
         },
         {
@@ -2924,7 +2924,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/shrinkray_small.arena_augments_v2.png",
             "id": 74,
             "name": "缩小射线",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "你的攻击会对敌人造成持续3秒的@DamageReduction*100@%伤害削减效果。<br><br>这个回合已削减的伤害：@f1@<br>已削减的伤害总和：@f2@"
         },
         {
@@ -2955,7 +2955,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/quest_steelyourheart_small.arena_augments_v2.png",
             "id": 152,
             "name": "任务：钢化你心",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "需求：持有【心之钢】且层数在@StackThreshold@层或以上。<br><br>奖励：将你的心之钢层数乘以@StackMultiplication@。使你的<healing>生命回复</healing>提升@StacktoRegenConversion*100@%x你的【心之钢】层数。"
         },
         {
@@ -3003,7 +3003,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/courageofthecolossus_small.arena_augments_v2.png",
             "id": 18,
             "name": "巨像的勇气",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "在<status>定身</status>一名敌方英雄后获得<shield>@TotalShield@护盾值</shield>。<br><br>这个回合已生成的护盾值：@f1@<br>已生成的护盾值总和：@f2@"
         },
         {
@@ -3068,7 +3068,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/combomaster_small.arena_augments_v2.png",
             "id": 16,
             "name": "连招大师",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "获得<spellName>电刑</spellName>和<spellName>相位猛冲</spellName>基石符文。<br><br>这个回合的【电刑】伤害：@f1@<br>【电刑】伤害总和：@f2@"
         },
         {
@@ -3099,7 +3099,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/itskillingtime_small.arena_augments_v2.png",
             "id": 211,
             "name": "杀戮时间到了",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": " {{Cherry_ItsKillingTime_Summary}}<br><br>这个回合已造成的伤害：@f1@<br>已造成伤害的总和：@f2@"
         },
         {
@@ -3111,7 +3111,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/wisdomofages_small.arena_augments_v2.png",
             "id": 96,
             "name": "时光之智慧",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "立刻提升1级，并且每隔一回合额外提升1级。你的等级上限已被移除。"
         },
         {
@@ -3142,7 +3142,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/perseverance_small.arena_augments_v2.png",
             "id": 64,
             "name": "坚韧",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "获得<healing>@BaseRegen*100@%基础生命回复</healing>，在低于25%生命值时提升至<healing>@AmpedRegen*100@%基础生命回复</healing>。<br><br>这个回合已造成的治疗效果：@f1@<br>已造成的治疗效果总和：@f2@"
         },
         {
@@ -3168,7 +3168,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/jeweledgauntlet_small.arena_augments_v2.png",
             "id": 48,
             "name": "珠光护手",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "你的技能可以造成暴击，造成140%总伤害。获得20%暴击几率。获得随法术强度增长的额外@APToCritConversion@暴击几率。<br><br>这个回合的额外伤害：@f1@<br>额外伤害总和：@f2@"
         }
     ]

@@ -2055,7 +2055,7 @@
     {
         "itemInstanceId": "e2cb006f-de80-48e1-b234-8b565f002a70",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "玉剑传说 苍鸾 小小莫甘娜",
+        "name": "玉剑传说 小小莫甘娜",
         "starLevel": 1,
         "rarity": "Mythic",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/ChibiMorgana/Loot_ChibiMorgana_Immortal_Immortal_Tier1.CHIBI_Morgana_Immortal.png",
@@ -2901,7 +2901,7 @@
     {
         "itemInstanceId": "a6bbbe31-6e70-48dd-b5ef-ffb4a87772dd",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "墨水 宇宙鱿",
+        "name": "墨之灵 宇宙鱿",
         "starLevel": 1,
         "rarity": "Default",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/DSSquid/Loot_DSSquid_Ink_Ink1_Tier1.LL_DSSquid_Ink.dds",
@@ -2910,7 +2910,7 @@
     {
         "itemInstanceId": "e7e5815f-4314-4048-9186-4fcfabd59d02",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "墨水 宇宙鱿",
+        "name": "墨之灵 宇宙鱿",
         "starLevel": 2,
         "rarity": "Default",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/DSSquid/Loot_DSSquid_Ink_Ink1_Tier2.LL_DSSquid_Ink.dds",
@@ -2919,7 +2919,7 @@
     {
         "itemInstanceId": "b042babd-def6-4bfc-b2cb-9d6f9ed4a04d",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "墨水 宇宙鱿",
+        "name": "墨之灵 宇宙鱿",
         "starLevel": 3,
         "rarity": "Default",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/DSSquid/Loot_DSSquid_Ink_Ink1_Tier3.LL_DSSquid_Ink.dds",
@@ -7347,7 +7347,7 @@
     {
         "itemInstanceId": "2a051d9c-f4f2-4060-95c8-6fe6b80731a8",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "混沌 TBD",
+        "name": "混沌",
         "starLevel": 1,
         "rarity": "Default",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic_Tier1.LL_Hundun_Base.png",
@@ -7356,7 +7356,7 @@
     {
         "itemInstanceId": "a7c66848-aabf-49da-afe0-a9b96dc3eab5",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "混沌 TBD",
+        "name": "混沌",
         "starLevel": 2,
         "rarity": "Default",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic_Tier2.LL_Hundun_Base.png",
@@ -7365,43 +7365,16 @@
     {
         "itemInstanceId": "494817df-2db4-41c5-808b-18b1df4a32f4",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "混沌 TBD",
+        "name": "混沌",
         "starLevel": 3,
         "rarity": "Default",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic_Tier3.LL_Hundun_Base.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
-        "itemInstanceId": "24f340cd-40c8-4e06-ae46-c1339ef2fb45",
-        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "灵泉 混沌 TBD",
-        "starLevel": 1,
-        "rarity": "Default",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic2_Tier1.LL_Hundun_Base.dds",
-        "highlightRewardAssetPath": "/lol-game-data/assets/"
-    },
-    {
-        "itemInstanceId": "c090d2d7-0f6f-42eb-be58-5eada26d6caa",
-        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "灵泉 混沌 TBD",
-        "starLevel": 2,
-        "rarity": "Default",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic2_Tier2.LL_Hundun_Base.dds",
-        "highlightRewardAssetPath": "/lol-game-data/assets/"
-    },
-    {
-        "itemInstanceId": "9bdaa074-5883-425d-a7ea-93f1f87cb708",
-        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "灵泉 混沌 TBD",
-        "starLevel": 3,
-        "rarity": "Default",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic2_Tier3.LL_Hundun_Base.dds",
-        "highlightRewardAssetPath": "/lol-game-data/assets/"
-    },
-    {
         "itemInstanceId": "72e48cc8-1785-4434-bcba-fcc36eb6d14e",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "繁花 混沌 TBD",
+        "name": "绽放之花 混沌",
         "starLevel": 1,
         "rarity": "Epic",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic3_Tier1.LL_Hundun_Base.png",
@@ -7410,7 +7383,7 @@
     {
         "itemInstanceId": "d1e34ab8-1331-4616-89ec-c00e245ac152",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "繁花 混沌 TBD",
+        "name": "绽放之花 混沌",
         "starLevel": 2,
         "rarity": "Epic",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic3_Tier2.LL_Hundun_Base.png",
@@ -7419,7 +7392,7 @@
     {
         "itemInstanceId": "40aac49e-4c41-44cd-89a9-fb6b914f5708",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "繁花 混沌 TBD",
+        "name": "绽放之花 混沌",
         "starLevel": 3,
         "rarity": "Epic",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic3_Tier3.LL_Hundun_Base.png",
@@ -7428,7 +7401,7 @@
     {
         "itemInstanceId": "91893605-a44c-4ff9-8438-84bda8d6cd0d",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "孪生灵 混沌 TBD",
+        "name": "太极 混沌",
         "starLevel": 1,
         "rarity": "Epic",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic4_Tier1.LL_Hundun_Base.png",
@@ -7437,7 +7410,7 @@
     {
         "itemInstanceId": "f7b1d1f5-96f4-453f-82e1-fc46605c7ba7",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "孪生灵 混沌 TBD",
+        "name": "太极 混沌",
         "starLevel": 2,
         "rarity": "Epic",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic4_Tier2.LL_Hundun_Base.png",
@@ -7446,7 +7419,7 @@
     {
         "itemInstanceId": "bfdac6c6-70a4-4b9e-8731-f48d3f12747a",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "孪生灵 混沌 TBD",
+        "name": "太极 混沌",
         "starLevel": 3,
         "rarity": "Epic",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic4_Tier3.LL_Hundun_Base.png",
@@ -7455,7 +7428,7 @@
     {
         "itemInstanceId": "c29d8984-2bc9-4d8c-9ea3-3e6d6bef02fa",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "星云 混沌 TBD",
+        "name": "黑洞 混沌",
         "starLevel": 1,
         "rarity": "Legendary",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic5_Tier1.LL_Hundun_Base.dds",
@@ -7464,7 +7437,7 @@
     {
         "itemInstanceId": "f38927b0-dc96-4b2c-b5b1-dc257a1fc5fa",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "星云 混沌 TBD",
+        "name": "黑洞 混沌",
         "starLevel": 2,
         "rarity": "Legendary",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic5_Tier2.LL_Hundun_Base.dds",
@@ -7473,7 +7446,7 @@
     {
         "itemInstanceId": "846fa9e6-cae6-47fc-829c-a46659c9d6b9",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "星云 混沌 TBD",
+        "name": "黑洞 混沌",
         "starLevel": 3,
         "rarity": "Legendary",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic5_Tier3.LL_Hundun_Base.dds",
@@ -7482,7 +7455,7 @@
     {
         "itemInstanceId": "03466c1d-8c34-46a1-bd74-fd4b3c20ea17",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "全知全视 混沌 TBD",
+        "name": "千里眼 混沌",
         "starLevel": 1,
         "rarity": "Epic",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic6_Tier1.LL_Hundun_Base.dds",
@@ -7491,7 +7464,7 @@
     {
         "itemInstanceId": "26fb79b0-dad7-42b1-942c-3f4f8a387536",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "全知全视 混沌 TBD",
+        "name": "千里眼 混沌",
         "starLevel": 2,
         "rarity": "Epic",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic6_Tier2.LL_Hundun_Base.dds",
@@ -7500,7 +7473,7 @@
     {
         "itemInstanceId": "4b020da1-8434-4248-8654-9ad236ec4aa8",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "全知全视 混沌 TBD",
+        "name": "千里眼 混沌",
         "starLevel": 3,
         "rarity": "Epic",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic6_Tier3.LL_Hundun_Base.dds",
@@ -13098,7 +13071,7 @@
     {
         "itemInstanceId": "e0dabd7f-6f9c-4b89-a73d-587c3493cea6",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "墨水河灵",
+        "name": "水墨河灵",
         "starLevel": 1,
         "rarity": "Default",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/TFTAvatar/Loot_TFTAvatar_Set11UpdateBattlePass_Victory_Tier1.LL_TFTAvatar_Set11UpdateBattlePass.dds",
@@ -14151,7 +14124,7 @@
     {
         "itemInstanceId": "9ffde8eb-9e7d-4300-84f8-7356d6d90ead",
         "itemTypeId": "2cad5e9d-183e-45ae-b787-eccb1e9efda2",
-        "name": "雨后春笋击 TBD",
+        "name": "神来之笔",
         "starLevel": 1,
         "rarity": "Epic",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_Bamboo.png",
@@ -15447,7 +15420,7 @@
     {
         "itemInstanceId": "65450b91-0a41-4dde-bc03-b01e8a3c39d0",
         "itemTypeId": "2cad5e9d-183e-45ae-b787-eccb1e9efda2",
-        "name": "单羽之刃扇 TBD",
+        "name": "桃花扇",
         "starLevel": 1,
         "rarity": "Epic",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_PapperFanAttack.png",
@@ -16441,7 +16414,7 @@
     {
         "itemInstanceId": "29b4a7ef-f9c6-4563-9812-31c623504b15",
         "itemTypeId": "b26717c6-87ec-43b0-b58f-fabc897c0b27",
-        "name": "天庭宝阁（暂译）",
+        "name": "水云天池",
         "rarity": "Mythic",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_ImmortalJourney.TFT_ArenaSkin_ImmortalJourney.dds",
         "highlightRewardAssetPath": "/lol-game-data/assets/ASSETS/UX/TFT/Troves_BannerContent/HeavenCelestialCourtArena/TFT-TrovesCelebration-ChaseContent-ImmortalJourneyArena.14_6_TFT_TR.png"
@@ -16449,7 +16422,7 @@
     {
         "itemInstanceId": "49002bbd-3941-4f04-83f2-3075b0e4fe18",
         "itemTypeId": "b26717c6-87ec-43b0-b58f-fabc897c0b27",
-        "name": "天之荫 TBD",
+        "name": "天荫园",
         "rarity": "Default",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_InkBiome_Sky.TFT_ArenaSkin_InkBiome.dds",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
@@ -16953,7 +16926,7 @@
     {
         "itemInstanceId": "a268fa11-590c-4128-8963-a5dba6c29662",
         "itemTypeId": "b26717c6-87ec-43b0-b58f-fabc897c0b27",
-        "name": "大地之梦 TBD",
+        "name": "彼岸花园",
         "rarity": "Legendary",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_TeaTerraces.TFT_ArenaSkin_TeaTerraces.dds",
         "highlightRewardAssetPath": "/lol-game-data/assets/"

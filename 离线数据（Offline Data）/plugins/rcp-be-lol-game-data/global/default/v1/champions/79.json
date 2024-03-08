@@ -589,6 +589,7 @@
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/79/79029.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/79/79029.jpg",
             "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Gragas/Skins/Skin29/GragasLoadScreen_29.SKINS_Gragas_Skin29.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Gragas/Skins/Skin29/GragasLoadScreen_29_LE.SKINS_Gragas_Skin29.jpg",
             "skinType": "",
             "rarity": "kEpic",
             "isLegacy": false,

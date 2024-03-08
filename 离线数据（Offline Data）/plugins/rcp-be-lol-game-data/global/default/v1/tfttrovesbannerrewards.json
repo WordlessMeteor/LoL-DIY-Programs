@@ -7372,33 +7372,6 @@
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
-        "itemInstanceId": "24f340cd-40c8-4e06-ae46-c1339ef2fb45",
-        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "Divine Spring Hundun",
-        "starLevel": 1,
-        "rarity": "Default",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic2_Tier1.LL_Hundun_Base.dds",
-        "highlightRewardAssetPath": "/lol-game-data/assets/"
-    },
-    {
-        "itemInstanceId": "c090d2d7-0f6f-42eb-be58-5eada26d6caa",
-        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "Divine Spring Hundun",
-        "starLevel": 2,
-        "rarity": "Default",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic2_Tier2.LL_Hundun_Base.dds",
-        "highlightRewardAssetPath": "/lol-game-data/assets/"
-    },
-    {
-        "itemInstanceId": "9bdaa074-5883-425d-a7ea-93f1f87cb708",
-        "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "Divine Spring Hundun",
-        "starLevel": 3,
-        "rarity": "Default",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic2_Tier3.LL_Hundun_Base.dds",
-        "highlightRewardAssetPath": "/lol-game-data/assets/"
-    },
-    {
         "itemInstanceId": "72e48cc8-1785-4434-bcba-fcc36eb6d14e",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
         "name": "Blooming Hundun",
@@ -7455,7 +7428,7 @@
     {
         "itemInstanceId": "c29d8984-2bc9-4d8c-9ea3-3e6d6bef02fa",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "Nebulus Hundun",
+        "name": " Nebulous Hundun",
         "starLevel": 1,
         "rarity": "Legendary",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic5_Tier1.LL_Hundun_Base.dds",
@@ -7464,7 +7437,7 @@
     {
         "itemInstanceId": "f38927b0-dc96-4b2c-b5b1-dc257a1fc5fa",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "Nebulus Hundun",
+        "name": " Nebulous Hundun",
         "starLevel": 2,
         "rarity": "Legendary",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic5_Tier2.LL_Hundun_Base.dds",
@@ -7473,7 +7446,7 @@
     {
         "itemInstanceId": "846fa9e6-cae6-47fc-829c-a46659c9d6b9",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "Nebulus Hundun",
+        "name": " Nebulous Hundun",
         "starLevel": 3,
         "rarity": "Legendary",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Hundun/Loot_Hundun_Base_Classic5_Tier3.LL_Hundun_Base.dds",

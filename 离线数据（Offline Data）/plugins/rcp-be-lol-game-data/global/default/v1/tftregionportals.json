@@ -33,25 +33,25 @@
         "iconPath": "/lol-game-data/assets/",
         "nameId": "TFT_Portals_Augments_SilverGoldPrismatic",
         "displayName": "",
-        "description": "Crescendo"
+        "description": "Ascending Augments"
     },
     {
         "iconPath": "/lol-game-data/assets/",
         "nameId": "TFT_Portals_Augments_TripleGold",
         "displayName": "",
-        "description": "Golden Symphony"
+        "description": "Golden Gala"
     },
     {
         "iconPath": "/lol-game-data/assets/",
         "nameId": "TFT_Portals_Augments_TriplePrismatic",
         "displayName": "",
-        "description": "Prismatic Symphony"
+        "description": "Prismatic Party"
     },
     {
         "iconPath": "/lol-game-data/assets/",
         "nameId": "TFT_Portals_Augments_TripleSilver",
         "displayName": "",
-        "description": "Silver Symphony"
+        "description": "Silver Party"
     },
     {
         "iconPath": "/lol-game-data/assets/",
@@ -171,11 +171,17 @@
         "iconPath": "/lol-game-data/assets/",
         "nameId": "TFT_Portals_Gold_GoldStart",
         "displayName": "",
-        "description": "Gold Start"
+        "description": "Gold Opener"
     },
     {
         "iconPath": "/lol-game-data/assets/",
         "nameId": "TFT_Portals_Gold_GoldSubscription",
+        "displayName": "",
+        "description": "Gold Subscription"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Gold_GoldSubscription_HR",
         "displayName": "",
         "description": "Gold Subscription"
     },
@@ -231,7 +237,7 @@
         "iconPath": "/lol-game-data/assets/",
         "nameId": "TFT_Portals_Items_ComponentFeast",
         "displayName": "",
-        "description": "Component Feast"
+        "description": "Anvil Buffet"
     },
     {
         "iconPath": "/lol-game-data/assets/",

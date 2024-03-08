@@ -346,6 +346,7 @@
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/526/526020.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/526/526020.jpg",
             "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rell/Skins/Skin20/RellLoadScreen_20.SKINS_Rell_Skin20.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Rell/Skins/Skin20/RellLoadScreen_20_LE.SKINS_Rell_Skin20.jpg",
             "skinType": "",
             "rarity": "kEpic",
             "isLegacy": false,

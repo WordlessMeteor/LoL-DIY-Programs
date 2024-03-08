@@ -2045,7 +2045,7 @@ async def search_profile(connection):
                                     LoLGame_info_header_keys = list(LoLGame_info_header.keys())
                                     team_color = {100: "蓝方", 200: "红方"}
                                     subteam_color = {0: "", 1: "魄罗", 2: "小兵", 3: "迅捷蟹", 4: "石甲虫"} #仅用于斗魂竞技场（Only for Soul Fighter mode）
-                                    augment_rarity = {0: "白银", 4: "黄金", 8: "棱彩"}
+                                    augment_rarity = {0: "白银", "1": "黄金", "2": "棱彩", 4: "黄金", 8: "棱彩"}
                                     win = {True: "胜利", False: "失败"}
                                     player_count = len(LoLGame_info["participantIdentities"])
                                     LoLItem_recapture = 0

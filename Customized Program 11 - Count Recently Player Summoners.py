@@ -1449,7 +1449,7 @@ async def search_recent_players(connection):
                         matches_to_remove = [] #记录获取成功但不包含主玩家的对局序号（Records the matches that are fetched successfully but don't contain the main player）
                         LoLGameDuration_raw = [] #用于存储未转化成几分几秒格式的游戏持续时间。主要是为了方便可视化时呈现不同玩家的累计游戏时间的图表（Used to store the gameDuration that is not transformed into "(X)X:XX" form. Mainly for convenience of displaying the chart regarding the total time for which a player has accompanied the main player）
                         subteam_color = {0: "", 1: "魄罗", 2: "小兵", 3: "迅捷蟹", 4: "石甲虫"} #仅用于斗魂竞技场（Only for Soul Fighter mode）
-                        augment_rarity = {0: "白银", 4: "黄金", 8: "棱彩"}
+                        augment_rarity = {0: "白银", "1": "黄金", "2": "棱彩", 4: "黄金", 8: "棱彩"}
                         win = {True: "胜利", False: "失败"}
                         spells = copy.deepcopy(spells_initial)
                         LoLItems = copy.deepcopy(LoLItems_initial) #接下来查询具体的对局信息和时间轴，使用的可能并不是历史记录中记载的对局序号形成的列表。考虑实际使用需求，这里对于装备的合适版本信息采取的思路是默认从最新版本开始获取，如果有装备不存在于最新版本的装备信息，则获取游戏信息中存储的版本对应的装备信息。该思路仍然有问题，详见后续关于美测服的装备获取的注释（The next step is to capture the information and timeline for each specific match, which may not originate from the matchIDs recorded in the match history. Considering the practical use, here the stream of thought for an appropriate version for items is to get items' information from the latest patch, and if some item doesn't exist in the items information of the latest patch, then get the items of the version corresponding to the game according to gameVersion recorded in the match information. There's a flaw of this idea. Please refer to the annotation regarding PBE data crawling for further solution）

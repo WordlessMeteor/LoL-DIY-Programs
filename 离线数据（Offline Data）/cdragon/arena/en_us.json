@@ -26,7 +26,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/vanish_small.arena_augments_v2.png",
             "id": 89,
             "name": "Vanish",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Become <stealth>Invisible</stealth> for @StealthDuration@ seconds or until you Attack or use an Ability.<br>This stealth cannot be revealed by the Arcane Sweeper trinket."
         },
         {
@@ -41,7 +41,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/chainlightning_small.arena_augments_v2.png",
             "id": 166,
             "name": "Chain Lightning",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "{{Cherry_ChainLightning_Summary}}<br><br>Damage Dealt this round: @f1@<br>Damage Dealt total: @f2@"
         },
         {
@@ -131,7 +131,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/quantumcomputing_small.arena_augments_v2.png",
             "id": 66,
             "name": "Quantum Computing",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "<keywordMajor>Automatically</keywordMajor> slash in a circle around you, dealing bonus damage and healing on the outer edge every 15 seconds. <br><br>Damage Dealt Total: @f1@<br>Healing Done Total: @f2@"
         },
         {
@@ -160,7 +160,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/demonsdance_small.arena_augments_v2.png",
             "id": 23,
             "name": "Demon's Dance",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Gain the <spellName>Fleet Footwork</spellName> and <spellName>Grasp of the Undying</spellName> Keystone Runes.<br><br>Healing Done This Round: @f1@<br>Healing Done Total: @f2@<br>Max Health Gained: @f3@"
         },
         {
@@ -193,7 +193,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/defensivemaneuvers_small.arena_augments_v2.png",
             "id": 21,
             "name": "Defensive Maneuvers",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Cast Summoner <abilityName>Barrier</abilityName> and <abilityName>Heal</abilityName> on you and your ally. Grants <shield>@BarrierAmount@ Shield</shield>, restores <healing>@HealAmount@ Health</healing>, and gives <speed>30% Move Speed</speed> for 1 second.<br><br>Healing Done Total: @f1@<br>Shields Created Total: @f2@"
         },
         {
@@ -208,7 +208,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/chauffeur_small.arena_augments_v2.png",
             "id": 14,
             "name": "Chauffeur",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "You are attached to your ally. Your bonus movespeed is also granted to your ally and you gain <scaleLevel>@Haste@ Ability Haste</scaleLevel> and <attackSpeed>@AttackSpeed*100@% Attack Speed</attackSpeed>. <br><br>Using a Dash or Blink ability removes the tether for 1.5s before snapping back to your ally."
         },
         {
@@ -236,7 +236,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/marksmage_small.arena_augments_v2.png",
             "id": 129,
             "name": "Marksmage",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "{{Cherry_Marksmage_Summary}}<br><br>Damage Dealt This Round: @f1@<br>Damage Dealt Total: @f2@"
         },
         {
@@ -274,7 +274,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/bladewaltz_small.arena_augments_v2.png",
             "id": 6,
             "name": "Blade Waltz",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "<rules>Makes you untargetable while you dash at and deal @Damage@ damage to enemies @TotalHits@ times (deals 50% on-hit damage).</rules><br><br>Damage Dealt This Round: @f1@<br>Damage Dealt Total: @f2@<br>"
         },
         {
@@ -289,7 +289,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/willingsacrifice_small.arena_augments_v2.png",
             "id": 94,
             "name": "Willing Sacrifice",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "When your ally drops below <health>@AllyHealthThreshold*100@% Health</health>, trade <health>@CurrentHealthToDrain*100@% of your current Health</health> for that much <shield>Shield</shield> on your ally.<br><br>Shields Generated This Round: @f1@<br>Shields Generated Total: @f2@"
         },
         {
@@ -333,7 +333,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/bannerofcommand_small.arena_augments_v2.png",
             "id": 5,
             "name": "Banner of Command",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Your Partner gains a bonus @EmpowermentValue*100@% <scaleHealth>Health</scaleHealth>, <scaleAD>Attack Damage</scaleAD>, <scaleAP>Ability Power</scaleAP>, and <attackSpeed>Attack Speed</attackSpeed> for 10 seconds."
         },
         {
@@ -377,7 +377,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/quest_urfschampion_small.arena_augments_v2.png",
             "id": 154,
             "name": "Quest: Urf's Champion",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Requirement: Score @TakedownsNeeded@ takedowns.<br><br>Reward: Golden Spatula"
         },
         {
@@ -392,7 +392,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/vengeance_small.arena_augments_v2.png",
             "id": 90,
             "name": "Vengeance",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Gain @DamageAmp*100@% increased damage and @Omnivamp*100@% Omnivamp after your partner dies.<br>Damage Dealt This Round: @f1@<br>Damage Dealt Total: @f2@"
         },
         {
@@ -447,7 +447,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/masterofduality_small.arena_augments_v2.png",
             "id": 54,
             "name": "Master of Duality",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Your Attacks grant you <scaleAP>@APGained@ Ability Power</scaleAP> and your Abilities grant you <scaleAD>@ADGained@ Attack Damage</scaleAD>, stacking infinitely until the end of the round."
         },
         {
@@ -534,7 +534,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/searingdawn_small.arena_augments_v2.png",
             "id": 72,
             "name": "Searing Dawn",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Your Abilities mark enemies, causing them to take an additional <magicDamage>@Damage@ magic damage</magicDamage> from your ally's next Attack or Ability.<br><br>Damage Dealt This Round: @f1@<br>Damage Dealt Total: @f2@"
         },
         {
@@ -565,7 +565,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/magicmissile_small.arena_augments_v2.png",
             "id": 133,
             "name": "Magic Missile",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "{{ Cherry_MagicMissile_Summary }}<br><br>Damage Dealt This Round:@f1@<br>Damage Dealt Total: @f2@"
         },
         {
@@ -605,7 +605,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/spellwake_small.arena_augments_v2.png",
             "id": 135,
             "name": "Spellwake",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Hitting enemies with Abilities creates a blast that deals <magicDamage>@Damage@ magic damage</magicDamage> from you to the location you hit them.<br><br>Damage Dealt This Round: @f1@<br>Damage Dealt Total: @f2@"
         },
         {
@@ -643,7 +643,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/centeroftheuniverse_small.arena_augments_v2.png",
             "id": 193,
             "name": "Center of the Universe",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Stars orbit you at your Attack Range, dealing <magicDamage>@StarDamage@ magic damage</magicDamage> to enemies they pass through.<br><br>Damage Dealt This Round: @f1@<br>Damage Dealt Total: @f2@"
         },
         {
@@ -659,7 +659,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/phenomenalevil_small.arena_augments_v2.png",
             "id": 65,
             "name": "Phenomenal Evil",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Permanently gain <scaleAP>@APPerProc@ Ability Power</scaleAP> when you hit enemies with Abilities.<br><br>1 second cooldown.<br><br>If taken as your second augment, starts with @StartingAPIfSecondAugment@ AP.<br><br>AP Gained: @f1@"
         },
         {
@@ -684,7 +684,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/bigbrain_small.arena_augments_v2.png",
             "id": 180,
             "name": "Big Brain",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "At the start of each round, gain<shield> @ShieldBase@ Shield </shield>for every <attention>%i:scaleAP% @AP@</attention> Ability Power."
         },
         {
@@ -711,7 +711,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/cannonfodder_small.arena_augments_v2.png",
             "id": 10,
             "name": "Cannon Fodder",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "You enter combat launching from a cannon."
         },
         {
@@ -730,7 +730,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/madscientist_small.arena_augments_v2.png",
             "id": 53,
             "name": "Mad Scientist",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "On Round start you grow large, gaining (<scaleAD>@ADAmp*100@% Adaptive Force</scaleAD> and <healing>@HealthAmp*100@% Health</healing>) or tiny (<scaleLevel>@Haste@ Ability Haste</scaleLevel> and <speed>@MovespeedAmp*100@% Move Speed</speed>)."
         },
         {
@@ -754,7 +754,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/ultimaterevolution_small.arena_augments_v2.png",
             "id": 88,
             "name": "Ultimate Revolution",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Once per round, refresh your Ultimate Ability after casting it."
         },
         {
@@ -877,7 +877,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/symphonyofwar_small.arena_augments_v2.png",
             "id": 79,
             "name": "Symphony of War",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Gain the <spellName>Lethal Tempo</spellName> and <spellName>Conqueror</spellName> Keystone Runes."
         },
         {
@@ -916,7 +916,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/trueshotprodigy_small.arena_augments_v2.png",
             "id": 86,
             "name": "Trueshot Prodigy",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "When you damage someone from over @SnipeDistance@ units away, <keywordMajor>Autocast</keywordMajor> a <abilityName>Trueshot Barrage</abilityName> at them, dealing @Damage@ damage at global range. @Cooldown@s cooldown.<br><br>Damage Dealt This Round: @f1@<br>Damage Dealt Total: @f2@"
         },
         {
@@ -930,7 +930,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/eureka_small.arena_augments_v2.png",
             "id": 30,
             "name": "Eureka",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Gain Ability Haste equal to <scaleAP>@APToHasteConversion*100@% of your Ability Power</scaleAP>"
         },
         {
@@ -957,7 +957,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/circleofdeath_small.arena_augments_v2.png",
             "id": 15,
             "name": "Circle of Death",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "<health>Healing</health> and Regen you do deals <magicDamage>@HealToDamageConversion*100@% of that value in magic damage</magicDamage> to the nearest enemy champion.<br><br>Damage Dealt This Round: @f1@<br>Damage Dealt Total: @f2@"
         },
         {
@@ -969,7 +969,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/quest_woogletswitchcap_small.arena_augments_v2.png",
             "id": 156,
             "name": "Quest: Wooglet's Witchcap",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Immediate: Gain Needlessly Large Rod.<br><br>Requirement: Possess Needlessly Large Rod, Rabadon's Deathcap, and Zhonya's Hourglass.<br><br>Reward: Gain Wooglet's Witchcap"
         },
         {
@@ -1008,7 +1008,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/earthwake_small.arena_augments_v2.png",
             "id": 27,
             "name": "Earthwake",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Your dash, leap, blink, or teleport Abilities leave behind a trail that detonates after 1 second, dealing @Damage@ physical damage.<br><br>Damage Dealt This Round: @f1@<br>Damage Dealt Total: @f2@"
         },
         {
@@ -1038,7 +1038,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/breadandbutter_small.arena_augments_v2.png",
             "id": 103,
             "name": "Bread And Butter",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Your Q gains @QAbilityHaste@ Ability Haste."
         },
         {
@@ -1054,7 +1054,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/thebrutalizer_small.arena_augments_v2.png",
             "id": 82,
             "name": "The Brutalizer",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Gain <scaleAD>@AD@ Attack Damage</scaleAD>, <scaleLevel>@AbilityHaste@ Ability Haste</scaleLevel>, and <scaleAD>@Lethality@ Lethality</scaleAD>."
         },
         {
@@ -1112,7 +1112,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/twicethrice_small.arena_augments_v2.png",
             "id": 107,
             "name": "Twice Thrice",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Every third Attack, your On-Hits trigger a second time."
         },
         {
@@ -1127,7 +1127,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/celestialbody_small.arena_augments_v2.png",
             "id": 13,
             "name": "Celestial Body",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Gain <health>@Health@ Health</health>, but you deal @DamageReduction*100@% less damage."
         },
         {
@@ -1141,7 +1141,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/breadandjam_small.arena_augments_v2.png",
             "id": 150,
             "name": "Bread And Jam",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Your W gains @WAbilityHaste@ Ability Haste."
         },
         {
@@ -1155,7 +1155,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/withhaste_small.arena_augments_v2.png",
             "id": 98,
             "name": "With Haste",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Gain <moveSpeed>Move Speed</moveSpeed> equal to @AbilityHasteToMSConversion@ times your <scaleLevel>Ability Haste</scaleLevel>."
         },
         {
@@ -1219,7 +1219,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/holyfire_small.arena_augments_v2.png",
             "id": 198,
             "name": "Holy Fire",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "{{Cherry_HolyFire_Summary}}<br><br>Damage Dealt This Round: @f1@<br>Damage Dealt Total: @f2@"
         },
         {
@@ -1247,7 +1247,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/feeltheburn_small.arena_augments_v2.png",
             "id": 35,
             "name": "Feel the Burn",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "<rules>Casts <spellName>Ignite</spellName> and <spellName>Exhaust</spellName> on all nearby enemy champions.</rules>"
         },
         {
@@ -1295,7 +1295,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/scopierweapons_small.arena_augments_v2.png",
             "id": 71,
             "name": "Scopier Weapons",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Gain @MeleeRangeIncrease@ Attack Range, reduced to @RangedRangeIncrease@ if you are Ranged."
         },
         {
@@ -1326,7 +1326,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/raidboss_small.arena_augments_v2.png",
             "id": 125,
             "name": "Raid Boss",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "You start each round imprisoned in the center of the arena, unable to act. While imprisoned, you have @DamageReductionMax*100@% damage reduction and gain size, <healing>Health</healing>, <physicalDamage>Attack Damage</physicalDamage>, and <magicDamage>Ability Power</magicDamage> over time (max @StatIncrease*100@%). After @ImprisonDuration@ seconds or reaching <healing>@BreakoutHealthThreshold*100@% Health</healing>, you break out, <status>Knocking Back</status> enemies and gaining <shield>@ShieldHealthRatio*100@% max Health Shield</shield>."
         },
         {
@@ -1341,7 +1341,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/outlawsgrit_small.arena_augments_v2.png",
             "id": 63,
             "name": "Outlaw's Grit",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "After using a dash, leap, blink, or teleport Ability you gain <scaleArmor>@ResistsPerStack@ Armor</scaleArmor> and <scaleMR>Magic Resist</scaleMR>.<br><br>This stacks up to @MaxStacks@ times."
         },
         {
@@ -1418,7 +1418,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/infernalconduit_small.arena_augments_v2.png",
             "id": 45,
             "name": "Infernal Conduit",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Your Abilities apply a stacking <keywordMajor>Burn</keywordMajor>, dealing <scaleAP>@BleedDamageTooltip@ Magic Damage</scaleAP> per second for @BleedDuration@ seconds. The <keywordMajor>Burn</keywordMajor> stacks infinitely.<br><br>All your <keywordMajor>Burn</keywordMajor> effects lower your remaining Basic Ability Cooldowns by @FlatCooldownRefundPerTick@s when they damage enemies.<br><br>Damage Dealt This Round: @f1@<br>Damage Dealt Total: @f2@<br>"
         },
         {
@@ -1451,7 +1451,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/backtobasics_small.arena_augments_v2.png",
             "id": 4,
             "name": "Back To Basics",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Your Ultimate Ability is sealed. Gain @DamageAmp*100@% <scaleLevel>Damage</scaleLevel>, <healing>Healing</healing>, <shield>Shielding</shield>, and <scaleBonus>@Haste@ Ability Haste</scaleBonus>"
         },
         {
@@ -1503,7 +1503,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/thiefsgloves_small.arena_augments_v2.png",
             "id": 83,
             "name": "Thief's Gloves",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Remove your current items, gain random items each combat instead. Bonus stats and item damage is increased by @ItemStatAmp*100@%."
         },
         {
@@ -1569,7 +1569,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/soulsiphon_small.arena_augments_v2.png",
             "id": 77,
             "name": "Soul Siphon",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Gain <crit>@CritChance*100@% Crit Chance</crit> and @HealPercentage*100@% Lifesteal on <crit>Critical Strikes</crit>.<br><br>Healing Done This Round: @f1@<br>Healing Done Total: @f2@"
         },
         {
@@ -1583,7 +1583,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/threadtheneedle_small.arena_augments_v2.png",
             "id": 84,
             "name": "Thread the Needle",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Gain @PercentPen*100@% <scaleAD>Armor Penetration</scaleAD> and <scaleAP>Magic Penetration</scaleAP>."
         },
         {
@@ -1597,7 +1597,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/breadandcheese_small.arena_augments_v2.png",
             "id": 151,
             "name": "Bread And Cheese",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Your E gains @EAbilityHaste@ Ability Haste."
         },
         {
@@ -1639,7 +1639,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/impassable_small.arena_augments_v2.png",
             "id": 149,
             "name": "Impassable",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Gain the <keywordMajor>Aftershock</keywordMajor> and <keywordMajor>Glacial Augment</keywordMajor> Keystone Runes."
         },
         {
@@ -1653,7 +1653,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/extendoarm_small.arena_augments_v2.png",
             "id": 33,
             "name": "Extendo-Arm",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "<keywordMajor>Automatically</keywordMajor> fire a Blitzcrank hook every 12 seconds at a nearby enemy champion.<br><br>Hooks Landed: @f1@"
         },
         {
@@ -1690,7 +1690,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/slowcooker_small.arena_augments_v2.png",
             "id": 75,
             "name": "Slow Cooker",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Every second, apply a stacking <keywordMajor>Burn</keywordMajor>, dealing <health>@BleedDamageTooltip@ per second as <scaleAP>Magic Damage</scaleAP> for @BleedDuration@ seconds</health> to enemy champions within @Range@ range. The <keywordMajor>Burn</keywordMajor> stacks infinitely.<br><br>Damage Dealt This Round: @f1@<br>Damage Dealt Total: @f2@"
         },
         {
@@ -1704,7 +1704,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/dieanotherday_small.arena_augments_v2.png",
             "id": 24,
             "name": "Die Another Day",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Bless the ground under you for 4s, preventing any unit inside from falling below 10% of their max Health. At the end, units inside are healed for <healing>@HealFlatTooltip@ Health</healing>. "
         },
         {
@@ -1719,7 +1719,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/spiritlink_small.arena_augments_v2.png",
             "id": 78,
             "name": "Spirit Link",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "@DamageRedirectPercentage*100@% of damage dealt to your ally is redirected to you, and @HealCopyPercentage*100@% of <healing>healing</healing> they receive is given to you as well.<br><br>Damage Redirected Total: @f1@<br>Healing Done Total: @f2@<br>"
         },
         {
@@ -1749,7 +1749,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/quest_angelofretribution_small.arena_augments_v2.png",
             "id": 192,
             "name": "Quest: Angel of Retribution",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "{{Cherry_QuestAngelofRetribution_Summary}}<br><br>Damage Healed or Blocked: @f1@<br>Damage Dealt: @f2@"
         },
         {
@@ -1828,7 +1828,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/okboomerang_small.arena_augments_v2.png",
             "id": 61,
             "name": "OK Boomerang",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "<keywordMajor>Autocast</keywordMajor> a boomerang at a nearby enemy every 7s, dealing @Damage@ adaptive damage to enemies hit.<br><br>Damage Dealt This Round: @f1@<br>Damage Dealt Total: @f2@"
         },
         {
@@ -1855,7 +1855,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/scopiestweapons_small.arena_augments_v2.png",
             "id": 115,
             "name": "Scopiest Weapons",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Gain @MeleeRangeIncrease@ Attack Range, reduced to @RangedRangeIncrease@ if you are Ranged."
         },
         {
@@ -1901,7 +1901,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/feymagic_small.arena_augments_v2.png",
             "id": 194,
             "name": "Fey Magic",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Damaging with your Ultimate <status>Polymorphs</status> enemies for @PolyDuration@ seconds (@PolyCooldown@ second Cooldown)."
         },
         {
@@ -1916,7 +1916,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/firebrand_small.arena_augments_v2.png",
             "id": 36,
             "name": "Firebrand",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Your Attacks also <keywordMajor>Burn</keywordMajor> enemies, dealing <scaleAP>@PercentMaxHPDamagePer5Seconds*20@% max Health Magic Damage</scaleAP> damage per second over @BleedDuration@ seconds. The <keywordMajor>Burn</keywordMajor> stacks infinitely.<br><br>Damage Dealt This Round: @f1@<br>Damage Dealt Total: @f2@"
         },
         {
@@ -1948,7 +1948,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/nestingdoll_small.arena_augments_v2.png",
             "id": 177,
             "name": "Nesting Doll",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "When you die for the first time, revive as a smaller version of yourself with @ReviveMod*100@% max Health and deal @ReviveMod*100@% damage. If you die again, revive as an even smaller version of yourself with @SecondReviveMod*100@% max Health and deal @SecondReviveMod*100@% damage.<br><br>When you revive, <status>Knockback</status> enemies around you."
         },
         {
@@ -1963,7 +1963,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/tapdancer_small.arena_augments_v2.png",
             "id": 81,
             "name": "Tap Dancer",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Your Attacks grant you <moveSpeed>@MSPerHit@ Move Speed</moveSpeed>, stacking infinitely. Gain AS equal to @MSToASConversion*10000@% of your MS."
         },
         {
@@ -1994,7 +1994,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/minionmancer_small.arena_augments_v2.png",
             "id": 104,
             "name": "Minionmancer",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Your summons gain @MinionSizeIncrease*100@% increased size, health, and damage."
         },
         {
@@ -2006,7 +2006,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/etherealweapon_small.arena_augments_v2.png",
             "id": 29,
             "name": "Ethereal Weapon",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Your Abilities apply on-hit effects. 1 second cooldown per target.<br><br>Times Triggered This Round: @f1@<br>Times Triggered Total: @f2@"
         },
         {
@@ -2018,7 +2018,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/omnisoul_small.arena_augments_v2.png",
             "id": 62,
             "name": "Omni Soul",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Gain 3 random Dragon Souls."
         },
         {
@@ -2052,7 +2052,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/dawnbringersresolve_small.arena_augments_v2.png",
             "id": 20,
             "name": "Dawnbringer's Resolve",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Upon dropping below @HealthThreshold*100@% Health, heal for @HealAmount*100@% max Health over 3 seconds.<br><br>Healing Done This Round: @f1@<br>Healing Done Total: @f2@"
         },
         {
@@ -2175,7 +2175,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/frombeginningtoend_small.arena_augments_v2.png",
             "id": 38,
             "name": "From Beginning to End",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Gain the <spellName>First Strike</spellName> and <spellName>Dark Harvest</spellName> Keystone Runes.<br><br>Damage Dealt This Round: @f1@<br>Damage Dealt Total: @f2@<br>Gold Gained Total: @f3@"
         },
         {
@@ -2190,7 +2190,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/canttouchthis_small.arena_augments_v2.png",
             "id": 11,
             "name": "Can't Touch This",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Casting your Ultimate also makes you <status>Invulnerable</status> for @InvulnDuration@s. @Cooldown@s cooldown."
         },
         {
@@ -2218,7 +2218,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/itscritical_small.arena_augments_v2.png",
             "id": 47,
             "name": "It's Critical",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Gain <crit>@CritChance*100@% Crit Chance</crit>."
         },
         {
@@ -2272,7 +2272,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/bloodbrother_small.arena_augments_v2.png",
             "id": 200,
             "name": "Blood Brother",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Gain Darius's Passive <spellName>Hemorrhage</spellName>.<br><br><rules>Attacks and damaging Abilities cause the target to <keywordMajor>Hemorrhage</keywordMajor>, dealing <physicalDamage>@BleedDamagePerStack@ physical damage</physicalDamage> over @BleedDuration@ seconds, stacking up to @MaxStacks@ times.<br><br>Draven gains  <scaleAD>@NoxianMightBonusAD@ Attack Damage</scaleAD> at @MaxStacks@ <keywordMajor>Hemorrhage</keywordMajor> stacks.</rules><br><br>"
         },
         {
@@ -2301,7 +2301,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/recursion_small.arena_augments_v2.png",
             "id": 68,
             "name": "Recursion",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Gain <scaleLevel>@AbilityHaste@ Ability Haste</scaleLevel>."
         },
         {
@@ -2332,7 +2332,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/goliath_small.arena_augments_v2.png",
             "id": 41,
             "name": "Goliath",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Become large, gaining @HealthAmp*100@% <scaleHealth>Health</scaleHealth> and @ADAmp*100@% <scaleAP>Adaptive Force</scaleAP>."
         },
         {
@@ -2346,7 +2346,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/acceleratingsorcery_small.arena_augments_v2.png",
             "id": 1,
             "name": "Accelerating Sorcery",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Using an Ability grants <scaleBonus>@HastePerCast@ Ability Haste</scaleBonus>, stacking infinitely."
         },
         {
@@ -2393,7 +2393,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/orbitallaser_small.arena_augments_v2.png",
             "id": 208,
             "name": "Orbital Laser",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "{{Cherry_OrbitalLaser_Summary}}<br><br>Damage Dealt This Round:@f1@<br>Damage Dealt Total:@f2@"
         },
         {
@@ -2407,7 +2407,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/mysticpunch_small.arena_augments_v2.png",
             "id": 58,
             "name": "Mystic Punch",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Your Attacks reduce your cooldowns by @CooldownRefund@ seconds."
         },
         {
@@ -2478,7 +2478,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/rabblerousing_small.arena_augments_v2.png",
             "id": 67,
             "name": "Rabble Rousing",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Using an Ability heals you for <healing>@HealAmount@ Health</healing>.<br><br>Healing Done This Round: @f1@<br>Healing Done Total: @f2@"
         },
         {
@@ -2497,7 +2497,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/giantslayer_small.arena_augments_v2.png",
             "id": 195,
             "name": "Giant Slayer",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Become tiny, gain <speed>@MovespeedMod*100@% Move Speed</speed>, and deal between @SmallBonusDamage*100@% and @XLargeBonusDamage*100@% bonus damage to champions based on how much larger they are than you.<br><br>Damage this Round: @f1@<br>Damage this Game: @f2@"
         },
         {
@@ -2529,7 +2529,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/criticalhealing_small.arena_augments_v2.png",
             "id": 118,
             "name": "Critical Healing",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Your Heals and Shields can Critically Strike for @CritHeal*100@% bonus amount. Gain @CritChance*100@% Crit Chance. <br><br>Bonus Healing: @f1@<br>Bonus Shielding: @f2@"
         },
         {
@@ -2544,7 +2544,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/apexinventor_small.arena_augments_v2.png",
             "id": 2,
             "name": "Apex Inventor",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Gain <scaleBonus>@ItemHaste@ Item Haste</scaleBonus> (equivalent to @TooltipCDR@% Item CDR).<br><br><rules>Item Haste reduces the cooldown of all Item Abilities.</rules>"
         },
         {
@@ -2575,7 +2575,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/allforyou_small.arena_augments_v2.png",
             "id": 141,
             "name": "All For You",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "{{ Cherry_AllForYou_Summary }}<br><br>Bonus Healing: @f1@<br>Bonus Shielding: @f2@"
         },
         {
@@ -2603,7 +2603,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/keystoneconjurer_small.arena_augments_v2.png",
             "id": 50,
             "name": "Keystone Conjurer",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Gain the <spellName>Summon Aery</spellName> and <spellName>Arcane Comet</spellName> Keystone Runes.<br><br>Damage Dealt Total: @f1@<br>Shields Generated Total: @f2@"
         },
         {
@@ -2665,7 +2665,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/lasereyes_small.arena_augments_v2.png",
             "id": 174,
             "name": "Laser Eyes",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "There is a laser in the direction you are facing that deals <magicDamage>@LaserEyesTooltip@ magic damage</magicDamage> per second.<br><br>Damage Dealt This Round: @f1@<br>Damage Dealt Total: @f2@"
         },
         {
@@ -2677,7 +2677,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/mythical_small.arena_augments_v2.png",
             "id": 59,
             "name": "Mythical",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "You can buy any number of Mythic Items."
         },
         {
@@ -2691,7 +2691,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/dashing_small.arena_augments_v2.png",
             "id": 19,
             "name": "Dashing",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Your dash, leap, blink, or teleport Abilities gain <scaleLevel>@Haste@ Ability Haste</scaleLevel>."
         },
         {
@@ -2705,7 +2705,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/lightningstrikes_small.arena_augments_v2.png",
             "id": 52,
             "name": "Lightning Strikes",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Gain <scaleAD>@ASToADConversion*.1@ Attack Damage</scaleAD> per <attackSpeed>0.1 Attack Speed</attackSpeed>."
         },
         {
@@ -2737,7 +2737,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/skilledsniper_small.arena_augments_v2.png",
             "id": 113,
             "name": "Skilled Sniper",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Hitting an enemy with a non-Ultimate Ability at over @SnipeDistance@ range reduces its Cooldown to @ReducedCooldown@ seconds."
         },
         {
@@ -2751,7 +2751,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/parasiticrelationship_small.arena_augments_v2.png",
             "id": 175,
             "name": "Parasitic Relationship",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "{{ Cherry_ParasiticRelationship_Summary }}<br><br>Healing this round: @f1@<br>Healing total: @f2@"
         },
         {
@@ -2765,7 +2765,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/restart_small.arena_augments_v2.png",
             "id": 165,
             "name": "Restart",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Your non-Ultimate Abilities <keywordMajor>Automatically</keywordMajor> refresh every @CoolDown@ seconds."
         },
         {
@@ -2787,7 +2787,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/drawyoursword_small.arena_augments_v2.png",
             "id": 134,
             "name": "Draw Your Sword",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "You are now melee. Gain <physicalDamage>@BonusAD*100@% Attack Damage</physicalDamage>, <healing>@BonusHP*100@% Health</healing>, <attackSpeed>@BonusAS*100@% Attack Speed</attackSpeed>, <lifesteal>@BonusLifesteal*100@% Lifesteal</lifesteal>, and <speed>@BonusMS*100@% Move Speed</speed> (each further increased based on Attack Range lost)."
         },
         {
@@ -2820,7 +2820,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/restlessrestoration_small.arena_augments_v2.png",
             "id": 70,
             "name": "Restless Restoration",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "You heal for @HealCalcPer1000Units@ per 1000 distance traveled.<br><br>Healing Done This Round: @f1@<br>Healing Done Total: @f2@"
         },
         {
@@ -2835,7 +2835,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/divebomber_small.arena_augments_v2.png",
             "id": 25,
             "name": "Dive Bomber",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Your team's first death each round explodes, dealing <trueDamage>@PercentMaxHPDamage*100@% of the targets max health as true damage</trueDamage> to nearby enemies.<br><br>Damage Dealt This Round: @f1@<br>Damage Dealt Total: @f2@"
         },
         {
@@ -2861,7 +2861,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/oathsworn_small.arena_augments_v2.png",
             "id": 109,
             "name": "Oathsworn",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Replace Summoner Flee with <spellName>Fate's Call</spellName> <br><br><rules><spellName>Fate's Call</spellName> pulls your partner inside of you for up to 4 seconds, making them Untargetable. The partner can move to launch themself out, <status>Knocking Back</status> the first champion hit and all surrounding enemies.</rules><br>"
         },
         {
@@ -2910,7 +2910,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/summonersroulette_small.arena_augments_v2.png",
             "id": 123,
             "name": "Summoner's Roulette",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Replace your Summoner spells with random ones. When you use a Summoner Spell in combat, replace it with another random one on a @Cooldown@ second Cooldown."
         },
         {
@@ -2924,7 +2924,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/shrinkray_small.arena_augments_v2.png",
             "id": 74,
             "name": "Shrink Ray",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Your Attacks reduce an enemy's damage by @DamageReduction*100@% for 3 seconds.<br><br>Damage Reduced This Round: @f1@<br>Damage Reduced Total: @f2@"
         },
         {
@@ -2955,7 +2955,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/quest_steelyourheart_small.arena_augments_v2.png",
             "id": 152,
             "name": "Quest: Steel Your Heart",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Requirement: Possess Heartsteel with @StackThreshold@+ stacks.<br><br>Reward: Multiply your Heartsteel stacks by @StackMultiplication@. Increase your <healing>Health Regeneration</healing> by @StacktoRegenConversion*100@% of your Heartsteel stacks."
         },
         {
@@ -3003,7 +3003,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/courageofthecolossus_small.arena_augments_v2.png",
             "id": 18,
             "name": "Courage of the Colossus",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Gain a <shield>@TotalShield@ Shield</shield> after <status>Immobilizing</status> an enemy champion.<br><br>Shields Generated This Round: @f1@<br>Shields Generated Total: @f2@"
         },
         {
@@ -3068,7 +3068,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/combomaster_small.arena_augments_v2.png",
             "id": 16,
             "name": "Combo Master",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Gain the <spellName>Electrocute</spellName> and <spellName>Phase Rush</spellName> Keystone Runes.<br><br>Electrocute Damage This Round: @f1@<br>Electrocute Damage Total: @f2@"
         },
         {
@@ -3099,7 +3099,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/itskillingtime_small.arena_augments_v2.png",
             "id": 211,
             "name": "It's Killing Time",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "{{Cherry_ItsKillingTime_Summary}}<br><br>Damage Dealt This Round:@f1@<br>Damage Dealt Total:@f2@"
         },
         {
@@ -3111,7 +3111,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/wisdomofages_small.arena_augments_v2.png",
             "id": 96,
             "name": "Wisdom of Ages",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Gain 1 level now, and 1 bonus level every other round. Your level cap is removed."
         },
         {
@@ -3142,7 +3142,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/perseverance_small.arena_augments_v2.png",
             "id": 64,
             "name": "Perseverance",
-            "rarity": 4,
+            "rarity": 1,
             "tooltip": "Gain <healing>@BaseRegen*100@% base Health Regen</healing>, increased to <healing>@AmpedRegen*100@% base Health Regen</healing> while below 25% Health.<br><br>Healing Done This Round: @f1@<br>Healing Done Total: @f2@"
         },
         {
@@ -3168,7 +3168,7 @@
             "iconSmall": "assets/ux/cherry/augments/icons/jeweledgauntlet_small.arena_augments_v2.png",
             "id": 48,
             "name": "Jeweled Gauntlet",
-            "rarity": 8,
+            "rarity": 2,
             "tooltip": "Your Abilities can Critically Strike for 140% total damage. Gain 20% Crit Chance. Gain an additional @APToCritConversion@ Crit Chance scaling with your AP.<br><br>Bonus Damage This Round: @f1@<br>Bonus Damage Total: @f2@"
         }
     ]

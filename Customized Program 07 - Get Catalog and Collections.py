@@ -1,5 +1,6 @@
 from lcu_driver import Connector
-import os, json, time, pandas
+import os, json, time, pandas, re, requests
+from openpyxl import load_workbook
 
 #=============================================================================
 # * 声明（Declaration）
@@ -78,7 +79,7 @@ def format_json(origin = '''{"customGameLobby": {"configuration": {"gameMode": "
     return result
 
 async def fetch_store(connection):
-    #获取大区信息，用于设置工作簿保存位置和工作表名称（Get server information to set up workbook saving directory and sheet name）
+    #获取大区信息，用于设置工作簿保存位置和工作表名称和获取相应的CommunityDragon数据资源（Get server information to set up workbook saving directory and sheet name and fetch the adaptive CommunityDragon data resources）
     info = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     displayName = info["displayName"]
     current_puuid = info["puuid"]
@@ -113,18 +114,22 @@ async def fetch_store(connection):
         catalogList += catalogDicts[inventoryType]
     #with open("catalogDicts.json", "w", encoding = "utf-8") as fp:
         #json.dump(catalogDicts, fp, indent = 4, ensure_ascii = False)
+    #with open("catalogList.json", "w", encoding = "utf-8") as fp:
+        #json.dump(catalogList, fp, indent = 4, ensure_ascii = False)
     collection = await (await connection.request("GET", '/lol-inventory/v1/inventory?inventoryTypes=["AUGMENT","AUGMENT_SLOT","BOOST","BUNDLES","CHAMPION","CHAMPION_SKIN","COMPANION","CURRENCY","EMOTE","EVENT_PASS","GIFT","HEXTECH_CRAFTING","MODE_PROGRESSION_REWARD","MYSTERY","QUEUE_ENTRY","RP","SPELL_BOOK_PAGE","STATSTONE","SUMMONER_CUSTOMIZATION","SUMMONER_ICON","TEAM_SKIN_PURCHASE","TFT_DAMAGE_SKIN","TFT_MAP_SKIN","TOURNAMENT_TROPHY","TRANSFER","WARD_SKIN"]')).json()
+    #with open("collection.json", "w", encoding = "utf-8") as fp:
+        #json.dump(collection, fp, indent = 4, ensure_ascii = False)
     collection_hashtable = {} #原本的藏品信息中没有记录名称，所以需要借用商品信息中的名称（The original collection information doesn't contain the names, so they're cited from the catalog information）
     for item in catalogList:
         if item["itemInstanceId"] != "":
             collection_hashtable[item["itemInstanceId"]] = item["name"]
     #定义商品数据结构（Define the store item data structure）
-    catalog_header = {"active": "可用性", "description": "简介", "imagePath": "缩略图路径", "inactiveDate": "停止销售日期", "inventoryType": "道具类型", "itemId": "序号", "itemInstanceId": "识别码", "metadata": "元数据", "name": "名称", "offerId": "交易代码", "owned": "已拥有", "ownershipType": "拥有权", "prices": "价格", "purchaseDate": "购买日期", "questSkinInfo": "赠送皮肤信息", "releaseDate": "发布日期", "sale": "销售信息", "subInventoryType": "次级道具类型", "subTitle": "副标题", "tags": "搜索关键词"}
+    catalog_header = {"active": "可用性", "description": "简介", "imagePath": "缩略图路径", "inactiveDate": "停止销售日期", "inventoryType": "道具类型", "itemId": "序号", "itemInstanceId": "识别码", "metadata": "元数据", "name": "名称", "offerId": "赠送代码", "owned": "已拥有", "ownershipType": "拥有权", "prices": "价格", "purchaseDate": "购买日期", "questSkinInfo": "赠送皮肤信息", "releaseDate": "发布日期", "sale": "销售信息", "subInventoryType": "次级道具类型", "subTitle": "副标题", "tags": "搜索关键词"}
     catalog_data = {}
     catalog_header_keys = list(catalog_header.keys())
     inventoryType_dict = {"AUGMENT": "AUGMENT", "AUGMENT_SLOT": "AUGMENT_SLOT", "BOOST": "加成道具", "BUNDLES": "道具包", "CHAMPION": "英雄", "CHAMPION_SKIN": "皮肤", "COMPANION": "小小英雄", "CURRENCY": "货币", "EMOTE": "表情", "EVENT_PASS": "事件通行证", "GIFT": "礼物", "HEXTECH_CRAFTING": "海克斯科技宝箱", "MODE_PROGRESSION_REWARD": "MODE_PROGRESSION_REWARD", "MYSTERY": "MYSTERY", "QUEUE_ENTRY": "队列通行证", "RP": "点券", "SPELL_BOOK_PAGE": "符文页", "STATSTONE": "永恒星碑", "SUMMONER_CUSTOMIZATION": "SUMMONER_CUSTOMIZATION", "SUMMONER_ICON": "召唤师图标", "TEAM_SKIN_PURCHASE": "TEAM_SKIN_PURCHASE", "TFT_DAMAGE_SKIN": "云顶之弈进攻特效", "TFT_MAP_SKIN": "云顶之弈棋盘皮肤", "TOURNAMENT_TROPHY": "赛事奖励", "TRANSFER": "转区项目", "WARD_SKIN": "守卫（眼）皮肤"}
     ownershipType_dict = {None: "未拥有", "F2P": "免费使用", "RENTED": "租借中", "OWNED": "已拥有"}
-    subInventoryType_dict = {"": "", "RECOLOR": "炫彩", "tft_star_fragments": "星之碎片"}
+    subInventoryType_dict = {"": "", "lol_clash_tickets": "冠军杯赛挑战券", "tft_star_fragments": "星之碎片", "TFT_PASS": "云顶之弈事件通行证", "RECOLOR": "炫彩", "lol_clash_premium_tickets": "冠军杯赛豪华版挑战券", "LOL_EVENT_PASS": "英雄联盟事件通行证"}
     for i in range(len(catalog_header)):
         key = catalog_header_keys[i]
         catalog_data[key] = []
@@ -213,27 +218,77 @@ async def fetch_store(connection):
                 collection_df.iat[i, j] = ""
     #保存文件（Save file）
     excel_name = "Store and Collections - %s.xlsx" %displayName
+    workbook_exist = True
     while True:
         try:
             with pandas.ExcelWriter(path = os.path.join(folder, excel_name), mode = "a", if_sheet_exists = "replace") as writer:
-                currentTime = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
+                currentTime = time.strftime("%Y-%m-%d", time.localtime(time.time()))
                 catalog_df.to_excel(excel_writer = writer, sheet_name = "Store - " + currentTime + "_" + platformId + "_" + locale)
-                collection_df.to_excel(excel_writer = writer, sheet_name = "Collections - " + currentTime + "_" + platformId + "_" + locale)
-            print('商品和藏品信息已保存为“%s”！请按任意键退出。\nStore and collections information is saved as "%s"! Press any key to exit ...' %(os.path.join(folder, excel_name), os.path.join(folder, excel_name)))
-            input()
+                collection_df.to_excel(excel_writer = writer, sheet_name = "Collections - " + currentTime + "_" + platformId)
+            print('商品和藏品信息已保存为“%s”！\nStore and collections information is saved as "%s"!' %(os.path.join(folder, excel_name), os.path.join(folder, excel_name)))
         except PermissionError:
             print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
             input()
         except FileNotFoundError:
+            workbook_exist = False
             os.makedirs(folder, exist_ok = True)
             with pandas.ExcelWriter(path = os.path.join(folder, excel_name)) as writer:
-                currentTime = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
+                currentTime = time.strftime("%Y-%m-%d", time.localtime(time.time()))
                 catalog_df.to_excel(excel_writer = writer, sheet_name = "Store - " + currentTime + "_" + platformId + "_" + locale)
-                collection_df.to_excel(excel_writer = writer, sheet_name = "Collections - " + currentTime + "_" + platformId + "_" + locale)
+                collection_df.to_excel(excel_writer = writer, sheet_name = "Collections - " + currentTime + "_" + platformId)
             print('商品和藏品信息已保存为“%s”！请按任意键退出。\nStore and collections information is saved as "%s"! Press any key to exit ...' %(os.path.join(folder, excel_name), os.path.join(folder, excel_name)))
             break
         else:
             break
+    #工作表排序（Worksheet ordering）
+    if workbook_exist:
+        print("警告：由于该文件已存在，本次导出已追加新工作表到工作簿的末尾。这可能导致工作表顺序的错乱。是否需要对工作表进行排序？（输入任意键排序，否则不排序）\nWarning: Because the excel workbook has existed, new sheets are appended to the last of the original sheet list. This may result in the disarrangement of worksheet order. Do you want to sort the sheets? (Input anything to sort the sheets, or null to skip sorting)")
+        sort = input()
+        if sort != "":
+            store_loaded = True
+            print("正在读取刚刚创建的工作表……\nLoading the workbook just created ...")
+            while True:
+                try:
+                    wb = load_workbook(os.path.join(folder, excel_name))
+                except FileNotFoundError:
+                    print('商品藏品信息工作簿读取失败！请确保“%s”文件夹内含有名为“%s”的工作簿。如果需要退出程序，请输入“0”。\nERROR reading the Store and Collections workbook! Please make sure the workbook "%s" is in the folder "%s". If you want to exit the program, please submit "0".' %(folder, excel_name, excel_name, folder))
+                    store_reload = input()
+                    if store_reload == "0":
+                        store_loaded = False
+                        break
+                else:
+                    break
+            if store_loaded:
+                sheetnames = wb.sheetnames #第一次获取原工作簿的工作表名称列表（The first time to get the sheet name list of the original workbook）
+                print("请选择排序方式：\nPlease select an ordering pattern:\n1\t时间优先（默认）【Time in priority (by default)】\n2\t类别优先（Type in priority）")
+                op = input()
+                print("正在创建顺序工作表列表……\nCreating the ordered sheet list ...")
+                date_re = re.compile(r"\d{4}-\d{2}-\d{2}") #设置正则表达式识别
+                if op == "" or op[0] != "2": #按照时间优先的原则对工作表进行排序，时间相同则商品工作表在前，藏品工作表在后（Sort the sheets by time in priority. If the times are the same, then the store sheet is arranged in front of the collection sheet）
+                    sheetname_date_list = list(map(lambda x: date_re.search(x).group(), sheetnames)) #从工作表名称提取日期信息形成列表（Extract the dates from the sheetnames to form a list）
+                    sheetname_type_list = list(map(lambda x: x.split()[0], sheetnames)) #从工作表名称提取数据类型信息形成列表（Extract the data types from the sheetnames to form a list）
+                    sheetname_platform_list = list(map(lambda x: x.split("-")[1], sheetnames)) #从工作表名称提取大区信息形成列表（Extract the platformId from the sheetnames to form a list）
+                    sheetname_tmpDf = pandas.DataFrame(data = [sheetnames, sheetname_date_list, sheetname_type_list, sheetname_platform_list]).stack().unstack(0) #创建一个四列数据框，各列分别是完整工作表名、日期信息、数据类型信息和大区信息（Create a 4-column dataframe whose columns are the complete sheetname, date, data type and platformId）
+                    sheetnames_sorted = sheetname_tmpDf.sort_values(by = [1, 2, 3], ascending = [True, False, True]).iloc[:, 0].tolist() #将工作表名按照第一关键字——日期信息正序排列，第二关键字——数据类型信息倒序排列（先商品后藏品），第三关键字——大区信息正序排列（Order the sheetnames according to the ascending order of the first keyword - date, the descending order of the second keyword - data type and the ascending order of the third keyword - platformId）
+                else:
+                    sheets_Store = [sheet_iter for sheet_iter in sheetnames if sheet_iter.startswith("Store")] #提取商品类型的工作表名称（Extract the names of the sheets containing Store data）
+                    sheets_Collections = [sheet_iter for sheet_iter in sheetnames if sheet_iter.startswith("Collections")] #提取藏品类型的工作表名称（Extract the names of the sheets containing Collection data）
+                    sheets_Store = sorted(sheets_Store, key = lambda x: date_re.search(x).group()) #按照日期正序排列商品类型的工作表名称（Order the Store sheetnames according to the ascending order of dates）
+                    sheets_Collections = sorted(sheets_Collections, key = lambda x: date_re.search(x).group()) #按照日期正序排列藏品类型的工作表名称（Order the Collection sheetnames according to the ascending order of dates）
+                    sheetnames_sorted = sheets_Store + sheets_Collections #合并列表得到先按类别排列、再按日期排列的工作表名称（Combine the lists to get the sheetname list ordered firstly by data type and secondly by date）
+                #下面排列所有工作表（The following code arrange all sheets）
+                print("正在排序……\nOrdering ...")
+                for i in range(len(sheetnames_sorted)): #排序的思路是每次将一个工作表根据其在原工作表列表中的索引和在顺序工作表列表中的索引的差值进行移动（The main idea of sheets' sorting is to move each sheet according to the difference of the indices between in the original sheet list and in the ordered sheet list）
+                    sheetnames = wb.sheetnames #因为一次移动可能导致很多其它工作表的位置发生变化，所以必须每次都重新获取工作表列表（Because a moving event may result in location change of many other sheets, the sheet list must be obtained each time）
+                    sheetname_iter = sheetnames_sorted[i] #这里以顺序工作表为迭代器进行遍历，因为顺序工作表是固定不变的（Here the ordered sheet list acts as the iterator to be traversed, for the ordered sheet list is fixed）
+                    if sheetnames[i] != sheetname_iter:
+                        preIndex = sheetnames.index(sheetname_iter)
+                        wb.move_sheet(sheetname_iter, i - preIndex) #注意移动距离数应当是排序后的索引减去排序前的索引（Note that the moving offset should be the index in the ordered list subtracted by that in the original list）
+                    #print("排序进度（Ordering process）：%d/%d\t工作表名称（Sheet name）： %s" %(i + 1, len(sheetnames_sorted), sheetname_iter))
+                print('正在保存中……\nSaving the ordered workbook ...')
+                wb.save(os.path.join(folder, excel_name))
+                print('排序完成！排好序的工作簿已保存为“%s”。请按任意键退出。\nOrdering finished! The ordered workbook is saved as "%s". Press any key to exit ...\n' %(excel_name, excel_name))
+                input()
 
 #-----------------------------------------------------------------------------
 # websocket

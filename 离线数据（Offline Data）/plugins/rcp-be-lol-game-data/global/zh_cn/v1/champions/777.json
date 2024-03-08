@@ -936,11 +936,12 @@
         {
             "id": 777055,
             "isBase": false,
-            "name": "",
+            "name": "西部魔影 永恩",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/777/777055.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/777/777055.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/777/777055.jpg",
             "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yone/Skins/Skin55/YoneLoadScreen_55.SKINS_Yone_Skin55.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Yone/Skins/Skin55/YoneLoadScreen_55_LE.SKINS_Yone_Skin55.jpg",
             "skinType": "",
             "rarity": "kLegendary",
             "isLegacy": false,
@@ -951,7 +952,7 @@
             "chromas": [
                 {
                     "id": 777059,
-                    "name": "",
+                    "name": "西部魔影 永恩 (Ruby)",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777059.png",
                     "colors": [
                         "#D33528",
@@ -960,7 +961,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
                         }
                     ],
                     "rarities": [
@@ -972,7 +973,7 @@
                 },
                 {
                     "id": 777060,
-                    "name": "",
+                    "name": "西部魔影 永恩 (Emerald)",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777060.png",
                     "colors": [
                         "#2DA130",
@@ -983,7 +984,7 @@
                 },
                 {
                     "id": 777061,
-                    "name": "",
+                    "name": "西部魔影 永恩 (Tanzanite)",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777061.png",
                     "colors": [
                         "#54209B",
@@ -994,7 +995,7 @@
                 },
                 {
                     "id": 777062,
-                    "name": "",
+                    "name": "西部魔影 永恩 (Rose Quartz)",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777062.png",
                     "colors": [
                         "#E58BA5",
@@ -1010,7 +1011,7 @@
                 },
                 {
                     "id": 777063,
-                    "name": "",
+                    "name": "西部魔影 永恩 (Obsidian)",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777063.png",
                     "colors": [
                         "#27211C",
@@ -1021,7 +1022,7 @@
                 },
                 {
                     "id": 777064,
-                    "name": "",
+                    "name": "西部魔影 永恩 (Noonday)",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777064.png",
                     "colors": [
                         "#9DB3E1",
@@ -1036,25 +1037,35 @@
                     ]
                 }
             ],
-            "emblems": null,
-            "regionRarityId": 0,
-            "rarityGemPath": null,
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
             "skinLines": [
                 {
                     "id": 39
                 }
             ],
             "skinAugments": null,
-            "description": null
+            "description": "那个魂不守舍的人没有呼吸，只是倚靠在拴马桩上，眯着眼睛看着边境的黄昏——但它不是他。不完全是。真正的永恩是阴影和硝烟，随着它重新回到他肉身的静止状态而不断翻腾。“你们怎么就这样分开了？” 年轻的火药女巫问道。永恩叹息道，“说来话长，孩子。”"
         },
         {
             "id": 777058,
             "isBase": false,
-            "name": "",
+            "name": "西部魔影 炽天使 永恩",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/777/777058.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/777/777058.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/777/777058.jpg",
             "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yone/Skins/Skin58/YoneLoadScreen_58.SKINS_Yone_Skin58.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Yone/Skins/Skin58/YoneLoadScreen_58_LE.SKINS_Yone_Skin58.jpg",
             "skinType": "",
             "rarity": "kMythic",
             "isLegacy": false,
@@ -1062,16 +1073,25 @@
             "collectionSplashVideoPath": null,
             "featuresText": null,
             "chromaPath": null,
-            "emblems": null,
-            "regionRarityId": 0,
-            "rarityGemPath": null,
+            "emblems": [
+                {
+                    "name": "Mythic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/68.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/68.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
             "skinLines": [
                 {
                     "id": 39
                 }
             ],
             "skinAugments": null,
-            "description": null
+            "description": "那个魂不守舍的人没有呼吸，只是倚靠在拴马桩上，眯着眼睛看着边境的黄昏——但它不是他。不完全是。真正的永恩是阴影和硝烟，随着它重新回到他肉身的静止状态而不断翻腾。“你们怎么就这样分开了？” 年轻的火药女巫问道。永恩叹息道，“说来话长，孩子。”"
         }
     ],
     "passive": {

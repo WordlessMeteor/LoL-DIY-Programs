@@ -12987,54 +12987,6 @@
         "TFTOnly": false
     },
     {
-        "contentId": "24f340cd-40c8-4e06-ae46-c1339ef2fb45",
-        "itemId": 78004,
-        "name": "Divine Spring Hundun",
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/Companions/Tooltip_Hundun_Base_Classic2_Tier1.LL_Hundun_Base.png",
-        "description": "Bathing your Hundun in divine springs is vital to Hundun care.",
-        "level": 1,
-        "speciesName": "Hundun",
-        "speciesId": 78,
-        "rarity": "Default",
-        "rarityValue": 0,
-        "isDefault": false,
-        "upgrades": [
-            "c090d2d7-0f6f-42eb-be58-5eada26d6caa",
-            "9bdaa074-5883-425d-a7ea-93f1f87cb708"
-        ],
-        "TFTOnly": false
-    },
-    {
-        "contentId": "c090d2d7-0f6f-42eb-be58-5eada26d6caa",
-        "itemId": 78005,
-        "name": "Divine Spring Hundun",
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/Companions/Tooltip_Hundun_Base_Classic2_Tier2.LL_Hundun_Base.png",
-        "description": "Bathing your Hundun in divine springs is vital to Hundun care.",
-        "level": 2,
-        "speciesName": "Hundun",
-        "speciesId": 78,
-        "rarity": "Default",
-        "rarityValue": 0,
-        "isDefault": false,
-        "upgrades": [],
-        "TFTOnly": false
-    },
-    {
-        "contentId": "9bdaa074-5883-425d-a7ea-93f1f87cb708",
-        "itemId": 78006,
-        "name": "Divine Spring Hundun",
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/Companions/Tooltip_Hundun_Base_Classic2_Tier3.LL_Hundun_Base.png",
-        "description": "Bathing your Hundun in divine springs is vital to Hundun care.",
-        "level": 3,
-        "speciesName": "Hundun",
-        "speciesId": 78,
-        "rarity": "Default",
-        "rarityValue": 0,
-        "isDefault": false,
-        "upgrades": [],
-        "TFTOnly": false
-    },
-    {
         "contentId": "72e48cc8-1785-4434-bcba-fcc36eb6d14e",
         "itemId": 78007,
         "name": "Blooming Hundun",
@@ -13133,7 +13085,7 @@
     {
         "contentId": "c29d8984-2bc9-4d8c-9ea3-3e6d6bef02fa",
         "itemId": 78013,
-        "name": "Nebulus Hundun",
+        "name": " Nebulous Hundun",
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/Companions/Tooltip_Hundun_Base_Classic5_Tier1.LL_Hundun_Base.png",
         "description": "Stare into the abyss long enough and it stares back.",
         "level": 1,
@@ -13151,7 +13103,7 @@
     {
         "contentId": "f38927b0-dc96-4b2c-b5b1-dc257a1fc5fa",
         "itemId": 78014,
-        "name": "Nebulus Hundun",
+        "name": " Nebulous Hundun",
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/Companions/Tooltip_Hundun_Base_Classic5_Tier2.LL_Hundun_Base.png",
         "description": "Stare into the abyss long enough and it stares back.",
         "level": 2,
@@ -13166,7 +13118,7 @@
     {
         "contentId": "846fa9e6-cae6-47fc-829c-a46659c9d6b9",
         "itemId": 78015,
-        "name": "Nebulus Hundun",
+        "name": " Nebulous Hundun",
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/Companions/Tooltip_Hundun_Base_Classic5_Tier3.LL_Hundun_Base.png",
         "description": "Stare into the abyss long enough and it stares back.",
         "level": 3,
