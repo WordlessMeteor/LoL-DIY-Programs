@@ -584,7 +584,7 @@
         {
             "id": 79029,
             "isBase": false,
-            "name": "",
+            "name": "High Noon Gragas",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/79/79029.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/79/79029.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/79/79029.jpg",
@@ -600,7 +600,7 @@
             "chromas": [
                 {
                     "id": 79030,
-                    "name": "",
+                    "name": "High Noon Gragas",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79030.png",
                     "colors": [
                         "#D33528",
@@ -621,7 +621,7 @@
                 },
                 {
                     "id": 79031,
-                    "name": "",
+                    "name": "High Noon Gragas",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79031.png",
                     "colors": [
                         "#E58BA5",
@@ -637,7 +637,7 @@
                 },
                 {
                     "id": 79032,
-                    "name": "",
+                    "name": "High Noon Gragas",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79032.png",
                     "colors": [
                         "#DF9117",
@@ -648,7 +648,7 @@
                 },
                 {
                     "id": 79033,
-                    "name": "",
+                    "name": "High Noon Gragas",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79033.png",
                     "colors": [
                         "#2DA130",
@@ -659,7 +659,7 @@
                 },
                 {
                     "id": 79034,
-                    "name": "",
+                    "name": "High Noon Gragas",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79034.png",
                     "colors": [
                         "#73BFBE",
@@ -670,7 +670,7 @@
                 },
                 {
                     "id": 79035,
-                    "name": "",
+                    "name": "High Noon Gragas",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79035.png",
                     "colors": [
                         "#2756CE",
@@ -686,7 +686,7 @@
                 },
                 {
                     "id": 79036,
-                    "name": "",
+                    "name": "High Noon Gragas",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79036.png",
                     "colors": [
                         "#54209B",
@@ -697,7 +697,7 @@
                 },
                 {
                     "id": 79037,
-                    "name": "",
+                    "name": "High Noon Gragas",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79037.png",
                     "colors": [
                         "#27211C",
@@ -708,7 +708,7 @@
                 },
                 {
                     "id": 79038,
-                    "name": "",
+                    "name": "High Noon Gragas",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79038.png",
                     "colors": [
                         "#A8BFF1",

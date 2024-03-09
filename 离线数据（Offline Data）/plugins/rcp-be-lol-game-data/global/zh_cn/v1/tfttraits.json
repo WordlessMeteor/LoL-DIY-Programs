@@ -3578,7 +3578,17 @@
         "set": "TFTSet11",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Artist.TFT_Set11.png",
         "tooltip_text": "【画圣】绘出你放置在一个特别备战席栏位的弈子。【画圣】画好后，你将获得该英雄的1星弈子。<br><br><TFTBonus>完成回合数 = 弈子的费用</TFTBonus>",
-        "innate_trait_sets": [],
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ExtraTurns",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
         "conditional_trait_sets": [
             {
                 "effect_amounts": [],
@@ -3620,7 +3630,7 @@
                 "effect_amounts": [
                     {
                         "name": "Defenses",
-                        "value": 30.0000,
+                        "value": 25.0000,
                         "format_string": ""
                     }
                 ],
@@ -3646,7 +3656,7 @@
                 "effect_amounts": [
                     {
                         "name": "Defenses",
-                        "value": 80.0000,
+                        "value": 75.0000,
                         "format_string": ""
                     }
                 ],
@@ -3667,7 +3677,7 @@
                 "effect_amounts": [
                     {
                         "name": "RefreshSeconds",
-                        "value": 4.0000,
+                        "value": 3.0000,
                         "format_string": ""
                     },
                     {
@@ -3719,7 +3729,7 @@
                 "effect_amounts": [
                     {
                         "name": "BonusPercentHealth",
-                        "value": 0.6000,
+                        "value": 0.6500,
                         "format_string": ""
                     },
                     {
@@ -3737,7 +3747,7 @@
                 "effect_amounts": [
                     {
                         "name": "BonusPercentHealth",
-                        "value": 0.7500,
+                        "value": 0.8000,
                         "format_string": ""
                     },
                     {
@@ -3913,7 +3923,7 @@
         "trait_id": "TFT11_Dryad",
         "set": "TFTSet11",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Dryad.TFT_Set11.png",
-        "tooltip_text": "【永恒之森】弈子们获得法术强度和@StartingHealth@生命值。每有一名敌人阵亡，获得额外生命值。<br><br><expandRow>(@MinUnits@) @AP@ %i:scaleAP%； 每次敌人阵亡获得@HealthPerCompost@ %i:scaleHealth%</expandRow><br><br><TFTTrackerLabel>(总生命值： @TFTUnitProperty.trait:TFT11_Trait_DryadHealth@%i:scaleHealth%)</TFTTrackerLabel><br><TFTTrackerLabel>(已击杀的敌人数量：@TFTUnitProperty.trait:TFT11_Trait_DryadCompost@)</TFTTrackerLabel><br>",
+        "tooltip_text": "【永恒之森】弈子们获得法术强度和@StartingHealth@生命值。每有一名敌人阵亡，获得永久的额外生命值。<br><br><expandRow>(@MinUnits@) @AP@ %i:scaleAP%； 每次敌人阵亡获得@HealthPerCompost@ %i:scaleHealth%</expandRow><br><br><TFTTrackerLabel>(总生命值： @TFTUnitProperty.trait:TFT11_Trait_DryadHealth@%i:scaleHealth%)</TFTTrackerLabel><br><TFTTrackerLabel>(已击杀的敌人数量：@TFTUnitProperty.trait:TFT11_Trait_DryadCompost@)</TFTTrackerLabel><br>",
         "innate_trait_sets": [
             {
                 "effect_amounts": [
@@ -4014,7 +4024,7 @@
         "trait_id": "TFT11_Duelist",
         "set": "TFTSet11",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_8_Duelist.png",
-        "tooltip_text": "【决斗大师】们每次攻击都会获得攻击速度，最多叠加@MaxStacks@次。<br><br><row>(@MinUnits@) @AttackSpeedPercent*100@%%i:scaleAS%</row><br><row>(@MinUnits@) @AttackSpeedPercent*100@%%i:scaleAS%</row><br><row>(@MinUnits@) @AttackSpeedPercent*100@%%i:scaleAS%；【决斗大师】们获得@DamageReduction*100@%伤害减免</row>",
+        "tooltip_text": "【决斗大师】们每次攻击都会获得攻击速度，最多叠加@MaxStacks@次。<br><br><row>(@MinUnits@) @AttackSpeedPercent*100@% %i:scaleAS%</row><br><row>(@MinUnits@) @AttackSpeedPercent*100@% %i:scaleAS%</row><br><row>(@MinUnits@) @AttackSpeedPercent*100@% %i:scaleAS%；【决斗大师】们获得@DamageReduction*100@%伤害减免</row><br><row>(@MinUnits@) @AttackSpeedPercent*100@% %i:scaleAS%；【决斗大师】们获得@DamageReduction*100@%伤害减免</row>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
             {
@@ -4067,7 +4077,7 @@
                 "effect_amounts": [
                     {
                         "name": "AttackSpeedPercent",
-                        "value": 0.1500,
+                        "value": 0.1400,
                         "format_string": ""
                     },
                     {
@@ -4082,6 +4092,29 @@
                     }
                 ],
                 "min_units": 6,
+                "max_units": 7,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AttackSpeedPercent",
+                        "value": 0.2200,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "MaxStacks",
+                        "value": 12.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DamageReduction",
+                        "value": 0.2400,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 8,
                 "style_idx": 4,
                 "style_name": "kGold"
             }
@@ -4108,7 +4141,7 @@
                     },
                     {
                         "name": "BaseDamageAmp",
-                        "value": 5.0000,
+                        "value": 2.0000,
                         "format_string": ""
                     }
                 ]
@@ -4137,7 +4170,7 @@
                 "effect_amounts": [
                     {
                         "name": "DamageAmpPerLevel",
-                        "value": 3.0000,
+                        "value": 2.5000,
                         "format_string": ""
                     },
                     {
@@ -4207,7 +4240,7 @@
                     },
                     {
                         "name": "BondIncreasePercent",
-                        "value": 1.5000,
+                        "value": 1.7500,
                         "format_string": ""
                     },
                     {
@@ -4230,7 +4263,7 @@
                     },
                     {
                         "name": "BondIncreasePercent",
-                        "value": 2.5000,
+                        "value": 2.7500,
                         "format_string": ""
                     },
                     {
@@ -4337,6 +4370,16 @@
                         "name": "Heal",
                         "value": 0.0000,
                         "format_string": ""
+                    },
+                    {
+                        "name": "HealHR",
+                        "value": 0.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealDU",
+                        "value": 0.0000,
+                        "format_string": ""
                     }
                 ],
                 "min_units": 3,
@@ -4370,6 +4413,16 @@
                         "name": "Heal",
                         "value": 3.0000,
                         "format_string": ""
+                    },
+                    {
+                        "name": "HealHR",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealDU",
+                        "value": 1.0000,
+                        "format_string": ""
                     }
                 ],
                 "min_units": 5,
@@ -4402,6 +4455,16 @@
                     {
                         "name": "Heal",
                         "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealHR",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealDU",
+                        "value": 1.0000,
                         "format_string": ""
                     }
                 ],
@@ -4487,7 +4550,7 @@
                 "effect_amounts": [
                     {
                         "name": "DamagePercent",
-                        "value": 0.3500,
+                        "value": 0.2700,
                         "format_string": ""
                     }
                 ],
@@ -4661,8 +4724,18 @@
         "trait_id": "TFT11_InkShadow",
         "set": "TFTSet11",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Ink_Shadow.TFT_Set11.png",
-        "tooltip_text": "获得各种独特的【墨之影】装备。【墨之影】弈子们获得伤害加成和伤害减免。<br><br><row>(@MinUnits@) @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item1@，@PercentBuff@%伤害加成和伤害减免 </row><br><row>(@MinUnits@) @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item2@，@PercentBuff@%伤害加成和伤害减免 </row><br><row>(@MinUnits@) @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item3@和@TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item4@，@PercentBuff@%伤害加成和伤害减免 </row>",
-        "innate_trait_sets": [],
+        "tooltip_text": "获得各种独特的【墨之影】装备。【墨之影】弈子们获得@PercentBuff@%伤害加成和伤害减免。<br><br><row>(@MinUnits@) @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item1@</row><br><row>(@MinUnits@) @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item2@和@IncreasedPercentBuff@%的额外伤害加成和伤害减免</row><br><row>(@MinUnits@) @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item3@和@TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item4@</row>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PercentBuff",
+                        "value": 5.0000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
         "conditional_trait_sets": [
             {
                 "effect_amounts": [
@@ -4672,8 +4745,8 @@
                         "format_string": ""
                     },
                     {
-                        "name": "PercentBuff",
-                        "value": 5.0000,
+                        "name": "IncreasedPercentBuff",
+                        "value": 0.0000,
                         "format_string": ""
                     }
                 ],
@@ -4690,8 +4763,8 @@
                         "format_string": ""
                     },
                     {
-                        "name": "PercentBuff",
-                        "value": 7.0000,
+                        "name": "IncreasedPercentBuff",
+                        "value": 5.0000,
                         "format_string": ""
                     }
                 ],
@@ -4708,8 +4781,8 @@
                         "format_string": ""
                     },
                     {
-                        "name": "PercentBuff",
-                        "value": 10.0000,
+                        "name": "IncreasedPercentBuff",
+                        "value": 5.0000,
                         "format_string": ""
                     }
                 ],
@@ -4770,7 +4843,7 @@
                     },
                     {
                         "name": "InvokerMana",
-                        "value": 30.0000,
+                        "value": 20.0000,
                         "format_string": ""
                     },
                     {
@@ -4793,7 +4866,7 @@
                     },
                     {
                         "name": "TeamMana",
-                        "value": 15.0000,
+                        "value": 20.0000,
                         "format_string": ""
                     },
                     {
@@ -5129,7 +5202,7 @@
                 "effect_amounts": [
                     {
                         "name": "Omnivamp",
-                        "value": 0.1500,
+                        "value": 0.1200,
                         "format_string": ""
                     },
                     {
@@ -5147,7 +5220,7 @@
                 "effect_amounts": [
                     {
                         "name": "Omnivamp",
-                        "value": 0.2200,
+                        "value": 0.2000,
                         "format_string": ""
                     },
                     {
@@ -5203,7 +5276,7 @@
         "trait_id": "TFT11_Sniper",
         "set": "TFTSet11",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_6_Sniper.png",
-        "tooltip_text": "固有能力：【狙神】们获得@HexRangeIncrease@攻击距离。<br><br>【狙神】们可对距离更远的目标造成更高伤害。<br><br><expandRow>(@MinUnits@) 每格@PercentDamageIncrease@%伤害。</expandRow>",
+        "tooltip_text": "固有能力：【狙神】们获得@HexRangeIncrease@攻击距离。<br><br>【狙神】们可对距离更远的目标造成更高伤害。<br><br><row>(@MinUnits@) 每格@PercentDamageIncrease@%伤害，</row><br><row>(@MinUnits@) 每格@PercentDamageIncrease@%伤害。</row><br><row>(@MinUnits@) 每格@PercentDamageIncrease@%伤害。【狙神】们获得额外的@BonusHexRangeIncrease@攻击距离。</row>",
         "innate_trait_sets": [
             {
                 "effect_amounts": [
@@ -5452,7 +5525,7 @@
                     },
                     {
                         "name": "PercentDamage",
-                        "value": 0.5000,
+                        "value": 0.6000,
                         "format_string": ""
                     }
                 ],

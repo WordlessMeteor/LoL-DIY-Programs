@@ -20,6 +20,292 @@
         "rewards": [
             {
                 "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_Heavenscale_Token.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_Heavenscale_Token.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_Heavenscale_Token.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_Capsule.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_EPE_Orb.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_EPE_Orb.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/HighNoon/4510_Dour_Dude_Inventory.ACCESSORIES_14_6.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/HighNoon/4511_Saloon_Singin_Inventory.ACCESSORIES_14_6.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/v1/profile-icons/6570.jpg"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/v1/profile-icons/6569.jpg"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/v1/profile-icons/6571.jpg"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
                     "image": "/fe/lol-loot/assets/loot_item_icons/currency_champion.png"
                 }
             }

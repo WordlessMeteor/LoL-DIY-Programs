@@ -2863,9 +2863,9 @@
             "reverseDirection": false
         },
         "121000": {
-            "name": "challenge_config_name_121000",
-            "description": "challenge_config_description_121000",
-            "descriptionShort": "challenge_config_short_description_121000",
+            "name": "光荣进化",
+            "description": "获取来自【光荣进化】分组中的成就点数",
+            "descriptionShort": "获取来自【光荣进化】分组中的成就点数",
             "source": "CHALLENGES",
             "tags": {
                 "isCapstone": "Y",
@@ -2918,9 +2918,9 @@
             "reverseDirection": false
         },
         "121001": {
-            "name": "challenge_config_name_121001",
-            "description": "challenge_config_description_121001",
-            "descriptionShort": "challenge_config_short_description_121001",
+            "name": "完美爆机",
+            "description": "赢得【人机对战 (一般级)】对局且一次不死",
+            "descriptionShort": "一次不死赢得对局",
             "source": "EOGD",
             "tags": {
                 "parent": "121000"
@@ -2974,9 +2974,9 @@
             "reverseDirection": false
         },
         "121002": {
-            "name": "challenge_config_name_121002",
-            "description": "challenge_config_description_121002",
-            "descriptionShort": "challenge_config_short_description_121002",
+            "name": "错误410：打野已去",
+            "description": "在【人机对战 (一般级)】对局中，在10分钟前于敌方野区击杀敌方打野",
+            "descriptionShort": "在10分钟前于敌方野区击杀敌方打野",
             "source": "EOGD",
             "tags": {
                 "parent": "121000"
@@ -3030,9 +3030,9 @@
             "reverseDirection": false
         },
         "121003": {
-            "name": "challenge_config_name_121003",
-            "description": "challenge_config_description_121003",
-            "descriptionShort": "challenge_config_short_description_121003",
+            "name": "机器会学习你",
+            "description": "在【人机对战 (一般级)】对局中，在25分钟之前摧毁所有3座召唤水晶",
+            "descriptionShort": "在25分钟以内摧毁所有3座召唤水晶",
             "source": "EOGD",
             "tags": {
                 "parent": "121000"
@@ -22889,7 +22889,7 @@
             "titleAcquisitionType": "DEFAULT"
         },
         "9894dc50-d106-45c7-ba88-6d7afc7c8994": {
-            "name": "challenge_title_121000_LOL_MOBA_MASTER",
+            "name": "图灵测试完毕",
             "itemId": 12100007,
             "titleAcquisitionName": "",
             "titleRequirementDescription": "",

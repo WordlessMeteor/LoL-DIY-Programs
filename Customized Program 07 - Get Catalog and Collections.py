@@ -78,6 +78,66 @@ def format_json(origin = '''{"customGameLobby": {"configuration": {"gameMode": "
     result = "".join(temp)
     return result
 
+def load_data_online(type_zh: str, type_en: str, url: str, path: str, format: str) -> dict:
+    try:
+        print("正在加载%s信息……\nLoading %s information from CommunityDragon..." %(type_zh, type_en))
+        captured = True
+        data = requests.get(url)
+        if data.ok:
+            data = data.json()
+            return {"captured": True, "data": data, "switch_to_offline": False, "exit": False}
+        else:
+            captured = False
+            print(data)
+            print('当前语言不可用！正在尝试离线加载数据……\nCurrent language isn\'t available! Trying loading offline data ...\n请输入%sJson数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the %s Json data file path. Enter an empty string to use the default relative path: "%s". Submit "0" to exit.' %(type_zh, path, type_en, path))
+    except requests.exceptions.RequestException:
+        captured = False
+        print('%s信息获取超时！正在尝试离线加载数据……\n%s information capture timeout! Trying loading offline data ...\n请输入%sJson数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the %s Json data file path. Enter an empty string to use the default relative path: "%s". Submit "2" to switch to offline mode. Submit "0" to exit.' %(type_zh, type_en.title(), type_zh, path, type_en, path))
+    if not captured:
+        while True:
+            data_local = input()
+            if data_local == "":
+                data_local = path
+            elif data_local[0] == "0":
+                print("%s信息获取失败！请检查系统网络状况和代理设置。\n%s information capture failure! Please check the system network condition and agent configuration." %(type_zh, type_en.title()))
+                time.sleep(3)
+                return {"captured": False, "data": None, "switch_to_offline": False, "exit": True}
+            elif data_local[0] == "2":
+                return {"captured": False, "data": None, "switch_to_offline": True, "exit": False}
+            try:
+                with open(data_local, "r", encoding = "utf-8") as fp:
+                    data = json.load(fp)
+                if eval(format, {"data": data}):
+                    return {"captured": True, "data": data, "switch_to_offline": False, "exit": True}
+                else:
+                    print("数据格式错误！请选择一个符合CommunityDragon数据库中记录的%s数据格式（%s）的数据文件！\nData format mismatched! Please select a data file that corresponds to the format of the %s data archived in CommunityDragon database (%s)!" %(type_zh, url, type_en, url))
+                    continue
+            except FileNotFoundError:
+                print('未找到文件“%s”！请输入正确的%sJson数据文件路径！\nFile "%s" NOT FOUND! Please input a correct %s Json data file path!' %(data_local, type_zh, data_local, type_en))
+                continue
+            except OSError:
+                print("数据文件名不合法！请输入含有%s信息的本地文件的路径！\nIllegal data filename! Please input the path of a local file with %s information." %(type_zh, type_en))
+                continue
+            except json.decoder.JSONDecodeError:
+                print("数据格式错误！请选择一个符合CommunityDragon数据库中记录的%s数据格式（%s）的数据文件！\nData format mismatched! Please select a data file that corresponds to the format of the %s data archived in CommunityDragon database (%s)!" %(type_zh, url, type_en, url))
+                continue
+
+def load_data_offline(path: str, format: str) -> dict:
+    loaded = notfound = formaterror = False
+    try:
+        with open(path, "r", encoding = "utf-8") as fp:
+            data = json.load(fp)
+        if not eval(format, {"data": data}): #这个地方非常玄学，一定要指定“data”这个临时变量，否则会引发命名错误（Here is an unreasonable point: "data" must be determined, otherwise a NameError will be thrown）
+            formaterror = True
+    except FileNotFoundError:
+        notfound = True
+    except json.decoder.JSONDecodeError:
+        formaterror = True
+    else:
+        if not formaterror:
+            loaded = True
+    return {"data": data if loaded else None, "loaded": loaded, "notfound": notfound, "formaterror": formaterror}
+
 async def fetch_store(connection):
     #获取大区信息，用于设置工作簿保存位置和工作表名称和获取相应的CommunityDragon数据资源（Get server information to set up workbook saving directory and sheet name and fetch the adaptive CommunityDragon data resources）
     info = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
@@ -104,6 +164,200 @@ async def fetch_store(connection):
         folder = "召唤师信息（Summoner Information）\\" + "外服（RIOT）" + "\\" + (platform_RIOT | platform_GARENA)[region] + "\\" + displayName
     platform_config = await (await connection.request("GET", "/lol-platform-config/v1/namespaces")).json()
     platformId = platform_config["LoginDataPacket"]["platformId"]
+    #下面声明一些数据资源地址（The following code declare some data resources' URLs）
+    URLPatch = "pbe" if platformId == "PBE1" else "latest"
+    language_cdragon = "default" if URLPatch == "en_US" else locale.lower()
+    championSkins_url = "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/skins.json" %(URLPatch, language_cdragon)
+    companions_url = "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/companions.json" %(URLPatch, language_cdragon)
+    statstones_url = "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/statstones.json" %(URLPatch, language_cdragon)
+    summonerEmotes_url = "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-emotes.json" %(URLPatch, language_cdragon)
+    summonerIcons_url = "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-icons.json" %(URLPatch, language_cdragon)
+    tftdamageskins_url = "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftdamageskins.json" %(URLPatch, language_cdragon)
+    tftmapskins_url = "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftmapskins.json" %(URLPatch, language_cdragon)
+    wardSkins_url = "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/ward-skins.json" %(URLPatch, language_cdragon)
+    #下面声明离线数据资源的默认地址（The following code declare the default paths of offline data resources）
+    championSkins_local_default = "离线数据（Offline Data）\\plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\skins.json"
+    companions_local_default = "离线数据（Offline Data）\\plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\companions.json"
+    statstones_local_default = "离线数据（Offline Data）\\plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\statstones.json"
+    summonerEmotes_local_default = "离线数据（Offline Data）\\plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\summoner-emotes.json"
+    summonerIcons_local_default = "离线数据（Offline Data）\\plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\summoner-icons.json"
+    tftdamageskins_local_default = "离线数据（Offline Data）\\plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\tftdamageskins.json"
+    tftmapskins_local_default = "离线数据（Offline Data）\\plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\tftmapskins.json"
+    wardSkins_local_default = "离线数据（Offline Data）\\plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\ward-skins.json"
+    #下面声明离线数据资源的格式（The following code declare the formats of offline data resources）
+    championSkins_format = 'isinstance(data, dict) and all(map(lambda x: isinstance(x, dict), data.values())) and all(i in data[j] for i in ["id", "isBase", "name", "splashPath", "uncenteredSplashPath", "tilePath", "loadScreenPath", "skinType", "rarity", "isLegacy", "splashVideoPath", "collectionSplashVideoPath", "featuresText", "emblems", "regionRarityId", "rarityGemPath", "skinLines", "skinAugments", "description"] for j in data) and all("chromaPath" in data[i] for i in data if not i in ["147000", "147001", "147015"])'
+    companions_format = 'isinstance(data, list) and all(isinstance(data[i], dict) for i in range(len(data))) and all(j in data[i] for i in range(len(data)) for j in ["contentId", "itemId", "name", "loadoutsIcon", "description", "level", "speciesName", "speciesId", "rarity", "rarityValue", "isDefault", "upgrades", "TFTOnly"])'
+    statstones_format = 'isinstance(data, dict) and all(i in data for i in ["statstoneData", "packData", "packIdToStatStonesIds", "seriesIdToStatStoneIds", "packIdToSubPackIds", "collectionIdToStatStoneIds", "packIdToChampIds", "champIdToPackIds", "packItemIdToContainingPackItemId"]) and all(isinstance(data[i], dict) if i != "statstoneData" and i != "packData" else isinstance(data[i], list) for i in data) and all(i in j for i in ["name", "itemId", "inventoryType", "contentId", "statstones"] for j in data["statstoneData"]) and all(i in j for statstone in data["statstoneData"] for i in ["name", "contentId", "itemId", "isRetired", "trackingType", "isEpic", "description", "milestones", "boundChampion", "category", "iconUnowned", "iconUnlit", "iconLit", "iconFull"] for j in statstone["statstones"]) and all(map(lambda x: all(i in x for i in ["name", "description", "itemId", "contentId", "storeIconImage"]), data["packData"]))'
+    summonerEmotes_format = 'isinstance(data, list) and all(map(lambda x: isinstance(x, dict), data)) and all(i in j for i in ["id", "name", "inventoryIcon", "description"] for j in data) and all(map(lambda x: isinstance(x["id"], int) and isinstance(x["name"], str) and isinstance(x["inventoryIcon"], str) and isinstance(x["description"], str), data))'
+    summonerIcons_format = 'isinstance(data, list) and all(map(lambda x: isinstance(x, dict), data)) and all(map(lambda x: all(i in x for i in ["id", "title", "yearReleased", "isLegacy", "descriptions", "rarities", "disabledRegions"]), data)) and all(map(lambda x: isinstance(x["id"], int) and isinstance(x["title"], str) and isinstance(x["yearReleased"], int) and isinstance(x["isLegacy"], bool) and isinstance(x["descriptions"], list) and isinstance(x["rarities"], list) and isinstance(x["disabledRegions"], list), data))'
+    tftdamageskins_format = 'isinstance(data, list) and all(map(lambda x: isinstance(x, dict), data)) and all(map(lambda x: all(i in x for i in ["contentId", "itemId", "name", "description", "loadoutsIcon", "groupId", "groupName", "rarity", "rarityValue", "level"]), data)) and all(map(lambda x: isinstance(x["contentId"], str) and isinstance(x["itemId"], int) and isinstance(x["name"], str) and isinstance(x["description"], str) and isinstance(x["loadoutsIcon"], str) and isinstance(x["groupId"], int) and isinstance(x["groupName"], str) and isinstance(x["rarity"], str) and isinstance(x["rarityValue"], int) and isinstance(x["level"], int), data))'
+    tftmapskins_format = 'isinstance(data, list) and all(map(lambda x: isinstance(x, dict), data)) and all(map(lambda x: all(i in x for i in ["contentId", "itemId", "name", "description", "loadoutsIcon", "groupId", "groupName", "rarity", "rarityValue"]), data)) and all(map(lambda x: isinstance(x["contentId"], str) and isinstance(x["itemId"], int) and isinstance(x["name"], str) and isinstance(x["description"], str) and isinstance(x["loadoutsIcon"], str) and isinstance(x["groupId"], int) and isinstance(x["groupName"], str) and isinstance(x["rarity"], str) and isinstance(x["rarityValue"], int), data))'
+    wardSkins_format = 'isinstance(data, list) and all(map(lambda x: isinstance(x, dict), data)) and all(map(lambda x: all(i in x for i in ["id", "name", "description", "wardImagePath", "wardShadowImagePath", "isLegacy", "regionalDescriptions", "rarities"]), data)) and all(map(lambda x: isinstance(x["id"], int) and isinstance(x["name"], str) and isinstance(x["description"], str) and isinstance(x["wardImagePath"], str) and isinstance(x["wardShadowImagePath"], str) and isinstance(x["isLegacy"], bool) and isinstance(x["regionalDescriptions"], list) and isinstance(x["rarities"], list), data))'
+    print("请选择数据资源获取模式：\nPlease select the data resource capture mode:\n1\t在线模式（Online）\n2\t离线模式（Offline）")
+    prepareMode = input()
+    while True:
+        if prepareMode != "" and prepareMode[0] == "1":
+            #下面获取皮肤数据（The following code get champion skin data）
+            championSkins_initial_dict = load_data_online("皮肤", "champion skin", championSkins_url, championSkins_local_default, championSkins_format)
+            if championSkins_initial_dict["captured"]:
+                championSkins_initial = championSkins_initial_dict["data"]
+            elif championSkins_initial_dict["switch_to_offline"]:
+                prepareMode == ""
+                continue
+            elif championSkins_initial_dict["exit"]:
+                return 0
+            #下面获取云顶之弈小小英雄数据（The following code get companion data）
+            companions_initial_dict = load_data_online("云顶之弈小小英雄", "companion", companions_url, companions_local_default, companions_format)
+            if companions_initial_dict["captured"]:
+                companions_initial = companions_initial_dict["data"]
+            elif companions_initial_dict["switch_to_offline"]:
+                prepareMode == ""
+                continue
+            elif companions_initial_dict["exit"]:
+                return 0
+            #下面获取永恒星碑数据（The following code get statstone data）
+            statstones_initial_dict = load_data_online("永恒星碑", "statstone", statstones_url, statstones_local_default, statstones_format)
+            if statstones_initial_dict["captured"]:
+                statstones_initial = statstones_initial_dict["data"]
+            elif statstones_initial_dict["switch_to_offline"]:
+                prepareMode == ""
+                continue
+            elif statstones_initial_dict["exit"]:
+                return 0
+            #下面获取表情数据（The following code get summoner emote data）
+            summonerEmotes_initial_dict = load_data_online("表情", "summoner emote", summonerEmotes_url, summonerEmotes_local_default, summonerEmotes_format)
+            if summonerEmotes_initial_dict["captured"]:
+                summonerEmotes_initial = summonerEmotes_initial_dict["data"]
+            elif summonerEmotes_initial_dict["switch_to_offline"]:
+                prepareMode == ""
+                continue
+            elif summonerEmotes_initial_dict["exit"]:
+                return 0
+            #下面获取召唤师图标数据（The following code get summoner icon data）
+            summonerIcons_initial_dict = load_data_online("召唤师图标", "summoner icon", summonerIcons_url, summonerIcons_local_default, summonerIcons_format)
+            if summonerIcons_initial_dict["captured"]:
+                summonerIcons_initial = summonerIcons_initial_dict["data"]
+            elif summonerIcons_initial_dict["switch_to_offline"]:
+                prepareMode == ""
+                continue
+            elif summonerIcons_initial_dict["exit"]:
+                return 0
+            #下面获取云顶之弈攻击特效数据（The following code get TFT damage skin data）
+            tftdamageskins_initial_dict = load_data_online("云顶之弈攻击特效", "TFT damage skin", tftdamageskins_url, tftdamageskins_local_default, tftdamageskins_format)
+            if tftdamageskins_initial_dict["captured"]:
+                tftdamageskins_initial = tftdamageskins_initial_dict["data"]
+            elif tftdamageskins_initial_dict["switch_to_offline"]:
+                prepareMode == ""
+                continue
+            elif tftdamageskins_initial_dict["exit"]:
+                return 0
+            #下面获取云顶之弈棋盘皮肤数据（The following code get TFT map skin data）
+            tftmapskins_initial_dict = load_data_online("云顶之弈棋盘皮肤", "TFT map skin", tftmapskins_url, tftmapskins_local_default, tftmapskins_format)
+            if tftmapskins_initial_dict["captured"]:
+                tftmapskins_initial = tftmapskins_initial_dict["data"]
+            elif tftmapskins_initial_dict["switch_to_offline"]:
+                prepareMode == ""
+                continue
+            elif tftmapskins_initial_dict["exit"]:
+                return 0
+            #下面获取守卫（眼）皮肤数据（The following code get ward skin data）
+            wardSkins_initial_dict = load_data_online("守卫（眼）皮肤", "ward skin", wardSkins_url, wardSkins_local_default, wardSkins_format)
+            if wardSkins_initial_dict["captured"]:
+                wardSkins_initial = wardSkins_initial_dict["data"]
+            elif wardSkins_initial_dict["switch_to_offline"]:
+                prepareMode == ""
+                continue
+            elif wardSkins_initial_dict["exit"]:
+                return 0
+        else:
+            switch_prepare_mode = False
+            print('请在浏览器中打开以下网页，待加载完成后按Ctrl + S保存网页json文件至同目录的“离线数据（Offline Data）”文件夹下，并根据括号内的提示放置和命名文件。\nPlease open the following URLs in a browser, then press Ctrl + S to save the online json files into the folder "离线数据（Offline Data）" under the same directory after the website finishes loading and organize and rename the downloaded files according to the hints in the circle brackets.\n皮肤（plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\skins.json）： %s\n云顶之弈小小英雄（plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\companions.json）： %s\n表情（plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\summoner-emotes.json）： %s\n召唤师图标（plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\summoner-icons.json）： %s\n云顶之弈攻击特效（plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\tftdamageskins.json）： %s\n守卫（眼）皮肤（plugins\\rcp-be-lol-game-data\\global\\zh_cn\\v1\\ward-skins.json）： %s' %(championSkins_url, companions_url, summonerIcons_url, tftdamageskins_url, wardSkins_url))
+            offline_files_loaded = {"skin": False, "companion": False, "statstone": False, "summonerEmote": False, "summonerIcon": False, "tftdamageskin": False, "tftmapskin": False, "wardSkin": False}
+            offline_files = {"skin": {"file": championSkins_local_default, "URL": championSkins_url, "content": "皮肤"}, "companion": {"file": companions_local_default, "URL": companions_url, "content": "云顶之弈小小英雄"}, "statstone": {"file": statstones_local_default, "URL": statstones_url, "content": "永恒星碑"}, "summonerEmote": {"file": summonerEmotes_local_default, "URL": summonerEmotes_url, "content": "表情"}, "summonerIcon": {"file": summonerIcons_local_default, "URL": summonerIcons_url, "content": "召唤师图标"}, "tftdamageskin": {"file": tftdamageskins_local_default, "URL": tftdamageskins_url, "content": "云顶之弈攻击特效"}, "tftmapskin": {"file": tftmapskins_local_default, "URL": tftmapskins_url, "content": "云顶之弈棋盘皮肤"}, "wardSkin": {"file": wardSkins_local_default, "URL": wardSkins_url, "content": "守卫（眼）皮肤"}}
+            print('请按任意键以加载离线数据。输入“1”以转为在线模式。输入“0”以退出程序。\nPlease input anything to load offline data. Input "1" to switch to online mode. Submit "0" to exit.')
+            while any(not i for i in offline_files_loaded.values()):
+                offline_files_notfound = {"skin": False, "companion": False, "statstone": False, "summonerEmote": False, "summonerIcon": False, "tftdamageskin": False, "tftmapskin": False, "wardSkin": False}
+                offline_files_formaterror = {"skin": False, "companion": False, "statstone": False, "summonerEmote": False, "summonerIcon": False, "tftdamageskin": False, "tftmapskin": False, "wardSkin": False}
+                prepareMode = input()
+                if prepareMode != "" and prepareMode[0] == "1":
+                    switch_prepare_mode = True
+                    continue
+                if prepareMode != "" and prepareMode[0] == "0":
+                    return 0
+                #下面获取皮肤数据（The following code get champion skin data）
+                if not offline_files_loaded["skin"]:
+                    championSkins_initial_dict = load_data_offline(championSkins_local_default, championSkins_format)
+                    offline_files_loaded["skin"], offline_files_notfound["skin"], offline_files_formaterror["skin"] = championSkins_initial_dict["loaded"], championSkins_initial_dict["notfound"], championSkins_initial_dict["formaterror"]
+                    if championSkins_initial_dict["loaded"]:
+                        championSkins_initial = championSkins_initial_dict["data"]
+                #下面获取云顶之弈小小英雄数据（The following code get companion data）
+                if not offline_files_loaded["companion"]:
+                    companions_initial_dict = load_data_offline(companions_local_default, companions_format)
+                    offline_files_loaded["companion"], offline_files_notfound["companion"], offline_files_formaterror["companion"] = companions_initial_dict["loaded"], companions_initial_dict["notfound"], companions_initial_dict["formaterror"]
+                    if companions_initial_dict["loaded"]:
+                        companions_initial = companions_initial_dict["data"]
+                #下面获取永恒星碑数据（The following code get statstone data）
+                if not offline_files_loaded["statstone"]:
+                    statstones_initial_dict = load_data_offline(statstones_local_default, statstones_format)
+                    offline_files_loaded["statstone"], offline_files_notfound["statstone"], offline_files_formaterror["statstone"] = statstones_initial_dict["loaded"], statstones_initial_dict["notfound"], statstones_initial_dict["formaterror"]
+                    if statstones_initial_dict["loaded"]:
+                        statstones_initial = statstones_initial_dict["data"]
+                #下面获取表情数据（The following code get summoner emote data）
+                if not offline_files_loaded["summonerEmote"]:
+                    summonerEmotes_initial_dict = load_data_offline(summonerEmotes_local_default, summonerEmotes_format)
+                    offline_files_loaded["summonerEmote"], offline_files_notfound["summonerEmote"], offline_files_formaterror["summonerEmote"] = summonerEmotes_initial_dict["loaded"], summonerEmotes_initial_dict["notfound"], summonerEmotes_initial_dict["formaterror"]
+                    if summonerEmotes_initial_dict["loaded"]:
+                        summonerEmotes_initial = summonerEmotes_initial_dict["data"]
+                #下面获取召唤师图标数据（The following code get summoner icon data）
+                if not offline_files_loaded["summonerIcon"]:
+                    summonerIcons_initial_dict = load_data_offline(summonerIcons_local_default, summonerIcons_format)
+                    offline_files_loaded["summonerIcon"], offline_files_notfound["summonerIcon"], offline_files_formaterror["summonerIcon"] = summonerIcons_initial_dict["loaded"], summonerIcons_initial_dict["notfound"], summonerIcons_initial_dict["formaterror"]
+                    if summonerIcons_initial_dict["loaded"]:
+                        summonerIcons_initial = summonerIcons_initial_dict["data"]
+                #下面获取云顶之弈攻击特效数据（The following code get TFT damage skin data）
+                if not offline_files_loaded["tftdamageskin"]:
+                    tftdamageskins_initial_dict = load_data_offline(tftdamageskins_local_default, tftdamageskins_format)
+                    offline_files_loaded["tftdamageskin"], offline_files_notfound["tftdamageskin"], offline_files_formaterror["tftdamageskin"] = tftdamageskins_initial_dict["loaded"], tftdamageskins_initial_dict["notfound"], tftdamageskins_initial_dict["formaterror"]
+                    if tftdamageskins_initial_dict["loaded"]:
+                        tftdamageskins_initial = tftdamageskins_initial_dict["data"]
+                #下面获取云顶之弈棋盘皮肤数据（The following code get TFT map skin data）
+                if not offline_files_loaded["tftmapskin"]:
+                    tftmapskins_initial_dict = load_data_offline(tftmapskins_local_default, tftmapskins_format)
+                    offline_files_loaded["tftmapskin"], offline_files_notfound["tftmapskin"], offline_files_formaterror["tftmapskin"] = tftmapskins_initial_dict["loaded"], tftmapskins_initial_dict["notfound"], tftmapskins_initial_dict["formaterror"]
+                    if tftmapskins_initial_dict["loaded"]:
+                        tftmapskins_initial = tftmapskins_initial_dict["data"]
+                #下面获取守卫（眼）皮肤数据（The following code get ward skin data）
+                if not offline_files_loaded["wardSkin"]:
+                    wardSkins_initial_dict = load_data_offline(wardSkins_local_default, wardSkins_format)
+                    offline_files_loaded["wardSkin"], offline_files_notfound["wardSkin"], offline_files_formaterror["wardSkin"] = wardSkins_initial_dict["loaded"], wardSkins_initial_dict["notfound"], wardSkins_initial_dict["formaterror"]
+                    if wardSkins_initial_dict["loaded"]:
+                        wardSkins_initial = wardSkins_initial_dict["data"]
+                #下面总结离线数据加载情况（The following code conclude the result of loading offline data）
+                unloaded_offline_files = []
+                notfound_offline_files = []
+                formaterror_offline_files = []
+                if any(offline_files_notfound.values()):
+                    for i in offline_files_notfound:
+                        if offline_files_notfound[i]:
+                            notfound_offline_files.append(i)
+                            unloaded_offline_files.append(i)
+                    print("以下信息文件不存在：\nNot existing file(s):")
+                    for i in notfound_offline_files:
+                        print(offline_files[i]["file"] + "\t" + offline_files[i]["content"] + "\t" + offline_files[i]["URL"])
+                if any(offline_files_formaterror.values()):
+                    for i in offline_files_formaterror:
+                        if offline_files_formaterror[i]:
+                            formaterror_offline_files.append(i)
+                            unloaded_offline_files.append(i)
+                    print("以下信息文件格式错误：\nFormatError file(s):")
+                    for i in formaterror_offline_files:
+                        print(offline_files[i]["file"] + "\t" + offline_files[i]["content"] + "\t" + offline_files[i]["URL"])
+                if any(not i for i in offline_files_loaded.values()):
+                    print('请按任意键以加载离线数据。输入“1”以转为在线模式。输入“0”以退出程序。\nPlease input anything to load offline data. Input "1" to switch to online mode. Submit "0" to exit.')
+            if switch_prepare_mode:
+                continue
+        print("数据资源加载完成。\nData resources loaded successfully.")
+        break
     #下面准备数据资源（The following code prepare the data resource）
     inventoryTypes = ["AUGMENT", "AUGMENT_SLOT", "BOOST", "BUNDLES", "CHAMPION", "CHAMPION_SKIN", "COMPANION", "CURRENCY", "EMOTE", "EVENT_PASS", "GIFT", "HEXTECH_CRAFTING", "MODE_PROGRESSION_REWARD", "MYSTERY", "QUEUE_ENTRY", "RP", "SPELL_BOOK_PAGE", "STATSTONE", "SUMMONER_CUSTOMIZATION", "SUMMONER_ICON", "TEAM_SKIN_PURCHASE", "TFT_DAMAGE_SKIN", "TFT_MAP_SKIN", "TOURNAMENT_TROPHY", "TRANSFER", "WARD_SKIN"]
     catalogDicts = {} #该变量并未投入使用，只是用于观察时分类（This variable isn't put to use. It's only intended for classifcation during inspection）
@@ -123,6 +377,67 @@ async def fetch_store(connection):
     for item in catalogList:
         if item["itemInstanceId"] != "":
             collection_hashtable[item["itemInstanceId"]] = item["name"]
+    championSkins_hashtable = {}
+    for skin in championSkins_initial.values():
+        championSkins_hashtable[skin["id"]] = {}
+        championSkins_hashtable[skin["id"]]["name"] = skin["name"]
+        championSkins_hashtable[skin["id"]]["description"] = skin["description"]
+        if "chromas" in skin:
+            for chroma in skin["chromas"]:
+                championSkins_hashtable[chroma["id"]] = {}
+                championSkins_hashtable[chroma["id"]]["name"] = chroma["name"]
+                for desc in chroma["descriptions"]:
+                    if desc["region"] == "riot" and len(set(list(desc["description"]))) != 1:
+                        championSkins_hashtable[chroma["id"]]["description"] = desc["description"]
+                        break
+                else:
+                    championSkins_hashtable[chroma["id"]]["description"] = ""
+        if "questSkinInfo" in skin:
+            for tier in skin["questSkinInfo"]["tiers"]:
+                championSkins_hashtable[tier["id"]] = {}
+                championSkins_hashtable[tier["id"]]["name"] = tier["name"]
+                championSkins_hashtable[tier["id"]]["description"] = tier["description"]
+    companions_hashtable = {}
+    for companion in companions_initial:
+        companions_hashtable[companion["itemId"]] = {}
+        companions_hashtable[companion["itemId"]]["name"] = item["name"]
+        companions_hashtable[companion["itemId"]]["description"] = item["description"]
+    statstones_hashtable = {}
+    for statstone in statstones_initial["packData"]:
+        statstones_hashtable[statstone["itemId"]] = {}
+        statstones_hashtable[statstone["itemId"]]["name"] = statstone["name"]
+        statstones_hashtable[statstone["itemId"]]["description"] = statstone["description"]
+    summonerEmotes_hashtable = {}
+    for emote in summonerEmotes_initial:
+        summonerEmotes_hashtable[emote["id"]] = {}
+        summonerEmotes_hashtable[emote["id"]]["name"] = emote["name"]
+        summonerEmotes_hashtable[emote["id"]]["description"] = emote["description"]
+    summonerIcons_hashtable = {}
+    for icon in summonerIcons_initial:
+        summonerIcons_hashtable[icon["id"]] = {}
+        summonerIcons_hashtable[icon["id"]]["name"] = icon["title"]
+        for desc in icon["descriptions"]:
+            if desc["region"] == "riot" and len(set(list(desc["description"]))) != 1: #为简化代码，目前仅统计守卫（眼）在拳头大区的简介。有些简介是非空字符串，但是实际上是一堆空格（To simplify the code, only riot descriptions of wards are counted. Some descriptions are indeed non-empty strings but actually a bunch of spaces）
+                summonerIcons_hashtable[icon["id"]]["description"] = desc["description"]
+                break
+        else:
+            summonerIcons_hashtable[icon["id"]]["description"] = ""
+    tftdamageskins_hashtable = {}
+    for skin in tftdamageskins_initial:
+        tftdamageskins_hashtable[skin["itemId"]] = {}
+        tftdamageskins_hashtable[skin["itemId"]]["name"] = skin["name"]
+        tftdamageskins_hashtable[skin["itemId"]]["description"] = skin["description"]
+    tftmapskins_hashtable = {}
+    for skin in tftmapskins_initial:
+        tftmapskins_hashtable[skin["itemId"]] = {}
+        tftmapskins_hashtable[skin["itemId"]]["name"] = skin["name"]
+        tftmapskins_hashtable[skin["itemId"]]["description"] = skin["description"]
+    wardSkins_hashtable = {}
+    for wardSkin in wardSkins_initial:
+        wardSkins_hashtable[wardSkin["id"]] = {}
+        wardSkins_hashtable[wardSkin["id"]]["name"] = wardSkin["name"]
+        wardSkins_hashtable[wardSkin["id"]]["description"] = wardSkin["description"]
+    hashtable_dicts = {"CHAMPION_SKIN": championSkins_hashtable, "COMPANION": companions_hashtable, "STATSTONE": statstones_hashtable, "EMOTE": summonerEmotes_hashtable, "SUMMONER_ICON": summonerIcons_hashtable, "TFT_DAMAGE_SKIN": tftdamageskins_hashtable, "TFT_MAP_SKIN": tftmapskins_hashtable, "WARD_SKIN": wardSkins_hashtable}
     #定义商品数据结构（Define the store item data structure）
     catalog_header = {"active": "可用性", "description": "简介", "imagePath": "缩略图路径", "inactiveDate": "停止销售日期", "inventoryType": "道具类型", "itemId": "序号", "itemInstanceId": "识别码", "metadata": "元数据", "name": "名称", "offerId": "赠送代码", "owned": "已拥有", "ownershipType": "拥有权", "prices": "价格", "purchaseDate": "购买日期", "questSkinInfo": "赠送皮肤信息", "releaseDate": "发布日期", "sale": "销售信息", "subInventoryType": "次级道具类型", "subTitle": "副标题", "tags": "搜索关键词"}
     catalog_data = {}
@@ -144,7 +459,14 @@ async def fetch_store(connection):
     for item in catalogList:
         for i in range(len(catalog_header)):
             key = catalog_header_keys[i]
-            if i == 2:
+            if i == 1:
+                if item[key] != "" and (len(set(list(item[key]))) != 1 or item[key][0] != " "):
+                    catalog_data[key].append(item[key])
+                elif item["inventoryType"] in hashtable_dicts and item["itemId"] in hashtable_dicts[item["inventoryType"]]: #道具序号为111007的炫彩皮肤没有收录在CommunityDragon数据库中（The skin chroma with the itemId 111007 isn't archived in CommunityDragon database）
+                    catalog_data[key].append(hashtable_dicts[item["inventoryType"]][item["itemId"]]["description"])
+                else:
+                    catalog_data[key].append("")
+            elif i == 2:
                 if item[key].startswith("//"):
                     imagePath = "https:" + item[key]
                 elif item[key].startswith("/"):
@@ -161,6 +483,13 @@ async def fetch_store(connection):
                     catalog_data[key].append("∞")
                 else:
                     catalog_data[key].append(time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(item[key])))
+            elif i == 8:
+                if item[key] != "":
+                    catalog_data[key].append(item[key])
+                elif item["inventoryType"] in hashtable_dicts:
+                    catalog_data[key].append(hashtable_dicts[item["inventoryType"]][item["itemId"]]["name"])
+                else:
+                    catalog_data[key].append("")
             elif i == 4:
                 catalog_data[key].append(inventoryType_dict[item[key]])
             elif i == 11:
@@ -188,7 +517,15 @@ async def fetch_store(connection):
             elif i == 13:
                 collection_data[key].append(item["payload"]["isVintage"]) if item["payload"] and "isVintage" in item["payload"] else collection_data[key].append("")
             elif i == 14:
-                collection_data[key].append(collection_hashtable.get(item["uuid"], ""))
+                if item["uuid"] in collection_hashtable:
+                    name = collection_hashtable[item["uuid"]]
+                    if name == "" and item["inventoryType"] in hashtable_dicts:
+                        name = hashtable_dicts[item["inventoryType"]][item["itemId"]]["name"]
+                elif item["inventoryType"] in hashtable_dicts:
+                    name = hashtable_dicts[item["inventoryType"]][item["itemId"]]["name"]
+                else:
+                    name = ""
+                collection_data[key].append(name)
             else:
                 collection_data[key].append(item[key])
     #数据框列序整理（Dataframe column ordering）

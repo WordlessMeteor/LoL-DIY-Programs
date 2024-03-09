@@ -358,7 +358,7 @@
         "description": "",
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_ImmortalJourney.TFT_ArenaSkin_ImmortalJourney.png",
         "groupId": 22,
-        "groupName": "云顶之弈_地图组_水墨世界",
+        "groupName": "画中灵",
         "rarity": "Mythic",
         "rarityValue": 3
     },
@@ -369,7 +369,7 @@
         "description": "",
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_InkBiome_Sky.TFT_ArenaSkin_InkBiome.png",
         "groupId": 22,
-        "groupName": "云顶之弈_地图组_水墨世界",
+        "groupName": "画中灵",
         "rarity": "Default",
         "rarityValue": 0
     },
@@ -1062,7 +1062,7 @@
         "description": "",
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_TeaTerraces.TFT_ArenaSkin_TeaTerraces.png",
         "groupId": 22,
-        "groupName": "云顶之弈_地图组_水墨世界",
+        "groupName": "画中灵",
         "rarity": "Legendary",
         "rarityValue": 2
     },

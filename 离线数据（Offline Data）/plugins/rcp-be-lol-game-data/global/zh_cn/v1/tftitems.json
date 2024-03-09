@@ -3757,6 +3757,32 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/BaBoom_II.TFT_Set11.png"
     },
     {
+        "guid": "49deabd7-3ea9-43d9-8c2b-c39528b68d4d",
+        "name": "精挑细选",
+        "nameId": "TFT11_Augment_PickOfTheLitter",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PickOfTheLitter_I.TFT_Set11.png"
+    },
+    {
+        "guid": "d8fa6b8a-6166-4df5-811b-829ad5038468",
+        "name": "精挑细选+",
+        "nameId": "TFT11_Augment_PickOfTheLitter_Plus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PickOfTheLitter_I.TFT_Set11.png"
+    },
+    {
         "guid": "12f5140e-6617-4a9c-8305-96e38b63f8f8",
         "name": "英雄复制器",
         "nameId": "TFT_Consumable_NeekosHelp",
@@ -8034,6 +8060,32 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/BaBoom_II.TFT_Set11.png"
     },
     {
+        "guid": "49deabd7-3ea9-43d9-8c2b-c39528b68d4d",
+        "name": "精挑细选",
+        "nameId": "TFT11_Augment_PickOfTheLitter",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PickOfTheLitter_I.TFT_Set11.png"
+    },
+    {
+        "guid": "d8fa6b8a-6166-4df5-811b-829ad5038468",
+        "name": "精挑细选+",
+        "nameId": "TFT11_Augment_PickOfTheLitter_Plus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PickOfTheLitter_I.TFT_Set11.png"
+    },
+    {
         "guid": "83ddbdce-45fd-481b-9326-4049e34fd856",
         "name": "打捞桶",
         "nameId": "TFT6_Augment_SalvageBin",
@@ -10492,7 +10544,7 @@
     },
     {
         "guid": "aa8b071a-e428-4469-a9ca-fd5360e393f9",
-        "name": "猩红银行",
+        "name": "午餐钱",
         "nameId": "TFT11_Augment_BloodBank",
         "id": 0,
         "color": {
@@ -10956,7 +11008,7 @@
             "G": 241,
             "A": 255
         },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Missing-T2.png"
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Gadget-Expert-II.png"
     },
     {
         "guid": "d8677627-0489-4c98-ae7a-aa80d661e8d5",
@@ -15158,6 +15210,32 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/BaBoom_II.TFT_Set11.png"
     },
     {
+        "guid": "49deabd7-3ea9-43d9-8c2b-c39528b68d4d",
+        "name": "精挑细选",
+        "nameId": "TFT11_Augment_PickOfTheLitter",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PickOfTheLitter_I.TFT_Set11.png"
+    },
+    {
+        "guid": "d8fa6b8a-6166-4df5-811b-829ad5038468",
+        "name": "精挑细选+",
+        "nameId": "TFT11_Augment_PickOfTheLitter_Plus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PickOfTheLitter_I.TFT_Set11.png"
+    },
+    {
         "guid": "83ddbdce-45fd-481b-9326-4049e34fd856",
         "name": "打捞桶",
         "nameId": "TFT6_Augment_SalvageBin",
@@ -17616,7 +17694,7 @@
     },
     {
         "guid": "aa8b071a-e428-4469-a9ca-fd5360e393f9",
-        "name": "猩红银行",
+        "name": "午餐钱",
         "nameId": "TFT11_Augment_BloodBank",
         "id": 0,
         "color": {
@@ -18080,7 +18158,7 @@
             "G": 241,
             "A": 255
         },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Missing-T2.png"
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Gadget-Expert-II.png"
     },
     {
         "guid": "d8677627-0489-4c98-ae7a-aa80d661e8d5",
@@ -22425,6 +22503,32 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/BaBoom_II.TFT_Set11.png"
     },
     {
+        "guid": "49deabd7-3ea9-43d9-8c2b-c39528b68d4d",
+        "name": "精挑细选",
+        "nameId": "TFT11_Augment_PickOfTheLitter",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PickOfTheLitter_I.TFT_Set11.png"
+    },
+    {
+        "guid": "d8fa6b8a-6166-4df5-811b-829ad5038468",
+        "name": "精挑细选+",
+        "nameId": "TFT11_Augment_PickOfTheLitter_Plus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PickOfTheLitter_I.TFT_Set11.png"
+    },
+    {
         "guid": "543031e7-fb54-4559-a686-c9d53b593fda",
         "name": "金蛋",
         "nameId": "TFT6_Augment_TheGoldenEggHR",
@@ -24740,7 +24844,7 @@
     },
     {
         "guid": "aa8b071a-e428-4469-a9ca-fd5360e393f9",
-        "name": "猩红银行",
+        "name": "午餐钱",
         "nameId": "TFT11_Augment_BloodBank",
         "id": 0,
         "color": {
@@ -25139,7 +25243,7 @@
             "G": 241,
             "A": 255
         },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Missing-T2.png"
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Gadget-Expert-II.png"
     },
     {
         "guid": "9b76c20f-6475-40d9-ab53-7a48d65841a5",

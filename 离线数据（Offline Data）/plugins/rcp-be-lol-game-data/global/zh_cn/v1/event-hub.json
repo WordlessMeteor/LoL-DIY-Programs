@@ -1,1 +1,638 @@
-[]
+[
+    {
+        "event": {
+            "eventId": "d5bf7cd5-c5bd-4b05-96e6-e78ca071108b",
+            "eventHubType": "kEventShop",
+            "localizedName": "西部魔影 2024",
+            "backgroundImage": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_EPE_Background.png",
+            "navbarIconImage": "/lol-game-data/assets/ASSETS/Missions/HighNoon24_TrackerIcon.svg",
+            "headerIconImage": "/lol-game-data/assets/ASSETS/Missions/HighNoon24_TrackerIcon.svg",
+            "startDate": "2024-03-20T18:00:00Z",
+            "progressEndDate": "2024-04-23T06:59:00Z",
+            "endDate": "2024-04-29T18:00:00Z",
+            "localizedUpsellTitle": "代币贮藏",
+            "localizedUpsellTooltipTitle": "你的代币贮藏",
+            "localizedUpsellTooltipDescription": "通过购买西部魔影(2024)通行证来领取你已赚取的西部魔影(2024)币！要记得在过期前去商城和活动商城中使用噢！",
+            "localizedUpsellButtonText": "获得试炼通行证",
+            "upsellBackgroundImageUrl": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_EPE_TokenStash_Background.png",
+            "upsellTooltipBackgroundImageUrl": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_Heavenscale_Token_TooltipBG.png",
+            "rewardTrack": {
+                "trackConfig": {
+                    "id": "0481ee26-df15-410f-b752-6f67cf7c07e8",
+                    "premiumEntitlementId": "00000000-0000-0000-0000-000000000000"
+                }
+            },
+            "tokenShop": {
+                "tokenImage": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_Token.png",
+                "tokenName": "lol_highnoon24_token",
+                "tokenUuid": "858d70e3-6625-5f7b-b88c-e7f122046aaa",
+                "offers": [
+                    {
+                        "id": "d55413b1-7b7b-4c3f-9190-152a432ec0f8",
+                        "localizedTitle": "西部魔影 永恩 边框",
+                        "localizedDescription": "包含边框图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_BorderBundle_Yone.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Borders",
+                        "items": [
+                            {
+                                "itemId": "6573",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 250,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "fc22a71a-a097-4345-ab6d-bd254ab92414",
+                        "localizedTitle": "西部魔影 伊芙琳 边框",
+                        "localizedDescription": "包含边框图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_BorderBundle_Evelynn.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Borders",
+                        "items": [
+                            {
+                                "itemId": "6576",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 250,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "efc45447-cf63-4e32-a4bd-4f9484eff605",
+                        "localizedTitle": "西部魔影 古拉加斯 边框",
+                        "localizedDescription": "包含边框图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_BorderBundle_Gragas.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Borders",
+                        "items": [
+                            {
+                                "itemId": "6578",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 250,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "06e834b2-d730-4ac9-83d5-18f356a97057",
+                        "localizedTitle": "西部魔影 芮尔 边框",
+                        "localizedDescription": "包含边框图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_BorderBundle_Rell.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Borders",
+                        "items": [
+                            {
+                                "itemId": "6580",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 250,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1484794e-47f3-4516-9bd8-6585c20e6d3d",
+                        "localizedTitle": "西部魔影 永恩 正午幻日 炫彩",
+                        "localizedDescription": "包含炫彩图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_IconBundle_Yone.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Chromas",
+                        "items": [
+                            {
+                                "itemId": "777064",
+                                "inventoryType": "CHAMPION_SKIN",
+                                "price": 250,
+                                "quantity": 1
+                            },
+                            {
+                                "itemId": "6574",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 50,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "8019c31a-3247-4d61-877a-f903bf21b77b",
+                        "localizedTitle": "西部魔影 芮尔 正午幻日 炫彩",
+                        "localizedDescription": "包含炫彩图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_IconBundle_Rell.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Chromas",
+                        "items": [
+                            {
+                                "itemId": "526029",
+                                "inventoryType": "CHAMPION_SKIN",
+                                "price": 250,
+                                "quantity": 1
+                            },
+                            {
+                                "itemId": "6581",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 50,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "20859ec9-9bde-432f-b74b-82cab83b56a1",
+                        "localizedTitle": "西部魔影 古拉加斯 正午幻日 炫彩",
+                        "localizedDescription": "包含炫彩图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_IconBundle_Gragas.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Chromas",
+                        "items": [
+                            {
+                                "itemId": "79038",
+                                "inventoryType": "CHAMPION_SKIN",
+                                "price": 250,
+                                "quantity": 1
+                            },
+                            {
+                                "itemId": "6579",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 50,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "8a590b17-1297-41f0-a3f6-23d38b63bdb6",
+                        "localizedTitle": "西部魔影 伊芙琳 正午幻日 炫彩",
+                        "localizedDescription": "包含炫彩图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_IconBundle_Evelynn.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Chromas",
+                        "items": [
+                            {
+                                "itemId": "28062",
+                                "inventoryType": "CHAMPION_SKIN",
+                                "price": 250,
+                                "quantity": 1
+                            },
+                            {
+                                "itemId": "6577",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 50,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "d6e4e9d5-f624-4449-a145-7cdcd5f3140c",
+                        "localizedTitle": "西部魔影 执行人 卡特琳娜 虔信 炫彩",
+                        "localizedDescription": "包含炫彩图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2022_IconBundle_Katarina.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Chromas",
+                        "items": [
+                            {
+                                "itemId": "55046",
+                                "inventoryType": "CHAMPION_SKIN",
+                                "price": 250,
+                                "quantity": 1
+                            },
+                            {
+                                "itemId": "5329",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 50,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "e6e8288e-05ac-46a2-ad2e-85006f6718f4",
+                        "localizedTitle": "西部魔影 大小姐 蕾欧娜 虔信 炫彩",
+                        "localizedDescription": "包含炫彩图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2022_IconBundle_Leona.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Chromas",
+                        "items": [
+                            {
+                                "itemId": "89048",
+                                "inventoryType": "CHAMPION_SKIN",
+                                "price": 250,
+                                "quantity": 1
+                            },
+                            {
+                                "itemId": "5325",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 50,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "3c9c20c4-f5bc-410d-8fbb-3af9c949e0b3",
+                        "localizedTitle": "西部魔影 地狱列车长 莫德凯撒 虔信 炫彩",
+                        "localizedDescription": "包含炫彩图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2022_IconBundle_Mordekaiser.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Chromas",
+                        "items": [
+                            {
+                                "itemId": "82041",
+                                "inventoryType": "CHAMPION_SKIN",
+                                "price": 250,
+                                "quantity": 1
+                            },
+                            {
+                                "itemId": "5328",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 50,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "988b64f5-ea08-433b-b7f6-4b1cca8665e0",
+                        "localizedTitle": "西部魔影 持枪女巫 莎弥拉 虔信 炫彩",
+                        "localizedDescription": "包含炫彩图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2022_IconBundle_Samira.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Chromas",
+                        "items": [
+                            {
+                                "itemId": "360029",
+                                "inventoryType": "CHAMPION_SKIN",
+                                "price": 250,
+                                "quantity": 1
+                            },
+                            {
+                                "itemId": "5385",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 50,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "248336bd-22f9-4070-b8c1-b1e1622a5f07",
+                        "localizedTitle": "西部魔影 合成天使 赛恩 虔信 炫彩",
+                        "localizedDescription": "包含炫彩图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2022_IconBundle_Sion.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Chromas",
+                        "items": [
+                            {
+                                "itemId": "14039",
+                                "inventoryType": "CHAMPION_SKIN",
+                                "price": 250,
+                                "quantity": 1
+                            },
+                            {
+                                "itemId": "5387",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 50,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "edfb9cee-e1c2-4c02-a375-79f27b6f2821",
+                        "localizedTitle": "西部魔影 恶魔大亨 塔姆 虔信 炫彩",
+                        "localizedDescription": "包含炫彩图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2022_IconBundle_TahmKench.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Chromas",
+                        "items": [
+                            {
+                                "itemId": "223029",
+                                "inventoryType": "CHAMPION_SKIN",
+                                "price": 250,
+                                "quantity": 1
+                            },
+                            {
+                                "itemId": "5384",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 50,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "a0e371c2-73da-4968-89f2-a8834070a5a2",
+                        "localizedTitle": "西部魔影 猎天使恶魔 泰隆 虔信 炫彩",
+                        "localizedDescription": "包含炫彩图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2022_IconBundle_Talon.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Chromas",
+                        "items": [
+                            {
+                                "itemId": "91048",
+                                "inventoryType": "CHAMPION_SKIN",
+                                "price": 250,
+                                "quantity": 1
+                            },
+                            {
+                                "itemId": "5326",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 50,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "a31aa472-a081-440f-ad65-8c701873558c",
+                        "localizedTitle": "西部魔影 送葬人 图奇 虔信 炫彩",
+                        "localizedDescription": "包含炫彩图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2022_IconBundle_Twitch.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Chromas",
+                        "items": [
+                            {
+                                "itemId": "29054",
+                                "inventoryType": "CHAMPION_SKIN",
+                                "price": 250,
+                                "quantity": 1
+                            },
+                            {
+                                "itemId": "5330",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 50,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "ba1d405c-8cb0-4455-a039-f0e28e990e3a",
+                        "localizedTitle": "西部魔影 天使 韦鲁斯 虔信 炫彩",
+                        "localizedDescription": "包含炫彩图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2022_IconBundle_Varus.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Chromas",
+                        "items": [
+                            {
+                                "itemId": "110043",
+                                "inventoryType": "CHAMPION_SKIN",
+                                "price": 250,
+                                "quantity": 1
+                            },
+                            {
+                                "itemId": "5327",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 50,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "4f585b03-051f-492e-81bb-e5cfc5d8e7ff",
+                        "localizedTitle": "西部魔影 天才机械师 维克托 虔信 炫彩",
+                        "localizedDescription": "包含炫彩图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2022_IconBundle_Viktor.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Chromas",
+                        "items": [
+                            {
+                                "itemId": "112023",
+                                "inventoryType": "CHAMPION_SKIN",
+                                "price": 250,
+                                "quantity": 1
+                            },
+                            {
+                                "itemId": "5386",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 50,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "c83b01e6-0427-4ff1-a56c-9abb8e04afae",
+                        "localizedTitle": "西部天使 艾希 拉斐尔之佑 炫彩",
+                        "localizedDescription": "包含炫彩图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2019_IconBundle_Ashe.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Chromas",
+                        "items": [
+                            {
+                                "itemId": "22021",
+                                "inventoryType": "CHAMPION_SKIN",
+                                "price": 250,
+                                "quantity": 1
+                            },
+                            {
+                                "itemId": "4375",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 50,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "86c99ec5-9d11-420e-b9d9-a33c7619e545",
+                        "localizedTitle": "西部魔影 德莱厄斯 莫斯提马之恶 炫彩",
+                        "localizedDescription": "包含炫彩图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2019_IconBundle_Darius.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Chromas",
+                        "items": [
+                            {
+                                "itemId": "122023",
+                                "inventoryType": "CHAMPION_SKIN",
+                                "price": 250,
+                                "quantity": 1
+                            },
+                            {
+                                "itemId": "4376",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 50,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "5fe0ee48-33db-4c7a-835d-1fb7dc32825a",
+                        "localizedTitle": "西部魔影 赫卡里姆 布锐斯之鸣 炫彩",
+                        "localizedDescription": "包含炫彩图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2019_IconBundle_Hecarim.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Chromas",
+                        "items": [
+                            {
+                                "itemId": "120010",
+                                "inventoryType": "CHAMPION_SKIN",
+                                "price": 250,
+                                "quantity": 1
+                            },
+                            {
+                                "itemId": "4374",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 50,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "38e243c8-ec58-4809-8f50-a2981b4766a9",
+                        "localizedTitle": "西部魔影(2024)法球",
+                        "localizedDescription": "开启以获得1个随机皮肤碎片，且有几率掉落一个【西部魔影(2024)福袋】。",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_EPE_Orb.png",
+                        "promotionType": "kFeatured",
+                        "offerCategory": "Loot",
+                        "items": [
+                            {
+                                "itemId": "681",
+                                "inventoryType": "HEXTECH_CRAFTING",
+                                "price": 200,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "edaca495-6318-4e0f-ae37-58d8944a0c2b",
+                        "localizedTitle": "神秘表情",
+                        "localizedDescription": "用来熔合成一款随机的表情。",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/EPE_Mystery_Emote.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Loot",
+                        "items": [
+                            {
+                                "itemId": "187",
+                                "inventoryType": "HEXTECH_CRAFTING",
+                                "price": 60,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "410fbbcf-ca0c-4937-88f1-10d046b40dfe",
+                        "localizedTitle": "随机英雄碎片",
+                        "localizedDescription": "包含一个价值在4800蓝色精萃或以上的随机英雄碎片",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/EPE_Mystery_Shard.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Loot",
+                        "items": [
+                            {
+                                "itemId": "241",
+                                "inventoryType": "HEXTECH_CRAFTING",
+                                "price": 50,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "7fc44053-9291-4401-8a01-a3eb05790fed",
+                        "localizedTitle": "钥匙",
+                        "localizedDescription": "用来开启海克斯宝箱和杰作宝箱。",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/EPE_Key.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Loot",
+                        "items": [
+                            {
+                                "itemId": "3",
+                                "inventoryType": "HEXTECH_CRAFTING",
+                                "price": 60,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "c2862613-4a28-4267-9c94-606aefe2f7f2",
+                        "localizedTitle": "钥匙碎片",
+                        "localizedDescription": "收集3个来制作一个钥匙。",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/EPE_KeyFragment.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Loot",
+                        "items": [
+                            {
+                                "itemId": "7",
+                                "inventoryType": "HEXTECH_CRAFTING",
+                                "price": 20,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "f8087479-b19a-44a5-aa5f-d177aab60299",
+                        "localizedTitle": "125神话精萃",
+                        "localizedDescription": "包含神话精萃图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_MythicEssence.png",
+                        "promotionType": "kFeatured",
+                        "offerCategory": "Currencies",
+                        "items": [
+                            {
+                                "itemId": "534",
+                                "inventoryType": "HEXTECH_CRAFTING",
+                                "price": 2000,
+                                "quantity": 125
+                            },
+                            {
+                                "itemId": "6572",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 200,
+                                "quantity": 1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "c3545497-d839-455c-ba25-66afc4fc40a9",
+                        "localizedTitle": "10蓝色精萃",
+                        "localizedDescription": "用来解锁英雄。",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/EPE_Blue_Essence.png",
+                        "promotionType": "kNone",
+                        "offerCategory": "Currencies",
+                        "items": [
+                            {
+                                "itemId": "6",
+                                "inventoryType": "HEXTECH_CRAFTING",
+                                "price": 1,
+                                "quantity": 10
+                            }
+                        ]
+                    }
+                ],
+                "contentDrops": [],
+                "tokenBundlesCatalogEntry": [
+                    {
+                        "contentId": "e600ba90-5101-44e8-9b83-aba858449384",
+                        "itemId": 69900920,
+                        "offerId": "581f96e1-a894-46f8-869c-237fa8966ce2",
+                        "typeId": ""
+                    },
+                    {
+                        "contentId": "b7b88d7a-e9aa-497e-bd20-334762560003",
+                        "itemId": 69900919,
+                        "offerId": "a3b8b278-4c5b-4b6f-afd1-747821eef1b1",
+                        "typeId": ""
+                    },
+                    {
+                        "contentId": "3ff36482-97fd-4ee8-a236-d47872f31b43",
+                        "itemId": 69900918,
+                        "offerId": "f22bc74b-2564-4b35-be6c-fc3f714aa572",
+                        "typeId": ""
+                    },
+                    {
+                        "contentId": "9c26e646-788f-4c21-a09e-fc387fc3ad53",
+                        "itemId": 69900917,
+                        "offerId": "7918e561-990b-41bd-ad4e-eb21301feb3c",
+                        "typeId": ""
+                    }
+                ]
+            },
+            "helpModalImage": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_EPE_Background.png",
+            "eventPassBundlesCatalogEntry": [
+                {
+                    "contentId": "c4da080f-4286-4e92-9a2f-62250e2ca6c9",
+                    "itemId": 69900924,
+                    "offerId": "03aec5dd-54b5-4496-ae4e-6212d599d4be",
+                    "typeId": ""
+                },
+                {
+                    "contentId": "011bab64-2212-41ee-8d40-64afd52f9b6b",
+                    "itemId": 69900925,
+                    "offerId": "adf73ae1-527c-4653-a958-270848148f1a",
+                    "typeId": ""
+                },
+                {
+                    "contentId": "b819b1c8-6406-42eb-8994-4cf5abe6fd93",
+                    "itemId": 69900926,
+                    "offerId": "dd7b9a34-71f5-4b29-ac2f-c80c7be08902",
+                    "typeId": ""
+                }
+            ]
+        }
+    }
+]

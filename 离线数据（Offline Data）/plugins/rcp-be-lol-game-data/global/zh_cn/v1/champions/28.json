@@ -999,7 +999,7 @@
             "chromas": [
                 {
                     "id": 28054,
-                    "name": "西部魔影 伊芙琳 (Ruby)",
+                    "name": "西部魔影 伊芙琳 温和",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28054.png",
                     "colors": [
                         "#D33528",
@@ -1020,7 +1020,7 @@
                 },
                 {
                     "id": 28055,
-                    "name": "西部魔影 伊芙琳 (Emerald)",
+                    "name": "西部魔影 伊芙琳 善良",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28055.png",
                     "colors": [
                         "#2DA130",
@@ -1031,7 +1031,7 @@
                 },
                 {
                     "id": 28056,
-                    "name": "西部魔影 伊芙琳 (Tanzanite)",
+                    "name": "西部魔影 伊芙琳 诚实",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28056.png",
                     "colors": [
                         "#54209B",
@@ -1042,7 +1042,7 @@
                 },
                 {
                     "id": 28057,
-                    "name": "西部魔影 伊芙琳 (Turquoise)",
+                    "name": "西部魔影 伊芙琳 恭敬",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28057.png",
                     "colors": [
                         "#73BFBE",
@@ -1053,7 +1053,7 @@
                 },
                 {
                     "id": 28058,
-                    "name": "西部魔影 伊芙琳 (Sapphire)",
+                    "name": "西部魔影 伊芙琳 节制",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28058.png",
                     "colors": [
                         "#2756CE",
@@ -1069,7 +1069,7 @@
                 },
                 {
                     "id": 28059,
-                    "name": "西部魔影 伊芙琳 (Rose Quartz)",
+                    "name": "西部魔影 伊芙琳 忠诚",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28059.png",
                     "colors": [
                         "#E58BA5",
@@ -1085,7 +1085,7 @@
                 },
                 {
                     "id": 28060,
-                    "name": "西部魔影 伊芙琳 (Catseye)",
+                    "name": "西部魔影 伊芙琳 慷慨",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28060.png",
                     "colors": [
                         "#FFEE59",
@@ -1096,7 +1096,7 @@
                 },
                 {
                     "id": 28061,
-                    "name": "西部魔影 伊芙琳 (Obsidian)",
+                    "name": "西部魔影 伊芙琳 谦卑",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28061.png",
                     "colors": [
                         "#27211C",
@@ -1107,7 +1107,7 @@
                 },
                 {
                     "id": 28062,
-                    "name": "西部魔影 伊芙琳 (Noonday)",
+                    "name": "西部魔影 伊芙琳 正午幻日",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28062.png",
                     "colors": [
                         "#A8BFF1",
@@ -1128,7 +1128,7 @@
                 },
                 {
                     "id": 28063,
-                    "name": "西部魔影 伊芙琳 (Vendetta)",
+                    "name": "西部魔影 伊芙琳 午夜影月",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28063.png",
                     "colors": [
                         "#D9C542",

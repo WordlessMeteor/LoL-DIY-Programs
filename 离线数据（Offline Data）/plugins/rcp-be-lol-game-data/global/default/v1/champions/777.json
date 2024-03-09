@@ -1001,7 +1001,12 @@
                         "#9DB3E1",
                         "#CD5867"
                     ],
-                    "descriptions": [],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2024 High Noon event."
+                        }
+                    ],
                     "rarities": [
                         {
                             "region": "riot",

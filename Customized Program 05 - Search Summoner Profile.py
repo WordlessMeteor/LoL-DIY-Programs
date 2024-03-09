@@ -279,7 +279,7 @@ async def search_profile(connection):
                                     print("数据格式错误！请选择一个符合DataDragon数据库中记录的版本数据格式（%s）的数据文件！\nData format mismatched! Please select a data file that corresponds to the format of the patch data archived in DataDragon database (%s)!" %(patches_url, patches_url))
                                     continue
                             except FileNotFoundError:
-                                print("未找到文件%s！请输入正确的版本Json数据文件路径！\nFile %s NOT found! Please input a correct patch Json data file path!" %(patches_local, patches_local))
+                                print('未找到文件“%s”！请输入正确的版本Json数据文件路径！\nFile "%s" NOT found! Please input a correct patch Json data file path!' %(patches_local, patches_local))
                                 continue
                             except OSError:
                                 print("数据文件名不合法！请输入含有版本信息的本地文件的路径！\nIllegal data filename! Please input the path of a local file with patch information.")
@@ -313,7 +313,7 @@ async def search_profile(connection):
                             switch_language = True
                             break
                     except requests.exceptions.RequestException:
-                        print('召唤师技能信息获取超时！正在尝试离线加载数据……\nSummoner spell information capture timeout! Trying loading offline data ...\n请输入召唤师技能Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the summoner spell Json data file path. Enter an empty string to use the default relative path: "%s". Submit "0" to exit.' %(spell_local_default, spell_local_default))
+                        print('召唤师技能信息获取超时！正在尝试离线加载数据……\nSummoner spell information capture timeout! Trying loading offline data ...\n请输入召唤师技能Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the summoner spell Json data file path. Enter an empty string to use the default relative path: "%s". Submit "2" to switch to offline mode. Submit "0" to exit.' %(spell_local_default, spell_local_default))
                         while True:
                             spell_local = input()
                             if spell_local == "":
@@ -334,7 +334,7 @@ async def search_profile(connection):
                                     print("数据格式错误！请选择一个符合CommunityDragon数据库中记录的召唤师技能数据格式（%s）的数据文件！\nData format mismatched! Please select a data file that corresponds to the format of the summoner spell data archived in CommunityDragon database (%s)!" %(spell_url, spell_url))
                                     continue
                             except FileNotFoundError:
-                                print("未找到文件%s！请输入正确的召唤师技能Json数据文件路径！\nFile %s NOT found! Please input a correct summoner spell Json data file path!" %(spell_local, spell_local))
+                                print('未找到文件“%s”！请输入正确的召唤师技能Json数据文件路径！\nFile "%s" NOT found! Please input a correct summoner spell Json data file path!' %(spell_local, spell_local))
                                 continue
                             except OSError:
                                 print("数据文件名不合法！请输入含有召唤师技能信息的本地文件的路径！\nIllegal data filename! Please input the path of a local file with summoner spell information.")
@@ -354,7 +354,7 @@ async def search_profile(connection):
                             switch_language = True
                             break
                     except requests.exceptions.RequestException:
-                        print('英雄联盟装备信息获取超时！正在尝试离线加载数据……\nLoL item information capture timeout! Trying loading offline data ...\n请输入英雄联盟装备Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the LoL item Json data file path. Enter an empty string to use the default relative path: "%s". Submit "0" to exit.' %(LoLItem_local_default, LoLItem_local_default))
+                        print('英雄联盟装备信息获取超时！正在尝试离线加载数据……\nLoL item information capture timeout! Trying loading offline data ...\n请输入英雄联盟装备Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the LoL item Json data file path. Enter an empty string to use the default relative path: "%s". Submit "2" to switch to offline mode. Submit "0" to exit.' %(LoLItem_local_default, LoLItem_local_default))
                         while True:
                             LoLItem_local = input()
                             if LoLItem_local == "":
@@ -375,7 +375,7 @@ async def search_profile(connection):
                                     print("数据格式错误！请选择一个符合CommunityDragon数据库中记录的英雄联盟装备数据格式（%s）的数据文件！\nData format mismatched! Please select a data file that corresponds to the format of the LoL item data archived in CommunityDragon database (%s)!" %(LoLItem_url, LoLItem_url))
                                     continue
                             except FileNotFoundError:
-                                print("未找到文件%s！请输入正确的英雄联盟装备Json数据文件路径！\nFile %s NOT found! Please input a correct LoL item Json data file path!" %(LoLItem_local, LoLItem_local))
+                                print('未找到文件“%s”！请输入正确的英雄联盟装备Json数据文件路径！\nFile "%s" NOT found! Please input a correct LoL item Json data file path!' %(LoLItem_local, LoLItem_local))
                                 continue
                             except OSError:
                                 print("数据文件名不合法！请输入含有英雄联盟装备信息的本地文件的路径！\nIllegal data filename! Please input the path of a local file with LoL item information.")
@@ -395,7 +395,7 @@ async def search_profile(connection):
                             switch_language = True
                             break
                     except requests.exceptions.RequestException:
-                        print('基石符文信息获取超时！正在尝试离线加载数据……\nPerk information capture timeout! Trying loading offline data ...\n请输入基石符文Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the perk Json data file path. Enter an empty string to use the default relative path: "%s". Submit "0" to exit.' %(perk_local_default, perk_local_default))
+                        print('基石符文信息获取超时！正在尝试离线加载数据……\nPerk information capture timeout! Trying loading offline data ...\n请输入基石符文Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the perk Json data file path. Enter an empty string to use the default relative path: "%s". Submit "2" to switch to offline mode. Submit "0" to exit.' %(perk_local_default, perk_local_default))
                         while True:
                             perk_local = input()
                             if perk_local == "":
@@ -416,7 +416,7 @@ async def search_profile(connection):
                                     print("数据格式错误！请选择一个符合CommunityDragon数据库中记录的基石符文数据格式（%s）的数据文件！\nData format mismatched! Please select a data file that corresponds to the format of the perk data archived in CommunityDragon database (%s)!" %(perk_url, perk_url))
                                     continue
                             except FileNotFoundError:
-                                print("未找到文件%s！请输入正确的基石符文Json数据文件路径！\nFile %s NOT found! Please input a correct perk Json data file path!" %(perk_local, perk_local))
+                                print('未找到文件“%s”！请输入正确的基石符文Json数据文件路径！\nFile "%s" NOT found! Please input a correct perk Json data file path!' %(perk_local, perk_local))
                                 continue
                             except OSError:
                                 print("数据文件名不合法！请输入含有基石符文信息的本地文件的路径！\nIllegal data filename! Please input the path of a local file with perk information.")
@@ -436,7 +436,7 @@ async def search_profile(connection):
                             switch_language = True
                             break
                     except requests.exceptions.RequestException:
-                        print('符文系信息获取超时！正在尝试离线加载数据……\nPerkstyle information capture timeout! Trying loading offline data ...\n请输入符文系Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the perkstyle Json data file path. Enter an empty string to use the default relative path: "%s". Submit "0" to exit.' %(perkstyle_local_default, perkstyle_local_default))
+                        print('符文系信息获取超时！正在尝试离线加载数据……\nPerkstyle information capture timeout! Trying loading offline data ...\n请输入符文系Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the perkstyle Json data file path. Enter an empty string to use the default relative path: "%s". Submit "2" to switch to offline mode. Submit "0" to exit.' %(perkstyle_local_default, perkstyle_local_default))
                         while True:
                             perkstyle_local = input()
                             if perkstyle_local == "":
@@ -457,7 +457,7 @@ async def search_profile(connection):
                                     print("数据格式错误！请选择一个符合CommunityDragon数据库中记录的符文系数据格式（%s）的数据文件！\nData format mismatched! Please select a data file that corresponds to the format of the perkstyle data archived in CommunityDragon database (%s)!" %(perkstyle_url, perkstyle_url))
                                     continue
                             except FileNotFoundError:
-                                print("未找到文件%s！请输入正确的符文系Json数据文件路径！\nFile %s NOT found! Please input a correct perkstyle Json data file path!" %(perkstyle_local, perkstyle_local))
+                                print('未找到文件“%s”！请输入正确的符文系Json数据文件路径！\nFile "%s" NOT found! Please input a correct perkstyle Json data file path!' %(perkstyle_local, perkstyle_local))
                                 continue
                             except OSError:
                                 print("数据文件名不合法！请输入含有符文系信息的本地文件的路径！\nIllegal data filename! Please input the path of a local file with perkstyle information.")
@@ -477,7 +477,7 @@ async def search_profile(connection):
                             switch_language = True
                             break
                     except requests.exceptions.RequestException:
-                        print('云顶之弈基础信息获取超时！正在尝试离线加载数据……\nTFT basic information capture timeout! Trying loading offline data ...\n请输入云顶之弈基础数据Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the TFT basics Json data file path. Enter an empty string to use the default relative path: "%s". Submit "0" to exit.' %(TFT_local_default, TFT_local_default))
+                        print('云顶之弈基础信息获取超时！正在尝试离线加载数据……\nTFT basic information capture timeout! Trying loading offline data ...\n请输入云顶之弈基础数据Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the TFT basics Json data file path. Enter an empty string to use the default relative path: "%s". Submit "2" to switch to offline mode. Submit "0" to exit.' %(TFT_local_default, TFT_local_default))
                         while True:
                             TFT_local = input()
                             if TFT_local == "":
@@ -498,7 +498,7 @@ async def search_profile(connection):
                                     print("数据格式错误！请选择一个符合CommunityDragon数据库中记录的云顶之弈基础数据格式（%s）的数据文件！\nData format mismatched! Please select a data file that corresponds to the format of the TFT basic data archived in CommunityDragon database (%s)!" %(TFT_url, TFT_url))
                                     continue
                             except FileNotFoundError:
-                                print("未找到文件%s！请输入正确的云顶之弈基础信息Json数据文件路径！\nFile %s NOT found! Please input a correct TFT basics Json data file path!" %(TFT_local, TFT_local))
+                                print('未找到文件“%s”！请输入正确的云顶之弈基础信息Json数据文件路径！\nFile "%s" NOT found! Please input a correct TFT basics Json data file path!' %(TFT_local, TFT_local))
                                 continue
                             except OSError:
                                 print("数据文件名不合法！请输入含有云顶之弈基础信息的本地文件的路径！\nIllegal data filename! Please input the path of a local file with TFT basic information.")
@@ -518,7 +518,7 @@ async def search_profile(connection):
                             switch_language = True
                             break
                     except requests.exceptions.RequestException:
-                        print('云顶之弈英雄信息获取超时！正在尝试离线加载数据……\nTFT champion information capture timeout! Trying loading offline data ...\n请输入云顶之弈英雄Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the TFT champion Json data file path. Enter an empty string to use the default relative path: "%s". Submit "0" to exit.' %(TFTChampion_local_default, TFTChampion_local_default))
+                        print('云顶之弈英雄信息获取超时！正在尝试离线加载数据……\nTFT champion information capture timeout! Trying loading offline data ...\n请输入云顶之弈英雄Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the TFT champion Json data file path. Enter an empty string to use the default relative path: "%s". Submit "2" to switch to offline mode. Submit "0" to exit.' %(TFTChampion_local_default, TFTChampion_local_default))
                         while True:
                             TFTChampion_local = input()
                             if TFTChampion_local == "":
@@ -539,7 +539,7 @@ async def search_profile(connection):
                                     print("数据格式错误！请选择一个符合CommunityDragon数据库中记录的云顶之弈棋子数据格式（%s）的数据文件！\nData format mismatched! Please select a data file that corresponds to the format of the TFT champion data archived in CommunityDragon database (%s)!" %(TFTChampion_url, TFTChampion_url))
                                     continue
                             except FileNotFoundError:
-                                print("未找到文件%s！请输入正确的云顶之弈棋子Json数据文件路径！\nFile %s NOT found! Please input a correct TFT champion Json data file path!" %(TFTChampion_local, TFTChampion_local))
+                                print('未找到文件“%s”！请输入正确的云顶之弈棋子Json数据文件路径！\nFile "%s" NOT found! Please input a correct TFT champion Json data file path!' %(TFTChampion_local, TFTChampion_local))
                                 continue
                             except OSError:
                                 print("数据文件名不合法！请输入含有云顶之弈英雄信息的本地文件的路径！\nIllegal data filename! Please input the path of a local file with TFT champion information.")
@@ -559,7 +559,7 @@ async def search_profile(connection):
                             switch_language = True
                             break
                     except requests.exceptions.RequestException:
-                        print('云顶之弈装备信息获取超时！正在尝试离线加载数据……\nTFT item information capture timeout! Trying loading offline data ...\n请输入云顶之弈装备Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the TFT item Json data file path. Enter an empty string to use the default relative path: "%s". Submit "0" to exit.' %(TFTItem_local_default, TFTItem_local_default))
+                        print('云顶之弈装备信息获取超时！正在尝试离线加载数据……\nTFT item information capture timeout! Trying loading offline data ...\n请输入云顶之弈装备Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the TFT item Json data file path. Enter an empty string to use the default relative path: "%s". Submit "2" to switch to offline mode. Submit "0" to exit.' %(TFTItem_local_default, TFTItem_local_default))
                         while True:
                             TFTItem_local = input()
                             if TFTItem_local == "":
@@ -580,7 +580,7 @@ async def search_profile(connection):
                                     print("数据格式错误！请选择一个符合CommunityDragon数据库中记录的云顶之弈装备数据格式（%s）的数据文件！\nData format mismatched! Please select a data file that corresponds to the format of the TFT item data archived in CommunityDragon database (%s)!" %(TFTItem_url, TFTItem_url))
                                     continue
                             except FileNotFoundError:
-                                print("未找到文件%s！请输入正确的云顶之弈装备Json数据文件路径！\nFile %s NOT found! Please input a correct TFT item Json data file path!" %(TFTItem_local, TFTItem_local))
+                                print('未找到文件“%s”！请输入正确的云顶之弈装备Json数据文件路径！\nFile "%s" NOT found! Please input a correct TFT item Json data file path!' %(TFTItem_local, TFTItem_local))
                                 continue
                             except OSError:
                                 print("数据文件名不合法！请输入含有云顶之弈装备信息的本地文件的路径！\nIllegal data filename! Please input the path of a local file with TFT companion information.")
@@ -600,7 +600,7 @@ async def search_profile(connection):
                             switch_language = True
                             break
                     except requests.exceptions.RequestException:
-                        print('云顶之弈小小英雄信息获取超时！正在尝试离线加载数据……\nTFT companion information capture timeout! Trying loading offline data ...\n请输入云顶之弈小小英雄Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the TFT companion Json data file path. Enter an empty string to use the default relative path: "%s". Submit "0" to exit.' %(TFTCompanion_local_default, TFTCompanion_local_default))
+                        print('云顶之弈小小英雄信息获取超时！正在尝试离线加载数据……\nTFT companion information capture timeout! Trying loading offline data ...\n请输入云顶之弈小小英雄Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the TFT companion Json data file path. Enter an empty string to use the default relative path: "%s". Submit "2" to switch to offline mode. Submit "0" to exit.' %(TFTCompanion_local_default, TFTCompanion_local_default))
                         while True:
                             TFTCompanion_local = input()
                             if TFTCompanion_local == "":
@@ -621,7 +621,7 @@ async def search_profile(connection):
                                     print("数据格式错误！请选择一个符合CommunityDragon数据库中记录的云顶之弈小小英雄数据格式（%s）的数据文件！\nData format mismatched! Please select a data file that corresponds to the format of the TFT companion data archived in CommunityDragon database (%s)!" %(TFTCompanion_url, TFTCompanion_url))
                                     continue
                             except FileNotFoundError:
-                                print("未找到文件%s！请输入正确的云顶之弈小小英雄Json数据文件路径！\nFile %s NOT found! Please input a correct TFT companion Json data file path!" %(TFTCompanion_local, TFTCompanion_local))
+                                print('未找到文件“%s”！请输入正确的云顶之弈小小英雄Json数据文件路径！\nFile "%s" NOT found! Please input a correct TFT companion Json data file path!' %(TFTCompanion_local, TFTCompanion_local))
                                 continue
                             except OSError:
                                 print("数据文件名不合法！请输入含有云顶之弈小小英雄信息的本地文件的路径！\nIllegal data filename! Please input the path of a local file with TFT companion information.")
@@ -641,7 +641,7 @@ async def search_profile(connection):
                             switch_language = True
                             break
                     except requests.exceptions.RequestException:
-                        print('云顶之弈羁绊信息获取超时！正在尝试离线加载数据……\nTFT trait information capture timeout! Trying loading offline data ...\n请输入云顶之弈羁绊Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the TFT trait Json data file path. Enter an empty string to use the default relative path: "%s". Submit "0" to exit.' %(TFTTrait_local_default, TFTTrait_local_default))
+                        print('云顶之弈羁绊信息获取超时！正在尝试离线加载数据……\nTFT trait information capture timeout! Trying loading offline data ...\n请输入云顶之弈羁绊Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the TFT trait Json data file path. Enter an empty string to use the default relative path: "%s". Submit "2" to switch to offline mode. Submit "0" to exit.' %(TFTTrait_local_default, TFTTrait_local_default))
                         while True:
                             TFTTrait_local = input()
                             if TFTTrait_local == "":
@@ -662,7 +662,7 @@ async def search_profile(connection):
                                     print("数据格式错误！请选择一个符合CommunityDragon数据库中记录的云顶之弈羁绊数据格式（%s）的数据文件！\nData format mismatched! Please select a data file that corresponds to the format of the TFT trait data archived in CommunityDragon database (%s)!" %(TFTTrait_url, TFTTrait_url))
                                     continue
                             except FileNotFoundError:
-                                print("未找到文件%s！请输入正确的云顶之弈羁绊Json数据文件路径！\nFile %s NOT found! Please input a correct TFT trait Json data file path!" %(TFTTrait_local, TFTTrait_local))
+                                print('未找到文件“%s”！请输入正确的云顶之弈羁绊Json数据文件路径！\nFile "%s" NOT found! Please input a correct TFT trait Json data file path!' %(TFTTrait_local, TFTTrait_local))
                                 continue
                             except OSError:
                                 print("数据文件名不合法！请输入含有云顶之弈小小英雄信息的本地文件的路径！\nIllegal data filename! Please input the path of a local file with TFT companion information.")
@@ -683,7 +683,7 @@ async def search_profile(connection):
                             switch_language = True
                             break
                     except requests.exceptions.RequestException:
-                        print('斗魂竞技场强化符文信息获取超时！正在尝试离线加载数据……\nArena augment information capture timeout! Trying loading offline data ...\n请输入斗魂竞技场强化符文Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the Arena augment Json data file path. Enter an empty string to use the default relative path: "%s". Submit "0" to exit.' %(Arena_local_default, Arena_local_default))
+                        print('斗魂竞技场强化符文信息获取超时！正在尝试离线加载数据……\nArena augment information capture timeout! Trying loading offline data ...\n请输入斗魂竞技场强化符文Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the Arena augment Json data file path. Enter an empty string to use the default relative path: "%s". Submit "2" to switch to offline mode. Submit "0" to exit.' %(Arena_local_default, Arena_local_default))
                         while True:
                             Arena_local = input()
                             if Arena_local == "":
@@ -704,7 +704,7 @@ async def search_profile(connection):
                                     print("数据格式错误！请选择一个符合CommunityDragon数据库中记录的斗魂竞技场强化符文数据格式（%s）的数据文件！\nData format mismatched! Please select a data file that corresponds to the format of the Arena augment data archived in CommunityDragon database (%s)!" %(Arena_url, Arena_url))
                                     continue
                             except FileNotFoundError:
-                                print("未找到文件%s！请输入正确的斗魂竞技场强化符文Json数据文件路径！\nFile %s NOT found! Please input a correct Arena augment Json data file path!" %(Arena_local, Arena_local))
+                                print('未找到文件“%s”！请输入正确的斗魂竞技场强化符文Json数据文件路径！\nFile "%s" NOT found! Please input a correct Arena augment Json data file path!' %(Arena_local, Arena_local))
                                 continue
                             except OSError:
                                 print("数据文件名不合法！请输入含有斗魂竞技场强化符文信息的本地文件的路径！\nIllegal data filename! Please input the path of a local file with Arena augment information.")

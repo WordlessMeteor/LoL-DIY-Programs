@@ -952,7 +952,7 @@
             "chromas": [
                 {
                     "id": 777059,
-                    "name": "西部魔影 永恩 (Ruby)",
+                    "name": "西部魔影 永恩 温和",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777059.png",
                     "colors": [
                         "#D33528",
@@ -961,7 +961,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                            "description": "这个炫彩曾在2024年期间作为礼包专属发布。"
                         }
                     ],
                     "rarities": [
@@ -973,7 +973,7 @@
                 },
                 {
                     "id": 777060,
-                    "name": "西部魔影 永恩 (Emerald)",
+                    "name": "西部魔影 永恩 善良",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777060.png",
                     "colors": [
                         "#2DA130",
@@ -984,7 +984,7 @@
                 },
                 {
                     "id": 777061,
-                    "name": "西部魔影 永恩 (Tanzanite)",
+                    "name": "西部魔影 永恩 诚实",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777061.png",
                     "colors": [
                         "#54209B",
@@ -995,7 +995,7 @@
                 },
                 {
                     "id": 777062,
-                    "name": "西部魔影 永恩 (Rose Quartz)",
+                    "name": "西部魔影 永恩 忠诚",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777062.png",
                     "colors": [
                         "#E58BA5",
@@ -1011,7 +1011,7 @@
                 },
                 {
                     "id": 777063,
-                    "name": "西部魔影 永恩 (Obsidian)",
+                    "name": "西部魔影 永恩 谦卑",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777063.png",
                     "colors": [
                         "#27211C",
@@ -1022,13 +1022,18 @@
                 },
                 {
                     "id": 777064,
-                    "name": "西部魔影 永恩 (Noonday)",
+                    "name": "西部魔影 永恩 正午幻日",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777064.png",
                     "colors": [
                         "#9DB3E1",
                         "#CD5867"
                     ],
-                    "descriptions": [],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在西部魔影(2024)期间作为战利品专属来发布。"
+                        }
+                    ],
                     "rarities": [
                         {
                             "region": "riot",

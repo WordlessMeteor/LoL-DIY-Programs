@@ -366,7 +366,7 @@
             "chromas": [
                 {
                     "id": 526021,
-                    "name": "西部魔影 芮尔 (Ruby)",
+                    "name": "西部魔影 芮尔 温和",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526021.png",
                     "colors": [
                         "#D33528",
@@ -387,7 +387,7 @@
                 },
                 {
                     "id": 526022,
-                    "name": "西部魔影 芮尔 (Emerald)",
+                    "name": "西部魔影 芮尔 善良",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526022.png",
                     "colors": [
                         "#2DA130",
@@ -398,7 +398,7 @@
                 },
                 {
                     "id": 526023,
-                    "name": "西部魔影 芮尔 (Tanzanite)",
+                    "name": "西部魔影 芮尔 诚实",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526023.png",
                     "colors": [
                         "#54209B",
@@ -409,7 +409,7 @@
                 },
                 {
                     "id": 526024,
-                    "name": "西部魔影 芮尔 (Turquoise)",
+                    "name": "西部魔影 芮尔 恭敬",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526024.png",
                     "colors": [
                         "#73BFBE",
@@ -420,7 +420,7 @@
                 },
                 {
                     "id": 526025,
-                    "name": "西部魔影 芮尔 (Rose Quartz)",
+                    "name": "西部魔影 芮尔 忠诚",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526025.png",
                     "colors": [
                         "#E58BA5",
@@ -436,7 +436,7 @@
                 },
                 {
                     "id": 526026,
-                    "name": "西部魔影 芮尔 (Sapphire)",
+                    "name": "西部魔影 芮尔 节制",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526026.png",
                     "colors": [
                         "#2756CE",
@@ -452,7 +452,7 @@
                 },
                 {
                     "id": 526027,
-                    "name": "西部魔影 芮尔 (Pearl)",
+                    "name": "西部魔影 芮尔 纯洁",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526027.png",
                     "colors": [
                         "#ECF9F8",
@@ -463,7 +463,7 @@
                 },
                 {
                     "id": 526028,
-                    "name": "西部魔影 芮尔 (Citrine)",
+                    "name": "西部魔影 芮尔 豪爽",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526028.png",
                     "colors": [
                         "#DF9117",
@@ -474,7 +474,7 @@
                 },
                 {
                     "id": 526029,
-                    "name": "西部魔影 芮尔 (Noonday)",
+                    "name": "西部魔影 芮尔 正午幻日",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526029.png",
                     "colors": [
                         "#A8BFF1",

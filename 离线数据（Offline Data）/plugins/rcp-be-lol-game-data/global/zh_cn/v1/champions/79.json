@@ -629,7 +629,7 @@
         {
             "id": 79029,
             "isBase": false,
-            "name": "",
+            "name": "西部魔影 古拉加斯",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/79/79029.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/79/79029.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/79/79029.jpg",
@@ -645,7 +645,7 @@
             "chromas": [
                 {
                     "id": 79030,
-                    "name": "",
+                    "name": "西部魔影 古拉加斯 温和",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79030.png",
                     "colors": [
                         "#D33528",
@@ -666,7 +666,7 @@
                 },
                 {
                     "id": 79031,
-                    "name": "",
+                    "name": "西部魔影 古拉加斯 忠诚",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79031.png",
                     "colors": [
                         "#E58BA5",
@@ -682,7 +682,7 @@
                 },
                 {
                     "id": 79032,
-                    "name": "",
+                    "name": "西部魔影 古拉加斯 豪爽",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79032.png",
                     "colors": [
                         "#DF9117",
@@ -693,7 +693,7 @@
                 },
                 {
                     "id": 79033,
-                    "name": "",
+                    "name": "西部魔影 古拉加斯 善良",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79033.png",
                     "colors": [
                         "#2DA130",
@@ -704,7 +704,7 @@
                 },
                 {
                     "id": 79034,
-                    "name": "",
+                    "name": "西部魔影 古拉加斯 恭敬",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79034.png",
                     "colors": [
                         "#73BFBE",
@@ -715,7 +715,7 @@
                 },
                 {
                     "id": 79035,
-                    "name": "",
+                    "name": "西部魔影 古拉加斯 节制",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79035.png",
                     "colors": [
                         "#2756CE",
@@ -731,7 +731,7 @@
                 },
                 {
                     "id": 79036,
-                    "name": "",
+                    "name": "西部魔影 古拉加斯 诚实",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79036.png",
                     "colors": [
                         "#54209B",
@@ -742,7 +742,7 @@
                 },
                 {
                     "id": 79037,
-                    "name": "",
+                    "name": "西部魔影 古拉加斯 谦卑",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79037.png",
                     "colors": [
                         "#27211C",
@@ -753,7 +753,7 @@
                 },
                 {
                     "id": 79038,
-                    "name": "",
+                    "name": "西部魔影 古拉加斯 正午幻日",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79038.png",
                     "colors": [
                         "#A8BFF1",

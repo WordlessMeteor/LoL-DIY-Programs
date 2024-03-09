@@ -14123,7 +14123,7 @@
     },
     {
         "itemInstanceId": "9ffde8eb-9e7d-4300-84f8-7356d6d90ead",
-        "itemTypeId": "2cad5e9d-183e-45ae-b787-eccb1e9efda2",
+        "itemTypeId": "a6bdfd45-048a-4ab7-859e-f87abe7efab5",
         "name": "神来之笔",
         "starLevel": 1,
         "rarity": "Epic",
@@ -14943,7 +14943,7 @@
     {
         "itemInstanceId": "d843ddc2-3a07-4bea-a45c-0ef748fe63d2",
         "itemTypeId": "a6bdfd45-048a-4ab7-859e-f87abe7efab5",
-        "name": "玉剑传说小小莫甘娜  灵魂镣铐",
+        "name": "玉剑传说  灵魂镣铐",
         "starLevel": 1,
         "rarity": "Epic",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_Chibi_Immortal_Morgana.png",
@@ -15213,7 +15213,7 @@
     {
         "itemInstanceId": "385e5460-856e-4de7-92a0-628f203887f0",
         "itemTypeId": "a6bdfd45-048a-4ab7-859e-f87abe7efab5",
-        "name": "小小莫甘娜 灵魂镣铐",
+        "name": "灵魂镣铐",
         "starLevel": 1,
         "rarity": "Epic",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_Chibi_BaseMorgana.png",
@@ -15419,7 +15419,7 @@
     },
     {
         "itemInstanceId": "65450b91-0a41-4dde-bc03-b01e8a3c39d0",
-        "itemTypeId": "2cad5e9d-183e-45ae-b787-eccb1e9efda2",
+        "itemTypeId": "a6bdfd45-048a-4ab7-859e-f87abe7efab5",
         "name": "桃花扇",
         "starLevel": 1,
         "rarity": "Epic",
