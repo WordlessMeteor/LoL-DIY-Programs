@@ -1036,7 +1036,7 @@ async def search_profile(connection):
             elif "errorCode" in info and info["httpStatus"] == 422:
                 print('召唤师名称已变更为拳头ID。请以“{召唤师名称}#{尾标}”的格式输入。\nSummoner name has been replaced with Riot ID. Please input the name in this format: "{gameName}#{tagLine}", e.g. "%s#%s".' %(current_info["gameName"], current_info["tagLine"]))
             elif "accountId" in info:
-                displayName = str(info["summonerId"]) if info["unnamed"] else (info["displayName"] if info["displayName"] else info["gameName"]) #用于文件名命名（For use of file naming）
+                displayName = info["displayName"] if info["displayName"] else (info["gameName"] if info["gameName"] else str(info["summonerId"])) #用于文件名命名（For use of file naming）
                 current_puuid = info["puuid"] #用于核验对局是否包含该召唤师。此外，还用于扫描模式从对局的所有玩家信息中定位到该玩家（For use of checking whether the searched matches include this summoner. In addition, it's used for localization of this player from all players in a match in "scan" mode）
                 #下面准备一些数据资源（The following code prepare data resources）
                 gamemode = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
@@ -1071,11 +1071,11 @@ async def search_profile(connection):
                         pass
                 region = client_info["--region"]
                 if region == "TENCENT":
-                    folder = "召唤师信息（Summoner Information）\\" + "国服（TENCENT）" + "\\" + platform_TENCENT[client_info["--rso_platform_id"]] + "\\" + ("0. 新玩家\\" + displayName if info["unnamed"] else displayName)
+                    folder = "召唤师信息（Summoner Information）\\" + "国服（TENCENT）" + "\\" + platform_TENCENT[client_info["--rso_platform_id"]] + "\\" + (displayName if info["displayName"] or info["gameName"] else "0. 新玩家\\" + displayName)
                 elif region == "GARENA":
-                    folder = "召唤师信息（Summoner Information）\\" + "竞舞（GARENA）" + "\\" + platform_GARENA[region] + "\\" + ("0. 新玩家\\" + displayName if info["unnamed"] else displayName)
+                    folder = "召唤师信息（Summoner Information）\\" + "竞舞（GARENA）" + "\\" + platform_GARENA[region] + "\\" + (displayName if info["displayName"] or info["gameName"] else "0. 新玩家\\" + displayName)
                 else: #拳头公司与竞舞娱乐公司的合同于2023年1月终止（In January 2023, Riot Games ended its contract with Garena）
-                    folder = "召唤师信息（Summoner Information）\\" + "外服（RIOT）" + "\\" + (platform_RIOT | platform_GARENA)[region] + "\\" + ("0. New Player\\" + displayName if info["unnamed"] else displayName)
+                    folder = "召唤师信息（Summoner Information）\\" + "外服（RIOT）" + "\\" + (platform_RIOT | platform_GARENA)[region] + "\\" + (displayName if info["displayName"] or info["gameName"] else "0. New Player\\" + displayName)
                 
                 json1name = "Summoner Profile - " + displayName + ".json"
                 while True:

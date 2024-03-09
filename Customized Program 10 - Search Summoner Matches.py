@@ -112,7 +112,7 @@ async def search_summoner_online(connection):
             elif "errorCode" in info and info["httpStatus"] == 422:
                 print('召唤师名称已变更为拳头ID。请以“{召唤师名称}#{尾标}”的格式输入。\nSummoner name has been replaced with Riot ID. Please input the name in this format: "{gameName}#{tagLine}", e.g. "%s#%s".' %(current_info["gameName"], current_info["tagLine"]))
             elif "accountId" in info:
-                displayName = str(info["summonerId"]) if info["unnamed"] else (info["displayName"] if info["displayName"] else info["gameName"]) #用于文件名命名（For use of file naming）
+                displayName = info["displayName"] if info["displayName"] else (info["gameName"] if info["gameName"] else str(info["summonerId"])) #用于文件名命名（For use of file naming）
                 puuid = info["puuid"]
                 switch_summoner = False #控制是否返回到输入召唤师名称的步骤（Controls returning to the step that requires inputting summoner name）
                 #设置输出信息中关于召唤师大区的描述（Adjust the description of the current server in printed information）
@@ -126,13 +126,13 @@ async def search_summoner_online(connection):
                 region = client_info["--region"]
                 if region == "TENCENT":
                     platform = platform_TENCENT[client_info["--rso_platform_id"]]
-                    folder = "召唤师信息（Summoner Information）\\" + "国服（TENCENT）" + "\\" + platform_TENCENT[client_info["--rso_platform_id"]]["zh_CN"] + "（" + platform_TENCENT[client_info["--rso_platform_id"]]["en_US"] + "）" + "\\" + ("0. 新玩家\\" + displayName if info["unnamed"] else displayName)
+                    folder = "召唤师信息（Summoner Information）\\" + "国服（TENCENT）" + "\\" + platform_TENCENT[client_info["--rso_platform_id"]]["zh_CN"] + "（" + platform_TENCENT[client_info["--rso_platform_id"]]["en_US"] + "）" + "\\" + (displayName if info["displayName"] or info["gameName"] else "0. 新玩家\\" + displayName)
                 elif region == "GARENA":
                     platform = platform_GARENA[region]
-                    folder = "召唤师信息（Summoner Information）\\" + "竞舞（GARENA）" + "\\" + platform_GARENA[region]["zh_CN"] + "（" + platform_GARENA[region]["en_US"] + "）" + "\\" + ("0. 新玩家\\" + displayName if info["unnamed"] else displayName)
+                    folder = "召唤师信息（Summoner Information）\\" + "竞舞（GARENA）" + "\\" + platform_GARENA[region]["zh_CN"] + "（" + platform_GARENA[region]["en_US"] + "）" + "\\" + (displayName if info["displayName"] or info["gameName"] else "0. 新玩家\\" + displayName)
                 else:
                     platform = (platform_RIOT | platform_GARENA)[region]
-                    folder = "召唤师信息（Summoner Information）\\" + "外服（RIOT）" + "\\" + (platform_RIOT | platform_GARENA)[region]["zh_CN"] + "（" + (platform_RIOT | platform_GARENA)[region]["en_US"] + "）" + "\\" + ("0. New Player\\" + displayName if info["unnamed"] else displayName)
+                    folder = "召唤师信息（Summoner Information）\\" + "外服（RIOT）" + "\\" + (platform_RIOT | platform_GARENA)[region]["zh_CN"] + "（" + (platform_RIOT | platform_GARENA)[region]["en_US"] + "）" + "\\" + (displayName if info["displayName"] or info["gameName"] else "0. New Player\\" + displayName)
                 message = "正在【在线】查询%s大区召唤师%s（玩家通用唯一识别码：%s）的对局……\n[Online] searching for matches of the summoner %s (puuid: %s) on %s server..." %(platform["zh_CN"], displayName, puuid, displayName, puuid, platform["en_US"]) #这里考虑到当程序异常中断时，再次运行该程序，文件中新行会紧跟上次运行的最后一行，不容易区分。所以在字符串最前面加了一个换行符。但是这样的话，在创建文件时，第一行也会变成空行。用户如果觉得不顺眼，可以直接双击日志文件去掉第一行，这样看着舒服一些（Considering when the program 
                 message_save(message, folder, displayName, "【参数设置】")
                 #从输入获取要查询的对局序号范围（Get matchID range from input）
