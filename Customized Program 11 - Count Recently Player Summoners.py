@@ -1051,7 +1051,7 @@ async def search_recent_players(connection):
                 print('召唤师名称已变更为拳头ID。请以“{召唤师名称}#{尾标}”的格式输入。\nSummoner name has been replaced with Riot ID. Please input the name in this format: "{gameName}#{tagLine}", e.g. "%s#%s".' %(current_info["gameName"], current_info["tagLine"]))
                 continue
             elif "accountId" in info:
-                displayName = info["displayName"] #用于扫描模式定位到某召唤师（Determines the directory which contains the summoner's data）
+                displayName = info["displayName"] if info["displayName"] else info["gameName"] #用于扫描模式定位到某召唤师（Determines the directory which contains the summoner's data）
                 current_puuid = info["puuid"] #用于核验对局是否包含该召唤师。此外，还用于扫描模式从对局的所有玩家信息中定位到该玩家（For use of checking whether the searched matches include this summoner. In addition, it's used for localization of this player from all players in a match in "scan" mode）
                 #下面设置扫描模式的扫描目录（The following code determines the scanning directory for scan mode）
                 riot_client_info = await (await connection.request("GET", "/riotclient/command-line-args")).json()

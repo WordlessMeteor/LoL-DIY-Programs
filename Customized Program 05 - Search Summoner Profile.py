@@ -1036,7 +1036,7 @@ async def search_profile(connection):
             elif "errorCode" in info and info["httpStatus"] == 422:
                 print('召唤师名称已变更为拳头ID。请以“{召唤师名称}#{尾标}”的格式输入。\nSummoner name has been replaced with Riot ID. Please input the name in this format: "{gameName}#{tagLine}", e.g. "%s#%s".' %(current_info["gameName"], current_info["tagLine"]))
             elif "accountId" in info:
-                displayName = info["displayName"] #用于文件名命名（For use of file naming）
+                displayName = info["displayName"] if info["displayName"] else info["gameName"] #用于文件名命名（For use of file naming）
                 current_puuid = info["puuid"] #用于核验对局是否包含该召唤师。此外，还用于扫描模式从对局的所有玩家信息中定位到该玩家（For use of checking whether the searched matches include this summoner. In addition, it's used for localization of this player from all players in a match in "scan" mode）
                 #下面准备一些数据资源（The following code prepare data resources）
                 gamemode = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()

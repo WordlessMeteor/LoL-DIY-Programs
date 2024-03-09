@@ -112,7 +112,7 @@ async def search_summoner_online(connection):
             elif "errorCode" in info and info["httpStatus"] == 422:
                 print('召唤师名称已变更为拳头ID。请以“{召唤师名称}#{尾标}”的格式输入。\nSummoner name has been replaced with Riot ID. Please input the name in this format: "{gameName}#{tagLine}", e.g. "%s#%s".' %(current_info["gameName"], current_info["tagLine"]))
             elif "accountId" in info:
-                displayName = info["displayName"] #用于文件名命名（For use of file naming）
+                displayName = info["displayName"] if info["displayName"] else info["gameName"] #用于文件名命名（For use of file naming）
                 puuid = info["puuid"]
                 switch_summoner = False #控制是否返回到输入召唤师名称的步骤（Controls returning to the step that requires inputting summoner name）
                 #设置输出信息中关于召唤师大区的描述（Adjust the description of the current server in printed information）
