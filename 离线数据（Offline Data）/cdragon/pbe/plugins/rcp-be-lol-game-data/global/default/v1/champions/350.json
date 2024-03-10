@@ -1,0 +1,1453 @@
+{
+    "id": 350,
+    "name": "Yuumi",
+    "alias": "Yuumi",
+    "title": "the Magical Cat",
+    "shortBio": "A magical cat from Bandle City, Yuumi was once the familiar of a yordle enchantress, Norra. When her master mysteriously disappeared, Yuumi became the Keeper of Norra's sentient Book of Thresholds, traveling through portals in its pages to search for her. Yearning for affection, Yuumi seeks friendly companions to partner with on her journey, protecting them with luminous shields and fierce resolve. While Book strives to keep her on task, Yuumi is often drawn to worldly comforts, such as naps and fish. In the end, however, she always returns to her quest to find her friend.",
+    "tacticalInfo": {
+        "style": 10,
+        "difficulty": 1,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 1,
+        "durability": 1,
+        "crowdControl": 1,
+        "mobility": 3,
+        "utility": 3
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/350.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/350.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/350.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/350.ogg",
+    "roles": [
+        "support",
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 350000,
+            "isBase": true,
+            "name": "Yuumi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/350/350000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/350/350000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/350/350000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yuumi/Skins/Base/YuumiLoadscreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 350001,
+            "isBase": false,
+            "name": "Battle Principal Yuumi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/350/350001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/350/350001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/350/350001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yuumi/Skins/Skin01/YuumiLoadscreen_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Yuumi/Skins/Skin01/YuumiLoadscreen_1_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350001.png",
+            "chromas": [
+                {
+                    "id": 350002,
+                    "name": "Battle Principal Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive during 2019."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 350003,
+                    "name": "Battle Principal Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350003.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 350004,
+                    "name": "Battle Principal Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350004.png",
+                    "colors": [
+                        "#85827F",
+                        "#85827F"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 350005,
+                    "name": "Battle Principal Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350005.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 350006,
+                    "name": "Battle Principal Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350006.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 350007,
+                    "name": "Battle Principal Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350007.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 350008,
+                    "name": "Battle Principal Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350008.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 350009,
+                    "name": "Battle Principal Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350009.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 350010,
+                    "name": "Battle Principal Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350010.png",
+                    "colors": [
+                        "#111112",
+                        "#EAF1F4"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "Loot exclusive gained during the 2019 Trials event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 113
+                }
+            ],
+            "skinAugments": null,
+            "description": "Following the disappearance of two principals, Yuumi has stepped in as the acting head of Durandal Academy until either individual can be found and re-instated. As a powerful channeler of magic, she uses the academic registry book as a focus object to generate apocalyptic levels of energy… often while perched on a terrified student's head."
+        },
+        {
+            "id": 350011,
+            "isBase": false,
+            "name": "Heartseeker Yuumi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/350/350011.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/350/350011.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/350/350011.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yuumi/Skins/Skin11/YuumiLoadScreen_11.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350011.png",
+            "chromas": [
+                {
+                    "id": 350012,
+                    "name": "Heartseeker Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350012.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2020."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 350013,
+                    "name": "Heartseeker Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350013.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 350014,
+                    "name": "Heartseeker Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350014.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 350015,
+                    "name": "Heartseeker Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350015.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 350016,
+                    "name": "Heartseeker Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350016.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 350017,
+                    "name": "Heartseeker Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350017.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 350018,
+                    "name": "Heartseeker Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350018.png",
+                    "colors": [
+                        "#85827F",
+                        "#85827F"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 64
+                }
+            ],
+            "skinAugments": null,
+            "description": "Yuumi's always looking for what cats love: a belly full of fish and a warm lap to curl up on. But with the romantic mood captivating even Book, Yuumi knows the only thing to set her heart purring will be a very precise number of pets."
+        },
+        {
+            "id": 350019,
+            "isBase": false,
+            "name": "Yuubee",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/350/350019.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/350/350019.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/350/350019.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yuumi/Skins/Skin19/YuumiLoadScreen_19.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350019.png",
+            "chromas": [
+                {
+                    "id": 350020,
+                    "name": "Yuubee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350020.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2021."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 350021,
+                    "name": "Yuubee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350021.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 350022,
+                    "name": "Yuubee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350022.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 350023,
+                    "name": "Yuubee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350023.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 350024,
+                    "name": "Yuubee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350024.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 350025,
+                    "name": "Yuubee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350025.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 350026,
+                    "name": "Yuubee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350026.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 350027,
+                    "name": "Yuubee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350027.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 143
+                }
+            ],
+            "skinAugments": null,
+            "description": "Hey… there's a bee on you."
+        },
+        {
+            "id": 350028,
+            "isBase": false,
+            "name": "Bewitching Yuumi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/350/350028.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/350/350028.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/350/350028.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yuumi/Skins/Skin28/YuumiLoadScreen_28.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Yuumi/Skins/Skin28/YuumiLoadscreen_28_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350028.png",
+            "chromas": [
+                {
+                    "id": 350029,
+                    "name": "Bewitching Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350029.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2021."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 350030,
+                    "name": "Bewitching Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350030.png",
+                    "colors": [
+                        "#DED6B0",
+                        "#DED6B0"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 350031,
+                    "name": "Bewitching Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350031.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 350032,
+                    "name": "Bewitching Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350032.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 350033,
+                    "name": "Bewitching Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350033.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 350034,
+                    "name": "Bewitching Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350034.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 350035,
+                    "name": "Bewitching Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350035.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 350036,
+                    "name": "Bewitching Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350036.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 172
+                }
+            ],
+            "skinAugments": null,
+            "description": "Yuumi pierces the protective bubble surrounding her prey, readying a pounce as it plops to the ground. She ponders for a moment: if a pumpkin-cat eats a pumpkin-fish, is that too much pumpkin? Is there even such a thing as too much pumpkin?"
+        },
+        {
+            "id": 350037,
+            "isBase": false,
+            "name": "EDG Yuumi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/350/350037.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/350/350037.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/350/350037.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yuumi/Skins/Skin37/YuumiLoadScreen_37.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Yuumi/Skins/Skin37/YuumiLoadscreen_37_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350037.png",
+            "chromas": [
+                {
+                    "id": 350038,
+                    "name": "EDG Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350038.png",
+                    "colors": [
+                        "#131521",
+                        "#9E1517"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive during MSI 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 350048,
+                    "name": "EDG Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350048.png",
+                    "colors": [
+                        "#FF1515",
+                        "#E8CD6B"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 158
+                }
+            ],
+            "skinAugments": null,
+            "description": "Honoring Meiko's winning performance as Yuumi during the 2021 World Championship."
+        },
+        {
+            "id": 350039,
+            "isBase": false,
+            "name": "Shiba Yuumi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/350/350039.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/350/350039.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/350/350039.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yuumi/Skins/Skin39/YuumiLoadScreen_39.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350039.png",
+            "chromas": [
+                {
+                    "id": 350040,
+                    "name": "Shiba Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350040.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 350041,
+                    "name": "Shiba Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350041.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 350042,
+                    "name": "Shiba Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350042.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 350043,
+                    "name": "Shiba Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350043.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 350044,
+                    "name": "Shiba Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350044.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 350045,
+                    "name": "Shiba Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350045.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 350046,
+                    "name": "Shiba Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350046.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 350047,
+                    "name": "Shiba Yuumi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/350/350047.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 98
+                }
+            ],
+            "skinAugments": null,
+            "description": "Something about this smol, dainty dog doesn't feel right... Wait, did it just hiss at the audience?"
+        }
+    ],
+    "passive": {
+        "name": "Feline Friendship",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Yuumi/HUD/Icons2D/YuumiP2.png",
+        "abilityVideoPath": "champion-abilities/0350/ability_0350_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0350/ability_0350_P1.jpg",
+        "description": "Periodically, when Yuumi strikes a champion with an attack or ability, she restores health to herself and the next ally she Attaches to.<br><br>While Attached, Yuumi generates a special bond with her allies. The ally with the strongest bond enhances Yuumi's abilities while she is Attached to them."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Prowling Projectile",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Yuumi/HUD/Icons2D/YuumiQ.png",
+            "abilityVideoPath": "champion-abilities/0350/ability_0350_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0350/ability_0350_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Yuumi fires a missile, dealing damage and slowing first target hit. It deals bonus damage and an enchanced slow if it takes at least 1.35 seconds to get to its target. While on her Best Friend, the slow is always enhanced and grants bonus On-Hit damage to her ally.<br><br>While Attached, the missile can be controlled with your cursor for a brief period.",
+            "dynamicDescription": "Yuumi summons an errant missile that deals <magicDamage>@TotalMissileDamage@ magic damage</magicDamage> to the first enemy and <status>Slows</status> the target for @SlowAmount@%.<br><br>If cast while <keywordMajor>Attached</keywordMajor>, Yuumi can control the missile using her mouse for a short period before it accelerates in a straight line. The accelerated missile deals <magicDamage>@TotalMissileDamageEmpowered@ magic damage</magicDamage> and <status>Slows</status> the target for @EmpoweredSlowAmount@% for @EmpoweredSlowDuration@ seconds, instead.<br><br><keywordMajor>Best Friend Bonus:</keywordMajor> <spellName>Prowling Projectile's</spellName> <status>Slow</status> will always be enhanced and hitting an enemy champion also grants them <magicDamage>@OnHitDamageCalc@ magic damage</magicDamage> <OnHit>On-Hit %i:OnHit%</OnHit> for @BuffDuration@ seconds.<br><br><rules>The bonus On-Hit damage can be increased by @AllyCritChanceMaxAmp*100@% based her ally's Critical Strike Chance.</rules>@SpellModifierDescriptionAppend@",
+            "range": [
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                60.0000,
+                70.0000,
+                80.0000,
+                90.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                6.5000,
+                6.5000,
+                6.5000,
+                6.5000,
+                6.5000,
+                6.5000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "You and Me!",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Yuumi/HUD/Icons2D/YuumiW.png",
+            "abilityVideoPath": "champion-abilities/0350/ability_0350_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0350/ability_0350_W1.jpg",
+            "cost": "No Cost",
+            "cooldown": "@AttachCooldown@s Cooldown",
+            "description": "Yuumi dashes to a target ally, becoming untargetable from everything except turrets. While on her Best Friend, she gains Heal & Shield Power and grants her Ally On-Hit healing.",
+            "dynamicDescription": "<spellPassive>Passive:</spellPassive> While on her <keywordMajor>Best Friend</keywordMajor>, Yuumi gains an additional <keywordMajor>@HealAndShieldPower*100@% Heal & Shield Power</keywordMajor> and her ally also restores <healing>@HealthOnHit@ health</healing> <OnHit>On-Hit %i:OnHit%</OnHit>.<br><br><spellActive>Active:</spellActive> Yuumi dashes to an ally champion and <keywordMajor>Attaches</keywordMajor> to them. While Yuumi is <keywordMajor>Attached</keywordMajor>, she follows her partner's movement and is Untargetable except from towers.<br><br><status>Immobilizing</status> effects on Yuumi place this Ability on a @CCAttachLockout@ second Cooldown.@SpellModifierDescriptionAppend@",
+            "range": [
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Zoomies",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Yuumi/HUD/Icons2D/YuumiP.png",
+            "abilityVideoPath": "champion-abilities/0350/ability_0350_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0350/ability_0350_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Shields Yuumi and boosts Move Speed and Attack Speed. If she's attached, she passes it to her ally instead.<br>",
+            "dynamicDescription": "Yuumi shields herself, blocking <shield>@TotalShielding@ damage</shield> and gains <attackSpeed>@TotalAttackSpeed@% Attack Speed</attackSpeed> for @MSDuration@ seconds. While the shield persists, the target also gains <speed>@MSAmount@% Move Speed</speed>.<br><br>If Yuumi is <keywordMajor>Attached</keywordMajor>, this Ability affects her ally instead and also restores <magicDamage>@ManaRestore@ Mana</magicDamage> to them, increased by up to @MaxManaPercIncrease*100@% based on the target's missing Mana.@SpellModifierDescriptionAppend@",
+            "range": [
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000
+            ],
+            "costCoefficients": [
+                80.0000,
+                90.0000,
+                100.0000,
+                110.0000,
+                120.0000,
+                130.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                11.5000,
+                11.0000,
+                10.5000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    18.0000,
+                    17.0000,
+                    16.0000,
+                    15.0000,
+                    14.0000,
+                    13.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Final Chapter",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Yuumi/HUD/Icons2D/YuumiR.png",
+            "abilityVideoPath": "champion-abilities/0350/ability_0350_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0350/ability_0350_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Yuumi channels five waves that damage enemies and heal allies. Yuumi can move, attach, and cast Zoomies! while channeling. While on her Best Friend, this spell also follows her mouse.",
+            "dynamicDescription": "Yuumi channels for @UltDuration@ seconds, launching @NumberOfWaves@ magical waves affecting both teams. If initially cast while <keywordMajor>Attached</keywordMajor>, Yuumi can steer the waves to follow her mouse.<br><br>Enemies struck are dealt <magicDamage>@TotalMissileDamage@ magic damage</magicDamage> and <status>Slowed</status> by @BaseSlow*-100@% for @CCDuration@ seconds, increased by @BonusSlowPerWave*-100@% per wave hit.<br><br>Ally champions are healed for <healing>@TotalHealPerWave@ health</healing> per wave. Excess healing is converted to a <shield>Shield</shield> instead.<br><br><keywordMajor>Best Friend Bonus:</keywordMajor> For her <keywordMajor>Best Friend</keywordMajor>, the heal is increased to <healing>@EnhancedHealPerWave@ health</healing>.<br><br><rules>Casting <spellName>You and Me!</spellName> will locks the waves in the curret direction.<br>Yuumi can move and cast <spellName>Zoomies</spellName> while channeling.</rules><br>@SpellModifierDescriptionAppend@",
+            "range": [
+                1100.0000,
+                1100.0000,
+                1100.0000,
+                1100.0000,
+                1100.0000,
+                1100.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                110.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0600,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

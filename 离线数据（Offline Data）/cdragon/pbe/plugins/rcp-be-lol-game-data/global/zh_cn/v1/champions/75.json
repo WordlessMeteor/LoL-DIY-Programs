@@ -1,0 +1,1616 @@
+{
+    "id": 75,
+    "name": "沙漠死神",
+    "alias": "Nasus",
+    "title": "内瑟斯",
+    "shortBio": "内瑟斯是一位庄严威武的犬首人身飞升者，在古代恕瑞玛帝国时期，是被沙漠子民敬仰为半神的英雄人物。作为知识的守护者和无双的战术家，他用高绝的智慧引导着古代恕瑞玛帝国在数百年间走向了繁荣伟大。帝国陨落以后，他开始了自我放逐，成为了人们口中缥缈的传说。现在，恕瑞玛古城已经再一次崛起，他也随之回归，并决心绝不让它再度陨落。",
+    "tacticalInfo": {
+        "style": 3,
+        "difficulty": 1,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 3,
+        "crowdControl": 2,
+        "mobility": 1,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/75.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/75.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/75.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/75.ogg",
+    "roles": [
+        "fighter",
+        "tank"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 75000,
+            "isBase": true,
+            "name": "沙漠死神",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/75/75000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/75/75000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/75/75000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nasus/Skins/Base/NasusLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 75001,
+            "isBase": false,
+            "name": "星空之门 内瑟斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/75/75001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/75/75001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/75/75001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nasus/Skins/Skin01/NasusLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Emperor",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/32.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/32.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 3,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/3_large.png",
+            "skinLines": [
+                {
+                    "id": 136
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 75002,
+            "isBase": false,
+            "name": "法老王朝 内瑟斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/75/75002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/75/75002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/75/75002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nasus/Skins/Skin02/NasusLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 67
+                }
+            ],
+            "skinAugments": null,
+            "description": "北方之土的不朽兽神，内瑟斯漫步在无垠的大沙漠中，寻找着他那曾经绿意盎然的王国。他召唤了浩瀚的沙暴来掩盖行踪，隐藏他在这个世界上的存在。"
+        },
+        {
+            "id": 75003,
+            "isBase": false,
+            "name": "死亡骑士 内瑟斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/75/75003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/75/75003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/75/75003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nasus/Skins/Skin03/NasusLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75003.png",
+            "chromas": [
+                {
+                    "id": 75007,
+                    "name": "死亡骑士 内瑟斯 鲜血使者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75007.png",
+                    "colors": [
+                        "#6F1819",
+                        "#252C4C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 75008,
+                    "name": "死亡骑士 内瑟斯 疫病使者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75008.png",
+                    "colors": [
+                        "#388F25",
+                        "#3E2245"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 75009,
+                    "name": "死亡骑士 内瑟斯 霜寒使者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75009.png",
+                    "colors": [
+                        "#4AB8C2",
+                        "#535381"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Emperor",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/32.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/32.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 3,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/3_large.png",
+            "skinLines": [
+                {
+                    "id": 123
+                }
+            ],
+            "skinAugments": null,
+            "description": "死亡骑士内瑟斯负责看守着他主人在迷宫般的寝陵中深藏的禁忌文书。相传其中藏着死亡骑士之陨落的秘密，但目前还没有生灵能够验证这到底是真相还是无稽之谈。"
+        },
+        {
+            "id": 75004,
+            "isBase": false,
+            "name": "警用试作体K-9 内瑟斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/75/75004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/75/75004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/75/75004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nasus/Skins/Skin04/NasusLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 37
+                }
+            ],
+            "skinAugments": null,
+            "description": "获取方式：在2011年或2012年与一位RIOT员工碰面，或是参加一个官方的RIOT事件。"
+        },
+        {
+            "id": 75005,
+            "isBase": false,
+            "name": "炼狱魔犬 内瑟斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/75/75005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/75/75005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/75/75005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nasus/Skins/Skin05/NasusLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 86
+                }
+            ],
+            "skinAugments": null,
+            "description": "更大的地狱火在某种程度上来说会比他们的小型对等物更加残酷和可憎，而内瑟斯也不例外。一个三头怪物从遥远、恐怖的深渊中升起，他仅靠触摸即可让生命衰老……然后将它烧掉。"
+        },
+        {
+            "id": 75006,
+            "isBase": false,
+            "name": "单身贵族 内瑟斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/75/75006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/75/75006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/75/75006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nasus/Skins/Skin06/NasusLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 102
+                }
+            ],
+            "skinAugments": null,
+            "description": "在上小学时，内瑟斯被告知老狗学不了新把戏。现在，在他长大成为了一名事业有成的政治家、画家和作曲家的岁月里，他想知道那句老话中是否存在真理。毕竟，他似乎不能让他的室内管弦乐队听从他的指示。"
+        },
+        {
+            "id": 75010,
+            "isBase": false,
+            "name": "创世之神 内瑟斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/75/75010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/75/75010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/75/75010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nasus/Skins/Skin10/NasusLoadscreen_10.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 29
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 75011,
+            "isBase": false,
+            "name": "北辰之威 内瑟斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/75/75011.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/75/75011.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/75/75011.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nasus/Skins/Skin11/NasusLoadscreen_11.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Nasus/Skins/Skin11/NasusLoadscreen_11_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75011.png",
+            "chromas": [
+                {
+                    "id": 75012,
+                    "name": "北辰之威 内瑟斯 天枢",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75012.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "ID",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 75013,
+                    "name": "北辰之威 内瑟斯 天璇",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75013.png",
+                    "colors": [
+                        "#9F4A25",
+                        "#9F4A25"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 75014,
+                    "name": "北辰之威 内瑟斯 天玑",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75014.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 75015,
+                    "name": "北辰之威 内瑟斯 天权",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75015.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Year of the Dog",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/47.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/47.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 55
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为送给年幼的春晖神女的礼物，内瑟斯一直在她身边陪伴她长大，保卫天界免受远古黑暗的侵袭。内瑟斯沉静内敛又强大，他远眺北方，将所有威胁到天界的敌人毫不留情的消灭殆尽。"
+        },
+        {
+            "id": 75016,
+            "isBase": false,
+            "name": "战地机甲 内瑟斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/75/75016.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/75/75016.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/75/75016.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nasus/Skins/Skin16/NasusLoadScreen_16.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75016.png",
+            "chromas": [
+                {
+                    "id": 75017,
+                    "name": "战地机甲 内瑟斯 赤红炼狱",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75017.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 75018,
+                    "name": "战地机甲 内瑟斯 颤栗黄昏",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75018.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75019,
+                    "name": "战地机甲 内瑟斯 深度毁伤",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75019.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75020,
+                    "name": "战地机甲 内瑟斯 静默声波",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75020.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75021,
+                    "name": "战地机甲 内瑟斯 诡秘信号",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75021.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75022,
+                    "name": "战地机甲 内瑟斯 肆虐风暴",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75022.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75023,
+                    "name": "战地机甲 内瑟斯 苍白杀戮",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75023.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75024,
+                    "name": "战地机甲 内瑟斯 午夜梦魇",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75024.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 25
+                }
+            ],
+            "skinAugments": null,
+            "description": "由维克托打造的最新怪物，战地机甲内瑟斯部队专攻对高优先级目标的针对性检索。在它们搜寻猎物的过程中，它们的机器被编入了学习和适应的程序，以提升它们的破坏能力，并授权它们清除一切挡道之物。"
+        },
+        {
+            "id": 75025,
+            "isBase": false,
+            "name": "太空律动 “狗头” 内瑟斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/75/75025.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/75/75025.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/75/75025.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nasus/Skins/Skin25/NasusLoadScreen_25.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Nasus/Skins/Skin25/NasusLoadscreen_25_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75025.png",
+            "chromas": [
+                {
+                    "id": 75026,
+                    "name": "“狗头” 内瑟斯 内有恶犬“橘宝”号",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75026.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 75027,
+                    "name": "“狗头” 内瑟斯 内有恶犬“大黄”号",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75027.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75028,
+                    "name": "“狗头” 内瑟斯 内有恶犬“萌萌”号",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75028.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 75029,
+                    "name": "“狗头” 内瑟斯 内有恶犬“大海”号",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75029.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75030,
+                    "name": "“狗头” 内瑟斯 内有恶犬“紫龙王”号",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75030.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75031,
+                    "name": "“狗头” 内瑟斯 内有恶犬“花菜”号",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75031.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75032,
+                    "name": "“狗头” 内瑟斯 内有恶犬“黑金刚”号",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75032.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75033,
+                    "name": "“狗头” 内瑟斯 内有恶犬“小能手”号",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75033.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75034,
+                    "name": "“狗头” 内瑟斯 内有恶犬“歌神”号",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75034.png",
+                    "colors": [
+                        "#9DFFEF",
+                        "#AA55FF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在太空律动(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 144
+                }
+            ],
+            "skinAugments": null,
+            "description": "内瑟斯是一个著名的DJ（唱片主持人）、乐库馆长、以及汪星的领导者，曾被丽桑卓奴役——没收并隐藏了汪星人们最律动的那些唱片，来使它们再也不被听到。而现在，随着他敞开心扉接受迪斯科之力，他开始带领汪星人们反抗那对致命的冲击伞兵——布里和里茨。"
+        },
+        {
+            "id": 75035,
+            "isBase": false,
+            "name": "海珀利安小队 S02-阿努比斯 内瑟斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/75/75035.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/75/75035.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/75/75035.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nasus/Skins/Skin35/NasusLoadScreen_35.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Nasus/Skins/Skin35/NasusLoadscreen_35_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75035.png",
+            "chromas": [
+                {
+                    "id": 75036,
+                    "name": "海珀利安小队 S02-阿努比斯 内瑟斯 赤红突袭",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75036.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 75037,
+                    "name": "海珀利安小队 S02-阿努比斯 内瑟斯 神佑先驱",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75037.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75038,
+                    "name": "海珀利安小队 S02-阿努比斯 内瑟斯 冰封预言",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75038.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75039,
+                    "name": "海珀利安小队 S02-阿努比斯 内瑟斯 神圣玫瑰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75039.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 75040,
+                    "name": "海珀利安小队 S02-阿努比斯 内瑟斯 公正天神",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75040.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75041,
+                    "name": "海珀利安小队 S02-阿努比斯 内瑟斯 紫色长剑",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75041.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75042,
+                    "name": "海珀利安小队 S02-阿努比斯 内瑟斯 不朽巨蛇",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75042.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75043,
+                    "name": "海珀利安小队 S02-阿努比斯 内瑟斯 磐石权杖",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75043.png",
+                    "colors": [
+                        "#85827F",
+                        "#85827F"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75044,
+                    "name": "海珀利安小队 S02-阿努比斯 内瑟斯 暗夜王牌",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75044.png",
+                    "colors": [
+                        "#FF70BA",
+                        "#464646"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在钢铁瓦尔基里(2022)事件期间作为战利品专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 65
+                }
+            ],
+            "skinAugments": null,
+            "description": "内瑟斯是“海珀利安”强袭小队的情报官。他的战斗服“S02-阿努比斯”是一种新型的动力装甲，可提供更高的耐久度、能量虹吸动力电池以及用于处理关键任务信息的深度分析技术。他会看到“海珀利安”取得成功；如果他们没有成功，就说不准离群的战斗服机师们会造成什么样的破坏了。"
+        },
+        {
+            "id": 75045,
+            "isBase": false,
+            "name": "黑夜使者 内瑟斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/75/75045.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/75/75045.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/75/75045.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nasus/Skins/Skin45/NasusLoadScreen_45.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75045.png",
+            "chromas": [
+                {
+                    "id": 75046,
+                    "name": "黑夜使者 内瑟斯 血夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75046.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 75047,
+                    "name": "黑夜使者 内瑟斯 森夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75047.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75048,
+                    "name": "黑夜使者 内瑟斯 邪夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75048.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75049,
+                    "name": "黑夜使者 内瑟斯 夕夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75049.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 75050,
+                    "name": "黑夜使者 内瑟斯 寒夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75050.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75051,
+                    "name": "黑夜使者 内瑟斯 幻夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75051.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75052,
+                    "name": "黑夜使者 内瑟斯 宁夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75052.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 75053,
+                    "name": "黑夜使者 内瑟斯 虹夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/75/75053.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 193
+                }
+            ],
+            "skinAugments": null,
+            "description": "内瑟斯与他的兄弟雷克顿永远联系在一起，不仅仅是因为他们在战斗中给彼此留下的伤疤，还因为他获得的洞察力。以前，他满足于无缘无故地追求混沌，但现在，他喜欢寻找弱点并对其痛击以造成彻底的破坏。大“果”之“因”。"
+        }
+    ],
+    "passive": {
+        "name": "吞噬灵魂",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Nasus/HUD/Icons2D/Nasus_Passive.png",
+        "abilityVideoPath": "champion-abilities/0075/ability_0075_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0075/ability_0075_P1.jpg",
+        "description": "内瑟斯吸取敌人的生命能量，从而获得生命偷取加成。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "汲魂痛击",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Nasus/HUD/Icons2D/Nasus_Q.png",
+            "abilityVideoPath": "champion-abilities/0075/ability_0075_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0075/ability_0075_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "内瑟斯对敌人施放汲魂痛击造成伤害，如果敌人死于汲魂痛击，则永久增加下次汲魂痛击的伤害。",
+            "dynamicDescription": "内瑟斯的下次攻击造成额外的<physicalDamage>@TotalDamage@物理伤害</physicalDamage>。用这个攻击击杀一名敌人后，会使其伤害永久提升@Effect2Amount@，击杀英雄、大型小兵和大型野怪的伤害提升为@Effect4Amount@。<br><br><rules>这个技能会在造成伤害时触发技能特效。</rules>@SpellModifierDescriptionAppend@",
+            "range": [
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000
+            ],
+            "costCoefficients": [
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000
+            ],
+            "cooldownCoefficients": [
+                7.5000,
+                6.5000,
+                5.5000,
+                4.5000,
+                3.5000,
+                2.5000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 1.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    10.0000,
+                    30.0000,
+                    50.0000,
+                    70.0000,
+                    90.0000,
+                    110.0000,
+                    130.0000
+                ],
+                "Effect2Amount": [
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000
+                ],
+                "Effect3Amount": [
+                    50.0000,
+                    50.0000,
+                    50.0000,
+                    50.0000,
+                    50.0000,
+                    50.0000,
+                    50.0000
+                ],
+                "Effect4Amount": [
+                    12.0000,
+                    12.0000,
+                    12.0000,
+                    12.0000,
+                    12.0000,
+                    12.0000,
+                    12.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "枯萎",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Nasus/HUD/Icons2D/Nasus_W.png",
+            "abilityVideoPath": "champion-abilities/0075/ability_0075_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0075/ability_0075_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "内瑟斯使一名敌方英雄衰老，持续减少其移动速度和攻击速度。",
+            "dynamicDescription": "内瑟斯使一名英雄衰老，使其<status>减速</status>@SlowBase@%，并在@Duration@秒内持续提升至@MaxSlowTooltipOnly@%。目标的<attackSpeed>攻击速度</attackSpeed>也会降低，相当于该<status>减速</status>幅度的@AttackSpeedSlowMult*100@%。@SpellModifierDescriptionAppend@",
+            "range": [
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000
+            ],
+            "costCoefficients": [
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
+            ],
+            "cooldownCoefficients": [
+                15.0000,
+                14.0000,
+                13.0000,
+                12.0000,
+                11.0000,
+                11.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "灵魂烈焰",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Nasus/HUD/Icons2D/Nasus_E.png",
+            "abilityVideoPath": "champion-abilities/0075/ability_0075_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0075/ability_0075_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "内瑟斯在目标区域施放灵魂烈焰，伤害并削弱敌人。",
+            "dynamicDescription": "内瑟斯引发一团灵魂烈焰，造成<magicDamage>@InitialDamage@魔法伤害</magicDamage>。区域内的敌人们会失去<scaleArmor>@Effect2Amount*-100@%护甲</scaleArmor>并在@Effect3Amount@秒里持续受到共<magicDamage>@TotalDotDamage@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                85.0000,
+                100.0000,
+                115.0000,
+                130.0000,
+                145.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.1200,
+                "coefficient2": 0.6000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    3.0000,
+                    11.0000,
+                    19.0000,
+                    27.0000,
+                    35.0000,
+                    43.0000,
+                    51.0000
+                ],
+                "Effect2Amount": [
+                    -0.2000,
+                    -0.2500,
+                    -0.3000,
+                    -0.3500,
+                    -0.4000,
+                    -0.4500,
+                    -0.5000
+                ],
+                "Effect3Amount": [
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000
+                ],
+                "Effect4Amount": [
+                    15.0000,
+                    55.0000,
+                    95.0000,
+                    135.0000,
+                    175.0000,
+                    215.0000,
+                    255.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "死神降临",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Nasus/HUD/Icons2D/Nasus_R.png",
+            "abilityVideoPath": "champion-abilities/0075/ability_0075_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0075/ability_0075_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "内瑟斯释放一个具有强大魔力的沙漠风暴来侵袭身边的敌人。当风暴肆虐期间，他会获得额外生命值、额外攻击距离，伤害附近的敌人，汲魂痛击会拥有较短冷却时间，并获得额外的护甲和魔法抗性。",
+            "dynamicDescription": "沙漠风暴赐予内瑟斯力量，使他在15秒的持续时间内获得<healing>@BonusHealth@最大生命值</healing>，以及@InitialResistGain@<scaleArmor>护甲</scaleArmor>与<scaleMR>魔法抗性</scaleMR>。<br><br>在风暴肆虐时，他每秒对周围目标造成<magicDamage>@DamageCalc@最大生命值的魔法伤害</magicDamage>，并且<spellName>汲魂痛击</spellName>的冷却时间缩短@QCDR*100@%。@SpellModifierDescriptionAppend@",
+            "range": [
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                100.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0100,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

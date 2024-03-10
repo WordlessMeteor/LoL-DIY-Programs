@@ -1,0 +1,1713 @@
+{
+    "id": 39,
+    "name": "刀锋舞者",
+    "alias": "Irelia",
+    "title": "艾瑞莉娅",
+    "shortBio": "诺克萨斯对艾欧尼亚的占领催生了许多英雄，但没有谁像来自纳沃利的艾瑞莉娅一般令人意外。她将家乡的古老舞艺化为战技，以精心修习的优雅身姿操控着致命的刀阵。在向众人证明了自己的战斗实力后，这位刀锋舞者被推举为反抗军的领袖和首脑，为守卫家园奋斗至今。",
+    "tacticalInfo": {
+        "style": 4,
+        "difficulty": 3,
+        "damageType": "kMixed"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 2,
+        "crowdControl": 2,
+        "mobility": 3,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/39.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/39.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/39.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/39.ogg",
+    "roles": [
+        "fighter",
+        "assassin"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 39000,
+            "isBase": true,
+            "name": "刀锋舞者",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/39/39000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/39/39000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/39/39000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Irelia/Skins/Base/IreliaLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 39001,
+            "isBase": false,
+            "name": "夜刃 艾瑞莉娅",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/39/39001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/39/39001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/39/39001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Irelia/Skins/Skin01/IreliaLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": "为了换得将诺克萨斯驱赶出艾欧尼亚的力量，艾瑞莉娅与邪恶的灵魂做了一笔交易。直到她的人性逐步泯灭的时候，她才知道这个决定的代价有多么惊人…"
+        },
+        {
+            "id": 39002,
+            "isBase": false,
+            "name": "凌云之翼 艾瑞莉娅",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/39/39002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/39/39002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/39/39002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Irelia/Skins/Skin02/IreliaLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 100
+                }
+            ],
+            "skinAugments": null,
+            "description": "只有很少飞行员的作战技巧能像艾瑞莉娅这样卓越，一次次漂亮的闪击战让她在军中的地位节节攀升。在战争结束后，艾瑞莉娅仍然坚持驾驶战斗机，从未让她光辉的战绩蒙尘。"
+        },
+        {
+            "id": 39003,
+            "isBase": false,
+            "name": "夜行义贼 艾瑞莉娅",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/39/39003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/39/39003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/39/39003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Irelia/Skins/Skin03/IreliaLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 111
+                }
+            ],
+            "skinAugments": null,
+            "description": "使用高科技自动追击装置装备的超硬化战刃，艾瑞莉娅矫健的身手还是很难有人能够追上。她身上已经背负了一连串的抢劫与侦查活动的案底。"
+        },
+        {
+            "id": 39004,
+            "isBase": false,
+            "name": "冰霜之刃 艾瑞莉娅",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/39/39004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/39/39004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/39/39004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Irelia/Skins/Skin04/IreliaLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39004.png",
+            "chromas": [
+                {
+                    "id": 39014,
+                    "name": "冰霜之刃 艾瑞莉娅 炫金",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39014.png",
+                    "colors": [
+                        "#FFC948",
+                        "#FFC948"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "   "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Superior Warrior",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/23.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/23.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 47
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为来自神秘大地的冰雪精灵，艾瑞莉娅的行为与她淘气的同胞相比显得非常沉稳。尽管如此，她仍渴望有一天能为魄罗国王尽忠效命。"
+        },
+        {
+            "id": 39005,
+            "isBase": false,
+            "name": "莲花之令 艾瑞莉娅",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/39/39005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/39/39005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/39/39005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Irelia/Skins/Skin05/IreliaLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 60
+                }
+            ],
+            "skinAugments": null,
+            "description": "这一次遇到莲花之令的机会改变了艾瑞莉娅的一生，在她接受了新生与死亡只是一次次轮回的时候，她依然没有忘记作为一名战士的职责，只是现在她清楚的知道，她的灵魂将永生不灭。"
+        },
+        {
+            "id": 39006,
+            "isBase": false,
+            "name": "玉剑传说 舞剑仙",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/39/39006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/39/39006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/39/39006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Irelia/Skins/Skin06/IreliaLoadScreen_6.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Irelia/Skins/Skin06/IreliaLoadScreen_6_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39006.png",
+            "chromas": [
+                {
+                    "id": 39007,
+                    "name": "玉剑传说 舞剑仙 承影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39007.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 39008,
+                    "name": "玉剑传说 舞剑仙 纯钧",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39008.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 39009,
+                    "name": "玉剑传说 舞剑仙 龙渊",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39009.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 39010,
+                    "name": "玉剑传说 舞剑仙 七星",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39010.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 39011,
+                    "name": "玉剑传说 舞剑仙 湛泸",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39011.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 39012,
+                    "name": "玉剑传说 舞剑仙 轩辕",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39012.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 39013,
+                    "name": "玉剑传说 舞剑仙 赤霄",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39013.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 39044,
+                    "name": "玉剑传说 舞剑仙 空翠烟霏",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39044.png",
+                    "colors": [
+                        "#39DBB8",
+                        "#C88A0B"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 4
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "7 Year Celebration",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/50.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/50.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 81
+                }
+            ],
+            "skinAugments": null,
+            "description": "很久以前，半神艾瑞莉娅向一位刚愎自用的龙王发出了挑战，并在他的所有仆从面前当场击败了他。龙王傲慢的讽刺艾瑞莉娅，而她则将龙王的力量封印在了她的神圣刀刃中，以让他在人类中寻找谦逊。 "
+        },
+        {
+            "id": 39015,
+            "isBase": false,
+            "name": "iG 艾瑞莉娅",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/39/39015.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/39/39015.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/39/39015.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Irelia/Skins/Skin15/IreliaLoadScreen_15.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Irelia/Skins/Skin15/IreliaLoadscreen_15_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Champion Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/54.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/54.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 107
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此致敬Duke在2018全球总决赛中使用艾瑞莉娅的夺胜表现。这是Duke的第二个冠军皮肤，上一个冠军皮肤是和SKT一起在2016年全球总决赛上获得的。"
+        },
+        {
+            "id": 39016,
+            "isBase": false,
+            "name": "源计划：正义 艾瑞莉娅",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/39/39016.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/39/39016.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/39/39016.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Irelia/Skins/Skin16/IreliaLoadScreen_16.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Irelia/Skins/Skin16/IreliaLoadscreen_16_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 18
+                }
+            ],
+            "skinAugments": null,
+            "description": "艾瑞莉娅曾是源计划的一件废弃物，被发现于无法荒地中的避难所。她领导着其他像她一样的被遗弃者们，试图在财团刺客、凶残的旧世界技术和广泛的生态崩溃等威胁中存活下去。虽然知道沃里克有能力摧毁她所珍视的一切，但她依然加入了对“城市”的进攻，以一劳永逸地终结源计划。"
+        },
+        {
+            "id": 39017,
+            "isBase": false,
+            "name": "至臻 源计划：正义 艾瑞莉娅",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/39/39017.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/39/39017.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/39/39017.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Irelia/Skins/Skin17/IreliaLoadscreen_17.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 18
+                }
+            ],
+            "skinAugments": null,
+            "description": "有的时候，艾瑞莉娅和其他被遗弃者们会记起他们曾经的身份，那时源计划尚未将他们放逐到这片充满了被风沙侵蚀的、为了财阀的贪婪而建造的纪念碑的荒土。这些记忆正在飞逝，成为一个长期妥协的人格最后闪过的幻景。"
+        },
+        {
+            "id": 39018,
+            "isBase": false,
+            "name": "西部天使 艾瑞莉娅",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/39/39018.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/39/39018.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/39/39018.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Irelia/Skins/Skin18/IreliaLoadScreen_18.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Irelia/Skins/Skin18/IreliaLoadscreen_18_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39018.png",
+            "chromas": [
+                {
+                    "id": 39019,
+                    "name": "西部天使 艾瑞莉娅 贝列之锐",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39019.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 39020,
+                    "name": "西部天使 艾瑞莉娅 布耶尔之疗",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39020.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 39021,
+                    "name": "西部天使 艾瑞莉娅 路西法之逆",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39021.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 39022,
+                    "name": "西部天使 艾瑞莉娅 贝利尔之怠",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39022.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 39023,
+                    "name": "西部天使 艾瑞莉娅 巴耶力之生",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39023.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 39024,
+                    "name": "西部天使 艾瑞莉娅 欧利昂之威",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39024.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 39025,
+                    "name": "西部天使 艾瑞莉娅 瓦沙克之言",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39025.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "艾瑞莉娅是一位从天堂的毁灭中逃脱的堕落天使，现在被不可言喻的黑暗所玷污。她已经躲藏了多年，因此她的归来，与刚刚复活的赛娜一起证明了那些想要看到天国复兴的力量的存在……这股力量也许为的是延续人类的利益，也许是为了它们的最终诅咒。"
+        },
+        {
+            "id": 39026,
+            "isBase": false,
+            "name": "光明哨兵 艾瑞莉娅",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/39/39026.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/39/39026.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/39/39026.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Irelia/Skins/Skin26/IreliaLoadScreen_26.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Irelia/Skins/Skin26/IreliaLoadscreen_26_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39026.png",
+            "chromas": [
+                {
+                    "id": 39027,
+                    "name": "光明哨兵 艾瑞莉娅 帝国抗击者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39027.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 39028,
+                    "name": "光明哨兵 艾瑞莉娅 山峰抗击者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39028.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 39029,
+                    "name": "光明哨兵 艾瑞莉娅 森林抗击者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39029.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 39030,
+                    "name": "光明哨兵 艾瑞莉娅 虚无抗击者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39030.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 39031,
+                    "name": "光明哨兵 艾瑞莉娅 海港抗击者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39031.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 39032,
+                    "name": "光明哨兵 艾瑞莉娅 极地抗击者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39032.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 39033,
+                    "name": "光明哨兵 艾瑞莉娅 灵岛抗击者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39033.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 39034,
+                    "name": "光明哨兵 艾瑞莉娅 丛林抗击者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39034.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 39035,
+                    "name": "光明哨兵 艾瑞莉娅 坚定抗击者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39035.png",
+                    "colors": [
+                        "#080808",
+                        "#8E0A38"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在光明哨兵(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 147
+                }
+            ],
+            "skinAugments": null,
+            "description": "在艾欧尼亚大神庙陷落后，艾瑞莉娅无法在她的家园被黑雾所蹂躏时袖手旁观。由光明哨兵委任，她作为他们的同袍之一来对抗破败之咒：她是一个天生领袖，知道破败军团卡尔玛所带来的威胁，并且将不惜一切代价拯救这位艾欧尼亚之魂。"
+        },
+        {
+            "id": 39036,
+            "isBase": false,
+            "name": "至臻 源计划：正义 艾瑞莉娅 (2022)",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/39/39036.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/39/39036.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/39/39036.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Irelia/Skins/Skin36/IreliaLoadScreen_36.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 18
+                }
+            ],
+            "skinAugments": null,
+            "description": "有的时候，艾瑞莉娅和其他被遗弃者们会记起他们曾经的身份，那时源计划尚未将他们放逐到这片充满了被风沙侵蚀的、为了财阀的贪婪而建造的纪念碑的荒土。这些记忆正在飞逝，成为一个长期妥协的人格最后闪过的幻景。"
+        },
+        {
+            "id": 39037,
+            "isBase": false,
+            "name": "剪纸仙灵 艾瑞莉娅",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/39/39037.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/39/39037.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/39/39037.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Irelia/Skins/Skin37/IreliaLoadScreen_37.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Irelia/Skins/Skin37/IreliaLoadscreen_37_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39037.png",
+            "chromas": [
+                {
+                    "id": 39038,
+                    "name": "剪纸仙灵 艾瑞莉娅 恭喜发财",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39038.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 39039,
+                    "name": "剪纸仙灵 艾瑞莉娅 前程似锦",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39039.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 39040,
+                    "name": "剪纸仙灵 艾瑞莉娅 喜气洋洋",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39040.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 39041,
+                    "name": "剪纸仙灵 艾瑞莉娅 年年有余",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39041.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 39042,
+                    "name": "剪纸仙灵 艾瑞莉娅 阖家安康",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39042.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 39043,
+                    "name": "剪纸仙灵 艾瑞莉娅 金玉满堂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39043.png",
+                    "colors": [
+                        "#181818",
+                        "#DDAA0E"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在春节(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Year of Bunny",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/72.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/72.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 188
+                }
+            ],
+            "skinAugments": null,
+            "description": "艾瑞莉娅一直是《大年兽加里奥》故事中的旁观者，在故事一次又一次被讲述时年复一年地旁观着……直到月之舞者们闯入他们的神话世界的那一天，她才发现她的故事能够发生改变。现在，艾瑞莉娅是时候成为她希望成为的那个英雄并书写自己的命运了。"
+        },
+        {
+            "id": 39045,
+            "isBase": false,
+            "name": "青花瓷 艾瑞莉娅",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/39/39045.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/39/39045.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/39/39045.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Irelia/Skins/Skin45/IreliaLoadScreen_45.SKINS_Irelia_Skin45.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Irelia/Skins/Skin45/IreliaLoadScreen_45_LE.SKINS_Irelia_Skin45.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39045.png",
+            "chromas": [
+                {
+                    "id": 39046,
+                    "name": "青花瓷 艾瑞莉娅 牡丹",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39046.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2024年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 39047,
+                    "name": "青花瓷 艾瑞莉娅 芭蕉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39047.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 39048,
+                    "name": "青花瓷 艾瑞莉娅 天青",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39048.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 39049,
+                    "name": "青花瓷 艾瑞莉娅 釉色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39049.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 39050,
+                    "name": "青花瓷 艾瑞莉娅 含苞",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39050.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 39051,
+                    "name": "青花瓷 艾瑞莉娅 月色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39051.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 39052,
+                    "name": "青花瓷 艾瑞莉娅 墨色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39052.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 39053,
+                    "name": "青花瓷 艾瑞莉娅 金辉玉洁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39053.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 39054,
+                    "name": "青花瓷 艾瑞莉娅 锦鲤",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/39/39054.png",
+                    "colors": [
+                        "#3AC8B1",
+                        "#B0412A"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在春节（2024）活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 154
+                }
+            ],
+            "skinAugments": null,
+            "description": "艾瑞莉娅早在成为生肖神卫之前就致力于保护古代圣物了。大学的第一年，她就在著名的考古研究所实习。这是她短暂一生的亮点……直到她被牛生肖圣物赋予了神话力量，并被卷入了一场长达数百年的战争。与之相比，学业就略显苍白了。"
+        }
+    ],
+    "passive": {
+        "name": "艾欧尼亚热诚",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Irelia/HUD/Icons2D/Irelia_Passive.png",
+        "abilityVideoPath": "champion-abilities/0039/ability_0039_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0039/ability_0039_P1.jpg",
+        "description": "当艾瑞莉娅用技能命中敌人时，她会获得可叠加的攻击速度加成。这个效果在满层时还会为艾瑞莉娅提供攻击附伤。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "利刃冲击",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Irelia/HUD/Icons2D/Irelia_Q.png",
+            "abilityVideoPath": "champion-abilities/0039/ability_0039_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0039/ability_0039_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@f1@秒%i:cooldown%",
+            "description": "艾瑞莉娅向前突进以打击她的目标，并治疗自身。如果目标被标记或死于利刃冲击，那么它的冷却时间会刷新。",
+            "dynamicDescription": "艾瑞莉娅冲向一名敌人，造成<physicalDamage>@ChampionDamage@物理伤害</physicalDamage>并回复自身 <healing>@HealAmount@生命值</healing>。如果敌人阵亡或者<keywordMajor>重心不稳</keywordMajor>，那么会刷新冷却时间。<br><br>对小兵造成@MinionDamage@伤害。@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000
+            ],
+            "cooldownCoefficients": [
+                11.0000,
+                10.0000,
+                9.0000,
+                8.0000,
+                7.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "距破之舞",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Irelia/HUD/Icons2D/Irelia_W.png",
+            "abilityVideoPath": "champion-abilities/0039/ability_0039_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0039/ability_0039_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "艾瑞莉娅开始蓄力以进行一次打击，蓄力越久则打击造成的伤害越多。在蓄力期间她所受的物理伤害降低。",
+            "dynamicDescription": "<charge>开始蓄力：</charge>艾瑞莉娅进入防御姿态，至多持续@MaxDuration@秒，变得无法行动但使所受的物理伤害降低@FinalPhysicalDR@%、所受的魔法伤害降低@FinalMagicDR@%。<br><br><release>释放：</release>艾瑞莉娅放出她的刀锋，造成<physicalDamage>@MinDamageCalc@物理伤害</physicalDamage>，基于蓄力时间至多提升至<physicalDamage>@MaxDamageCalc@</physicalDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                825.0000,
+                825.0000,
+                825.0000,
+                825.0000,
+                825.0000,
+                825.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                75.0000,
+                80.0000,
+                85.0000,
+                90.0000,
+                90.0000
+            ],
+            "cooldownCoefficients": [
+                20.0000,
+                18.0000,
+                16.0000,
+                14.0000,
+                12.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "比翼双刃",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Irelia/HUD/Icons2D/Irelia_E.png",
+            "abilityVideoPath": "champion-abilities/0039/ability_0039_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0039/ability_0039_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "艾瑞莉娅放出两柄相互聚拢的利刃。利刃之间被击中的敌人会受到伤害、晕眩效果并被标记。",
+            "dynamicDescription": "艾瑞莉娅扔出一把刀锋至地上，并且至多可在@BuffDuration@秒里<recast>再次施放</recast>。<br><br><recast>再次施放：</recast>艾瑞莉娅扔出第二把刀锋，随后两把刀锋会朝着彼此飞行，对沿途的敌人造成@StunDuration@秒<status>晕眩</status>和<magicDamage>@TotalDamage@魔法伤害</magicDamage>。英雄和大型野怪会进入<keywordMajor>重心不稳</keywordMajor>状态，持续@MarkDuration@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                850.0000,
+                850.0000,
+                850.0000,
+                850.0000,
+                850.0000,
+                850.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000
+            ],
+            "cooldownCoefficients": [
+                16.0000,
+                15.0000,
+                14.0000,
+                13.0000,
+                12.0000,
+                12.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "先锋之刃",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Irelia/HUD/Icons2D/Irelia_R.png",
+            "abilityVideoPath": "champion-abilities/0039/ability_0039_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0039/ability_0039_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "艾瑞莉娅发射庞大数量的利刃，它们会在命中一名敌方英雄时向外爆开。被利刃命中的敌人会受到伤害并被标记。然后利刃会形成一道刃墙，在敌人穿过时造成伤害、和减速效果。",
+            "dynamicDescription": "艾瑞莉娅发射出一阵刀锋弹幕，造成<magicDamage>@MissileDamage@魔法伤害</magicDamage>并对英雄和大型野怪施加持续@MarkDuration@秒的<keywordMajor>重心不稳</keywordMajor>。刀锋弹幕会在命中第一个英雄后绽放成一个持续@ZoneDuration@秒的牢笼。牢笼造成<magicDamage>@ZoneDamage@魔法伤害</magicDamage>和持续@CCDuration@秒的@SlowAmount@%<status>减速</status>。<br><br><passive>【Q利刃冲击】的基础冷却时间会缩短@CooldownAmount@秒。</passive>@SpellModifierDescriptionAppend@",
+            "range": [
+                950.0000,
+                950.0000,
+                950.0000,
+                950.0000,
+                950.0000,
+                950.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                125.0000,
+                105.0000,
+                85.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    -1.0000,
+                    -1.0000,
+                    -1.0000,
+                    -1.0000,
+                    -1.0000,
+                    -1.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

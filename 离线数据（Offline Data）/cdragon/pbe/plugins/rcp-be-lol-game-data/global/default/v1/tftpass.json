@@ -1,0 +1,142 @@
+[
+    {
+        "passLevels": [
+            {
+                "id": "M0HGPH67",
+                "o": 1.0,
+                "value": {
+                    "imageOverridePath": "/lol-game-data/assets/",
+                    "walletEntry": "ClientStates/TFTPreGame/Content/Currency/TreasureToken"
+                }
+            },
+            {
+                "id": "XEAEVAtU",
+                "o": 3.0,
+                "value": {
+                    "imageOverridePath": "/lol-game-data/assets/",
+                    "walletEntry": "ClientStates/TFTPreGame/Content/Currency/TreasureToken"
+                }
+            },
+            {
+                "id": "AnOkoIne",
+                "o": 4.0,
+                "value": {
+                    "imageOverridePath": "/lol-game-data/assets/",
+                    "walletEntry": "ClientStates/TFTPreGame/Content/Currency/StarShards"
+                }
+            },
+            {
+                "id": "cEMaUGqa",
+                "o": 5.0,
+                "value": {
+                    "imageOverridePath": "/lol-game-data/assets/",
+                    "catalogEntry": "Loadouts/TFTDamageSkins/Fish/Fish_Tier3"
+                }
+            },
+            {
+                "id": "44y7aS2f",
+                "o": 6.0,
+                "value": {
+                    "imageOverridePath": "/lol-game-data/assets/",
+                    "walletEntry": "ClientStates/TFTPreGame/Content/Currency/TreasureToken"
+                }
+            },
+            {
+                "id": "o1WvOAuw",
+                "o": 7.0,
+                "value": {
+                    "imageOverridePath": "/lol-game-data/assets/",
+                    "walletEntry": "ClientStates/TFTPreGame/Content/Currency/StarShards"
+                }
+            },
+            {
+                "id": "5cnY9Nsa",
+                "o": 8.0,
+                "value": {
+                    "imageOverridePath": "/lol-game-data/assets/",
+                    "catalogEntry": "Loadouts/TFTDamageSkins/Fireworks/Fireworks_Tier3"
+                }
+            },
+            {
+                "id": "-ZO2U439",
+                "o": 8.5,
+                "value": {
+                    "imageOverridePath": "/lol-game-data/assets/ASSETS/Loot/Companions/ElegantDragon/Loot_ElegantDragon_Liuli_Liuli4_Tier1.LL_ElegantDragon_Liuli.png",
+                    "catalogEntry": "Loadouts/Companions/Species/ElegantDragon/Liuli4/ElegantDragon_Liuli_Liuli4_Tier1"
+                }
+            },
+            {
+                "id": "lcHvf5Gs",
+                "o": 9.0,
+                "value": {
+                    "imageOverridePath": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/4460_Special_Invitation_Inventory.ACCESSORIES_14_2.png",
+                    "catalogEntry": "Loadouts/SummonerEmotes/4460"
+                }
+            },
+            {
+                "id": "3U-SFMFG",
+                "o": 10.0,
+                "value": {
+                    "imageOverridePath": "/lol-game-data/assets/",
+                    "walletEntry": "ClientStates/TFTPreGame/Content/Currency/StarShards"
+                }
+            },
+            {
+                "id": "zMHcXqH6",
+                "o": 11.0,
+                "value": {
+                    "imageOverridePath": "/lol-game-data/assets/",
+                    "walletEntry": "ClientStates/TFTPreGame/Content/Currency/TreasureToken"
+                }
+            },
+            {
+                "id": "z5UX9DGm",
+                "o": 12.0,
+                "value": {
+                    "imageOverridePath": "/lol-game-data/assets/",
+                    "walletEntry": "ClientStates/TFTPreGame/Content/Currency/StarShards"
+                }
+            },
+            {
+                "id": "5Cax5ckB",
+                "o": 12.5,
+                "value": {
+                    "imageOverridePath": "/lol-game-data/assets/",
+                    "catalogEntry": "Loadouts/TFTDamageSkins/RedPackets/RedPackets_Tier3"
+                }
+            },
+            {
+                "id": "gi01iji5",
+                "o": 13.0,
+                "value": {
+                    "imageOverridePath": "/lol-game-data/assets/",
+                    "walletEntry": "ClientStates/TFTPreGame/Content/Currency/TreasureToken"
+                }
+            },
+            {
+                "id": "nHCaIGZu",
+                "o": 16.0,
+                "value": {
+                    "imageOverridePath": "/lol-game-data/assets/",
+                    "walletEntry": "ClientStates/TFTPreGame/Content/Currency/StarShards"
+                }
+            },
+            {
+                "id": "7jm8BPQf",
+                "o": 17.0,
+                "value": {
+                    "imageOverridePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_LanternFestivalStreet.TFT_ArenaSkin_LanternFestivalStreet.png",
+                    "catalogEntry": "Loadouts/TFTMapSkins/LanternFestivalStreet"
+                }
+            },
+            {
+                "id": "SFHkt_aT",
+                "o": 18.0,
+                "value": {
+                    "imageOverridePath": "/lol-game-data/assets/",
+                    "walletEntry": "ClientStates/TFTPreGame/Content/Currency/TreasureToken"
+                }
+            }
+        ]
+    }
+]

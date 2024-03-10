@@ -1,0 +1,1064 @@
+{
+    "id": 429,
+    "name": "复仇之矛",
+    "alias": "Kalista",
+    "title": "卡莉丝塔",
+    "shortBio": "卡莉丝塔是充满复仇怨念的幽灵，是不灭的复仇之魂，是召唤自暗影岛的噩梦，专门猎杀背信弃义之人。因遭人背叛而受害的人会以血泪盼望着复仇，但只有甘愿献上自己灵魂的人，才能获得卡莉丝塔的回应。所有被卡莉丝塔盯上的人都将不可避免地遭遇不幸，因为这位死亡猎手完成誓约的方式只有一种，那就是她灵魂标枪上的冷酷灵火。",
+    "tacticalInfo": {
+        "style": 2,
+        "difficulty": 3,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 1,
+        "mobility": 3,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/429.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/429.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/429.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/429.ogg",
+    "roles": [
+        "marksman"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 429000,
+            "isBase": true,
+            "name": "复仇之矛",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/429/429000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/429/429000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/429/429000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kalista/Skins/Base/KalistaLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 429001,
+            "isBase": false,
+            "name": "腥红之月 卡莉丝塔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/429/429001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/429/429001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/429/429001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kalista/Skins/Skin01/KalistaLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 12
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为在血月之夜被召唤出来的复仇恶魔，卡莉丝塔“背叛者”的非常魔力让她变得不知疲倦，无论是多么平凡的生物，她都不会吝惜赐予他们死亡。死在她手下的人会被她钉在墙上，作为所有生者的警告。"
+        },
+        {
+            "id": 429002,
+            "isBase": false,
+            "name": "冠军之矛 卡莉丝塔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/429/429002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/429/429002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/429/429002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kalista/Skins/Skin02/KalistaLoadScreen_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Kalista/Skins/Skin02/KalistaLoadScreen_2_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/429/429002.png",
+            "chromas": [
+                {
+                    "id": 429004,
+                    "name": "冠军之矛 卡莉丝塔 凯旋圣装",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/429/429004.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在一个全球总决赛事件期间作为战利品专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 8
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此庆祝2015年在欧洲举办的全球总决赛。"
+        },
+        {
+            "id": 429003,
+            "isBase": false,
+            "name": "SKT T1 卡莉丝塔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/429/429003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/429/429003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/429/429003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kalista/Skins/Skin03/KalistaLoadscreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 5
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此致敬Bang在2015全球总决赛中使用卡莉丝塔的夺胜表现。"
+        },
+        {
+            "id": 429005,
+            "isBase": false,
+            "name": "黑暗骑士 卡莉丝塔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/429/429005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/429/429005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/429/429005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kalista/Skins/Skin05/KalistaLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/429/429005.png",
+            "chromas": [
+                {
+                    "id": 429006,
+                    "name": "黑暗骑士 卡莉丝塔 傲慢劫掠者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/429/429006.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 429007,
+                    "name": "黑暗骑士 卡莉丝塔 冷血劫掠者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/429/429007.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 429008,
+                    "name": "黑暗骑士 卡莉丝塔 炫目劫掠者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/429/429008.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 429009,
+                    "name": "黑暗骑士 卡莉丝塔 狂热劫掠者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/429/429009.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 429010,
+                    "name": "黑暗骑士 卡莉丝塔 魅惑劫掠者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/429/429010.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 429011,
+                    "name": "黑暗骑士 卡莉丝塔 幻境劫掠者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/429/429011.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 429012,
+                    "name": "黑暗骑士 卡莉丝塔 永生劫掠者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/429/429012.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 429013,
+                    "name": "黑暗骑士 卡莉丝塔 剧毒劫掠者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/429/429013.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 45
+                }
+            ],
+            "skinAugments": null,
+            "description": "法术领主们……他们的征服之旅狂野、蛮横、并且光荣——他们是一群早已消失于时间之沙的勇士。直到现在。被当前的劫掠者领袖们复活后，卡莉丝塔的复仇之欲随着几千年的过去而更加恶化了。现在，她回来了，比以往任何时候都更强大，想要根除守望者们和他们所建立的一切。"
+        },
+        {
+            "id": 429014,
+            "isBase": false,
+            "name": "花仙骑士 卡莉丝塔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/429/429014.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/429/429014.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/429/429014.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kalista/Skins/Skin14/KalistaLoadScreen_14.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Kalista/Skins/Skin14/KalistaLoadscreen_14_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/429/429014.png",
+            "chromas": [
+                {
+                    "id": 429015,
+                    "name": "花仙骑士 卡莉丝塔 朝云",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/429/429015.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 429016,
+                    "name": "花仙骑士 卡莉丝塔 彩裳",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/429/429016.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 429017,
+                    "name": "花仙骑士 卡莉丝塔 海神",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/429/429017.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 429018,
+                    "name": "花仙骑士 卡莉丝塔 眜影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/429/429018.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 429019,
+                    "name": "花仙骑士 卡莉丝塔 乐仙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/429/429019.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 429020,
+                    "name": "花仙骑士 卡莉丝塔 鼎脉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/429/429020.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 429021,
+                    "name": "花仙骑士 卡莉丝塔 朱红",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/429/429021.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 429022,
+                    "name": "花仙骑士 卡莉丝塔 霜白",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/429/429022.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 429023,
+                    "name": "花仙骑士 卡莉丝塔 迷人幻翼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/429/429023.png",
+                    "colors": [
+                        "#866EFF",
+                        "#8AE1E8"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在花仙子(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 191
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为女王陛下的卫队长，卡莉丝塔致力于确保她女王的安全高于一切。尽管有人抱怨说卡莉丝塔被提升到这个位置只是因为她是卡尔玛最亲密的朋友，但她一次又一次地证明了她的头衔是当之无愧的。她很欢迎任何不这么认为的人前来决斗并直接领教这一点。"
+        }
+    ],
+    "passive": {
+        "name": "武术姿态",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Kalista/HUD/Icons2D/Kalista_Passive.png",
+        "abilityVideoPath": "champion-abilities/0429/ability_0429_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0429/ability_0429_P1.jpg",
+        "description": "如果卡莉丝塔在进行普攻或穿刺的同时被下达了移动指令，那么她会在发起进攻的同时朝着这个移动指令的方向位移小段距离。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "穿刺",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Kalista/HUD/Icons2D/Kalista_Q.png",
+            "abilityVideoPath": "champion-abilities/0429/ability_0429_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0429/ability_0429_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "扔出一个快速移动的长矛。长矛在击杀敌人后会继续飞行。",
+            "dynamicDescription": "卡莉丝塔掷出一支长矛，对命中的第一个目标造成<physicalDamage>@TotalDamage@物理伤害</physicalDamage>。如果这个技能击杀了目标，那么长矛会继续前行，将<spellName>撕裂</spellName>的层数带给命中的下一个目标。<br><br>卡莉丝塔可以在使用这个技能后使用<spellName>武术姿态</spellName>的冲刺。@SpellModifierDescriptionAppend@",
+            "range": [
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000
+            ],
+            "cooldownCoefficients": [
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "哨兵",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Kalista/HUD/Icons2D/Kalista_W.png",
+            "abilityVideoPath": "champion-abilities/0429/ability_0429_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0429/ability_0429_W1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "在卡莉丝塔与誓约者一起攻击相同目标时提供额外伤害。<br><br>激活此技能可以派出一个灵魂来侦查道路，将它面前的区域显示在玩家的视野内。",
+            "dynamicDescription": "<spellPassive>被动：</spellPassive>当卡莉丝塔和她的<keywordMajor>誓约者</keywordMajor>都攻击了相同的目标时，她会造成<magicDamage>@Effect2Amount@%最大生命值的魔法伤害</magicDamage>。这个效果在@Effect7Amount@秒内无法重复作用于相同目标。<br><br><spellPassive>主动：</spellPassive>派出一个灵魂哨兵去巡视一个地区，持续3个来回。被发现的敌方英雄会被显形4秒。这个技能有2层充能(@Effect4Amount@秒充能时间)。@SpellModifierDescriptionAppend@",
+            "range": [
+                5000.0000,
+                5000.0000,
+                5000.0000,
+                5000.0000,
+                5000.0000,
+                5000.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.3000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    80.0000,
+                    80.0000,
+                    80.0000,
+                    80.0000,
+                    80.0000,
+                    80.0000,
+                    80.0000
+                ],
+                "Effect2Amount": [
+                    14.0000,
+                    14.0000,
+                    15.0000,
+                    16.0000,
+                    17.0000,
+                    18.0000,
+                    19.0000
+                ],
+                "Effect3Amount": [
+                    100.0000,
+                    125.0000,
+                    150.0000,
+                    175.0000,
+                    200.0000,
+                    225.0000,
+                    250.0000
+                ],
+                "Effect4Amount": [
+                    100.0000,
+                    90.0000,
+                    80.0000,
+                    70.0000,
+                    60.0000,
+                    50.0000,
+                    40.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    50.0000,
+                    75.0000,
+                    100.0000,
+                    125.0000,
+                    150.0000,
+                    175.0000,
+                    200.0000
+                ],
+                "Effect7Amount": [
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    90.0000,
+                    80.0000,
+                    70.0000,
+                    60.0000,
+                    50.0000,
+                    50.0000
+                ],
+                "maxAmmo": [
+                    2,
+                    2,
+                    2,
+                    2,
+                    2,
+                    2
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "撕裂",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Kalista/HUD/Icons2D/Kalista_E.png",
+            "abilityVideoPath": "champion-abilities/0429/ability_0429_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0429/ability_0429_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@FakedCooldown@秒冷却时间",
+            "description": "攻击时用长矛来刺穿目标。主动激活可以将长矛扯出，造成减速和逐步上升的伤害。",
+            "dynamicDescription": "<spellPassive>被动：</spellPassive>卡莉丝塔的长矛会在目标身上存留4秒，可叠加任意次数。<br><br><spellActive>主动：</spellActive>卡莉丝塔从附近的敌人们身上拔出长矛，造成<physicalDamage>@NormalDamage@</physicalDamage>外加每根后续长矛<physicalDamage>@AdditionalDamage@物理伤害</physicalDamage>。对命中的敌人们造成持续@SlowDuration@秒的<attention>@TotalSlowAmount@</attention><status>减速</status>。<br><br>如果这个技能击杀了至少一个目标，那么它的冷却时间会刷新并且它会返还<scaleMana>@ManaRefund@法力值</scaleMana>。@SpellModifierDescriptionAppend@",
+            "range": [
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000
+            ],
+            "costCoefficients": [
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000
+            ],
+            "cooldownCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000
+                ],
+                "Effect2Amount": [
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000
+                ],
+                "Effect5Amount": [
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000
+                ],
+                "Effect6Amount": [
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000
+                ],
+                "Effect7Amount": [
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000
+                ],
+                "Effect8Amount": [
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000
+                ],
+                "Effect9Amount": [
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000,
+                    999.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "命运的召唤",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Kalista/HUD/Icons2D/Kalista_R.png",
+            "abilityVideoPath": "champion-abilities/0429/ability_0429_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0429/ability_0429_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "卡莉丝塔传送一位友军到自己身边。该友军随后可以冲向一个地点，并击退命中的敌人。",
+            "dynamicDescription": "卡莉丝塔将她的<keywordMajor>誓约者</keywordMajor>置入凝滞状态并将其拖拽到她的身边，至多持续4秒。<keywordMajor>誓约者</keywordMajor>可以点击来将自己投放出去，在命中第一个英雄时停止并<status>击退</status>所有附近的敌人。如果<keywordMajor>誓约者</keywordMajor>命中了一名英雄，则会被放置在与目标相距其最大攻击距离的位置。@SpellModifierDescriptionAppend@",
+            "range": [
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                150.0000,
+                120.0000,
+                90.0000,
+                90.0000,
+                90.0000,
+                90.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    1.0000,
+                    1.5000,
+                    2.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    40.0000,
+                    60.0000,
+                    80.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

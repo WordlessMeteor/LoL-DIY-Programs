@@ -1,0 +1,21 @@
+{
+    "decimalSeperator": ".",
+    "thousandSeperator": ",",
+    "thousandAbbreviation": "k",
+    "tenThousandAbbreviation": "10k",
+    "millionAbbreviation": "m",
+    "oneHundredMillionAbbreviation": "100b",
+    "billionAbbreviation": "b",
+    "trillionAbbreviation": "t",
+    "secondAbbreviation": "s",
+    "minuteAbbreviation": "m",
+    "hourAbbreviation": "h",
+    "metersAbbreviation": "m",
+    "kilometersAbbreviation": "km",
+    "percentageFormat": "@NUMBER@%",
+    "numberFormattingBehavior": {
+        "digitsForThousandsSeperator": 4,
+        "trimTrailingZerosAfterDecimal": true,
+        "westernNumberGrouping": true
+    }
+}

@@ -1,0 +1,2011 @@
+{
+    "id": 157,
+    "name": "疾风剑豪",
+    "alias": "Yasuo",
+    "title": "亚索",
+    "shortBio": "亚索是一个百折不屈的艾欧尼亚人，也是一名身手敏捷的御风剑客。这位生性自负的年轻人，被误认作杀害长老的凶手——无法自证清白的亚索因此出于自卫而出手杀死了自己的哥哥。之后，虽然长老死亡的真相已然大白，他的哥哥也已离奇重生，但亚索仍然无法原谅自己的所作所为。他将自己放逐于天涯，听任疾风指引着剑刃的方向。",
+    "tacticalInfo": {
+        "style": 3,
+        "difficulty": 3,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 2,
+        "mobility": 3,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/157.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/157.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/157.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/157.ogg",
+    "roles": [
+        "fighter",
+        "assassin"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 157000,
+            "isBase": true,
+            "name": "疾风剑豪",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/157/157000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/157/157000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/157/157000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Base/YasuoLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 157001,
+            "isBase": false,
+            "name": "西部牛仔 亚索",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/157/157001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/157/157001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/157/157001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin01/YasuoLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157001.png",
+            "chromas": [
+                {
+                    "id": 157004,
+                    "name": "西部牛仔 亚索 赤胆威龙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157004.png",
+                    "colors": [
+                        "#002B83",
+                        "#AA5500"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 157005,
+                    "name": "西部牛仔 亚索 日落狂沙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157005.png",
+                    "colors": [
+                        "#797ACF",
+                        "#E6CE13"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 157006,
+                    "name": "西部牛仔 亚索 原野奇侠",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157006.png",
+                    "colors": [
+                        "#752505",
+                        "#2E9C5C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 157007,
+                    "name": "西部牛仔 亚索 大地惊雷",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157007.png",
+                    "colors": [
+                        "#00AA7F",
+                        "#550000"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 157008,
+                    "name": "西部牛仔 亚索 浴血金沙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157008.png",
+                    "colors": [
+                        "#030635",
+                        "#D2D894"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "在这个只有两条街的小镇上，有一个神秘且顽抗的警官，那就是因在东部地区被指控谋杀，目前处于自我流放状态的亚索。尽管如此，但是他赶走了整个强盗帮以及荒漠中各种最致命的威胁，顺便拯救了数百人的性命。  "
+        },
+        {
+            "id": 157002,
+            "isBase": false,
+            "name": "源计划：风 亚索",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/157/157002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/157/157002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/157/157002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin02/YasuoLoadScreen_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin02/YasuoLoadScreen_2_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 18
+                }
+            ],
+            "skinAugments": null,
+            "description": "亚索从一次高科技战斗中归来，却被指控一项他不曾犯下的罪行。他知道源计划的管理层一定牵连其中，于是亚索与基因动力叛军并肩作战，用自己的等离子锻压战刃斩断科技的谎言。"
+        },
+        {
+            "id": 157003,
+            "isBase": false,
+            "name": "腥红之月 亚索",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/157/157003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/157/157003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/157/157003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin03/YasuoLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 12
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为血月教派的仪式执行者，亚索的剑刃已被一只贪婪嗜血的恶魔而寄生，它对生灵的屠戮欲望永远得不到满足。而这正好符合亚索的心愿，恶魔的贪欲加上亚索内心黑暗的力量远胜于在他耳边低语的生物。"
+        },
+        {
+            "id": 157009,
+            "isBase": false,
+            "name": "黑夜使者 亚索",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/157/157009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/157/157009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/157/157009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin09/YasuoLoadscreen_9.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin09/YasuoLoadscreen_9_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157009.png",
+            "chromas": [
+                {
+                    "id": 157034,
+                    "name": "黑夜使者 亚索 堕夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157034.png",
+                    "colors": [
+                        "#C33C3E",
+                        "#0C0E15"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 193
+                }
+            ],
+            "skinAugments": null,
+            "description": "生于造物之破晓的溃烂回响，亚索是星界里混沌能量的如魔具象。他的宿命就是与黎明使者永远对抗下去，而他正在等待着，终有一日，他的黑暗将完全斩断她的光明。"
+        },
+        {
+            "id": 157010,
+            "isBase": false,
+            "name": "奥德赛 亚索",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/157/157010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/157/157010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/157/157010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin10/YasuoLoadScreen_10.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin10/YasuoLoadScreen_10_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157010.png",
+            "chromas": [
+                {
+                    "id": 157011,
+                    "name": "奥德赛 亚索 星河征服者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157011.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 157012,
+                    "name": "奥德赛 亚索 流星群竞速者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157012.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157013,
+                    "name": "奥德赛 亚索 星云环游者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157013.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157014,
+                    "name": "奥德赛 亚索 黑洞挑战者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157014.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157015,
+                    "name": "奥德赛 亚索 小行星带探险者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157015.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157016,
+                    "name": "奥德赛 亚索 恒星游历者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157016.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 73
+                }
+            ],
+            "skinAugments": null,
+            "description": "亚索从来没想要成为一个太空海盗……﻿直到他被诬陷谋杀了自己的兄弟，他也不得不逃离他那相对奢侈的生活。﻿现在，亚索依然在被十几个不同的军队和准军事组织的追杀中逃亡，在此过程中亚索正在建立起一支由古怪队员组成的小队，以期望在星系中创造新生活。"
+        },
+        {
+            "id": 157017,
+            "isBase": false,
+            "name": "战场BOSS 亚索",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/157/157017.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/157/157017.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/157/157017.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin17/YasuoLoadScreen_17.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin17/YasuoLoadscreen_17_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157017.png",
+            "chromas": [
+                {
+                    "id": 157019,
+                    "name": "战场BOSS 亚索 霸者之威",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157019.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157020,
+                    "name": "战场BOSS 亚索 瞬杀之影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157020.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 157021,
+                    "name": "战场BOSS 亚索 吞币之星",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157021.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157022,
+                    "name": "战场BOSS 亚索 叹息之壁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157022.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157023,
+                    "name": "战场BOSS 亚索 幻灭之刃",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157023.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 157024,
+                    "name": "战场BOSS 亚索 绝望之斩",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157024.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157025,
+                    "name": "战场BOSS 亚索 隐藏强者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157025.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157026,
+                    "name": "战场BOSS 亚索 K.O.",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157026.png",
+                    "colors": [
+                        "#A5FFF8",
+                        "#D87BFF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "2019电玩事件期间的战利品专属道具。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 11
+                }
+            ],
+            "skinAugments": null,
+            "description": "亚索曾是1979年邪典游戏“Hasagi”从前的主人公，但在战场BOSS接管了电玩世界后，被维迦的恶意代码所感染。他保持着他那复杂至极的玩法模式和高伤害的攻击，但现在为邪恶势力而战。"
+        },
+        {
+            "id": 157018,
+            "isBase": false,
+            "name": "真实伤害 亚索",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/157/157018.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/157/157018.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/157/157018.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin18/YasuoLoadScreen_18.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin18/YasuoLoadscreen_18_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157018.png",
+            "chromas": [
+                {
+                    "id": 157027,
+                    "name": "真实伤害 亚索 锐意之风",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157027.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 157028,
+                    "name": "真实伤害 亚索 无畏之志",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157028.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157029,
+                    "name": "真实伤害 亚索 华丽之韵",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157029.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157030,
+                    "name": "真实伤害 亚索 进取之意",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157030.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157031,
+                    "name": "真实伤害 亚索 孤高之傲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157031.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157032,
+                    "name": "真实伤害 亚索 本真之范",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157032.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157033,
+                    "name": "真实伤害 亚索 即兴说唱",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157033.png",
+                    "colors": [
+                        "#BD1357",
+                        "#19182A"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 120
+                }
+            ],
+            "skinAugments": null,
+            "description": "亚索是一位资深制作人，技艺精湛，高深莫测，人人都会向他寻求灵感。他的音乐不拘一格，以狂放的音色描绘出多重宇宙。亚索挑剔的脾性在业内人尽皆知，但他认为“真实伤害”就是革新大众音乐体验的手段。"
+        },
+        {
+            "id": 157035,
+            "isBase": false,
+            "name": "至臻 真实伤害 亚索",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/157/157035.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/157/157035.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/157/157035.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin35/YasuoLoadscreen_35.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin35/YasuoLoadscreen_35_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 120
+                }
+            ],
+            "skinAugments": null,
+            "description": "“巨人”在全球范围获得成功后，隐居的制作人——卓越的亚索获得了海量的邀约。从唱片合约到服装赞助，他一个接一个地拒绝了，宁愿远离聚光灯，专注于创作节拍的简单乐趣。然而，A Bathing Ape不知怎么吸引到了他的注意。现在，亚索身着与他的才华相配的金色织物，让全世界都侧耳倾听——粉丝们和评论家们都在等着听他的下一首革命性的歌曲。"
+        },
+        {
+            "id": 157036,
+            "isBase": false,
+            "name": "灵魂莲华 亚索",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/157/157036.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/157/157036.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/157/157036.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin36/YasuoLoadScreen_36.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin36/YasuoLoadscreen_36_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157036.png",
+            "chromas": [
+                {
+                    "id": 157037,
+                    "name": "灵魂莲华 亚索 流火",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157037.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020年作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 157038,
+                    "name": "灵魂莲华 亚索 月升",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157038.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157039,
+                    "name": "灵魂莲华 亚索 雪落",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157039.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157040,
+                    "name": "灵魂莲华 亚索 朝花",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157040.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157041,
+                    "name": "灵魂莲华 亚索 春晓",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157041.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 157042,
+                    "name": "灵魂莲华 亚索 云开",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157042.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157043,
+                    "name": "灵魂莲华 亚索 雁来",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157043.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157044,
+                    "name": "灵魂莲华 亚索 霜见",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157044.png",
+                    "colors": [
+                        "#0C0C0F",
+                        "#B2D1E4"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在灵魂莲华(2020)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 171
+                }
+            ],
+            "skinAugments": null,
+            "description": "很久以前，一对兄弟打了一场遍及艾欧尼亚的苦涩战争。兄弟中的弟弟，亚索, 曾是一位大名，以放浪形骸而闻名——直到他被指控犯有叛国罪并拿起武器自卫。两人都注定要在最后的决斗中倒下……这或许就是对骄傲和狂妄的教训。"
+        },
+        {
+            "id": 157045,
+            "isBase": false,
+            "name": "断浪之刃 亚索",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/157/157045.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/157/157045.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/157/157045.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin45/YasuoLoadScreen_45.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157045.png",
+            "chromas": [
+                {
+                    "id": 157046,
+                    "name": "断浪之刃 亚索 勇敢",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157046.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 157047,
+                    "name": "断浪之刃 亚索 豪迈",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157047.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157048,
+                    "name": "断浪之刃 亚索 冷静",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157048.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157049,
+                    "name": "断浪之刃 亚索 顽强",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157049.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157050,
+                    "name": "断浪之刃 亚索 飘逸",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157050.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157051,
+                    "name": "断浪之刃 亚索 不羁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157051.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 157052,
+                    "name": "断浪之刃 亚索 果决",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157052.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157053,
+                    "name": "断浪之刃 亚索 无拘",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157053.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 138
+                }
+            ],
+            "skinAugments": null,
+            "description": "在与卡玛维亚的佛耶戈作战时，亚索得到了芭茹提供的神力，成为了娜伽卡波洛丝的孩子们的一位格格不入的捍卫者——他对过去事件的痴迷与他们所信仰的一切背道而驰。然而，即使是最颓丧的海狗也有其出头之日，亚索奋起抵抗黑暗势力并胜利而归。"
+        },
+        {
+            "id": 157054,
+            "isBase": false,
+            "name": "神龙尊者 昼日真龙 亚索",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/157/157054.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/157/157054.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/157/157054.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin54/YasuoLoadScreen_54.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin54/YasuoLoadscreen_54_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 135
+                }
+            ],
+            "skinAugments": null,
+            "description": "独自面对一支军队的亚索选择了站出来进行战斗。 他堵住了两山之间的一条狭窄通道，让无辜者免遭无妄之灾。 如舞蹈般挥舞着钢之真理，他击倒了无数敌人——但即使是他也无法永远坚持下去。昼日真龙被他的剑法所感动，从它的巅峰降临，前来为他赐福……"
+        },
+        {
+            "id": 157055,
+            "isBase": false,
+            "name": "神龙尊者 夜月幻龙 亚索",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/157/157055.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/157/157055.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/157/157055.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin55/YasuoLoadScreen_55.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin55/YasuoLoadscreen_55_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 135
+                }
+            ],
+            "skinAugments": null,
+            "description": "钢之歌谣变得寂静无声，而亚索是战场上最后一个活着的灵魂——尽管他想象着他能听到受他保护的村民们感激的低语。 身受重伤、奄奄一息的亚索拿出他的长笛吹奏了最后一首令人难以忘怀的挽歌。夜月幻龙被他的歌谣所感动，从它的巅峰降临，前来为他赐福……"
+        },
+        {
+            "id": 157056,
+            "isBase": false,
+            "name": "墨之影武者 亚索",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/157/157056.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/157/157056.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/157/157056.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin56/YasuoLoadScreen_56.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin56/YasuoLoadScreen_56_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157056.png",
+            "chromas": [
+                {
+                    "id": 157058,
+                    "name": "墨之影武者 亚索 炽墨挥影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157058.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 157059,
+                    "name": "墨之影武者 亚索 金墨耀影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157059.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157060,
+                    "name": "墨之影武者 亚索 云墨漾影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157060.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157061,
+                    "name": "墨之影武者 亚索 森墨拂影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157061.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157062,
+                    "name": "墨之影武者 亚索 晶墨绽影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157062.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157063,
+                    "name": "墨之影武者 亚索 樱墨映影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157063.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 157064,
+                    "name": "墨之影武者 亚索 松墨彰影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157064.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157065,
+                    "name": "墨之影武者 亚索 玄墨蕴影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157065.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157066,
+                    "name": "墨之影武者 亚索 灵墨刻影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157066.png",
+                    "colors": [
+                        "#B5CED6",
+                        "#33D889"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在墨之影(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 157067,
+                    "name": "墨之影武者 亚索 破障",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157067.png",
+                    "colors": [
+                        "#B4CECD",
+                        "#D55049"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩用于纪念季中冠军赛(2023)。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 192
+                }
+            ],
+            "skinAugments": null,
+            "description": "与易大师一起流离失所的亚索现在使用他的墨纹在拉巴登城区和各城郊之间御风而行，在神秘的千面具之人的帮助下保护那些寻求庇护的平民。尽管他放弃了自己的自由以换取力量，但他将这个代价看作是对无法帮助那些最需要帮助的人的忏悔。"
+        },
+        {
+            "id": 157057,
+            "isBase": false,
+            "name": "至臻 墨之影武者 亚索",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/157/157057.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/157/157057.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/157/157057.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin57/YasuoLoadScreen_57.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin57/YasuoLoadScreen_57_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 192
+                }
+            ],
+            "skinAugments": null,
+            "description": "对传统艾欧尼亚男装的高雅演绎加上一组无所畏惧、令人惊艳的遮光墨纹，亚索的盛大装扮彰显着优雅的叛逆、得体的颠覆和一场前所未有的设计变革。"
+        },
+        {
+            "id": 157068,
+            "isBase": false,
+            "name": "预知之眼 亚索",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/157/157068.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/157/157068.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/157/157068.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/Skins/Skin68/YasuoLoadScreen_68.SKINS_Yasuo_Skin68.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157068.png",
+            "chromas": [
+                {
+                    "id": 157069,
+                    "name": "预知之眼 亚索 不怒",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157069.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 157070,
+                    "name": "预知之眼 亚索 不拘",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157070.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157071,
+                    "name": "预知之眼 亚索 不惑",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157071.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157072,
+                    "name": "预知之眼 亚索 不屈",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157072.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157073,
+                    "name": "预知之眼 亚索 不悔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157073.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157074,
+                    "name": "预知之眼 亚索 不愧",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157074.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157075,
+                    "name": "预知之眼 亚索 不怠",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157075.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 157076,
+                    "name": "预知之眼 亚索 不骄",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/157/157076.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 180
+                }
+            ],
+            "skinAugments": null,
+            "description": "亚索在梦中瞥见了许多道路。其中一条道路中，看到他是一个老人，独自一人，远远偏离了他的路线。他已放弃了雄心、家庭、甚至爱情，一切都是为了弥补他再也记不起来的那些罪。这个幻象不是警告，而是提醒，因为亚索知道他总能回到自己的道路上。他只需要找到它……或者让它找到他。"
+        }
+    ],
+    "passive": {
+        "name": "浪客之道",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/HUD/Icons2D/Yasuo_Passive.png",
+        "abilityVideoPath": "champion-abilities/0157/ability_0157_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0157/ability_0157_P1.jpg",
+        "description": "亚索的暴击几率提升。此外，亚索在移动时会为一层护盾攒能。护盾会在他受到来自英雄或野怪的伤害时触发。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "斩钢闪",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/HUD/Icons2D/Yasuo_Q1.png",
+            "abilityVideoPath": "champion-abilities/0157/ability_0157_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0157/ability_0157_Q1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@f1@秒%i:cooldown%",
+            "description": "向前出剑，呈直线造成伤害。<br><br>在命中时，斩钢闪会获得一层旋风烈斩效果，持续数秒。在积攒2层旋风烈斩效果后，斩钢闪会形成一阵能够<font color='#6655CC'>击飞</font>敌人的旋风。<br><br>斩钢闪被视为普通攻击，并且可以从所有作用于普攻的东西上获得收益。",
+            "dynamicDescription": "亚索进行戳刺，造成<physicalDamage>@TotalDamage@物理伤害</physicalDamage>。如果他命中了，那么他会获得一层持续@GatheringStormDuration@秒的层数。当他拥有2层时，这个技能的下次施放将会发射出一道远程龙卷风，造成等值伤害和@KnockUpDurationTOOLTIPONLY@秒<status>击飞</status>。<br><br>如果在冲刺期间施放，那么这个技能会呈环状进行打击而非直接戳刺。@SpellModifierDescriptionAppend@",
+            "range": [
+                475.0000,
+                475.0000,
+                475.0000,
+                475.0000,
+                475.0000,
+                475.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                4.0000,
+                4.0000,
+                4.0000,
+                4.0000,
+                4.0000,
+                4.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "风之障壁",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/HUD/Icons2D/Yasuo_W.png",
+            "abilityVideoPath": "champion-abilities/0157/ability_0157_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0157/ability_0157_W1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "形成一个持续4秒的气流之墙，来阻挡敌方的飞行道具。",
+            "dynamicDescription": "亚索形成一个持续4秒的气流浮墙，来阻挡敌方的飞行道具。@SpellModifierDescriptionAppend@",
+            "range": [
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                25.0000,
+                23.0000,
+                21.0000,
+                19.0000,
+                17.0000,
+                15.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    10.0000,
+                    15.0000,
+                    20.0000,
+                    25.0000,
+                    30.0000,
+                    35.0000,
+                    40.0000
+                ],
+                "Effect2Amount": [
+                    30.0000,
+                    60.0000,
+                    90.0000,
+                    120.0000,
+                    150.0000,
+                    180.0000,
+                    210.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    3.0000,
+                    6.0000,
+                    9.0000,
+                    12.0000,
+                    15.0000,
+                    18.0000
+                ],
+                "Effect4Amount": [
+                    250.0000,
+                    300.0000,
+                    350.0000,
+                    400.0000,
+                    450.0000,
+                    500.0000,
+                    550.0000
+                ],
+                "Effect5Amount": [
+                    250.0000,
+                    320.0000,
+                    390.0000,
+                    460.0000,
+                    530.0000,
+                    600.0000,
+                    670.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "踏前斩",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/HUD/Icons2D/Yasuo_E.png",
+            "abilityVideoPath": "champion-abilities/0157/ability_0157_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0157/ability_0157_E1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "向目标敌人突进，造成魔法伤害。每次施法都会提升你的后续突进的伤害，直到抵达上限。<br><br>在若干秒内无法对相同敌人重复施放。<br><br><font color='#99FF99'>如果在突进的过程中施放斩钢闪，那么斩钢闪就会呈环状出剑。</font>",
+            "dynamicDescription": "亚索冲刺并穿过一名目标，造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>。这个技能每次施放后都会为@StackDuration@秒内的后续施放提供<magicDamage>@BonusDamagePerStack@</magicDamage>(%i:scaleLevel%)额外伤害，至多可叠加@MaxStacks@次。<br><br>这个技能对每个目标有@Effect2Amount@秒冷却时间。@SpellModifierDescriptionAppend@",
+            "range": [
+                475.0000,
+                475.0000,
+                475.0000,
+                475.0000,
+                475.0000,
+                475.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                0.5000,
+                0.4000,
+                0.3000,
+                0.2000,
+                0.1000,
+                0.1000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    11.0000,
+                    10.0000,
+                    9.0000,
+                    8.0000,
+                    7.0000,
+                    6.0000,
+                    6.0000
+                ],
+                "Effect3Amount": [
+                    0.5000,
+                    0.5000,
+                    0.4000,
+                    0.3000,
+                    0.2000,
+                    0.1000,
+                    0.1000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    750.0000,
+                    750.0000,
+                    750.0000,
+                    750.0000,
+                    750.0000,
+                    750.0000,
+                    750.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "狂风绝息斩",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Yasuo/HUD/Icons2D/Yasuo_R.png",
+            "abilityVideoPath": "champion-abilities/0157/ability_0157_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0157/ability_0157_R1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "闪烁到一个<factionIonia1>浮空</factionIonia1>的敌方英雄身边，造成物理伤害，并使范围内的所有<factionIonia1>浮空</factionIonia1>的敌人滞留在空中。获得满额的剑意值，但会重置旋风烈斩的层数。<br><br>在接下来的若干秒里，亚索的暴击会获得显著的额外护甲穿透加成值。",
+            "dynamicDescription": "亚索传送到一名<status>浮空</status>的敌方英雄身边，造成<physicalDamage>@Damage@物理伤害</physicalDamage>并使所有附近<status>浮空</status>的敌人们维持此状态至多@RKnockupDuration@秒。亚索还会获得满额<keywordMajor>剑意</keywordMajor>，但会失去所有所有<spellName>斩钢闪</spellName>层数。<br><br>之后，亚索的暴击会无视<scaleArmor>@RPercentArmorPen@%额外护甲</scaleArmor>，持续@RBuffDuration@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                1400.0000,
+                1400.0000,
+                1400.0000,
+                1400.0000,
+                1400.0000,
+                1400.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                70.0000,
+                50.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

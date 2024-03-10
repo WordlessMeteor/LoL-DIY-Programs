@@ -1,0 +1,355 @@
+[
+    {
+        "id": 1,
+        "name": "Cleanse",
+        "description": "Removes all disables (excluding suppression and airborne) and summoner spell debuffs affecting your champion and lowers the duration of incoming disables by 65% for 3 seconds.",
+        "summonerLevel": 9,
+        "cooldown": 210,
+        "gameModes": [
+            "URF",
+            "CLASSIC",
+            "ARSR",
+            "ARAM",
+            "ULTBOOK",
+            "WIPMODEWIP",
+            "TUTORIAL",
+            "DOOMBOTSTEEMO",
+            "PRACTICETOOL",
+            "FIRSTBLOOD",
+            "NEXUSBLITZ",
+            "PROJECT",
+            "ONEFORALL"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_boost.png"
+    },
+    {
+        "id": 3,
+        "name": "Exhaust",
+        "description": "Exhausts target enemy champion, reducing their Move Speed by 30%, and their damage dealt by 35% for 3 seconds.",
+        "summonerLevel": 4,
+        "cooldown": 210,
+        "gameModes": [
+            "URF",
+            "CLASSIC",
+            "ARSR",
+            "ARAM",
+            "ULTBOOK",
+            "WIPMODEWIP",
+            "TUTORIAL",
+            "DOOMBOTSTEEMO",
+            "PRACTICETOOL",
+            "NEXUSBLITZ",
+            "ONEFORALL"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_exhaust.png"
+    },
+    {
+        "id": 4,
+        "name": "Flash",
+        "description": "Teleports your champion a short distance toward your cursor's location.",
+        "summonerLevel": 7,
+        "cooldown": 300,
+        "gameModes": [
+            "PRACTICETOOL",
+            "CLASSIC",
+            "ARSR",
+            "ARAM",
+            "NEXUSBLITZ",
+            "ULTBOOK",
+            "TUTORIAL",
+            "FIRSTBLOOD",
+            "ASSASSINATE",
+            "DOOMBOTSTEEMO",
+            "URF",
+            "STARGUARDIAN",
+            "PROJECT",
+            "WIPMODEWIP",
+            "SNOWURF",
+            "ONEFORALL"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_flash.png"
+    },
+    {
+        "id": 5,
+        "name": "",
+        "description": "",
+        "summonerLevel": 4,
+        "cooldown": 180,
+        "gameModes": [],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_Backtrack.png"
+    },
+    {
+        "id": 6,
+        "name": "Ghost",
+        "description": "Your champion can move through units and gains 24 - 48% Move Speed (depending on champion level) for 15 seconds.",
+        "summonerLevel": 1,
+        "cooldown": 210,
+        "gameModes": [
+            "URF",
+            "CLASSIC",
+            "ARSR",
+            "ARAM",
+            "ASSASSINATE",
+            "TUTORIAL_MODULE_2",
+            "TUTORIAL_MODULE_1",
+            "ULTBOOK",
+            "WIPMODEWIP",
+            "TUTORIAL",
+            "DOOMBOTSTEEMO",
+            "PRACTICETOOL",
+            "FIRSTBLOOD",
+            "NEXUSBLITZ",
+            "STARGUARDIAN",
+            "PROJECT",
+            "ONEFORALL"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_haste.png"
+    },
+    {
+        "id": 7,
+        "name": "Heal",
+        "description": "Restores 80-318 Health and grants 30% Move Speed for 1 second to you and target allied champion. This healing is halved for units recently affected by Summoner Heal.",
+        "summonerLevel": 1,
+        "cooldown": 240,
+        "gameModes": [
+            "URF",
+            "CLASSIC",
+            "ARSR",
+            "ARAM",
+            "ASSASSINATE",
+            "TUTORIAL_MODULE_2",
+            "TUTORIAL_MODULE_1",
+            "ULTBOOK",
+            "WIPMODEWIP",
+            "TUTORIAL",
+            "DOOMBOTSTEEMO",
+            "PRACTICETOOL",
+            "NEXUSBLITZ",
+            "STARGUARDIAN",
+            "PROJECT",
+            "ONEFORALL"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_heal.png"
+    },
+    {
+        "id": 11,
+        "name": "Smite",
+        "description": "Deals 600-1200 true damage to target monster.",
+        "summonerLevel": 3,
+        "cooldown": 15,
+        "gameModes": [
+            "URF",
+            "CLASSIC",
+            "ARSR",
+            "ONEFORALL",
+            "PRACTICETOOL",
+            "NEXUSBLITZ",
+            "TUTORIAL",
+            "DOOMBOTSTEEMO"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_smite.png"
+    },
+    {
+        "id": 12,
+        "name": "Teleport",
+        "description": "After channeling for 4 seconds, teleports your champion to target allied structure. Upgrades to Unleashed Teleport at 10 minutes, which teleports your champion to target allied structure, minion, or ward.",
+        "summonerLevel": 7,
+        "cooldown": 360,
+        "gameModes": [
+            "ONEFORALL",
+            "PRACTICETOOL",
+            "CLASSIC",
+            "TUTORIAL",
+            "ULTBOOK",
+            "ARSR",
+            "ASSASSINATE",
+            "DOOMBOTSTEEMO"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_teleport.png"
+    },
+    {
+        "id": 13,
+        "name": "Clarity",
+        "description": "Restores 50% of your champion's maximum Mana. Also restores allies for 25% of their maximum Mana.",
+        "summonerLevel": 6,
+        "cooldown": 240,
+        "gameModes": [
+            "ARAM",
+            "FIRSTBLOOD"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/SummonerMana.png"
+    },
+    {
+        "id": 14,
+        "name": "Ignite",
+        "description": "Ignites target enemy champion, dealing 70-410 true damage (depending on champion level) over 5 seconds, grants you vision of the target, and reduces healing effects on them for the duration.",
+        "summonerLevel": 9,
+        "cooldown": 180,
+        "gameModes": [
+            "URF",
+            "CLASSIC",
+            "ARSR",
+            "ARAM",
+            "ASSASSINATE",
+            "ULTBOOK",
+            "WIPMODEWIP",
+            "TUTORIAL",
+            "DOOMBOTSTEEMO",
+            "PRACTICETOOL",
+            "FIRSTBLOOD",
+            "NEXUSBLITZ",
+            "ONEFORALL"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/SummonerIgnite.png"
+    },
+    {
+        "id": 21,
+        "name": "Barrier",
+        "description": "Shields your champion from 105-411 damage (depending on champion level) for 2 seconds.",
+        "summonerLevel": 4,
+        "cooldown": 180,
+        "gameModes": [
+            "URF",
+            "CLASSIC",
+            "ARSR",
+            "ARAM",
+            "ASSASSINATE",
+            "ULTBOOK",
+            "WIPMODEWIP",
+            "TUTORIAL",
+            "DOOMBOTSTEEMO",
+            "PRACTICETOOL",
+            "FIRSTBLOOD",
+            "NEXUSBLITZ",
+            "STARGUARDIAN",
+            "PROJECT",
+            "ONEFORALL"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/SummonerBarrier.png"
+    },
+    {
+        "id": 30,
+        "name": "To the King!",
+        "description": "Quickly travel to the Poro King's side.",
+        "summonerLevel": 1,
+        "cooldown": 10,
+        "gameModes": [
+            "KINGPORO"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Benevolence_Of_King_Poro_Icon.png"
+    },
+    {
+        "id": 31,
+        "name": "Poro Toss",
+        "description": "Toss a Poro at your enemies. If it hits, you can quickly travel to your target as a follow up.",
+        "summonerLevel": 1,
+        "cooldown": 20,
+        "gameModes": [
+            "KINGPORO"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Trailblazer_Poro_Icon.png"
+    },
+    {
+        "id": 32,
+        "name": "Mark",
+        "description": "Throw a snowball in a straight line at your enemies. If it hits an enemy, they become marked, granting True Sight, and your champion can quickly travel to the marked target as a follow up.",
+        "summonerLevel": 6,
+        "cooldown": 80,
+        "gameModes": [
+            "ARAM",
+            "FIRSTBLOOD"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_Mark.png"
+    },
+    {
+        "id": 39,
+        "name": "Mark",
+        "description": "Throw a snowball in a straight line at your enemies. If it hits an enemy, they become marked, granting True Sight, and your champion can quickly travel to the marked target as a follow up.",
+        "summonerLevel": 6,
+        "cooldown": 80,
+        "gameModes": [
+            "SNOWURF"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_Mark.png"
+    },
+    {
+        "id": 54,
+        "name": "Placeholder",
+        "description": "This slot will be replaced by another champion's ultimate selected at the start of the game. There will be 30 seconds to select an ultimate. Be prepared!",
+        "summonerLevel": 1,
+        "cooldown": 0,
+        "gameModes": [
+            "ULTBOOK"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_Empty.png"
+    },
+    {
+        "id": 55,
+        "name": "Placeholder and Attack-Smite",
+        "description": "This slot will be replaced by another champion's ultimate and you will gain Attack-Smite. There will be 30 seconds to select an ultimate. Be prepared!",
+        "summonerLevel": 1,
+        "cooldown": 0,
+        "gameModes": [
+            "ULTBOOK"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_EmptySmite.png"
+    },
+    {
+        "id": 2201,
+        "name": "Flee",
+        "description": "Gain a short burst of Move Speed, increased while running away from enemy champions.",
+        "summonerLevel": 1,
+        "cooldown": 45,
+        "gameModes": [
+            "CHERRY"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Icon_SummonerSpell_Flee.2v2_Mode_Fighters.png"
+    },
+    {
+        "id": 2202,
+        "name": "Flash",
+        "description": "Teleports your champion a short distance toward your cursor's location.",
+        "summonerLevel": 1,
+        "cooldown": 0,
+        "gameModes": [
+            "CHERRY"
+        ],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_flash.png"
+    },
+    {
+        "id": 2203,
+        "name": "Flash",
+        "description": "Teleports your champion a short distance toward your cursor's location.",
+        "summonerLevel": 1,
+        "cooldown": 3,
+        "gameModes": [],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_flash.png"
+    },
+    {
+        "id": 4294967295,
+        "name": "Primal Smite",
+        "description": "",
+        "summonerLevel": 3,
+        "cooldown": 15,
+        "gameModes": [],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/1103_Smite.png"
+    },
+    {
+        "id": 4294967295,
+        "name": "Primal Smite",
+        "description": "",
+        "summonerLevel": 3,
+        "cooldown": 15,
+        "gameModes": [],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/1101_Smite.png"
+    },
+    {
+        "id": 4294967295,
+        "name": "Primal Smite",
+        "description": "",
+        "summonerLevel": 3,
+        "cooldown": 15,
+        "gameModes": [],
+        "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/1102_Smite.png"
+    }
+]

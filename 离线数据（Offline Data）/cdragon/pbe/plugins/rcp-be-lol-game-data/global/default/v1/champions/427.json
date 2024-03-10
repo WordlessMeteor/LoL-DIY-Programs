@@ -1,0 +1,1106 @@
+{
+    "id": 427,
+    "name": "Ivern",
+    "alias": "Ivern",
+    "title": "the Green Father",
+    "shortBio": "Ivern Bramblefoot, known to many as the Green Father, is a peculiar half man, half tree who roams Runeterra's forests, cultivating life everywhere he goes. He knows the secrets of the natural world, and holds deep friendships with all things that grow, fly, and scuttle. Ivern wanders the wilderness, imparting strange wisdom to any he meets, enriching the forests, and occasionally entrusting loose-lipped butterflies with his secrets.",
+    "tacticalInfo": {
+        "style": 1,
+        "difficulty": 3,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 1,
+        "durability": 1,
+        "crowdControl": 3,
+        "mobility": 2,
+        "utility": 3
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/427.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/427.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/427.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/427.ogg",
+    "roles": [
+        "support",
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 427000,
+            "isBase": true,
+            "name": "Ivern",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/427/427000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/427/427000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/427/427000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ivern/Skins/Base/IvernLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 427001,
+            "isBase": false,
+            "name": "Candy King Ivern",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/427/427001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/427/427001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/427/427001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ivern/Skins/Skin01/IvernLoadscreen_1.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 57
+                }
+            ],
+            "skinAugments": null,
+            "description": "The resplendent ruler of the Candy Kingdom, Ivern is beloved by subjects far and wide. Yet there are those who have seen the monster lurking beneath his jolly frame—and his gnawing hunger for candy flesh that can never be satisfied."
+        },
+        {
+            "id": 427002,
+            "isBase": false,
+            "name": "Dunkmaster Ivern",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/427/427002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/427/427002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/427/427002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ivern/Skins/Skin02/IvernLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427002.png",
+            "chromas": [
+                {
+                    "id": 427003,
+                    "name": "Dunkmaster Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427003.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive during 2019."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 427004,
+                    "name": "Dunkmaster Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427004.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 427005,
+                    "name": "Dunkmaster Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427005.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 427006,
+                    "name": "Dunkmaster Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427006.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427007,
+                    "name": "Dunkmaster Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427007.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427008,
+                    "name": "Dunkmaster Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427008.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427009,
+                    "name": "Dunkmaster Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427009.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427010,
+                    "name": "Dunkmaster Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427010.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 103
+                }
+            ],
+            "skinAugments": null,
+            "description": "Daisy and Ivern first started as a basketball doubles pair on the mean streets of Kumungu jungle—but then a chance encounter with then-NBA commissioner John Brambleback pushed them both into the national spotlight. They've been tearing up the court on the professional circuit ever since."
+        },
+        {
+            "id": 427011,
+            "isBase": false,
+            "name": "Old God Ivern",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/427/427011.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/427/427011.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/427/427011.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ivern/Skins/Skin11/IvernLoadScreen_11.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ivern/Skins/Skin11/IvernLoadscreen_11_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427011.png",
+            "chromas": [
+                {
+                    "id": 427012,
+                    "name": "Old God Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427012.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2020."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 427013,
+                    "name": "Old God Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427013.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427014,
+                    "name": "Old God Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427014.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427015,
+                    "name": "Old God Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427015.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427016,
+                    "name": "Old God Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427016.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427017,
+                    "name": "Old God Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427017.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 427018,
+                    "name": "Old God Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427018.png",
+                    "colors": [
+                        "#27211C",
+                        "#971458"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2020 Battle Queens event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 427019,
+                    "name": "Old God Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427019.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 92
+                }
+            ],
+            "skinAugments": null,
+            "description": "A nightmarish totem forged of witchcraft and forbidden incantations, Ivern stood among the Old Gods in the days before their destruction. Left inert for hundreds of years, he has risen along with his brethren to annihilate the paltry works of man."
+        },
+        {
+            "id": 427020,
+            "isBase": false,
+            "name": "Astronaut Ivern",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/427/427020.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/427/427020.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/427/427020.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ivern/Skins/Skin20/IvernLoadScreen_20.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427020.png",
+            "chromas": [
+                {
+                    "id": 427021,
+                    "name": "Astronaut Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427021.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 427022,
+                    "name": "Astronaut Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427022.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427023,
+                    "name": "Astronaut Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427023.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427024,
+                    "name": "Astronaut Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427024.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 427025,
+                    "name": "Astronaut Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427025.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "Obtained through Influencer audience giveaways."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 427026,
+                    "name": "Astronaut Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427026.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427027,
+                    "name": "Astronaut Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427027.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 427028,
+                    "name": "Astronaut Ivern",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/427/427028.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 94
+                }
+            ],
+            "skinAugments": null,
+            "description": "Ivern's nurturing nature created a safe haven for the meeps under his care. However, an explosion caused by Xerath destroyed his ship and left him aimlessly floating in space. After a chance encounter with Fizz, who saved him by accidentally crashing into him, Ivern joined their ranks to search for any wanderers in need of his protection."
+        }
+    ],
+    "passive": {
+        "name": "Friend of the Forest",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ivern/HUD/Icons2D/IvernP.png",
+        "abilityVideoPath": "champion-abilities/0427/ability_0427_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0427/ability_0427_P1.jpg",
+        "description": "Ivern cannot attack or be attacked by non-epic monsters. Ivern can create magical groves on jungle camps which grow over time. When the grove is fully grown, Ivern may free the monsters to receive gold and experience."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Rootcaller",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ivern/HUD/Icons2D/IvernQ.png",
+            "abilityVideoPath": "champion-abilities/0427/ability_0427_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0427/ability_0427_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Ivern conjures a vine, dealing damage and rooting enemy targets hit. Ivern's allies can dash to the rooted target.",
+            "dynamicDescription": "Ivern conjures a vine dealing <magicDamage>@TotalDamage@ magic damage</magicDamage> and <status>Rooting</status> the first enemy hit for @RootDuration@ seconds. Allies that Attack a <status>Rooted</status> enemy dash into Attack Range. <br><br><recast>Recast:</recast> Ivern dashes directly onto the <status>Rooted</status> enemy.<br><br><rules>Hitting non-epic monsters reduces <spellName>Rootcaller's</spellName> cooldown by 50%.</rules>@SpellModifierDescriptionAppend@",
+            "range": [
+                1125.0000,
+                1125.0000,
+                1125.0000,
+                1125.0000,
+                1125.0000,
+                1125.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000
+            ],
+            "cooldownCoefficients": [
+                14.0000,
+                13.0000,
+                12.0000,
+                11.0000,
+                10.0000,
+                9.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Brushmaker",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ivern/HUD/Icons2D/IvernW.png",
+            "abilityVideoPath": "champion-abilities/0427/ability_0427_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0427/ability_0427_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@AmmoRechargeTime@s Cooldown",
+            "description": "In brush, Ivern and his nearby allies attacks deal bonus magic damage. Ivern can activate this ability to create a patch of brush.",
+            "dynamicDescription": "<spellPassive>Passive:</spellPassive> While in brush and for @BuffDuration@ seconds after leaving, Ivern's Attacks deal an additional <magicDamage>@TotalDamage@ magic damage</magicDamage>. Nearby allies will gain this effect for @AllyBuffDuration@ seconds and deal <magicDamage>@TotalAllyDamage@ magic damage</magicDamage>.<br><br><spellActive>Active:</spellActive> Ivern grows a patch of Brush, revealing the area for @RevealDuration@ seconds. The Brush persists until Ivern's team loses vision within it, or up to @MaxBrushDuration@ seconds.@SpellModifierDescriptionAppend@",
+            "range": [
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000
+            ],
+            "costCoefficients": [
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000
+            ],
+            "cooldownCoefficients": [
+                0.5000,
+                0.5000,
+                0.5000,
+                0.5000,
+                0.5000,
+                0.5000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000,
+                    20.0000
+                ],
+                "maxAmmo": [
+                    3,
+                    3,
+                    3,
+                    3,
+                    3,
+                    3
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Triggerseed",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ivern/HUD/Icons2D/IvernE.png",
+            "abilityVideoPath": "champion-abilities/0427/ability_0427_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0427/ability_0427_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Ivern places a shield on an ally which explodes after a short duration slowing and damaging enemies. The shield refreshes if it hits no enemies.",
+            "dynamicDescription": "Ivern grants <shield>@TotalShield@ Shield</shield> to an ally champion or Daisy. After @ShieldDuration@ seconds, it bursts, dealing <magicDamage>@TotalDamage@ magic damage</magicDamage> and <status>Slowing</status> enemies by @SlowAmount*100@% for @SlowDuration@ seconds.<br><br>If <spellName>Triggerseed</spellName> detonates and no enemy champions are hit while the shield still persists, the ally will be shielded for <shield>@TotalShield@ </shield>for @ShieldDuration@ seconds.@SpellModifierDescriptionAppend@",
+            "range": [
+                750.0000,
+                750.0000,
+                750.0000,
+                750.0000,
+                750.0000,
+                750.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                11.0000,
+                10.0000,
+                9.0000,
+                8.0000,
+                7.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Daisy!",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ivern/HUD/Icons2D/IvernR.png",
+            "abilityVideoPath": "champion-abilities/0427/ability_0427_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0427/ability_0427_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Ivern summons his Sentinel friend Daisy to fight with him. Re-cast command Daisy to attack or move.",
+            "dynamicDescription": "Ivern summons his sentinel friend Daisy to leap into the fray for @DaisyDuration@ seconds.<br><br><spellActive>Daisy, Slam!:</spellActive> Daisy's 3rd consecutive Attack on the same champion or epic monster will launch a shockwave, dealing<magicDamage> @TotalShockwaveDamage@ magic damage</magicDamage> to all enemies hit as well as <status>Knocking Up</status> for @ShockwaveCCDuration@ second. This effect can only occur once every @ShockwaveCD@ seconds.<br><br><recast>Recast:</recast> Instruct Daisy to Attack or move.@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                140.0000,
+                130.0000,
+                120.0000,
+                110.0000,
+                100.0000,
+                90.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.3000,
+                "coefficient2": 0.5000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

@@ -1,0 +1,1773 @@
+{
+    "id": 875,
+    "name": "腕豪",
+    "alias": "Sett",
+    "title": "瑟提",
+    "shortBio": "在与诺克萨斯的战争结束之后，艾欧尼亚的地下王国日渐兴起，瑟提在其中脱颖而出，成为了一方霸主。虽然他一开始只是纳沃利的搏击场里的无名小卒，但他有着一身蛮力，而且极其耐打，很快就名声鹊起。等到当地的搏击手尽数被他击败之后，瑟提靠着一腔勇武，掌控了自己曾经浴血奋战的搏击场。",
+    "tacticalInfo": {
+        "style": 4,
+        "difficulty": 2,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 2,
+        "crowdControl": 2,
+        "mobility": 2,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/875.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/875.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/875.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/875.ogg",
+    "roles": [
+        "fighter",
+        "tank"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 875000,
+            "isBase": true,
+            "name": "腕豪",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/875/875000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/875/875000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/875/875000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sett/Skins/Base/SettLoadScreen.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sett/Skins/Base/SettLoadscreen_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 875001,
+            "isBase": false,
+            "name": "王国机神苍狼 瑟提",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/875/875001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/875/875001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/875/875001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sett/Skins/Skin01/SettLoadscreen_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sett/Skins/Skin01/SettLoadscreen_1_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875001.png",
+            "chromas": [
+                {
+                    "id": 875002,
+                    "name": "王国机神苍狼 瑟提 月蚀",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875002.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875003,
+                    "name": "王国机神苍狼 瑟提 影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875003.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875004,
+                    "name": "王国机神苍狼 瑟提 炼狱",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875004.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 875005,
+                    "name": "王国机神苍狼 瑟提 雷霆",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875005.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875006,
+                    "name": "王国机神苍狼 瑟提 云霄",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875006.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875007,
+                    "name": "王国机神苍狼 瑟提 光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875007.png",
+                    "colors": [
+                        "#0C0E15",
+                        "#611B9E"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Year of mouse",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/58.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/58.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 127
+                }
+            ],
+            "skinAugments": null,
+            "description": "瑟提是一位在郊野地区求生的无名野蛮人。他知道，他最大的才能来自他的双拳。在残酷的搏击场中拼搏出了他的财富和名望后，他制造了一个全新的身份，并冠以“苍狼”的称号。在听闻利维坦的入侵后，他用他的名声与钱财搞到了一台属于他自己的阿瓦隆，只为一劳永逸地在广大着迷的观众面前证明他的力量。"
+        },
+        {
+            "id": 875008,
+            "isBase": false,
+            "name": "神龙尊者 炎龙瑟提",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/875/875008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/875/875008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/875/875008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sett/Skins/Skin08/SettLoadScreen_8.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sett/Skins/Skin08/SettLoadscreen_8_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875008.png",
+            "chromas": [
+                {
+                    "id": 875020,
+                    "name": "神龙尊者 炎龙瑟提 烬爪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875020.png",
+                    "colors": [
+                        "#110A20",
+                        "#5C1111"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 875021,
+                    "name": "神龙尊者 炎龙瑟提 傲雪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875021.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875022,
+                    "name": "神龙尊者 炎龙瑟提 碧漪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875022.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875023,
+                    "name": "神龙尊者 炎龙瑟提 望霞",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875023.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 875024,
+                    "name": "神龙尊者 炎龙瑟提 摘星",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875024.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875025,
+                    "name": "神龙尊者 炎龙瑟提 玄黄",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875025.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875026,
+                    "name": "神龙尊者 炎龙瑟提 登龙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875026.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 875027,
+                    "name": "神龙尊者 炎龙瑟提 朝云",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875027.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875028,
+                    "name": "神龙尊者 炎龙瑟提 聚鹤",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875028.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875055,
+                    "name": "巅峰之拳 瑟提 明镜止水",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875055.png",
+                    "colors": [
+                        "#FF1515",
+                        "#E8CD6B"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 135
+                }
+            ],
+            "skinAugments": null,
+            "description": "瑟提曾经是一个遭到遗弃的孩子，发誓要获得力量去摧毁任何让他感到软弱的人。炎龙注意到了他的豪气和凶猛，赐予了他如黑曜石般坚硬的皮肤。现在的瑟提用他超人类的强壮打出了地下拳王的名气，并且他晶状皮肤反射的每一击都会让他的敌人们颤抖不已。"
+        },
+        {
+            "id": 875009,
+            "isBase": false,
+            "name": "至臻 神龙尊者 炎龙瑟提",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/875/875009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/875/875009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/875/875009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sett/Skins/Skin09/SettLoadscreen_9.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sett/Skins/Skin09/SettLoadscreen_9_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 135
+                }
+            ],
+            "skinAugments": null,
+            "description": "在巩固了自己“永不服输的地下拳王”这一威名后，瑟提用他的胜利带给了他的母亲梦想中的舒适生活。当她的幸福得到保障后，瑟提回到了地下拳台，决心培养有才华的年轻战士，并将地下拳台改造成了一种体系，来奖励那些并非最富有或最显赫，但最有决心的人。"
+        },
+        {
+            "id": 875010,
+            "isBase": false,
+            "name": "泳池派对 瑟提",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/875/875010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/875/875010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/875/875010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sett/Skins/Skin10/SettLoadScreen_10.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sett/Skins/Base/SettLoadscreen_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875010.png",
+            "chromas": [
+                {
+                    "id": 875011,
+                    "name": "泳池派对 瑟提 菠萝暴击",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875011.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 875012,
+                    "name": "泳池派对 瑟提 海星反击",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875012.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875013,
+                    "name": "泳池派对 瑟提 椰树抱摔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875013.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875014,
+                    "name": "泳池派对 瑟提 贝壳抵御",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875014.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875015,
+                    "name": "泳池派对 瑟提 樱花重袭",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875015.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 875016,
+                    "name": "泳池派对 瑟提 炙热蓄力",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875016.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875017,
+                    "name": "泳池派对 瑟提 夜影突进",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875017.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875018,
+                    "name": "泳池派对 瑟提 西瓜冲击",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875018.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 15
+                }
+            ],
+            "skinAugments": null,
+            "description": "布隆的热带饮料是瑟提的最爱——味道越甜并且鲜花越大，就越好！任何对此有问题的人都可以带上这个问题去找腕豪。他会为你呼叫救生员的。"
+        },
+        {
+            "id": 875019,
+            "isBase": false,
+            "name": "龙腾虎跃 瑟提",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/875/875019.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/875/875019.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/875/875019.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sett/Skins/Skin19/SettLoadScreen_19.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sett/Skins/Skin19/SettLoadscreen_19_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875019.png",
+            "chromas": [
+                {
+                    "id": 875029,
+                    "name": "龙腾虎跃 瑟提 恭喜发财",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875029.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 875030,
+                    "name": "龙腾虎跃 瑟提 日进斗金",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875030.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 875031,
+                    "name": "龙腾虎跃 瑟提 阖家安康",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875031.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 875032,
+                    "name": "龙腾虎跃 瑟提 紫气东来",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875032.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 875033,
+                    "name": "龙腾虎跃 瑟提 龙马精神",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875033.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 875034,
+                    "name": "龙腾虎跃 瑟提 前程似锦",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875034.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 875035,
+                    "name": "龙腾虎跃 瑟提 团团圆圆",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875035.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 875036,
+                    "name": "龙腾虎跃 瑟提 吉祥如意",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875036.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 875037,
+                    "name": "龙腾虎跃 瑟提 玉虎呈祥",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875037.png",
+                    "colors": [
+                        "#FF9D13",
+                        "#B9FFC1"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在春节(2022)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Year of Tiger",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/66.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/66.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 54
+                }
+            ],
+            "skinAugments": null,
+            "description": "虽然瑟提最出名的是他的格斗技巧，但很少有人意识到他也是一位多才多艺的舞狮人。 这而二者之间所需的技巧惊人地相似；它们都需要良好的步法、激烈的动作、并且知道如何让观众们惊叹，谁比瑟提自己做得更好呢？"
+        },
+        {
+            "id": 875038,
+            "isBase": false,
+            "name": "灵魂莲华 瑟提",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/875/875038.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/875/875038.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/875/875038.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sett/Skins/Skin38/SettLoadScreen_38.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sett/Skins/Skin38/SettLoadscreen_38_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875038.png",
+            "chromas": [
+                {
+                    "id": 875039,
+                    "name": "灵魂莲华 瑟提 流火",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875039.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 875040,
+                    "name": "灵魂莲华 瑟提 雪落",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875040.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875041,
+                    "name": "灵魂莲华 瑟提 云开",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875041.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875042,
+                    "name": "灵魂莲华 瑟提 春晓",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875042.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 875043,
+                    "name": "灵魂莲华 瑟提 雁来",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875043.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875044,
+                    "name": "灵魂莲华 瑟提 绽夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875044.png",
+                    "colors": [
+                        "#0C0C0F",
+                        "#B2D1E4"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2022)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 171
+                }
+            ],
+            "skinAugments": null,
+            "description": "有一些灵体引导亡者顺路而行；另一些灵体则引诱他们脱离道路。还有一个仍然没有投效任何一方，因为他的灵体与自己发生了冲突。生于明昼和夜幽，瑟提祥和地生活着，直到被父亲抛弃，他才开始寻求报复。如今，他只能听到救赎的低语，因为他每天都在挑战死于沙场的战士们，测试他们的价值。 "
+        },
+        {
+            "id": 875045,
+            "isBase": false,
+            "name": "斗魂觉醒 瑟提",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/875/875045.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/875/875045.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/875/875045.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sett/Skins/Skin45/SettLoadScreen_45.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sett/Skins/Skin45/SettLoadScreen_45_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875045.png",
+            "chromas": [
+                {
+                    "id": 875046,
+                    "name": "斗魂觉醒 瑟提 烈之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875046.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 875047,
+                    "name": "斗魂觉醒 瑟提 毅之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875047.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875048,
+                    "name": "斗魂觉醒 瑟提 幽之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875048.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875049,
+                    "name": "斗魂觉醒 瑟提 幻之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875049.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 875050,
+                    "name": "斗魂觉醒 瑟提 韧之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875050.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875051,
+                    "name": "斗魂觉醒 瑟提 飒之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875051.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875052,
+                    "name": "斗魂觉醒 瑟提 魅之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875052.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875053,
+                    "name": "斗魂觉醒 瑟提 燃之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875053.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875054,
+                    "name": "斗魂觉醒 瑟提 无限斗志",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875054.png",
+                    "colors": [
+                        "#C8D0CE",
+                        "#AF65D1"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在斗魂觉醒(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "RiftSummitLimited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/76.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/76.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 196
+                }
+            ],
+            "skinAugments": null,
+            "description": "这位战士来这里是为了证明拳头可以成为一切的答案！也就是说，假定一切的问题是“一个人如何赢得历史上最多的本地锦标赛？”他这样做不仅仅是为了看起来不错——尽管这也是一个不错的奖励——而是为了跻身为斗魂传奇人物，让他的妈妈感到骄傲。有请瑟——提！"
+        },
+        {
+            "id": 875056,
+            "isBase": false,
+            "name": "心之钢 瑟提",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/875/875056.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/875/875056.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/875/875056.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sett/Skins/Skin56/SettLoadScreen_56.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sett/Skins/Skin56/SettLoadscreen_56_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875056.png",
+            "chromas": [
+                {
+                    "id": 875057,
+                    "name": "心之钢 瑟提 锐意曲风",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875057.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 875058,
+                    "name": "心之钢 瑟提 华丽韵律",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875058.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875059,
+                    "name": "心之钢 瑟提 坚守决意",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875059.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875060,
+                    "name": "心之钢 瑟提 超凡信心",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875060.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875061,
+                    "name": "心之钢 瑟提 天纵才华",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875061.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 875062,
+                    "name": "心之钢 瑟提 本真风范",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875062.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875063,
+                    "name": "心之钢 瑟提 孤高傲气",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875063.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 875064,
+                    "name": "心之钢 瑟提 金声玉振",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875064.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 875065,
+                    "name": "心之钢 瑟提 摇滚明星",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/875/875065.png",
+                    "colors": [
+                        "#E1F0F5",
+                        "#E9628F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 199
+                }
+            ],
+            "skinAugments": null,
+            "description": "别让这些轮廓分明的腹肌欺骗了你：凭借精明的风格和多年来支持母亲的辛勤工作磨炼出来的一颗金子般的心，瑟提已经颇具说唱歌手自信的范儿了。他的上一次音乐生涯因殴打狗仔队而结束，但他不会受制于人。人们对瑟提的称呼有很多，但当他在心之钢的舞台上时，你可以称他为“BOSS”。"
+        }
+    ],
+    "passive": {
+        "name": "沙场豪情",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Sett/HUD/Icons2D/Sett_P.png",
+        "abilityVideoPath": "champion-abilities/0875/ability_0875_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0875/ability_0875_P1.jpg",
+        "description": "瑟提的普通攻击会交替使用左重拳和右重拳。右重拳稍微强一些和快一些。瑟提还很讨厌失败，因此会基于他的已损失生命值而获得额外的生命回复。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "屈人之威",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Sett/HUD/Icons2D/Sett_Q.png",
+            "abilityVideoPath": "champion-abilities/0875/ability_0875_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0875/ability_0875_Q1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "瑟提的下两次攻击将基于目标的最大生命值来造成额外伤害。瑟提也会在朝着敌方英雄移动时获得移动速度加成。",
+            "dynamicDescription": "瑟提手痒难耐，渴望打架，在朝着敌方英雄移动时获得<speed>@MSAmount*100@%移动速度</speed>，持续@MSDuration@秒。<br><br>此外，瑟提的下两次攻击造成额外的<physicalDamage>@BaseDamage@外加@MaxHealthDamageCalc@最大生命值的物理伤害</physicalDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                9.0000,
+                8.0000,
+                7.0000,
+                6.0000,
+                5.0000,
+                9.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "蓄意轰拳",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Sett/HUD/Icons2D/Sett_W.png",
+            "abilityVideoPath": "champion-abilities/0875/ability_0875_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0875/ability_0875_W1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "瑟提会被动地将他受到的伤害储存为豪意。在施放时，瑟提会释放所有已储存的豪意来提供一层护盾并且重击一个区域，在区域中心造成真实伤害并在区域边缘造成物理伤害。",
+            "dynamicDescription": "<spellPassive>被动：</spellPassive>瑟提将受到的@DamageStored*100@%伤害储存为<keywordMajor>豪意</keywordMajor>，储量上限为<keywordMajor>@MaxGrit@</keywordMajor>。<keywordMajor>豪意</keywordMajor>在停止受到伤害的@AdrenalineStorageWindow@秒后会快速衰减。<br><br><spellActive>主动：</spellActive>瑟提将所有<keywordMajor>豪意</keywordMajor>迸发出来，获得<shield>@ShieldConversion*100@%迸发豪意值的护盾值</shield>，护盾值会在@ShieldMaxDuration@秒里持续衰减。瑟提随后会轰出一记重拳，对中央的所有敌人造成<trueDamage>@DamageCalc@外加@DamageConversion@迸发豪意值的真实伤害</trueDamage>(最大伤害为<trueDamage>@f1@</trueDamage>)。不在中央的敌人会受到<physicalDamage>物理伤害</physicalDamage>作为替代。@SpellModifierDescriptionAppend@",
+            "range": [
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                18.0000,
+                16.5000,
+                15.0000,
+                13.5000,
+                12.0000,
+                12.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "强手裂颅",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Sett/HUD/Icons2D/Sett_E.png",
+            "abilityVideoPath": "champion-abilities/0875/ability_0875_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0875/ability_0875_E1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "瑟提将他两侧的所有敌人猛撞到一起，对他们造成伤害和晕眩效果。如果敌人仅位于他的一侧，那么他们只会被减速而不会被晕眩。",
+            "dynamicDescription": "瑟提将他两侧的敌人猛撞到一起，造成<physicalDamage>@DamageCalc@物理伤害</physicalDamage>并使他们<status>减速</status>@SlowAmount*100@%，持续@SlowDuration@秒。如果瑟提在每侧都至少擒住了一名敌人，那么所有敌人还会被<status>晕眩</status>@StunDuration@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                490.0000,
+                490.0000,
+                490.0000,
+                490.0000,
+                490.0000,
+                490.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                16.0000,
+                14.5000,
+                13.0000,
+                11.5000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 0.0200
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "叹为观止",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Sett/HUD/Icons2D/Sett_R.png",
+            "abilityVideoPath": "champion-abilities/0875/ability_0875_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0875/ability_0875_R1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "瑟提将一名敌方英雄带到空中，然后将其猛砸到地上，在该英雄着陆后对其附近的所有敌人造成伤害和减速效果。",
+            "dynamicDescription": "瑟提擒住一名敌方英雄，并在扛着该英雄前行时将其<status>压制</status>，然后将该英雄猛摔到地上，对着陆点附近的所有敌人造成<physicalDamage>@DamageCalc@外加@MaxHealthDamage*100@%被擒英雄的额外生命值的物理伤害</physicalDamage>和持续@SlowDuration@秒的@SlowAmount*100@%<status>减速</status>。敌人离瑟提着陆的位置越远，受到的伤害越低。@SpellModifierDescriptionAppend@",
+            "range": [
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                100.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.1000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

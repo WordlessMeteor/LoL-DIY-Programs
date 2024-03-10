@@ -1,0 +1,1874 @@
+{
+    "id": 99,
+    "name": "光辉女郎",
+    "alias": "Lux",
+    "title": "拉克丝",
+    "shortBio": "拉克丝全名拉克珊娜·冕卫，出身自德玛西亚颇有声望的冕卫家族。德玛西亚是一个将魔法视为禁忌的封闭国度，只要提及魔法，人们总是带着恐惧和怀疑。因此，拥有折光之力的拉克丝，在整个童年的成长过程中都担心被人发现而遭放逐，她一直强迫自己隐瞒力量，以保住家族的贵族地位。即便如此，拉克丝的乐观和顽强还是让她学会了拥抱自己独特的天赋。现在，她在暗地中使用这份能力为王国效力。",
+    "tacticalInfo": {
+        "style": 9,
+        "difficulty": 1,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 2,
+        "mobility": 1,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/99.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/99.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/99.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/99.ogg",
+    "roles": [
+        "mage",
+        "support"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 99000,
+            "isBase": true,
+            "name": "光辉女郎",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Base/LuxLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 99001,
+            "isBase": false,
+            "name": "奥术光辉 拉克丝",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin01/LuxLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 114
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为一名来自德玛西亚公爵领的有志法师，拉克丝已经游历过各地，寻求用魔法来照亮农民们的生活。尽管她的努力经常会先遭到怀疑，但她的“奇迹”传说已经开始传到公爵领的统治阶级那里了……"
+        },
+        {
+            "id": 99002,
+            "isBase": false,
+            "name": "游侠法师 拉克丝",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin02/LuxLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 95
+                }
+            ],
+            "skinAugments": null,
+            "description": "她不用诸如窃法之刃来吸钱，也不能真的像塞拉斯那样窃取技能，但从技术上来说，拉克丝正在学习并复刻非法魔法。可惜的是，“非法咒语学习者 拉克丝”听起来不够响亮。"
+        },
+        {
+            "id": 99003,
+            "isBase": false,
+            "name": "ODST地狱伞兵 拉克丝",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin03/LuxLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 104
+                }
+            ],
+            "skinAugments": null,
+            "description": "一副隔音耳罩，一块多光谱遮面，一双及膝系带靴子，以及一把发射激光而非火焰的双面火焰喷射器？拉克丝真的应有尽有。"
+        },
+        {
+            "id": 99004,
+            "isBase": false,
+            "name": "星际迷航 拉克丝",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin04/LuxLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 99005,
+            "isBase": false,
+            "name": "钢铁军团 拉克丝",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin05/LuxLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "LPL Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/45.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/45.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 85
+                }
+            ],
+            "skinAugments": null,
+            "description": "这位训练有素的钢铁军团专家使用光线增幅水晶权杖来释放浓缩了能量的光束。拉克丝是被认定过的，她与武器的密切关联已被组织内的若干主要科学家给静默观察过。"
+        },
+        {
+            "id": 99006,
+            "isBase": false,
+            "name": "星之守护者 拉克丝",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin06/LuxLoadScreen_6.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin06/LuxLoadscreen_6_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 19
+                }
+            ],
+            "skinAugments": null,
+            "description": "欢欣而且勇敢的拉克丝是她星之守护者小队中最闪亮的一员。虽然年轻缺乏经验，但这位粉色头发的队长却用自己的乐观激励着其他人相信自己保护宇宙的命运。她全心全意地相信，只要他们团结一心，就没有不能战胜的黑暗。"
+        },
+        {
+            "id": 99007,
+            "isBase": false,
+            "name": "大元素使 拉克丝",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin07/LuxLoadScreen_7.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin07/LuxLoadScreen_7_LE.jpg",
+            "skinType": "Ultimate",
+            "rarity": "kUltimate",
+            "isLegacy": false,
+            "splashVideoPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin07/AnimatedSplash/Lux_Skin7_centered.webm",
+            "collectionSplashVideoPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin07/AnimatedSplash/Lux_Skin7_uncentered.webm",
+            "featuresText": "<ul><li>- 十种独特的元素形态</li><li>- 合成元素来触发新的融合形态</li><li>- 所有形态都有全新的元素特效</li><li>- 五个附带动态生涯背景的专属召唤师图标</li></ul>",
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Ultimate",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/44.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/44.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 9,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/9_large.png",
+            "skinLines": [
+                {
+                    "id": 166
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 99008,
+            "isBase": false,
+            "name": "春晖神女 拉克丝",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin08/LuxLoadScreen_8.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin08/LuxLoadScreen_8_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99008.png",
+            "chromas": [
+                {
+                    "id": 99009,
+                    "name": "春晖神女 拉克丝 玉露金风",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99009.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "ID",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 99010,
+                    "name": "春晖神女 拉克丝 倾城碧色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99010.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 99011,
+                    "name": "春晖神女 拉克丝 轻云蔽月",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99011.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 99012,
+                    "name": "春晖神女 拉克丝 流风回雪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99012.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 99013,
+                    "name": "春晖神女 拉克丝 空谷幽兰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99013.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Year of the Dog",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/47.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/47.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 55
+                }
+            ],
+            "skinAugments": null,
+            "description": "从小就被教导要保护天界免受黑暗的侵袭，春晖神女和她的伙伴们承诺要守护整个世界。虽然拉克丝已经是非常强大的半神，但是她还是需要来自忠诚的伙伴沃里克和内瑟斯的帮助。"
+        },
+        {
+            "id": 99014,
+            "isBase": false,
+            "name": "睡衣守护者 拉克丝",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99014.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99014.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99014.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin14/LuxLoadscreen_14.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin06/LuxLoadscreen_6_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 19
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为星之守护者小队的队长，拉克丝知道放松与恢复的重要性。作为派对的主持者，她仍然在放松部分努力着。太难放开了——尤其是当一个有些英俊的金发守护者在不断绽放迷人的微笑时！——但拉克丝无限的乐观精神仍然照亮了每个房间。"
+        },
+        {
+            "id": 99015,
+            "isBase": false,
+            "name": "战斗学院 拉克丝",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99015.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99015.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99015.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin15/LuxLoadScreen_15.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin15/LuxLoadscreen_15_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 113
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为杜朗德尔神之武器学院的一名一年级学生，拉克丝不管遇到什么都保持着一种乐观的态度。尽管她在巫术俱乐部处在新人位置，但拉克丝所运用的巨大魔法能量就连学院的资深职员都没办法解释。"
+        },
+        {
+            "id": 99016,
+            "isBase": false,
+            "name": "至臻 战斗学院 拉克丝",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99016.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99016.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99016.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin16/LuxLoadscreen_16.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 113
+                }
+            ],
+            "skinAugments": null,
+            "description": "现在已是拉克丝在杜朗德尔学院的第二学年。磨人的试炼、失败与背叛曾不时在她的新人经历中添上一笔，也让她得以变得坚强。随着与一把已被确认的、侠盗的神之武器的巅峰对决，拉克丝已经精通了她的能量并且跻身为巫术俱乐部的领导人，并且也是新任班长。"
+        },
+        {
+            "id": 99017,
+            "isBase": false,
+            "name": "暗星女王 拉克丝",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99017.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99017.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99017.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin17/LuxLoadScreen_17.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin17/LuxLoadscreen_17_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 44
+                }
+            ],
+            "skinAugments": null,
+            "description": "曾是女皇艾希右使的拉克丝拥抱了内心的黑暗，回应了暗星的癫狂召唤。终于看到了真相的她拒绝了星界神廷，转而效忠于她自身的黑暗雄心，来让陈腐的创造噪音安静下来。因为她现在知道了她的真正宿命——以黑暗神廷的女皇，和暗星的合法主人的身份来施行统治。"
+        },
+        {
+            "id": 99018,
+            "isBase": false,
+            "name": "耀星女神 拉克丝",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99018.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99018.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99018.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin18/LuxLoadScreen_18.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin18/LuxLoadscreen_18_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 43
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为女皇艾希右使的拉克丝编织了天界的星座，将秩序带回了一个正在移向熵增的宇宙。在暗星开始腐化星界神廷的成员们时，拉克丝站出来与锤石对垒。她现在隐藏这一个可怕的秘密——一颗黑暗碎片总是存在于她的内心中，不断低语着引诱之辞……"
+        },
+        {
+            "id": 99019,
+            "isBase": false,
+            "name": "太空律动 “闪耀灯球” 拉克丝",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99019.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99019.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99019.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin19/LuxLoadScreen_19.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin19/LuxLoadscreen_19_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99019.png",
+            "chromas": [
+                {
+                    "id": 99020,
+                    "name": "“闪耀灯球” 拉克丝 我又开团了",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99020.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 99021,
+                    "name": "“闪耀灯球” 拉克丝 我又游走了",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99021.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99022,
+                    "name": "“闪耀灯球” 拉克丝 我又补车了",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99022.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 99023,
+                    "name": "“闪耀灯球” 拉克丝 我又回城了",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99023.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99024,
+                    "name": "“闪耀灯球” 拉克丝 我又探草了",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99024.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99025,
+                    "name": "“闪耀灯球” 拉克丝 我又越塔了",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99025.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99026,
+                    "name": "“闪耀灯球” 拉克丝 我又走错了",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99026.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99027,
+                    "name": "“闪耀灯球” 拉克丝 我又大意了",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99027.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99028,
+                    "name": "“闪耀灯球” 拉克丝 我又发呆了",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99028.png",
+                    "colors": [
+                        "#9DFFEF",
+                        "#AA55FF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在太空律动(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 144
+                }
+            ],
+            "skinAugments": null,
+            "description": "拉克丝是来自正常世界的一名普通少女，捡到了一根附魔了律动能量的法杖，并凭借它来保护她的星球免受刺耳颤音的侵袭……拉克丝无意中发现，她可以引导浓缩迪斯科音乐的强力音爆。现在的拉克丝与她的佣兵保镖莎弥拉一起航行于太空，如同一座善良的活泼堡垒，对抗着一支异星无敌舰队与它们可怕的音乐品味。"
+        },
+        {
+            "id": 99029,
+            "isBase": false,
+            "name": "青花瓷 拉克丝",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99029.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99029.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99029.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin29/LuxLoadScreen_29.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin29/LuxLoadscreen_29_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99029.png",
+            "chromas": [
+                {
+                    "id": 99030,
+                    "name": "青花瓷 拉克丝 牡丹",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99030.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 99031,
+                    "name": "青花瓷 拉克丝 烟雨",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99031.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99032,
+                    "name": "青花瓷 拉克丝 含苞",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99032.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 99033,
+                    "name": "青花瓷 拉克丝 檀香",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99033.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99034,
+                    "name": "青花瓷 拉克丝 釉色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99034.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99035,
+                    "name": "青花瓷 拉克丝 墨色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99035.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99036,
+                    "name": "青花瓷 拉克丝 芭蕉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99036.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99037,
+                    "name": "青花瓷 拉克丝 月色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99037.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99041,
+                    "name": "青花瓷 拉克丝 天青",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99041.png",
+                    "colors": [
+                        "#FF9D13",
+                        "#B9FFC1"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在春节(2022)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 154
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为生肖神卫的现任领袖和兔生肖圣物的持有者，拉克丝决心保持她阳光的性格，不管遇到什么事情：她自己艰苦的巫术训练，偶然加入他们行列的新手考古学家，以及突然觉醒的邪恶现在要复仇了。她有这个觉悟……对吧？对的。"
+        },
+        {
+            "id": 99038,
+            "isBase": false,
+            "name": "斗魂觉醒 拉克丝",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99038.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99038.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99038.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin38/LuxLoadScreen_38.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin38/LuxLoadScreen_38_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99038.png",
+            "chromas": [
+                {
+                    "id": 99052,
+                    "name": "斗魂觉醒 拉克丝 烈之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99052.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 99053,
+                    "name": "斗魂觉醒 拉克丝 澄之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99053.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99054,
+                    "name": "斗魂觉醒 拉克丝 飒之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99054.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99055,
+                    "name": "斗魂觉醒 拉克丝 韧之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99055.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99056,
+                    "name": "斗魂觉醒 拉克丝 幻之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99056.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 99057,
+                    "name": "斗魂觉醒 拉克丝 魅之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99057.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99058,
+                    "name": "斗魂觉醒 拉克丝 幽之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99058.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99059,
+                    "name": "斗魂觉醒 拉克丝 毅之魂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99059.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99060,
+                    "name": "斗魂觉醒 拉克丝 无限斗志",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99060.png",
+                    "colors": [
+                        "#C8D0CE",
+                        "#AF65D1"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在斗魂觉醒(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 196
+                }
+            ],
+            "skinAugments": null,
+            "description": "在离家出走时，她认为最好的藏身之处是在电视上？！不过说实话，各位，这位女士有一些痛苦经历……我们都知道擂台是解决那个问题的*地方*！现在，如果让我猜的话——我确实要猜——我敢说她会用那个灵魂的愿望来让她的抓马人生消失不见。有请拉克丝！"
+        },
+        {
+            "id": 99039,
+            "isBase": false,
+            "name": "至臻 战斗学院 拉克丝 (2022)",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99039.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99039.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99039.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin39/LuxLoadScreen_39.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 113
+                }
+            ],
+            "skinAugments": null,
+            "description": "现在已是拉克丝在杜朗德尔学院的第二学年。磨人的试炼、失败与背叛曾不时在她的新人经历中添上一笔，也让她得以变得坚强。随着与一把已被确认的、侠盗的神之武器的巅峰对决，拉克丝已经精通了她的能量并且跻身为巫术俱乐部的领导人，并且也是新任班长。"
+        },
+        {
+            "id": 99040,
+            "isBase": false,
+            "name": "至臻 青花瓷 拉克丝",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99040.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99040.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99040.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin40/LuxLoadScreen_40.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin40/LuxLoadscreen_40_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 154
+                }
+            ],
+            "skinAugments": null,
+            "description": "一位领袖也许会妥协，但绝对不会崩溃。在生肖神卫追击远古邪恶的过程中，拉克丝带领她的团队克服了即使是那个考古学家——在信心爆棚下——都认为无法克服的障碍。拉克丝的力量，曾是黑暗世界中的一道微弱光芒，而现在则在灿烂地闪耀着。还有她的那群性格脆弱的草台班子，生肖神卫？只要有她的支持，那么他们的头衔就当之无愧。"
+        },
+        {
+            "id": 99042,
+            "isBase": false,
+            "name": "至高天 拉克丝",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99042.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99042.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99042.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin42/LuxLoadScreen_42.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin42/LuxLoadscreen_42_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99042.png",
+            "chromas": [
+                {
+                    "id": 99043,
+                    "name": "至高天 拉克丝 狂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99043.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 99044,
+                    "name": "至高天 拉克丝 幻耀",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99044.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 99045,
+                    "name": "至高天 拉克丝 华耀",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99045.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99046,
+                    "name": "至高天 拉克丝 青炬",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99046.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99047,
+                    "name": "至高天 拉克丝 寒芒",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99047.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99048,
+                    "name": "至高天 拉克丝 荧煌",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99048.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99049,
+                    "name": "至高天 拉克丝 胧光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99049.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99050,
+                    "name": "至高天 拉克丝 苍黯",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99050.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99051,
+                    "name": "至高天 拉克丝 霓虹耀斑",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99051.png",
+                    "colors": [
+                        "#FF655B",
+                        "#95E237"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2022)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 186
+                }
+            ],
+            "skinAugments": null,
+            "description": "拉克丝由于她的魔法能力而被迫生活在穷街陋巷和屈辱中，讽刺的是，当她的位面崩溃时，她却逃过了必然之死。现在，凭借盈晖的原生力量，她自由了。即使她半只脚踏进了死亡也没关系：她打算在火焰吞噬她之前尽可能多地去感受生活的美好。 "
+        }
+    ],
+    "passive": {
+        "name": "光芒四射",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Lux/HUD/Icons2D/LuxIlluminatingFraulein.png",
+        "abilityVideoPath": "champion-abilities/0099/ability_0099_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0099/ability_0099_P1.jpg",
+        "description": "拉克丝的伤害类技能会对敌人施加【启明】效果，持续若干秒。拉克丝的下一次攻击将会消耗【启明】效果，来对目标造成额外魔法伤害（基于拉克丝等级）。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "光之束缚",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Lux/HUD/Icons2D/LuxCrashingBlitz2.png",
+            "abilityVideoPath": "champion-abilities/0099/ability_0099_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0099/ability_0099_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "拉克丝释放一个光球，束缚并伤害最多两个敌方单位。",
+            "dynamicDescription": "拉克丝朝目标地点发射一团光球，<status>束缚</status>前2名敌人@Effect3Amount@秒并对每个敌人造<magicDamage>@TotalDamageTT@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                1175.0000,
+                1175.0000,
+                1175.0000,
+                1175.0000,
+                1175.0000,
+                1175.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000
+            ],
+            "cooldownCoefficients": [
+                11.0000,
+                10.5000,
+                10.0000,
+                9.5000,
+                9.0000,
+                9.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.6000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    80.0000,
+                    120.0000,
+                    160.0000,
+                    200.0000,
+                    240.0000,
+                    240.0000
+                ],
+                "Effect2Amount": [
+                    50.0000,
+                    50.0000,
+                    50.0000,
+                    50.0000,
+                    50.0000,
+                    50.0000,
+                    50.0000
+                ],
+                "Effect3Amount": [
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "曲光屏障",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Lux/HUD/Icons2D/LuxPrismaWrap.png",
+            "abilityVideoPath": "champion-abilities/0099/ability_0099_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0099/ability_0099_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "拉克丝掷出她的魔杖，魔杖所触及的友方单位会有光环环绕，保护他们免受敌方伤害。",
+            "dynamicDescription": "拉克丝扔出她的魔杖，为它途经的友军提供持续@Effect3Amount@秒的<shield>@TotalShieldTT@护盾</shield>。随后它会折返，为它途经的友军提供等额的<shield>护盾</shield>。@SpellModifierDescriptionAppend@",
+            "range": [
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000,
+                80.0000,
+                85.0000
+            ],
+            "cooldownCoefficients": [
+                14.0000,
+                13.0000,
+                12.0000,
+                11.0000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.4000,
+                "coefficient2": 0.4000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    2.0000,
+                    4.0000,
+                    6.0000,
+                    8.0000,
+                    10.0000,
+                    12.0000
+                ],
+                "Effect2Amount": [
+                    25.0000,
+                    40.0000,
+                    55.0000,
+                    70.0000,
+                    85.0000,
+                    100.0000,
+                    145.0000
+                ],
+                "Effect3Amount": [
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000
+                ],
+                "Effect4Amount": [
+                    100.0000,
+                    100.0000,
+                    100.0000,
+                    100.0000,
+                    100.0000,
+                    100.0000,
+                    100.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "透光奇点",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Lux/HUD/Icons2D/LuxLightStrikeKugel.png",
+            "abilityVideoPath": "champion-abilities/0099/ability_0099_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0099/ability_0099_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "朝一个区域发射一个不规则的扭曲之光，减速附近敌人。拉克丝可以引爆它，对敌人造成区域性伤害。",
+            "dynamicDescription": "拉克丝创造一个光明地带，显形该区域并使区域中的敌人<status>减速</status>@Effect1Amount@%。在@Effect3Amount@秒后或<recast>再次施放</recast>这个技能后，它会爆炸，造成<magicDamage>@TotalDamageTT@魔法伤害</magicDamage>并<status>减速</status>额外的@SlowLingerDuration@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                1100.0000,
+                1100.0000,
+                1100.0000,
+                1100.0000,
+                1100.0000,
+                1100.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                80.0000,
+                90.0000,
+                100.0000,
+                110.0000,
+                110.0000
+            ],
+            "cooldownCoefficients": [
+                10.0000,
+                9.5000,
+                9.0000,
+                8.5000,
+                8.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.8000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    20.0000,
+                    25.0000,
+                    30.0000,
+                    35.0000,
+                    40.0000,
+                    45.0000,
+                    50.0000
+                ],
+                "Effect2Amount": [
+                    20.0000,
+                    65.0000,
+                    115.0000,
+                    165.0000,
+                    215.0000,
+                    265.0000,
+                    315.0000
+                ],
+                "Effect3Amount": [
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000
+                ],
+                "Effect4Amount": [
+                    310.0000,
+                    310.0000,
+                    310.0000,
+                    310.0000,
+                    310.0000,
+                    310.0000,
+                    310.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "终极闪光",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Lux/HUD/Icons2D/LuxFinaleFunkeln.png",
+            "abilityVideoPath": "champion-abilities/0099/ability_0099_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0099/ability_0099_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "在积蓄能量之后，拉克丝发射一束光波，对该区域所有目标造成伤害。此外，该技能触发拉克丝的被动技能并刷新光芒四射减益的持续时间。",
+            "dynamicDescription": "拉克丝发射一束耀目的光能射线，对一条直线上的所有敌人造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                3340.0000,
+                3340.0000,
+                3340.0000,
+                3340.0000,
+                3340.0000,
+                3340.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                60.0000,
+                50.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                30.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

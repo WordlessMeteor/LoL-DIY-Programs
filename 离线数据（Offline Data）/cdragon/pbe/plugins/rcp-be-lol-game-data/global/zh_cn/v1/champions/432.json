@@ -1,0 +1,1265 @@
+{
+    "id": 432,
+    "name": "星界游神",
+    "alias": "Bard",
+    "title": "巴德",
+    "shortBio": "巴德是星界彼端的旅者，是奇缘巧遇的使者。他艰难地维护着宇宙的平衡，从而让生命能够抵御无情的混乱。符文之地有许多人传唱关于他的歌谣，内容里流露出对他超凡本质的猜想，而所有这些歌谣都会提及同一件事：这位星界游荡者总是会被强大的魔法圣物所吸引。一群木灵欢唱乐团始终围绕在巴德身边充当小帮手，他的行为绝不会被误会带有任何恶意，因为他永远都是在为更大的良善尽职尽责，只不过他的方式不为常人理解。",
+    "tacticalInfo": {
+        "style": 7,
+        "difficulty": 3,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 1,
+        "durability": 1,
+        "crowdControl": 3,
+        "mobility": 2,
+        "utility": 3
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/432.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/432.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/432.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/432.ogg",
+    "roles": [
+        "support",
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 432000,
+            "isBase": true,
+            "name": "星界游神",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/432/432000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/432/432000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/432/432000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Bard/Skins/Base/BardLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432000.png",
+            "chromas": [
+                {
+                    "id": 432002,
+                    "name": "星界游神 巴德 恒星之耀",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432002.png",
+                    "colors": [
+                        "#F7963F",
+                        "#701E1E"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 432003,
+                    "name": "星界游神 巴德 流星之煌",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432003.png",
+                    "colors": [
+                        "#447164",
+                        "#262C35"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 432004,
+                    "name": "星界游神 巴德 彗星之辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432004.png",
+                    "colors": [
+                        "#3F4CAF",
+                        "#0D124A"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 432001,
+            "isBase": false,
+            "name": "永恒之森 巴德",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/432/432001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/432/432001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/432/432001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Bard/Skins/Skin01/BardLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 58
+                }
+            ],
+            "skinAugments": null,
+            "description": "巴德是一个来自古老世界的生物，他们说，比最大的森林还要古老，甚至比萌生了这个森林的种子还要古老。鲜有记录从诸神之前的时代中存留下来，但巴德很可能比这些记录还要早——一个真正原始的存在，从时间的第一次破晓开始就在照料大地了。"
+        },
+        {
+            "id": 432005,
+            "isBase": false,
+            "name": "冰雪游神 巴德",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/432/432005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/432/432005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/432/432005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Bard/Skins/Skin05/BardLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432005.png",
+            "chromas": [
+                {
+                    "id": 432007,
+                    "name": "冰雪游神 巴德 炫金",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432007.png",
+                    "colors": [
+                        "#FFC948",
+                        "#FFC948"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "   "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 46
+                }
+            ],
+            "skinAugments": null,
+            "description": "巴德神通广大的宇宙力量和他不可捉摸的天性是打雪仗的巨大优势。他召唤的冰雪大陆魔法企鹅队列、自动加热的可可饮料、还有通向未知的传送门，全都让这个冰雪游神无往不利。"
+        },
+        {
+            "id": 432006,
+            "isBase": false,
+            "name": "巴德·吟游诗人",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/432/432006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/432/432006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/432/432006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Bard/Skins/Skin06/BardLoadscreen_6.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 38
+                }
+            ],
+            "skinAugments": null,
+            "description": "虽然在《峡谷勇者》中选择了一个冷门职业，巴德还是把远古的歌谣改变成了足以扭曲现实的死亡武器。遗憾的是他的回合每次都要花费很长的时间，因为他没有线性时间的概念并且说话还会发出古怪的“嗡嗡”声。"
+        },
+        {
+            "id": 432008,
+            "isBase": false,
+            "name": "宇航员 巴德",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/432/432008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/432/432008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/432/432008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Bard/Skins/Skin08/BardLoadScreen_8.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Bard/Skins/Skin08/BardLoadscreen_8_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432008.png",
+            "chromas": [
+                {
+                    "id": 432009,
+                    "name": "宇航员 巴德 月球漫步",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432009.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 432010,
+                    "name": "宇航员 巴德 平坦宇宙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432010.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 432011,
+                    "name": "宇航员 巴德 太阳风帆",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432011.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 432012,
+                    "name": "宇航员 巴德 重力弹弓",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432012.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 432013,
+                    "name": "宇航员 巴德 自由落体",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432013.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 432014,
+                    "name": "宇航员 巴德 万有引力",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432014.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 432015,
+                    "name": "宇航员 巴德 伽马射线",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432015.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 432016,
+                    "name": "宇航员 巴德 无尽永前",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432016.png",
+                    "colors": [
+                        "#162D57",
+                        "#A50031"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在未来战士(2020)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 94
+                }
+            ],
+            "skinAugments": null,
+            "description": "在太空中，没人能听到你尖叫。"
+        },
+        {
+            "id": 432017,
+            "isBase": false,
+            "name": "咖啡甜心 巴德",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/432/432017.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/432/432017.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/432/432017.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Bard/Skins/Skin17/BardLoadScreen_17.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Bard/Skins/Skin17/BardLoadscreen_17_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432017.png",
+            "chromas": [
+                {
+                    "id": 432018,
+                    "name": "咖啡甜心 巴德 草莓戚风",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432018.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 432019,
+                    "name": "咖啡甜心 巴德 海盐泡芙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432019.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 432020,
+                    "name": "咖啡甜心 巴德 吉子芝士",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432020.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 432021,
+                    "name": "咖啡甜心 巴德 抹茶巧克力",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432021.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 432022,
+                    "name": "咖啡甜心 巴德 酒醉樱桃",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432022.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 432023,
+                    "name": "咖啡甜心 巴德 提子班戟",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432023.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 432024,
+                    "name": "咖啡甜心 巴德 薄荷雪拔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432024.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 432025,
+                    "name": "咖啡甜心 巴德 焦糖布丁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432025.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 153
+                }
+            ],
+            "skinAugments": null,
+            "description": "巴德是在一流咖啡馆之间漫游的一位无言鉴赏家。 如果他留下了一个茶杯形式的祝福？那就意味着一百年的甜蜜成效。没有人知道“茶壶游吟诗人”从哪里来，或者他是否有一个比游乐于糕点店更上一层的目的，但巴德的一次造访会让任何一家咖啡馆立刻闻名于世！"
+        },
+        {
+            "id": 432026,
+            "isBase": false,
+            "name": "山海绘卷 巴德",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/432/432026.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/432/432026.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/432/432026.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Bard/Skins/Skin26/BardLoadScreen_26.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432026.png",
+            "chromas": [
+                {
+                    "id": 432027,
+                    "name": "山海绘卷 巴德 朱红",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432027.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 432028,
+                    "name": "山海绘卷 巴德 靛青",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432028.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 432029,
+                    "name": "山海绘卷 巴德 竹青",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432029.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 432030,
+                    "name": "山海绘卷 巴德 青莲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432030.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 432031,
+                    "name": "山海绘卷 巴德 杏黄",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432031.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 432032,
+                    "name": "山海绘卷 巴德 湘妃",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432032.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 432033,
+                    "name": "山海绘卷 巴德 茶白",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432033.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 432034,
+                    "name": "山海绘卷 巴德 墨色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/432/432034.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 139
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为“植物之神”，巴德一直在移动以补充自然能量。作为黄昏和黎明两棵圣树的看管者，他将其中一根断枝制成了一个号角，可以让他在绘卷中的任何地方旅行。他知道“疯狂之神”烬会利用这种力量为自己谋利，但巴德会用自己的生命来阻止它。"
+        }
+    ],
+    "passive": {
+        "name": "旅者的召唤",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Bard/HUD/Icons2D/Bard_Passive.png",
+        "abilityVideoPath": "champion-abilities/0432/ability_0432_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0432/ability_0432_P1.jpg",
+        "description": "<font color='#FF9900'>木灵：</font>巴德吸引小型灵体来强化他的普攻以造成额外魔法伤害。当巴德收集到足够的<font color='#cccc00'>调和之音</font>时，这些木灵还会造成范围伤害并使命中的敌人减速。<br><br><font color='#FF9900'>调和之音：</font>远古的<font color='#cccc00'>调和之音</font>会随机出现，用来让巴德收集。这些调和之音会提供经验值，回复法力值，并提供脱战状态下的移动速度加成。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "星界束缚",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Bard/HUD/Icons2D/Bard_Q.png",
+            "abilityVideoPath": "champion-abilities/0432/ability_0432_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0432/ability_0432_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "巴德发射一束能量弹，减速命中的第一个敌人，并继续向前。如果能量弹命中墙体，它还会使首个目标晕眩；如果它命中了另一个敌人，那么它会让这两个敌人都晕眩。",
+            "dynamicDescription": "巴德发射一束能量弹，对命中的头两个敌人造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>。第一个被命中的敌人会被施加持续@SlowDuration@秒的@SlowAmountPercentage@%<status>减速</status>。<br><br>如果该能量弹命中了第二个敌人或一个墙体，那么被命中的敌人都会被<status>晕眩</status>@StunDuration@秒。<br>@SpellModifierDescriptionAppend@",
+            "range": [
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000
+            ],
+            "cooldownCoefficients": [
+                11.0000,
+                10.0000,
+                9.0000,
+                8.0000,
+                7.0000,
+                7.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.6500,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "游神圣坛",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Bard/HUD/Icons2D/Bard_W.png",
+            "abilityVideoPath": "champion-abilities/0432/ability_0432_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0432/ability_0432_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@f7@秒",
+            "description": "升起一座生命圣坛，圣坛会在短时间内持续充能，并在治疗和加速第一个接触它的友军后消失。",
+            "dynamicDescription": "巴德升起一座生命圣坛，圣坛会为第一个进入的友方英雄提供在@MoveSpeed_Duration@秒里持续衰减的<speed>@Calc_MoveSpeed@移动速度</speed>并为其回复至少<healing>@InitialHeal@生命值</healing>。圣坛会不断成长，在存在@Effect8Amount@秒后即可满额回复<healing>@MaxHeal@生命值</healing>。<br><br>巴德最多可同时拥有@Effect3Amount@座圣坛。如果有一名敌方英雄进入圣坛，那么该圣坛就会被摧毁。<br><br>这个技能有@Ammo_Limit@层充能。<br><br>当前已激活的圣坛数：@f1@ / @f2@@SpellModifierDescriptionAppend@",
+            "range": [
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.3000,
+                "coefficient2": 0.6000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    25.0000,
+                    50.0000,
+                    75.0000,
+                    100.0000,
+                    125.0000,
+                    150.0000
+                ],
+                "Effect6Amount": [
+                    12.5000,
+                    50.0000,
+                    87.5000,
+                    125.0000,
+                    162.5000,
+                    200.0000,
+                    237.5000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    18.0000,
+                    18.0000,
+                    18.0000,
+                    18.0000,
+                    18.0000,
+                    18.0000
+                ],
+                "maxAmmo": [
+                    2,
+                    2,
+                    2,
+                    2,
+                    2,
+                    2
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "神奇旅程",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Bard/HUD/Icons2D/Bard_E.png",
+            "abilityVideoPath": "champion-abilities/0432/ability_0432_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0432/ability_0432_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "巴德在附近的地形上开启一道单向传送门。友军和敌军都可以使用传送门来穿过该地形。",
+            "dynamicDescription": "巴德在附近的地形上开启一道单向传送门，持续@Effect1Amount@秒。传送门附近的任何英雄都可以通过移动到它上面来进入传送门。@SpellModifierDescriptionAppend@",
+            "range": [
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000
+            ],
+            "costCoefficients": [
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000
+            ],
+            "cooldownCoefficients": [
+                22.0000,
+                20.5000,
+                19.0000,
+                17.5000,
+                16.0000,
+                16.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.4000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000
+                ],
+                "Effect2Amount": [
+                    33.0000,
+                    33.0000,
+                    33.0000,
+                    33.0000,
+                    33.0000,
+                    33.0000,
+                    33.0000
+                ],
+                "Effect3Amount": [
+                    900.0000,
+                    900.0000,
+                    900.0000,
+                    900.0000,
+                    900.0000,
+                    900.0000,
+                    900.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "调和命运",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Bard/HUD/Icons2D/Bard_R.png",
+            "abilityVideoPath": "champion-abilities/0432/ability_0432_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0432/ability_0432_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "巴德朝目标区域发射能量弧光，使区域内的所有单位、小兵、野怪和防御塔都暂时进入凝滞状态。",
+            "dynamicDescription": "巴德朝一个区域投出神奇的防护能量，使命中的所有单位和建筑物都进入凝滞状态@RStasisDuration@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                3400.0000,
+                3400.0000,
+                3400.0000,
+                3400.0000,
+                3400.0000,
+                3400.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                110.0000,
+                95.0000,
+                80.0000,
+                10.0000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.5000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

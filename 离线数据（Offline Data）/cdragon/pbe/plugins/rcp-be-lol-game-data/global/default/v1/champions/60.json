@@ -1,0 +1,1245 @@
+{
+    "id": 60,
+    "name": "Elise",
+    "alias": "Elise",
+    "title": "the Spider Queen",
+    "shortBio": "Elise is a deadly predator who dwells in a shuttered, lightless palace, deep within the oldest city of Noxus. Once mortal, she was the mistress of a powerful house, but the bite of a vile demigod transformed her into something beautiful, yet utterly inhuman—a spider-like creature, drawing unsuspecting prey into her web. To maintain her eternal youth, Elise now prefers to feed upon the naive and the faithless, and there are few who can resist her seductions.",
+    "tacticalInfo": {
+        "style": 7,
+        "difficulty": 3,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 2,
+        "crowdControl": 2,
+        "mobility": 2,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/60.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/60.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/60.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/60.ogg",
+    "roles": [
+        "mage",
+        "fighter"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 60000,
+            "isBase": true,
+            "name": "Elise",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/60/60000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/60/60000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/60/60000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Elise/Skins/Base/EliseLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 60001,
+            "isBase": false,
+            "name": "Death Blossom Elise",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/60/60001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/60/60001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/60/60001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Elise/Skins/Skin01/EliseLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 62
+                }
+            ],
+            "skinAugments": null,
+            "description": "An enchanting beauty she is, lithe in form, and colored like the flowering valleys frozen mid-bloom by winter's chill. Yet the creature Elise dines upon the flesh of maidens, allured by her delicate pulchritude, who dance softly into the jaws of a monster."
+        },
+        {
+            "id": 60002,
+            "isBase": false,
+            "name": "Victorious Elise",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/60/60002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/60/60002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/60/60002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Elise/Skins/Skin02/EliseLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 7
+                }
+            ],
+            "skinAugments": null,
+            "description": "Victorious Elise was awarded to players who reached Gold or higher in the 2013 season. Spin a wicked web for your enemies in gold-trimmed armor and deep purple robes, and chuckle as they struggle."
+        },
+        {
+            "id": 60003,
+            "isBase": false,
+            "name": "Blood Moon Elise",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/60/60003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/60/60003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/60/60003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Elise/Skins/Skin03/EliseLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 12
+                }
+            ],
+            "skinAugments": null,
+            "description": "A revered priestess of the Blood Moon cult, Elise has so wholly intertwined her body with her demon spirit that they are now a single entity. She has traveled beyond all known civilization, existing in the apocryphal darkness hanging beyond the precipice of the world."
+        },
+        {
+            "id": 60004,
+            "isBase": false,
+            "name": "SKT T1 Elise",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/60/60004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/60/60004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/60/60004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Elise/Skins/skin04/EliseLoadscreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 5
+                }
+            ],
+            "skinAugments": null,
+            "description": "Honoring Bengi's winning performance as Elise during the 2015 World Championship. This is Bengi's second World Champion skin, following his win with SKT at the 2013 World Championship."
+        },
+        {
+            "id": 60005,
+            "isBase": false,
+            "name": "Super Galaxy Elise",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/60/60005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/60/60005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/60/60005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Elise/Skins/Skin05/EliseLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 21
+                }
+            ],
+            "skinAugments": null,
+            "description": "Once a promising cadet, Elise discovered that her metamorphic power enabled her transformation into a mechanical arachnoid at will. Now, she seeks to reign as an evil, immortal Spider Queen—seeing all the galaxy not as a home to defend, but a realm to be conquered."
+        },
+        {
+            "id": 60006,
+            "isBase": false,
+            "name": "Bewitching Elise",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/60/60006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/60/60006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/60/60006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Elise/Skins/Skin06/EliseLoadscreen_6.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Elise/Skins/Skin06/EliseLoadscreen_6_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60006.png",
+            "chromas": [
+                {
+                    "id": 60007,
+                    "name": "Bewitching Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60007.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 60008,
+                    "name": "Bewitching Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60008.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2020."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 60009,
+                    "name": "Bewitching Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60009.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 60010,
+                    "name": "Bewitching Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60010.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 60011,
+                    "name": "Bewitching Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60011.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 60012,
+                    "name": "Bewitching Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60012.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 60013,
+                    "name": "Bewitching Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60013.png",
+                    "colors": [
+                        "#DED6B0",
+                        "#DED6B0"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 60014,
+                    "name": "Bewitching Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60014.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 172
+                }
+            ],
+            "skinAugments": null,
+            "description": "A witch of some renown, Elise is widely feared by trick-or-treaters after that whole “human-sized cocoons” incident."
+        },
+        {
+            "id": 60015,
+            "isBase": false,
+            "name": "Withered Rose Elise",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/60/60015.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/60/60015.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/60/60015.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Elise/Skins/Skin15/EliseLoadScreen_15.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60015.png",
+            "chromas": [
+                {
+                    "id": 60016,
+                    "name": "Withered Rose Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60016.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 60017,
+                    "name": "Withered Rose Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60017.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 60018,
+                    "name": "Withered Rose Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60018.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 60019,
+                    "name": "Withered Rose Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60019.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 60020,
+                    "name": "Withered Rose Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60020.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 60021,
+                    "name": "Withered Rose Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60021.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 60022,
+                    "name": "Withered Rose Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60022.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 60023,
+                    "name": "Withered Rose Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60023.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 141
+                }
+            ],
+            "skinAugments": null,
+            "description": "Elise is in attendance at every annual gala, despite never once receiving a formal invitation. Rumor has it she's been blacklisted for spinning webs of lies, forming and disbanding allegiances in the span of a single evening. Attendees have also noted her suitors never seem to make a return visit to the festival."
+        },
+        {
+            "id": 60024,
+            "isBase": false,
+            "name": "Coven Elise",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/60/60024.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/60/60024.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/60/60024.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Elise/Skins/Skin24/EliseLoadScreen_24.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Elise/Skins/Skin24/EliseLoadScreen_24_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60024.png",
+            "chromas": [
+                {
+                    "id": 60025,
+                    "name": "Coven Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60025.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 60026,
+                    "name": "Coven Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60026.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 60027,
+                    "name": "Coven Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60027.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 60028,
+                    "name": "Coven Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60028.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 60029,
+                    "name": "Coven Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60029.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 60030,
+                    "name": "Coven Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60030.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 60031,
+                    "name": "Coven Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60031.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 60032,
+                    "name": "Coven Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60032.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 60033,
+                    "name": "Coven Elise",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/60/60033.png",
+                    "colors": [
+                        "#429184",
+                        "#942861"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the Worlds 2023 event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 92
+                }
+            ],
+            "skinAugments": null,
+            "description": "They came to Elise long ago, crawling through the underbrush, their many eyes locked with hers as a deal was made. The unfathomable powers of an Old God for her devotion and humanity. Reborn in the image of an arachnoid deity, Elise lingers along the edges of the Elderwood, enticing to their doom all those foolish enough to believe her a mere folktale."
+        }
+    ],
+    "passive": {
+        "name": "Spider Queen",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Elise/HUD/Icons2D/ElisePassive.png",
+        "abilityVideoPath": "champion-abilities/0060/ability_0060_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0060/ability_0060_P1.jpg",
+        "description": "Human Form: When Elise's abilities hit an enemy, she gains a dormant Spiderling.<br><br>Spider Form: Basic attacks deal bonus magic damage and restore health to Elise."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Neurotoxin / Venomous Bite",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Elise/HUD/Icons2D/EliseHumanQ.png",
+            "abilityVideoPath": "champion-abilities/0060/ability_0060_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0060/ability_0060_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Human Form: Deals damage based upon how high the target's Health is.<br><br>Spider Form: Lunges at an enemy and deals damage based upon how low their Health is.",
+            "dynamicDescription": "<keywordMajor>Human Form</keywordMajor>: Elise injects neurotoxin, dealing <magicDamage>@Effect1Amount@ plus @HumanPercentHealth@ current Health magic damage</magicDamage>.@SpellModifierDescriptionAppend@",
+            "range": [
+                615.0000,
+                615.0000,
+                615.0000,
+                615.0000,
+                615.0000,
+                615.0000
+            ],
+            "costCoefficients": [
+                80.0000,
+                85.0000,
+                90.0000,
+                95.0000,
+                100.0000,
+                105.0000
+            ],
+            "cooldownCoefficients": [
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0300,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    40.0000,
+                    40.0000,
+                    75.0000,
+                    110.0000,
+                    145.0000,
+                    180.0000,
+                    190.0000
+                ],
+                "Effect2Amount": [
+                    50.0000,
+                    75.0000,
+                    100.0000,
+                    125.0000,
+                    150.0000,
+                    175.0000,
+                    200.0000
+                ],
+                "Effect3Amount": [
+                    10.0000,
+                    15.0000,
+                    20.0000,
+                    25.0000,
+                    30.0000,
+                    35.0000,
+                    40.0000
+                ],
+                "Effect4Amount": [
+                    30.0000,
+                    36.0000,
+                    42.0000,
+                    48.0000,
+                    54.0000,
+                    60.0000,
+                    66.0000
+                ],
+                "Effect5Amount": [
+                    25.0000,
+                    60.0000,
+                    90.0000,
+                    120.0000,
+                    150.0000,
+                    180.0000,
+                    210.0000
+                ],
+                "Effect6Amount": [
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Volatile Spiderling / Skittering Frenzy",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Elise/HUD/Icons2D/EliseHumanW.png",
+            "abilityVideoPath": "champion-abilities/0060/ability_0060_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0060/ability_0060_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Human Form: Releases a venom-gorged Spiderling that explodes when it nears a target.<br><br>Spider Form: Elise and her Spiderlings gain Attack Speed.",
+            "dynamicDescription": "<keywordMajor>Human Form</keywordMajor>: Elise summons an explosive spider that moves to a location and explodes when it nears an enemy or after 3 seconds. The spider deals <magicDamage>@spell.EliseHumanW:TotalSpiderDamage@ magic damage</magicDamage>.@SpellModifierDescriptionAppend@",
+            "range": [
+                950.0000,
+                950.0000,
+                950.0000,
+                950.0000,
+                950.0000,
+                950.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                70.0000,
+                80.0000,
+                90.0000,
+                100.0000,
+                110.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.9500,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000
+                ],
+                "Effect2Amount": [
+                    40.0000,
+                    60.0000,
+                    80.0000,
+                    100.0000,
+                    120.0000,
+                    140.0000,
+                    160.0000
+                ],
+                "Effect3Amount": [
+                    60.0000,
+                    60.0000,
+                    105.0000,
+                    150.0000,
+                    195.0000,
+                    240.0000,
+                    285.0000
+                ],
+                "Effect4Amount": [
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000
+                ],
+                "Effect5Amount": [
+                    55.0000,
+                    65.0000,
+                    75.0000,
+                    85.0000,
+                    95.0000,
+                    105.0000,
+                    115.0000
+                ],
+                "Effect6Amount": [
+                    275.0000,
+                    275.0000,
+                    275.0000,
+                    275.0000,
+                    275.0000,
+                    275.0000,
+                    275.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Cocoon / Rappel",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Elise/HUD/Icons2D/EliseHumanE.png",
+            "abilityVideoPath": "champion-abilities/0060/ability_0060_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0060/ability_0060_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Human Form: Stuns the first enemy unit hit and reveals them if they are not stealthed.<br><br>Spider Form: Elise and her Spiderlings ascend into the air and then descend upon target enemy. After descending on an enemy target, Elise's bonus damage and healing from Spider Queen is increased.",
+            "dynamicDescription": "<keywordMajor>Human Form</keywordMajor>: Elise fires a cocoon, <status>Stunning</status> and revealing the first enemy hit for @Effect5Amount@ seconds.@SpellModifierDescriptionAppend@",
+            "range": [
+                1075.0000,
+                1075.0000,
+                1075.0000,
+                1075.0000,
+                1075.0000,
+                1075.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                11.5000,
+                11.0000,
+                10.5000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.7000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    12.0000,
+                    12.0000,
+                    11.5000,
+                    11.0000,
+                    10.5000,
+                    10.0000,
+                    9.5000
+                ],
+                "Effect2Amount": [
+                    10.0000,
+                    15.0000,
+                    20.0000,
+                    25.0000,
+                    30.0000,
+                    35.0000,
+                    40.0000
+                ],
+                "Effect3Amount": [
+                    22.0000,
+                    22.0000,
+                    21.0000,
+                    20.0000,
+                    19.0000,
+                    18.0000,
+                    18.0000
+                ],
+                "Effect4Amount": [
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000
+                ],
+                "Effect5Amount": [
+                    1.6000,
+                    1.6000,
+                    1.8000,
+                    2.0000,
+                    2.2000,
+                    2.4000,
+                    2.4000
+                ],
+                "Effect6Amount": [
+                    25.0000,
+                    40.0000,
+                    55.0000,
+                    70.0000,
+                    85.0000,
+                    100.0000,
+                    115.0000
+                ],
+                "Effect7Amount": [
+                    250.0000,
+                    250.0000,
+                    250.0000,
+                    250.0000,
+                    250.0000,
+                    250.0000,
+                    250.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Spider Form",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Elise/HUD/Icons2D/EliseR.png",
+            "abilityVideoPath": "champion-abilities/0060/ability_0060_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0060/ability_0060_R1.jpg",
+            "cost": "No Cost",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Transforms into a menacing spider, reducing her attack range in exchange for Move Speed, new abilities, and a Spiderling swarm that will attack her foes.",
+            "dynamicDescription": "<keywordMajor>Human Form</keywordMajor>: Elise transforms into a menacing spider, becoming melee ranged, and gaining <speed>@Effect3Amount@ Move Speed</speed> and access to <keywordMajor>Spider Form</keywordMajor> Abilities. She also summons all dormant <keywordMajor>Spiderlings</keywordMajor>.@SpellModifierDescriptionAppend@",
+            "range": [
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                4.0000,
+                4.0000,
+                4.0000,
+                4.0000,
+                4.0000,
+                4.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.2000,
+                "coefficient2": 0.1500
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    8.0000,
+                    14.0000,
+                    20.0000,
+                    26.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    12.0000,
+                    22.0000,
+                    32.0000,
+                    42.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    25.0000,
+                    25.0000,
+                    25.0000,
+                    25.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    25.0000,
+                    25.0000,
+                    25.0000,
+                    25.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    2.0000,
+                    3.0000,
+                    4.0000,
+                    5.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    30.0000,
+                    50.0000,
+                    70.0000,
+                    90.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    50.0000,
+                    70.0000,
+                    90.0000,
+                    110.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    4.0000,
+                    6.0000,
+                    8.0000,
+                    10.0000,
+                    12.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0800,
+                    0.0800,
+                    0.0800,
+                    0.0800,
+                    0.0800,
+                    0.0800,
+                    0.0800
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

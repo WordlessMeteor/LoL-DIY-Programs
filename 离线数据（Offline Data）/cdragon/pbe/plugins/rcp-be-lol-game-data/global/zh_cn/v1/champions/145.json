@@ -1,0 +1,1883 @@
+{
+    "id": 145,
+    "name": "虚空之女",
+    "alias": "Kaisa",
+    "title": "卡莎",
+    "shortBio": "在孩童时期就被虚空掠夺走的卡莎，凭着顽强的意志力活了下来。那些经历，让她成为了一位夺命猎手——或许有人会称她为“黑暗未来的使者”。如今，卡莎与一副活着的虚空生物甲壳形成了一种微妙的共生状态，但很快她就将面临一个重大的抉择：究竟是原谅那些称她为怪物的凡人，与之共同抵御虚空压境的黑暗……还是干脆忘记，放任虚空吞噬这个已将她抛弃的世界。",
+    "tacticalInfo": {
+        "style": 2,
+        "difficulty": 2,
+        "damageType": "kMixed"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 0,
+        "mobility": 3,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/145.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/145.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/145.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/145.ogg",
+    "roles": [
+        "marksman"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 145000,
+            "isBase": true,
+            "name": "虚空之女",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/145/145000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/145/145000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/145/145000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/Skins/Base/KaisaLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 145001,
+            "isBase": false,
+            "name": "弹幕天使 卡莎",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/145/145001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/145/145001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/145/145001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/Skins/Skin01/KaisaLoadscreen_1.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145001.png",
+            "chromas": [
+                {
+                    "id": 145002,
+                    "name": "弹幕天使 卡莎 炽天使·圣洁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145002.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 145003,
+                    "name": "弹幕天使 卡莎 炽天使·热忱",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145003.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 145004,
+                    "name": "弹幕天使 卡莎 炽天使·勇敢",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145004.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 145005,
+                    "name": "弹幕天使 卡莎 炽天使·敏锐",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145005.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 145006,
+                    "name": "弹幕天使 卡莎 炽天使·坚忍",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145006.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 145007,
+                    "name": "弹幕天使 卡莎 炽天使·威严",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145007.png",
+                    "colors": [
+                        "#85827F",
+                        "#85827F"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 145008,
+                    "name": "弹幕天使 卡莎 炽天使·忠诚",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145008.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 145009,
+                    "name": "弹幕天使 卡莎 炽天使·公正",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145009.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 145047,
+                    "name": "弹幕天使 卡莎 独行之翼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145047.png",
+                    "colors": [
+                        "#FF70BA",
+                        "#464646"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在钢铁瓦尔基里(2022)事件期间作为战利品专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 65
+                }
+            ],
+            "skinAugments": null,
+            "description": "卡莎曾经是皇家太空军的一员，现在她是第一位驾驶实验型X01-蝴蝶号的驾驶员。通过她的首次试飞表明这套战斗机甲过于致命，然而在这一次试飞之后她就带着飞船逃跑了——成为了全宇宙最危险的杀手。"
+        },
+        {
+            "id": 145014,
+            "isBase": false,
+            "name": "K/DA 卡莎",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/145/145014.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/145/145014.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/145/145014.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/Skins/Skin14/KaisaLoadScreen_14.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 91
+                }
+            ],
+            "skinAugments": null,
+            "description": "卡莎是来自国外的天才，将独特的风格和声音带到了音乐产业。她已掌握了通过她的才艺来表达她自身，并跻身于全世界最具天赋的舞者之列——对K/DA的异类们来说是个完美的同类，因为她可以让她们的表现力更上一层楼。"
+        },
+        {
+            "id": 145015,
+            "isBase": false,
+            "name": "至臻 K/DA 卡莎",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/145/145015.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/145/145015.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/145/145015.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/Skins/Skin15/KaisaLoadscreen_15.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 91
+                }
+            ],
+            "skinAugments": null,
+            "description": "刚刚现身于年度流行音乐奖的K/DA卡莎，正穿着一件至臻奢华的全金服装——吸引着整个世界的目光。"
+        },
+        {
+            "id": 145016,
+            "isBase": false,
+            "name": "iG 卡莎",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/145/145016.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/145/145016.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/145/145016.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/Skins/Skin16/KaisaLoadScreen_16.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/Skins/Skin16/KaisaLoadscreen_16_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145016.png",
+            "chromas": [
+                {
+                    "id": 145058,
+                    "name": "无畏猎手 卡莎 极境飞跃",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145058.png",
+                    "colors": [
+                        "#FF1500",
+                        "#E8CD6B"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Champion Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/54.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/54.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 107
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此致敬JackeyLove在2018全球总决赛中使用卡莎的夺胜表现。"
+        },
+        {
+            "id": 145017,
+            "isBase": false,
+            "name": "电玩女神 卡莎",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/145/145017.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/145/145017.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/145/145017.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/Skins/Skin17/KaisaLoadScreen_17.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/Skins/Skin17/KaisaLoadscreen_17_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145017.png",
+            "chromas": [
+                {
+                    "id": 145018,
+                    "name": "电玩女神 卡莎 K.O.",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145018.png",
+                    "colors": [
+                        "#A5FFF8",
+                        "#D87BFF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "2019电玩事件期间的战利品专属道具。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 145019,
+                    "name": "电玩女神 卡莎 强袭丽影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145019.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 145020,
+                    "name": "电玩女神 卡莎 华丽舞步",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145020.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 145021,
+                    "name": "电玩女神 卡莎 绚烂弹幕",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145021.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 145022,
+                    "name": "电玩女神 卡莎 钢铁天使",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145022.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 145023,
+                    "name": "电玩女神 卡莎 致命狙杀",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145023.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 145024,
+                    "name": "电玩女神 卡莎 极速融解",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145024.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 145025,
+                    "name": "电玩女神 卡莎 时光勇者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145025.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "参与主播活动获得"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 10
+                }
+            ],
+            "skinAugments": null,
+            "description": "卡莎是一名来自地狱多向射击游戏“像素虚空2”的赏金猎人和前任士兵。在战场BOSS们感染了她的游戏后，她被召回到电玩剧场。由于她在击杀那些拥有海量生命值的霸屏BOSS级怪物方面有着无与伦比的实力，因此入侵“像素虚空2”也许会成为一次严重的误算。"
+        },
+        {
+            "id": 145026,
+            "isBase": false,
+            "name": "K/DA ALL OUT 卡莎",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/145/145026.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/145/145026.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/145/145026.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/Skins/Skin26/KaisaLoadScreen_26.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/Skins/Skin26/KaisaLoadscreen_26_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145026.png",
+            "chromas": [
+                {
+                    "id": 145028,
+                    "name": "K/DA ALL OUT 卡莎 (BADDEST)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145028.png",
+                    "colors": [
+                        "#0C0C0F",
+                        "#272A3F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在女帝无双(2020)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 91
+                }
+            ],
+            "skinAugments": null,
+            "description": "在向全世界展示了她完美无瑕的舞蹈技巧后，卡莎已经准备好将她传说般的自律和专注应用到她表演艺术家生活中的方方面面。她仍然不确定，当她迈步向前闪耀自我时，会变成谁。但她仍在向前展望，面对找到这一答案的挑战。"
+        },
+        {
+            "id": 145027,
+            "isBase": false,
+            "name": "至臻 K/DA ALL OUT 卡莎",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/145/145027.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/145/145027.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/145/145027.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/Skins/Skin27/KaisaLoadscreen_27.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/Skins/Skin27/KaisaLoadscreen_27_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 91
+                }
+            ],
+            "skinAugments": null,
+            "description": "在卡莎想要一套走红毯的服装来匹配她对艺术能力日益增长的信心时，她去找了伊芙琳寻求建议。凭借着能匹配她卓越表演的锐利剪裁和配饰，卡莎已经准备好在舞台内外绽放光彩了。"
+        },
+        {
+            "id": 145029,
+            "isBase": false,
+            "name": "神龙尊者 玉境灵龙 卡莎",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/145/145029.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/145/145029.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/145/145029.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/Skins/Skin29/KaisaLoadScreen_29.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/Skins/Skin29/KaisaLoadscreen_29_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145029.png",
+            "chromas": [
+                {
+                    "id": 145030,
+                    "name": "神龙尊者 玉境灵龙 卡莎 登龙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145030.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 145031,
+                    "name": "神龙尊者 玉境灵龙 卡莎 集仙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145031.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 145032,
+                    "name": "神龙尊者 玉境灵龙 卡莎 望霞",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145032.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 145033,
+                    "name": "神龙尊者 玉境灵龙 卡莎 玄黄",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145033.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 145034,
+                    "name": "神龙尊者 玉境灵龙 卡莎 揽月",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145034.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 145035,
+                    "name": "神龙尊者 玉境灵龙 卡莎 朝云",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145035.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 145036,
+                    "name": "神龙尊者 玉境灵龙 卡莎 松峦",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145036.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 145037,
+                    "name": "神龙尊者 玉境灵龙 卡莎 碧漪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145037.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 145038,
+                    "name": "神龙尊者 玉境灵龙 卡莎 烬爪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145038.png",
+                    "colors": [
+                        "#110A20",
+                        "#5C1111"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 135
+                }
+            ],
+            "skinAugments": null,
+            "description": "为了寻求神力净化被布兰德腐化的土地，卡莎不顾关于无尽深渊的各种恐怖传说，一头扎进了玉境之海的深处。然而，玉境灵龙认可了她面对未知事物的勇气，并将它的赐福赠与她。现在，她在世界各地冒险，净化土地并保护那些无法自保的人。"
+        },
+        {
+            "id": 145039,
+            "isBase": false,
+            "name": "至臻 K/DA 卡莎 (2022)",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/145/145039.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/145/145039.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/145/145039.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/Skins/Skin39/KaisaLoadScreen_39.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 91
+                }
+            ],
+            "skinAugments": null,
+            "description": "刚刚现身于年度流行音乐奖的K/DA卡莎，正穿着一件至臻奢华的全金服装——吸引着整个世界的目光。"
+        },
+        {
+            "id": 145040,
+            "isBase": false,
+            "name": "星之守护者 卡莎",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/145/145040.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/145/145040.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/145/145040.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/Skins/Skin40/KaisaLoadScreen_40.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/Skins/Skin40/KaisaLoadscreen_40_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145040.png",
+            "chromas": [
+                {
+                    "id": 145041,
+                    "name": "星之守护者 卡莎 热情之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145041.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 145042,
+                    "name": "星之守护者 卡莎 爱之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145042.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 145043,
+                    "name": "星之守护者 卡莎 飞翔之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145043.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 145044,
+                    "name": "星之守护者 卡莎 勇气之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145044.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 145045,
+                    "name": "星之守护者 卡莎 重生之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145045.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 145046,
+                    "name": "星之守护者 卡莎 希望之光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145046.png",
+                    "colors": [
+                        "#FDA4DA",
+                        "#9DE5FF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在星之守护者(2022)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 161
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为一个天生的领袖，卡莎非常重视自己作为队长的工作……也许这对她来说有点过头了。尽管如此，她的小队仍然尊重她的指挥，甚至会跟随她执行哪怕是最危险的任务。而在执行任务时，她将狙击高优先级的目标，然后用星光动力导弹轰炸剩余敌人。"
+        },
+        {
+            "id": 145048,
+            "isBase": false,
+            "name": "墨之影武者 卡莎",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/145/145048.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/145/145048.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/145/145048.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/Skins/Skin48/KaisaLoadScreen_48.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/Skins/Skin48/KaisaLoadScreen_48_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145048.png",
+            "chromas": [
+                {
+                    "id": 145049,
+                    "name": "墨之影武者 卡莎 炽墨挥影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145049.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 145050,
+                    "name": "墨之影武者 卡莎 金墨耀影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145050.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 145051,
+                    "name": "墨之影武者 卡莎 岩墨裂影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145051.png",
+                    "colors": [
+                        "#9F4A25",
+                        "#9F4A25"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 145052,
+                    "name": "墨之影武者 卡莎 森墨拂影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145052.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 145053,
+                    "name": "墨之影武者 卡莎 云墨漾影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145053.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 145054,
+                    "name": "墨之影武者 卡莎 玄墨蕴影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145054.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 145055,
+                    "name": "墨之影武者 卡莎 紫墨掠影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145055.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 145056,
+                    "name": "墨之影武者 卡莎 樱墨映影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145056.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 145057,
+                    "name": "墨之影武者 卡莎 灵墨刻影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145057.png",
+                    "colors": [
+                        "#B5CED6",
+                        "#33D889"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在墨之影(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 192
+                }
+            ],
+            "skinAugments": null,
+            "description": "卡莎的父亲死于卡勃尔派之手，作为年轻幸存者的她逃离了这座城市并加入了义军。她为了拒绝让别人为她而战，牺牲了自己的自主性来换取反击的机会，并接受了她生存所需的神奇共生墨纹。卡莎终于有了复仇的工具。她会看到正义得到伸张。"
+        },
+        {
+            "id": 145059,
+            "isBase": false,
+            "name": "天龙之子 卡莎",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/145/145059.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/145/145059.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/145/145059.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/Skins/Skin59/KaisaLoadScreen_59.PIE_C_14_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/Skins/Skin59/KaisaLoadScreen_59_LE.PIE_C_14_2.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145059.png",
+            "chromas": [
+                {
+                    "id": 145060,
+                    "name": "天龙之子 卡莎 龙马精神",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145060.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 145061,
+                    "name": "天龙之子 卡莎 龙飞凤翔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145061.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 145062,
+                    "name": "天龙之子 卡莎 矫若惊龙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145062.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 145063,
+                    "name": "天龙之子 卡莎 龙行虎步",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145063.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 145064,
+                    "name": "天龙之子 卡莎 飞龙乘云",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145064.png",
+                    "colors": [
+                        "#85827F",
+                        "#85827F"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 145065,
+                    "name": "天龙之子 卡莎 祥龙献瑞",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145065.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 145066,
+                    "name": "天龙之子 卡莎 蛟龙得水",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145066.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 145067,
+                    "name": "天龙之子 卡莎 赫赫龙威",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145067.png",
+                    "colors": [
+                        "#DFA6DF",
+                        "#E0D7D7"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在天龙之子(2024)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 145068,
+                    "name": "天龙之子 卡莎 云起龙骧",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/145/145068.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Year of Loong 2024",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/83.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/83.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 201
+                }
+            ],
+            "skinAugments": null,
+            "description": "卡莎是皇家斥候，也是龙太子的好友。她很坚毅，在云端度过的时间比她的任何同龄人都多。虽然这是她第一次与人类直接互动，但她观察到的知识和机敏一定会在她与人类一起庆祝新年时派上用场。"
+        }
+    ],
+    "passive": {
+        "name": "体表活肤",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/HUD/Icons2D/Kaisa_Passive.png",
+        "abilityVideoPath": "champion-abilities/0145/ability_0145_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0145/ability_0145_P1.jpg",
+        "description": "卡莎的普通攻击会叠加电浆，造成不断提升的额外魔法伤害。友军的定身效果也可以帮忙叠加电浆。此外，卡莎可通过购买装备来升级她的基础技能，让它们拥有更多强大的属性。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "艾卡西亚暴雨",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/HUD/Icons2D/Kaisa_Q.png",
+            "abilityVideoPath": "champion-abilities/0145/ability_0145_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0145/ability_0145_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "卡莎发射一大堆弹体来搜寻附近的目标。<br><br>活体武器：这个技能得到升级，可发射更多弹体。",
+            "dynamicDescription": "卡莎发射@Effect2Amount@发弹体并在附近的敌人中间四散，每一发造成<physicalDamage>@TotalIndividualMissileDamage@物理伤害</physicalDamage>，至多至最大值@MaxDamage@伤害。对英雄或野怪的每发额外弹体造成@Effect3Amount*100@%伤害。<br><br><keywordMajor>进化版</keywordMajor>：卡莎转而发射@Effect7Amount@发弹体。<br>当前：<physicalDamage>@f11.1@/@Effect6Amount@额外攻击力</physicalDamage>@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                55.0000,
+                55.0000,
+                55.0000,
+                55.0000,
+                55.0000,
+                55.0000
+            ],
+            "cooldownCoefficients": [
+                10.0000,
+                9.0000,
+                8.0000,
+                7.0000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.5000,
+                "coefficient2": 0.2000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    40.0000,
+                    40.0000,
+                    55.0000,
+                    70.0000,
+                    85.0000,
+                    100.0000,
+                    115.0000
+                ],
+                "Effect2Amount": [
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000
+                ],
+                "Effect3Amount": [
+                    0.2500,
+                    0.2500,
+                    0.2500,
+                    0.2500,
+                    0.2500,
+                    0.2500,
+                    0.2500
+                ],
+                "Effect4Amount": [
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000
+                ],
+                "Effect5Amount": [
+                    0.3500,
+                    0.3500,
+                    0.3500,
+                    0.3500,
+                    0.3500,
+                    0.3500,
+                    0.3500
+                ],
+                "Effect6Amount": [
+                    100.0000,
+                    100.0000,
+                    100.0000,
+                    100.0000,
+                    100.0000,
+                    100.0000,
+                    100.0000
+                ],
+                "Effect7Amount": [
+                    12.0000,
+                    12.0000,
+                    12.0000,
+                    12.0000,
+                    12.0000,
+                    12.0000,
+                    12.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "虚空索敌",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/HUD/Icons2D/Kaisa_W.png",
+            "abilityVideoPath": "champion-abilities/0145/ability_0145_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0145/ability_0145_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "卡莎发射一束长程弹体，并用她的被动来标记敌人。<br><br>活体武器：这个技能得到升级，可施加更多被动标记并在命中英雄时减少冷却时间。",
+            "dynamicDescription": "卡莎发射一道虚空震波来对命中的第一个敌人造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>、施加@Effect4Amount@层<keywordMajor>电浆</keywordMajor>效果并提供其<keywordStealth>真实视野</keywordStealth>，持续@spell.KaisaPassive:PDuration@秒。<br><br><keywordMajor>进化版</keywordMajor>：卡莎转而施加@Effect5Amount@层<keywordMajor>电浆</keywordMajor>效果并在命中一名英雄时使冷却时间缩短@Effect3Amount@%。<br>当前：<scaleAP>@f2.1@/@Effect2Amount@法术强度</scaleAP>@SpellModifierDescriptionAppend@",
+            "range": [
+                3000.0000,
+                3000.0000,
+                3000.0000,
+                3000.0000,
+                3000.0000,
+                3000.0000
+            ],
+            "costCoefficients": [
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000,
+                85.0000
+            ],
+            "cooldownCoefficients": [
+                22.0000,
+                20.0000,
+                18.0000,
+                16.0000,
+                14.0000,
+                14.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.3000,
+                "coefficient2": 0.4500
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    30.0000,
+                    30.0000,
+                    55.0000,
+                    80.0000,
+                    105.0000,
+                    130.0000,
+                    130.0000
+                ],
+                "Effect2Amount": [
+                    100.0000,
+                    100.0000,
+                    100.0000,
+                    100.0000,
+                    100.0000,
+                    100.0000,
+                    100.0000
+                ],
+                "Effect3Amount": [
+                    75.0000,
+                    75.0000,
+                    75.0000,
+                    75.0000,
+                    75.0000,
+                    75.0000,
+                    75.0000
+                ],
+                "Effect4Amount": [
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000
+                ],
+                "Effect5Amount": [
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "极限超载",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/HUD/Icons2D/Kaisa_E.png",
+            "abilityVideoPath": "champion-abilities/0145/ability_0145_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0145/ability_0145_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "卡莎暂时提升移动速度，随后提升攻击速度。<br><br>活体武器：这个技能得到升级，可短暂提供隐形效果。",
+            "dynamicDescription": "卡莎极限超载她的虚空能量，获得<speed>@TotalMoveSpeed@移动速度</speed>并且在超载时变为幽灵状态，随后获得持续@Effect2Amount@秒的<attackSpeed>@Effect5Amount*100@%攻击速度</attackSpeed>。<br><br>每次攻击还会使此技能的冷却时间缩短@Effect4Amount@秒。<br><br><keywordMajor>进化版</keywordMajor>：卡莎还会<keywordStealth>隐形</keywordStealth>@Effect7Amount@秒。<br>当前：<attackSpeed>@f10.1@%/@Effect6Amount@%额外攻击速度</attackSpeed>@SpellModifierDescriptionAppend@",
+            "range": [
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000
+            ],
+            "costCoefficients": [
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000
+            ],
+            "cooldownCoefficients": [
+                16.0000,
+                14.5000,
+                13.0000,
+                11.5000,
+                10.0000,
+                11.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 1.5000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.5500,
+                    0.5500,
+                    0.6000,
+                    0.6500,
+                    0.7000,
+                    0.7500,
+                    0.7500
+                ],
+                "Effect2Amount": [
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000
+                ],
+                "Effect3Amount": [
+                    1.2000,
+                    1.2000,
+                    1.2000,
+                    1.2000,
+                    1.2000,
+                    1.2000,
+                    1.2000
+                ],
+                "Effect4Amount": [
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000
+                ],
+                "Effect5Amount": [
+                    0.4000,
+                    0.4000,
+                    0.5000,
+                    0.6000,
+                    0.7000,
+                    0.8000,
+                    0.9000
+                ],
+                "Effect6Amount": [
+                    100.0000,
+                    100.0000,
+                    100.0000,
+                    100.0000,
+                    100.0000,
+                    100.0000,
+                    100.0000
+                ],
+                "Effect7Amount": [
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000
+                ],
+                "Effect8Amount": [
+                    0.6000,
+                    0.6000,
+                    0.6000,
+                    0.6000,
+                    0.6000,
+                    0.6000,
+                    0.6000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "猎手本能",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Kaisa/HUD/Icons2D/Kaisa_R.png",
+            "abilityVideoPath": "champion-abilities/0145/ability_0145_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0145/ability_0145_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "卡莎突进到一个敌方英雄身边。",
+            "dynamicDescription": "卡莎跃迁到一个位置上，该位置处于一名身上带有<keywordMajor>电浆</keywordMajor>效果的敌方英雄的附近，并获得持续@RShieldDuration@秒的<shield>@RCalculatedShieldValue@护盾值</shield>。@SpellModifierDescriptionAppend@",
+            "range": [
+                2000.0000,
+                2500.0000,
+                3000.0000,
+                3500.0000,
+                4000.0000,
+                4500.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                130.0000,
+                100.0000,
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 0.5000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

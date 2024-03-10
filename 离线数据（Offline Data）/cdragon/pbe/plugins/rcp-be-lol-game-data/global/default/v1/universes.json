@@ -1,0 +1,1117 @@
+[
+    {
+        "id": 0,
+        "name": "",
+        "description": "",
+        "imagePath": "",
+        "skinSets": []
+    },
+    {
+        "id": 100,
+        "name": "Forgotten Depths",
+        "description": "Sit down, my child, and listen close. The ocean is a wonder, the foaming waves that reach our peaceful shores a deceitful invitation. For what lies beneath that endless blue is a world beyond our imagining. Of kingdoms ruined and monsters fierce, floating down in those forgotten depths.",
+        "imagePath": "",
+        "skinSets": [
+            108
+        ]
+    },
+    {
+        "id": 101,
+        "name": "Galactic",
+        "description": "The War of the Broken Moon has ravaged our galaxy for near a hundred cycles. And still... there is no end in sight.",
+        "imagePath": "",
+        "skinSets": [
+            136
+        ]
+    },
+    {
+        "id": 102,
+        "name": "Glacial",
+        "description": "It is dangerous to venture out in the cold, for who knows what lurks within these frozen lands…",
+        "imagePath": "",
+        "skinSets": [
+            112
+        ]
+    },
+    {
+        "id": 103,
+        "name": "Lunar New Year",
+        "description": "It's time to look back, to celebrate with family and friends, to join together and remember all that has happened, the good and the bad. And as the fireworks light up the night sky, we look forward to a new year filled with wonderful memories with the ones we hold dear.",
+        "imagePath": "",
+        "skinSets": [
+            142,
+            55,
+            54,
+            154,
+            201
+        ]
+    },
+    {
+        "id": 104,
+        "name": "Order of the Lotus",
+        "description": "Tomes of Ionian myth speak of the venerable Order of the Lotus. Formed when mortals settled in the First Lands, the Order spent generations cultivating the secrets of immortality. Indeed, they were the only group to achieve the pure reincarnation of their spirits. As graceful and transient as ripples in the sea, Order of the Lotus disciples protect the First Lands without fear of facing this life or the next.",
+        "imagePath": "",
+        "skinSets": [
+            60
+        ]
+    },
+    {
+        "id": 105,
+        "name": "PAX",
+        "description": "To those about to game, we salute you.",
+        "imagePath": "",
+        "skinSets": [
+            84
+        ]
+    },
+    {
+        "id": 106,
+        "name": "Folded Edges",
+        "description": "A sedge of cranes glides through the sky, the canvas of sun and clouds a beautiful backdrop to their flight. The trees too, and the grass, are made of this self-same material, a parchment pressed with phenomenal power, forming this papercraft world.",
+        "imagePath": "",
+        "skinSets": [
+            96
+        ]
+    },
+    {
+        "id": 107,
+        "name": "Piltover Customs",
+        "description": "Looking for a souped-up ride? Look no further. (Mileage may vary.)",
+        "imagePath": "",
+        "skinSets": [
+            42
+        ]
+    },
+    {
+        "id": 108,
+        "name": "The Badge",
+        "description": "In the criminal justice system, there are those who bend the law and those who break it. The dedicated officers at the RPD investigate the city's most heinous crimes to bring the worst offenders to justice. These are their stories...",
+        "imagePath": "",
+        "skinSets": [
+            37
+        ]
+    },
+    {
+        "id": 109,
+        "name": "Highway Heretics",
+        "description": "In the radioactive ashes of the old world, wasteland warriors, vicious Vandals, and scrappy survivors war with one another for control over all that's left.",
+        "imagePath": "",
+        "skinSets": [
+            70,
+            27
+        ]
+    },
+    {
+        "id": 10,
+        "name": "Arclight",
+        "description": "Across the heavens and spanning all of creation, the Agents of Light wage an eternal battle against an unyielding darkness.",
+        "imagePath": "",
+        "skinSets": [
+            24,
+            33
+        ]
+    },
+    {
+        "id": 110,
+        "name": "Soulstealer",
+        "description": "Souls are life, light, power—and in a world without mercy, they are stolen and consumed by remorseless masters of death.",
+        "imagePath": "",
+        "skinSets": [
+            183
+        ]
+    },
+    {
+        "id": 111,
+        "name": "Super Galaxy",
+        "description": "//EMERGENCY BROADCAST, ALL CHANNELS//<br>The Galaxy Threat Level has been raised to CRIMSON. [REDACTED] is under attack by [REDACTED]. HQ estimates [REDACTED] hours before total destruction, with collateral damage likely on neighboring systems. Super Galaxy ACTIVATE!",
+        "imagePath": "",
+        "skinSets": [
+            21
+        ]
+    },
+    {
+        "id": 112,
+        "name": "Thunder Lord",
+        "description": "Mankind are not the only ones who fight bitter wars over petty squabbles. Once, before our time, two gods—two brothers—took up arms against each other, shaping the very land with the desolation of their battle.",
+        "imagePath": "",
+        "skinSets": [
+            52
+        ]
+    },
+    {
+        "id": 113,
+        "name": "Triumphant",
+        "description": "Rise to the competition and emerge triumphant!",
+        "imagePath": "",
+        "skinSets": [
+            184
+        ]
+    },
+    {
+        "id": 114,
+        "name": "Winter Sports",
+        "description": "Nothing brings out the best from competitive athletes like the prospect of getting a little frostbite.",
+        "imagePath": "",
+        "skinSets": [
+            28
+        ]
+    },
+    {
+        "id": 115,
+        "name": "Zombie VS Slayers",
+        "description": "Brains...",
+        "imagePath": "",
+        "skinSets": [
+            89
+        ]
+    },
+    {
+        "id": 116,
+        "name": "Neon Strata",
+        "description": "Few know of the Foreglow, and even fewer have seen its volatile neon flames. Normally a cosmic balancing force, something has tipped the scales, causing realms to collapse and funnel the Foreglow's power into single beings. Now known as Empyreans, these otherworldly forces of nature blaze a trail through the realms, each with their own agenda. The fire is spreading, with no end in sight.",
+        "imagePath": "",
+        "skinSets": [
+            186
+        ]
+    },
+    {
+        "id": 117,
+        "name": "Tales of Borealis",
+        "description": "Have you heard the stories of the Aurora? Cold and dark they can be, but if you're brave enough you'll find warmth and majesty grander than any dream you've had. So sit yourself by the fire and come listen to these Tales of Borealis...",
+        "imagePath": "",
+        "skinSets": [
+            187
+        ]
+    },
+    {
+        "id": 118,
+        "name": "Storycraft",
+        "description": "Stories, myths, legends: within each lies a world unto itself, where characters act out their trials and tribulations over and over as their tales are told and retold.",
+        "imagePath": "",
+        "skinSets": [
+            188
+        ]
+    },
+    {
+        "id": 119,
+        "name": "Lancer",
+        "description": "The ancient Lancers were marvels beyond compare in their time, built to protect the realm in its greatest hours of need. As time marches on and the giants sleep, the secrets of their construction have long since disappeared... but hope remains that they will answer the call.",
+        "imagePath": "",
+        "skinSets": [
+            69
+        ]
+    },
+    {
+        "id": 11,
+        "name": "Battlecast",
+        "description": "The glorious revolution is here! Assembling an army of machines with living brains, Viktor marches against the combined forces of his enemies—with only a scrappy human-led resistance keeping him from total world domination.",
+        "imagePath": "",
+        "skinSets": [
+            25
+        ]
+    },
+    {
+        "id": 120,
+        "name": "Fallen World",
+        "description": "When magic is lost, ash and despair reign in its stead. When the knights of that cursed order fall, what will rise in their place?",
+        "imagePath": "",
+        "skinSets": [
+            157
+        ]
+    },
+    {
+        "id": 121,
+        "name": "<3",
+        "description": "Between the rigid cliques, awkward group projects, and cheesy holidays, school was rough but routine. But getting lovestruck wasn't in the syllabus, and it's gonna make things way more complicated.",
+        "imagePath": "",
+        "skinSets": [
+            189
+        ]
+    },
+    {
+        "id": 122,
+        "name": "Forsaken Hymn",
+        "description": "Within this ruined world of breaths and glass, where prayers go unanswered and vows are challenged, the only thing one can have faith in is this: a single breath can change one's life.",
+        "imagePath": "",
+        "skinSets": [
+            190
+        ]
+    },
+    {
+        "id": 123,
+        "name": "Winged Reign",
+        "description": "Pixies, nixies, hobs, redcaps, and more call the Faerie Queendoms home: all creatures of pure natural magic and ethereal beauty that delight in moonlight revels, mellifluous song, and tricksy dealings.",
+        "imagePath": "",
+        "skinSets": [
+            191
+        ]
+    },
+    {
+        "id": 124,
+        "name": "Inkshadow Uprising",
+        "description": "Rabadon City thrives on magic. Whoever controls magic, controls Rabadon. And the Cabal's control is absolute. Any who resist are brought to heel or eliminated… but an Uprising is coming. Armed with dangerous magic inked directly into their skin, these rebels seek to topple the Cabal and give the city back to its people—or die trying.",
+        "imagePath": "",
+        "skinSets": [
+            192
+        ]
+    },
+    {
+        "id": 125,
+        "name": "Magicae Prismatica",
+        "description": "Long ago, in a time beyond all living memory, the existence of magic was swept away from the universe. Life moved on, but some worlds could not, and as years turned to decades and centuries, nature began to rebalance itself. Finally the time has come, and now magic is ready to make its return, though not in the form that anyone expects.",
+        "imagePath": "",
+        "skinSets": [
+            195
+        ]
+    },
+    {
+        "id": 126,
+        "name": "Soul Fighter",
+        "description": "From across the globe, those with awakened souls are granted invitation to fight in... the Tournament of Souls! It sits as king above all entertainment, a televised spectacle with no equal! Fighters face off in 1v1 battles in the ring, until only one remains to receive their prize: the deepest desire of their soul! And I'll be here, announcing it all!",
+        "imagePath": "",
+        "skinSets": [
+            196
+        ]
+    },
+    {
+        "id": 127,
+        "name": "Concrete Canvas",
+        "description": "Art and magic twine through the urban streets of Styxbridge city, home to monsters, spirits, ghosts, and ghouls of all stripes.",
+        "imagePath": "",
+        "skinSets": [
+            197
+        ]
+    },
+    {
+        "id": 128,
+        "name": "Sueño de Vida",
+        "description": "Life and death may be the only true constants in the universe, but the one thing that can match their power is family. Life cannot exist without death, and death cannot exist without life, but the bonds of family are strong enough to ensure no spirit is truly forgotten.",
+        "imagePath": "",
+        "skinSets": [
+            198
+        ]
+    },
+    {
+        "id": 129,
+        "name": "Fury and Fang",
+        "description": "Embrace instinct. Unleash aggression. Demand respect.",
+        "imagePath": "",
+        "skinSets": [
+            200
+        ]
+    },
+    {
+        "id": 13,
+        "name": "Culinary Masters",
+        "description": "Culinary Masters,\" the incredibly popular cooking competition reality series, is streaming now. Everywhere. On all the platforms. All 1000 episodes from each of the 50 seasons. Even \"Culinary Masters Superstars.\" And \"Celebrity Culinary Masters.\" Start binging today.",
+        "imagePath": "",
+        "skinSets": [
+            26
+        ]
+    },
+    {
+        "id": 14,
+        "name": "Headhunter",
+        "description": "For some species, the hunt is more than mere sport—it possesses their minds and bodies, molding them into a race of perfect killing machines.",
+        "imagePath": "",
+        "skinSets": [
+            30
+        ]
+    },
+    {
+        "id": 15,
+        "name": "Guardian of the Sands",
+        "description": "Powerful guardians stand watch over the tomb of an ancient horror, so that it may never threaten the world again. But they may already be too late...",
+        "imagePath": "",
+        "skinSets": [
+            66,
+            67
+        ]
+    },
+    {
+        "id": 16,
+        "name": "Sugar Rush",
+        "description": "From the Gingerbread Castle to the Root Beer Sea, the Licorice Mountains to the Gumdrop Forest—this is the Candy Kingdom in all its glory.",
+        "imagePath": "",
+        "skinSets": [
+            57
+        ]
+    },
+    {
+        "id": 17,
+        "name": "Toy Box",
+        "description": "Gnar's toy chest is brimming with priceless treasures, but when no one's home, his toys take on a life of their own...",
+        "imagePath": "",
+        "skinSets": [
+            61
+        ]
+    },
+    {
+        "id": 19,
+        "name": "Woad Tribe",
+        "description": "Few can survive a journey through the frozen tundra of the north. If the cold doesn't kill you... the Woad surely will.",
+        "imagePath": "",
+        "skinSets": [
+            68
+        ]
+    },
+    {
+        "id": 1,
+        "name": "Star Guardian",
+        "description": "In a vast and dark universe, young warriors are chosen by fate to protect the light of the stars. They are destined to burn bright, but collapse as furiously as they shine.",
+        "imagePath": "",
+        "skinSets": [
+            19,
+            20,
+            119,
+            161
+        ]
+    },
+    {
+        "id": 20,
+        "name": "Moons of Ionia",
+        "description": "A voice echoes from the silence: “Writhe, beasts, brethren. The moons of a doomed Ionia rise like eyes of starved demons, awaiting the red of your fealty—or are they monstrous blights that cannot pass? Either way, we are vessels plunged in ritual and sacrifice. At the moon's peak, we carve flesh from flesh, offering the meager gift of all that we are.”",
+        "imagePath": "",
+        "skinSets": [
+            12,
+            160
+        ]
+    },
+    {
+        "id": 21,
+        "name": "Prehistoric Hunters",
+        "description": "Gargantuan monsters roam our land, stalking their prey with frightening precision. Humans would surely become their next meals, if not for the Hunters. Armed with blades crafted from the bones of their first kills, with instincts that rival the most fearsome of beasts, the Hunters protect their people each day from a grisly fate.",
+        "imagePath": "",
+        "skinSets": [
+            32
+        ]
+    },
+    {
+        "id": 22,
+        "name": "Storybook",
+        "description": "Once upon a time, there was a group of storybook characters brought to life from the page...",
+        "imagePath": "",
+        "skinSets": [
+            71,
+            41
+        ]
+    },
+    {
+        "id": 23,
+        "name": "Fables",
+        "description": "Every culture has their own folklore surrounding legends and monsters. Are these myths a figment of our imagination, stories passed down through generations to explain the unexplainable? Or are they based in a truth hidden from the rest of the world?",
+        "imagePath": "",
+        "skinSets": [
+            72
+        ]
+    },
+    {
+        "id": 24,
+        "name": "Versus",
+        "description": "All things are born from conflict; none can escape it. Harmony is an illusion, and only those who embrace that illusion will reap life's greatest rewards.",
+        "imagePath": "",
+        "skinSets": [
+            78,
+            125,
+            124,
+            193
+        ]
+    },
+    {
+        "id": 25,
+        "name": "Mecha",
+        "description": "Towering above the city, gargantuan kaiju tussle with towering mechas. Who will win?",
+        "imagePath": "",
+        "skinSets": [
+            35,
+            79
+        ]
+    },
+    {
+        "id": 26,
+        "name": "Hextech",
+        "description": "Now at the forefront of science and art, Hextech has evolved from its rudimentary beginnings into a modern renaissance of intricate, artificial lifeforms capable of free will. Skilled artificers lead the medium into a bold new future -- but what it will bring, none can say.",
+        "imagePath": "",
+        "skinSets": [
+            40
+        ]
+    },
+    {
+        "id": 28,
+        "name": "Snowdown",
+        "description": "Is there a better time of year than Snowdown, when the air is crisp, the snow fluffy, and the chocolate hot? Toss a snowball or sing a carol; as long as you have good cheer, all will be well, and you'll have nothing to fear.",
+        "imagePath": "",
+        "skinSets": [
+            46,
+            48,
+            47
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Warring Kingdoms",
+        "description": "Rival empires vie for power as they attempt to unify the lands, while brave warriors and stoic generals test their skill against the greatest heroes of the era. It is a time of war, and a time of legends.",
+        "imagePath": "",
+        "skinSets": [
+            53
+        ]
+    },
+    {
+        "id": 30,
+        "name": "Immortal Journey",
+        "description": "Long ago, in an ancient land, many souls gathered beneath the gods to test the limits of their power. Foolish and arrogant, brave and just, their journeys are written into the immortal pages of history…",
+        "imagePath": "",
+        "skinSets": [
+            81
+        ]
+    },
+    {
+        "id": 31,
+        "name": "High Noon Gothic",
+        "description": "At the height of the industrial revolution, travelers begin pouring into the untamed west, searching for fortune and prosperity among the unknown horrors of a cruel and ancient world. It is a time of brave gunslingers and rotten scoundrels, inscrutable gods, and savage demons.",
+        "imagePath": "",
+        "skinSets": [
+            39
+        ]
+    },
+    {
+        "id": 32,
+        "name": "Odyssey",
+        "description": "From the urbanized coreworlds to the outermost edge of the galaxy, adventure awaits! The great Demaxian Empire ignores the objections of the Templar Order and the criminal Syndicate alike in their pursuit of ora—a mysterious golden essence that serves as the lifeblood of all civilization, and promises untold power to those who can wield it for themselves…",
+        "imagePath": "",
+        "skinSets": [
+            73
+        ]
+    },
+    {
+        "id": 33,
+        "name": "PROJECT",
+        "description": "Among the mega-structures and packed streets of a future controlled by global corporations, a shadow war rages between rebellious, augmented humans and newly empowered artificial beings. The winners will shape the course of history... and the losers will be forced to evolve.",
+        "imagePath": "",
+        "skinSets": [
+            18,
+            17,
+            148
+        ]
+    },
+    {
+        "id": 34,
+        "name": "Eclipse",
+        "description": "In the beginning, the Old Gods reigned. So great was humankind's love for them that one dared to make them a part of her flesh forever. She devoured the sun itself and, descending from that empty heaven, inspired her knights to decimate all those that remained. Centuries later, they stand, the only hope against the rising Coven's darkness.",
+        "imagePath": "",
+        "skinSets": [
+            93,
+            92,
+            58,
+            62,
+            80
+        ]
+    },
+    {
+        "id": 36,
+        "name": "Mecha Kingdoms",
+        "description": "The Great Kingdoms warred for generations until the arrival of a new enemy. To fight back, they are blessed with gifts from the heavens. Will they rise above their past to save their future?",
+        "imagePath": "",
+        "skinSets": [
+            127
+        ]
+    },
+    {
+        "id": 37,
+        "name": "Spirit Blossom",
+        "description": "The Spirit Blossom Festival is an ancient and celebrated time in Ionia, when the door to the spirit world is opened, the dead return to their loved ones, and spirits of all manner turn their eyes towards the living. From the benevolent Kanmei, to the obsessive Akana—their stories play out again and again, like shadows on a paper lantern.",
+        "imagePath": "",
+        "skinSets": [
+            171
+        ]
+    },
+    {
+        "id": 38,
+        "name": "PsyOps",
+        "description": "To protect against rogue forces seeking to destabilize the world, High Command sends PsyOps, an elite team of psychic soldiers. Members include [REDACTED].",
+        "imagePath": "",
+        "skinSets": [
+            133,
+            134,
+            63
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Worldbreaker",
+        "description": "In the end, the moon will smother the sun. And in that hopeless dawn, four titans will rise to shatter the world itself.",
+        "imagePath": "",
+        "skinSets": [
+            29
+        ]
+    },
+    {
+        "id": 40,
+        "name": "Battle Queens",
+        "description": "Once fractured by endless warfare, the collective Queendoms of Elysia have realized the true nature of their world: that the magic holding their fantastical plane together is maintained only through conflict. They have thus allied through the unifying conflict of the Grand Coronation, though some alliances are beginning to show cracks...",
+        "imagePath": "",
+        "skinSets": [
+            137
+        ]
+    },
+    {
+        "id": 41,
+        "name": "The Ruined King Saga",
+        "description": "The Black Mist gathers, the Harrowing comes, and the Ruined King has risen once more. Viego's corruption blankets Runeterra, turning friends into foes and bringing entire nations to their knees. The only ones with the power to stop him are the Sentinels of Light: an ancient order led by Senna and Lucian. They must call upon champions from every corner of the realm to fight back the Black Mist and end the Ruined King's reign of terror once and for all.",
+        "imagePath": "",
+        "skinSets": [
+            138,
+            147
+        ]
+    },
+    {
+        "id": 42,
+        "name": "Shan Hai Scrolls",
+        "description": "No one can say who created the mysterious Shan Hai Scrolls, or when. All it takes is one glimpse to see the painting is a window to a world of magic and wonder, but perhaps it is more of a doorway?",
+        "imagePath": "",
+        "skinSets": [
+            139
+        ]
+    },
+    {
+        "id": 43,
+        "name": "Crystal Rose",
+        "description": "In a world of frequently-broken magical alliances and centuries-old grudges, the annual Crystal Rose Festival offers a neutral ground for the powerful to forgive slights and renegotiate truces. Weapons are ostensibly left at the door, and potential new pacts are signaled by picking and wearing the magical roses that grow only during the festival.",
+        "imagePath": "",
+        "skinSets": [
+            140,
+            141
+        ]
+    },
+    {
+        "id": 45,
+        "name": "Space Groove",
+        "description": "In a groovy galaxy a million disco infernos away, a mysterious energy known only as The Groove brings music and prosperity to trillions of galactic citizens. But when the alien overlord Lissandra and her army of Harsh Vibes begin to enslave planets and suppress disco music, a new age of heroes rises to stop her, and keep the party grooving.",
+        "imagePath": "",
+        "skinSets": [
+            144
+        ]
+    },
+    {
+        "id": 46,
+        "name": "Arcana",
+        "description": "High above Arcana, the Archetypes, living patterns that shape reality itself, struggle to trace their vision upon the chaos below them. The Archetypes recruit perceptive citizens of the world below to amplify their hidden patterns—and the more who magnify an Archetype's pattern, the more the world reflects their grand design.",
+        "imagePath": "",
+        "skinSets": [
+            146
+        ]
+    },
+    {
+        "id": 48,
+        "name": "Crime City Nightmare",
+        "description": "Eldritch horrors lurk within the crime and grime of Valoran City. Black markets have given rise to Elixirs: a valuable substance of dubious origin whose production spells money and influence should any gang corner the market. Spurred on by agents of corruption, capos and cronies alike look to forces beyond the veil for a taste of true power.",
+        "imagePath": "",
+        "skinSets": [
+            149,
+            51,
+            23
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Pulsefire",
+        "description": "Between the branching of infinite realities, Chrono-enforcers clash with fleeing fugitives, temporal warlords, and the unrelenting march of Praetorians through the vicissitudes of space-time.",
+        "imagePath": "",
+        "skinSets": [
+            36,
+            90
+        ]
+    },
+    {
+        "id": 51,
+        "name": "Cafe Cuties",
+        "description": "Good food is magic—literally! In a world of elegant tea times and enchanted pastries, mages make magical macarons, craft charmed croissants, and serve up sorcerous scones to scores of customers eager to get a taste.",
+        "imagePath": "",
+        "skinSets": [
+            153
+        ]
+    },
+    {
+        "id": 52,
+        "name": "Arcane",
+        "description": "In the cities of Piltover and Zaun, unrest stirs as inventors and thieves, politicians and crime lords chafe against the constraints of a society torn asunder. Discovery and danger intertwine as heroes are born and bonds are broken. Will this power change the world, or lead it to ruin?",
+        "imagePath": "",
+        "skinSets": [
+            152
+        ]
+    },
+    {
+        "id": 55,
+        "name": "Cloudedge",
+        "description": "Bearing weapons imbued with lightning magic through the deadly Cloud Ritual, Shockblades are an order of mysterious shinobi warriors tasked with protecting humankind from malevolent spirits and monsters. They travel between the mortal and spirit realms to chase down threats no one else can touch, safeguarding the future for all denizens of the mortal world.",
+        "imagePath": "",
+        "skinSets": [
+            155
+        ]
+    },
+    {
+        "id": 56,
+        "name": "AnimaTech",
+        "description": "Humankind is on its last legs, nearly defeated by a high-tech army of deep-sea invaders called the Primordians. Enter Anima Squad: elite fighters using salvaged Primordian tech to push back against the end of the world. To save humanity, they will have to fight like an animal.",
+        "imagePath": "",
+        "skinSets": [
+            156
+        ]
+    },
+    {
+        "id": 58,
+        "name": "Sunkissed Summer",
+        "description": "It's summer, baby! The sun's out, the breeze's warm, and the water's cool. Everybody's leaving their rivalries and grudges at home, and bringing only swimsuits and good vibes. There'll be plenty of time for punching and yelling later. Just sit back, enjoy the music, and soak up the fun.",
+        "imagePath": "",
+        "skinSets": [
+            159,
+            15
+        ]
+    },
+    {
+        "id": 59,
+        "name": "Monster Tamers",
+        "description": "Who are we? We're Monster Tamers! We protect the world when it's in danger! When others would flee, we follow the roar. We tame the monster and use the CORE. And with our new friends by our side, we'll hop and run and swim and glide! We'll go anywhere, no matter how far. Because we're Monster Tamers! That's who we are!",
+        "imagePath": "",
+        "skinSets": [
+            162
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Event Horizon",
+        "description": "In the vast darkness of space are born terrible, beautiful things—Cosmic creatures of sublime love, and the unknowable monstrosities of the Dark Star. These are the children of silent gods, and they are finally coming home.",
+        "imagePath": "",
+        "skinSets": [
+            43,
+            44
+        ]
+    },
+    {
+        "id": 60,
+        "name": "Spirit Guard",
+        "description": "Udyr spent almost a decade training in Ionia with the monks of the Hirana Monastery, learning to control and master his spiritual abilities. At last, when the Freljord called him home, he chose to stay and complete his training. In the time since then, Udyr has become part of the Ionian landscape, both spiritual and mortal, as he works with Lee Sin and Karma to return balance to the wartorn land.",
+        "imagePath": "",
+        "skinSets": [
+            163
+        ]
+    },
+    {
+        "id": 61,
+        "name": "The Grind",
+        "description": "The grind isn't just work. It's the struggle, the hustle, sometimes invigorating, sometimes demoralizing. It's a weeklong rollercoaster with comedic bends and tragic drops, only to start all over again on Monday. Are we working hard or hardly working? It's all the same on the grind.",
+        "imagePath": "",
+        "skinSets": [
+            100,
+            168,
+            169,
+            31,
+            115,
+            106,
+            34,
+            102,
+            103,
+            121
+        ]
+    },
+    {
+        "id": 62,
+        "name": "Definitely Not",
+        "description": "A totally normal universe with nothing duplicitous, treacherous, or disingenuous going on. Definitely not.",
+        "imagePath": "",
+        "skinSets": [
+            101
+        ]
+    },
+    {
+        "id": 63,
+        "name": "Iron Firmament",
+        "description": "A war-torn galaxy attempts to rebuild, but old wounds remain. Bounty hunters and corporate agents have filled the power vacuum, some piloting dangerous combat exo suits with godlike abilities. In response, megacorporations leverage private armies to enforce their will across the far-flung colonies of space. War never dies; it only changes battlefields.",
+        "imagePath": "",
+        "skinSets": [
+            65,
+            85,
+            59,
+            76
+        ]
+    },
+    {
+        "id": 64,
+        "name": "Ages of Runeterra",
+        "description": "Glimpses of selves in other lives. Clashes of fate in another era. Runeterra is a world rich in possibility as its legends find new destinations and destinies.",
+        "imagePath": "",
+        "skinSets": [
+            164,
+            49,
+            177,
+            178,
+            179,
+            180,
+            128,
+            82
+        ]
+    },
+    {
+        "id": 65,
+        "name": "Elementalist",
+        "description": "A kingdom hangs on the edge of ruin as an army of titanic elemental beasts wage war on humanity. The last line of defense is held by a lone warrior queen, Elementalist Lux. To save her people, she must look within and reveal her true nature... no matter what form it takes.",
+        "imagePath": "",
+        "skinSets": [
+            166
+        ]
+    },
+    {
+        "id": 66,
+        "name": "Infernal",
+        "description": "Fire, sulfur, and death. There is no returning to what the world was before the Ashen Lord rose. It is a dream, lost to the searing lava rivers beneath volcano-strewn lands. Now a new age begins, one that will burn for eternity.",
+        "imagePath": "",
+        "skinSets": [
+            86
+        ]
+    },
+    {
+        "id": 67,
+        "name": "Legacy",
+        "description": "Treasures from days long passed, glimmering just within reach.",
+        "imagePath": "",
+        "skinSets": [
+            167,
+            69,
+            185
+        ]
+    },
+    {
+        "id": 68,
+        "name": "Wonders of the World",
+        "description": "Individuals hailing from the far-flung universe of \"Earth,\" where giant statues come to life and everyone is wearing a fun hat. It's a lot like Runeterra, if you think about it.",
+        "imagePath": "",
+        "skinSets": [
+            99
+        ]
+    },
+    {
+        "id": 69,
+        "name": "Institute of War",
+        "description": "Though the rigid laws, empires, and political turmoil that lead to the Rune War have since faded into antiquity, the tales of legendary battles fought on the Fields of Justice are kept alive by the remnants of the Magelords and Protectorate. The Marauders and Wardens continue their ancestors' legacy of war and animosity, despite how removed they are from those initial conflicts.",
+        "imagePath": "",
+        "skinSets": [
+            50,
+            45
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Dragon World",
+        "description": "Twice did dragonfire consume the world. Twice from the embers were heroes forged.",
+        "imagePath": "",
+        "skinSets": [
+            13
+        ]
+    },
+    {
+        "id": 70,
+        "name": "Kinetex Machina",
+        "description": "It's the 22nd century; body augmentation is a common part of society. Humanity's limits change constantly, creating an unheard of sense of optimism and possibility. Every four years, nations put aside their conflicts in the spirit of harmony and competition in the Zenith Games. They enter not to show the world what's possible, but what it might become.",
+        "imagePath": "",
+        "skinSets": [
+            165
+        ]
+    },
+    {
+        "id": 71,
+        "name": "Arcade",
+        "description": "Insert Coin to Play\" flashes on the screen, an irrestistable offer for any gamer worth their salt. But whisked away from their humble arcade into a world of Heroes and Battle Bosses, these ordinary players will have to fight with all the reflexes and combos they can muster. Because gamers in Arcadia... are playing with their lives.",
+        "imagePath": "",
+        "skinSets": [
+            11,
+            10,
+            117
+        ]
+    },
+    {
+        "id": 72,
+        "name": "Tales from the Rift",
+        "description": "Parents tell their children stories of wicked witches and the like, those that lurk the streets one night each year. \"Stay in your bed, little one, for darkness is their friend.\" These tales are only partly true; while the ghouls of this enchanted evening love a good scare, they'd never harm a hair on a child's head. Except for the very naughty ones.",
+        "imagePath": "",
+        "skinSets": [
+            172,
+            88
+        ]
+    },
+    {
+        "id": 73,
+        "name": "Bees",
+        "description": "Bzzz. Bzzz bzzz bzzz. Bzzz! Bzzz, bzz, bzz bzz bzz. Bzzz...",
+        "imagePath": "",
+        "skinSets": [
+            143
+        ]
+    },
+    {
+        "id": 74,
+        "name": "Silver Age",
+        "description": "The rift's greatest superheroes and most dastardly villains, available at a comic store near you!",
+        "imagePath": "",
+        "skinSets": [
+            111
+        ]
+    },
+    {
+        "id": 75,
+        "name": "Cats Versus Dogs",
+        "description": "The oldest rivalry the world has ever known: man's best friend pitted against the internet's greatest heroes. Only one faction will emerge victorious from the gnawing maw of battle between cats and dogs. Hopefully they don't get their fur too dirty: the only thing worse than losing is bathtime.",
+        "imagePath": "",
+        "skinSets": [
+            98
+        ]
+    },
+    {
+        "id": 76,
+        "name": "Neighborhood Nightmare",
+        "description": "In small close-knit towns across the globe, there's always that one house children decide is the stuff of nightmares. No matter how many times these monstrous inhabitants welcome them in for a good night of casting spells and howling at the moon, the normies never seem to take them up on their offer.",
+        "imagePath": "",
+        "skinSets": [
+            170,
+            110
+        ]
+    },
+    {
+        "id": 77,
+        "name": "Ye Olde",
+        "description": "Life is a blessing within the castle walls of Lord Tryndamere's domain. Knights may seek out the blacksmith to purchase their wares or one of many mages for sage advice. And for the adventurous in spirit, the lands of Albion await, their mysteries known only to the fae folk that reside there.",
+        "imagePath": "",
+        "skinSets": [
+            97,
+            114
+        ]
+    },
+    {
+        "id": 78,
+        "name": "Dark Waters",
+        "description": "Bilgewater, where death is swifter than the currents, and the rules as formless as swill. Where coin is the one key that can unlock anything, and the truth is only a lie agreed upon.",
+        "imagePath": "",
+        "skinSets": [
+            74
+        ]
+    },
+    {
+        "id": 79,
+        "name": "Riot Records",
+        "description": "Sure, it's about sold out stadiums, the high-fashion swagger, the cheering crowd; but it's also about speakers cranked so loud, your ears ring like they want to sing along. About hot stage lights, pounding bass, and the steady rhythm of the drums. It's about that adrenaline high, igniting you from the inside out. This feeling? This is music.",
+        "imagePath": "",
+        "skinSets": [
+            173,
+            174,
+            120,
+            91,
+            16,
+            151,
+            199
+        ]
+    },
+    {
+        "id": 80,
+        "name": "Victorious",
+        "description": "Champions conquer their enemies and ascend to new heights, achieving their wildest dreams and showing off their hard-earned spoils to any and all who want to look upon true greatness.",
+        "imagePath": "",
+        "skinSets": [
+            7
+        ]
+    },
+    {
+        "id": 81,
+        "name": "Honor",
+        "description": "Society has become increasingly individualistic and closed off under the Essent's rule. People are encouraged to care only about themselves, so nobody trusts each other. As leader of the long-dead Order of Solace, Malzahar seeks to bring harmony to this dissonant world through the uplifting aura of Solace. He knows that only by coming together can they inspire a better world.",
+        "imagePath": "",
+        "skinSets": [
+            176
+        ]
+    },
+    {
+        "id": 82,
+        "name": "Heavy Metal",
+        "description": "Audiences gather from all over the world for a chance to witness the greatest robot fighters throw down in RiotCorp's gladiatorial arenas, eager for the chance to be crowned the Full Metal Robot Fighting League Champion or break down trying.",
+        "imagePath": "",
+        "skinSets": [
+            118
+        ]
+    },
+    {
+        "id": 83,
+        "name": "Be Mine",
+        "description": "So... will you?",
+        "imagePath": "",
+        "skinSets": [
+            64
+        ]
+    },
+    {
+        "id": 84,
+        "name": "Academy",
+        "description": "ATTENTION STUDENTS AND FACULTY: It has come to our attention that all students are currently facing disiplinary action and all professors are on \"suggested\" psychiatric leave. Class will be canceled until further notice, perhaps a time when the aformentioned suspeded students have reexamined their abysmal behavior.",
+        "imagePath": "",
+        "skinSets": [
+            22
+        ]
+    },
+    {
+        "id": 85,
+        "name": "Arcanists",
+        "description": "Right outside the academy doors is a world filled with magic... and danger. The professors caution the young wizards and witches to stay within the safety of the school grounds, grow their power, and study well—but where is the fun in that when adventure awaits just beyond the bend?",
+        "imagePath": "",
+        "skinSets": [
+            95
+        ]
+    },
+    {
+        "id": 86,
+        "name": "Star Voyagers",
+        "description": "It's dangerous to traverse space alone… take a meep! Unless it's purple. The purple ones are evil.",
+        "imagePath": "",
+        "skinSets": [
+            94,
+            105
+        ]
+    },
+    {
+        "id": 87,
+        "name": "God Weapon",
+        "description": "Scattered across the globe, the God Weapons morphed society into one driven by power. These sentient monuments call to those who are worthy and bestow their gifts upon their subjects, aiming to expand their conquest in this war-torn world. To be chosen is a badge of honor, instilling fear into any who may oppose them.",
+        "imagePath": "",
+        "skinSets": [
+            113
+        ]
+    },
+    {
+        "id": 88,
+        "name": "Beta",
+        "description": "beta_universe_descriptionFINALFINAL.txt",
+        "imagePath": "",
+        "skinSets": [
+            182
+        ]
+    },
+    {
+        "id": 89,
+        "name": "Blackfrost",
+        "description": "The Ice Witch lets none slumber; each fallen friend and foe in her domain rises anew to fight by her side. Her dark magic twists their appearance, creating glacial golems with hearts of black, unmelting ice.",
+        "imagePath": "",
+        "skinSets": [
+            129
+        ]
+    },
+    {
+        "id": 90,
+        "name": "Bloodstone",
+        "description": "The fabled Bloodstone grants impressive abilities at an equally chilling price. Many bodies lie in its wake, with doubtless more to come, because there is no shortage of power within the darkness, only the will to seize it.",
+        "imagePath": "",
+        "skinSets": [
+            126
+        ]
+    },
+    {
+        "id": 91,
+        "name": "Esports",
+        "description": "Some say holding up the Summoner's Cup before a stadium of cheering fans is the greatest prize... others say it's the cash. The folks who make Skins on the League of Legends team? We think that the best part of winning Worlds is being immortalized in your favorite game. And we aren't biased!",
+        "imagePath": "",
+        "skinSets": [
+            9,
+            109,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            75,
+            107,
+            130,
+            145,
+            158,
+            8
+        ]
+    },
+    {
+        "id": 92,
+        "name": "Collector Edition",
+        "description": "For the discerning collector of limited edition MOBA releases in 2009.",
+        "imagePath": "",
+        "skinSets": [
+            83
+        ]
+    },
+    {
+        "id": 93,
+        "name": "War is Heck",
+        "description": "What is this?! We're in war, soldier, and you're spending your time reading? What use is reading when you're scooching your skinny butt through rat-infested mud in the middle of a hurricane under live fire? None, that's what! Now get in formation!",
+        "imagePath": "",
+        "skinSets": [
+            104,
+            14
+        ]
+    },
+    {
+        "id": 94,
+        "name": "Cottontail",
+        "description": "It's rabbit season! Fine folk up and down the bunny trail are dressed in their bun-day best, eggs painted and smiles wide. Here's hoping their hopping helps you with holiday cheer!",
+        "imagePath": "",
+        "skinSets": [
+            56
+        ]
+    },
+    {
+        "id": 95,
+        "name": "Crimson Elite",
+        "description": "How does one find the Crimson Elite? Follow the bodies.",
+        "imagePath": "",
+        "skinSets": [
+            122
+        ]
+    },
+    {
+        "id": 96,
+        "name": "Death Sworn",
+        "description": "The underworld stirs with ominous activity. Death marshals its subjects for a new plan of terrifying design, one that will require the souls of every mortal.",
+        "imagePath": "",
+        "skinSets": [
+            87
+        ]
+    },
+    {
+        "id": 97,
+        "name": "Demonic",
+        "description": "To those poor souls condemned to suffering, whether bound by contract or practiced wickedness, the eternal fires of Hell will be waiting.",
+        "imagePath": "",
+        "skinSets": [
+            116
+        ]
+    },
+    {
+        "id": 98,
+        "name": "Four Beasts",
+        "description": "Divine beasts watch over the world entire, capable of turning anyone into powerful beings, but only if that soul is worthy of their blessings. Whether their power is used for good or evil, once the gift is given, it cannot be taken away.",
+        "imagePath": "",
+        "skinSets": [
+            135,
+            150
+        ]
+    },
+    {
+        "id": 99,
+        "name": "Dreadknights",
+        "description": "Brought back to life by mysterious ancient magic, these undead knights are the only remnants of a storied history, lost to time. They'll protect what once was theirs, at any cost to mortal life.",
+        "imagePath": "",
+        "skinSets": [
+            123
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Riftquest",
+        "description": "Danger lurks in the land of Runeterra! Powerful monsters, dastardly sorcerers, and mythical creatures roam unchecked! Gather your friends and create your own adventure for 3-5 players, vanquishing evil with each roll of the die. Do you have what it takes to save the world, and become a legend of RIFTQUEST?",
+        "imagePath": "",
+        "skinSets": [
+            38
+        ]
+    }
+]

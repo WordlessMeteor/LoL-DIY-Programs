@@ -1,0 +1,1621 @@
+{
+    "id": 58,
+    "name": "荒漠屠夫",
+    "alias": "Renekton",
+    "title": "雷克顿",
+    "shortBio": "雷克顿是一位来自恕瑞玛炙热沙漠中的面目可怖、野蛮狂怒的飞升者。他曾经是帝国最受尊敬的战士，带领恕瑞玛的军队取得过无数次胜利。然而，在帝国陨落以后，雷克顿被困在了沙漠之下，慢慢地，在世界变迁的同时，雷克顿丧失了理智。现在他重获自由，但却被一个执念吞噬：找到并杀死他的哥哥内瑟斯，因为疯狂之中的他坚信内瑟斯是害他经受数百年黑暗束缚的罪魁祸首。",
+    "tacticalInfo": {
+        "style": 5,
+        "difficulty": 1,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 2,
+        "crowdControl": 2,
+        "mobility": 2,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/58.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/58.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/58.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/58.ogg",
+    "roles": [
+        "fighter",
+        "tank"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 58000,
+            "isBase": true,
+            "name": "荒漠屠夫",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/58/58000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/58/58000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/58/58000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renekton/Skins/Base/RenektonLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 58001,
+            "isBase": false,
+            "name": "星河战队 雷克顿",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/58/58001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/58/58001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/58/58001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renekton/Skins/Skin01/RenektonLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 136
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 58002,
+            "isBase": false,
+            "name": "荒野之咬 雷克顿",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/58/58002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/58/58002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/58/58002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renekton/Skins/Skin02/RenektonLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 99
+                }
+            ],
+            "skinAugments": null,
+            "description": "喔唷，好个锯齿。"
+        },
+        {
+            "id": 58003,
+            "isBase": false,
+            "name": "血石战神 雷克顿",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/58/58003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/58/58003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/58/58003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renekton/Skins/Skin03/RenektonLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 126
+                }
+            ],
+            "skinAugments": null,
+            "description": "这台因血而发狂的杀人机器在战场上四处搜寻着，来满足血石的需求。他屠戮得越多，他获得的力量就越多。这反过来又助长了他的狂暴，创造了一个永不终结的血腥循环。"
+        },
+        {
+            "id": 58004,
+            "isBase": false,
+            "name": "符文战神 雷克顿",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/58/58004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/58/58004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/58/58004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renekton/Skins/Skin04/RenektonLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 180
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 58005,
+            "isBase": false,
+            "name": "枯萎之壤 雷克顿",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/58/58005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/58/58005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/58/58005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renekton/Skins/Skin05/RenektonLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 86
+                }
+            ],
+            "skinAugments": null,
+            "description": "地狱火不就是从凡人想象中最黑暗的角落中召唤出的尖啸吗？在几个世纪以来，它们都被认为不过是虚构故事而已——而现在，诸如雷克顿这样的凶残怪物自由地漫游着，惩罚着我们所有人那最后一丝残存的傲慢。"
+        },
+        {
+            "id": 58006,
+            "isBase": false,
+            "name": "泳池派对 雷克顿",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/58/58006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/58/58006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/58/58006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renekton/Skins/Skin06/RenektonLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 15
+                }
+            ],
+            "skinAugments": null,
+            "description": "救生员值班中！但说真的，请小心！——你不会想让一个9英尺高的鳄鱼人给你做心肺复苏的。 "
+        },
+        {
+            "id": 58007,
+            "isBase": false,
+            "name": "猛龙 雷克顿",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/58/58007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/58/58007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/58/58007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renekton/Skins/Skin07/RenektonLoadScreen_7.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 32
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为一只罕有的高智商动物，雷克顿的语言能力极其强大，并且使用半月刃的能力也神乎其神。他还有接近六层楼的身高并且态度极不友善。想要追捕他的猎人在出击之前建议先安排好身后事。"
+        },
+        {
+            "id": 58008,
+            "isBase": false,
+            "name": "SKT T1 雷克顿",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/58/58008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/58/58008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/58/58008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renekton/Skins/skin08/RenektonLoadscreen_8.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 5
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此致敬MaRin在2015全球总决赛中使用雷克顿的夺胜表现。"
+        },
+        {
+            "id": 58009,
+            "isBase": false,
+            "name": "鳄霸 雷克顿",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/58/58009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/58/58009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/58/58009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renekton/Skins/Skin09/RenektonLoadscreen_9.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58009.png",
+            "chromas": [
+                {
+                    "id": 58010,
+                    "name": "黄金鳄霸 雷克顿",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58010.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 58011,
+                    "name": "死亡鳄霸 雷克顿",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58011.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 58012,
+                    "name": "激萌鳄霸 雷克顿",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58012.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 58013,
+                    "name": "暴走鳄霸 雷克顿",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58013.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 58014,
+                    "name": "虹彩鳄霸 雷克顿",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58014.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 58015,
+                    "name": "铁血鳄霸 雷克顿",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58015.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 58016,
+                    "name": "深渊鳄霸 雷克顿",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58016.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 61
+                }
+            ],
+            "skinAugments": null,
+            "description": "首次生产于1996年，鳄霸雷克顿迅速且出人意料地成为了当季的必备赠礼。库存紧缺和订单飙升导致出现了线上拍卖，家长们在商店走道上互殴，此事被少数警察在之后描述为“商场大暴走”的事件。"
+        },
+        {
+            "id": 58017,
+            "isBase": false,
+            "name": "海克斯科技 雷克顿",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/58/58017.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/58/58017.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/58/58017.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renekton/Skins/Skin17/RenektonLoadScreen_17.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Hextech Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/43.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/43.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 40
+                }
+            ],
+            "skinAugments": null,
+            "description": "一如往常的那样，海克斯科技复兴的工匠们将他们的新科学推行得太远太快了，没有全面考虑过可能导致的一系列后果。雷克顿——一个由血肉和金属组成的半疯癫的怪兽——就是那种短视带来的结果。"
+        },
+        {
+            "id": 58018,
+            "isBase": false,
+            "name": "黯晶巨鳄 雷克顿",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/58/58018.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/58/58018.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/58/58018.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renekton/Skins/Skin18/RenektonLoadscreen_18.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58018.png",
+            "chromas": [
+                {
+                    "id": 58019,
+                    "name": "黯晶巨鳄 雷克顿 凝结之焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58019.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 58020,
+                    "name": "黯晶巨鳄 雷克顿 凝结之风",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58020.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 58021,
+                    "name": "黯晶巨鳄 雷克顿 凝结之涛",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58021.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 58022,
+                    "name": "黯晶巨鳄 雷克顿 凝结之魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58022.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 58023,
+                    "name": "黯晶巨鳄 雷克顿 凝结之灵",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58023.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 58024,
+                    "name": "黯晶巨鳄 雷克顿 凝结之沙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58024.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 58025,
+                    "name": "黯晶巨鳄 雷克顿 凝结之梦",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58025.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 129
+                }
+            ],
+            "skinAugments": null,
+            "description": "生前，雷克顿反抗着冰霜女巫的严酷统治，与不可避免、无穷无尽的寒冬战斗不止，直到咽下最后一口气。死后，这名高尚战士被诅咒复活——作为一个被困在岩石与寒冰中的邪恶好战者而被起死回生。雷克顿现在是一位将军，领导着黯晶大军的狂袭，忠诚地效忠着他曾经想要毁灭的那名女皇。"
+        },
+        {
+            "id": 58026,
+            "isBase": false,
+            "name": "源计划：泯灭 雷克顿",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/58/58026.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/58/58026.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/58/58026.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renekton/Skins/Skin26/RenektonLoadScreen_26.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Renekton/Skins/Skin26/RenektonLoadscreen_26_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58026.png",
+            "chromas": [
+                {
+                    "id": 58027,
+                    "name": "源计划：泯灭 雷克顿 裂变",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58027.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 58028,
+                    "name": "源计划：泯灭 雷克顿 地覆",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58028.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 58029,
+                    "name": "源计划：泯灭 雷克顿 默化",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58029.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 58030,
+                    "name": "源计划：泯灭 雷克顿 失控",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58030.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 58031,
+                    "name": "源计划：泯灭 雷克顿 惩戒",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58031.png",
+                    "colors": [
+                        "#FF5500",
+                        "#162B30"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在源计划(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 58032,
+                    "name": "源计划：泯灭 雷克顿 震击",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58032.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 18
+                }
+            ],
+            "skinAugments": null,
+            "description": "雷克顿是一个混合战士，从灭绝的动物种类中汲取灵感，并且是源计划的跨物种超级武器项目的完美版本。雷克顿被释放出来援助城市对抗源代码病毒，他那似乎无穷无尽的怒气现在有了用武之地……尽管他那相信自己能够“看见超越灵魂之物”的信念越来越令人不安。"
+        },
+        {
+            "id": 58033,
+            "isBase": false,
+            "name": "黎明使者 雷克顿",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/58/58033.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/58/58033.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/58/58033.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renekton/Skins/Skin33/RenektonLoadScreen_33.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58033.png",
+            "chromas": [
+                {
+                    "id": 58034,
+                    "name": "黎明使者 雷克顿 阳辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58034.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 58035,
+                    "name": "黎明使者 雷克顿 曙辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58035.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 58036,
+                    "name": "黎明使者 雷克顿 宁辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58036.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 58037,
+                    "name": "黎明使者 雷克顿 霞辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58037.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 58038,
+                    "name": "黎明使者 雷克顿 幻辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58038.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 58039,
+                    "name": "黎明使者 雷克顿 愈辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58039.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 58040,
+                    "name": "黎明使者 雷克顿 苍辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58040.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 58041,
+                    "name": "黎明使者 雷克顿 雪辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58041.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 193
+                }
+            ],
+            "skinAugments": null,
+            "description": "在混沌击败秩序之后，两兄弟诞生了：“因之化身”雷克顿，以及“果之化身”内瑟斯。作为黎明使者的执行人，雷克顿因为与他的同胞作战而变得更加疯狂，但他仍然坚持他的观点，即一切都必须有一个目的。如果不是为了造成更多混沌的话，那么混沌的作用是什么？"
+        },
+        {
+            "id": 58042,
+            "isBase": false,
+            "name": "2023 全球总决赛 雷克顿",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/58/58042.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/58/58042.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/58/58042.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renekton/Skins/Skin42/RenektonLoadScreen_42.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Renekton/Skins/Skin42/RenektonLoadscreen_42_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58042.png",
+            "chromas": [
+                {
+                    "id": 58043,
+                    "name": "2023 全球总决赛 雷克顿 征战八方",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58043.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 58044,
+                    "name": "2023 全球总决赛 雷克顿 竞逐巅峰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58044.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2023)活动期间发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 58045,
+                    "name": "2023 全球总决赛 雷克顿 勇者无畏",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58045.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2023)活动期间发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 58046,
+                    "name": "2023 全球总决赛 雷克顿 潜力解封",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58046.png",
+                    "colors": [
+                        "#DED6B0",
+                        "#DED6B0"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为【2023全球总决赛典藏礼盒】专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 3
+                        }
+                    ]
+                },
+                {
+                    "id": 58047,
+                    "name": "2023 全球总决赛 雷克顿 百炼成金",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/58/58047.png",
+                    "colors": [
+                        "#BF15C5",
+                        "#0C2CBD"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "2021 Worlds Final",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/65.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/65.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 8
+                }
+            ],
+            "skinAugments": null,
+            "description": "用来纪念在韩国举办的2023全球总决赛。"
+        }
+    ],
+    "passive": {
+        "name": "怒之领域",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Renekton/HUD/Icons2D/Renekton_Passive.png",
+        "abilityVideoPath": "champion-abilities/0058/ability_0058_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0058/ability_0058_P1.jpg",
+        "description": "雷克顿的攻击会产生【怒气】，在它的生命值较低时产生更多【怒气】。【怒气】可以强化他的基础技能，使它们具有额外效果。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "巨鳄狂袭",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Renekton/HUD/Icons2D/Renekton_Q.png",
+            "abilityVideoPath": "champion-abilities/0058/ability_0058_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0058/ability_0058_Q1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "雷克顿挥动他的武器，对周围所有目标造成中等水平物理伤害，并根据造成的伤害来治疗自己。如果他有50点以上怒气，那么此技能的伤害和治疗效果会得到提升。",
+            "dynamicDescription": "雷克顿挥舞他的战刃，造成<physicalDamage>@BasicDamage@物理伤害</physicalDamage>，此外，每命中一个非英雄单位就会回复<healing>@NonChampHealing@生命值</healing>，每命中一位英雄就会回复<healing>@ChampHealing@</healing>(最多回复<healing>@Effect4Amount@生命值</healing>)。他每命中一个非英雄单位还会生成<keywordMajor>2.5怒气</keywordMajor>，且每命中一位英雄生成<keywordMajor>10怒气</keywordMajor>(最多生成<keywordMajor>30怒气</keywordMajor>)。<br><br><keywordMajor>怒气加成</keywordMajor>：伤害提升至<physicalDamage>@EmpDamage@物理伤害</physicalDamage>并且对非英雄单位的治疗效果提升至<healing>@EmpNonChampHealing@生命值</healing>，对英雄的治疗效果提升至<healing>@EmpChampHealing@生命值</healing>(最多回复<healing>@Effect9Amount@生命值</healing>)。不会生成任何<keywordMajor>怒气</keywordMajor>。@SpellModifierDescriptionAppend@",
+            "range": [
+                325.0000,
+                325.0000,
+                325.0000,
+                325.0000,
+                325.0000,
+                20.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.8000,
+                "coefficient2": 1.2000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    30.0000,
+                    60.0000,
+                    90.0000,
+                    120.0000,
+                    150.0000,
+                    180.0000,
+                    210.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    2.0000,
+                    3.0000,
+                    4.0000,
+                    5.0000,
+                    6.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0200,
+                    0.0200,
+                    0.0200,
+                    0.0200,
+                    0.0200,
+                    0.0200,
+                    0.0200
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    50.0000,
+                    75.0000,
+                    100.0000,
+                    125.0000,
+                    150.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000
+                ],
+                "Effect6Amount": [
+                    45.0000,
+                    90.0000,
+                    135.0000,
+                    180.0000,
+                    225.0000,
+                    270.0000,
+                    315.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    6.0000,
+                    9.0000,
+                    12.0000,
+                    15.0000,
+                    18.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0600,
+                    0.0600,
+                    0.0600,
+                    0.0600,
+                    0.0600,
+                    0.0600,
+                    0.0600
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    200.0000,
+                    300.0000,
+                    400.0000,
+                    500.0000,
+                    600.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "冷酷捕猎",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Renekton/HUD/Icons2D/Renekton_W.png",
+            "abilityVideoPath": "champion-abilities/0058/ability_0058_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0058/ability_0058_W1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "雷克顿两次挥击目标，对其造成中等水平物理伤害并晕眩其0.75秒。如果雷克顿有50点以上怒气，他会三次挥击目标，摧毁目标身上的伤害护盾，对其造成高额物理伤害，并晕眩其1.5秒。",
+            "dynamicDescription": "雷克顿的下次攻击会进行两次打击，造成@Effect3Amount@秒<status>晕眩</status>和共计<physicalDamage>@BasicTotalDamage@物理伤害</physicalDamage>。命中一名英雄会生成额外的<keywordMajor>@Effect7Amount@怒气</keywordMajor>。<br><br><keywordMajor>怒气加成</keywordMajor>：雷克顿转而进行三次打击，摧毁<shield>护盾</shield>然后造成<physicalDamage>@EmpTotalDamage@物理伤害</physicalDamage>和@Effect4Amount@秒<status>晕眩</status>。不会生成任何<keywordMajor>怒气</keywordMajor>。@SpellModifierDescriptionAppend@",
+            "range": [
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                16.0000,
+                14.0000,
+                12.0000,
+                10.0000,
+                8.0000,
+                0.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    5.0000,
+                    20.0000,
+                    35.0000,
+                    50.0000,
+                    65.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500
+                ],
+                "Effect3Amount": [
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500
+                ],
+                "Effect4Amount": [
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    10.0000,
+                    40.0000,
+                    70.0000,
+                    100.0000,
+                    130.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    15.0000,
+                    60.0000,
+                    105.0000,
+                    150.0000,
+                    195.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "横冲直撞",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Renekton/HUD/Icons2D/Renekton_E.png",
+            "abilityVideoPath": "champion-abilities/0058/ability_0058_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0058/ability_0058_E1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "雷克顿冲向前方，对沿途的敌人造成伤害。如果雷克顿有50点以上怒气，就会造成额外伤害，并减少沿途敌人的护甲值。",
+            "dynamicDescription": "雷克顿进行冲刺，造成<physicalDamage>@BasicDamage@物理伤害</physicalDamage>。他每命中一名非英雄单位就会生成<keywordMajor>@Effect4Amount@怒气</keywordMajor>，每命中一位英雄就会生成<keywordMajor>@Effect5Amount@怒气</keywordMajor>。如果至少命中一名敌人，那么雷克顿就能在@Effect8Amount@秒内<recast>再次施放</recast>这个技能一次。<br><br><keywordMajor>怒气加成</keywordMajor>：<recast>再次施放</recast>的冲刺造成<physicalDamage>@EmpDamage@物理伤害</physicalDamage>作为替代并移除<scaleArmor>@Effect2Amount@%护甲</scaleArmor>，持续@Effect9Amount@秒。不会生成<keywordMajor>怒气</keywordMajor>。@SpellModifierDescriptionAppend@",
+            "range": [
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                16.0000,
+                14.5000,
+                13.0000,
+                11.5000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.9000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    5.0000,
+                    40.0000,
+                    70.0000,
+                    100.0000,
+                    130.0000,
+                    160.0000,
+                    190.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    25.0000,
+                    27.5000,
+                    30.0000,
+                    32.5000,
+                    35.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    70.0000,
+                    70.0000,
+                    115.0000,
+                    160.0000,
+                    205.0000,
+                    250.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000
+                ],
+                "Effect5Amount": [
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000,
+                    10.0000
+                ],
+                "Effect6Amount": [
+                    0.9000,
+                    0.9000,
+                    0.9000,
+                    0.9000,
+                    0.9000,
+                    0.9000,
+                    0.9000
+                ],
+                "Effect7Amount": [
+                    1.3500,
+                    1.3500,
+                    1.3500,
+                    1.3500,
+                    1.3500,
+                    1.3500,
+                    1.3500
+                ],
+                "Effect8Amount": [
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000
+                ],
+                "Effect9Amount": [
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000
+                ],
+                "Effect10Amount": [
+                    30.0000,
+                    30.0000,
+                    30.0000,
+                    30.0000,
+                    30.0000,
+                    30.0000,
+                    30.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "终极统治",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Renekton/HUD/Icons2D/Renekton_R.png",
+            "abilityVideoPath": "champion-abilities/0058/ability_0058_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0058/ability_0058_R1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "雷克顿转换为暴君形态，获得额外生命值，并对周围敌人造成伤害。此形态的雷克顿定时获得怒气。",
+            "dynamicDescription": "雷克顿用黑暗能量笼罩自身，持续@BuffDuration@秒，获得<healing>@HealthGain@最大生命值</healing>和<keywordMajor>@FuryOnCast@怒气</keywordMajor>。在激活时，他每秒造成<magicDamage>@TotalDamagePerSecond@魔法伤害</magicDamage>并获得<keywordMajor>@FuryPerSecond@怒气</keywordMajor>。@SpellModifierDescriptionAppend@",
+            "range": [
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                100.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.1000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

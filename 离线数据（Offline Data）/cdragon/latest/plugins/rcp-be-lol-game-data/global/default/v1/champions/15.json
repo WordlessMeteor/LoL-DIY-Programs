@@ -1,0 +1,1920 @@
+{
+    "id": 15,
+    "name": "Sivir",
+    "alias": "Sivir",
+    "title": "the Battle Mistress",
+    "shortBio": "Sivir is a renowned fortune hunter and mercenary captain who plies her trade in the deserts of Shurima. Armed with her legendary jeweled crossblade, she has fought and won countless battles for those who can afford her exorbitant price. Known for her fearless resolve and endless ambition, she prides herself on recovering buried treasures from the perilous tombs of Shurima—for a generous bounty. With ancient forces stirring the very bones of Shurima, Sivir finds herself torn between conflicting destinies.",
+    "tacticalInfo": {
+        "style": 2,
+        "difficulty": 2,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 1,
+        "mobility": 1,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/15.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/15.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/15.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/15.ogg",
+    "roles": [
+        "marksman"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 15000,
+            "isBase": true,
+            "name": "Sivir",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Base/SivirLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 15001,
+            "isBase": false,
+            "name": "Warrior Princess Sivir",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin01/SivirLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 15002,
+            "isBase": false,
+            "name": "Spectacular Sivir",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin02/SivirLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 15003,
+            "isBase": false,
+            "name": "Huntress Sivir",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin03/SivirLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 32
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 15004,
+            "isBase": false,
+            "name": "Bandit Sivir",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin04/SivirLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 15005,
+            "isBase": false,
+            "name": "PAX Sivir",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin05/SivirLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 84
+                }
+            ],
+            "skinAugments": null,
+            "description": "A special event skin given away PAX Prime 2011."
+        },
+        {
+            "id": 15006,
+            "isBase": false,
+            "name": "Snowstorm Sivir",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin06/SivirLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15006.png",
+            "chromas": [
+                {
+                    "id": 15017,
+                    "name": "Snowstorm Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15017.png",
+                    "colors": [
+                        "#FFC948",
+                        "#FFC948"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "Loot exclusive gained from the 2018 Snowdown event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 47
+                }
+            ],
+            "skinAugments": null,
+            "description": "The wild and brash Battle Mistress known as Sivir cares only for the thrill of combat and the rattle of coin. She relentlessly hunts her bounties across the ice, cutting down opponents with a massive, razor-sharp snowflake as hard and unforgiving as the cruelest snowstorm."
+        },
+        {
+            "id": 15007,
+            "isBase": false,
+            "name": "Warden Sivir",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin07/SivirLoadScreen_7.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 50
+                }
+            ],
+            "skinAugments": null,
+            "description": "The Wardens, like the Protectorate before them, cannot rely on innumerable conquered peoples to bolster its military as the Marauders do. Sivir, a skilled sellsword, was sworn into the order's ranks, only to take up the cause in earnest when she learned the organization's true purpose."
+        },
+        {
+            "id": 15008,
+            "isBase": false,
+            "name": "Victorious Sivir",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin08/SivirLoadScreen_8.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 7
+                }
+            ],
+            "skinAugments": null,
+            "description": "Victorious Sivir was awarded to players who reached Gold or higher in the 2015 season. As the ultimate battle mistress, Sivir wears a winged crown of victory and wields a golden weapon."
+        },
+        {
+            "id": 15009,
+            "isBase": false,
+            "name": "Neo PAX Sivir",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin09/SivirLoadscreen_9.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 84
+                }
+            ],
+            "skinAugments": null,
+            "description": "A special event skin given away PAX West 2017."
+        },
+        {
+            "id": 15010,
+            "isBase": false,
+            "name": "Pizza Delivery Sivir",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin10/SivirLoadScreen_10.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15010.png",
+            "chromas": [
+                {
+                    "id": 15011,
+                    "name": "Pizza Delivery Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15011.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 15012,
+                    "name": "Pizza Delivery Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15012.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 15013,
+                    "name": "Pizza Delivery Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15013.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 15014,
+                    "name": "Pizza Delivery Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15014.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 15015,
+                    "name": "Pizza Delivery Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15015.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 26
+                }
+            ],
+            "skinAugments": null,
+            "description": "The fastest pizza delivery girl on the continent, Sivir has racked up an impressive nine consecutive awards from corporate headquarters, and hasn't seen a customer complaint since online reviews were invented. Her vicious rivalry with Birdio is well documented, and the two will do anything to one-up each other."
+        },
+        {
+            "id": 15016,
+            "isBase": false,
+            "name": "Blood Moon Sivir",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15016.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15016.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15016.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin16/SivirLoadScreen_16.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15016.png",
+            "chromas": [
+                {
+                    "id": 15018,
+                    "name": "Blood Moon Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15018.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "Obtained through Influencer audience giveaways."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15019,
+                    "name": "Blood Moon Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15019.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15020,
+                    "name": "Blood Moon Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15020.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15021,
+                    "name": "Blood Moon Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15021.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15022,
+                    "name": "Blood Moon Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15022.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15023,
+                    "name": "Blood Moon Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15023.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive during 2019."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15024,
+                    "name": "Blood Moon Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15024.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 12
+                }
+            ],
+            "skinAugments": null,
+            "description": "A newly anointed priestess of the Blood Moon cult, Sivir wields a weapon that is both a killing tool and a key to the hellish mirror world where all demons are born. Slowly but surely, it has merged her twinned selves, and now it is no longer clear where the human ends and the monster begins."
+        },
+        {
+            "id": 15025,
+            "isBase": false,
+            "name": "Odyssey Sivir",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15025.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15025.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15025.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin25/SivirLoadScreen_25.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin25/SivirLoadscreen_25_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15025.png",
+            "chromas": [
+                {
+                    "id": 15026,
+                    "name": "Odyssey Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15026.png",
+                    "colors": [
+                        "#0C0C0F",
+                        "#9B1520"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2020 Worlds event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15027,
+                    "name": "Odyssey Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15027.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2020."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15028,
+                    "name": "Odyssey Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15028.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15029,
+                    "name": "Odyssey Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15029.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15030,
+                    "name": "Odyssey Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15030.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15031,
+                    "name": "Odyssey Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15031.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15032,
+                    "name": "Odyssey Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15032.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15033,
+                    "name": "Odyssey Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15033.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 73
+                }
+            ],
+            "skinAugments": null,
+            "description": "Sivir runs her own small bounty hunting operation on the fringes of the galaxy. She's self-made and tough, having lost her parents to the Demaxian empire many years prior, but holds on to her soft and sympathetic side despite that hardened exterior. Sivir was hired by Karma, along with the other mercs, to free the captured templars."
+        },
+        {
+            "id": 15034,
+            "isBase": false,
+            "name": "Cafe Cuties Sivir",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15034.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15034.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15034.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin34/SivirLoadScreen_34.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin34/SivirLoadscreen_34_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15034.png",
+            "chromas": [
+                {
+                    "id": 15035,
+                    "name": "Cafe Cuties Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15035.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2021."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15036,
+                    "name": "Cafe Cuties Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15036.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15037,
+                    "name": "Cafe Cuties Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15037.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15038,
+                    "name": "Cafe Cuties Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15038.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15039,
+                    "name": "Cafe Cuties Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15039.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15040,
+                    "name": "Cafe Cuties Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15040.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15041,
+                    "name": "Cafe Cuties Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15041.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15042,
+                    "name": "Cafe Cuties Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15042.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 153
+                }
+            ],
+            "skinAugments": null,
+            "description": "Sivir began as a pastry chef, but has since transitioned to “front-of-house defense specialist”. Her protective nature has gotten her into a few scraps with unruly customers, but Sivir's love of her work, her friends, and the cafe is what she's really fighting for. If you want to talk to the manager, she's got some words for you, too."
+        },
+        {
+            "id": 15043,
+            "isBase": false,
+            "name": "Solar Eclipse Sivir",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15043.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15043.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15043.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin43/SivirLoadScreen_43.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin43/SivirLoadscreen_43_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15043.png",
+            "chromas": [
+                {
+                    "id": 15044,
+                    "name": "Solar Eclipse Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15044.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15045,
+                    "name": "Solar Eclipse Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15045.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15046,
+                    "name": "Solar Eclipse Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15046.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15047,
+                    "name": "Solar Eclipse Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15047.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15048,
+                    "name": "Solar Eclipse Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15048.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15049,
+                    "name": "Solar Eclipse Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15049.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 93
+                }
+            ],
+            "skinAugments": null,
+            "description": "A mercenary Eclipse Knight known for her skill in battle and lack of chivalry, Sivir sells her services eliminating witches and monsters who menace the countryside, ignoring threats that do not prove lucrative. Though many knights find nobility in their stated purpose, Sivir cares naught but for coin, pledging to aid her order only in their final, dire hour."
+        },
+        {
+            "id": 15050,
+            "isBase": false,
+            "name": "Mythmaker Sivir",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15050.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15050.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15050.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin50/SivirLoadScreen_50.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin50/SivirLoadscreen_50_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15050.png",
+            "chromas": [
+                {
+                    "id": 15052,
+                    "name": "Mythmaker Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15052.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 15053,
+                    "name": "Mythmaker Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15053.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15054,
+                    "name": "Mythmaker Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15054.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15055,
+                    "name": "Mythmaker Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15055.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15056,
+                    "name": "Mythmaker Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15056.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15057,
+                    "name": "Mythmaker Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15057.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15058,
+                    "name": "Mythmaker Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15058.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15059,
+                    "name": "Mythmaker Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15059.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15060,
+                    "name": "Mythmaker Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15060.png",
+                    "colors": [
+                        "#181818",
+                        "#DDAA0E"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2023 Lunar Revel event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 188
+                }
+            ],
+            "skinAugments": null,
+            "description": "Once the hero of “The Great Beast Galio”, Sivir's myth-world is forever changed when the Lunar Players interrupt her climactic battle, and she discovers that she is no longer the protagonist. Grappling with the question of who she is if she's not saving the day, Sivir must now carve out a role for herself in a tale whose future is suddenly unwritten."
+        },
+        {
+            "id": 15051,
+            "isBase": false,
+            "name": "Prestige Mythmaker Sivir",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15051.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15051.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15051.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin51/SivirLoadScreen_51.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin51/SivirLoadscreen_51_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 188
+                }
+            ],
+            "skinAugments": null,
+            "description": "Sivir seeks nothing short of opulence, her beautiful clothes symbols of personal success as much as they are points of sartorial pride. It's important that she looks impeccable: the New Year is here, after all, and starting it off right means stepping out in style."
+        },
+        {
+            "id": 15061,
+            "isBase": false,
+            "name": "Primal Ambush Sivir",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/15/15061.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15061.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15061.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin61/SivirLoadScreen_61.PIE_C_14_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin61/SivirLoadScreen_61_LE.PIE_C_14_2.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15061.png",
+            "chromas": [
+                {
+                    "id": 15062,
+                    "name": "Primal Ambush Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15062.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2024."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15063,
+                    "name": "Primal Ambush Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15063.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 15064,
+                    "name": "Primal Ambush Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15064.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15065,
+                    "name": "Primal Ambush Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15065.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15066,
+                    "name": "Primal Ambush Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15066.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15067,
+                    "name": "Primal Ambush Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15067.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15068,
+                    "name": "Primal Ambush Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15068.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 15069,
+                    "name": "Primal Ambush Sivir",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/15/15069.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 200
+                }
+            ],
+            "skinAugments": null,
+            "description": "Born into greatness, Sivir quickly discovered that her enhanced capabilities were the key to earning higher mercenary payouts. As a master of instinct, she clawed her way through countless battles and struck down any target in the way of her coin. However, her current bounty, the leader of the Favorclaw, may prove to be a beast beyond even her reach."
+        }
+    ],
+    "passive": {
+        "name": "Fleet of Foot",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/HUD/Icons2D/Sivir_Passive.png",
+        "abilityVideoPath": "champion-abilities/0015/ability_0015_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0015/ability_0015_P1.jpg",
+        "description": "Sivir gains a short burst of Move Speed when she attacks an enemy champion."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Boomerang Blade",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/HUD/Icons2D/Sivir_Q.png",
+            "abilityVideoPath": "champion-abilities/0015/ability_0015_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0015/ability_0015_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Sivir hurls her crossblade like a boomerang, dealing damage each way.",
+            "dynamicDescription": "Sivir hurls her crossblade like a boomerang, dealing <physicalDamage>@TotalDamage@</physicalDamage> to all enemies it cuts through. Hitting non-champions reduces the damage to subsequent targets, down to a minimum of @FallOffMinimum*100@%.@SpellModifierDescriptionAppend@",
+            "range": [
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000
+            ],
+            "costCoefficients": [
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                10.0000,
+                9.5000,
+                9.0000,
+                8.5000,
+                8.0000,
+                7.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Ricochet",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/HUD/Icons2D/Sivir_W.png",
+            "abilityVideoPath": "champion-abilities/0015/ability_0015_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0015/ability_0015_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Sivir's next few basic attacks gain additional attack speed and bounce to nearby targets, dealing reduced damage while bouncing.",
+            "dynamicDescription": "For the next @BuffDuration@ seconds, Sivir gains <attackSpeed>@RicochetAttackSpeed*100@% Attack Speed</attackSpeed> and her auto attacks are empowered to bounce to additional surrounding enemies dealing <physicalDamage>@BounceDamage@ physical damage</physicalDamage> each bounce for up to @MaxBounces@ bounces.<br><br>These bounces critically strike if the attack generating them does.@SpellModifierDescriptionAppend@",
+            "range": [
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Spell Shield",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/HUD/Icons2D/Sivir_E.png",
+            "abilityVideoPath": "champion-abilities/0015/ability_0015_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0015/ability_0015_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Creates a magical barrier that blocks a single enemy ability cast on Sivir. She receives health and a burst of movement speed if a spell is blocked.",
+            "dynamicDescription": "Sivir creates a magical barrier for @Effect1Amount@ seconds that blocks the next incoming enemy Ability. If an ability is blocked, Sivir restores <healing>@TotalHeal@ health</healing> and triggers Fleet of Foot.@SpellModifierDescriptionAppend@",
+            "range": [
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                24.0000,
+                22.5000,
+                21.0000,
+                19.5000,
+                18.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000
+                ],
+                "Effect2Amount": [
+                    55.0000,
+                    55.0000,
+                    55.0000,
+                    55.0000,
+                    55.0000,
+                    55.0000,
+                    55.0000
+                ],
+                "Effect3Amount": [
+                    60.0000,
+                    60.0000,
+                    60.0000,
+                    60.0000,
+                    60.0000,
+                    60.0000,
+                    60.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "On The Hunt",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/HUD/Icons2D/Sivir_R.png",
+            "abilityVideoPath": "champion-abilities/0015/ability_0015_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0015/ability_0015_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Sivir leads her allies in battle, granting them a surge of Move Speed for a period of time. In addition, Sivir's attacks reduce her spell cooldowns.",
+            "dynamicDescription": "Sivir rallies her nearby allies, granting them <speed>@MaxMS*100@% Move Speed</speed> for @UltDuration@ seconds.<br><br>Sivir's attacks against champions while On The Hunt reduce the cooldown of her basic abilities by 0.5 seconds.<br><br>Takedowns on recently damaged enemies refreshes the duration of the hunt.@SpellModifierDescriptionAppend@",
+            "range": [
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                100.0000,
+                80.0000,
+                90.0000,
+                90.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

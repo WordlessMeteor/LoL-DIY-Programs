@@ -1,0 +1,1590 @@
+{
+    "id": 32,
+    "name": "Amumu",
+    "alias": "Amumu",
+    "title": "the Sad Mummy",
+    "shortBio": "Legend claims that Amumu is a lonely and melancholy soul from ancient Shurima, roaming the world in search of a friend. Doomed by an ancient curse to remain alone forever, his touch is death, his affection ruin. Those who claim to have seen him describe a living cadaver, small in stature and wrapped in creeping bandages. Amumu has inspired myths, songs, and folklore told and retold for generations—such that it is impossible to separate truth from fiction.",
+    "tacticalInfo": {
+        "style": 9,
+        "difficulty": 1,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 3,
+        "crowdControl": 3,
+        "mobility": 1,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/32.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/32.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/32.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/32.ogg",
+    "roles": [
+        "tank",
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 32000,
+            "isBase": true,
+            "name": "Amumu",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/32/32000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/32/32000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/32/32000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Amumu/Skins/Base/AmumuLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 32001,
+            "isBase": false,
+            "name": "Pharaoh Amumu",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/32/32001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/32/32001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/32/32001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Amumu/Skins/Skin01/AmumuLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 67
+                }
+            ],
+            "skinAugments": null,
+            "description": "Boy-king of the southern wastes, Amumu's mummified body still haunts the halls of his ancient tomb. His mournful sobbing can be heard over the brutal desert winds, luring in unwitting adventurers."
+        },
+        {
+            "id": 32002,
+            "isBase": false,
+            "name": "Vancouver Amumu",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/32/32002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/32/32002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/32/32002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Amumu/Skins/Skin02/AmumuLoadScreen_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Amumu/Skins/Skin02/AmumuLoadScreen_2_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 28
+                }
+            ],
+            "skinAugments": null,
+            "description": "The Vancouver Board of Public Safety would like to assure citizens that no cursed mummies have been spotted within the city limits. Cursed mummies are not native to the Vancouver area. Please do not touch cursed mummies, spreading their mummy curse."
+        },
+        {
+            "id": 32003,
+            "isBase": false,
+            "name": "Emumu",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/32/32003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/32/32003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/32/32003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Amumu/Skins/Skin03/AmumuLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 110
+                }
+            ],
+            "skinAugments": null,
+            "description": "When your friends let you down, the best thing to do is start a rock band driven by hard emotions."
+        },
+        {
+            "id": 32004,
+            "isBase": false,
+            "name": "Re-Gifted Amumu",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/32/32004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/32/32004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/32/32004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Amumu/Skins/Skin04/AmumuLoadScreen_4.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Amumu/Skins/Skin04/AmumuLoadScreen_4_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 48
+                }
+            ],
+            "skinAugments": null,
+            "description": "Like decorative soaps or a fifth pair of socks, Amumu has been passed back and forth between disgruntled family members for generations. For some reason nobody seems to want the sobbing, accursed mummy boy."
+        },
+        {
+            "id": 32005,
+            "isBase": false,
+            "name": "Almost-Prom King Amumu",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/32/32005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/32/32005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/32/32005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Amumu/Skins/Skin05/AmumuLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 100
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 32006,
+            "isBase": false,
+            "name": "Little Knight Amumu",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/32/32006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/32/32006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/32/32006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Amumu/Skins/Skin06/AmumuLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 114
+                }
+            ],
+            "skinAugments": null,
+            "description": "A diminutive knight whose heart is brave and true, Sir Amumu of Shurima wants only to see peace reign the land in his lifetime. Considering that he's an undying, mummified princeling, he'll probably succeed."
+        },
+        {
+            "id": 32007,
+            "isBase": false,
+            "name": "Sad Robot Amumu",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/32/32007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/32/32007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/32/32007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Amumu/Skins/Skin07/AmumuLoadScreen_7.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 106
+                }
+            ],
+            "skinAugments": null,
+            "description": "What's worse than a robot without a heart? A child without a friend."
+        },
+        {
+            "id": 32008,
+            "isBase": false,
+            "name": "Surprise Party Amumu",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/32/32008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/32/32008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/32/32008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Amumu/Skins/Skin08/AmumuLoadScreen_8.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32008.png",
+            "chromas": [
+                {
+                    "id": 32009,
+                    "name": "Surprise Party Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32009.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 32010,
+                    "name": "Surprise Party Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32010.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 32011,
+                    "name": "Surprise Party Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32011.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 32012,
+                    "name": "Surprise Party Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32012.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 32013,
+                    "name": "Surprise Party Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32013.png",
+                    "colors": [
+                        "#C1F2E1",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 32014,
+                    "name": "Surprise Party Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32014.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 32015,
+                    "name": "Surprise Party Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32015.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 32016,
+                    "name": "Surprise Party Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32016.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 169
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 32017,
+            "isBase": false,
+            "name": "Infernal Amumu",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/32/32017.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/32/32017.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/32/32017.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Amumu/Skins/Skin17/AmumuLoadScreen_17.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32017.png",
+            "chromas": [
+                {
+                    "id": 32018,
+                    "name": "Infernal Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32018.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive during 2018."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 32019,
+                    "name": "Infernal Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32019.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "Obtained through Influencer audience giveaways."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 32020,
+                    "name": "Infernal Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32020.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 32021,
+                    "name": "Infernal Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32021.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 32022,
+                    "name": "Infernal Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32022.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 86
+                }
+            ],
+            "skinAugments": null,
+            "description": "When ancient pyromancers unleashed the malevolent Infernals upon the world, they also unintentionally summoned younger, lonelier creatures. A mere spark compared to the fiery monsters now ravaging the land, Amumu seeks only friendship… unwittingly incinerating all those he touches."
+        },
+        {
+            "id": 32023,
+            "isBase": false,
+            "name": "Hextech Amumu",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/32/32023.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/32/32023.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/32/32023.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Amumu/Skins/Skin23/AmumuLoadScreen_23.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 40
+                }
+            ],
+            "skinAugments": null,
+            "description": "A mechanical boy intended as a playmate for wealthy children, Amumu has been long forgotten in the advent of newer and more advanced Hextech innovations. But a child has feelings, and within his artificial mind something has begun to awaken that will change the history of Hextech forever."
+        },
+        {
+            "id": 32024,
+            "isBase": false,
+            "name": "Pumpkin Prince Amumu",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/32/32024.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/32/32024.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/32/32024.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Amumu/Skins/Skin24/AmumuLoadScreen_24.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32024.png",
+            "chromas": [
+                {
+                    "id": 32025,
+                    "name": "Pumpkin Prince Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32025.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2020."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 32026,
+                    "name": "Pumpkin Prince Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32026.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 32027,
+                    "name": "Pumpkin Prince Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32027.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 32028,
+                    "name": "Pumpkin Prince Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32028.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 32029,
+                    "name": "Pumpkin Prince Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32029.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 32030,
+                    "name": "Pumpkin Prince Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32030.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 32031,
+                    "name": "Pumpkin Prince Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32031.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 32032,
+                    "name": "Pumpkin Prince Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32032.png",
+                    "colors": [
+                        "#DED6B0",
+                        "#DED6B0"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 32033,
+                    "name": "Pumpkin Prince Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32033.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 88
+                }
+            ],
+            "skinAugments": null,
+            "description": "A lonely lad and prince of the patch, Amumu watches year after year as his people are decimated by possums and rowdy teenagers."
+        },
+        {
+            "id": 32034,
+            "isBase": false,
+            "name": "Porcelain Amumu",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/32/32034.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/32/32034.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/32/32034.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Amumu/Skins/Skin34/AmumuLoadScreen_34.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Amumu/Skins/Skin34/AmumuLoadscreen_34_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32034.png",
+            "chromas": [
+                {
+                    "id": 32035,
+                    "name": "Porcelain Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32035.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 32036,
+                    "name": "Porcelain Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32036.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 32037,
+                    "name": "Porcelain Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32037.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 32038,
+                    "name": "Porcelain Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32038.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 32039,
+                    "name": "Porcelain Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32039.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 32040,
+                    "name": "Porcelain Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32040.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 32041,
+                    "name": "Porcelain Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32041.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 32042,
+                    "name": "Porcelain Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32042.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 32043,
+                    "name": "Porcelain Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32043.png",
+                    "colors": [
+                        "#FF9D13",
+                        "#B9FFC1"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2022 Lunar Revel event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 154
+                }
+            ],
+            "skinAugments": null,
+            "description": "Eternally young due to his bond with the Rat Relic, Amumu's innocence belies centuries of existence. He's been lonely in ages past, but no more: Lux is like his big sister, and Kindred is his… Kindred? Companionship hasn't stopped his occasional tantrums, of course, but at least now there's someone to shine his porcelain eyes after a nice cathartic cry."
+        },
+        {
+            "id": 32044,
+            "isBase": false,
+            "name": "Heartache Amumu",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/32/32044.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/32/32044.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/32/32044.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Amumu/Skins/Skin44/AmumuLoadScreen_44.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32044.png",
+            "chromas": [
+                {
+                    "id": 32045,
+                    "name": "Heartache Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32045.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 32046,
+                    "name": "Heartache Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32046.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 32047,
+                    "name": "Heartache Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32047.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 32048,
+                    "name": "Heartache Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32048.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 32049,
+                    "name": "Heartache Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32049.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 32050,
+                    "name": "Heartache Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32050.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 32051,
+                    "name": "Heartache Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32051.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 32052,
+                    "name": "Heartache Amumu",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/32/32052.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 189
+                }
+            ],
+            "skinAugments": null,
+            "description": "Dear Amumu, I see you around the halls, and at the battle of the bands. I'm afraid I'm just too shy to ask you to hold hands, I think you're really cool and I'd love to be your friend. I can't wait to finally meet you! Love, Your Secret Friend-mirer 'Til the End"
+        }
+    ],
+    "passive": {
+        "name": "Cursed Touch",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Amumu/HUD/Icons2D/Amumu_Passive.png",
+        "abilityVideoPath": "",
+        "abilityVideoImagePath": "",
+        "description": "Amumu's basic attacks <font color='#9b0f5f'>Curse</font> his enemies, causing them to take bonus true damage from incoming magic damage."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Bandage Toss",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Amumu/HUD/Icons2D/Amumu_Q.png",
+            "abilityVideoPath": "champion-abilities/0032/ability_0032_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0032/ability_0032_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@AmmoRechargeTime@s Recharge (@Cooldown@s %i:cooldown%)",
+            "description": "Amumu tosses a sticky bandage at a target, stunning and damaging the target while he pulls himself to them.",
+            "dynamicDescription": "Amumu launches a bandage, pulling himself to the first enemy hit, <status>Stunning</status> them for @Effect2Amount@ second, and dealing <magicDamage>@TotalDamage@ magic damage</magicDamage>.<br><br>This Ability has 2 charges.@SpellModifierDescriptionAppend@",
+            "range": [
+                1100.0000,
+                1100.0000,
+                1100.0000,
+                1100.0000,
+                1100.0000,
+                1100.0000
+            ],
+            "costCoefficients": [
+                45.0000,
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                3.0000,
+                3.0000,
+                3.0000,
+                3.0000,
+                3.0000,
+                3.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.8500,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    45.0000,
+                    70.0000,
+                    95.0000,
+                    120.0000,
+                    145.0000,
+                    170.0000,
+                    195.0000
+                ],
+                "Effect2Amount": [
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000
+                ],
+                "Effect3Amount": [
+                    1800.0000,
+                    1800.0000,
+                    1800.0000,
+                    1800.0000,
+                    1800.0000,
+                    1800.0000,
+                    1800.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    16.0000,
+                    15.5000,
+                    15.0000,
+                    14.5000,
+                    14.0000,
+                    14.0000
+                ],
+                "maxAmmo": [
+                    2,
+                    2,
+                    2,
+                    2,
+                    2,
+                    2
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Despair",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Amumu/HUD/Icons2D/Amumu_W.png",
+            "abilityVideoPath": "champion-abilities/0032/ability_0032_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0032/ability_0032_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@ per Second",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Overcome by anguish, nearby enemies lose a percentage of their maximum Health each second and have their <font color='#9b0f5f'>Curses</font> refreshed.",
+            "dynamicDescription": "<toggle>Toggle:</toggle> Amumu begins crying, dealing <magicDamage>@BaseDamage@ plus @TotalHealthDamage@% max Health magic damage</magicDamage> to nearby enemies every second and refreshing <keywordMajor>Curse</keywordMajor>.@SpellModifierDescriptionAppend@",
+            "range": [
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000
+            ],
+            "costCoefficients": [
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000
+            ],
+            "cooldownCoefficients": [
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0050,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Tantrum",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Amumu/HUD/Icons2D/Amumu_E.png",
+            "abilityVideoPath": "champion-abilities/0032/ability_0032_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0032/ability_0032_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Permanently reduces the physical damage Amumu would take. Amumu can unleash his rage, dealing damage to surrounding enemies. Each time Amumu is hit, the cooldown on Tantrum is reduced.",
+            "dynamicDescription": "<spellPassive>Passive:</spellPassive> Amumu takes @DamageReduction@ reduced physical damage. Additionally, when Amumu is hit by an Attack, this Ability's Cooldown is reduced by @Effect3Amount@ seconds.<br><br><spellActive>Active:</spellActive> Amumu throws a tantrum, dealing <magicDamage>@TantrumDamage@ magic damage</magicDamage> to nearby enemies.@SpellModifierDescriptionAppend@",
+            "range": [
+                350.0000,
+                350.0000,
+                350.0000,
+                350.0000,
+                350.0000,
+                350.0000
+            ],
+            "costCoefficients": [
+                35.0000,
+                35.0000,
+                35.0000,
+                35.0000,
+                35.0000,
+                35.0000
+            ],
+            "cooldownCoefficients": [
+                9.0000,
+                8.0000,
+                7.0000,
+                6.0000,
+                5.0000,
+                4.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.5000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    5.0000,
+                    7.0000,
+                    9.0000,
+                    11.0000,
+                    13.0000,
+                    15.0000
+                ],
+                "Effect2Amount": [
+                    30.0000,
+                    65.0000,
+                    100.0000,
+                    135.0000,
+                    170.0000,
+                    205.0000,
+                    240.0000
+                ],
+                "Effect3Amount": [
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0300,
+                    0.0300,
+                    0.0300,
+                    0.0300,
+                    0.0300,
+                    0.0300,
+                    0.0300
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Curse of the Sad Mummy",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Amumu/HUD/Icons2D/Amumu_R.png",
+            "abilityVideoPath": "champion-abilities/0032/ability_0032_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0032/ability_0032_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Amumu entangles surrounding enemy units in bandages, applying his <keywordMajor>Curse</keywordMajor>, damaging and stunning them.",
+            "dynamicDescription": "Amumu flares out his bandages, <status>Stunning</status> for @RDuration@ seconds, dealing <magicDamage>@RCalculatedDamage@ magic damage</magicDamage> and applying <keywordMajor>Curse</keywordMajor>.@SpellModifierDescriptionAppend@",
+            "range": [
+                550.0000,
+                550.0000,
+                550.0000,
+                550.0000,
+                550.0000,
+                550.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                150.0000,
+                200.0000,
+                80.0000,
+                80.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                150.0000,
+                125.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

@@ -1,0 +1,1416 @@
+{
+    "id": 120,
+    "name": "战争之影",
+    "alias": "Hecarim",
+    "title": "赫卡里姆",
+    "shortBio": "赫卡里姆是人与兽的幽灵混合体，身上的诅咒让他只能永世不停地践踏生者的灵魂。在福光岛被暗影吞噬之际，这位高傲的骑士被破败之咒的毁灭能量彻底湮没——连同他的骑兵团和他们胯下的坐骑。现在，符文之地上只要是有黑雾出现的地方，就会有赫卡里姆率军冲锋的鬼影，他们肆虐雀跃，用铁蹄践踏着脚下的幽魂。",
+    "tacticalInfo": {
+        "style": 7,
+        "difficulty": 2,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 2,
+        "crowdControl": 2,
+        "mobility": 2,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/120.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/120.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/120.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/120.ogg",
+    "roles": [
+        "fighter",
+        "tank"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 120000,
+            "isBase": true,
+            "name": "战争之影",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/120/120000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/120/120000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/120/120000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Hecarim/Skins/Base/HecarimLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 120001,
+            "isBase": false,
+            "name": "血石骑士 赫卡里姆",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/120/120001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/120/120001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/120/120001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Hecarim/Skins/Skin01/HecarimLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 126
+                }
+            ],
+            "skinAugments": null,
+            "description": "赫卡里姆对他的教团来说是一个狂热的谄媚者，总是毫不迟疑地服侍着血石的意志。虽然没有他的主人们想要的那么精巧，但他在以可怕的方式处决敌人们时总是非常有效率。"
+        },
+        {
+            "id": 120002,
+            "isBase": false,
+            "name": "幽魂骑士 赫卡里姆",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/120/120002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/120/120002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/120/120002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Hecarim/Skins/Skin02/HecarimLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 87
+                }
+            ],
+            "skinAugments": null,
+            "description": "每当死者拒绝接受死亡誓约给予他们的一席之地时，幽魂骑士赫卡里姆就会用他早已准备好的镰刀送他们一程。在他身后充斥着无数被征服的鬼魂，现在赫卡里姆只渴望收获新鲜并具挑衅性的灵魂。"
+        },
+        {
+            "id": 120003,
+            "isBase": false,
+            "name": "无头骑士 赫卡里姆",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/120/120003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/120/120003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/120/120003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Hecarim/Skins/Skin03/HecarimLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Halloween_b",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/11.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/11.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 88
+                }
+            ],
+            "skinAugments": null,
+            "description": "关于夜晚在路间徘徊的生物有着诸多故事，但没有一个会像无头骑士的故事那般黑暗。他在一场马背对决中失去了自己的头颅，这注定了他的生活永远被困扰-他的肩头只能扛着一个丑陋的杰克南瓜灯。"
+        },
+        {
+            "id": 120004,
+            "isBase": false,
+            "name": "电玩战魂 赫卡里姆",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/120/120004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/120/120004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/120/120004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Hecarim/Skins/Skin04/HecarimLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 10
+                }
+            ],
+            "skinAugments": null,
+            "description": "他似乎很难成为复古游戏中的最爱人选，但是赫卡里姆确实是街机时代最受欢迎的人气角色。他现在要对抗由游戏内最危险的反派组成的大军，证明自己才是自从1978年以来最伟大的带着彩虹尾巴的半人马。"
+        },
+        {
+            "id": 120005,
+            "isBase": false,
+            "name": "永恒之森 赫卡里姆",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/120/120005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/120/120005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/120/120005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Hecarim/Skins/Skin05/HecarimLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 58
+                }
+            ],
+            "skinAugments": null,
+            "description": "他所穿的是夏木和花楸轻纺而成的护甲——他身上的石头雕刻于一段时光，那时古神们尚未在树丛之中起舞。即使是现在，赫卡里姆仍在永恒之森里浅浅的河流和点缀着青苔的小路中旅行着，这个不老的守护者保护着森林，抵抗着人类那最为黑暗的众多渴求。"
+        },
+        {
+            "id": 120006,
+            "isBase": false,
+            "name": "创世之神 赫卡里姆",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/120/120006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/120/120006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/120/120006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Hecarim/Skins/Skin06/HecarimLoadscreen_6.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 29
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 120007,
+            "isBase": false,
+            "name": "零之枪骑 赫卡里姆",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/120/120007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/120/120007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/120/120007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Hecarim/Skins/Skin07/HecarimLoadScreen_7.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Hextech Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/43.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/43.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 69
+                }
+            ],
+            "skinAugments": null,
+            "description": "一个曾在战争时代被召唤出来的机械哨兵，【零之枪骑 赫卡里姆】是一个远古城市的守护神——抵抗那些最为恐怖的对手的最后一道防线。一旦释放，它就会引发异乎寻常的破坏力，因此它总会被当作孤注一掷时的决战兵器。"
+        },
+        {
+            "id": 120008,
+            "isBase": false,
+            "name": "西部魔影 赫卡里姆",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/120/120008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/120/120008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/120/120008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Hecarim/Skins/Skin08/HecarimLoadscreen_8.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Hecarim/Skins/Skin08/HecarimLoadscreen_8_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120008.png",
+            "chromas": [
+                {
+                    "id": 120009,
+                    "name": "西部魔影 赫卡里姆 欧利昂之威",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120009.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 120010,
+                    "name": "西部魔影 赫卡里姆 布锐斯之鸣",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120010.png",
+                    "colors": [
+                        "#95ECFF",
+                        "#C33C3E"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 120011,
+                    "name": "西部魔影 赫卡里姆 贝列之锐",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120011.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 120012,
+                    "name": "西部魔影 赫卡里姆 拜恩之势",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120012.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 120013,
+                    "name": "西部魔影 赫卡里姆 斯伯纳克之坚",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120013.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "在天堂已被凡人摧毁时，地狱漫溢到大草原上也只是时间问题。它带来了所有极度耐心地等待着逃离监禁的恶魔们。赫卡里姆和他的黑骑手们在这种新发现的自由中现身，蜂拥着穿过边境，将他们面前的一切毁灭殆尽。"
+        },
+        {
+            "id": 120014,
+            "isBase": false,
+            "name": "人马星神 赫卡里姆",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/120/120014.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/120/120014.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/120/120014.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Hecarim/Skins/Skin14/HecarimLoadScreen_14.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120014.png",
+            "chromas": [
+                {
+                    "id": 120015,
+                    "name": "人马星神 赫卡里姆 战神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120015.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 120016,
+                    "name": "人马星神 赫卡里姆 光神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120016.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 120017,
+                    "name": "人马星神 赫卡里姆 猎神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120017.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 120018,
+                    "name": "人马星神 赫卡里姆 夜神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120018.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 120019,
+                    "name": "人马星神 赫卡里姆 天神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120019.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 120020,
+                    "name": "人马星神 赫卡里姆 美神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120020.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 120021,
+                    "name": "人马星神 赫卡里姆 冥神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120021.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 43
+                }
+            ],
+            "skinAugments": null,
+            "description": "赫卡里姆是女王神廷的一名骑士。他带领着他的骑兵穿行于天空，一直都在扩展着创造的外缘——将全新的生命带到他的蹄子落下的地方。"
+        },
+        {
+            "id": 120022,
+            "isBase": false,
+            "name": "车骑之力 赫卡里姆",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/120/120022.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/120/120022.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/120/120022.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Hecarim/Skins/Skin22/HecarimLoadScreen_22.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120022.png",
+            "chromas": [
+                {
+                    "id": 120023,
+                    "name": "车骑之力 赫卡里姆 斗志",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120023.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 120024,
+                    "name": "车骑之力 赫卡里姆 忠诚",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120024.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 120025,
+                    "name": "车骑之力 赫卡里姆 丰足",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120025.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 120026,
+                    "name": "车骑之力 赫卡里姆 财富",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120026.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 120027,
+                    "name": "车骑之力 赫卡里姆 权威",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120027.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 120028,
+                    "name": "车骑之力 赫卡里姆 学识",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120028.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 120029,
+                    "name": "车骑之力 赫卡里姆 哀伤",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120029.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 120030,
+                    "name": "车骑之力 赫卡里姆 均衡",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120030.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 146
+                }
+            ],
+            "skinAugments": null,
+            "description": "他是高位世界的执法者，他不断向前的移动粉碎着他前面的人，同时为他身后的人雕刻着新的命运。他在设法阻拦低位世界的洛并防止那个不幸灾难的发生，这个灾难的原因是：将有一段命定的爱情在星空间绽放。"
+        },
+        {
+            "id": 120031,
+            "isBase": false,
+            "name": "北极星守护者 赫卡里姆",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/120/120031.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/120/120031.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/120/120031.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Hecarim/Skins/Skin31/HecarimLoadScreen_31.PIE_C_13_24.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Hecarim/Skins/Skin31/HecarimLoadScreen_31_LE.PIE_C_13_24.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120031.png",
+            "chromas": [
+                {
+                    "id": 120032,
+                    "name": "北极星守护者 赫卡里姆 激昂脉冲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120032.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 120033,
+                    "name": "北极星守护者 赫卡里姆 幸运漩涡",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120033.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 120034,
+                    "name": "北极星守护者 赫卡里姆 祥和面纱",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120034.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 120035,
+                    "name": "北极星守护者 赫卡里姆 希望辉光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120035.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 120036,
+                    "name": "北极星守护者 赫卡里姆 神秘幻彩",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120036.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 120037,
+                    "name": "北极星守护者 赫卡里姆 浪漫帘幕",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120037.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 120038,
+                    "name": "北极星守护者 赫卡里姆 庄严光冕",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120038.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 120039,
+                    "name": "北极星守护者 赫卡里姆 七彩光斑",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120039.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 120040,
+                    "name": "北极星守护者 赫卡里姆 花冠极光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/120/120040.png",
+                    "colors": [
+                        "#BF2020",
+                        "#368B25"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在北极星(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Snowdown",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/9.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/9.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 187
+                }
+            ],
+            "skinAugments": null,
+            "description": "“你是北极星。”赫卡里姆回答了她的疑问。他的嗓音粗重，浸透了千百年间的辛劳。他向赛娜解释，她是北极光的降世化身；而他，则是北极光的保护者。每一年，他都在北极星缺位的时间里守护边疆，等待新一任北极星蒙恩天选。他告诉她：她曾经是谁并不重要，因为现在的她受到了征召。"
+        }
+    ],
+    "passive": {
+        "name": "征战之路",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hecarim/HUD/Icons2D/Hecarim_Passive.png",
+        "abilityVideoPath": "",
+        "abilityVideoImagePath": "",
+        "description": "赫卡里姆获得相当于他一部分额外移动速度的攻击力加成。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "暴走",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hecarim/HUD/Icons2D/Hecarim_Rampage.png",
+            "abilityVideoPath": "champion-abilities/0120/ability_0120_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0120/ability_0120_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "赫卡里姆猛劈周围的敌人，同时造成物理伤害。如果这个技能对至少一名敌人造成伤害，那么赫卡里姆会提升【暴走】的伤害并为随后施放的【暴走】缩短冷却时间。",
+            "dynamicDescription": "赫卡里姆顺劈周围的敌人，造成<physicalDamage>@Damage@物理伤害</physicalDamage>。如果这个技能命中了敌人，那么他会获得一层效果，来使这次技能的冷却时间降低@RampageCooldownReduction@秒并提升此技能@RampageBonusDamagePerc@%伤害，持续@Effect6Amount@秒。这个效果至多可达@Effect2Amount@层。@SpellModifierDescriptionAppend@",
+            "range": [
+                350.0000,
+                350.0000,
+                350.0000,
+                350.0000,
+                350.0000,
+                350.0000
+            ],
+            "costCoefficients": [
+                28.0000,
+                26.0000,
+                24.0000,
+                22.0000,
+                20.0000,
+                20.0000
+            ],
+            "cooldownCoefficients": [
+                4.0000,
+                4.0000,
+                4.0000,
+                4.0000,
+                4.0000,
+                4.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.9000,
+                "coefficient2": 0.1000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000
+                ],
+                "Effect3Amount": [
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000
+                ],
+                "Effect4Amount": [
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000
+                ],
+                "Effect5Amount": [
+                    60.0000,
+                    60.0000,
+                    60.0000,
+                    60.0000,
+                    60.0000,
+                    60.0000,
+                    60.0000
+                ],
+                "Effect6Amount": [
+                    8.0000,
+                    8.0000,
+                    8.0000,
+                    8.0000,
+                    8.0000,
+                    8.0000,
+                    8.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "恐惧之灵",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hecarim/HUD/Icons2D/Hecarim_SpiritofDread.png",
+            "abilityVideoPath": "champion-abilities/0120/ability_0120_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0120/ability_0120_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "赫卡里姆获得护甲和魔抗。赫卡里姆对附近敌人造成魔法伤害，并基于敌人所受的伤害来恢复生命值。",
+            "dynamicDescription": "赫卡里姆在@BuffDuration@秒里对附近的敌人们持续造成共<magicDamage>@TotalDamage@魔法伤害</magicDamage>。<br><br>赫卡里姆获得<passive>@ResistAmount@</passive> <scaleArmor>护甲</scaleArmor>和<scaleMR>魔法抗性</scaleMR>并治疗自身，治疗数额相当于这些敌人受到的来自赫卡里姆的<healing>@LeechAmount@%伤害</healing>和来自赫卡里姆友军的<healing>@AllyTooltipLeachValue@%伤害</healing>。@SpellModifierDescriptionAppend@",
+            "range": [
+                525.0000,
+                525.0000,
+                525.0000,
+                525.0000,
+                525.0000,
+                525.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                16.0000,
+                15.5000,
+                15.0000,
+                14.5000,
+                14.0000,
+                14.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.8000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "毁灭冲锋",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hecarim/HUD/Icons2D/Hecarim_DevastingCharge.png",
+            "abilityVideoPath": "champion-abilities/0120/ability_0120_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0120/ability_0120_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "赫卡里姆获得不断提升的移动速度加成并且移动时可以无视单位的碰撞体积。他的下一次攻击将会击退目标，并且造成额外物理伤害，伤害值基于他在激活该技能后所移动的距离。",
+            "dynamicDescription": "赫卡里姆变为幽灵状态，并获得<speed>@MinMoveSpeed*100@%移动速度</speed>，在@Effect5Amount@秒里持续提升至<speed>@MaxMoveSpeed*100@%</speed>。他的下次攻击会<status>击退</status>目标并造成<physicalDamage>@MinDamage@</physicalDamage>到<physicalDamage>@MaxDamage@物理伤害</physicalDamage>。<status>击退</status>距离和伤害随此技能期间的位移距离而增长。@SpellModifierDescriptionAppend@",
+            "range": [
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000
+            ],
+            "cooldownCoefficients": [
+                18.0000,
+                18.0000,
+                18.0000,
+                18.0000,
+                18.0000,
+                18.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.5000,
+                "coefficient2": 1.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    150.0000,
+                    150.0000,
+                    150.0000,
+                    150.0000,
+                    150.0000,
+                    150.0000,
+                    150.0000
+                ],
+                "Effect2Amount": [
+                    350.0000,
+                    350.0000,
+                    350.0000,
+                    350.0000,
+                    350.0000,
+                    350.0000,
+                    350.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    60.0000,
+                    90.0000,
+                    120.0000,
+                    150.0000,
+                    180.0000,
+                    180.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    30.0000,
+                    45.0000,
+                    60.0000,
+                    75.0000,
+                    90.0000,
+                    90.0000
+                ],
+                "Effect5Amount": [
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000
+                ],
+                "Effect6Amount": [
+                    0.6500,
+                    0.6500,
+                    0.6500,
+                    0.6500,
+                    0.6500,
+                    0.6500,
+                    0.6500
+                ],
+                "Effect7Amount": [
+                    1200.0000,
+                    1200.0000,
+                    1200.0000,
+                    1200.0000,
+                    1200.0000,
+                    1200.0000,
+                    1200.0000
+                ],
+                "Effect8Amount": [
+                    0.2500,
+                    0.2500,
+                    0.2500,
+                    0.2500,
+                    0.2500,
+                    0.2500,
+                    0.2500
+                ],
+                "Effect9Amount": [
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "暗影冲击",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hecarim/HUD/Icons2D/Hecarim_OnslaughtofShadows.png",
+            "abilityVideoPath": "champion-abilities/0120/ability_0120_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0120/ability_0120_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "赫卡里姆召唤幽魂骑兵向前冲锋，对一条直线上的敌人造成魔法伤害。赫卡里姆会在完成他的冲锋时发出一道冲击波，来使周围的敌人惊慌失措地逃命。",
+            "dynamicDescription": "赫卡里姆召唤幽魂骑兵并向前冲锋，造成<magicDamage>@DamageDone@魔法伤害</magicDamage>。赫卡里姆会在他冲锋的终点释放一道冲击波，来使敌人们<status>恐惧</status>@FearDurationMin@到@FearDurationMax@秒，随冲锋距离提升。@SpellModifierDescriptionAppend@",
+            "range": [
+                50000.0000,
+                50000.0000,
+                50000.0000,
+                50000.0000,
+                50000.0000,
+                50000.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                140.0000,
+                120.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                0.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 1.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    150.0000,
+                    250.0000,
+                    350.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500,
+                    0.7500
+                ],
+                "Effect3Amount": [
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000
+                ],
+                "Effect4Amount": [
+                    1100.0000,
+                    1100.0000,
+                    1100.0000,
+                    1100.0000,
+                    1100.0000,
+                    1100.0000,
+                    1100.0000
+                ],
+                "Effect5Amount": [
+                    1000.0000,
+                    1000.0000,
+                    1000.0000,
+                    1000.0000,
+                    1000.0000,
+                    1000.0000,
+                    1000.0000
+                ],
+                "Effect6Amount": [
+                    950.0000,
+                    950.0000,
+                    950.0000,
+                    950.0000,
+                    950.0000,
+                    950.0000,
+                    950.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

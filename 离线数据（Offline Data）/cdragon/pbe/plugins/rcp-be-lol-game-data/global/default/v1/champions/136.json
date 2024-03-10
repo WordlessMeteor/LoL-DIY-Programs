@@ -1,0 +1,1242 @@
+{
+    "id": 136,
+    "name": "Aurelion Sol",
+    "alias": "AurelionSol",
+    "title": "The Star Forger",
+    "shortBio": "Aurelion Sol once graced the vast emptiness of the cosmos with celestial wonders of his own devising. Now, he is forced to wield his awesome power at the behest of a space-faring empire that tricked him into servitude. Desiring a return to his star-forging ways, Aurelion Sol will drag the very stars from the sky, if he must, in order to regain his freedom.",
+    "tacticalInfo": {
+        "style": 10,
+        "difficulty": 3,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 2,
+        "mobility": 2,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/136.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/136.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/136.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/136.ogg",
+    "roles": [
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 136000,
+            "isBase": true,
+            "name": "Aurelion Sol",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/136/136000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/136/136000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/136/136000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/AurelionSol/Skins/Base/AurelionSolLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 136001,
+            "isBase": false,
+            "name": "Ashen Lord Aurelion Sol",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/136/136001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/136/136001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/136/136001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/AurelionSol/Skins/skin01/AurelionSolLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 86
+                }
+            ],
+            "skinAugments": null,
+            "description": "Pyromancer cultists unwisely summoned the god of fire and ruin—the Ashen Lord—into the world hoping to control his power. Instead, he unleashed his infernal legions to remake all things in his image: cinder, ash, and death."
+        },
+        {
+            "id": 136002,
+            "isBase": false,
+            "name": "Mecha Aurelion Sol",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/136/136002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/136/136002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/136/136002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/AurelionSol/Skins/Skin02/AurelionSolLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136002.png",
+            "chromas": [
+                {
+                    "id": 136004,
+                    "name": "Mecha Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136004.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive during 2018."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 136005,
+                    "name": "Mecha Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136005.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136006,
+                    "name": "Mecha Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136006.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136007,
+                    "name": "Mecha Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136007.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136008,
+                    "name": "Mecha Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136008.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136009,
+                    "name": "Mecha Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136009.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136010,
+                    "name": "Mecha Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136010.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 35
+                }
+            ],
+            "skinAugments": null,
+            "description": "Designated ASOL-13, the “Mecha Aurelion Sol” is a gigantic, mobile mothership carrying tens of thousands of personnel, attack fighters, and ground-based anti-kaiju vehicles. Buried within its hull are a vast array of weapons, making ASOL-13 more than a match for even the most gargantuan kaiju."
+        },
+        {
+            "id": 136011,
+            "isBase": false,
+            "name": "Storm Dragon Aurelion Sol",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/136/136011.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/136/136011.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/136/136011.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/AurelionSol/Skins/Skin11/AurelionSolLoadScreen_11.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/AurelionSol/Skins/Skin11/AurelionSolLoadscreen_11_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136011.png",
+            "chromas": [
+                {
+                    "id": 136012,
+                    "name": "Storm Dragon Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136012.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2020."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 136013,
+                    "name": "Storm Dragon Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136013.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136014,
+                    "name": "Storm Dragon Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136014.png",
+                    "colors": [
+                        "#88FF00",
+                        "#00B170"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2020 Worlds event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 136015,
+                    "name": "Storm Dragon Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136015.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136016,
+                    "name": "Storm Dragon Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136016.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136017,
+                    "name": "Storm Dragon Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136017.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136018,
+                    "name": "Storm Dragon Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136018.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136019,
+                    "name": "Storm Dragon Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136019.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "tencent",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 136020,
+                    "name": "Storm Dragon Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136020.png",
+                    "colors": [
+                        "#110A20",
+                        "#5C1111"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the Worlds 2021 event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 135
+                }
+            ],
+            "skinAugments": null,
+            "description": "The dragon Aurelion Sol, known to seven generations of worshippers as Ao Shin, has long awaited the ascent of a warrior worthy of receiving the power of the storm. Now, with Lee Sin's transformation into the Dragonmancer, Ao Shin has directed his impossible power towards purging the world of evil."
+        },
+        {
+            "id": 136021,
+            "isBase": false,
+            "name": "Inkshadow Aurelion Sol",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/136/136021.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/136/136021.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/136/136021.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/AurelionSol/Skins/Skin21/AurelionSolLoadScreen_21.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/AurelionSol/Skins/Skin21/AurelionSolLoadScreen_21_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136021.png",
+            "chromas": [
+                {
+                    "id": 136022,
+                    "name": "Inkshadow Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136022.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 136023,
+                    "name": "Inkshadow Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136023.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136024,
+                    "name": "Inkshadow Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136024.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136025,
+                    "name": "Inkshadow Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136025.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136026,
+                    "name": "Inkshadow Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136026.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136027,
+                    "name": "Inkshadow Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136027.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 136028,
+                    "name": "Inkshadow Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136028.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136029,
+                    "name": "Inkshadow Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136029.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136030,
+                    "name": "Inkshadow Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136030.png",
+                    "colors": [
+                        "#B5CED6",
+                        "#33D889"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2023 Inkshadow event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 192
+                }
+            ],
+            "skinAugments": null,
+            "description": "An ancient spirit that has been making contracts with mortals through tattoos for centuries, Aurelion Sol grants inhuman power in exchange for the life force of his pawns, letting them slowly waste away until they inevitably succumb to his appetite. There is always another conflict, another war—so he has grown powerful on their deals, ever feeding."
+        },
+        {
+            "id": 136031,
+            "isBase": false,
+            "name": "Porcelain Protector Aurelion Sol",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/136/136031.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/136/136031.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/136/136031.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/AurelionSol/Skins/Skin31/AurelionSolLoadScreen_31.PIE_C_14_4.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/AurelionSol/Skins/Skin31/AurelionSolLoadScreen_31_LE.PIE_C_14_4.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136031.png",
+            "chromas": [
+                {
+                    "id": 136032,
+                    "name": "Porcelain Protector Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136032.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2024."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 136033,
+                    "name": "Porcelain Protector Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136033.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136034,
+                    "name": "Porcelain Protector Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136034.png",
+                    "colors": [
+                        "#3AC8B1",
+                        "#B0412A"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2024 Lunar Revel event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 136035,
+                    "name": "Porcelain Protector Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136035.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 136036,
+                    "name": "Porcelain Protector Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136036.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 136037,
+                    "name": "Porcelain Protector Aurelion Sol",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/136/136037.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 154
+                }
+            ],
+            "skinAugments": null,
+            "description": "When the Zodiac forged their relics, Aurelion Sol was there. With him, eleven others: the first to be humbled with the task of guarding the artifacts, the first to be granted their powers. Centuries later, Aurelion Sol is summoned forth by his draconic descendant, desperate for his help against an ancient threat with which he is all too familiar."
+        }
+    ],
+    "passive": {
+        "name": "Cosmic Creator",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/AurelionSol/HUD/Icons2D/AurelionSolP.png",
+        "abilityVideoPath": "champion-abilities/0136/ability_0136_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0136/ability_0136_P1.jpg",
+        "description": "Aurelion Sol's damaging Abilities break down enemies into stacks of <font color='#3458eb'>Stardust</font>, which permanently improves each of his abilities. "
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Breath of Light",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/AurelionSol/HUD/Icons2D/AurelionSolQ.png",
+            "abilityVideoPath": "champion-abilities/0136/ability_0136_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0136/ability_0136_Q1.jpg",
+            "cost": "@ManaCostPerSecond@ Mana per second",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Aurelion Sol channels his dragon breath for a few seconds, damaging the first enemy hit and splashing reduced damage onto nearby enemies. Each second the breath is channeled directly at an enemy will deal bonus damage, which is improved by the amount of Stardust that's been collected. This ability collects Stardust if the target is a champion.",
+            "dynamicDescription": "Aurelion Sol breathes starfire for up to @MaxChannelDuration@ seconds, dealing <magicDamage>@DamagePerSecond@ magic damage</magicDamage> per second to the first enemy hit and @AOEModifier*100@% of the damage to surrounding enemies.<br><br>Each full second of breath on the same enemy deals a burst of <magicDamage>@BurstDamage@ magic damage</magicDamage> plus <magicDamage>@BurstBonusTrueDamageToChamps@ max Health magic damage</magicDamage> and absorbs <font color='#3458eb'>@QMassStolen@ Stardust</font> if they are a champion.@SpellModifierDescriptionAppend@",
+            "range": [
+                750.0000,
+                750.0000,
+                750.0000,
+                750.0000,
+                750.0000,
+                750.0000
+            ],
+            "costCoefficients": [
+                30.0000,
+                35.0000,
+                40.0000,
+                45.0000,
+                50.0000,
+                50.0000
+            ],
+            "cooldownCoefficients": [
+                3.0000,
+                3.0000,
+                3.0000,
+                3.0000,
+                3.0000,
+                3.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.2500,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Astral Flight",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/AurelionSol/HUD/Icons2D/AurelionSolW1.png",
+            "abilityVideoPath": "champion-abilities/0136/ability_0136_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0136/ability_0136_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@f7.1@s",
+            "description": "Aurelion Sol flies over terrain in a targeted direction. While in this state, he can cast other abilities. Breath of Light no longer has a cooldown or maximum channel duration and deals increased damage while flying.<br><br>Astral Flight's remaining cooldown is reduced whenever an enemy champion dies after being recently damaged by Aurelion Sol.<br><br>Stardust increases Astral Flight's maximum range.",
+            "dynamicDescription": "Aurelion Sol flies in a direction. While flying, <spellName>Breath of Light</spellName> has no Cooldown, no max channel duration, and its flat damage is increased by @TrueDamageBonus*100@%.<br><br>Takedowns on champions within @ResetWindow@ seconds of damaging them refunds @TooltipTakedownCooldownMultiplier@% of this Ability's Cooldown.<br><br><recast>Recast:</recast> End flight early.@SpellModifierDescriptionAppend@",
+            "range": [
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.5000,
+                "coefficient2": 1.5000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Singularity",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/AurelionSol/HUD/Icons2D/AurelionSolE.png",
+            "abilityVideoPath": "champion-abilities/0136/ability_0136_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0136/ability_0136_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Aurelion Sol summons a black hole, damaging enemies and slowly pulling them toward its center. This ability grants Stardust each time an enemy dies within the black hole and for each second an enemy champion is caught inside it. The center of the black hole executes enemies who are below a certain percentage of their maximum health. Stardust increases Singularity's area as well as the execution threshold.",
+            "dynamicDescription": "Aurelion Sol summons a black hole, dealing <magicDamage>@DamagePerSecond@ magic damage</magicDamage> per second and <status>Dragging</status> enemies towards the center for @Duration@ seconds. Enemies in the center below <scaleHealth>@CurrentExecutionThreshold@% max Health</scaleHealth> die instantly.<br><br>The black hole absorbs <font color='#3458eb'>Stardust</font> when enemies die within it and each second an enemy champion is inside.@SpellModifierDescriptionAppend@",
+            "range": [
+                750.0000,
+                750.0000,
+                750.0000,
+                750.0000,
+                750.0000,
+                750.0000
+            ],
+            "costCoefficients": [
+                80.0000,
+                85.0000,
+                90.0000,
+                95.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.7000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Falling Star / The Skies Descend",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/AurelionSol/HUD/Icons2D/AurelionSolR1.png",
+            "abilityVideoPath": "champion-abilities/0136/ability_0136_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0136/ability_0136_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Falling Star: Aurelion Sol crashes a star into the earth. This impact deals magic damage and stuns enemies while also granting Stardust for each enemy champion it hits. Gathering enough Stardust transforms Aurelion Sol's next Falling Star into The Skies Descend.<br><br>The Skies Descend: Aurelion Sol drags a giant star down from the heavens with an increased impact zone and increased damage, knocking up enemies rather than stunning them. A shockwave then spreads from the edge of the impact zone, which damages and slows the enemies it hits. Stardust increases the impact area of both Falling Star and The Skies Descend.",
+            "dynamicDescription": "Aurelion Sol plucks a star from the heavens and crashes it into the earth, dealing <magicDamage>@MaxDamageTooltip@ magic damage</magicDamage>, <status>Stunning</status> enemies @StunDuration@ second, and absorbing <font color='#3458eb'>@MassStolen@ Stardust</font> for each champion hit.<br><br>Gathering <font color='#3458eb'>@CalamityStacks@ Stardust</font> transforms the next <spellName>Falling Star</spellName> into <spellName>The Skies Descend</spellName>.<br><br><spellName>The Skies Descend</spellName>: Aurelion Sol drags a constellation's worth of fury down from the cosmos, dealing <magicDamage>@R2Damage@ magic damage</magicDamage> in a larger area, <status>Knocking Up</status> enemies hit for @StunDuration@ second, and unleashing a massive shockwave that deals <magicDamage>@ShockwaveDamage@ magic damage</magicDamage> to champions and Epic Monsters and <status>Slows</status> all enemies hit by @ShockwaveSlow*100@% for 1 second.@SpellModifierDescriptionAppend@",
+            "range": [
+                1250.0000,
+                1250.0000,
+                1250.0000,
+                1250.0000,
+                1250.0000,
+                1250.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                110.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.7500,
+                "coefficient2": 1.5000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

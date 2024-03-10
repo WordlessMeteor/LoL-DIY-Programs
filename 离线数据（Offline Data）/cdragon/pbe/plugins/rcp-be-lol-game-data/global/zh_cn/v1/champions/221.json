@@ -1,0 +1,1102 @@
+{
+    "id": 221,
+    "name": "祖安花火",
+    "alias": "Zeri",
+    "title": "泽丽",
+    "shortBio": "泽丽是一个顽强固执、意志坚定的女孩。她出身自祖安的工人阶层，可以引导电能魔法来为自身和她特制的枪械充能。动荡难测的能量也是她内心情绪的写照，闪烁的火花反映出她轻快如电的生活态度。泽丽对他人抱有深切的同情，而来自家人和故乡的爱也伴随着她投身于每一场战斗。虽然这种迫切的渴望有时也会给她带来麻烦，但是泽丽毫不怀疑的是，为你的同胞奋起抗争，便一定能够一呼百应。",
+    "tacticalInfo": {
+        "style": 4,
+        "difficulty": 2,
+        "damageType": "kMixed"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 1,
+        "crowdControl": 2,
+        "mobility": 3,
+        "utility": 0
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/221.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/221.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/221.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/221.ogg",
+    "roles": [
+        "marksman"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 221000,
+            "isBase": true,
+            "name": "祖安花火",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/221/221000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/221/221000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/221/221000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Zeri/Skins/Base/ZeriLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 221001,
+            "isBase": false,
+            "name": "幽梦玫瑰 泽丽",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/221/221001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/221/221001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/221/221001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Zeri/Skins/Skin01/ZeriLoadscreen_1.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221001.png",
+            "chromas": [
+                {
+                    "id": 221002,
+                    "name": "幽梦玫瑰 泽丽 热烈花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 221003,
+                    "name": "幽梦玫瑰 泽丽 倾心花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221003.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 221004,
+                    "name": "幽梦玫瑰 泽丽 长情花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221004.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 221005,
+                    "name": "幽梦玫瑰 泽丽 憧憬花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221005.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 221006,
+                    "name": "幽梦玫瑰 泽丽 浪漫花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221006.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 221007,
+                    "name": "幽梦玫瑰 泽丽 甜蜜花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221007.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 221008,
+                    "name": "幽梦玫瑰 泽丽 纯洁花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221008.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 221009,
+                    "name": "幽梦玫瑰 泽丽 真挚花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221009.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 141
+                }
+            ],
+            "skinAugments": null,
+            "description": "泽丽可不是一个喜欢在水晶玫瑰节庆典上暗箭伤人的人。她更愿意采取行动而非制定一些复杂的计划；而这就是派对参与者们今年对此深信不疑的原因，可她有另一个目的：以拒绝之名破坏派对！没有人——包括某个风度翩翩的潜在竞争对手——会看到她的到来。"
+        },
+        {
+            "id": 221010,
+            "isBase": false,
+            "name": "海之歌 泽丽",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/221/221010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/221/221010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/221/221010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Zeri/Skins/Skin10/ZeriLoadScreen_10.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221010.png",
+            "chromas": [
+                {
+                    "id": 221011,
+                    "name": "海之歌 泽丽 迷人晚霞",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221011.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 221012,
+                    "name": "海之歌 泽丽 清凉海风",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221012.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 221013,
+                    "name": "海之歌 泽丽 葱郁椰林",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221013.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 221014,
+                    "name": "海之歌 泽丽 浪漫氛围",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221014.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 221015,
+                    "name": "海之歌 泽丽 逐浪流沙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221015.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 221016,
+                    "name": "海之歌 泽丽 幻彩夜空",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221016.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 221017,
+                    "name": "海之歌 泽丽 冰爽浪花",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221017.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 221018,
+                    "name": "海之歌 泽丽 月夜潮汐",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221018.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 159
+                }
+            ],
+            "skinAugments": null,
+            "description": "泽丽是来自西南地区的一位崭露头角的驯水师，一头扎进了海之歌音乐节。这是她第一次独自掌控舞台，并且为了给自己留个好印象，她可能在表演计划上做得有点过头了。人人都爱过度刺激，对吧？"
+        },
+        {
+            "id": 221019,
+            "isBase": false,
+            "name": "玉剑传说 神机花火",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/221/221019.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/221/221019.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/221/221019.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Zeri/Skins/Skin19/ZeriLoadScreen_19.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Zeri/Skins/Skin19/ZeriLoadScreen_19_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221019.png",
+            "chromas": [
+                {
+                    "id": 221020,
+                    "name": "玉剑传说 神机花火 胭脂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221020.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 221021,
+                    "name": "玉剑传说 神机花火 黄栌",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221021.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 221022,
+                    "name": "玉剑传说 神机花火 翡翠",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221022.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 221023,
+                    "name": "玉剑传说 神机花火 珐琅",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221023.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 221024,
+                    "name": "玉剑传说 神机花火 青竹",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221024.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 221025,
+                    "name": "玉剑传说 神机花火 丁香",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221025.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 221026,
+                    "name": "玉剑传说 神机花火 珠光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221026.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 221027,
+                    "name": "玉剑传说 神机花火 墨云",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221027.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "12 Year Celebration",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/80.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/80.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 81
+                }
+            ],
+            "skinAugments": null,
+            "description": "神机花火在婴儿时期便失去了双亲，幸而被一个机关师家庭收养，她的动手能力得以见长。 他们的爱点燃了她心底的本愿，就是奋不顾身地帮助他人。由于她的非凡才能，家人供她进入了虔衷派。 神机花火是一个充满梦想和好奇心的学生，她将利用得道的力量帮助她所能帮助的每一个人。"
+        }
+    ],
+    "passive": {
+        "name": "内能迁转",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Zeri/HUD/Icons2D/ZeriQPassiveCharged.png",
+        "abilityVideoPath": "champion-abilities/0221/ability_0221_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0221/ability_0221_P1.jpg",
+        "description": "泽丽的攻击造成魔法伤害并被视为技能。移动和施放【电火迸射】会将能量储存至泽丽的【火花背包】。在完全充能后，她的下次攻击将造成额外伤害。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "电火迸射",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Zeri/HUD/Icons2D/ZeriQ.png",
+            "abilityVideoPath": "champion-abilities/0221/ability_0221_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0221/ability_0221_Q1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@f1@秒%i:cooldown%",
+            "description": "【电火迸射】连续发射7发子弹，对命中的首个敌人造成相当于攻击力的物理伤害。这个技能会被视为一次攻击。",
+            "dynamicDescription": "泽丽发射一连串的@NumberOfMissiles@颗子弹，来对命中的第一个敌人造成<physicalDamage>@ActiveDamageThatCanCrit@物理伤害</physicalDamage>。这个技能会被视为一次攻击。 @SpellModifierDescriptionAppend@",
+            "range": [
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.1000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "强穿激光",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Zeri/HUD/Icons2D/ZeriW.png",
+            "abilityVideoPath": "champion-abilities/0221/ability_0221_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0221/ability_0221_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "泽丽发射一道电能脉冲，来对首个命中的敌人造成减速和伤害。如果脉冲命中了一个墙体，那么它会延伸为一道长程激光。",
+            "dynamicDescription": "泽丽发射一道电能脉冲，来对首个命中的敌人造成<physicalDamage>@TotalDamage@物理伤害</physicalDamage>和持续@SlowDuration@秒的@SlowPercent*100@%<status>减速</status>。如果脉冲命中了地形，那么它会延伸为一道激光并在一个区域内施加效果并对英雄和野怪造成暴击。@SpellModifierDescriptionAppend@",
+            "range": [
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                60.0000,
+                70.0000,
+                80.0000,
+                90.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                11.0000,
+                10.0000,
+                9.0000,
+                8.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.4000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "灿丽花火",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Zeri/HUD/Icons2D/ZeriE.png",
+            "abilityVideoPath": "champion-abilities/0221/ability_0221_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0221/ability_0221_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "泽丽冲刺一小段距离，并激发她的下3发【电火迸射】，使它们获得穿刺敌人的效果。她将在接触任何地形时进行翻越和滑行。",
+            "dynamicDescription": "泽丽冲刺一小段距离，并翻越接触到的任何地形，来极大地延伸冲刺距离。接下来的@BuffDuration@秒，她的<spellName>电火迸射</spellName>将获得穿刺效果，对首个敌人之后的敌人们造成@PenDamagePercent*100@%伤害，并对命中的第一个目标附加额外的<magicDamage>@BonusDamageTotal@魔法伤害</magicDamage>。<br><br>用一次攻击或技能命中一名英雄时，会使这个技能的冷却时间缩短@CDReductionPerHit@秒。暴击会转而使这个技能的冷却时间缩短@CritCDReductionPerHit@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000
+            ],
+            "costCoefficients": [
+                90.0000,
+                85.0000,
+                80.0000,
+                75.0000,
+                70.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                22.0000,
+                21.0000,
+                20.0000,
+                19.0000,
+                18.0000,
+                18.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.6000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "超限爆闪",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Zeri/HUD/Icons2D/ZeriR.png",
+            "abilityVideoPath": "champion-abilities/0221/ability_0221_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0221/ability_0221_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "泽丽放出一道电能新星，并且自身进入超负荷状态，来获得伤害提升和可叠加的移动速度，并且这个状态可在她每次命中敌方英雄时刷新持续时间并变得更强。在超负荷状态下。【枪火迸射】会变成一个快速的3连发，并在敌人之间引发连锁闪电。",
+            "dynamicDescription": "泽丽放出一道电能新星，对附近的敌人们造成<magicDamage>@TotalActiveDamage@魔法伤害</magicDamage>。如果她命中了一名敌方英雄，就会获得持续@RDuration@秒的<attackSpeed>@BaseASPercent*100@%攻击速度</attackSpeed>和<speed>@BaseBonusMS*100@%移动速度</speed>。用一次攻击或技能命中一名敌方英雄时，会使这个技能的持续时间延长并添加一层持续@MaxHyperchargeDuration@秒的超负荷效果。暴击会添加额外的2层效果。每层效果提供<speed>@MSPercent*100@%移动速度</speed>。<br><br>在此期间，<spellName>电火迸射</spellName>会变为一个更快速的3连发，可对附近的敌人们连锁造成<physicalDamage>@ChainPhysicalDamage@物理伤害</physicalDamage>。<br><br>@SpellModifierDescriptionAppend@",
+            "range": [
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                80.0000,
+                75.0000,
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.8000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

@@ -1,0 +1,1178 @@
+{
+    "id": 102,
+    "name": "龙血武姬",
+    "alias": "Shyvana",
+    "title": "希瓦娜",
+    "shortBio": "希瓦娜是一只魔法生物，心中有一块燃烧不灭的符文碎片。虽然她时常以人的形象出现，但她真正的形态是一条威猛的巨龙，可以用龙息烈焰吞噬敌人。希瓦娜曾拯救过皇子嘉文四世的性命，如今她心神不宁地在皇子的卫队中效力，力图让多疑的德玛西亚人接纳自己。",
+    "tacticalInfo": {
+        "style": 6,
+        "difficulty": 1,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 2,
+        "crowdControl": 1,
+        "mobility": 2,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/102.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/102.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/102.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/102.ogg",
+    "roles": [
+        "fighter",
+        "tank"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 102000,
+            "isBase": true,
+            "name": "龙血武姬",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/102/102000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/102/102000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/102/102000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Shyvana/Skins/Base/ShyvanaLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 102001,
+            "isBase": false,
+            "name": "钢之逆鳞 希瓦娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/102/102001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/102/102001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/102/102001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Shyvana/Skins/Skin01/ShyvanaLoadscreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 102002,
+            "isBase": false,
+            "name": "骸骨之爪 希瓦娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/102/102002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/102/102002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/102/102002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Shyvana/Skins/Skin02/ShyvanaLoadscreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 32
+                }
+            ],
+            "skinAugments": null,
+            "description": "很多猎人声称希瓦娜在击杀那些称霸大地的巨兽时有一项得天独厚的优势。希瓦娜她自己倒不怎么在意他们的看法，宁愿将她的怒意引导至她的真正形态——一头体型巨大、喷吐炎息的巨龙……足以证明那些猎人们的观点。"
+        },
+        {
+            "id": 102003,
+            "isBase": false,
+            "name": "黯黑魔龙 希瓦娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/102/102003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/102/102003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/102/102003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Shyvana/Skins/Skin03/ShyvanaLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": "当希瓦娜的人性被黯黑魔龙焚烧殆尽后，她便自此在战场上称霸了。据说，只要有人触碰到她的烈焰，其灵魂就将在黑暗魔法中灰飞烟灭。"
+        },
+        {
+            "id": 102004,
+            "isBase": false,
+            "name": "冰霜亚龙 希瓦娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/102/102004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/102/102004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/102/102004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Shyvana/Skins/Skin04/ShyvanaLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Superior Warrior",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/23.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/23.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 129
+                }
+            ],
+            "skinAugments": null,
+            "description": "在北方的荒凉地带，一只休眠的幼龙正躺在那里休息。希瓦娜一到，这头庞然大物便从沉睡中苏醒，并为她灌注了冰冻废土的力量。现在她在苔原上追猎，搜寻着任何蠢到挡住她路的蠢货。"
+        },
+        {
+            "id": 102005,
+            "isBase": false,
+            "name": "冠军之血 希瓦娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/102/102005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/102/102005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/102/102005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Shyvana/Skins/Skin05/ShyvanaLoadScreen_5.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Shyvana/Skins/Skin05/ShyvanaLoadScreen_5_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/102/102005.png",
+            "chromas": [
+                {
+                    "id": 102007,
+                    "name": "冠军之血 希瓦娜 凯旋圣装",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/102/102007.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在一个全球总决赛事件期间作为战利品专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 8
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此庆祝2014年在韩国举办的全球总决赛。"
+        },
+        {
+            "id": 102006,
+            "isBase": false,
+            "name": "银河魔装机神 希瓦娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/102/102006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/102/102006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/102/102006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Shyvana/Skins/skin06/ShyvanaLoadscreen_6.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 21
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为超级银河战队中最有经验的元老，希瓦娜正是她的队友们极度需要的领袖。﻿作为一个来自不同防御部队（但同样有着夸张的名字）的驾驶员，希瓦娜有时表现古怪，甚至会把友军当作敌人对待——并且会周期性地质疑自己额外10%的工资是否对得起自己的付出。"
+        },
+        {
+            "id": 102008,
+            "isBase": false,
+            "name": "破败军团 希瓦娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/102/102008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/102/102008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/102/102008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Shyvana/Skins/Skin08/ShyvanaLoadScreen_8.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Shyvana/Skins/Skin08/ShyvanaLoadscreen_8_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/102/102008.png",
+            "chromas": [
+                {
+                    "id": 102009,
+                    "name": "破败军团 希瓦娜 帝国征伐使",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/102/102009.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 102010,
+                    "name": "破败军团 希瓦娜 山峰征伐使",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/102/102010.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 102011,
+                    "name": "破败军团 希瓦娜 森林征伐使",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/102/102011.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 102012,
+                    "name": "破败军团 希瓦娜 海港征伐使",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/102/102012.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 102013,
+                    "name": "破败军团 希瓦娜 虚无征伐使",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/102/102013.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 102014,
+                    "name": "破败军团 希瓦娜 灵岛征伐使",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/102/102014.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 102015,
+                    "name": "破败军团 希瓦娜 极地征伐使",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/102/102015.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 102016,
+                    "name": "破败军团 希瓦娜 咒缚征伐使",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/102/102016.png",
+                    "colors": [
+                        "#050B19",
+                        "#ECC124"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在光明哨兵(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 138
+                }
+            ],
+            "skinAugments": null,
+            "description": "希瓦娜的破败之咒带来了一场新萌生的黑暗，以及新萌生的想法。她迅速掉头对抗德玛西亚对魔法的迫害，并且龙性大发。她看起来就像一头古老的复仇野兽，准备因德玛西亚的无知而将其推翻。"
+        },
+        {
+            "id": 102017,
+            "isBase": false,
+            "name": "玉剑传说 舞龙卫",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/102/102017.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/102/102017.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/102/102017.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Shyvana/Skins/Skin17/ShyvanaLoadScreen_17.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Shyvana/Skins/Skin17/ShyvanaLoadScreen_17_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/102/102017.png",
+            "chromas": [
+                {
+                    "id": 102018,
+                    "name": "玉剑传说 舞龙卫 胭脂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/102/102018.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 102019,
+                    "name": "玉剑传说 舞龙卫 珐琅",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/102/102019.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 102020,
+                    "name": "玉剑传说 舞龙卫 翡翠",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/102/102020.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 102021,
+                    "name": "玉剑传说 舞龙卫 黄栌",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/102/102021.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 102022,
+                    "name": "玉剑传说 舞龙卫 紫檀",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/102/102022.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 102023,
+                    "name": "玉剑传说 舞龙卫 墨云",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/102/102023.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 102024,
+                    "name": "玉剑传说 舞龙卫 丁香",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/102/102024.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 102025,
+                    "name": "玉剑传说 舞龙卫 珠光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/102/102025.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "We are Champions",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/81.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/81.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 81
+                }
+            ],
+            "skinAugments": null,
+            "description": "一百年来，舞龙卫本是旸刚派洞天的看守，但在救了一位落水僧人的子弟后，师父恩准她开始修炼。 她很享受化为人形所带来的种种纠葛。与星仙子不同，舞龙卫毫不怀疑自己的身份：至尊修仙学派的保护者。"
+        }
+    ],
+    "passive": {
+        "name": "龙族之怒",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Shyvana/HUD/Icons2D/ShyvanaReinforcedScales.png",
+        "abilityVideoPath": "",
+        "abilityVideoImagePath": "",
+        "description": "希瓦娜对巨龙们造成额外伤害并获得护甲加成和魔法抗性加成。被希瓦娜或她的友军击败的元素亚龙们会为她提供额外的护甲和魔法抗性加成。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "龙牙突刺",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Shyvana/HUD/Icons2D/ShyvanaTwinBite.png",
+            "abilityVideoPath": "champion-abilities/0102/ability_0102_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0102/ability_0102_Q1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "希瓦娜的下次攻击将进行两次打击并为她接下来的若干次攻击提供攻击速度。每次普通攻击会减少【龙牙突刺】0.5 秒冷却时间。<br><br><font color='#FF3300'>魔龙形态：</font>【龙牙突刺】会顺劈希瓦娜面前的所有单位。",
+            "dynamicDescription": "希瓦娜的下次攻击会进行两次打击，造成<physicalDamage>@FirstHitDamageCalc@</physicalDamage>接<physicalDamage>@SecondHitDamageCalc@物理伤害</physicalDamage>。她的下2次攻击获得<speed> @BonusAS@%攻击速度</speed>。<br><br>攻击会使这个技能的冷却时间缩短@CDReductionOnHit@秒。<br><br><keywordMajor>魔龙形态：</keywordMajor>这些强化攻击会命中希瓦娜前方的所有单位。<br><br><rules>这个技能会在造成伤害时触发技能特效。</rules>@SpellModifierDescriptionAppend@",
+            "range": [
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                8.0000,
+                7.5000,
+                7.0000,
+                6.5000,
+                6.0000,
+                5.5000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "烈火燎原",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Shyvana/HUD/Icons2D/ShyvanaScorchedEarth.png",
+            "abilityVideoPath": "champion-abilities/0102/ability_0102_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0102/ability_0102_W1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "希瓦娜将自己围在火焰之中，每秒对周围的敌人造成伤害，并能移动得更快，持续3秒。在这个技能开启时，希瓦娜的普攻会对敌人造成基于此技能伤害的额外伤害。移动速度加成会随着技能的持续时间而减少。普通攻击会延长烈火燎原的持续时间。<br><br><font color='#FF3300'>魔龙形态：</font>烈火燎原会随体积增长。",
+            "dynamicDescription": "希瓦娜召唤一道烈焰风暴环绕于她，获得<speed>@FinalMSPerc@不断衰减的移动速度</speed>并且每秒造成<magicDamage>@DamagePerTickCalc@魔法伤害</magicDamage>，持续@BaseDuration@秒。 <br><br>烈焰风暴还会使希瓦娜的攻击对周围的敌人们造成额外的<magicDamage>@DamageOnHitCalc@魔法伤害</magicDamage>并使这个技能的持续时间延长@BonusDurationOnHit@秒。<br><br><keywordMajor>魔龙形态：</keywordMajor>烈焰风暴的半径得到提升。@SpellModifierDescriptionAppend@",
+            "range": [
+                325.0000,
+                325.0000,
+                325.0000,
+                325.0000,
+                325.0000,
+                325.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "烈焰吐息",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Shyvana/HUD/Icons2D/ShyvanaFlameBreath.png",
+            "abilityVideoPath": "champion-abilities/0102/ability_0102_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0102/ability_0102_E1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "希瓦娜放出一枚火球，对沿途的所有目标造成魔法伤害，并在目标身上留下熔化护甲的燃渣，持续5秒。希瓦娜对被标记目标进行的普通攻击，会造成基于目标最大生命值的额外伤害。<br><br><font color='#FF3300'>魔龙形态：</font>烈焰吐息会在碰撞或在抵达目标位置后爆炸，造成额外伤害并灼烧大地一小段时间。",
+            "dynamicDescription": "希瓦娜释放一团火球来造成<magicDamage>@DamageCalc@魔法伤害</magicDamage>并标记@MarkDuration@秒。火球会在命中第一个英雄时停下。<br><br>希瓦娜对被标记目标的攻击会造成额外的<magicDamage>@PercentHPDamageOnHit@%最大生命值的魔法伤害</magicDamage>。<br><br><keywordMajor>魔龙形态：</keywordMajor>火球一旦命中或到达终点就会爆炸，造成额外的<magicDamage>@DragonExplosionCalc@魔法伤害</magicDamage>并灼烧大地，在4秒里持续造成共<magicDamage>@DragonDamageTotalCalc@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                925.0000,
+                925.0000,
+                925.0000,
+                925.0000,
+                925.0000,
+                925.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                11.0000,
+                10.0000,
+                9.0000,
+                8.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    60.0000,
+                    100.0000,
+                    140.0000,
+                    180.0000,
+                    220.0000,
+                    260.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "魔龙降世",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Shyvana/HUD/Icons2D/ShyvanaDragonsDescent.png",
+            "abilityVideoPath": "champion-abilities/0102/ability_0102_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0102/ability_0102_R1.jpg",
+            "cost": "<font color='#FF6633'>@FuryDrainPerSecond@怒气/秒</font>",
+            "cooldown": "<font color='#FF3300'>需要@FuryToActivate@怒气以激活</font>",
+            "description": "希瓦娜变成一条巨龙，并且飞向目标区域。沿途的敌人会受到魔法伤害，并被震向她的目标区域。<br><br>希瓦娜每秒都会被动获取怒气，并且她的每次普通攻击会提供2点怒气。",
+            "dynamicDescription": "<spellPassive>被动： </spellPassive>希瓦娜每秒生成<keywordMajor>@FuryGainPerTick@怒气</keywordMajor>，并且攻击生成额外的<keywordMajor>@FuryGainOnHit@怒气</keywordMajor>。<br><br><spellActive>主动： </spellActive>希瓦娜变形为<keywordMajor>魔龙形态</keywordMajor>，获得<healing>@BonusHP@最大生命值</healing>并向前飞行，造成<magicDamage>@DamageCalc@魔法伤害</magicDamage>并将敌人们<status>击退</status>向她的目标位置。@SpellModifierDescriptionAppend@",
+            "range": [
+                850.0000,
+                850.0000,
+                850.0000,
+                850.0000,
+                850.0000,
+                850.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

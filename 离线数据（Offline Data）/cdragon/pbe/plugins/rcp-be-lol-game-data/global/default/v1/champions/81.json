@@ -1,0 +1,1948 @@
+{
+    "id": 81,
+    "name": "Ezreal",
+    "alias": "Ezreal",
+    "title": "the Prodigal Explorer",
+    "shortBio": "A dashing adventurer, unknowingly gifted in the magical arts, Ezreal raids long-lost catacombs, tangles with ancient curses, and overcomes seemingly impossible odds with ease. His courage and bravado knowing no bounds, he prefers to improvise his way out of any situation, relying partially on his wits, but mostly on his mystical Shuriman gauntlet, which he uses to unleash devastating arcane blasts. One thing is for sure—whenever Ezreal is around, trouble isn't too far behind. Or ahead. Probably everywhere.",
+    "tacticalInfo": {
+        "style": 1,
+        "difficulty": 1,
+        "damageType": "kMixed"
+    },
+    "playstyleInfo": {
+        "damage": 1,
+        "durability": 1,
+        "crowdControl": 1,
+        "mobility": 1,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/81.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/81.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/81.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/81.ogg",
+    "roles": [
+        "marksman",
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 81000,
+            "isBase": true,
+            "name": "Ezreal",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Base/EzrealLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 81001,
+            "isBase": false,
+            "name": "Nottingham Ezreal",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin01/EzrealLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 97
+                }
+            ],
+            "skinAugments": null,
+            "description": "An adventuring elf from the outlying forest kingdoms, Ezreal likes to present himself as a “handsome rogue-paladin” named Jarro Lightfeather. Very few people believe his claims of knighthood, but they serve as a decent enough distraction between his disastrous misadventures."
+        },
+        {
+            "id": 81002,
+            "isBase": false,
+            "name": "Striker Ezreal",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin02/EzrealLoadScreen_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin02/EzrealLoadScreen_2_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 31
+                }
+            ],
+            "skinAugments": null,
+            "description": "A young and flashy prodigy, Ezreal is Order United's most popular player. Or at least he was, until a long series of teleportation-related fouls got him in trouble with the oversight committee."
+        },
+        {
+            "id": 81003,
+            "isBase": false,
+            "name": "Frosted Ezreal",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin03/EzrealLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 128
+                }
+            ],
+            "skinAugments": null,
+            "description": "Ezreal occasionally finds himself in the Freljord, searching for such-and-such ancient artifact. But braving sub-zero temperatures, terrifying ice beasts, and angry Freljordian tribes is a tall order, even for him—that's why he goes in disguise. He's practically a different person!"
+        },
+        {
+            "id": 81004,
+            "isBase": false,
+            "name": "Explorer Ezreal",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin04/EzrealLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": "Ezreal's almost suicidal obsession with braving tombs, ruins, forbidden temples, and abandoned cities has netted him a tidy handful of priceless relics. Most of those relics are sold off to pay exploration-related medical bills, but one of these days…"
+        },
+        {
+            "id": 81005,
+            "isBase": false,
+            "name": "Pulsefire Ezreal",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin05/EzrealLoadScreen_5.jpg",
+            "skinType": "Ultimate",
+            "rarity": "kUltimate",
+            "isLegacy": false,
+            "splashVideoPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin05/AnimatedSplash/Ezreal_Skin5_centered.webm",
+            "collectionSplashVideoPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin05/AnimatedSplash/Ezreal_Skin5_uncentered.webm",
+            "featuresText": "<ul><li>All new spell effects and animations</li><li>Four stage evolving model</li><li>Pulsefire Ezreal and AI voices</li><li>Custom effects on a killing blow</li><li>Summoner icon</li><li>Summoner profile banner</li></ul>",
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 36
+                }
+            ],
+            "skinAugments": null,
+            "description": "Temporal fugitive and time-hopping explorer extraordinaire, Ezreal leaps across disparate realities searching for interesting technology to acquire. He is responsible for countless paradoxes and is currently wanted by the dystopian Remembrancers, who hunt him relentlessly."
+        },
+        {
+            "id": 81006,
+            "isBase": false,
+            "name": "TPA Ezreal",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin06/EzrealLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 2
+                }
+            ],
+            "skinAugments": null,
+            "description": "Honoring BeBe's winning performance as Ezreal during the 2012 World Championship."
+        },
+        {
+            "id": 81007,
+            "isBase": false,
+            "name": "Debonair Ezreal",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin07/EzrealLoadScreen_7.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81007.png",
+            "chromas": [
+                {
+                    "id": 81010,
+                    "name": "Debonair Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81010.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 81011,
+                    "name": "Debonair Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81011.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 81012,
+                    "name": "Debonair Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81012.png",
+                    "colors": [
+                        "#DED6B0",
+                        "#DED6B0"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 81013,
+                    "name": "Debonair Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81013.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 81014,
+                    "name": "Debonair Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81014.png",
+                    "colors": [
+                        "#5DF1FF",
+                        "#5DF1FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 81015,
+                    "name": "Debonair Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81015.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 81016,
+                    "name": "Debonair Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81016.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 81017,
+                    "name": "Debonair Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81017.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "VN",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 23
+                }
+            ],
+            "skinAugments": null,
+            "description": "Tailored suits, fitted vests, and an elegant gauntlet let everyone know the difference between Ezreal and the common rabble is simple. He makes this look good, and they… don't."
+        },
+        {
+            "id": 81008,
+            "isBase": false,
+            "name": "Ace of Spades Ezreal",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin08/EzrealLoadScreen_8.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 41
+                }
+            ],
+            "skinAugments": null,
+            "description": "First is the Ace, at a hurtling pace,<br>A man of both talent and vim,<br>Who holds all the cards in the court of High Stakes<br>Because everything's about him."
+        },
+        {
+            "id": 81009,
+            "isBase": false,
+            "name": "Arcade Ezreal",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin09/EzrealLoadscreen_9.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 10
+                }
+            ],
+            "skinAugments": null,
+            "description": "A skilled gamer transported to Arcade World by Veigar, Ezreal holds the world record for speedrunning the original version of Hyper Crystal Dungeon in 45 seconds, using a custom-made mobile controller. Veigar has made a terrible mistake."
+        },
+        {
+            "id": 81018,
+            "isBase": false,
+            "name": "Star Guardian Ezreal",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81018.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81018.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81018.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin18/EzrealLoadScreen_18.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin18/EzrealLoadScreen_18_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 20
+                }
+            ],
+            "skinAugments": null,
+            "description": "With a boundless curiosity about the universe, Ezreal is a born explorer, and becoming a Star Guardian only served to fuel his appetite for discovery. Though known to wander off, he always returns when most needed, especially now, as a certain pink-haired Guardian from another team has caught his attention…"
+        },
+        {
+            "id": 81019,
+            "isBase": false,
+            "name": "SSG Ezreal",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81019.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81019.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81019.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin19/EzrealLoadScreen_19.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin19/EzrealLoadScreen_19_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 75
+                }
+            ],
+            "skinAugments": null,
+            "description": "Honoring Haru's winning performance as Ezreal during the 2017 World Championship. "
+        },
+        {
+            "id": 81020,
+            "isBase": false,
+            "name": "Pajama Guardian Ezreal",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81020.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81020.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81020.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin20/EzrealLoadScreen_20.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin18/EzrealLoadScreen_18_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 20
+                }
+            ],
+            "skinAugments": null,
+            "description": "The First Star has burdened Ezreal with a lot. The responsibility. The hefty weight of destiny. The sparkly outfit (he's used to it). “Attending a slumber party” was definitely not on the list of expected cosmic duties. Not that he minds, really… as long as they don't actually try to braid his hair."
+        },
+        {
+            "id": 81021,
+            "isBase": false,
+            "name": "Battle Academia Ezreal",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81021.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81021.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81021.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin21/EzrealLoadScreen_21.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin21/EzrealLoadscreen_21_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81021.png",
+            "chromas": [
+                {
+                    "id": 81032,
+                    "name": "Battle Academia Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81032.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 4
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 113
+                }
+            ],
+            "skinAugments": null,
+            "description": "A young orphan initially thought devoid of any superhuman abilities, Ezreal had resigned himself to a normal life once he graduated middle school. But an encounter with a deadly threat awakened his slumbering potential, and now he finds himself a 1st year at the prestigious Durandal God-Weapon Academy, where he's joined the ragtag Battle Club."
+        },
+        {
+            "id": 81022,
+            "isBase": false,
+            "name": "PsyOps Ezreal",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81022.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81022.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81022.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin22/EzrealLoadScreen_22.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin22/EzrealLoadscreen_22_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 133
+                }
+            ],
+            "skinAugments": null,
+            "description": "A young hotshot and the newest recruit in the elite PsyOps unit, Ezreal's raw psychic ability is only matched by his severely over-inflated ego. He has successfully annoyed the rest of his team to the point they just direct him towards hard targets and half-hope he winds up dead."
+        },
+        {
+            "id": 81023,
+            "isBase": false,
+            "name": "Prestige PsyOps Ezreal",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81023.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81023.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81023.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin23/EzrealLoadscreen_23.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin23/EzrealLoadscreen_23_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 133
+                }
+            ],
+            "skinAugments": null,
+            "description": "Ezreal's mastery of psychic military combat has driven him to new heights, attracting the attention of his handlers in High Command. He's calmed down a bit, earning some respect from his squad mates… but not enough. He's never calmed down enough."
+        },
+        {
+            "id": 81025,
+            "isBase": false,
+            "name": "Porcelain Protector Ezreal",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81025.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81025.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81025.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin25/EzrealLoadScreen_25.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin25/EzrealLoadscreen_25_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81025.png",
+            "chromas": [
+                {
+                    "id": 81026,
+                    "name": "Porcelain Protector Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81026.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81027,
+                    "name": "Porcelain Protector Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81027.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81028,
+                    "name": "Porcelain Protector Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81028.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81029,
+                    "name": "Porcelain Protector Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81029.png",
+                    "colors": [
+                        "#FF9D13",
+                        "#B9FFC1"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2022 Lunar Revel event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81030,
+                    "name": "Porcelain Protector Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81030.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81031,
+                    "name": "Porcelain Protector Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81031.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 154
+                }
+            ],
+            "skinAugments": null,
+            "description": "After accidentally unleashing an ancient evil sorceress while doing research in the university archive, Ezreal narrowly escaped certain death when Lux and the spirit of the Tiger Relic stepped in to save him. Though he is new to the world of magic, Ezreal has joined the Protectors— determined to help solve the problem he (inadvertently) caused."
+        },
+        {
+            "id": 81033,
+            "isBase": false,
+            "name": "Faerie Court Ezreal",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81033.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81033.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81033.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin33/EzrealLoadScreen_33.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin33/EzrealLoadscreen_33_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81033.png",
+            "chromas": [
+                {
+                    "id": 81034,
+                    "name": "Faerie Court Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81034.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81035,
+                    "name": "Faerie Court Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81035.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81036,
+                    "name": "Faerie Court Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81036.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81037,
+                    "name": "Faerie Court Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81037.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81038,
+                    "name": "Faerie Court Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81038.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81039,
+                    "name": "Faerie Court Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81039.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81040,
+                    "name": "Faerie Court Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81040.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81041,
+                    "name": "Faerie Court Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81041.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81042,
+                    "name": "Faerie Court Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81042.png",
+                    "colors": [
+                        "#866EFF",
+                        "#8AE1E8"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2023 Faerie Court event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 191
+                }
+            ],
+            "skinAugments": null,
+            "description": "Though he is a lord of the Summer Court, Ezreal would much rather be investigating ancient magical history than putting up with all the political drama. When his research reveals something curious about the Faerie queen's line of succession, however, Ezreal discovers that someone may have placed Karma upon the throne for their own purposes…"
+        },
+        {
+            "id": 81043,
+            "isBase": false,
+            "name": "HEARTSTEEL Ezreal",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81043.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81043.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81043.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin43/EzrealLoadScreen_43.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin43/EzrealLoadscreen_43_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81043.png",
+            "chromas": [
+                {
+                    "id": 81045,
+                    "name": "HEARTSTEEL Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81045.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81046,
+                    "name": "HEARTSTEEL Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81046.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81047,
+                    "name": "HEARTSTEEL Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81047.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81048,
+                    "name": "HEARTSTEEL Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81048.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81049,
+                    "name": "HEARTSTEEL Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81049.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81050,
+                    "name": "HEARTSTEEL Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81050.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81051,
+                    "name": "HEARTSTEEL Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81051.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 81052,
+                    "name": "HEARTSTEEL Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81052.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81053,
+                    "name": "HEARTSTEEL Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81053.png",
+                    "colors": [
+                        "#CDE9EF",
+                        "#E9628F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the Worlds 2023 event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 199
+                }
+            ],
+            "skinAugments": null,
+            "description": "After a manufactured one-hit wonder launched Ezreal into the spotlight, only for him to fall out of it again when the album got panned, Ezreal decided it was time he took some creative control back. Now, having left his old label and lending what star power he has to HEARTSTEEL, Ezreal has found musicians and friends he's ready to make a comeback with."
+        },
+        {
+            "id": 81044,
+            "isBase": false,
+            "name": "Heavenscale Ezreal",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81044.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81044.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81044.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin44/EzrealLoadScreen_44.PIE_C_14_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin44/EzrealLoadScreen_44_LE.PIE_C_14_2.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81044.png",
+            "chromas": [
+                {
+                    "id": 81055,
+                    "name": "Heavenscale Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81055.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2024."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 81056,
+                    "name": "Heavenscale Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81056.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81057,
+                    "name": "Heavenscale Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81057.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81058,
+                    "name": "Heavenscale Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81058.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81059,
+                    "name": "Heavenscale Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81059.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81060,
+                    "name": "Heavenscale Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81060.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81061,
+                    "name": "Heavenscale Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81061.png",
+                    "colors": [
+                        "#ECEAD3",
+                        "#DC7515"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2024 Heavenscale event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 81062,
+                    "name": "Heavenscale Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81062.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81063,
+                    "name": "Heavenscale Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81063.png",
+                    "colors": [
+                        "#DFA6DF",
+                        "#E0D7D7"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2024 Heavenscale event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 81064,
+                    "name": "Heavenscale Ezreal",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/81/81064.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 201
+                }
+            ],
+            "skinAugments": null,
+            "description": "Wherever chaos is sown, dragons across the kingdom know to listen for Ezreal's mischievous laughter. His japes are harmless, but don't let that merry spirit fool you: he is a shrewd royal scout alongside Kai'Sa who has braved many adventures between bouts of pranking. Dressing up like a human to go party? Now that sounds like his idea of a good time."
+        },
+        {
+            "id": 81054,
+            "isBase": false,
+            "name": "Prestige Heavenscale Ezreal",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/81/81054.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/81/81054.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/81/81054.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin54/EzrealLoadScreen_54.PIE_C_14_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/Skins/Skin54/EzrealLoadScreen_54_LE.PIE_C_14_2.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 201
+                }
+            ],
+            "skinAugments": null,
+            "description": "Ezreal's gilded gala garb is fit for royalty. Adorned in hand-crafted scales and crystal horns, this tastemaker came to the party with a mission: ring in the New Year not just with a bang, but a roar."
+        }
+    ],
+    "passive": {
+        "name": "Rising Spell Force",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/HUD/Icons2D/Ezreal_Passive.png",
+        "abilityVideoPath": "champion-abilities/0081/ability_0081_P1.webm",
+        "abilityVideoImagePath": "",
+        "description": "Ezreal gains increasing Attack Speed each time he successfully hits a spell, stacking up to 5 times."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Mystic Shot",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/HUD/Icons2D/Ezreal_Q.png",
+            "abilityVideoPath": "champion-abilities/0081/ability_0081_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0081/ability_0081_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Ezreal fires a damaging bolt of energy which reduces all of his cooldowns slightly if it strikes an enemy unit.",
+            "dynamicDescription": "Ezreal fires a bolt of energy, dealing <physicalDamage>@Damage@ physical damage</physicalDamage> to the first enemy hit and reducing his Ability Cooldowns by @CDRefund@ seconds.@SpellModifierDescriptionAppend@",
+            "range": [
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000
+            ],
+            "costCoefficients": [
+                28.0000,
+                31.0000,
+                34.0000,
+                37.0000,
+                40.0000,
+                43.0000
+            ],
+            "cooldownCoefficients": [
+                5.5000,
+                5.2500,
+                5.0000,
+                4.7500,
+                4.5000,
+                3.5000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.1500
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Essence Flux",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/HUD/Icons2D/Ezreal_W.png",
+            "abilityVideoPath": "champion-abilities/0081/ability_0081_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0081/ability_0081_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Ezreal fires an orb that sticks to the first champion or objective hit. If Ezreal hits an enemy with the orb, it detonates and deals damage.",
+            "dynamicDescription": "Ezreal fires a magical orb that sticks to the first champion, structure, or epic jungle monster hit for @DetonationTimeout@ seconds. If Ezreal hits that target with an Attack or Ability, it detonates, dealing <magicDamage>@Damage@ magic damage</magicDamage>. Detonating with an Ability refunds the Mana cost of that Ability plus <scaleMana>@ManaReturn@ Mana</scaleMana>.@SpellModifierDescriptionAppend@",
+            "range": [
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000
+            ],
+            "cooldownCoefficients": [
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Arcane Shift",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/HUD/Icons2D/Ezreal_E.png",
+            "abilityVideoPath": "champion-abilities/0081/ability_0081_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0081/ability_0081_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Ezreal teleports to a target nearby location and fires a homing bolt which strikes the nearest enemy unit. Prioritizes enemies stuck with Essence Flux.",
+            "dynamicDescription": "Ezreal teleports then fires a bolt at the nearest enemy, dealing <magicDamage>@Damage@ magic damage</magicDamage>. The bolt prioritizes enemies affected by <spellName>Essence Flux</spellName>.@SpellModifierDescriptionAppend@",
+            "range": [
+                475.0000,
+                475.0000,
+                475.0000,
+                475.0000,
+                475.0000,
+                475.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                26.0000,
+                23.0000,
+                20.0000,
+                17.0000,
+                14.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.7500,
+                "coefficient2": 0.5000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    30.0000,
+                    80.0000,
+                    130.0000,
+                    180.0000,
+                    230.0000,
+                    280.0000,
+                    330.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Trueshot Barrage",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ezreal/HUD/Icons2D/Ezreal_R.png",
+            "abilityVideoPath": "champion-abilities/0081/ability_0081_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0081/ability_0081_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Ezreal winds up before firing a powerful barrage of energy that deals massive damage to each unit it passes through (damage is reduced for minions and non-epic monsters).",
+            "dynamicDescription": "Ezreal fires a massive energy arc that deals <magicDamage>@Damage@ magic damage</magicDamage>. The arc deals @DamageReductionWaveclear.0*100@% damage to minions and non-epic jungle monsters.@SpellModifierDescriptionAppend@",
+            "range": [
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                105.0000,
+                90.0000,
+                10.0000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.9000,
+                "coefficient2": 1.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

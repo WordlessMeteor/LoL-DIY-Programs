@@ -1,0 +1,668 @@
+{
+    "Trophies": [
+        {
+            "contentId": "57dfb01e-42ef-427b-87b5-604257fff351",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Bandle_City",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/BandleCity/Trophy_BandleCity_16_Inventory.png"
+        },
+        {
+            "contentId": "e2fa0636-a32f-45b5-99f9-2a6928b16636",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Bandle_City",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/BandleCity/Trophy_BandleCity_4_Inventory.png"
+        },
+        {
+            "contentId": "03d216ac-5d52-4cc8-a791-aaa909f19646",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Bandle_City",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/BandleCity/Trophy_BandleCity_8_Inventory.png"
+        },
+        {
+            "contentId": "87f08295-50e0-4a37-a6f6-95d4c1058bed",
+            "objectName": "Trophy_Base",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Base",
+            "bracket": 0,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Demacia/LeagueClient/Trophy_Demacia_4_Inventory.png"
+        },
+        {
+            "contentId": "2c69248e-85e0-11eb-8dcd-0242ac130003",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Bilgewater",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Bilgewater/Trophy_Bilgewater_16_Inventory.png"
+        },
+        {
+            "contentId": "de161ae4-85df-11eb-8dcd-0242ac130003",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Bilgewater",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Bilgewater/Trophy_Bilgewater_4_Inventory.png"
+        },
+        {
+            "contentId": "23a2078a-85e0-11eb-8dcd-0242ac130003",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Bilgewater",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Bilgewater/Trophy_Bilgewater_8_Inventory.png"
+        },
+        {
+            "contentId": "91a315fd-267a-49d8-8075-082ef1ae12ad",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "CoPilot",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/CoPilot/LeagueClient/Trophy_Copilot_16_Inventory.png"
+        },
+        {
+            "contentId": "b0892c1e-e070-49e1-a721-5533a0a48b50",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "CoPilot",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/CoPilot/LeagueClient/Trophy_Copilot_4_Inventory.png"
+        },
+        {
+            "contentId": "bad08d47-78e4-478f-a064-b64f22d4119b",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "CoPilot",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/CoPilot/LeagueClient/Trophy_Copilot_8_Inventory.png"
+        },
+        {
+            "contentId": "d5c83387-b49e-42d6-abb8-62170cc83340",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Conqueror",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Conqueror/LeagueClient/Trophy_Conqueror_16_Inventory.png"
+        },
+        {
+            "contentId": "84e853be-1884-48d5-935e-d7f889c1aaf0",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Conqueror",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Conqueror/LeagueClient/Trophy_Conqueror_4_Inventory.png"
+        },
+        {
+            "contentId": "36f4d6b0-631f-455b-90ca-7fb0fb02d1c9",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Conqueror",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Conqueror/LeagueClient/Trophy_Conqueror_8_Inventory.png"
+        },
+        {
+            "contentId": "68274a4b-33c2-40d1-b77c-58d8789fb16f",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Demacia",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Demacia/LeagueClient/Trophy_Demacia_16_Inventory.png"
+        },
+        {
+            "contentId": "7d75a734-5461-4c80-a166-75182d4a87c8",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Demacia",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Demacia/LeagueClient/Trophy_Demacia_4_Inventory.png"
+        },
+        {
+            "contentId": "7f65db96-6078-4fb8-b72a-05f9223a2308",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Demacia",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Demacia/LeagueClient/Trophy_Demacia_8_Inventory.png"
+        },
+        {
+            "contentId": "5f166233-4b6f-40e4-8e2e-0d758ff47718",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Freljord",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Freljord/LeagueClient/Trophy_Freljord_16_Inventory.png"
+        },
+        {
+            "contentId": "91f21bc8-a0c0-4f5f-8507-954a4226d7db",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Freljord",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Freljord/LeagueClient/Trophy_Freljord_4_Inventory.png"
+        },
+        {
+            "contentId": "708a72b5-2c8d-4e8e-9ede-c2e964349c3f",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Freljord",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Freljord/LeagueClient/Trophy_Freljord_8_Inventory.png"
+        },
+        {
+            "contentId": "89a272f9-9632-4b97-9c41-fcdefa8cbfba",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Ionia",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Ionia/LeagueClient/Trophy_Ionia_16_Inventory.png"
+        },
+        {
+            "contentId": "407e585d-705d-401d-b8a8-2009d427fa21",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Ionia",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Ionia/LeagueClient/Trophy_Ionia_4_Inventory.png"
+        },
+        {
+            "contentId": "8f708699-8c42-41f6-b4f2-60a91fd14ed8",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Ionia",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Ionia/LeagueClient/Trophy_Ionia_8_Inventory.png"
+        },
+        {
+            "contentId": "5d856656-e678-46bf-aae2-4c4afe13ba56",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Ixtal",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Ixtal/LeagueClient/Trophy_Ixtal_16_Inventory.png"
+        },
+        {
+            "contentId": "b0b933dc-575c-4947-a52a-48fe159a05fa",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Ixtal",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Ixtal/LeagueClient/Trophy_Ixtal_4_Inventory.png"
+        },
+        {
+            "contentId": "dcf4b3c0-ae0a-42c2-b929-70b06bb5cf00",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Ixtal",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Ixtal/LeagueClient/Trophy_Ixtal_8_Inventory.png"
+        },
+        {
+            "contentId": "4bcb4d42-963f-11eb-a8b3-0242ac130003",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "MSI2021",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/MSI2021/Trophy_MSI2021_16_Inventory.png"
+        },
+        {
+            "contentId": "1da5f2dc-963f-11eb-a8b3-0242ac130003",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "MSI2021",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/MSI2021/Trophy_MSI2021_4_Inventory.png"
+        },
+        {
+            "contentId": "320ee102-963f-11eb-a8b3-0242ac130003",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "MSI2021",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/MSI2021/Trophy_MSI2021_8_Inventory.png"
+        },
+        {
+            "contentId": "5a688d9c-9f17-11ec-b909-0242ac120002",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "MSI2022",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/MSI2022/LeagueClient/Trophy_MSI2022_16_Inventory.png"
+        },
+        {
+            "contentId": "5a6883e2-9f17-11ec-b909-0242ac120002",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "MSI2022",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/MSI2022/LeagueClient/Trophy_MSI2022_4_Inventory.png"
+        },
+        {
+            "contentId": "5a68889c-9f17-11ec-b909-0242ac120002",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "MSI2022",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/MSI2022/LeagueClient/Trophy_MSI2022_8_Inventory.png"
+        },
+        {
+            "contentId": "9f488bcc-cdb2-11ed-afa1-0242ac120002",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "MSI2023",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/MSI2023/Trophy_MSI2023_16_Inventory.png"
+        },
+        {
+            "contentId": "51bdc49e-cdb2-11ed-afa1-0242ac120002",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "MSI2023",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/MSI2023/Trophy_MSI2023_4_Inventory.png"
+        },
+        {
+            "contentId": "921fb218-cdb2-11ed-afa1-0242ac120002",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "MSI2023",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/MSI2023/Trophy_MSI2023_8_Inventory.png"
+        },
+        {
+            "contentId": "dab34f3e-c31f-11eb-8529-0242ac130003",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Mount_Targon",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Targon/LeagueClient/Trophy_Targon_16_Inventory.png"
+        },
+        {
+            "contentId": "dab34976-c31f-11eb-8529-0242ac130003",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Mount_Targon",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Targon/LeagueClient/Trophy_Targon_4_Inventory.png"
+        },
+        {
+            "contentId": "dab34c28-c31f-11eb-8529-0242ac130003",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Mount_Targon",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Targon/LeagueClient/Trophy_Targon_8_Inventory.png"
+        },
+        {
+            "contentId": "b41a37e8-70b8-11eb-9439-0242ac130002",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Noxus",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Noxus/LeagueClient/Trophy_Noxus_16_Inventory.png"
+        },
+        {
+            "contentId": "b41a307c-70b8-11eb-9439-0242ac130002",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Noxus",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Noxus/LeagueClient/Trophy_Noxus_4_Inventory.png"
+        },
+        {
+            "contentId": "b41a3658-70b8-11eb-9439-0242ac130002",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Noxus",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Noxus/LeagueClient/Trophy_Noxus_8_Inventory.png"
+        },
+        {
+            "contentId": "172c05be-ba2d-4b7f-9e58-27cfb2145207",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Piltover",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Piltover/LeagueClient/Trophy_Piltover_16_Inventory.png"
+        },
+        {
+            "contentId": "46911cd3-e62c-46dd-9bdf-33a499ea06bc",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Piltover",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Piltover/LeagueClient/Trophy_Piltover_4_Inventory.png"
+        },
+        {
+            "contentId": "8f7a5488-60b5-4f81-88d5-d705e9f87bb9",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Piltover",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Piltover/LeagueClient/Trophy_Piltover_8_Inventory.png"
+        },
+        {
+            "contentId": "f43b5ebd-c625-494a-97c5-e3d30f2e0ee6",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Preseason2022",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Preseason2022/Trophy_Preseason2022_16_Inventory.png"
+        },
+        {
+            "contentId": "424c3acf-ffa0-475e-ba66-7d0bfbd89232",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Preseason2022",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Preseason2022/Trophy_Preseason2022_4_Inventory.png"
+        },
+        {
+            "contentId": "cf746fd9-e8c1-4019-ac36-e01b5b4ccc1c",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Preseason2022",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Preseason2022/Trophy_Preseason2022_8_Inventory.png"
+        },
+        {
+            "contentId": "5727e588-c2ca-4494-a004-6da2cf782f03",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Shadow_Isles",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/ShadowIsles/LeagueClient/Trophy_ShadowIsles_16_Inventory.png"
+        },
+        {
+            "contentId": "40177dc5-8dc8-462a-ab91-bfdb8b6d09c6",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Shadow_Isles",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/ShadowIsles/LeagueClient/Trophy_ShadowIsles_4_Inventory.png"
+        },
+        {
+            "contentId": "f539aa50-309a-4edf-85f2-aa4e8c876025",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Shadow_Isles",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/ShadowIsles/LeagueClient/Trophy_ShadowIsles_8_Inventory.png"
+        },
+        {
+            "contentId": "1ca17980-7c52-11eb-9439-0242ac130002",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Shurima",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Shurima/LeagueClient/Trophy_Shurima_16_Inventory.png"
+        },
+        {
+            "contentId": "1ca17c5a-7c52-11eb-9439-0242ac130002",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Shurima",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Shurima/LeagueClient/Trophy_Shurima_4_Inventory.png"
+        },
+        {
+            "contentId": "1ca17660-7c52-11eb-9439-0242ac130002",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Shurima",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Shurima/LeagueClient/Trophy_Shurima_8_Inventory.png"
+        },
+        {
+            "contentId": "8d3d6849-57c9-42fa-b411-56d996b0bc29",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Void",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Void/LeagueClient/Trophy_Void_16_Inventory.png"
+        },
+        {
+            "contentId": "1b7f5440-e341-11eb-ba80-0242ac130004",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Void",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Void/LeagueClient/Trophy_Void_4_Inventory.png"
+        },
+        {
+            "contentId": "25d8f167-4826-4d06-a538-c42d5bcb0630",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Void",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Void/LeagueClient/Trophy_Void_8_Inventory.png"
+        },
+        {
+            "contentId": "2f859be7-a8cb-4575-9373-29733ae4be8d",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Worlds2020",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Worlds2020/LeagueClient/Trophy_Worlds2020_16_Inventory.png"
+        },
+        {
+            "contentId": "77c38ed5-0f70-4c27-aeaa-45396af44582",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Worlds2020",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Worlds2020/LeagueClient/Trophy_Worlds2020_4_Inventory.png"
+        },
+        {
+            "contentId": "5626aac0-71cc-4a9d-93f1-4af00a8f675f ",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Worlds2020",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Worlds2020/LeagueClient/Trophy_Worlds2020_8_Inventory.png"
+        },
+        {
+            "contentId": "acb49226-09fe-496c-956c-b0a84a1b08cf",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Worlds2021",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Worlds2021/Trophy_Worlds2021_16_Inventory.png"
+        },
+        {
+            "contentId": "e592d1e4-052a-4335-ab82-0e1debf24891",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Worlds2021",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Worlds2021/Trophy_Worlds2021_16_Inventory.png"
+        },
+        {
+            "contentId": "d6f2e760-cd4b-470e-b337-6d083032ed36",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Worlds2021",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Worlds2021/Trophy_Worlds2021_16_Inventory.png"
+        },
+        {
+            "contentId": "07d78258-a139-4ee3-a308-3d16f421eb4c",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Worlds2022",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Worlds2022/Trophy_Worlds2022_16_Inventory.png"
+        },
+        {
+            "contentId": "04b2e0c8-c2a0-4d7e-8adc-8782844fc29c",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Worlds2022",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Worlds2022/Trophy_Worlds2022_16_Inventory.png"
+        },
+        {
+            "contentId": "3a5bfafc-c117-4a51-ab65-f0733f2d00ec",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Worlds2022",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Worlds2022/Trophy_Worlds2022_16_Inventory.png"
+        },
+        {
+            "contentId": "b9957828-0757-47b4-8e3f-13ef6a5660e6",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Worlds2023",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Worlds2023/LeagueClient/Trophy_Worlds2023_16_Inventory.png"
+        },
+        {
+            "contentId": "6fea1696-0449-4f8b-814b-2b0b81f7b924",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Worlds2023",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Worlds2023/LeagueClient/Trophy_Worlds2023_4_Inventory.png"
+        },
+        {
+            "contentId": "254404b0-d3e2-4f5d-b6a6-269c8ae11a92",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Worlds2023",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Worlds2023/LeagueClient/Trophy_Worlds2023_8_Inventory.png"
+        },
+        {
+            "contentId": "5b13c6da-ed13-40ef-817b-58b3f8459972",
+            "objectName": "Trophy_16",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Zaun",
+            "bracket": 16,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Zaun/LeagueClient/Trophy_Zaun_16_Inventory.png"
+        },
+        {
+            "contentId": "d8924c53-201e-497b-90a0-5ef073362667",
+            "objectName": "Trophy_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Zaun",
+            "bracket": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Zaun/LeagueClient/Trophy_Zaun_4_Inventory.png"
+        },
+        {
+            "contentId": "9e9ac93f-6c74-413d-98fc-083deb44845d",
+            "objectName": "Trophy_8",
+            "localizedName": "",
+            "localizedDescription": "",
+            "theme": "Zaun",
+            "bracket": 8,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Trophies/Zaun/LeagueClient/Trophy_Zaun_8_Inventory.png"
+        }
+    ],
+    "TrophyPedestals": [
+        {
+            "contentId": "c8a90aac-60b8-4156-88ca-5cb7e2a0398e",
+            "objectName": "tier_1",
+            "localizedName": "",
+            "localizedDescription": "",
+            "tier": 1,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Pedestals/Base/LeagueClient/Pedestal_04_Inventory.png"
+        },
+        {
+            "contentId": "490ed187-62d4-4966-8a50-12c7436b0d52",
+            "objectName": "tier_2",
+            "localizedName": "",
+            "localizedDescription": "",
+            "tier": 2,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Pedestals/Base/LeagueClient/Pedestal_03_Inventory.png"
+        },
+        {
+            "contentId": "df0469cd-455f-425f-81f7-8a9e06487ec9",
+            "objectName": "tier_3",
+            "localizedName": "",
+            "localizedDescription": "",
+            "tier": 3,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Pedestals/Base/LeagueClient/Pedestal_02_Inventory.png"
+        },
+        {
+            "contentId": "10b56c12-1ad4-4713-b69f-42635b9d2e23",
+            "objectName": "tier_4",
+            "localizedName": "",
+            "localizedDescription": "",
+            "tier": 4,
+            "profileIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerTrophies/Pedestals/Base/LeagueClient/Pedestal_01_Inventory.png"
+        }
+    ]
+}

@@ -1,0 +1,1084 @@
+{
+    "id": 221,
+    "name": "Zeri",
+    "alias": "Zeri",
+    "title": "The Spark of Zaun",
+    "shortBio": "A headstrong, spirited young woman from Zaun's working-class, Zeri channels her electric magic to charge herself and her custom-crafted gun. Her volatile power mirrors her emotions, its sparks reflecting her lightning-fast approach to life. Deeply compassionate toward others, Zeri carries the love of her family and her home into every fight. Though her eagerness to help can sometimes backfire, Zeri believes one truth to be certain: stand up for your community, and it will stand up with you.",
+    "tacticalInfo": {
+        "style": 4,
+        "difficulty": 2,
+        "damageType": "kMixed"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 1,
+        "crowdControl": 2,
+        "mobility": 3,
+        "utility": 0
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/221.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/221.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/221.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/221.ogg",
+    "roles": [
+        "marksman"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 221000,
+            "isBase": true,
+            "name": "Zeri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/221/221000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/221/221000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/221/221000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Zeri/Skins/Base/ZeriLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 221001,
+            "isBase": false,
+            "name": "Withered Rose Zeri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/221/221001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/221/221001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/221/221001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Zeri/Skins/Skin01/ZeriLoadscreen_1.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221001.png",
+            "chromas": [
+                {
+                    "id": 221002,
+                    "name": "Withered Rose Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 221003,
+                    "name": "Withered Rose Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221003.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 221004,
+                    "name": "Withered Rose Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221004.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 221005,
+                    "name": "Withered Rose Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221005.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 221006,
+                    "name": "Withered Rose Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221006.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 221007,
+                    "name": "Withered Rose Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221007.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 221008,
+                    "name": "Withered Rose Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221008.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 221009,
+                    "name": "Withered Rose Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221009.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 141
+                }
+            ],
+            "skinAugments": null,
+            "description": "Zeri's not one for the backstabbing schemes at the Festival of the Crystal Rose. She'd rather take action than formulate some complicated plan; and that's why partygoers will never suspect that this year, she's got one: Crash the party in the name of the rejects! No one—not even a dashing, would-be rival—will see her coming."
+        },
+        {
+            "id": 221010,
+            "isBase": false,
+            "name": "Ocean Song Zeri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/221/221010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/221/221010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/221/221010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Zeri/Skins/Skin10/ZeriLoadScreen_10.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221010.png",
+            "chromas": [
+                {
+                    "id": 221011,
+                    "name": "Ocean Song Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221011.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 221012,
+                    "name": "Ocean Song Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221012.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 221013,
+                    "name": "Ocean Song Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221013.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 221014,
+                    "name": "Ocean Song Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221014.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 221015,
+                    "name": "Ocean Song Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221015.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 221016,
+                    "name": "Ocean Song Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221016.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 221017,
+                    "name": "Ocean Song Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221017.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 221018,
+                    "name": "Ocean Song Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221018.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 159
+                }
+            ],
+            "skinAugments": null,
+            "description": "An up and coming Water Tamer from the Southwest, Zeri is diving into the Ocean Song Festival headfirst. This is her first time handling a stage on her own, and she may have gone a little overboard with her showstopper plans in order to give herself a calling card. Everybody loves a little overstimulation, right?"
+        },
+        {
+            "id": 221019,
+            "isBase": false,
+            "name": "Immortal Journey Zeri",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/221/221019.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/221/221019.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/221/221019.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Zeri/Skins/Skin19/ZeriLoadScreen_19.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Zeri/Skins/Skin19/ZeriLoadScreen_19_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221019.png",
+            "chromas": [
+                {
+                    "id": 221020,
+                    "name": "Immortal Journey Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221020.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 221021,
+                    "name": "Immortal Journey Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221021.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 221022,
+                    "name": "Immortal Journey Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221022.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 221023,
+                    "name": "Immortal Journey Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221023.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 221024,
+                    "name": "Immortal Journey Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221024.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 221025,
+                    "name": "Immortal Journey Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221025.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 221026,
+                    "name": "Immortal Journey Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221026.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 221027,
+                    "name": "Immortal Journey Zeri",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/221/221027.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 81
+                }
+            ],
+            "skinAugments": null,
+            "description": "Orphaned as a baby, Zeri was taken in by a family of inventors who cultivated her tinkering tendencies. Their love ignited a deep desire to help others over herself, and because of her prodigious talents, her family paid her admission to the Tempered Faith School. A student full of dreams and curiosity, Zeri will use immortality to help everyone she can."
+        }
+    ],
+    "passive": {
+        "name": "Living Battery",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Zeri/HUD/Icons2D/ZeriQPassiveCharged.png",
+        "abilityVideoPath": "champion-abilities/0221/ability_0221_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0221/ability_0221_P1.jpg",
+        "description": "Zeri's Attacks deal magic damage and are treated as Abilities. Moving and casting Burst Fire stores up energy in Zeri's Sparkpack. When fully charged her next Attack deals bonus damage."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Burst Fire",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Zeri/HUD/Icons2D/ZeriQ.png",
+            "abilityVideoPath": "champion-abilities/0221/ability_0221_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0221/ability_0221_Q1.jpg",
+            "cost": "No Cost",
+            "cooldown": "@f1@s %i:cooldown%",
+            "description": "Burst Fire shoots a burst of 7 rounds that deal attack damage to the first enemy hit. This Ability is treated as an Attack.",
+            "dynamicDescription": "Zeri fires a burst of @NumberOfMissiles@ rounds that deals <physicalDamage>@ActiveDamageThatCanCrit@ physical damage</physicalDamage> to the first enemy hit. This Ability is treated as an Attack. @SpellModifierDescriptionAppend@",
+            "range": [
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.1000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Ultrashock Laser",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Zeri/HUD/Icons2D/ZeriW.png",
+            "abilityVideoPath": "champion-abilities/0221/ability_0221_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0221/ability_0221_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Zeri fires an electric pulse that slows and damages the first enemy hit. If the pulse hits a wall it expands into a long range laser.",
+            "dynamicDescription": "Zeri fires an electric pulse that deals <physicalDamage>@TotalDamage@ physical damage</physicalDamage> and <status>Slows</status> the first enemy hit by @SlowPercent*100@% for @SlowDuration@ seconds.<br><br>If the pulse hits terrain, it expands into a laser that applies the effects in an area and Critically Strikes champions and monsters.@SpellModifierDescriptionAppend@",
+            "range": [
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                60.0000,
+                70.0000,
+                80.0000,
+                90.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                11.0000,
+                10.0000,
+                9.0000,
+                8.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.4000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Spark Surge",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Zeri/HUD/Icons2D/ZeriE.png",
+            "abilityVideoPath": "champion-abilities/0221/ability_0221_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0221/ability_0221_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Zeri dashes a short distance and energizes her next 3 shots of Burst Fire, causing them to pierce through enemies. She will vault and grind over any terrain she touches.",
+            "dynamicDescription": "Zeri dashes a short distance and vaults over any terrain she touches, greatly extending the dash range. For the next @BuffDuration@ seconds, her shots of <spellName>Burst Fire</spellName> pierce dealing @PenDamagePercent*100@% damage to enemies after the first and an additional <magicDamage>@BonusDamageTotal@ magic damage</magicDamage> On-Hit to the first target struck. <br><br>Hitting an enemy champion with an Attack or Ability reduces this Ability's cooldown by @CDReductionPerHit@ seconds. Critical strikes reduce the cooldown by @CritCDReductionPerHit@ seconds instead.@SpellModifierDescriptionAppend@",
+            "range": [
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000
+            ],
+            "costCoefficients": [
+                90.0000,
+                85.0000,
+                80.0000,
+                75.0000,
+                70.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                22.0000,
+                21.0000,
+                20.0000,
+                19.0000,
+                18.0000,
+                18.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.6000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Lightning Crash",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Zeri/HUD/Icons2D/ZeriR.png",
+            "abilityVideoPath": "champion-abilities/0221/ability_0221_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0221/ability_0221_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Zeri discharges a nova of electricity and overcharges herself, gaining increased damage and stacking Move Speed that refreshes and gets stronger every time she hits an enemy champion. While overcharged, Burst fire becomes a faster triple shot that chains lightning between enemies.",
+            "dynamicDescription": "Zeri discharges a nova of electricity, dealing <magicDamage>@TotalActiveDamage@ magic damage</magicDamage> to nearby enemies. If she hits an enemy champion, Zeri gains <attackSpeed>@BaseASPercent*100@% Attack Speed</attackSpeed> and <speed>@BaseBonusMS*100@% Move Speed</speed> for @RDuration@ seconds. Hitting an enemy champion with an Attack or Ability extends this ability's duration and adds a stack of Overcharge for @MaxHyperchargeDuration@ seconds. Critical strikes add 2 additional stacks. Each stack grants <speed>@MSPercent*100@% Move Speed</speed>.<br><br>During this time, <spellName>Burst Fire</spellName> becomes a faster triple shot that chains <physicalDamage>@ChainPhysicalDamage@ physical damage</physicalDamage> to nearby enemies.<br><br>@SpellModifierDescriptionAppend@",
+            "range": [
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                80.0000,
+                75.0000,
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.8000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

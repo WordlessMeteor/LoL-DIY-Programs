@@ -1,0 +1,900 @@
+{
+    "id": 77,
+    "name": "Udyr",
+    "alias": "Udyr",
+    "title": "the Spirit Walker",
+    "shortBio": "The most powerful spirit walker alive, Udyr communes with all the spirits of the Freljord, whether by empathically understanding their needs, or by channeling and transforming their ethereal energy into his own primal fighting style. He seeks balance within, so that his mind does not get lost amidst others, but he also seeks balance without—for the Freljord's mystical landscape can only thrive with the growth that comes from conflict and struggle, and Udyr knows that sacrifices must be made to keep peaceful stagnance at bay.",
+    "tacticalInfo": {
+        "style": 4,
+        "difficulty": 2,
+        "damageType": "kMixed"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 3,
+        "crowdControl": 2,
+        "mobility": 2,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/77.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/77.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/77.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/77.ogg",
+    "roles": [
+        "fighter",
+        "tank"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 77000,
+            "isBase": true,
+            "name": "Udyr",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/77/77000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/77/77000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/77/77000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/Skins/Base/UdyrLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 77001,
+            "isBase": false,
+            "name": "Black Belt Udyr",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/77/77001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/77/77001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/77/77001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/Skins/skin01/UdyrLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 100
+                }
+            ],
+            "skinAugments": null,
+            "description": "Students of the Hiraclaw Dojo know that the best way to tell people you're good at punching is to have a giant screen-printed fist on your clothes. That's a karate fact, according to sensei Udyr. Which is why their parents all buy them the special Hiraclaw gi (only $89.95)."
+        },
+        {
+            "id": 77002,
+            "isBase": false,
+            "name": "Primal Udyr",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/77/77002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/77/77002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/77/77002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/Skins/Skin02/UdyrLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 32
+                }
+            ],
+            "skinAugments": null,
+            "description": "Cursed to roam the land as something between man and beast, Udyr no longer distinguishes between hunters and hunted. Once he gets close enough to strike, they are all his prey."
+        },
+        {
+            "id": 77003,
+            "isBase": false,
+            "name": "Spirit Guard Udyr",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/77/77003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/77/77003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/77/77003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/Skins/Skin03/UdyrLoadscreen_3.jpg",
+            "skinType": "Ultimate",
+            "rarity": "kUltimate",
+            "isLegacy": false,
+            "splashVideoPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/Skins/Skin03/AnimatedSplash/Udyr_Skin3_centered.webm",
+            "collectionSplashVideoPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/Skins/Skin03/AnimatedSplash/Udyr_Skin3_uncentered.webm",
+            "featuresText": "<ul><li>All-new spell effects and animations</li><li>Four model evolutions - one for each stance</li><li>Unique kill effects</li><li>Four exclusive icons which grant dynamic portrait background</ul>",
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 163
+                }
+            ],
+            "skinAugments": null,
+            "description": "Udyr's time in Ionia, training at Hirana Monastery, taught him control and calmed the storm in his heart. Though the Freljord called him home, Udyr chose to stay and help Ionia regain spiritual harmony, as it had done for him. As he gets closer to this goal, he knows that his work to do the same for the whole of Runeterra has only just begun."
+        },
+        {
+            "id": 77004,
+            "isBase": false,
+            "name": "Definitely Not Udyr",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/77/77004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/77/77004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/77/77004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/Skins/Skin04/UdyrLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 101
+                }
+            ],
+            "skinAugments": null,
+            "description": "Wear the onesie. Become the beast."
+        },
+        {
+            "id": 77005,
+            "isBase": false,
+            "name": "Dragon Oracle Udyr",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/77/77005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/77/77005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/77/77005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/Skins/Skin05/UdyrLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 13
+                }
+            ],
+            "skinAugments": null,
+            "description": "Every dragon that dies leaves behind a blazing spirit. Through Udyr, a mystic who doubted the old tales, these dragon spirits have the chance to touch life once again. He believes that dragons are only as evil as those who command them and, in channeling the spirits and their flames, seeks to prove it to the slayers."
+        },
+        {
+            "id": 77006,
+            "isBase": false,
+            "name": "Inkshadow Udyr",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/77/77006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/77/77006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/77/77006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/Skins/Skin06/UdyrLoadScreen_6.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Udyr/Skins/Skin06/UdyrLoadScreen_6_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/77/77006.png",
+            "chromas": [
+                {
+                    "id": 77007,
+                    "name": "Inkshadow Udyr",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/77/77007.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 77008,
+                    "name": "Inkshadow Udyr",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/77/77008.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 77009,
+                    "name": "Inkshadow Udyr",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/77/77009.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 77010,
+                    "name": "Inkshadow Udyr",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/77/77010.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 77011,
+                    "name": "Inkshadow Udyr",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/77/77011.png",
+                    "colors": [
+                        "#B5CED6",
+                        "#33D889"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2023 Inkshadow event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 192
+                }
+            ],
+            "skinAugments": null,
+            "description": "Udyr has given up much as tattoo artist for the Inkshadow Warriors, sacrificing pieces of himself to multiple spirits and covering his body in their arcane contracts to enhance his natural second sight. He sees the souls of his canvases, knows the price they must pay, and connects them to the spirits who will give them the power to do what must be done."
+        }
+    ],
+    "passive": {
+        "name": "Bridge Between",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/HUD/Icons2D/Udyr_P.png",
+        "abilityVideoPath": "champion-abilities/0077/ability_0077_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0077/ability_0077_P1.jpg",
+        "description": "Udyr has four basic Abilities that swap between Stances and can Recast an Ability to renew it with Ultimate benefits. Additionally, after using an Ability, Udyr's next two Attacks gain Attack Speed."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Wilding Claw",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/HUD/Icons2D/Udyr_Q.png",
+            "abilityVideoPath": "champion-abilities/0077/ability_0077_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0077/ability_0077_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Udyr gains attack speed and his next two attacks deal bonus physical damage. Recast: Gain even more attack speed, and the next two attacks call lightning to strike the target.",
+            "dynamicDescription": "<spellActive>Claw Stance:</spellActive> Udyr gains <attackSpeed>@AttackSpeedBase*100@% Attack Speed</attackSpeed> and his Attacks deal <physicalDamage>@OnHitDamage@ physical damage</physicalDamage> %i:OnHit% <OnHit>On-Hit</OnHit> for @AttackSpeedDurationBase@ seconds. Additionally, Udyr's next two Attacks in this stance deal a bonus <physicalDamage>@MaxHPOnHit1@ max Health physical damage</physicalDamage> and gain @AttackRange@ range.<br><br><keywordMajor>Awaken:</keywordMajor> Increase bonus <attackSpeed>Attack Speed</attackSpeed> to <attackSpeed>@EmpoweredTotalAS@</attackSpeed> and max Health damage to <physicalDamage>@Q2TotalOnHitHPDamage@</physicalDamage>. Additionally, Udyr's next two Attacks call lightning six times, dealing a total of <magicDamage>@EmpoweredLightningBonusMax@ max Health magic damage</magicDamage> to isolated targets (strikes bounce to other nearby targets when possible).<br>@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000
+            ],
+            "cooldownCoefficients": [
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Iron Mantle",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/HUD/Icons2D/Udyr_W.png",
+            "abilityVideoPath": "champion-abilities/0077/ability_0077_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0077/ability_0077_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Udyr gains a shield and his next two attacks heal him. Recast: Gain an even bigger shield and heal based on max health over the next couple seconds.",
+            "dynamicDescription": "<spellPassive>Mantle Stance:</spellPassive> Udyr gains <shield>@TotalShield@ Shield</shield> for @ShieldDuration@ seconds. Additionally, Udyr's next two Attacks gain @LifeSteal*100@% Life Steal and restore <healing>@LifeOnHit@ Health</healing>.<br><br><keywordMajor>Awaken:</keywordMajor> Gain <shield>@RecastShield@ Shield</shield>, restore <healing>@RecastHeal@ Health</healing> over @ShieldDuration@ seconds, and Udyr's next two Attacks instead have @LifeSteal*200@% Life Steal and restore <healing>@LifeOnHitAwakened@ Health</healing>.<br>@SpellModifierDescriptionAppend@",
+            "range": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "costCoefficients": [
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000
+            ],
+            "cooldownCoefficients": [
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.4500,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Blazing Stampede",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/HUD/Icons2D/Udyr_E.png",
+            "abilityVideoPath": "champion-abilities/0077/ability_0077_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0077/ability_0077_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Udyr gains movement speed and his first attack against each target will Stun them. Recast: Gain even more movement speed and immunity to immobilizing effects for a couple seconds. ",
+            "dynamicDescription": "<spellActive>Stampede Stance:</spellActive> Udyr gains <speed>@MoveSpeed*100@% Move Speed</speed>, decaying over @MoveSpeedDuration@ seconds. Additionally, Udyr's Attacks dash him to the target and <status>Stun</status> for @StunDuration@ seconds (@ICD@ second Cooldown per target).<br><br><keywordMajor>Awaken:</keywordMajor> Grants immunity to <status>Immobilizing</status> and <status>Disabling</status> effects and an additional <speed>@MoveSpeedBonus@ Move Speed</speed> for @UnstoppableDuration@ seconds.@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000
+            ],
+            "cooldownCoefficients": [
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Wingborne Storm",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/HUD/Icons2D/Udyr_R.png",
+            "abilityVideoPath": "champion-abilities/0077/ability_0077_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0077/ability_0077_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Udyr surrounds himself in a glacial storm, damaging and slowing nearby enemies. Recast: Empower and unleash the storm, causing it to track enemies and deal additional damage.",
+            "dynamicDescription": "<spellActive>Storm Stance:</spellActive> Udyr surrounds himself in a glacial storm for @BuffDuration@ seconds, dealing <magicDamage>@StormDamage@ magic damage</magicDamage> per second to nearby enemies and <status>Slowing</status> them by @SlowPotency*100@%. Additionally, Udyr's next two Attacks in this stance deal <magicDamage>@PulseDamage@ magic damage</magicDamage> to enemies in the storm.<br><br><keywordMajor>Awaken:</keywordMajor> Unleash the storm, causing it to follow Udyr's last Attacked enemy, deal an additional <magicDamage>@PercentHPBlast@ max Health magic damage</magicDamage> over the duration, and <status>Slow</status> by an additional @EmpoweredSlow@.@SpellModifierDescriptionAppend@",
+            "range": [
+                370.0000,
+                370.0000,
+                370.0000,
+                370.0000,
+                370.0000,
+                370.0000
+            ],
+            "costCoefficients": [
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000
+            ],
+            "cooldownCoefficients": [
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

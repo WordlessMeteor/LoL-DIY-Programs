@@ -1,0 +1,1591 @@
+{
+    "id": 37,
+    "name": "Sona",
+    "alias": "Sona",
+    "title": "Maven of the Strings",
+    "shortBio": "Sona is Demacia's foremost virtuoso of the stringed etwahl, speaking only through her graceful chords and vibrant arias. This genteel manner has endeared her to the highborn, though others suspect her spellbinding melodies to actually emanate magic—a Demacian taboo. Silent to outsiders but somehow understood by close companions, Sona plucks her harmonies not only to soothe injured allies, but also to strike down unsuspecting enemies.",
+    "tacticalInfo": {
+        "style": 9,
+        "difficulty": 1,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 1,
+        "crowdControl": 2,
+        "mobility": 1,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/37.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/37.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/37.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/37.ogg",
+    "roles": [
+        "support",
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 37000,
+            "isBase": true,
+            "name": "Sona",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/37/37000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/37/37000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/37/37000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sona/Skins/Base/SonaLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 37001,
+            "isBase": false,
+            "name": "Muse Sona",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/37/37001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/37/37001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/37/37001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sona/Skins/Skin01/SonaLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 72
+                }
+            ],
+            "skinAugments": null,
+            "description": "Sona is a goddess of inspiration, compelling her worshippers to create profound works of art for all the world to see. Forgotten with the march of time, she has recently enjoyed a resurgence of followers in the form of coffee-addled waiters working on their 'next big screenplay idea.'"
+        },
+        {
+            "id": 37002,
+            "isBase": false,
+            "name": "Pentakill Sona",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/37/37002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/37/37002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/37/37002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sona/Skins/Skin02/SonaLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 16
+                }
+            ],
+            "skinAugments": null,
+            "description": "Never tell Sona of PENTAKILL that keyboards aren't metal. Her instrument is filled with living barbed wire and a sonic scream loud enough to bring other, lesser musical genres crashing to their knees."
+        },
+        {
+            "id": 37003,
+            "isBase": false,
+            "name": "Silent Night Sona",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/37/37003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/37/37003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/37/37003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sona/Skins/Skin03/SonaLoadScreen_3.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sona/Skins/Skin03/SonaLoadScreen_3_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 48
+                }
+            ],
+            "skinAugments": null,
+            "description": "Drifting through the streets as she plays, Sona's beautiful melodies bring out the wonder of fresh snowfalls, quiet evenings by the fire, and time spent with family and friends. She can also weaponize these songs, raining destruction upon those who would spoil the holidays."
+        },
+        {
+            "id": 37004,
+            "isBase": false,
+            "name": "Guqin Sona",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/37/37004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/37/37004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/37/37004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sona/Skins/Skin04/SonaLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37004.png",
+            "chromas": [
+                {
+                    "id": 37008,
+                    "name": "Guqin Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37008.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "Loot exclusive gained from the 2018 Lunar Revel missions."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 37055,
+                    "name": "Guqin Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37055.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 55
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 37005,
+            "isBase": false,
+            "name": "Arcade Sona",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/37/37005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/37/37005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/37/37005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sona/Skins/Skin05/SonaLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37005.png",
+            "chromas": [
+                {
+                    "id": 37016,
+                    "name": "Arcade Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37016.png",
+                    "colors": [
+                        "#A5FFF8",
+                        "#D87BFF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "Loot exclusive gained during the 2019 Arcade event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 10
+                }
+            ],
+            "skinAugments": null,
+            "description": "Being forcefully transported from the real world to fight an army of evil video game bosses is no sweat for Sona. She was the first person to beat Keyboard Solo 4's ultra solo mode on nightmare difficulty—a feat that, by the developers' own admission, should not have been possible."
+        },
+        {
+            "id": 37006,
+            "isBase": false,
+            "name": "DJ Sona",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/37/37006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/37/37006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/37/37006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sona/Skins/Skin06/SonaLoadScreen_6.jpg",
+            "skinType": "Ultimate",
+            "rarity": "kUltimate",
+            "isLegacy": false,
+            "splashVideoPath": "/lol-game-data/assets/ASSETS/Characters/Sona/Skins/Skin06/AnimatedSplash/Sona_Skin6_centered.webm",
+            "collectionSplashVideoPath": "/lol-game-data/assets/ASSETS/Characters/Sona/Skins/Skin06/AnimatedSplash/Sona_Skin6_uncentered.webm",
+            "featuresText": "<ul><li>Trio of music styles</li><li>Show-stopping dance moves</li><li>Light show of effects</li><li>Music sharing with teammates</li><li>Three exclusive icons which grant dynamic profile background</li></ul>",
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 173
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 37007,
+            "isBase": false,
+            "name": "Sweetheart Sona",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/37/37007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/37/37007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/37/37007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sona/Skins/Skin07/SonaLoadScreen_7.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 64
+                }
+            ],
+            "skinAugments": null,
+            "description": "Sona's quiet elegance and mastery of enchanted music might make the heart go all aflutter, but don't be fooled—she can still cut a man in half at thirty paces with her harp's soundwaves. That's the duality of love: sometimes you win, sometimes you get cut in half by soundwaves."
+        },
+        {
+            "id": 37009,
+            "isBase": false,
+            "name": "Odyssey Sona",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/37/37009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/37/37009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/37/37009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sona/Skins/Skin09/SonaLoadScreen_9.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sona/Skins/Skin09/SonaLoadScreen_9_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37009.png",
+            "chromas": [
+                {
+                    "id": 37010,
+                    "name": "Odyssey Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37010.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37011,
+                    "name": "Odyssey Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37011.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive during 2018."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 37012,
+                    "name": "Odyssey Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37012.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37013,
+                    "name": "Odyssey Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37013.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37014,
+                    "name": "Odyssey Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37014.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37015,
+                    "name": "Odyssey Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37015.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 73
+                }
+            ],
+            "skinAugments": null,
+            "description": "Once member of the Templar Order, Sona was born with the ability to commune directly with ora, and the creatures from which it is harvested. More recently, she has sought out Yasuo, troubled captain of the Morning Star, and joined his ragtag crew—hoping to avert a disaster that could destroy the entire galaxy."
+        },
+        {
+            "id": 37017,
+            "isBase": false,
+            "name": "PsyOps Sona",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/37/37017.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/37/37017.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/37/37017.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sona/Skins/Skin17/SonaLoadScreen_17.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sona/Skins/Skin17/SonaLoadscreen_17_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37017.png",
+            "chromas": [
+                {
+                    "id": 37018,
+                    "name": "PsyOps Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37018.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2020."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 37019,
+                    "name": "PsyOps Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37019.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37020,
+                    "name": "PsyOps Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37020.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37021,
+                    "name": "PsyOps Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37021.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37022,
+                    "name": "PsyOps Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37022.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37023,
+                    "name": "PsyOps Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37023.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37024,
+                    "name": "PsyOps Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37024.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37025,
+                    "name": "PsyOps Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37025.png",
+                    "colors": [
+                        "#B2D1E4",
+                        "#3CABFF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2020 PsyOps event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 133
+                }
+            ],
+            "skinAugments": null,
+            "description": "An immensely powerful psychic, Sona has spent the past several years locked in darkness, subjected to harrowing experiments to further the Black Rose Group's aims of manufacturing the perfect human bioweapon. Freeing herself during the assault on the BRG's research facility, she discovers her power has grown to near-omnipotence, making her less a human than a psychic god."
+        },
+        {
+            "id": 37026,
+            "isBase": false,
+            "name": "Pentakill III: Lost Chapter Sona",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/37/37026.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/37/37026.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/37/37026.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sona/Skins/Skin26/SonaLoadScreen_26.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37026.png",
+            "chromas": [
+                {
+                    "id": 37027,
+                    "name": "Pentakill III: Lost Chapter Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37027.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2021."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 37028,
+                    "name": "Pentakill III: Lost Chapter Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37028.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37029,
+                    "name": "Pentakill III: Lost Chapter Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37029.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37030,
+                    "name": "Pentakill III: Lost Chapter Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37030.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37031,
+                    "name": "Pentakill III: Lost Chapter Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37031.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37032,
+                    "name": "Pentakill III: Lost Chapter Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37032.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 37033,
+                    "name": "Pentakill III: Lost Chapter Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37033.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37034,
+                    "name": "Pentakill III: Lost Chapter Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37034.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 151
+                }
+            ],
+            "skinAugments": null,
+            "description": "All hail, Sona, the Silent Virtuoso! An artist's soul can change the world, and with the harmonious power of creation at her fingertips, she will prove that what is made can yet be unmade."
+        },
+        {
+            "id": 37035,
+            "isBase": false,
+            "name": "Star Guardian Sona",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/37/37035.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/37/37035.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/37/37035.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sona/Skins/Skin35/SonaLoadScreen_35.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sona/Skins/Skin35/SonaLoadscreen_35_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37035.png",
+            "chromas": [
+                {
+                    "id": 37036,
+                    "name": "Star Guardian Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37036.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 37037,
+                    "name": "Star Guardian Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37037.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37038,
+                    "name": "Star Guardian Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37038.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37039,
+                    "name": "Star Guardian Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37039.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 37040,
+                    "name": "Star Guardian Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37040.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37041,
+                    "name": "Star Guardian Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37041.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37042,
+                    "name": "Star Guardian Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37042.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37043,
+                    "name": "Star Guardian Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37043.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37044,
+                    "name": "Star Guardian Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37044.png",
+                    "colors": [
+                        "#FDA4DA",
+                        "#9DE5FF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2022 Star Guardian event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 161
+                }
+            ],
+            "skinAugments": null,
+            "description": "Quiet and reflective, Sona spends her time away from the Guardians as a composer of music... and her time with them as a fighter of incredible power, blasting enemies away with sonically charged starlight. Though she cannot speak, she always makes her voice heard through deeds... or her chatterbox familiar-slash-interpreter, Chiizu."
+        },
+        {
+            "id": 37045,
+            "isBase": false,
+            "name": "Immortal Journey Sona",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/37/37045.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/37/37045.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/37/37045.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sona/Skins/Skin45/SonaLoadScreen_45.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sona/Skins/Skin45/SonaLoadScreen_45_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37045.png",
+            "chromas": [
+                {
+                    "id": 37047,
+                    "name": "Immortal Journey Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37047.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 37048,
+                    "name": "Immortal Journey Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37048.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 37049,
+                    "name": "Immortal Journey Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37049.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37050,
+                    "name": "Immortal Journey Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37050.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37051,
+                    "name": "Immortal Journey Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37051.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37052,
+                    "name": "Immortal Journey Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37052.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37053,
+                    "name": "Immortal Journey Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37053.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 37054,
+                    "name": "Immortal Journey Sona",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/37/37054.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 81
+                }
+            ],
+            "skinAugments": null,
+            "description": "As a newly immortal member of the Radiant Passion School, Sona's power is in building harmony from dissonance. To her, immortality only comes through finding your shared harmony with your fellow people, and she sees her students as strong notes to be built into immortal chords. It is in this shared passion that makes anything possible."
+        },
+        {
+            "id": 37046,
+            "isBase": false,
+            "name": "Prestige Immortal Journey Sona",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/37/37046.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/37/37046.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/37/37046.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sona/Skins/Skin46/SonaLoadScreen_46.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sona/Skins/Skin46/SonaLoadScreen_46_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 81
+                }
+            ],
+            "skinAugments": null,
+            "description": "A virtuoso artist radiating passion in whatever she does, Sona paused her promising music career to enroll in fashion school. Now a graduate, the Gala is the first showing of her debut line, and Sona is more than happy to let her work do the talking. Unlike her classmates, she has no dreams of becoming immortal through her designs. The journey is enough."
+        }
+    ],
+    "passive": {
+        "name": "Power Chord",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Sona/HUD/Icons2D/Sona_Passive_Charged.png",
+        "abilityVideoPath": "champion-abilities/0037/ability_0037_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0037/ability_0037_P1.jpg",
+        "description": "<passive>Accelerando</passive>: Sona gains non-Ultimate ability haste permanently for her basic abilities as she uses her abilities well, up to a cap. Beyond that cap, further successful uses reduce her ultimate's remaining cooldown instead.<br><br><passive>Power Chord</passive>: Every few spell casts, Sona's next attack will deal bonus magic damage in addition to an additional effect based on what basic Ability Sona last activated."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Hymn of Valor",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Sona/HUD/Icons2D/Sona_Q.png",
+            "abilityVideoPath": "champion-abilities/0037/ability_0037_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0037/ability_0037_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Sona plays the Hymn of Valor, sends out bolts of sound, dealing magic damage to two nearby enemies, prioritizing champions and monsters. Sona gains a temporary aura that grants allies tagged by the zone bonus damage on their next attack against enemies.",
+            "dynamicDescription": "Sona deals <magicDamage>@TotalDamage@ magic damage</magicDamage> to the nearest two enemies, prioritizing champions. She then begins a new <keywordMajor>Melody</keywordMajor>. Gain a stack of <keywordMajor>Accelerando</keywordMajor> for every champion you damage with this.<br><br><keywordMajor>Melody:</keywordMajor> Sona gains an aura for @AuraDuration@ seconds, granting allied champions an additional <magicDamage>@TotalOnHitDamage@ magic damage</magicDamage> %i:OnHit% on their next Attack within @OnHitDuration@ seconds.<br><br><keywordMajor>Power Chord - Staccato:</keywordMajor> Power Chord bonus damage (<magicDamage>@TotalStaccatoDamage@ total magic damage</magicDamage>).@SpellModifierDescriptionAppend@",
+            "range": [
+                825.0000,
+                825.0000,
+                825.0000,
+                825.0000,
+                825.0000,
+                825.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000
+            ],
+            "cooldownCoefficients": [
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Aria of Perseverance",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Sona/HUD/Icons2D/Sona_W.png",
+            "abilityVideoPath": "champion-abilities/0037/ability_0037_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0037/ability_0037_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Sona plays the Aria of Perseverance, sending out protective melodies, healing Sona and a nearby wounded ally. Sona gains a temporary aura that grants allies tagged by the zone a temporary shield.",
+            "dynamicDescription": "<spellPassive>Active:</spellPassive> Sona restores <healing>@TotalHeal@ Health</healing> to herself and a nearby allied champion, prioritizing the most wounded. She then begins a new <keywordMajor>Melody</keywordMajor>.<br><br><keywordMajor>Melody:</keywordMajor> Sona gains an aura for @AuraDuration@ seconds, granting allied champions <shield>@TotalShield@ Shield</shield> for @ShieldDuration@ seconds.<br><br>Gain a stack of <keywordMajor>Accelerando</keywordMajor> whenever you heal another injured ally and every time you protect another ally from at least @AccelerandoShieldBreakpoint@ damage with this shield.<br><br><keywordMajor>Power Chord - Diminuendo:</keywordMajor> Power Chord also reduces physical and magic damage dealt by the target by @TotalDiminuendoWeakenPercent@ for @DiminuendoDuration@ seconds.@SpellModifierDescriptionAppend@",
+            "range": [
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000
+            ],
+            "costCoefficients": [
+                80.0000,
+                85.0000,
+                90.0000,
+                95.0000,
+                100.0000,
+                105.0000
+            ],
+            "cooldownCoefficients": [
+                10.0000,
+                10.0000,
+                10.0000,
+                10.0000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Song of Celerity",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Sona/HUD/Icons2D/Sona_E.png",
+            "abilityVideoPath": "champion-abilities/0037/ability_0037_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0037/ability_0037_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Sona plays the Song of Celerity, granting nearby allies bonus Move Speed. Sona gains a temporary aura that grants allied champions tagged by the zone bonus Move Speed.",
+            "dynamicDescription": "<spellPassive>Active:</spellPassive> She begins a new <keywordMajor>Melody</keywordMajor> and grants herself <speed>@TotalSelfMovementSpeed@ Move Speed</speed> for @SelfMovementSpeedDurationMin@ seconds, extended to up to @SelfMovementSpeedDurationMax@ seconds if she doesn't take damage. <br><br><keywordMajor>Melody:</keywordMajor> Sona gains an aura for @AuraDuration@ seconds that grants allied champions <speed>@TotalAllyMovementSpeed@ Move Speed</speed> for @AllyMovementSpeedDuration@ seconds.<br><br><keywordMajor>Power Chord - Tempo:</keywordMajor> Power Chord also <status>Slows</status> the target by @TotalTempoMoveSpeedSlow@ for @TempoDuration@ seconds.@SpellModifierDescriptionAppend@",
+            "range": [
+                430.0000,
+                430.0000,
+                430.0000,
+                430.0000,
+                430.0000,
+                430.0000
+            ],
+            "costCoefficients": [
+                65.0000,
+                65.0000,
+                65.0000,
+                65.0000,
+                65.0000,
+                65.0000
+            ],
+            "cooldownCoefficients": [
+                14.0000,
+                14.0000,
+                14.0000,
+                14.0000,
+                14.0000,
+                14.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Crescendo",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Sona/HUD/Icons2D/Sona_R.png",
+            "abilityVideoPath": "champion-abilities/0037/ability_0037_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0037/ability_0037_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Sona plays her ultimate chord, stunning enemy champions and forcing them to dance and dealing magic damage to them. Each rank reduces the base cooldown of Sona's basic abilities.",
+            "dynamicDescription": "Sona strikes an irresistible chord, <status>Stunning</status> enemy for @StunDuration@ seconds and dealing <magicDamage>@TotalDamage@ magic damage</magicDamage>.@SpellModifierDescriptionAppend@",
+            "range": [
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                140.0000,
+                120.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

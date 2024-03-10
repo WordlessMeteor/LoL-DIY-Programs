@@ -1,0 +1,1639 @@
+{
+    "id": 117,
+    "name": "仙灵女巫",
+    "alias": "Lulu",
+    "title": "璐璐",
+    "shortBio": "璐璐是一位约德尔女巫，最著名的能力是操纵梦境般的幻觉和召唤各种奇异的小动物。在小仙灵皮克斯的陪伴下，璐璐在符文之地上四处云游。她会突发奇想地重塑现实，改变世界的本质结构，改造这个平凡的物质领域中任何让她感觉是限制的东西。虽然其他人对她的魔法颇有微词，往好听了说是一种异象，往难听了说是一种危害。但是璐璐始终认为，一点魔力的启发对任何人都没有坏处。",
+    "tacticalInfo": {
+        "style": 8,
+        "difficulty": 2,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 1,
+        "crowdControl": 2,
+        "mobility": 1,
+        "utility": 3
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/117.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/117.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/117.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/117.ogg",
+    "roles": [
+        "support",
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 117000,
+            "isBase": true,
+            "name": "仙灵女巫",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/117/117000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/117/117000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/117/117000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lulu/Skins/Base/LuluLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 117001,
+            "isBase": false,
+            "name": "糖果女巫 璐璐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/117/117001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/117/117001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/117/117001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lulu/Skins/Skin01/LuluLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 57
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为一个住在薄荷松埌外围地区的糖果女巫，璐璐众所周知的糖果魔法赋予任何想要得到它的人难以置信的力量……但是，这仅仅需要他们的糖果灵魂付出沉重的代价而已。"
+        },
+        {
+            "id": 117002,
+            "isBase": false,
+            "name": "邪恶女巫 璐璐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/117/117002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/117/117002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/117/117002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lulu/Skins/Skin02/LuluLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 88
+                }
+            ],
+            "skinAugments": null,
+            "description": "在符文之地，父母告诫孩子要听话，以免在晚上被邪恶的璐璐抢走。在那里，她会把他们变成皮克斯精灵，让他们在令人毛骨悚然的森林里采花，以实施她的邪恶计划！"
+        },
+        {
+            "id": 117003,
+            "isBase": false,
+            "name": "驯龙女巫 璐璐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/117/117003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/117/117003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/117/117003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lulu/Skins/Skin03/LuluLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117003.png",
+            "chromas": [
+                {
+                    "id": 117021,
+                    "name": "驯龙女巫 璐璐 无畏绿龙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117021.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 117022,
+                    "name": "驯龙女巫 璐璐 庄严银龙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117022.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 117023,
+                    "name": "驯龙女巫 璐璐 狂傲红龙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117023.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 117024,
+                    "name": "驯龙女巫 璐璐 威仪晶龙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117024.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 117025,
+                    "name": "驯龙女巫 璐璐 狡黠黑龙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117025.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 13
+                }
+            ],
+            "skinAugments": null,
+            "description": "巨龙，尽管很可怕，仍然是具有生命的活物，因此可以在恰当的情境下与它们成为朋友。璐璐用奇思妙想的魔法迷住了她的小小朋友……同时也成为了空前的首个驯龙师。"
+        },
+        {
+            "id": 117004,
+            "isBase": false,
+            "name": "寒冬精灵 璐璐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/117/117004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/117/117004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/117/117004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lulu/Skins/Skin04/LuluLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Snowdown",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/9.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/9.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 47
+                }
+            ],
+            "skinAugments": null,
+            "description": "和善的小女巫身后跟着魄罗小伙伴皮克斯，这是璐璐在用古怪的冰雪魔法给各地的冰雪节狂欢送去惊喜与欢欣。她同时也是个老练的战士，能够发射夺命的冰川长枪，还能把敌人变成无害的雪娃娃。"
+        },
+        {
+            "id": 117005,
+            "isBase": false,
+            "name": "泳池派对 璐璐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/117/117005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/117/117005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/117/117005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lulu/Skins/Skin05/LuluLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117005.png",
+            "chromas": [
+                {
+                    "id": 117007,
+                    "name": "泳池派对 璐璐 黄金章鱼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117007.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 117008,
+                    "name": "泳池派对 璐璐 笨笨暹罗猫",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117008.png",
+                    "colors": [
+                        "#DED6B0",
+                        "#DED6B0"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 117009,
+                    "name": "泳池派对 璐璐 热辣绿珊瑚",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117009.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 117010,
+                    "name": "泳池派对 璐璐 萌萌红尾金",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117010.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 117011,
+                    "name": "泳池派对 璐璐 坏坏鹰嘴鱼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117011.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 117012,
+                    "name": "泳池派对 璐璐 呆呆小丑鱼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117012.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 117013,
+                    "name": "泳池派对 璐璐 尊贵红钻鱼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117013.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 15
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 117006,
+            "isBase": false,
+            "name": "星之守护者 璐璐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/117/117006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/117/117006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/117/117006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lulu/Skins/Skin06/LuluLoadscreen_6.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lulu/Skins/Skin06/LuluLoadscreen_6_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 19
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为拉克丝小队中最年幼的成员，璐璐是一名古怪但却有天赋的星之守护者。虽然她与星光的独特连接有时让她迷惑不解，但璐璐能够肩负起支援全队的重任——她将让队友们知道，星光也在支援着他们。"
+        },
+        {
+            "id": 117014,
+            "isBase": false,
+            "name": "创星之灵 璐璐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/117/117014.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/117/117014.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/117/117014.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lulu/Skins/Skin14/LuluLoadScreen_14.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117014.png",
+            "chromas": [
+                {
+                    "id": 117016,
+                    "name": "创星之灵 璐璐 变通之慧",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117016.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 117017,
+                    "name": "创星之灵 璐璐 独创之智",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117017.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 117018,
+                    "name": "创星之灵 璐璐 流畅之悟",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117018.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 117019,
+                    "name": "创星之灵 璐璐 精进之毅",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117019.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 117020,
+                    "name": "创星之灵 璐璐 敏觉之明",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117020.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 43
+                }
+            ],
+            "skinAugments": null,
+            "description": "璐璐的任务是描绘天际，她古灵精怪的魔法四处飞溅，与新生的星辰一同点缀着天空。她一丝不苟地记录着他们的名字，而当它们最终陨落时，也为他们哀悼。  "
+        },
+        {
+            "id": 117015,
+            "isBase": false,
+            "name": "睡衣守护者 璐璐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/117/117015.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/117/117015.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/117/117015.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lulu/Skins/Skin15/LuluLoadScreen_15.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 19
+                }
+            ],
+            "skinAugments": null,
+            "description": "毛绒连体睡衣！折纸算命！璐璐已经为这场睡衣派对进行了充分的准备。就连皮克斯都很激动，并被现场的气氛感染了。星之守护者们命中注定要保护宇宙——但那不意味着他们不能在途中拥有一点小小的欢乐。"
+        },
+        {
+            "id": 117026,
+            "isBase": false,
+            "name": "太空律动 “节奏幻师” 璐璐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/117/117026.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/117/117026.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/117/117026.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lulu/Skins/Skin26/LuluLoadScreen_26.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lulu/Skins/Skin26/LuluLoadscreen_26_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117026.png",
+            "chromas": [
+                {
+                    "id": 117028,
+                    "name": "“节奏幻师” 璐璐 把你变成小橘",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117028.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 117029,
+                    "name": "“节奏幻师” 璐璐 把你变成小蓝",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117029.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 117030,
+                    "name": "“节奏幻师” 璐璐 把你变成小绿",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117030.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 117031,
+                    "name": "“节奏幻师” 璐璐 把你变成小粉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117031.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 117032,
+                    "name": "“节奏幻师” 璐璐 把你变成小黄",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117032.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 117033,
+                    "name": "“节奏幻师” 璐璐 把你变成小紫",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117033.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 117034,
+                    "name": "“节奏幻师” 璐璐 把你变成小柠檬",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117034.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 117035,
+                    "name": "“节奏幻师” 璐璐 把你变成小黑",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117035.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 117036,
+                    "name": "“节奏幻师” 璐璐 把你变成小花",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117036.png",
+                    "colors": [
+                        "#9DFFEF",
+                        "#AA55FF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在太空律动(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 144
+                }
+            ],
+            "skinAugments": null,
+            "description": "璐璐来自布吉乐仙境，“纯粹律动”星系的一颗星球。她对星界迪斯科能量的共鸣有种独特的感应力。她用她的法杖变出自由和恣意的幻景，甚至可以让银河系中最笨拙的生物跟着一起打拍子。"
+        },
+        {
+            "id": 117027,
+            "isBase": false,
+            "name": "至臻 太空律动 “节奏幻师” 璐璐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/117/117027.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/117/117027.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/117/117027.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lulu/Skins/Skin27/LuluLoadscreen_27.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lulu/Skins/Skin27/LuluLoadscreen_27_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 144
+                }
+            ],
+            "skinAugments": null,
+            "description": "在刚刚访问过星系中心的三派对女神后，璐璐与“律动”达成了空前的合拍。她的幻景甚至更加强而有力，她的节奏甚至更加不可抵挡，并且没人知道璐璐接下来会在哪出现。"
+        },
+        {
+            "id": 117037,
+            "isBase": false,
+            "name": "小怪兽训练师 璐璐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/117/117037.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/117/117037.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/117/117037.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lulu/Skins/Skin37/LuluLoadScreen_37.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lulu/Skins/Skin37/LuluLoadscreen_37_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117037.png",
+            "chromas": [
+                {
+                    "id": 117038,
+                    "name": "小怪兽训练师 璐璐 红宝",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117038.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 117039,
+                    "name": "小怪兽训练师 璐璐 紫晶",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117039.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 117040,
+                    "name": "小怪兽训练师 璐璐 绿松",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117040.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 117041,
+                    "name": "小怪兽训练师 璐璐 绿宝",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117041.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 117042,
+                    "name": "小怪兽训练师 璐璐 蔷薇石英",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117042.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 117043,
+                    "name": "小怪兽训练师 璐璐 天蓝宝",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117043.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 117044,
+                    "name": "小怪兽训练师 璐璐 黑曜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117044.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 117045,
+                    "name": "小怪兽训练师 璐璐 珍珠",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117045.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 162
+                }
+            ],
+            "skinAugments": null,
+            "description": "虽然璐璐还是一个新人，但她如典范一般体现了成为小怪兽训练师的意义。她从头到尾地学习了“核心”（全称：用于接替和交战的袖珍工具）手册。她甚至已经在战场上将它用过几次了！她的最新发现：电格莫，是一种有多可爱就有多危险的生物。"
+        },
+        {
+            "id": 117046,
+            "isBase": false,
+            "name": "咖啡甜心 璐璐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/117/117046.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/117/117046.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/117/117046.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lulu/Skins/Skin46/LuluLoadScreen_46.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117046.png",
+            "chromas": [
+                {
+                    "id": 117047,
+                    "name": "咖啡甜心 璐璐 草莓戚风",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117047.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 117048,
+                    "name": "咖啡甜心 璐璐 吉子芝士",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117048.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 117049,
+                    "name": "咖啡甜心 璐璐 抹茶巧克力",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117049.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 117050,
+                    "name": "咖啡甜心 璐璐 提子班戟",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117050.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 117051,
+                    "name": "咖啡甜心 璐璐 海盐泡芙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117051.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 117052,
+                    "name": "咖啡甜心 璐璐 酒醉樱桃",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117052.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 117053,
+                    "name": "咖啡甜心 璐璐 薄荷雪拔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117053.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 117054,
+                    "name": "咖啡甜心 璐璐 焦糖布丁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/117/117054.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 153
+                }
+            ],
+            "skinAugments": null,
+            "description": "当璐璐和她得力的副主厨皮克斯制作甜点时，甜食爱好者们总是会感到满足！他们的糕点魔法料理只需要一丝香气，就足以让最任性的顾客们沉醉。有人说他们的美食非常令人着迷，甚至具有改变现实的效果……"
+        }
+    ],
+    "passive": {
+        "name": "皮克斯，仙灵伙伴",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Lulu/HUD/Icons2D/Lulu_PixFaerieCompanion.png",
+        "abilityVideoPath": "champion-abilities/0117/ability_0117_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0117/ability_0117_P1.jpg",
+        "description": "每当皮克斯正在跟随的英雄进行攻击时，皮克斯就会发射魔法飞弹。这些飞弹会自动寻敌，但也会被其它单位所拦截。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "闪耀长枪",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Lulu/HUD/Icons2D/Lulu_Glitterbolt.png",
+            "abilityVideoPath": "champion-abilities/0117/ability_0117_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0117/ability_0117_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "璐璐和皮克斯各自发射一个穿刺飞弹，对命中的所有敌人造成伤害和重度减速效果。",
+            "dynamicDescription": "璐璐和皮克斯各发射一束贯穿魔弹，造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>和在@Effect3Amount@秒里持续衰减的@Effect2Amount*-100@%<status>减速</status>。<br><br>如果两束魔弹都命中了相同的一名敌人，那么会对其造成额外的<magicDamage>@BonusMissileDamage@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                925.0000,
+                925.0000,
+                925.0000,
+                925.0000,
+                925.0000,
+                925.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000
+            ],
+            "cooldownCoefficients": [
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.4000,
+                "coefficient2": 0.1500
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    45.0000,
+                    70.0000,
+                    105.0000,
+                    140.0000,
+                    175.0000,
+                    210.0000,
+                    255.0000
+                ],
+                "Effect2Amount": [
+                    -0.8000,
+                    -0.8000,
+                    -0.8000,
+                    -0.8000,
+                    -0.8000,
+                    -0.8000,
+                    -0.8000
+                ],
+                "Effect3Amount": [
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000
+                ],
+                "Effect6Amount": [
+                    8.0000,
+                    8.0000,
+                    8.0000,
+                    8.0000,
+                    8.0000,
+                    8.0000,
+                    8.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "奇思妙想",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Lulu/HUD/Icons2D/Lulu_Whimsy.png",
+            "abilityVideoPath": "champion-abilities/0117/ability_0117_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0117/ability_0117_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "如果对友军施放，会暂时增加目标友军的攻击速度和移动速度。如果对敌人施放，会将一名敌方英雄变成可爱的动物，使其无法攻击或施法。",
+            "dynamicDescription": "当用在一名友方身上时，璐璐提供<speed>@TotalMS@移动速度</speed>和<attackSpeed>@Effect7Amount*100@%攻击速度</attackSpeed>，持续@Effect5Amount@秒。<br><br>当用在一名敌人身上时，璐璐会将其<status>变形</status>@Effect3Amount@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000
+            ],
+            "costCoefficients": [
+                65.0000,
+                65.0000,
+                65.0000,
+                65.0000,
+                65.0000,
+                65.0000
+            ],
+            "cooldownCoefficients": [
+                17.0000,
+                16.5000,
+                16.0000,
+                15.5000,
+                15.0000,
+                15.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.6000,
+                "coefficient2": 0.0500
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.2500,
+                    0.2500,
+                    0.2500,
+                    0.2500,
+                    0.2500,
+                    0.2500,
+                    0.2500
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    1.0000,
+                    1.2000,
+                    1.4000,
+                    1.6000,
+                    1.8000,
+                    2.0000,
+                    2.2000
+                ],
+                "Effect4Amount": [
+                    -60.0000,
+                    -60.0000,
+                    -60.0000,
+                    -60.0000,
+                    -60.0000,
+                    -60.0000,
+                    -60.0000
+                ],
+                "Effect5Amount": [
+                    2.7500,
+                    3.0000,
+                    3.2500,
+                    3.5000,
+                    3.7500,
+                    4.0000,
+                    4.2500
+                ],
+                "Effect6Amount": [
+                    0.0100,
+                    0.0100,
+                    0.0100,
+                    0.0100,
+                    0.0100,
+                    0.0100,
+                    0.0100
+                ],
+                "Effect7Amount": [
+                    0.2250,
+                    0.2500,
+                    0.2750,
+                    0.3000,
+                    0.3250,
+                    0.3500,
+                    0.3750
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "帮忙，皮克斯！",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Lulu/HUD/Icons2D/Lulu_CommandPix.png",
+            "abilityVideoPath": "champion-abilities/0117/ability_0117_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0117/ability_0117_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "如果对友军施放，会命令皮克斯跳到一名友军身上进行保护，之后会跟随并协助目标（而不是璐璐）进行攻击。如果对敌人施放，皮克斯会跳到敌人身上造成伤害，之后会跟随并提供目标的视野。",
+            "dynamicDescription": "在对一名友方施放时，皮克斯会跳到该友方处并提供<spellName>皮克斯，仙灵伙伴</spellName>，持续@Effect1Amount@秒。如果该友方是一名英雄，那么皮克斯还会提供<shield>@TotalShield@护盾值</shield>，持续@Effect7Amount@秒。<br><br>在对一名敌方英雄使用时，皮克斯会妨碍该英雄，造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>并提供其<keywordStealth>真实视野</keywordStealth>，持续@Effect6Amount@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000,
+                80.0000,
+                85.0000
+            ],
+            "cooldownCoefficients": [
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.5500,
+                "coefficient2": 0.4000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000
+                ],
+                "Effect2Amount": [
+                    80.0000,
+                    80.0000,
+                    125.0000,
+                    170.0000,
+                    215.0000,
+                    260.0000,
+                    260.0000
+                ],
+                "Effect3Amount": [
+                    50.0000,
+                    50.0000,
+                    50.0000,
+                    50.0000,
+                    50.0000,
+                    50.0000,
+                    50.0000
+                ],
+                "Effect4Amount": [
+                    80.0000,
+                    80.0000,
+                    125.0000,
+                    170.0000,
+                    215.0000,
+                    260.0000,
+                    260.0000
+                ],
+                "Effect5Amount": [
+                    25.0000,
+                    25.0000,
+                    25.0000,
+                    25.0000,
+                    25.0000,
+                    25.0000,
+                    25.0000
+                ],
+                "Effect6Amount": [
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000
+                ],
+                "Effect7Amount": [
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "狂野生长",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Lulu/HUD/Icons2D/Lulu_GiantGrowth.png",
+            "abilityVideoPath": "champion-abilities/0117/ability_0117_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0117/ability_0117_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "璐璐让她的友军变大，击飞目标附近的敌人，同时为她的友军提供大量生命值加成。接下来的数秒内，该友军会获得一个减少附近敌人速度的光环。",
+            "dynamicDescription": "璐璐使一名友方英雄巨大化，并<status>击飞</status>周围的敌人@KnockbackDuration@秒。巨大化的友方英雄会获得<healing>@TotalBonusHealth@最大生命值</healing>并使周围的敌人们<status>减速</status>@SlowPercent@%，持续@BuffDuration@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                100.0000,
+                80.0000,
+                60.0000,
+                40.0000,
+                20.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.5500,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

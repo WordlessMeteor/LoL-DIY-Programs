@@ -1,0 +1,918 @@
+{
+    "id": 77,
+    "name": "兽灵行者",
+    "alias": "Udyr",
+    "title": "乌迪尔",
+    "shortBio": "身为最强大的兽灵行者，乌迪尔能够与弗雷尔卓德的一切灵体交流。他能感知它们的欲求，也能引导它们的超然力量，融入自己野性十足的战斗。乌迪尔追求的是内心的平衡，这样他的意志才不会在众灵的喧嚣中迷失，但他同时也在追求外在的平衡，因为弗雷尔卓德的神秘大地必须依靠争斗与冲突来获得滋养。乌迪尔十分明白，为了防止弗雷尔卓德陷入看似和平实则僵滞，牺牲在所难免。",
+    "tacticalInfo": {
+        "style": 4,
+        "difficulty": 2,
+        "damageType": "kMixed"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 3,
+        "crowdControl": 2,
+        "mobility": 2,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/77.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/77.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/77.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/77.ogg",
+    "roles": [
+        "fighter",
+        "tank"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 77000,
+            "isBase": true,
+            "name": "兽灵行者",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/77/77000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/77/77000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/77/77000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/Skins/Base/UdyrLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 77001,
+            "isBase": false,
+            "name": "武力全开 乌迪尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/77/77001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/77/77001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/77/77001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/Skins/skin01/UdyrLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 100
+                }
+            ],
+            "skinAugments": null,
+            "description": "希拉爪道馆的学生们知道，告诉人们你擅长拳击的最好方式，就是在你的衣服上都印上一只巨大的拳头。据乌迪尔师父所说，那就是空手道的一个真相。这就是他们的父母都给他们买特制空手道服的原因。"
+        },
+        {
+            "id": 77002,
+            "isBase": false,
+            "name": "四神之力 乌迪尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/77/77002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/77/77002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/77/77002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/Skins/Skin02/UdyrLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 32
+                }
+            ],
+            "skinAugments": null,
+            "description": "乌迪尔受到了诅咒，以一种介于人与野兽之间的状态游荡在这片土地，不再分得清猎人与猎物之间的区别。一旦他接近到足以进行打击的距离，他们就都是他的猎物。"
+        },
+        {
+            "id": 77003,
+            "isBase": false,
+            "name": "灵魂守卫 乌迪尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/77/77003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/77/77003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/77/77003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/Skins/Skin03/UdyrLoadscreen_3.jpg",
+            "skinType": "Ultimate",
+            "rarity": "kUltimate",
+            "isLegacy": false,
+            "splashVideoPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/Skins/Skin03/AnimatedSplash/Udyr_Skin3_centered.webm",
+            "collectionSplashVideoPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/Skins/Skin03/AnimatedSplash/Udyr_Skin3_uncentered.webm",
+            "featuresText": "<ul><li>- 全新的技能特效和动画效果</li><li>- 四套可进化的模型，对应四种姿态</li><li>- 各种独特的击杀特效</li><li>- 四个附带动态肖像背景的专属召唤师图标</ul>",
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Ultimate",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/44.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/44.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 9,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/9_large.png",
+            "skinLines": [
+                {
+                    "id": 163
+                }
+            ],
+            "skinAugments": null,
+            "description": "乌迪尔在艾欧尼亚时，曾在希拉娜修道院受训，学习控制和掌握他的灵力。尽管弗雷尔卓德召唤他回家，但他选择留下来帮助艾欧尼亚重获精神领域的和谐，就像艾欧尼亚对他做的那样。随着他越来越接近这个目标，他明白了他的工作——让符文之地同样地重获精神领域的和谐——才刚刚开始。"
+        },
+        {
+            "id": 77004,
+            "isBase": false,
+            "name": "这货不是乌迪尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/77/77004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/77/77004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/77/77004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/Skins/Skin04/UdyrLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 101
+                }
+            ],
+            "skinAugments": null,
+            "description": "穿上连体衣。变成野兽。"
+        },
+        {
+            "id": 77005,
+            "isBase": false,
+            "name": "龙神之力 乌迪尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/77/77005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/77/77005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/77/77005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/Skins/Skin05/UdyrLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 13
+                }
+            ],
+            "skinAugments": null,
+            "description": "每头巨龙在临终时都会留下一个炽热之灵。通过乌迪尔——一个曾经怀疑过古老传说的秘术师——这些龙灵有机会再次触碰到生命。他相信，巨龙们的邪恶程度取决于指挥它们的那些人，并且正在引导龙灵和它们的烈焰，试图向屠龙者们证明这一点。"
+        },
+        {
+            "id": 77006,
+            "isBase": false,
+            "name": "墨影行者 乌迪尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/77/77006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/77/77006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/77/77006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/Skins/Skin06/UdyrLoadScreen_6.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Udyr/Skins/Skin06/UdyrLoadScreen_6_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/77/77006.png",
+            "chromas": [
+                {
+                    "id": 77007,
+                    "name": "墨影行者 乌迪尔 炽墨挥影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/77/77007.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 77008,
+                    "name": "墨影行者 乌迪尔 云墨漾影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/77/77008.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 77009,
+                    "name": "墨影行者 乌迪尔 樱墨映影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/77/77009.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 77010,
+                    "name": "墨影行者 乌迪尔 玄墨蕴影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/77/77010.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 77011,
+                    "name": "墨影行者 乌迪尔 灵墨刻影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/77/77011.png",
+                    "colors": [
+                        "#B5CED6",
+                        "#33D889"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在墨之影(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 192
+                }
+            ],
+            "skinAugments": null,
+            "description": "乌迪尔已经放弃了作为墨影之纹艺术家的工作，将自己的碎片献给了多个灵体，并用他们的晦涩契约覆盖了他的身体，以增强他天生的第二视力。他看到了他的画布的灵魂们，知道他们必须付出的代价，并将他们与灵体们相连接，来让灵体们给他们提供力量去行必行之事。"
+        }
+    ],
+    "passive": {
+        "name": "众灵纽带",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/HUD/Icons2D/Udyr_P.png",
+        "abilityVideoPath": "champion-abilities/0077/ability_0077_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0077/ability_0077_P1.jpg",
+        "description": "乌迪尔的四个基础技能会让他在四种姿态之间来回转换，并且再次施放同一技能会带来终极技能助益。此外，在使用一个技能后，乌迪尔的下两次攻击获得攻击速度。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "狂暴爪击",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/HUD/Icons2D/Udyr_Q.png",
+            "abilityVideoPath": "champion-abilities/0077/ability_0077_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0077/ability_0077_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "乌迪尔获得攻击速度加成并且他的下两次攻击造成额外的物理伤害。再次施放：获得更多攻击速度加成，并且下两次攻击会召唤闪电打击目标。",
+            "dynamicDescription": "<spellActive>爪击姿态：</spellActive>乌迪尔获得<attackSpeed>@AttackSpeedBase*100@%攻击速度</attackSpeed>并且他攻击造成<physicalDamage>@OnHitDamage@物理伤害</physicalDamage> %i:OnHit%<OnHit>攻击特效</OnHit>，持续@AttackSpeedDurationBase@秒。此外，乌迪尔在这个姿态中的下两次攻击造成额外的<physicalDamage>@MaxHPOnHit1@最大生命值的物理伤害</physicalDamage>并获得@AttackRange@距离。<br><br><keywordMajor>觉醒：</keywordMajor>将额外<attackSpeed>攻击速度</attackSpeed>提升至<attackSpeed>@EmpoweredTotalAS@</attackSpeed>并且将百分比生命值伤害提升至<physicalDamage>@Q2TotalOnHitHPDamage@</physicalDamage>。此外，乌迪尔的下两次攻击会召唤闪电进行6次打击，对落单的目标造成共计<magicDamage>@EmpoweredLightningBonusMax@最大生命值的魔法伤害</magicDamage>(如果可能的话，闪电打击会弹射至附近的其它目标)。<br>@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000
+            ],
+            "cooldownCoefficients": [
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "坚铁甲胄",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/HUD/Icons2D/Udyr_W.png",
+            "abilityVideoPath": "champion-abilities/0077/ability_0077_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0077/ability_0077_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "乌迪尔获得护盾，并且下两次攻击会回复生命值。再次施放：获得更厚的护盾并且在接下来的若干秒内持续获得基于最大生命值的治疗效果。",
+            "dynamicDescription": "<spellPassive>甲胄姿态：</spellPassive>乌迪尔获得持续@ShieldDuration@秒的<shield>@TotalShield@护盾值</shield>。此外，乌迪尔的下两次攻击具有@LifeSteal*100@%生命偷取并回复<healing>@LifeOnHit@生命值</healing>。<br><br><keywordMajor>觉醒：</keywordMajor>获得<shield>@RecastShield@护盾值</shield>，在@ShieldDuration@秒里持续回复<healing>@RecastHeal@生命值</healing>，并且乌迪尔的下两次攻击转而具有@LifeSteal*200@%生命偷取并回复<healing>@LifeOnHitAwakened@生命值</healing>。<br>@SpellModifierDescriptionAppend@",
+            "range": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "costCoefficients": [
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000
+            ],
+            "cooldownCoefficients": [
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.4500,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "踏火蛮冲",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/HUD/Icons2D/Udyr_E.png",
+            "abilityVideoPath": "champion-abilities/0077/ability_0077_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0077/ability_0077_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "乌迪尔获得移动速度并且他对每个目标打出的第一次攻击将造成晕眩。再次施放：获得更多移动速度并在若干秒里免疫定身效果。 ",
+            "dynamicDescription": "<spellActive>蛮冲姿态：</spellActive>乌迪尔获得在@MoveSpeedDuration@秒里持续衰减的<speed>@MoveSpeed*100@%移动速度</speed>。此外，乌迪尔的攻击会使他冲刺到目标处并造成@StunDuration@秒<status>晕眩</status>。(对每个目标各有@ICD@秒冷却时间)。<br><br><keywordMajor>觉醒：</keywordMajor>免疫<status>定身</status>和<status>限制</status>效果，并额外提供持续@UnstoppableDuration@秒的<speed>@MoveSpeedBonus@移动速度</speed>。@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000
+            ],
+            "cooldownCoefficients": [
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "极凌飓风",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Udyr/HUD/Icons2D/Udyr_R.png",
+            "abilityVideoPath": "champion-abilities/0077/ability_0077_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0077/ability_0077_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "乌迪尔召唤冰川风暴环绕自身，对附近的敌人造成伤害和减速。再次施放：强化并释放风暴，让风暴追踪敌人并造成额外伤害。",
+            "dynamicDescription": "<spellActive>飓风姿态：</spellActive>乌迪尔召唤冰川风暴环绕自身@BuffDuration@秒，每秒对附近的敌人造成<magicDamage>@StormDamage@魔法伤害</magicDamage>，并对这些敌人造成@SlowPotency*100@%<status>减速</status>。此外，乌迪尔在这个姿态中的下两次攻击对风暴中的敌人造成<magicDamage>@PulseDamage@魔法伤害</magicDamage>。<br><br><keywordMajor>觉醒：</keywordMajor>释放风暴，使它跟随乌迪尔最后攻击的那名敌人，在持续期间造成额外的<magicDamage>@PercentHPBlast@最大生命值的魔法伤害</magicDamage>，和额外的@EmpoweredSlow@<status>减速</status>。@SpellModifierDescriptionAppend@",
+            "range": [
+                370.0000,
+                370.0000,
+                370.0000,
+                370.0000,
+                370.0000,
+                370.0000
+            ],
+            "costCoefficients": [
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000
+            ],
+            "cooldownCoefficients": [
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

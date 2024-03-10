@@ -1,0 +1,950 @@
+{
+    "id": 897,
+    "name": "K'Sante",
+    "alias": "KSante",
+    "title": "the Pride of Nazumah",
+    "shortBio": "Defiant and courageous, K'Sante battles colossal beasts and ruthless Ascended to protect his home of Nazumah, a coveted oasis amid the sands of Shurima. But after a falling-out with his former partner, K'Sante realizes that in order to become a warrior worthy of leading his city, he must temper his single-minded drive for success. Only then can he avoid falling prey to his own pride and find the wisdom he needs to defeat the vicious monsters threatening his people.",
+    "tacticalInfo": {
+        "style": 3,
+        "difficulty": 3,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 3,
+        "crowdControl": 3,
+        "mobility": 2,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/897.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/897.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/897.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/897.ogg",
+    "roles": [
+        "tank",
+        "fighter"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 897000,
+            "isBase": true,
+            "name": "K'Sante",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/897/897000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/897/897000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/897/897000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/KSante/Skins/Base/KSanteLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 897001,
+            "isBase": false,
+            "name": "Empyrean K'Sante",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/897/897001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/897/897001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/897/897001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/KSante/Skins/Skin01/KSanteLoadscreen_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/KSante/Skins/Skin01/KSanteLoadscreen_1_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897001.png",
+            "chromas": [
+                {
+                    "id": 897003,
+                    "name": "Empyrean K'Sante",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897003.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 897004,
+                    "name": "Empyrean K'Sante",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897004.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 897005,
+                    "name": "Empyrean K'Sante",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897005.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 897006,
+                    "name": "Empyrean K'Sante",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897006.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 897007,
+                    "name": "Empyrean K'Sante",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897007.png",
+                    "colors": [
+                        "#FF655B",
+                        "#95E237"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the Worlds 2022 Event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 186
+                }
+            ],
+            "skinAugments": null,
+            "description": "K'Sante prides himself on leading under adversity, but this is a challenge unlike any other. His realm is gone, he's living on borrowed time, and the other Empyreans don't realize that something released the Foreglow. Something bad. He knows only they can fix it, but they need their eyes opened. They need a leader."
+        },
+        {
+            "id": 897002,
+            "isBase": false,
+            "name": "Prestige Empyrean K'Sante",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/897/897002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/897/897002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/897/897002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/KSante/Skins/Skin02/KSanteLoadScreen_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/KSante/Skins/Skin02/KSanteLoadscreen_2_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 186
+                }
+            ],
+            "skinAugments": null,
+            "description": "K'Sante's always been a trailblazer on the fashion circuit, and this year he definitely wants to make the audience sweat. With his crystal-laden drip and flawless makeup, he's about to light a fire under this Gala."
+        },
+        {
+            "id": 897008,
+            "isBase": false,
+            "name": "HEARTSTEEL K'Sante",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/897/897008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/897/897008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/897/897008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/KSante/Skins/Skin08/KSanteLoadScreen_8.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/KSante/Skins/Skin08/KSanteLoadscreen_8_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897008.png",
+            "chromas": [
+                {
+                    "id": 897009,
+                    "name": "HEARTSTEEL K'Sante",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897009.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 897010,
+                    "name": "HEARTSTEEL K'Sante",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897010.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 897011,
+                    "name": "HEARTSTEEL K'Sante",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897011.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 897012,
+                    "name": "HEARTSTEEL K'Sante",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897012.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 897013,
+                    "name": "HEARTSTEEL K'Sante",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897013.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 897014,
+                    "name": "HEARTSTEEL K'Sante",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897014.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 897015,
+                    "name": "HEARTSTEEL K'Sante",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897015.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 897016,
+                    "name": "HEARTSTEEL K'Sante",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897016.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 897017,
+                    "name": "HEARTSTEEL K'Sante",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897017.png",
+                    "colors": [
+                        "#CDE9EF",
+                        "#E9628F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the Worlds 2023 event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 199
+                }
+            ],
+            "skinAugments": null,
+            "description": "An awe-inspiring presence—physically, emotionally, vocally—K'Sante is always focused on the bigger picture, determined for HEARTSTEEL to make its mark on the music industry. Though in his solo career his ambition often outpaced what one man can do alone, now that he's found friends and collaborators he believes in, K'Sante knows nothing can stop them."
+        }
+    ],
+    "passive": {
+        "name": "Dauntless Instinct",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/KSante/HUD/Icons2D/Icons_KSante_P.png",
+        "abilityVideoPath": "champion-abilities/0897/ability_0897_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0897/ability_0897_P1.jpg",
+        "description": "K'Sante's Abilities mark targets to take more damage on his next Attack."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Ntofo Strikes",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/KSante/HUD/Icons2D/Icons_KSante_Q1.png",
+            "abilityVideoPath": "champion-abilities/0897/ability_0897_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0897/ability_0897_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@f1.2@s",
+            "description": "Strike a weapon forward, damaging and slowing all enemies in a short line.<br><br>On hit, grants a stack for a few seconds. At 2 stacks, this skill fires a shockwave that pulls enemies in.",
+            "dynamicDescription": "K'Sante slams his weapon down, dealing <physicalDamage>@BaseDamage@ physical damage</physicalDamage> and briefly <status>Slowing</status> the enemies struck by @SlowPercent*100@%.<br><br>When an enemy is hit, K'Sante gains a stack of Ntofo Strikes for @RecastWindow@ seconds. At 2 stacks, K'Sante instead fires a shockwave that <status>Stuns</status> and <status>Pulls</status> enemies for @StunDuration@ second.<br><br><rules>Cooldown reduced by Bonus <scaleArmor>Armor</scaleArmor> and <scaleMR>Magic Resist</scaleMR>: @BonusResistsTooltip@ / @DefenseCapforCooldown@.<br>Cast time reduced by Bonus <healing>Health</healing>: @BonusHealthTooltip@ / @HealthCapForCastTime@.</rules><br><br><keywordMajor>All Out</keywordMajor>: This Ability's Cooldown is reduced but no longer <status>slows</status>.@SpellModifierDescriptionAppend@",
+            "range": [
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000
+            ],
+            "costCoefficients": [
+                28.0000,
+                26.0000,
+                24.0000,
+                22.0000,
+                20.0000,
+                20.0000
+            ],
+            "cooldownCoefficients": [
+                4.0000,
+                4.0000,
+                4.0000,
+                4.0000,
+                4.0000,
+                4.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Path Maker",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/KSante/HUD/Icons2D/Icons_KSante_W.png",
+            "abilityVideoPath": "champion-abilities/0897/ability_0897_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0897/ability_0897_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "K'Sante charges up before dashing. K'Sante is unstoppable and takes less damage while charging. Any targets hit by the dash are knocked to the end of the dash and stunned.<br><br>",
+            "dynamicDescription": "K'Sante raises his weapons defensively for @MinDurationTOOLTIP@ - @MaxDuration@s, becoming Unstoppable and reducing incoming damage by @DamageReductionCharLevel@%.<br><br>After charging, he rams forward, dealing <physicalDamage>@BaseDamageCalc@ + @MaxHealthDamage*100@% max Health physical damage</physicalDamage>. K'Sante <status>Knocks Back</status> and <status>Stuns</status> enemies he rams into for @MaxKnockbackDuration@ seconds.<br><br><keywordMajor>All Out:</keywordMajor> This Ability's Cooldown is refreshed. Damage reduction increases to @DamageReductionCalcAO@% and its dash speed increases but will no longer <status>Knock Back</status> or <status>Stun</status>.@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                40.0000,
+                45.0000,
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000
+            ],
+            "cooldownCoefficients": [
+                24.0000,
+                22.0000,
+                20.0000,
+                18.0000,
+                16.0000,
+                14.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.7000,
+                "coefficient2": 0.7000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Footwork",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/KSante/HUD/Icons2D/Icons_KSante_E.png",
+            "abilityVideoPath": "champion-abilities/0897/ability_0897_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0897/ability_0897_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "K'Sante will dash to an ally and both will gain a shield. If there is no ally, K'Sante will still dash to the location at a reduced range and gain a shield.<br>",
+            "dynamicDescription": "K'Sante dashes, gaining <shield>@TotalShield@ Shield</shield> for @ShieldDuration@ seconds. If dashing to an ally, the distance of the dash is significantly increased and the ally is also <shield>Shielded</shield>.<br><br><keywordMajor>All Out</keywordMajor>: This Ability's dash speed is increased. Dashing without an ally has increased range and can go over walls.@SpellModifierDescriptionAppend@",
+            "range": [
+                525.0000,
+                525.0000,
+                525.0000,
+                525.0000,
+                525.0000,
+                525.0000
+            ],
+            "costCoefficients": [
+                45.0000,
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                10.5000,
+                10.0000,
+                9.5000,
+                9.0000,
+                8.5000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "All Out",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/KSante/HUD/Icons2D/Icons_KSante_R1.png",
+            "abilityVideoPath": "champion-abilities/0897/ability_0897_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0897/ability_0897_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "K'Sante smashes an enemy away. If the enemy hits a wall they will go through the wall taking more damage. K'Sante will appear behind the target and goes All Out by shredding his defenses but greatly increasing his damage.<br><br>",
+            "dynamicDescription": "K'Sante shatters his ntofos, dealing <magicDamage>@TotalDamage@ magic damage</magicDamage> and <status>Knocking Back</status> an enemy champion. Enemies that hit a wall take an additional <magicDamage>@TotalDamageSlamDown@ magic damage</magicDamage>, are <status>Knocked Back</status> over the wall, and are briefly <status>Stunned</status>. K'Sante then dashes after the enemy and goes <keywordMajor>All Out</keywordMajor> for 20 seconds.<br><br><keywordMajor>All Out</keywordMajor> K'Sante loses <healing>@HealthLost*100@% max Health</healing>, <scaleArmor>@DefensesLost*100@% Bonus Armor</scaleArmor>, and <scaleMR>@DefensesLost*100@% Bonus Magic Resistance</scaleMR> but gains <scaleAD>@AllOutAttackDamage@ Attack Damage</scaleAD>, <attackSpeed>@AttackSpeedIncrease*100@% Attack Speed</attackSpeed>, heals for <healing>@AllOutOmnivamp@%</healing> of the damage he deals to Champions, and transforms his Abilities.@SpellModifierDescriptionAppend@",
+            "range": [
+                250.0000,
+                250.0000,
+                250.0000,
+                250.0000,
+                250.0000,
+                250.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                100.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

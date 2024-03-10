@@ -1,0 +1,1907 @@
+{
+    "id": 53,
+    "name": "蒸汽机器人",
+    "alias": "Blitzcrank",
+    "title": "布里茨",
+    "shortBio": "布里茨是来自祖安的一个巨大的、几乎坚不可摧的机械体，最初被制造出来的目的是为了处理有毒废料。然而他觉得自己存在的意义太过狭隘，于是就改装了自己的形态，以便更好地效力于地沟区的孱弱人群。布里茨无私地使用自己的力量和钢铁之躯保护其他人，伸出长长的机械援手，或者发出能量脉冲，制服任何带来麻烦的人。",
+    "tacticalInfo": {
+        "style": 9,
+        "difficulty": 1,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 1,
+        "durability": 2,
+        "crowdControl": 3,
+        "mobility": 1,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/53.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/53.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/53.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/53.ogg",
+    "roles": [
+        "tank",
+        "fighter"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 53000,
+            "isBase": true,
+            "name": "蒸汽机器人",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Base/BlitzcrankLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53000.png",
+            "chromas": [
+                {
+                    "id": 53008,
+                    "name": "蒸汽机器人 布里茨 炎之斗魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53008.png",
+                    "colors": [
+                        "#DFC764",
+                        "#AD3333"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 53009,
+                    "name": "蒸汽机器人 布里茨 雷之气势",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53009.png",
+                    "colors": [
+                        "#DFC764",
+                        "#446188"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 53010,
+                    "name": "蒸汽机器人 布里茨 铁之意志",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53010.png",
+                    "colors": [
+                        "#9C9C9C",
+                        "#585858"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 53001,
+            "isBase": false,
+            "name": "铁锈斑斑 布里茨",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin01/BlitzcrankLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 53002,
+            "isBase": false,
+            "name": "钢铁之门 布里茨",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin02/BlitzcrankLoadScreen_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin02/BlitzcrankLoadScreen_2_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 31
+                }
+            ],
+            "skinAugments": null,
+            "description": "史上最伟大的守门员之一，来自混乱FC俱乐部的布里茨终于跻身体育名人堂。它的个人形象骄傲地与排球巨龙，女子网球峡谷迅捷蟹，羽毛球纳什男爵齐名。"
+        },
+        {
+            "id": 53003,
+            "isBase": false,
+            "name": "擂台皇帝 布里茨",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin03/BlitzcrankLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 100
+                }
+            ],
+            "skinAugments": null,
+            "description": "它的双拳名为“嘣”和“嘣”，证明那些机器人是人类生活的一种完美复写。"
+        },
+        {
+            "id": 53004,
+            "isBase": false,
+            "name": "陆地王者4WD 布里茨",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin04/BlitzcrankLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 42
+                }
+            ],
+            "skinAugments": null,
+            "description": "你的机器人腿部已经破损，因此我们将它换成了老式'32的改装版本，并配备了一款八缸外置的煤炭引擎。并且，我们还为他的拳头喷绘了火焰图案。火焰图案需要额外收费。"
+        },
+        {
+            "id": 53005,
+            "isBase": false,
+            "name": "戴一个表 布里茨",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin05/BlitzcrankLoadScreen_5.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin05/BlitzcrankLoadScreen_5_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 101
+                }
+            ],
+            "skinAugments": null,
+            "description": "我，不是机器人。"
+        },
+        {
+            "id": 53006,
+            "isBase": false,
+            "name": "苹果机器人 布里茨",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin06/BlitzcrankLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 17
+                }
+            ],
+            "skinAugments": null,
+            "description": "苹果机器人布里茨最初的设计是家用服务机械体，但后来上千个布里茨在一次日常软件更新时被源代码攻破。他们的人类主人对此毫不知情，而他们继续忙里忙外，耐心地等待着新命令初始化。"
+        },
+        {
+            "id": 53007,
+            "isBase": false,
+            "name": "防暴机器人 布里茨",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin07/BlitzcrankLoadScreen_7.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 37
+                }
+            ],
+            "skinAugments": null,
+            "description": "获取方式：在2013年与一位RIOT员工碰面，或是参加一个官方的RIOT事件。"
+        },
+        {
+            "id": 53011,
+            "isBase": false,
+            "name": "战场BOSS 布里茨",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53011.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53011.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53011.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin11/BlitzcrankLoadScreen_11.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53011.png",
+            "chromas": [
+                {
+                    "id": 53012,
+                    "name": "战场BOSS 布里茨 “枢纽毁灭！”",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53012.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 53013,
+                    "name": "战场BOSS 布里茨 “彩虹小马捕获！”",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53013.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 53014,
+                    "name": "战场BOSS 布里茨 “摇杆不灵！”",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53014.png",
+                    "colors": [
+                        "#DF9117",
+                        "#E99117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 53015,
+                    "name": "战场BOSS 布里茨 “感光器损坏！”",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53015.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 53016,
+                    "name": "战场BOSS 布里茨 “瞄准镜失准！”",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53016.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 53017,
+                    "name": "战场BOSS 布里茨 “手柄故障！”",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53017.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 53018,
+                    "name": "战场BOSS 布里茨 “圣剑易主！”",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53018.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 53019,
+                    "name": "战场BOSS 布里茨 “彩虹之星陨落！”",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53019.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 11
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为一个来自流行科幻射击游戏的Boss，布里茨以其简单的操作、强力的攻击和超高的生命值在玩家之间有口皆碑。维迦委派它作为自己私人堡垒的看守者，因为维迦就是讨厌取乐。"
+        },
+        {
+            "id": 53020,
+            "isBase": false,
+            "name": "暮色枪骑 布里茨",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53020.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53020.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53020.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin20/BlitzcrankLoadScreen_20.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 69
+                }
+            ],
+            "skinAugments": null,
+            "description": "【暮色枪骑 布里茨】是一个远古哨兵，已被神秘的黑色闪电所腐化。他无情地碾压着行省驻军，摧毁整座城堡，连同仍在王座上的国王们一起。导致他暴走的原因仍然无法确定，但目前它似乎要一丝不苟地遵循它的恐惧协议。"
+        },
+        {
+            "id": 53021,
+            "isBase": false,
+            "name": "银白枪骑 布里茨",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53021.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53021.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53021.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin21/BlitzcrankLoadScreen_21.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 69
+                }
+            ],
+            "skinAugments": null,
+            "description": "布里茨是民众的静默守护者，人造的圣骑士。它被一道神秘的白色闪电所唤醒，从大地之中起身。它现在服务于所有可敬的主体们，用精密的打击系统捍卫大家。"
+        },
+        {
+            "id": 53022,
+            "isBase": false,
+            "name": "大魔法锅 布里茨",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53022.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53022.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53022.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin22/BlitzcrankLoadScreen_22.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin22/BlitzcrankLoadscreen_22_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53022.png",
+            "chromas": [
+                {
+                    "id": 53023,
+                    "name": "大魔法锅 布里茨 麻辣火锅",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53023.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 53024,
+                    "name": "大魔法锅 布里茨 硫磺毒液",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53024.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53025,
+                    "name": "大魔法锅 布里茨 霜寒漩涡",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53025.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53026,
+                    "name": "大魔法锅 布里茨 剧毒之源",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53026.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53027,
+                    "name": "大魔法锅 布里茨 灵魂浓汤",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53027.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53028,
+                    "name": "大魔法锅 布里茨 猩红药剂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53028.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Halloween_b",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/11.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/11.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 88
+                }
+            ],
+            "skinAugments": null,
+            "description": "布里茨曾经只是一口单纯的坩埚，但被附魔后，他获得了生命，只为在厄运小姐的诱人幻术中协助她。"
+        },
+        {
+            "id": 53029,
+            "isBase": false,
+            "name": "太空律动 “猫猫” 布里和里茨",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53029.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53029.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53029.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin29/BlitzcrankLoadScreen_29.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin29/BlitzcrankLoadscreen_29_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53029.png",
+            "chromas": [
+                {
+                    "id": 53030,
+                    "name": "“猫猫” 布里和里茨 小灰抓不到与我老黑有啥关系",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53030.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53031,
+                    "name": "“猫猫” 布里和里茨 大黑抓不到与我灰灰有啥关系",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53031.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53032,
+                    "name": "“猫猫” 布里和里茨 暹罗抓不到与我二黑有啥关系",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53032.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53033,
+                    "name": "“猫猫” 布里和里茨 小粉抓不到与我小白有啥关系",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53033.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53034,
+                    "name": "“猫猫” 布里和里茨 小白抓不到与我小黑有啥关系",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53034.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53035,
+                    "name": "“猫猫” 布里和里茨 小紫抓不到与我小绿有啥关系",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53035.png",
+                    "colors": [
+                        "#9DFFEF",
+                        "#AA55FF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在太空律动(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 144
+                }
+            ],
+            "skinAugments": null,
+            "description": "布里和里茨是喵星上最为凶猛的战士，并且（几乎）天衣无缝地共同驾驶着他们的机甲，布里茨。尽管里茨相信，他能在他那精力充沛的副驾驶员的帮助下克服他对韵律的欠缺，布里却……好吧……他却忙于按他自己的节奏跳舞。他们计划着一起接管汪星并把它的阳光据为己有。"
+        },
+        {
+            "id": 53036,
+            "isBase": false,
+            "name": "胜利机器人 布里茨",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53036.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53036.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53036.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin36/BlitzcrankLoadScreen_36.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53036.png",
+            "chromas": [
+                {
+                    "id": 53037,
+                    "name": "胜利机器人 布里茨 单排/双排 华贵铂金",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53037.png",
+                    "colors": [
+                        "#26854C",
+                        "#26854C"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾奖励给那些在单排/双排队列中达到【华贵铂金】段位的玩家。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53038,
+                    "name": "胜利机器人 布里茨 单排/双排 璀璨钻石",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53038.png",
+                    "colors": [
+                        "#65337F",
+                        "#65337F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾奖励给那些在单排/双排队列中达到【璀璨钻石】段位的玩家。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 53039,
+                    "name": "胜利机器人 布里茨 单排/双排 超凡大师",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53039.png",
+                    "colors": [
+                        "#9D228D",
+                        "#9D228D"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾奖励给那些在单排/双排队列中达到【超凡大师】段位的玩家。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 3
+                        }
+                    ]
+                },
+                {
+                    "id": 53040,
+                    "name": "胜利机器人 布里茨 单排/双排 傲世宗师",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53040.png",
+                    "colors": [
+                        "#B31316",
+                        "#B31316"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾奖励给那些在单排/双排队列中达到【傲世宗师】段位的玩家。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 4
+                        }
+                    ]
+                },
+                {
+                    "id": 53041,
+                    "name": "胜利机器人 布里茨 单排/双排 最强王者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53041.png",
+                    "colors": [
+                        "#1D62C8",
+                        "#1D62C8"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾奖励给那些在单排/双排队列中达到【最强王者】段位的玩家。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 5
+                        }
+                    ]
+                },
+                {
+                    "id": 53042,
+                    "name": "胜利机器人 布里茨 灵活排位 华贵铂金",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53042.png",
+                    "colors": [
+                        "#26854C",
+                        "#7BDDA9"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾奖励给那些在灵活排位队列中达到【华贵铂金】段位的玩家。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53043,
+                    "name": "胜利机器人 布里茨 灵活排位 璀璨钻石",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53043.png",
+                    "colors": [
+                        "#65337F",
+                        "#6F587F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾奖励给那些在灵活排位队列中达到【璀璨钻石】段位的玩家。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 53044,
+                    "name": "胜利机器人 布里茨 灵活排位 超凡大师",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53044.png",
+                    "colors": [
+                        "#9D228D",
+                        "#9D5B92"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾奖励给那些在灵活排位队列中达到【超凡大师】段位的玩家。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 3
+                        }
+                    ]
+                },
+                {
+                    "id": 53045,
+                    "name": "胜利机器人 布里茨 灵活排位 傲世宗师",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53045.png",
+                    "colors": [
+                        "#B31316",
+                        "#B35556"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾奖励给那些在灵活排位队列中达到【傲世宗师】段位的玩家。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 4
+                        }
+                    ]
+                },
+                {
+                    "id": 53046,
+                    "name": "胜利机器人 布里茨 灵活排位 最强王者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53046.png",
+                    "colors": [
+                        "#1D62C8",
+                        "#638BC8"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾奖励给那些在灵活排位队列中达到【最强王者】段位的玩家。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 5
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 7
+                }
+            ],
+            "skinAugments": null,
+            "description": "【胜利机器人 布里茨】是给2021赛季达到【荣耀黄金】段位或以上的玩家的奖励。"
+        },
+        {
+            "id": 53047,
+            "isBase": false,
+            "name": "巅峰之星 布里茨",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53047.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53047.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53047.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin47/BlitzcrankLoadScreen_47.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53047.png",
+            "chromas": [
+                {
+                    "id": 53048,
+                    "name": "巅峰之星 布里茨 顽强拼搏",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53048.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53049,
+                    "name": "巅峰之星 布里茨 奋发进取",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53049.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53050,
+                    "name": "巅峰之星 布里茨 不屈不挠",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53050.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53051,
+                    "name": "巅峰之星 布里茨 科学求实",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53051.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53052,
+                    "name": "巅峰之星 布里茨 自强不息",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53052.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53053,
+                    "name": "巅峰之星 布里茨 追求卓越",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53053.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53054,
+                    "name": "巅峰之星 布里茨 团结协作",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53054.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53055,
+                    "name": "巅峰之星 布里茨 永不言败",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53055.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 165
+                }
+            ],
+            "skinAugments": null,
+            "description": "布里茨最初是一个拆弹机器人，因为它能在瞬间做出调整来一直保持在那些非凡运动员的前方，所以被任命为裁判。直到后来大家才意识到，这个机器人的背景使它在化解经常出现的激烈……分歧方面异常有效。"
+        },
+        {
+            "id": 53056,
+            "isBase": false,
+            "name": "巨神蜂 布里茨",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53056.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53056.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53056.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin56/BlitzcrankLoadScreen_56.PIE_C_13_23.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53056.png",
+            "chromas": [
+                {
+                    "id": 53057,
+                    "name": "元气满满小红红 布里茨",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53057.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53058,
+                    "name": "冷若冰霜小深蓝 布里茨",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53058.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53059,
+                    "name": "春意盎然小青青 布里茨",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53059.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53060,
+                    "name": "白白嫩嫩小迷糊 布里茨",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53060.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53061,
+                    "name": "野心勃勃小腹黑 布里茨",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53061.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53062,
+                    "name": "笑意盈盈小紫紫 布里茨",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53062.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 53063,
+                    "name": "可爱可爱粉红红 布里茨",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53063.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53064,
+                    "name": "五彩缤纷小可爱 布里茨",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/53/53064.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 143
+                }
+            ],
+            "skinAugments": null,
+            "description": "布里茨以让他的蜂兵陷入胶着处境而闻名。也许是因为那个巨大的蜂窝状机械臂。"
+        }
+    ],
+    "passive": {
+        "name": "法力屏障",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/HUD/Icons2D/BlitzcrankP.png",
+        "abilityVideoPath": "champion-abilities/0053/ability_0053_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0053/ability_0053_P1.jpg",
+        "description": "布里茨在血量过低时会获得一层基于它法力值的护盾。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "机械飞爪",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/HUD/Icons2D/BlitzcrankQ.png",
+            "abilityVideoPath": "champion-abilities/0053/ability_0053_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0053/ability_0053_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "布里茨发射它的右手，来抓取碰到的第一个敌人，在对敌人造成伤害的同时，还会将这名敌人拉到它的面前。",
+            "dynamicDescription": "布里茨射出它的右拳，将命中的第一个敌人<status>拉拽</status>向它并造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                1079.0000,
+                1079.0000,
+                1079.0000,
+                1079.0000,
+                1079.0000,
+                1079.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                20.0000,
+                19.0000,
+                18.0000,
+                17.0000,
+                16.0000,
+                16.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    40.0000,
+                    90.0000,
+                    140.0000,
+                    190.0000,
+                    240.0000,
+                    290.0000,
+                    340.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "过载运转",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/HUD/Icons2D/BlitzcrankW.png",
+            "abilityVideoPath": "champion-abilities/0053/ability_0053_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0053/ability_0053_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "布里茨对自己进行了超级充电，它的攻击速度和移动速度得到了显著提升。它会在效果结束后暂时减速。",
+            "dynamicDescription": "布里茨进行超级充能，获得<speed>持续衰减的@MoveSpeedMod*100@%移动速度</speed>和<attackSpeed>@AttackSpeedMod*100@%攻击速度</attackSpeed>，持续@Duration@秒。<br><br>持续期间过后，布里茨会<status>减速</status>@MoveSpeedModReduction*100@%，持续@SlowDuration@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000
+            ],
+            "costCoefficients": [
+                75.0000,
+                75.0000,
+                75.0000,
+                75.0000,
+                75.0000,
+                75.0000
+            ],
+            "cooldownCoefficients": [
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "能量铁拳",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/HUD/Icons2D/BlitzcrankE.png",
+            "abilityVideoPath": "champion-abilities/0053/ability_0053_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0053/ability_0053_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "布里茨为机械手臂充能，下次攻击造成双倍伤害并击飞目标。",
+            "dynamicDescription": "布里茨给它的拳头充能，使它的下次攻击可以<status>击飞</status>@CCDuration@秒并造成<physicalDamage>@TotalDamage@物理伤害</physicalDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000,
+                300.0000
+            ],
+            "costCoefficients": [
+                25.0000,
+                25.0000,
+                25.0000,
+                25.0000,
+                25.0000,
+                25.0000
+            ],
+            "cooldownCoefficients": [
+                9.0000,
+                8.0000,
+                7.0000,
+                6.0000,
+                5.0000,
+                5.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.8000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "静电力场",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/HUD/Icons2D/BlitzcrankR.png",
+            "abilityVideoPath": "champion-abilities/0053/ability_0053_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0053/ability_0053_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "被布里茨攻击过的敌人会被标记并在1秒后受到闪电伤害。此外，布里茨可以主动激活这个技能来移除附近敌人们的护盾、对他们造成伤害并暂时沉默他们。",
+            "dynamicDescription": "<spellPassive>被动：</spellPassive>在这个技能可以使用时，闪电会充盈着布里茨的双拳，标记它攻击的敌人。在1秒后，被标记的敌人会被震击，受到<magicDamage>@PassiveDamage@魔法伤害</magicDamage>。<br><br><spellActive>主动：</spellActive>布里茨进行过度充能，对附近的敌人造成<magicDamage>@ActiveDamage@魔法伤害</magicDamage>和@SilenceDuration@秒<status>沉默</status>效果。敌人的护盾也会被摧毁。@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                150.0000,
+                150.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                60.0000,
+                40.0000,
+                20.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

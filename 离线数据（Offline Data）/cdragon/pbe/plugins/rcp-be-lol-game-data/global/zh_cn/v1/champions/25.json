@@ -1,0 +1,2045 @@
+{
+    "id": 25,
+    "name": "堕落天使",
+    "alias": "Morgana",
+    "title": "莫甘娜",
+    "shortBio": "在天界与凡间双重本性的夹缝中左右为难的莫甘娜，束缚了自己的双翼并拥抱了人性，还将自己的痛苦和怨恨施加给那些失信和堕落之人。她抗拒一切在她眼中不公正的法律和传统，并从德玛西亚的黑影中投出保护的盾牌和暗焰的锁链，在别人想要打压的暗处为真理而战。最重要的是，莫甘娜坚信，即使是被放逐、被遗弃的人，也可能有朝一日东山再起。",
+    "tacticalInfo": {
+        "style": 10,
+        "difficulty": 1,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 1,
+        "crowdControl": 3,
+        "mobility": 1,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/25.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/25.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/25.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/25.ogg",
+    "roles": [
+        "mage",
+        "support"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 25000,
+            "isBase": true,
+            "name": "堕落天使",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/25/25000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/25/25000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/25/25000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Base/MorganaLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25000.png",
+            "chromas": [
+                {
+                    "id": 25007,
+                    "name": "堕落天使 莫甘娜 傲慢原罪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25007.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 25008,
+                    "name": "堕落天使 莫甘娜 嫉妒原罪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25008.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 25009,
+                    "name": "堕落天使 莫甘娜 愤怒原罪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25009.png",
+                    "colors": [
+                        "#1B1C27",
+                        "#1B1C27"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 25001,
+            "isBase": false,
+            "name": "杀戮天使昔拉 莫甘娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/25/25001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/25/25001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/25/25001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Skin01/MorganaLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 68
+                }
+            ],
+            "skinAugments": null,
+            "description": "莫甘娜是一位曾在上个年代被放逐的战斗之灵。她已安静地谋划了对背叛者们及其后代们的复仇长达数百年之久。每个过去的冬天都会让她更加接近她的目标——在一场盛大空前的战役中，让凯尔及其部族陨落。"
+        },
+        {
+            "id": 25002,
+            "isBase": false,
+            "name": "地狱厨房 莫甘娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/25/25002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/25/25002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/25/25002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Skin02/MorganaLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 26
+                }
+            ],
+            "skinAugments": null,
+            "description": "她是糖之原罪，甜品荟萃的暗黑女主角，梦幻香味的堕落天使。她可怕的宴飨将让你深陷在座位上。让我们以烹饪大师的规格欢迎莫甘娜！"
+        },
+        {
+            "id": 25003,
+            "isBase": false,
+            "name": "刀锋女王 莫甘娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/25/25003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/25/25003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/25/25003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Skin03/MorganaLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 65
+                }
+            ],
+            "skinAugments": null,
+            "description": "莫甘娜是一位致命战斗员，并且是“X09-地狱”战斗机甲的前飞行员，同时也是银河系中仅存的半异形生物之一。她如外科手术一般将她机甲上的禁忌、遗失的技术隐藏在了她的皮肤下——她的目标是躲避她的姐姐，那位疯狂的审判官，凯尔。"
+        },
+        {
+            "id": 25004,
+            "isBase": false,
+            "name": "黑色荆棘 莫甘娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/25/25004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/25/25004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/25/25004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Skin04/MorganaLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25004.png",
+            "chromas": [
+                {
+                    "id": 25012,
+                    "name": "黑色荆棘 莫甘娜 马樱丹",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25012.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25013,
+                    "name": "黑色荆棘 莫甘娜 千鸟草",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25013.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25014,
+                    "name": "黑色荆棘 莫甘娜 钩吻花",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25014.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25015,
+                    "name": "黑色荆棘 莫甘娜 一品白",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25015.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25016,
+                    "name": "黑色荆棘 莫甘娜 曼陀罗",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25016.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 97
+                }
+            ],
+            "skinAugments": null,
+            "description": "黑暗森林精灵是伟大的精灵诸帝国的破碎残存，戒备地守卫着邪恶能量，皆因这股能量曾经被有些人视为他们魔法霸权的基石。莫甘娜已将这股魔力深深地隐藏在她的躯体中，将它与她的灵魂链在一起，以便让它仅供她运用。"
+        },
+        {
+            "id": 25005,
+            "isBase": false,
+            "name": "鬼魂新娘 莫甘娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/25/25005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/25/25005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/25/25005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Skin05/MorganaLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 72
+                }
+            ],
+            "skinAugments": null,
+            "description": "据说这位哭泣的新娘在河岸边不断徘徊，寻找着自己遗失的新郎，她要报复所有幸福美满的生者。父母告诫自己的孩子要小心“鬼魂新娘”，因为所有试着寻找鬼魂新娘的人都消失的无影无踪了。"
+        },
+        {
+            "id": 25006,
+            "isBase": false,
+            "name": "胜利女神 莫甘娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/25/25006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/25/25006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/25/25006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Skin06/MorganaLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 7
+                }
+            ],
+            "skinAugments": null,
+            "description": "胜利女神莫甘娜是给2014赛季达到黄金段位或以上的玩家的奖励。作为暗影的女王，胜利女神莫甘娜身穿深蓝色铠甲飘过召唤师峡谷，还有华丽的回城动作。"
+        },
+        {
+            "id": 25010,
+            "isBase": false,
+            "name": "紫金罗刹 莫甘娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/25/25010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/25/25010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/25/25010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Skin10/MorganaLoadScreen_10.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Year of the Monkey",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/12.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/12.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 55
+                }
+            ],
+            "skinAugments": null,
+            "description": "紫金罗刹是一只在春节期间四处游荡的鬼魂，引诱所有的凡人、怪兽与神灵。据说她可以在将受害者的灵魂拖向不可言喻的炼狱之前就禁锢他们的心灵，之后这样的传言再也没人提起过。"
+        },
+        {
+            "id": 25011,
+            "isBase": false,
+            "name": "魅惑女巫 莫甘娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/25/25011.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/25/25011.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/25/25011.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Skin11/MorganaLoadscreen_11.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Skin11/MorganaLoadscreen_11_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25011.png",
+            "chromas": [
+                {
+                    "id": 25031,
+                    "name": "魅惑女巫 莫甘娜 热情化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25031.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 25032,
+                    "name": "魅惑女巫 莫甘娜 清新化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25032.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 25033,
+                    "name": "魅惑女巫 莫甘娜 典雅化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25033.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 25034,
+                    "name": "魅惑女巫 莫甘娜 知性化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25034.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 25035,
+                    "name": "魅惑女巫 莫甘娜 高贵化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25035.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 25036,
+                    "name": "魅惑女巫 莫甘娜 浪漫化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25036.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 25037,
+                    "name": "魅惑女巫 莫甘娜 纯真化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25037.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 25038,
+                    "name": "魅惑女巫 莫甘娜 雍容化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25038.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Halloween_b",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/11.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/11.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 172
+                }
+            ],
+            "skinAugments": null,
+            "description": "不幸的是，“不给糖就捣蛋”越来越少地涉及到黑魔法和神秘迷信，越来越多地涉及到找到一套适合的COS装束。你见过这些尺寸吗？这东西是做给谁的呢？"
+        },
+        {
+            "id": 25017,
+            "isBase": false,
+            "name": "玉剑传说 苍鸾",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/25/25017.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/25/25017.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/25/25017.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Skin17/MorganaLoadScreen_17.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Skin17/MorganaLoadscreen_17_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25017.png",
+            "chromas": [
+                {
+                    "id": 25018,
+                    "name": "玉剑传说 苍鸾 胭脂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25018.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 25019,
+                    "name": "玉剑传说 苍鸾 黄栌",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25019.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25020,
+                    "name": "玉剑传说 苍鸾 珐琅",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25020.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25021,
+                    "name": "玉剑传说 苍鸾 青竹",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25021.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25022,
+                    "name": "玉剑传说 苍鸾 紫檀",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25022.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25023,
+                    "name": "玉剑传说 苍鸾 丁香",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25023.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 25024,
+                    "name": "玉剑传说 苍鸾 鹤雪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25024.png",
+                    "colors": [
+                        "#E0FFFF",
+                        "#C50041"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 25025,
+                    "name": "玉剑传说 苍鸾 琥珀",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25025.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 81
+                }
+            ],
+            "skinAugments": null,
+            "description": "苍鸾是一位来自天庭且令人畏惧的仙宫之主。她对舞剑仙封印巨龙之力的行为满是鄙弃。在战斗中击败她的同时，苍鸾很快意识到，这位年轻的半仙已将这股力量隐藏了起来，因此她现在正在坚决无情地寻找一种方式，来将这股力量归还到它应在的主人那里。"
+        },
+        {
+            "id": 25026,
+            "isBase": false,
+            "name": "至尊魔女 莫甘娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/25/25026.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/25/25026.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/25/25026.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Skin26/MorganaLoadScreen_26.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Skin26/MorganaLoadscreen_26_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25026.png",
+            "chromas": [
+                {
+                    "id": 25027,
+                    "name": "至尊魔女 莫甘娜 愤怒",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25027.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 25028,
+                    "name": "至尊魔女 莫甘娜 饕餮",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25028.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25029,
+                    "name": "至尊魔女 莫甘娜 欲望",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25029.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25030,
+                    "name": "至尊魔女 莫甘娜 倦怠",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25030.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25040,
+                    "name": "至尊魔女 莫甘娜 狂信",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25040.png",
+                    "colors": [
+                        "#162B30",
+                        "#8E0A38"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在魔女(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 92
+                }
+            ],
+            "skinAugments": null,
+            "description": "莫甘娜是魔女集会的女王，也是被称为苍枭的恩主。莫甘娜崇拜古神们，并在它们被杀时还哭泣过——当她的姐姐谋杀了原初太阳并把它的力量交给了一支女巫骑士的军队时，她背叛了。现在，莫甘娜已经归来，要终结人类的统治，让世界的真正领主们回到它们应有的、崩塌的王座上。"
+        },
+        {
+            "id": 25039,
+            "isBase": false,
+            "name": "黎明使者 莫甘娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/25/25039.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/25/25039.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/25/25039.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Skin39/MorganaLoadScreen_39.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Skin39/MorganaLoadscreen_39_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25039.png",
+            "chromas": [
+                {
+                    "id": 25042,
+                    "name": "黎明使者 莫甘娜 阳辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25042.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 25043,
+                    "name": "黎明使者 莫甘娜 炎辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25043.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25044,
+                    "name": "黎明使者 莫甘娜 宁辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25044.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25045,
+                    "name": "黎明使者 莫甘娜 祥辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25045.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25046,
+                    "name": "黎明使者 莫甘娜 苍辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25046.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25047,
+                    "name": "黎明使者 莫甘娜 霞辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25047.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 25048,
+                    "name": "黎明使者 莫甘娜 雪辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25048.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25049,
+                    "name": "黎明使者 莫甘娜 生辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25049.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#A67400"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 193
+                }
+            ],
+            "skinAugments": null,
+            "description": "莫甘娜决意看到秩序战胜混沌，已经牺牲了很多来让天平倾斜得对光明有利。 如果黎明胜利，她确信他们可以避免众神的毁灭并迎来一个新的时代，一个没有混沌腐化的时代……也许到那时，永恩就会把平衡视为错觉。"
+        },
+        {
+            "id": 25041,
+            "isBase": false,
+            "name": "至臻 魅惑女巫 莫甘娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/25/25041.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/25/25041.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/25/25041.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Skin41/MorganaLoadScreen_41.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Skin41/MorganaLoadscreen_41_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 172
+                }
+            ],
+            "skinAugments": null,
+            "description": "莫甘娜在节日服装比赛中获得最高奖并不需要字面意义上的魔法。 但这并没有阻止她用她那迷人的整套装束对评委施展具象化的咒语。 这是一场他们短期内难以忘记的派对！"
+        },
+        {
+            "id": 25050,
+            "isBase": false,
+            "name": "星之吞噬者 莫甘娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/25/25050.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/25/25050.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/25/25050.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Skin50/MorganaLoadScreen_50.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Skin50/MorganaLoadscreen_50_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25050.png",
+            "chromas": [
+                {
+                    "id": 25051,
+                    "name": "星之吞噬者 莫甘娜 热情之末",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25051.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 25052,
+                    "name": "星之吞噬者 莫甘娜 爱之末",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25052.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25053,
+                    "name": "星之吞噬者 莫甘娜 变更之末",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25053.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25054,
+                    "name": "星之吞噬者 莫甘娜 拥抱之末",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25054.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25055,
+                    "name": "星之吞噬者 莫甘娜 智慧之末",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25055.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25056,
+                    "name": "星之吞噬者 莫甘娜 未来之末",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25056.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 25057,
+                    "name": "星之吞噬者 莫甘娜 勇气之末",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25057.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25058,
+                    "name": "星之吞噬者 莫甘娜 沉默之末",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25058.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25059,
+                    "name": "星之吞噬者 莫甘娜 希望之末",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25059.png",
+                    "colors": [
+                        "#5F4AFF",
+                        "#B11450"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在星之守护者(2022)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 161
+                }
+            ],
+            "skinAugments": null,
+            "description": "莫甘娜是一个出身神秘的反派，她相信正义和秩序等概念正在阻碍着宇宙……她愿意做任何事情来让它回到一种熵增状态。她将星之守护者作为毁灭的目标，在对他们进行一番无情的折磨后，赐予他们最终的夺命一击。"
+        },
+        {
+            "id": 25060,
+            "isBase": false,
+            "name": "净雪之月 莫甘娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/25/25060.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/25/25060.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/25/25060.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Skin60/MorganaLoadScreen_60.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25060.png",
+            "chromas": [
+                {
+                    "id": 25061,
+                    "name": "净雪之月 莫甘娜 赤心",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25061.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 25062,
+                    "name": "净雪之月 莫甘娜 水竹",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25062.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25063,
+                    "name": "净雪之月 莫甘娜 风花",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25063.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 25064,
+                    "name": "净雪之月 莫甘娜 翠微",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25064.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25065,
+                    "name": "净雪之月 莫甘娜 韶华",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25065.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25066,
+                    "name": "净雪之月 莫甘娜 金穗",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25066.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25067,
+                    "name": "净雪之月 莫甘娜 冬虹",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25067.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25068,
+                    "name": "净雪之月 莫甘娜 化墨",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25068.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 160
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为净雪之月的女祭司和首席驱魔师，莫甘娜的魔法被用来束缚和摧毁任何已经发现的腐化。一旦信徒们完成了他们的试炼并将他们的记忆和情感献给了阿狸，就轮到莫甘娜履行她的职责了，那就是将他们的灵魂束缚在净雪之月上，从而完成他们的入教仪式。"
+        },
+        {
+            "id": 25070,
+            "isBase": false,
+            "name": "青花瓷 莫甘娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/25/25070.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/25/25070.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/25/25070.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Skin70/MorganaLoadScreen_70.SKINS_Morgana_Skin70.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Morgana/Skins/Skin70/MorganaLoadScreen_70_LE.SKINS_Morgana_Skin70.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25070.png",
+            "chromas": [
+                {
+                    "id": 25071,
+                    "name": "青花瓷 莫甘娜 牡丹",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25071.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2024年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 25072,
+                    "name": "青花瓷 莫甘娜 芭蕉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25072.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25073,
+                    "name": "青花瓷 莫甘娜 天青",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25073.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25074,
+                    "name": "青花瓷 莫甘娜 釉色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25074.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25075,
+                    "name": "青花瓷 莫甘娜 含苞",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25075.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 25076,
+                    "name": "青花瓷 莫甘娜 墨色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25076.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25077,
+                    "name": "青花瓷 莫甘娜 月色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25077.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 25078,
+                    "name": "青花瓷 莫甘娜 金辉玉洁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25078.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 25079,
+                    "name": "青花瓷 莫甘娜 锦鲤",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/25/25079.png",
+                    "colors": [
+                        "#3AC8B1",
+                        "#B0412A"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在春节（2024）活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 154
+                }
+            ],
+            "skinAugments": null,
+            "description": "没有人比莫甘娜更了解女巫丽桑卓的力量。将丽桑卓束缚在她的圣物上的那个魔法，是有代价的：说出这段咒语的生肖神卫也会被困住。莫甘娜牺牲了自己，而她的鸡生肖圣物的双翼将她包裹在瓷茧中长达数千年。再次醒来后，她要加倍奉还。"
+        }
+    ],
+    "passive": {
+        "name": "灵魂吸取",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Morgana/HUD/Icons2D/FallenAngel_Empathize.png",
+        "abilityVideoPath": "champion-abilities/0025/ability_0025_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0025/ability_0025_P1.jpg",
+        "description": "莫甘娜从她的敌人身上吸取灵魂，在对英雄、大型小兵、中型野怪和大型野怪造成技能伤害时获得治疗效果。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "暗之禁锢",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Morgana/HUD/Icons2D/FallenAngel_DarkBinding.png",
+            "abilityVideoPath": "champion-abilities/0025/ability_0025_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0025/ability_0025_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "莫甘娜用黑暗魔法将一名敌人禁锢在原地，迫使其感受自己造成的痛苦并对其造成魔法伤害。 ",
+            "dynamicDescription": "莫甘娜掷出一团星火来<status>禁锢</status>命中的第一个敌人@RootDuration@秒，并造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                1250.0000,
+                1250.0000,
+                1250.0000,
+                1250.0000,
+                1250.0000,
+                1250.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000
+            ],
+            "cooldownCoefficients": [
+                10.0000,
+                10.0000,
+                10.0000,
+                10.0000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    25.0000,
+                    80.0000,
+                    135.0000,
+                    190.0000,
+                    245.0000,
+                    300.0000,
+                    355.0000
+                ],
+                "Effect2Amount": [
+                    1.7500,
+                    2.0000,
+                    2.2500,
+                    2.5000,
+                    2.7500,
+                    3.0000,
+                    3.2500
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "折磨之影",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Morgana/HUD/Icons2D/FallenAngel_TormentedSoil.png",
+            "abilityVideoPath": "champion-abilities/0025/ability_0025_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0025/ability_0025_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "莫甘娜在一个区域施放一团诅咒之影，对胆敢站在她黑色环形之中的敌人造成伤害。敌人会持续受到魔法伤害，并且生命值越低受到伤害越高。",
+            "dynamicDescription": "莫甘娜点燃一个区域@WDuration@秒，每秒对区域内的敌人造成<magicDamage>@TotalMinDamage@魔法伤害</magicDamage>，基于目标的已损失生命值，伤害可最多提升至@MissingHealthAmpPercent*100@%。<br><br>每当莫甘娜被<spellName>灵魂吸取</spellName>治疗时，这个技能的冷却时间就会减少@CDRefundPercent*100@%。@SpellModifierDescriptionAppend@",
+            "range": [
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                85.0000,
+                100.0000,
+                115.0000,
+                130.0000,
+                145.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "黑暗之盾",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Morgana/HUD/Icons2D/FallenAngel_BlackShield.png",
+            "abilityVideoPath": "champion-abilities/0025/ability_0025_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0025/ability_0025_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "莫甘娜为一名友方英雄涂上一层保护性的星火屏障，在被打破之前吸收魔法伤害和限制效果。",
+            "dynamicDescription": "莫甘娜为一名友方英雄提供<shield>@TotalShieldStrength@魔法护盾</shield>，持续@ShieldDuration@秒。护盾会阻挡<status>限制</status>和<status>定身</status>效果，直至被打破为止。@SpellModifierDescriptionAppend@",
+            "range": [
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000
+            ],
+            "costCoefficients": [
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
+            ],
+            "cooldownCoefficients": [
+                26.0000,
+                23.5000,
+                21.0000,
+                18.5000,
+                16.0000,
+                16.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "灵魂镣铐",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Morgana/HUD/Icons2D/FallenAngel_Purgatory.png",
+            "abilityVideoPath": "champion-abilities/0025/ability_0025_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0025/ability_0025_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "莫甘娜全力释放她的星界能量，与此同时，她的羽翼会解除束缚并且会悬浮在地面上。她将黑暗痛苦组成的锁链抽击到附近的敌方英雄身上，在朝向他们移动时获得移动速度。锁链会减速并造成初段伤害，并在一段延迟后，晕眩那些未能挣脱的敌方英雄。",
+            "dynamicDescription": "莫甘娜将她自己与附近的敌方英雄用锁链铐在一起，造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>和@SlowPercent@%<status>减速</status>效果。在@ChainDuration@秒后，仍未挣断锁链的敌人会受到<magicDamage>@TotalDamage@魔法伤害</magicDamage>并被<status>晕眩</status>@StunDuration@秒。<br><br>在施放这个技能时，莫甘娜会获得<speed>@HastePercent@%移动速度</speed>。@SpellModifierDescriptionAppend@",
+            "range": [
+                625.0000,
+                625.0000,
+                625.0000,
+                625.0000,
+                625.0000,
+                625.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                110.0000,
+                100.0000,
+                10.0000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

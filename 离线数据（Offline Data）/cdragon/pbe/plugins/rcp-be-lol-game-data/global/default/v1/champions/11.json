@@ -1,0 +1,2060 @@
+{
+    "id": 11,
+    "name": "Master Yi",
+    "alias": "MasterYi",
+    "title": "the Wuju Bladesman",
+    "shortBio": "Master Yi has tempered his body and sharpened his mind, so that thought and action have become almost as one. Though he chooses to enter into violence only as a last resort, the grace and speed of his blade ensures resolution is always swift. As one of the last living practitioners of the Ionian art of Wuju, Yi has devoted his life to continuing the legacy of his people—scrutinizing potential new disciples with the Seven Lenses of Insight to identify the most worthy among them.",
+    "tacticalInfo": {
+        "style": 2,
+        "difficulty": 1,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 1,
+        "mobility": 2,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/11.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/11.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/11.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/11.ogg",
+    "roles": [
+        "assassin",
+        "fighter"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 11000,
+            "isBase": true,
+            "name": "Master Yi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/11/11000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/11/11000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/11/11000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Base/MasterYiLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 11001,
+            "isBase": false,
+            "name": "Assassin Master Yi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/11/11001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/11/11001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/11/11001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin01/MasterYiLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": "Ever since Yi gave up the ideals of Wuju style, he's been a terror to Noxian forces. A blade in the night, he strikes at the foes of Ionia with deadly precision. With every whisper of the leaves they shudder, expecting the next moment to be their last."
+        },
+        {
+            "id": 11002,
+            "isBase": false,
+            "name": "Chosen Master Yi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/11/11002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/11/11002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/11/11002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin02/MasterYiLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 11003,
+            "isBase": false,
+            "name": "Ionia Master Yi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/11/11003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/11/11003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/11/11003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin03/MasterYiLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 11004,
+            "isBase": false,
+            "name": "Samurai Yi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/11/11004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/11/11004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/11/11004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin04/MasterYiLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 11005,
+            "isBase": false,
+            "name": "Headhunter Master Yi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/11/11005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/11/11005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/11/11005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin05/MasterYiLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11005.png",
+            "chromas": [
+                {
+                    "id": 11006,
+                    "name": "Headhunter Master Yi Strike",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11006.png",
+                    "colors": [
+                        "#FED24D",
+                        "#D48F3B"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 11007,
+                    "name": "Headhunter Master Yi Strike",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11007.png",
+                    "colors": [
+                        "#76E7F5",
+                        "#DBAD38"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 11008,
+                    "name": "Headhunter Master Yi Strike",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11008.png",
+                    "colors": [
+                        "#993045",
+                        "#AC6A64"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 30
+                }
+            ],
+            "skinAugments": null,
+            "description": "Hunters use many tools: the bowgun, the rifle, the knife, the mind. Master Yi's tool of choice is a five foot long serrated blade forged from meteoric alloy. "
+        },
+        {
+            "id": 11009,
+            "isBase": false,
+            "name": "PROJECT: Yi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/11/11009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/11/11009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/11/11009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin09/MasterYiLoadScreen_9.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin09/MasterYiLoadScreen_9_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 18
+                }
+            ],
+            "skinAugments": null,
+            "description": "One of the first concepts, Yi was held by PROJECT for extensive experimentation, and then finally freed by the G/NETIC rebels. His psyche may still contain some glitches, but his experimental hyperlight “alpha” blade serves the resistance with its precision balance."
+        },
+        {
+            "id": 11010,
+            "isBase": false,
+            "name": "Cosmic Blade Master Yi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/11/11010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/11/11010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/11/11010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin10/MasterYiLoadscreen_10.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 43
+                }
+            ],
+            "skinAugments": null,
+            "description": "Gliding effortlessly from star to star, Yi flashes through the night sky with celestial grace, his blade arcing with crystalline precision through the fabric of the universe itself."
+        },
+        {
+            "id": 11011,
+            "isBase": false,
+            "name": "Eternal Sword Yi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/11/11011.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/11/11011.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/11/11011.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin11/MasterYiLoadScreen_11.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11011.png",
+            "chromas": [
+                {
+                    "id": 11012,
+                    "name": "Eternal Sword Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11012.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 11013,
+                    "name": "Eternal Sword Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11013.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 11014,
+                    "name": "Eternal Sword Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11014.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 11015,
+                    "name": "Eternal Sword Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11015.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 11016,
+                    "name": "Eternal Sword Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11016.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 81
+                }
+            ],
+            "skinAugments": null,
+            "description": "A pupil of a famous martial arts school, Yi has dedicated his life to the purity and art of combat. And yet, in his heart, he knows he is worthy of the fabled sword of jade, and a power beyond mere mortality…"
+        },
+        {
+            "id": 11017,
+            "isBase": false,
+            "name": "Snow Man Yi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/11/11017.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/11/11017.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/11/11017.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin17/MasterYiLoadScreen_17.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin17/MasterYiLoadScreen_17_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11017.png",
+            "chromas": [
+                {
+                    "id": 11019,
+                    "name": "Snow Man Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11019.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive during 2018."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 11020,
+                    "name": "Snow Man Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11020.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "tencent",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 11021,
+                    "name": "Snow Man Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11021.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 11022,
+                    "name": "Snow Man Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11022.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 11023,
+                    "name": "Snow Man Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11023.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 47
+                }
+            ],
+            "skinAugments": null,
+            "description": "A humble snowman brought to life by the magic of the Poro King, Yi strives to become the most gallant knight in all the land… and with the imminent invasion of Ice King Twitch, he might just get his chance."
+        },
+        {
+            "id": 11024,
+            "isBase": false,
+            "name": "Blood Moon Master Yi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/11/11024.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/11/11024.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/11/11024.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin24/MasterYiLoadScreen_24.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11024.png",
+            "chromas": [
+                {
+                    "id": 11025,
+                    "name": "Blood Moon Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11025.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2020."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 11026,
+                    "name": "Blood Moon Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11026.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11027,
+                    "name": "Blood Moon Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11027.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11028,
+                    "name": "Blood Moon Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11028.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11029,
+                    "name": "Blood Moon Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11029.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11030,
+                    "name": "Blood Moon Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11030.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11031,
+                    "name": "Blood Moon Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11031.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11032,
+                    "name": "Blood Moon Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11032.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 12
+                }
+            ],
+            "skinAugments": null,
+            "description": "The cultists of the Blood Moon have begun a dread metamorphosis, as the boundary between the demon realm and the human world is rapidly erased. Yi is among those first blessed by this new darkness, the demon within his blade arm driving him to ever greater spectacles of violence."
+        },
+        {
+            "id": 11033,
+            "isBase": false,
+            "name": "PsyOps Master Yi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/11/11033.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/11/11033.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/11/11033.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin33/MasterYiLoadScreen_33.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin33/MasterYiLoadscreen_33_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11033.png",
+            "chromas": [
+                {
+                    "id": 11034,
+                    "name": "PsyOps Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11034.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11035,
+                    "name": "PsyOps Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11035.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11036,
+                    "name": "PsyOps Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11036.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11037,
+                    "name": "PsyOps Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11037.png",
+                    "colors": [
+                        "#DED6B0",
+                        "#DED6B0"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11038,
+                    "name": "PsyOps Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11038.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2020."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 11039,
+                    "name": "PsyOps Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11039.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11040,
+                    "name": "PsyOps Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11040.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 11041,
+                    "name": "PsyOps Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11041.png",
+                    "colors": [
+                        "#B2D1E4",
+                        "#3CABFF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2020 PsyOps event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 133
+                }
+            ],
+            "skinAugments": null,
+            "description": "A legendary psychic swordsman and elite leader of the PsyOps unit. Yi is calm, professional, and always gets the job done, making him a terrifying bogeyman among rogue militaries, and a target for those harboring resentment towards the global war machine."
+        },
+        {
+            "id": 11042,
+            "isBase": false,
+            "name": "Debonair Master Yi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/11/11042.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/11/11042.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/11/11042.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin42/MasterYiLoadScreen_42.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin42/MasterYiLoadscreen_42_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11042.png",
+            "chromas": [
+                {
+                    "id": 11043,
+                    "name": "Debonair Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11043.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2021."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 11044,
+                    "name": "Debonair Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11044.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11045,
+                    "name": "Debonair Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11045.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11046,
+                    "name": "Debonair Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11046.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 11047,
+                    "name": "Debonair Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11047.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11048,
+                    "name": "Debonair Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11048.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11049,
+                    "name": "Debonair Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11049.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11050,
+                    "name": "Debonair Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11050.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11051,
+                    "name": "Debonair Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11051.png",
+                    "colors": [
+                        "#42A7CC",
+                        "#FFFFFF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2021 Debonair event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 23
+                }
+            ],
+            "skinAugments": null,
+            "description": "A powerful businessman of few words, often seen staring down on “his” strip from the comfort of his posh presidential suite. Despite his cold demeanor, Yi enjoys the finer things in life, and demands only the finest fits for his world-famous evening attire."
+        },
+        {
+            "id": 11052,
+            "isBase": false,
+            "name": "Spirit Blossom Master Yi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/11/11052.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/11/11052.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/11/11052.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin52/MasterYiLoadScreen_52.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin52/MasterYiLoadscreen_52_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11052.png",
+            "chromas": [
+                {
+                    "id": 11080,
+                    "name": "Spirit Blossom Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11080.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 11081,
+                    "name": "Spirit Blossom Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11081.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11082,
+                    "name": "Spirit Blossom Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11082.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11083,
+                    "name": "Spirit Blossom Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11083.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11084,
+                    "name": "Spirit Blossom Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11084.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 11085,
+                    "name": "Spirit Blossom Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11085.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11086,
+                    "name": "Spirit Blossom Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11086.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11087,
+                    "name": "Spirit Blossom Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11087.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11088,
+                    "name": "Spirit Blossom Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11088.png",
+                    "colors": [
+                        "#0C0C0F",
+                        "#B2D1E4"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the Worlds 2022 event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 171
+                }
+            ],
+            "skinAugments": null,
+            "description": "Legends speak of Master Yi, a swordsman who took but one student in his lifetime. After an unceremonious betrayal, Yi perished—not from a blade, but from a broken heart. Now the Spirit of Legacy roams the spirit world, searching for a pupil. He is lost, anyone that joins him destined to face the same fate."
+        },
+        {
+            "id": 11053,
+            "isBase": false,
+            "name": "Prestige Spirit Blossom Master Yi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/11/11053.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/11/11053.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/11/11053.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin53/MasterYiLoadScreen_53.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin53/MasterYiLoadscreen_53_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 171
+                }
+            ],
+            "skinAugments": null,
+            "description": "Yi arrives at the Spirit Blossom Fashion Festival, donning tinted shades and the finest fabrics. While others prefer to celebrate with close family and friends, Yi revels in the attention his outfit brings, intent to cement his style \"legacy\"."
+        },
+        {
+            "id": 11089,
+            "isBase": false,
+            "name": "Inkshadow Master Yi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/11/11089.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/11/11089.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/11/11089.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin89/MasterYiLoadScreen_89.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin89/MasterYiLoadScreen_89_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11089.png",
+            "chromas": [
+                {
+                    "id": 11090,
+                    "name": "Inkshadow Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11090.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 11091,
+                    "name": "Inkshadow Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11091.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11092,
+                    "name": "Inkshadow Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11092.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11093,
+                    "name": "Inkshadow Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11093.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 11094,
+                    "name": "Inkshadow Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11094.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 11095,
+                    "name": "Inkshadow Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11095.png",
+                    "colors": [
+                        "#B5CED6",
+                        "#33D889"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2023 Inkshadow event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 192
+                }
+            ],
+            "skinAugments": null,
+            "description": "Master Yi's family refused Cabal control, fleeing Rabadon City—only to be snuffed out. To fight back, he became one of the first Inkshadow Warriors, sacrificing his lifespan for a magical tattoo that grants him the power to raise his sword against the Cabal. He doesn't know how long he has left to live; still, he will save his city… and get his revenge."
+        },
+        {
+            "id": 11096,
+            "isBase": false,
+            "name": "Heavenscale Master Yi",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/11/11096.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/11/11096.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/11/11096.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin96/MasterYiLoadScreen_96.PIE_C_14_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/Skins/Skin96/MasterYiLoadScreen_96_LE.PIE_C_14_2.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11096.png",
+            "chromas": [
+                {
+                    "id": 11097,
+                    "name": "Heavenscale Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11097.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2024."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 11098,
+                    "name": "Heavenscale Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11098.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 11099,
+                    "name": "Heavenscale Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11099.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 11100,
+                    "name": "Heavenscale Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11100.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 11101,
+                    "name": "Heavenscale Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11101.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 11102,
+                    "name": "Heavenscale Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11102.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 11103,
+                    "name": "Heavenscale Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11103.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 11104,
+                    "name": "Heavenscale Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11104.png",
+                    "colors": [
+                        "#DFA6DF",
+                        "#E0D7D7"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2024 Heavenscale event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 11105,
+                    "name": "Heavenscale Master Yi",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/11/11105.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 201
+                }
+            ],
+            "skinAugments": null,
+            "description": "A prince requires a master of the highest caliber to teach him martial arts, and there is no dragon of greater skill than Master Yi. A true master must be both warrior and poet, champion and artist—and in the spirit of learning, must always be ready for anything."
+        }
+    ],
+    "passive": {
+        "name": "Double Strike",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/HUD/Icons2D/MasterYi_Passive1.png",
+        "abilityVideoPath": "champion-abilities/0011/ability_0011_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0011/ability_0011_P1.jpg",
+        "description": "Every few consecutive basic attack, Master Yi strikes twice."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Alpha Strike",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/HUD/Icons2D/MasterYi_Q.png",
+            "abilityVideoPath": "champion-abilities/0011/ability_0011_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0011/ability_0011_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Master Yi teleports across the battlefield with blinding speed, dealing physical damage to multiple units in his path, while simultaneously becoming untargetable. Alpha Strike can critically strike and deals bonus physical damage to monsters. Basic attacks reduce Alpha Strike's cooldown.",
+            "dynamicDescription": "Master Yi becomes Untargetable and teleports to rapidly strike enemies near his target, dealing <physicalDamage>@TotalDamage@ physical damage</physicalDamage> to all enemies hit after @AlphaStrikeBounces@ hits. <br><br>This Ability can strike the same enemy repeatedly if there are no other targets, dealing @SubsequentHitMultiplier*100@% damage for subsequent hits (<physicalDamage>@SubesquentDamage@</physicalDamage>), for a maximum single target total of <physicalDamage>@SingleTotalDamage@ physical damage</physicalDamage>.@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000
+            ],
+            "cooldownCoefficients": [
+                20.0000,
+                19.5000,
+                19.0000,
+                18.5000,
+                18.0000,
+                17.5000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Meditate",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/HUD/Icons2D/MasterYi_W.png",
+            "abilityVideoPath": "champion-abilities/0011/ability_0011_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0011/ability_0011_W1.jpg",
+            "cost": "@BaseManaCost@ Mana (+<scaleMana>@PercentManaCostPerSecond*100@% Max Mana</scaleMana> per second)",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Master Yi rejuvenates his body by focus of mind, restoring Health and taking reduced damage for a short time. In addition, Master Yi will gain stacks of Double Strike and pause the remaining duration on Wuju Style and Highlander for each second he channels.",
+            "dynamicDescription": "Master Yi channels, restoring <healing>@TotalHeal@ Health</healing> over @HealDuration@ seconds. This healing is increased by up to @MaxMissingHealthPercent*100@% based on Master Yi's missing Health.<br><br>While channeling and for @DRLinger@ seconds afterwards, he takes @InitialDR@ reduced damage, decreased to @DamageReduction*100@% after the first @InitialExtraDRDuration@ seconds.@SpellModifierDescriptionAppend@",
+            "range": [
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000
+            ],
+            "costCoefficients": [
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000
+            ],
+            "cooldownCoefficients": [
+                9.0000,
+                9.0000,
+                9.0000,
+                9.0000,
+                9.0000,
+                9.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Wuju Style",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/HUD/Icons2D/MasterYi_E1.png",
+            "abilityVideoPath": "champion-abilities/0011/ability_0011_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0011/ability_0011_E1.jpg",
+            "cost": "No Cost",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Grants bonus true damage on basic attacks.",
+            "dynamicDescription": "Master Yi's Attacks deal an additional <trueDamage>@TotalDamage@ true damage</trueDamage> for @Duration@ seconds.@SpellModifierDescriptionAppend@",
+            "range": [
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                14.0000,
+                14.0000,
+                14.0000,
+                14.0000,
+                14.0000,
+                14.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Highlander",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/MasterYi/HUD/Icons2D/MasterYi_R.png",
+            "abilityVideoPath": "champion-abilities/0011/ability_0011_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0011/ability_0011_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Master Yi moves with unparalleled agility, temporarily increasing his Move Speed and Attack Speed as well as making him immune to all slowing effects. While active, Champion kills or assists extend Highlander's duration. Passively reduces cooldown for his other abilities on a kill or assist.",
+            "dynamicDescription": "<spellPassive>Passive:</spellPassive> Champion takedowns reduce the remaining Cooldown of Master Yi's basic Abilities by @RCooldownRefund*100@%.<br><br><spellActive>Active:</spellActive> Master Yi enters a trance, gaining <speed>@RMSBonus@% Move Speed</speed>, <attackSpeed>@RASBonus@% Attack Speed</attackSpeed>, and immunity to <status>Slows</status> for @RDuration@ seconds. Champion takedowns extend the duration of this Ability by @RKillAssistExtension@ seconds.@SpellModifierDescriptionAppend@",
+            "range": [
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                85.0000,
+                85.0000,
+                85.0000,
+                85.0000,
+                85.0000,
+                85.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

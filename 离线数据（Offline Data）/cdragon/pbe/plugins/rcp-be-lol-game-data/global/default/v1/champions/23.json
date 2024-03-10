@@ -1,0 +1,1369 @@
+{
+    "id": 23,
+    "name": "Tryndamere",
+    "alias": "Tryndamere",
+    "title": "the Barbarian King",
+    "shortBio": "Fueled by unbridled fury and rage, Tryndamere once carved his way through the Freljord, openly challenging the greatest warriors of the north to prepare himself for even darker days ahead. The wrathful barbarian has long sought revenge for the annihilation of his clan, though more recently he has found companionship with Ashe, the Avarosan warmother, and a home with her people. His almost inhuman strength and fortitude is legendary, and has delivered him and his new allies countless victories against the greatest of odds.",
+    "tacticalInfo": {
+        "style": 2,
+        "difficulty": 1,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 2,
+        "crowdControl": 1,
+        "mobility": 2,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/23.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/23.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/23.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/23.ogg",
+    "roles": [
+        "fighter",
+        "assassin"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 23000,
+            "isBase": true,
+            "name": "Tryndamere",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/23/23000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/23/23000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/23/23000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Tryndamere/Skins/Base/TryndamereLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 23001,
+            "isBase": false,
+            "name": "Highland Tryndamere",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/23/23001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/23/23001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/23/23001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Tryndamere/Skins/Skin01/TryndamereLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 23002,
+            "isBase": false,
+            "name": "King Tryndamere",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/23/23002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/23/23002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/23/23002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Tryndamere/Skins/Skin02/TryndamereLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 114
+                }
+            ],
+            "skinAugments": null,
+            "description": "A proud king who was once known only as a brutal highland swordsman, Tryndamere rules his people as the martial protector of two great Freljordian houses. Yet every day he resists the pull of an intangible evil at his back, as he has not forgotten a certain blood debt that he vowed to see repaid."
+        },
+        {
+            "id": 23003,
+            "isBase": false,
+            "name": "Viking Tryndamere",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/23/23003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/23/23003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/23/23003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Tryndamere/Skins/Skin03/TryndamereLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 99
+                }
+            ],
+            "skinAugments": null,
+            "description": "Vikings believed that death in battle was a ticket to the eternal realm of Valhalla. Tryndamere's signature ability is being unable to die. You… you're seeing the issue here, right?"
+        },
+        {
+            "id": 23004,
+            "isBase": false,
+            "name": "Demonblade Tryndamere",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/23/23004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/23/23004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/23/23004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Tryndamere/Skins/Skin04/TryndamereLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 180
+                }
+            ],
+            "skinAugments": null,
+            "description": "Tryndamere's cursed blade corrupted him from a once honorable barbarian into a rampaging monster. Now in a frenzy to sate his endless hunger, this demonic sword drives him to slay all. With each kill another fraction of his humanity is lost and succumbing further into the demonic sword's madness."
+        },
+        {
+            "id": 23005,
+            "isBase": false,
+            "name": "Sultan Tryndamere",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/23/23005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/23/23005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/23/23005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Tryndamere/Skins/Skin05/TryndamereLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 99
+                }
+            ],
+            "skinAugments": null,
+            "description": "Tryndamere is a ruler from a distant land, and tales of his impossible strength and distinctive mustache have reached even the farthest-flung city-states. As is the rule rather than the exception with rulers from distant lands, his hat is exceptional."
+        },
+        {
+            "id": 23006,
+            "isBase": false,
+            "name": "Warring Kingdoms Tryndamere",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/23/23006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/23/23006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/23/23006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Tryndamere/Skins/Skin06/TryndamereLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 53
+                }
+            ],
+            "skinAugments": null,
+            "description": "Tryndamere  is a grand general of the Warring Kingdoms, so deadly and so feared it is said he is the god of war incarnate. Truly a spectacle to behold, it would take a thousand men to kill him in battle, and a thousand more to keep him dead."
+        },
+        {
+            "id": 23007,
+            "isBase": false,
+            "name": "Nightmare Tryndamere",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/23/23007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/23/23007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/23/23007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Tryndamere/Skins/Skin07/TryndamereLoadScreen_7.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 88
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 23008,
+            "isBase": false,
+            "name": "Beast Hunter Tryndamere",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/23/23008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/23/23008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/23/23008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Tryndamere/Skins/Skin08/TryndamereLoadScreen_8.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 32
+                }
+            ],
+            "skinAugments": null,
+            "description": "Tryndamere isn't the smartest beast hunter, but he is the strongest—possessing a stubborn rage that quite literally refuses to let him die. A single swing of his blade can cleave a beast's limb from its body, and he has the hunting trophies to prove it."
+        },
+        {
+            "id": 23009,
+            "isBase": false,
+            "name": "Chemtech Tryndamere",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/23/23009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/23/23009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/23/23009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Tryndamere/Skins/Skin09/TryndamereLoadscreen_9.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 111
+                }
+            ],
+            "skinAugments": null,
+            "description": "A monstrous experiment created by the villainous Singed, Tryndamere was irrevocably changed when he fell into a vat of volatile chemicals. Wherever Singed goes, Tryndamere follows—yet another dastardly villain battling against New Valoran's bravest heroes!"
+        },
+        {
+            "id": 23010,
+            "isBase": false,
+            "name": "Blood Moon Tryndamere",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/23/23010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/23/23010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/23/23010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Tryndamere/Skins/Skin10/TryndamereLoadscreen_10.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23010.png",
+            "chromas": [
+                {
+                    "id": 23011,
+                    "name": "Blood Moon Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23011.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 23012,
+                    "name": "Blood Moon Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23012.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 23013,
+                    "name": "Blood Moon Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23013.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "Obtained through Influencer audience giveaways."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 23014,
+                    "name": "Blood Moon Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23014.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 23015,
+                    "name": "Blood Moon Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23015.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 23016,
+                    "name": "Blood Moon Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23016.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 23017,
+                    "name": "Blood Moon Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23017.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2020."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 12
+                }
+            ],
+            "skinAugments": null,
+            "description": "The demon Tryndamere has fully assumed control over his twinned human body, using its inhuman strength to slash gaping wounds in the veil between the human and demonic realms. Shrugging off wounds considered fatal even to other demons, his is an unstoppable, unquenchable rage that would see all things consumed by the Blood Moon."
+        },
+        {
+            "id": 23018,
+            "isBase": false,
+            "name": "Nightbringer Tryndamere",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/23/23018.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/23/23018.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/23/23018.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Tryndamere/Skins/Skin18/TryndamereLoadScreen_18.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Tryndamere/Skins/Skin18/TryndamereLoadscreen_18_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23018.png",
+            "chromas": [
+                {
+                    "id": 23019,
+                    "name": "Nightbringer Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23019.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2021."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 23020,
+                    "name": "Nightbringer Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23020.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 23021,
+                    "name": "Nightbringer Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23021.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 23022,
+                    "name": "Nightbringer Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23022.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "Obtained through Influencer audience giveaways."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 23023,
+                    "name": "Nightbringer Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23023.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 23024,
+                    "name": "Nightbringer Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23024.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 23025,
+                    "name": "Nightbringer Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23025.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 23026,
+                    "name": "Nightbringer Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23026.png",
+                    "colors": [
+                        "#1E1B1A",
+                        "#FFFFFF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the Worlds 2021 event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 193
+                }
+            ],
+            "skinAugments": null,
+            "description": "A fiendish god of rage and battle, Tryndamere embodies the moment when war descends into bloodied frenzy. Peace is anathema, but perhaps Yone's crusade presents an opportunity… After all, to Tryndamere, chaos is best when it is born of order's decay."
+        },
+        {
+            "id": 23027,
+            "isBase": false,
+            "name": "Victorious Tryndamere",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/23/23027.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/23/23027.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/23/23027.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Tryndamere/Skins/Skin27/TryndamereLoadScreen_27.SKINS_Tryndamere_Skin27.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23027.png",
+            "chromas": [
+                {
+                    "id": 23028,
+                    "name": "Victorious Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23028.png",
+                    "colors": [
+                        "#764D43",
+                        "#764D43"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This Chroma was awarded to players who accumulated at least 1600 Split Points and reached Bronze rank in any Summoner's Rift ranked queue in Season 2023 - Split 2"
+                        }
+                    ],
+                    "rarities": []
+                },
+                {
+                    "id": 23029,
+                    "name": "Victorious Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23029.png",
+                    "colors": [
+                        "#AAB5BA",
+                        "#AAB5BA"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This Chroma was awarded to players who accumulated at least 1600 Split Points and reached Silver rank in any Summoner's Rift ranked queue in Season 2023 - Split 2"
+                        }
+                    ],
+                    "rarities": []
+                },
+                {
+                    "id": 23030,
+                    "name": "Victorious Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23030.png",
+                    "colors": [
+                        "#D9C445",
+                        "#D9C445"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This Chroma was awarded to players who accumulated at least 80 Split Points and reached Gold rank in any Summoner's Rift ranked queue in Season 2023 - Split 2"
+                        }
+                    ],
+                    "rarities": []
+                },
+                {
+                    "id": 23031,
+                    "name": "Victorious Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23031.png",
+                    "colors": [
+                        "#55CDE5",
+                        "#55CDE5"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This Chroma was awarded to players who accumulated at least 80 Split Points and reached Platinum rank in any Summoner's Rift ranked queue in Season 2023 - Split 2"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 23032,
+                    "name": "Victorious Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23032.png",
+                    "colors": [
+                        "#26854C",
+                        "#26854C"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This Chroma was awarded to players who accumulated at least 80 Split Points and reached Emerald rank in any Summoner's Rift ranked queue in Season 2023 - Split 2"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 23033,
+                    "name": "Victorious Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23033.png",
+                    "colors": [
+                        "#65337F",
+                        "#65337F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This Chroma was awarded to players who accumulated at least 80 Split Points and reached Diamond rank in any Summoner's Rift ranked queue in Season 2023 - Split 2"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 3
+                        }
+                    ]
+                },
+                {
+                    "id": 23034,
+                    "name": "Victorious Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23034.png",
+                    "colors": [
+                        "#9D228D",
+                        "#9D228D"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This Chroma was awarded to players who accumulated at least 80 Split Points and reached Master rank in any Summoner's Rift ranked queue in Season 2023 - Split 2"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 4
+                        }
+                    ]
+                },
+                {
+                    "id": 23035,
+                    "name": "Victorious Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23035.png",
+                    "colors": [
+                        "#B31316",
+                        "#B31316"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This Chroma was awarded to players who accumulated at least 80 Split Points and reached Grandmaster rank in any Summoner's Rift ranked queue in Season 2023 - Split 2"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 5
+                        }
+                    ]
+                },
+                {
+                    "id": 23036,
+                    "name": "Victorious Tryndamere",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/23/23036.png",
+                    "colors": [
+                        "#1D62C8",
+                        "#1D62C8"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This Chroma was awarded to players who accumulated at least 80 Split Points and reached Challenger rank in any Summoner's Rift ranked queue in Season 2023 - Split 2"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 5
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 7
+                }
+            ],
+            "skinAugments": null,
+            "description": "Victorious Tryndamere was earned by players who accumulated enough split points in Ranked. The last thing Tryndamere's challengers would ever see was the unbridled wrath in his eyes as he decided they would be the next to meet his blade."
+        }
+    ],
+    "passive": {
+        "name": "Battle Fury",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Tryndamere/HUD/Icons2D/Tryndamere_Passive.png",
+        "abilityVideoPath": "champion-abilities/0023/ability_0023_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0023/ability_0023_P1.jpg",
+        "description": "Tryndamere gains Fury for each attack, critical strike, and killing blow he makes. Fury passively increases his Critical Strike Chance and can be consumed with his Bloodlust spell."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Bloodlust",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Tryndamere/HUD/Icons2D/Tryndamere_Q.png",
+            "abilityVideoPath": "champion-abilities/0023/ability_0023_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0023/ability_0023_Q1.jpg",
+            "cost": "No Cost",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Tryndamere thrives on the thrills of combat, increasing his Attack Damage as he is more and more wounded. He can cast Bloodlust to consume his Fury and heal himself.",
+            "dynamicDescription": "<spellPassive>Passive:</spellPassive> Tryndamere thirsts for blood, gaining <scaleAD>@FlatAD@ Attack Damage</scaleAD> plus <scaleAD>@ADPerOnePercentMissingHP@</scaleAD> per 1% missing Health.<br><br><spellActive>Active:</spellActive> Tryndamere consumes his <keywordMajor>Fury</keywordMajor>, restoring <healing>@BaseHeal@ plus @HealPerFury@ Health per Fury</healing>.@SpellModifierDescriptionAppend@",
+            "range": [
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.3000,
+                "coefficient2": 0.0120
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Mocking Shout",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Tryndamere/HUD/Icons2D/Tryndamere_W.png",
+            "abilityVideoPath": "champion-abilities/0023/ability_0023_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0023/ability_0023_W1.jpg",
+            "cost": "No Cost",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Tryndamere lets out an insulting cry, decreasing surrounding champions' Attack Damage. Enemies with their backs turned to Tryndamere also have their Move Speed reduced.",
+            "dynamicDescription": "Tryndamere hurls insults, reducing champions' Attack Damage by @ADReduction*-1@ for @ReductionDuration@ seconds. Enemy champions with their backs towards Tryndamere are <status>Slowed</status> by @SlowPotency*-100@% for the same duration.@SpellModifierDescriptionAppend@",
+            "range": [
+                850.0000,
+                850.0000,
+                850.0000,
+                850.0000,
+                850.0000,
+                850.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                14.0000,
+                14.0000,
+                14.0000,
+                14.0000,
+                14.0000,
+                14.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Spinning Slash",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Tryndamere/HUD/Icons2D/Tryndamere_E.png",
+            "abilityVideoPath": "champion-abilities/0023/ability_0023_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0023/ability_0023_E1.jpg",
+            "cost": "No Cost",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Tryndamere slices toward a target unit, dealing damage to enemies in his path.",
+            "dynamicDescription": "Tryndamere spins through his enemies, dealing <physicalDamage>@TotalDamage@ physical damage</physicalDamage> and generating <keywordMajor>@NonChampFuryGain@ Fury</keywordMajor> per enemy hit, increased to <keywordMajor>@ChampFuryGain@ Fury</keywordMajor> against enemy champions.<br><br>This Ability's Cooldown is reduced by @NonChampCDRefund@ second when Tryndamere critically strikes, and reduced by @ChampCDRefund@ seconds when critically striking a champion.@SpellModifierDescriptionAppend@",
+            "range": [
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                11.0000,
+                10.0000,
+                9.0000,
+                8.0000,
+                7.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.8000,
+                "coefficient2": 1.3000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Undying Rage",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Tryndamere/HUD/Icons2D/Tryndamere_R.png",
+            "abilityVideoPath": "champion-abilities/0023/ability_0023_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0023/ability_0023_R1.jpg",
+            "cost": "No Cost",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Tryndamere's lust for battle becomes so strong that he is unable to die, no matter how wounded he becomes.",
+            "dynamicDescription": "Tryndamere becomes completely immune to death for @Effect3Amount@ seconds, refusing to be reduced below @Effect2Amount@ Health, and instantly gains <keywordMajor>@Effect1Amount@ Fury</keywordMajor>.@SpellModifierDescriptionAppend@",
+            "range": [
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                100.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    50.0000,
+                    50.0000,
+                    75.0000,
+                    100.0000,
+                    100.0000,
+                    100.0000,
+                    100.0000
+                ],
+                "Effect2Amount": [
+                    30.0000,
+                    30.0000,
+                    50.0000,
+                    70.0000,
+                    70.0000,
+                    70.0000,
+                    70.0000
+                ],
+                "Effect3Amount": [
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

@@ -1,0 +1,2630 @@
+{
+    "id": 910,
+    "name": "异画师",
+    "alias": "Hwei",
+    "title": "彗",
+    "shortBio": "彗是一个郁郁寡欢的画家，在艾欧尼亚四处创作惊世佳作，只为惩戒恶人，宽慰弱者。在他的忧郁之下，藏着一颗斑驳、敏感的心，想象中的绚烂色彩与回忆中的凄惨尸骸始终萦绕在他脑海。彗寻求对自身光与暗的彻悟，而这份追寻也将不可避免地把他推向他的启蒙艺术家。以画笔和色盘，彗画出无尽的可能性，同时也在不断接近最终的答案，或是冰冷的绝望。",
+    "tacticalInfo": {
+        "style": 9,
+        "difficulty": 3,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 3,
+        "mobility": 1,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/910.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/910.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/910.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/910.ogg",
+    "roles": [
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 910000,
+            "isBase": true,
+            "name": "异画师",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/910/910000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/910/910000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/910/910000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/Skins/Skin0/HweiLoadScreen_0.Hwei_13_24.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 910001,
+            "isBase": false,
+            "name": "北极星使者 彗",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/910/910001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/910/910001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/910/910001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/Skins/Skin1/HweiLoadScreen_1.Hwei_13_24.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Hwei/Skins/Skin1/HweiLoadScreen_1_LE.Hwei_13_24.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/910/910001.png",
+            "chromas": [
+                {
+                    "id": 910002,
+                    "name": "北极星使者 彗 激昂脉冲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/910/910002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 910003,
+                    "name": "北极星使者 彗 幸运漩涡",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/910/910003.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 910004,
+                    "name": "北极星使者 彗 智慧纽带",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/910/910004.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 910005,
+                    "name": "北极星使者 彗 祥和面纱",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/910/910005.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 910006,
+                    "name": "北极星使者 彗 希望辉光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/910/910006.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 910007,
+                    "name": "北极星使者 彗 浪漫帘幕",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/910/910007.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 910008,
+                    "name": "北极星使者 彗 庄严光冕",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/910/910008.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 910009,
+                    "name": "北极星使者 彗 圣洁光带",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/910/910009.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 910010,
+                    "name": "北极星使者 彗 花冠极光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/910/910010.png",
+                    "colors": [
+                        "#BF2020",
+                        "#368B25"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在北极星(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Snowdown",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/9.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/9.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 187
+                }
+            ],
+            "skinAugments": null,
+            "description": "北极星的使者——彗，正在沮丧中苦苦等待。当赛娜和赫卡里姆来到凡人的世界找到他时，狂风大作，飞雪连天。身为使者的他，用画笔在天空中泼洒北极光，为世间降下初雪。在赫卡里姆的示意下，他挥动画笔，扫开乌云，露出苍茫的天空。可是北极光在哪里？"
+        }
+    ],
+    "passive": {
+        "name": "落款",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiPassive.png",
+        "abilityVideoPath": "champion-abilities/0910/ability_0910_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0910/ability_0910_P1.jpg",
+        "description": "彗准备在那些受到他的技能伤害的敌人们身上留下落款。<br><br>用另一个伤害型技能命中时，即可完成他的落款，将其留在敌人脚下。落款会在短暂延迟后引爆，对范围内的所有敌人造成魔法伤害。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "主题：灾",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiQ.png",
+            "abilityVideoPath": "champion-abilities/0910/ability_0910_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0910/ability_0910_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "彗将眼中所见的灾难逐一描绘，造成可怕的破坏力。<br><br>这个技能会用这些伤害型技能替换掉彗的技能：没骨火、攒聚雷、连皴山。",
+            "dynamicDescription": "彗描绘出眼中所见的灾难，来对敌人们造成大量伤害。<br><br><spellName>没骨火</spellName><br>彗发射一颗炽热的快速火球，火球在命中第一个敌人时爆炸，对区域内的所有敌人造成<magicDamage>@Tooltip_QQDamage@外加@Tooltip_QQBonusDamage@%最大生命值的魔法伤害</magicDamage>。<br><br><spellName>攒聚雷</spellName><br>彗在一段延迟后降下一道远距离落雷，造成<magicDamage>@Tooltip_QWDamage@魔法伤害</magicDamage>。命中一个孤立无援或被<status>定身</status>的目标时会将这个伤害至多提升至<magicDamage>@Tooltip_QWBonusDamage@魔法伤害</magicDamage>，基于目标的已损失生命值。<br><br><spellName>连皴山</spellName><br>彗释放一道长距离、缓慢的喷发路径，在一个区域内造成<magicDamage>@Tooltip_QEDamage@魔法伤害</magicDamage>并留下持续@spell.HweiQE:Duration@秒的岩浆池来对敌人造成@spell.HweiQE:SlowPercent@%<status>减速</status>和<magicDamage>每秒@Tooltip_QEDamagePerSecond@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "costCoefficients": [
+                80.0000,
+                90.0000,
+                100.0000,
+                110.0000,
+                120.0000,
+                120.0000
+            ],
+            "cooldownCoefficients": [
+                10.0000,
+                9.0000,
+                8.0000,
+                7.0000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "主题：靖",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiW.png",
+            "abilityVideoPath": "champion-abilities/0910/ability_0910_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0910/ability_0910_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "彗画下眼中所见到的宁静，抚慰并激励众人。<br><br>这个技能会用这些功能型技能替换掉彗的技能：飞染、渲浓、宿墨",
+            "dynamicDescription": "彗画下眼中所见到的宁静来为他和友方英雄们提供功能性。<br><br><spellName>飞染</spellName><br>彗画出一条激流来使友军提升<speed>@Tooltip_WQMoveSpeed@移动速度</speed>。<br><br><spellName>渲浓</spellName><br>彗画下一汪池水来持续为其中的友方英雄提供<shield>@Tooltip_WWShieldAmount@护盾值</shield>并且对友军时减少@spell.HweiWW:AllyMod*100@%护盾值。<br><br><spellName>宿墨</spellName><br>彗在身边点出三团光芒来强化他的下三次技能或攻击，每次造成额外的<magicDamage>@Tooltip_WEOnHitDamage@魔法伤害</magicDamage>并回复<scaleMana>@Tooltip_WEOnHitManaRestore@法力值</scaleMana>。@SpellModifierDescriptionAppend@",
+            "range": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "costCoefficients": [
+                90.0000,
+                95.0000,
+                100.0000,
+                105.0000,
+                110.0000,
+                110.0000
+            ],
+            "cooldownCoefficients": [
+                18.0000,
+                17.5000,
+                17.0000,
+                16.5000,
+                16.0000,
+                16.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "主题：悚",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiE.png",
+            "abilityVideoPath": "champion-abilities/0910/ability_0910_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0910/ability_0910_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "彗将眼中所见到的恐怖景象付诸笔端，带来震慑人心的画面。<br><br>这个技能会用这些控制型技能替换掉彗的技能：阴沉变意、滞涩幽瞳、双钩血喉。",
+            "dynamicDescription": "彗描绘出恐怖景象来控制敌人们。<br><br><spellName>阴沉变意</spellName><br>彗投射出一张恐怖面容来对命中的第一个敌人造成@Tooltip_EQFleeDuration@秒<status>逃跑</status>和<magicDamage>@Tooltip_EQDamage@魔法伤害</magicDamage>。<br><br><spellName>滞涩幽瞳</spellName><br>彗画出一颗眼眸来停留并提供视野，它会锁定进入其中的第一个敌方英雄并对其发射一颗追踪飞弹，这颗飞弹会<status>禁锢</status>命中的第一个敌人@Tooltip_EWRootDuration@秒并造成<magicDamage>@Tooltip_EWDamage@魔法伤害</magicDamage>。<br><br><spellName>双钩血喉</spellName><br>彗在目标位置画出一张大口来将敌人们<status>拖拽</status>向它的中心。大口对被捕获的敌人们造成<magicDamage>@Tooltip_EEDamage@魔法伤害</magicDamage>和在1.25秒内持续衰减的@Tooltip_EESlowAmount@%<status>减速</status>。 @SpellModifierDescriptionAppend@",
+            "range": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                11.5000,
+                11.0000,
+                10.5000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "焚心绚华绘",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiR.png",
+            "abilityVideoPath": "champion-abilities/0910/ability_0910_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0910/ability_0910_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "彗画出深重的绝望。命中的第一个敌人会成为画卷的中心。画卷向四周展开，减速并伤害附近的敌人们。展开至最大时，或是中心的敌人死亡时，画卷会发生爆炸。",
+            "dynamicDescription": "彗将深重的绝望附着在一名敌方英雄上，持续@Duration@秒。绝望会持续扩大，每0.25秒对敌人们施加一层可叠加的@SlowPercentPerStack@%<status>减速</status>，并造成<magicDamage>每秒@DamageOverTime@魔法伤害</magicDamage>。<br><br>在完成的同时，绝望会碎裂，造成<magicDamage>@Damage@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                1300.0000,
+                1300.0000,
+                1300.0000,
+                1300.0000,
+                1300.0000,
+                1300.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                140.0000,
+                115.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ],
+    "spellbookOverride": [
+        [
+            {
+                "spellKey": "qq",
+                "name": "没骨火",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiQQ.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_QQ1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_QQ1.jpg",
+                "cost": "@Cost@ @AbilityResourceName@",
+                "cooldown": "@Cooldown@秒 %i:cooldown%",
+                "description": "慧画出一发炽热的火球，在命中一个敌人单位或达到最大距离时发生爆炸。",
+                "dynamicDescription": "彗画出一发炽热的火球，飞向目标方向。火球在命中第一个敌人时爆炸，对区域内的所有敌人造成<magicDamage>@spell.HweiQ:Tooltip_QQDamage@外加@spell.HweiQ:Tooltip_QQBonusDamage@%最大生命值的魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+                "range": [
+                    800.0000,
+                    800.0000,
+                    800.0000,
+                    800.0000,
+                    800.0000,
+                    800.0000
+                ],
+                "costCoefficients": [
+                    80.0000,
+                    90.0000,
+                    100.0000,
+                    110.0000,
+                    120.0000,
+                    120.0000
+                ],
+                "cooldownCoefficients": [
+                    10.0000,
+                    9.0000,
+                    8.0000,
+                    7.0000,
+                    6.0000,
+                    6.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            },
+            {
+                "spellKey": "qw",
+                "name": "攒聚雷",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiQW.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_QW1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_QW1.jpg",
+                "cost": "@Cost@ @AbilityResourceName@",
+                "cooldown": "@Cooldown@秒 %i:cooldown%",
+                "description": "彗画出一道带有延迟的远距离落雷，对被定身或孤立无援的低生命值敌人造成额外伤害。",
+                "dynamicDescription": "在一段延迟后，彗在目标位置降下一道强大的远距离落雷，造成<magicDamage>@spell.HweiQ:Tooltip_QWDamage@魔法伤害</magicDamage>。孤立无援或<status>定身</status>的敌人将基于已损失生命值受到额外伤害，至多至<magicDamage>@spell.HweiQ:Tooltip_QWBonusDamage@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+                "range": [
+                    1900.0000,
+                    1900.0000,
+                    1900.0000,
+                    1900.0000,
+                    1900.0000,
+                    1900.0000
+                ],
+                "costCoefficients": [
+                    80.0000,
+                    90.0000,
+                    100.0000,
+                    110.0000,
+                    120.0000,
+                    120.0000
+                ],
+                "cooldownCoefficients": [
+                    10.0000,
+                    9.0000,
+                    8.0000,
+                    7.0000,
+                    6.0000,
+                    6.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            },
+            {
+                "spellKey": "qe",
+                "name": "连皴山",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiQE.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_QE1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_QE1.jpg",
+                "cost": "@Cost@ @AbilityResourceName@",
+                "cooldown": "@Cooldown@秒 %i:cooldown%",
+                "description": "彗画出一道熔岩喷发地带，所过之处岩浆翻滚。",
+                "dynamicDescription": "彗画出一道不断爆裂的岩浆喷发地带，所过之处岩浆翻滚。每次爆裂都会对命中的敌人们造成<magicDamage>@spell.HweiQ:Tooltip_QEDamage@魔法伤害</magicDamage>。位于岩浆区域内的敌人<magicDamage>每秒承受@spell.HweiQ:Tooltip_QEDamagePerSecond@魔法伤害</magicDamage>，并被<status>减速</status>@spell.HweiQE:SlowPercent@%。每个岩浆池持续@spell.HweiQE:Duration@秒。@SpellModifierDescriptionAppend@",
+                "range": [
+                    1200.0000,
+                    1200.0000,
+                    1200.0000,
+                    1200.0000,
+                    1200.0000,
+                    1200.0000
+                ],
+                "costCoefficients": [
+                    80.0000,
+                    90.0000,
+                    100.0000,
+                    110.0000,
+                    120.0000,
+                    120.0000
+                ],
+                "cooldownCoefficients": [
+                    10.0000,
+                    9.0000,
+                    8.0000,
+                    7.0000,
+                    6.0000,
+                    6.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            },
+            {
+                "spellKey": "qr",
+                "name": "濯",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiWashBrush.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_QR1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_QR1.jpg",
+                "cost": "",
+                "cooldown": "",
+                "description": "彗清洗手中画笔，所有技能回复至初始状态。这个技能不消耗法力，没有冷却时间。只在主题：灾、主题：靖或主题：悚处于激活状态时可用。",
+                "dynamicDescription": "彗清洗手中画笔并回到基础系技能。这个技能不消耗法力或冷却时间。@SpellModifierDescriptionAppend@",
+                "range": [
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000
+                ],
+                "costCoefficients": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "cooldownCoefficients": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            }
+        ],
+        [
+            {
+                "spellKey": "wq",
+                "name": "飞染",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiWQ.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_WQ1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_WQ1.jpg",
+                "cost": "@Cost@ @AbilityResourceName@",
+                "cooldown": "@Cooldown@秒 %i:cooldown%",
+                "description": "彗画出一条激流，为自己和队友提升移动速度。",
+                "dynamicDescription": "彗画出一条持续@spell.HweiW:Tooltip_WQAreaDuration@秒的激流，为自己和友方英雄们提供<speed>@spell.HweiW:Tooltip_WQMoveSpeed@移动速度</speed>。@SpellModifierDescriptionAppend@",
+                "range": [
+                    1200.0000,
+                    1200.0000,
+                    1200.0000,
+                    1200.0000,
+                    1200.0000,
+                    1200.0000
+                ],
+                "costCoefficients": [
+                    90.0000,
+                    95.0000,
+                    100.0000,
+                    105.0000,
+                    110.0000,
+                    110.0000
+                ],
+                "cooldownCoefficients": [
+                    18.0000,
+                    17.5000,
+                    17.0000,
+                    16.5000,
+                    16.0000,
+                    16.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            },
+            {
+                "spellKey": "ww",
+                "name": "渲浓",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiWW.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_WW1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_WW1.jpg",
+                "cost": "@Cost@ @AbilityResourceName@",
+                "cooldown": "@Cooldown@秒 %i:cooldown%",
+                "description": "彗画下一汪池水，为队友提供护盾。",
+                "dynamicDescription": "彗在目标位置画下一汪持续@spell.HweiWW:AreaDuration@秒的池水，为位于范围内的队友立刻提供<shield>@spell.HweiW:Tooltip_WWStartShieldAmount@护盾值</shield>，且这个护盾值会在@spell.HweiWW:SecsToFullStack@秒里持续提升至<shield>@spell.HweiW:Tooltip_WWShieldAmount@护盾值</shield>并且对友军时减少@spell.HweiWW:AllyMod*100@%护盾值。@SpellModifierDescriptionAppend@",
+                "range": [
+                    650.0000,
+                    650.0000,
+                    650.0000,
+                    650.0000,
+                    650.0000,
+                    650.0000
+                ],
+                "costCoefficients": [
+                    90.0000,
+                    95.0000,
+                    100.0000,
+                    105.0000,
+                    110.0000,
+                    110.0000
+                ],
+                "cooldownCoefficients": [
+                    18.0000,
+                    17.5000,
+                    17.0000,
+                    16.5000,
+                    16.0000,
+                    16.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            },
+            {
+                "spellKey": "we",
+                "name": "宿墨",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiWE.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_WE1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_WE1.jpg",
+                "cost": "@Cost@ @AbilityResourceName@",
+                "cooldown": "@Cooldown@秒 %i:cooldown%",
+                "description": "彗在身边点出三团光芒，强化下三次攻击或技能，造成额外魔法伤害并提供法力回复。",
+                "dynamicDescription": "彗在身边点出三团光芒，来使他的下三次技能或攻击造成额外的<magicDamage>@spell.HweiW:Tooltip_WEOnHitDamage@魔法伤害</magicDamage>并附带回复<scaleMana>@spell.HweiW:Tooltip_WEOnHitManaRestore@法力</scaleMana>。@SpellModifierDescriptionAppend@",
+                "range": [
+                    500.0000,
+                    500.0000,
+                    500.0000,
+                    500.0000,
+                    500.0000,
+                    500.0000
+                ],
+                "costCoefficients": [
+                    90.0000,
+                    95.0000,
+                    100.0000,
+                    105.0000,
+                    110.0000,
+                    110.0000
+                ],
+                "cooldownCoefficients": [
+                    18.0000,
+                    17.5000,
+                    17.0000,
+                    16.5000,
+                    16.0000,
+                    16.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            },
+            {
+                "spellKey": "wr",
+                "name": "濯",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiWashBrush.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_WR1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_WR1.jpg",
+                "cost": "",
+                "cooldown": "",
+                "description": "彗清洗手中画笔，所有技能回复至初始状态。这个技能不消耗法力，没有冷却时间。只在主题：灾、主题：靖或主题：悚处于激活状态时可用。",
+                "dynamicDescription": "彗清洗手中画笔并回到基础系技能。这个技能不消耗法力或冷却时间。@SpellModifierDescriptionAppend@",
+                "range": [
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000
+                ],
+                "costCoefficients": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "cooldownCoefficients": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            }
+        ],
+        [
+            {
+                "spellKey": "eq",
+                "name": "阴沉变意",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiEQ.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_EQ1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_EQ1.jpg",
+                "cost": "@Cost@ @AbilityResourceName@",
+                "cooldown": "@Cooldown@秒 %i:cooldown%",
+                "description": "彗在人心中投下恐怖的阴影，对命中的第一个敌人造成伤害并使其逃跑。",
+                "dynamicDescription": "彗在人心中投下恐怖的阴影，使命中的第一个敌人<status>逃跑</status>@spell.HweiEQ:FleeDuration@秒并造成<magicDamage>@spell.HweiE:Tooltip_EQDamage@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+                "range": [
+                    1100.0000,
+                    1100.0000,
+                    1100.0000,
+                    1100.0000,
+                    1100.0000,
+                    1100.0000
+                ],
+                "costCoefficients": [
+                    50.0000,
+                    55.0000,
+                    60.0000,
+                    65.0000,
+                    70.0000,
+                    70.0000
+                ],
+                "cooldownCoefficients": [
+                    12.0000,
+                    11.5000,
+                    11.0000,
+                    10.5000,
+                    10.0000,
+                    10.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            },
+            {
+                "spellKey": "ew",
+                "name": "滞涩幽瞳",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiEW.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_EW1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_EW1.jpg",
+                "cost": "@Cost@ @AbilityResourceName@",
+                "cooldown": "@Cooldown@秒 %i:cooldown%",
+                "description": "彗在目标位置画出一枚提供视野的眼眸，并凝视第一个进入其距离中的敌人。眼眸随后射出目光，禁锢被目光命中的第一个敌人。",
+                "dynamicDescription": "彗在目标位置画出一枚提供视野的深邃眼眸，它会锁定相距最近的那个敌方英雄并对其发射一颗追踪飞弹，这颗飞弹会对命中的第一个敌人造成@spell.HweiE:Tooltip_EWRootDuration@秒<status>禁锢</status>和<magicDamage>@spell.HweiE:Tooltip_EWDamage@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+                "range": [
+                    900.0000,
+                    900.0000,
+                    900.0000,
+                    900.0000,
+                    900.0000,
+                    900.0000
+                ],
+                "costCoefficients": [
+                    50.0000,
+                    55.0000,
+                    60.0000,
+                    65.0000,
+                    70.0000,
+                    70.0000
+                ],
+                "cooldownCoefficients": [
+                    12.0000,
+                    11.5000,
+                    11.0000,
+                    10.5000,
+                    10.0000,
+                    10.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            },
+            {
+                "spellKey": "ee",
+                "name": "双钩血喉",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiEE.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_EE1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_EE1.jpg",
+                "cost": "@Cost@ @AbilityResourceName@",
+                "cooldown": "@Cooldown@秒 %i:cooldown%",
+                "description": "彗画出一张紧咬敌人的大口，将敌人拖拽到中心并造成减速效果。",
+                "dynamicDescription": "彗画出一张大口，对命中的敌人们造成<magicDamage>@spell.HweiE:Tooltip_EEDamage@魔法伤害</magicDamage>，并将其<status>拖拽</status>向中心，造成在1.25秒内持续衰减的@spell.HweiE:Tooltip_EESlowAmount@%<status>减速</status>。@SpellModifierDescriptionAppend@",
+                "range": [
+                    800.0000,
+                    800.0000,
+                    800.0000,
+                    800.0000,
+                    800.0000,
+                    800.0000
+                ],
+                "costCoefficients": [
+                    50.0000,
+                    55.0000,
+                    60.0000,
+                    65.0000,
+                    70.0000,
+                    70.0000
+                ],
+                "cooldownCoefficients": [
+                    12.0000,
+                    11.5000,
+                    11.0000,
+                    10.5000,
+                    10.0000,
+                    10.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            },
+            {
+                "spellKey": "er",
+                "name": "濯",
+                "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Hwei/HUD/Icons2D/HweiWashBrush.png",
+                "abilityVideoPath": "champion-abilities/0910/ability_0910_ER1.webm",
+                "abilityVideoImagePath": "champion-abilities/0910/ability_0910_ER1.jpg",
+                "cost": "",
+                "cooldown": "",
+                "description": "彗清洗手中画笔，所有技能回复至初始状态。这个技能不消耗法力，没有冷却时间。只在主题：灾、主题：靖或主题：悚处于激活状态时可用。",
+                "dynamicDescription": "彗清洗手中画笔并回到基础系技能。这个技能不消耗法力或冷却时间。@SpellModifierDescriptionAppend@",
+                "range": [
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000,
+                    400.0000
+                ],
+                "costCoefficients": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "cooldownCoefficients": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "coefficients": {
+                    "coefficient1": 0.0000,
+                    "coefficient2": 0.0000
+                },
+                "effectAmounts": {
+                    "Effect1Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect2Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect3Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect4Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect5Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect6Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect7Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect8Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect9Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "Effect10Amount": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ]
+                },
+                "ammo": {
+                    "ammoRechargeTime": [
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000,
+                        0.0000
+                    ],
+                    "maxAmmo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "maxLevel": 0
+            }
+        ]
+    ]
+}

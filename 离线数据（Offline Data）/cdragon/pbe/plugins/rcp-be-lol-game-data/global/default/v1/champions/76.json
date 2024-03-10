@@ -1,0 +1,1637 @@
+{
+    "id": 76,
+    "name": "Nidalee",
+    "alias": "Nidalee",
+    "title": "the Bestial Huntress",
+    "shortBio": "Raised in the deepest jungle, Nidalee is a master tracker who can shapeshift into a ferocious cougar at will. Neither wholly woman nor beast, she viciously defends her territory from any and all trespassers, with carefully placed traps and deft spear throws. She cripples her quarry before pouncing on them in feline form—the lucky few who survive tell tales of a wild woman with razor-sharp instincts, and even sharper claws...",
+    "tacticalInfo": {
+        "style": 8,
+        "difficulty": 3,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 1,
+        "mobility": 3,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/76.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/76.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/76.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/76.ogg",
+    "roles": [
+        "assassin",
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 76000,
+            "isBase": true,
+            "name": "Nidalee",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Base/nidaleeLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 76001,
+            "isBase": false,
+            "name": "Snow Bunny Nidalee",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin01/nidaleeLoadScreen_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin01/nidaleeLoadScreen_1_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 48
+                }
+            ],
+            "skinAugments": null,
+            "description": "A fierce warrior who makes her home in the winter forest, Nidalee has little interest in Snowdown parties. Instead, she prefers to spend her time protecting cheerful woodland creatures from trappers and intruders, giving her furry friends a reason for the season."
+        },
+        {
+            "id": 76002,
+            "isBase": false,
+            "name": "Leopard Nidalee",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin02/nidaleeLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": "Nidalee roams the tall grasses and bubbling tar pits of her home, a prehistoric savannah teeming with natural magic. She protects her leap of leopards by taking the appearance of their hunters, deceiving and disarming human threats with her wild skill."
+        },
+        {
+            "id": 76003,
+            "isBase": false,
+            "name": "French Maid Nidalee",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin03/nidaleeLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 100
+                }
+            ],
+            "skinAugments": null,
+            "description": "Armed with a diverting maid outfit, a sunny disposition, and a vast knowledge of cleaning techniques, Nidalee catburgles her wealthy customers without them being any the wiser. She does it all for her kitties, who have grown used to some very high quality scratching posts."
+        },
+        {
+            "id": 76004,
+            "isBase": false,
+            "name": "Pharaoh Nidalee",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin04/nidaleeLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 67
+                }
+            ],
+            "skinAugments": null,
+            "description": "Worshiped as a god-queen of the Great Desert, Nidalee is the avatar of the glorious cat-god, Sypakaa. As war tears through the land, Nidalee will do whatever it takes to protect her city and her temple from those who would dare threaten them."
+        },
+        {
+            "id": 76005,
+            "isBase": false,
+            "name": "Bewitching Nidalee",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin05/nidaleeLoadScreen_5.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin05/nidaleeLoadScreen_5_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 172
+                }
+            ],
+            "skinAugments": null,
+            "description": "She is a cat. That is a hat. Legally, we're not allowed to put those two thoughts together."
+        },
+        {
+            "id": 76006,
+            "isBase": false,
+            "name": "Headhunter Nidalee",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin06/NidaleeLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 30
+                }
+            ],
+            "skinAugments": null,
+            "description": "There are those who still ask: between man and beast, who is the better hunter? With her alien biology allowing her to embody both, Nidalee of the Headhunters answers that question with, “I am.” "
+        },
+        {
+            "id": 76007,
+            "isBase": false,
+            "name": "Warring Kingdoms Nidalee",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin07/NidaleeLoadScreen_7.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 53
+                }
+            ],
+            "skinAugments": null,
+            "description": "Of the legends surrounding Nidalee, it is difficult to know what is true and what is mere myth. Some within the Warring Kingdoms say she fights with the wild ferocity of a white tiger, that the tiger's spirit dwells within her heart. Others believe she is the white tiger, that she can become the beast itself."
+        },
+        {
+            "id": 76008,
+            "isBase": false,
+            "name": "Challenger Nidalee",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin08/NidaleeLoadScreen_8.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin08/NidaleeLoadscreen_8_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76008.png",
+            "chromas": [
+                {
+                    "id": 76010,
+                    "name": "Challenger Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76010.png",
+                    "colors": [
+                        "#FFC948",
+                        "#FFC948"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "Loot exclusive gained during the 2019 MSI Event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 9
+                }
+            ],
+            "skinAugments": null,
+            "description": "Commemorating the 2016 season start."
+        },
+        {
+            "id": 76009,
+            "isBase": false,
+            "name": "Super Galaxy Nidalee",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin09/nidaleeLoadScreen_9.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 21
+                }
+            ],
+            "skinAugments": null,
+            "description": "Of the new class of Super Galaxy cadets, Nidalee—with her exceptional skill for throwing projectiles through zero-gravity—shows the most promise. As the Spider Queen continues her reign of terror, the team will need Nidalee's cunning tactics and keen hunting instincts if they want to save the galaxy."
+        },
+        {
+            "id": 76011,
+            "isBase": false,
+            "name": "Dawnbringer Nidalee",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76011.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76011.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76011.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin11/NidaleeLoadScreen_11.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin11/NidaleeLoadscreen_11_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76011.png",
+            "chromas": [
+                {
+                    "id": 76012,
+                    "name": "Dawnbringer Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76012.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2019."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76013,
+                    "name": "Dawnbringer Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76013.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76014,
+                    "name": "Dawnbringer Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76014.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76015,
+                    "name": "Dawnbringer Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76015.png",
+                    "colors": [
+                        "#6FFDFF",
+                        "#2377FF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in 2019."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76016,
+                    "name": "Dawnbringer Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76016.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76017,
+                    "name": "Dawnbringer Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76017.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 193
+                }
+            ],
+            "skinAugments": null,
+            "description": "Both a celestial beast and a dawn-walking primordial, Nidalee rules over the restorative calm of the natural world. She guards the land's remaining peaceful places, bringing light and order to the mortal creatures under her care."
+        },
+        {
+            "id": 76018,
+            "isBase": false,
+            "name": "Cosmic Huntress Nidalee",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76018.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76018.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76018.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin18/NidaleeLoadScreen_18.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76018.png",
+            "chromas": [
+                {
+                    "id": 76019,
+                    "name": "Cosmic Huntress Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76019.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2020."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76020,
+                    "name": "Cosmic Huntress Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76020.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76021,
+                    "name": "Cosmic Huntress Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76021.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76022,
+                    "name": "Cosmic Huntress Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76022.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76023,
+                    "name": "Cosmic Huntress Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76023.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76024,
+                    "name": "Cosmic Huntress Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76024.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76025,
+                    "name": "Cosmic Huntress Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76025.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76026,
+                    "name": "Cosmic Huntress Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76026.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 43
+                }
+            ],
+            "skinAugments": null,
+            "description": "A cosmic tracker and ferocious hunter, Nidalee travels the galaxy in an eternal hunt, shifting her shape to hide among the sky's wandering stars. Tasked with finding and caring for newborn stars, she is dedicated to defending them from the ever hungry Dark Star corruptants."
+        },
+        {
+            "id": 76027,
+            "isBase": false,
+            "name": "DWG Nidalee",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76027.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76027.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76027.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin27/NidaleeLoadScreen_27.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin27/NidaleeLoadscreen_27_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76027.png",
+            "chromas": [
+                {
+                    "id": 76028,
+                    "name": "DWG Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76028.png",
+                    "colors": [
+                        "#050B19",
+                        "#0055FF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive during MSI 2021."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 145
+                }
+            ],
+            "skinAugments": null,
+            "description": "Honoring Canyon's winning performance as Nidalee during the 2020 World Championship."
+        },
+        {
+            "id": 76029,
+            "isBase": false,
+            "name": "Ocean Song Nidalee",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76029.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76029.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76029.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin29/NidaleeLoadScreen_29.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76029.png",
+            "chromas": [
+                {
+                    "id": 76030,
+                    "name": "Ocean Song Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76030.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76031,
+                    "name": "Ocean Song Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76031.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76032,
+                    "name": "Ocean Song Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76032.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76033,
+                    "name": "Ocean Song Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76033.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76034,
+                    "name": "Ocean Song Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76034.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76035,
+                    "name": "Ocean Song Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76035.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76036,
+                    "name": "Ocean Song Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76036.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76037,
+                    "name": "Ocean Song Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76037.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 159
+                }
+            ],
+            "skinAugments": null,
+            "description": "The Ocean Song Festival is lucky to have Nidalee as its performer stylist, with her fashion guides selling almost as much as her albums, but in reality she's here as a featured part of Yone's show. She was the first person he showed his lyrics to, and it's her honor to lend them her voice."
+        },
+        {
+            "id": 76039,
+            "isBase": false,
+            "name": "Kittalee",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76039.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76039.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76039.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin39/NidaleeLoadScreen_39.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76039.png",
+            "chromas": [
+                {
+                    "id": 76040,
+                    "name": "Kittalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76040.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76041,
+                    "name": "Kittalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76041.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76042,
+                    "name": "Kittalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76042.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76043,
+                    "name": "Kittalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76043.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76044,
+                    "name": "Kittalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76044.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76045,
+                    "name": "Kittalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76045.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76046,
+                    "name": "Kittalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76046.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76047,
+                    "name": "Kittalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76047.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 98
+                }
+            ],
+            "skinAugments": null,
+            "description": "Adorable squeaky toy or deadly weapon? In Nidalee's claws, a Friendly Fish (TM) can be both!"
+        },
+        {
+            "id": 76048,
+            "isBase": false,
+            "name": "La Ilusión Nidalee",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/76/76048.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/76/76048.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/76/76048.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin48/NidaleeLoadScreen_48.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/Skins/Skin48/NidaleeLoadscreen_48_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76048.png",
+            "chromas": [
+                {
+                    "id": 76049,
+                    "name": "La Ilusión Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76049.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76050,
+                    "name": "La Ilusión Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76050.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76051,
+                    "name": "La Ilusión Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76051.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76052,
+                    "name": "La Ilusión Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76052.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76053,
+                    "name": "La Ilusión Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76053.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76054,
+                    "name": "La Ilusión Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76054.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76055,
+                    "name": "La Ilusión Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76055.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76056,
+                    "name": "La Ilusión Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76056.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 76057,
+                    "name": "La Ilusión Nidalee",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/76/76057.png",
+                    "colors": [
+                        "#EE3B93",
+                        "#055939"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 198
+                }
+            ],
+            "skinAugments": null,
+            "description": "A jaguar leader of her own pack, Nidalee was both feared and respected by her neighboring humans. When she fell to a group of hunters for protecting her family, the shared love not just from her pack, but from her neighbors, reincarnated Nidalee as an Eidola Vida. With the power to assume both jaguar and human form now, she watches over her kin from afar."
+        }
+    ],
+    "passive": {
+        "name": "Prowl",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/HUD/Icons2D/Nidalee_Passive.png",
+        "abilityVideoPath": "champion-abilities/0076/ability_0076_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0076/ability_0076_P1.jpg",
+        "description": "Moving through brush increases Nidalee's Move Speed by 10% for 2 seconds, increased to 30% toward visible enemy champions within 1400 range.<br><br>Hitting champions or monsters with Javelin Toss or Bushwhack triggers a <font color='#FFF673'>Hunt</font>, granting <font color='#ee91d7'>True Sight</font> of them for 4 seconds. During this time, Nidalee gains 10% Move Speed (increased to 30% toward the <font color='#FFF673'>Hunted</font> target) and her Takedown and Pounce are enhanced against them."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Javelin Toss / Takedown",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/HUD/Icons2D/Nidalee_Q1.png",
+            "abilityVideoPath": "champion-abilities/0076/ability_0076_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0076/ability_0076_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "In human form, Nidalee throws a spiked javelin at her target that gains damage as it flies.  As a cougar, her next attack will attempt to fatally wound her target, dealing more damage the less life they have.",
+            "dynamicDescription": "<keywordMajor>Human Form:</keywordMajor> Nidalee throws her javelin, dealing <magicDamage>@HumanMinimumDamage@ magic damage</magicDamage>, increased up to <magicDamage>@HumanMaximumDamage@ magic damage</magicDamage> based on distance flown.@SpellModifierDescriptionAppend@",
+            "range": [
+                1500.0000,
+                1500.0000,
+                1500.0000,
+                1500.0000,
+                1500.0000,
+                1500.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000
+            ],
+            "cooldownCoefficients": [
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.5000,
+                "coefficient2": 0.5000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    50.0000,
+                    70.0000,
+                    90.0000,
+                    110.0000,
+                    130.0000,
+                    150.0000,
+                    170.0000
+                ],
+                "Effect2Amount": [
+                    150.0000,
+                    210.0000,
+                    270.0000,
+                    330.0000,
+                    390.0000,
+                    450.0000,
+                    510.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.4000,
+                    0.4000,
+                    0.4000,
+                    0.4000,
+                    0.4000,
+                    0.4000,
+                    0.4000
+                ],
+                "Effect6Amount": [
+                    1.2000,
+                    1.2000,
+                    1.2000,
+                    1.2000,
+                    1.2000,
+                    1.2000,
+                    1.2000
+                ],
+                "Effect7Amount": [
+                    525.0000,
+                    525.0000,
+                    525.0000,
+                    525.0000,
+                    525.0000,
+                    525.0000,
+                    525.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Bushwhack / Pounce",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/HUD/Icons2D/Nidalee_W1.png",
+            "abilityVideoPath": "champion-abilities/0076/ability_0076_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0076/ability_0076_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "In human form, Nidalee lays a trap for unwary opponents that, when sprung, damages and reveals its target. As a cougar, she jumps in a direction, dealing damage in an area where she lands.",
+            "dynamicDescription": "<keywordMajor>Human Form:</keywordMajor> Nidalee places an invisible trap for 2 minutes. When an enemy walks over it, they are dealt <magicDamage>@DamagePerSecond@ magic damage</magicDamage> per second for @Effect3Amount@ seconds.<br><br>@MaxTraps@ traps may be active at once.@SpellModifierDescriptionAppend@",
+            "range": [
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000
+            ],
+            "costCoefficients": [
+                30.0000,
+                35.0000,
+                40.0000,
+                45.0000,
+                50.0000,
+                55.0000
+            ],
+            "cooldownCoefficients": [
+                13.0000,
+                12.0000,
+                11.0000,
+                10.0000,
+                9.0000,
+                9.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0500,
+                "coefficient2": 0.2000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000
+                ],
+                "Effect4Amount": [
+                    14.0000,
+                    13.0000,
+                    12.0000,
+                    11.0000,
+                    10.0000,
+                    9.0000,
+                    9.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    10.0000,
+                    20.0000,
+                    30.0000,
+                    40.0000,
+                    50.0000,
+                    60.0000
+                ],
+                "Effect6Amount": [
+                    120.0000,
+                    120.0000,
+                    120.0000,
+                    120.0000,
+                    120.0000,
+                    120.0000,
+                    120.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    40.0000,
+                    80.0000,
+                    120.0000,
+                    160.0000,
+                    200.0000,
+                    240.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    -1.0000,
+                    -1.0000,
+                    -1.0000,
+                    -1.0000,
+                    -1.0000,
+                    -1.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Primal Surge / Swipe",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/HUD/Icons2D/Nidalee_E1.png",
+            "abilityVideoPath": "champion-abilities/0076/ability_0076_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0076/ability_0076_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "In human form, Nidalee channels the spirit of the cougar to heal her allies and imbue them with Attack Speed for a short duration. As a cougar, she claws in a direction, dealing damage to enemies in front of her.",
+            "dynamicDescription": "<keywordMajor>Human Form:</keywordMajor> Nidalee restores <healing>@TotalHealing@ Health</healing> increased up to <healing>@MaxHealing@</healing> based on missing Health and grants them <attackSpeed>@BonusAS*100@% Attack Speed</attackSpeed> for @ASDuration@ seconds.@SpellModifierDescriptionAppend@",
+            "range": [
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Aspect Of The Cougar",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Nidalee/HUD/Icons2D/Nidalee_R1.png",
+            "abilityVideoPath": "champion-abilities/0076/ability_0076_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0076/ability_0076_R1.jpg",
+            "cost": "No Cost",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Nidalee transforms into a cougar, gaining new abilities.",
+            "dynamicDescription": "<spellPassive>Passive:</spellPassive> While in <keywordMajor>Human Form</keywordMajor>, applying <keywordMajor>Hunted</keywordMajor> refreshes this Ability's Cooldown.<br><br><keywordMajor>Human Form:</keywordMajor> Nidalee transforms into <keywordMajor>Cougar Form</keywordMajor>, gaining melee Attacks and replacing her Active Abilities.<br><br><keywordMajor>Cougar Form:</keywordMajor> Nidalee transforms into <keywordMajor>Human Form</keywordMajor>, gaining ranged Attacks and replacing her Active Abilities.@SpellModifierDescriptionAppend@",
+            "range": [
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000,
+                20.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                3.0000,
+                3.0000,
+                3.0000,
+                3.0000,
+                3.0000,
+                3.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.7500,
+                "coefficient2": 0.4000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

@@ -1,0 +1,792 @@
+{
+    "id": 233,
+    "name": "狂厄蔷薇",
+    "alias": "Briar",
+    "title": "贝蕾亚",
+    "shortBio": "身为黑色玫瑰实验失败的产物，贝蕾亚不受控制的嗜血欲必须使用一种特殊的囚枷进行压制，进而让她保持清醒的头脑。经过多年的监禁，这具活体武器突破了拘束，闯到了外面的世界。如今的她不受任何人的掌控，只遵循自己对知识与鲜血的渴望。如果遇到合适的机会，她将细细品味放纵的感觉，只不过嗜血的狂意一旦释放就很难压制。",
+    "tacticalInfo": {
+        "style": 2,
+        "difficulty": 2,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 2,
+        "crowdControl": 3,
+        "mobility": 3,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/233.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/233.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/233.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/233.ogg",
+    "roles": [
+        "fighter",
+        "assassin"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 233000,
+            "isBase": true,
+            "name": "狂厄蔷薇",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/233/233000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/233/233000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/233/233000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Briar/Skins/Base/BriarLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 233001,
+            "isBase": false,
+            "name": "妖怪艺术家 贝蕾亚",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/233/233001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/233/233001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/233/233001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Briar/Skins/Skin01/BriarLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/233/233001.png",
+            "chromas": [
+                {
+                    "id": 233002,
+                    "name": "妖怪艺术家 贝蕾亚 朱槿",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/233/233002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 233003,
+                    "name": "妖怪艺术家 贝蕾亚 碧荷",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/233/233003.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 233004,
+                    "name": "妖怪艺术家 贝蕾亚 霞光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/233/233004.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 233005,
+                    "name": "妖怪艺术家 贝蕾亚 紫萱",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/233/233005.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 233006,
+                    "name": "妖怪艺术家 贝蕾亚 青矾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/233/233006.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 233007,
+                    "name": "妖怪艺术家 贝蕾亚 群青",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/233/233007.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 233008,
+                    "name": "妖怪艺术家 贝蕾亚 青黛",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/233/233008.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 233009,
+                    "name": "妖怪艺术家 贝蕾亚 月白",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/233/233009.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 197
+                }
+            ],
+            "skinAugments": null,
+            "description": "不管你看到的是她那些充满暴力的、激发观众狂野的涂鸦，还是她充满顽皮幽默的随性画作，贝蕾亚的作品都会给你留下深刻的印象。作为一个僵尸，贝蕾亚以她的画作创造的能量为食，所以她使用哪种风格真的取决于她有多饿。"
+        }
+    ],
+    "passive": {
+        "name": "猩红诅咒",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Briar/HUD/Icons2D/BriarP.png",
+        "abilityVideoPath": "champion-abilities/0233/ability_0233_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0233/ability_0233_P1.jpg",
+        "description": "贝蕾亚的攻击与技能会造成可叠加的流血效果，同时基于这个效果的伤害治疗自身。她永远处于饥饿状态，会根据自己的已损失生命值获得更高的治疗，但缺乏自带的生命回复。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "冲头",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Briar/HUD/Icons2D/BriarQ.png",
+            "abilityVideoPath": "champion-abilities/0233/ability_0233_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0233/ability_0233_Q1.jpg",
+            "cost": "消耗<font color='#CC3300'>@Spell.BriarP:CurrentHealthPercentCost*100@%当前生命值</font>",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "贝蕾亚跃向一个单位并用她的（痛苦之）脚镣命中敌人们，将他们晕眩并削减他们的护甲。",
+            "dynamicDescription": "贝蕾亚跃向一个单位，将其<status>晕眩</status>@StunDuration@秒，造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>和持续@ShredDuration@秒的@ShredPercent*100@%<scaleArmor>护甲削减</scaleArmor>与<scaleMR>魔抗削减</scaleMR>。<br><br><rules>如果贝蕾亚在<keywordMajor>血莽</keywordMajor>期间对一个小兵或野怪施放这个技能，那么她会停止将英雄作为优先目标。</rules>@SpellModifierDescriptionAppend@",
+            "range": [
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                13.0000,
+                12.0000,
+                11.0000,
+                10.0000,
+                9.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "血莽 / 噬击",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Briar/HUD/Icons2D/BriarW.png",
+            "abilityVideoPath": "champion-abilities/0233/ability_0233_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0233/ability_0233_W1.jpg",
+            "cost": "消耗<font color='#CC3300'>@Spell.BriarP:CurrentHealthPercentCost*100@%当前生命值</font>",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "贝蕾亚向前跳跃并击碎她的囚枷，进入一种【血莽】状态来使她无休止地追击相距最近的那个敌人（优先以英雄为目标）。在【血莽】状态下，她的攻击速度和移动速度获得提升，并且她的攻击会在她目标四周的一个区域内造成伤害。<br><br>贝蕾亚可以在【血莽】状态下再次激活这个技能，来让她的下一次攻击噬咬她的目标，造成基于目标已损失生命值的额外伤害，并且基于她造成的伤害来为她提供治疗效果。",
+            "dynamicDescription": "贝蕾亚跳跃并进入一种<keywordMajor>血莽</keywordMajor>状态，自我嘲讽至相距最近的那个敌人，持续@BerserkDuration@秒，优先以英雄为目标。在<keywordMajor>血莽</keywordMajor>状态下，她获得<attackSpeed>@BerserkAS*100@%攻击速度</attackSpeed>和<speed>@BerserkMS*100@%移动速度</speed>，并且她的攻击会对目标四周的敌人们造成<physicalDamage>@TotalAoEDamage@物理伤害</physicalDamage>。<br><br>贝蕾亚可以<recast>再次施放</recast>这个技能来强化她的下一次攻击。这次攻击造成<physicalDamage>@TotalAttackBonusDamage@ + @TotalAttackPercentMissingHealth@%已损失生命值的物理伤害</physicalDamage>并<healing>为贝蕾亚提供@AttackMaxHPHeal@+@AttackHealPercent*100@%已造成伤害值的治疗效果</healing>。<br>@SpellModifierDescriptionAppend@",
+            "range": [
+                350.0000,
+                350.0000,
+                350.0000,
+                350.0000,
+                350.0000,
+                350.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                14.0000,
+                13.0000,
+                12.0000,
+                11.0000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "惊吼",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Briar/HUD/Icons2D/BriarE.png",
+            "abilityVideoPath": "champion-abilities/0233/ability_0233_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0233/ability_0233_E1.jpg",
+            "cost": "消耗<font color='#CC3300'>@Spell.BriarP:CurrentHealthPercentCost*100@%当前生命值</font>",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "贝蕾亚重新集中她的意志，移除【血莽】并将能量引导为一次强力吼叫，对敌人造成伤害和减速。在蓄力时，她获得伤害减免并回复一部分最大生命值。一次完全蓄力的吼叫会将敌人们击退，对那些与墙体碰撞的敌人造成额外伤害和晕眩。",
+            "dynamicDescription": "<charge>开始蓄力</charge>：贝蕾亚移除<keywordMajor>血莽</keywordMajor>并聚集能量，获得@DRPercent@%伤害减免并在1秒里持续获得共<healing>@PercentMaxHPHeal@治疗效果</healing>。<br><br><release>释放：</release>贝蕾亚释放一次吼叫，基于蓄力时间造成至多<magicDamage>@Damage@魔法伤害</magicDamage>，以及持续@SlowDuration@秒的@SlowPercent*100@%<status>减速</status>。在完全蓄力后，吼叫会<status>击退</status>敌人们，对那些与墙体碰撞的敌人造成<magicDamage>@WallHitDamage@魔法伤害</magicDamage>和@WallStunDuration@秒<status>晕眩</status>。@SpellModifierDescriptionAppend@",
+            "range": [
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                16.0000,
+                16.0000,
+                16.0000,
+                16.0000,
+                16.0000,
+                16.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "毙除",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Briar/HUD/Icons2D/BriarR.png",
+            "abilityVideoPath": "champion-abilities/0233/ability_0233_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0233/ability_0233_R1.jpg",
+            "cost": "消耗<font color='#CC3300'>@Spell.BriarP:CurrentHealthPercentCost*100@%当前生命值</font>",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "贝蕾亚踢出她的囚枷中的血石，让被它命中的第一个英雄成为她的猎物。她随后会径直走向该目标，在抵达目标处时恐惧周围的其它敌人们，并进入一个彻底血狂的状态。她将追击她的猎物直至阵亡才罢休，获得【血莽】的助益以及额外的护甲、魔抗、生命偷取和移动速度。",
+            "dynamicDescription": "贝蕾亚踢出她的囚枷中的血石并飞到被它命中的第一个英雄的位置，将这个英雄标记为她的猎物。在着陆时，她对附近的一切造成<magicDamage>@Damage@魔法伤害</magicDamage>并使那些并非她猎物的敌人们<status>逃跑</status>@FearDuration@秒。她随后会进入一个强化版<keywordMajor>血莽</keywordMajor>状态并将追击她的猎物直至阵亡才罢休。在此期间，她获得@TotalResists@<scaleArmor>护甲</scaleArmor> 和<scaleMR>魔法抗性</scaleMR>、@LifeStealPercent*100@%生命偷取和额外的<speed>@ExtraMoveSpeedPercent*100@%移动速度</speed>。@SpellModifierDescriptionAppend@",
+            "range": [
+                10000.0000,
+                10000.0000,
+                10000.0000,
+                10000.0000,
+                10000.0000,
+                10000.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                100.0000,
+                80.0000,
+                70.0000,
+                70.0000,
+                70.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

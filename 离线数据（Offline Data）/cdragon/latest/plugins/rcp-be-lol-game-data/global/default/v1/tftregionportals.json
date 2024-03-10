@@ -1,0 +1,800 @@
+[
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Augments_GoldFirst",
+        "displayName": "",
+        "description": "Golden Prelude"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Augments_GoldThird",
+        "displayName": "",
+        "description": "Golden Finale"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Augments_PrismaticFirst",
+        "displayName": "",
+        "description": "Prismatic Prelude"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Augments_PrismaticGoldSilver",
+        "displayName": "",
+        "description": "Decrescendo"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Augments_PrismaticThird",
+        "displayName": "",
+        "description": "Prismatic Finale"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Augments_SilverGoldPrismatic",
+        "displayName": "",
+        "description": "Crescendo"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Augments_TripleGold",
+        "displayName": "",
+        "description": "Golden Symphony"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Augments_TriplePrismatic",
+        "displayName": "",
+        "description": "Prismatic Symphony"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Augments_TripleSilver",
+        "displayName": "",
+        "description": "Silver Symphony"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Champions_ChampionStart",
+        "displayName": "",
+        "description": "3-Cost Champion"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Champions_DuplicatorStart",
+        "displayName": "",
+        "description": "Champion Duplicator"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Champions_RandomChampion",
+        "displayName": "",
+        "description": "Champion Delivery"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Champions_RandomChampion_HR",
+        "displayName": "",
+        "description": "Champion Delivery"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Champions_TripleStart",
+        "displayName": "",
+        "description": "3 Champions"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Champions_UpgradedChampions",
+        "displayName": "",
+        "description": "Upgraded Champion"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Combat_KillCounter",
+        "displayName": "",
+        "description": "Kill Counter"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Combat_TrainingDummy",
+        "displayName": "",
+        "description": "Training Dummy"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Combat_WanderingTrainers",
+        "displayName": "",
+        "description": "Wandering Trainers"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Combat_ZoomZone",
+        "displayName": "",
+        "description": "Unit Accelerator"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Gold_Cashout",
+        "displayName": "",
+        "description": "Pot of Gold"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Gold_Cashout_HR",
+        "displayName": "",
+        "description": "Pot of Gold"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Gold_GoldPerAugment",
+        "displayName": "",
+        "description": "Augment Payout"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Gold_GoldPerItem",
+        "displayName": "",
+        "description": "Item Payout"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Gold_MaxInterest",
+        "displayName": "",
+        "description": "Max Interest"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Headliner_Entourage",
+        "displayName": "",
+        "description": "Entourage"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Headliner_Showtime",
+        "displayName": "",
+        "description": "Showtime"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Headliner_Superstar",
+        "displayName": "",
+        "description": "Multi-Talented"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Items_ArtifactAnvil",
+        "displayName": "",
+        "description": "Artifact Anvil"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Items_CompletedAnvil",
+        "displayName": "",
+        "description": "Completed Anvil"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Items_ComponentAnvil",
+        "displayName": "",
+        "description": "Component Anvils"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Items_RadiantItem",
+        "displayName": "",
+        "description": "Radiant Item"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Items_RadiantItem_HR",
+        "displayName": "",
+        "description": "Radiant Item"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Items_SupportAnvil",
+        "displayName": "",
+        "description": "Support Anvil"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Items_TacticiansCrown",
+        "displayName": "",
+        "description": "Tactician's Crown"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Items_TomeOfTraits",
+        "displayName": "",
+        "description": "Tome of Traits"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_CrabRave",
+        "displayName": "",
+        "description": "Crab Rave"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_DoubleItemCarousel",
+        "displayName": "",
+        "description": "Loaded Carousels"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_LootSubscription",
+        "displayName": "",
+        "description": "Loot Subscription"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_LootSubscription_HR",
+        "displayName": "",
+        "description": "Loot Subscription"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_MaxHealthDecrease",
+        "displayName": "",
+        "description": "Player Health Decrease"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_MaxHealthIncrease",
+        "displayName": "",
+        "description": "Larger Legends"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_RadiantBlessing",
+        "displayName": "",
+        "description": "Radiant Blessing"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_RadiantBlessing_HR",
+        "displayName": "",
+        "description": "Radiant Blessing"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_ScuttlePuddle",
+        "displayName": "",
+        "description": "Scuttle Puddle"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_Spatula",
+        "displayName": "",
+        "description": "Spatula"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_TreasureArmory",
+        "displayName": "",
+        "description": "Treasure Armory"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT_Portals_Unique_TreasureArmory_HR",
+        "displayName": "",
+        "description": "Treasure Armory"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT3_RegionPortals_Bonanza",
+        "displayName": "",
+        "description": "Treasure Trove"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT3_RegionPortals_Dreadnova",
+        "displayName": "",
+        "description": "Plunder Planet"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT3_RegionPortals_Finale",
+        "displayName": "",
+        "description": "The Big Bang"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT3_RegionPortals_FreeNeekos",
+        "displayName": "",
+        "description": "The Neekoverse"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT3_RegionPortals_FreeRerolls",
+        "displayName": "",
+        "description": "Trade Sector"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT3_RegionPortals_FreeSpatula",
+        "displayName": "",
+        "description": "Manatee's Delight "
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT3_RegionPortals_MidGameFoN",
+        "displayName": "",
+        "description": "Superdense Galaxy"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT3_RegionPortals_StartingItems",
+        "displayName": "",
+        "description": "Galactic Armory"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/",
+        "nameId": "TFT3_RegionPortals_TwoStarCarousels",
+        "displayName": "",
+        "description": "Star Cluster"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_BandleCity.png",
+        "nameId": "TFT9_RegionPortals_BandleCafeteria",
+        "displayName": "Bandle City",
+        "description": "Bandle Cafeteria"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_BandleCity.png",
+        "nameId": "TFT9_RegionPortals_BandleCafeteria_HR",
+        "displayName": "Bandle City",
+        "description": "Bandle Cafeteria"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Zaun.png",
+        "nameId": "TFT9_RegionPortals_EclipticVaults",
+        "displayName": "Zaun",
+        "description": "Ecliptic Vaults"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Zaun.png",
+        "nameId": "TFT9_RegionPortals_GlascIndustries",
+        "displayName": "Zaun",
+        "description": "Glasc Industries"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ionia.png",
+        "nameId": "TFT9_RegionPortals_GodWillowsGrove",
+        "displayName": "Ionia",
+        "description": "God-Willow's Grove"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Freljord.png",
+        "nameId": "TFT9_RegionPortals_HearthHome",
+        "displayName": "Freljord",
+        "description": "Hearth-Home"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Freljord.png",
+        "nameId": "TFT9_RegionPortals_HearthHome_HR",
+        "displayName": "Freljord",
+        "description": "Hearth-Home"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Demacia.png",
+        "nameId": "TFT9_RegionPortals_HouseLightshield",
+        "displayName": "Demacia",
+        "description": "House Lightshield"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Demacia.png",
+        "nameId": "TFT9_RegionPortals_HouseLightshield_HR",
+        "displayName": "Demacia",
+        "description": "House Lightshield"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Noxus.png",
+        "nameId": "TFT9_RegionPortals_ImmortalBastion",
+        "displayName": "Noxus",
+        "description": "Immortal Bastion"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Noxus.png",
+        "nameId": "TFT9_RegionPortals_ImmortalBastion_HR",
+        "displayName": "Noxus",
+        "description": "Immortal Bastion"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Piltover.png",
+        "nameId": "TFT9_RegionPortals_JaycesWorkshop",
+        "displayName": "Piltover",
+        "description": "Jayce's Workshop"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Targon.png",
+        "nameId": "TFT9_RegionPortals_MarusOmegnum",
+        "displayName": "Targon",
+        "description": "Marus Omegnum"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Targon.png",
+        "nameId": "TFT9_RegionPortals_MarusOmegnum_HR",
+        "displayName": "Targon",
+        "description": "Marus Omegnum"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Noxus.png",
+        "nameId": "TFT9_RegionPortals_Noxkraya",
+        "displayName": "Noxus",
+        "description": "Noxkraya"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Freljord.png",
+        "nameId": "TFT9_RegionPortals_OrnnsForge",
+        "displayName": "Freljord",
+        "description": "Ornn's Forge"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Freljord.png",
+        "nameId": "TFT9_RegionPortals_OrnnsForge_HR",
+        "displayName": "Freljord",
+        "description": "Ornn's Forge"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Demacia.png",
+        "nameId": "TFT9_RegionPortals_PetriciteForest",
+        "displayName": "Demacia",
+        "description": "Ehrenmount"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ionia.png",
+        "nameId": "TFT9_RegionPortals_PlacidiumLibrary",
+        "displayName": "Ionia",
+        "description": "Placidium Library"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ionia.png",
+        "nameId": "TFT9_RegionPortals_PlacidiumLibrary_HR",
+        "displayName": "Ionia",
+        "description": "Placidium Library"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_BandleCity.png",
+        "nameId": "TFT9_RegionPortals_ScuttlePuddle",
+        "displayName": "Bandle City",
+        "description": "Scuttle Puddle"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Shurima.png",
+        "nameId": "TFT9_RegionPortals_ShiftingSands",
+        "displayName": "Shurima",
+        "description": "Shifting Sands"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Shurima.png",
+        "nameId": "TFT9_RegionPortals_ShurimanBazaar",
+        "displayName": "Shurima",
+        "description": "Shuriman Bazaar"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Piltover.png",
+        "nameId": "TFT9_RegionPortals_StillwaterHold",
+        "displayName": "Piltover",
+        "description": "Stillwater Hold"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Targon.png",
+        "nameId": "TFT9_RegionPortals_TargonPrime",
+        "displayName": "Targon",
+        "description": "Targon Prime"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Targon.png",
+        "nameId": "TFT9_RegionPortals_TargonPrime_HR",
+        "displayName": "Targon",
+        "description": "Targon Prime"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ionia.png",
+        "nameId": "TFT9_RegionPortals_TheDreamingPool",
+        "displayName": "Ionia",
+        "description": "The Dreaming Pool"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Void.png",
+        "nameId": "TFT9_RegionPortals_TheHallOfTheNine",
+        "displayName": "The Void",
+        "description": "Hall of the Nine"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Void.png",
+        "nameId": "TFT9_RegionPortals_TheHallOfTheNine_HR",
+        "displayName": "The Void",
+        "description": "Hall of the Nine"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Void.png",
+        "nameId": "TFT9_RegionPortals_TheRupture",
+        "displayName": "The Void",
+        "description": "The Rupture"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Targon.png",
+        "nameId": "TFT9_RegionPortals_TheSummit",
+        "displayName": "Targon",
+        "description": "The Summit"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Targon.png",
+        "nameId": "TFT9_RegionPortals_TheSummit_HR",
+        "displayName": "Targon",
+        "description": "The Summit"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Zaun.png",
+        "nameId": "TFT9_RegionPortals_TheSump",
+        "displayName": "Zaun",
+        "description": "The Sump"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Piltover.png",
+        "nameId": "TFT9_RegionPortals_TheUniversity",
+        "displayName": "Piltover",
+        "description": "The University"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_ShadowIsles.png",
+        "nameId": "TFT9_RegionPortals_ThreshsSanctum",
+        "displayName": "Shadow Isles",
+        "description": "Thresh's Sanctum"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_ShadowIsles.png",
+        "nameId": "TFT9_RegionPortals_ThreshsSanctum_HR",
+        "displayName": "Shadow Isles",
+        "description": "Thresh's Sanctum"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Void.png",
+        "nameId": "TFT9_RegionPortals_UnstableRift",
+        "displayName": "The Void",
+        "description": "Unstable Rift"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Shurima.png",
+        "nameId": "TFT9_RegionPortals_WarlordsPalace",
+        "displayName": "Shurima",
+        "description": "Warlord's Palace"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Shurima.png",
+        "nameId": "TFT9_RegionPortals_WarlordsPalace_HR",
+        "displayName": "Shurima",
+        "description": "Warlord's Palace"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Noxus.png",
+        "nameId": "TFT9_RegionPortals_YordlePordles",
+        "displayName": "Noxus",
+        "description": "Fleshing Arena"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Noxus.png",
+        "nameId": "TFT9_RegionPortals_YordlePordles_HR",
+        "displayName": "Noxus",
+        "description": "Fleshing Arena"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_ShadowIsles.png",
+        "nameId": "TFT9_RegionPortals_YoricksGraveyard",
+        "displayName": "Shadow Isles",
+        "description": "Yorick's Graveyard"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_BandleCity.png",
+        "nameId": "TFT9_RegionPortals_YuumisZoomZone",
+        "displayName": "Bandle City",
+        "description": "Yuumi's Zoom Zone"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Zaun.png",
+        "nameId": "TFT9_RegionPortals_BasementShow",
+        "displayName": "Zaun",
+        "description": "Basement Show"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Piltover.png",
+        "nameId": "TFT9_RegionPortals_BeatsByScuttle",
+        "displayName": "Piltover",
+        "description": "Beats by Scuttle"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_CardinalArcology",
+        "displayName": "Ixtal",
+        "description": "Cardinal Arcology"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Demacia.png",
+        "nameId": "TFT9_RegionPortals_CenterStage",
+        "displayName": "Demacia",
+        "description": "Center Stage"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Freljord.png",
+        "nameId": "TFT9_RegionPortals_ChillBeats",
+        "displayName": "Freljord",
+        "description": "Chill Beats"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Zaun.png",
+        "nameId": "TFT9_RegionPortals_Crescendo",
+        "displayName": "Zaun",
+        "description": "Crescendo"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Bilgewater.png",
+        "nameId": "TFT9_RegionPortals_FinnsMarket",
+        "displayName": "Bilgewater",
+        "description": "Finn's Market"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_BandleCity.png",
+        "nameId": "TFT9_RegionPortals_FoodfightTactics",
+        "displayName": "Bandle City",
+        "description": "Foodfight Tactics"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Bilgewater.png",
+        "nameId": "TFT9_RegionPortals_HighNotes",
+        "displayName": "Bilgewater",
+        "description": "High Notes"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ionia.png",
+        "nameId": "TFT9_RegionPortals_IonianDuet",
+        "displayName": "Ionia",
+        "description": "Ionian Duet"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_Ixaocan",
+        "displayName": "Ixtal",
+        "description": "Ixaocan"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Demacia.png",
+        "nameId": "TFT9_RegionPortals_OpeningAct",
+        "displayName": "Demacia",
+        "description": "Opening Act"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_ShadowIsles.png",
+        "nameId": "TFT9_RegionPortals_ProcessionalDirge",
+        "displayName": "Shadow Isles",
+        "description": "Processional Dirge"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Bilgewater.png",
+        "nameId": "TFT9_RegionPortals_RatTown",
+        "displayName": "Bilgewater",
+        "description": "Rat Town"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Bilgewater.png",
+        "nameId": "TFT9_RegionPortals_RatTown_HR",
+        "displayName": "Bilgewater",
+        "description": "Rat Town"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_RollingStone",
+        "displayName": "Ixtal",
+        "description": "Rock'n'Rollin"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Void.png",
+        "nameId": "TFT9_RegionPortals_RupturedHarmony",
+        "displayName": "The Void",
+        "description": "Ruptured Harmony"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_SerpentineRiver",
+        "displayName": "Ixtal",
+        "description": "Serpentine River"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_SerpentineRiver_Component",
+        "displayName": "",
+        "description": "Component Anvil"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_SerpentineRiver_Gold",
+        "displayName": "",
+        "description": "Gold"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_SerpentineRiver_Health",
+        "displayName": "",
+        "description": "Health"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_SerpentineRiver_LootOrb",
+        "displayName": "",
+        "description": "Mystery Box"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_SerpentineRiver_Rerolls",
+        "displayName": "",
+        "description": "Rerolls"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_SerpentineRiver_Spatula",
+        "displayName": "",
+        "description": "Spatula"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_SerpentineRiver_SupportItem",
+        "displayName": "",
+        "description": "Support Item"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Ixtal.png",
+        "nameId": "TFT9_RegionPortals_SerpentineRiver_Tome",
+        "displayName": "",
+        "description": "Tome of Traits"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Bilgewater.png",
+        "nameId": "TFT9_RegionPortals_SlaughterDocks",
+        "displayName": "Bilgewater",
+        "description": "Slaughter Docks"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Bilgewater.png",
+        "nameId": "TFT9_RegionPortals_SlaughterDocks_HR",
+        "displayName": "Bilgewater",
+        "description": "Slaughter Docks"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Shurima.png",
+        "nameId": "TFT9_RegionPortals_TheGoldenEra",
+        "displayName": "Shurima",
+        "description": "The Golden Era"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Noxus.png",
+        "nameId": "TFT9_RegionPortals_TheRudeSandstorm",
+        "displayName": "Noxus",
+        "description": "Battle of the Sands"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Bilgewater.png",
+        "nameId": "TFT9_RegionPortals_VIPLounge",
+        "displayName": "Bilgewater",
+        "description": "VIP Lounge"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Freljord.png",
+        "nameId": "TFT9_RegionPortals_ValarsHollow",
+        "displayName": "Freljord",
+        "description": "Valar's Hollow"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Freljord.png",
+        "nameId": "TFT9_RegionPortals_ValarsHollow_HR",
+        "displayName": "Freljord",
+        "description": "Valar's Hollow"
+    },
+    {
+        "iconPath": "/lol-game-data/assets/ASSETS/Characters/TFT9_Augment/HUD/Icons2D/TFT9_AugmentPropPortrait_Targon.png",
+        "nameId": "TFT9_RegionPortals_MarusOmegnum_SF",
+        "displayName": "Targon",
+        "description": "Marus Omegnum"
+    }
+]

@@ -1,0 +1,1619 @@
+{
+    "id": 235,
+    "name": "Senna",
+    "alias": "Senna",
+    "title": "the Redeemer",
+    "shortBio": "Cursed from childhood to be haunted by the supernatural Black Mist, Senna joined a sacred order known as the Sentinels of Light, and fiercely fought back—only to be killed, her soul imprisoned in a lantern by the cruel wraith Thresh. But refusing to lose hope, within the lantern Senna learned to use the Mist, and reemerged to new life, forever changed. Now wielding darkness along with light, Senna seeks to end the Black Mist by turning it against itself—with every blast of her relic weapon, redeeming the souls lost within.",
+    "tacticalInfo": {
+        "style": 3,
+        "difficulty": 2,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 1,
+        "crowdControl": 2,
+        "mobility": 1,
+        "utility": 3
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/235.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/235.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/235.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/235.ogg",
+    "roles": [
+        "marksman",
+        "support"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 235000,
+            "isBase": true,
+            "name": "Senna",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/235/235000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/235/235000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/235/235000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Base/SennaLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 235001,
+            "isBase": false,
+            "name": "True Damage Senna",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/235/235001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/235/235001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/235/235001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin01/SennaLoadscreen_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin01/SennaLoadscreen_1_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235001.png",
+            "chromas": [
+                {
+                    "id": 235002,
+                    "name": "True Damage Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235002.png",
+                    "colors": [
+                        "#BD1357",
+                        "#19182A"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in 2019."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235003,
+                    "name": "True Damage Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235003.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235004,
+                    "name": "True Damage Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235004.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235005,
+                    "name": "True Damage Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235005.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235006,
+                    "name": "True Damage Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235006.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235007,
+                    "name": "True Damage Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235007.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2019."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235008,
+                    "name": "True Damage Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235008.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 120
+                }
+            ],
+            "skinAugments": null,
+            "description": "Senna rose to fame with her stunning vocal range and iconic sense of style, but when a shady adversary from her past imprisoned her in a restrictive record deal that took away her creative independence, she vanished from the spotlight. After years of living in the shadows, she now emerges as the lead singer of True Damage with her mind set on defining her legacy on her own terms."
+        },
+        {
+            "id": 235009,
+            "isBase": false,
+            "name": "Prestige True Damage Senna",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/235/235009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/235/235009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/235/235009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin09/SennaLoadscreen_9.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin09/SennaLoadscreen_9_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 120
+                }
+            ],
+            "skinAugments": null,
+            "description": "Having topped the charts once more, Senna finds herself in the familiar space of fame and celebrity. Between cosmetics deals and fashion shows, she offers a clear message to fans and haters alike: Don't call it comeback. Senna's been here for years."
+        },
+        {
+            "id": 235010,
+            "isBase": false,
+            "name": "High Noon Senna",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/235/235010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/235/235010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/235/235010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin10/SennaLoadScreen_10.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin10/SennaLoadscreen_10_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235010.png",
+            "chromas": [
+                {
+                    "id": 235011,
+                    "name": "High Noon Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235011.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2020."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235012,
+                    "name": "High Noon Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235012.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235013,
+                    "name": "High Noon Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235013.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235014,
+                    "name": "High Noon Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235014.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235015,
+                    "name": "High Noon Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235015.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235037,
+                    "name": "High Noon Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235037.png",
+                    "colors": [
+                        "#CFC0A7",
+                        "#59C3F2"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 4
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "Once the greatest gunslinger on the continent, Senna's life would have ended when her heart was torn out by the devil—save for the intervention of a higher authority. Mysteriously resurrected with the heart of an angel and a demonic steed, she has returned to the west to restore the balance of Heaven and Hell... however she sees fit."
+        },
+        {
+            "id": 235016,
+            "isBase": false,
+            "name": "PROJECT: Senna",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/235/235016.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/235/235016.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/235/235016.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin16/SennaLoadScreen_16.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin16/SennaLoadscreen_16_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235016.png",
+            "chromas": [
+                {
+                    "id": 235017,
+                    "name": "PROJECT: Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235017.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2021."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235018,
+                    "name": "PROJECT: Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235018.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235019,
+                    "name": "PROJECT: Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235019.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235020,
+                    "name": "PROJECT: Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235020.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235021,
+                    "name": "PROJECT: Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235021.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235022,
+                    "name": "PROJECT: Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235022.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235023,
+                    "name": "PROJECT: Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235023.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235024,
+                    "name": "PROJECT: Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235024.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235025,
+                    "name": "PROJECT: Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235025.png",
+                    "colors": [
+                        "#FF5500",
+                        "#162B30"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2021 PROJECT event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 18
+                }
+            ],
+            "skinAugments": null,
+            "description": "A PROJECT volunteer who supposedly died during the elevation of her consciousness, Senna's mind was decoupled from the physical world and escaped into cyberspace, becoming a digital ghost. Inhabiting a body of her own design as Mordekaiser assumed control of the City, she is one of the few who understands the true threat of his ever-expanding directives. "
+        },
+        {
+            "id": 235026,
+            "isBase": false,
+            "name": "Lunar Eclipse Senna",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/235/235026.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/235/235026.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/235/235026.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin26/SennaLoadScreen_26.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235026.png",
+            "chromas": [
+                {
+                    "id": 235028,
+                    "name": "Lunar Eclipse Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235028.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235029,
+                    "name": "Lunar Eclipse Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235029.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235030,
+                    "name": "Lunar Eclipse Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235030.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235031,
+                    "name": "Lunar Eclipse Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235031.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235032,
+                    "name": "Lunar Eclipse Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235032.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235033,
+                    "name": "Lunar Eclipse Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235033.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235034,
+                    "name": "Lunar Eclipse Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235034.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235035,
+                    "name": "Lunar Eclipse Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235035.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 93
+                }
+            ],
+            "skinAugments": null,
+            "description": "An ancient knight long thought dead, freed from the Eclipse Cathedral's catacombs as Kayle began to stir from her ancient slumber. Senna now aids her knighthood against the new threat of the Coven, saving whoever she can from the resurrected Old Gods… though she remains ever vigilant, as the sun-eater's return is now inevitable."
+        },
+        {
+            "id": 235027,
+            "isBase": false,
+            "name": "Prestige Lunar Eclipse Senna",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/235/235027.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/235/235027.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/235/235027.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin27/SennaLoadScreen_27.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin27/SennaLoadscreen_27_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 93
+                }
+            ],
+            "skinAugments": null,
+            "description": "Burning up the runway in a look inspired by an ancient order of magical knights, Senna brings a cold, but determined energy to the Gala proceedings. Evil beware — these looks can kill... and kill again."
+        },
+        {
+            "id": 235036,
+            "isBase": false,
+            "name": "Bewitching Senna",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/235/235036.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/235/235036.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/235/235036.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin36/SennaLoadScreen_36.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin36/SennaLoadscreen_36_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235036.png",
+            "chromas": [
+                {
+                    "id": 235038,
+                    "name": "Bewitching Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235038.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235039,
+                    "name": "Bewitching Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235039.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235040,
+                    "name": "Bewitching Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235040.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235041,
+                    "name": "Bewitching Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235041.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235042,
+                    "name": "Bewitching Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235042.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235043,
+                    "name": "Bewitching Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235043.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235044,
+                    "name": "Bewitching Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235044.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235045,
+                    "name": "Bewitching Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235045.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 172
+                }
+            ],
+            "skinAugments": null,
+            "description": "When she was just a young witch, a warlock bound Senna's soul to a tome of spells, hoping to rid himself of her rising power. But her time spent disembodied only made her stronger. While others party, the overly serious Senna searches for ghouls and ghosts, planning to send them to the grave... again."
+        },
+        {
+            "id": 235046,
+            "isBase": false,
+            "name": "Star Guardian Senna",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/235/235046.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/235/235046.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/235/235046.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin46/SennaLoadScreen_46.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin46/SennaLoadScreen_46_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235046.png",
+            "chromas": [
+                {
+                    "id": 235048,
+                    "name": "Star Guardian Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235048.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235049,
+                    "name": "Star Guardian Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235049.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235050,
+                    "name": "Star Guardian Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235050.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235051,
+                    "name": "Star Guardian Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235051.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235052,
+                    "name": "Star Guardian Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235052.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235053,
+                    "name": "Star Guardian Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235053.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235054,
+                    "name": "Star Guardian Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235054.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235055,
+                    "name": "Star Guardian Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235055.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 161
+                }
+            ],
+            "skinAugments": null,
+            "description": "Years spent battling the darkness alone has strengthened Senna's resolve, but it also hardened her heart. After all, when you're a Star Guardian, you know losing loved ones is inevitable. Still, she'll keep fighting now, harder than ever. Reuniting her new friend Xayah with her evil ex-boyfriend is a powerful motivator."
+        },
+        {
+            "id": 235056,
+            "isBase": false,
+            "name": "Winterblessed Senna",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/235/235056.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/235/235056.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/235/235056.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin56/SennaLoadScreen_56.PIE_C_13_24.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Senna/Skins/Skin56/SennaLoadScreen_56_LE.PIE_C_13_24.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235056.png",
+            "chromas": [
+                {
+                    "id": 235057,
+                    "name": "Winterblessed Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235057.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235058,
+                    "name": "Winterblessed Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235058.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235059,
+                    "name": "Winterblessed Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235059.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 235060,
+                    "name": "Winterblessed Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235060.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235061,
+                    "name": "Winterblessed Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235061.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 235062,
+                    "name": "Winterblessed Senna",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/235/235062.png",
+                    "colors": [
+                        "#BF2020",
+                        "#368B25"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2023 Winterblessed event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 187
+                }
+            ],
+            "skinAugments": null,
+            "description": "Senna woke in the dreamlike embrace of the Aurora. Clad in regal dress she didn't recognize, she had no memory of how she got there, nor could she remember anything else, save for flashes of warmth: a love, lost in shadow. \"Who am I?\" she wondered."
+        }
+    ],
+    "passive": {
+        "name": "Absolution",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Senna/HUD/Icons2D/Senna_Passive.png",
+        "abilityVideoPath": "champion-abilities/0235/ability_0235_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0235/ability_0235_P1.jpg",
+        "description": "When units die near Senna, their souls are periodically trapped by the Black Mist. Senna can attack these souls to free them, absorbing the Mist that held them in death. Mist fuels her Relic Cannon's power with increased Attack Damage, Attack Range, and Critical Strike Chance. <br><br>Attacks from Senna's Relic Cannon take longer to fire, deal bonus damage, and briefly grant her a portion of her target's Move Speed."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Piercing Darkness",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Senna/HUD/Icons2D/Senna_Q.png",
+            "abilityVideoPath": "champion-abilities/0235/ability_0235_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0235/ability_0235_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "From the twin barrels of her Relic Cannon, Senna fires a unified beam of light and shadow through a target, healing allies and damaging enemies.",
+            "dynamicDescription": "Senna shoots a bolt of piercing shadow through an ally or enemy, dealing <physicalDamage>@TotalDamage@ physical damage</physicalDamage> to enemies and <status>Slowing</status> them by @TotalSlow@ for @SlowDuration@ second(s). Restores <healing>@TotalHeal@ Health</healing> to allied champions. <br><br>Attacks reduce this Ability's Cooldown by @CDReductionOnHit@ second.@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                80.0000,
+                90.0000,
+                100.0000,
+                110.0000,
+                110.0000
+            ],
+            "cooldownCoefficients": [
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000,
+                15.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Last Embrace",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Senna/HUD/Icons2D/Senna_W.png",
+            "abilityVideoPath": "champion-abilities/0235/ability_0235_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0235/ability_0235_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Senna sends forth a wave of Black Mist. If it hits an enemy it latches onto them hungrily, rooting them and everything nearby after a brief delay.",
+            "dynamicDescription": "Senna sends forth the Black Mist, dealing <physicalDamage>@Damage@ physical damage</physicalDamage> to the first enemy hit. After a @DelayTime@ second delay the target and other nearby enemies are <status>Rooted</status> for @RootDuration@ second(s).@SpellModifierDescriptionAppend@",
+            "range": [
+                1250.0000,
+                1250.0000,
+                1250.0000,
+                1250.0000,
+                1250.0000,
+                1250.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                11.0000,
+                11.0000,
+                11.0000,
+                11.0000,
+                11.0000,
+                11.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Curse of the Black Mist",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Senna/HUD/Icons2D/Senna_E.png",
+            "abilityVideoPath": "champion-abilities/0235/ability_0235_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0235/ability_0235_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Senna draws the Mist she has stored in her weapon into a storm around her, embracing darkness and becoming a wraith within. Allies who enter the area are camouflaged and also appear as wraiths as the Mist shrouds them. Wraiths gain increased Move Speed, are unselectable, and hide their identities.",
+            "dynamicDescription": "Senna dissolves into a cloud of Black Mist for @BuffDuration@ seconds, becoming a Wraith. Allied champions who enter the Mist are <keywordStealth>Camouflaged</keywordStealth> and become Wraiths when they leave. Wraiths gain <speed>@TotalMS@ Move Speed</speed>, are Unselectable, and hide their identities as long as no enemy champions are nearby.@SpellModifierDescriptionAppend@",
+            "range": [
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                26.0000,
+                24.5000,
+                23.0000,
+                21.5000,
+                20.0000,
+                20.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.7500,
+                "coefficient2": 0.5000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Dawning Shadow",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Senna/HUD/Icons2D/Senna_R.png",
+            "abilityVideoPath": "champion-abilities/0235/ability_0235_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0235/ability_0235_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Senna calls upon the relic stones of fallen Sentinels, splitting her relic cannon into a holy array of shadow and light. She then fires a global beam that shields allies from harm, while damaging enemies caught in the center.",
+            "dynamicDescription": "Senna fires a beam of light that deals <physicalDamage>@TotalDamage@ physical damage</physicalDamage> to all enemy champions hit. Allied champions hit in a wider area receive <shield>@TotalShield@ Shield</shield> for @ShieldDuration@ seconds.@SpellModifierDescriptionAppend@",
+            "range": [
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                140.0000,
+                120.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.9000,
+                "coefficient2": 1.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

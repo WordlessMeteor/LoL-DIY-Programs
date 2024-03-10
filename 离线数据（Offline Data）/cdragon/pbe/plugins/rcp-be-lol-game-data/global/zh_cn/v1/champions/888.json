@@ -1,0 +1,1133 @@
+{
+    "id": 888,
+    "name": "炼金男爵",
+    "alias": "Renata",
+    "title": "烈娜塔 · 戈拉斯克",
+    "shortBio": "烈娜塔•格拉斯克从童年家宅的灰烬中走出，仅凭自己的名字和父母的炼金术研究成果白手起家。在后来的几十年里，她成为了祖安炼金男爵中的首富，通过利益捆绑积累人脉。与她合作，就将获得难以计量的奖赏。与她作对，就将捶胸顿足悔不当初。但到最后，所有人都会成为她的附庸。",
+    "tacticalInfo": {
+        "style": 8,
+        "difficulty": 2,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 1,
+        "crowdControl": 3,
+        "mobility": 1,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/888.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/888.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/888.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/888.ogg",
+    "roles": [
+        "support",
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 888000,
+            "isBase": true,
+            "name": "炼金男爵",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/888/888000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/888/888000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/888/888000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renata/Skins/Base/RenataLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 888001,
+            "isBase": false,
+            "name": "舰队司令 烈娜塔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/888/888001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/888/888001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/888/888001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renata/Skins/Skin01/RenataLoadscreen_1.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888001.png",
+            "chromas": [
+                {
+                    "id": 888002,
+                    "name": "舰队司令 烈娜塔 战场狂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 888003,
+                    "name": "舰队司令 烈娜塔 漫天沙暴",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888003.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888004,
+                    "name": "舰队司令 烈娜塔 森中魔怪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888004.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888005,
+                    "name": "舰队司令 烈娜塔 深海巨妖",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888005.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888006,
+                    "name": "舰队司令 烈娜塔 惑心恶魔",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888006.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 888007,
+                    "name": "舰队司令 烈娜塔 曙光梦魇",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888007.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888008,
+                    "name": "舰队司令 烈娜塔 天际幽影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888008.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888009,
+                    "name": "舰队司令 烈娜塔 苍穹铁腕",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888009.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888011,
+                    "name": "舰队司令 烈娜塔 暗夜王牌",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888011.png",
+                    "colors": [
+                        "#FF70BA",
+                        "#464646"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在钢铁瓦尔基里(2022)事件期间作为战利品专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 65
+                }
+            ],
+            "skinAugments": null,
+            "description": "雄心勃勃、诡计多端、残酷无情——这些品质在银河内战期间让舰队司令烈娜塔大放异彩。它们仍然在让她大放异彩，无论是在前线还是在武器制造业。作为皇家太空军研发部门的负责人，舰队司令烈娜塔将以无与伦比的火力为银河系带来秩序：无论是空投到行星边缘还是穿越到遥远恒星，宇宙就是她的棋盘，而她，则是女王。"
+        },
+        {
+            "id": 888010,
+            "isBase": false,
+            "name": "魔域梦魇 烈娜塔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/888/888010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/888/888010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/888/888010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renata/Skins/Skin10/RenataLoadScreen_10.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888010.png",
+            "chromas": [
+                {
+                    "id": 888012,
+                    "name": "魔域梦魇 烈娜塔 红夜梦境",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888012.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 888013,
+                    "name": "魔域梦魇 烈娜塔 糖果梦境",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888013.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888014,
+                    "name": "魔域梦魇 烈娜塔 荆棘梦境",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888014.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888015,
+                    "name": "魔域梦魇 烈娜塔 舞会梦境",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888015.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 888016,
+                    "name": "魔域梦魇 烈娜塔 惊情梦境",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888016.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888017,
+                    "name": "魔域梦魇 烈娜塔 荒宅梦境",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888017.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888018,
+                    "name": "魔域梦魇 烈娜塔 歌影梦境",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888018.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888019,
+                    "name": "魔域梦魇 烈娜塔 飞帚梦境",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888019.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 170
+                }
+            ],
+            "skinAugments": null,
+            "description": "温柔的关怀和几勺甜奶<br>和其它东西彰显妈咪爱<br>它扼她喉咙表现善之坏<br>有些天选孩子就爱黑暗，戈妈妈劝你别见怪！"
+        },
+        {
+            "id": 888020,
+            "isBase": false,
+            "name": "魂蔷薇 烈娜塔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/888/888020.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/888/888020.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/888/888020.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renata/Skins/Skin20/RenataLoadScreen_20.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Renata/Skins/Skin20/RenataLoadscreen_20_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888020.png",
+            "chromas": [
+                {
+                    "id": 888022,
+                    "name": "魂蔷薇 烈娜塔 信念之火",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888022.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 888023,
+                    "name": "魂蔷薇 烈娜塔 告慰之饮",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888023.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888024,
+                    "name": "魂蔷薇 烈娜塔 引路之花",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888024.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888025,
+                    "name": "魂蔷薇 烈娜塔 送别之礼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888025.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888026,
+                    "name": "魂蔷薇 烈娜塔 庆典之饰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888026.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888027,
+                    "name": "魂蔷薇 烈娜塔 家人之爱",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888027.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 888028,
+                    "name": "魂蔷薇 烈娜塔 生命之源",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888028.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888029,
+                    "name": "魂蔷薇 烈娜塔 智慧之物",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888029.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888030,
+                    "name": "魂蔷薇 烈娜塔 生如夏花",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888030.png",
+                    "colors": [
+                        "#EE3B93",
+                        "#055939"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 198
+                }
+            ],
+            "skinAugments": null,
+            "description": "烈娜塔的生前深陷于各种迫不得已的关系，而死亡使她得以自由组建她一直想要的家庭。作为“进取”家族的创始人，成员之间的纽带不是来自于任何家庭的温暖，而是来自于实实在在的算计。至于她的工作，烈娜塔着眼于社群，并竭尽全力让各种事情都变得更加“高效”。"
+        },
+        {
+            "id": 888021,
+            "isBase": false,
+            "name": "至臻 魂蔷薇 烈娜塔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/888/888021.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/888/888021.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/888/888021.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renata/Skins/Skin21/RenataLoadScreen_21.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Renata/Skins/Skin21/RenataLoadscreen_21_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 198
+                }
+            ],
+            "skinAugments": null,
+            "description": "从时装模特到时尚专家，烈娜塔拥有在盛会上参展的最大时装公司之一。这么长时间以来，在一场糟糕的走秀后宣布她“死亡”的批评家数不胜数，而她则自豪地将它当成品牌来穿，为她的公司和临时家庭注入了活力。最后，只有她掌控着生与死的丝线，至少在伸展台上是这样。"
+        }
+    ],
+    "passive": {
+        "name": "物尽其用",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Renata/HUD/Icons2D/Renata_P.png",
+        "abilityVideoPath": "champion-abilities/0888/ability_0888_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0888/ability_0888_P1.jpg",
+        "description": "烈娜塔的攻击会造成额外伤害并标记敌人。烈娜塔的队友在对被标记的敌人造成伤害时可以造成额外伤害。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "铁腕竞合",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Renata/HUD/Icons2D/Renata_Q.png",
+            "abilityVideoPath": "champion-abilities/0888/ability_0888_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0888/ability_0888_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "烈娜塔发射一颗飞弹来禁锢命中的第一个敌人，并且可以再次施放这个技能来将该目标朝一个方向投掷。",
+            "dynamicDescription": "烈娜塔发射一颗飞弹来<status>禁锢</status>命中的第一个敌人@RootDuration@秒，并造成<magicDamage>@TotalDamage@</magicDamage><magicDamage>魔法伤害</magicDamage>。<br><br><recast>再次施放：</recast>烈娜塔将敌人朝一个方向<status>拉拽</status>，对被其碰到的敌人们造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>，并且如果被拉拽的敌人是一个英雄，那么还会造成@StunDuration@秒<status>晕眩</status>。@SpellModifierDescriptionAppend@",
+            "range": [
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000
+            ],
+            "costCoefficients": [
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
+            ],
+            "cooldownCoefficients": [
+                16.0000,
+                16.0000,
+                16.0000,
+                16.0000,
+                16.0000,
+                16.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "及时救难",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Renata/HUD/Icons2D/Renata_W.png",
+            "abilityVideoPath": "champion-abilities/0888/ability_0888_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0888/ability_0888_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "烈娜塔增益一名友方英雄，让其打得更猛，延缓其死亡并且在其参与一次击杀后将其救活。",
+            "dynamicDescription": "烈娜塔为一名友方英雄注入药剂，为其提供<attackSpeed>@ASCalc@攻击速度</attackSpeed>和朝敌人时的<speed>@MSCalc@移动速度</speed>，这个加成会在@Duration@秒里持续提升至<attackSpeed>@FinalASCalc@攻击速度</attackSpeed>和<speed>@FinalMSCalc@移动速度</speed>。参与击杀后会刷新这个增益的持续时间。<br><br>如果该友方英雄阵亡，就会带着满额生命值归来，然后这些生命值会在3秒里持续衰减。<br><br>如果该友方英雄在衰减期间参与了一次击杀，那么就会回复至<healing>@TriumphPercent@%最大生命值</healing>并停止衰减。<br><br><rules>该英雄在衰减状态下的死亡，可通过治疗或相似效果来延缓，但无法防止，除非该英雄参与了一次击杀。英雄仅可延缓一次死亡。</rules>@SpellModifierDescriptionAppend@",
+            "range": [
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000
+            ],
+            "costCoefficients": [
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
+            ],
+            "cooldownCoefficients": [
+                28.0000,
+                27.0000,
+                26.0000,
+                25.0000,
+                24.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.2000,
+                "coefficient2": 0.0500
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "忠诚激励",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Renata/HUD/Icons2D/Renata_E.png",
+            "abilityVideoPath": "champion-abilities/0888/ability_0888_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0888/ability_0888_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "烈娜塔发射一对炼金科技飞弹，在命中时为友军提供护盾并对敌人造成伤害和减速。",
+            "dynamicDescription": "烈娜塔发射一对炼金科技飞弹，在命中敌人时对该敌人及周围的敌人们造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>和持续@SlowDuration@秒的30%<status>减速</status>。在命中友军时提供持续@ShieldDuration@秒的<shield>@ShieldCalc@护盾值</shield>。@SpellModifierDescriptionAppend@",
+            "range": [
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                80.0000,
+                90.0000,
+                100.0000,
+                110.0000,
+                120.0000
+            ],
+            "cooldownCoefficients": [
+                14.0000,
+                13.0000,
+                12.0000,
+                11.0000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "恶意收购",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Renata/HUD/Icons2D/Renata_R.png",
+            "abilityVideoPath": "champion-abilities/0888/ability_0888_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0888/ability_0888_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "烈娜塔发射一道炼金波纹，使命中的敌人们都陷入狂暴状态。",
+            "dynamicDescription": "烈娜塔发射一道炼金波纹，让命中的敌人们<status>狂暴</status>@BerserkDuration@秒，来使他们攻击相距最近的单位并优先以他们的友军为目标。<br><br>在<status>狂暴</status>状态下，敌人们会获得<attackSpeed>@BonusAttackSpeed*100@%攻击速度</attackSpeed>。@SpellModifierDescriptionAppend@",
+            "range": [
+                2000.0000,
+                2000.0000,
+                2000.0000,
+                2000.0000,
+                2000.0000,
+                2000.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                150.0000,
+                130.0000,
+                110.0000,
+                10.0000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.6000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

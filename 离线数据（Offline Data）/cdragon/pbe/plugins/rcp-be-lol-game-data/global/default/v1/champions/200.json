@@ -1,0 +1,922 @@
+{
+    "id": 200,
+    "name": "Bel'Veth",
+    "alias": "Belveth",
+    "title": "the Empress of the Void",
+    "shortBio": "A nightmarish empress created from the raw material of an entire devoured city, Bel'Veth is the end of Runeterra itself... and the beginning of a monstrous reality of her own design. Driven by epochs of repurposed history, knowledge, and memories from the world above, she voraciously feeds an ever-expanding need for new experiences and emotions, consuming all that crosses her path. Yet her wants could never be sated by only one world as she turns her hungry eyes toward the Void's old masters...",
+    "tacticalInfo": {
+        "style": 1,
+        "difficulty": 2,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 2,
+        "mobility": 3,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/200.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/200.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/200.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/200.ogg",
+    "roles": [
+        "fighter"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 200000,
+            "isBase": true,
+            "name": "Bel'Veth",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/200/200000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/200/200000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/200/200000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Belveth/Skins/Base/BelvethLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 200001,
+            "isBase": false,
+            "name": "Battle Boss Bel'Veth",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/200/200001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/200/200001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/200/200001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Belveth/Skins/Skin01/BelvethLoadscreen_1.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200001.png",
+            "chromas": [
+                {
+                    "id": 200002,
+                    "name": "Battle Boss Bel'Veth",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 200003,
+                    "name": "Battle Boss Bel'Veth",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200003.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 200004,
+                    "name": "Battle Boss Bel'Veth",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200004.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 200005,
+                    "name": "Battle Boss Bel'Veth",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200005.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 200006,
+                    "name": "Battle Boss Bel'Veth",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200006.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 200007,
+                    "name": "Battle Boss Bel'Veth",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200007.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 200008,
+                    "name": "Battle Boss Bel'Veth",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200008.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 200009,
+                    "name": "Battle Boss Bel'Veth",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200009.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 11
+                }
+            ],
+            "skinAugments": null,
+            "description": "True final boss of the hit 1998 RPG \"Initial Reverie VIII,\" Bel'Veth has become a staple of the series thanks to fan popularity and her storyline about assimilating all of reality into herself. Recruited into the war in Arcadia by Veigar, she has decided to ignore his commands, annihilate everything in her path, and assimilate all of Arcade World into herself. Who could have seen it coming?"
+        },
+        {
+            "id": 200010,
+            "isBase": false,
+            "name": "Cosmic Matriarch Bel'Veth",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/200/200010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/200/200010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/200/200010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Belveth/Skins/Skin10/BelvethLoadScreen_10.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200010.png",
+            "chromas": [
+                {
+                    "id": 200011,
+                    "name": "Cosmic Matriarch Bel'Veth",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200011.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 200012,
+                    "name": "Cosmic Matriarch Bel'Veth",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200012.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 200013,
+                    "name": "Cosmic Matriarch Bel'Veth",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200013.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 200014,
+                    "name": "Cosmic Matriarch Bel'Veth",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200014.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 200015,
+                    "name": "Cosmic Matriarch Bel'Veth",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200015.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 200016,
+                    "name": "Cosmic Matriarch Bel'Veth",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200016.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 200017,
+                    "name": "Cosmic Matriarch Bel'Veth",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200017.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 200018,
+                    "name": "Cosmic Matriarch Bel'Veth",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/200/200018.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 43
+                }
+            ],
+            "skinAugments": null,
+            "description": "A lonely cradle of life amongst the stars, Bel'Veth wanders ruined space in the aftermath of the Cosmic Court's destruction. She refuses to allow the Dark Star's entropy to spread any further, and so has begun plucking chosen creatures from dying worlds, imbuing them with the power to fight by her side and contain the corruption before it is too late."
+        }
+    ],
+    "passive": {
+        "name": "Death in Lavender ",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Belveth/HUD/Icons2D/Belveth_Passive.png",
+        "abilityVideoPath": "champion-abilities/0200/ability_0200_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0200/ability_0200_P1.jpg",
+        "description": "Bel'Veth gains permanent attack speed stacks after taking down large minions and monsters and champions. She also gains temporary bonus attack speed after using an ability."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Void Surge",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Belveth/HUD/Icons2D/BV_Q_1.png",
+            "abilityVideoPath": "champion-abilities/0200/ability_0200_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0200/ability_0200_Q1.jpg",
+            "cost": "No Cost",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Bel'Veth dashes in a chosen direction and damages all enemies she passes through.",
+            "dynamicDescription": "Bel'Veth dashes, dealing <physicalDamage>@BaseDamage@ physical damage</physicalDamage> to enemies she passes through.<br><br>Each direction has an unique Cooldown of @f1@ seconds that scales down based on her <attackSpeed>Attack Speed</attackSpeed>.<br>@SpellModifierDescriptionAppend@",
+            "range": [
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Above and Below",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Belveth/HUD/Icons2D/BelvethW.png",
+            "abilityVideoPath": "champion-abilities/0200/ability_0200_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0200/ability_0200_W1.jpg",
+            "cost": "No Cost",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Bel'Veth slams her tail to the ground, damaging, knocking up, and slowing her enemies.",
+            "dynamicDescription": "Bel'Veth slams her tail, dealing <magicDamage>@Damage@ magic damage</magicDamage>, <status>Knocking Up</status> foes for @Duration@ seconds, and <status>Slowing</status> them by @SlowPercent*100@% for @SlowDuration@ seconds. If a champion is hit, this refreshes the Cooldown of <spellName>Void Surge</spellName> in that direction.@SpellModifierDescriptionAppend@",
+            "range": [
+                715.0000,
+                715.0000,
+                715.0000,
+                715.0000,
+                715.0000,
+                715.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                11.0000,
+                10.0000,
+                9.0000,
+                8.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Royal Maelstrom",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Belveth/HUD/Icons2D/BelvethE.png",
+            "abilityVideoPath": "champion-abilities/0200/ability_0200_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0200/ability_0200_E1.jpg",
+            "cost": "No Cost",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Bel'Veth roots herself in place, channeling a storm of slashes around her that targets the lowest-health enemy and grants her lifesteal and damage reduction.",
+            "dynamicDescription": "Bel'Veth channels and slashes around herself, gaining @DRPercent*100@% Damage Reduction, @TotalLifesteal@ Life Steal, and Attacking @f2.0@ times over @TotalDuration@ seconds with the number of Attacks increasing based on her <attackSpeed>Attack Speed</attackSpeed>. Each Attack strikes the lowest-health enemy, dealing <physicalDamage>@DamagePerStrike@</physicalDamage> to <physicalDamage>@MaxDamagePerStrikeTooltip@ physical damage</physicalDamage> based on the target's missing Health.<br><br>Using another Ability or <recast>Recasting</recast> ends this Ability early.<br>@SpellModifierDescriptionAppend@",
+            "range": [
+                500.0000,
+                500.0000,
+                500.0000,
+                500.0000,
+                500.0000,
+                500.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                20.0000,
+                19.0000,
+                18.0000,
+                17.0000,
+                16.0000,
+                16.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Endless Banquet",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Belveth/HUD/Icons2D/BelvethR.png",
+            "abilityVideoPath": "champion-abilities/0200/ability_0200_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0200/ability_0200_R1.jpg",
+            "cost": "No Cost",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Bel'Veth consumes Void coral remnants, transforming into her true form and increasing her max health, attack range, attack speed, and out-of-combat move speed. Consuming the Void coral remnants of a Void epic monster will grant her a longer ultimate duration, as well as the power to summon Void remora.",
+            "dynamicDescription": "<spellPassive>Passive:</spellPassive> Every second Attack against the same target deals an additional <trueDamage>@FinalOnHitDamage@ true damage</trueDamage>, stacking infinitely. Takedowns against champions and epic monsters leave behind a piece of Void Coral.<br><br><spellActive>Active:</spellActive> Consuming Void Coral grants <keywordMajor>@PassiveStacksOnDevour@ Lavender</keywordMajor> stack and activates Bel'Veth's true form for @SteroidDuration@ seconds. Void Coral from Void epic monsters increases the duration to @VoidDuration@ seconds and causes minions that die nearby to become Void Remora. While casting, Bel'Veth <status>Slows</status> nearby enemies before exploding, dealing <trueDamage>@TotalExplosionDamage@ + @MissingHealthDamage*100@% missing-Health true damage</trueDamage>.<br><br>In her true form, Bel'Veth gains <healing>@MaxHealthOnDevour@ max Health</healing>, <speed>@OOCMS@ Move Speed</speed> out of combat, @BonusAARange@ Attack range, <attackSpeed>@TotalASMod*100@% Total Attack Speed</attackSpeed>, and <spellName>Void Surge</spellName> can pass through walls.<br><br><br>@SpellModifierDescriptionAppend@",
+            "range": [
+                275.0000,
+                275.0000,
+                275.0000,
+                275.0000,
+                275.0000,
+                275.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000,
+                1.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

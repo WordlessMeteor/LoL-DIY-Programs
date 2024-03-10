@@ -1,0 +1,48 @@
+{
+    "LCTFTModeData": {
+        "mActiveSets": [
+            {
+                "SetCoreName": "TFTTutorial",
+                "SetDisplayName": "强音争霸已开始",
+                "SetAugmentName": "海克斯核心 强化符文",
+                "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/gear.png",
+                "SetPortalSystemName": ""
+            },
+            {
+                "SetCoreName": "TFTSet10",
+                "SetDisplayName": "强音争霸已开始",
+                "SetAugmentName": "音响强化符文",
+                "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set10.TFT_Set10.png",
+                "SetPortalSystemName": ""
+            },
+            {
+                "SetCoreName": "TFTSet10",
+                "SetDisplayName": "强音争霸已开始",
+                "SetAugmentName": "音响强化符文",
+                "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set10.TFT_Set10.png",
+                "SetPortalSystemName": ""
+            },
+            {
+                "SetCoreName": "TFTSet3",
+                "SetDisplayName": "强音争霸已开始",
+                "SetAugmentName": "银河强化符文",
+                "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set3.png",
+                "SetPortalSystemName": "银河"
+            },
+            {
+                "SetCoreName": "TFTSet10",
+                "SetDisplayName": "强音争霸已开始",
+                "SetAugmentName": "音响强化符文",
+                "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/gear.png",
+                "SetPortalSystemName": ""
+            }
+        ],
+        "mDefaultSet": {
+            "SetCoreName": "TFTSet10",
+            "SetDisplayName": "强音争霸已开始",
+            "SetAugmentName": "音响强化符文",
+            "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set10.TFT_Set10.png",
+            "SetPortalSystemName": ""
+        }
+    }
+}

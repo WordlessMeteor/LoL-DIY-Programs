@@ -1,0 +1,959 @@
+{
+    "id": 897,
+    "name": "纳祖芒荣耀",
+    "alias": "KSante",
+    "title": "奎桑提",
+    "shortBio": "威武不屈的奎桑提，与山峦般的巨兽和残忍的飞升者不懈地战斗，只为保护自己的家园纳祖芒——恕瑞玛沙漠中一处明珠般的绿洲。但自从与曾经的伙伴分别，奎桑提意识到他要是渴望成为一名足够领导纳祖芒的英雄，就必须克服自己一心求胜的固执。只有这样，他才不会被自己的傲慢所吞噬，最终收获他所需的智慧，击溃那些足以威胁族人的恐怖对手。",
+    "tacticalInfo": {
+        "style": 3,
+        "difficulty": 3,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 3,
+        "crowdControl": 3,
+        "mobility": 2,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/897.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/897.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/897.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/897.ogg",
+    "roles": [
+        "tank",
+        "fighter"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 897000,
+            "isBase": true,
+            "name": "纳祖芒荣耀",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/897/897000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/897/897000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/897/897000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/KSante/Skins/Base/KSanteLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 897001,
+            "isBase": false,
+            "name": "至高天 奎桑提",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/897/897001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/897/897001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/897/897001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/KSante/Skins/Skin01/KSanteLoadscreen_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/KSante/Skins/Skin01/KSanteLoadscreen_1_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897001.png",
+            "chromas": [
+                {
+                    "id": 897003,
+                    "name": "至高天 奎桑提 狂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897003.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 897004,
+                    "name": "至高天 奎桑提 青炬",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897004.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 897005,
+                    "name": "至高天 奎桑提 灵辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897005.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 897006,
+                    "name": "至高天 奎桑提 胧光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897006.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 897007,
+                    "name": "至高天 奎桑提 霓虹耀斑",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897007.png",
+                    "colors": [
+                        "#FF655B",
+                        "#95E237"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2022)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 186
+                }
+            ],
+            "skinAugments": null,
+            "description": "奎桑提以在逆境下的领导力而自豪，但这一次和任何一种其它的挑战都不同。他的位面没了，他活在借来的时间里，并且其他至高天们并没有意识到的是，某种东西释放了盈晖。某种东西出问题了。他知道只有他们能解决，但他们需要睁开眼睛。他们需要一个领袖。"
+        },
+        {
+            "id": 897002,
+            "isBase": false,
+            "name": "至臻 至高天 奎桑提",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/897/897002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/897/897002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/897/897002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/KSante/Skins/Skin02/KSanteLoadScreen_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/KSante/Skins/Skin02/KSanteLoadscreen_2_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 186
+                }
+            ],
+            "skinAugments": null,
+            "description": "奎桑提一直是时尚圈的开拓者，并且今年他肯定想让观众们畅快淋漓。凭借晶莹剔透的滴水装和完美无瑕的妆容，他即将在这场盛会中引燃全场。"
+        },
+        {
+            "id": 897008,
+            "isBase": false,
+            "name": "心之钢 奎桑提",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/897/897008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/897/897008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/897/897008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/KSante/Skins/Skin08/KSanteLoadScreen_8.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/KSante/Skins/Skin08/KSanteLoadscreen_8_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897008.png",
+            "chromas": [
+                {
+                    "id": 897009,
+                    "name": "心之钢 奎桑提 锐意曲风",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897009.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 897010,
+                    "name": "心之钢 奎桑提 天籁旋律",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897010.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 897011,
+                    "name": "心之钢 奎桑提 天纵才华",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897011.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 897012,
+                    "name": "心之钢 奎桑提 超凡信心",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897012.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 897013,
+                    "name": "心之钢 奎桑提 坚守决意",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897013.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 897014,
+                    "name": "心之钢 奎桑提 本真风范",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897014.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 897015,
+                    "name": "心之钢 奎桑提 典雅品味",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897015.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 897016,
+                    "name": "心之钢 奎桑提 金声玉振",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897016.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 897017,
+                    "name": "心之钢 奎桑提 摇滚明星",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/897/897017.png",
+                    "colors": [
+                        "#CDE9EF",
+                        "#E9628F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 199
+                }
+            ],
+            "skinAugments": null,
+            "description": "奎桑提在身体、情感、嗓音上都是一个令人惊叹的存在，始终着眼于大局，决心让心之钢在音乐行业留下它的印记。尽管在奎桑提的单飞生涯中，他的雄心壮志常常超出个人力所能及的限度，但现在他找到了他信任的朋友和合作者，知道没有什么可以阻止他们。"
+        }
+    ],
+    "passive": {
+        "name": "血性本能",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/KSante/HUD/Icons2D/Icons_KSante_P.png",
+        "abilityVideoPath": "champion-abilities/0897/ability_0897_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0897/ability_0897_P1.jpg",
+        "description": "奎桑提的技能会标记目标来使他的下一次攻击对其造成更多伤害。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "无双陀斧",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/KSante/HUD/Icons2D/Icons_KSante_Q1.png",
+            "abilityVideoPath": "champion-abilities/0897/ability_0897_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0897/ability_0897_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@f1.2@秒",
+            "description": "向前进行一次武器打击，对一条较短直线内的所有敌人造成伤害和减速效果。<br><br>命中敌人时会叠加1层持续数秒的效果。叠加至2层时，这个技能会放出一道冲击波来将敌人拉向奎桑提。",
+            "dynamicDescription": "奎桑提将他的武器猛砸下去，对击中的敌人们造成<physicalDamage>@BaseDamage@物理伤害</physicalDamage>和短暂的@SlowPercent*100@%<status>减速</status>。<br><br>在命中一名敌人时，奎桑提会获得一层持续@RecastWindow@秒的【无双陀斧】效果。在2层时，奎桑提会转而发射一道冲击波来对敌人们造成持续@StunDuration@秒的<status>晕眩</status>和<status>拉拽</status>。<br><br><rules>冷却时间已通过额外<scaleArmor>护甲</scaleArmor>和<scaleMR>魔法抗性</scaleMR>缩短： @BonusResistsTooltip@ / @DefenseCapforCooldown@。<br>施放时间已通过额外<healing>生命值</healing>缩短：@BonusHealthTooltip@ / @HealthCapForCastTime@。</rules><br><br><keywordMajor>全盛姿态</keywordMajor>：这个技能的冷却时间会缩短，但不再造成<status>减速</status>效果。@SpellModifierDescriptionAppend@",
+            "range": [
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000
+            ],
+            "costCoefficients": [
+                28.0000,
+                26.0000,
+                24.0000,
+                22.0000,
+                20.0000,
+                20.0000
+            ],
+            "cooldownCoefficients": [
+                4.0000,
+                4.0000,
+                4.0000,
+                4.0000,
+                4.0000,
+                4.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "辟路先锋",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/KSante/HUD/Icons2D/Icons_KSante_W.png",
+            "abilityVideoPath": "champion-abilities/0897/ability_0897_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0897/ability_0897_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "奎桑提蓄力然后冲刺。奎桑提在蓄力时处于不可阻挡状态并且所受伤害降低。任何被这个冲刺命中的目标都会被震到这个冲刺的终点并被晕眩。<br><br>",
+            "dynamicDescription": "奎桑提架起武器@MinDurationTOOLTIP@ - @MaxDuration@秒，变为不可阻挡，并使即将到来的伤害降低@DamageReductionCharLevel@%。<br><br>在蓄力后，他会向前猛撞，造成<physicalDamage>@BaseDamageCalc@ + @MaxHealthDamage*100@%最大生命值的物理伤害</physicalDamage>。奎桑提将对被他撞到的敌人造成<status>击退</status>和@MaxKnockbackDuration@秒<status>晕眩</status>。<br><br><keywordMajor>全盛姿态：</keywordMajor>这个技能的冷却时间已经刷新。伤害减免提升至@DamageReductionCalcAO@%并且它的冲刺速度提升，但将不再造成<status>击退</status>或<status>晕眩</status>。@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                40.0000,
+                45.0000,
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000
+            ],
+            "cooldownCoefficients": [
+                24.0000,
+                22.0000,
+                20.0000,
+                18.0000,
+                16.0000,
+                14.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.7000,
+                "coefficient2": 0.7000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "大步驰援",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/KSante/HUD/Icons2D/Icons_KSante_E.png",
+            "abilityVideoPath": "champion-abilities/0897/ability_0897_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0897/ability_0897_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "奎桑提将冲刺至一名友方英雄处，并且两人都会获得一层护盾。如果没有友方英雄，奎桑提将依然朝目标位置进行较短距离的冲刺并获得一层护盾。<br>",
+            "dynamicDescription": "奎桑提进行冲刺，获得持续@ShieldDuration@秒的<shield>@TotalShield@护盾值</shield>。如果冲刺至一名友方英雄处，那么冲刺距离会显著提升并且该友方英雄也会<shield>获得护盾值</shield>。<br><br><keywordMajor>全盛姿态</keywordMajor>：这个技能的冲刺速度获得提升。不朝友方英雄冲刺的距离得到提升并且可以翻越墙体。@SpellModifierDescriptionAppend@",
+            "range": [
+                525.0000,
+                525.0000,
+                525.0000,
+                525.0000,
+                525.0000,
+                525.0000
+            ],
+            "costCoefficients": [
+                45.0000,
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000
+            ],
+            "cooldownCoefficients": [
+                10.5000,
+                10.0000,
+                9.5000,
+                9.0000,
+                8.5000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "傲岸雄姿",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/KSante/HUD/Icons2D/Icons_KSante_R1.png",
+            "abilityVideoPath": "champion-abilities/0897/ability_0897_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0897/ability_0897_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "奎桑提将一名敌方英雄撞走。如果这名敌方英雄命中了一段墙体，那么该英雄会穿过墙体并受到更多伤害。奎桑提将出现在目标英雄身后并进入“全盛姿态”，通过降低他自身的各项防御属性来极大地提升他的伤害。<br><br>",
+            "dynamicDescription": "奎桑提分开他的陀斧，造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>并<status>击退</status>一名敌方英雄。被推至墙体的敌人会受到额外的<magicDamage>@TotalDamageSlamDown@魔法伤害</magicDamage>，并被<status>击退</status>至墙体另一侧，并被短暂<status>晕眩</status>。奎桑提然后会冲刺到该敌方英雄身后并进入持续20秒的<keywordMajor>全盛姿态</keywordMajor>。<br><br><keywordMajor>全盛姿态</keywordMajor>：奎桑提损失<healing>@HealthLost*100@%最大生命值</healing>、<scaleArmor>@DefensesLost*100@%额外护甲</scaleArmor>和<scaleMR>@DefensesLost*100@%额外魔法抗性</scaleMR>，但获得<scaleAD>@AllOutAttackDamage@攻击力</scaleAD>、<attackSpeed>@AttackSpeedIncrease*100@%攻击速度</attackSpeed>、<healing>@AllOutOmnivamp@%</healing>对英雄的全能吸血，并且他的各个技能将变换形态。@SpellModifierDescriptionAppend@",
+            "range": [
+                250.0000,
+                250.0000,
+                250.0000,
+                250.0000,
+                250.0000,
+                250.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                100.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

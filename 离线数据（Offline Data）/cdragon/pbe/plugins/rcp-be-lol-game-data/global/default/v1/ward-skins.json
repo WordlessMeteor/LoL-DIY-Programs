@@ -1,0 +1,4961 @@
+[
+    {
+        "id": 0,
+        "name": "Default Ward",
+        "description": "Base Ward Skin",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_0.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_0.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was acquired when creating a League of Legends account. "
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "name": "Bat-o-lantern Ward",
+        "description": "Harrowing 2012",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_1.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_1.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2012 Harrowing event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Haunting Ward",
+        "description": "Harrowing 2012",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_2.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_2.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2012 Harrowing event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Widow Ward",
+        "description": "Harrowing 2012",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_3.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_3.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2012 Harrowing event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Deadfall Ward",
+        "description": "Harrowing 2012",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_4.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_4.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2012 Harrowing event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Tomb Angel Ward",
+        "description": "Harrowing 2012",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_5.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_5.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2012 Harrowing event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Snowman Ward",
+        "description": "Snowdown Showdown 2012",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_6.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_6.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2012 Snowdown Showdown event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "name": "Gingerbread Ward",
+        "description": "Snowdown Showdown 2012",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_7.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_7.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2012 Snowdown Showdown event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Lantern of the Serpent Ward",
+        "description": "Lunar Revel 2013",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_8.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_8.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2013 Lunar Revel event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Banner of the Serpent Ward",
+        "description": "Lunar Revel 2013",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_9.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_9.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2013 Lunar Revel event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "name": "Starcall Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_10.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_10.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2013."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "name": "Ward of Draven",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_11.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_11.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2013."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "name": "Luminosity Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_12.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_12.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2013."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "name": "Season 3 Victorious Ward",
+        "description": "Season 3 Reward for being Silver or higher in ranked play",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_13.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_13.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "Earned by reaching Silver or higher in Season 3."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "name": "Worlds 2013 Ward",
+        "description": "World Finals 2013",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_14.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_14.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase during Worlds 2013."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ]
+    },
+    {
+        "id": 15,
+        "name": "Candy Cane Ward",
+        "description": "Snowdown 2013",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_15.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_15.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2013 Snowdown event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 16,
+        "name": "Banner of the Horse Ward",
+        "description": "Lunar Revel 2014",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_16.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_16.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2014 Lunar Revel event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 17,
+        "name": "Gong Ward",
+        "description": "Lunar Revel 2014",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_17.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_17.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2014 Lunar Revel event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 18,
+        "name": "Bouquet Ward",
+        "description": "Valentine's Day 2014",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_18.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_18.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2014 Valentine's Day event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 19,
+        "name": "Fist Bump Ward",
+        "description": "You met a Rioter!",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_19.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_19.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "SG",
+                "description": "This ward was granted to players who have went to PAX East 2014 event."
+            },
+            {
+                "region": "TH",
+                "description": "This ward was given to players who come to the offline events."
+            },
+            {
+                "region": "riot",
+                "description": "This ward was granted to players who have met a Rioter and received a code!"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "TENCENT",
+                "rarity": 1
+            },
+            {
+                "region": "riot",
+                "rarity": 4
+            }
+        ]
+    },
+    {
+        "id": 20,
+        "name": "SKT T1 Ward",
+        "description": "Commemorate SKT T1's sweeping World Championship victory for season 3",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_20.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_20.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was made to commemorate SKT T1's World Championship victory in Season 3."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 21,
+        "name": "Dragonslayer Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_21.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_21.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2014 with other Dragonslayer skins."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 22,
+        "name": "All-Star 2014 Ward",
+        "description": "All-Stars 2014",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_22.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_22.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase during All-Stars 2014."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 23,
+        "name": "Golden Goal Ward",
+        "description": "World Cup 2014",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_23.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_23.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2014 Soccer Cup event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 24,
+        "name": "Mecha Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_24.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_24.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2014 with other Mecha skins."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 25,
+        "name": "Armordillo Ward",
+        "description": "Shurima Event 2014",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_25.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_25.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2014 Shurima event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 26,
+        "name": "Sad Mummy Ward",
+        "description": "Shurima Event 2014",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_26.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_26.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2014 Shurima event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 27,
+        "name": "Sun Disc Ward",
+        "description": "Shurima Event 2014",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_27.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_27.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2014 Shurima event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 28,
+        "name": "Worlds 2014 Ward",
+        "description": "World Finals 2014",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_28.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_28.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase during Worlds 2014."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 29,
+        "name": "2014 Conquering Ward",
+        "description": "Ranked Team Rewards 2014 Season - 20 points ",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_29.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_29.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "Earned by achieving 20 points in Ranked Teams in Season 4."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ]
+    },
+    {
+        "id": 30,
+        "name": "2014 Triumphant Ward",
+        "description": "Ranked Team Rewards 2014 Season - 45 points",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_30.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_30.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "Earned by achieving 45 points in Ranked Teams in Season 4."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ]
+    },
+    {
+        "id": 31,
+        "name": "2014 Victorious Ward",
+        "description": "Ranked Team Rewards 2014 Season - 75 points",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_31.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_31.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "Earned by achieving 75 points in Ranked Teams in Season 4."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 4
+            }
+        ]
+    },
+    {
+        "id": 32,
+        "name": "Battlecast Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_32.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_32.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2014 with other Battlecast skins."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 33,
+        "name": "Poro Ward",
+        "description": "Snowdown 2014",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_33.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_33.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2014."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 34,
+        "name": "Astronaut Poro Ward",
+        "description": "Snowdown 2014",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_34.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_34.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2014."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 35,
+        "name": "Gentleman Poro Ward",
+        "description": "Snowdown 2014",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_35.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_35.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2014."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 36,
+        "name": "Battlecast Poro Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_36.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_36.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2015."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 37,
+        "name": "Dragonslayer Poro Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_37.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_37.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2015."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 38,
+        "name": "Underworld Poro Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_38.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_38.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2015."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 39,
+        "name": "Firecracker Ward",
+        "description": "Lunar Revel 2015",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_39.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_39.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2015 Lunar Revel event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 40,
+        "name": "Heartseeker Ward",
+        "description": "Valentine's Day 2015",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_40.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_40.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2015 Valentine's Day event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 41,
+        "name": "Urf Ward",
+        "description": "URF 2015",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_41.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_41.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2015 URF event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "TENCENT",
+                "rarity": 1
+            },
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 42,
+        "name": "Mother Serpent Ward",
+        "description": "Bilgewater Event 2015",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_42.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_42.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2015 Bilgewater event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 43,
+        "name": "Slaughter Fleet Ward",
+        "description": "Bilgewater Event 2015",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_43.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_43.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2015 Bilgewater event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 44,
+        "name": "Optic Enhancer Ward",
+        "description": "PROJECT: 2015",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_44.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_44.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2015 with other PROJECT skins."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 45,
+        "name": "Worlds 2015 Ward",
+        "description": "World Finals 2015",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_45.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_45.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase during Worlds 2015."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 46,
+        "name": "2015 Conquering Ward",
+        "description": "Ranked Team Rewards 2015 Season - 20 points",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_46.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_46.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "Earned by achieving 20 points in Ranked Teams in Season 5."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ]
+    },
+    {
+        "id": 47,
+        "name": "2015 Triumphant Ward",
+        "description": "Ranked Team Rewards 2015 Season - 45 points",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_47.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_47.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "Earned by achieving 45 points in Ranked Teams in Season 5."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ]
+    },
+    {
+        "id": 48,
+        "name": "2015 Victorious Ward",
+        "description": "Ranked Team Rewards 2015 Season - 75 points",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_48.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_48.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "Earned by achieving 75 points in Ranked Teams in Season 5."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 4
+            }
+        ]
+    },
+    {
+        "id": 49,
+        "name": "Riggle Ward",
+        "description": "Take flight!",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_49.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_49.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2015 with other Dragon Trainer skins."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 50,
+        "name": "All-Star 2015 Team Fire Ward",
+        "description": "All-Star 2015 Team Fire",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_50.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_50.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase during All-Stars 2015 for Team Fire."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 51,
+        "name": "All-Star 2015 Team Ice Ward",
+        "description": "All-Star 2015 Team Ice",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_51.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_51.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase during All-Stars 2015 for Team Ice."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 52,
+        "name": "Penguin Skier Ward",
+        "description": "Snowdown 2015",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_52.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_52.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2015 Snowdown event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 53,
+        "name": "Rising Dawn Ward",
+        "description": "Lunar Revel 2016",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_53.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_53.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2016 Lunar Revel event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 54,
+        "name": "Harpseeker Ward",
+        "description": "Valentine's Day 2016",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_54.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_54.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2016 Valentine's Day event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 55,
+        "name": "Hextech Ward",
+        "description": "Hextech Crafting Launch",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_55.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_55.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released when Hextech Crafting launched."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 4
+            }
+        ]
+    },
+    {
+        "id": 56,
+        "name": "Definitely Not A Ward",
+        "description": "Draven Day 2016",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_56.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_56.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2016 Draven Day (April Fools) event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 57,
+        "name": "Mecha Zero Ward",
+        "description": "Mecha Zero Sion",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_57.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_57.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2016 alongside Mecha Zero Sion."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 58,
+        "name": "El Poro Ward",
+        "description": "El Poro",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_58.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_58.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2016."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 59,
+        "name": "Dark Star Ward",
+        "description": "Dark Star",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_59.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_59.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2016 with other Dark Star skins."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 60,
+        "name": "His Royal Crabness Ward",
+        "description": "Pool Party 2016",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_60.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_60.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2016 with other Pool Party skins."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 61,
+        "name": "Recon Drone Ward",
+        "description": "PROJECT 2016",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_61.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_61.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2016 with other PROJECT skins."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 62,
+        "name": "Game On Ward",
+        "description": "Arcade 2016",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_62.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_62.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2016 with other Arcade skins."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 63,
+        "name": "Star Guardian Ward",
+        "description": "Star Guardian 2016",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_63.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_63.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2016 with other Star Guardian skins."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 64,
+        "name": "Worlds 2016 Ward",
+        "description": "World Finals 2016",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_64.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_64.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase during Worlds 2016."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 65,
+        "name": "Mechs vs. Minions Ward",
+        "description": "Mechs vs. Minions",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_65.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_65.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2016 to commemorate the release of the board game, Mechs vs. Minions."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 66,
+        "name": "2016 Conquering Ward",
+        "description": "2016 Conquering",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_66.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_66.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "Earned by achieving 20 points in Ranked Teams in Season 6."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ]
+    },
+    {
+        "id": 67,
+        "name": "2016 Triumphant Ward",
+        "description": "2016 Triumphant",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_67.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_67.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "Earned by achieving 45 points in Ranked Teams in Season 6."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ]
+    },
+    {
+        "id": 68,
+        "name": "2016 Victorious Ward",
+        "description": "2016 Victorious",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_68.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_68.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "Earned by achieving 75 points in Ranked Teams in Season 6."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 4
+            }
+        ]
+    },
+    {
+        "id": 69,
+        "name": "Elementalist Ward",
+        "description": "Elementalist Lux",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_69.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_69.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This bundle-exclusive ward is acquired by purchasing the Elementalist Lux bundle."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 70,
+        "name": "Vamporo Ward",
+        "description": "Tales from the Rift 2016",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_70.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_70.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2016 Tales from the Rift event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 71,
+        "name": "Santa Penguin Ward",
+        "description": "Snowdown 2016",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_71.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_71.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2016 Snowdown event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 72,
+        "name": "Crest of the Rooster Ward",
+        "description": "Lunar Revel 2017",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_72.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_72.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2017 Lunar Revel event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 73,
+        "name": "2016 All-Star Ward",
+        "description": "2016 All-Star",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_73.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_73.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase during All-Stars 2016."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 74,
+        "name": "Blood Demon Ward",
+        "description": "Blood Moon 2017",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_74.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_74.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2017 Blood Moon event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 75,
+        "name": "Love Dove Ward",
+        "description": "Love Dove Ward",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_75.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_75.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2017 Valentine's Day event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 76,
+        "name": "Eye of the Dragon Ward",
+        "description": "Eye of the Dragon Ward",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_76.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_76.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2017."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 77,
+        "name": "Pulsefire Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_77.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_77.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2017 with other Pulsefire skins."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 78,
+        "name": "Dawnbringer Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_78.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_78.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "Acquired by purchasing the Way of Order Pass during the 2017 Versus event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ]
+    },
+    {
+        "id": 79,
+        "name": "Nightbringer Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_79.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_79.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "Acquired by purchasing the Way of Chaos Pass during the 2017 Versus event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ]
+    },
+    {
+        "id": 80,
+        "name": "God Fist Ward",
+        "description": "God Fist Ward",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_80.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_80.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "ID",
+                "description": "This bundle-exclusive ward is acquired by purchasing the God Fist Lee Sin bundle."
+            },
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2017 alongside God Fist Lee Sin."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 81,
+        "name": "Pentakill Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_81.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_81.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2017 with other Pentakill skins."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 82,
+        "name": "Corruptant Ward",
+        "description": "Corruptant Ward",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_82.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_82.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2017 with other Dark Star skins."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 83,
+        "name": "Conqueror Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_83.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_83.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2017 MSI event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 84,
+        "name": "Omega Squad Ward",
+        "description": "Omega Squad Ward",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_84.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_84.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2017 with other Omega Squad skins."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 85,
+        "name": "Arcade Poro Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_85.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_85.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "Acquired by purchasing the Event Pass during the 2017 Arcade event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ]
+    },
+    {
+        "id": 86,
+        "name": "Mimi Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_86.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_86.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2017."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 87,
+        "name": "SKT T1 kkOma Ward",
+        "description": "SKT T1 kkOma Ward",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_87.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_87.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was made to commemorate SKT T1's World Championship victory in Season 6."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 88,
+        "name": "New Horizon Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_88.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_88.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward is acquired by redeeming 4 Starlight Tokens during the 2017 Star Guardian event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ]
+    },
+    {
+        "id": 89,
+        "name": "Worlds 2017 Ward",
+        "description": "Worlds 2017 Ward",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_89.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_89.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase during Worlds 2017."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 90,
+        "name": "Worlds 2017 Golden Ward",
+        "description": "Worlds 2017 Golden Ward",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_90.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_90.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "Redeemed with 320 Worlds Tokens from the 2017 World Championship: Chase Your Legend missions."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ]
+    },
+    {
+        "id": 91,
+        "name": "Divine Sword Ward",
+        "description": "Divine Sword Ward",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_91.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_91.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2017 with other Immortal Heroes skins."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 92,
+        "name": "Glorious Legend Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_92.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_92.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward is rewarded to those who have reached Level 100."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ]
+    },
+    {
+        "id": 93,
+        "name": "Honor 3 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_93.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_93.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward is rewarded to those who have reached Honor Level 3."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 94,
+        "name": "Honor 4 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_94.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_94.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward is rewarded to those who have reached Honor Level 4."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 95,
+        "name": "Honor 5 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_95.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_95.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward is rewarded to those who have reached Honor Level 5."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ]
+    },
+    {
+        "id": 96,
+        "name": "Rune Enthusiast Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_96.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_96.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward is rewarded to those who have spent more than 125,000 IP or owned a limited Quintessence on Runes before Runes Reforged."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ]
+    },
+    {
+        "id": 97,
+        "name": "2017 Victorious Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_97.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_97.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "Earned by reaching Silver or higher in two different queues in Season 7."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ]
+    },
+    {
+        "id": 98,
+        "name": "Dearest Deer Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_98.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_98.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2017 Snowdown event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 99,
+        "name": "Lovebirds Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_99.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_99.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2018 Valentine's event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 100,
+        "name": "Death Sworn Ward",
+        "description": "Death Sworn Ward",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_100.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_100.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2018 Tales from the Rift event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 101,
+        "name": "Essence Collector Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_101.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_101.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2017."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 102,
+        "name": "Puppy Warwick Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_102.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_102.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2018 Lunar Revel event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 103,
+        "name": "Puppy Nasus Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_103.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_103.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2018 Lunar Revel event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 104,
+        "name": "Exo-Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_104.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_104.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This bundle-exclusive ward is acquired by purchasing the Gun Goddess Miss Fortune bundle."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 105,
+        "name": "Pizza Chicken Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_105.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_105.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "VN",
+                "description": "Only owned in April Fool event."
+            },
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2018 April Fools event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 106,
+        "name": "2018 Conqueror Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_106.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_106.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2018 MSI event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 107,
+        "name": "Pulsefire 2018 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_107.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_107.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2018 alongside some Pulsefire skins."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 108,
+        "name": "The Ripper Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_108.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_108.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was acquired during the 2018 Bilgewater event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 109,
+        "name": "The Lion Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_109.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_109.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store during the 2018 Versus event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 110,
+        "name": "The Wolf Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_110.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_110.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store during the 2018 Versus event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 111,
+        "name": "World Rune Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_111.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_111.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was awarded for completing all the missions during the release of the Runeterra map."
+            }
+        ],
+        "rarities": []
+    },
+    {
+        "id": 112,
+        "name": "Surfin' Pengu Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_112.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_112.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward skin was released in the store for purchase during Pool Party 2018 event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 113,
+        "name": "Wipeout Pengu Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_113.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_113.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward skin was released in the store for purchase during Pool Party 2018 event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 114,
+        "name": "Hang Loose Pengu Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_114.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_114.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward skin was released in the store for purchase during Pool Party 2018 event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 115,
+        "name": "Space Lizard Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_115.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_115.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "Released in 2018 as part of Odyssey event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 116,
+        "name": "Devil Vulture Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_116.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_116.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2018 alongside High Noon Lucian."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 117,
+        "name": "Gold Space Lizard Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_117.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_117.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "Earned for completing the 2018 Odyssey mission: Crew of the Galaxy."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 4
+            }
+        ]
+    },
+    {
+        "id": 118,
+        "name": "Worlds 2018 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_118.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_118.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "Unlocked through crafting in the 2018 Worlds event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 119,
+        "name": "Pumpkin Cat Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_119.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_119.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released during the 2018 Worlds event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 120,
+        "name": "Pajama Guardian Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_120.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_120.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2018 with the Pajama Guardian skins."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 121,
+        "name": "Worlds 2018 Golden Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_121.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_121.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released as a bundle exclusive during the 2020 Spirit Blossom event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 122,
+        "name": "Trained Dragon Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_122.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_122.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2018 with Dragon Trainer Heimerdinger."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 123,
+        "name": "Queen Poro Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_123.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_123.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2019 Lunar Revel event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 124,
+        "name": "Pop Music A-ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_124.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_124.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released during the 2018 Worlds event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 125,
+        "name": "2018 Honor 3 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_125.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_125.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward is rewarded to those who have reached Honor Level 3 in the 2018 season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 126,
+        "name": "2018 Honor 4 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_126.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_126.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward is rewarded to those who have reached Honor Level 4 in the 2018 season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 127,
+        "name": "2018 Honor 5 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_127.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_127.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward is rewarded to those who have reached Honor Level 5 in the 2018 season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 128,
+        "name": "Year of the Pig Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_128.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_128.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2019 Lunar Revel event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 129,
+        "name": "Golden Year of the Pig Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_129.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_129.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "Unlocked through crafting in the 2019 Lunar Revel event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 130,
+        "name": "Unassuming Snowman Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_130.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_130.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store during the 2018 Snowdown event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 131,
+        "name": "Golden Snowman Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_131.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_131.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "Unlocked through crafting in the 2018 Snowdown event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 132,
+        "name": "Blood Moon Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_132.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_132.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released for purchase in the store in 2019 with Blood Moon skins."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 133,
+        "name": "Cat Lover Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_133.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_133.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released during the 2019 April Fool's event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 134,
+        "name": "Dog Lover Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_134.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_134.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released during the 2019 April Fool's event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 135,
+        "name": "2019 Conqueror Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_135.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_135.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 MSI event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 136,
+        "name": "Battle Academia Durandal Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_136.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_136.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Trials event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 137,
+        "name": "Championship Hot Dog Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_137.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_137.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 MSI event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 138,
+        "name": "Battle Academia Desk Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_138.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_138.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was acquired through Loot during the 2019 Trials event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 139,
+        "name": "Arcade 2019 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_139.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_139.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was acquired during the 2019 Arcade event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 140,
+        "name": "SK telecom T1 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_140.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_140.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 141,
+        "name": "Demacia Vice Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_141.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_141.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was acquired during the 2019 Arcade event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 142,
+        "name": "TSM Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_142.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_142.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 143,
+        "name": "Echo Fox Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_143.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_143.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 144,
+        "name": "100 Thieves Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_144.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_144.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 145,
+        "name": "Cloud9 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_145.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_145.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 146,
+        "name": "CLG Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_146.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_146.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 147,
+        "name": "Team Liquid Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_147.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_147.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 148,
+        "name": "Team OpTic Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_148.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_148.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 149,
+        "name": "Golden Guardians Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_149.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_149.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 150,
+        "name": "FlyQuest Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_150.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_150.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 151,
+        "name": "Clutch Gaming Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_151.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_151.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 152,
+        "name": "Excel Esports Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_152.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_152.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 153,
+        "name": "Fnatic Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_153.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_153.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 154,
+        "name": "G2 Esports Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_154.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_154.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 155,
+        "name": "Misfits Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_155.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_155.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 156,
+        "name": "Origen Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_156.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_156.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 157,
+        "name": "Rogue Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_157.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_157.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 158,
+        "name": "Schalke 04 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_158.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_158.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 159,
+        "name": "SK Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_159.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_159.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 160,
+        "name": "Splyce Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_160.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_160.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 161,
+        "name": "Vitality Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_161.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_161.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 162,
+        "name": "Fan Pass Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_162.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_162.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 163,
+        "name": "Bilibili Gaming Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_163.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_163.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 164,
+        "name": "Dominus Esports Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_164.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_164.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 165,
+        "name": "Edward Gaming Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_165.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_165.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 166,
+        "name": "FunPlus Phoenix Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_166.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_166.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 167,
+        "name": "Invictus Gaming Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_167.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_167.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 168,
+        "name": "JD Gaming Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_168.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_168.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 169,
+        "name": "LGD Gaming Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_169.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_169.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 170,
+        "name": "LNG Esports Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_170.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_170.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 171,
+        "name": "Oh My God Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_171.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_171.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 172,
+        "name": "Royal Never Give Up Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_172.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_172.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 173,
+        "name": "Rogue Warriors Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_173.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_173.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 174,
+        "name": "Suning Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_174.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_174.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 175,
+        "name": "TOP Esports Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_175.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_175.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 176,
+        "name": "Victory Five Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_176.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_176.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 177,
+        "name": "Vici Gaming Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_177.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_177.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 178,
+        "name": "Team WE Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_178.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_178.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 179,
+        "name": "KING-ZONE DragonX Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_179.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_179.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 180,
+        "name": "Afreeca Freecs Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_180.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_180.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 181,
+        "name": "DAMWON Gaming Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_181.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_181.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 182,
+        "name": "Gen.G Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_182.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_182.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 183,
+        "name": "GRIFFIN Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_183.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_183.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 184,
+        "name": "Hanwha Life Esports Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_184.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_184.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 185,
+        "name": "Jin Air Greenwings Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_185.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_185.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 186,
+        "name": "kt Rolster Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_186.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_186.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 187,
+        "name": "SANDBOX Gaming Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_187.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_187.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase during the 2019 Esports regular season."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 188,
+        "name": "Star Guardian 2019 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_188.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_188.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released in the store for purchase in 2019."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 189,
+        "name": "PROJECT: Reckoning Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_189.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_189.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was acquired through Loot during the 2019 PROJECT event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 190,
+        "name": "Worlds 2019 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_190.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_190.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "Unlocked during the 2019 Worlds event.﻿"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 191,
+        "name": "Frontier Devil Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_191.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_191.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was acquired during the 2019 Worlds event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 192,
+        "name": "True Damage Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_192.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_192.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was acquired through Loot during the 2019 Worlds event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 193,
+        "name": "10th Anniversary Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_193.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_193.png",
+        "isLegacy": true,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was awarded for playing during the 10th Anniversary celebration"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 4
+            }
+        ]
+    },
+    {
+        "id": 194,
+        "name": "Tales From the Rift 2019 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_194.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_194.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released during the 2019 Tales from the Rift event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 195,
+        "name": "Night & Dawn Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_195.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_195.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was earned through missions during the Night & Dawn event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 196,
+        "name": "Prestige 2019 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_196.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_196.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released during the last-chance event for 2019 Prestige Points."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 4
+            }
+        ]
+    },
+    {
+        "id": 197,
+        "name": "Mecha Kingdoms 2020 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_197.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_197.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released as a bundle exclusive during the 2020 Mecha Kingdoms event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 198,
+        "name": "Galaxies 2020 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_198.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_198.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released as a bundle exclusive during the 2020 Galaxies event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 199,
+        "name": "2020 Pulsefire Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_199.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_199.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released during the 2020 Pulsefire event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 200,
+        "name": "2020 Spirit Blossom Kanmei Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_200.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_200.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released as a bundle exclusive during the 2020 Spirit Blossom event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 201,
+        "name": "2020 Spirit Blossom Akana Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_201.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_201.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released as a bundle exclusive during the 2020 Spirit Blossom event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 202,
+        "name": "Riot Games Fist Bump Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_202.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_202.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was granted to players who met a Rioter."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 4
+            }
+        ]
+    },
+    {
+        "id": 203,
+        "name": "Tellstones: King's Gambit Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_203.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_203.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released to celebrate the release of Tellstones: King's Gambit."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 204,
+        "name": "PsyOps 2020 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_204.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_204.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released as a bundle exclusive during the 2020 PsyOps event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 205,
+        "name": "K/DA ALL OUT Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_205.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_205.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was acquired during the 2020 Worlds event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 206,
+        "name": "Worlds 2020 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_206.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_206.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was unlocked during the 2020 Worlds event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 207,
+        "name": "Dragonmancer Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_207.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_207.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was acquired during the 2020 Worlds event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 208,
+        "name": "Battle Queens Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_208.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_208.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was acquired during the 2020 Battle Queens event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 209,
+        "name": "2021 Lunar Beast Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_209.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_209.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward skin was earned during the 2021 Lunar Beast event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 0
+            }
+        ]
+    },
+    {
+        "id": 210,
+        "name": "2021 Space Groove Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_210.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_210.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was earned during the 2021 Space Groove Event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 211,
+        "name": "PROJECT 2021 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_211.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_211.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was earned during the 2021 PROJECT Event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 212,
+        "name": "Sentinel Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_212.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_212.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was earned during the 2021 Sentinels of Light event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 213,
+        "name": "Coven Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_213.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_213.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was earned during the 2021 Coven event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 214,
+        "name": "2021 Hextech Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_214.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_214.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was obtained through the Hextech Crafting"
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 4
+            }
+        ]
+    },
+    {
+        "id": 215,
+        "name": "Ruined Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_215.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_215.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was earned during the 2021 Sentinels of Light event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 216,
+        "name": "Phoenix Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_216.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_216.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was earned during the 2021 Coven event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 217,
+        "name": "Night & Dawn 2021 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_217.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_217.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was earned during the Worlds 2021 event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 218,
+        "name": "Arcane Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_218.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_218.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was earned during the RiotX Arcane 2021 event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 219,
+        "name": "2022 Firecracker Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_219.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_219.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was an exclusive reward for participating in the Lunar Revel 2022 event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 220,
+        "name": "Forge God - Season 2022 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_220.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_220.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was an exclusive reward for participating in the Season 2022 event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 221,
+        "name": "Debonair Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_221.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_221.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was earned during the 2021 Debonair event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 222,
+        "name": "Primordial Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_222.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_222.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was an exclusive reward for participating in the Anima Squad event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 223,
+        "name": "Ashen Knight Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_223.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_223.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was obtained through Hextech Crafting."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 4
+            }
+        ]
+    },
+    {
+        "id": 224,
+        "name": "LoL Esports Ward Season 2022",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_224.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_224.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was rewarded when watching games on LoLEsports.com or by taking part in missions and competitions."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 225,
+        "name": "MSI 2022 High Noon Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_225.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_225.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was a bundle exclusive during the MSI 2022 High Noon Event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 226,
+        "name": "Ocean Song Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_226.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_226.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was an exclusive reward for participating in the Ocean Song showcase."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 227,
+        "name": "Star Guardian 2022 Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_227.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_227.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was an exclusive reward for participating in the 2022 Star Guardian event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 228,
+        "name": "I.S.R Drone Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_228.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_228.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was an exclusive reward for participating in the 2022 Steel Valkyrie event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 229,
+        "name": "Worlds 2022 Trophy Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_229.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_229.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was earned during the Worlds 2022 event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 230,
+        "name": "2022 Spirit Blossom Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_230.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_230.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was earned during the Worlds 2022 event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 231,
+        "name": "Hyperion Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_231.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_231.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was an exclusive reward for participating in the 2022 Steel Valkyrie event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 232,
+        "name": "Empyrean Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_232.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_232.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was earned during the Worlds 2022 event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 233,
+        "name": "Winterblessed Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_233.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_233.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was an exclusive reward for participating in the Season 2023 event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 234,
+        "name": "2023 Lunar Revel Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_234.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_234.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was an exclusive reward for participating in the 2023 Lunar Revel event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 235,
+        "name": "2023 Season Start Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_235.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_235.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was an exclusive reward for participating in the Season 2023 event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 237,
+        "name": "Faerie Court Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_237.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_237.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was an exclusive reward for participating in the Faerie Court event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 238,
+        "name": "Inkshadow Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_238.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_238.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was an exclusive reward for participating in the Inkshadow event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 239,
+        "name": "Mysterious Garment Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_239.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_239.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released to celebrate the launch of The Mageseeker: A League of Legends Story."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 240,
+        "name": "DRX Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_240.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_240.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was made to commemorate DRX winning the 2022 World Championship."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 241,
+        "name": "Space & Time Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_241.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_241.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released to celebrate the launch of Convergence: A League of Legends Story."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 242,
+        "name": "Soul Fighter Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_242.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_242.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was an exclusive reward for participating in the Soul Fighter event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 244,
+        "name": "HEARTSTEEL Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_244.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_244.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released as a bundle exclusive in 2023."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 245,
+        "name": "2023 Coven Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_245.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_245.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released as a bundle exclusive in 2023."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 246,
+        "name": "2023 Winterblessed Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_246.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_246.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released as a bundle exclusive in 2023."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    },
+    {
+        "id": 247,
+        "name": "Crystalis Motus Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_247.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_247.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was obtained through Hextech Crafting."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 4
+            }
+        ]
+    },
+    {
+        "id": 248,
+        "name": "Heavenscale Ward",
+        "description": "",
+        "wardImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHero_248.png",
+        "wardShadowImagePath": "/lol-game-data/assets/content/src/LeagueClient/WardSkinImages/wardHeroShadow_248.png",
+        "isLegacy": false,
+        "regionalDescriptions": [
+            {
+                "region": "riot",
+                "description": "This ward was released as a bundle exclusive in 2024."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ]
+    }
+]

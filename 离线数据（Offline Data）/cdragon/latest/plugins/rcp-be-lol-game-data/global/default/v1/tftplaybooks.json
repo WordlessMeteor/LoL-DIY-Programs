@@ -1,0 +1,2597 @@
+[
+    {
+        "name": "Loadouts/TFTPlaybooks/AurelionSol",
+        "itemId": 27,
+        "contentId": "50fd8b01-9ae7-4f5b-8b8d-442dd690c27b",
+        "capTypeId": "",
+        "offerId": "7884cecb-11c4-4528-a34e-792e16f6ab88",
+        "alternateOfferId": "",
+        "translatedName": "Aurelion Sol: The Ancient",
+        "translatedDescription": "Become high level and play awesome units!",
+        "earlyAugments": [
+            {
+                "name": "Cutting Corners",
+                "description": "Leveling up costs @Experience@ XP less.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Cutting-Corners-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Experience",
+                        "value": 3.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Patient Study",
+                "description": "After player combat, gain @winxp@ XP if you won or @lossxp@ XP if you lost.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Learning-From-Experience-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "WinXP",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LossXP",
+                        "value": 3.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Level Up!",
+                "description": "When you buy XP, gain an additional @XP@. Gain @InitialXP@ immediately.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/LevelUp3.png",
+                "effectAmounts": [
+                    {
+                        "name": "XP",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "InitialXP",
+                        "value": 8.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "Knowledge Download I",
+                "description": "Gain @Experience@ XP.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Knowledge-Download-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Experience",
+                        "value": 12.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Knowledge Download II",
+                "description": "Gain @Experience@ XP.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Knowledge-Download-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "Experience",
+                        "value": 22.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Knowledge Download III",
+                "description": "Gain @Experience@ XP.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Knowledge-Download-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "Experience",
+                        "value": 36.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "It Pays To Learn",
+                "description": "Gain @XP@ XP and @Gold@ gold. ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/It-Pays-To-Learn-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "XP",
+                        "value": 10.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 8.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "It Pays to Learn II",
+                "description": "Gain @XP@ XP and @Gold@ gold. ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/It-Pays-To-Learn-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "XP",
+                        "value": 16.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 12.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "It Pays to Learn III",
+                "description": "Gain @XP@ XP and @Gold@ gold. ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/It-Pays-To-Learn-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "XP",
+                        "value": 24.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 16.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_AurelionSol.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_AurelionSol.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_AurelionSol.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_AurelionSol.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/Bard",
+        "itemId": 28,
+        "contentId": "1488b4ca-ec3e-407c-9db6-53942a64ea84",
+        "capTypeId": "",
+        "offerId": "5dcabc56-c2d1-41b8-9162-3d988d26378d",
+        "alternateOfferId": "",
+        "translatedName": "Bard: The Traveler",
+        "translatedDescription": "Gain even more power when you level up!",
+        "earlyAugments": [
+            {
+                "name": "Caretaker's Ally",
+                "description": "Gain a random @UnitTier@-cost champion now. Gain the same one again every time you level up.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Caretaker_s-Chosen-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "UnitTier",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Caretaker's Favor",
+                "description": "Gain a component anvil when you reach level @levelreqa@, @levelreqb@, @levelreqc@, and @levelreqd@.<br><br><rules>The anvil offers 4 choices.</rules>",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Caretaker_s-Chosen-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "LevelReqA",
+                        "value": 5.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LevelReqC",
+                        "value": 7.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LevelReqB",
+                        "value": 6.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LevelReqD",
+                        "value": 8.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Caretaker's Chosen",
+                "description": "As you level, gain more powerful items.<br>Level @levelreqa@: component anvil<br>Level @levelreqb@: completed item anvil<br>Level @levelreqc@: choose 1 of 5 Radiant items",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Caretaker_s-Chosen-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "LevelReqA",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LevelReqB",
+                        "value": 6.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LevelReqC",
+                        "value": 8.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "Small Forge",
+                "description": "Gain a Component Anvil and @gold@ gold.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Forge-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Anvils",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Medium Forge",
+                "description": "Gain a Completed Item Anvil and @gold@ Gold.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Forge-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Large Forge",
+                "description": "Gain an Artifact Anvil and a Component Item Anvil.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Forge-III.png",
+                "effectAmounts": []
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "Teaming Up I",
+                "description": "Gain @NumComponents@ random component and @NumChamps@ random Tier 3 champions.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Teaming-Up-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumChamps",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumComponents",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Teaming Up II",
+                "description": "Gain @NumItems@ random Support item and @NumUnits@ random 4-cost champions.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Teaming-Up-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumComponents",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumUnits",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Teaming Up III",
+                "description": "Gain @NumItems@ Support Anvil, @NumComponents@ random component, and @NumUnits@ random Tier 4 champions.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Teaming-Up-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumComponents",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumUnits",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Bard.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Bard.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_Bard.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_Bard.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/Caitlyn",
+        "itemId": 23,
+        "contentId": "d3b2b452-0559-4113-a9de-4c5326337dfe",
+        "capTypeId": "",
+        "offerId": "179f0d77-cd64-49f3-aa7c-6cc04b6a9726",
+        "alternateOfferId": "",
+        "translatedName": "Caitlyn: The Peacekeeper",
+        "translatedDescription": "Get strong units at the start of the game!",
+        "earlyAugments": [
+            {
+                "name": "Ones Twos Three",
+                "description": "Gain @tier1champs@ 1-cost champion, @numchamps@ 2-cost champions, and 1 3-cost champion.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Threes-Company-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumChamps",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Tier1Champs",
+                        "value": 3.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Stars are Born",
+                "description": "The first 1-cost and 2-cost champions you buy are instantly upgraded to 2-star. Gain @Gold@ gold.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Stars-are-born-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "Gold",
+                        "value": 5.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Starter Kit",
+                "description": "Gain a 4-cost champion, a 2-star 1-cost champion that shares a trait with them, and @Gold@ gold.<br><br>At the start of the next @FutureChampionCount@ stages, gain that 4-cost champion again.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Starter-Kit-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "FutureChampionCount",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 4.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "Knowledge Download I",
+                "description": "Gain @Experience@ XP.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Knowledge-Download-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Experience",
+                        "value": 12.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Knowledge Download II",
+                "description": "Gain @Experience@ XP.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Knowledge-Download-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "Experience",
+                        "value": 22.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Knowledge Download III",
+                "description": "Gain @Experience@ XP.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Knowledge-Download-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "Experience",
+                        "value": 36.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "Rolling For Days I",
+                "description": "Gain @Numrolls@ free Shop rerolls that never expire.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Rolling-For-Days-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumRolls",
+                        "value": 9.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Rolling For Days II",
+                "description": "Gain @Numrolls@ free Shop rerolls that never expire.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Rolling-For-Days-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumRolls",
+                        "value": 15.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Rolling For Days III",
+                "description": "Gain @Numrolls@ free Shop rerolls that never expire.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Rolling-For-Days-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumRolls",
+                        "value": 25.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Caitlyn.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Caitlyn.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_Caitlyn.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_Caitlyn.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/Draven",
+        "itemId": 19,
+        "contentId": "a42205d2-0877-4f06-8a92-29596481ce2a",
+        "capTypeId": "",
+        "offerId": "eb34e7f6-9036-4946-95fe-4c9b4b3846a5",
+        "alternateOfferId": "",
+        "translatedName": "Draven: The Executioner",
+        "translatedDescription": "Win big and get bigger payouts!",
+        "earlyAugments": [
+            {
+                "name": "Spoils of War I",
+                "description": "Enemies have a @LootDropChance*100@% chance to drop loot when killed.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Spoils-Of-War-Legend-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "TableRollOdds",
+                        "value": 0.25,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LootDropChance",
+                        "value": 0.25,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Spoils of War II",
+                "description": "Enemies have a @LootDropChance*100@% chance to drop loot when killed.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Spoils-Of-War-Legend-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "TableRollOdds",
+                        "value": 0.30000001192092898,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LootDropChance",
+                        "value": 0.30000001192092898,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Spoils of War III",
+                "description": "Enemies have a @LootDropChance*100@% chance to drop loot when killed.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Spoils-Of-War-Legend-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "TableRollOdds",
+                        "value": 0.4000000059604645,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LootDropChance",
+                        "value": 0.4000000059604645,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "Balanced Budget",
+                "description": "At the start of the next @rounds@ rounds, gain @gold@ gold.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Balanced-Budget-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Rounds",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 4.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Balanced Budget",
+                "description": "At the start of the next @rounds@ rounds, gain @gold@ gold.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Balanced-Budget-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "Rounds",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 7.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Balanced Budget III",
+                "description": "At the start of the next @rounds@ rounds, gain @gold@ gold.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Balanced-Budget-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "Rounds",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 11.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "Rolling For Days I",
+                "description": "Gain @Numrolls@ free Shop rerolls that never expire.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Rolling-For-Days-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumRolls",
+                        "value": 9.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Rolling For Days II",
+                "description": "Gain @Numrolls@ free Shop rerolls that never expire.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Rolling-For-Days-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumRolls",
+                        "value": 15.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Rolling For Days III",
+                "description": "Gain @Numrolls@ free Shop rerolls that never expire.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Rolling-For-Days-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumRolls",
+                        "value": 25.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Draven.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Draven.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_Draven.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_Draven.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/Ezreal",
+        "itemId": 18,
+        "contentId": "b2e722e4-a2d9-43a2-b312-ecf2a7997288",
+        "capTypeId": "",
+        "offerId": "90f4e671-9adf-4cbc-9e88-0d341ceaa4f2",
+        "alternateOfferId": "",
+        "translatedName": "Ezreal: The Item Collector",
+        "translatedDescription": "The more items, the better!",
+        "earlyAugments": [
+            {
+                "name": "Buried Treasures I",
+                "description": "Gain a random item component at the start of the next @roundsofbonusitems@ rounds (including this round).",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Buried-Treasures-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "RoundsOfBonusItems",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 0.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Buried Treasures II",
+                "description": "Gain a random item component at the start of the next @roundsofbonusitems@ rounds (including this round).",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Buried-Treasures-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "RoundsOfBonusItems",
+                        "value": 3.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 0.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Buried Treasures III",
+                "description": "Gain a random item component at the start of the next @roundsofbonusitems@ rounds (including this round).",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Buried-Treasures-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "RoundsOfBonusItems",
+                        "value": 6.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 0.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "Tiny Grab Bag",
+                "description": "Gain a random component, @Gold@ gold, a Magnetic Remover. ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Grab-Bag-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumFullitems",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DuplicatorAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "SpatulaAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Big Grab Bag",
+                "description": "Gain @NumItems@ random components, @Gold@ gold, and 1 Reforger. <br><br><rules>Reforgers allow you to remake any item.</rules>",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Grab-Bag-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 3.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Giant Grab Bag",
+                "description": "Gain @NumItems@ random components, @Gold@ gold, and a Lesser Champion Duplicator. ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Grab-Bag-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 3.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LesserDuplicatorAmount",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "Well-Earned Comforts I",
+                "description": "Your units gain @Health@ Health for each item equipped.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Well-Earned-Comforts-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Health",
+                        "value": 70.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Well-Earned Comforts II",
+                "description": "Your units gain @Health@ Health for each item equipped.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Well-Earned-Comforts-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "Health",
+                        "value": 111.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Well-Earned Comforts III",
+                "description": "Your units gain @Health@ Health and @AttackSpeed*100@% Attack Speed for each item equipped.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Well-Earned-Comforts-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "Health",
+                        "value": 120.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "AttackSpeed",
+                        "value": 0.05999999865889549,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Ezreal.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Ezreal.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_Ezreal.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_Ezreal.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/LeeSin",
+        "itemId": 26,
+        "contentId": "ac167be6-e6ff-48cb-8ee3-0eea9c149994",
+        "capTypeId": "",
+        "offerId": "304648ed-08c9-48e2-a0ff-ceb503a2cbf3",
+        "alternateOfferId": "",
+        "translatedName": "Lee Sin: The Playmaker",
+        "translatedDescription": "Reroll your Shop for perfect champions!",
+        "earlyAugments": [
+            {
+                "name": "Silver Ticket",
+                "description": "Gain a free Shop reroll after every @RollNumber@ rerolls.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/GoldenTicket1.png",
+                "effectAmounts": [
+                    {
+                        "name": "RollNumber",
+                        "value": 4.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Trade Sector",
+                "description": "Gain a free Shop reroll every round. Gain @Gold@ gold.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Trade2.png",
+                "effectAmounts": [
+                    {
+                        "name": "Gold",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Shopping Spree",
+                "description": "Gain @gold@ gold per round. When you level up, gain a number of free shop refreshes equal to your level, which carry over between rounds.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Trade3.png",
+                "effectAmounts": [
+                    {
+                        "name": "CheapRollLevel",
+                        "value": 8.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "Training Reward",
+                "description": "Gain @Gold@ gold and a Lesser Champion Duplicator.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Training-Reward-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Gold",
+                        "value": 5.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LesserDuplicatorAmount",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Training Reward II",
+                "description": "Gain @Gold@ gold and a Lesser Champion Duplicator.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Training-Reward-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "Gold",
+                        "value": 12.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LesserDuplicatorAmount",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Training Reward III",
+                "description": "Gain @Gold@ gold and a Champion Duplicator. ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Training-Reward-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "Gold",
+                        "value": 24.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DuplicatorAmount",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "Money!",
+                "description": "Gain @gold@ gold. In @Numberofcombats@ turns, gain @gold@ gold again.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Money-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumberOfCombats",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 11.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Money Money!",
+                "description": "Gain @gold@ gold. In @Numberofcombats@ turns, gain @gold@ gold again.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Money-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumberOfCombats",
+                        "value": 3.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 16.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Money Money Money!",
+                "description": "Gain @gold@ gold. In @Numberofcombats@ turns, gain @gold@ gold again.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Money-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumberOfCombats",
+                        "value": 3.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 25.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_LeeSin.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_LeeSin.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_LeeSin.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_LeeSin.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/MasterYi",
+        "itemId": 25,
+        "contentId": "3e53c1d3-4088-475f-80bf-656f69f05237",
+        "capTypeId": "",
+        "offerId": "5ae90e54-3403-4e6f-afbc-2ad16d2d71f8",
+        "alternateOfferId": "",
+        "translatedName": "Master Yi: The Wuju Master",
+        "translatedDescription": "Grow stronger and stronger with every fight!",
+        "earlyAugments": [
+            {
+                "name": "Pumping Up I",
+                "description": "Your team gains @BaseAS@% Attack Speed now. Each round after, they gain @IncreasePerRound@% more. (current Attack Speed: @TFTUnitProperty.item:TFT9_PumpingUpRounds@%)",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Pumping-Up-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "IncreasePerRound",
+                        "value": 0.5,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "BaseAS",
+                        "value": 8.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Pumping Up II",
+                "description": "Your team gains @BaseAS@% Attack Speed now. Each round after, they gain @IncreasePerRound@% more. (current Attack Speed: @TFTUnitProperty.item:TFT9_PumpingUp2Rounds@%)",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Pumping-Up-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "IncreasePerRound",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "BaseAS",
+                        "value": 8.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Pumping Up III",
+                "description": "Your team gains @BaseAS@% Attack Speed now. Each round after, they gain @IncreasePerRound@% more. (current Attack Speed: @TFTUnitProperty.item:TFT9_PumpingUp3Rounds@%)",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Pumping-Up-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "IncreasePerRound",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "BaseAS",
+                        "value": 12.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "Battle Ready",
+                "description": "Your team deals @BonusDamage@% more damage and takes @DR@% less damage. ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Battle-Ready-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "BonusDamage",
+                        "value": 3.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DR",
+                        "value": 3.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Battle Ready II",
+                "description": "Your team deals @BonusDamage@% more damage and takes @DR@% less damage. ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Battle-Ready-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "BonusDamage",
+                        "value": 6.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DR",
+                        "value": 6.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Battle Ready III",
+                "description": "Your team deals @BonusDamage@% more damage and takes @DR@% less damage. ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Battle-Ready-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "BonusDamage",
+                        "value": 8.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DR",
+                        "value": 8.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "Gotta Go Fast!",
+                "description": "Your units generate @PercentMana@% more Mana and move @BonusMovementSpeed@% faster.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Gotta-Go-Fast-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "PercentMana",
+                        "value": 10.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "BonusMovementSpeed",
+                        "value": 35.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "ActualMovementSpeed",
+                        "value": 300.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Gotta Go Fast! II",
+                "description": "Your units generate @PercentMana@% more Mana and move @BonusMovementSpeed@% faster.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Gotta-Go-Fast-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "PercentMana",
+                        "value": 20.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "BonusMovementSpeed",
+                        "value": 60.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "ActualMovementSpeed",
+                        "value": 450.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Gotta Go Fast!!! III",
+                "description": "Your units generate @PercentMana@% more Mana and move @BonusMovementSpeed@% faster.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Gotta-Go-Fast-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "PercentMana",
+                        "value": 30.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "BonusMovementSpeed",
+                        "value": 100.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "ActualMovementSpeed",
+                        "value": 750.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_MasterYi.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_MasterYi.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_MasterYi.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_MasterYi.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/Ornn",
+        "itemId": 22,
+        "contentId": "6fae50b8-5d6e-4ca3-b712-14a419101874",
+        "capTypeId": "",
+        "offerId": "e97a7983-fadf-4894-91df-b1a69aeddc13",
+        "alternateOfferId": "",
+        "translatedName": "Ornn: The Forgemaster",
+        "translatedDescription": "Gain the power of Ornn's creations!",
+        "earlyAugments": [
+            {
+                "name": "Latent Forge",
+                "description": "After @NumberOfCombats@ player combats, gain an Artifact anvil. <br><br><rules>The anvil offers 4 choices. Artifacts are more powerful items with a unique effect.</rules>",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Long-time-Crafting-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumberOfCombats",
+                        "value": 8.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Portable Forge",
+                "description": "Choose 1 of @ArmoryChoiceCount@ Artifacts.<br><br><rules>Artifacts are more powerful items with a unique effect.</rules>",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/PortableForge2.png",
+                "effectAmounts": [
+                    {
+                        "name": "ArmoryChoiceCount",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Living Forge",
+                "description": "Gain an Artifact anvil now and after every @NumberOfCombats@ player combats.<br><br><rules>Artifacts are more powerful items with a unique effect.</rules>",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Living-Forge-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumberOfCombats",
+                        "value": 10.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "Small Forge",
+                "description": "Gain a Component Anvil and @gold@ gold.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Forge-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Anvils",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Medium Forge",
+                "description": "Gain a Completed Item Anvil and @gold@ Gold.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Forge-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Large Forge",
+                "description": "Gain an Artifact Anvil and a Component Item Anvil.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Forge-III.png",
+                "effectAmounts": []
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "Job's Done",
+                "description": "Gain @anvils@ Component Anvil and @RandomComponents@ random component.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Job_s-Done-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Anvils",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "RandomComponents",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Job Well Done",
+                "description": "Gain a Completed Item Anvil and @RandomComponents@ random component.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Job_s-Done-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumAnvils",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "RandomComponents",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Masterful Job",
+                "description": "Gain an Artifact Anvil and a Completed Item Anvil.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Job_s-Done-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "Gold",
+                        "value": 5.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Ornn.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Ornn.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_Ornn.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_Ornn.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/Pengu",
+        "itemId": 24,
+        "contentId": "9b0c2ca4-301a-42c0-bc4f-d8122ae674f0",
+        "capTypeId": "",
+        "offerId": "c455dbd4-efeb-4a9b-83b4-181f7b35d117",
+        "alternateOfferId": "",
+        "translatedName": "Pengu: The Tactician",
+        "translatedDescription": "Play it safe! Great for beginners!",
+        "earlyAugments": [
+            {
+                "name": "Tiny Titans",
+                "description": "Increase your current and maximum player health by @heal@.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Tiny-Titans-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Heal",
+                        "value": 30.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Metabolic Accelerator",
+                "description": "Gain @Heal@ player health after every player combat. Your Tactician also moves faster.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/MetabolicAccel2.png",
+                "effectAmounts": [
+                    {
+                        "name": "Heal",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Tiniest Titan",
+                "description": "Gain @Heal@ player health and @Gold@ gold after every player combat. Your Tactician also moves faster.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Tiniest-TitanIII.png",
+                "effectAmounts": [
+                    {
+                        "name": "Heal",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "Item Grab Bag I",
+                "description": "Gain @NumItems@ random completed item.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ItemGrabBag1.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Item Grab Bag II",
+                "description": "Gain a random completed item, a random component, and @Gold@ gold. ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ItemGrabBag2.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumFullitems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DuplicatorAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "SpatulaAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Item Grab Bag III",
+                "description": "Gain @NumFullItems@ random completed items and @Gold@ Gold.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ItemGrabBag3.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumFullitems",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DuplicatorAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "SpatulaAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "Final Grab Bag",
+                "description": "Gain a random component, @Gold@ gold, and a Reforger. ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Final-Grab-Bag-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 10.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 0.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Final Grab Bag II",
+                "description": "Gain @NumItems@ random components, @Gold@ gold, and a Magnetic Remover. ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Final-Grab-Bag-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 12.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Urf's Grab Bag",
+                "description": "Gain @NumItems@ random components, a Champion Duplicator, and a Spatula. ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Final-Grab-Bag-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DuplicatorAmount",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "SpatulaAmount",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Pengu.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Pengu.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_Pengu.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_Pengu.png",
+        "isDisabledInDoubleUp": true
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/Poro",
+        "itemId": 1,
+        "contentId": "dfb8fed0-e28f-4f03-ae2f-3d1ba59574ca",
+        "capTypeId": "",
+        "offerId": "6ea5bee5-e4c9-480f-9c56-35fa2a09ccdd",
+        "alternateOfferId": "",
+        "translatedName": "Poro: The Imporoble ",
+        "translatedDescription": "No tailoring, just a classic game of TFT!",
+        "earlyAugments": [],
+        "midAugments": [],
+        "lateAugments": [],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Poro.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Poro.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_Poro.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_Poro.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/TahmKench",
+        "itemId": 16,
+        "contentId": "324e0bd0-8a1c-4696-83ef-dad14d9a0fe5",
+        "capTypeId": "",
+        "offerId": "c5b65f0b-9ed7-44af-906d-d96f41fe1b4b",
+        "alternateOfferId": "",
+        "translatedName": "Tahm Kench: The Glutton",
+        "translatedDescription": "Collect as much gold as possible!",
+        "earlyAugments": [
+            {
+                "name": "AFK",
+                "description": "You cannot perform actions for the next @RoundsToSkip@ rounds. Afterwards, gain @Gold@ gold.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/AFK-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Gold",
+                        "value": 18.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "RoundsToSkip",
+                        "value": 3.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Rich Get Richer",
+                "description": "Gain @Gold@ gold. Your max interest is increased to @InterestCap@.<br><br><rules>Interest is extra gold you gain per 10g saved.</rules>",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/RichGetRicher2.png",
+                "effectAmounts": [
+                    {
+                        "name": "Gold",
+                        "value": 12.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "InterestCap",
+                        "value": 7.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Hedge Fund",
+                "description": "Gain @Gold@ gold. Your max interest is increased to @InterestCap@.<br><br><rules>Interest is extra gold you gain per 10g saved.</rules>",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/RichGetRicher3.png",
+                "effectAmounts": [
+                    {
+                        "name": "Gold",
+                        "value": 20.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "InterestCap",
+                        "value": 10.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "Balanced Budget",
+                "description": "At the start of the next @rounds@ rounds, gain @gold@ gold.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Balanced-Budget-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "Rounds",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 4.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Balanced Budget",
+                "description": "At the start of the next @rounds@ rounds, gain @gold@ gold.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Balanced-Budget-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "Rounds",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 7.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Balanced Budget III",
+                "description": "At the start of the next @rounds@ rounds, gain @gold@ gold.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Balanced-Budget-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "Rounds",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 11.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "Money!",
+                "description": "Gain @gold@ gold. In @Numberofcombats@ turns, gain @gold@ gold again.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Money-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumberOfCombats",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 11.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Money Money!",
+                "description": "Gain @gold@ gold. In @Numberofcombats@ turns, gain @gold@ gold again.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Money-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumberOfCombats",
+                        "value": 3.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 16.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Money Money Money!",
+                "description": "Gain @gold@ gold. In @Numberofcombats@ turns, gain @gold@ gold again.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Money-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumberOfCombats",
+                        "value": 3.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 25.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_TahmKench.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_TahmKench.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_TahmKench.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_TahmKench.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/TwistedFate",
+        "itemId": 20,
+        "contentId": "90a7c0b7-5d07-4c6a-bc99-9df582a7237d",
+        "capTypeId": "",
+        "offerId": "cca450ec-6a8c-4652-9da8-ca6307007993",
+        "alternateOfferId": "",
+        "translatedName": "Twisted Fate: The Gambler",
+        "translatedDescription": "Get the exact items you need!",
+        "earlyAugments": [
+            {
+                "name": "Pandora's Items",
+                "description": "Round start: items on your bench are randomized (except Tactician's Crown and Spatula). <br><br>Gain @NumComponents@ random component.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Pandora1.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumComponents",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Pandora's Items II",
+                "description": "Round start: items on your bench are randomized (excluding Tactician's Crown and Spatula).<br><br>Gain @NumCompletedItems@ random completed item.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Pandora2.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumComponents",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumCompletedItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Pandora's Items III",
+                "description": "Round start: items on your bench are randomized (excluding Tactician's Crown and Spatula). <br><br>Gain 1 random Radiant item.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Pandora3.png",
+                "effectAmounts": []
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "Item Grab Bag I",
+                "description": "Gain @NumItems@ random completed item.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ItemGrabBag1.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Item Grab Bag II",
+                "description": "Gain a random completed item, a random component, and @Gold@ gold. ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ItemGrabBag2.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumFullitems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DuplicatorAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "SpatulaAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Item Grab Bag III",
+                "description": "Gain @NumFullItems@ random completed items and @Gold@ Gold.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ItemGrabBag3.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumFullitems",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DuplicatorAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "SpatulaAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "Teaming Up I",
+                "description": "Gain @NumComponents@ random component and @NumChamps@ random Tier 3 champions.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Teaming-Up-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumChamps",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumComponents",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Teaming Up II",
+                "description": "Gain @NumItems@ random Support item and @NumUnits@ random 4-cost champions.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Teaming-Up-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumComponents",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumUnits",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Teaming Up III",
+                "description": "Gain @NumItems@ Support Anvil, @NumComponents@ random component, and @NumUnits@ random Tier 4 champions.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Teaming-Up-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumComponents",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumUnits",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_TwistedFate.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_TwistedFate.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_TwistedFate.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_TwistedFate.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/Urf",
+        "itemId": 21,
+        "contentId": "a537b812-b5d1-433c-9835-b59c123f93fd",
+        "capTypeId": "",
+        "offerId": "177029e0-743f-467b-8702-9457f61537f4",
+        "alternateOfferId": "",
+        "translatedName": "Urf: The Emblem Collector",
+        "translatedDescription": "For the player that loves emblems!",
+        "earlyAugments": [
+            {
+                "name": "Branching Out",
+                "description": "Gain a random Emblem and a Reforger.<br><br><rules>Reforgers allow you to remake any item.</rules>",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Branching-Out-I.png",
+                "effectAmounts": []
+            },
+            {
+                "name": "Ancient Archives I",
+                "description": "Gain @NumTomes@ Tome of Traits and @Gold@ gold.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/AncientArchives2.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumTomes",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 3.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Ancient Archives II",
+                "description": "Gain @NumTomes@ Tome of Traits and @Gold@ gold.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/AncientArchives3.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumTomes",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 5.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "Tiny Grab Bag",
+                "description": "Gain a random component, @Gold@ gold, a Magnetic Remover. ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Grab-Bag-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumFullitems",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DuplicatorAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "SpatulaAmount",
+                        "value": 0.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Big Grab Bag",
+                "description": "Gain @NumItems@ random components, @Gold@ gold, and 1 Reforger. <br><br><rules>Reforgers allow you to remake any item.</rules>",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Grab-Bag-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 3.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Giant Grab Bag",
+                "description": "Gain @NumItems@ random components, @Gold@ gold, and a Lesser Champion Duplicator. ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Grab-Bag-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 3.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 4.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "LesserDuplicatorAmount",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "Final Grab Bag",
+                "description": "Gain a random component, @Gold@ gold, and a Reforger. ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Final-Grab-Bag-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 10.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 0.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Final Grab Bag II",
+                "description": "Gain @NumItems@ random components, @Gold@ gold, and a Magnetic Remover. ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Final-Grab-Bag-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 12.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Urf's Grab Bag",
+                "description": "Gain @NumItems@ random components, a Champion Duplicator, and a Spatula. ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Final-Grab-Bag-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "NumItems",
+                        "value": 2.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumReforgers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "Gold",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "NumRemovers",
+                        "value": 0.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DuplicatorAmount",
+                        "value": 1.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "SpatulaAmount",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Urf.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Urf.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_Urf.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_Urf.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/Veigar",
+        "itemId": 15,
+        "contentId": "769eaf83-e357-4bd2-97c1-6babfa5c781f",
+        "capTypeId": "",
+        "offerId": "38383e49-32f5-45f6-a56c-0ac25f2af2e0",
+        "alternateOfferId": "",
+        "translatedName": "Veigar: The Caster",
+        "translatedDescription": "Deal big damage with your champions' abilities!",
+        "earlyAugments": [
+            {
+                "name": "Jeweled Lotus I",
+                "description": "Combat start: Your strongest unit gains @CritChance@% Critical Strike Chance and their abilities can critically strike.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Jeweled-Lotus-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "CritChance",
+                        "value": 40.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Jeweled Lotus II",
+                "description": "Your team gains @critchance@% Critical Strike chance, and their Abilities can critically strike.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Jeweled-Lotus-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "CritChance",
+                        "value": 15.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Jeweled Lotus III",
+                "description": "Your team gains @critchance@% Critical Strike chance, and their Abilities can critically strike.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Jeweled-Lotus-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "CritChance",
+                        "value": 40.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "Tiny Power I",
+                "description": "Your units gain @ap@% Attack Damage, Ability Power, and Attack Speed.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Tiny-Power-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "AD",
+                        "value": 6.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "AP",
+                        "value": 6.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "AS",
+                        "value": 6.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Tiny Power II",
+                "description": "Your units gain @ap@% Attack Damage, Ability Power, and Attack Speed.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Tiny-Power-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "AD",
+                        "value": 10.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "AP",
+                        "value": 10.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "AS",
+                        "value": 10.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Tiny Power III",
+                "description": "Your units gain @ap@% Attack Damage, Ability Power, and Attack Speed.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Tiny-Power-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "AD",
+                        "value": 15.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "AP",
+                        "value": 15.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "AS",
+                        "value": 15.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "Partial Ascension",
+                "description": "After @Delay@ seconds of combat, your units deal @DamageAmp@% more damage.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Ascension1.png",
+                "effectAmounts": [
+                    {
+                        "name": "Delay",
+                        "value": 15.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DamageAmp",
+                        "value": 30.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Ascension",
+                "description": "After @Delay@ seconds of combat, your units deal @DamageAmp@% more damage.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Ascension2.png",
+                "effectAmounts": [
+                    {
+                        "name": "Delay",
+                        "value": 15.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DamageAmp",
+                        "value": 50.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Final Ascension",
+                "description": "Your team deals @damageamp@% more damage. After @delay@ seconds, they deal @AscendedAmpTOOLTIPONLY@% more damage.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Ascension3.png",
+                "effectAmounts": [
+                    {
+                        "name": "Delay",
+                        "value": 15.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DamageAmp",
+                        "value": 15.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "AscendedAmpTOOLTIPONLY",
+                        "value": 45.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Veigar.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Veigar.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_Veigar.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_Veigar.png",
+        "isDisabledInDoubleUp": false
+    },
+    {
+        "name": "Loadouts/TFTPlaybooks/Vladamir",
+        "itemId": 17,
+        "contentId": "b6caaf87-7616-4b62-a1f1-c4d5b81f6da8",
+        "capTypeId": "",
+        "offerId": "1586a642-e4ef-4d6c-84e4-a125b02f2b88",
+        "alternateOfferId": "",
+        "translatedName": "Vladimir: The Hemomancer",
+        "translatedDescription": "Trade your health for power!",
+        "earlyAugments": [
+            {
+                "name": "Transfusion I",
+                "description": "Your units gain @BaseHP@ Health, plus @BonusHPPerMissingHealth@ Health per missing Tactician Health.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Transfusion-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "BaseHP",
+                        "value": 20.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "BonusHPPerMissingHealth",
+                        "value": 2.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Transfusion II",
+                "description": "Your units gain @BaseHP@ Health, plus @BonusHPPerMissingHealth@ Health per missing Tactician Health.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Transfusion-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "BaseHP",
+                        "value": 40.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "BonusHPPerMissingHealth",
+                        "value": 3.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Transfusion III",
+                "description": "Your units gain @BaseHP@ Health, plus @BonusHPPerMissingHealth@ Health per missing Tactician Health.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Transfusion-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "BaseHP",
+                        "value": 50.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "BonusHPPerMissingHealth",
+                        "value": 5.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "midAugments": [
+            {
+                "name": "Battle Ready",
+                "description": "Your team deals @BonusDamage@% more damage and takes @DR@% less damage. ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Battle-Ready-I.png",
+                "effectAmounts": [
+                    {
+                        "name": "BonusDamage",
+                        "value": 3.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DR",
+                        "value": 3.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Battle Ready II",
+                "description": "Your team deals @BonusDamage@% more damage and takes @DR@% less damage. ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Battle-Ready-II.png",
+                "effectAmounts": [
+                    {
+                        "name": "BonusDamage",
+                        "value": 6.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DR",
+                        "value": 6.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Battle Ready III",
+                "description": "Your team deals @BonusDamage@% more damage and takes @DR@% less damage. ",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Battle-Ready-III.png",
+                "effectAmounts": [
+                    {
+                        "name": "BonusDamage",
+                        "value": 8.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DR",
+                        "value": 8.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "lateAugments": [
+            {
+                "name": "Partial Ascension",
+                "description": "After @Delay@ seconds of combat, your units deal @DamageAmp@% more damage.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Ascension1.png",
+                "effectAmounts": [
+                    {
+                        "name": "Delay",
+                        "value": 15.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DamageAmp",
+                        "value": 30.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Ascension",
+                "description": "After @Delay@ seconds of combat, your units deal @DamageAmp@% more damage.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Ascension2.png",
+                "effectAmounts": [
+                    {
+                        "name": "Delay",
+                        "value": 15.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DamageAmp",
+                        "value": 50.0,
+                        "formatString": ""
+                    }
+                ]
+            },
+            {
+                "name": "Final Ascension",
+                "description": "Your team deals @damageamp@% more damage. After @delay@ seconds, they deal @AscendedAmpTOOLTIPONLY@% more damage.",
+                "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Ascension3.png",
+                "effectAmounts": [
+                    {
+                        "name": "Delay",
+                        "value": 15.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "DamageAmp",
+                        "value": 15.0,
+                        "formatString": ""
+                    },
+                    {
+                        "name": "AscendedAmpTOOLTIPONLY",
+                        "value": 45.0,
+                        "formatString": ""
+                    }
+                ]
+            }
+        ],
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Vladimir.png",
+        "enabled": true,
+        "iconPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Icons/Legend_LargeCircle_Vladimir.png",
+        "iconPathSmall": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/SmallIcons/Legend_SmallCircle_Vladimir.png",
+        "splashPath": "/lol-game-data/assets/ASSETS/UX/TFT/Playbook/Splashes/Legend_SidePanel_Vladimir.png",
+        "isDisabledInDoubleUp": false
+    }
+]

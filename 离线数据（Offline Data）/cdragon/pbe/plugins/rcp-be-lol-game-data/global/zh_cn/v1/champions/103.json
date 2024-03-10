@@ -1,0 +1,2282 @@
+{
+    "id": 103,
+    "name": "九尾妖狐",
+    "alias": "Ahri",
+    "title": "阿狸",
+    "shortBio": "天生就与精神领域的魔法相通的阿狸，顾名思义，是一名狐狸模样的瓦斯塔亚。她可以操纵猎物的情感，吞噬他们的精魄——他们生前的记忆与领悟化作碎片在她心中浮现。她曾是一名强大又任性的掠食者，但现在却一心在世间寻觅着先祖留下的残迹，同时努力地创造一份真正属于自己，而非取自他人的记忆。",
+    "tacticalInfo": {
+        "style": 10,
+        "difficulty": 2,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 2,
+        "mobility": 3,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/103.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/103.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/103.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/103.ogg",
+    "roles": [
+        "mage",
+        "assassin"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 103000,
+            "isBase": true,
+            "name": "九尾妖狐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Base/AhriLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 103001,
+            "isBase": false,
+            "name": "高丽风情 阿狸",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin01/AhriLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103001.png",
+            "chromas": [
+                {
+                    "id": 103052,
+                    "name": "高丽风情 阿狸 素裹",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103052.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 99
+                }
+            ],
+            "skinAugments": null,
+            "description": "虽然阿狸的时尚和优雅明显体现了她的皇室血统，但她更喜欢在屋顶上奔跑并且制造恶作剧，而不是被关在深宅大院里。生活有笑声相伴会更有趣，你不觉得吗？"
+        },
+        {
+            "id": 103002,
+            "isBase": false,
+            "name": "暗影妖狐 阿狸",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin02/AhriLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103002.png",
+            "chromas": [
+                {
+                    "id": 103053,
+                    "name": "暗影妖狐 阿狸 入梦之影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103053.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": "村民们讲述着一只神秘冰狐的各种故事，据说在与王国接壤的多雪森林的深处，它会在午夜月光下变成人类。他们不知道的是，这只狐狸，阿狸，曾经是一位公主。因诅咒而过着一种如她的内心那样狂野的生活，她白天在森林里奔跑，希望能找到一个人来打破她永恒的诅咒。"
+        },
+        {
+            "id": 103003,
+            "isBase": false,
+            "name": "焰尾妖狐 阿狸",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin03/AhriLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103003.png",
+            "chromas": [
+                {
+                    "id": 103054,
+                    "name": "焰尾妖狐 阿狸 纯白之焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103054.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103075,
+                    "name": "焰尾妖狐 阿狸",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103075.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 86
+                }
+            ],
+            "skinAugments": null,
+            "description": "阿狸是来自黯焰寺院的一个年轻且有天赋的控火士。在一个极端组织释放了灰白领主的那些熊熊燃烧的恐魔们时，她放弃了她平静的生活。现在，她使用她的火焰魔法来与它们作战，即使所有希望似乎都已破灭。"
+        },
+        {
+            "id": 103004,
+            "isBase": false,
+            "name": "偶像歌手 阿狸",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin04/AhriLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103004.png",
+            "chromas": [
+                {
+                    "id": 103008,
+                    "name": "偶像歌手 阿狸 皇室鸢尾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103008.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 103009,
+                    "name": "偶像歌手 阿狸 盛开之樱",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103009.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 103010,
+                    "name": "偶像歌手 阿狸 沙漠玫瑰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103010.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 103011,
+                    "name": "偶像歌手 阿狸 草原龙胆",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103011.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 103012,
+                    "name": "偶像歌手 阿狸 极地雪莲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103012.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 103013,
+                    "name": "偶像歌手 阿狸 高山杜鹃",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103013.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 103055,
+                    "name": "偶像歌手 阿狸 幻紫罗兰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103055.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 174
+                }
+            ],
+            "skinAugments": null,
+            "description": "阿狸在她十几岁的时候就被她的唱片公司发现，在她最初的五首单曲进入百大热门榜时席卷了音乐界，并在2013年流行闪耀奖上获得了“最具天赋的K-pop新秀奖”。从那以后，她一直在俘获人心和横扫各种奖项。然而，在完美的外表下，阿狸感到被越来越多的要求给困住了……"
+        },
+        {
+            "id": 103005,
+            "isBase": false,
+            "name": "勇者 阿狸",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin05/AhriLoadScreen_5.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin05/AhriLoadscreen_5_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103005.png",
+            "chromas": [
+                {
+                    "id": 103018,
+                    "name": "勇者 阿狸 炫金",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103018.png",
+                    "colors": [
+                        "#FFC948",
+                        "#FFC948"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 103056,
+                    "name": "勇者 阿狸 追梦",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103056.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 9
+                }
+            ],
+            "skinAugments": null,
+            "description": "纪念2015赛季开始。"
+        },
+        {
+            "id": 103006,
+            "isBase": false,
+            "name": "风纪委员 阿狸",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin06/AhriLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103006.png",
+            "chromas": [
+                {
+                    "id": 103057,
+                    "name": "风纪委员 阿狸 守序之心",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103057.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 22
+                }
+            ],
+            "skinAugments": null,
+            "description": "教务处通知：阿狸已被暂停参加今后的学院活动，因为她的下列行为（包括但不限于）：在上课时使用手机，在关于使用手机的纪律听证会上使用手机，还逃避了关于她手机的纪律听证会。    "
+        },
+        {
+            "id": 103007,
+            "isBase": false,
+            "name": "电玩女神 阿狸",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin07/AhriLoadscreen_7.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103007.png",
+            "chromas": [
+                {
+                    "id": 103058,
+                    "name": "电玩女神 阿狸 时光勇者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103058.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "5 Year Celebration",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/38.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/38.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 10
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为极难游戏《德玛西亚恶人》六百万分记录的拥有者，阿狸自然成为了电玩世界中一股无法被忽视的战力。在游戏内的Boss被她的8位魔法撕碎之前，阿狸已经冲向了自己的下一个目标。她已经为自己赢得了“街机女皇”的绰号。"
+        },
+        {
+            "id": 103014,
+            "isBase": false,
+            "name": "星之守护者 阿狸",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103014.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103014.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103014.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin14/AhriLoadScreen_14.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin14/AhriLoadScreen_14_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103014.png",
+            "chromas": [
+                {
+                    "id": 103059,
+                    "name": "星之守护者 阿狸 幻尾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103059.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 20
+                }
+            ],
+            "skinAugments": null,
+            "description": "阿狸是一位充满人格魅力的小队长，带领她的星之守护者小队从外宇宙而来，女王权威如蜂后，足智多谋胜狡狐。她轻而易举就成为红人，无坚不摧的魅力让朋友和敌人全都放下武装。"
+        },
+        {
+            "id": 103015,
+            "isBase": false,
+            "name": "K/DA 阿狸",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103015.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103015.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103015.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin15/AhriLoadScreen_15.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103015.png",
+            "chromas": [
+                {
+                    "id": 103060,
+                    "name": "K/DA 阿狸 魅惑之舞",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103060.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 91
+                }
+            ],
+            "skinAugments": null,
+            "description": "阿狸决定改变她的形象，将旧的泡泡糖流行乐人设抛开，并把自己重新塑造为音乐产业内的一股不可阻挡的势力。五年之后，她带着全新的时尚造型和打动人心的歌喉归来——而这次的她并不是孤身一人。"
+        },
+        {
+            "id": 103016,
+            "isBase": false,
+            "name": "至臻 K/DA 阿狸",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103016.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103016.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103016.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin16/AhriLoadscreen_16_LE.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin16/AhriLoadscreen_16_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 91
+                }
+            ],
+            "skinAugments": null,
+            "description": "【K/DA 阿狸】这身倾倒众生的闪亮盛装是特别为K/DA乐团在2019流行闪耀赏上的表演而制作的。她的至臻演出服洋溢着流行明星们流金般的胜利气息。你感受到这股冲击了吗？"
+        },
+        {
+            "id": 103017,
+            "isBase": false,
+            "name": "永恒之森 阿狸",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103017.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103017.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103017.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin17/AhriLoadScreen_17.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin17/AhriLoadscreen_17_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103017.png",
+            "chromas": [
+                {
+                    "id": 103019,
+                    "name": "永恒之森 阿狸 枫叶之尾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103019.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103020,
+                    "name": "永恒之森 阿狸 朝露之尾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103020.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103021,
+                    "name": "永恒之森 阿狸 琥珀之尾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103021.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103022,
+                    "name": "永恒之森 阿狸 清溪之尾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103022.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103023,
+                    "name": "永恒之森 阿狸 黎明之尾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103023.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103024,
+                    "name": "永恒之森 阿狸 瑰蕾之尾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103024.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103025,
+                    "name": "永恒之森 阿狸 桔梗之尾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103025.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103026,
+                    "name": "永恒之森 阿狸 夜幕之尾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103026.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103061,
+                    "name": "永恒之森 阿狸 灿樱之尾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103061.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 58
+                }
+            ],
+            "skinAugments": null,
+            "description": "善骗妖精阿狸的寓言已成为人类历史的一部分长达无数个世代之久。容光焕发和永恒青春的她被描绘成了永恒之森的林精中的一位好奇、爱戏弄人的成员……尽管在近些年里，她的内心已变得坚韧，皆因她与故土之内的一股不断增长的腐败不停战斗着。"
+        },
+        {
+            "id": 103027,
+            "isBase": false,
+            "name": "灵魂莲华 阿狸",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103027.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103027.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103027.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin27/AhriLoadScreen_27.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin27/AhriLoadscreen_27_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103027.png",
+            "chromas": [
+                {
+                    "id": 103029,
+                    "name": "灵魂莲华 阿狸 融冰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103029.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103030,
+                    "name": "灵魂莲华 阿狸 朝花",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103030.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103031,
+                    "name": "灵魂莲华 阿狸 春晓",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103031.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103032,
+                    "name": "灵魂莲华 阿狸 月升",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103032.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103033,
+                    "name": "灵魂莲华 阿狸 霜见",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103033.png",
+                    "colors": [
+                        "#0C0C0F",
+                        "#B2D1E4"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在灵魂莲华(2020)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103062,
+                    "name": "灵魂莲华 阿狸 樱灿",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103062.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 171
+                }
+            ],
+            "skinAugments": null,
+            "description": "阿狸是著名的救赎之灵，也是在所有凡人的灵魂到达灵界时的引路狐。她是一个变化无常、异想天开的灵体，把生者的命运视为一场追逐游戏。她为灵魂们提供了找到最后安息的机会……但如果他们偏离了道路，她将不会干预。"
+        },
+        {
+            "id": 103028,
+            "isBase": false,
+            "name": "K/DA ALL OUT 阿狸",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103028.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103028.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103028.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin28/AhriLoadScreen_28.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin28/AhriLoadscreen_28_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103028.png",
+            "chromas": [
+                {
+                    "id": 103034,
+                    "name": "K/DA ALL OUT 阿狸 星光之途",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103034.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103035,
+                    "name": "K/DA ALL OUT 阿狸 惊艳之姿",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103035.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103036,
+                    "name": "K/DA ALL OUT 阿狸 优雅之仪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103036.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103037,
+                    "name": "K/DA ALL OUT 阿狸 治愈之声",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103037.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103038,
+                    "name": "K/DA ALL OUT 阿狸 温润之音",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103038.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103039,
+                    "name": "K/DA ALL OUT 阿狸 纯粹之心",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103039.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103040,
+                    "name": "K/DA ALL OUT 阿狸 晶莹之睐",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103040.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103041,
+                    "name": "K/DA ALL OUT 阿狸 BADDEST",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103041.png",
+                    "colors": [
+                        "#0C0C0F",
+                        "#272A3F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2020)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103063,
+                    "name": "K/DA ALL OUT 阿狸 玲珑之影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103063.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 91
+                }
+            ],
+            "skinAugments": null,
+            "description": "当阿狸与K/DA一起踏上舞台表演时，她知道与她同台的都是至佳中的至佳——拥有不同个性的不同女士们，都处在各自领域的顶尖位置。作为她们的队长和好友，阿狸正准备引导这些小天后们达到更高的高度，并让她们的观众感到美不胜收。"
+        },
+        {
+            "id": 103042,
+            "isBase": false,
+            "name": "魔女 阿狸",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103042.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103042.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103042.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin42/AhriLoadScreen_42.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin42/AhriLoadscreen_42_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103042.png",
+            "chromas": [
+                {
+                    "id": 103043,
+                    "name": "魔女 阿狸 愤怒",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103043.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103044,
+                    "name": "魔女 阿狸 嫉妒",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103044.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103045,
+                    "name": "魔女 阿狸 贪婪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103045.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103046,
+                    "name": "魔女 阿狸 虚荣",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103046.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103047,
+                    "name": "魔女 阿狸 欺骗",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103047.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103048,
+                    "name": "魔女 阿狸 欲望",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103048.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103049,
+                    "name": "魔女 阿狸 倦怠",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103049.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103050,
+                    "name": "魔女 阿狸 饕餮",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103050.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103051,
+                    "name": "魔女 阿狸 狂信",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103051.png",
+                    "colors": [
+                        "#162B30",
+                        "#8E0A38"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在魔女(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103064,
+                    "name": "魔女 阿狸 污蔑",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103064.png",
+                    "colors": [
+                        "#2E38C4",
+                        "#C8003F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 92
+                }
+            ],
+            "skinAugments": null,
+            "description": "它们来到阿狸身边，在第一缕暮光中——暗光豺狼的笑声，一直追猎着这个世界，正如它转向自身不可避免的熵增。 作为凶恶的掠食者和强大的女巫，阿狸从被她引诱靠近的所有生物那里吸取生命，并将其输送向她在黑暗中的领主。"
+        },
+        {
+            "id": 103065,
+            "isBase": false,
+            "name": "至臻 K/DA 阿狸 (2022)",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103065.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103065.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103065.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin65/AhriLoadscreen_65_LE.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin65/AhriLoadscreen_65_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 91
+                }
+            ],
+            "skinAugments": null,
+            "description": "【K/DA 阿狸】这身倾倒众生的闪亮盛装是特别为K/DA乐团在2019流行闪耀赏上的表演而制作的。她的至臻演出服洋溢着流行明星们流金般的胜利气息。你感受到这股冲击了吗？"
+        },
+        {
+            "id": 103066,
+            "isBase": false,
+            "name": "魅惑之月 阿狸",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103066.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103066.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103066.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin66/AhriLoadScreen_66.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103066.png",
+            "chromas": [
+                {
+                    "id": 103067,
+                    "name": "魅惑之月 阿狸 斗志",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103067.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103068,
+                    "name": "魅惑之月 阿狸 财富",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103068.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103069,
+                    "name": "魅惑之月 阿狸 学识",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103069.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103070,
+                    "name": "魅惑之月 阿狸 忠诚",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103070.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103071,
+                    "name": "魅惑之月 阿狸 权威",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103071.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103072,
+                    "name": "魅惑之月 阿狸 丰足",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103072.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103073,
+                    "name": "魅惑之月 阿狸 谦逊",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103073.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103074,
+                    "name": "魅惑之月 阿狸 哀伤",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103074.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 146
+                }
+            ],
+            "skinAugments": null,
+            "description": "阿狸是一个诡术师和魔术师，她的力量来自欢笑之月。她利用她的行当来重新排列图案并允许低位世界洞察到高位世界。已经让天生一对的霞和洛彼此倾慕的她，正等待着那种伴随着私下猜忌而产生的混乱。"
+        },
+        {
+            "id": 103076,
+            "isBase": false,
+            "name": "净雪之月 阿狸",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/103/103076.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/103/103076.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/103/103076.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/Skins/Skin76/AhriLoadScreen_76.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103076.png",
+            "chromas": [
+                {
+                    "id": 103077,
+                    "name": "净雪之月 阿狸 赤心",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103077.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103078,
+                    "name": "净雪之月 阿狸 金穗",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103078.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103079,
+                    "name": "净雪之月 阿狸 风花",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103079.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 103080,
+                    "name": "净雪之月 阿狸 萌春",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103080.png",
+                    "colors": [
+                        "#9F4A25",
+                        "#9F4A25"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103081,
+                    "name": "净雪之月 阿狸 韶华",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103081.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103082,
+                    "name": "净雪之月 阿狸 翠微",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103082.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103083,
+                    "name": "净雪之月 阿狸 鲛绡",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103083.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 103084,
+                    "name": "净雪之月 阿狸 水竹",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/103/103084.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 160
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为古老而强大的北极狐灵，阿狸自净雪之月教团成立以来就一直存在。这是一种共生的安排：契约者们通过牺牲自己的情感和记忆来满足她的胃口，从而净化自己。阿狸是他们丢失记忆的守护者，通过她的信徒们体验外面的世界，他们的眼睛现在空洞而冰冷。"
+        }
+    ],
+    "passive": {
+        "name": "摄魂夺魄",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/HUD/Icons2D/Icons_Ahri_Passive.png",
+        "abilityVideoPath": "champion-abilities/0103/ability_0103_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0103/ability_0103_P1.jpg",
+        "description": "在击杀9个小兵或野怪后，阿狸会治疗自身。<br>在参与击杀一名敌方英雄后，阿狸会以一个更高的治疗效果来治疗自身。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "欺诈宝珠",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/HUD/Icons2D/Icons_Ahri_Q.png",
+            "abilityVideoPath": "champion-abilities/0103/ability_0103_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0103/ability_0103_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "阿狸放出并收回她的宝珠，在放出时会沿途对敌人造成魔法伤害，在收回时则会沿途对敌人造成真实伤害。 ",
+            "dynamicDescription": "阿狸投出然后收回她的宝珠，在放出时会沿途对敌人造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>，在收回时则会沿途对敌人造成<trueDamage>@TotalDamage@真实伤害</trueDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                970.0000,
+                970.0000,
+                970.0000,
+                970.0000,
+                970.0000,
+                970.0000
+            ],
+            "costCoefficients": [
+                55.0000,
+                65.0000,
+                75.0000,
+                85.0000,
+                95.0000,
+                95.0000
+            ],
+            "cooldownCoefficients": [
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000,
+                7.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "妖异狐火",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/HUD/Icons2D/Icons_Ahri_W.png",
+            "abilityVideoPath": "champion-abilities/0103/ability_0103_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0103/ability_0103_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "阿狸获得短暂的爆发性移动速度加成，并放出三团狐火，锁定附近的敌人进行攻击。",
+            "dynamicDescription": "阿狸释放出3团狐火来追踪附近的敌人们并造成<magicDamage>@SingleFireDamage@魔法伤害</magicDamage>，第一团之后的狐火降低至<magicDamage>@MultiFireDamage@伤害</magicDamage>。她还会获得在@MovementSpeedDuration@秒里持续衰减的<speed>@MovementSpeed*100@%移动速度</speed>。@SpellModifierDescriptionAppend@",
+            "range": [
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000
+            ],
+            "costCoefficients": [
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000
+            ],
+            "cooldownCoefficients": [
+                9.0000,
+                8.0000,
+                7.0000,
+                6.0000,
+                5.0000,
+                4.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "魅惑妖术",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/HUD/Icons2D/Icons_Ahri_E.png",
+            "abilityVideoPath": "champion-abilities/0103/ability_0103_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0103/ability_0103_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "阿狸献出红唇热吻，对命中的第一个敌人造成伤害并将目标魅惑，并且立刻终止目标的移动技能并使目标无恶意地走向她。",
+            "dynamicDescription": "阿狸献出红唇热吻，<status>魅惑</status>命中的首个敌人@CharmDuration@秒并造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                975.0000,
+                975.0000,
+                975.0000,
+                975.0000,
+                975.0000,
+                975.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "灵魄突袭",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/HUD/Icons2D/Icons_Ahri_R.png",
+            "abilityVideoPath": "champion-abilities/0103/ability_0103_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0103/ability_0103_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "阿狸向前猛冲，并放出元气弹，对周围的数个敌人造成伤害。灵魄突袭在进入冷却阶段以前最多可被施放三次，并在参与击杀敌方英雄后获得额外的再次施放次数。",
+            "dynamicDescription": "阿狸灵活地突进，并对附近的敌人们发射@RMaxTargetsPerCast@颗灵魄弹，优先选择英雄。这些灵魄弹每颗造成<magicDamage>@RCalculatedDamage@魔法伤害</magicDamage>。<spellName>灵魄突袭</spellName>可以在@RRecastWindow@秒内<recast>再次施放</recast>至多2次。<br><br>在此期间，用<spellName>摄魂夺魄</spellName>吞噬一名英雄的魂魄时，会使再次施放的窗口期至多延长至@PDurationExtension@秒并为<spellName>灵魄突袭</spellName>提供一次额外的再次施放(至多可储存至@RMaxCasts@次)。@SpellModifierDescriptionAppend@",
+            "range": [
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000,
+                450.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                130.0000,
+                105.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

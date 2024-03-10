@@ -1,0 +1,17 @@
+{
+    "Disc_Pres_Map_10": "扭曲丛林",
+    "Disc_Pres_Map_11": "召唤师峡谷",
+    "Disc_Pres_Map_12": "嚎哭深渊",
+    "Disc_Pres_Map_22": "云顶之弈",
+    "Disc_Pres_QueueType_ARAM": "极地大乱斗",
+    "Disc_Pres_QueueType_BOT": "人机",
+    "Disc_Pres_QueueType_CUSTOM": "自定义",
+    "Disc_Pres_QueueType_NORMAL": "普通",
+    "Disc_Pres_QueueType_RANKED": "排位赛",
+    "Disc_Pres_State_championSelect": "英雄选择中",
+    "Disc_Pres_State_hosting": "房间中",
+    "Disc_Pres_State_hosting_Custom": "创建自定义对局中",
+    "Disc_Pres_State_inGame": "游戏中",
+    "Disc_Pres_State_inQueue": "队列中",
+    "Disc_Pres_State_outOfGame": "游戏外"
+}

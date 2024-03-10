@@ -1,0 +1,1766 @@
+{
+    "id": 99,
+    "name": "Lux",
+    "alias": "Lux",
+    "title": "the Lady of Luminosity",
+    "shortBio": "Luxanna Crownguard hails from Demacia, an insular realm where magical abilities are viewed with fear and suspicion. Able to bend light to her will, she grew up dreading discovery and exile, and was forced to keep her power secret, in order to preserve her family's noble status. Nonetheless, Lux's optimism and resilience have led her to embrace her unique talents, and she now covertly wields them in service of her homeland.",
+    "tacticalInfo": {
+        "style": 9,
+        "difficulty": 1,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 2,
+        "mobility": 1,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/99.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/99.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/99.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/99.ogg",
+    "roles": [
+        "mage",
+        "support"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 99000,
+            "isBase": true,
+            "name": "Lux",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Base/LuxLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 99001,
+            "isBase": false,
+            "name": "Sorceress Lux",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin01/LuxLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 114
+                }
+            ],
+            "skinAugments": null,
+            "description": "An aspiring mage from the Demacian Dukedom, Lux has traveled across the land in her quest to lighten the lives of the peasantry with magic. Though her efforts are often met with suspicion at first, tales of her 'miracles' are beginning to reach the ruling class of the Dukedom itself…"
+        },
+        {
+            "id": 99002,
+            "isBase": false,
+            "name": "Spellthief Lux",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin02/LuxLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 95
+                }
+            ],
+            "skinAugments": null,
+            "description": "She doesn't pull in coin like the Spellthief's Edge, and can't actually steal spells like Sylas, but technically Lux is learning and reproducing illegal magic. Sadly, “Illegal Spell Learner Lux” doesn't have quite the same ring to it."
+        },
+        {
+            "id": 99003,
+            "isBase": false,
+            "name": "Commando Lux",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin03/LuxLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 104
+                }
+            ],
+            "skinAugments": null,
+            "description": "Soundproof ear protectors, a multispectral heat visor, lace-up knee-high boots, and a double-sided flamethrower that shoots lasers instead of fire? Lux really does have it all."
+        },
+        {
+            "id": 99004,
+            "isBase": false,
+            "name": "Imperial Lux",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin04/LuxLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 99005,
+            "isBase": false,
+            "name": "Steel Legion Lux",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin05/LuxLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 85
+                }
+            ],
+            "skinAugments": null,
+            "description": "This highly-trained specialist in the Steel Legion uses light-magnifying crystal rods to discharge rays of concentrated energy. Designated Lux, her affinity with the weapons has been quietly observed by several leading scientists within the organization."
+        },
+        {
+            "id": 99006,
+            "isBase": false,
+            "name": "Star Guardian Lux",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin06/LuxLoadScreen_6.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin06/LuxLoadscreen_6_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 19
+                }
+            ],
+            "skinAugments": null,
+            "description": "Cheerful and courageous, Lux shines the brightest among her Star Guardian team. While young and inexperienced, the pink-haired captain's optimism inspires others in their destiny to protect the universe. She truly believes that as long as they fight together, there is no darkness they can't overcome."
+        },
+        {
+            "id": 99007,
+            "isBase": false,
+            "name": "Elementalist Lux",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin07/LuxLoadScreen_7.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin07/LuxLoadScreen_7_LE.jpg",
+            "skinType": "Ultimate",
+            "rarity": "kUltimate",
+            "isLegacy": false,
+            "splashVideoPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin07/AnimatedSplash/Lux_Skin7_centered.webm",
+            "collectionSplashVideoPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin07/AnimatedSplash/Lux_Skin7_uncentered.webm",
+            "featuresText": "<ul><li>Ten distinct elemental forms</li><li>Combining elements triggers new transformations</li><li>New elemental effects for all forms</li><li>Five exclusive icons which grant dynamic profile background</li></ul>",
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 166
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 99008,
+            "isBase": false,
+            "name": "Lunar Empress Lux",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin08/LuxLoadScreen_8.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin08/LuxLoadScreen_8_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99008.png",
+            "chromas": [
+                {
+                    "id": 99009,
+                    "name": "Lunar Empress Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99009.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "Bundle exclusive from the 2018 Lunar Revel event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "ID",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 99010,
+                    "name": "Lunar Empress Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99010.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 99011,
+                    "name": "Lunar Empress Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99011.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 99012,
+                    "name": "Lunar Empress Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99012.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 99013,
+                    "name": "Lunar Empress Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99013.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 55
+                }
+            ],
+            "skinAugments": null,
+            "description": "Groomed from a young age to guard the immortal realm from darkness, the Lunar Empress and her companions are said to stand watch over the world. Lux, though a powerful demigod in her own right, draws aid from the ever-faithful Warwick and Nasus."
+        },
+        {
+            "id": 99014,
+            "isBase": false,
+            "name": "Pajama Guardian Lux",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99014.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99014.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99014.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin14/LuxLoadscreen_14.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin06/LuxLoadscreen_6_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 19
+                }
+            ],
+            "skinAugments": null,
+            "description": "As captain of her Star Guardian team, Lux knows the importance of a little R&R. As host of the party, though, she's still working on the relaxation part. It's hard to cut loose—especially when a certain handsome blond Guardian keeps flashing that charming grin!—but Lux's boundless optimism still lights up any room."
+        },
+        {
+            "id": 99015,
+            "isBase": false,
+            "name": "Battle Academia Lux",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99015.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99015.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99015.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin15/LuxLoadScreen_15.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin15/LuxLoadscreen_15_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 113
+                }
+            ],
+            "skinAugments": null,
+            "description": "A 1st year at the Durandal God-Weapon Academy, Lux maintains an upbeat attitude no matter the odds. Despite her freshman position in the Sorcery Club, Lux wields a tremendous amount of magical power that even the Academy's senior staff can't quite explain."
+        },
+        {
+            "id": 99016,
+            "isBase": false,
+            "name": "Prestige Battle Academia Lux",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99016.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99016.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99016.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin16/LuxLoadscreen_16.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 113
+                }
+            ],
+            "skinAugments": null,
+            "description": "Now in her second year at Durandal Academy, Lux has been hardened by the harrowing trials, losses, and betrayals that punctuated her freshman experience. Following the climactic clash with a certain Rogue God-Weapon, Lux has mastered her powers and risen to take her place as head of the Sorcery Club, as well as the new class president."
+        },
+        {
+            "id": 99017,
+            "isBase": false,
+            "name": "Dark Cosmic Lux",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99017.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99017.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99017.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin17/LuxLoadScreen_17.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin17/LuxLoadscreen_17_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 44
+                }
+            ],
+            "skinAugments": null,
+            "description": "Once the right hand of Queen Ashe, Lux embraced the darkness in her heart, answering the mad call of the Dark Star. Finally seeing the truth, she rejects the Cosmic Court, instead serving her own dark ambition to quiet the banal noise of creation. For she now knows her true fate—to reign as Queen of a Dark Court, and rightful master of the Dark Star."
+        },
+        {
+            "id": 99018,
+            "isBase": false,
+            "name": "Cosmic Lux",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99018.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99018.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99018.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin18/LuxLoadScreen_18.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin18/LuxLoadscreen_18_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 43
+                }
+            ],
+            "skinAugments": null,
+            "description": "The right hand of Queen Ashe, Lux weaves celestial constellations, bringing order to a universe drifting towards entropy. When the Dark Star began corrupting members of the Cosmic Court, Lux stepped forward to confront Thresh. Yet she harbors a terrible secret—a shard of darkness that has always lived within her heart, whispering temptations…"
+        },
+        {
+            "id": 99019,
+            "isBase": false,
+            "name": "Space Groove Lux",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99019.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99019.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99019.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin19/LuxLoadScreen_19.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin19/LuxLoadscreen_19_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99019.png",
+            "chromas": [
+                {
+                    "id": 99020,
+                    "name": "Space Groove Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99020.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2021."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 99021,
+                    "name": "Space Groove Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99021.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99022,
+                    "name": "Space Groove Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99022.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 99023,
+                    "name": "Space Groove Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99023.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99024,
+                    "name": "Space Groove Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99024.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99025,
+                    "name": "Space Groove Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99025.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99026,
+                    "name": "Space Groove Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99026.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99027,
+                    "name": "Space Groove Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99027.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99028,
+                    "name": "Space Groove Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99028.png",
+                    "colors": [
+                        "#9DFFEF",
+                        "#AA55FF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2021 Space Groove event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 144
+                }
+            ],
+            "skinAugments": null,
+            "description": "A normal girl from the Normal World, Lux picked up a groove-enhancing staff to defend her planet from the Harsh Vibes… inadvertently discovering she could channel mighty blasts of concentrated disco music. Sailing into space with her mercenary bodyguard, Samira, Lux now stands as the bubbly bastion of good against an evil alien armada and their terrible taste in music."
+        },
+        {
+            "id": 99029,
+            "isBase": false,
+            "name": "Porcelain Lux",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99029.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99029.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99029.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin29/LuxLoadScreen_29.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin29/LuxLoadscreen_29_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99029.png",
+            "chromas": [
+                {
+                    "id": 99030,
+                    "name": "Porcelain Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99030.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 99031,
+                    "name": "Porcelain Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99031.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99032,
+                    "name": "Porcelain Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99032.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 99033,
+                    "name": "Porcelain Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99033.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99034,
+                    "name": "Porcelain Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99034.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99035,
+                    "name": "Porcelain Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99035.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99036,
+                    "name": "Porcelain Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99036.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99037,
+                    "name": "Porcelain Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99037.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99041,
+                    "name": "Porcelain Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99041.png",
+                    "colors": [
+                        "#FF9D13",
+                        "#B9FFC1"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2022 Lunar Revel event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 154
+                }
+            ],
+            "skinAugments": null,
+            "description": "As the current leader of the Protectors and wielder of the Rabbit Relic, Lux is determined to keep up her sunny disposition in spite of everything: her own arduous sorcery training, the newbie archaeologist who stumbled into their ranks, and the sudden threat of an awakened evil now out for vengeance. She's got this… right? Right."
+        },
+        {
+            "id": 99038,
+            "isBase": false,
+            "name": "Soul Fighter Lux",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99038.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99038.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99038.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin38/LuxLoadScreen_38.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin38/LuxLoadScreen_38_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99038.png",
+            "chromas": [
+                {
+                    "id": 99052,
+                    "name": "Soul Fighter Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99052.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 99053,
+                    "name": "Soul Fighter Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99053.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99054,
+                    "name": "Soul Fighter Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99054.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99055,
+                    "name": "Soul Fighter Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99055.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99056,
+                    "name": "Soul Fighter Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99056.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 99057,
+                    "name": "Soul Fighter Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99057.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99058,
+                    "name": "Soul Fighter Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99058.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99059,
+                    "name": "Soul Fighter Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99059.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99060,
+                    "name": "Soul Fighter Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99060.png",
+                    "colors": [
+                        "#C8D0CE",
+                        "#AF65D1"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2023 Soul Fighter event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 196
+                }
+            ],
+            "skinAugments": null,
+            "description": "On the run from her family, and she figured the best place to hide would be ON TV?! Seriously though, folks, this lady has some trauma... and we all know the ring is *the* place to work that out! Now, if I was a betting man—and I am—I'd say she'd use that soul's desire to make her drama disappear. It's Lux!"
+        },
+        {
+            "id": 99039,
+            "isBase": false,
+            "name": "Prestige Battle Academia Lux (2022)",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99039.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99039.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99039.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin39/LuxLoadScreen_39.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 113
+                }
+            ],
+            "skinAugments": null,
+            "description": "Now in her second year at Durandal Academy, Lux has been hardened by the harrowing trials, losses, and betrayals that punctuated her freshman experience. Following the climactic clash with a certain Rogue God-Weapon, Lux has mastered her powers and risen to take her place as head of the Sorcery Club, as well as the new class president."
+        },
+        {
+            "id": 99040,
+            "isBase": false,
+            "name": "Prestige Porcelain Lux",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99040.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99040.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99040.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin40/LuxLoadScreen_40.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin40/LuxLoadscreen_40_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 154
+                }
+            ],
+            "skinAugments": null,
+            "description": "A leader bends, but never breaks. In the Protectors' pursuit of ancient evil, Lux has navigated her team over obstacles that even the archeologist — in all his unbridled confidence — thought insurmountable. Lux's power, once a dim light in a darkened world, now shines brightly. And her ragtag group of fragile personalities, the Protectors? With her support, deserving of their title."
+        },
+        {
+            "id": 99042,
+            "isBase": false,
+            "name": "Empyrean Lux",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/99/99042.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/99/99042.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/99/99042.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin42/LuxLoadScreen_42.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Lux/Skins/Skin42/LuxLoadscreen_42_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99042.png",
+            "chromas": [
+                {
+                    "id": 99043,
+                    "name": "Empyrean Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99043.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 99044,
+                    "name": "Empyrean Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99044.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 99045,
+                    "name": "Empyrean Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99045.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99046,
+                    "name": "Empyrean Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99046.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99047,
+                    "name": "Empyrean Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99047.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99048,
+                    "name": "Empyrean Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99048.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99049,
+                    "name": "Empyrean Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99049.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99050,
+                    "name": "Empyrean Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99050.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 99051,
+                    "name": "Empyrean Lux",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/99/99051.png",
+                    "colors": [
+                        "#FF655B",
+                        "#95E237"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the Worlds 2022 Event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 186
+                }
+            ],
+            "skinAugments": null,
+            "description": "Forced to live in squalor and shame for her magical abilities, Lux ironically escaped certain death when her realm collapsed. Now with the raw power of the Foreglow, she's free. It doesn't matter that she's on her last legs: she intends to live and experience as much as she can before the fire consumes her."
+        }
+    ],
+    "passive": {
+        "name": "Illumination",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Lux/HUD/Icons2D/LuxIlluminatingFraulein.png",
+        "abilityVideoPath": "champion-abilities/0099/ability_0099_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0099/ability_0099_P1.jpg",
+        "description": "Lux's damaging spells charge the target with energy for a few seconds. Lux's next attack ignites the energy, dealing bonus magic damage (depending on Lux's level) to the target."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Light Binding",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Lux/HUD/Icons2D/LuxCrashingBlitz2.png",
+            "abilityVideoPath": "champion-abilities/0099/ability_0099_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0099/ability_0099_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Lux releases a sphere of light that binds and deals damage to up to two enemy units.",
+            "dynamicDescription": "Lux fires a ball of light, <status>Rooting</status> the first two enemies for @Effect3Amount@ seconds and dealing <magicDamage>@TotalDamageTT@ magic damage</magicDamage> to each.@SpellModifierDescriptionAppend@",
+            "range": [
+                1175.0000,
+                1175.0000,
+                1175.0000,
+                1175.0000,
+                1175.0000,
+                1175.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000
+            ],
+            "cooldownCoefficients": [
+                11.0000,
+                10.5000,
+                10.0000,
+                9.5000,
+                9.0000,
+                9.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.6000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    80.0000,
+                    120.0000,
+                    160.0000,
+                    200.0000,
+                    240.0000,
+                    240.0000
+                ],
+                "Effect2Amount": [
+                    50.0000,
+                    50.0000,
+                    50.0000,
+                    50.0000,
+                    50.0000,
+                    50.0000,
+                    50.0000
+                ],
+                "Effect3Amount": [
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Prismatic Barrier",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Lux/HUD/Icons2D/LuxPrismaWrap.png",
+            "abilityVideoPath": "champion-abilities/0099/ability_0099_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0099/ability_0099_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Lux throws her wand and bends the light around any friendly target it touches, protecting them from enemy damage.",
+            "dynamicDescription": "Lux throws her wand, granting <shield>@TotalShieldTT@ Shield</shield> for @Effect3Amount@ seconds to allies it passes through. Then it returns, granting the same <shield>Shield</shield> on its return.@SpellModifierDescriptionAppend@",
+            "range": [
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000,
+                1150.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000,
+                80.0000,
+                85.0000
+            ],
+            "cooldownCoefficients": [
+                14.0000,
+                13.0000,
+                12.0000,
+                11.0000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.4000,
+                "coefficient2": 0.4000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    2.0000,
+                    4.0000,
+                    6.0000,
+                    8.0000,
+                    10.0000,
+                    12.0000
+                ],
+                "Effect2Amount": [
+                    25.0000,
+                    40.0000,
+                    55.0000,
+                    70.0000,
+                    85.0000,
+                    100.0000,
+                    145.0000
+                ],
+                "Effect3Amount": [
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000
+                ],
+                "Effect4Amount": [
+                    100.0000,
+                    100.0000,
+                    100.0000,
+                    100.0000,
+                    100.0000,
+                    100.0000,
+                    100.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Lucent Singularity",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Lux/HUD/Icons2D/LuxLightStrikeKugel.png",
+            "abilityVideoPath": "champion-abilities/0099/ability_0099_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0099/ability_0099_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Fires an anomaly of twisted light to an area, which slows nearby enemies. Lux can detonate it to damage enemies in the area of effect.",
+            "dynamicDescription": "Lux creates a light zone that <status>Slows</status> by @Effect1Amount@% and reveals the area. After @Effect3Amount@ seconds or on <recast>Recasting</recast> this Ability, it detonates, dealing <magicDamage>@TotalDamageTT@ magic damage</magicDamage> and <status>Slowing</status> for an additional @SlowLingerDuration@ second.@SpellModifierDescriptionAppend@",
+            "range": [
+                1100.0000,
+                1100.0000,
+                1100.0000,
+                1100.0000,
+                1100.0000,
+                1100.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                80.0000,
+                90.0000,
+                100.0000,
+                110.0000,
+                110.0000
+            ],
+            "cooldownCoefficients": [
+                10.0000,
+                9.5000,
+                9.0000,
+                8.5000,
+                8.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.8000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    20.0000,
+                    25.0000,
+                    30.0000,
+                    35.0000,
+                    40.0000,
+                    45.0000,
+                    50.0000
+                ],
+                "Effect2Amount": [
+                    20.0000,
+                    65.0000,
+                    115.0000,
+                    165.0000,
+                    215.0000,
+                    265.0000,
+                    315.0000
+                ],
+                "Effect3Amount": [
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000
+                ],
+                "Effect4Amount": [
+                    310.0000,
+                    310.0000,
+                    310.0000,
+                    310.0000,
+                    310.0000,
+                    310.0000,
+                    310.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Final Spark",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Lux/HUD/Icons2D/LuxFinaleFunkeln.png",
+            "abilityVideoPath": "champion-abilities/0099/ability_0099_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0099/ability_0099_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "After gathering energy, Lux fires a beam of light that deals damage to all targets in the area. In addition, triggers Lux's passive ability and refreshes the Illumination debuff duration.",
+            "dynamicDescription": "Lux fires a dazzling ray of light, dealing <magicDamage>@TotalDamage@ magic damage</magicDamage> to all enemies in a line.@SpellModifierDescriptionAppend@",
+            "range": [
+                3340.0000,
+                3340.0000,
+                3340.0000,
+                3340.0000,
+                3340.0000,
+                3340.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                60.0000,
+                50.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                30.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

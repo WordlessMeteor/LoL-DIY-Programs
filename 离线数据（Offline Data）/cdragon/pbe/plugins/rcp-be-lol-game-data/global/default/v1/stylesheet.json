@@ -1,0 +1,2300 @@
+{
+    "iconTexture": "/lol-game-data/assets/ASSETS/UX/Fonts/TextIcons.Smolder.png",
+    "iconData": [
+        {
+            "id": "Q9you-CQ",
+            "key": "scaleMana",
+            "value": {
+                "xy": {
+                    "x": 0.0,
+                    "y": 0.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 1.0
+            }
+        },
+        {
+            "id": "y0KKXrmY",
+            "key": "scaleManaRegen",
+            "value": {
+                "xy": {
+                    "x": 24.0,
+                    "y": 0.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "h1odBAs_",
+            "key": "scaleMPen",
+            "value": {
+                "xy": {
+                    "x": 48.0,
+                    "y": 0.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "ho5TJkpT",
+            "key": "scaleMR",
+            "value": {
+                "xy": {
+                    "x": 72.0,
+                    "y": 0.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "pUx0CRlt",
+            "key": "scaleMS",
+            "value": {
+                "xy": {
+                    "x": 96.0,
+                    "y": 0.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 1.0
+            }
+        },
+        {
+            "id": "IKaNRKzT",
+            "key": "scaleAD",
+            "value": {
+                "xy": {
+                    "x": 0.0,
+                    "y": 24.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 4.0
+            }
+        },
+        {
+            "id": "UYBr7R3M",
+            "key": "scaleSV",
+            "value": {
+                "xy": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 5.0
+            }
+        },
+        {
+            "id": "7VGTMKbU",
+            "key": "scaleTenacity",
+            "value": {
+                "xy": {
+                    "x": 48.0,
+                    "y": 24.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "I-RCZDbT",
+            "key": "cooldown",
+            "value": {
+                "xy": {
+                    "x": 72.0,
+                    "y": 24.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "3cYDu2qo",
+            "key": "scaleAP",
+            "value": {
+                "xy": {
+                    "x": 96.0,
+                    "y": 24.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 5.0
+            }
+        },
+        {
+            "id": "-hzyJYwj",
+            "key": "scaleArmor",
+            "value": {
+                "xy": {
+                    "x": 0.0,
+                    "y": 48.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 3.0
+            }
+        },
+        {
+            "id": "F0H7osmE",
+            "key": "scaleAS",
+            "value": {
+                "xy": {
+                    "x": 24.0,
+                    "y": 48.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "ALtQB72H",
+            "key": "scaleCooldown",
+            "value": {
+                "xy": {
+                    "x": 48.0,
+                    "y": 48.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "oQxgrSlD",
+            "key": "scaleCrit",
+            "value": {
+                "xy": {
+                    "x": 72.0,
+                    "y": 48.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 3.0
+            }
+        },
+        {
+            "id": "65K4Xwbd",
+            "key": "scaleHealth",
+            "value": {
+                "xy": {
+                    "x": 97.0,
+                    "y": 49.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 4.0
+            }
+        },
+        {
+            "id": "bqbWlxdp",
+            "key": "scaleLS",
+            "value": {
+                "xy": {
+                    "x": 0.0,
+                    "y": 72.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "LQmiDSWy",
+            "key": "leftArrow",
+            "value": {
+                "xy": {
+                    "x": 24.0,
+                    "y": 72.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "XdvdFmuI",
+            "key": "rightArrow",
+            "value": {
+                "xy": {
+                    "x": 48.0,
+                    "y": 72.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "ByAywnGu",
+            "key": "scaleRange",
+            "value": {
+                "xy": {
+                    "x": 72.0,
+                    "y": 72.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "x1GQYZ0K",
+            "key": "scaleAPen",
+            "value": {
+                "xy": {
+                    "x": 96.0,
+                    "y": 72.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 3.0
+            }
+        },
+        {
+            "id": "x0CQv16Z",
+            "key": "scaleHPRegen",
+            "value": {
+                "xy": {
+                    "x": 0.0,
+                    "y": 96.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "xgiO0PAU",
+            "key": "tftRightArrow",
+            "value": {
+                "xy": {
+                    "x": 20.0,
+                    "y": 96.0
+                },
+                "wh": {
+                    "x": 13.0,
+                    "y": 11.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "Dp9Jq1xd",
+            "key": "goldCoins",
+            "value": {
+                "xy": {
+                    "x": 48.0,
+                    "y": 96.0
+                },
+                "wh": {
+                    "x": 18.0,
+                    "y": 16.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "HBih-1Ac",
+            "key": "star",
+            "value": {
+                "xy": {
+                    "x": 48.0,
+                    "y": 120.0
+                },
+                "wh": {
+                    "x": 16.0,
+                    "y": 16.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "5Tcv3Xsj",
+            "key": "traitGlacial",
+            "value": {
+                "xy": {
+                    "x": 24.0,
+                    "y": 144.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "0AI_r9W7",
+            "key": "traitDruid",
+            "value": {
+                "xy": {
+                    "x": 48.0,
+                    "y": 144.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 3.0
+            }
+        },
+        {
+            "id": "N9mT-R_2",
+            "key": "traitDesert",
+            "value": {
+                "xy": {
+                    "x": 72.0,
+                    "y": 144.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 4.0
+            }
+        },
+        {
+            "id": "Mk4njb0f",
+            "key": "traitAlchemist",
+            "value": {
+                "xy": {
+                    "x": 24.0,
+                    "y": 168.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 3.0
+            }
+        },
+        {
+            "id": "oo9SUmko",
+            "key": "traitAvatar",
+            "value": {
+                "xy": {
+                    "x": 48.0,
+                    "y": 168.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 3.0
+            }
+        },
+        {
+            "id": "jPCsCvHC",
+            "key": "traitOcean",
+            "value": {
+                "xy": {
+                    "x": 0.0,
+                    "y": 192.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 4.0
+            }
+        },
+        {
+            "id": "GwKoyuLm",
+            "key": "traitMountain",
+            "value": {
+                "xy": {
+                    "x": 24.0,
+                    "y": 216.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "FzMoiggK",
+            "key": "lossStreak",
+            "value": {
+                "xy": {
+                    "x": 72.0,
+                    "y": 96.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "3Rlv0yie",
+            "key": "winStreak",
+            "value": {
+                "xy": {
+                    "x": 96.0,
+                    "y": 96.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "4NnrL4P8",
+            "key": "scaleCritMult",
+            "value": {
+                "xy": {
+                    "x": 24.0,
+                    "y": 240.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "_zKjA0Ha",
+            "key": "dodgeChance",
+            "value": {
+                "xy": {
+                    "x": 48.0,
+                    "y": 240.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "ezwnwsVP",
+            "key": "rankCHALLENGER",
+            "value": {
+                "xy": {
+                    "x": 0.0,
+                    "y": 448.0
+                },
+                "wh": {
+                    "x": 50.0,
+                    "y": 40.0
+                },
+                "yAdjustment": 11.0
+            }
+        },
+        {
+            "id": "6CIlU8PQ",
+            "key": "rankGRANDMASTER",
+            "value": {
+                "xy": {
+                    "x": 50.0,
+                    "y": 408.0
+                },
+                "wh": {
+                    "x": 50.0,
+                    "y": 40.0
+                },
+                "yAdjustment": 11.0
+            }
+        },
+        {
+            "id": "3zDwB-U1",
+            "key": "rankMASTER",
+            "value": {
+                "xy": {
+                    "x": 0.0,
+                    "y": 408.0
+                },
+                "wh": {
+                    "x": 50.0,
+                    "y": 40.0
+                },
+                "yAdjustment": 11.0
+            }
+        },
+        {
+            "id": "NnLLKjP4",
+            "key": "rankDIAMOND",
+            "value": {
+                "xy": {
+                    "x": 50.0,
+                    "y": 368.0
+                },
+                "wh": {
+                    "x": 50.0,
+                    "y": 40.0
+                },
+                "yAdjustment": 11.0
+            }
+        },
+        {
+            "id": "3_yNIsHb",
+            "key": "rankPLATINUM",
+            "value": {
+                "xy": {
+                    "x": 0.0,
+                    "y": 368.0
+                },
+                "wh": {
+                    "x": 50.0,
+                    "y": 40.0
+                },
+                "yAdjustment": 11.0
+            }
+        },
+        {
+            "id": "B3cA7Bkd",
+            "key": "rankGOLD",
+            "value": {
+                "xy": {
+                    "x": 50.0,
+                    "y": 328.0
+                },
+                "wh": {
+                    "x": 50.0,
+                    "y": 40.0
+                },
+                "yAdjustment": 11.0
+            }
+        },
+        {
+            "id": "NgqAakSe",
+            "key": "rankSILVER",
+            "value": {
+                "xy": {
+                    "x": 0.0,
+                    "y": 328.0
+                },
+                "wh": {
+                    "x": 50.0,
+                    "y": 40.0
+                },
+                "yAdjustment": 11.0
+            }
+        },
+        {
+            "id": "TQM0NB3x",
+            "key": "rankBRONZE",
+            "value": {
+                "xy": {
+                    "x": 50.0,
+                    "y": 288.0
+                },
+                "wh": {
+                    "x": 50.0,
+                    "y": 40.0
+                },
+                "yAdjustment": 11.0
+            }
+        },
+        {
+            "id": "vmwVI7Tl",
+            "key": "rankIRON",
+            "value": {
+                "xy": {
+                    "x": 0.0,
+                    "y": 288.0
+                },
+                "wh": {
+                    "x": 50.0,
+                    "y": 40.0
+                },
+                "yAdjustment": 11.0
+            }
+        },
+        {
+            "id": "TKEFbSbL",
+            "key": "rankDecay",
+            "value": {
+                "xy": {
+                    "x": 50.0,
+                    "y": 448.0
+                },
+                "wh": {
+                    "x": 50.0,
+                    "y": 40.0
+                },
+                "yAdjustment": 11.0
+            }
+        },
+        {
+            "id": "SVFl_Ywk",
+            "key": "questionMarkCircle",
+            "value": {
+                "xy": {
+                    "x": 100.0,
+                    "y": 453.0
+                },
+                "wh": {
+                    "x": 36.0,
+                    "y": 36.0
+                },
+                "yAdjustment": 3.0
+            }
+        },
+        {
+            "id": "AvYTJcX7",
+            "key": "starDefault",
+            "value": {
+                "xy": {
+                    "x": 106.0,
+                    "y": 380.0
+                },
+                "wh": {
+                    "x": 22.0,
+                    "y": 22.0
+                },
+                "yAdjustment": -2.0
+            }
+        },
+        {
+            "id": "14v8YCMc",
+            "key": "starHover",
+            "value": {
+                "xy": {
+                    "x": 106.0,
+                    "y": 428.0
+                },
+                "wh": {
+                    "x": 22.0,
+                    "y": 22.0
+                },
+                "yAdjustment": -2.0
+            }
+        },
+        {
+            "id": "ARd9m2Km",
+            "key": "starPressed",
+            "value": {
+                "xy": {
+                    "x": 106.0,
+                    "y": 404.0
+                },
+                "wh": {
+                    "x": 22.0,
+                    "y": 22.0
+                },
+                "yAdjustment": -2.0
+            }
+        },
+        {
+            "id": "lv9B6GXj",
+            "key": "starDisabled",
+            "value": {
+                "xy": {
+                    "x": 106.0,
+                    "y": 354.0
+                },
+                "wh": {
+                    "x": 22.0,
+                    "y": 22.0
+                },
+                "yAdjustment": -2.0
+            }
+        },
+        {
+            "id": "XL062BB-",
+            "key": "starPremiumTag",
+            "value": {
+                "xy": {
+                    "x": 107.0,
+                    "y": 331.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": -2.0
+            }
+        },
+        {
+            "id": "KBvLfvTW",
+            "key": "goldCoinLarger",
+            "value": {
+                "xy": {
+                    "x": 150.0,
+                    "y": 450.0
+                },
+                "wh": {
+                    "x": 32.0,
+                    "y": 28.0
+                },
+                "yAdjustment": -5.0
+            }
+        },
+        {
+            "id": "5Ncr8Cds",
+            "key": "traitSoulbound",
+            "value": {
+                "xy": {
+                    "x": 0.0,
+                    "y": 264.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "EnkDfJ91",
+            "key": "traitCelestial",
+            "value": {
+                "xy": {
+                    "x": 24.0,
+                    "y": 264.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "bs1X6WII",
+            "key": "traitCelestial1",
+            "value": {
+                "xy": {
+                    "x": 120.0,
+                    "y": 0.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 1.0
+            }
+        },
+        {
+            "id": "9aeVL10d",
+            "key": "traitChrono",
+            "value": {
+                "xy": {
+                    "x": 144.0,
+                    "y": 0.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "tz7TMeVZ",
+            "key": "traitCybernetic",
+            "value": {
+                "xy": {
+                    "x": 168.0,
+                    "y": -4.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "iLvSDtZc",
+            "key": "traitDarkstar",
+            "value": {
+                "xy": {
+                    "x": 192.0,
+                    "y": 0.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 1.0
+            }
+        },
+        {
+            "id": "jW9st8hB",
+            "key": "traitSpacepirate",
+            "value": {
+                "xy": {
+                    "x": 216.0,
+                    "y": 0.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "1Ctsn5ir",
+            "key": "traitMechpilot",
+            "value": {
+                "xy": {
+                    "x": 120.0,
+                    "y": 24.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "GVtRhlqI",
+            "key": "traitRebel",
+            "value": {
+                "xy": {
+                    "x": 144.0,
+                    "y": 24.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 3.0
+            }
+        },
+        {
+            "id": "N1U689AS",
+            "key": "traitStarguardian",
+            "value": {
+                "xy": {
+                    "x": 168.0,
+                    "y": 24.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 3.0
+            }
+        },
+        {
+            "id": "cu9aTwAm",
+            "key": "traitValkyrie",
+            "value": {
+                "xy": {
+                    "x": 192.0,
+                    "y": 24.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 3.0
+            }
+        },
+        {
+            "id": "fyWJGelM",
+            "key": "traitVoid",
+            "value": {
+                "xy": {
+                    "x": 216.0,
+                    "y": 24.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 1.0
+            }
+        },
+        {
+            "id": "-HIJtFmu",
+            "key": "traitInfiltrator",
+            "value": {
+                "xy": {
+                    "x": 120.0,
+                    "y": 48.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "4u7M2puP",
+            "key": "traitBlaster",
+            "value": {
+                "xy": {
+                    "x": 144.0,
+                    "y": 48.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 3.0
+            }
+        },
+        {
+            "id": "UyBXzX6B",
+            "key": "traitBrawler",
+            "value": {
+                "xy": {
+                    "x": 72.0,
+                    "y": 120.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "sG5Cc6eD",
+            "key": "traitMercenary",
+            "value": {
+                "xy": {
+                    "x": 216.0,
+                    "y": 48.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 1.0
+            }
+        },
+        {
+            "id": "nGsj2qLE",
+            "key": "traitDemolitionist",
+            "value": {
+                "xy": {
+                    "x": 120.0,
+                    "y": 72.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 1.0
+            }
+        },
+        {
+            "id": "voNaESzD",
+            "key": "traitProtector",
+            "value": {
+                "xy": {
+                    "x": 144.0,
+                    "y": 72.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "DoiRiphl",
+            "key": "traitSorcerer",
+            "value": {
+                "xy": {
+                    "x": 168.0,
+                    "y": 72.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 6.0
+            }
+        },
+        {
+            "id": "aUMSVplY",
+            "key": "traitManareaver",
+            "value": {
+                "xy": {
+                    "x": 192.0,
+                    "y": 72.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "RHEQNv0Z",
+            "key": "traitSniper",
+            "value": {
+                "xy": {
+                    "x": 216.0,
+                    "y": 72.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "EbeR6f_U",
+            "key": "traitStarship",
+            "value": {
+                "xy": {
+                    "x": 120.0,
+                    "y": 96.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "TS-F8wJS",
+            "key": "traitAstro",
+            "value": {
+                "xy": {
+                    "x": 144.0,
+                    "y": 96.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "9oKHHf6C",
+            "key": "traitBattlecast",
+            "value": {
+                "xy": {
+                    "x": 168.0,
+                    "y": 96.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "bTjmAwze",
+            "key": "traitParagon",
+            "value": {
+                "xy": {
+                    "x": 192.0,
+                    "y": 96.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "01J1TtqN",
+            "key": "kindredPassiveIcon",
+            "value": {
+                "xy": {
+                    "x": 168.0,
+                    "y": 264.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 4.0
+            }
+        },
+        {
+            "id": "Y5C4bwx1",
+            "key": "nasusStackIcon",
+            "value": {
+                "xy": {
+                    "x": 215.0,
+                    "y": 265.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 4.0
+            }
+        },
+        {
+            "id": "M0XnF3PU",
+            "key": "threshScalingIcon",
+            "value": {
+                "xy": {
+                    "x": 191.0,
+                    "y": 264.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 4.0
+            }
+        },
+        {
+            "id": "qYuv0K0j",
+            "key": "sennaScalingIcon",
+            "value": {
+                "xy": {
+                    "x": 168.0,
+                    "y": 288.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 4.0
+            }
+        },
+        {
+            "id": "kWdKfmmw",
+            "key": "scaleLevel",
+            "value": {
+                "xy": {
+                    "x": 50.0,
+                    "y": 267.0
+                },
+                "wh": {
+                    "x": 18.0,
+                    "y": 15.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "v8ywOie1",
+            "key": "currencyStarShardsActive",
+            "value": {
+                "xy": {
+                    "x": 130.0,
+                    "y": 288.0
+                },
+                "wh": {
+                    "x": 32.0,
+                    "y": 32.0
+                },
+                "yAdjustment": 4.0
+            }
+        },
+        {
+            "id": "Vdjo_uoK",
+            "key": "currencyStarShardsInactive",
+            "value": {
+                "xy": {
+                    "x": 130.0,
+                    "y": 320.0
+                },
+                "wh": {
+                    "x": 32.0,
+                    "y": 32.0
+                },
+                "yAdjustment": 4.0
+            }
+        },
+        {
+            "id": "UKIhqG4E",
+            "key": "currencyStarShardsGlow",
+            "value": {
+                "xy": {
+                    "x": 147.0,
+                    "y": 364.0
+                },
+                "wh": {
+                    "x": 43.0,
+                    "y": 48.0
+                },
+                "yAdjustment": 4.0
+            }
+        },
+        {
+            "id": "J1rD5VUr",
+            "key": "chevronRight",
+            "value": {
+                "xy": {
+                    "x": 237.0,
+                    "y": 444.0
+                },
+                "wh": {
+                    "x": 7.0,
+                    "y": 10.0
+                },
+                "yAdjustment": -2.0
+            }
+        },
+        {
+            "id": "Bx6mMnd8",
+            "key": "chevronDown",
+            "value": {
+                "xy": {
+                    "x": 234.0,
+                    "y": 430.0
+                },
+                "wh": {
+                    "x": 10.0,
+                    "y": 7.0
+                },
+                "yAdjustment": -2.0
+            }
+        },
+        {
+            "id": "9_Y4EdVO",
+            "key": "rangedActive",
+            "value": {
+                "xy": {
+                    "x": 120.0,
+                    "y": 240.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 5.0
+            }
+        },
+        {
+            "id": "RyrjTYT4",
+            "key": "rangedInactive",
+            "value": {
+                "xy": {
+                    "x": 120.0,
+                    "y": 264.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 5.0
+            }
+        },
+        {
+            "id": "b0fO-5gZ",
+            "key": "meleeActive",
+            "value": {
+                "xy": {
+                    "x": 144.0,
+                    "y": 240.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 5.0
+            }
+        },
+        {
+            "id": "_p7Frnvb",
+            "key": "meleeInactive",
+            "value": {
+                "xy": {
+                    "x": 144.0,
+                    "y": 264.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 5.0
+            }
+        },
+        {
+            "id": "XigUYRAM",
+            "key": "scaleHealShield",
+            "value": {
+                "xy": {
+                    "x": 72.0,
+                    "y": 264.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 4.0
+            }
+        },
+        {
+            "id": "sShSFeCT",
+            "key": "OnHit",
+            "value": {
+                "xy": {
+                    "x": 97.0,
+                    "y": 266.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 5.0
+            }
+        },
+        {
+            "id": "e-dljuE_",
+            "key": "activeEffect",
+            "value": {
+                "xy": {
+                    "x": 169.0,
+                    "y": 217.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "43qisemF",
+            "key": "scaleAH",
+            "value": {
+                "xy": {
+                    "x": 48.0,
+                    "y": 48.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "ddN5z17e",
+            "key": "silverCoins",
+            "value": {
+                "xy": {
+                    "x": 192.0,
+                    "y": 240.0
+                },
+                "wh": {
+                    "x": 18.0,
+                    "y": 16.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "fLKWdTzx",
+            "key": "ornnIcon",
+            "value": {
+                "xy": {
+                    "x": 168.0,
+                    "y": 240.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 4.0
+            }
+        },
+        {
+            "id": "4z-75GxK",
+            "key": "tftCoinsIcon",
+            "value": {
+                "xy": {
+                    "x": 168.0,
+                    "y": 312.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "2d8GGIJJ",
+            "key": "traitSwiftshot",
+            "value": {
+                "xy": {
+                    "x": 216.0,
+                    "y": 312.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "Ya9F9xJU",
+            "key": "turboLightningGRAY",
+            "value": {
+                "xy": {
+                    "x": 197.0,
+                    "y": 355.0
+                },
+                "wh": {
+                    "x": 28.0,
+                    "y": 31.0
+                },
+                "yAdjustment": 6.0
+            }
+        },
+        {
+            "id": "Apm4RkcL",
+            "key": "turboLightningGREEN",
+            "value": {
+                "xy": {
+                    "x": 197.0,
+                    "y": 388.0
+                },
+                "wh": {
+                    "x": 28.0,
+                    "y": 31.0
+                },
+                "yAdjustment": 6.0
+            }
+        },
+        {
+            "id": "kwty0wFE",
+            "key": "turboLightningBLUE",
+            "value": {
+                "xy": {
+                    "x": 197.0,
+                    "y": 420.0
+                },
+                "wh": {
+                    "x": 28.0,
+                    "y": 31.0
+                },
+                "yAdjustment": 6.0
+            }
+        },
+        {
+            "id": "ROw93AgK",
+            "key": "turboLightningPURPLE",
+            "value": {
+                "xy": {
+                    "x": 227.0,
+                    "y": 355.0
+                },
+                "wh": {
+                    "x": 28.0,
+                    "y": 31.0
+                },
+                "yAdjustment": 6.0
+            }
+        },
+        {
+            "id": "n2802IEX",
+            "key": "turboLightningORANGE",
+            "value": {
+                "xy": {
+                    "x": 227.0,
+                    "y": 388.0
+                },
+                "wh": {
+                    "x": 28.0,
+                    "y": 31.0
+                },
+                "yAdjustment": 6.0
+            }
+        },
+        {
+            "id": "aURMJiH-",
+            "key": "doubleUpBadgeGRAY",
+            "value": {
+                "xy": {
+                    "x": 225.0,
+                    "y": 292.0
+                },
+                "wh": {
+                    "x": 28.0,
+                    "y": 31.0
+                },
+                "yAdjustment": 6.0
+            }
+        },
+        {
+            "id": "YXJtlh-x",
+            "key": "doubleUpBadgeBLUE",
+            "value": {
+                "xy": {
+                    "x": 197.0,
+                    "y": 323.0
+                },
+                "wh": {
+                    "x": 28.0,
+                    "y": 31.0
+                },
+                "yAdjustment": 6.0
+            }
+        },
+        {
+            "id": "tnxDBTYa",
+            "key": "doubleUpBadgeGREEN",
+            "value": {
+                "xy": {
+                    "x": 225.0,
+                    "y": 323.0
+                },
+                "wh": {
+                    "x": 28.0,
+                    "y": 31.0
+                },
+                "yAdjustment": 6.0
+            }
+        },
+        {
+            "id": "PcVN04QB",
+            "key": "doubleUpBadgePURPLE",
+            "value": {
+                "xy": {
+                    "x": 197.0,
+                    "y": 459.0
+                },
+                "wh": {
+                    "x": 28.0,
+                    "y": 31.0
+                },
+                "yAdjustment": 6.0
+            }
+        },
+        {
+            "id": "bk_p0DNr",
+            "key": "doubleUpBadgeORANGE",
+            "value": {
+                "xy": {
+                    "x": 225.0,
+                    "y": 458.0
+                },
+                "wh": {
+                    "x": 28.0,
+                    "y": 31.0
+                },
+                "yAdjustment": 6.0
+            }
+        },
+        {
+            "id": "VF0wJpia",
+            "key": "bounty",
+            "value": {
+                "xy": {
+                    "x": 154.0,
+                    "y": 432.0
+                },
+                "wh": {
+                    "x": 9.0,
+                    "y": 10.0
+                },
+                "yAdjustment": -1.0
+            }
+        },
+        {
+            "id": "XScoOEO5",
+            "key": "bigbounty",
+            "value": {
+                "xy": {
+                    "x": 214.0,
+                    "y": 234.0
+                },
+                "wh": {
+                    "x": 23.0,
+                    "y": 23.0
+                },
+                "yAdjustment": 3.0
+            }
+        },
+        {
+            "id": "0HqDxU25",
+            "key": "eternalsFire",
+            "value": {
+                "xy": {
+                    "x": 122.0,
+                    "y": 28.0
+                },
+                "wh": {
+                    "x": 16.0,
+                    "y": 22.0
+                },
+                "yAdjustment": 3.0
+            }
+        },
+        {
+            "id": "kGr5O2DA",
+            "key": "personalBest",
+            "value": {
+                "xy": {
+                    "x": 123.0,
+                    "y": 4.0
+                },
+                "wh": {
+                    "x": 16.0,
+                    "y": 16.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "9aOsKqy6",
+            "key": "titleIcon",
+            "value": {
+                "xy": {
+                    "x": 145.0,
+                    "y": 6.0
+                },
+                "wh": {
+                    "x": 22.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "TZJwMgSo",
+            "key": "tokenBronze",
+            "value": {
+                "xy": {
+                    "x": 123.0,
+                    "y": 59.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 5.0
+            }
+        },
+        {
+            "id": "MSP2XOKa",
+            "key": "tokenChallenger",
+            "value": {
+                "xy": {
+                    "x": 123.0,
+                    "y": 81.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 5.0
+            }
+        },
+        {
+            "id": "2oA2MjrR",
+            "key": "tokenDiamond",
+            "value": {
+                "xy": {
+                    "x": 123.0,
+                    "y": 103.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 5.0
+            }
+        },
+        {
+            "id": "4Z0XbDT-",
+            "key": "tokenGold",
+            "value": {
+                "xy": {
+                    "x": 123.0,
+                    "y": 125.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 5.0
+            }
+        },
+        {
+            "id": "xJkH7hip",
+            "key": "tokenGrandmaster",
+            "value": {
+                "xy": {
+                    "x": 145.0,
+                    "y": 103.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 5.0
+            }
+        },
+        {
+            "id": "5KVrWLt3",
+            "key": "tokenIron",
+            "value": {
+                "xy": {
+                    "x": 145.0,
+                    "y": 81.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 5.0
+            }
+        },
+        {
+            "id": "ZqqEvpNp",
+            "key": "tokenMaster",
+            "value": {
+                "xy": {
+                    "x": 145.0,
+                    "y": 59.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 5.0
+            }
+        },
+        {
+            "id": "JkZ3UKar",
+            "key": "tokenPlatinum",
+            "value": {
+                "xy": {
+                    "x": 145.0,
+                    "y": 37.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 5.0
+            }
+        },
+        {
+            "id": "8TI59qyh",
+            "key": "tokenSilver",
+            "value": {
+                "xy": {
+                    "x": 145.0,
+                    "y": 125.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 5.0
+            }
+        },
+        {
+            "id": "0ft9EpYB",
+            "key": "twoPeople",
+            "value": {
+                "xy": {
+                    "x": 102.0,
+                    "y": 125.0
+                },
+                "wh": {
+                    "x": 17.0,
+                    "y": 16.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "69oUjDyS",
+            "key": "heartGold",
+            "value": {
+                "xy": {
+                    "x": 2.0,
+                    "y": 146.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "KFeQMAqu",
+            "key": "miniAdaptiveForce",
+            "value": {
+                "xy": {
+                    "x": 0.0,
+                    "y": 169.0
+                },
+                "wh": {
+                    "x": 14.0,
+                    "y": 14.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "wZEGrRoE",
+            "key": "miniArmor",
+            "value": {
+                "xy": {
+                    "x": 15.0,
+                    "y": 169.0
+                },
+                "wh": {
+                    "x": 14.0,
+                    "y": 14.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "_notc8qf",
+            "key": "miniMR",
+            "value": {
+                "xy": {
+                    "x": 30.0,
+                    "y": 169.0
+                },
+                "wh": {
+                    "x": 14.0,
+                    "y": 14.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "y0YELr6f",
+            "key": "miniAD",
+            "value": {
+                "xy": {
+                    "x": 45.0,
+                    "y": 169.0
+                },
+                "wh": {
+                    "x": 14.0,
+                    "y": 14.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "bZOtGlFu",
+            "key": "miniAP",
+            "value": {
+                "xy": {
+                    "x": 60.0,
+                    "y": 169.0
+                },
+                "wh": {
+                    "x": 14.0,
+                    "y": 14.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "3Dx-Qksd",
+            "key": "miniHealth",
+            "value": {
+                "xy": {
+                    "x": 75.0,
+                    "y": 169.0
+                },
+                "wh": {
+                    "x": 14.0,
+                    "y": 14.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "BzR0oBa1",
+            "key": "tftXBGPArena",
+            "value": {
+                "xy": {
+                    "x": 26.0,
+                    "y": 146.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 4.0
+            }
+        },
+        {
+            "id": "I7_MHe0p",
+            "key": "tftXBGPYodle",
+            "value": {
+                "xy": {
+                    "x": 50.0,
+                    "y": 146.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 3.0
+            }
+        },
+        {
+            "id": "isZPndp-",
+            "key": "tftXBGPQuestionMark",
+            "value": {
+                "xy": {
+                    "x": 74.0,
+                    "y": 146.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 4.0
+            }
+        },
+        {
+            "id": "Hn0a9UWl",
+            "key": "tftXBGPQuestionMarkClick",
+            "value": {
+                "xy": {
+                    "x": 98.0,
+                    "y": 146.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 4.0
+            }
+        },
+        {
+            "id": "Zy6TU4Zp",
+            "key": "tftXBGPClock",
+            "value": {
+                "xy": {
+                    "x": 122.0,
+                    "y": 146.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 4.0
+            }
+        },
+        {
+            "id": "t9wGP1QR",
+            "key": "asolStackIcon",
+            "value": {
+                "xy": {
+                    "x": 192.0,
+                    "y": 288.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 5.0
+            }
+        },
+        {
+            "id": "uVKDYGRZ",
+            "key": "tftTroveToken",
+            "value": {
+                "xy": {
+                    "x": 166.0,
+                    "y": 338.0
+                },
+                "wh": {
+                    "x": 28.0,
+                    "y": 28.0
+                },
+                "yAdjustment": 5.0
+            }
+        },
+        {
+            "id": "-C7sCGDr",
+            "key": "tftNoDuplicates",
+            "value": {
+                "xy": {
+                    "x": 24.0,
+                    "y": 216.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "MYlrNrh6",
+            "key": "tftRolloverProtection",
+            "value": {
+                "xy": {
+                    "x": 0.0,
+                    "y": 216.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "Engs1lHw",
+            "key": "tftTrovePromise",
+            "value": {
+                "xy": {
+                    "x": 48.0,
+                    "y": 216.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "hEfNkyOh",
+            "key": "tftNoDuplicatesWhite",
+            "value": {
+                "xy": {
+                    "x": 96.0,
+                    "y": 216.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "NPA9MtMr",
+            "key": "tftRolloverProtectionWhite",
+            "value": {
+                "xy": {
+                    "x": 72.0,
+                    "y": 216.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 2.0
+            }
+        },
+        {
+            "id": "ydB5-Uud",
+            "key": "tftTroveTokenDisabled",
+            "value": {
+                "xy": {
+                    "x": 168.0,
+                    "y": 417.0
+                },
+                "wh": {
+                    "x": 28.0,
+                    "y": 28.0
+                },
+                "yAdjustment": 5.0
+            }
+        },
+        {
+            "id": "WVtk9aFZ",
+            "key": "tftTroveTokenFlat",
+            "value": {
+                "xy": {
+                    "x": 123.0,
+                    "y": 213.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "KXStJbG6",
+            "key": "goldCoinLargerPressed",
+            "value": {
+                "xy": {
+                    "x": 198.0,
+                    "y": 204.0
+                },
+                "wh": {
+                    "x": 32.0,
+                    "y": 28.0
+                },
+                "yAdjustment": -5.0
+            }
+        },
+        {
+            "id": "lvFRqFth",
+            "key": "stun",
+            "value": {
+                "xy": {
+                    "x": 0.0,
+                    "y": 240.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 4.0
+            }
+        },
+        {
+            "id": "TtkNmNbg",
+            "key": "itemadviceKDA",
+            "value": {
+                "xy": {
+                    "x": 96.0,
+                    "y": 240.0
+                },
+                "wh": {
+                    "x": 16.0,
+                    "y": 16.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "RtIQmcR6",
+            "key": "iconHyperlink",
+            "value": {
+                "xy": {
+                    "x": 216.0,
+                    "y": 23.0
+                },
+                "wh": {
+                    "x": 25.0,
+                    "y": 25.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "X9X-V8xo",
+            "key": "set10Headliner",
+            "value": {
+                "xy": {
+                    "x": 1.0,
+                    "y": 192.8000030517578
+                },
+                "wh": {
+                    "x": 23.0,
+                    "y": 23.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "w0zqPvWI",
+            "key": "promobannerHyperlink",
+            "value": {
+                "xy": {
+                    "x": 186.0,
+                    "y": 24.0
+                },
+                "wh": {
+                    "x": 24.0,
+                    "y": 24.0
+                },
+                "yAdjustment": 0.0
+            }
+        },
+        {
+            "id": "IA6KeD6i",
+            "key": "rankEMERALD",
+            "value": {
+                "xy": {
+                    "x": 203.0,
+                    "y": 63.0
+                },
+                "wh": {
+                    "x": 50.0,
+                    "y": 40.0
+                },
+                "yAdjustment": 10.0
+            }
+        },
+        {
+            "id": "6bjlJDry",
+            "key": "Smolder",
+            "value": {
+                "xy": {
+                    "x": 73.0,
+                    "y": 191.0
+                },
+                "wh": {
+                    "x": 20.0,
+                    "y": 20.0
+                },
+                "yAdjustment": 2.5
+            }
+        }
+    ]
+}

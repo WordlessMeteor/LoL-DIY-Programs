@@ -1,0 +1,1328 @@
+{
+    "id": 518,
+    "name": "万花通灵",
+    "alias": "Neeko",
+    "title": "妮蔻",
+    "shortBio": "妮蔻来自一个早已迷失的瓦斯塔亚部落。她可以借用别人的外表来伪装自己，融入人群，甚至通过影响别人的情绪状态，一瞬间就能化敌为友。没人知道妮蔻到底在哪儿——或者到底是谁，但是想要为难她的人会立刻见识到她的本色，感受原始的精神魔法倾泻在自己身上的痛苦。",
+    "tacticalInfo": {
+        "style": 8,
+        "difficulty": 1,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 3,
+        "mobility": 1,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/518.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/518.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/518.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/518.ogg",
+    "roles": [
+        "mage",
+        "support"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 518000,
+            "isBase": true,
+            "name": "万花通灵",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/518/518000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/518/518000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/518/518000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Neeko/Skins/Base/NeekoLoadscreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 518001,
+            "isBase": false,
+            "name": "冬境仙灵 妮蔻",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/518/518001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/518/518001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/518/518001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Neeko/Skins/Skin01/NeekoLoadscreen_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Neeko/Skins/Skin01/NeekoLoadscreen_1_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518001.png",
+            "chromas": [
+                {
+                    "id": 518002,
+                    "name": "焰阳仙灵 妮蔻",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "  "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 518003,
+                    "name": "新绿仙灵 妮蔻",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518003.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 518004,
+                    "name": "荧火仙灵 妮蔻",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518004.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 518005,
+                    "name": "温泉仙灵 妮蔻",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518005.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 518006,
+                    "name": "紫晶仙灵 妮蔻",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518006.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 518007,
+                    "name": "蔷薇仙灵 妮蔻",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518007.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        },
+                        {
+                            "region": "tencent",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 518008,
+                    "name": "夜幕仙灵 妮蔻",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518008.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 518009,
+                    "name": "极光仙灵 妮蔻",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518009.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 47
+                }
+            ],
+            "skinAugments": null,
+            "description": "妮蔻是一个古老且神秘的冬季精怪，以一种近似于孩童般的好奇看待着她周围的世界。她最近刚从魄罗之王的广袤领土上回来，并且变得沉迷于这个在她不在时崛起的文明。"
+        },
+        {
+            "id": 518010,
+            "isBase": false,
+            "name": "星之守护者 妮蔻",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/518/518010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/518/518010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/518/518010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Neeko/Skins/Skin10/NeekoLoadScreen_10.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Neeko/Skins/Skin10/NeekoLoadscreen_10_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 119
+                }
+            ],
+            "skinAugments": null,
+            "description": "妮蔻原本和阿狸同属一支星之守护者小队。她曾经目睹队友们在对抗佐伊的黑暗能量时惨遭陨落，自己便躲了起来——人们以为她也难逃一死。在星之守护者们即将迎来决战的前夕，妮蔻在他们面前现身了。这位大眼睛的冒险者发誓，她绝对不会再逃了。"
+        },
+        {
+            "id": 518011,
+            "isBase": false,
+            "name": "至臻 星之守护者 妮蔻",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/518/518011.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/518/518011.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/518/518011.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Neeko/Skins/Skin11/NeekoLoadscreen_11.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Neeko/Skins/Skin11/NeekoLoadscreen_11_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 119
+                }
+            ],
+            "skinAugments": null,
+            "description": "妮蔻和星之守护者们从那场战役中幸存下来，从此永远地改变了。面对惊人的胜利和残酷的牺牲，众人的友谊得以再造。他们将拯救迷失的同伴——也许不是现在，但终有一日——这个目标将由他们并肩实现。"
+        },
+        {
+            "id": 518012,
+            "isBase": false,
+            "name": "山海绘卷 妮蔻",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/518/518012.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/518/518012.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/518/518012.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Neeko/Skins/Skin12/NeekoLoadScreen_12.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518012.png",
+            "chromas": [
+                {
+                    "id": 518013,
+                    "name": "山海绘卷 妮蔻 朱红",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518013.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 518014,
+                    "name": "山海绘卷 妮蔻 赤金",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518014.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 518015,
+                    "name": "山海绘卷 妮蔻 湘妃",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518015.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 518016,
+                    "name": "山海绘卷 妮蔻 靛青",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518016.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 518017,
+                    "name": "山海绘卷 妮蔻 青莲",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518017.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 518018,
+                    "name": "山海绘卷 妮蔻 茶白",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518018.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 518019,
+                    "name": "山海绘卷 妮蔻 墨色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518019.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 518020,
+                    "name": "山海绘卷 妮蔻 秋色",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518020.png",
+                    "colors": [
+                        "#85827F",
+                        "#85827F"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 139
+                }
+            ],
+            "skinAugments": null,
+            "description": "妮蔻是山海绘卷中的善神。她还记得她的对立神——烬——在陷入疯狂之前的样子，并且相信她能在绘卷的魔法消逝且末日降临到多重宇宙之前，使烬重归善良，但她也知道，如此浩大的能量消耗也许会在这个过程中将她毁灭。"
+        },
+        {
+            "id": 518021,
+            "isBase": false,
+            "name": "至臻 星之守护者 妮蔻 (2022)",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/518/518021.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/518/518021.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/518/518021.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Neeko/Skins/Skin21/NeekoLoadScreen_21.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 119
+                }
+            ],
+            "skinAugments": null,
+            "description": "妮蔻和星之守护者们从那场战役中幸存下来，从此永远地改变了。面对惊人的胜利和残酷的牺牲，众人的友谊得以再造。他们将拯救迷失的同伴——也许不是现在，但终有一日——这个目标将由他们并肩实现。"
+        },
+        {
+            "id": 518022,
+            "isBase": false,
+            "name": "魅惑女巫 妮蔻",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/518/518022.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/518/518022.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/518/518022.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Neeko/Skins/Skin22/NeekoLoadScreen_22.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Neeko/Skins/Skin22/NeekoLoadscreen_22_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518022.png",
+            "chromas": [
+                {
+                    "id": 518023,
+                    "name": "魅惑女巫 妮蔻 热情化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518023.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 518024,
+                    "name": "魅惑女巫 妮蔻 清新化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518024.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 518025,
+                    "name": "魅惑女巫 妮蔻 典雅化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518025.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 518026,
+                    "name": "魅惑女巫 妮蔻 知性化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518026.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 518027,
+                    "name": "魅惑女巫 妮蔻 青春化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518027.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 518028,
+                    "name": "魅惑女巫 妮蔻 浪漫化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518028.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 518029,
+                    "name": "魅惑女巫 妮蔻 高冷化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518029.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 518030,
+                    "name": "魅惑女巫 妮蔻 纯真化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518030.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Halloween_b",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/11.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/11.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 172
+                }
+            ],
+            "skinAugments": null,
+            "description": "妮蔻从不记得为每年的庆祝活动买服装。她令人愉快的乔装来自她的变形天赋和变形咒语。等等……这个派对上有两个奈德丽？并没有。那只是妮蔻，在显摆她的经典恶作剧之一。"
+        },
+        {
+            "id": 518031,
+            "isBase": false,
+            "name": "妖怪艺术家 妮蔻",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/518/518031.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/518/518031.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/518/518031.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Neeko/Skins/Skin31/NeekoLoadScreen_31.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518031.png",
+            "chromas": [
+                {
+                    "id": 518032,
+                    "name": "妖怪艺术家 妮蔻 朱槿",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518032.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 518033,
+                    "name": "妖怪艺术家 妮蔻 碧荷",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518033.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 518034,
+                    "name": "妖怪艺术家 妮蔻 青矾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518034.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 518035,
+                    "name": "妖怪艺术家 妮蔻 群青",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518035.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 518036,
+                    "name": "妖怪艺术家 妮蔻 霞光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518036.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 518037,
+                    "name": "妖怪艺术家 妮蔻 丁香",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518037.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 518038,
+                    "name": "妖怪艺术家 妮蔻 青黛",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518038.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 518039,
+                    "name": "妖怪艺术家 妮蔻 月白",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/518/518039.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 197
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为一名崭露头角的年轻河童，妮蔻已经准备好在这座城市的墙壁上留下她神奇的印记。虽然她是名副其实的创意通灵，能够采用任何艺术风格，但她自己的标志性作品以其明亮、活泼的风格而闻名，为任何看到她涂鸦的人带去微笑。"
+        }
+    ],
+    "passive": {
+        "name": "天生幻魅",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Neeko/HUD/Icons2D/Neeko_P.png",
+        "abilityVideoPath": "champion-abilities/0518/ability_0518_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0518/ability_0518_P1.jpg",
+        "description": "妮蔻可以假扮成一名友方英雄。承受来自敌方英雄的伤害或是施放伤害型的技能都会打破这个假扮状态。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "盛开花种",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Neeko/HUD/Icons2D/Neeko_Q.png",
+            "abilityVideoPath": "champion-abilities/0518/ability_0518_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0518/ability_0518_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "妮蔻扔出一颗种子以造成伤害。种子在再次命中英雄或击杀单位时会盛开。",
+            "dynamicDescription": "妮蔻扔出一颗种子以造成<magicDamage>@ExplosionDamage@魔法伤害</magicDamage>。如果种子击杀了一个单位或命中了一个英雄或大型野怪，那么它会再次盛开，造成<magicDamage>@SecondDamage@魔法伤害</magicDamage>。最多可额外盛开2次。@SpellModifierDescriptionAppend@",
+            "range": [
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                60.0000,
+                70.0000,
+                80.0000,
+                90.0000,
+                85.0000
+            ],
+            "cooldownCoefficients": [
+                9.0000,
+                8.5000,
+                8.0000,
+                7.5000,
+                7.0000,
+                7.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "两生花影",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Neeko/HUD/Icons2D/Neeko_W.png",
+            "abilityVideoPath": "champion-abilities/0518/ability_0518_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0518/ability_0518_W1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "被动效果：妮蔻每第三次攻击造成额外魔法伤害。主动效果：妮蔻能够朝一个方向投射出一个幻像。",
+            "dynamicDescription": "<passive>被动：</passive>每第三次攻击造成<magicDamage>@PassiveBonusDamageCalc@额外魔法伤害</magicDamage>并使妮蔻获得持续@PassiveHasteDuration@秒的<speed>@PassiveHaste@%移动速度</speed>提升。<br><br><active>主动：</active>妮蔻<keywordStealth>隐形</keywordStealth>@StealthDuration@秒并投射出一个持续@CloneDuration@秒的复制体。妮蔻和复制体会获得持续@HasteDuration@秒的<speed>@Haste@%移动速度</speed> 。<br><br><rules>可通过使用“移动宠物点击”热键或通过<recast>再次施放</recast>这个技能来控制复制体。<br>复制体会镜像模仿她的技能施放、表情和回城。</rules>@SpellModifierDescriptionAppend@",
+            "range": [
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                16.0000,
+                15.0000,
+                14.0000,
+                13.0000,
+                12.0000,
+                12.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "缠结倒刺",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Neeko/HUD/Icons2D/Neeko_E.png",
+            "abilityVideoPath": "champion-abilities/0518/ability_0518_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0518/ability_0518_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "妮蔻投出一团倒刺，对它沿途的所有东西造成伤害和禁锢效果。如果倒刺击杀了一个敌人或穿过了一名英雄，就会变得更大、更快并且禁锢时间更长。",
+            "dynamicDescription": "妮蔻掷出一团倒刺，造成<magicDamage>@BaseDamage@魔法伤害</magicDamage>和@MinRootDuration@秒的<status>禁锢</status>效果。<br><br>倒刺会在命中一名敌方英雄后强化，长得更大、动得更快、并且<status>禁锢</status>时长变为@MaxRootDuration@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000,
+                80.0000,
+                60.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                11.5000,
+                11.0000,
+                10.5000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "怒放",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Neeko/HUD/Icons2D/Neeko_R.png",
+            "abilityVideoPath": "champion-abilities/0518/ability_0518_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0518/ability_0518_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "在短暂的准备阶段后，妮蔻会跃入空中。在着陆时，附近的敌人会受到伤害并被击飞。如果妮蔻处于假扮状态时，那么准备阶段不会被敌人看见。",
+            "dynamicDescription": "在短暂延迟后，妮蔻会跃入空中，对所有附近的敌人造成@DelayUntilExplosion@秒<status>击飞</status>。然后她会猛然着陆，对附近的所有敌人造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>和@StunDuration@秒<status>晕眩</status>效果。<br><br><rules>如果妮蔻处于假扮状态时，那么这个技能的准备阶段不会被敌人看见。妮蔻会在施放这个技能的@DelayBeforePassiveRemoval@秒后打破她的假扮状态。</rules>@SpellModifierDescriptionAppend@",
+            "range": [
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000,
+                600.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                105.0000,
+                90.0000,
+                90.0000,
+                90.0000,
+                90.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

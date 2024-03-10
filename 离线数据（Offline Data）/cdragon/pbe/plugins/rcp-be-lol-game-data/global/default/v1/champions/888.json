@@ -1,0 +1,1124 @@
+{
+    "id": 888,
+    "name": "Renata Glasc",
+    "alias": "Renata",
+    "title": "the Chem-Baroness",
+    "shortBio": "Renata Glasc rose from the ashes of her childhood home with nothing but her name and her parents' alchemical research. In the decades since, she has become Zaun's wealthiest chem-baron, a business magnate who built her power by tying everyone's interests to her own. Work with her, and be rewarded beyond measure. Work against her, and live to regret it. But everyone comes to her side, eventually.",
+    "tacticalInfo": {
+        "style": 8,
+        "difficulty": 2,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 2,
+        "durability": 1,
+        "crowdControl": 3,
+        "mobility": 1,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/888.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/888.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/888.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/888.ogg",
+    "roles": [
+        "support",
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 888000,
+            "isBase": true,
+            "name": "Renata Glasc",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/888/888000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/888/888000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/888/888000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renata/Skins/Base/RenataLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 888001,
+            "isBase": false,
+            "name": "Admiral Glasc",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/888/888001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/888/888001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/888/888001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renata/Skins/Skin01/RenataLoadscreen_1.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888001.png",
+            "chromas": [
+                {
+                    "id": 888002,
+                    "name": "Admiral Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 888003,
+                    "name": "Admiral Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888003.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888004,
+                    "name": "Admiral Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888004.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888005,
+                    "name": "Admiral Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888005.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888006,
+                    "name": "Admiral Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888006.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 888007,
+                    "name": "Admiral Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888007.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888008,
+                    "name": "Admiral Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888008.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888009,
+                    "name": "Admiral Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888009.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888011,
+                    "name": "Admiral Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888011.png",
+                    "colors": [
+                        "#FF70BA",
+                        "#464646"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2022 Steel Valkyrie event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 65
+                }
+            ],
+            "skinAugments": null,
+            "description": "Ambitious, cunning, cutthroat – these qualities served Admiral Glasc well during the Galactic Civil War. They serve her still, both on the front lines and in the weapons manufacturing industry. As leader of the Royal Space Military's R&D unit, Admiral Glasc will bring order to the galaxy with a firepower unmatched: whether it's dropping planetside or traversing distant stars, the universe is her chessboard, and she is the queen."
+        },
+        {
+            "id": 888010,
+            "isBase": false,
+            "name": "Fright Night Renata Glasc",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/888/888010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/888/888010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/888/888010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renata/Skins/Skin10/RenataLoadScreen_10.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888010.png",
+            "chromas": [
+                {
+                    "id": 888012,
+                    "name": "Fright Night Renata Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888012.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2022."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 888013,
+                    "name": "Fright Night Renata Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888013.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888014,
+                    "name": "Fright Night Renata Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888014.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888015,
+                    "name": "Fright Night Renata Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888015.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 888016,
+                    "name": "Fright Night Renata Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888016.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888017,
+                    "name": "Fright Night Renata Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888017.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888018,
+                    "name": "Fright Night Renata Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888018.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888019,
+                    "name": "Fright Night Renata Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888019.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 170
+                }
+            ],
+            "skinAugments": null,
+            "description": "Tender loving care and spoons of sugar spice<br>And all the other things that make a mommy nice<br>It choked her throat and lungs and showed her virtue's vice<br>Some chosen children love the dark, that's Mother Glasc's advice!"
+        },
+        {
+            "id": 888020,
+            "isBase": false,
+            "name": "La Ilusión Renata Glasc",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/888/888020.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/888/888020.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/888/888020.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renata/Skins/Skin20/RenataLoadScreen_20.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Renata/Skins/Skin20/RenataLoadscreen_20_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888020.png",
+            "chromas": [
+                {
+                    "id": 888022,
+                    "name": "La Ilusión Renata Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888022.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 888023,
+                    "name": "La Ilusión Renata Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888023.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888024,
+                    "name": "La Ilusión Renata Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888024.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888025,
+                    "name": "La Ilusión Renata Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888025.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888026,
+                    "name": "La Ilusión Renata Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888026.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888027,
+                    "name": "La Ilusión Renata Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888027.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 888028,
+                    "name": "La Ilusión Renata Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888028.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888029,
+                    "name": "La Ilusión Renata Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888029.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 888030,
+                    "name": "La Ilusión Renata Glasc",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/888/888030.png",
+                    "colors": [
+                        "#EE3B93",
+                        "#055939"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 198
+                }
+            ],
+            "skinAugments": null,
+            "description": "In a life filled with forced relationships, death freed Renata to form the family she always wanted. As the Enterprise Family's founder, the bond between members doesn't come from any sense of familial warmth but from honest calculation. As for her work, Renata looks at society and pulls whatever deathly strings she needs to make things more “efficient.”"
+        },
+        {
+            "id": 888021,
+            "isBase": false,
+            "name": "Prestige La Ilusión Renata Glasc",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/888/888021.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/888/888021.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/888/888021.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Renata/Skins/Skin21/RenataLoadScreen_21.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Renata/Skins/Skin21/RenataLoadscreen_21_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 198
+                }
+            ],
+            "skinAugments": null,
+            "description": "From fashion model to maven, Renata owns one of the largest fashion houses showing at the Gala. After all this time, enough critics have declared her \"death\" after a poor show that she wears the label proudly, invigorating the spirit of her company and makeshift family. In the end, only she controls the threads of life and death, on the runway at least."
+        }
+    ],
+    "passive": {
+        "name": "Leverage",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Renata/HUD/Icons2D/Renata_P.png",
+        "abilityVideoPath": "champion-abilities/0888/ability_0888_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0888/ability_0888_P1.jpg",
+        "description": "Renata's Attacks deal bonus damage and mark enemies. Renata's allies can damage marked enemies to deal bonus damage."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Handshake",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Renata/HUD/Icons2D/Renata_Q.png",
+            "abilityVideoPath": "champion-abilities/0888/ability_0888_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0888/ability_0888_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Renata sends out a missile rooting the first enemy hit, and can recast the ability to throw the unit in a direction.",
+            "dynamicDescription": "Renata sends out a missile from her arm, <status>Rooting</status> the first enemy hit for @RootDuration@ second and dealing <magicDamage>@TotalDamage@</magicDamage> <magicDamage>magic damage</magicDamage>.<br><br><recast>Recast:</recast> Renata <status>Pulls</status> the enemy in a direction, dealing <magicDamage>@TotalDamage@ magic damage</magicDamage> to enemies they are thrown into and <status>Stunning</status> for @StunDuration@ seconds if the thrown enemy is a champion.@SpellModifierDescriptionAppend@",
+            "range": [
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000,
+                900.0000
+            ],
+            "costCoefficients": [
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
+            ],
+            "cooldownCoefficients": [
+                16.0000,
+                16.0000,
+                16.0000,
+                16.0000,
+                16.0000,
+                16.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Bailout",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Renata/HUD/Icons2D/Renata_W.png",
+            "abilityVideoPath": "champion-abilities/0888/ability_0888_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0888/ability_0888_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Renata buffs an allied champion to fight harder, delaying their death and potentially saving them if they get a takedown.",
+            "dynamicDescription": "Renata infuses an ally champion, granting <attackSpeed>@ASCalc@ Attack Speed</attackSpeed> and <speed>@MSCalc@ Move Speed</speed> towards enemies, increasing to <attackSpeed>@FinalASCalc@ Attack Speed</attackSpeed> and <speed>@FinalMSCalc@ Move Speed</speed> over @Duration@ seconds. Takedowns refresh the duration of the buff.<br><br>If the ally would die, they instead return to full Health, which then decays over 3 seconds.<br><br>If they get a Takedown while decaying, they will be set to <healing>@TriumphPercent@% max Health</healing> and stop decaying.<br><br><rules>The Champion's death can be delayed by healing or similar effects while in the decaying state, but cannot be prevented unless the Champion gets a Takedown. Champions can only delay their death once.</rules>@SpellModifierDescriptionAppend@",
+            "range": [
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000
+            ],
+            "costCoefficients": [
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
+            ],
+            "cooldownCoefficients": [
+                28.0000,
+                27.0000,
+                26.0000,
+                25.0000,
+                24.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.2000,
+                "coefficient2": 0.0500
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Loyalty Program",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Renata/HUD/Icons2D/Renata_E.png",
+            "abilityVideoPath": "champion-abilities/0888/ability_0888_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0888/ability_0888_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Renata sends out a pair of chemtech missiles, shielding allies and damaging and slowing enemies hit.",
+            "dynamicDescription": "Renata sends out a pair of chemtech missiles, dealing <magicDamage>@TotalDamage@ magic damage</magicDamage> and <status>Slowing</status> surrounding enemies and enemies hit by 30% for @SlowDuration@ seconds. Allies hit gain <shield>@ShieldCalc@ Shield</shield> for @ShieldDuration@ seconds.@SpellModifierDescriptionAppend@",
+            "range": [
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                80.0000,
+                90.0000,
+                100.0000,
+                110.0000,
+                120.0000
+            ],
+            "cooldownCoefficients": [
+                14.0000,
+                13.0000,
+                12.0000,
+                11.0000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Hostile Takeover",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Renata/HUD/Icons2D/Renata_R.png",
+            "abilityVideoPath": "champion-abilities/0888/ability_0888_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0888/ability_0888_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Renata sends out a wave of chemicals, causing any enemies hit to go Berserk.",
+            "dynamicDescription": "Renata sends out a wave of chemicals, <status>Berserking</status> enemies for @BerserkDuration@ seconds, causing them to Attack the nearest unit, prioritizing their allies.<br><br>While <status>Berserk</status>, enemies gain <attackSpeed>@BonusAttackSpeed*100@% Attack Speed</attackSpeed>.@SpellModifierDescriptionAppend@",
+            "range": [
+                2000.0000,
+                2000.0000,
+                2000.0000,
+                2000.0000,
+                2000.0000,
+                2000.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                150.0000,
+                130.0000,
+                110.0000,
+                10.0000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.6000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

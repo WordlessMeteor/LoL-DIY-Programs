@@ -1,0 +1,68 @@
+[
+    {
+        "game_variation_display_name": "Active Element: Inferno",
+        "game_variation_decorated_name": "FireElement",
+        "game_variation_description": "At the beginning of each game, 1 out of 4 elements is randomly selected as the element of the game. Each element has a different effect. <br><br>Champions inside Inferno Hexes have 30% increased Attack Speed.<br>Qiyana is an Inferno champion this game.<br>",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TFT/StageIcons/Type_Inferno.png"
+    },
+    {
+        "game_variation_display_name": "Active Element: Mountain",
+        "game_variation_decorated_name": "MountainElement",
+        "game_variation_description": "At the beginning of each game, 1 out of 4 elements is randomly selected as the element of the game. Each element has a different effect. <br><br>Champions inside Mountain Hexes permanently gain 30 Max Health at the end of each Planning Phase<br>Qiyana is a Mountain champion this game.",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TFT/StageIcons/Type_Mountain.png"
+    },
+    {
+        "game_variation_display_name": "Active Element: Ocean",
+        "game_variation_decorated_name": "OceanElement",
+        "game_variation_description": "At the beginning of each game, 1 out of 4 elements is randomly selected as the element of the game. Each element has a different effect. <br><br>Champions inside Ocean Hexes start combat with 30 additional Mana.<br>Qiyana is an Ocean champion this game.",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TFT/StageIcons/Type_Ocean.png"
+    },
+    {
+        "game_variation_display_name": "Active Element: Cloud",
+        "game_variation_decorated_name": "WindElement",
+        "game_variation_description": "At the beginning of each game, 1 out of 4 elements is randomly selected as the element of the game. Each element has a different effect. <br><br>Champions inside Cloud Hexes permanently gain 15% chance to dodge enemy attacks.<br>Qiyana is a Cloud champion this game.",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TFT/StageIcons/Type_Wind.png"
+    },
+    {
+        "game_variation_display_name": "Medium Legends Galaxy",
+        "game_variation_decorated_name": "TFT3_GameVariation_BigLittleLegends",
+        "game_variation_description": "Little Legends are bigger and have +25 starting health.",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TFT/StageIcons/Galaxy_Small_BigLegends.png"
+    },
+    {
+        "game_variation_display_name": "Lilac Nebula",
+        "game_variation_decorated_name": "TFT3_GameVariation_FourCostFirstCarousel",
+        "game_variation_description": "The first carousel contains four cost units.",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TFT/StageIcons/Galaxy_Small_LilacNebula.png"
+    },
+    {
+        "game_variation_display_name": "Salvage World",
+        "game_variation_decorated_name": "TFT3_GameVariation_ItemsBreak",
+        "game_variation_description": "Selling a champion also breaks all of their finished items into components.",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TFT/StageIcons/Galaxy_Small_SalvageWorld.png"
+    },
+    {
+        "game_variation_display_name": "Little Little Legends",
+        "game_variation_decorated_name": "TFT3_GameVariation_LittlerLegends",
+        "game_variation_description": "Little Legends are smaller and faster, and start with only 85 health.",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TFT/StageIcons/Galaxy_Small_LittleLittleLegends.png"
+    },
+    {
+        "game_variation_display_name": "Normal Game",
+        "game_variation_decorated_name": "TFT3_GameVariation_None",
+        "game_variation_description": "No special rules",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TFT/StageIcons/Type_Normal.png"
+    },
+    {
+        "game_variation_display_name": "Dwarf Planet",
+        "game_variation_decorated_name": "TFT3_GameVariation_SmallerBoards",
+        "game_variation_description": "The nearest and farthest rows on every board are impassable.<br><br><rules>Units cannot be placed in impassable hexes during planning and cannot enter them during combat.</rules>",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TFT/StageIcons/Galaxy_Small_DwarfPlanet.png"
+    },
+    {
+        "game_variation_display_name": "Binary Star",
+        "game_variation_decorated_name": "TFT3_GameVariation_TwoItemMax",
+        "game_variation_description": "Champions can only equip two items.",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TFT/StageIcons/Galaxy_Small_BinaryStar.png"
+    }
+]

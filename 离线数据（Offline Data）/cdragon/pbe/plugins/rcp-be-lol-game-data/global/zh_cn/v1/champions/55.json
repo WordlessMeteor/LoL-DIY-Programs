@@ -1,0 +1,1739 @@
+{
+    "id": 55,
+    "name": "不祥之刃",
+    "alias": "Katarina",
+    "title": "卡特琳娜",
+    "shortBio": "果断坚决、心狠手辣，卡特琳娜是诺克萨斯的顶尖刺客。作为传奇将军杜·克卡奥的长女，她凭借出其不意的迅猛刺杀很快声名鹊起。强烈的野心曾经驱使她挑战重兵把守的暗杀目标，甚至不惜冒险让友军暴露在危险中。不过无论是怎样的任务，卡特琳娜都会毫不迟疑地在锯刃匕首的风暴中履行自己的使命。",
+    "tacticalInfo": {
+        "style": 10,
+        "difficulty": 3,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 1,
+        "mobility": 3,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/55.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/55.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/55.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/55.ogg",
+    "roles": [
+        "assassin",
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 55000,
+            "isBase": true,
+            "name": "不祥之刃",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/55/55000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/55/55000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/55/55000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Base/KatarinaLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 55001,
+            "isBase": false,
+            "name": "赏金猎人 卡特琳娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/55/55001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/55/55001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/55/55001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin01/KatarinaLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 55002,
+            "isBase": false,
+            "name": "红牌！退场！ 卡特琳娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/55/55002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/55/55002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/55/55002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin02/KatarinaLoadScreen_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin02/KatarinaLoadScreen_2_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 31
+                }
+            ],
+            "skinAugments": null,
+            "description": "那是一套统一的制服吗？不。一名裁判会在一场体育竞赛中手持一把巨大的匕首吗？不。你会在一场体育竞赛中与一名身着非统一制服手持一把巨大匕首的女士相争论吗？我想我们都知道答案。"
+        },
+        {
+            "id": 55003,
+            "isBase": false,
+            "name": "海贼魅影 卡特琳娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/55/55003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/55/55003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/55/55003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin03/KatarinaLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 49
+                }
+            ],
+            "skinAugments": null,
+            "description": "对外来者而言，比尔吉沃特的政治生态似乎充斥着卑鄙的恶棍和无耻的小偷。但贯穿始终的是错综复杂的忠诚、庄严的荣誉守则、和一种非常特定（如果带血的话）的做事方式。将其全部切断的人是卡特琳娜，一位剑刃大师。她会在适当的时刻让适当的舌头变安静……来换取适当的报酬。"
+        },
+        {
+            "id": 55004,
+            "isBase": false,
+            "name": "暗夜猫女 卡特琳娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/55/55004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/55/55004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/55/55004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin04/KatarinaLoadScreen_4.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin04/KatarinaLoadScreen_4_LE.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 88
+                }
+            ],
+            "skinAugments": null,
+            "description": "有些时候，卡特琳娜会深刻地质疑她刺杀任务的各个参数。而这一次，不知怎么地，并不是前文提到的那些时候。"
+        },
+        {
+            "id": 55005,
+            "isBase": false,
+            "name": "前线指挥官 卡特琳娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/55/55005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/55/55005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/55/55005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin05/KatarinaLoadScreen_5.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 177
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 55006,
+            "isBase": false,
+            "name": "沙漠风暴 卡特琳娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/55/55006.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/55/55006.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/55/55006.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin06/KatarinaLoadScreen_6.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 66
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 55007,
+            "isBase": false,
+            "name": "夺命美人 卡特琳娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/55/55007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/55/55007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/55/55007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin07/KatarinaLoadScreen_7.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 48
+                }
+            ],
+            "skinAugments": null,
+            "description": "卡特琳娜混搭了各种冰雪节风格的装扮从而隐藏自己的气味，她将这个节日作为高调暗杀的掩护。如果你听到了铃儿响叮当的声音……快逃。"
+        },
+        {
+            "id": 55008,
+            "isBase": false,
+            "name": "闭月之颜 貂蝉",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/55/55008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/55/55008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/55/55008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin08/KatarinaLoadScreen_8.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55008.png",
+            "chromas": [
+                {
+                    "id": 55011,
+                    "name": "闭月之颜 貂蝉 炫金莲华",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55011.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 53
+                }
+            ],
+            "skinAugments": null,
+            "description": "在公开反对她的家族后，卡特琳娜放弃了公主的生活而四处猎杀最伟大的三国英雄。在夜幕的掩护下消灭自己的敌人，她开始缓慢地实现自己的野心。"
+        },
+        {
+            "id": 55009,
+            "isBase": false,
+            "name": "源计划：雄心 卡特琳娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/55/55009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/55/55009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/55/55009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin09/KatarinaLoadscreen_9.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin09/KatarinaLoadscreen_9_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 18
+                }
+            ],
+            "skinAugments": null,
+            "description": "曾在基因动力叛军中担任中尉的卡特琳娜，在与艾希本尊当面对质以后回到了体系内。她的超刃匕首现在重新为源计划而战，但那些了解她的叛军依然心存希望，认为她会从内部为叛军而战。"
+        },
+        {
+            "id": 55010,
+            "isBase": false,
+            "name": "死亡誓约 卡特琳娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/55/55010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/55/55010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/55/55010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin10/KatarinaLoadScreen_10.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Halloween_b",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/11.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/11.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 87
+                }
+            ],
+            "skinAugments": null,
+            "description": "要完全将自身宣誓效忠于死亡，一个凡人必须做好献祭生灵的准备。卡特琳娜生前是一个熟练的刺客，将她不祥的刀刃们自愿抵押了出去，并且她所获得的幽魂般的诸多能力，使她能够轻易地进出于地底世界。"
+        },
+        {
+            "id": 55012,
+            "isBase": false,
+            "name": "战斗学院 卡特琳娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/55/55012.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/55/55012.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/55/55012.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin12/KatarinaLoadScreen_12.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin12/KatarinaLoadscreen_12_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55012.png",
+            "chromas": [
+                {
+                    "id": 55013,
+                    "name": "战斗学院 卡特琳娜 不死鸟",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55013.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 55014,
+                    "name": "战斗学院 卡特琳娜 盛典礼服",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55014.png",
+                    "colors": [
+                        "#111112",
+                        "#EAF1F4"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "在2019试炼事件期间获得的战利品专属。 "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 55015,
+                    "name": "战斗学院 卡特琳娜 天马",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55015.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55016,
+                    "name": "战斗学院 卡特琳娜 梦魇  ",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55016.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55017,
+                    "name": "战斗学院 卡特琳娜 黑龙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55017.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55018,
+                    "name": "战斗学院 卡特琳娜 火蜥蜴",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55018.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55019,
+                    "name": "战斗学院 卡特琳娜 狮鹫",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55019.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55020,
+                    "name": "战斗学院 卡特琳娜 九头蛇",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55020.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 113
+                }
+            ],
+            "skinAugments": null,
+            "description": "卡特琳娜是一个与杜朗德尔学院的政治活动保持远离的顽劣独行者。作为一个秉性好斗的二年级学生，她也是刺客俱乐部的一名顶级成员——这个俱乐部也是仅有的一个允许在学校批准的决斗中击杀对手的校内俱乐部。鲜有其他学生敢靠近她。"
+        },
+        {
+            "id": 55021,
+            "isBase": false,
+            "name": "腥红之月 卡特琳娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/55/55021.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/55/55021.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/55/55021.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin21/KatarinaLoadScreen_21.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55021.png",
+            "chromas": [
+                {
+                    "id": 55022,
+                    "name": "腥红之月 卡特琳娜 霞赤",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55022.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 55023,
+                    "name": "腥红之月 卡特琳娜 苍澜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55023.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55024,
+                    "name": "腥红之月 卡特琳娜 夜鸦",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55024.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55025,
+                    "name": "腥红之月 卡特琳娜 青木",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55025.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55026,
+                    "name": "腥红之月 卡特琳娜 落樱",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55026.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55027,
+                    "name": "腥红之月 卡特琳娜 鎏金",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55027.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55028,
+                    "name": "腥红之月 卡特琳娜 鹤雪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55028.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 12
+                }
+            ],
+            "skinAugments": null,
+            "description": "卡特琳娜是血月教派中的一位受人尊敬的女祭司，并且正如所有女祭司注定的那样，已经与她恶魔的血肉相融合了。然而血月的降临已经改变了恶魔和人类的本性，而卡特琳娜已经开始飞升为一个更新、更黑暗的形态。"
+        },
+        {
+            "id": 55029,
+            "isBase": false,
+            "name": "女帝 卡特琳娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/55/55029.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/55/55029.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/55/55029.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin29/KatarinaLoadScreen_29.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin29/KatarinaLoadscreen_29_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55029.png",
+            "chromas": [
+                {
+                    "id": 55030,
+                    "name": "女帝 卡特琳娜 纹章之刻印·英勇",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55030.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 55031,
+                    "name": "女帝 卡特琳娜 纹章之刻印·果决",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55031.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55032,
+                    "name": "女帝 卡特琳娜 纹章之刻印·无我",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55032.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55033,
+                    "name": "女帝 卡特琳娜 纹章之刻印·飒爽",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55033.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55034,
+                    "name": "女帝 卡特琳娜 纹章之刻印·敏锐",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55034.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55035,
+                    "name": "女帝 卡特琳娜 纹章之刻印·深谋",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55035.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55036,
+                    "name": "女帝 卡特琳娜 纹章·神圣加冕礼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55036.png",
+                    "colors": [
+                        "#FF80B1",
+                        "#9DFFEF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在女帝无双(2020)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 137
+                }
+            ],
+            "skinAugments": null,
+            "description": "卡特琳娜在她的女帝之国的角斗场内以冷酷无情的表现赢下了斯琪玛纹章。对于斯琪玛来说，要想摆脱其所在的卑微联盟，并成为该地区的合法领袖，它需要在“神圣加冕礼”上展现出同样居高临下的风采——并且卡特琳娜已经做好了绝对充分的准备，来巩固她作为“女帝中的女帝”的可怕状态。"
+        },
+        {
+            "id": 55037,
+            "isBase": false,
+            "name": "西部魔影 执行人 卡特琳娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/55/55037.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/55/55037.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/55/55037.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin37/KatarinaLoadScreen_37.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin37/KatarinaLoadscreen_37_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55037.png",
+            "chromas": [
+                {
+                    "id": 55038,
+                    "name": "西部魔影 执行人 卡特琳娜 温和",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55038.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 55039,
+                    "name": "西部魔影 执行人 卡特琳娜 慷慨",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55039.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55040,
+                    "name": "西部魔影 执行人 卡特琳娜 善良",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55040.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55041,
+                    "name": "西部魔影 执行人 卡特琳娜 忠诚",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55041.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 55042,
+                    "name": "西部魔影 执行人 卡特琳娜 节制",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55042.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55043,
+                    "name": "西部魔影 执行人 卡特琳娜 诚实",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55043.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55044,
+                    "name": "西部魔影 执行人 卡特琳娜 纯洁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55044.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55045,
+                    "name": "西部魔影 执行人 卡特琳娜 谦卑",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55045.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55046,
+                    "name": "西部魔影 执行人 卡特琳娜 虔信",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55046.png",
+                    "colors": [
+                        "#95ECFF",
+                        "#C33C3E"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在季中冠军赛(2022)西部魔影期间作为战利品专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "“我的人民被诈骗了。我的目标是收回我们的欠款，”外来者说道，并把她的匕首别在一张机械恶魔的通缉海报上。当她凝视着每个尘土飞扬的旅行者时，她的眼睛像烧焦的煤一样燃烧，“我听说你们都计划跳上硫磺铁路，先驱者们。如果你们要去打倒这个恶魔，我想加入进来。” "
+        },
+        {
+            "id": 55047,
+            "isBase": false,
+            "name": "花仙使者 卡特琳娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/55/55047.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/55/55047.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/55/55047.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin47/KatarinaLoadScreen_47.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin47/KatarinaLoadscreen_47_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55047.png",
+            "chromas": [
+                {
+                    "id": 55049,
+                    "name": "花仙使者 卡特琳娜 凤仙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55049.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 55050,
+                    "name": "花仙使者 卡特琳娜 玉带",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55050.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55051,
+                    "name": "花仙使者 卡特琳娜 霜降",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55051.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55052,
+                    "name": "花仙使者 卡特琳娜 榆绿",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55052.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55053,
+                    "name": "花仙使者 卡特琳娜 茜草",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55053.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55054,
+                    "name": "花仙使者 卡特琳娜 黑星",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55054.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55055,
+                    "name": "花仙使者 卡特琳娜 桃六点",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55055.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 55056,
+                    "name": "花仙使者 卡特琳娜 构月",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55056.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 55057,
+                    "name": "花仙使者 卡特琳娜 迷人幻翼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/55/55057.png",
+                    "colors": [
+                        "#866EFF",
+                        "#8AE1E8"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在花仙子(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 191
+                }
+            ],
+            "skinAugments": null,
+            "description": "尽管卡特琳娜是来自真相与暗影之哀怒花仙王庭的一名官方外交使节，但你根本无法从心胸狭窄的庭臣们对她投来的斜眼和不赞成的皱眉中了解到这一点。不管怎样：匕首在手，谜团未解，卡特琳娜自有打算。"
+        },
+        {
+            "id": 55048,
+            "isBase": false,
+            "name": "至臻 花仙使者 卡特琳娜",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/55/55048.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/55/55048.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/55/55048.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin48/KatarinaLoadScreen_48.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Katarina/Skins/Skin48/KatarinaLoadscreen_48_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 191
+                }
+            ],
+            "skinAugments": null,
+            "description": "别被蝴蝶把你给愚弄了：超凡脱俗的优雅可能是卡特琳娜的花招，但那种盛装打扮比她的匕首还要动人心弦。毕竟，时尚就是一种蜕变。可别落伍。"
+        }
+    ],
+    "passive": {
+        "name": "贪婪",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Katarina/HUD/Icons2D/Katarina_Passive.png",
+        "abilityVideoPath": "champion-abilities/0055/ability_0055_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0055/ability_0055_P1.jpg",
+        "description": "每当一名在过去3秒被卡特琳娜所伤害的敌方英雄阵亡时，卡特琳娜的技能的冷却时间就会显著减少。<br><br>如果卡特琳娜拾起一把<font color='#FFF673'>匕首</font>，她会用它来斩击附近的所有敌人以造成魔法伤害。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "弹射之刃",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Katarina/HUD/Icons2D/Katarina_Q.png",
+            "abilityVideoPath": "champion-abilities/0055/ability_0055_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0055/ability_0055_Q1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "卡特琳娜朝敌人扔出一把<font color='#FFF673'>匕首</font>，<font color='#FFF673'>匕首</font>会弹射到附近敌人身上，然后落到地面上。",
+            "dynamicDescription": "卡特琳娜投掷一把<keywordMajor>匕首</keywordMajor>，造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>给目标及附近的@MaxBounces@个敌人。<keywordMajor>匕首</keywordMajor>随后会弹落到主要目标身后的地面上。@SpellModifierDescriptionAppend@",
+            "range": [
+                625.0000,
+                625.0000,
+                625.0000,
+                625.0000,
+                625.0000,
+                625.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                11.0000,
+                10.0000,
+                9.0000,
+                8.0000,
+                7.0000,
+                7.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "伺机待发",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Katarina/HUD/Icons2D/Katarina_W.png",
+            "abilityVideoPath": "champion-abilities/0055/ability_0055_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0055/ability_0055_W1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "卡特琳娜获得爆发性的移动速度加成，同时投掷一把<font color='#FFF673'>匕首</font>到她正上方的空中。",
+            "dynamicDescription": "卡特琳娜扔出一把<keywordMajor>匕首</keywordMajor>至空中并获得在@Effect2Amount@秒里持续衰减的<speed>@Effect4Amount@%移动速度</speed>。@SpellModifierDescriptionAppend@",
+            "range": [
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000,
+                25000.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                15.0000,
+                14.0000,
+                13.0000,
+                12.0000,
+                11.0000,
+                11.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    1.2500,
+                    1.2500,
+                    1.2500,
+                    1.2500,
+                    1.2500,
+                    1.2500,
+                    1.2500
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    40.0000,
+                    50.0000,
+                    60.0000,
+                    70.0000,
+                    80.0000,
+                    90.0000,
+                    100.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "瞬步",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Katarina/HUD/Icons2D/Katarina_E.png",
+            "abilityVideoPath": "champion-abilities/0055/ability_0055_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0055/ability_0055_E1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "卡特琳娜立刻闪烁到目标处，如果目标是敌人，则她会对目标造成伤害，否则会对距她最近的敌人造成伤害。",
+            "dynamicDescription": "卡特琳娜在眨眼间闪烁到目标友军、敌人、或<keywordMajor>匕首</keywordMajor>处。如果目标是敌人，那么卡特琳娜会造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>——如果是其它情况，那么她会对范围内距她最近的敌人造成伤害。<br><br>拾取一把<keywordMajor>匕首</keywordMajor>将使这个技能的冷却时间缩短<scaleLevel>@DaggerCooldownReduction@</scaleLevel>秒(<scaleLevel>@TooltipDaggerReduction@</scaleLevel>)。卡特琳娜可以闪烁到目标附近的任一位置。@SpellModifierDescriptionAppend@",
+            "range": [
+                725.0000,
+                725.0000,
+                725.0000,
+                725.0000,
+                725.0000,
+                725.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                14.0000,
+                12.5000,
+                11.0000,
+                9.5000,
+                8.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "死亡莲华",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Katarina/HUD/Icons2D/Katarina_R.png",
+            "abilityVideoPath": "champion-abilities/0055/ability_0055_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0055/ability_0055_R1.jpg",
+            "cost": "无消耗",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "卡特琳娜化身为一道剑刃飓风，以无与伦比的速度对周围最多三个敌方英雄造成巨量魔法伤害。",
+            "dynamicDescription": "卡特琳娜化身为一道剑刃飓风，快速用一连串匕首攻击相距最近的3名敌方英雄。每把匕首造成<magicDamage>@DamageCalc@魔法伤害</magicDamage>和<physicalDamage>@ADDamageCalc@物理伤害</physicalDamage>，并施加持续@GrievousDuration@秒的@GrievousAmount*100@%重伤效果。<br><br>在@Duration@秒里持续对每个敌方英雄造成的总伤害：<magicDamage>@TotalDamageCalc@魔法伤害</magicDamage>和<physicalDamage>@TotalADDamageCalc@物理伤害</physicalDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                550.0000,
+                550.0000,
+                550.0000,
+                550.0000,
+                550.0000,
+                550.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                90.0000,
+                60.0000,
+                45.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

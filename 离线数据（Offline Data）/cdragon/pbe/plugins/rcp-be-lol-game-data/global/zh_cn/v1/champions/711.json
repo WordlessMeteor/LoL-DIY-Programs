@@ -1,0 +1,955 @@
+{
+    "id": 711,
+    "name": "愁云使者",
+    "alias": "Vex",
+    "title": "薇古丝",
+    "shortBio": "在暗影岛的黑色中心，一个约德尔人孤独地踯躅在鬼魅的浓雾中，在那片阴郁的惨象中安然自得。薇古丝有着取之不尽的少年烦恼，身后还跟着一个强大的黑影，她为自己打造了一片阴郁的小天地，沉浸其中，远离 “正常人”世界里恶心的欢快气氛。虽然她没什么远大志向，但她会毫不犹豫地抹杀任何色彩和欢笑，用她的颓废魔法阻止所有试图闯入的人。",
+    "tacticalInfo": {
+        "style": 9,
+        "difficulty": 2,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 2,
+        "crowdControl": 2,
+        "mobility": 2,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/711.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/711.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/711.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/711.ogg",
+    "roles": [
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 711000,
+            "isBase": true,
+            "name": "愁云使者",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/711/711000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/711/711000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/711/711000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Vex/Skins/Base/VexLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 711001,
+            "isBase": false,
+            "name": "黎明使者 薇古丝",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/711/711001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/711/711001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/711/711001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Vex/Skins/Skin01/VexLoadScreen_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Vex/Skins/Skin01/VexLoadscreen_1_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711001.png",
+            "chromas": [
+                {
+                    "id": 711002,
+                    "name": "黎明使者 薇古丝 阳辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 711003,
+                    "name": "黎明使者 薇古丝 碧辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711003.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 711004,
+                    "name": "黎明使者 薇古丝 炎辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711004.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 711005,
+                    "name": "黎明使者 薇古丝 宁辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711005.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 711006,
+                    "name": "黎明使者 薇古丝 霞辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711006.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 711007,
+                    "name": "黎明使者 薇古丝 幻辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711007.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 711008,
+                    "name": "黎明使者 薇古丝 黯辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711008.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 711009,
+                    "name": "黎明使者 薇古丝 生辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711009.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#A67400"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 193
+                }
+            ],
+            "skinAugments": null,
+            "description": "薇古丝在白天降临到黑暗中寻找秩序，并在晚上看着她的影子追逐地平线下的太阳来打发时间。作为一个异常尖酸且缺乏干劲的神，她发现整个混沌和秩序的“事情”都非常无聊。"
+        },
+        {
+            "id": 711010,
+            "isBase": false,
+            "name": "至高天 薇古丝",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/711/711010.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/711/711010.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/711/711010.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Vex/Skins/Skin10/VexLoadScreen_10.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Vex/Skins/Skin10/VexLoadscreen_10_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711010.png",
+            "chromas": [
+                {
+                    "id": 711011,
+                    "name": "至高天 薇古丝 狂焰",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711011.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 711012,
+                    "name": "至高天 薇古丝 华耀",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711012.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 711013,
+                    "name": "至高天 薇古丝 寒芒",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711013.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 711014,
+                    "name": "至高天 薇古丝 青炬",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711014.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 711015,
+                    "name": "至高天 薇古丝 幻耀",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711015.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 711016,
+                    "name": "至高天 薇古丝 荧煌",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711016.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 711017,
+                    "name": "至高天 薇古丝 灵辉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711017.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 711018,
+                    "name": "至高天 薇古丝 胧光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711018.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 711019,
+                    "name": "至高天 薇古丝 霓虹耀斑",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/711/711019.png",
+                    "colors": [
+                        "#FF655B",
+                        "#95E237"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2022)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 186
+                }
+            ],
+            "skinAugments": null,
+            "description": "薇古丝不需要任何人。她一个人长大，自给自足，被大部分人所厌烦着。她的位面的毁灭几乎没有让她眨眼，但她新的至高天力量确实给了她一个想法。通过将力量赋予自己的影子，她终于有了一个可以容忍的同伴。薇古丝可能不需要任何人，但话说回来，祸不单行。 "
+        }
+    ],
+    "passive": {
+        "name": "终焉暮气",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Vex/HUD/Icons2D/Icons_Vex_Passive.png",
+        "abilityVideoPath": "champion-abilities/0711/ability_0711_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0711/ability_0711_P1.jpg",
+        "description": "薇古丝周期性地获得强化，使她的下一个基础技能可以恐惧敌人并打断冲刺。当一名附近的敌人冲刺时，薇古丝会施加一个标记，该标记可被消耗来造成额外伤害，并缩短她强化状态的冷却时间。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "寒心波云",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Vex/HUD/Icons2D/Icons_Vex_Q01.png",
+            "abilityVideoPath": "champion-abilities/0711/ability_0711_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0711/ability_0711_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "发射一个可在飞行途中提速的伤害型飞弹。",
+            "dynamicDescription": "薇古丝发射一道迷雾波，造成<magicDamage>@QDamageCalc@魔法伤害</magicDamage>。在短暂的延迟后，迷雾波会变得更小更快。<br><br>在命中敌人时会消耗其身上的<keywordMajor>暮气</keywordMajor>效果。@SpellModifierDescriptionAppend@",
+            "range": [
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000,
+                1200.0000
+            ],
+            "costCoefficients": [
+                45.0000,
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                65.0000
+            ],
+            "cooldownCoefficients": [
+                8.0000,
+                7.0000,
+                6.0000,
+                5.0000,
+                4.0000,
+                4.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "生人勿近",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Vex/HUD/Icons2D/Icons_Vex_W01.png",
+            "abilityVideoPath": "champion-abilities/0711/ability_0711_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0711/ability_0711_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "获得一个护盾并伤害附近的敌人们。",
+            "dynamicDescription": "薇古丝获得持续@ShieldDuration@秒的<shield>@ShieldCalc@护盾值</shield>并且放射一道冲击波来造成<magicDamage>@WDamageCalc@魔法伤害</magicDamage>。<br><br>在命中敌人时会消耗其身上的<keywordMajor>暮气</keywordMajor>效果。@SpellModifierDescriptionAppend@",
+            "range": [
+                475.0000,
+                475.0000,
+                475.0000,
+                475.0000,
+                475.0000,
+                475.0000
+            ],
+            "costCoefficients": [
+                75.0000,
+                75.0000,
+                75.0000,
+                75.0000,
+                75.0000,
+                75.0000
+            ],
+            "cooldownCoefficients": [
+                16.0000,
+                15.0000,
+                14.0000,
+                13.0000,
+                12.0000,
+                11.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "溟濛渐染",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Vex/HUD/Icons2D/Icons_Vex_E01.png",
+            "abilityVideoPath": "champion-abilities/0711/ability_0711_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0711/ability_0711_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "召唤一个伤害性的减速地带，来对敌人们施加【暮气】效果。",
+            "dynamicDescription": "薇古丝命令【黑影】飞向一个区域，在其飞行时提升其体型。在抵达后，它会造成<magicDamage>@EDamageCalc@魔法伤害</magicDamage>和持续@SlowDuration@秒的@SlowAmount*100@%<status>减速</status>。<br><br>对命中的敌人们施加<keywordMajor>暮气</keywordMajor>效果。@SpellModifierDescriptionAppend@",
+            "range": [
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                80.0000,
+                90.0000,
+                100.0000,
+                110.0000,
+                110.0000
+            ],
+            "cooldownCoefficients": [
+                13.0000,
+                13.0000,
+                13.0000,
+                13.0000,
+                13.0000,
+                13.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "愁煞",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Vex/HUD/Icons2D/Icons_Vex_R01.png",
+            "abilityVideoPath": "champion-abilities/0711/ability_0711_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0711/ability_0711_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "射出一个飞弹来标记一名敌方英雄。再次施放可冲刺至该英雄处并造成伤害。",
+            "dynamicDescription": "黑影激动地向前涌动，造成<magicDamage>@spell.VexR:RDamageCalc@魔法伤害</magicDamage>并将命中的第一位敌方英雄标记4秒。<br><br><recast>再次施放</recast>：冲刺至被标记的英雄，在抵达时造成<magicDamage>@spell.VexR:RecastDamageCalc@魔法伤害</magicDamage>。<br><br>如果被标记的英雄在受到此技能伤害后的@spell.VexR:TakedownWindow@秒内阵亡，那么这个技能的冷却时间会暂时重置。@SpellModifierDescriptionAppend@",
+            "range": [
+                2000.0000,
+                2500.0000,
+                3000.0000,
+                3000.0000,
+                3000.0000,
+                3000.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                140.0000,
+                120.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

@@ -1,0 +1,1689 @@
+{
+    "id": 267,
+    "name": "唤潮鲛姬",
+    "alias": "Nami",
+    "title": "娜美",
+    "shortBio": "娜美是一名强大年轻的瓦斯塔亚海族。当鲛人族与巨神族自古订立的契约被打破，她是第一个离开海洋、踏上陆地的人。她别无选择，只能挺身而出担此重任，完成神圣的仪式以确保族人的安全。在这崭新时代的混乱浪潮中，娜美以无比的决心和无畏的斗志面对未知的明天，用手中的唤潮者之杖召唤来自海洋的力量。",
+    "tacticalInfo": {
+        "style": 9,
+        "difficulty": 2,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 1,
+        "durability": 1,
+        "crowdControl": 3,
+        "mobility": 1,
+        "utility": 2
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/267.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/267.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/267.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/267.ogg",
+    "roles": [
+        "support",
+        "mage"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 267000,
+            "isBase": true,
+            "name": "唤潮鲛姬",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/267/267000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/267/267000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/267/267000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nami/Skins/Base/NamiLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 267001,
+            "isBase": false,
+            "name": "锦鲤 娜美",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/267/267001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/267/267001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/267/267001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nami/Skins/Skin01/NamiLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267001.png",
+            "chromas": [
+                {
+                    "id": 267004,
+                    "name": "锦鲤 娜美 黄金鲤",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267004.png",
+                    "colors": [
+                        "#CF8730",
+                        "#3B899A"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 267005,
+                    "name": "锦鲤 娜美 红白鲤",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267005.png",
+                    "colors": [
+                        "#5C8694",
+                        "#743449"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 267006,
+                    "name": "锦鲤 娜美 幻紫鲤",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267006.png",
+                    "colors": [
+                        "#8A397B",
+                        "#18214A"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 267002,
+            "isBase": false,
+            "name": "河水之灵 娜美",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/267/267002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/267/267002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/267/267002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nami/Skins/skin02/NamiLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 72
+                }
+            ],
+            "skinAugments": null,
+            "description": "曾经，一位年轻的农夫被森林中传来的美妙音乐所吸引，他追随音乐的源头遇到了森林中的河神。被她的美丽所吸引，年轻的农夫从此沉睡于美丽的梦境中，从此再也没有出现在尘世之中。"
+        },
+        {
+            "id": 267003,
+            "isBase": false,
+            "name": "鲛妮座人 娜美",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/267/267003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/267/267003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/267/267003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nami/Skins/Skin03/NamiLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 168
+                }
+            ],
+            "skinAugments": null,
+            "description": "娜美其实并不明白“阿福”是什么意思。她只知道，人们要她披上自己最华丽的外衣，向伟大的海牛阿福致敬。她很开心能和海牛伙伴与海牛爱好者一起玩耍，可她就是想不通，自己为什么要被塞到大炮里发射出去。"
+        },
+        {
+            "id": 267007,
+            "isBase": false,
+            "name": "海皇姬 娜美",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/267/267007.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/267/267007.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/267/267007.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nami/Skins/skin07/NamiLoadscreen_7.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 108
+                }
+            ],
+            "skinAugments": null,
+            "description": "“我看见过她！在那个光明终结、仅有寒冷黑暗的海水作伴的地方，她出现在我面前——一个无言、古老的东西，闪动着一种怪异的光泽，在黑暗中扭动着怪异的身影。”"
+        },
+        {
+            "id": 267008,
+            "isBase": false,
+            "name": "SKT T1 娜美",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/267/267008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/267/267008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/267/267008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nami/Skins/Skin08/NamiLoadscreen_8.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 6
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此致敬Wolf在2016全球总决赛中使用娜美的夺胜表现。这是Wolf第二个世界冠军皮肤，前一次是2015全球总决赛SKT夺冠。"
+        },
+        {
+            "id": 267009,
+            "isBase": false,
+            "name": "源代码 娜美",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/267/267009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/267/267009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/267/267009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nami/Skins/Skin09/NamiLoadScreen_9.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267009.png",
+            "chromas": [
+                {
+                    "id": 267010,
+                    "name": "源代码 娜美 灭火娇娃",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267010.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 267011,
+                    "name": "源代码 娜美 抗毒娇娃",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267011.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 267012,
+                    "name": "源代码 娜美 救灾娇娃",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267012.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 267013,
+                    "name": "源代码 娜美 消暑娇娃",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267013.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 267014,
+                    "name": "源代码 娜美 造景娇娃",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267014.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 17
+                }
+            ],
+            "skinAugments": null,
+            "description": "娜美是一个水中搜救型医疗机器人，她的制造商被一次激进的企业收购所收购，而她也被源代码公司的指令不可逆转地改变了。目前，她仍延续了她的首要功能……然而她的行为已变得逐渐古怪起来。"
+        },
+        {
+            "id": 267015,
+            "isBase": false,
+            "name": "玉剑传说 寒潭夭夭",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/267/267015.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/267/267015.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/267/267015.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nami/Skins/Skin15/NamiLoadScreen_15.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Nami/Skins/Skin15/NamiLoadscreen_15_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267015.png",
+            "chromas": [
+                {
+                    "id": 267016,
+                    "name": "玉剑传说 寒潭夭夭 胭脂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267016.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 267017,
+                    "name": "玉剑传说 寒潭夭夭 丁香",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267017.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 267018,
+                    "name": "玉剑传说 寒潭夭夭 碧空",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267018.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 267019,
+                    "name": "玉剑传说 寒潭夭夭 黄栌",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267019.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 267020,
+                    "name": "玉剑传说 寒潭夭夭 紫檀",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267020.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 267021,
+                    "name": "玉剑传说 寒潭夭夭 绿柳",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267021.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 267022,
+                    "name": "玉剑传说 寒潭夭夭 鹤雪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267022.png",
+                    "colors": [
+                        "#E0FFFF",
+                        "#C50041"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2019期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 267023,
+                    "name": "玉剑传说 寒潭夭夭 珠光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267023.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 81
+                }
+            ],
+            "skinAugments": null,
+            "description": "在舞剑仙被仙宫之主击败的同时，封印着无影那股龙力的力量也被削弱了……这使得他的一些法力泄露到了凡间。寒潭夭夭曾是一条平平无奇的鱼，梦想着成为龙。而她得到了这股法力的一部分，并且发现了她真正的形态已经开始觉醒。"
+        },
+        {
+            "id": 267024,
+            "isBase": false,
+            "name": "双鱼星神 娜美",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/267/267024.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/267/267024.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/267/267024.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nami/Skins/Skin24/NamiLoadScreen_24.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267024.png",
+            "chromas": [
+                {
+                    "id": 267025,
+                    "name": "双鱼星神 娜美 战神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267025.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 267026,
+                    "name": "双鱼星神 娜美 主神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267026.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 267027,
+                    "name": "双鱼星神 娜美 猎神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267027.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 267028,
+                    "name": "双鱼星神 娜美 梦神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267028.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 267029,
+                    "name": "双鱼星神 娜美 美神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267029.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 267030,
+                    "name": "双鱼星神 娜美 冥神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267030.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 267031,
+                    "name": "双鱼星神 娜美 乐神星魂",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267031.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 43
+                }
+            ],
+            "skinAugments": null,
+            "description": "娜美是带来生命的使者。随着新的恒星和星座的诞生，会出现很多新诞生的、冰冷且无生命的岩石和星球，而娜美就负责将“生命力”的种子散播到这些岩石和星球中。"
+        },
+        {
+            "id": 267032,
+            "isBase": false,
+            "name": "魅惑女巫 娜美",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/267/267032.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/267/267032.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/267/267032.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nami/Skins/Skin32/NamiLoadScreen_32.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Nami/Skins/Skin32/NamiLoadscreen_32_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267032.png",
+            "chromas": [
+                {
+                    "id": 267033,
+                    "name": "魅惑女巫 娜美 热情化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267033.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 267034,
+                    "name": "魅惑女巫 娜美 清新化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267034.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 267035,
+                    "name": "魅惑女巫 娜美 青春化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267035.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 267036,
+                    "name": "魅惑女巫 娜美 知性化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267036.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 267037,
+                    "name": "魅惑女巫 娜美 浪漫化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267037.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 267038,
+                    "name": "魅惑女巫 娜美 高冷化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267038.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 267039,
+                    "name": "魅惑女巫 娜美 纯真化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267039.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 267040,
+                    "name": "魅惑女巫 娜美 典雅化身",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267040.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Halloween_b",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/11.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/11.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 172
+                }
+            ],
+            "skinAugments": null,
+            "description": "当娜美带着潮汐一起去参加派对时，咬苹果无疑变得更具挑战性了。苹果不会反咬一口，但南瓜鱼会！"
+        },
+        {
+            "id": 267041,
+            "isBase": false,
+            "name": "太空律动 “魔音海妖” 娜美",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/267/267041.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/267/267041.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/267/267041.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nami/Skins/Skin41/NamiLoadScreen_41.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267041.png",
+            "chromas": [
+                {
+                    "id": 267043,
+                    "name": "“魔音海妖” 娜美 草莓弹弹乐",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267043.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 267044,
+                    "name": "“魔音海妖” 娜美 凤梨弹弹乐",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267044.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 267045,
+                    "name": "“魔音海妖” 娜美 猕猴桃弹弹乐",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267045.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 267046,
+                    "name": "“魔音海妖” 娜美 蓝果弹弹乐",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267046.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 267047,
+                    "name": "“魔音海妖” 娜美 蜜桃弹弹乐",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267047.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 267048,
+                    "name": "“魔音海妖” 娜美 酸梅弹弹乐",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267048.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 267049,
+                    "name": "“魔音海妖” 娜美 椰果弹弹乐",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267049.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 267050,
+                    "name": "“魔音海妖” 娜美 彩虹弹弹乐",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267050.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 144
+                }
+            ],
+            "skinAugments": null,
+            "description": "娜美将自己塑造成了宇宙热浴盆的塞壬海妖。她的歌曲已经吸引了来自银河系的人群涌向她，只为一睹她的其中一场舞台表演。因此，当“酱酱舞会”的组织者请她在最顶级的星际迪斯科表演她的歌曲时，她的那句充满热情的“好！”脱口而出。"
+        },
+        {
+            "id": 267042,
+            "isBase": false,
+            "name": "至臻 太空律动 “魔音海妖” 娜美",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/267/267042.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/267/267042.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/267/267042.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nami/Skins/Skin42/NamiLoadScreen_42.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Nami/Skins/Skin42/NamiLoadscreen_42_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 144
+                }
+            ],
+            "skinAugments": null,
+            "description": "娜美长期以来一直在为大盛会提供引人注目的外观，并且从未跟随过当下的流行趋势。本季，她展示了她作为音乐人的一面，希望将这场秀推向一个更律动的新高度。有像大盛会一样漂亮的舞台，为什么不在上面跳舞呢？"
+        },
+        {
+            "id": 267051,
+            "isBase": false,
+            "name": "魔女 娜美",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/267/267051.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/267/267051.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/267/267051.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Nami/Skins/Skin51/NamiLoadScreen_51.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Nami/Skins/Skin51/NamiLoadScreen_51_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267051.png",
+            "chromas": [
+                {
+                    "id": 267052,
+                    "name": "魔女 娜美 愤怒",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267052.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 267053,
+                    "name": "魔女 娜美 欺骗",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267053.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 267054,
+                    "name": "魔女 娜美 嫉妒",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267054.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 267055,
+                    "name": "魔女 娜美 虚荣",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267055.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 267056,
+                    "name": "魔女 娜美 饕餮",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267056.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 267057,
+                    "name": "魔女 娜美 不畏",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/267/267057.png",
+                    "colors": [
+                        "#429184",
+                        "#942861"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 92
+                }
+            ],
+            "skinAugments": null,
+            "description": "它们从深海中召唤娜美，它们的声音带着一个承诺，许以她前所未知的更强力量。娜美需要做的就是供养它。她现在已经放弃了她的誓言，她的魔女集会，在永恒之森的浑浊水道下方进行了无数个黑夜的潜伏，寻找着她对利维坦的下一个祭品。"
+        }
+    ],
+    "passive": {
+        "name": "踏浪之行",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Nami/HUD/Icons2D/NamiPassive.png",
+        "abilityVideoPath": "champion-abilities/0267/ability_0267_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0267/ability_0267_P1.jpg",
+        "description": "每当娜美的技能命中友方英雄时，他们都会暂时获得移动速度加成。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "碧波之牢",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Nami/HUD/Icons2D/NamiQ.png",
+            "abilityVideoPath": "champion-abilities/0267/ability_0267_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0267/ability_0267_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "朝着目标区域放出一个泡泡，对命中的所有敌人造成伤害和晕眩效果。",
+            "dynamicDescription": "娜美掷出一个泡泡，<status>晕眩</status>敌人@Effect2Amount@秒并造成<magicDamage>@TotalDamageTT@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                875.0000,
+                875.0000,
+                875.0000,
+                875.0000,
+                875.0000,
+                875.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                11.0000,
+                10.0000,
+                9.0000,
+                8.0000,
+                8.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.5000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    20.0000,
+                    75.0000,
+                    130.0000,
+                    185.0000,
+                    240.0000,
+                    295.0000,
+                    350.0000
+                ],
+                "Effect2Amount": [
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "冲击之潮",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Nami/HUD/Icons2D/NamiW.png",
+            "abilityVideoPath": "champion-abilities/0267/ability_0267_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0267/ability_0267_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "释放一股在友方英雄和敌方英雄之间交替流动的水流，治疗友军并伤害敌军。",
+            "dynamicDescription": "娜美释放一股在友方英雄和敌方英雄之间交替弹跳的水流。每个目标只会被弹到一次，并且水流至多可弹@Effect2Amount@个目标。<li>为友方英雄回复<healing>@TotalHealTooltip@生命值</healing>并弹向附近的一名敌方英雄身上。<li>给敌方英雄造成<magicDamage>@TotalDamageTooltip@魔法伤害</magicDamage>并弹向附近的一名友方英雄身上。<br>每次弹跳会使伤害和治疗效果修正@BounceScalingTooltip@。 @SpellModifierDescriptionAppend@",
+            "range": [
+                725.0000,
+                725.0000,
+                725.0000,
+                725.0000,
+                725.0000,
+                725.0000
+            ],
+            "costCoefficients": [
+                70.0000,
+                80.0000,
+                90.0000,
+                100.0000,
+                110.0000,
+                145.0000
+            ],
+            "cooldownCoefficients": [
+                10.0000,
+                10.0000,
+                10.0000,
+                10.0000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.5500,
+                "coefficient2": 0.2500
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    60.0000,
+                    60.0000,
+                    100.0000,
+                    140.0000,
+                    180.0000,
+                    220.0000,
+                    220.0000
+                ],
+                "Effect2Amount": [
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000
+                ],
+                "Effect3Amount": [
+                    55.0000,
+                    55.0000,
+                    75.0000,
+                    95.0000,
+                    115.0000,
+                    135.0000,
+                    135.0000
+                ],
+                "Effect4Amount": [
+                    15.0000,
+                    15.0000,
+                    15.0000,
+                    15.0000,
+                    15.0000,
+                    15.0000,
+                    15.0000
+                ],
+                "Effect5Amount": [
+                    0.0750,
+                    0.0750,
+                    0.0750,
+                    0.0750,
+                    0.0750,
+                    0.0750,
+                    0.0750
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "唤潮之佑",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Nami/HUD/Icons2D/NamiE.png",
+            "abilityVideoPath": "champion-abilities/0267/ability_0267_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0267/ability_0267_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "短时间里强化一个友军英雄。友军的普通攻击和技能会对其目标造成额外伤害和减速效果。",
+            "dynamicDescription": "娜美强化一位友方英雄的下@Effect4Amount@次普通攻击和技能，持续@Effect5Amount@秒，使其可以使目标<status>减速</status>@TotalSlowTooltip@，持续@Effect3Amount@秒，并造成额外的<magicDamage>@TotalDamageTooltip@魔法伤害</magicDamage>。 @SpellModifierDescriptionAppend@",
+            "range": [
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000,
+                800.0000
+            ],
+            "costCoefficients": [
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000,
+                80.0000
+            ],
+            "cooldownCoefficients": [
+                11.0000,
+                11.0000,
+                11.0000,
+                11.0000,
+                11.0000,
+                11.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.2000,
+                "coefficient2": 0.0500
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    15.0000,
+                    20.0000,
+                    35.0000,
+                    50.0000,
+                    65.0000,
+                    80.0000,
+                    100.0000
+                ],
+                "Effect2Amount": [
+                    10.0000,
+                    15.0000,
+                    20.0000,
+                    25.0000,
+                    30.0000,
+                    35.0000,
+                    40.0000
+                ],
+                "Effect3Amount": [
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000
+                ],
+                "Effect4Amount": [
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000
+                ],
+                "Effect5Amount": [
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000,
+                    6.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "怒涛之啸",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Nami/HUD/Icons2D/NamiR.png",
+            "abilityVideoPath": "champion-abilities/0267/ability_0267_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0267/ability_0267_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "召唤一阵巨大的怒涛，击飞、减速并伤害沿途的所有敌人。被怒涛命中的友方英雄会获得【踏浪之行】的双倍加速效果。",
+            "dynamicDescription": "娜美召唤一阵怒涛，<status>击飞</status>敌人0.5秒，<status>减速</status>敌人@Effect4Amount@%并造成<magicDamage>@TotalDamageTooltip@魔法伤害</magicDamage>。<status>减速</status>的持续时间会基于怒涛的行进距离而提升，至多持续@Effect5Amount@秒。<br><br>被怒涛命中的友方英雄会获得<spellName>踏浪之行</spellName>的双倍加速效果。@SpellModifierDescriptionAppend@",
+            "range": [
+                2550.0000,
+                2550.0000,
+                2550.0000,
+                2550.0000,
+                2550.0000,
+                2550.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                110.0000,
+                100.0000,
+                10.0000,
+                10.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.6000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    150.0000,
+                    150.0000,
+                    250.0000,
+                    350.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000
+                ],
+                "Effect3Amount": [
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000
+                ],
+                "Effect4Amount": [
+                    50.0000,
+                    50.0000,
+                    60.0000,
+                    70.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000,
+                    4.0000
+                ],
+                "Effect6Amount": [
+                    0.0020,
+                    0.0020,
+                    0.0020,
+                    0.0020,
+                    0.0020,
+                    0.0020,
+                    0.0020
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

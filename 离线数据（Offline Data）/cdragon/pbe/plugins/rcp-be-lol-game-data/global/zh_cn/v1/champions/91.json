@@ -1,0 +1,1677 @@
+{
+    "id": 91,
+    "name": "刀锋之影",
+    "alias": "Talon",
+    "title": "泰隆",
+    "shortBio": "泰隆是黑暗中的匕首，是绝无仁慈的杀手，他出手前不会有任何警告，不会留任何退路，也不会引起任何警觉。泰隆在诺克萨斯的野蛮街巷中深深烙印了自己危险的名号，在这里他被迫为了生存而战斗、杀戮、偷窃。后来恶名昭彰的杜·克卡奥家族收养了他，现在他为帝国的指挥部贡献自己的夺命手段，暗杀敌人的领袖、军官和英雄，当然也包括任何得罪了最高长官们的诺克萨斯蠢货。",
+    "tacticalInfo": {
+        "style": 7,
+        "difficulty": 2,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 1,
+        "mobility": 2,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/91.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/91.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/91.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/91.ogg",
+    "roles": [
+        "assassin"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 91000,
+            "isBase": true,
+            "name": "刀锋之影",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/91/91000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/91/91000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/91/91000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Talon/Skins/Base/TalonLoadScreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 91001,
+            "isBase": false,
+            "name": "刺客信条 泰隆",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/91/91001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/91/91001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/91/91001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Talon/Skins/Skin01/TalonLoadScreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 167
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 91002,
+            "isBase": false,
+            "name": "血色精锐 泰隆",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/91/91002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/91/91002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/91/91002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Talon/Skins/Skin02/TalonLoadScreen_2.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 122
+                }
+            ],
+            "skinAugments": null,
+            "description": "血色精锐既不能确认也无法否认名叫泰隆的特工的存在。他身后留下的斑斑血迹，是对所有人的一种残酷警告。也许更令人不安的是，还有数以百计的悬案有待进一步的求证。"
+        },
+        {
+            "id": 91003,
+            "isBase": false,
+            "name": "银龙裁决 泰隆",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/91/91003.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/91/91003.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/91/91003.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Talon/Skins/Skin03/TalonLoadScreen_3.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91003.png",
+            "chromas": [
+                {
+                    "id": 91006,
+                    "name": "银龙裁决 泰隆 锦衣卫",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91006.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 91007,
+                    "name": "银龙裁决 泰隆 锦衣夜行",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91007.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 91008,
+                    "name": "银龙裁决 泰隆 碧玉幻影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91008.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 91009,
+                    "name": "银龙裁决 泰隆 夜中血影",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91009.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 91010,
+                    "name": "银龙裁决 泰隆 昼行死神",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91010.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 91011,
+                    "name": "银龙裁决 泰隆 冷血寒锋",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91011.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        },
+                        {
+                            "region": "riot",
+                            "rarity": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 91050,
+                    "name": "银龙裁决 泰隆 潜龙在渊",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91050.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 2
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Year of the Dragon",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/13.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/13.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 53
+                }
+            ],
+            "skinAugments": null,
+            "description": "据说泰隆的刀锋是在暗影巨龙的火焰中铸造而成的，之后他用这把刀割开了他已被腐化的家主的喉咙。从此泰隆的刀锋在消失于阴影之前总能轻易消灭它的对手，许多人相信每当强者欺凌弱者时，刀锋总会显现。"
+        },
+        {
+            "id": 91004,
+            "isBase": false,
+            "name": "SSW 泰隆",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/91/91004.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/91/91004.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/91/91004.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Talon/Skins/Skin04/TalonLoadScreen_4.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Limited",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/1.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/1.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 4
+                }
+            ],
+            "skinAugments": null,
+            "description": "以此致敬PawN在2014全球总决赛中使用泰隆的夺胜表现。"
+        },
+        {
+            "id": 91005,
+            "isBase": false,
+            "name": "腥红之月 泰隆",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/91/91005.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/91/91005.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/91/91005.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Talon/Skins/Skin05/TalonLoadscreen_5.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Epic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/29.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/29.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 4,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/4_large.png",
+            "skinLines": [
+                {
+                    "id": 12
+                }
+            ],
+            "skinAugments": null,
+            "description": "在血月之夜，一只混乱的恶魔被召唤至这个世界。泰隆曾经是一名刺客，之后他在教派的献祭仪式中将自己出卖给了恶魔。现在杀戮本身已经无法满足泰隆的欲望，他只为了欣赏目标临死前眼中露出的恐惧。"
+        },
+        {
+            "id": 91012,
+            "isBase": false,
+            "name": "玉剑传说 无影",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/91/91012.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/91/91012.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/91/91012.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Talon/Skins/Skin12/TalonLoadScreen_12.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Talon/Skins/Skin12/TalonLoadScreen_12_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91012.png",
+            "chromas": [
+                {
+                    "id": 91013,
+                    "name": "玉剑传说 无影 舍神",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91013.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 91014,
+                    "name": "玉剑传说 无影 竞星",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91014.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91015,
+                    "name": "玉剑传说 无影 日月",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91015.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 91016,
+                    "name": "玉剑传说 无影 青干",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91016.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91017,
+                    "name": "玉剑传说 无影 游龙",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91017.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91018,
+                    "name": "玉剑传说 无影 天瀑",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91018.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91019,
+                    "name": "玉剑传说 无影 莫问",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91019.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "7 Year Celebration",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/50.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/50.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 81
+                }
+            ],
+            "skinAugments": null,
+            "description": "南海的高傲龙王，泰隆接受了半神的艾瑞莉娅的挑战，却在自己的宝座前被击败。备受屈辱的他讽刺了艾瑞莉娅.......却被她将其力量封印在了她的刀刃之中，并被命令去凡人的国度中去寻找新的目标。 "
+        },
+        {
+            "id": 91020,
+            "isBase": false,
+            "name": "泰隆 · 黑木",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/91/91020.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/91/91020.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/91/91020.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Talon/Skins/Skin20/TalonLoadScreen_20.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91020.png",
+            "chromas": [
+                {
+                    "id": 91021,
+                    "name": "泰隆 · 黑木 白夜勇者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91021.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91022,
+                    "name": "泰隆 · 黑木 海洋勇者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91022.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91023,
+                    "name": "泰隆 · 黑木 大地勇者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91023.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91024,
+                    "name": "泰隆 · 黑木 烈焰勇者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91024.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020期间作为礼包专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 91025,
+                    "name": "泰隆 · 黑木 梦境勇者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91025.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 91026,
+                    "name": "泰隆 · 黑木 辉刃勇者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91026.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91027,
+                    "name": "泰隆 · 黑木 森林勇者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91027.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91028,
+                    "name": "泰隆 · 黑木 绿萼勇者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91028.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 38
+                }
+            ],
+            "skinAugments": null,
+            "description": "“帅气刺客”“非凡的”泰隆 · 黑木是图奇 · 影足的结拜兄弟，是一个恶名昭彰的地下世界二人组中的一员，并且是整个团队中唯一的高级职业。他还是一个令人担忧的暗精灵反英雄角色，有着一个悲惨的背景故事，命中注定将在某一天拯救世界！也许吧。"
+        },
+        {
+            "id": 91029,
+            "isBase": false,
+            "name": "幽梦玫瑰 泰隆",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/91/91029.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/91/91029.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/91/91029.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Talon/Skins/Skin29/TalonLoadScreen_29.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": true,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91029.png",
+            "chromas": [
+                {
+                    "id": 91030,
+                    "name": "幽梦玫瑰 泰隆 热烈花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91030.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 91031,
+                    "name": "幽梦玫瑰 泰隆 倾心花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91031.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91032,
+                    "name": "幽梦玫瑰 泰隆 痴心花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91032.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91033,
+                    "name": "幽梦玫瑰 泰隆 真挚花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91033.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91034,
+                    "name": "幽梦玫瑰 泰隆 浪漫花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91034.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 91035,
+                    "name": "幽梦玫瑰 泰隆 憧憬花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91035.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91036,
+                    "name": "幽梦玫瑰 泰隆 甜蜜花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91036.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91037,
+                    "name": "幽梦玫瑰 泰隆 纯洁花蕾",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91037.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Valentine",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/8.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/8.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 7,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/7_large.png",
+            "skinLines": [
+                {
+                    "id": 141
+                }
+            ],
+            "skinAugments": null,
+            "description": "在卡特琳娜——泰隆被领养的妹妹——于上次节庆中建立的联盟破裂后，他发誓要复仇。为了重振他们家族的荣光，他想要揭露并粉碎这个由华丽服饰和神圣誓言组成的盛会。今年的节庆上，没有任何事、任何人能逃脱他的怒火。"
+        },
+        {
+            "id": 91038,
+            "isBase": false,
+            "name": "西部魔影 猎天使恶魔 泰隆",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/91/91038.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/91/91038.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/91/91038.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Talon/Skins/Skin38/TalonLoadScreen_38.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Talon/Skins/Skin38/TalonLoadscreen_38_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91038.png",
+            "chromas": [
+                {
+                    "id": 91040,
+                    "name": "西部魔影 猎天使恶魔 泰隆 温和",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91040.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 91041,
+                    "name": "西部魔影 猎天使恶魔 泰隆 慷慨",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91041.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91042,
+                    "name": "西部魔影 猎天使恶魔 泰隆 忠诚",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91042.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 91043,
+                    "name": "西部魔影 猎天使恶魔 泰隆 节制",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91043.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91044,
+                    "name": "西部魔影 猎天使恶魔 泰隆 诚实",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91044.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91045,
+                    "name": "西部魔影 猎天使恶魔 泰隆 善良",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91045.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91046,
+                    "name": "西部魔影 猎天使恶魔 泰隆 谦卑",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91046.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91047,
+                    "name": "西部魔影 猎天使恶魔 泰隆 纯洁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91047.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91048,
+                    "name": "西部魔影 猎天使恶魔 泰隆 虔信",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91048.png",
+                    "colors": [
+                        "#95ECFF",
+                        "#C33C3E"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在季中冠军赛(2022)西部魔影期间作为战利品专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "“命运正在捉弄你，老朋友，”泰隆说道，靠在他的椅背上，捕食者的眼睛在他帽子的阴影下闪闪发光。他仍然像魔鬼一样移动，即使已被天使之血给扭曲和腐蚀了。他的笑容，懊悔且意味深长，露出了太多的牙齿：“我们所有人的结局都快到了。”"
+        },
+        {
+            "id": 91039,
+            "isBase": false,
+            "name": "至臻 西部魔影 猎天使恶魔 泰隆",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/91/91039.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/91/91039.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/91/91039.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Talon/Skins/Skin39/TalonLoadScreen_39.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Talon/Skins/Skin39/TalonLoadscreen_39_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "英俊到魔性的泰隆穿着最新的西部时髦款式，已做好了在走道上摇滚或在大道上骑行的准备。那双靴子是为步行而设计的，并且他会从任何挡路之人的身上踏过去。"
+        },
+        {
+            "id": 91049,
+            "isBase": false,
+            "name": "伏虎之力 泰隆",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/91/91049.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/91/91049.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/91/91049.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Talon/Skins/Skin49/TalonLoadScreen_49.PIE_C_14_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Talon/Skins/Skin49/TalonLoadScreen_49_LE.PIE_C_14_2.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91049.png",
+            "chromas": [
+                {
+                    "id": 91051,
+                    "name": "伏虎之力 泰隆 旺盛战意",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91051.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": " "
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 91052,
+                    "name": "伏虎之力 泰隆 兽王威仪",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91052.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91053,
+                    "name": "伏虎之力 泰隆 虎啸风生",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91053.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91054,
+                    "name": "伏虎之力 泰隆 原初直觉",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91054.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91055,
+                    "name": "伏虎之力 泰隆 如虎添翼",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91055.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91056,
+                    "name": "伏虎之力 泰隆 无形震慑",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91056.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 91057,
+                    "name": "伏虎之力 泰隆 瑞兽灵光",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91057.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 91058,
+                    "name": "伏虎之力 泰隆 灵兽之仁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/91/91058.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 200
+                }
+            ],
+            "skinAugments": null,
+            "description": "泰隆是一位令许多人畏惧和尊敬的冷酷刺客。他环游世界，只有一个目标：消灭所有的神恩战爪，直到只剩下他一个。当他听说有个倔强的佣兵受命在他完成任务之前打倒神恩战爪的首领时，他窃喜地意识到一场新的狩猎即将开始。"
+        }
+    ],
+    "passive": {
+        "name": "刀锋之末",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Talon/HUD/Icons2D/TalonP.png",
+        "abilityVideoPath": "champion-abilities/0091/ability_0091_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0091/ability_0091_P1.jpg",
+        "description": "泰隆的技能会创伤英雄和大型野怪，可叠加3层。当泰隆用普攻攻击一个带有3层创伤效果的目标时，目标会流血，受到重度的持续伤害。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "诺克萨斯式外交",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Talon/HUD/Icons2D/TalonQ.png",
+            "abilityVideoPath": "champion-abilities/0091/ability_0091_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0091/ability_0091_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "泰隆戳刺目标单位。如果目标在近战距离之内，那么这次攻击会造成致命伤害。如果目标在近战距离之外，那么泰隆将会跃向他的目标然后戳刺目标。如果这个技能击杀了泰隆的目标，那么就会返还给泰隆一些生命值和冷却时间。",
+            "dynamicDescription": "泰隆跃向一个目标并造成<physicalDamage>@LeapDamage@物理伤害</physicalDamage>。如果在近战距离内使用，那么这个技能会转而进行暴击，造成<physicalDamage>@CriticalDamage@物理伤害</physicalDamage>。<br><br>如果这个技能击杀了目标，那么泰隆会回复<healing>@TotalHealing@生命值</healing>并返还@Effect5Amount*100@%冷却时间。@SpellModifierDescriptionAppend@",
+            "range": [
+                575.0000,
+                575.0000,
+                575.0000,
+                575.0000,
+                575.0000,
+                575.0000
+            ],
+            "costCoefficients": [
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000
+            ],
+            "cooldownCoefficients": [
+                8.0000,
+                7.5000,
+                7.0000,
+                6.5000,
+                6.0000,
+                6.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 1.2000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    40.0000,
+                    65.0000,
+                    85.0000,
+                    105.0000,
+                    125.0000,
+                    145.0000,
+                    190.0000
+                ],
+                "Effect2Amount": [
+                    50.0000,
+                    50.0000,
+                    50.0000,
+                    50.0000,
+                    50.0000,
+                    50.0000,
+                    50.0000
+                ],
+                "Effect3Amount": [
+                    17.0000,
+                    17.0000,
+                    17.0000,
+                    17.0000,
+                    17.0000,
+                    17.0000,
+                    17.0000
+                ],
+                "Effect4Amount": [
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000,
+                    3.0000
+                ],
+                "Effect5Amount": [
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000
+                ],
+                "Effect6Amount": [
+                    8.5000,
+                    8.0000,
+                    7.5000,
+                    7.0000,
+                    6.5000,
+                    6.0000,
+                    6.0000
+                ],
+                "Effect7Amount": [
+                    0.8000,
+                    0.8000,
+                    0.8000,
+                    0.8000,
+                    0.8000,
+                    0.8000,
+                    0.8000
+                ],
+                "Effect8Amount": [
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "斩草除根",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Talon/HUD/Icons2D/TalonW.png",
+            "abilityVideoPath": "champion-abilities/0091/ability_0091_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0091/ability_0091_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "泰隆放出一排匕首，随后匕首会返回泰隆处，匕首每次穿过敌人时都会造成物理伤害。返程的匕首会造成额外伤害并使被命中的目标减速。",
+            "dynamicDescription": "泰隆扔出一排刀刃，造成<physicalDamage>@TotalInitialDamage@物理伤害</physicalDamage>。然后刀刃会折返，造成<physicalDamage>@TotalReturnDamage@额外物理伤害</physicalDamage>和持续@SlowDuration@秒的@MovespeedSlow*100@%<status>减速</status>。@SpellModifierDescriptionAppend@",
+            "range": [
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000
+            ],
+            "cooldownCoefficients": [
+                9.0000,
+                8.5000,
+                8.0000,
+                7.5000,
+                7.0000,
+                7.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "刺客之道",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Talon/HUD/Icons2D/TalonE.png",
+            "abilityVideoPath": "champion-abilities/0091/ability_0091_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0091/ability_0091_E1.jpg",
+            "cost": "无消耗",
+            "cooldown": "无冷却时间",
+            "description": "泰隆翻越任何地形或建筑物，有一个最大距离。这个技能的冷却时间很短，但是需要很长一段时间后才能再次翻越已经翻越过的地形。",
+            "dynamicDescription": "泰隆翻越相距最近的地形或建筑物。泰隆无法在@WallCD@秒里重复翻越相同地区的地形。@SpellModifierDescriptionAppend@",
+            "range": [
+                725.0000,
+                725.0000,
+                725.0000,
+                725.0000,
+                725.0000,
+                725.0000
+            ],
+            "costCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.4000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    625.0000,
+                    625.0000,
+                    625.0000,
+                    625.0000,
+                    625.0000,
+                    625.0000,
+                    625.0000
+                ],
+                "Effect4Amount": [
+                    1250.0000,
+                    1250.0000,
+                    1250.0000,
+                    1250.0000,
+                    1250.0000,
+                    1250.0000,
+                    1250.0000
+                ],
+                "Effect5Amount": [
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000,
+                    2.0000
+                ],
+                "Effect6Amount": [
+                    185.0000,
+                    160.0000,
+                    135.0000,
+                    110.0000,
+                    85.0000,
+                    60.0000,
+                    60.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "暗影突袭",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Talon/HUD/Icons2D/TalonR.png",
+            "abilityVideoPath": "champion-abilities/0091/ability_0091_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0091/ability_0091_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "泰隆散出一圈刀刃并变为隐形状态，同时获得额外移动速度。当泰隆从隐形状态下现身时，刀刃会汇聚向泰隆处。刀刃的每段移动，都会让暗影突袭对被至少一枚刀刃命中的敌人造成物理伤害。",
+            "dynamicDescription": "泰隆散出一圈刀刃，造成<physicalDamage>@Damage@物理伤害</physicalDamage>，获得<speed>@MoveSpeed*100@%移动速度</speed>，并且变为<keywordStealth>隐形</keywordStealth>状态，持续@Duration@秒。当<keywordStealth>隐形</keywordStealth>状态结束时，刀刃会折返至泰隆处，再次造成<physicalDamage>@Damage@物理伤害</physicalDamage>。<br><br>如果泰隆用一次攻击或<spellName>诺克萨斯式外交</spellName>取消掉<keywordStealth>隐形</keywordStealth>状态，那么刀刃会转而折返至目标处。@SpellModifierDescriptionAppend@",
+            "range": [
+                550.0000,
+                550.0000,
+                550.0000,
+                550.0000,
+                550.0000,
+                550.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                100.0000,
+                80.0000,
+                60.0000,
+                60.0000,
+                60.0000,
+                60.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

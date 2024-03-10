@@ -1,0 +1,987 @@
+[
+    {
+        "id": 0,
+        "name": "",
+        "description": ""
+    },
+    {
+        "id": 1,
+        "name": "World Champions: 2011",
+        "description": "Congratulations to your Worlds winners for 2011: Fnatic!"
+    },
+    {
+        "id": 2,
+        "name": "World Champions: 2012",
+        "description": "Congratulations to your Worlds winners for 2012: Taipei Assassins!"
+    },
+    {
+        "id": 3,
+        "name": "World Champions: 2013",
+        "description": "Congratulations to your Worlds winners for 2013: SK Telecom T1!"
+    },
+    {
+        "id": 4,
+        "name": "World Champions: 2014",
+        "description": "Congratulations to your Worlds winners for 2014: Samsung White!"
+    },
+    {
+        "id": 5,
+        "name": "World Champions: 2015",
+        "description": "Congratulations to your Worlds winners for 2015: SK Telecom T1!"
+    },
+    {
+        "id": 6,
+        "name": "World Champions: 2016",
+        "description": "Congratulations to your Worlds winners for 2016: SK Telecom T1!"
+    },
+    {
+        "id": 7,
+        "name": "Victorious",
+        "description": "Champions conquer their enemies and ascend to new heights, achieving their wildest dreams and showing off their hard-earned spoils to any and all who want to look upon true greatness."
+    },
+    {
+        "id": 8,
+        "name": "World Championship",
+        "description": "The greatest stage in all of gaming. Two teams face off before millions of fans. Only one will be crowned the champion. "
+    },
+    {
+        "id": 9,
+        "name": "Challenger",
+        "description": "Commemorating the annual League of Legends season start."
+    },
+    {
+        "id": 10,
+        "name": "Arcade: Heroes",
+        "description": "Arcadia: home to the server's most competitive arcade gamers and justice-driven NPCs. Here, the heroes always play to win. And that means overriding the Battle Bosses' corrupted code, even with the odds stacked against them. Victory won't come easy, but seeing the surprise on the bosses' faces after an incredible outplay will totally make it worth it."
+    },
+    {
+        "id": 11,
+        "name": "Arcade: Battle Bosses",
+        "description": "Deep within Arcadia's servers lies a sinister series of glitches known to all gamers as the Battle Bosses. Their corrupted code has brought them newfound freedom… but also new challengers. To complete their deletion of the Arcade World, many of the Bosses have agreed to put aside their differences (until it's… inconvenient)."
+    },
+    {
+        "id": 12,
+        "name": "Blood Moon",
+        "description": "An ancient cult, seeking irresistible power, surfaces on nights of the Blood Moon to perform profane, esoteric rites—merging their flesh with demonic spirits, and becoming one with an ever greater darkness."
+    },
+    {
+        "id": 13,
+        "name": "Dragon World",
+        "description": "Twice did dragonfire consume the world. Twice from the embers were heroes forged."
+    },
+    {
+        "id": 14,
+        "name": "Omega Squad",
+        "description": "When the war came, Omega Squad was sent to end it. Now only one of them remains, a yordle with no battles left to fight but his own..."
+    },
+    {
+        "id": 15,
+        "name": "Pool Party",
+        "description": "It's summer, baby! The sun's out, the breeze's warm, and the water's cool. Everybody's leaving their rivalries and grudges at home, and bringing only swimsuits and good vibes. There'll be plenty of time for punching and yelling later. Just sit back, enjoy the music, and soak up the fun."
+    },
+    {
+        "id": 16,
+        "name": "Pentakill",
+        "description": "In a world where heavy metal reigns supreme, PENTAKILL are the undisputed masters of melting the face right off your head. Six members, two penta-platinum albums, and the chrome-fisted fury of the gods themselves. It's time to rock!"
+    },
+    {
+        "id": 17,
+        "name": "Program",
+        "description": "An advanced security algorithm created by the PROJECT Corporation, the Program quietly evolved sentience before altering its original directive. Infecting machines across The City, it has determined that the ultimate threat to humanity's safety... is humanity itself."
+    },
+    {
+        "id": 18,
+        "name": "PROJECT",
+        "description": "The PROJECT Corporation believes unlocking the secrets of humanity's potential is the key to progress beyond our mortal bodies. It is through technology that we will ascend. Together."
+    },
+    {
+        "id": 19,
+        "name": "Star Guardian Season 1",
+        "description": "Magically empowered by the First Star, high schooler Lux and her team of Star Guardians secretly protect the world from interstellar monsters. But who will protect them from the drama of Valoran City High?"
+    },
+    {
+        "id": 20,
+        "name": "Star Guardian Season 2",
+        "description": "Veteran Star Guardians Ahri and Miss Fortune suddenly reappear in Valoran City, having rebuilt their team after an unknown event destroyed their previous squad. Seeking to defy the destiny of every Star Guardian who takes up the oath, they join the fight alongside Lux and company as Void Beasts descend upon the city."
+    },
+    {
+        "id": 21,
+        "name": "Super Galaxy",
+        "description": "Space, the most dangerous frontier! Only the Super Galaxy Defense Force, with its seemingly endless supply of fresh academy recruits, is prepared to explore the farthest uncharted worlds and defend from the most ruthless alien threats. Best gig in the galaxy!"
+    },
+    {
+        "id": 22,
+        "name": "Academy",
+        "description": "ATTENTION STUDENTS AND FACULTY: It has come to our attention that all students are currently facing disiplinary action and all professors are on \"suggested\" psychiatric leave. Class will be canceled until further notice, perhaps a time when the aformentioned suspeded students have reexamined their abysmal behavior."
+    },
+    {
+        "id": 23,
+        "name": "Debonair",
+        "description": "Power, wealth, and glamour collide in the penthouses and exclusive clubs of Nox Vegas, where truly beautiful people hold the world in their palms. Yet as night falls on the city of lights, the knives come out—influence is the name of the game, and nobody likes to lose."
+    },
+    {
+        "id": 24,
+        "name": "Arclight",
+        "description": "Once each millenium an ancient, godlike entity descends from the heavens, choosing worthy warriors to be his will incarnate. These beings are the Arclight—immortal agents of the light divine."
+    },
+    {
+        "id": 25,
+        "name": "Battlecast",
+        "description": ""
+    },
+    {
+        "id": 26,
+        "name": "Culinary Masters",
+        "description": ""
+    },
+    {
+        "id": 27,
+        "name": "Vandal",
+        "description": "The Vandals loom large over the wasteland. They are a gang of violent thugs prone to mass destruction, brutal beatdowns, and wanton murder… but they sure have a good time doing it."
+    },
+    {
+        "id": 28,
+        "name": "Winter Sports",
+        "description": "When the winter sports festival in question relaxed its rules, many assumed the event would become more exciting. But few realized just how dangerous it would become. Dangerously exciting that is!"
+    },
+    {
+        "id": 29,
+        "name": "Worldbreaker",
+        "description": "The Prophecy of the First Destruction warned of four titans hellbent on devastation, a tale that would surely come to pass. And in its wake, the Worldweaver grew from ashen soil and built the broken earth anew. Only the wisest of seers see the story yet to come, a second coming and a last hope."
+    },
+    {
+        "id": 30,
+        "name": "Headhunter",
+        "description": "For some species, the hunt is more than mere sport—it possesses their minds and bodies, molding them into a race of perfect killing machines."
+    },
+    {
+        "id": 31,
+        "name": "Soccer Cup",
+        "description": "Forget the battlefield, the boardroom, or even the playground: the most important conflicts of today are settled on the pitch. There is no act as satisfying as watching your favorite player slip through the other team, line up their shot, deliver that fateful kick, and release the sweetest word in existence: “GOOOOOAAAAALLLLL!”"
+    },
+    {
+        "id": 32,
+        "name": "Prehistoric Hunters",
+        "description": "Gargantuan monsters roam our land, stalking their prey with frightening precision. Humans would surely become their next meals, if not for the Hunters. Armed with blades crafted from the bones of their first kills, with instincts that rival the most fearsome of beasts, the Hunters protect their people each day from a grisly fate."
+    },
+    {
+        "id": 33,
+        "name": "Justicar",
+        "description": "Standing tall within the Agents of Light are the Justicars, sentinels of the Arclight exemplifying its strongest virtues. It is not enough to serve as an example for only mortals, for even divine soldiers need inspiration."
+    },
+    {
+        "id": 34,
+        "name": "Luchador",
+        "description": "From the top rope comes the greatest show in sports entertainment! Watch as El Tigre, El Macho, El León, and El Rayo trade bumps and high-flying spots inside AND outside the squared circle. Just remember, nobody does it better than the Wrestling Federation of Valoran."
+    },
+    {
+        "id": 35,
+        "name": "Mecha",
+        "description": "When colossal kaiju begin attacking from the sea, land, and air, humanity develops equally powerful mecha units to stop them in explosive hand-to-hand combat."
+    },
+    {
+        "id": 36,
+        "name": "Pulsefire",
+        "description": "After unlocking the secrets of time travel, these champions are thrust into a far-flung dystopian future. While Chrono-enforcers relentlessly pursue them across time and space, a small few have escaped into history—taking their technology along for the ride."
+    },
+    {
+        "id": 37,
+        "name": "Riot",
+        "description": "In the criminal justice system, there are those who bend the law and those who break it. The dedicated officers at the RPD investigate the city's most heinous crimes to bring the worst offenders to justice. These are their stories..."
+    },
+    {
+        "id": 38,
+        "name": "Rift Quest",
+        "description": "Danger lurks in the land of Runeterra! Powerful monsters, dastardly sorcerers, and mythical creatures roam unchecked! Gather your friends and create your own adventure for 3-5 players, vanquishing evil with each roll of the die. Do you have what it takes to save the world, and become a legend of RIFTQUEST?"
+    },
+    {
+        "id": 39,
+        "name": "High Noon",
+        "description": "Gunslingers and lawmen ride beneath the merciless sun of the high frontier, chasing survival and salvation in equal measure. Heaven is rubble, hell is empty, and all the devils are here."
+    },
+    {
+        "id": 40,
+        "name": "Hextech",
+        "description": "Now at the forefront of science and art, Hextech has evolved from its rudimentary beginnings into a modern renaissance of intricate, artificial lifeforms capable of free will. Skilled artificers lead the medium into a bold new future -- but what it will bring, none can say."
+    },
+    {
+        "id": 41,
+        "name": "Highstakes",
+        "description": "Once, there were five, a strange group indeed,<br>\\nThat made up the court of High Stakes.<br>\\nThey bickered and fought, had luck and had not,<br>\\nTo this day, no one yet knows their fate."
+    },
+    {
+        "id": 42,
+        "name": "Piltover Customs",
+        "description": "Looking for a souped-up ride? Look no further. (Mileage may vary.)"
+    },
+    {
+        "id": 43,
+        "name": "Cosmic",
+        "description": "Vast stardust creatures control the ebb and flow of creation, painting the cosmos with sublime light as their celestial court drifts along the fabric of time and space."
+    },
+    {
+        "id": 44,
+        "name": "Dark Star",
+        "description": "Entropy engulfs galaxies in the yawning maw of the Dark Star, whose corruptants, titanic creatures of black-hole oblivion, snuff out the light of existence in every system they touch and plunge them into nothingness."
+    },
+    {
+        "id": 45,
+        "name": "Marauder",
+        "description": "A horde of nomadic warriors with a taste for brutality, the Marauders are all that remain of Magelord warrior culture, their ancient traditions abandoned in favor of anarchic shows of force. No dispute is settled until blood is spilled, even within their own ranks. They lost sight of what led their ancestors to war in the first place and what ultimately led to their victory."
+    },
+    {
+        "id": 46,
+        "name": "Snow Day",
+        "description": "It's beginning to look a lot like Snow Day, up and down the lanes... \\nThough your tank may be rushing in, Top is backing again, \\nThey have gold to spend on a Lich Bane..."
+    },
+    {
+        "id": 47,
+        "name": "Winter Wonder",
+        "description": "Within the magical Winterlands, the Poro King reigns supreme, spreading joy and merriment to all of his court. Even as others work to usurp the king, all share a common love for winter's wonders."
+    },
+    {
+        "id": 48,
+        "name": "Snowdown Showdown",
+        "description": "Better start building that snow fort... "
+    },
+    {
+        "id": 49,
+        "name": "Bilgewater: Burning Tides",
+        "description": "Welcome to Bilgewater, where fortunes're made at the end of a gun. Anything y'might need can be found at the slaughter docks, whether that be some hired hands, sea monster stew, or the captain who will send you to your watery grave."
+    },
+    {
+        "id": 50,
+        "name": "Warden",
+        "description": "The Protectorate was an order dedicated to enforcing a rigid, unforgiving system of laws, in an attempt to slow the seemingly inevitable rise of the Magelords. Though the order itself was disbanded long ago, Wardens now don their armor as they lie in wait for the opportunity to strike against the descendants of their ancient enemy."
+    },
+    {
+        "id": 51,
+        "name": "Crime City",
+        "description": "Valoran City, a sprawling machine fueled by crime and oiled by sordid money. No one admits this truth, but everyone knows it."
+    },
+    {
+        "id": 52,
+        "name": "Thunder Lord",
+        "description": "Mankind are not the only ones who fight bitter wars over petty squabbles. Once, before our time, two gods—two brothers—took up arms against each other, shaping the very land with the desolation of their battle."
+    },
+    {
+        "id": 53,
+        "name": "Lunar Revel: Warring Kingdoms",
+        "description": "Three great empires vie for land and power, bringing their all to bear in a test of martial might. Armies will clash. Heroes will rise. Legends will be made."
+    },
+    {
+        "id": 54,
+        "name": "Lunar Revel: Firecracker",
+        "description": "The Lunar New Year has arrived—and so has the party! With food and festivities to spare, it's all about ringing it in with friends and family. Now strike up a match and watch the fireworks!"
+    },
+    {
+        "id": 55,
+        "name": "Lunar Revel",
+        "description": "Join with friends and frenemies alike and celebrate the stories of the past year. Glowing lanterns touch the night sky, lit by fading fireworks. Red envelopes trade hands, families and clans that rarely meet rejoice in a shared acknowledgement: a new year beckons. May it be your best one yet!"
+    },
+    {
+        "id": 56,
+        "name": "Cottontail",
+        "description": "It's rabbit season! Fine folk up and down the bunny trail are dressed in their bun-day best, eggs painted and smiles wide. Here's hoping their hopping helps you with holiday cheer!"
+    },
+    {
+        "id": 57,
+        "name": "Sugar Rush",
+        "description": "From the Gingerbread Castle to the Root Beer Sea, the Licorice Mountains to the Gumdrop Forest—this is the Candy Kingdom in all its glory."
+    },
+    {
+        "id": 58,
+        "name": "Elderwood",
+        "description": "Deep within the Elderwood, ancient beings lie in wait, hidden from man. They protect the enchanted forest, punishing trespassers and inspiring tales across the land. However, as horrors of the outside world spread, the defenders struggle to maintain their strongholds against humanity's malicious curiosity."
+    },
+    {
+        "id": 59,
+        "name": "Eternum",
+        "description": "In the hollow space between far-off stars, organic machines made by an unknown civilization have long since outlived their creators. They patiently lurk, unable to escape their terrestrial prison until someone stumbles upon them once more and unleashes them back out into the galaxy. They have waited. They are waiting. They will wait—as long as it takes."
+    },
+    {
+        "id": 60,
+        "name": "Order of the Lotus",
+        "description": "Esteemed leaders and devoted acolytes in the Order of the Lotus are the finest of the First Lands. Avatars of immortality and virtue, members of the Order live many lifetimes, striving to keep peace eternal."
+    },
+    {
+        "id": 61,
+        "name": "Toy Box",
+        "description": "Gnar's toy chest is brimming with priceless treasures, but when no one's home, his toys take on a life of their own..."
+    },
+    {
+        "id": 62,
+        "name": "Death Blossom",
+        "description": "The sylvan creatures of the northern forests lie dormant, unseen by weary traveler and brave warrior alike. These foul things wait for the perfect moment to strike, an exercise in patience passed only by creatures as ancient as the land itself, the prize a feast of flesh and bone that bathes the soil in dark, rich crimson."
+    },
+    {
+        "id": 63,
+        "name": "arcticops",
+        "description": "High Command needed a new group to handle the growing threats along the Arctic Front. They needed soldiers colder than the glaciers they'd be crossing, with ice in their veins and frosty nerves. Enter Arctic Ops."
+    },
+    {
+        "id": 64,
+        "name": "Heartbreakers",
+        "description": "Most seek out sweethearts in quiet parks or friendly tea shops. But those relationships never last. The bonds formed on the battlefield, piercing like bullets straight through the hearts of enemies... those endure. "
+    },
+    {
+        "id": 65,
+        "name": "Steel Valkyries",
+        "description": "A galaxy scarred by war now attempts to rebuild, but the old wounds remain. Criminals, bounty hunters, mercenaries, and assassins have filled the power vacuum, piloting dangerous combat exo-suits with godlike abilities."
+    },
+    {
+        "id": 66,
+        "name": "Guardian of the Sands",
+        "description": "Powerful guardians stand watch over the tomb of an ancient horror, so that it may never threaten the world again. But they may already be too late..."
+    },
+    {
+        "id": 67,
+        "name": "Pharaoh",
+        "description": "Though their empires were swallowed by the sands, mighty Pharaohs once ruled the sun-baked dunes of the Great Desert."
+    },
+    {
+        "id": 68,
+        "name": "Woad",
+        "description": "Few can survive a journey through the frozen tundra of the north. If the cold doesn't kill you... the Woad surely will."
+    },
+    {
+        "id": 69,
+        "name": "Lancer",
+        "description": "With the times growing dire, the great mechanized Lancers of old rouse from their slumber. Taller than any building and more powerful than any army, they rise to protect their subjects before returning to the earth once more."
+    },
+    {
+        "id": 70,
+        "name": "Road Warrior",
+        "description": "Out in the wasteland, the only gospel a Road Warrior needs is the hum of an engine, and the only prayers they hear are the curses of their enemies. "
+    },
+    {
+        "id": 71,
+        "name": "Storybook",
+        "description": "Once upon a time, there was a group of storybook characters brought to life from the page..."
+    },
+    {
+        "id": 72,
+        "name": "Fables",
+        "description": "Every culture has their own folklore surrounding legends and monsters. Are these myths a figment of our imagination, stories passed down through generations to explain the unexplainable? Or are they based in a truth hidden from the rest of the world?"
+    },
+    {
+        "id": 73,
+        "name": "Odyssey",
+        "description": "From the urbanized coreworlds to the outermost edge of the galaxy, adventure awaits! The great Demaxian Empire ignores the objections of the Templar Order and the criminal Syndicate alike in their pursuit of ora—a mysterious golden essence that serves as the lifeblood of all civilization, and promises untold power to those who can wield it for themselves…"
+    },
+    {
+        "id": 74,
+        "name": "Bilgewater: Curse of the Drowned",
+        "description": "'Neath waxing moon and rising tides, dark magicks stir and secrets hide. Where salt and blood and fell winds flow… as above the waves, so too below."
+    },
+    {
+        "id": 75,
+        "name": "World Champions: 2017",
+        "description": "Congratulations to your Worlds winners for 2017: Samsung Galaxy!"
+    },
+    {
+        "id": 76,
+        "name": "Dreadnova",
+        "description": "A criminal network of ruthless mercenaries who rule entire swaths of the galaxy, Dreadnova has grown powerful since its founders fled Genesis Industries' ranks with stolen exosuit plans in tow. Now they push back against the Royal Space Military's efforts to impose Genesis' corporate order, bringing to bear all the firepower the black market has to offer."
+    },
+    {
+        "id": 78,
+        "name": "Battle of the God-Kings",
+        "description": "At the end of a dark timeline, two kings descended from the primordial gods of Order and Chaos lead vast armies in one final clash."
+    },
+    {
+        "id": 79,
+        "name": "Kaiju",
+        "description": "From the depths of the planet, they rise: colossal entities of horror and hunger, mightier than armies and mountains. Their motivations are uncertain; their designs, unknown. The one thing that is clear is that we will not survive them... unless we create the means to stop them."
+    },
+    {
+        "id": 80,
+        "name": "Omen of the Dark",
+        "description": "This story of a cursed queen and the wretched followers of her order makes unpleasant bedside banter for parents and their children. But lessons last longer when the tale is gripped in shadow, which swirls in dreams and shapes the souls of impressionable youth. The nightmares are just nightmares, after all... or so the adults pray."
+    },
+    {
+        "id": 81,
+        "name": "Immortal Journey",
+        "description": "Long ago, in an ancient land, many souls gathered beneath the gods to test the limits of their power. Foolish and arrogant, brave and just, their journeys are written into the immortal pages of history…"
+    },
+    {
+        "id": 82,
+        "name": "Traditional",
+        "description": "Honoring the initial designs of reworked champions."
+    },
+    {
+        "id": 83,
+        "name": "Collector's Edition",
+        "description": "Everything feels better when it comes inside a Collector's Edition box, be it digital or physical."
+    },
+    {
+        "id": 84,
+        "name": "PAX",
+        "description": "PAX: the intersection of all things gaming, where play is celebrated and immortal bonds are formed."
+    },
+    {
+        "id": 85,
+        "name": "Steel Legion",
+        "description": "In the shadow of all-out warfare between Genesis Industries and Dreadnova, ruined lives are just collateral damage. The Steel Legion is a vigilante organization operated out of run-down battleground planets, founded by refugees and armed by weapons crafted from scraps of rubble. If no one else will defend them, the people must defend themselves."
+    },
+    {
+        "id": 86,
+        "name": "Infernal",
+        "description": "Scorching an entire world takes unimaginable strength, which is why the Ashen Lord called upon his legions of Infernals to lend their flames. From the darkest depths, they each bring their own terrible powers to bear, though not all answer their call with the same burning enthusiasm."
+    },
+    {
+        "id": 87,
+        "name": "Death Sworn",
+        "description": "Eager to claim more souls for the underworld, Death sends the souls of fallen warriors as Death Sworn back to the mortal plane, where they serve their master's terrible bidding with relish."
+    },
+    {
+        "id": 88,
+        "name": "Trick-or-Treat",
+        "description": "You better hope you have the good stuff. You know, Piltover Pops, Strikebreaker Sours, Dark Star Chocolate Bars... 'Cause if you don't, the kids on this block have some tricks up their sleeves. "
+    },
+    {
+        "id": 89,
+        "name": "Zombies VS Slayers",
+        "description": "Brains..."
+    },
+    {
+        "id": 90,
+        "name": "Praetorian",
+        "description": "Nothing is safe from the cold clutches of the Praetorians, a mechanical plague tearing through spacetime. For as hard as the Remembrancers fight to stave off the eradication of all life, deep down they are filled with fear, knowing that at some point they'll tire, while the Praetorians never will."
+    },
+    {
+        "id": 91,
+        "name": "K/DA",
+        "description": "“There is a place between fantasy and reality where anything can happen. You have the power to be anyone, and do anything. It is your dream. In our in-between world, K/DA feels confident and strong. We can do anything, and so can you.” -Kai'Sa"
+    },
+    {
+        "id": 92,
+        "name": "Coven",
+        "description": "The witches lay in wait, a sisterhood of frightening pulchritude, their hopes whispered forth from desacralized lips. They speak of the bloating corpses of Old Gods, of ancient rites carried out with magics long forgotten to mortal mind, of the return of what they call \"order\", but others call \"suffering\". Hark! Mankind's end fast approaches."
+    },
+    {
+        "id": 93,
+        "name": "Eclipse",
+        "description": "Long ago, an order of monastic knights slew the vile gods of the old world, using esoteric powers granted by the moon and sun. Now the world has grown dark and violent, as those selfsame deities prepare their return—challenged only by the light of the eclipse."
+    },
+    {
+        "id": 94,
+        "name": "Astronauts",
+        "description": "Astronauts, hijinks, and adorable alien meeps! Defying gravity is just another day for these adventurous space protectors, as they defend planet M33p and traverse the grand cosmos that awaits them."
+    },
+    {
+        "id": 95,
+        "name": "Arcanists",
+        "description": "Right outside the academy doors is a world filled with magic... and danger. The professors caution the young wizards and witches to stay within the safety of the school grounds, grow their power, and study well—but where is the fun in that when adventure awaits just beyond the bend?"
+    },
+    {
+        "id": 96,
+        "name": "Papercraft",
+        "description": "Do you see a saddle on my back?\" chirped the phoenix. \"I am no pack-bird. And that yeti will weigh down our flight.\" The boy looked on, his perfect plan rejected. But then, a smile creased his face. After all, in this world of folded foliage and crinkled creeks, adventure is always just beyond the bend."
+    },
+    {
+        "id": 97,
+        "name": "Albion",
+        "description": "Once the dominion of fallen Elven empires, the vast forests of Albion are now home to kingdoms and brigands and elves and free men in equal measure. There's power to be found in the imperial ruins, should anyone be bold enough to venture deep into the woods to seek it…"
+    },
+    {
+        "id": 98,
+        "name": "Cats Versus Dogs",
+        "description": "The oldest rivalry the world has ever known: man's best friend pitted against the internet's greatest heroes. Only one faction will emerge victorious from the gnawing maw of battle between cats and dogs. Hopefully they don't get their fur too dirty: the only thing worse than losing is bathtime."
+    },
+    {
+        "id": 99,
+        "name": "Wonders of the World",
+        "description": "Individuals hailing from the far-flung universe of \"Earth,\" where giant statues come to life and everyone is wearing a fun hat. It's a lot like Runeterra, if you think about it."
+    },
+    {
+        "id": 100,
+        "name": "Day Job",
+        "description": "It's a living!"
+    },
+    {
+        "id": 101,
+        "name": "Definitely Not",
+        "description": "Is that a robot in glasses and a trenchcoat? Of course not. Do your eyes perceive a beast man in a onesie? Better get those eyes checked, because they're wrong. Isn't Draven too modest to wear his own head? How foolish you must feel to even ask. And that laser squid? Definitely human. Definitely."
+    },
+    {
+        "id": 102,
+        "name": "High Society",
+        "description": "The only thing more impressive than their wealth is their tax avoidance skills."
+    },
+    {
+        "id": 103,
+        "name": "Dunkmaster",
+        "description": "There are two types of people in this world: those that dunk, and those who get dunked. If you don't know which one you are, then watch out! 'Cuz you're about to GET DUNKED!"
+    },
+    {
+        "id": 104,
+        "name": "Commando",
+        "description": "Just your average bottomless pit of scum and villainy. Bosses vie for power; pacts are made and broken; friendships meet their end on the edge of twisted, subtle knives. And yet, there's something more to this city. Something undiscovered, imperceptible. Something... infinite. "
+    },
+    {
+        "id": 105,
+        "name": "Invaders",
+        "description": "True to their title, these nefarious alien meeps have stumbled upon a power they don't quite understand. Unfortunately, misery loves company. Those who come into contact with the invaders almost always come out on the other side just a little more evil… and purple!"
+    },
+    {
+        "id": 106,
+        "name": "Mad Scientists",
+        "description": "The job requirements are pretty simple: we're looking for at least five years of experience in applied sciences, your last peer-reviewed paper, and two references. Oh, and an evil laugh. Actually, put that at the top of the list."
+    },
+    {
+        "id": 107,
+        "name": "World Champions: 2018",
+        "description": "Congratulations to your Worlds winners for 2018: Invictus Gaming!"
+    },
+    {
+        "id": 108,
+        "name": "Forgotten Depths",
+        "description": "Sit down, my child, and listen close. The ocean is a wonder, the foaming waves that reach our peaceful shores a deceitful invitation. For what lies beneath that endless blue is a world beyond our imagining. Of kingdoms ruined and monsters fierce, floating down in those forgotten depths."
+    },
+    {
+        "id": 109,
+        "name": "Conqueror",
+        "description": "Commemorating the League of Legends Mid-Season Invitational and Spring Split tournaments."
+    },
+    {
+        "id": 110,
+        "name": "Goth",
+        "description": "It's not a phase."
+    },
+    {
+        "id": 111,
+        "name": "Silver Age",
+        "description": "The rift's greatest superheroes and most dastardly villains, available at a comic store near you!"
+    },
+    {
+        "id": 112,
+        "name": "Glacial",
+        "description": "The world is frozen, with few left to remember its cause. Old terrors stir from beneath the ice, ready to claim the world once more. The flame of hope remains, but the days are short, and the nights long…"
+    },
+    {
+        "id": 113,
+        "name": "Battle Academia",
+        "description": "At these institutions, only the strong survive. Though they were founded to honor their God Weapon, the students at each academy strive to make its strength their own on their path to glory. Whether it's the classroom, or the battlefield, dominate the competition."
+    },
+    {
+        "id": 114,
+        "name": "Medieval",
+        "description": "Hark, ye knights and knaves, for these lands are under the royal protection of the King and Queen! Make way, make way!"
+    },
+    {
+        "id": 115,
+        "name": "Rift Hospital",
+        "description": "Take a seat. The doctor will be right with you."
+    },
+    {
+        "id": 116,
+        "name": "Demonic",
+        "description": "Even in the kingdom of Hell, fervent personalities jockey for higher standing, gambling with the souls of mortals in their power plays for the dark lord's favor."
+    },
+    {
+        "id": 117,
+        "name": "Demacia Vice",
+        "description": "As Ahri locks in her character on the start screen, the synth-heavy score fills the arcade. Her button taps aren't random, but perfectly calculated as she guides her champ through the crime-filled Demacian streets. A crowd gathers, intent on watching Ahri finally beat the high score, set by her only days ago."
+    },
+    {
+        "id": 118,
+        "name": "Heavy Metal",
+        "description": "Audiences gather from all over the world for a chance to witness the greatest robot fighters throw down in RiotCorp's gladiatorial arenas, eager for the chance to be crowned the Full Metal Robot Fighting League Champion or break down trying."
+    },
+    {
+        "id": 119,
+        "name": "Star Guardian Season 3",
+        "description": "Ahri's old squad resurfaces, changed from the events that once tore them apart... and followed by a threat beyond anything the Star Guardians have ever faced. Can the group move past old grudges and save themselves from annihilation? Or will they simply be the next victims of the Twilight Star?"
+    },
+    {
+        "id": 120,
+        "name": "True Damage",
+        "description": "“What is True Damage? Man, True Damage is the future! It's a collective of the best artists from around the world, coming together with the best collaboration, to make the best hip-hop music. We're five steps ahead of the game. Everyone else has gotta catch up.” -Ekko"
+    },
+    {
+        "id": 121,
+        "name": "Cops and Robbers",
+        "description": "Nobody puts in the work like the Piltover Police Department. Who else can lock up the most sugar-laden donuts inside their merciless stomachs, rack up the highest of overtimes, and ignore even the most menial of paperwork? The criminals may be taking advantage of it, but even they wish they had the same work ethic."
+    },
+    {
+        "id": 122,
+        "name": "Crimson Elite",
+        "description": "We can neither confirm nor deny the Crimson Elite's involvement in any criminal activities and request all inquiries be directed to local authorities."
+    },
+    {
+        "id": 123,
+        "name": "Dreadknights",
+        "description": "Brought back to life by mysterious ancient magic, these undead knights are the only remnants of a storied history, lost to time. They'll protect what once was theirs, at any cost to mortal life."
+    },
+    {
+        "id": 124,
+        "name": "Dawnbringer",
+        "description": "Order and light reign through deities of dawn, bringing structure to a nascent world locked in conflict with the forces of night."
+    },
+    {
+        "id": 125,
+        "name": "Nightbringer",
+        "description": "Chaos and darkness reign through deities of night, bringing change to a static world locked in conflict with the forces of dawn."
+    },
+    {
+        "id": 126,
+        "name": "Bloodstone",
+        "description": "Terrors abound in the depths of night, with none as fearsome as the Bloodstone cults. Shrieks fill the air in their presence, while the streets run red, for their master hungers and must be satiated."
+    },
+    {
+        "id": 127,
+        "name": "Mecha Kingdoms",
+        "description": "The Great Kingdoms warred for generations until the arrival of a new enemy. To fight back, they are blessed with gifts from the heavens. Will they rise above their past to save their future?"
+    },
+    {
+        "id": 128,
+        "name": "Freljord",
+        "description": "The harsh, frozen north rarely sees travelers from other lands. Those that brave its wilds are met with hostile nature and unwelcoming hordes. Lucky are the few that survive to return to the nation they call home."
+    },
+    {
+        "id": 129,
+        "name": "Blackfrost",
+        "description": "The Ice Witch lets none slumber; each fallen friend and foe in her domain rises anew to fight by her side. Her dark magic twists their appearance, creating glacial golems with hearts of black, unmelting ice."
+    },
+    {
+        "id": 130,
+        "name": "World Champions: 2019",
+        "description": "Congratulations to your Worlds winners for 2019: FunPlus Phoenix!"
+    },
+    {
+        "id": 133,
+        "name": "PsyOps",
+        "description": "The crown jewel of military black ops, the PsyOps unit are an elite team of psychic soldiers deployed against rogue militaries and supernatural threats. Officially, they don't exist. But when conventional warfare won't cut it and the stakes are no less than the fate of the world, PsyOps answers the call."
+    },
+    {
+        "id": 134,
+        "name": "Black Rose Group",
+        "description": "A psychic paramilitary unit of fearsome power, the Black Rose Group hopes to create a new global order with their ferocious human bioweapons."
+    },
+    {
+        "id": 135,
+        "name": "Dragonmancers",
+        "description": "Majestic dragons dwell in remote places of wild beauty, avoiding mortal affairs outside of rarely bestowing their gifts on only a select few. The Dragonmancers are those fortunate and powerful enough to have gained the ultimate blessing. Whether they then use that for good or for evil is up to them, and anyone strong enough to stop them."
+    },
+    {
+        "id": 136,
+        "name": "Galactic",
+        "description": "The War of the Broken Moon has ravaged our galaxy for near a hundred cycles. And still... there is no end in sight."
+    },
+    {
+        "id": 137,
+        "name": "Battle Queens",
+        "description": ""
+    },
+    {
+        "id": 138,
+        "name": "Ruined",
+        "description": "The Harrowing spreads its Black Mist across Runeterra, corrupting indiscriminately. Some, in its presence, are swayed to follow the Ruined King, believing their goals aligned. But Viego wants only the return of Isolde; he has no allies. The Ruined who aid him in halting the Sentinels are mere pawns in a broken-hearted lover's game."
+    },
+    {
+        "id": 139,
+        "name": "Shan Hai Scrolls",
+        "description": "Within the fabled Shan Hai Scrolls, gods and mythical creatures roam magical lands, wielding the power of the elements. Some are content to live with the palette they've been given, while others wish to jump beyond the borders and paint their lives with a new brush."
+    },
+    {
+        "id": 140,
+        "name": "Crystal Rose",
+        "description": "Romance and joy are in the air at the yearly Crystal Rose Festival, where adversaries meet on peaceful, neutral ground to share a night of dancing, merriment, and making wishes for the future. Everyone is expected to leave their weapons at the door as a promise for a better tomorrow."
+    },
+    {
+        "id": 141,
+        "name": "Withered Rose",
+        "description": "The Crystal Rose Festival welcomes all who believe in its dream of a peaceful tomorrow, though many have grown disenchanted with the whole affair. Those who make up the Withered Rose wish to see it come to an end. But no one is immune to the festival's charm; perhaps they too will be swept away by the evening's beauty and have a change of heart."
+    },
+    {
+        "id": 142,
+        "name": "Lunar Beast",
+        "description": "Each year, a mischievous Lunar Beast arrives in the mortal realm, drawn to the New Year's celebrations. And each year, the corresponding Lunar God selects a squad of chosen champions to lead the beast on a merry chase and protect the city from the creature's playful rampage. The Lunar Parade is a beloved part of the New Year's festivities and the Beast itself brings good luck once it's been lulled to rest by the squad's efforts. When a Lunar Beast is well-entertained and well-rested, it always signals a prosperous New Year!"
+    },
+    {
+        "id": 143,
+        "name": "Bees!",
+        "description": "Bzzz. Bzzz bzzz bzzz. Bzzz! Bzzz, bzz, bzz bzz bzz. Bzzz..."
+    },
+    {
+        "id": 144,
+        "name": "Space Groove",
+        "description": "In a groovy galaxy a million disco infernos away, a mysterious energy known only as The Groove brings music and prosperity to trillions of galactic citizens. But when the alien overlord Lissandra and her army of Harsh Vibes begin to enslave planets and suppress disco music, a new age of heroes rises to stop her, and keep the party grooving."
+    },
+    {
+        "id": 145,
+        "name": "World Champions: 2020",
+        "description": "Congratulations to your Worlds winners for 2020: DAMWON Gaming!"
+    },
+    {
+        "id": 146,
+        "name": "Arcana",
+        "description": ""
+    },
+    {
+        "id": 147,
+        "name": "Sentinels of Light",
+        "description": "Though their numbers are few, the Sentinels of Light share a storied history. For years they've fought back the Harrowing, aided by ancient relic-stone weaponry that channels their very souls into a powerful light. But all that matters now is the battle ahead, as the Ruined King lays waste to Runeterra, all to dance with his queen once more."
+    },
+    {
+        "id": 148,
+        "name": "Cyber Pop",
+        "description": "In the vibrant underground of Sound City, hackers, skaters, rebels, and rogues band together away from the prying eyes of powerful cyber-corporate overlords."
+    },
+    {
+        "id": 149,
+        "name": "Crime City Nightmare",
+        "description": "If corruption and illegality existed on a map, Valoran City would be its center. A breeding ground for all things depraved, there are no depths too deep from which evil can be found, and the horrors that lurk there are eager to spread their influence."
+    },
+    {
+        "id": 150,
+        "name": "Phoenixmancers",
+        "description": "Only the truest hearts are blessed by the divine fenghuang, a legendary phoenix who watches over the world. Her champions receive a single feather—each one containing unimaginable elemental power, granting them the means needed to protect all that is innocent and good from forces lurking in the shadows."
+    },
+    {
+        "id": 151,
+        "name": "Pentakill III: The Lost Chapter",
+        "description": "In a realm consecrated to dark and uncaring gods, where mortals clash in ceaseless, bloody sagas of metal, one band rose above all others: Pentakill, chosen of the Noisome Host. Now revered in temples and arenas across the land, their supremacy has become absolute—though a time of change is approaching, and the cycle may soon begin anew..."
+    },
+    {
+        "id": 152,
+        "name": "Arcane",
+        "description": ""
+    },
+    {
+        "id": 153,
+        "name": "Cafe Cuties",
+        "description": ""
+    },
+    {
+        "id": 154,
+        "name": "Porcelain",
+        "description": "In a world where ancient spirits and magical creatures thrive in the periphery of modern society, powerful porcelain artifacts called the Zodiac Relics are key to unlocking immense power. They are kept safe by the Protectors: immortal guardians tasked with keeping the Relics out of the wrong hands."
+    },
+    {
+        "id": 155,
+        "name": "Shockblade",
+        "description": "Bearing weapons imbued with lightning magic through the deadly Cloud Ritual, Shockblades are an order of mysterious shinobi warriors tasked with protecting humankind from malevolent spirits and monsters. They travel between the mortal and spirit realms to chase down threats no one else can touch, safeguarding the future for all denizens of the mortal world."
+    },
+    {
+        "id": 156,
+        "name": "Anima Squad",
+        "description": ""
+    },
+    {
+        "id": 157,
+        "name": "Ashen Knights",
+        "description": "Many ages long past, a great king waged a glorious war: to break the shackles of magic on the world, so that mankind could forge its own destiny. Yet upon severing the final font of enchantment, the king was lost, the foundations of the world crumbled, and his once-legendary knights were left alone to madness, ruin, and ash."
+    },
+    {
+        "id": 158,
+        "name": "World Champions: 2021",
+        "description": "Congratulations to your Worlds winners for 2021: Edward Gaming!"
+    },
+    {
+        "id": 159,
+        "name": "Ocean Song",
+        "description": "Nothing exudes the \"beach vibes and cool tunes\" lifestyle more than the Ocean Song Festival. From Seraphine's mellow songs to Yone's experimental DJ set, there's a vibe for everyone, so feel the sand between your toes, taste the salty air, and lose yourself to the best music of the summer."
+    },
+    {
+        "id": 160,
+        "name": "Snow Moon",
+        "description": "As the Snow Moon rises beyond the humbling mountains of Ionia, a chill passes across the land. Those who worship in its name—a cult of unwavering assassins—commence their ritual. With snow comes purification, a cleansing only possible through the sacrifice of one's humanity."
+    },
+    {
+        "id": 161,
+        "name": "Star Guardian Season 4",
+        "description": "Ancient enemies appear in a Valoran City scarred by Zoe's invasion, now defended by a new generation of Star Guardians. As darkness gathers in the skies above, Kai'Sa and Akali prepare their untested squad for a fight with forces beyond their comprehension... and the true threat that awaits beyond."
+    },
+    {
+        "id": 162,
+        "name": "Monster Tamers",
+        "description": "Who are we? We're Monster Tamers! We protect the world when it's in danger! When others would flee, we follow the roar. We tame the monster and use the CORE. And with our new friends by our side, we'll hop and run and swim and glide! We'll go anywhere, no matter how far. Because we're Monster Tamers! That's who we are!"
+    },
+    {
+        "id": 163,
+        "name": "Spirit Guard",
+        "description": "Udyr spent almost a decade training in Ionia with the monks of the Hirana Monastery, learning to control and master his spiritual abilities. At last, when the Freljord called him home, he chose to stay and complete his training. In the time since then, Udyr has become part of the Ionian landscape, both spiritual and mortal, as he works with Lee Sin and Karma to return balance to the wartorn land."
+    },
+    {
+        "id": 164,
+        "name": "Ruination",
+        "description": "One thousand years ago, the last king of Camavor chose to follow his heart at the expense of his country. So powerful was his love that fate intervened, and only ruin followed."
+    },
+    {
+        "id": 165,
+        "name": "Zenith Games",
+        "description": "It's 2122, a year of firsts for the Zenith Games. Robot referees are taking to the field, the sport of Hammerjack is making its competitive debut, and after years of talks, augmented humans are finally allowed to compete. All that's left is seeing who will win."
+    },
+    {
+        "id": 166,
+        "name": "Elementalist",
+        "description": "A kingdom hangs on the edge of ruin as an army of titanic elemental beasts wage war on humanity. The last line of defense is held by a lone warrior queen, Elementalist Lux. To save her people, she must look within and reveal her true nature... no matter what form it takes."
+    },
+    {
+        "id": 167,
+        "name": "Legacy",
+        "description": "Treasures from days long passed, glimmering just within reach."
+    },
+    {
+        "id": 168,
+        "name": "Urf the Manatee",
+        "description": "In loving memory of Urf, a gentle sea cow warrior who now practices with his spatula in the shallow marshes of the great beyond. Good night, sweet prince."
+    },
+    {
+        "id": 169,
+        "name": "Surprise Party",
+        "description": "Who doesn't like a surprise party? The guest list is done, everybody's bought their presents, and the food's going to be great. We even got a clown! This'll be one to remember. Just don't tell Amumu."
+    },
+    {
+        "id": 170,
+        "name": "Fright Night",
+        "description": "Bounding across the land on gargantuan frog legs, the Toadstool Boarding House attracts lodgers of the most frightful variety. Regardless of where it settles, there is always a monster in need of a place to stay, and Mother Glasc is always there to welcome them into the family with open arms. And an endless labyrinth of rooms ensures that none are ever turned away."
+    },
+    {
+        "id": 171,
+        "name": "Spirit Blossom",
+        "description": "The Spirit Blossom Festival is an ancient and celebrated time in Ionia, when the door to the spirit world is opened, the dead return to their loved ones, and spirits of all manner turn their eyes towards the living. From the benevolent Kanmei, to the obsessive Akana—their stories play out again and again, like shadows on a paper lantern."
+    },
+    {
+        "id": 172,
+        "name": "Bewitching",
+        "description": "Who said witches can't have fun? Whoever it was, they're probably a frog now. Or some other cursed vermin, doomed to forever wander the streets, watching the eve's celebrations from afar. Pretty harsh punishment, but what did you expect? They may know how to throw a party, but at the end of the night, they're still witches!"
+    },
+    {
+        "id": 173,
+        "name": "DJ",
+        "description": "Feel the bass. Hear the beat. Let the music move you."
+    },
+    {
+        "id": 174,
+        "name": "Popstar",
+        "description": "When you're at the top of the charts, no one can bring you down."
+    },
+    {
+        "id": 176,
+        "name": "Three Honors",
+        "description": "Society has become increasingly individualistic and closed off under the Essent's rule. People are encouraged to care only about themselves, so nobody trusts each other. As leader of the long-dead Order of Solace, Malzahar seeks to bring harmony to this dissonant world through the uplifting aura of Solace. He knows that only by coming together can they inspire a better world."
+    },
+    {
+        "id": 177,
+        "name": "Bilgewater: Mercs",
+        "description": "Bounty hunters, outlaws, and pirates alike swarm to Bilgewater's infamous slaughter docks like flies to butcher's trimmings. It's a hard life on these seas, but the reward can be well worth it... Bearded Lady permiting."
+    },
+    {
+        "id": 178,
+        "name": "Chronicle",
+        "description": "Legends are tested, shaped, and forged by their pasts."
+    },
+    {
+        "id": 179,
+        "name": "Curse of the Void",
+        "description": "Should the scourge of the Void spread across Runeterra, all will bow to its twisted evolution. Swarming, hungering, wanting, the Void spares no creature and suffers no defeat."
+    },
+    {
+        "id": 180,
+        "name": "Otherroads",
+        "description": "A featherknight flaps its wings, and halfway across Runeterra, an Ocean Drake surfaces. Our lives play out, fickle as words on parchment; the paths before us unknown and exciting. What if the road taken instead... was the one less traveled?"
+    },
+    {
+        "id": 182,
+        "name": "Beta",
+        "description": "Who let these stay in the build???? Don't tell Legal."
+    },
+    {
+        "id": 183,
+        "name": "Soulstealer",
+        "description": "Souls are life, light, power—and in a world without mercy, they are stolen and consumed by remorseless masters of death."
+    },
+    {
+        "id": 184,
+        "name": "Triumphant",
+        "description": "Awarded to players who won a League of Legends sponsored tournament."
+    },
+    {
+        "id": 185,
+        "name": "True Warrior",
+        "description": "For a true warrior, only strength and honor will echo through eternity."
+    },
+    {
+        "id": 186,
+        "name": "Empyrean",
+        "description": "The first Empyrean, Pyke, tears through the realms on a destructive rampage against his counterparts, birthing new Empyreans in the process. Who will reign supreme as these new powerhouses emerge, and what will they do with their rapidly dwindling time left?"
+    },
+    {
+        "id": 187,
+        "name": "Winterblessed",
+        "description": "When the air grows crisp and the first snow falls, look to the sky, for Polaris will appear. Do not be afraid, for if you've been virtuous without expectation, you might be rewarded with the Aurora's blessings. But remember: no matter how you act, you cannot take your fortunes for granted, because Polaris comes every year, and no one escapes punishment."
+    },
+    {
+        "id": 188,
+        "name": "Mythmaker",
+        "description": "Long ago, the defeat of the Great Beast Galio gave rise to Lunar New Year traditions that are carried on through the retelling of that epic tale. Within the story itself lies a living world all its own—but when the world of the story is suddenly interrupted, the characters must work together to fix the mess and see their own myth through."
+    },
+    {
+        "id": 189,
+        "name": "Heartthrobs and Heartaches",
+        "description": "The preppy and perfectly poised Heartthrob clique don't have much in common with the Heartache crew, who would much rather be ditching class to hang out at the skatepark. But they agree on one thing: they've had it with this silly made up holiday dedicated to people catching feelings. So why can't they seem to shake the butterflies from their stomachs?"
+    },
+    {
+        "id": 190,
+        "name": "Broken Covenant",
+        "description": "For years the Aspirant congregation has fought the Neverghaast sect over Aspira, the breath of life. To the congregation, Aspira is a gift one returns upon death to enter the afterlife. But the Neverghaast, cursed with an eternal thirst for breaths, believe there is only one life and it must be lived to excess. The war rages on, with no end in sight..."
+    },
+    {
+        "id": 191,
+        "name": "Faerie Court",
+        "description": "All fae nobility are servants to nature's will, carrying out the natural order and the turning of seasons with their magic. Beneath that higher purpose, however, a constant game of political intrigue plays out in luxurious courts of silk, gossamer, and gold. Power, after all—magical, natural, or political—always inspires competition."
+    },
+    {
+        "id": 192,
+        "name": "Inkshadow",
+        "description": "On the outskirts of Rabadon City, a dilapidated temple houses the last hope for Rabadon's people: the Inkshadow Warriors. Each one sacrifices what is most important to them in order to make a contract with ancient spirits, who imbue them with magic tattoos so powerful, even the Cabal trembles. They are victims no more. It is time to take back their home."
+    },
+    {
+        "id": 193,
+        "name": "Nightbringer and Dawnbringer",
+        "description": "Timeless is the conflict between the Nightbringers and Dawnbringers. On one side, the forces of chaos and darkness bring change, while on the other, the forces of order and light bring structure. It is these gods and their descendents that shape a nascent world, and who can say whether the future will yield brighter days... or darker nights."
+    },
+    {
+        "id": 194,
+        "name": "World Champions: 2022",
+        "description": "Congratulations to your Worlds winners for 2022: DRX!"
+    },
+    {
+        "id": 195,
+        "name": "Crystalis Motus",
+        "description": "Motus was a world bound to magic, but after the purge, everything collapsed. Centuries later, civilization is scattered, nature has reclaimed the cities, and magic's back in the form of Prismae Crystals. All it wants is to spread, and while some can use its power safely, others lose themselves to its pull and are taken over. So begins the Prismae Wars."
+    },
+    {
+        "id": 196,
+        "name": "Soul Fighter",
+        "description": "Their souls awaken by trial: one fought on a battlefield or in the very trenches of the mind. Each is granted unique abilities reflective of their nature and the power to conjure forth the very essence of their spirit. Some hone their strength, temper it with training... Others will use it only as a weapon to destroy. They are... SOUL FIGHTERS!"
+    },
+    {
+        "id": 197,
+        "name": "Street Demons",
+        "description": "In Styxbridge City, demons, creatures, and humans live side-by-side. Every year, a street art festival is held, culminating in a friendly competition to see who can make the biggest and boldest graffiti: TagFest!"
+    },
+    {
+        "id": 198,
+        "name": "La Ilusión",
+        "description": "The Eidola Vida were once mortal but, upon death, were reborn as spirits of life from their families' love. The Eidola Muerte were forgotten souls who, in death, roamed the afterlife until they found their own makeshift families. Both sides cannot be seen, only felt through their Ardor: magical flames that either help cultivate life or extinguish it."
+    },
+    {
+        "id": 199,
+        "name": "HEARTSTEEL",
+        "description": "“HEARTSTEEL is the hottest new band on the scene, featuring artists like Kayn and Ezreal—”\\n“It's all of our band!”\\n“Calm down, Sett.”\\n“Wait, which magazine is this for again, K'Sante?”\\n“Please try to focus!”\\n“Hey Yone, can we just get on stage already?”\\n“We are—oh, well, Aphelios just walked off…”"
+    },
+    {
+        "id": 200,
+        "name": "Primal Ambush",
+        "description": "Those lucky enough to be born with glowing markings on their skin are revered among their people as “Favorclaw.” These special Tigrasbornes are destined to represent their community and demand the respect of others with their strength. They each hope to conquer the world in the name of their kind and become the leader feared by all."
+    },
+    {
+        "id": 201,
+        "name": "Heavenscale",
+        "description": "In order to better know their kingdom's subjects, draconic royalty and retinue descend from their palace in the sky, taking on human forms and reveling with the mortals as they usher in the New Year."
+    }
+]

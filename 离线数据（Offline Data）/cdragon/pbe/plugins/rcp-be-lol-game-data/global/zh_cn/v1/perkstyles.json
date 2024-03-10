@@ -1,0 +1,873 @@
+{
+    "schemaVersion": 2,
+    "styles": [
+        {
+            "id": 8400,
+            "name": "坚决",
+            "tooltip": "耐久和控制",
+            "iconPath": "/lol-game-data/assets/v1/perk-images/Styles/7204_Resolve.png",
+            "assetMap": {
+                "p8400_s0_k0": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/p8400_s0_k0.jpg",
+                "p8400_s0_k8437": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/p8400_s0_k8437.jpg",
+                "p8400_s0_k8439": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/p8400_s0_k8439.jpg",
+                "p8400_s0_k8465": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/p8400_s0_k8465.jpg",
+                "p8400_s8000_k0": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/p8400_s8000_k0.jpg",
+                "p8400_s8000_k8437": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/p8400_s8000_k8437.jpg",
+                "p8400_s8000_k8439": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/p8400_s8000_k8439.jpg",
+                "p8400_s8000_k8465": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/p8400_s8000_k8465.jpg",
+                "p8400_s8100_k0": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/p8400_s8100_k0.jpg",
+                "p8400_s8100_k8437": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/p8400_s8100_k8437.jpg",
+                "p8400_s8100_k8439": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/p8400_s8100_k8439.jpg",
+                "p8400_s8100_k8465": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/p8400_s8100_k8465.jpg",
+                "p8400_s8200_k0": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/p8400_s8200_k0.jpg",
+                "p8400_s8200_k8437": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/p8400_s8200_k8437.jpg",
+                "p8400_s8200_k8439": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/p8400_s8200_k8439.jpg",
+                "p8400_s8200_k8465": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/p8400_s8200_k8465.jpg",
+                "p8400_s8300_k0": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/p8400_s8300_k0.jpg",
+                "p8400_s8300_k8437": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/p8400_s8300_k8437.jpg",
+                "p8400_s8300_k8439": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/p8400_s8300_k8439.jpg",
+                "p8400_s8300_k8465": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/p8400_s8300_k8465.jpg",
+                "svg_icon": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/resolve_icon.svg",
+                "svg_icon_16": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/resolve_icon_16.svg"
+            },
+            "isAdvanced": false,
+            "allowedSubStyles": [
+                8000,
+                8100,
+                8200,
+                8300
+            ],
+            "subStyleBonus": [
+                {
+                    "styleId": 8000,
+                    "perkId": 8414
+                },
+                {
+                    "styleId": 8100,
+                    "perkId": 8454
+                },
+                {
+                    "styleId": 8200,
+                    "perkId": 8415
+                },
+                {
+                    "styleId": 8300,
+                    "perkId": 8416
+                }
+            ],
+            "slots": [
+                {
+                    "type": "kKeyStone",
+                    "slotLabel": "",
+                    "perks": [
+                        8437,
+                        8439,
+                        8465
+                    ]
+                },
+                {
+                    "type": "kMixedRegularSplashable",
+                    "slotLabel": "蛮力",
+                    "perks": [
+                        8446,
+                        8463,
+                        8401
+                    ]
+                },
+                {
+                    "type": "kMixedRegularSplashable",
+                    "slotLabel": "抵抗",
+                    "perks": [
+                        8429,
+                        8444,
+                        8473
+                    ]
+                },
+                {
+                    "type": "kMixedRegularSplashable",
+                    "slotLabel": "生机",
+                    "perks": [
+                        8451,
+                        8453,
+                        8242
+                    ]
+                },
+                {
+                    "type": "kStatMod",
+                    "slotLabel": "进攻",
+                    "perks": [
+                        5008,
+                        5005,
+                        5007
+                    ]
+                },
+                {
+                    "type": "kStatMod",
+                    "slotLabel": "灵活",
+                    "perks": [
+                        5008,
+                        5010,
+                        5001
+                    ]
+                },
+                {
+                    "type": "kStatMod",
+                    "slotLabel": "防御",
+                    "perks": [
+                        5011,
+                        5013,
+                        5001
+                    ]
+                }
+            ],
+            "defaultPageName": "坚决：巨像",
+            "defaultSubStyle": 8200,
+            "defaultPerks": [
+                8437,
+                8446,
+                8444,
+                8451,
+                8224,
+                8237,
+                5008,
+                5001,
+                5001
+            ],
+            "defaultPerksWhenSplashed": [
+                8444,
+                8446
+            ],
+            "defaultStatModsPerSubStyle": [
+                {
+                    "id": "8000",
+                    "perks": [
+                        5005,
+                        5001,
+                        5001
+                    ]
+                },
+                {
+                    "id": "8100",
+                    "perks": [
+                        5008,
+                        5001,
+                        5001
+                    ]
+                },
+                {
+                    "id": "8200",
+                    "perks": [
+                        5008,
+                        5001,
+                        5001
+                    ]
+                },
+                {
+                    "id": "8300",
+                    "perks": [
+                        5007,
+                        5001,
+                        5001
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 8100,
+            "name": "主宰",
+            "tooltip": "爆发伤害和近身手段",
+            "iconPath": "/lol-game-data/assets/v1/perk-images/Styles/7200_Domination.png",
+            "assetMap": {
+                "p8100_s0_k0": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s0_k0.jpg",
+                "p8100_s0_k8112": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s0_k8112.jpg",
+                "p8100_s0_k8124": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s0_k8124.jpg",
+                "p8100_s0_k8128": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s0_k8124.jpg",
+                "p8100_s0_k9923": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s0_k9923.jpg",
+                "p8100_s8000_k0": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s8000_k0.jpg",
+                "p8100_s8000_k8112": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s8000_k8112.jpg",
+                "p8100_s8000_k8124": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s8000_k8124.jpg",
+                "p8100_s8000_k8128": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s8000_k8128.jpg",
+                "p8100_s8000_k9923": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s8000_k9923.jpg",
+                "p8100_s8200_k0": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s8200_k0.jpg",
+                "p8100_s8200_k8112": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s8200_k8112.jpg",
+                "p8100_s8200_k8124": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s8200_k8124.jpg",
+                "p8100_s8200_k8128": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s8200_k8128.jpg",
+                "p8100_s8200_k9923": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s8200_k9923.jpg",
+                "p8100_s8300_k0": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s8300_k0.jpg",
+                "p8100_s8300_k8112": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s8300_k8112.jpg",
+                "p8100_s8300_k8124": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s8300_k8124.jpg",
+                "p8100_s8300_k8128": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s8300_k8128.jpg",
+                "p8100_s8300_k9923": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s8300_k9923.jpg",
+                "p8100_s8400_k0": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s8400_k0.jpg",
+                "p8100_s8400_k8112": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s8400_k8112.jpg",
+                "p8100_s8400_k8124": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s8400_k8124.jpg",
+                "p8100_s8400_k8128": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s8400_k8128.jpg",
+                "p8100_s8400_k9923": "/lol-game-data/assets/v1/perk-images/Styles/Domination/p8100_s8400_k9923.jpg",
+                "svg_icon": "/lol-game-data/assets/v1/perk-images/Styles/Domination/domination_icon.svg",
+                "svg_icon_16": "/lol-game-data/assets/v1/perk-images/Styles/Domination/domination_icon_16.svg"
+            },
+            "isAdvanced": false,
+            "allowedSubStyles": [
+                8300,
+                8400,
+                8200,
+                8000
+            ],
+            "subStyleBonus": [
+                {
+                    "styleId": 8300,
+                    "perkId": 8109
+                },
+                {
+                    "styleId": 8400,
+                    "perkId": 8114
+                },
+                {
+                    "styleId": 8200,
+                    "perkId": 8115
+                },
+                {
+                    "styleId": 8000,
+                    "perkId": 8127
+                }
+            ],
+            "slots": [
+                {
+                    "type": "kKeyStone",
+                    "slotLabel": "",
+                    "perks": [
+                        8112,
+                        8124,
+                        8128,
+                        9923
+                    ]
+                },
+                {
+                    "type": "kMixedRegularSplashable",
+                    "slotLabel": "预谋",
+                    "perks": [
+                        8126,
+                        8139,
+                        8143
+                    ]
+                },
+                {
+                    "type": "kMixedRegularSplashable",
+                    "slotLabel": "追踪",
+                    "perks": [
+                        8136,
+                        8120,
+                        8138
+                    ]
+                },
+                {
+                    "type": "kMixedRegularSplashable",
+                    "slotLabel": "狩猎",
+                    "perks": [
+                        8135,
+                        8134,
+                        8105,
+                        8106
+                    ]
+                },
+                {
+                    "type": "kStatMod",
+                    "slotLabel": "进攻",
+                    "perks": [
+                        5008,
+                        5005,
+                        5007
+                    ]
+                },
+                {
+                    "type": "kStatMod",
+                    "slotLabel": "灵活",
+                    "perks": [
+                        5008,
+                        5010,
+                        5001
+                    ]
+                },
+                {
+                    "type": "kStatMod",
+                    "slotLabel": "防御",
+                    "perks": [
+                        5011,
+                        5013,
+                        5001
+                    ]
+                }
+            ],
+            "defaultPageName": "主宰：行刑官",
+            "defaultSubStyle": 8000,
+            "defaultPerks": [
+                8112,
+                8139,
+                8138,
+                8135,
+                9111,
+                8014,
+                5005,
+                5008,
+                5001
+            ],
+            "defaultPerksWhenSplashed": [
+                8139,
+                8105
+            ],
+            "defaultStatModsPerSubStyle": [
+                {
+                    "id": "8000",
+                    "perks": [
+                        5005,
+                        5008,
+                        5001
+                    ]
+                },
+                {
+                    "id": "8200",
+                    "perks": [
+                        5008,
+                        5008,
+                        5001
+                    ]
+                },
+                {
+                    "id": "8300",
+                    "perks": [
+                        5008,
+                        5008,
+                        5001
+                    ]
+                },
+                {
+                    "id": "8400",
+                    "perks": [
+                        5008,
+                        5001,
+                        5001
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 8000,
+            "name": "精密",
+            "tooltip": "强化攻击和持续伤害",
+            "iconPath": "/lol-game-data/assets/v1/perk-images/Styles/7201_Precision.png",
+            "assetMap": {
+                "p8000_s0_k0": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s0_k0.jpg",
+                "p8000_s0_k8005": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s0_k8005.jpg",
+                "p8000_s0_k8008": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s0_k8008.jpg",
+                "p8000_s0_k8010": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s0_k8010.jpg",
+                "p8000_s0_k8021": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s0_k8021.jpg",
+                "p8000_s8100_k0": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s8100_k0.jpg",
+                "p8000_s8100_k8005": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s8100_k8005.jpg",
+                "p8000_s8100_k8008": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s8100_k8008.jpg",
+                "p8000_s8100_k8010": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s8100_k8010.jpg",
+                "p8000_s8100_k8021": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s8100_k8021.jpg",
+                "p8000_s8200_k0": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s8200_k0.jpg",
+                "p8000_s8200_k8005": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s8200_k8005.jpg",
+                "p8000_s8200_k8008": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s8200_k8008.jpg",
+                "p8000_s8200_k8010": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s8200_k8010.jpg",
+                "p8000_s8200_k8021": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s8200_k8021.jpg",
+                "p8000_s8300_k0": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s8300_k0.jpg",
+                "p8000_s8300_k8005": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s8300_k8005.jpg",
+                "p8000_s8300_k8008": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s8300_k8008.jpg",
+                "p8000_s8300_k8010": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s8300_k8010.jpg",
+                "p8000_s8300_k8021": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s8300_k8021.jpg",
+                "p8000_s8400_k0": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s8400_k0.jpg",
+                "p8000_s8400_k8005": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s8400_k8005.jpg",
+                "p8000_s8400_k8008": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s8400_k8008.jpg",
+                "p8000_s8400_k8010": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s8400_k8010.jpg",
+                "p8000_s8400_k8021": "/lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s8400_k8021.jpg",
+                "svg_icon": "/lol-game-data/assets/v1/perk-images/Styles/Precision/precision_icon.svg",
+                "svg_icon_16": "/lol-game-data/assets/v1/perk-images/Styles/Precision/precision_icon_16.svg"
+            },
+            "isAdvanced": false,
+            "allowedSubStyles": [
+                8200,
+                8400,
+                8300,
+                8100
+            ],
+            "subStyleBonus": [
+                {
+                    "styleId": 8200,
+                    "perkId": 8004
+                },
+                {
+                    "styleId": 8400,
+                    "perkId": 8006
+                },
+                {
+                    "styleId": 8300,
+                    "perkId": 8007
+                },
+                {
+                    "styleId": 8100,
+                    "perkId": 8016
+                }
+            ],
+            "slots": [
+                {
+                    "type": "kKeyStone",
+                    "slotLabel": "",
+                    "perks": [
+                        8005,
+                        8008,
+                        8021,
+                        8010
+                    ]
+                },
+                {
+                    "type": "kMixedRegularSplashable",
+                    "slotLabel": "英武",
+                    "perks": [
+                        9101,
+                        9111,
+                        8009
+                    ]
+                },
+                {
+                    "type": "kMixedRegularSplashable",
+                    "slotLabel": "传说",
+                    "perks": [
+                        9104,
+                        9105,
+                        9103
+                    ]
+                },
+                {
+                    "type": "kMixedRegularSplashable",
+                    "slotLabel": "战斗",
+                    "perks": [
+                        8014,
+                        8017,
+                        8299
+                    ]
+                },
+                {
+                    "type": "kStatMod",
+                    "slotLabel": "进攻",
+                    "perks": [
+                        5008,
+                        5005,
+                        5007
+                    ]
+                },
+                {
+                    "type": "kStatMod",
+                    "slotLabel": "灵活",
+                    "perks": [
+                        5008,
+                        5010,
+                        5001
+                    ]
+                },
+                {
+                    "type": "kStatMod",
+                    "slotLabel": "防御",
+                    "perks": [
+                        5011,
+                        5013,
+                        5001
+                    ]
+                }
+            ],
+            "defaultPageName": "精密：完美者",
+            "defaultSubStyle": 8200,
+            "defaultPerks": [
+                8005,
+                9111,
+                9104,
+                8014,
+                8233,
+                8236,
+                5005,
+                5008,
+                5001
+            ],
+            "defaultPerksWhenSplashed": [
+                9111,
+                8014
+            ],
+            "defaultStatModsPerSubStyle": [
+                {
+                    "id": "8100",
+                    "perks": [
+                        5005,
+                        5008,
+                        5001
+                    ]
+                },
+                {
+                    "id": "8200",
+                    "perks": [
+                        5005,
+                        5008,
+                        5001
+                    ]
+                },
+                {
+                    "id": "8300",
+                    "perks": [
+                        5005,
+                        5008,
+                        5001
+                    ]
+                },
+                {
+                    "id": "8400",
+                    "perks": [
+                        5005,
+                        5001,
+                        5001
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 8200,
+            "name": "巫术",
+            "tooltip": "强化技能和资源控制",
+            "iconPath": "/lol-game-data/assets/v1/perk-images/Styles/7202_Sorcery.png",
+            "assetMap": {
+                "p8200_s0_k0": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/p8200_s0_k0.jpg",
+                "p8200_s0_k8214": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/p8200_s0_k8214.jpg",
+                "p8200_s0_k8229": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/p8200_s0_k8229.jpg",
+                "p8200_s0_k8230": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/p8200_s0_k8230.jpg",
+                "p8200_s8000_k0": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/p8200_s8000_k0.jpg",
+                "p8200_s8000_k8214": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/p8200_s8000_k8214.jpg",
+                "p8200_s8000_k8229": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/p8200_s8000_k8229.jpg",
+                "p8200_s8000_k8230": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/p8200_s8000_k8230.jpg",
+                "p8200_s8100_k0": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/p8200_s8100_k0.jpg",
+                "p8200_s8100_k8214": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/p8200_s8100_k8214.jpg",
+                "p8200_s8100_k8229": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/p8200_s8100_k8229.jpg",
+                "p8200_s8100_k8230": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/p8200_s8100_k8230.jpg",
+                "p8200_s8300_k0": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/p8200_s8300_k0.jpg",
+                "p8200_s8300_k8214": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/p8200_s8300_k8214.jpg",
+                "p8200_s8300_k8229": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/p8200_s8300_k8229.jpg",
+                "p8200_s8300_k8230": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/p8200_s8300_k8230.jpg",
+                "p8200_s8400_k0": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/p8200_s8400_k0.jpg",
+                "p8200_s8400_k8214": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/p8200_s8400_k8214.jpg",
+                "p8200_s8400_k8229": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/p8200_s8400_k8229.jpg",
+                "p8200_s8400_k8230": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/p8200_s8400_k8230.jpg",
+                "svg_icon": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/sorcery_icon.svg",
+                "svg_icon_16": "/lol-game-data/assets/v1/perk-images/Styles/Sorcery/sorcery_icon_16.svg"
+            },
+            "isAdvanced": false,
+            "allowedSubStyles": [
+                8000,
+                8300,
+                8400,
+                8100
+            ],
+            "subStyleBonus": [
+                {
+                    "styleId": 8000,
+                    "perkId": 8205
+                },
+                {
+                    "styleId": 8300,
+                    "perkId": 8207
+                },
+                {
+                    "styleId": 8400,
+                    "perkId": 8208
+                },
+                {
+                    "styleId": 8100,
+                    "perkId": 8220
+                }
+            ],
+            "slots": [
+                {
+                    "type": "kKeyStone",
+                    "slotLabel": "",
+                    "perks": [
+                        8214,
+                        8229,
+                        8230
+                    ]
+                },
+                {
+                    "type": "kMixedRegularSplashable",
+                    "slotLabel": "宝物",
+                    "perks": [
+                        8224,
+                        8226,
+                        8275
+                    ]
+                },
+                {
+                    "type": "kMixedRegularSplashable",
+                    "slotLabel": "卓越",
+                    "perks": [
+                        8210,
+                        8234,
+                        8233
+                    ]
+                },
+                {
+                    "type": "kMixedRegularSplashable",
+                    "slotLabel": "威能",
+                    "perks": [
+                        8237,
+                        8232,
+                        8236
+                    ]
+                },
+                {
+                    "type": "kStatMod",
+                    "slotLabel": "进攻",
+                    "perks": [
+                        5008,
+                        5005,
+                        5007
+                    ]
+                },
+                {
+                    "type": "kStatMod",
+                    "slotLabel": "灵活",
+                    "perks": [
+                        5008,
+                        5010,
+                        5001
+                    ]
+                },
+                {
+                    "type": "kStatMod",
+                    "slotLabel": "防御",
+                    "perks": [
+                        5011,
+                        5013,
+                        5001
+                    ]
+                }
+            ],
+            "defaultPageName": "巫术：玄妙者",
+            "defaultSubStyle": 8100,
+            "defaultPerks": [
+                8229,
+                8226,
+                8210,
+                8236,
+                8138,
+                8105,
+                5008,
+                5008,
+                5001
+            ],
+            "defaultPerksWhenSplashed": [
+                8233,
+                8236
+            ],
+            "defaultStatModsPerSubStyle": [
+                {
+                    "id": "8000",
+                    "perks": [
+                        5005,
+                        5008,
+                        5001
+                    ]
+                },
+                {
+                    "id": "8100",
+                    "perks": [
+                        5008,
+                        5008,
+                        5001
+                    ]
+                },
+                {
+                    "id": "8300",
+                    "perks": [
+                        5008,
+                        5008,
+                        5001
+                    ]
+                },
+                {
+                    "id": "8400",
+                    "perks": [
+                        5008,
+                        5008,
+                        5001
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 8300,
+            "name": "启迪",
+            "tooltip": "创造性的工具并扭转常规",
+            "iconPath": "/lol-game-data/assets/v1/perk-images/Styles/7203_Whimsy.png",
+            "assetMap": {
+                "p8300_s0_k0": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/p8300_s0_k0.jpg",
+                "p8300_s0_k8351": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/p8300_s0_k8351.jpg",
+                "p8300_s0_k8360": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/p8300_s0_k8360.jpg",
+                "p8300_s0_k8369": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/p8300_s0_k8369.jpg",
+                "p8300_s8000_k0": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/p8300_s8000_k0.jpg",
+                "p8300_s8000_k8351": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/p8300_s8000_k8351.jpg",
+                "p8300_s8000_k8360": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/p8300_s8000_k8360.jpg",
+                "p8300_s8000_k8369": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/p8300_s8000_k8369.jpg",
+                "p8300_s8100_k0": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/p8300_s8100_k0.jpg",
+                "p8300_s8100_k8351": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/p8300_s8100_k8351.jpg",
+                "p8300_s8100_k8360": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/p8300_s8100_k8360.jpg",
+                "p8300_s8100_k8369": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/p8300_s8100_k8369.jpg",
+                "p8300_s8200_k0": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/p8300_s8200_k0.jpg",
+                "p8300_s8200_k8351": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/p8300_s8200_k8351.jpg",
+                "p8300_s8200_k8360": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/p8300_s8200_k8360.jpg",
+                "p8300_s8200_k8369": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/p8300_s8200_k8369.jpg",
+                "p8300_s8400_k0": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/p8300_s8400_k0.jpg",
+                "p8300_s8400_k8351": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/p8300_s8400_k8351.jpg",
+                "p8300_s8400_k8360": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/p8300_s8400_k8360.jpg",
+                "p8300_s8400_k8369": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/p8300_s8400_k8369.jpg",
+                "svg_icon": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/inspiration_icon.svg",
+                "svg_icon_16": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/inspiration_icon_16.svg"
+            },
+            "isAdvanced": true,
+            "allowedSubStyles": [
+                8100,
+                8200,
+                8400,
+                8000
+            ],
+            "subStyleBonus": [
+                {
+                    "styleId": 8100,
+                    "perkId": 8318
+                },
+                {
+                    "styleId": 8200,
+                    "perkId": 8319
+                },
+                {
+                    "styleId": 8400,
+                    "perkId": 8320
+                },
+                {
+                    "styleId": 8000,
+                    "perkId": 8344
+                }
+            ],
+            "slots": [
+                {
+                    "type": "kKeyStone",
+                    "slotLabel": "",
+                    "perks": [
+                        8351,
+                        8360,
+                        8369
+                    ]
+                },
+                {
+                    "type": "kMixedRegularSplashable",
+                    "slotLabel": "巧具",
+                    "perks": [
+                        8306,
+                        8304,
+                        8313
+                    ]
+                },
+                {
+                    "type": "kMixedRegularSplashable",
+                    "slotLabel": "未来",
+                    "perks": [
+                        8321,
+                        8316,
+                        8345
+                    ]
+                },
+                {
+                    "type": "kMixedRegularSplashable",
+                    "slotLabel": "超越",
+                    "perks": [
+                        8347,
+                        8410,
+                        8352
+                    ]
+                },
+                {
+                    "type": "kStatMod",
+                    "slotLabel": "进攻",
+                    "perks": [
+                        5008,
+                        5005,
+                        5007
+                    ]
+                },
+                {
+                    "type": "kStatMod",
+                    "slotLabel": "灵活",
+                    "perks": [
+                        5008,
+                        5010,
+                        5001
+                    ]
+                },
+                {
+                    "type": "kStatMod",
+                    "slotLabel": "防御",
+                    "perks": [
+                        5011,
+                        5013,
+                        5001
+                    ]
+                }
+            ],
+            "defaultPageName": "启迪：时间无穷者",
+            "defaultSubStyle": 8400,
+            "defaultPerks": [
+                8351,
+                8313,
+                8345,
+                8347,
+                8451,
+                8444,
+                5007,
+                5001,
+                5001
+            ],
+            "defaultPerksWhenSplashed": [
+                8345,
+                8347
+            ],
+            "defaultStatModsPerSubStyle": [
+                {
+                    "id": "8000",
+                    "perks": [
+                        5005,
+                        5008,
+                        5001
+                    ]
+                },
+                {
+                    "id": "8100",
+                    "perks": [
+                        5008,
+                        5008,
+                        5001
+                    ]
+                },
+                {
+                    "id": "8200",
+                    "perks": [
+                        5008,
+                        5008,
+                        5001
+                    ]
+                },
+                {
+                    "id": "8400",
+                    "perks": [
+                        5007,
+                        5001,
+                        5001
+                    ]
+                }
+            ]
+        }
+    ]
+}

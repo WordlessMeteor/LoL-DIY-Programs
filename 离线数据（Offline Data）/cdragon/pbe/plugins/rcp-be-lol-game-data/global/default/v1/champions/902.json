@@ -1,0 +1,813 @@
+{
+    "id": 902,
+    "name": "Milio",
+    "alias": "Milio",
+    "title": "The Gentle Flame",
+    "shortBio": "Milio is a warmhearted boy from Ixtal who has, despite his young age, mastered the fire axiom and discovered something new: soothing fire. With this newfound power, Milio plans to help his family escape their exile by joining the Yun Tal—just like his grandmother once did. Having traveled through the Ixtal jungles to the capital of Ixaocan, Milio now prepares to face the Vidalion and join the Yun Tal, unaware of the trials—and dangers—that await him.",
+    "tacticalInfo": {
+        "style": 8,
+        "difficulty": 1,
+        "damageType": "kMagic"
+    },
+    "playstyleInfo": {
+        "damage": 1,
+        "durability": 1,
+        "crowdControl": 2,
+        "mobility": 1,
+        "utility": 3
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/902.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/902.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/902.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/902.ogg",
+    "roles": [
+        "support"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 902000,
+            "isBase": true,
+            "name": "Milio",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/902/902000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/902/902000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/902/902000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Milio/Skins/Base/MilioLoadscreen_0.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 902001,
+            "isBase": false,
+            "name": "Faerie Court Milio",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/902/902001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/902/902001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/902/902001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Milio/Skins/Skin01/MilioLoadScreen_1.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Milio/Skins/Skin01/MilioLoadscreen_1_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/902/902001.png",
+            "chromas": [
+                {
+                    "id": 902002,
+                    "name": "Faerie Court Milio",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/902/902002.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2023."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 902003,
+                    "name": "Faerie Court Milio",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/902/902003.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 902004,
+                    "name": "Faerie Court Milio",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/902/902004.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 902005,
+                    "name": "Faerie Court Milio",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/902/902005.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 902006,
+                    "name": "Faerie Court Milio",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/902/902006.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 902007,
+                    "name": "Faerie Court Milio",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/902/902007.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 902008,
+                    "name": "Faerie Court Milio",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/902/902008.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 902009,
+                    "name": "Faerie Court Milio",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/902/902009.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 902010,
+                    "name": "Faerie Court Milio",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/902/902010.png",
+                    "colors": [
+                        "#866EFF",
+                        "#8AE1E8"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2023 Faerie Court event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 191
+                }
+            ],
+            "skinAugments": null,
+            "description": "An archmagus of the court wreathed in firefly familiars, Milio knows just about everything that happens within the palace walls. He may seem like a child, but fae are long-lived, and Milio has been a child far longer than others have been adults. Still, he is a friendly face who uses his power to safeguard the Queendom however he can."
+        }
+    ],
+    "passive": {
+        "name": "Fired Up!",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Milio/HUD/Icons2D/Milio_P.png",
+        "abilityVideoPath": "champion-abilities/0902/ability_0902_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0902/ability_0902_P1.jpg",
+        "description": "Milio's abilities enchant allies on touch, making their next damage deal a burst of extra damage and burn the target."
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "Ultra Mega Fire Kick",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Milio/HUD/Icons2D/Milio_Q.png",
+            "abilityVideoPath": "champion-abilities/0902/ability_0902_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0902/ability_0902_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Kick a ball that knocks back an enemy. The ball launches upward on hit and falls toward the enemy, damaging and slowing enemies in the area upon impact.",
+            "dynamicDescription": "Milio kicks a fireball, <status>Knocking Back</status> the first enemy hit. If it hits, the ball bounces past them and explodes, dealing <magicDamage>@Damage@ magic damage</magicDamage> to surrounding enemies and <status>Slowing</status> them by @SlowAmountPercent@ for @SlowDuration@ seconds.@SpellModifierDescriptionAppend@",
+            "range": [
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000,
+                1000.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000
+            ],
+            "cooldownCoefficients": [
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000,
+                12.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.3000,
+                "coefficient2": 0.4000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "Cozy Campfire",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Milio/HUD/Icons2D/Milio_W.png",
+            "abilityVideoPath": "champion-abilities/0902/ability_0902_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0902/ability_0902_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Create an empowering zone that heals allies and increases attack range to those inside. The zone follows the ally nearest to the cast point.",
+            "dynamicDescription": "Milio creates a hearth that follows ally champions for @ZoneDuration@ seconds. Ally champions nearby gain @RangePercent@ Attack Range and restore <healing>@HealingOverTime@ Health</healing> over the duration. The hearth also applies <spellName>Fired Up!</spellName> every @HealFrequencySeconds@ seconds.<br><br><recast>Recast:</recast> Change the hearth's follow ally.@SpellModifierDescriptionAppend@",
+            "range": [
+                350.0000,
+                350.0000,
+                350.0000,
+                350.0000,
+                350.0000,
+                350.0000
+            ],
+            "costCoefficients": [
+                90.0000,
+                100.0000,
+                110.0000,
+                120.0000,
+                130.0000,
+                140.0000
+            ],
+            "cooldownCoefficients": [
+                29.0000,
+                27.0000,
+                25.0000,
+                23.0000,
+                21.0000,
+                19.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "Warm Hugs",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Milio/HUD/Icons2D/Milio_E.png",
+            "abilityVideoPath": "champion-abilities/0902/ability_0902_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0902/ability_0902_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@AmmoRechargeTime@s Ammo Recharge (@Cooldown@s %i:cooldown%)",
+            "description": "Milio tosses a shield to an ally, temporarily increasing their movement speed. This ability has 2 charges.",
+            "dynamicDescription": "Milio wraps an ally champion in protective flames, granting <shield>@ShieldCalc@ Shield</shield> and <speed>@MoveSpeedAmount*100@% Move Speed</speed> for @MoveSpeedDuration@ seconds.<br><br>This ability has 2 charges and the effects stack on repeat targets.@SpellModifierDescriptionAppend@",
+            "range": [
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                60.0000,
+                70.0000,
+                80.0000,
+                90.0000,
+                100.0000
+            ],
+            "cooldownCoefficients": [
+                0.5000,
+                0.5000,
+                0.5000,
+                0.5000,
+                0.5000,
+                0.5000
+            ],
+            "coefficients": {
+                "coefficient1": 0.6000,
+                "coefficient2": 0.4000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    17.0000,
+                    16.0000,
+                    15.0000,
+                    14.0000,
+                    13.0000,
+                    12.0000
+                ],
+                "maxAmmo": [
+                    2,
+                    2,
+                    2,
+                    2,
+                    2,
+                    2
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "Breath of Life",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Milio/HUD/Icons2D/Milio_R.png",
+            "abilityVideoPath": "champion-abilities/0902/ability_0902_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0902/ability_0902_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@s %i:cooldown%",
+            "description": "Milio unleashes a wave of soothing flames that heal and remove crowd control effects from allies in range.",
+            "dynamicDescription": "Milio unleashes a wave of soothing flames on nearby ally champions, cleansing <status>Disabling</status> and <status>Immobilizing</status> effects, restoring <healing>@HealCalc@ Health</healing>, and granting @TenacityAmount*100@% Tenacity for @TenacityDuration@ seconds.@SpellModifierDescriptionAppend@",
+            "range": [
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                160.0000,
+                145.0000,
+                130.0000,
+                70.0000,
+                40.0000,
+                10.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect2Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect5Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

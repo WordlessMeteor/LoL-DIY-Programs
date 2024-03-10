@@ -1,0 +1,1145 @@
+{
+    "id": 141,
+    "name": "影流之镰",
+    "alias": "Kayn",
+    "title": "凯隐",
+    "shortBio": "悉达·凯隐是修行暗影魔法的天纵之才，他战斗的意义，是为了实现自己真正的命运——为了有朝一日能够率领影流教派，开创艾欧尼亚霸业的新世代。他挥舞着活体暗裔武器拉亚斯特，毫不在意它对自己身体与思想的腐化侵蚀。这样做只会有两种结局：要么，凯隐让这把武器屈服于自己的意志；要么，这把恶毒的刀刃将他彻底吞噬，为符文之地的毁灭奏响序曲。",
+    "tacticalInfo": {
+        "style": 1,
+        "difficulty": 2,
+        "damageType": "kPhysical"
+    },
+    "playstyleInfo": {
+        "damage": 3,
+        "durability": 1,
+        "crowdControl": 1,
+        "mobility": 3,
+        "utility": 1
+    },
+    "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/141.png",
+    "stingerSfxPath": "/lol-game-data/assets/v1/champion-sfx-audios/141.ogg",
+    "chooseVoPath": "/lol-game-data/assets/v1/champion-choose-vo/141.ogg",
+    "banVoPath": "/lol-game-data/assets/v1/champion-ban-vo/141.ogg",
+    "roles": [
+        "fighter",
+        "assassin"
+    ],
+    "recommendedItemDefaults": [],
+    "skins": [
+        {
+            "id": 141000,
+            "isBase": true,
+            "name": "影流之镰",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/141/141000.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/141/141000.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/141/141000.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kayn/Skins/Base/KaynLoadscreen.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": null,
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 141001,
+            "isBase": false,
+            "name": "摄魂猎手 凯隐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/141/141001.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/141/141001.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/141/141001.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kayn/Skins/Skin01/KaynLoadscreen_1.jpg",
+            "skinType": "",
+            "rarity": "kNoRarity",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 74
+                }
+            ],
+            "skinAugments": null,
+            "description": null
+        },
+        {
+            "id": 141002,
+            "isBase": false,
+            "name": "奥德赛 凯隐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/141/141002.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/141/141002.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/141/141002.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kayn/Skins/Skin02/KaynLoadScreen_2.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Kayn/Skins/Skin02/KaynLoadScreen_2_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141002.png",
+            "chromas": [
+                {
+                    "id": 141003,
+                    "name": "奥德赛 凯隐 银河征服者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141003.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2020年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 141004,
+                    "name": "奥德赛 凯隐 星云环游者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141004.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 141005,
+                    "name": "奥德赛 凯隐 虫洞穿行者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141005.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 141006,
+                    "name": "奥德赛 凯隐 宇宙探索者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141006.png",
+                    "colors": [
+                        "#0C0C0F",
+                        "#9B1520"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2020)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 141007,
+                    "name": "奥德赛 凯隐 星辉收割者",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141007.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 73
+                }
+            ],
+            "skinAugments": null,
+            "description": "作为德玛-萨斯帝国万人敬仰的首席帝王，凯隐无情地追捕晨星组织的成员，期望能够重新抓住娑娜以了解传说中奥拉之门的秘密。﻿凯隐经常与他那把有灵性的异星镰刀，拉亚斯特拌嘴。但拉亚斯特自己的动机远比凯隐能意识到的更加可怕。"
+        },
+        {
+            "id": 141008,
+            "isBase": false,
+            "name": "黑夜使者 凯隐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/141/141008.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/141/141008.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/141/141008.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kayn/Skins/Skin08/KaynLoadScreen_8.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Kayn/Skins/Skin08/KaynLoadscreen_8_LE.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141008.png",
+            "chromas": [
+                {
+                    "id": 141010,
+                    "name": "黑夜使者 凯隐 血夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141010.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2021年作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 141011,
+                    "name": "黑夜使者 凯隐 炎夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141011.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 141012,
+                    "name": "黑夜使者 凯隐 幻夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141012.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 141013,
+                    "name": "黑夜使者 凯隐 寒夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141013.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 141014,
+                    "name": "黑夜使者 凯隐 陨夜",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141014.png",
+                    "colors": [
+                        "#1E1B1A",
+                        "#FFFFFF"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2021)事件期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 193
+                }
+            ],
+            "skinAugments": null,
+            "description": "拉亚斯特曾经是一名光明执政官，一个秩序之信标……而现在的他只不过是凯隐手中的一件武器，而凯隐则是一位寻求真正神格、充满野心的暮光半神。二者在凯隐自己的身体中激烈地斗争着，彼此都决心推翻对方并宣称自己才是真正的神。"
+        },
+        {
+            "id": 141009,
+            "isBase": false,
+            "name": "至臻 黑夜使者 凯隐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/141/141009.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/141/141009.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/141/141009.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kayn/Skins/Skin09/KaynLoadScreen_9.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Kayn/Skins/Skin09/KaynLoadscreen_9_LE.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 193
+                }
+            ],
+            "skinAugments": null,
+            "description": "凯隐和拉亚斯特在他们冲突的熔炉中重获新生。他们不再是一件武器和一位半神而已——他们是自然的力量，相互扭曲着彼此和彼此周围的原生能量，齐心协力冲向胜利，定能撼动苍穹本身。"
+        },
+        {
+            "id": 141015,
+            "isBase": false,
+            "name": "净雪之月 凯隐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/141/141015.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/141/141015.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/141/141015.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kayn/Skins/Skin15/KaynLoadScreen_15.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141015.png",
+            "chromas": [
+                {
+                    "id": 141016,
+                    "name": "净雪之月 凯隐 赤心",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141016.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2022年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 141017,
+                    "name": "净雪之月 凯隐 化墨",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141017.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 141018,
+                    "name": "净雪之月 凯隐 琼枝",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141018.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 141019,
+                    "name": "净雪之月 凯隐 烟云",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141019.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 160
+                }
+            ],
+            "skinAugments": null,
+            "description": "仪式就快完成了。凯隐能感觉到腥红之月恶魔在体内扭动。就在这时，净雪之月刺客们发起了进攻。凯隐从那座神殿被带到净雪之月的神殿，并加入了净雪之月教团，他们古老的方式刺耳而陌生。只有时间才能证明他们对他灵魂的驯服是否成立。"
+        },
+        {
+            "id": 141020,
+            "isBase": false,
+            "name": "心之钢 凯隐",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/141/141020.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/141/141020.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/141/141020.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Kayn/Skins/Skin20/KaynLoadScreen_20.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Kayn/Skins/Skin20/KaynLoadscreen_20_LE.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141020.png",
+            "chromas": [
+                {
+                    "id": 141021,
+                    "name": "心之钢 凯隐 锐意曲风",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141021.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2023年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 141022,
+                    "name": "心之钢 凯隐 天纵才华",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141022.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 141023,
+                    "name": "心之钢 凯隐 本真风范",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141023.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 141024,
+                    "name": "心之钢 凯隐 金声玉振",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141024.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 141025,
+                    "name": "心之钢 凯隐 摇滚明星",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/141/141025.png",
+                    "colors": [
+                        "#CDE9EF",
+                        "#E9628F"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在全球总决赛(2023)活动期间作为战利品专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 199
+                }
+            ],
+            "skinAugments": null,
+            "description": "凯隐将他的音乐作为武器——不管是他自己还是他恶魔般的另一个自我，拉亚斯特。虽然他接受了一位流行音乐王子的所有训练，但他在最后一支乐队拆伙之后的糟糕名声使他成为了业界弃儿。凯隐决心要激怒那些黑子，于是加入了心之钢，只为找到他能真正信任的创意合作伙伴（和朋友？）。"
+        }
+    ],
+    "passive": {
+        "name": "暗裔魔镰",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Kayn/HUD/Icons2D/Kayn_Passive_Primary.png",
+        "abilityVideoPath": "champion-abilities/0141/ability_0141_P1.webm",
+        "abilityVideoImagePath": "champion-abilities/0141/ability_0141_P1.jpg",
+        "description": "凯隐使用的是一把上古神兵，并且一直都在与附在武器上的暗裔灵体拉亚斯特为了身体的控制权而战斗着。要么<font color='#fe5c50'>暗裔杀手</font>将获胜，要么凯隐将统御拉亚斯特并变为<font color='#8484fb'>影流刺客</font>。<br><hr><font color='#fe5c50'>暗裔杀手：</font>治疗自身，数额相当于一部分对敌方英雄造成的技能伤害值。<br><br><font color='#8484fb'>影流刺客：</font>在与敌方英雄作战的最初几秒里，造成额外伤害。"
+    },
+    "spells": [
+        {
+            "spellKey": "q",
+            "name": "巨镰横扫",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Kayn/HUD/Icons2D/Kayn_Q_Primary.png",
+            "abilityVideoPath": "champion-abilities/0141/ability_0141_Q1.webm",
+            "abilityVideoImagePath": "champion-abilities/0141/ability_0141_Q1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "凯隐向前冲刺并打击附近的敌人。冲刺和打击都会造成伤害。",
+            "dynamicDescription": "凯隐冲刺然后旋转他的镰刀，对他途经的敌人们造成<physicalDamage>@TotalDamage@物理伤害</physicalDamage>，然后对附近的敌人们再次造成等额伤害。<br><br><keywordMajor>暗裔杀手：</keywordMajor>转而造成<physicalDamage>@DarkinFlatDamage@外加@DarkinPercentDamage@最大生命值的物理伤害</physicalDamage>。@SpellModifierDescriptionAppend@",
+            "range": [
+                350.0000,
+                350.0000,
+                350.0000,
+                350.0000,
+                350.0000,
+                350.0000
+            ],
+            "costCoefficients": [
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000
+            ],
+            "cooldownCoefficients": [
+                7.0000,
+                6.5000,
+                6.0000,
+                5.5000,
+                5.0000,
+                4.5000
+            ],
+            "coefficients": {
+                "coefficient1": 0.8000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    75.0000,
+                    75.0000,
+                    95.0000,
+                    115.0000,
+                    135.0000,
+                    155.0000,
+                    155.0000
+                ],
+                "Effect2Amount": [
+                    0.6500,
+                    0.6500,
+                    0.6500,
+                    0.6500,
+                    0.6500,
+                    0.6500,
+                    0.6500
+                ],
+                "Effect3Amount": [
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000,
+                    5.0000
+                ],
+                "Effect4Amount": [
+                    3.5000,
+                    3.5000,
+                    3.5000,
+                    3.5000,
+                    3.5000,
+                    3.5000,
+                    3.5000
+                ],
+                "Effect5Amount": [
+                    175.0000,
+                    200.0000,
+                    250.0000,
+                    300.0000,
+                    350.0000,
+                    400.0000,
+                    0.0000
+                ],
+                "Effect6Amount": [
+                    40.0000,
+                    40.0000,
+                    40.0000,
+                    40.0000,
+                    40.0000,
+                    40.0000,
+                    40.0000
+                ],
+                "Effect7Amount": [
+                    300.0000,
+                    300.0000,
+                    300.0000,
+                    300.0000,
+                    300.0000,
+                    300.0000,
+                    300.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "w",
+            "name": "利刃纵贯",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Kayn/HUD/Icons2D/Kayn_W_Primary.png",
+            "abilityVideoPath": "champion-abilities/0141/ability_0141_W1.webm",
+            "abilityVideoImagePath": "champion-abilities/0141/ability_0141_W1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "凯隐伤害并减速一条直线上的敌人。",
+            "dynamicDescription": "凯隐向上挥出他的镰刀，造成<physicalDamage>@TotalDamage@物理伤害</physicalDamage>和在@Effect5Amount@秒里持续衰减的@Effect3Amount*-100@%<status>减速</status>。<br><br><keywordMajor>影流刺客：</keywordMajor>凯隐可在使用这个技能时移动并提升这个技能的距离。<br><br><keywordMajor>暗裔杀手：</keywordMajor>还会<status>击飞</status>命中的敌人@Effect2Amount@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000
+            ],
+            "costCoefficients": [
+                60.0000,
+                65.0000,
+                70.0000,
+                75.0000,
+                80.0000,
+                85.0000
+            ],
+            "cooldownCoefficients": [
+                13.0000,
+                12.0000,
+                11.0000,
+                10.0000,
+                9.0000,
+                9.0000
+            ],
+            "coefficients": {
+                "coefficient1": 1.1000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    85.0000,
+                    85.0000,
+                    130.0000,
+                    175.0000,
+                    220.0000,
+                    265.0000,
+                    265.0000
+                ],
+                "Effect2Amount": [
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000,
+                    1.0000
+                ],
+                "Effect3Amount": [
+                    -0.9000,
+                    -0.9000,
+                    -0.9000,
+                    -0.9000,
+                    -0.9000,
+                    -0.9000,
+                    -0.9000
+                ],
+                "Effect4Amount": [
+                    160.0000,
+                    160.0000,
+                    160.0000,
+                    160.0000,
+                    160.0000,
+                    160.0000,
+                    160.0000
+                ],
+                "Effect5Amount": [
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000
+                ],
+                "Effect6Amount": [
+                    900.0000,
+                    900.0000,
+                    900.0000,
+                    900.0000,
+                    900.0000,
+                    900.0000,
+                    900.0000
+                ],
+                "Effect7Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect8Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "e",
+            "name": "掠影步",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Kayn/HUD/Icons2D/Kayn_E_Primary.png",
+            "abilityVideoPath": "champion-abilities/0141/ability_0141_E1.webm",
+            "abilityVideoImagePath": "champion-abilities/0141/ability_0141_E1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@f15@秒冷却时间",
+            "description": "凯隐可以穿越地形。",
+            "dynamicDescription": "凯隐获得<speed>@Effect1Amount@%移动速度</speed>，变为【幽灵】状态，并能在地形中移动，持续@Effect2Amount@秒。当他第一次进入地形时，他会治疗自身<healing>@TotalHealing@生命值</healing>。<br><br>被<status>定身</status>或是在地形外连续停留@Effect3Amount@秒，就会提前结束这个技能。<br><br><keywordMajor>影流刺客：</keywordMajor>获得<speed>@Effect5Amount@%移动速度</speed>，免疫<status>减速</status>并使冷却时间缩短至@AssassinCDReduction@秒。@SpellModifierDescriptionAppend@",
+            "range": [
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000
+            ],
+            "costCoefficients": [
+                90.0000,
+                90.0000,
+                90.0000,
+                90.0000,
+                90.0000,
+                90.0000
+            ],
+            "cooldownCoefficients": [
+                21.0000,
+                19.0000,
+                17.0000,
+                15.0000,
+                13.0000,
+                11.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.4000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    40.0000,
+                    40.0000,
+                    40.0000,
+                    40.0000,
+                    40.0000,
+                    40.0000,
+                    40.0000
+                ],
+                "Effect2Amount": [
+                    7.0000,
+                    7.0000,
+                    7.5000,
+                    8.0000,
+                    8.5000,
+                    9.0000,
+                    9.5000
+                ],
+                "Effect3Amount": [
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000
+                ],
+                "Effect4Amount": [
+                    1250.0000,
+                    1250.0000,
+                    1250.0000,
+                    1250.0000,
+                    1250.0000,
+                    1250.0000,
+                    1250.0000
+                ],
+                "Effect5Amount": [
+                    70.0000,
+                    70.0000,
+                    70.0000,
+                    70.0000,
+                    70.0000,
+                    70.0000,
+                    70.0000
+                ],
+                "Effect6Amount": [
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000,
+                    1.5000
+                ],
+                "Effect7Amount": [
+                    80.0000,
+                    90.0000,
+                    100.0000,
+                    110.0000,
+                    120.0000,
+                    130.0000,
+                    140.0000
+                ],
+                "Effect8Amount": [
+                    0.4500,
+                    0.4500,
+                    0.4500,
+                    0.4500,
+                    0.4500,
+                    0.4500,
+                    0.4500
+                ],
+                "Effect9Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect10Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        },
+        {
+            "spellKey": "r",
+            "name": "裂舍影",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Kayn/HUD/Icons2D/Kayn_R1_Primary.png",
+            "abilityVideoPath": "champion-abilities/0141/ability_0141_R1.webm",
+            "abilityVideoImagePath": "champion-abilities/0141/ability_0141_R1.jpg",
+            "cost": "@Cost@ @AbilityResourceName@",
+            "cooldown": "@Cooldown@秒 %i:cooldown%",
+            "description": "凯隐隐藏在敌方身体内，在他破膛而出时造成巨量伤害。",
+            "dynamicDescription": "<spellPassive>被动：</spellPassive>被凯隐造成过伤害的英雄们会被标记3.15秒。<br><br>凯隐侵入一名被标记的敌方英雄，变为不可被选取状态。在@InfestDuration@秒后或<recast>再次施放</recast>后，凯隐会破体而出，对该敌方英雄造成<physicalDamage>@Damage@物理伤害</physicalDamage>。<br><br><keywordMajor>影流刺客：</keywordMajor>提升这个技能的距离，凯隐离开时的移动距离，并在离开时刷新<spellName>暗裔魔镰</spellName>的冷却时间。<br><br><keywordMajor>暗裔杀手：</keywordMajor>转而造成<physicalDamage>@SlayerDamage@最大生命值的物理伤害</physicalDamage>并回复<healing>@HealValue@生命值</healing>(@SlayerHealPercent*100@%伤害数额)。@SpellModifierDescriptionAppend@",
+            "range": [
+                550.0000,
+                550.0000,
+                550.0000,
+                550.0000,
+                550.0000,
+                550.0000
+            ],
+            "costCoefficients": [
+                100.0000,
+                100.0000,
+                100.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "cooldownCoefficients": [
+                120.0000,
+                100.0000,
+                80.0000,
+                0.0000,
+                0.0000,
+                0.0000
+            ],
+            "coefficients": {
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
+            },
+            "effectAmounts": {
+                "Effect1Amount": [
+                    150.0000,
+                    150.0000,
+                    250.0000,
+                    350.0000,
+                    350.0000,
+                    350.0000,
+                    350.0000
+                ],
+                "Effect2Amount": [
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000,
+                    0.5000
+                ],
+                "Effect3Amount": [
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
+                ],
+                "Effect4Amount": [
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000,
+                    2.5000
+                ],
+                "Effect5Amount": [
+                    300.0000,
+                    300.0000,
+                    300.0000,
+                    300.0000,
+                    300.0000,
+                    300.0000,
+                    300.0000
+                ],
+                "Effect6Amount": [
+                    15.0000,
+                    15.0000,
+                    15.0000,
+                    15.0000,
+                    15.0000,
+                    15.0000,
+                    15.0000
+                ],
+                "Effect7Amount": [
+                    13.0000,
+                    13.0000,
+                    13.0000,
+                    13.0000,
+                    13.0000,
+                    13.0000,
+                    13.0000
+                ],
+                "Effect8Amount": [
+                    70.0000,
+                    70.0000,
+                    70.0000,
+                    70.0000,
+                    70.0000,
+                    70.0000,
+                    70.0000
+                ],
+                "Effect9Amount": [
+                    750.0000,
+                    750.0000,
+                    750.0000,
+                    750.0000,
+                    750.0000,
+                    750.0000,
+                    750.0000
+                ],
+                "Effect10Amount": [
+                    550.0000,
+                    550.0000,
+                    550.0000,
+                    550.0000,
+                    550.0000,
+                    550.0000,
+                    550.0000
+                ]
+            },
+            "ammo": {
+                "ammoRechargeTime": [
+                    12.0000,
+                    11.0000,
+                    10.0000,
+                    9.0000,
+                    8.0000,
+                    1.0000
+                ],
+                "maxAmmo": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "maxLevel": 0
+        }
+    ]
+}

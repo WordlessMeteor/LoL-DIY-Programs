@@ -1,0 +1,38 @@
+[
+    {
+        "id": 0,
+        "name": "Common",
+        "description": "Common",
+        "mapStringId": ""
+    },
+    {
+        "id": 11,
+        "name": "Summoner's Rift",
+        "description": "The newest and most venerated battleground is known as Summoner's Rift. Traverse down one of three different paths in order to attack your enemy at their weakest point. Work with your allies to siege the enemy base and destroy their Nexus!",
+        "mapStringId": "SR"
+    },
+    {
+        "id": 12,
+        "name": "Howling Abyss",
+        "description": "The Howling Abyss is a bottomless crevasse located in the coldest, cruelest, part of the Freljord. Legends say that, long ago, a great battle took place here on the narrow bridge spanning this chasm. No one remembers who fought here, or why, but it is said that if you listen carefully to the wind you can still hear the cries of the vanquished tossed howling into the Abyss.",
+        "mapStringId": "HA"
+    },
+    {
+        "id": 21,
+        "name": "Nexus Blitz",
+        "description": "Nexus Blitz",
+        "mapStringId": "NB"
+    },
+    {
+        "id": 22,
+        "name": "Teamfight Tactics",
+        "description": "Assemble a squad of champions that battle on your behalf. Outlast all seven of your opponents and become the last person standing.",
+        "mapStringId": "TFT"
+    },
+    {
+        "id": 30,
+        "name": "Arena",
+        "description": "Queue up solo or partner with your friends in this multi-team game mode. Face against your foes in chaotic battles across diverse arenas.",
+        "mapStringId": "RoW"
+    }
+]
