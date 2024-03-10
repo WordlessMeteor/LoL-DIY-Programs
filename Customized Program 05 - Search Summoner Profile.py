@@ -1152,7 +1152,7 @@ async def search_profile(connection):
                 pkl2name = "Intermediate Object - mastery (Champion Mastery) - %s (%s).pkl" %(displayName, currentTime)
                 #with open(os.path.join(folder, pkl2name), "wb") as IntObj2:
                     #pickle.dump(mastery, IntObj2)
-                mastery_header = {"champion": "英雄", "alias": "名称", "championLevel": "成就等级", "championPoints": "总成就点数", "championPointsSinceLastLevel": "当前等级成就点数", "championPointsUntilNextLevel": "升级所需成就点数", "chestGranted": "已赚取海克斯宝箱", "highestGrade": "当前赛季最高评分", "lastPlayTime": "上次使用时间", "tokensEarned": "成就代币数量"}
+                mastery_header = {"champion": "英雄", "alias": "名称", "championLevel": "成就等级", "championPoints": "总成就点数", "championPointsSinceLastLevel": "当前等级成就点数", "championPointsUntilNextLevel": "升级所需成就点数", "chestGranted": "已赚取海克斯宝箱", "formattedChampionPoints": "总成就点数（千位分隔符）", "formattedMasteryGoal": "下一级成就点数（千位分隔符）", "highestGrade": "当前赛季最高评分", "lastPlayTime": "上次使用时间", "playerId": "玩家序号", "puuid": "玩家通用唯一识别码", "tokensEarned": "成就代币数量"}
                 mastery_header_keys = list(mastery_header.keys())
                 mastery_data = {}
                 for i in range(len(mastery_header)):
@@ -1164,7 +1164,7 @@ async def search_profile(connection):
                     elif i == 1:
                         for j in range(len(mastery)):
                             mastery_data[key].append(LoLChampions[mastery[j]["championId"]]["alias"])
-                    elif i == 8:
+                    elif i == 10:
                         for j in range(len(mastery)): #这里需要将时间戳转换为标准格式的时间（Here the timestamp is going to be converted into time in standard format）
                             lastPlayTime = time.localtime(mastery[j][key] // 1000) #英雄联盟中的时间戳精确到微妙，也就是放大了1000倍（Timestamps in LCU api are accurate to milliseconds, namely multiplied by 1000）
                             lastPlayTime_standard = time.strftime("%Y年%m月%d日%H:%M:%S", lastPlayTime)
@@ -1172,7 +1172,7 @@ async def search_profile(connection):
                     else:
                         for j in range(len(mastery)):
                             mastery_data[key].append(mastery[j][key])
-                mastery_statistics_display_order = range(len(mastery_header))
+                mastery_statistics_display_order = [0, 1, 2, 3, 4, 5, 6, 9, 10, 13]
                 mastery_data_organized = {}
                 for i in mastery_statistics_display_order:
                     key = mastery_header_keys[i]
@@ -2361,7 +2361,7 @@ async def search_profile(connection):
                                                                 LoLGame_info_data[key].append(LoLChampions[bans[j]["championId"]]["alias"])
                                                             except KeyError:
                                                                 LoLGame_info_data[key].append(bans[j]["championId"])
-                                    LoLGame_info_statistics_display_order = [17, 113, 0, 10, 4, 11, 9, 6, 3, 12, 13, 139, 140, 20, 15, 16, 39, 40, 41, 42, 43, 44, 45, 95, 96, 97, 98, 99, 100, 101, 102, 47, 25, 18, 21, 124, 125, 49, 46, 50, 29, 28, 33, 32, 31, 30, 26, 128, 114, 59, 133, 118, 126, 120, 93, 53, 130, 119, 92, 52, 129, 48, 23, 22, 122, 127, 121, 94, 54, 131, 24, 134, 137, 136, 115, 135, 36, 37, 123, 55, 57, 56, 132, 38, 51, 90, 91, 60, 61, 65, 66, 70, 71, 75, 76, 80, 81, 85, 86, 19, 27, 117, 34, 35, 138, 116]
+                                    LoLGame_info_statistics_display_order = [17, 113, 0, 10, 4, 11, 9, 6, 3, 14, 12, 13, 139, 140, 20, 15, 16, 39, 40, 41, 42, 43, 44, 45, 95, 96, 97, 98, 99, 100, 101, 102, 47, 25, 18, 21, 124, 125, 49, 46, 50, 29, 28, 33, 32, 31, 30, 26, 128, 114, 59, 133, 118, 126, 120, 93, 53, 130, 119, 92, 52, 129, 48, 23, 22, 122, 127, 121, 94, 54, 131, 24, 134, 137, 136, 115, 135, 36, 37, 123, 55, 57, 56, 132, 38, 51, 90, 91, 60, 61, 65, 66, 70, 71, 75, 76, 80, 81, 85, 86, 19, 27, 117, 34, 35, 138, 116]
                                     LoLGame_info_data_organized = {}
                                     for i in LoLGame_info_statistics_display_order:
                                         key = LoLGame_info_header_keys[i]
@@ -2412,7 +2412,7 @@ async def search_profile(connection):
                                         LoLGame_timeline_df = pandas.DataFrame(data = LoLGame_timeline_error)
                                 elif not "errorCode" in LoLGame_info: #在整理时间轴数据时，需要使用LoLGame_info中的一些数据（While sorting the timeline, some data in LoLGame_info are needed）
                                     timeline_exist_error[int(matchID)] = False
-                                    LoLGame_timeline_header = {"events": "事件", "timestamp": "时间戳", "time": "时间", "participantID": "玩家序号", "teamID": "阵营", "summonerName": "召唤师名称", "champion": "选用英雄", "alias": "名称", "currentGold": "当前金币余额", "dominionScore": "占领得分", "jungleMinionsKilled": "击杀野怪数", "level": "英雄等级", "minionsKilled": "击杀小兵数", "position": "当前位置坐标", "teamScore": "队伍得分", "totalGold": "金币获取", "xp": "经验值"}
+                                    LoLGame_timeline_header = {"events": "事件", "timestamp": "时间戳", "time": "时间", "participantID": "玩家序号", "teamId": "阵营", "summonerName": "召唤师名称", "champion": "选用英雄", "alias": "名称", "currentGold": "当前金币余额", "dominionScore": "占领得分", "jungleMinionsKilled": "击杀野怪数", "level": "英雄等级", "minionsKilled": "击杀小兵数", "position": "当前位置坐标", "teamScore": "队伍得分", "totalGold": "金币获取", "xp": "经验值"}
                                     LoLGame_timeline_data = {}
                                     LoLGame_timeline_header_keys = list(LoLGame_timeline_header.keys())
                                     frames = LoLGame_timeline["frames"]
@@ -2777,11 +2777,12 @@ async def search_profile(connection):
                                             if TFTPlayer["puuid"] == current_puuid:
                                                 TFTHistory_data[key].append(to_append[j])
                                         elif j in {16, 23, 24, 25}:
-                                            if TFTPlayer["puuid"] == "00000000-0000-0000-0000-000000000000": #在云顶之弈（新手教程）中，无法通过电脑玩家的玩家通用唯一识别码（00000000-0000-0000-0000-000000000000）来查询其召唤师名称和序号（Summoner names and IDs of bot players in TFT (Tutorial) can't be searched for according to their puuid: 00000000-0000-0000-0000-000000000000）
-                                                to_append = {16: "", 23: "", 24: "", 25: ""}
+                                            if TFTPlayer["puuid"] in infos:
+                                                TFTPlayer_info = infos[TFTPlayer["puuid"]]
+                                                to_append = {16: TFTPlayer_info["gameName"], 23: TFTPlayer_info["summonerId"], 24: TFTPlayer_info["displayName"], 25: TFTPlayer_info["tagLine"]}
                                             else:
-                                                if TFTPlayer["puuid"] in infos:
-                                                    TFTPlayer_info = infos[TFTPlayer["puuid"]]
+                                                if TFTPlayer["puuid"] == "00000000-0000-0000-0000-000000000000": #在云顶之弈（新手教程）中，无法通过电脑玩家的玩家通用唯一识别码（00000000-0000-0000-0000-000000000000）来查询其召唤师名称和序号（Summoner names and IDs of bot players in TFT (Tutorial) can't be searched for according to their puuid: 00000000-0000-0000-0000-000000000000）
+                                                    to_append = {16: "", 23: "", 24: "", 25: ""}
                                                 else:
                                                     TFTPlayer_info_recapture = 0
                                                     TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
@@ -2789,11 +2790,11 @@ async def search_profile(connection):
                                                         TFTPlayer_info_recapture += 1
                                                         print("第%d/%d场对局（对局序号：%d）玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of Player (puuid: %s) in Match %d / %d (matchID: %d) capture failed! Recapturing this player's information ... Times tried: %d." %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer["puuid"], TFTPlayer_info_recapture, TFTPlayer["puuid"], i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer_info_recapture))
                                                         TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
-                                                if "errorCode" in TFTPlayer_info:
-                                                    to_append = {16: "", 23: "", 24: "", 25: ""}
-                                                else:
-                                                    infos[TFTPlayer["puuid"]] = TFTPlayer_info #虽然即使infos中已经存在该召唤师信息时也会执行这一步，但不会影响数据的准确性（Despite the this summoner's existence in `infos`, running this statement won't influence data accuracy）
-                                                    to_append = {16: TFTPlayer_info["gameName"], 23: TFTPlayer_info["summonerId"], 24: TFTPlayer_info["displayName"], 25: TFTPlayer_info["tagLine"]}
+                                                    if "errorCode" in TFTPlayer_info:
+                                                        to_append = {16: "", 23: "", 24: "", 25: ""}
+                                                    else:
+                                                        infos[TFTPlayer["puuid"]] = TFTPlayer_info #虽然即使infos中已经存在该召唤师信息时也会执行这一步，但不会影响数据的准确性（Despite the this summoner's existence in `infos`, running this statement won't influence data accuracy）
+                                                        to_append = {16: TFTPlayer_info["gameName"], 23: TFTPlayer_info["summonerId"], 24: TFTPlayer_info["displayName"], 25: TFTPlayer_info["tagLine"]}
                                             TFTGame_info_data[key].append(to_append[j])
                                             if TFTPlayer["puuid"] == current_puuid:
                                                 TFTHistory_data[key].append(to_append[j])
@@ -2827,7 +2828,7 @@ async def search_profile(connection):
                                         TFTPlayer_Traits = TFTPlayer["traits"]
                                         if TFTPlayer["puuid"] in infos:
                                             TFTPlayer_info = infos[TFTPlayer["puuid"]]
-                                        else:
+                                        elif TFTPlayer["puuid"] != "00000000-0000-0000-0000-000000000000":
                                             TFTPlayer_info_recapture = 0
                                             TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
                                             while "errorCode" in TFTPlayer_info and TFTPlayer_info_recapture < 3:
@@ -2839,7 +2840,7 @@ async def search_profile(connection):
                                         if int(TFTTrait_iter[5:]) < len(TFTPlayer_Traits): #在这个小于的问题上纠结了很久[敲打]——下标是从0开始的。假设API上记录了n个羁绊，那么当程序正在获取第n个羁绊时，就会引起下标越界的问题。所以这里不能使用小于等于号（I stuck at this less than sign for long xD - note that the index begins from 0. Suppose there're totally n traits recorded in LCU API. Then, when the program is trying to capture the n-th trait, it'll throw an IndexError. That's why the less than or equal to sign can't be used here）
                                             try:
                                                 if TFTPlayer_Traits[int(TFTTrait_iter[5:])]["name"] == "TemplateTrait": #CommunityDragon数据库中没有收录模板羁绊的数据（Data about TemplateTrait aren't archived in CommunityDragon database）
-                                                    if (j - 28) % 5 == 4: #模板羁绊没有tier_total键（The key `tier_total` doesn't exist in "TemplateTrait" dictionary）
+                                                    if (j - 28) % 5 == 4 and TFTPlayer["puuid"] != "00000000-0000-0000-0000-000000000000": #模板羁绊没有tier_total键（The key `tier_total` doesn't exist in "TemplateTrait" dictionary）
                                                         to_append = ""
                                                         print("警告：对局%d中玩家%s（玩家通用唯一识别码：%s）的第%d个羁绊是模板羁绊！\nWarning: Trait No. %d of the player %s (puuid: %s) in the match %d is TemplateTrait." %(TFTHistory[i]["json"]["game_id"], get_info_name(TFTPlayer_info), TFTPlayer["puuid"], int(TFTTrait_iter[5:]) + 1, int(TFTTrait_iter[5:]) + 1, get_info_name(TFTPlayer_info), TFTPlayer["puuid"], TFTHistory[i]["json"]["game_id"]))
                                                     else:

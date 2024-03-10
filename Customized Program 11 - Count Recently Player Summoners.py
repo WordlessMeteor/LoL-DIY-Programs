@@ -1,5 +1,5 @@
 from lcu_driver import Connector
-import copy, os, unicodedata, shutil, pandas, requests, time, json, re, pyperclip
+import copy, os, unicodedata, shutil, pandas, requests, time, json, re, pyperclip, pickle
 from urllib.parse import quote, unquote
 from wcwidth import wcswidth
 import matplotlib.pyplot as plt
@@ -1077,6 +1077,8 @@ async def search_recent_players(connection):
                 displayName = get_info_name(info) #用于扫描模式定位到某召唤师（Determines the directory which contains the summoner's data）
                 current_puuid = info["puuid"] #用于核验对局是否包含该召唤师。此外，还用于扫描模式从对局的所有玩家信息中定位到该玩家（For use of checking whether the searched matches include this summoner. In addition, it's used for localization of this player from all players in a match in "scan" mode）
                 infos[current_puuid] = info
+                #下面准备一些数据资源（The following code prepare data resources）
+                tier = {"": "", "NONE": "没有段位", "IRON": "坚韧黑铁", "BRONZE": "英勇黄铜", "SILVER": "不屈白银", "GOLD": "荣耀黄金", "PLATINUM": "华贵铂金", "EMERALD": "流光翡翠", "DIAMOND": "璀璨钻石", "MASTER": "超凡大师", "GRANDMASTER": "傲世宗师", "CHALLENGER": "最强王者"}
                 #下面设置扫描模式的扫描目录（The following code determines the scanning directory for scan mode）
                 riot_client_info = await (await connection.request("GET", "/riotclient/command-line-args")).json()
                 client_info = {}
@@ -1465,13 +1467,14 @@ async def search_recent_players(connection):
                                 continue
                         #开始获取各对局内的玩家信息。数据结构参考/lol-match-history/v1/recently-played-summoners（Begin to capture the players' information in each match. The data structure can be referred to "/lol-match-history/v1/recently-played-summoners"）
                         ##首先定义存储玩家信息的数据框的数据结构（First, define the data structure of the dataframe that stores player information）
-                        LoLGame_info_header = {"gameCreationDate": "创建日期", "gameDuration": "持续时长", "gameId": "对局序号", "gameMode": "游戏模式", "gameModeName": "模式名称", "gameVersion": "对局版本", "mapId": "地图序号", "queueId": "队列序号", "accountId": "账户序号", "currentAccountId": "当前账户序号", "currentPlatformId": "当前大区", "gameName": "游戏名", "matchHistoryUri": "", "platformId": "原大区", "profileIcon": "召唤师图标序号", "puuid": "玩家通用唯一识别码", "summonerId": "召唤师序号", "summonerName": "召唤师名称", "tagLine": "尾标", "champion": "英雄", "alias": "名字", "spell1": "召唤师技能1", "spell2": "召唤师技能2", "KDA": "战损比", "assists": "助攻", "causedEarlySurrender": "发起提前投降", "champLevel": "英雄等级", "combatPlayerScore": "战斗得分", "damageDealtToObjectives": "对战略点的总伤害", "damageDealtToTurrets": "对防御塔的总伤害", "damageSelfMitigated": "自我缓和的伤害", "deaths": "死亡", "doubleKills": "双杀", "earlySurrenderAccomplice": "同意提前投降", "firstBloodAssist": "协助获得第一滴血", "firstBloodKill": "第一滴血", "firstInhibitorAssist": "协助摧毁第一座召唤水晶", "firstInhibitorKill": "摧毁第一座召唤水晶", "firstTowerAssist": "协助摧毁第一座塔", "firstTowerKill": "摧毁第一座塔", "gameEndedInEarlySurrender": "提前投降导致比赛结束", "gameEndedInSurrender": "投降导致比赛结束", "goldEarned": "金币获取", "goldSpent": "金币使用", "inhibitorKills": "摧毁召唤水晶", "item1": "装备1", "item2": "装备2", "item3": "装备3", "item4": "装备4", "item5": "装备5", "item6": "装备6", "ornament": "饰品", "killingSprees": "大杀特杀", "kills": "击杀", "largestCriticalStrike": "最大暴击伤害", "largestKillingSpree": "最高连杀", "largestMultiKill": "最高多杀", "longestTimeSpentLiving": "最长生存时间", "magicDamageDealt": "造成的魔法伤害", "magicDamageDealtToChampions": "对英雄的魔法伤害", "magicalDamageTaken": "承受的魔法伤害", "neutralMinionsKilled": "击杀野怪", "neutralMinionsKilledEnemyJungle": "击杀敌方野区野怪", "neutralMinionsKilledTeamJungle": "击杀我方野区野怪", "objectivePlayerScore": "战略点玩家得分", "pentaKills": "五杀", "perk0": "符文1", "perk0EndOfGameStatDescs": "符文1游戏结算数据", "perk0Var1": "符文1：参数1", "perk0Var2": "符文1：参数2", "perk0Var3": "符文1：参数3", "perk1": "符文2", "perk1EndOfGameStatDescs": "符文2游戏结算数据", "perk1Var1": "符文2：参数1", "perk1Var2": "符文2：参数2", "perk1Var3": "符文2：参数3", "perk2": "符文3", "perk2EndOfGameStatDescs": "符文3游戏结算数据", "perk2Var1": "符文3：参数1", "perk2Var2": "符文3：参数2", "perk2Var3": "符文3：参数3", "perk3": "符文4", "perk3EndOfGameStatDescs": "符文4游戏结算数据", "perk3Var1": "符文4：参数1", "perk3Var2": "符文4：参数2", "perk3Var3": "符文4：参数3", "perk4": "符文5", "perk4EndOfGameStatDescs": "符文5游戏结算数据", "perk4Var1": "符文5：参数1", "perk4Var2": "符文5：参数2", "perk4Var3": "符文5：参数3", "perk5": "符文6", "perk5EndOfGameStatDescs": "符文6游戏结算数据", "perk5Var1": "符文6：参数1", "perk5Var2": "符文6：参数2", "perk5Var3": "符文6：参数3", "perkPrimaryStyle": "主系", "perkSubStyle": "副系", "physicalDamageDealt": "造成的物理伤害", "physicalDamageDealtToChampions": "对英雄的物理伤害", "physicalDamageTaken": "承受的物理伤害", "playerAugment1": "强化符文1", "playerAugment1_rarity": "强化符文1等级", "playerAugment2": "强化符文2", "playerAugment2_rarity": "强化符文2等级", "playerAugment3": "强化符文3", "playerAugment3_rarity": "强化符文3等级", "playerAugment4": "强化符文4", "playerAugment4_rarity": "强化符文4等级", "playerScore0": "玩家得分1", "playerScore1": "玩家得分2", "playerScore2": "玩家得分3", "playerScore3": "玩家得分4", "playerScore4": "玩家得分5", "playerScore5": "玩家得分6", "playerScore6": "玩家得分7", "playerScore7": "玩家得分8", "playerScore8": "玩家得分9", "playerScore9": "玩家得分10", "playerSubteamId": "子阵营序号", "quadraKills": "四杀", "sightWardsBoughtInGame": "购买洞察之石", "subteamPlacement": "队伍排名", "teamEarlySurrendered": "队伍提前投降", "timeCCingOthers": "控制得分", "totalDamageDealt": "造成的伤害总和", "totalDamageDealtToChampions": "对英雄的伤害总和", "totalDamageTaken": "承受伤害", "totalHeal": "治疗伤害", "totalMinionsKilled": "击杀小兵", "totalPlayerScore": "玩家总得分", "totalScoreRank": "总得分排名", "totalTimeCrowdControlDealt": "控制时间", "totalUnitsHealed": "治疗单位数", "tripleKills": "三杀", "trueDamageDealt": "造成真实伤害", "trueDamageDealtToChampions": "对英雄的真实伤害", "trueDamageTaken": "承受的真实伤害", "turretKills": "摧毁防御塔", "unrealKills": "六杀及以上", "visionScore": "视野得分", "visionWardsBoughtInGame": "购买控制守卫", "wardsKilled": "摧毁守卫", "wardsPlaced": "放置守卫", "win/lose": "胜负", "ally?": "是否队友？"}
+                        LoLGame_info_header = {"gameCreationDate": "创建日期", "gameDuration": "持续时长", "gameId": "对局序号", "gameMode": "游戏模式", "gameModeName": "模式名称", "gameVersion": "对局版本", "mapId": "地图序号", "queueId": "队列序号", "accountId": "账户序号", "currentAccountId": "当前账户序号", "currentPlatformId": "当前大区", "gameName": "游戏名", "matchHistoryUri": "", "platformId": "原大区", "profileIcon": "召唤师图标序号", "puuid": "玩家通用唯一识别码", "summonerId": "召唤师序号", "summonerName": "召唤师名称", "tagLine": "尾标", "champion": "英雄", "alias": "名字", "highestAchievedSeasonTier": "最高赛段", "spell1": "召唤师技能1", "spell2": "召唤师技能2", "KDA": "战损比", "teamId": "阵营", "assists": "助攻", "causedEarlySurrender": "发起提前投降", "champLevel": "英雄等级", "combatPlayerScore": "战斗得分", "damageDealtToObjectives": "对战略点的总伤害", "damageDealtToTurrets": "对防御塔的总伤害", "damageSelfMitigated": "自我缓和的伤害", "deaths": "死亡", "doubleKills": "双杀", "earlySurrenderAccomplice": "同意提前投降", "firstBloodAssist": "协助获得第一滴血", "firstBloodKill": "第一滴血", "firstInhibitorAssist": "协助摧毁第一座召唤水晶", "firstInhibitorKill": "摧毁第一座召唤水晶", "firstTowerAssist": "协助摧毁第一座塔", "firstTowerKill": "摧毁第一座塔", "gameEndedInEarlySurrender": "提前投降导致比赛结束", "gameEndedInSurrender": "投降导致比赛结束", "goldEarned": "金币获取", "goldSpent": "金币使用", "inhibitorKills": "摧毁召唤水晶", "item1": "装备1", "item2": "装备2", "item3": "装备3", "item4": "装备4", "item5": "装备5", "item6": "装备6", "ornament": "饰品", "killingSprees": "大杀特杀", "kills": "击杀", "largestCriticalStrike": "最大暴击伤害", "largestKillingSpree": "最高连杀", "largestMultiKill": "最高多杀", "longestTimeSpentLiving": "最长生存时间", "magicDamageDealt": "造成的魔法伤害", "magicDamageDealtToChampions": "对英雄的魔法伤害", "magicalDamageTaken": "承受的魔法伤害", "neutralMinionsKilled": "击杀野怪", "neutralMinionsKilledEnemyJungle": "击杀敌方野区野怪", "neutralMinionsKilledTeamJungle": "击杀我方野区野怪", "objectivePlayerScore": "战略点玩家得分", "pentaKills": "五杀", "perk0": "符文1", "perk0EndOfGameStatDescs": "符文1游戏结算数据", "perk0Var1": "符文1：参数1", "perk0Var2": "符文1：参数2", "perk0Var3": "符文1：参数3", "perk1": "符文2", "perk1EndOfGameStatDescs": "符文2游戏结算数据", "perk1Var1": "符文2：参数1", "perk1Var2": "符文2：参数2", "perk1Var3": "符文2：参数3", "perk2": "符文3", "perk2EndOfGameStatDescs": "符文3游戏结算数据", "perk2Var1": "符文3：参数1", "perk2Var2": "符文3：参数2", "perk2Var3": "符文3：参数3", "perk3": "符文4", "perk3EndOfGameStatDescs": "符文4游戏结算数据", "perk3Var1": "符文4：参数1", "perk3Var2": "符文4：参数2", "perk3Var3": "符文4：参数3", "perk4": "符文5", "perk4EndOfGameStatDescs": "符文5游戏结算数据", "perk4Var1": "符文5：参数1", "perk4Var2": "符文5：参数2", "perk4Var3": "符文5：参数3", "perk5": "符文6", "perk5EndOfGameStatDescs": "符文6游戏结算数据", "perk5Var1": "符文6：参数1", "perk5Var2": "符文6：参数2", "perk5Var3": "符文6：参数3", "perkPrimaryStyle": "主系", "perkSubStyle": "副系", "physicalDamageDealt": "造成的物理伤害", "physicalDamageDealtToChampions": "对英雄的物理伤害", "physicalDamageTaken": "承受的物理伤害", "playerAugment1": "强化符文1", "playerAugment1_rarity": "强化符文1等级", "playerAugment2": "强化符文2", "playerAugment2_rarity": "强化符文2等级", "playerAugment3": "强化符文3", "playerAugment3_rarity": "强化符文3等级", "playerAugment4": "强化符文4", "playerAugment4_rarity": "强化符文4等级", "playerScore0": "玩家得分1", "playerScore1": "玩家得分2", "playerScore2": "玩家得分3", "playerScore3": "玩家得分4", "playerScore4": "玩家得分5", "playerScore5": "玩家得分6", "playerScore6": "玩家得分7", "playerScore7": "玩家得分8", "playerScore8": "玩家得分9", "playerScore9": "玩家得分10", "playerSubteamId": "子阵营序号", "quadraKills": "四杀", "sightWardsBoughtInGame": "购买洞察之石", "subteamPlacement": "队伍排名", "teamEarlySurrendered": "队伍提前投降", "timeCCingOthers": "控制得分", "totalDamageDealt": "造成的伤害总和", "totalDamageDealtToChampions": "对英雄的伤害总和", "totalDamageTaken": "承受伤害", "totalHeal": "治疗伤害", "totalMinionsKilled": "击杀小兵", "totalPlayerScore": "玩家总得分", "totalScoreRank": "总得分排名", "totalTimeCrowdControlDealt": "控制时间", "totalUnitsHealed": "治疗单位数", "tripleKills": "三杀", "trueDamageDealt": "造成真实伤害", "trueDamageDealtToChampions": "对英雄的真实伤害", "trueDamageTaken": "承受的真实伤害", "turretKills": "摧毁防御塔", "unrealKills": "六杀及以上", "visionScore": "视野得分", "visionWardsBoughtInGame": "购买控制守卫", "wardsKilled": "摧毁守卫", "wardsPlaced": "放置守卫", "win/lose": "胜负", "ally?": "是否队友？"}
                         LoLGame_info_data = {}
                         LoLGame_info_header_keys = list(LoLGame_info_header.keys())
                         fetched_info = False #用于控制程序走向，防止在没有获取到任何对局信息的情况下程序进入可视化部分（Used to control the running of the program, in case the program enters visualization part without fetching any match information）
                         error_LoLMatchIDs = [] #记录实际存在但未如期获取的对局序号（Records the LoL matchIDs that really exist but fail to be fetched）
                         matches_to_remove = [] #记录获取成功但不包含主玩家的对局序号（Records the matches that are fetched successfully but don't contain the main player）
                         LoLGameDuration_raw = [] #用于存储未转化成几分几秒格式的游戏持续时间。主要是为了方便可视化时呈现不同玩家的累计游戏时间的图表（Used to store the gameDuration that is not transformed into "(X)X:XX" form. Mainly for convenience of displaying the chart regarding the total time for which a player has accompanied the main player）
+                        team_color = {100: "蓝方", 200: "红方"}
                         subteam_color = {0: "", 1: "魄罗", 2: "小兵", 3: "迅捷蟹", 4: "石甲虫"} #仅用于斗魂竞技场（Only for Soul Fighter mode）
                         augment_rarity = {0: "白银", 1: "黄金", 2: "棱彩", 4: "黄金", 8: "棱彩"}
                         win = {True: "胜利", False: "失败"}
@@ -1553,18 +1556,22 @@ async def search_recent_players(connection):
                                                         LoLGame_info_data[key].append(LoLChampions[championID]["name"])
                                                     else:
                                                         LoLGame_info_data[key].append(LoLChampions[championID]["alias"])
-                                                elif j in {21, 22}:
+                                                elif j == 21:
+                                                    LoLGame_info_data[key].append(tier[LoLGame_info["participants"][i]["highestAchievedSeasonTier"]])
+                                                elif j in {22, 23}:
                                                     spellId = LoLGame_info["participants"][i][key + "Id"]
                                                     try:
                                                         LoLGame_info_data[key].append(spells[spellId]["name"])
                                                     except KeyError:
                                                         LoLGame_info_data[key].append(spellId)
-                                                elif j == 23:
+                                                elif j == 24:
                                                     kill, death, assist = stats["kills"], stats["deaths"], stats["assists"]
                                                     LoLGame_info_data[key].append("%d/%d/%d" %(kill, death, assist))
-                                                elif j >= 45 and j <= 51:
-                                                    if j >= 45 and j <= 50:
-                                                        LoLItemID = stats["item%d" %(j - 45)]
+                                                elif j == 25:
+                                                    LoLGame_info_data[key].append(team_color[LoLGame_info["participants"][i]["teamId"]])
+                                                elif j >= 47 and j <= 53:
+                                                    if j >= 47 and j <= 52:
+                                                        LoLItemID = stats["item%d" %(j - 47)]
                                                     else:
                                                         LoLItemID = stats["item6"]
                                                     if LoLItemID == 0:
@@ -1574,10 +1581,10 @@ async def search_recent_players(connection):
                                                             LoLGame_info_data[key].append(LoLItems[str(LoLItemID)]["name"])
                                                         except KeyError:
                                                             LoLGame_info_data[key].append(str(LoLItemID))
-                                                elif j >= 66 and j <= 97:
-                                                    if j <= 95:
-                                                        if (j - 66) % 5 == 0 or (j - 66) % 5 == 1:
-                                                            subkey = LoLGame_info_header_keys[66 + (j - 66) // 5 * 5]
+                                                elif j >= 68 and j <= 99:
+                                                    if j <= 97:
+                                                        if (j - 68) % 5 == 0 or (j - 68) % 5 == 1:
+                                                            subkey = LoLGame_info_header_keys[68 + (j - 68) // 5 * 5]
                                                             perkId = LoLGame_info["participants"][i]["stats"][subkey]
                                                             if perkId == 0: #在一些非常规模式（如新手训练）的对局中，玩家可能没有携带任何符文（In matches with unconventional game mode (e.g. TUTORIAL), maybe the player doesn't take any runes）
                                                                 LoLGame_info_data[key].append("")
@@ -1620,7 +1627,7 @@ async def search_recent_players(connection):
                                                                             else:
                                                                                 break
                                                                 if perk_captured:
-                                                                    if (j - 66) % 5 == 0:
+                                                                    if (j - 68) % 5 == 0:
                                                                         to_append = perk_to_append["name"]
                                                                     else:
                                                                         perk_EndOfGameStatDescs = "".join(list(map(lambda x: x + "。", perk_to_append["endOfGameStatDescs"])))
@@ -1629,7 +1636,7 @@ async def search_recent_players(connection):
                                                                         perk_EndOfGameStatDescs = perk_EndOfGameStatDescs.replace("@eogvar3@", str(LoLGame_info["participants"][i]["stats"][LoLGame_info_header_keys[j + 3]]))
                                                                         to_append = perk_EndOfGameStatDescs
                                                                 else:
-                                                                    to_append = perkId if (j - 66) % 5 == 0 else ""
+                                                                    to_append = perkId if (j - 68) % 5 == 0 else ""
                                                                 LoLGame_info_data[key].append(to_append)
                                                         else:
                                                             LoLGame_info_data[key].append(LoLGame_info["participants"][i]["stats"][key])
@@ -1675,8 +1682,8 @@ async def search_recent_players(connection):
                                                                         else:
                                                                             break
                                                             LoLGame_info_data[key].append(to_append)
-                                                elif j >= 101 and j <= 108: #此处处理方法同上——退而求其次（Here the principle is similar to the above: seek for the second best）
-                                                    subkey = LoLGame_info_header_keys[101 + (j - 101) // 2 * 2]
+                                                elif j >= 103 and j <= 110: #此处处理方法同上——退而求其次（Here the principle is similar to the above: seek for the second best）
+                                                    subkey = LoLGame_info_header_keys[103 + (j - 103) // 2 * 2]
                                                     playerAugmentId = LoLGame_info["participants"][i]["stats"][subkey]
                                                     if playerAugmentId == 0:
                                                         LoLGame_info_data[key].append("")
@@ -1719,15 +1726,15 @@ async def search_recent_players(connection):
                                                                     else:
                                                                         break
                                                         if ArenaAugment_captured:
-                                                            to_append = augment_to_append["name"] if (j - 101) % 2 == 0 else augment_rarity[augment_to_append["rarity"]]
+                                                            to_append = augment_to_append["name"] if (j - 103) % 2 == 0 else augment_rarity[augment_to_append["rarity"]]
                                                         else:
-                                                            to_append = playerAugmentId if (j - 101) % 2 == 0 else ""
+                                                            to_append = playerAugmentId if (j - 103) % 2 == 0 else ""
                                                         LoLGame_info_data[key].append(to_append)
-                                                elif j == 119:
+                                                elif j == 121:
                                                     LoLGame_info_data[key].append(subteam_color[LoLGame_info["participants"][i]["stats"]["playerSubteamId"]])
-                                                elif j == 144:
+                                                elif j == 146:
                                                     LoLGame_info_data[key].append(win[LoLGame_info["participants"][i]["stats"]["win"]])
-                                                elif j == 145:
+                                                elif j == 147:
                                                     if LoLGame_info["participants"][i]["teamId"] == LoLGame_info["participants"][currentParticipantId]["teamId"] and stats["playerSubteamId"] == LoLGame_info["participants"][currentParticipantId]["stats"]["playerSubteamId"]:
                                                         LoLGame_info_data[key].append(True)
                                                     else:
@@ -1743,7 +1750,7 @@ async def search_recent_players(connection):
                         if not fetched_info:
                             print("未获取到有效对局。请重新输入要查询的对局序号。\nThe program didn't fetch any valid match. Please reinput the match ID to check.")
                             continue
-                        recent_LoLPlayers_statistics_display_order = [17, 11, 18, 16, 15, 2, 0, 1, 7, 3, 4, 6, 5, 145, 19, 20, 26, 21, 22, 45, 46, 47, 48, 49, 50, 51, 101, 102, 103, 104, 105, 106, 107, 108, 23, 27, 130, 131, 55, 52, 56, 35, 34, 39, 38, 37, 36, 32, 134, 120, 65, 139, 124, 132, 126, 99, 59, 136, 125, 98, 58, 135, 54, 29, 28, 128, 133, 127, 100, 60, 137, 30, 140, 143, 142, 121, 141, 42, 43, 129, 61, 63, 62, 138, 44, 57, 96, 97, 66, 67, 71, 72, 76, 77, 81, 82, 86, 87, 91, 92, 25, 33, 123, 40, 41, 144]
+                        recent_LoLPlayers_statistics_display_order = [17, 11, 18, 16, 15, 21, 2, 0, 1, 7, 3, 4, 6, 5, 147, 19, 20, 28, 22, 23, 47, 48, 49, 50, 51, 52, 53, 103, 104, 105, 106, 107, 108, 109, 110, 24, 29, 132, 133, 57, 54, 58, 37, 36, 41, 40, 39, 38, 34, 136, 122, 67, 141, 126, 134, 128, 101, 61, 138, 127, 100, 60, 137, 56, 31, 30, 130, 135, 129, 102, 62, 139, 32, 142, 145, 144, 123, 143, 44, 45, 131, 63, 65, 64, 140, 46, 59, 98, 99, 68, 69, 73, 74, 78, 79, 83, 84, 88, 89, 93, 94, 27, 35, 125, 42, 43, 146]
                         recent_LoLPlayers_data_organized = {}
                         for i in range(len(recent_LoLPlayers_statistics_display_order)):
                             key = LoLGame_info_header_keys[recent_LoLPlayers_statistics_display_order[i]]
@@ -1853,25 +1860,7 @@ async def search_recent_players(connection):
                                 TFTHistory_data[key] = []
                             for i in range(len(TFTHistory)): #由于不同对局意味着不同版本，不同版本的云顶之弈数据相差较大，所以为了使得一次获取的版本能够尽可能用到多个对局中，第一层迭代器应当是对局序号（Because different matches mean different patches, and TFT data differ greatly among different patches, to make a recently captured version of TFT data applicable in as more matches as possible, the first iterator should be the ID of the matches）
                                 if TFT_main_player_indices[i] == -1: #对局数据记录存在异常时的处理（Exception of match data recording exception）
-                                    TFTGamePatches.append("") #后面的代码中存在对TFTGamePatches的索引，因此为了保证索引的准确性，当对局记录出现异常时，应当追加一个空版本号到版本列表中（There're indices of `TFTGamePatches`. Therefore, to ensure the correctness of the indices, an empty patch should be appended to this patch list）
-                                    for j in range(len(TFTHistory_header)):
-                                        key = TFTHistory_header_keys[j]
-                                        if j == 0:
-                                            TFTHistory_data[key].append(i + 1)
-                                        elif j == 1:
-                                            game_datetime = TFTHistory[i]["metadata"]["timestamp"]
-                                            game_date = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(game_datetime // 1000))
-                                            game_date_fraction = game_datetime / 1000 - game_datetime // 1000
-                                            to_append = game_date + ("{0:.3}".format(game_date_fraction))[1:5]
-                                            TFTHistory_data[key].append(to_append)
-                                        elif j == 2:
-                                            TFTHistory_data[key].append(TFTHistory[i]["metadata"]["match_id"].split("_")[1])
-                                        elif j == 3:
-                                            TFTGameDuration_raw.append(0)
-                                            TFTHistory_data[key].append("")
-                                        else:
-                                            TFTHistory_data[key].append("")
-                                    print("加载进度（Loading process）：%d/%d\t对局序号（MatchID）： %s" %(i + 1, len(TFTHistory), TFTHistory[i]["metadata"]["match_id"].split("_")[1]))
+                                    print("加载进度（Loading process）：%d/%d\t对局序号（MatchID）： %s （Exceptional match neglected）" %(i + 1, len(TFTHistory), TFTHistory[i]["metadata"]["match_id"].split("_")[1]))
                                 else:
                                     TFTHistoryJson = TFTHistory[i]["json"] #该数据结构应用于1 ≤ j ≤ 8（This variable applies when 1 ≤ j ≤ 8）
                                     #j == 1
@@ -2014,11 +2003,12 @@ async def search_recent_players(connection):
                                                     if TFTPlayer["puuid"] != current_puuid:
                                                         TFTHistory_data[key].append(to_append[j])
                                                 elif j in {16, 23, 24, 25}:
-                                                    if TFTPlayer["puuid"] == "00000000-0000-0000-0000-000000000000": #在云顶之弈（新手教程）中，无法通过电脑玩家的玩家通用唯一识别码（00000000-0000-0000-0000-000000000000）来查询其召唤师名称和序号（Summoner names and IDs of bot players in TFT (Tutorial) can't be searched for according to their puuid: 00000000-0000-0000-0000-000000000000）
-                                                        to_append = {16: "", 23: "", 24: "", 25: ""}
+                                                    if TFTPlayer["puuid"] in infos:
+                                                        TFTPlayer_info = infos[TFTPlayer["puuid"]]
+                                                        to_append = {16: TFTPlayer_info["gameName"], 23: TFTPlayer_info["summonerId"], 24: TFTPlayer_info["displayName"], 25: TFTPlayer_info["tagLine"]}
                                                     else:
-                                                        if TFTPlayer["puuid"] in infos:
-                                                            TFTPlayer_info = infos[TFTPlayer["puuid"]]
+                                                        if TFTPlayer["puuid"] == "00000000-0000-0000-0000-000000000000": #在云顶之弈（新手教程）中，无法通过电脑玩家的玩家通用唯一识别码（00000000-0000-0000-0000-000000000000）来查询其召唤师名称和序号（Summoner names and IDs of bot players in TFT (Tutorial) can't be searched for according to their puuid: 00000000-0000-0000-0000-000000000000）
+                                                            to_append = {16: "", 23: "", 24: "", 25: ""}
                                                         else:
                                                             TFTPlayer_info_recapture = 0
                                                             TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
@@ -2026,11 +2016,11 @@ async def search_recent_players(connection):
                                                                 TFTPlayer_info_recapture += 1
                                                                 print("第%d/%d场对局（对局序号：%d）玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of Player (puuid: %s) in Match %d / %d (matchID: %d) capture failed! Recapturing this player's information ... Times tried: %d." %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer["puuid"], TFTPlayer_info_recapture, TFTPlayer["puuid"], i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer_info_recapture))
                                                                 TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
-                                                        if "errorCode" in TFTPlayer_info:
-                                                            to_append = {16: "", 23: "", 24: "", 25: ""}
-                                                        else:
-                                                            infos[TFTPlayer["puuid"]] = TFTPlayer_info
-                                                            to_append = {16: TFTPlayer_info["gameName"], 23: TFTPlayer_info["summonerId"], 24: TFTPlayer_info["displayName"], 25: TFTPlayer_info["tagLine"]}
+                                                            if "errorCode" in TFTPlayer_info:
+                                                                to_append = {16: "", 23: "", 24: "", 25: ""}
+                                                            else:
+                                                                infos[TFTPlayer["puuid"]] = TFTPlayer_info
+                                                                to_append = {16: TFTPlayer_info["gameName"], 23: TFTPlayer_info["summonerId"], 24: TFTPlayer_info["displayName"], 25: TFTPlayer_info["tagLine"]}
                                                     if TFTPlayer["puuid"] != current_puuid:
                                                         TFTHistory_data[key].append(to_append[j])
                                                 elif j == 18:
@@ -2060,7 +2050,7 @@ async def search_recent_players(connection):
                                                 TFTPlayer_Traits = TFTPlayer["traits"]
                                                 if TFTPlayer["puuid"] in infos:
                                                     TFTPlayer_info = infos[TFTPlayer["puuid"]]
-                                                else:
+                                                elif TFTPlayer["puuid"] != "00000000-0000-0000-0000-000000000000":
                                                     TFTPlayer_info_recapture = 0
                                                     TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
                                                     while "errorCode" in TFTPlayer_info and TFTPlayer_info_recapture < 3:
@@ -2072,7 +2062,7 @@ async def search_recent_players(connection):
                                                 if int(TFTTrait_iter[5:]) < len(TFTPlayer_Traits): #在这个小于的问题上纠结了很久[敲打]——下标是从0开始的。假设API上记录了n个羁绊，那么当程序正在获取第n个羁绊时，就会引起下标越界的问题。所以这里不能使用小于等于号（I stuck at this less than sign for long xD - note that the index begins from 0. Suppose there're totally n traits recorded in LCU API. Then, when the program is trying to capture the n-th trait, it'll throw an IndexError. That's why the less than or equal to sign can't be used here）
                                                     try:
                                                         if TFTPlayer_Traits[int(TFTTrait_iter[5:])]["name"] == "TemplateTrait": #CommunityDragon数据库中没有收录模板羁绊的数据（Data about TemplateTrait aren't archived in CommunityDragon database）
-                                                            if (j - 28) % 5 == 4: #模板羁绊没有tier_total键（The key `tier_total` doesn't exist in "TemplateTrait" dictionary）
+                                                            if (j - 28) % 5 == 4 and TFTPlayer["puuid"] != "00000000-0000-0000-0000-000000000000": #模板羁绊没有tier_total键（The key `tier_total` doesn't exist in "TemplateTrait" dictionary）
                                                                 to_append == ""
                                                                 print("警告：对局%d中玩家%s（玩家通用唯一识别码：%s）的第%d个羁绊是模板羁绊！\nWarning: Trait No. %d of the player %s (puuid: %s) in the match %d is TemplateTrait." %(TFTHistory[i]["json"]["game_id"], get_info_name(TFTPlayer_info), TFTPlayer["puuid"], int(TFTTrait_iter[5:]) + 1, int(TFTTrait_iter[5:]) + 1, get_info_name(TFTPlayer_info), TFTPlayer["puuid"], TFTHistory[i]["json"]["game_id"]))
                                                             else:

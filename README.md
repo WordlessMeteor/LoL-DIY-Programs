@@ -182,7 +182,7 @@ The following explanations only apply to the current branch. For other details (
 				- “{文件夹地址}”示例：`C:\Users\19250\Desktop\英雄联盟自定义房间创建\召唤师信息（Summoner Information）`。
 	- 为方便理解自定义脚本中一些大型数据框的结构，在主目录中添加了一个工作簿`Customized Program Main Dataframe Structure.xlsx`，以解释其生成过程。
 		- 下面对自定义脚本11中的`recent_LoLPlayers_df`的结构进行说明，以便说明一些设定。一些设定在后续解释中不再赘述。
-			- 工作表`11 - recent_LoLPlayers_header`共有5列，其中前3列是**主要数据区域**。
+			- 工作表`11 - LoLGame_info_header`共有5列，其中前3列是**主要数据区域**。
 				- `Index`代表`LoLGame_info_data`的键的索引。
 				- `Key`代表`LoLGame_info_data`的键。
 				- `Value`代表`LoLGame_info_data`的值。
@@ -191,7 +191,7 @@ The following explanations only apply to the current branch. For other details (
 			- 在该工作表中，主要数据区域设置了5种颜色。
 				- 绿色代表`Key`可以直接作为`LoLGame_info`的索引。
 				- 黄色代表`Key`作为`LoLGame_info["participantIdentities"][participantId]`的索引。
-				- 蓝色代表`Key`作为`LoLGame_info["participants"][participantId]["name"]`的索引。
+				- 蓝色代表`Key`作为`LoLGame_info["participants"][participantId]`的索引。
 				- 橙色代表`Key`作为`LoLGame_info["participants"][participantId]["stats"]`的索引。
 				- 粉红色代表`Key`不作为LCU API中任何变量的索引。
 					- 目前粉红色区域只包含`ally?`，表示查询的玩家是否是主玩家的队友。在导出的工作表中，打勾表示该玩家是主玩家的队友。
@@ -241,7 +241,7 @@ The following explanations only apply to the current branch. For other details (
 				- 蓝色代表`Key`可以作为`queues[id]["queueRewards"]`的索引。
 				- 白色代表`Key`曾经存在，但后来被删除了。
 		- 下面对自定义脚本11中的`recent_TFTPlayers_df`的结构进行说明。
-			- 工作表`11 - recent_TFTPlayers_header`的主要数据区域设置了5种颜色。
+			- 工作表`11 - TFTHistory_header`的主要数据区域设置了5种颜色。
 				- 无填充代表`Key`不作为LCU API中任何变量的索引。
 				- 天蓝色代表`Key`可以作为`TFTHistory[i]["json"]`的索引。
 				- 绿色代表`Key`可以作为`TFTHistory[i]["json"]["participants"][participantId]`的索引。
@@ -447,7 +447,7 @@ For details about customized programs that is beyond the scope of creating a cus
 			- 5 colors are used to divide the main data area in this sheet.
 				- Data in the green area mean `Key` is the direct index of the variable `LoLGame_info`.
 				- Data in the orange area mean `Key` is the index of `LoLGame_info["participantIdentities"][participantId]`.
-				- Data in the blue area mean `Key` is the index of `LoLGame_info["participants"][participantId]["name"]`.
+				- Data in the blue area mean `Key` is the index of `LoLGame_info["participants"][participantId]`.
 				- Data in the yellow area mean `Key` is the index of `LoLGame_info["participants"][participantId]["stats"]`.
 				- Data in the purple area mean `Key` doesn't serve as the index of any variables of LCU API.
 					- Currently, the purple area only contains `ally?`, a judgement whether the queried player is an ally of the main player. In the exported sheet, a tick means the queried player is the ally of the main player.
