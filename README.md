@@ -191,7 +191,7 @@ The following explanations only apply to the current branch. For other details (
 			- 在该工作表中，主要数据区域设置了5种颜色。
 				- 绿色代表`Key`可以直接作为`LoLGame_info`的索引。
 				- 黄色代表`Key`作为`LoLGame_info["participantIdentities"][participantId]`的索引。
-				- 蓝色代表`Key`作为`LoLGame_info["participants"][participantId]`的索引。
+				- 蓝色代表`Key`作为`LoLGame_info["participants"][participantId]["name"]`的索引。
 				- 橙色代表`Key`作为`LoLGame_info["participants"][participantId]["stats"]`的索引。
 				- 粉红色代表`Key`不作为LCU API中任何变量的索引。
 					- 目前粉红色区域只包含`ally?`，表示查询的玩家是否是主玩家的队友。在导出的工作表中，打勾表示该玩家是主玩家的队友。
@@ -447,7 +447,7 @@ For details about customized programs that is beyond the scope of creating a cus
 			- 5 colors are used to divide the main data area in this sheet.
 				- Data in the green area mean `Key` is the direct index of the variable `LoLGame_info`.
 				- Data in the orange area mean `Key` is the index of `LoLGame_info["participantIdentities"][participantId]`.
-				- Data in the blue area mean `Key` is the index of `LoLGame_info["participants"][participantId]`.
+				- Data in the blue area mean `Key` is the index of `LoLGame_info["participants"][participantId]["name"]`.
 				- Data in the yellow area mean `Key` is the index of `LoLGame_info["participants"][participantId]["stats"]`.
 				- Data in the purple area mean `Key` doesn't serve as the index of any variables of LCU API.
 					- Currently, the purple area only contains `ally?`, a judgement whether the queried player is an ally of the main player. In the exported sheet, a tick means the queried player is the ally of the main player.

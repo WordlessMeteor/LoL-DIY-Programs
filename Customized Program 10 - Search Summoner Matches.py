@@ -77,6 +77,28 @@ def platform_format(platform = '{"TENCENT": "国服（TENCENT）", "RIOT": "外�
     print("已复制转换后的平台字典信息。\nSuccessfully copied the transformed dictionary information.")
     return formatted
 
+def get_info_name(info: dict, mode = 1) -> str:
+    if not isinstance(info, dict) or not all(i in info for i in ["displayName", "gameName", "tagLine"]):
+        print("您的召唤师信息格式有误！\nERROR format of summoner information!")
+        name = ""
+        exit()
+    else:
+        if info["displayName"] or info["gameName"]:
+            if info["gameName"] and info["tagLine"]:
+                name = info["gameName"] + "#" + info["tagLine"]
+            elif not info["tagLine"] and info["gameName"]:
+                name = info["gameName"]
+            else:
+                name = info["displayName"]
+        else: #新玩家属于这种类型（This case matches new players）
+            if mode == 1:
+                name = str(info["summonerId"])
+            elif mode == 2: #仅用于设置召唤师数据保存路径（Designed to set the summoner name directory）
+                name = "0. 新玩家\\" + str(info["summonerId"])
+            elif mode == 3: #仅用于设置召唤师数据保存路径（Designed to set the summoner name directory）
+                name = "0. New Player\\" + str(info["summonerId"])
+    return name
+
 async def search_summoner_online(connection):
     platform_TENCENT = {"BGP1": {"zh_CN": "全网通区 男爵领域", "en_US": "Baron Zone"}, "BGP2": {"zh_CN": "峡谷之巅", "en_US": "Super Zone"}, "EDU1": {"zh_CN": "教育网专区", "en_US": "CRENET Server"}, "HN1": {"zh_CN": "电信一区 艾欧尼亚", "en_US": "Ionia"}, "HN2": {"zh_CN": "电信二区 祖安", "en_US": "Zaun"}, "HN3": {"zh_CN": "电信三区 诺克萨斯", "en_US": "Noxus 1"}, "HN4": {"zh_CN": "电信四区 班德尔城", "en_US": "Bandle City"}, "HN4_NEW": {"zh_CN": "电信四区 班德尔城", "en_US": "Bandle City"}, "HN5": {"zh_CN": "电信五区 皮尔特沃夫", "en_US": "Piltover"}, "HN6": {"zh_CN": "电信六区 战争学院", "en_US": "the Institute of War"}, "HN7": {"zh_CN": "电信七区 巨神峰", "en_US": "Mount Targon"}, "HN8": {"zh_CN": "电信八区 雷瑟守备", "en_US": "Noxus 2"}, "HN9": {"zh_CN": "电信九区 裁决之地", "en_US": "the Proving Grounds"}, "HN10": {"zh_CN": "电信十区 黑色玫瑰", "en_US": "the Black Rose"}, "HN11": {"zh_CN": "电信十一区 暗影岛", "en_US": "Shadow Isles"}, "HN12": {"zh_CN": "电信十二区 钢铁烈阳", "en_US": "the Iron Solari"}, "HN13": {"zh_CN": "电信十三区 水晶之痕", "en_US": "Crystal Scar"}, "HN14": {"zh_CN": "电信十四区 均衡教派", "en_US": "the Kinkou Order"}, "HN15": {"zh_CN": "电信十五区 影流", "en_US": "the Shadow Order"}, "HN16": {"zh_CN": "电信十六区 守望之海", "en_US": "Guardian's Sea"}, "HN17": {"zh_CN": "电信十七区 征服之海", "en_US": "Conqueror's Sea"}, "HN18": {"zh_CN": "电信十八区 卡拉曼达", "en_US": "Kalamanda"}, "HN19": {"zh_CN": "电信十九区 皮城警备", "en_US": "Piltover Wardens"}, "PBE": {"zh_CN": "体验服 试炼之地", "en_US": "Chinese PBE"}, "WT1": {"zh_CN": "网通一区 比尔吉沃特", "en_US": "Bilgewater"}, "WT1_NEW": {"zh_CN": "网通一区 比尔吉沃特", "en_US": "Bilgewater"}, "WT2": {"zh_CN": "网通二区 德玛西亚", "en_US": "Demacia"}, "WT2_NEW": {"zh_CN": "网通二区 德玛西亚", "en_US": "Demacia"}, "WT3": {"zh_CN": "网通三区 弗雷尔卓德", "en_US": "Freljord"}, "WT3_NEW": {"zh_CN": "网通三区 弗雷尔卓德", "en_US": "Freljord"}, "WT4": {"zh_CN": "网通四区 无畏先锋", "en_US": "House Crownguard"}, "WT4_NEW": {"zh_CN": "网通四区 无畏先锋", "en_US": "House Crownguard"}, "WT5": {"zh_CN": "网通五区 恕瑞玛", "en_US": "Shurima"}, "WT6": {"zh_CN": "网通六区 扭曲丛林", "en_US": "Twisted Treeline"}, "WT7": {"zh_CN": "网通七区 巨龙之巢", "en_US": "the Dragon Camp"}, "NJ100": {"zh_CN": "联盟一区", "en_US": ""}, "GZ100": {"zh_CN": "联盟二区", "en_US": ""}}
     platform_RIOT = {"BR": {"zh_CN": "巴西服", "en_US": "Brazil"}, "EUNE": {"zh_CN": "北欧和东欧服", "en_US": "Europe Nordic & East"}, "EUW": {"zh_CN": "西欧服", "en_US": "Europe West"}, "LAN": {"zh_CN": "北拉美服", "en_US": "Latin America North"}, "LAS": {"zh_CN": "南拉美服", "en_US": "Latin America South"}, "NA": {"zh_CN": "北美服", "en_US": "North America"}, "OCE": {"zh_CN": "大洋洲服", "en_US": "Oceania"}, "RU": {"zh_CN": "俄罗斯服", "en_US": "Russia"}, "TR": {"zh_CN": "土耳其服", "en_US": "Turkey"}, "JP": {"zh_CN": "日服", "en_US": "Japan"}, "KR": {"zh_CN": "韩服", "en_US": "Republic of Korea"}, "PBE": {"zh_CN": "测试服", "en_US": "Public Beta Environment"}}
@@ -112,7 +134,7 @@ async def search_summoner_online(connection):
             elif "errorCode" in info and info["httpStatus"] == 422:
                 print('召唤师名称已变更为拳头ID。请以“{召唤师名称}#{尾标}”的格式输入。\nSummoner name has been replaced with Riot ID. Please input the name in this format: "{gameName}#{tagLine}", e.g. "%s#%s".' %(current_info["gameName"], current_info["tagLine"]))
             elif "accountId" in info:
-                displayName = info["displayName"] if info["displayName"] else (info["gameName"] if info["gameName"] else str(info["summonerId"])) #用于文件名命名（For use of file naming）
+                displayName = get_info_name(info) #用于文件名命名（For use of file naming）
                 puuid = info["puuid"]
                 switch_summoner = False #控制是否返回到输入召唤师名称的步骤（Controls returning to the step that requires inputting summoner name）
                 #设置输出信息中关于召唤师大区的描述（Adjust the description of the current server in printed information）
@@ -126,13 +148,13 @@ async def search_summoner_online(connection):
                 region = client_info["--region"]
                 if region == "TENCENT":
                     platform = platform_TENCENT[client_info["--rso_platform_id"]]
-                    folder = "召唤师信息（Summoner Information）\\" + "国服（TENCENT）" + "\\" + platform_TENCENT[client_info["--rso_platform_id"]]["zh_CN"] + "（" + platform_TENCENT[client_info["--rso_platform_id"]]["en_US"] + "）" + "\\" + (displayName if info["displayName"] or info["gameName"] else "0. 新玩家\\" + displayName)
+                    folder = "召唤师信息（Summoner Information）\\" + "国服（TENCENT）" + "\\" + platform_TENCENT[client_info["--rso_platform_id"]]["zh_CN"] + "（" + platform_TENCENT[client_info["--rso_platform_id"]]["en_US"] + "）" + "\\" + get_info_name(info, 2)
                 elif region == "GARENA":
                     platform = platform_GARENA[region]
-                    folder = "召唤师信息（Summoner Information）\\" + "竞舞（GARENA）" + "\\" + platform_GARENA[region]["zh_CN"] + "（" + platform_GARENA[region]["en_US"] + "）" + "\\" + (displayName if info["displayName"] or info["gameName"] else "0. 新玩家\\" + displayName)
+                    folder = "召唤师信息（Summoner Information）\\" + "竞舞（GARENA）" + "\\" + platform_GARENA[region]["zh_CN"] + "（" + platform_GARENA[region]["en_US"] + "）" + "\\" + get_info_name(info, 2)
                 else:
                     platform = (platform_RIOT | platform_GARENA)[region]
-                    folder = "召唤师信息（Summoner Information）\\" + "外服（RIOT）" + "\\" + (platform_RIOT | platform_GARENA)[region]["zh_CN"] + "（" + (platform_RIOT | platform_GARENA)[region]["en_US"] + "）" + "\\" + (displayName if info["displayName"] or info["gameName"] else "0. New Player\\" + displayName)
+                    folder = "召唤师信息（Summoner Information）\\" + "外服（RIOT）" + "\\" + (platform_RIOT | platform_GARENA)[region]["zh_CN"] + "（" + (platform_RIOT | platform_GARENA)[region]["en_US"] + "）" + "\\" + get_info_name(info, 3)
                 message = "正在【在线】查询%s大区召唤师%s（玩家通用唯一识别码：%s）的对局……\n[Online] searching for matches of the summoner %s (puuid: %s) on %s server..." %(platform["zh_CN"], displayName, puuid, displayName, puuid, platform["en_US"]) #这里考虑到当程序异常中断时，再次运行该程序，文件中新行会紧跟上次运行的最后一行，不容易区分。所以在字符串最前面加了一个换行符。但是这样的话，在创建文件时，第一行也会变成空行。用户如果觉得不顺眼，可以直接双击日志文件去掉第一行，这样看着舒服一些（Considering when the program 
                 message_save(message, folder, displayName, "【参数设置】")
                 #从输入获取要查询的对局序号范围（Get matchID range from input）

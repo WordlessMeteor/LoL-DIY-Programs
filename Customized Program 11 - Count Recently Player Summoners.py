@@ -182,6 +182,28 @@ def FindPostPatch(patch, patchList): #二分查找某个版本号在DataDragon�
         print("该版本为美测服最新版本，暂未收录在DataDragon数据库中。该函数将返回正式服的最新版本。\nThis version is the latest version on PBE and isn't temporarily archived in DataDragon database. This function will return the latest Live version.")
         return patchList[0]
 
+def get_info_name(info: dict, mode = 1) -> str:
+    if not isinstance(info, dict) or not all(i in info for i in ["displayName", "gameName", "tagLine"]):
+        print("您的召唤师信息格式有误！\nERROR format of summoner information!")
+        name = ""
+        exit()
+    else:
+        if info["displayName"] or info["gameName"]:
+            if info["gameName"] and info["tagLine"]:
+                name = info["gameName"] + "#" + info["tagLine"]
+            elif not info["tagLine"] and info["gameName"]:
+                name = info["gameName"]
+            else:
+                name = info["displayName"]
+        else: #新玩家属于这种类型（This case matches new players）
+            if mode == 1:
+                name = str(info["summonerId"])
+            elif mode == 2: #仅用于设置召唤师数据保存路径（Designed to set the summoner name directory）
+                name = "0. 新玩家\\" + str(info["summonerId"])
+            elif mode == 3: #仅用于设置召唤师数据保存路径（Designed to set the summoner name directory）
+                name = "0. New Player\\" + str(info["summonerId"])
+    return name
+
 async def search_recent_players(connection):
     platform_config = await (await connection.request("GET", "/lol-platform-config/v1/namespaces")).json()
     platformId = platform_config["LoginDataPacket"]["platformId"]
@@ -1018,12 +1040,13 @@ async def search_recent_players(connection):
         TFTCompanions = copy.deepcopy(TFTCompanions_initial)
         TFTTraits = copy.deepcopy(TFTTraits_initial)
         ArenaAugments = copy.deepcopy(ArenaAugments_initial)
+        infos = {} #存储程序运行过程中遇到的玩家信息，防止后续程序反复获取已经获取过的玩家信息（Store the summoner information fetched  during the program execution, in case the program would keep capturing the summoner information already fetched before）
         if detectMode == False:
             print('请输入要查询的召唤师名称，退出请输入“0”：\nPlease input the summoner name to be searched. Submit "0" to exit.')
             summoner_name = input()
         else:
             info = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
-            summoner_name = info["displayName"]
+            summoner_name = info["puuid"]
         if summoner_name == "0":
             os._exit(0)
         elif summoner_name == "":
@@ -1051,8 +1074,9 @@ async def search_recent_players(connection):
                 print('召唤师名称已变更为拳头ID。请以“{召唤师名称}#{尾标}”的格式输入。\nSummoner name has been replaced with Riot ID. Please input the name in this format: "{gameName}#{tagLine}", e.g. "%s#%s".' %(current_info["gameName"], current_info["tagLine"]))
                 continue
             elif "accountId" in info:
-                displayName = info["displayName"] if info["displayName"] else (info["gameName"] if info["gameName"] else str(info["summonerId"])) #用于扫描模式定位到某召唤师（Determines the directory which contains the summoner's data）
+                displayName = get_info_name(info) #用于扫描模式定位到某召唤师（Determines the directory which contains the summoner's data）
                 current_puuid = info["puuid"] #用于核验对局是否包含该召唤师。此外，还用于扫描模式从对局的所有玩家信息中定位到该玩家（For use of checking whether the searched matches include this summoner. In addition, it's used for localization of this player from all players in a match in "scan" mode）
+                infos[current_puuid] = info
                 #下面设置扫描模式的扫描目录（The following code determines the scanning directory for scan mode）
                 riot_client_info = await (await connection.request("GET", "/riotclient/command-line-args")).json()
                 client_info = {}
@@ -1063,11 +1087,11 @@ async def search_recent_players(connection):
                         pass
                 region = client_info["--region"]
                 if region == "TENCENT":
-                    folder = "召唤师信息（Summoner Information）\\" + "国服（TENCENT）" + "\\" + platform_TENCENT[client_info["--rso_platform_id"]] + "\\" + (displayName if info["displayName"] or info["gameName"] else "0. 新玩家\\" + displayName)
+                    folder = "召唤师信息（Summoner Information）\\" + "国服（TENCENT）" + "\\" + platform_TENCENT[client_info["--rso_platform_id"]] + "\\" + get_info_name(info, 2)
                 elif region == "GARENA":
-                    folder = "召唤师信息（Summoner Information）\\" + "竞舞（GARENA）" + "\\" + platform_GARENA[region] + "\\" + (displayName if info["displayName"] or info["gameName"] else "0. 新玩家\\" + displayName)
+                    folder = "召唤师信息（Summoner Information）\\" + "竞舞（GARENA）" + "\\" + platform_GARENA[region] + "\\" + get_info_name(info, 2)
                 else: #拳头公司与竞舞娱乐公司的合同于2023年1月终止（In January 2023, Riot Games ended its contract with Garena）
-                    folder = "召唤师信息（Summoner Information）\\" + "外服（RIOT）" + "\\" + (platform_RIOT | platform_GARENA)[region] + "\\" + (displayName if info["displayName"] or info["gameName"] else "0. New Player\\" + displayName)
+                    folder = "召唤师信息（Summoner Information）\\" + "外服（RIOT）" + "\\" + (platform_RIOT | platform_GARENA)[region] + "\\" + get_info_name(info, 3)
                 #print("召唤师英雄联盟对局记录如下：\nLoL match history is as follows:")
                 LoLHistory_get = True
                 begIndex_get, endIndex_get = 0, 500
@@ -1441,7 +1465,7 @@ async def search_recent_players(connection):
                                 continue
                         #开始获取各对局内的玩家信息。数据结构参考/lol-match-history/v1/recently-played-summoners（Begin to capture the players' information in each match. The data structure can be referred to "/lol-match-history/v1/recently-played-summoners"）
                         ##首先定义存储玩家信息的数据框的数据结构（First, define the data structure of the dataframe that stores player information）
-                        LoLGame_info_header = {"gameCreationDate": "创建日期", "gameDuration": "持续时长", "gameId": "对局序号", "gameMode": "游戏模式", "gameModeName": "模式名称", "gameVersion": "对局版本", "mapId": "地图序号", "queueId": "队列序号", "puuid": "玩家通用唯一识别码", "summonerId": "召唤师序号", "summonerName": "召唤师名称", "champion": "英雄", "alias": "名字", "spell1": "召唤师技能1", "spell2": "召唤师技能2", "KDA": "战损比", "assists": "助攻", "causedEarlySurrender": "发起提前投降", "champLevel": "英雄等级", "combatPlayerScore": "战斗得分", "damageDealtToObjectives": "对战略点的总伤害", "damageDealtToTurrets": "对防御塔的总伤害", "damageSelfMitigated": "自我缓和的伤害", "deaths": "死亡", "doubleKills": "双杀", "earlySurrenderAccomplice": "同意提前投降", "firstBloodAssist": "协助获得第一滴血", "firstBloodKill": "第一滴血", "firstInhibitorAssist": "协助摧毁第一座召唤水晶", "firstInhibitorKill": "摧毁第一座召唤水晶", "firstTowerAssist": "协助摧毁第一座塔", "firstTowerKill": "摧毁第一座塔", "gameEndedInEarlySurrender": "提前投降导致比赛结束", "gameEndedInSurrender": "投降导致比赛结束", "goldEarned": "金币获取", "goldSpent": "金币使用", "inhibitorKills": "摧毁召唤水晶", "item1": "装备1", "item2": "装备2", "item3": "装备3", "item4": "装备4", "item5": "装备5", "item6": "装备6", "ornament": "饰品", "killingSprees": "大杀特杀", "kills": "击杀", "largestCriticalStrike": "最大暴击伤害", "largestKillingSpree": "最高连杀", "largestMultiKill": "最高多杀", "longestTimeSpentLiving": "最长生存时间", "magicDamageDealt": "造成的魔法伤害", "magicDamageDealtToChampions": "对英雄的魔法伤害", "magicalDamageTaken": "承受的魔法伤害", "neutralMinionsKilled": "击杀野怪", "neutralMinionsKilledEnemyJungle": "击杀敌方野区野怪", "neutralMinionsKilledTeamJungle": "击杀我方野区野怪", "objectivePlayerScore": "战略点玩家得分", "pentaKills": "五杀", "perk0": "符文1", "perk0EndOfGameStatDescs": "符文1游戏结算数据", "perk0Var1": "符文1：参数1", "perk0Var2": "符文1：参数2", "perk0Var3": "符文1：参数3", "perk1": "符文2", "perk1EndOfGameStatDescs": "符文2游戏结算数据", "perk1Var1": "符文2：参数1", "perk1Var2": "符文2：参数2", "perk1Var3": "符文2：参数3", "perk2": "符文3", "perk2EndOfGameStatDescs": "符文3游戏结算数据", "perk2Var1": "符文3：参数1", "perk2Var2": "符文3：参数2", "perk2Var3": "符文3：参数3", "perk3": "符文4", "perk3EndOfGameStatDescs": "符文4游戏结算数据", "perk3Var1": "符文4：参数1", "perk3Var2": "符文4：参数2", "perk3Var3": "符文4：参数3", "perk4": "符文5", "perk4EndOfGameStatDescs": "符文5游戏结算数据", "perk4Var1": "符文5：参数1", "perk4Var2": "符文5：参数2", "perk4Var3": "符文5：参数3", "perk5": "符文6", "perk5EndOfGameStatDescs": "符文6游戏结算数据", "perk5Var1": "符文6：参数1", "perk5Var2": "符文6：参数2", "perk5Var3": "符文6：参数3", "perkPrimaryStyle": "主系", "perkSubStyle": "副系", "physicalDamageDealt": "造成的物理伤害", "physicalDamageDealtToChampions": "对英雄的物理伤害", "physicalDamageTaken": "承受的物理伤害", "playerAugment1": "强化符文1", "playerAugment1_rarity": "强化符文1等级", "playerAugment2": "强化符文2", "playerAugment2_rarity": "强化符文2等级", "playerAugment3": "强化符文3", "playerAugment3_rarity": "强化符文3等级", "playerAugment4": "强化符文4", "playerAugment4_rarity": "强化符文4等级", "playerScore0": "玩家得分1", "playerScore1": "玩家得分2", "playerScore2": "玩家得分3", "playerScore3": "玩家得分4", "playerScore4": "玩家得分5", "playerScore5": "玩家得分6", "playerScore6": "玩家得分7", "playerScore7": "玩家得分8", "playerScore8": "玩家得分9", "playerScore9": "玩家得分10", "playerSubteamId": "子阵营序号", "quadraKills": "四杀", "sightWardsBoughtInGame": "购买洞察之石", "subteamPlacement": "队伍排名", "teamEarlySurrendered": "队伍提前投降", "timeCCingOthers": "控制得分", "totalDamageDealt": "造成的伤害总和", "totalDamageDealtToChampions": "对英雄的伤害总和", "totalDamageTaken": "承受伤害", "totalHeal": "治疗伤害", "totalMinionsKilled": "击杀小兵", "totalPlayerScore": "玩家总得分", "totalScoreRank": "总得分排名", "totalTimeCrowdControlDealt": "控制时间", "totalUnitsHealed": "治疗单位数", "tripleKills": "三杀", "trueDamageDealt": "造成真实伤害", "trueDamageDealtToChampions": "对英雄的真实伤害", "trueDamageTaken": "承受的真实伤害", "turretKills": "摧毁防御塔", "unrealKills": "六杀及以上", "visionScore": "视野得分", "visionWardsBoughtInGame": "购买控制守卫", "wardsKilled": "摧毁守卫", "wardsPlaced": "放置守卫", "win/lose": "胜负", "ally?": "是否队友？"}
+                        LoLGame_info_header = {"gameCreationDate": "创建日期", "gameDuration": "持续时长", "gameId": "对局序号", "gameMode": "游戏模式", "gameModeName": "模式名称", "gameVersion": "对局版本", "mapId": "地图序号", "queueId": "队列序号", "accountId": "账户序号", "currentAccountId": "当前账户序号", "currentPlatformId": "当前大区", "gameName": "游戏名", "matchHistoryUri": "", "platformId": "原大区", "profileIcon": "召唤师图标序号", "puuid": "玩家通用唯一识别码", "summonerId": "召唤师序号", "summonerName": "召唤师名称", "tagLine": "尾标", "champion": "英雄", "alias": "名字", "spell1": "召唤师技能1", "spell2": "召唤师技能2", "KDA": "战损比", "assists": "助攻", "causedEarlySurrender": "发起提前投降", "champLevel": "英雄等级", "combatPlayerScore": "战斗得分", "damageDealtToObjectives": "对战略点的总伤害", "damageDealtToTurrets": "对防御塔的总伤害", "damageSelfMitigated": "自我缓和的伤害", "deaths": "死亡", "doubleKills": "双杀", "earlySurrenderAccomplice": "同意提前投降", "firstBloodAssist": "协助获得第一滴血", "firstBloodKill": "第一滴血", "firstInhibitorAssist": "协助摧毁第一座召唤水晶", "firstInhibitorKill": "摧毁第一座召唤水晶", "firstTowerAssist": "协助摧毁第一座塔", "firstTowerKill": "摧毁第一座塔", "gameEndedInEarlySurrender": "提前投降导致比赛结束", "gameEndedInSurrender": "投降导致比赛结束", "goldEarned": "金币获取", "goldSpent": "金币使用", "inhibitorKills": "摧毁召唤水晶", "item1": "装备1", "item2": "装备2", "item3": "装备3", "item4": "装备4", "item5": "装备5", "item6": "装备6", "ornament": "饰品", "killingSprees": "大杀特杀", "kills": "击杀", "largestCriticalStrike": "最大暴击伤害", "largestKillingSpree": "最高连杀", "largestMultiKill": "最高多杀", "longestTimeSpentLiving": "最长生存时间", "magicDamageDealt": "造成的魔法伤害", "magicDamageDealtToChampions": "对英雄的魔法伤害", "magicalDamageTaken": "承受的魔法伤害", "neutralMinionsKilled": "击杀野怪", "neutralMinionsKilledEnemyJungle": "击杀敌方野区野怪", "neutralMinionsKilledTeamJungle": "击杀我方野区野怪", "objectivePlayerScore": "战略点玩家得分", "pentaKills": "五杀", "perk0": "符文1", "perk0EndOfGameStatDescs": "符文1游戏结算数据", "perk0Var1": "符文1：参数1", "perk0Var2": "符文1：参数2", "perk0Var3": "符文1：参数3", "perk1": "符文2", "perk1EndOfGameStatDescs": "符文2游戏结算数据", "perk1Var1": "符文2：参数1", "perk1Var2": "符文2：参数2", "perk1Var3": "符文2：参数3", "perk2": "符文3", "perk2EndOfGameStatDescs": "符文3游戏结算数据", "perk2Var1": "符文3：参数1", "perk2Var2": "符文3：参数2", "perk2Var3": "符文3：参数3", "perk3": "符文4", "perk3EndOfGameStatDescs": "符文4游戏结算数据", "perk3Var1": "符文4：参数1", "perk3Var2": "符文4：参数2", "perk3Var3": "符文4：参数3", "perk4": "符文5", "perk4EndOfGameStatDescs": "符文5游戏结算数据", "perk4Var1": "符文5：参数1", "perk4Var2": "符文5：参数2", "perk4Var3": "符文5：参数3", "perk5": "符文6", "perk5EndOfGameStatDescs": "符文6游戏结算数据", "perk5Var1": "符文6：参数1", "perk5Var2": "符文6：参数2", "perk5Var3": "符文6：参数3", "perkPrimaryStyle": "主系", "perkSubStyle": "副系", "physicalDamageDealt": "造成的物理伤害", "physicalDamageDealtToChampions": "对英雄的物理伤害", "physicalDamageTaken": "承受的物理伤害", "playerAugment1": "强化符文1", "playerAugment1_rarity": "强化符文1等级", "playerAugment2": "强化符文2", "playerAugment2_rarity": "强化符文2等级", "playerAugment3": "强化符文3", "playerAugment3_rarity": "强化符文3等级", "playerAugment4": "强化符文4", "playerAugment4_rarity": "强化符文4等级", "playerScore0": "玩家得分1", "playerScore1": "玩家得分2", "playerScore2": "玩家得分3", "playerScore3": "玩家得分4", "playerScore4": "玩家得分5", "playerScore5": "玩家得分6", "playerScore6": "玩家得分7", "playerScore7": "玩家得分8", "playerScore8": "玩家得分9", "playerScore9": "玩家得分10", "playerSubteamId": "子阵营序号", "quadraKills": "四杀", "sightWardsBoughtInGame": "购买洞察之石", "subteamPlacement": "队伍排名", "teamEarlySurrendered": "队伍提前投降", "timeCCingOthers": "控制得分", "totalDamageDealt": "造成的伤害总和", "totalDamageDealtToChampions": "对英雄的伤害总和", "totalDamageTaken": "承受伤害", "totalHeal": "治疗伤害", "totalMinionsKilled": "击杀小兵", "totalPlayerScore": "玩家总得分", "totalScoreRank": "总得分排名", "totalTimeCrowdControlDealt": "控制时间", "totalUnitsHealed": "治疗单位数", "tripleKills": "三杀", "trueDamageDealt": "造成真实伤害", "trueDamageDealtToChampions": "对英雄的真实伤害", "trueDamageTaken": "承受的真实伤害", "turretKills": "摧毁防御塔", "unrealKills": "六杀及以上", "visionScore": "视野得分", "visionWardsBoughtInGame": "购买控制守卫", "wardsKilled": "摧毁守卫", "wardsPlaced": "放置守卫", "win/lose": "胜负", "ally?": "是否队友？"}
                         LoLGame_info_data = {}
                         LoLGame_info_header_keys = list(LoLGame_info_header.keys())
                         fetched_info = False #用于控制程序走向，防止在没有获取到任何对局信息的情况下程序进入可视化部分（Used to control the running of the program, in case the program enters visualization part without fetching any match information）
@@ -1449,7 +1473,7 @@ async def search_recent_players(connection):
                         matches_to_remove = [] #记录获取成功但不包含主玩家的对局序号（Records the matches that are fetched successfully but don't contain the main player）
                         LoLGameDuration_raw = [] #用于存储未转化成几分几秒格式的游戏持续时间。主要是为了方便可视化时呈现不同玩家的累计游戏时间的图表（Used to store the gameDuration that is not transformed into "(X)X:XX" form. Mainly for convenience of displaying the chart regarding the total time for which a player has accompanied the main player）
                         subteam_color = {0: "", 1: "魄罗", 2: "小兵", 3: "迅捷蟹", 4: "石甲虫"} #仅用于斗魂竞技场（Only for Soul Fighter mode）
-                        augment_rarity = {0: "白银", "1": "黄金", "2": "棱彩", 4: "黄金", 8: "棱彩"}
+                        augment_rarity = {0: "白银", 1: "黄金", 2: "棱彩", 4: "黄金", 8: "棱彩"}
                         win = {True: "胜利", False: "失败"}
                         spells = copy.deepcopy(spells_initial)
                         LoLItems = copy.deepcopy(LoLItems_initial) #接下来查询具体的对局信息和时间轴，使用的可能并不是历史记录中记载的对局序号形成的列表。考虑实际使用需求，这里对于装备的合适版本信息采取的思路是默认从最新版本开始获取，如果有装备不存在于最新版本的装备信息，则获取游戏信息中存储的版本对应的装备信息。该思路仍然有问题，详见后续关于美测服的装备获取的注释（The next step is to capture the information and timeline for each specific match, which may not originate from the matchIDs recorded in the match history. Considering the practical use, here the stream of thought for an appropriate version for items is to get items' information from the latest patch, and if some item doesn't exist in the items information of the latest patch, then get the items of the version corresponding to the game according to gameVersion recorded in the match information. There's a flaw of this idea. Please refer to the annotation regarding PBE data crawling for further solution）
@@ -1521,26 +1545,26 @@ async def search_recent_players(connection):
                                                         LoLGame_info_data[key].append("自定义")
                                                     else:
                                                         LoLGame_info_data[key].append(gamemodes[LoLGame_info["queueId"]]["name"])
-                                                elif j in {8, 9, 10}:
+                                                elif j >= 8 and j <= 18:
                                                     LoLGame_info_data[key].append(LoLGame_info["participantIdentities"][i]["player"][key])
-                                                elif j in {11, 12}:
+                                                elif j in {19, 20}:
                                                     championID = LoLGame_info["participants"][i]["championId"]
-                                                    if j == 11:
+                                                    if j == 19:
                                                         LoLGame_info_data[key].append(LoLChampions[championID]["name"])
                                                     else:
                                                         LoLGame_info_data[key].append(LoLChampions[championID]["alias"])
-                                                elif j in {13, 14}:
+                                                elif j in {21, 22}:
                                                     spellId = LoLGame_info["participants"][i][key + "Id"]
                                                     try:
                                                         LoLGame_info_data[key].append(spells[spellId]["name"])
                                                     except KeyError:
                                                         LoLGame_info_data[key].append(spellId)
-                                                elif j == 15:
+                                                elif j == 23:
                                                     kill, death, assist = stats["kills"], stats["deaths"], stats["assists"]
                                                     LoLGame_info_data[key].append("%d/%d/%d" %(kill, death, assist))
-                                                elif j >= 37 and j <= 43:
-                                                    if j >= 37 and j <= 43:
-                                                        LoLItemID = stats["item%d" %(j - 37)]
+                                                elif j >= 45 and j <= 51:
+                                                    if j >= 45 and j <= 50:
+                                                        LoLItemID = stats["item%d" %(j - 45)]
                                                     else:
                                                         LoLItemID = stats["item6"]
                                                     if LoLItemID == 0:
@@ -1550,10 +1574,10 @@ async def search_recent_players(connection):
                                                             LoLGame_info_data[key].append(LoLItems[str(LoLItemID)]["name"])
                                                         except KeyError:
                                                             LoLGame_info_data[key].append(str(LoLItemID))
-                                                elif j >= 58 and j <= 89:
-                                                    if j <= 87:
-                                                        if (j - 58) % 5 == 0 or (j - 58) % 5 == 1:
-                                                            subkey = LoLGame_info_header_keys[58 + (j - 58) // 5 * 5]
+                                                elif j >= 66 and j <= 97:
+                                                    if j <= 95:
+                                                        if (j - 66) % 5 == 0 or (j - 66) % 5 == 1:
+                                                            subkey = LoLGame_info_header_keys[66 + (j - 66) // 5 * 5]
                                                             perkId = LoLGame_info["participants"][i]["stats"][subkey]
                                                             if perkId == 0: #在一些非常规模式（如新手训练）的对局中，玩家可能没有携带任何符文（In matches with unconventional game mode (e.g. TUTORIAL), maybe the player doesn't take any runes）
                                                                 LoLGame_info_data[key].append("")
@@ -1596,7 +1620,7 @@ async def search_recent_players(connection):
                                                                             else:
                                                                                 break
                                                                 if perk_captured:
-                                                                    if (j - 58) % 5 == 0:
+                                                                    if (j - 66) % 5 == 0:
                                                                         to_append = perk_to_append["name"]
                                                                     else:
                                                                         perk_EndOfGameStatDescs = "".join(list(map(lambda x: x + "。", perk_to_append["endOfGameStatDescs"])))
@@ -1605,7 +1629,7 @@ async def search_recent_players(connection):
                                                                         perk_EndOfGameStatDescs = perk_EndOfGameStatDescs.replace("@eogvar3@", str(LoLGame_info["participants"][i]["stats"][LoLGame_info_header_keys[j + 3]]))
                                                                         to_append = perk_EndOfGameStatDescs
                                                                 else:
-                                                                    to_append = perkId if (j - 58) % 5 == 0 else ""
+                                                                    to_append = perkId if (j - 66) % 5 == 0 else ""
                                                                 LoLGame_info_data[key].append(to_append)
                                                         else:
                                                             LoLGame_info_data[key].append(LoLGame_info["participants"][i]["stats"][key])
@@ -1651,8 +1675,8 @@ async def search_recent_players(connection):
                                                                         else:
                                                                             break
                                                             LoLGame_info_data[key].append(to_append)
-                                                elif j >= 93 and j <= 100: #此处处理方法同上——退而求其次（Here the principle is similar to the above: seek for the second best）
-                                                    subkey = LoLGame_info_header_keys[93 + (j - 93) // 2 * 2]
+                                                elif j >= 101 and j <= 108: #此处处理方法同上——退而求其次（Here the principle is similar to the above: seek for the second best）
+                                                    subkey = LoLGame_info_header_keys[101 + (j - 101) // 2 * 2]
                                                     playerAugmentId = LoLGame_info["participants"][i]["stats"][subkey]
                                                     if playerAugmentId == 0:
                                                         LoLGame_info_data[key].append("")
@@ -1695,15 +1719,15 @@ async def search_recent_players(connection):
                                                                     else:
                                                                         break
                                                         if ArenaAugment_captured:
-                                                            to_append = augment_to_append["name"] if (j - 93) % 2 == 0 else augment_rarity[augment_to_append["rarity"]]
+                                                            to_append = augment_to_append["name"] if (j - 101) % 2 == 0 else augment_rarity[augment_to_append["rarity"]]
                                                         else:
-                                                            to_append = playerAugmentId if (j - 93) % 2 == 0 else ""
+                                                            to_append = playerAugmentId if (j - 101) % 2 == 0 else ""
                                                         LoLGame_info_data[key].append(to_append)
-                                                elif j == 111:
+                                                elif j == 119:
                                                     LoLGame_info_data[key].append(subteam_color[LoLGame_info["participants"][i]["stats"]["playerSubteamId"]])
-                                                elif j == 136:
+                                                elif j == 144:
                                                     LoLGame_info_data[key].append(win[LoLGame_info["participants"][i]["stats"]["win"]])
-                                                elif j == 137:
+                                                elif j == 145:
                                                     if LoLGame_info["participants"][i]["teamId"] == LoLGame_info["participants"][currentParticipantId]["teamId"] and stats["playerSubteamId"] == LoLGame_info["participants"][currentParticipantId]["stats"]["playerSubteamId"]:
                                                         LoLGame_info_data[key].append(True)
                                                     else:
@@ -1719,7 +1743,7 @@ async def search_recent_players(connection):
                         if not fetched_info:
                             print("未获取到有效对局。请重新输入要查询的对局序号。\nThe program didn't fetch any valid match. Please reinput the match ID to check.")
                             continue
-                        recent_LoLPlayers_statistics_display_order = [10, 9, 8, 2, 0, 1, 7, 3, 4, 6, 5, 137, 11, 12, 18, 13, 14, 37, 38, 39, 40, 41, 42, 43, 93, 94, 95, 96, 97, 98, 99, 100, 15, 19, 122, 123, 47, 44, 48, 27, 26, 31, 30, 29, 28, 24, 126, 112, 57, 131, 116, 124, 118, 91, 51, 128, 117, 90, 50, 127, 46, 21, 20, 120, 125, 119, 92, 52, 129, 22, 132, 135, 134, 113, 133, 34, 35, 121, 53, 55, 54, 130, 36, 49, 88, 89, 58, 59, 63, 64, 68, 69, 73, 74, 78, 79, 83, 84, 17, 25, 115, 32, 33, 136]
+                        recent_LoLPlayers_statistics_display_order = [17, 11, 18, 16, 15, 2, 0, 1, 7, 3, 4, 6, 5, 145, 19, 20, 26, 21, 22, 45, 46, 47, 48, 49, 50, 51, 101, 102, 103, 104, 105, 106, 107, 108, 23, 27, 130, 131, 55, 52, 56, 35, 34, 39, 38, 37, 36, 32, 134, 120, 65, 139, 124, 132, 126, 99, 59, 136, 125, 98, 58, 135, 54, 29, 28, 128, 133, 127, 100, 60, 137, 30, 140, 143, 142, 121, 141, 42, 43, 129, 61, 63, 62, 138, 44, 57, 96, 97, 66, 67, 71, 72, 76, 77, 81, 82, 86, 87, 91, 92, 25, 33, 123, 40, 41, 144]
                         recent_LoLPlayers_data_organized = {}
                         for i in range(len(recent_LoLPlayers_statistics_display_order)):
                             key = LoLGame_info_header_keys[recent_LoLPlayers_statistics_display_order[i]]
@@ -1802,7 +1826,7 @@ async def search_recent_players(connection):
                             if not TFTHistory_get:
                                 continue
                             TFTHistory = TFTHistory["games"]
-                            TFTHistory_header = {"gameIndex": "游戏序号", "game_datetime": "创建日期", "game_id": "对局序号", "game_length": "持续时长", "game_version": "对局版本", "queue_id": "队列序号", "tft_game_type": "游戏类型", "tft_set_core_name": "数据版本名称", "tft_set_number": "赛季", "participantId": "玩家序号", "augment1": "强化符文1", "augment2": "强化符文2", "augment3": "强化符文3", "companion": "小小英雄", "companion_level": "小小英雄星级", "companion_rarity": "小小英雄稀有度", "gold_left": "剩余金币", "last_round": "存活回合", "level": "等级", "placement": "名次", "players_eliminated": "淘汰玩家数", "puuid": "玩家通用唯一识别码", "summonerName": "召唤师名称", "summonerId": "召唤师序号", "time_eliminated": "存活时长", "total_damage_to_players": "造成玩家伤害", "trait0 name": "羁绊1", "trait0 num_units": "羁绊1单位数", "trait0 style": "羁绊1羁绊框颜色", "trait0 tier_current": "羁绊1当前等级", "trait0 tier_total": "羁绊1最高等级", "trait1 name": "羁绊2", "trait1 num_units": "羁绊2单位数", "trait1 style": "羁绊2羁绊框颜色", "trait1 tier_current": "羁绊2当前等级", "trait1 tier_total": "羁绊2最高等级", "trait2 name": "羁绊3", "trait2 num_units": "羁绊3单位数", "trait2 style": "羁绊3羁绊框颜色", "trait2 tier_current": "羁绊3当前等级", "trait2 tier_total": "羁绊3最高等级", "trait3 name": "羁绊4", "trait3 num_units": "羁绊4单位数", "trait3 style": "羁绊4羁绊框颜色", "trait3 tier_current": "羁绊4当前等级", "trait3 tier_total": "羁绊4最高等级", "trait4 name": "羁绊5", "trait4 num_units": "羁绊5单位数", "trait4 style": "羁绊5羁绊框颜色", "trait4 tier_current": "羁绊5当前等级", "trait4 tier_total": "羁绊5最高等级", "trait5 name": "羁绊6", "trait5 num_units": "羁绊6单位数", "trait5 style": "羁绊6羁绊框颜色", "trait5 tier_current": "羁绊6当前等级", "trait5 tier_total": "羁绊6最高等级", "trait6 name": "羁绊7", "trait6 num_units": "羁绊7单位数", "trait6 style": "羁绊7羁绊框颜色", "trait6 tier_current": "羁绊7当前等级", "trait6 tier_total": "羁绊7最高等级", "trait7 name": "羁绊8", "trait7 num_units": "羁绊8单位数", "trait7 style": "羁绊8羁绊框颜色", "trait7 tier_current": "羁绊8当前等级", "trait7 tier_total": "羁绊8最高等级", "trait8 name": "羁绊9", "trait8 num_units": "羁绊9单位数", "trait8 style": "羁绊9羁绊框颜色", "trait8 tier_current": "羁绊9当前等级", "trait8 tier_total": "羁绊9最高等级", "trait9 name": "羁绊10", "trait9 num_units": "羁绊10单位数", "trait9 style": "羁绊10羁绊框颜色", "trait9 tier_current": "羁绊10当前等级", "trait9 tier_total": "羁绊10最高等级", "trait10 name": "羁绊11", "trait10 num_units": "羁绊11单位数", "trait10 style": "羁绊11羁绊框颜色", "trait10 tier_current": "羁绊11当前等级", "trait10 tier_total": "羁绊11最高等级", "trait11 name": "羁绊12", "trait11 num_units": "羁绊12单位数", "trait11 style": "羁绊12羁绊框颜色", "trait11 tier_current": "羁绊12当前等级", "trait11 tier_total": "羁绊12最高等级", "trait12 name": "羁绊13", "trait12 num_units": "羁绊13单位数", "trait12 style": "羁绊13羁绊框颜色", "trait12 tier_current": "羁绊13当前等级", "trait12 tier_total": "羁绊13最高等级", "unit0 character": "英雄1", "unit0 rarity": "英雄1：稀有度", "unit0 tier": "英雄1：星级", "unit1 character": "英雄2", "unit1 rarity": "英雄2：稀有度", "unit1 tier": "英雄2：星级", "unit2 character": "英雄3", "unit2 rarity": "英雄3：稀有度", "unit2 tier": "英雄3：星级", "unit3 character": "英雄4", "unit3 rarity": "英雄4：稀有度", "unit3 tier": "英雄4：星级", "unit4 character": "英雄5", "unit4 rarity": "英雄5：稀有度", "unit4 tier": "英雄5：星级", "unit5 character": "英雄6", "unit5 rarity": "英雄6：稀有度", "unit5 tier": "英雄6：星级", "unit6 character": "英雄7", "unit6 rarity": "英雄7：稀有度", "unit6 tier": "英雄7：星级", "unit7 character": "英雄8", "unit7 rarity": "英雄8：稀有度", "unit7 tier": "英雄8：星级", "unit8 character": "英雄9", "unit8 rarity": "英雄9：稀有度", "unit8 tier": "英雄9：星级", "unit9 character": "英雄10", "unit9 rarity": "英雄10：稀有度", "unit9 tier": "英雄10：星级", "unit10 character": "英雄11", "unit10 rarity": "英雄11：稀有度", "unit11 tier": "英雄11：星级", "unit0 item0": "英雄1：装备1", "unit0 item1": "英雄1：装备2", "unit0 item2": "英雄1：装备3", "unit1 item0": "英雄2：装备1", "unit1 item1": "英雄2：装备2", "unit1 item2": "英雄2：装备3", "unit2 item0": "英雄3：装备1", "unit2 item1": "英雄3：装备2", "unit2 item2": "英雄3：装备3", "unit3 item0": "英雄4：装备1", "unit3 item1": "英雄4：装备2", "unit3 item2": "英雄4：装备3", "unit4 item0": "英雄5：装备1", "unit4 item1": "英雄5：装备2", "unit4 item2": "英雄5：装备3", "unit5 item0": "英雄6：装备1", "unit5 item1": "英雄6：装备2", "unit5 item2": "英雄6：装备3", "unit6 item0": "英雄7：装备1", "unit6 item1": "英雄7：装备2", "unit6 item2": "英雄7：装备3", "unit7 item0": "英雄8：装备1", "unit7 item1": "英雄8：装备2", "unit7 item2": "英雄8：装备3", "unit8 item0": "英雄9：装备1", "unit8 item1": "英雄9：装备2", "unit8 item2": "英雄9：装备3", "unit9 item0": "英雄10：装备1", "unit9 item1": "英雄10：装备2", "unit9 item2": "英雄10：装备3", "unit10 item0": "英雄11：装备1", "unit10 item1": "英雄11：装备2", "unit10 item2": "英雄11：装备3"}
+                            TFTHistory_header = {"gameIndex": "游戏序号", "game_datetime": "创建日期", "game_id": "对局序号", "game_length": "持续时长", "game_version": "对局版本", "queue_id": "队列序号", "tft_game_type": "游戏类型", "tft_set_core_name": "数据版本名称", "tft_set_number": "赛季", "participantId": "玩家序号", "augment1": "强化符文1", "augment2": "强化符文2", "augment3": "强化符文3", "companion": "小小英雄", "companion_level": "小小英雄星级", "companion_rarity": "小小英雄稀有度", "gameName": "游戏名", "gold_left": "剩余金币", "last_round": "存活回合", "level": "等级", "placement": "名次", "players_eliminated": "淘汰玩家数", "puuid": "玩家通用唯一识别码", "summonerId": "召唤师序号", "summonerName": "召唤师名称", "tagLine": "尾标", "time_eliminated": "存活时长", "total_damage_to_players": "造成玩家伤害", "trait0 name": "羁绊1", "trait0 num_units": "羁绊1单位数", "trait0 style": "羁绊1羁绊框颜色", "trait0 tier_current": "羁绊1当前等级", "trait0 tier_total": "羁绊1最高等级", "trait1 name": "羁绊2", "trait1 num_units": "羁绊2单位数", "trait1 style": "羁绊2羁绊框颜色", "trait1 tier_current": "羁绊2当前等级", "trait1 tier_total": "羁绊2最高等级", "trait2 name": "羁绊3", "trait2 num_units": "羁绊3单位数", "trait2 style": "羁绊3羁绊框颜色", "trait2 tier_current": "羁绊3当前等级", "trait2 tier_total": "羁绊3最高等级", "trait3 name": "羁绊4", "trait3 num_units": "羁绊4单位数", "trait3 style": "羁绊4羁绊框颜色", "trait3 tier_current": "羁绊4当前等级", "trait3 tier_total": "羁绊4最高等级", "trait4 name": "羁绊5", "trait4 num_units": "羁绊5单位数", "trait4 style": "羁绊5羁绊框颜色", "trait4 tier_current": "羁绊5当前等级", "trait4 tier_total": "羁绊5最高等级", "trait5 name": "羁绊6", "trait5 num_units": "羁绊6单位数", "trait5 style": "羁绊6羁绊框颜色", "trait5 tier_current": "羁绊6当前等级", "trait5 tier_total": "羁绊6最高等级", "trait6 name": "羁绊7", "trait6 num_units": "羁绊7单位数", "trait6 style": "羁绊7羁绊框颜色", "trait6 tier_current": "羁绊7当前等级", "trait6 tier_total": "羁绊7最高等级", "trait7 name": "羁绊8", "trait7 num_units": "羁绊8单位数", "trait7 style": "羁绊8羁绊框颜色", "trait7 tier_current": "羁绊8当前等级", "trait7 tier_total": "羁绊8最高等级", "trait8 name": "羁绊9", "trait8 num_units": "羁绊9单位数", "trait8 style": "羁绊9羁绊框颜色", "trait8 tier_current": "羁绊9当前等级", "trait8 tier_total": "羁绊9最高等级", "trait9 name": "羁绊10", "trait9 num_units": "羁绊10单位数", "trait9 style": "羁绊10羁绊框颜色", "trait9 tier_current": "羁绊10当前等级", "trait9 tier_total": "羁绊10最高等级", "trait10 name": "羁绊11", "trait10 num_units": "羁绊11单位数", "trait10 style": "羁绊11羁绊框颜色", "trait10 tier_current": "羁绊11当前等级", "trait10 tier_total": "羁绊11最高等级", "trait11 name": "羁绊12", "trait11 num_units": "羁绊12单位数", "trait11 style": "羁绊12羁绊框颜色", "trait11 tier_current": "羁绊12当前等级", "trait11 tier_total": "羁绊12最高等级", "trait12 name": "羁绊13", "trait12 num_units": "羁绊13单位数", "trait12 style": "羁绊13羁绊框颜色", "trait12 tier_current": "羁绊13当前等级", "trait12 tier_total": "羁绊13最高等级", "unit0 character": "英雄1", "unit0 rarity": "英雄1：稀有度", "unit0 tier": "英雄1：星级", "unit1 character": "英雄2", "unit1 rarity": "英雄2：稀有度", "unit1 tier": "英雄2：星级", "unit2 character": "英雄3", "unit2 rarity": "英雄3：稀有度", "unit2 tier": "英雄3：星级", "unit3 character": "英雄4", "unit3 rarity": "英雄4：稀有度", "unit3 tier": "英雄4：星级", "unit4 character": "英雄5", "unit4 rarity": "英雄5：稀有度", "unit4 tier": "英雄5：星级", "unit5 character": "英雄6", "unit5 rarity": "英雄6：稀有度", "unit5 tier": "英雄6：星级", "unit6 character": "英雄7", "unit6 rarity": "英雄7：稀有度", "unit6 tier": "英雄7：星级", "unit7 character": "英雄8", "unit7 rarity": "英雄8：稀有度", "unit7 tier": "英雄8：星级", "unit8 character": "英雄9", "unit8 rarity": "英雄9：稀有度", "unit8 tier": "英雄9：星级", "unit9 character": "英雄10", "unit9 rarity": "英雄10：稀有度", "unit9 tier": "英雄10：星级", "unit10 character": "英雄11", "unit10 rarity": "英雄11：稀有度", "unit11 tier": "英雄11：星级", "unit0 item0": "英雄1：装备1", "unit0 item1": "英雄1：装备2", "unit0 item2": "英雄1：装备3", "unit1 item0": "英雄2：装备1", "unit1 item1": "英雄2：装备2", "unit1 item2": "英雄2：装备3", "unit2 item0": "英雄3：装备1", "unit2 item1": "英雄3：装备2", "unit2 item2": "英雄3：装备3", "unit3 item0": "英雄4：装备1", "unit3 item1": "英雄4：装备2", "unit3 item2": "英雄4：装备3", "unit4 item0": "英雄5：装备1", "unit4 item1": "英雄5：装备2", "unit4 item2": "英雄5：装备3", "unit5 item0": "英雄6：装备1", "unit5 item1": "英雄6：装备2", "unit5 item2": "英雄6：装备3", "unit6 item0": "英雄7：装备1", "unit6 item1": "英雄7：装备2", "unit6 item2": "英雄7：装备3", "unit7 item0": "英雄8：装备1", "unit7 item1": "英雄8：装备2", "unit7 item2": "英雄8：装备3", "unit8 item0": "英雄9：装备1", "unit8 item1": "英雄9：装备2", "unit8 item2": "英雄9：装备3", "unit9 item0": "英雄10：装备1", "unit9 item1": "英雄10：装备2", "unit9 item2": "英雄10：装备3", "unit10 item0": "英雄11：装备1", "unit10 item1": "英雄11：装备2", "unit10 item2": "英雄11：装备3"}
                             TFTHistory_data = {}
                             TFTHistory_header_keys = list(TFTHistory_header.keys())
                             traitStyles = {0: "", 1: "青铜", 2: "白银", 3: "黄金", 4: "炫金", 5: "独行"}
@@ -1894,7 +1918,7 @@ async def search_recent_players(connection):
                                                             TFTHistory_data[key].append("新手教程")
                                                         else:
                                                             TFTHistory_data[key].append(TFTHistoryJson[key])
-                                        elif j >= 9 and j <= 25: #对于一些容易产生争议和报错的情况，引入to_append变量以简化代码。下同（Variable `to_append` is introduced to simplify the code in case of some controversy that produces errors easily. So does the following）
+                                        elif j >= 9 and j <= 27: #对于一些容易产生争议和报错的情况，引入to_append变量以简化代码。下同（Variable `to_append` is introduced to simplify the code in case of some controversy that produces errors easily. So does the following）
                                             #TFTMainPlayer = TFTHistory[i]["json"]["participants"][TFT_main_player_indices[i]]
                                             for k in range(len(TFTHistory[i]["metadata"]["participants"])): #注意这里遍历对象和查战绩脚本的区别。实际上相当于判断玩家是不是人类玩家（Pay attention to the difference between this piece of code and the corresponding code in Customized Program 5. Actually this line of code judges whether a player is human player）
                                                 TFTPlayer = TFTHistory[i]["json"]["participants"][k]
@@ -1989,7 +2013,27 @@ async def search_recent_players(connection):
                                                         to_append = {13: TFTCompanion_iter["name"], 14: TFTCompanion_iter["level"], 15: rarity[TFTCompanion_iter["rarity"]]}
                                                     if TFTPlayer["puuid"] != current_puuid:
                                                         TFTHistory_data[key].append(to_append[j])
-                                                elif j == 17:
+                                                elif j in {16, 23, 24, 25}:
+                                                    if TFTPlayer["puuid"] == "00000000-0000-0000-0000-000000000000": #在云顶之弈（新手教程）中，无法通过电脑玩家的玩家通用唯一识别码（00000000-0000-0000-0000-000000000000）来查询其召唤师名称和序号（Summoner names and IDs of bot players in TFT (Tutorial) can't be searched for according to their puuid: 00000000-0000-0000-0000-000000000000）
+                                                        to_append = {16: "", 23: "", 24: "", 25: ""}
+                                                    else:
+                                                        if TFTPlayer["puuid"] in infos:
+                                                            TFTPlayer_info = infos[TFTPlayer["puuid"]]
+                                                        else:
+                                                            TFTPlayer_info_recapture = 0
+                                                            TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
+                                                            while "errorCode" in TFTPlayer_info and TFTPlayer_info_recapture < 3:
+                                                                TFTPlayer_info_recapture += 1
+                                                                print("第%d/%d场对局（对局序号：%d）玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of Player (puuid: %s) in Match %d / %d (matchID: %d) capture failed! Recapturing this player's information ... Times tried: %d." %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer["puuid"], TFTPlayer_info_recapture, TFTPlayer["puuid"], i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer_info_recapture))
+                                                                TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
+                                                        if "errorCode" in TFTPlayer_info:
+                                                            to_append = {16: "", 23: "", 24: "", 25: ""}
+                                                        else:
+                                                            infos[TFTPlayer["puuid"]] = TFTPlayer_info
+                                                            to_append = {16: TFTPlayer_info["gameName"], 23: TFTPlayer_info["summonerId"], 24: TFTPlayer_info["displayName"], 25: TFTPlayer_info["tagLine"]}
+                                                    if TFTPlayer["puuid"] != current_puuid:
+                                                        TFTHistory_data[key].append(to_append[j])
+                                                elif j == 18:
                                                     lastRound = TFTPlayer["last_round"]
                                                     if lastRound <= 3:
                                                         bigRound = 1
@@ -2000,23 +2044,7 @@ async def search_recent_players(connection):
                                                     to_append = "%d-%d" %(bigRound, smallRound)
                                                     if TFTPlayer["puuid"] != current_puuid:
                                                         TFTHistory_data[key].append(to_append)
-                                                elif j == 22 or j == 23:
-                                                    if TFTPlayer["puuid"] == "00000000-0000-0000-0000-000000000000": #在云顶之弈（新手教程）中，无法通过电脑玩家的玩家通用唯一识别码（00000000-0000-0000-0000-000000000000）来查询其召唤师名称和序号（Summoner names and IDs of bot players in TFT (Tutorial) can't be searched for according to their puuid: 00000000-0000-0000-0000-000000000000）
-                                                        to_append = {22: "", 23: ""}
-                                                    else:
-                                                        TFTPlayer_info_recapture = 0
-                                                        TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
-                                                        while "errorCode" in TFTPlayer_info and TFTPlayer_info_recapture < 3:
-                                                            TFTPlayer_info_recapture += 1
-                                                            print("第%d/%d场对局（对局序号：%d）玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of Player (puuid: %s) in Match %d / %d (matchID: %d) capture failed! Recapturing this player's information ... Times tried: %d." %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer["puuid"], TFTPlayer_info_recapture, TFTPlayer["puuid"], i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer_info_recapture))
-                                                            TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
-                                                        if "errorCode" in TFTPlayer:
-                                                            to_append = {22: "", 23: ""}
-                                                        else:
-                                                            to_append = {22: TFTPlayer_info["displayName"], 23: TFTPlayer_info["summonerId"]}
-                                                    if TFTPlayer["puuid"] != current_puuid:
-                                                        TFTHistory_data[key].append(to_append[j])
-                                                elif j == 24:
+                                                elif j == 26:
                                                     to_append = "%d:%02d" %(int(TFTPlayer["time_eliminated"]) // 60, int(TFTPlayer["time_eliminated"]) % 60)
                                                     if TFTPlayer["puuid"] != current_puuid:
                                                         TFTHistory_data[key].append(to_append)
@@ -2024,25 +2052,35 @@ async def search_recent_players(connection):
                                                     to_append = TFTPlayer[key]
                                                     if TFTPlayer["puuid"] != current_puuid:
                                                         TFTHistory_data[key].append(to_append)
-                                        elif j >= 26 and j <= 90:
+                                        elif j >= 28 and j <= 92:
                                             #TFTMainPlayer_Traits = TFTHistory[i]["json"]["participants"][TFT_main_player_indices[i]]["traits"]
                                             TFTTrait_iter, subkey = key.split(" ")
                                             for k in range(len(TFTHistory[i]["metadata"]["participants"])):
                                                 TFTPlayer = TFTHistory[i]["json"]["participants"][k]
                                                 TFTPlayer_Traits = TFTPlayer["traits"]
-                                                TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
+                                                if TFTPlayer["puuid"] in infos:
+                                                    TFTPlayer_info = infos[TFTPlayer["puuid"]]
+                                                else:
+                                                    TFTPlayer_info_recapture = 0
+                                                    TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
+                                                    while "errorCode" in TFTPlayer_info and TFTPlayer_info_recapture < 3:
+                                                        TFTPlayer_info_recapture += 1
+                                                        print("第%d/%d场对局（对局序号：%d）玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of Player (puuid: %s) in Match %d / %d (matchID: %d) capture failed! Recapturing this player's information ... Times tried: %d." %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer["puuid"], TFTPlayer_info_recapture, TFTPlayer["puuid"], i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"], TFTPlayer_info_recapture))
+                                                        TFTPlayer_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/" + TFTPlayer["puuid"])).json()
+                                                    if "accountId" in TFTPlayer_info:
+                                                        infos[TFTPlayer["puuid"]] = TFTPlayer_info
                                                 if int(TFTTrait_iter[5:]) < len(TFTPlayer_Traits): #在这个小于的问题上纠结了很久[敲打]——下标是从0开始的。假设API上记录了n个羁绊，那么当程序正在获取第n个羁绊时，就会引起下标越界的问题。所以这里不能使用小于等于号（I stuck at this less than sign for long xD - note that the index begins from 0. Suppose there're totally n traits recorded in LCU API. Then, when the program is trying to capture the n-th trait, it'll throw an IndexError. That's why the less than or equal to sign can't be used here）
                                                     try:
                                                         if TFTPlayer_Traits[int(TFTTrait_iter[5:])]["name"] == "TemplateTrait": #CommunityDragon数据库中没有收录模板羁绊的数据（Data about TemplateTrait aren't archived in CommunityDragon database）
-                                                            if (j - 26) % 5 == 4: #模板羁绊没有tier_total键（The key `tier_total` doesn't exist in "TemplateTrait" dictionary）
+                                                            if (j - 28) % 5 == 4: #模板羁绊没有tier_total键（The key `tier_total` doesn't exist in "TemplateTrait" dictionary）
                                                                 to_append == ""
-                                                                print("警告：对局%d中玩家%s（玩家通用唯一识别码：%s）的第%d个羁绊是模板羁绊！\nWarning: Trait No. %d of the player %s (puuid: %s) in the match %d is TemplateTrait." %(TFTHistory[i]["json"]["game_id"], TFTPlayer_info["displayName"], TFTPlayer["puuid"], int(TFTTrait_iter[5:]) + 1, int(TFTTrait_iter[5:]) + 1, TFTPlayer_info["displayName"], TFTPlayer["puuid"], TFTHistory[i]["json"]["game_id"]))
+                                                                print("警告：对局%d中玩家%s（玩家通用唯一识别码：%s）的第%d个羁绊是模板羁绊！\nWarning: Trait No. %d of the player %s (puuid: %s) in the match %d is TemplateTrait." %(TFTHistory[i]["json"]["game_id"], get_info_name(TFTPlayer_info), TFTPlayer["puuid"], int(TFTTrait_iter[5:]) + 1, int(TFTTrait_iter[5:]) + 1, get_info_name(TFTPlayer_info), TFTPlayer["puuid"], TFTHistory[i]["json"]["game_id"]))
                                                             else:
                                                                 to_append == TFTPlayer_Traits[int(TFTTrait_iter[5:])][subkey]
                                                         else:
-                                                            if (j - 26) % 5 == 0:
+                                                            if (j - 28) % 5 == 0:
                                                                 to_append = TFTTraits[TFTPlayer_Traits[int(TFTTrait_iter[5:])]["name"]]["display_name"]
-                                                            elif (j - 26) % 5 == 2:
+                                                            elif (j - 28) % 5 == 2:
                                                                 #to_append = traitStyles[TFTTraits[TFTPlayer_Traits[int(TFTTrait_iter[5:])]["name"]]["conditional_trait_sets"][TFTPlayer_Traits[int(TFTTrait_iter[5:])]["style"]]["style_name"]] #至于为什么前面traitStyles变量不直接用数字作为键，那是因为一旦用数字作为键，我的习惯是比较想知道是不是还有其它数字对应了某一种类型，就是说看上去不是特别舒服（As for why I don't take numbers as the keys of the dictionary variable `traitStyles`, if I do that, then I tend to wonder if there's some other number correspondent to some other type, that is, the program seems not so perfect and long-living）
                                                                 to_append = traitStyles[TFTPlayer_Traits[int(TFTTrait_iter[5:])]["style"]] #LCU API中记录的style和CommunityDragon数据库中记录的style_idx不是一个东西（`style` in LCU API and `style_idx` in CommunityDragon database aren't the same thing）
                                                             else:
@@ -2080,9 +2118,9 @@ async def search_recent_players(connection):
                                                                     trait_iter["conditional_trait_sets"] = conditional_trait_sets
                                                                     TFTTraits[trait_id] = trait_iter
                                                                 try:
-                                                                    if (j - 26) % 5 == 0:
+                                                                    if (j - 28) % 5 == 0:
                                                                         to_append = TFTTraits[TFTPlayer_Traits[int(TFTTrait_iter[5:])]["name"]]["display_name"]
-                                                                    elif (j - 26) % 5 == 2:
+                                                                    elif (j - 28) % 5 == 2:
                                                                         to_append = traitStyles[TFTPlayer_Traits[int(TFTTrait_iter[5:])]["style"]]
                                                                     else:
                                                                         to_append = TFTPlayer_Traits[int(TFTTrait_iter[5:])][subkey]
@@ -2105,9 +2143,9 @@ async def search_recent_players(connection):
                                             unit_iter, subkey = key.split(" ")
                                             for k in range(len(TFTHistory[i]["metadata"]["participants"])):
                                                 TFTPlayer_Units = TFTHistory[i]["json"]["participants"][k]["units"]
-                                                if j >= 91 and j <= 123:
+                                                if j >= 93 and j <= 125:
                                                     if int(unit_iter[4:]) < len(TFTPlayer_Units):
-                                                        if j % 3 == 1:
+                                                        if j % 3 == 0:
                                                             try:
                                                                 to_append = TFTChampions[TFTPlayer_Units[int(unit_iter[4:])]["character_id"]]["display_name"]
                                                             except KeyError: #在获取艾欧尼亚对局序号为8390690410的英雄信息时，由于雷克塞的英雄序号大小写的原因，会引发键异常（KeyError is caused due to the case of "RekSai" string when the program is getting data from an Ionia match with matchID 8390690410）
@@ -2170,8 +2208,8 @@ async def search_recent_players(connection):
                                                             TFTHistory_data[key].append("")
                                                 else:
                                                     if int(unit_iter[4:]) < len(TFTPlayer_Units): #很少有英雄单位可以有3个装备（Merely do champion units have full items）
-                                                        if "itemNames" in TFTPlayer_Units[(int(unit_iter[4:]))] and (j - 1) % 3 < len(TFTPlayer_Units[(int(unit_iter[4:]))]["itemNames"]):
-                                                            TFTItemNameId = TFTPlayer_Units[(int(unit_iter[4:]))]["itemNames"][(j - 1) % 3]
+                                                        if "itemNames" in TFTPlayer_Units[(int(unit_iter[4:]))] and j % 3 < len(TFTPlayer_Units[(int(unit_iter[4:]))]["itemNames"]):
+                                                            TFTItemNameId = TFTPlayer_Units[(int(unit_iter[4:]))]["itemNames"][j % 3]
                                                             try:
                                                                 to_append = TFTItems[TFTItemNameId]["name"]
                                                             except KeyError:
@@ -2208,8 +2246,8 @@ async def search_recent_players(connection):
                                                                             break
                                                                         else:
                                                                             break
-                                                        elif "items" in TFTPlayer_Units[(int(unit_iter[4:]))] and (j - 1) % 3 < len(TFTPlayer_Units[(int(unit_iter[4:]))]["items"]): #在12.4版本之前，装备是通过序号而不是接口名称在LCU API中被存储的（Before Patch 12.4, items are stored via itemIDs instead of itemNames）
-                                                            TFTItemId = TFTPlayer_Units[(int(unit_iter[4:]))]["items"][(j - 1) % 3]
+                                                        elif "items" in TFTPlayer_Units[(int(unit_iter[4:]))] and j % 3 < len(TFTPlayer_Units[(int(unit_iter[4:]))]["items"]): #在12.4版本之前，装备是通过序号而不是接口名称在LCU API中被存储的（Before Patch 12.4, items are stored via itemIDs instead of itemNames）
+                                                            TFTItemId = TFTPlayer_Units[(int(unit_iter[4:]))]["items"][j % 3]
                                                             try:
                                                                 to_append = TFTItems[TFTItemId]["name"] #第一次运行此处时，必定发生报错，因为在重新获取装备信息之前，最新版本的TFTItems是以TFTItemName而不是TFTItemId作为键的（First run here will definitely cause an error. That's because before recapturing the item information, the latest `TFTItems` takes `TFTItemName` instead of `TFTItemId` as the key）
                                                             except KeyError:
@@ -2254,7 +2292,7 @@ async def search_recent_players(connection):
                                                         if TFTHistory[i]["json"]["participants"][k]["puuid"] != current_puuid:
                                                             TFTHistory_data[key].append("")
                                     print("加载进度（Loading process）：%d/%d\t对局序号（MatchID）： %d" %(i + 1, len(TFTHistory), TFTHistory[i]["json"]["game_id"]))
-                            recent_TFTPlayers_statistics_display_order = [22, 23, 21, 2, 1, 3, 5, 6, 4, 13, 14, 15, 18, 17, 24, 16, 25, 20, 19, 10, 11, 12, 91, 92, 93, 124, 125, 126, 94, 95, 96, 127, 128, 129, 97, 98, 99, 130, 131, 132, 100, 101, 102, 133, 134, 135, 103, 104, 105, 136, 137, 138, 106, 107, 108, 139, 140, 141, 109, 110, 111, 142, 143, 144, 112, 113, 114, 145, 146, 147, 115, 116, 117, 148, 149, 150, 118, 119, 120, 151, 152, 153, 121, 122, 123, 154, 155, 156, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90]
+                            recent_TFTPlayers_statistics_display_order = [24, 16, 25, 23, 22, 2, 1, 3, 5, 6, 4, 13, 14, 15, 19, 18, 26, 17, 27, 21, 20, 10, 11, 12, 93, 94, 95, 126, 127, 128, 96, 97, 98, 129, 130, 131, 99, 100, 101, 132, 133, 134, 102, 103, 104, 135, 136, 137, 105, 106, 107, 138, 139, 140, 108, 109, 110, 141, 142, 143, 111, 112, 113, 144, 145, 146, 114, 115, 116, 147, 148, 149, 117, 118, 119, 150, 151, 152, 120, 121, 122, 153, 154, 155, 123, 124, 125, 156, 157, 158, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92]
                             recent_TFTPlayers_data_organized = {}
                             for i in range(len(recent_TFTPlayers_statistics_display_order)):
                                 key = TFTHistory_header_keys[recent_TFTPlayers_statistics_display_order[i]]
@@ -2269,7 +2307,7 @@ async def search_recent_players(connection):
                             TFTHistory_header = {"gameIndex": "游戏序号", "game_datetime": "创建日期", "game_id": "对局序号", "game_length": "持续时长", "game_version": "对局版本", "queue_id": "队列序号", "tft_game_type": "游戏类型", "tft_set_core_name": "数据版本名称", "tft_set_number": "赛季", "participantId": "玩家序号", "augment1": "强化符文1", "augment2": "强化符文2", "augment3": "强化符文3", "companion": "小小英雄", "companion_level": "小小英雄星级", "companion_rarity": "小小英雄稀有度", "gold_left": "剩余金币", "last_round": "存活回合", "level": "等级", "placement": "名次", "players_eliminated": "淘汰玩家数", "puuid": "玩家通用唯一识别码", "summonerName": "召唤师名称", "summonerId": "召唤师序号", "time_eliminated": "存活时长", "total_damage_to_players": "造成玩家伤害", "trait0 name": "羁绊1", "trait0 num_units": "羁绊1单位数", "trait0 style": "羁绊1羁绊框颜色", "trait0 tier_current": "羁绊1当前等级", "trait0 tier_total": "羁绊1最高等级", "trait1 name": "羁绊2", "trait1 num_units": "羁绊2单位数", "trait1 style": "羁绊2羁绊框颜色", "trait1 tier_current": "羁绊2当前等级", "trait1 tier_total": "羁绊2最高等级", "trait2 name": "羁绊3", "trait2 num_units": "羁绊3单位数", "trait2 style": "羁绊3羁绊框颜色", "trait2 tier_current": "羁绊3当前等级", "trait2 tier_total": "羁绊3最高等级", "trait3 name": "羁绊4", "trait3 num_units": "羁绊4单位数", "trait3 style": "羁绊4羁绊框颜色", "trait3 tier_current": "羁绊4当前等级", "trait3 tier_total": "羁绊4最高等级", "trait4 name": "羁绊5", "trait4 num_units": "羁绊5单位数", "trait4 style": "羁绊5羁绊框颜色", "trait4 tier_current": "羁绊5当前等级", "trait4 tier_total": "羁绊5最高等级", "trait5 name": "羁绊6", "trait5 num_units": "羁绊6单位数", "trait5 style": "羁绊6羁绊框颜色", "trait5 tier_current": "羁绊6当前等级", "trait5 tier_total": "羁绊6最高等级", "trait6 name": "羁绊7", "trait6 num_units": "羁绊7单位数", "trait6 style": "羁绊7羁绊框颜色", "trait6 tier_current": "羁绊7当前等级", "trait6 tier_total": "羁绊7最高等级", "trait7 name": "羁绊8", "trait7 num_units": "羁绊8单位数", "trait7 style": "羁绊8羁绊框颜色", "trait7 tier_current": "羁绊8当前等级", "trait7 tier_total": "羁绊8最高等级", "trait8 name": "羁绊9", "trait8 num_units": "羁绊9单位数", "trait8 style": "羁绊9羁绊框颜色", "trait8 tier_current": "羁绊9当前等级", "trait8 tier_total": "羁绊9最高等级", "trait9 name": "羁绊10", "trait9 num_units": "羁绊10单位数", "trait9 style": "羁绊10羁绊框颜色", "trait9 tier_current": "羁绊10当前等级", "trait9 tier_total": "羁绊10最高等级", "trait10 name": "羁绊11", "trait10 num_units": "羁绊11单位数", "trait10 style": "羁绊11羁绊框颜色", "trait10 tier_current": "羁绊11当前等级", "trait10 tier_total": "羁绊11最高等级", "trait11 name": "羁绊12", "trait11 num_units": "羁绊12单位数", "trait11 style": "羁绊12羁绊框颜色", "trait11 tier_current": "羁绊12当前等级", "trait11 tier_total": "羁绊12最高等级", "trait12 name": "羁绊13", "trait12 num_units": "羁绊13单位数", "trait12 style": "羁绊13羁绊框颜色", "trait12 tier_current": "羁绊13当前等级", "trait12 tier_total": "羁绊13最高等级", "unit0 character": "英雄1", "unit0 rarity": "英雄1：稀有度", "unit0 tier": "英雄1：星级", "unit1 character": "英雄2", "unit1 rarity": "英雄2：稀有度", "unit1 tier": "英雄2：星级", "unit2 character": "英雄3", "unit2 rarity": "英雄3：稀有度", "unit2 tier": "英雄3：星级", "unit3 character": "英雄4", "unit3 rarity": "英雄4：稀有度", "unit3 tier": "英雄4：星级", "unit4 character": "英雄5", "unit4 rarity": "英雄5：稀有度", "unit4 tier": "英雄5：星级", "unit5 character": "英雄6", "unit5 rarity": "英雄6：稀有度", "unit5 tier": "英雄6：星级", "unit6 character": "英雄7", "unit6 rarity": "英雄7：稀有度", "unit6 tier": "英雄7：星级", "unit7 character": "英雄8", "unit7 rarity": "英雄8：稀有度", "unit7 tier": "英雄8：星级", "unit8 character": "英雄9", "unit8 rarity": "英雄9：稀有度", "unit8 tier": "英雄9：星级", "unit9 character": "英雄10", "unit9 rarity": "英雄10：稀有度", "unit9 tier": "英雄10：星级", "unit10 character": "英雄11", "unit10 rarity": "英雄11：稀有度", "unit11 tier": "英雄11：星级", "unit0 item0": "英雄1：装备1", "unit0 item1": "英雄1：装备2", "unit0 item2": "英雄1：装备3", "unit1 item0": "英雄2：装备1", "unit1 item1": "英雄2：装备2", "unit1 item2": "英雄2：装备3", "unit2 item0": "英雄3：装备1", "unit2 item1": "英雄3：装备2", "unit2 item2": "英雄3：装备3", "unit3 item0": "英雄4：装备1", "unit3 item1": "英雄4：装备2", "unit3 item2": "英雄4：装备3", "unit4 item0": "英雄5：装备1", "unit4 item1": "英雄5：装备2", "unit4 item2": "英雄5：装备3", "unit5 item0": "英雄6：装备1", "unit5 item1": "英雄6：装备2", "unit5 item2": "英雄6：装备3", "unit6 item0": "英雄7：装备1", "unit6 item1": "英雄7：装备2", "unit6 item2": "英雄7：装备3", "unit7 item0": "英雄8：装备1", "unit7 item1": "英雄8：装备2", "unit7 item2": "英雄8：装备3", "unit8 item0": "英雄9：装备1", "unit8 item1": "英雄9：装备2", "unit8 item2": "英雄9：装备3", "unit9 item0": "英雄10：装备1", "unit9 item1": "英雄10：装备2", "unit9 item2": "英雄10：装备3", "unit10 item0": "英雄11：装备1", "unit10 item1": "英雄11：装备2", "unit10 item2": "英雄11：装备3"}
                             TFTHistory_data = {}
                             TFTHistory_header_keys = list(TFTHistory_header.keys())
-                            recent_TFTPlayers_statistics_display_order = [22, 23, 21, 2, 1, 3, 5, 6, 4, 13, 14, 15, 18, 17, 24, 16, 25, 20, 19, 10, 11, 12, 91, 92, 93, 124, 125, 126, 94, 95, 96, 127, 128, 129, 97, 98, 99, 130, 131, 132, 100, 101, 102, 133, 134, 135, 103, 104, 105, 136, 137, 138, 106, 107, 108, 139, 140, 141, 109, 110, 111, 142, 143, 144, 112, 113, 114, 145, 146, 147, 115, 116, 117, 148, 149, 150, 118, 119, 120, 151, 152, 153, 121, 122, 123, 154, 155, 156, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90]
+                            recent_TFTPlayers_statistics_display_order = [24, 16, 25, 23, 22, 2, 1, 3, 5, 6, 4, 13, 14, 15, 19, 18, 26, 17, 27, 21, 20, 10, 11, 12, 93, 94, 95, 126, 127, 128, 96, 97, 98, 129, 130, 131, 99, 100, 101, 132, 133, 134, 102, 103, 104, 135, 136, 137, 105, 106, 107, 138, 139, 140, 108, 109, 110, 141, 142, 143, 111, 112, 113, 144, 145, 146, 114, 115, 116, 147, 148, 149, 117, 118, 119, 150, 151, 152, 120, 121, 122, 153, 154, 155, 123, 124, 125, 156, 157, 158, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92]
                             recent_TFTPlayers_data_organized = {}
                             for i in range(len(recent_TFTPlayers_statistics_display_order)):
                                 key = TFTHistory_header_keys[recent_TFTPlayers_statistics_display_order[i]]
@@ -2531,8 +2569,8 @@ async def search_recent_players(connection):
                             print("近期一起玩过的玩家数据已加载完成！\nRecently played summoner data loaded successfully!")
                             update = False
                             while True:
-                                recent_LoLPlayer_fields = ["summonerName", "gameCreationDate", "gameMode", "gameModeName", "mapId", "ally?", "champion", "alias", "champLevel", "spell1", "spell2", "KDA", "item1", "item2", "item3", "item4", "item5", "item6", "ornament", "win/lose"]
-                                recent_TFTPlayer_fields = ["summonerName", "game_datetime", "tft_game_type", "companion", "companion_level", "companion_rarity", "level", "last_round", "time_eliminated", "gold_left", "total_damage_to_players", "players_eliminated", "placement", "augment1", "augment2", "augment3", "unit0 character", "unit0 rarity", "unit0 tier", "unit0 item0", "unit0 item1", "unit0 item2", "unit1 character", "unit1 rarity", "unit1 tier", "unit1 item0", "unit1 item1", "unit1 item2", "unit2 character", "unit2 rarity", "unit2 tier", "unit2 item0", "unit2 item1", "unit2 item2", "unit3 character", "unit3 rarity", "unit3 tier", "unit3 item0", "unit3 item1", "unit3 item2", "unit4 character", "unit4 rarity", "unit4 tier", "unit4 item0", "unit4 item1", "unit4 item2", "unit5 character", "unit5 rarity", "unit5 tier", "unit5 item0", "unit5 item1", "unit5 item2", "unit6 character", "unit6 rarity", "unit6 tier", "unit6 item0", "unit6 item1", "unit6 item2", "unit7 character", "unit7 rarity", "unit7 tier", "unit7 item0", "unit7 item1", "unit7 item2", "unit8 character", "unit8 rarity", "unit8 tier", "unit8 item0", "unit8 item1", "unit8 item2", "unit9 character", "unit9 rarity", "unit9 tier", "unit9 item0", "unit9 item1", "unit9 item2", "unit10 character", "unit10 rarity", "unit11 tier", "unit10 item0", "unit10 item1", "unit10 item2", "trait0 name", "trait0 num_units", "trait0 style", "trait0 tier_current", "trait0 tier_total", "trait1 name", "trait1 num_units", "trait1 style", "trait1 tier_current", "trait1 tier_total", "trait2 name", "trait2 num_units", "trait2 style", "trait2 tier_current", "trait2 tier_total", "trait3 name", "trait3 num_units", "trait3 style", "trait3 tier_current", "trait3 tier_total", "trait4 name", "trait4 num_units", "trait4 style", "trait4 tier_current", "trait4 tier_total", "trait5 name", "trait5 num_units", "trait5 style", "trait5 tier_current", "trait5 tier_total", "trait6 name", "trait6 num_units", "trait6 style", "trait6 tier_current", "trait6 tier_total", "trait7 name", "trait7 num_units", "trait7 style", "trait7 tier_current", "trait7 tier_total", "trait8 name", "trait8 num_units", "trait8 style", "trait8 tier_current", "trait8 tier_total", "trait9 name", "trait9 num_units", "trait9 style", "trait9 tier_current", "trait9 tier_total", "trait10 name", "trait10 num_units", "trait10 style", "trait10 tier_current", "trait10 tier_total", "trait11 name", "trait11 num_units", "trait11 style", "trait11 tier_current", "trait11 tier_total", "trait12 name", "trait12 num_units", "trait12 style", "trait12 tier_current", "trait12 tier_total"]
+                                recent_LoLPlayer_fields = ["summonerName", "gameName", "tagLine", "summonerId", "puuid", "gameCreationDate", "gameMode", "gameModeName", "mapId", "ally?", "champion", "alias", "champLevel", "spell1", "spell2", "KDA", "item1", "item2", "item3", "item4", "item5", "item6", "ornament", "win/lose"]
+                                recent_TFTPlayer_fields = ["summonerName", "gameName", "tagLine", "summonerId", "puuid", "game_datetime", "tft_game_type", "companion", "companion_level", "companion_rarity", "level", "last_round", "time_eliminated", "gold_left", "total_damage_to_players", "players_eliminated", "placement", "augment1", "augment2", "augment3", "unit0 character", "unit0 rarity", "unit0 tier", "unit0 item0", "unit0 item1", "unit0 item2", "unit1 character", "unit1 rarity", "unit1 tier", "unit1 item0", "unit1 item1", "unit1 item2", "unit2 character", "unit2 rarity", "unit2 tier", "unit2 item0", "unit2 item1", "unit2 item2", "unit3 character", "unit3 rarity", "unit3 tier", "unit3 item0", "unit3 item1", "unit3 item2", "unit4 character", "unit4 rarity", "unit4 tier", "unit4 item0", "unit4 item1", "unit4 item2", "unit5 character", "unit5 rarity", "unit5 tier", "unit5 item0", "unit5 item1", "unit5 item2", "unit6 character", "unit6 rarity", "unit6 tier", "unit6 item0", "unit6 item1", "unit6 item2", "unit7 character", "unit7 rarity", "unit7 tier", "unit7 item0", "unit7 item1", "unit7 item2", "unit8 character", "unit8 rarity", "unit8 tier", "unit8 item0", "unit8 item1", "unit8 item2", "unit9 character", "unit9 rarity", "unit9 tier", "unit9 item0", "unit9 item1", "unit9 item2", "unit10 character", "unit10 rarity", "unit11 tier", "unit10 item0", "unit10 item1", "unit10 item2", "trait0 name", "trait0 num_units", "trait0 style", "trait0 tier_current", "trait0 tier_total", "trait1 name", "trait1 num_units", "trait1 style", "trait1 tier_current", "trait1 tier_total", "trait2 name", "trait2 num_units", "trait2 style", "trait2 tier_current", "trait2 tier_total", "trait3 name", "trait3 num_units", "trait3 style", "trait3 tier_current", "trait3 tier_total", "trait4 name", "trait4 num_units", "trait4 style", "trait4 tier_current", "trait4 tier_total", "trait5 name", "trait5 num_units", "trait5 style", "trait5 tier_current", "trait5 tier_total", "trait6 name", "trait6 num_units", "trait6 style", "trait6 tier_current", "trait6 tier_total", "trait7 name", "trait7 num_units", "trait7 style", "trait7 tier_current", "trait7 tier_total", "trait8 name", "trait8 num_units", "trait8 style", "trait8 tier_current", "trait8 tier_total", "trait9 name", "trait9 num_units", "trait9 style", "trait9 tier_current", "trait9 tier_total", "trait10 name", "trait10 num_units", "trait10 style", "trait10 tier_current", "trait10 tier_total", "trait11 name", "trait11 num_units", "trait11 style", "trait11 tier_current", "trait11 tier_total", "trait12 name", "trait12 num_units", "trait12 style", "trait12 tier_current", "trait12 tier_total"]
                                 recent_LoLPlayer_dict_to_print = {}
                                 recent_TFTPlayer_dict_to_print = {}
                                 for key in recent_LoLPlayer_fields:
@@ -2603,14 +2641,19 @@ async def search_recent_players(connection):
                                                 if ally["puuid"] != current_puuid:
                                                     if ally["nameVisibilityType"] == "VISIBLE":
                                                         ally_info_recapture = 0
-                                                        ally_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %ally["puuid"])).json()
-                                                        while "errorCode" in ally_info and ally_info_recapture < 3:
-                                                            ally_info_recapture += 1
-                                                            print("队友信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an ally (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
+                                                        if ally["puuid"] in infos:
+                                                            ally_info = infos[ally["puuid"]]
+                                                        else:
                                                             ally_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %ally["puuid"])).json()
-                                                        if ally_info_recapture >= 3:
-                                                            print("队友信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an ally (puuid: %s) capture failed! The program will ignore this ally.")
-                                                            continue
+                                                            while "errorCode" in ally_info and ally_info_recapture < 3:
+                                                                ally_info_recapture += 1
+                                                                print("队友信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an ally (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
+                                                                ally_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %ally["puuid"])).json()
+                                                            if ally_info_recapture >= 3:
+                                                                print("队友信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an ally (puuid: %s) capture failed! The program will ignore this ally.")
+                                                                continue
+                                                            else:
+                                                                infos[ally["puuid"]] = ally_info
                                                         LoLAlly_index = [0] #第0行是中文表头，所以一开始要包含在内（The 0th line is Chinese header, so it should be contained in the beginning）
                                                         TFTAlly_index = [0]
                                                         for i in range(len(recent_LoLPlayers_df.loc[:, "puuid"])):
@@ -2627,25 +2670,25 @@ async def search_recent_players(connection):
                                                             TFTAlly_df = recent_TFTPlayers_df.loc[TFTAlly_index, :]
                                                             TFTAlly_df_to_print = pandas.concat([TFTAlly_df_to_print, TFTAlly_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
                                                             if ally["puuid"] in friends:
-                                                                recent_friends.append(ally_info["displayName"])
+                                                                recent_friends.append(get_info_name(ally_info))
                                                             while True:
                                                                 try:
                                                                     with pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") as writer:
                                                                         if len(LoLAlly_index) > 1:
-                                                                            LoLAlly_df.to_excel(excel_writer = writer, sheet_name = ally_info["displayName"] + " (LoL)")
+                                                                            LoLAlly_df.to_excel(excel_writer = writer, sheet_name = get_info_name(ally_info) + " (LoL)")
                                                                         if search_TFT != "" and len(TFTAlly_index) > 1:
-                                                                            TFTAlly_df.to_excel(excel_writer = writer, sheet_name = ally_info["displayName"] + " (TFT)")
-                                                                        print("队友%s曾经与您一同战斗过%d次。\nAlly %s has fought with you for %d times." %(ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2, ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2))
+                                                                            TFTAlly_df.to_excel(excel_writer = writer, sheet_name = get_info_name(ally_info) + " (TFT)")
+                                                                        print("队友%s曾经与您一同战斗过%d次。\nAlly %s has fought with you for %d times." %(get_info_name(ally_info), len(LoLAlly_index) + len(TFTAlly_index) - 2, get_info_name(ally_info), len(LoLAlly_index) + len(TFTAlly_index) - 2))
                                                                 except PermissionError:
                                                                     print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
                                                                     input()
                                                                 except FileNotFoundError:
                                                                     with pandas.ExcelWriter(path = excel_name) as writer:
                                                                         if len(LoLAlly_index) > 1:
-                                                                            LoLAlly_df.to_excel(excel_writer = writer, sheet_name = ally_info["displayName"] + " (LoL)")
+                                                                            LoLAlly_df.to_excel(excel_writer = writer, sheet_name = get_info_name(ally_info) + " (LoL)")
                                                                         if search_TFT != "" and len(TFTAlly_index) > 1:
-                                                                            TFTAlly_df.to_excel(excel_writer = writer, sheet_name = ally_info["displayName"] + " (TFT)")
-                                                                        print("队友%s曾经与您一同战斗过%d次。\nAlly %s has fought with you for %d times." %(ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2, ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2))
+                                                                            TFTAlly_df.to_excel(excel_writer = writer, sheet_name = get_info_name(ally_info) + " (TFT)")
+                                                                        print("队友%s曾经与您一同战斗过%d次。\nAlly %s has fought with you for %d times." %(get_info_name(ally_info), len(LoLAlly_index) + len(TFTAlly_index) - 2, get_info_name(ally_info), len(LoLAlly_index) + len(TFTAlly_index) - 2))
                                                                     break
                                                                 else:
                                                                     break
@@ -2653,14 +2696,19 @@ async def search_recent_players(connection):
                                                 for enemy in champ_select_session["theirTeam"]:
                                                     if enemy["nameVisibilityType"] == "VISIBLE":
                                                         enemy_info_recapture = 0
-                                                        enemy_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %enemy["puuid"])).json()
-                                                        while "errorCode" in enemy_info and enemy_info_recapture < 3:
-                                                            enemy_info_recapture += 1
-                                                            print("对手信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an enemy (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(enemy["puuid"], enemy_info_recapture, enemy["puuid"], enemy_info_recapture))
+                                                        if enemy["puuid"] in infos:
+                                                            enemy_info = infos[enemy["puuid"]]
+                                                        else:
                                                             enemy_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %enemy["puuid"])).json()
-                                                        if enemy_info_recapture >= 3:
-                                                            print("对手信息（玩家通用唯一识别码：%s）获取失败！将忽略该名对手。\nInformation of an enemy (puuid: %s) capture failed! The program will ignore this enemy.")
-                                                            continue
+                                                            while "errorCode" in enemy_info and enemy_info_recapture < 3:
+                                                                enemy_info_recapture += 1
+                                                                print("对手信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an enemy (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(enemy["puuid"], enemy_info_recapture, enemy["puuid"], enemy_info_recapture))
+                                                                enemy_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %enemy["puuid"])).json()
+                                                            if enemy_info_recapture >= 3:
+                                                                print("对手信息（玩家通用唯一识别码：%s）获取失败！将忽略该名对手。\nInformation of an enemy (puuid: %s) capture failed! The program will ignore this enemy.")
+                                                                continue
+                                                            else:
+                                                                infos[enemy["puuid"]] = enemy_info
                                                         LoLEnemy_index = [0]
                                                         TFTEnemy_index = [0]
                                                         for i in range(len(recent_LoLPlayers_df.loc[:, "puuid"])):
@@ -2677,25 +2725,25 @@ async def search_recent_players(connection):
                                                             TFTEnemy_df = recent_TFTPlayers_df.loc[TFTEnemy_index, :]
                                                             TFTEnemy_df_to_print = pandas.concat([TFTEnemy_df_to_print, TFTEnemy_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
                                                             if enemy["puuid"] in friends:
-                                                                recent_friends.append((enemy_info["displayName"]))
+                                                                recent_friends.append((get_info_name(enemy_info)))
                                                             while True:
                                                                 try:
                                                                     with pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") as writer:
                                                                         if len(LoLEnemy_index) > 1:
-                                                                            LoLEnemy_df.to_excel(excel_writer = writer, sheet_name = enemy_info["displayName"] + " (LoL)")
+                                                                            LoLEnemy_df.to_excel(excel_writer = writer, sheet_name = get_info_name(enemy_info) + " (LoL)")
                                                                         if search_TFT != "" and len(TFTEnemy_index) > 1:
-                                                                            TFTEnemy_df.to_excel(excel_writer = writer, sheet_name = enemy_info["displayName"] + " (TFT)")
-                                                                        print("对手%s曾经与您一同战斗过%d次。\nEnemy %s has fought with you for %d times." %(enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2, enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2))
+                                                                            TFTEnemy_df.to_excel(excel_writer = writer, sheet_name = get_info_name(enemy_info) + " (TFT)")
+                                                                        print("对手%s曾经与您一同战斗过%d次。\nEnemy %s has fought with you for %d times." %(get_info_name(enemy_info), len(LoLEnemy_index) + len(TFTEnemy_index) - 2, get_info_name(enemy_info), len(LoLEnemy_index) + len(TFTEnemy_index) - 2))
                                                                 except PermissionError:
                                                                     print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
                                                                     input()
                                                                 except FileNotFoundError:
                                                                     with pandas.ExcelWriter(path = excel_name) as writer:
                                                                         if len(LoLEnemy_index) > 1:
-                                                                            LoLEnemy_df.to_excel(excel_writer = writer, sheet_name = enemy_info["displayName"] + " (LoL)")
+                                                                            LoLEnemy_df.to_excel(excel_writer = writer, sheet_name = get_info_name(enemy_info) + " (LoL)")
                                                                         if search_TFT != "" and len(TFTEnemy_index) > 1:
-                                                                            TFTEnemy_df.to_excel(excel_writer = writer, sheet_name = enemy_info["displayName"] + " (TFT)")
-                                                                        print("对手%s曾经与您一同战斗过%d次。\nEnemy %s has fought with you for %d times." %(enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2, enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2))
+                                                                            TFTEnemy_df.to_excel(excel_writer = writer, sheet_name = get_info_name(enemy_info) + " (TFT)")
+                                                                        print("对手%s曾经与您一同战斗过%d次。\nEnemy %s has fought with you for %d times." %(get_info_name(enemy_info), len(LoLEnemy_index) + len(TFTEnemy_index) - 2, get_info_name(enemy_info), len(LoLEnemy_index) + len(TFTEnemy_index) - 2))
                                                                     break
                                                                 else:
                                                                     break
@@ -2737,14 +2785,19 @@ async def search_recent_players(connection):
                                             for player in gameData["teamOne"]:
                                                 if "puuid" in player and player["puuid"] != current_puuid: #电脑玩家没有玩家通用唯一识别码（Bot players don't have puuids）
                                                     player_info_recapture = 0
-                                                    player_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %player["puuid"])).json()
-                                                    while "errorCode" in player_info and player_info_recapture < 3:
-                                                        player_info_recapture += 1
-                                                        print("玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an player (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(player["puuid"], player_info_recapture, player["puuid"], player_info_recapture))
+                                                    if player["puuid"] in infos:
+                                                        player_info = infos[player["puuid"]]
+                                                    else:
                                                         player_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %player["puuid"])).json()
-                                                    if player_info_recapture >= 3:
-                                                        print("玩家信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an player (puuid: %s) capture failed! The program will ignore this player.")
-                                                        continue
+                                                        while "errorCode" in player_info and player_info_recapture < 3:
+                                                            player_info_recapture += 1
+                                                            print("玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an player (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(player["puuid"], player_info_recapture, player["puuid"], player_info_recapture))
+                                                            player_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %player["puuid"])).json()
+                                                        if player_info_recapture >= 3:
+                                                            print("玩家信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an player (puuid: %s) capture failed! The program will ignore this player.")
+                                                            continue
+                                                        else:
+                                                            infos[player_info["puuid"]] = player_info
                                                     LoLPlayer_index = [0] #第0行是中文表头，所以一开始要包含在内（The 0th line is Chinese header, so it should be contained in the beginning）
                                                     TFTPlayer_index = [0]
                                                     for i in range(len(recent_LoLPlayers_df.loc[:, "puuid"])):
@@ -2761,25 +2814,25 @@ async def search_recent_players(connection):
                                                         TFTPlayer_df = recent_TFTPlayers_df.loc[TFTPlayer_index, :]
                                                         TFTPlayer_df_to_print = pandas.concat([TFTPlayer_df_to_print, TFTPlayer_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
                                                         if player["puuid"] in friends:
-                                                            recent_friends.append(player_info["displayName"])
+                                                            recent_friends.append(get_info_name(player_info))
                                                         while True:
                                                             try:
                                                                 with pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") as writer:
                                                                     if len(LoLPlayer_index) > 1:
-                                                                        LoLPlayer_df.to_excel(excel_writer = writer, sheet_name = player_info["displayName"] + " (LoL)")
+                                                                        LoLPlayer_df.to_excel(excel_writer = writer, sheet_name = get_info_name(player_info) + " (LoL)")
                                                                     if search_TFT != "" and len(TFTPlayer_index) > 1:
-                                                                        TFTPlayer_df.to_excel(excel_writer = writer, sheet_name = player_info["displayName"] + " (TFT)")
-                                                                    print("玩家%s曾经与您一同战斗过%d次。\nPlayer %s has fought with you for %d times." %(player_info["displayName"], len(LoLPlayer_index) + len(TFTPlayer_index) - 2, player_info["displayName"], len(LoLPlayer_index) + len(TFTPlayer_index) - 2))
+                                                                        TFTPlayer_df.to_excel(excel_writer = writer, sheet_name = get_info_name(player_info) + " (TFT)")
+                                                                    print("玩家%s曾经与您一同战斗过%d次。\nPlayer %s has fought with you for %d times." %(get_info_name(player_info), len(LoLPlayer_index) + len(TFTPlayer_index) - 2, get_info_name(player_info), len(LoLPlayer_index) + len(TFTPlayer_index) - 2))
                                                             except PermissionError:
                                                                 print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
                                                                 input()
                                                             except FileNotFoundError:
                                                                 with pandas.ExcelWriter(path = excel_name) as writer:
                                                                     if len(LoLPlayer_index) > 1:
-                                                                        LoLPlayer_df.to_excel(excel_writer = writer, sheet_name = player_info["displayName"] + " (LoL)")
+                                                                        LoLPlayer_df.to_excel(excel_writer = writer, sheet_name = get_info_name(player_info) + " (LoL)")
                                                                     if search_TFT != "" and len(TFTPlayer_index) > 1:
-                                                                        TFTPlayer_df.to_excel(excel_writer = writer, sheet_name = player_info["displayName"] + " (TFT)")
-                                                                    print("玩家%s曾经与您一同战斗过%d次。\nPlayer %s has fought with you for %d times." %(player_info["displayName"], len(LoLPlayer_index) + len(TFTPlayer_index) - 2, player_info["displayName"], len(LoLPlayer_index) + len(TFTPlayer_index) - 2))
+                                                                        TFTPlayer_df.to_excel(excel_writer = writer, sheet_name = get_info_name(player_info) + " (TFT)")
+                                                                    print("玩家%s曾经与您一同战斗过%d次。\nPlayer %s has fought with you for %d times." %(get_info_name(player_info), len(LoLPlayer_index) + len(TFTPlayer_index) - 2, get_info_name(player_info), len(LoLPlayer_index) + len(TFTPlayer_index) - 2))
                                                                 break
                                                             else:
                                                                 break
@@ -2814,20 +2867,25 @@ async def search_recent_players(connection):
                                             for ally in myTeam:
                                                 if "puuid" in ally and ally["puuid"] != current_puuid:
                                                     ally_info_recapture = 0
-                                                    ally_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %ally["puuid"])).json()
-                                                    while "errorCode" in ally_info and ally_info_recapture < 3:
-                                                        ally_info_recapture += 1
-                                                        if isSpectating:
-                                                            print("队友信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an ally (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
-                                                        else:
-                                                            print("玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of a player (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
+                                                    if ally["puuid"] in infos:
+                                                        ally_info = infos[ally["puuid"]]
+                                                    else:
                                                         ally_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %ally["puuid"])).json()
-                                                    if ally_info_recapture >= 3:
-                                                        if isSpectating:
-                                                            print("队友信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an ally (puuid: %s) capture failed! The program will ignore this ally.")
+                                                        while "errorCode" in ally_info and ally_info_recapture < 3:
+                                                            ally_info_recapture += 1
+                                                            if isSpectating:
+                                                                print("队友信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an ally (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
+                                                            else:
+                                                                print("玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of a player (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
+                                                            ally_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %ally["puuid"])).json()
+                                                        if ally_info_recapture >= 3:
+                                                            if isSpectating:
+                                                                print("队友信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an ally (puuid: %s) capture failed! The program will ignore this ally.")
+                                                            else:
+                                                                print("玩家信息（玩家通用唯一识别码：%s）获取失败！将忽略该名玩家。\nInformation of a player (puuid: %s) capture failed! The program will ignore this player.")
+                                                            continue
                                                         else:
-                                                            print("玩家信息（玩家通用唯一识别码：%s）获取失败！将忽略该名玩家。\nInformation of a player (puuid: %s) capture failed! The program will ignore this player.")
-                                                        continue
+                                                            infos[ally_info["puuid"]] = ally_info
                                                     LoLAlly_index = [0] #第0行是中文表头，所以一开始要包含在内（The 0th line is Chinese header, so it should be contained in the beginning）
                                                     TFTAlly_index = [0]
                                                     for i in range(len(recent_LoLPlayers_df.loc[:, "puuid"])):
@@ -2844,45 +2902,50 @@ async def search_recent_players(connection):
                                                         TFTAlly_df = recent_TFTPlayers_df.loc[TFTAlly_index, :]
                                                         TFTAlly_df_to_print = pandas.concat([TFTAlly_df_to_print, TFTAlly_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
                                                         if ally["puuid"] in friends:
-                                                            recent_friends.append(ally_info["displayName"])
+                                                            recent_friends.append(get_info_name(ally_info))
                                                         while True:
                                                             try:
                                                                 with pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") as writer:
                                                                     if len(LoLAlly_index) > 1:
-                                                                        LoLAlly_df.to_excel(excel_writer = writer, sheet_name = ally_info["displayName"] + " (LoL)")
+                                                                        LoLAlly_df.to_excel(excel_writer = writer, sheet_name = get_info_name(ally_info) + " (LoL)")
                                                                     if search_TFT != "" and len(TFTAlly_index) > 1:
-                                                                        TFTAlly_df.to_excel(excel_writer = writer, sheet_name = ally_info["displayName"] + " (TFT)")
+                                                                        TFTAlly_df.to_excel(excel_writer = writer, sheet_name = get_info_name(ally_info) + " (TFT)")
                                                                     if isSpectating:
-                                                                        print("队友%s曾经与您一同战斗过%d次。\nAlly %s has fought with you for %d times." %(ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2, ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2))
+                                                                        print("队友%s曾经与您一同战斗过%d次。\nAlly %s has fought with you for %d times." %(get_info_name(ally_info), len(LoLAlly_index) + len(TFTAlly_index) - 2, get_info_name(ally_info), len(LoLAlly_index) + len(TFTAlly_index) - 2))
                                                                     else:
-                                                                        print("玩家%s曾经与您一同战斗过%d次。\nPlayer %s has fought with you for %d times." %(ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2, ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2))
+                                                                        print("玩家%s曾经与您一同战斗过%d次。\nPlayer %s has fought with you for %d times." %(get_info_name(ally_info), len(LoLAlly_index) + len(TFTAlly_index) - 2, get_info_name(ally_info), len(LoLAlly_index) + len(TFTAlly_index) - 2))
                                                             except PermissionError:
                                                                 print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
                                                                 input()
                                                             except FileNotFoundError:
                                                                 with pandas.ExcelWriter(path = excel_name) as writer:
                                                                     if len(LoLAlly_index) > 1:
-                                                                        LoLAlly_df.to_excel(excel_writer = writer, sheet_name = ally_info["displayName"] + " (LoL)")
+                                                                        LoLAlly_df.to_excel(excel_writer = writer, sheet_name = get_info_name(ally_info) + " (LoL)")
                                                                     if search_TFT != "" and len(TFTAlly_index) > 1:
-                                                                        TFTAlly_df.to_excel(excel_writer = writer, sheet_name = ally_info["displayName"] + " (TFT)")
+                                                                        TFTAlly_df.to_excel(excel_writer = writer, sheet_name = get_info_name(ally_info) + " (TFT)")
                                                                     if isSpectating:
-                                                                        print("队友%s曾经与您一同战斗过%d次。\nAlly %s has fought with you for %d times." %(ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2, ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2))
+                                                                        print("队友%s曾经与您一同战斗过%d次。\nAlly %s has fought with you for %d times." %(get_info_name(ally_info), len(LoLAlly_index) + len(TFTAlly_index) - 2, get_info_name(ally_info), len(LoLAlly_index) + len(TFTAlly_index) - 2))
                                                                     else:
-                                                                        print("玩家%s曾经与您一同战斗过%d次。\nPlayer %s has fought with you for %d times." %(ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2, ally_info["displayName"], len(LoLAlly_index) + len(TFTAlly_index) - 2))
+                                                                        print("玩家%s曾经与您一同战斗过%d次。\nPlayer %s has fought with you for %d times." %(get_info_name(ally_info), len(LoLAlly_index) + len(TFTAlly_index) - 2, get_info_name(ally_info), len(LoLAlly_index) + len(TFTAlly_index) - 2))
                                                                 break
                                                             else:
                                                                 break
                                             for enemy in theirTeam:
                                                 if "puuid" in enemy:
-                                                    enemy_info_recapture = 0
-                                                    enemy_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %enemy["puuid"])).json()
-                                                    while "errorCode" in enemy_info and enemy_info_recapture < 3:
-                                                        enemy_info_recapture += 1
-                                                        print("对手信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an enemy (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(enemy["puuid"], enemy_info_recapture, enemy["puuid"], enemy_info_recapture))
+                                                    if enemy["puuid"] in infos:
+                                                        enemy_info = infos[enemy["puuid"]]
+                                                    else:
+                                                        enemy_info_recapture = 0
                                                         enemy_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %enemy["puuid"])).json()
-                                                    if enemy_info_recapture >= 3:
-                                                        print("对手信息（玩家通用唯一识别码：%s）获取失败！将忽略该名对手。\nInformation of an enemy (puuid: %s) capture failed! The program will ignore this enemy.")
-                                                        continue
+                                                        while "errorCode" in enemy_info and enemy_info_recapture < 3:
+                                                            enemy_info_recapture += 1
+                                                            print("对手信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an enemy (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(enemy["puuid"], enemy_info_recapture, enemy["puuid"], enemy_info_recapture))
+                                                            enemy_info = await (await connection.request("GET", "/lol-summoner/v2/summoners/puuid/%s" %enemy["puuid"])).json()
+                                                        if enemy_info_recapture >= 3:
+                                                            print("对手信息（玩家通用唯一识别码：%s）获取失败！将忽略该名对手。\nInformation of an enemy (puuid: %s) capture failed! The program will ignore this enemy.")
+                                                            continue
+                                                        else:
+                                                            infos[enemy["puuid"]] = enemy_info
                                                     LoLEnemy_index = [0]
                                                     TFTEnemy_index = [0]
                                                     for i in range(len(recent_LoLPlayers_df.loc[:, "puuid"])):
@@ -2899,25 +2962,25 @@ async def search_recent_players(connection):
                                                         TFTEnemy_df = recent_TFTPlayers_df.loc[TFTEnemy_index, :]
                                                         TFTEnemy_df_to_print = pandas.concat([TFTEnemy_df_to_print, TFTEnemy_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
                                                         if enemy["puuid"] in friends:
-                                                            recent_friends.append((enemy_info["displayName"]))
+                                                            recent_friends.append((get_info_name(enemy_info)))
                                                         while True:
                                                             try:
                                                                 with pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") as writer:
                                                                     if len(LoLEnemy_index) > 1:
-                                                                        LoLEnemy_df.to_excel(excel_writer = writer, sheet_name = enemy_info["displayName"] + " (LoL)")
+                                                                        LoLEnemy_df.to_excel(excel_writer = writer, sheet_name = get_info_name(enemy_info) + " (LoL)")
                                                                     if search_TFT != "" and len(TFTEnemy_index) > 1:
-                                                                        TFTEnemy_df.to_excel(excel_writer = writer, sheet_name = enemy_info["displayName"] + " (TFT)")
-                                                                    print("对手%s曾经与您一同战斗过%d次。\nEnemy %s has fought with you for %d times." %(enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2, enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2))
+                                                                        TFTEnemy_df.to_excel(excel_writer = writer, sheet_name = get_info_name(enemy_info) + " (TFT)")
+                                                                    print("对手%s曾经与您一同战斗过%d次。\nEnemy %s has fought with you for %d times." %(get_info_name(enemy_info), len(LoLEnemy_index) + len(TFTEnemy_index) - 2, get_info_name(enemy_info), len(LoLEnemy_index) + len(TFTEnemy_index) - 2))
                                                             except PermissionError:
                                                                 print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
                                                                 input()
                                                             except FileNotFoundError:
                                                                 with pandas.ExcelWriter(path = excel_name) as writer:
                                                                     if len(LoLEnemy_index) > 1:
-                                                                        LoLEnemy_df.to_excel(excel_writer = writer, sheet_name = enemy_info["displayName"] + " (LoL)")
+                                                                        LoLEnemy_df.to_excel(excel_writer = writer, sheet_name = get_info_name(enemy_info) + " (LoL)")
                                                                     if search_TFT != "" and len(TFTEnemy_index) > 1:
-                                                                        TFTEnemy_df.to_excel(excel_writer = writer, sheet_name = enemy_info["displayName"] + " (TFT)")
-                                                                    print("对手%s曾经与您一同战斗过%d次。\nEnemy %s has fought with you for %d times." %(enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2, enemy_info["displayName"], len(LoLEnemy_index) + len(TFTEnemy_index) - 2))
+                                                                        TFTEnemy_df.to_excel(excel_writer = writer, sheet_name = get_info_name(enemy_info) + " (TFT)")
+                                                                    print("对手%s曾经与您一同战斗过%d次。\nEnemy %s has fought with you for %d times." %(get_info_name(enemy_info), len(LoLEnemy_index) + len(TFTEnemy_index) - 2, get_info_name(enemy_info), len(LoLEnemy_index) + len(TFTEnemy_index) - 2))
                                                                 break
                                                             else:
                                                                 break
@@ -3125,6 +3188,7 @@ async def search_recent_players(connection):
                                             check_by_puuid = False
                                             info_check = await (await connection.request("GET", "/lol-summoner/v1/summoners?name=" + quote(summoner))).json()
                                         if "accountId" in info_check:
+                                            infos[info_check["puuid"]] = info_check
                                             legal_summoners[info_check["puuid"]] = info_check["displayName"] if info_check["tagLine"] == "" else info_check["gameName"] + "#" + info_check["tagLine"] #在腾讯代理的未开放跨区匹配的服务器上，尾标为空（On Tencent servers that don't support cross-server matching for now, the tagLine is empty）
                                             LoLPlayer_index = [0]
                                             TFTPlayer_index = [0]
@@ -3195,6 +3259,8 @@ async def search_recent_players(connection):
                                     break
                             if update:
                                 break
+            #with open("infos.json", "w", encoding = "utf-8") as fp:
+                #json.dump(infos, fp, indent = 4, ensure_ascii = False)
             if detectMode and matchID == "0":
                 break
 

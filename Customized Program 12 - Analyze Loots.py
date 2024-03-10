@@ -53,10 +53,32 @@ async def get_lockfile(connection):
 #-----------------------------------------------------------------------------
 #  分析战利品（Analyze loots）
 #-----------------------------------------------------------------------------
+def get_info_name(info: dict, mode = 1) -> str:
+    if not isinstance(info, dict) or not all(i in info for i in ["displayName", "gameName", "tagLine"]):
+        print("您的召唤师信息格式有误！\nERROR format of summoner information!")
+        name = ""
+        exit()
+    else:
+        if info["displayName"] or info["gameName"]:
+            if info["gameName"] and info["tagLine"]:
+                name = info["gameName"] + "#" + info["tagLine"]
+            elif not info["tagLine"] and info["gameName"]:
+                name = info["gameName"]
+            else:
+                name = info["displayName"]
+        else: #新玩家属于这种类型（This case matches new players）
+            if mode == 1:
+                name = str(info["summonerId"])
+            elif mode == 2: #仅用于设置召唤师数据保存路径（Designed to set the summoner name directory）
+                name = "0. 新玩家\\" + str(info["summonerId"])
+            elif mode == 3: #仅用于设置召唤师数据保存路径（Designed to set the summoner name directory）
+                name = "0. New Player\\" + str(info["summonerId"])
+    return name
+
 async def analyze_player_loots(connection): #导出玩家目前含有的战利品的信息（Exports the user's current loots' information）
     #下面设置输出文件的位置（The following code determines the output files' location）
     info = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
-    displayName = info["displayName"] if info["displayName"] else (info["gameName"] if info["gameName"] else str(info["summonerId"]))
+    displayName = get_info_name(info)
     current_puuid = info["puuid"]
     platform_TENCENT = {"BGP1": "全网通区 男爵领域（Baron Zone）", "BGP2": "峡谷之巅（Super Zone）", "EDU1": "教育网专区（CRENET Server）", "HN1": "电信一区 艾欧尼亚（Ionia）", "HN2": "电信二区 祖安（Zaun）", "HN3": "电信三区 诺克萨斯（Noxus 1）", "HN4": "电信四区 班德尔城（Bandle City）", "HN4_NEW": "电信四区 班德尔城（Bandle City）", "HN5": "电信五区 皮尔特沃夫（Piltover）", "HN6": "电信六区 战争学院（the Institute of War）", "HN7": "电信七区 巨神峰（Mount Targon）", "HN8": "电信八区 雷瑟守备（Noxus 2）", "HN9": "电信九区 裁决之地（the Proving Grounds）", "HN10": "电信十区 黑色玫瑰（the Black Rose）", "HN11": "电信十一区 暗影岛（Shadow Isles）", "HN12": "电信十二区 钢铁烈阳（the Iron Solari）", "HN13": "电信十三区 水晶之痕（Crystal Scar）", "HN14": "电信十四区 均衡教派（the Kinkou Order）", "HN15": "电信十五区 影流（the Shadow Order）", "HN16": "电信十六区 守望之海（Guardian's Sea）", "HN17": "电信十七区 征服之海（Conqueror's Sea）", "HN18": "电信十八区 卡拉曼达（Kalamanda）", "HN19": "电信十九区 皮城警备（Piltover Wardens）", "PBE": "体验服 试炼之地（Chinese PBE）", "WT1": "网通一区 比尔吉沃特（Bilgewater）", "WT1_NEW": "网通一区 比尔吉沃特（Bilgewater）", "WT2": "网通二区 德玛西亚（Demacia）", "WT2_NEW": "网通二区 德玛西亚（Demacia）", "WT3": "网通三区 弗雷尔卓德（Freljord）", "WT3_NEW": "网通三区 弗雷尔卓德（Freljord）", "WT4": "网通四区 无畏先锋（House Crownguard）", "WT4_NEW": "网通四区 无畏先锋（House Crownguard）", "WT5": "网通五区 恕瑞玛（Shurima）", "WT6": "网通六区 扭曲丛林（Twisted Treeline）", "WT7": "网通七区 巨龙之巢（the Dragon Camp）", "NJ100": "联盟一区", "GZ100": "联盟二区"}
     platform_RIOT = {"BR": "巴西服（Brazil）", "EUNE": "北欧和东欧服（Europe Nordic & East）", "EUW": "西欧服（Europe West）", "LAN": "北拉美服（Latin America North）", "LAS": "南拉美服（Latin America South）", "NA": "北美服（North America）", "OCE": "大洋洲服（Oceania）", "RU": "俄罗斯服（Russia）", "TR": "土耳其服（Turkey）", "JP": "日服（Japan）", "KR": "韩服（Republic of Korea）", "PBE": "测试服（Public Beta Environment）"}
@@ -72,11 +94,11 @@ async def analyze_player_loots(connection): #导出玩家目前含有的战利�
     region = client_info["--region"]
     locale = client_info["--locale"]
     if region == "TENCENT":
-        folder = "召唤师信息（Summoner Information）\\" + "国服（TENCENT）" + "\\" + platform_TENCENT[client_info["--rso_platform_id"]] + "\\" + (displayName if info["displayName"] or info["gameName"] else "0. 新玩家\\" + displayName)
+        folder = "召唤师信息（Summoner Information）\\" + "国服（TENCENT）" + "\\" + platform_TENCENT[client_info["--rso_platform_id"]] + "\\" + get_info_name(info, 2)
     elif region == "GARENA":
-        folder = "召唤师信息（Summoner Information）\\" + "竞舞（GARENA）" + "\\" + platform_GARENA[region] + "\\" + (displayName if info["displayName"] or info["gameName"] else "0. 新玩家\\" + displayName)
+        folder = "召唤师信息（Summoner Information）\\" + "竞舞（GARENA）" + "\\" + platform_GARENA[region] + "\\" + get_info_name(info, 2)
     else: #拳头公司与竞舞娱乐公司的合同于2023年1月终止（In January 2023, Riot Games ended its contract with Garena）
-        folder = "召唤师信息（Summoner Information）\\" + "外服（RIOT）" + "\\" + (platform_RIOT | platform_GARENA)[region] + "\\" + (displayName if info["displayName"] or info["gameName"] else "0. New Player\\" + displayName)
+        folder = "召唤师信息（Summoner Information）\\" + "外服（RIOT）" + "\\" + (platform_RIOT | platform_GARENA)[region] + "\\" + get_info_name(info, 3)
     platform_config = await (await connection.request("GET", "/lol-platform-config/v1/namespaces")).json()
     platformId = platform_config["LoginDataPacket"]["platformId"]
     loots = await (await connection.request("GET", "/lol-loot/v1/loot-items")).json()
@@ -100,7 +122,7 @@ async def analyze_player_loots(connection): #导出玩家目前含有的战利�
     player_loot_header_keys = list(player_loot_header.keys())
     essenceType = {"CURRENCY_champion": "蓝色精萃", "CURRENCY_cosmetic": "橙色精萃", "": ""}
     lootCategories = {"": "其它", "CHAMPION": "英雄", "CHEST": "宝箱", "COMPANION": "小小英雄", "EMOTE": "表情", "ETERNALS": "永恒星碑", "SKIN": "皮肤", "SUMMONERICON": "图标", "WARDSKIN": "守卫皮肤"}
-    itemStatus = {"NONE": "未拥有", "OWNED": "已拥有"}
+    itemStatus = {"NONE": "未拥有", "RENTAL": "租借中", "OWNED": "已拥有"}
     rarity = {"": "无", "DEFAULT": "经典", "EPIC": "史诗", "LEGENDARY": "传说", "MYTHIC": "神话", "RARE": "稀有", "ULTIMATE": "终极"}
     redeemableStatus = {"ALREADY_OWNED": "已拥有", "CHAMPION_NOT_OWNED": "英雄未拥有", "NOT_REDEEMABLE": "不可解锁", "REDEEMABLE": "可解锁", "REDEEMABLE_RENTAL": "可激活租借"}
     lootType = {"": "其它", "BOOST": "加成道具", "CHAMPION": "永久英雄", "CHAMPION_RENTAL": "英雄碎片", "CHAMPION_TOKEN": "成就代币", "CHEST": "宝箱", "COMPANION": "小小英雄", "CURRENCY": "货币", "EMOTE": "永久表情", "EMOTE_RENTAL": "表情碎片", "MATERIAL": "材料", "SKIN": "永久皮肤", "SKIN_RENTAL": "皮肤碎片", "STATSTONE": "永久永恒星碑", "STATSTONE_SHARD": "永恒星碑碎片", "SUMMONERICON": "召唤师图标", "TFT_MAP_SKIN": "云顶之弈棋盘皮肤", "TOURNAMENTLOGO": "冠军杯赛图标", "WARDSKIN": "永久守卫皮肤", "WARDSKIN_RENTAL": "守卫皮肤碎片"}
