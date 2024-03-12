@@ -20,7 +20,7 @@
         "rewards": [
             {
                 "media": {
-                    "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_Heavenscale_Token.png"
+                    "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_Token.png"
                 }
             }
         ]
@@ -46,7 +46,7 @@
         "rewards": [
             {
                 "media": {
-                    "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_Heavenscale_Token.png"
+                    "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_Token.png"
                 }
             }
         ]
@@ -72,7 +72,7 @@
         "rewards": [
             {
                 "media": {
-                    "image": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_Heavenscale_Token.png"
+                    "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_Token.png"
                 }
             }
         ]
@@ -13387,6 +13387,32 @@
             {
                 "media": {
                     "image": "/lol-game-data/assets/v1/profile-icons/4794.jpg"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kSmall",
+                "canvasBackgroundImage": ""
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/UX/SummonerIcons/6584.jpg"
                 }
             }
         ]

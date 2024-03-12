@@ -2067,7 +2067,7 @@
         "name": "Chibi Sett",
         "starLevel": 1,
         "rarity": "Default",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/ChibiSett/Loot_ChibiSett_Base_Classic_Tier1.CHIBI_Sett_Base.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/ChibiSett/Loot_ChibiSett_Base_Classic_Tier1.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {

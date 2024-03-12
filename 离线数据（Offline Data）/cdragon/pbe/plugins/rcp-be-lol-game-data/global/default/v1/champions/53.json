@@ -1116,7 +1116,7 @@
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/53/53056.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/53/53056.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/53/53056.jpg",
-            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin56/BlitzcrankLoadScreen_56.PIE_C_13_23.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Blitzcrank/Skins/Skin56/BlitzcrankLoadScreen_56.jpg",
             "skinType": "",
             "rarity": "kEpic",
             "isLegacy": false,

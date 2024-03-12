@@ -1203,7 +1203,12 @@
                         "#8DDC26"
                     ],
                     "descriptions": [],
-                    "rarities": []
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 4
+                        }
+                    ]
                 }
             ],
             "emblems": [

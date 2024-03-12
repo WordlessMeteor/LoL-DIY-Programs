@@ -1076,7 +1076,7 @@
         "display_name": "8-bit",
         "trait_id": "TFT10_8Bit",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_8Bit.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_8Bit.png",
         "tooltip_text": "Keep score of your team's damage dealt. For each high score you beat, 8-bit champions gain Attack&nbsp;Damage.<br><br><row>(@MinUnits@) @AttackDamage@% %i:scaleAD%</row><br><row>(@MinUnits@) @AttackDamage@% %i:scaleAD%</row><br><row>(@MinUnits@) @AttackDamage@% %i:scaleAD% and unlock a final high score, that rewards you with a grand prize.</row><br><br>Bonus: @TFTUnitProperty.trait:TFT10_Trait_8bit_CurrentBonus@% %i:scaleAD% (@TFTUnitProperty.trait:TFT10_Trait_8bit_StackCount@/@NumHighScores@)",
         "innate_trait_sets": [
             {
@@ -1307,7 +1307,7 @@
         "display_name": "Breakout",
         "trait_id": "TFT10_Breakout",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Breakout.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Breakout.png",
         "tooltip_text": "(unique) Akali is a member of K/DA or True Damage depending on which trait has more fielded champions. She gains a different Ability depending on which form she takes. ",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -1323,7 +1323,7 @@
         "display_name": "Maestro",
         "trait_id": "TFT10_Classical",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Classical.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Classical.png",
         "tooltip_text": "(unique) The Maestro always attacks at a fixed pace, converting @BonusAttackSpeed@% bonus Attack Speed into @BonusAttackDamage@% Attack Damage. ",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -1365,7 +1365,7 @@
         "display_name": "Country",
         "trait_id": "TFT10_Country",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Country.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Country.png",
         "tooltip_text": "When your team loses @HealthRatio*100@% of their Health, call a Dreadsteed that empowers your team. Each Country star&nbsp;level increases the Dreadsteed's Health and Attack&nbsp;Damage.<br><br><row>(@MinUnits@) Dreadsteed</row><br><row>(@MinUnits@) Midnight Dreadsteed</row><br><row>(@MinUnits@) Infernal Invocation Dreadsteed</row>",
         "innate_trait_sets": [
             {
@@ -1443,7 +1443,7 @@
         "display_name": "Crowd Diver",
         "trait_id": "TFT10_CrowdDive",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_CrowdDiver.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_CrowdDiver.png",
         "tooltip_text": "After Crowd Divers die, they leap onto the furthest enemy, dealing <magicDamage>@JumpDamage@</magicDamage> magic damage. Enemies within @StunRange@ hex are Stunned for @StunDuration@ seconds.<br><br>They also deal bonus damage, increased by @BonusPerSecond*100@% each second.<br><br><expandRow>(@MinUnits@) @BaseBonus*100@% bonus damage</expandRow>",
         "innate_trait_sets": [
             {
@@ -1516,7 +1516,7 @@
         "display_name": "Mixmaster",
         "trait_id": "TFT10_DJ",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_DJ.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_DJ.png",
         "tooltip_text": "(unique) Choose a mode that changes the Mixmaster's attacks and Ability!",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -1610,7 +1610,7 @@
         "display_name": "Big Shot",
         "trait_id": "TFT10_Deadeye",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_BigShot.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_BigShot.png",
         "tooltip_text": "Big Shots gain Attack Damage, which increases for @Duration@ seconds when they use their Ability.<br><br><expandRow>(@MinUnits@) @PercentAD*100@% %i:scaleAD%, @PercentADEmpowered*100@% after casting</expandRow>",
         "innate_trait_sets": [
             {
@@ -1683,7 +1683,7 @@
         "display_name": "EDM",
         "trait_id": "TFT10_EDM",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_EDM.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_EDM.png",
         "tooltip_text": "Use the EDM selector item to choose an EDM champion and see the frequency for each.<br><br>At the selected champion's frequency, your EDM champions cast the selected Ability with modified effectiveness.<br><br><row>(@MinUnits@) @EDMstats*100@% effectiveness</row><br><row>(@MinUnits@) @EDMstats*100@% effectiveness</row><br><row>(@MinUnits@) @EDMstats*100@% effectiveness, -@EDMtimereduction@ second</row><br><row>(@MinUnits@) @EDMstats*100@% effectiveness, -@EDMtimereduction@ second</row>",
         "innate_trait_sets": [
             {
@@ -1799,7 +1799,7 @@
         "display_name": "Edgelord",
         "trait_id": "TFT10_Edgelord",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Edgelord.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Edgelord.png",
         "tooltip_text": "Edgelords gain Attack Speed, which doubles when their target drops below @HealthRatio*100@% Health. Edgelords with 1-hex range also dash through them on their next&nbsp;attack. <br><br><expandRow>(@MinUnits@) @AttackSpeed*100@% %i:scaleAS%</expandRow><br>",
         "innate_trait_sets": [
             {
@@ -1862,7 +1862,7 @@
         "display_name": "Emo",
         "trait_id": "TFT10_Emo",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_BigSad.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_BigSad.png",
         "tooltip_text": "Emo champions' Abilities cost less Mana to cast, and they gain Mana whenever an allied champion dies.<br><br><row>(@MinUnits@) @InitialMana@%&nbsp;less, gain @StackingMana@&nbsp;%i:scaleMana%</row><br><row>(@MinUnits@) @InitialMana@%&nbsp;less, gain @StackingMana@&nbsp;%i:scaleMana%</row><br><row>(@MinUnits@) @BonusAP@&nbsp;%i:scaleAP%; @InitialMana@% less, gain @StackingMana@&nbsp;%i:scaleMana% </row>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -1993,7 +1993,7 @@
         "display_name": "Mosher",
         "trait_id": "TFT10_Fighter",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Mosher.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Mosher.png",
         "tooltip_text": "Moshers gain Attack Speed and <TFTKeyword>Omnivamp</TFTKeyword>, which increases up to @AmountIncrease*100@% based on their missing Health. <br><br><expandRow>(@MinUnits@) @FighterAS@% %i:scaleAS%, @FighterVamp@% Omnivamp </expandRow><br><br><rules>Omnivamp: Heal for percentage of damage dealt</rules>",
         "innate_trait_sets": [
             {
@@ -2084,7 +2084,7 @@
         "display_name": "Disco",
         "trait_id": "TFT10_Funk",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Funk.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Funk.png",
         "tooltip_text": "Summon a movable Disco Ball. <br><br>Combat start: Allies next to it gain Attack Speed and healing immediately and every @TickRate@ seconds.<br><br><row>(@MinUnits@) @AttackSpeed*100@% %i:scaleAS% and @Healing*100@% max %i:scaleHealth%</row><br><row>(@MinUnits@) @AttackSpeed*100@% %i:scaleAS% and @Healing*100@% max %i:scaleHealth%</row><br><row>(@MinUnits@) 2 Disco Balls, @AttackSpeed*100@% %i:scaleAS% and @Healing*100@% max %i:scaleHealth%</row><br><row>(@MinUnits@) @AttackSpeed*100@% %i:scaleAS% and @Healing*100@% max %i:scaleHealth%</row>",
         "innate_trait_sets": [
             {
@@ -2263,7 +2263,7 @@
         "display_name": "Hyperpop",
         "trait_id": "TFT10_Hyperpop",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Hyperpop.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Hyperpop.png",
         "tooltip_text": "When Hyperpop champions use an Ability, they grant Mana and @BuffDuration@ seconds of Attack Speed to their @NumOfAllies@ closest allies.<br><br><expandRow>(@MinUnits@) @Mana@ %i:scaleMana% and @AS*100@% %i:scaleAS%</expandRow>",
         "innate_trait_sets": [
             {
@@ -2359,7 +2359,7 @@
         "display_name": "ILLBEATS",
         "trait_id": "TFT10_IllBeats",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_ILLBeats.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_ILLBeats.png",
         "tooltip_text": "(unique) Gain @1Star@/@2Star@/@3Star@ placeable Spirit Tentacles, based on Illaoi's star level. Tentacles gain Illaoi's bonus Armor and Magic Resist.",
         "innate_trait_sets": [
             {
@@ -2396,7 +2396,7 @@
         "display_name": "Jazz",
         "trait_id": "TFT10_Jazz",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Jazz.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Jazz.png",
         "tooltip_text": "For each active trait (except uniques), your team gains bonus Health and deals bonus damage.<br><br><expandRow>(@MinUnits@) @BonusHealth*100@% %i:scaleHealth%, @BonusDamage*100@% Damage</expandRow><br><br>Bonus Health: @TFTUnitProperty.trait:TFT10_Trait_Jazz_TraitTracker_CurrentBonus@%<br>Bonus Damage: @TFTUnitProperty.trait:TFT10_Trait_Jazz_TraitTracker_CurrentBonus_Damage@%",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -2459,7 +2459,7 @@
         "display_name": "K/DA",
         "trait_id": "TFT10_KDA",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_KDA.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_KDA.png",
         "tooltip_text": "Your team gains max Health, Ability Power, and Attack Damage if they are in a lighted hex. K/DA champions gain double!<br><br><row>(@MinUnits@) @BonusMaxHealth*100@% max %i:scaleHealth%, @BonusAP@%&nbsp;%i:scaleAP%%i:scaleAD%</row><br><row>(@MinUnits@) @BonusMaxHealth*100@% max %i:scaleHealth%, @BonusAP@%&nbsp;%i:scaleAP%%i:scaleAD%</row><br><row>(@MinUnits@) @BonusMaxHealth*100@% max %i:scaleHealth%, @BonusAP@%&nbsp;%i:scaleAP%%i:scaleAD%</row><br><row>(@MinUnits@) @BonusMaxHealth*100@% max %i:scaleHealth%, @BonusAP@%&nbsp;%i:scaleAP%%i:scaleAD%, @ManaPerSecond@ mana per second </row>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -2580,7 +2580,7 @@
         "display_name": "Pentakill",
         "trait_id": "TFT10_Pentakill",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Pentakill.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Pentakill.png",
         "tooltip_text": "Pentakill champions reduce incoming damage by 15% and deal bonus damage. For each champion kill, a Pentakill champion rocks out and increases their damage bonus by @Kill_Bonus*100@%.<br><br>On the @Kill_Count@th kill, all Pentakill champions rock out and your team gains @Attack_Speed*100@% Attack Speed.<br><br><row>(@MinUnits@) @Bonus_Damage*100@% bonus damage</row><br><row>(@MinUnits@) @Bonus_Damage*100@% bonus damage</row><br><row>(@MinUnits@) @Bonus_Damage*100@% bonus damage</row><br><row>(@MinUnits@) 50% damage reduction and @Bonus_Damage*100@% bonus damage</row>",
         "innate_trait_sets": [
             {
@@ -2681,7 +2681,7 @@
         "display_name": "Heartsteel",
         "trait_id": "TFT10_PopBand",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Heartsteel.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Heartsteel.png",
         "tooltip_text": "Earn Hearts by killing enemies. Gain even more by losing player combat. Every @RoundCount@ player combats, convert Hearts into powerful rewards! <br><br><row>(@MinUnits@) @PercentHeartRate@x Hearts</row><br><row>(@MinUnits@) @PercentHeartRate@x Hearts</row><br><row>(@MinUnits@) @PercentHeartRate@x Hearts</row><br><row>(@MinUnits@) @PercentHeartRate@x Hearts, Gain rewards every round and keep @HeartKeepPercentage*100@% of your Hearts!</row>",
         "innate_trait_sets": [
             {
@@ -2932,7 +2932,7 @@
         "display_name": "Punk",
         "trait_id": "TFT10_PunkRock",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Punk.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Punk.png",
         "tooltip_text": "Punks gain bonus Health and Attack Damage, which increases by 1% every time you spend gold on a Shop reroll.<br><br>After Punks fight in combat, your 1st Shop reroll costs 1 gold and grants @FIRST_ROLL_BONUS@% bonus instead!<br><br><expandRow>(@MinUnits@) @BONUS_HEALTH@ %i:scaleHealth% and @BONUS_AD_AP*100@% %i:scaleAD%</expandRow><br><br>Current Bonus: @TFTUnitProperty.trait:TFT10_Punk_CurrentBonus@%<br>@TFTUnitProperty.trait:TFT10_Punk_CurrentHealthBonus@ %i:scaleHealth% and @TFTUnitProperty.trait:TFT10_Punk_CurrentADBonus@% %i:scaleAD%",
         "innate_trait_sets": [
             {
@@ -3010,7 +3010,7 @@
         "display_name": "Rapidfire",
         "trait_id": "TFT10_Quickshot",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Rapidfire.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Rapidfire.png",
         "tooltip_text": "Your team gains @TeamwideAttackSpeed*100@% Attack Speed.<br><br>Rapidfire champions gain more on every attack, up to @MaxStacks@ stacks.<br><br><expandRow>(@MinUnits@) @PercentAS*100@% %i:scaleAS%</expandRow>",
         "innate_trait_sets": [
             {
@@ -3083,7 +3083,7 @@
         "display_name": "Sentinel",
         "trait_id": "TFT10_Sentinel",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Warden.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Warden.png",
         "tooltip_text": "Your team gains Armor and Magic Resist. Sentinels gain double.<br><br><expandRow>(@MinUnits@) @BonusArmor@ %i:scaleArmor%, @BonusArmor@ %i:scaleMR%</expandRow>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -3255,7 +3255,7 @@
         "display_name": "Superfan",
         "trait_id": "TFT10_Superfan",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Superfan.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Superfan.png",
         "tooltip_text": "Superfans improve your Headliner!<br><br><row> (@MinUnits@) Headliner gets a completed item</row><br><row> (@MinUnits@) Headliner gets @HealthBonus@ %i:scaleHealth% and @OmnivampBonus*100@% <TFTKeyword>Omnivamp</TFTKeyword></row><br><row> (@MinUnits@) Item upgrades to radiant</row><br><br><rules>Omnivamp: Heal for percentage of damage dealt</rules>",
         "innate_trait_sets": [
             {
@@ -3300,7 +3300,7 @@
         "display_name": "True Damage",
         "trait_id": "TFT10_TrueDamage",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_TrueDamage.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_TrueDamage.png",
         "tooltip_text": "True Damage champions deal bonus true damage. If they are holding an item, they gain a unique Bling Bonus for their Ability.<br><br><row>(@MinUnits@) <trueDamage>@BONUS_DAMAGE*100@%</trueDamage> damage</row><br><row>(@MinUnits@) <trueDamage>@BONUS_DAMAGE*100@%</trueDamage> damage</row><br><row>(@MinUnits@) <trueDamage>@BONUS_DAMAGE*100@%</trueDamage> damage</row><br><row>(@MinUnits@) <trueDamage>@BONUS_DAMAGE*100@%</trueDamage> damage, Bling Bonuses go&nbsp;Platinum!</row>",
         "innate_trait_sets": [
             {
@@ -3405,7 +3405,7 @@
         "display_name": "Wildcard",
         "trait_id": "TFT10_TwoSides",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Wildcard.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Wildcard.png",
         "tooltip_text": "(unique) If you win player combat, Kayn becomes the Shadow Assassin. If not, he becomes Rhaast. You receive a reward based on his form every time he kills @NumOfKills@ enemy champions. <br><br><TFTBonus enabled=TFT10_WildcardShadowAssassin alternate=rules>Shadow Assassin: @AssassinGoldPerKill@g</TFTBonus><br><TFTBonus enabled=TFT10_WildcardRhaast alternate=rules>Rhaast: @RhaastPlayerHealthPerKill@ player health</TFTBonus>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -4125,7 +4125,7 @@
         "trait_id": "TFT11_Exalted",
         "set": "TFTSet11",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Exalted.TFT_Set11.png",
-        "tooltip_text": "Your team gains @BaseDamageAmp@% bonus damage, plus more based on your level <br><br>After combat, store @BaseAmountXP@ XP in a Soul Core. Sell the Core to claim the XP.<br><br><expandRow>(@MinUnits@) @DamageAmpPerLevel@% damage per level</expandRow><br><br>(<TFTBonus>Current bonus: @TFTUnitProperty.trait:TFT11_Trait_Exalted_CurrentBonus@%</TFTBonus>). <br><br><rules>Each game a different set of units is Exalted.</rules>",
+        "tooltip_text": "Your team gains @BaseDamageAmp@% bonus damage, plus more based on your level.<br><br>After combat, store @BaseAmountXP@ XP in a Soul Core. Sell the Core to claim the XP.<br><br><expandRow>(@MinUnits@) @DamageAmpPerLevel@% damage per level</expandRow><br><br>(<TFTBonus>Current bonus: @TFTUnitProperty.trait:TFT11_Trait_Exalted_CurrentBonus@%</TFTBonus>). <br><br><rules>Each game a different set of units is Exalted.</rules>",
         "innate_trait_sets": [
             {
                 "effect_amounts": [
@@ -4587,7 +4587,7 @@
         "trait_id": "TFT11_Heavenly",
         "set": "TFTSet11",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Heavenly.TFT_Set11.png",
-        "tooltip_text": "Heavenly champions grant a unique stat bonus to your team, increased by their star level and each Heavenly unit in play.<br><br><expandRow>(@MinUnits@) <TFTGuildActive>@HeavenlyBonus*100@%</TFTGuildActive>&nbsp;bonus.</expandRow><br><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveCrit alternate=TFTGuildInactive>Kha'Zix - </TFTGuildActive>&nbsp;%i:scaleCrit% <spellActive enabled=TFT11_Trait_Heavenly_ActiveCrit alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Crit@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveDefenses alternate=TFTGuildInactive>Malphite - </TFTGuildActive>&nbsp;%i:scaleArmor%&nbsp;%i:scaleMR% <spellActive enabled=TFT11_Trait_Heavenly_ActiveDefenses alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Defenses@</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveHealth alternate=TFTGuildInactive>Neeko - </TFTGuildActive>&nbsp;%i:scaleHealth% <spellActive enabled=TFT11_Trait_Heavenly_ActiveHealth alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Health@</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveAttackDamage alternate=TFTGuildInactive>Qiyana - </TFTGuildActive>&nbsp;%i:scaleAD% <spellActive enabled=TFT11_Trait_Heavenly_ActiveAttackDamage alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_AD@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveAP alternate=TFTGuildInactive>Soraka - </TFTGuildActive>&nbsp;%i:scaleAP% <spellActive enabled=TFT11_Trait_Heavenly_ActiveAP alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_AP@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveAttackSpeed alternate=TFTGuildInactive>Wukong - </TFTGuildActive>&nbsp;%i:scaleAS% <spellActive enabled=TFT11_Trait_Heavenly_ActiveAttackSpeed alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_AS@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveOmnivamp alternate=TFTGuildInactive>Emblem - &nbsp;Omnivamp </TFTGuildActive><spellActive enabled=TFT11_Trait_Heavenly_ActiveOmnivamp alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Omnivamp@%</spellActive><br><br><rules>2-stars grant 50% more.<br>3-stars grant 90%&nbsp;more.</rules>",
+        "tooltip_text": "Heavenly units grant unique stats to your team, increased by their star level and each Heavenly unit in play.<br><br><expandRow>(@MinUnits@) <TFTGuildActive>@HeavenlyBonus*100@%</TFTGuildActive>&nbsp;bonus.</expandRow><br><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveCrit alternate=TFTGuildInactive>Kha'Zix - </TFTGuildActive>&nbsp;%i:scaleCrit% <spellActive enabled=TFT11_Trait_Heavenly_ActiveCrit alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Crit@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveDefenses alternate=TFTGuildInactive>Malphite - </TFTGuildActive>&nbsp;%i:scaleArmor%&nbsp;%i:scaleMR% <spellActive enabled=TFT11_Trait_Heavenly_ActiveDefenses alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Defenses@</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveHealth alternate=TFTGuildInactive>Neeko - </TFTGuildActive>&nbsp;%i:scaleHealth% <spellActive enabled=TFT11_Trait_Heavenly_ActiveHealth alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Health@</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveAttackDamage alternate=TFTGuildInactive>Qiyana - </TFTGuildActive>&nbsp;%i:scaleAD% <spellActive enabled=TFT11_Trait_Heavenly_ActiveAttackDamage alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_AD@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveAP alternate=TFTGuildInactive>Soraka - </TFTGuildActive>&nbsp;%i:scaleAP% <spellActive enabled=TFT11_Trait_Heavenly_ActiveAP alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_AP@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveAttackSpeed alternate=TFTGuildInactive>Wukong - </TFTGuildActive>&nbsp;%i:scaleAS% <spellActive enabled=TFT11_Trait_Heavenly_ActiveAttackSpeed alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_AS@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveOmnivamp alternate=TFTGuildInactive>Emblem - &nbsp;Omnivamp </TFTGuildActive><spellActive enabled=TFT11_Trait_Heavenly_ActiveOmnivamp alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Omnivamp@%</spellActive>",
         "innate_trait_sets": [
             {
                 "effect_amounts": [
@@ -4787,7 +4787,6 @@
                     }
                 ],
                 "min_units": 7,
-                "max_units": 8,
                 "style_idx": 4,
                 "style_name": "kGold"
             }
@@ -5136,7 +5135,7 @@
         "trait_id": "TFT11_Reaper",
         "set": "TFTSet11",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Reaper.TFT_Set11.png",
-        "tooltip_text": "<row>(@MinUnits@) Reapers Abilities can critically strike and they gain @CritChance*100@% Critical Strike Chance.</row><br><row>(@MinUnits@) Additionally, Reapers' bleed enemies for @BleedDamage*100@% bonus true damage over @Duration@&nbsp;seconds.</row><br>",
+        "tooltip_text": "<row>(@MinUnits@) Reapers' Abilities can critically strike and they gain @CritChance*100@% Critical Strike Chance.</row><br><row>(@MinUnits@) Additionally, Reapers bleed enemies for @BleedDamage*100@% bonus true damage over @Duration@&nbsp;seconds.</row><br>",
         "innate_trait_sets": [
             {
                 "effect_amounts": [
@@ -5546,7 +5545,14 @@
                 "effect_amounts": []
             }
         ],
-        "conditional_trait_sets": []
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [],
+                "min_units": 1,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            }
+        ]
     },
     {
         "display_name": "Umbral",

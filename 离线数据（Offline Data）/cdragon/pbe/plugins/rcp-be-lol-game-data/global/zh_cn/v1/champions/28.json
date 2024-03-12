@@ -990,7 +990,7 @@
             "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Evelynn/Skins/Skin52/EvelynnLoadScreen_52.SKINS_Evelynn_Skin52.jpg",
             "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Evelynn/Skins/Skin52/EvelynnLoadScreen_52_LE.SKINS_Evelynn_Skin52.jpg",
             "skinType": "",
-            "rarity": "kNoRarity",
+            "rarity": "kEpic",
             "isLegacy": false,
             "splashVideoPath": null,
             "collectionSplashVideoPath": null,

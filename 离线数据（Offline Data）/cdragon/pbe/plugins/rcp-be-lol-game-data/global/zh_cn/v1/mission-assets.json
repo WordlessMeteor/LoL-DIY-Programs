@@ -35,6 +35,20 @@
         "iconNeedsFrame": false
     },
     {
+        "internalName": "HighNoon2024_TrackerIcon",
+        "internalDescription": "HighNoon2024_TrackerIcon",
+        "path": "/lol-game-data/assets/ASSETS/Missions/HighNoon24_TrackerIcon.svg",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "HighNoon24_Thumbnail",
+        "internalDescription": "HighNoon24_Thumbnail",
+        "path": "/lol-game-data/assets/ASSETS/Missions/HighNoon24_Thumbnail.png",
+        "startDate": 0,
+        "iconNeedsFrame": false
+    },
+    {
         "internalName": "ImmortalJourney23_MissionThumbnail",
         "internalDescription": "ImmortalJourney23_MissionThumbnail",
         "path": "/lol-game-data/assets/ASSETS/Missions/ImmortalJourney23_MissionThumbnail.png",
@@ -499,7 +513,7 @@
     {
         "internalName": "egg_ll_a1",
         "internalDescription": "",
-        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactician_dj_gloop.TFT_Set10.png",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactician_dj_gloop.png",
         "startDate": 0,
         "iconNeedsFrame": false
     },
@@ -611,21 +625,21 @@
     {
         "internalName": "tactician_pentakill_10a",
         "internalDescription": "",
-        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactician_pentakill_ao_shin.TFT_Set10.png",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactician_pentakill_ao_shin.png",
         "startDate": 0,
         "iconNeedsFrame": false
     },
     {
         "internalName": "tactitian_choncc_10a",
         "internalDescription": "",
-        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactician_emo_choncc.TFT_Set10.png",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactician_emo_choncc.png",
         "startDate": 0,
         "iconNeedsFrame": false
     },
     {
         "internalName": "tactitian_sprite_10a",
         "internalDescription": "",
-        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactician_superfan_sprite.TFT_Set10.png",
+        "path": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactician_superfan_sprite.png",
         "startDate": 0,
         "iconNeedsFrame": false
     },

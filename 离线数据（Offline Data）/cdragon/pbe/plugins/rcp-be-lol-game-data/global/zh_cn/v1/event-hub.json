@@ -8,18 +8,18 @@
             "navbarIconImage": "/lol-game-data/assets/ASSETS/Missions/HighNoon24_TrackerIcon.svg",
             "headerIconImage": "/lol-game-data/assets/ASSETS/Missions/HighNoon24_TrackerIcon.svg",
             "startDate": "2024-03-20T18:00:00Z",
-            "progressEndDate": "2024-04-23T06:59:00Z",
+            "progressEndDate": "2024-04-29T06:59:00Z",
             "endDate": "2024-04-29T18:00:00Z",
             "localizedUpsellTitle": "代币贮藏",
             "localizedUpsellTooltipTitle": "你的代币贮藏",
             "localizedUpsellTooltipDescription": "通过购买西部魔影(2024)通行证来领取你已赚取的西部魔影(2024)币！要记得在过期前去商城和活动商城中使用噢！",
             "localizedUpsellButtonText": "获得试炼通行证",
             "upsellBackgroundImageUrl": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_EPE_TokenStash_Background.png",
-            "upsellTooltipBackgroundImageUrl": "/lol-game-data/assets/ASSETS/Loot/LunarRevel2024_Heavenscale_Token_TooltipBG.png",
+            "upsellTooltipBackgroundImageUrl": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_Token_TooltipBG.png",
             "rewardTrack": {
                 "trackConfig": {
                     "id": "0481ee26-df15-410f-b752-6f67cf7c07e8",
-                    "premiumEntitlementId": "00000000-0000-0000-0000-000000000000"
+                    "premiumEntitlementId": "4aab6b91-423a-4a6d-a18a-a188950b5ca8"
                 }
             },
             "tokenShop": {
@@ -27,6 +27,28 @@
                 "tokenName": "lol_highnoon24_token",
                 "tokenUuid": "858d70e3-6625-5f7b-b88c-e7f122046aaa",
                 "offers": [
+                    {
+                        "id": "e4e4fbba-29de-4be7-855f-ed6584a6424c",
+                        "localizedTitle": "至臻 西部魔影 伊芙琳",
+                        "localizedDescription": "包含 边框+图标！",
+                        "image": "/lol-game-data/assets/ASSETS/Loot/HighNoon2024_EPE_Prestige_HN_Evelynn.png",
+                        "promotionType": "kFeaturedHighlighted",
+                        "offerCategory": "Skins",
+                        "items": [
+                            {
+                                "itemId": "28053",
+                                "inventoryType": "CHAMPION_SKIN",
+                                "price": 1800,
+                                "quantity": 1
+                            },
+                            {
+                                "itemId": "6575",
+                                "inventoryType": "SUMMONER_ICON",
+                                "price": 200,
+                                "quantity": 1
+                            }
+                        ]
+                    },
                     {
                         "id": "d55413b1-7b7b-4c3f-9190-152a432ec0f8",
                         "localizedTitle": "西部魔影 永恩 边框",

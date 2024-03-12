@@ -1076,7 +1076,7 @@
         "display_name": "8比特",
         "trait_id": "TFT10_8Bit",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_8Bit.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_8Bit.png",
         "tooltip_text": "将你队伍的已造成伤害记录成分数。你每突破一个高分，【8比特】弈子们就会获得攻击力。<br><br><row>(@MinUnits@) @AttackDamage@% %i:scaleAD%</row><br><row>(@MinUnits@) @AttackDamage@% %i:scaleAD%</row><br><row>(@MinUnits@) @AttackDamage@% %i:scaleAD%并解锁一个终极高分，可奖励你一份大奖。</row><br><br>加成：@TFTUnitProperty.trait:TFT10_Trait_8bit_CurrentBonus@% %i:scaleAD% (@TFTUnitProperty.trait:TFT10_Trait_8bit_StackCount@/@NumHighScores@)",
         "innate_trait_sets": [
             {
@@ -1307,7 +1307,7 @@
         "display_name": "双修出道",
         "trait_id": "TFT10_Breakout",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Breakout.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Breakout.png",
         "tooltip_text": "(唯一) 【阿卡丽】可以是【K/DA】或【真实伤害】的一名成员，取决于哪个羁绊登场了更多弈子。她会基于所处的乐队获得一个相应的技能。 ",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -1323,7 +1323,7 @@
         "display_name": "戏命师",
         "trait_id": "TFT10_Classical",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Classical.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Classical.png",
         "tooltip_text": "(唯一) 【戏命师】总会以一个固定的频率进行攻击，并且会将@BonusAttackSpeed@%额外攻击速度转化为@BonusAttackDamage@%攻击力。",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -1365,7 +1365,7 @@
         "display_name": "乡村音乐",
         "trait_id": "TFT10_Country",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Country.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Country.png",
         "tooltip_text": "当你的队伍损失@HealthRatio*100@%总生命值时，召唤一匹【恐惧战马】前来强化你的队伍。【乡村音乐】弈子的每个星级都会提升【恐惧战马】的生命值和攻击力。<br><br><row>(@MinUnits@) 恐惧战马</row><br><row>(@MinUnits@) 午夜恐惧战马</row><br><row>(@MinUnits@) 炼狱祈灵恐惧战马</row>",
         "innate_trait_sets": [
             {
@@ -1443,7 +1443,7 @@
         "display_name": "音浪刺客",
         "trait_id": "TFT10_CrowdDive",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_CrowdDiver.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_CrowdDiver.png",
         "tooltip_text": "【音浪刺客】在阵亡后会跳到相距最远的敌人身上，对其造成<magicDamage>@JumpDamage@</magicDamage>魔法伤害。@StunRange@格内的敌人们会被晕眩@StunDuration@秒。<br><br>【音浪刺客】们还会造成额外伤害，每秒提升@BonusPerSecond*100@%。<br><br><expandRow>(@MinUnits@) @BaseBonus*100@%额外伤害</expandRow>",
         "innate_trait_sets": [
             {
@@ -1516,7 +1516,7 @@
         "display_name": "DJ娑娜",
         "trait_id": "TFT10_DJ",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_DJ.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_DJ.png",
         "tooltip_text": "(唯一) 选择一个模式来修改【DJ娑娜】的攻击和技能。",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -1610,7 +1610,7 @@
         "display_name": "大腕射手",
         "trait_id": "TFT10_Deadeye",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_BigShot.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_BigShot.png",
         "tooltip_text": "【大腕射手】们获得攻击力。这个加成会在【大腕射手】们每次施放技能时获得持续@Duration@秒的提升。<br><br><expandRow>(@MinUnits@) @PercentAD*100@% %i:scaleAD%，施法后@PercentADEmpowered*100@%</expandRow>",
         "innate_trait_sets": [
             {
@@ -1683,7 +1683,7 @@
         "display_name": "电子舞曲",
         "trait_id": "TFT10_EDM",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_EDM.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_EDM.png",
         "tooltip_text": "使用【电子舞曲选择器】来选出一个【电子舞曲】弈子和查看每个弈子的频率。<br><br>你的【电子舞曲】弈子们会以获选弈子的频率和修正过的效能来施放获选弈子的技能。<br><br><row>(@MinUnits@) @EDMstats*100@%效能</row><br><row>(@MinUnits@) @EDMstats*100@%效能</row><br><row>(@MinUnits@) @EDMstats*100@%效能，频率-@EDMtimereduction@秒</row><br><row>(@MinUnits@) @EDMstats*100@%效能，频率-@EDMtimereduction@秒</row>",
         "innate_trait_sets": [
             {
@@ -1799,7 +1799,7 @@
         "display_name": "刀锋领主",
         "trait_id": "TFT10_Edgelord",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Edgelord.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Edgelord.png",
         "tooltip_text": "【刀锋领主】们获得攻击速度，这个攻速加成会在其目标跌下@HealthRatio*100@%生命值时翻倍。攻击距离为1格的【刀锋领主】的下次攻击还会冲刺并穿过其目标。<br><br><expandRow>(@MinUnits@) @AttackSpeed*100@% %i:scaleAS%</expandRow><br>",
         "innate_trait_sets": [
             {
@@ -1862,7 +1862,7 @@
         "display_name": "EMO",
         "trait_id": "TFT10_Emo",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_BigSad.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_BigSad.png",
         "tooltip_text": "【EMO】弈子们的技能的法力消耗更低，并且他们会在一名己方弈子阵亡时获得法力值。<br><br><row>(@MinUnits@) 降低@InitialMana@%法力消耗，获得@StackingMana@ %i:scaleMana%</row><br><row>(@MinUnits@) 降低@InitialMana@%法力消耗，获得@StackingMana@ %i:scaleMana%</row><br><row>(@MinUnits@) @BonusAP@ %i:scaleAP%；降低@InitialMana@%法力消耗，获得@StackingMana@ %i:scaleMana% </row>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -1993,7 +1993,7 @@
         "display_name": "舞者",
         "trait_id": "TFT10_Fighter",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Mosher.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Mosher.png",
         "tooltip_text": "【舞者】们获得攻击速度和<TFTKeyword>全能吸血</TFTKeyword>，这些加成基于已损失生命值至多提升@AmountIncrease*100@%。<br><br><expandRow>(@MinUnits@) @FighterAS@% %i:scaleAS%，@FighterVamp@%全能吸血</expandRow><br><br><rules>全能吸血：获得相当于一部分已造成伤害值的治疗效果</rules>",
         "innate_trait_sets": [
             {
@@ -2084,7 +2084,7 @@
         "display_name": "迪斯科",
         "trait_id": "TFT10_Funk",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Funk.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Funk.png",
         "tooltip_text": "召唤一个可移动的【迪斯科灯球】。<br><br>战斗开始时：紧挨着灯球的弈子们每@TickRate@秒获得攻击速度和即时治疗效果。<br><br><row>(@MinUnits@) @AttackSpeed*100@% %i:scaleAS%和@Healing*100@%最大%i:scaleHealth%</row><br><row>(@MinUnits@) @AttackSpeed*100@% %i:scaleAS%和@Healing*100@%最大%i:scaleHealth%</row><br><row>(@MinUnits@) 2个【迪斯科灯球】，@AttackSpeed*100@% %i:scaleAS%和@Healing*100@%最大%i:scaleHealth%</row><br><row>(@MinUnits@) @AttackSpeed*100@% %i:scaleAS%和@Healing*100@%最大%i:scaleHealth%</row>",
         "innate_trait_sets": [
             {
@@ -2263,7 +2263,7 @@
         "display_name": "高能流行",
         "trait_id": "TFT10_Hyperpop",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Hyperpop.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Hyperpop.png",
         "tooltip_text": "在【高能流行】弈子们施放技能时，会为其相距最近的@NumOfAllies@个友军提供法力值和持续@BuffDuration@秒的攻击速度。<br><br><expandRow>(@MinUnits@) @Mana@ %i:scaleMana%和@AS*100@% %i:scaleAS%</expandRow>",
         "innate_trait_sets": [
             {
@@ -2359,7 +2359,7 @@
         "display_name": "大触打击乐",
         "trait_id": "TFT10_IllBeats",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_ILLBeats.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_ILLBeats.png",
         "tooltip_text": "(唯一) 获得@1Star@/@2Star@/@3Star@可放置的灵体触手，取决于俄洛伊的星级。触手们拥有俄洛伊的额外护甲和魔抗。",
         "innate_trait_sets": [
             {
@@ -2396,7 +2396,7 @@
         "display_name": "爵士乐",
         "trait_id": "TFT10_Jazz",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Jazz.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Jazz.png",
         "tooltip_text": "每拥有一个处于激活状态的羁绊(唯一羁绊除外)，你的队伍就会获得额外生命值并造成额外伤害。<br><br><expandRow>(@MinUnits@) @BonusHealth*100@% %i:scaleHealth%, @BonusDamage*100@%伤害</expandRow><br><br>额外生命值：@TFTUnitProperty.trait:TFT10_Trait_Jazz_TraitTracker_CurrentBonus@%<br>额外伤害：@TFTUnitProperty.trait:TFT10_Trait_Jazz_TraitTracker_CurrentBonus_Damage@%",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -2459,7 +2459,7 @@
         "display_name": "K/DA",
         "trait_id": "TFT10_KDA",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_KDA.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_KDA.png",
         "tooltip_text": "己方处于灯光格内的弈子们都会获得最大生命值、法术强度和攻击力。【K/DA】弈子们则双倍此加成！<br><br><row>(@MinUnits@) @BonusMaxHealth*100@%最大%i:scaleHealth%，@BonusAP@%%i:scaleAP%%i:scaleAD%</row><br><row>(@MinUnits@) @BonusMaxHealth*100@%最大%i:scaleHealth%，@BonusAP@%%i:scaleAP%%i:scaleAD%</row><br><row>(@MinUnits@) @BonusMaxHealth*100@%最大%i:scaleHealth%，@BonusAP@%%i:scaleAP%%i:scaleAD%</row><br><row>(@MinUnits@) @BonusMaxHealth*100@%最大%i:scaleHealth%，@BonusAP@%%i:scaleAP%%i:scaleAD%，每秒@ManaPerSecond@法力值</row>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -2580,7 +2580,7 @@
         "display_name": "五杀摇滚",
         "trait_id": "TFT10_Pentakill",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Pentakill.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Pentakill.png",
         "tooltip_text": "【五杀摇滚】弈子们获得15%伤害减免并造成额外伤害。每击杀一个弈子，一个最强大的【五杀摇滚】弈子就会摇滚起来，使其伤害加成提升@Kill_Bonus*100@%。<br><br>第@Kill_Count@次击杀会使所有【五杀摇滚】弈子摇滚起来并且你的队伍会获得@Attack_Speed*100@%攻击速度。<br><br><row>(@MinUnits@) @Bonus_Damage*100@%额外伤害</row><br><row>(@MinUnits@) @Bonus_Damage*100@%额外伤害</row><br><row>(@MinUnits@) @Bonus_Damage*100@%额外伤害</row><br><row>(@MinUnits@) 50%伤害减免和@Bonus_Damage*100@%额外伤害</row>",
         "innate_trait_sets": [
             {
@@ -2681,7 +2681,7 @@
         "display_name": "心之钢",
         "trait_id": "TFT10_PopBand",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Heartsteel.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Heartsteel.png",
         "tooltip_text": "通过击杀敌人来获得心能。输掉玩家战斗回合会获得更多心能。每经过@RoundCount@场玩家战斗回合，就会将心能转化为强力奖励！<br><br><row>(@MinUnits@) @PercentHeartRate@x心能</row><br><row>(@MinUnits@) @PercentHeartRate@x心能</row><br><row>(@MinUnits@) @PercentHeartRate@x心能</row><br><row>(@MinUnits@) @PercentHeartRate@x心能，每回合获得奖励并保留你的@HeartKeepPercentage*100@%心能！</row>",
         "innate_trait_sets": [
             {
@@ -2932,7 +2932,7 @@
         "display_name": "朋克",
         "trait_id": "TFT10_PunkRock",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Punk.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Punk.png",
         "tooltip_text": "【朋克】们获得额外生命值和攻击力。在你每次将金币花在刷新商店时，这个加成都会提升1%。<br><br>在【朋克】们参与战斗之后，你的第一次商店刷新花费1金币并转而提供@FIRST_ROLL_BONUS@%加成！<br><br><expandRow>(@MinUnits@) @BONUS_HEALTH@ %i:scaleHealth%和@BONUS_AD_AP*100@% %i:scaleAD%</expandRow><br><br>当前加成：@TFTUnitProperty.trait:TFT10_Punk_CurrentBonus@%<br>@TFTUnitProperty.trait:TFT10_Punk_CurrentHealthBonus@ %i:scaleHealth%和@TFTUnitProperty.trait:TFT10_Punk_CurrentADBonus@% %i:scaleAD%",
         "innate_trait_sets": [
             {
@@ -3010,7 +3010,7 @@
         "display_name": "疾射枪手",
         "trait_id": "TFT10_Quickshot",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Rapidfire.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Rapidfire.png",
         "tooltip_text": "你的弈子们获得@TeamwideAttackSpeed*100@%攻击速度。<br><br>【疾射枪手】们在每次攻击时获得更多攻击速度，至多至@MaxStacks@层。<br><br><expandRow>(@MinUnits@) @PercentAS*100@% %i:scaleAS%</expandRow>",
         "innate_trait_sets": [
             {
@@ -3083,7 +3083,7 @@
         "display_name": "秘术护卫",
         "trait_id": "TFT10_Sentinel",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Warden.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Warden.png",
         "tooltip_text": "你的队伍获得护甲与魔抗。【秘术护卫】们获得双倍此加成。<br><br><expandRow>(@MinUnits@) @BonusArmor@ %i:scaleArmor%，@BonusArmor@ %i:scaleMR%</expandRow>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -3255,7 +3255,7 @@
         "display_name": "超级粉丝",
         "trait_id": "TFT10_Superfan",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Superfan.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Superfan.png",
         "tooltip_text": "【超级粉丝】们会增强你的【赛季之星】！<br><br><row> (@MinUnits@) 【赛季之星】获得一件成装</row><br><row> (@MinUnits@) 【赛季之星】获得@HealthBonus@ %i:scaleHealth%和@OmnivampBonus*100@%<TFTKeyword>全能吸血</TFTKeyword></row><br><row> (@MinUnits@) 提供的这件装备升级至光明武器</row><br><br><rules>全能吸血：获得相当于一部分实际伤害值的治疗效果</rules>",
         "innate_trait_sets": [
             {
@@ -3300,7 +3300,7 @@
         "display_name": "真实伤害",
         "trait_id": "TFT10_TrueDamage",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_TrueDamage.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_TrueDamage.png",
         "tooltip_text": "【真实伤害】弈子们造成额外真实伤害。如果【真实伤害】弈子携带了一件装备，那么会使其技能获得一个独特的【闪亮加成】。<br><br><row>(@MinUnits@) <trueDamage>@BONUS_DAMAGE*100@%</trueDamage>伤害</row><br><row>(@MinUnits@) <trueDamage>@BONUS_DAMAGE*100@%</trueDamage>伤害</row><br><row>(@MinUnits@) <trueDamage>@BONUS_DAMAGE*100@%</trueDamage>伤害</row><br><row>(@MinUnits@) <trueDamage>@BONUS_DAMAGE*100@%</trueDamage>伤害，闪亮加成变为白金级！</row>",
         "innate_trait_sets": [
             {
@@ -3405,7 +3405,7 @@
         "display_name": "影流之镰",
         "trait_id": "TFT10_TwoSides",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Wildcard.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Wildcard.png",
         "tooltip_text": "(唯一) 如果你赢下了玩家战斗回合，那么【凯隐】就会变成【影流刺客】。如果没有，则他会变成【拉亚斯特】。每当他击杀@NumOfKills@个敌方弈子时，你就会获得一次基于他形态的奖励。<TFTBonus enabled=TFT10_WildcardShadowAssassin alternate=rules>影流刺客：@AssassinGoldPerKill@金币</TFTBonus><br><TFTBonus enabled=TFT10_WildcardRhaast alternate=rules>拉亚斯特：@RhaastPlayerHealthPerKill@玩家生命值</TFTBonus>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -4125,7 +4125,7 @@
         "trait_id": "TFT11_Exalted",
         "set": "TFTSet11",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Exalted.TFT_Set11.png",
-        "tooltip_text": "己方队伍获得@BaseDamageAmp@%额外伤害，伤害加成随你的等级提升<br><br>战斗环节结束后，将@BaseAmountXP@经验值储存在一个【灵魂核心】中。售出核心即可领取这些经验值。<br><br><expandRow>(@MinUnits@) 每级@DamageAmpPerLevel@%伤害</expandRow><br><br>(<TFTBonus>当前加成：@TFTUnitProperty.trait:TFT11_Trait_Exalted_CurrentBonus@%</TFTBonus>)。<br><br><rules>每场对局都有一组不同的弈子变成【尊者】。</rules>",
+        "tooltip_text": "己方队伍获得@BaseDamageAmp@%额外伤害，伤害加成随你的等级提升。<br><br>战斗环节结束后，将@BaseAmountXP@经验值储存在一个【灵魂核心】中。售出核心即可领取这些经验值。<br><br><expandRow>(@MinUnits@) 每级@DamageAmpPerLevel@%伤害</expandRow><br><br>(<TFTBonus>当前加成：@TFTUnitProperty.trait:TFT11_Trait_Exalted_CurrentBonus@%</TFTBonus>)。<br><br><rules>每场对局都有一组不同的弈子变成【尊者】。</rules>",
         "innate_trait_sets": [
             {
                 "effect_amounts": [
@@ -4587,7 +4587,7 @@
         "trait_id": "TFT11_Heavenly",
         "set": "TFTSet11",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Heavenly.TFT_Set11.png",
-        "tooltip_text": "【天将】弈子们会为你的队伍提供一个独特的属性加成，该加成会随着其星级和已登场的【天将】弈子数量而提升。<br><br><expandRow>(@MinUnits@)<TFTGuildActive> @HeavenlyBonus*100@%</TFTGuildActive>加成。</expandRow><br><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveCrit alternate=TFTGuildInactive>卡兹克 - </TFTGuildActive>%i:scaleCrit% <spellActive enabled=TFT11_Trait_Heavenly_ActiveCrit alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Crit@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveDefenses alternate=TFTGuildInactive>墨菲特 - </TFTGuildActive>%i:scaleArmor%%i:scaleMR% <spellActive enabled=TFT11_Trait_Heavenly_ActiveDefenses alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Defenses@</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveHealth alternate=TFTGuildInactive>妮蔻 - </TFTGuildActive>%i:scaleHealth% <spellActive enabled=TFT11_Trait_Heavenly_ActiveHealth alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Health@</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveAttackDamage alternate=TFTGuildInactive>奇亚娜 - </TFTGuildActive>%i:scaleAD% <spellActive enabled=TFT11_Trait_Heavenly_ActiveAttackDamage alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_AD@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveAP alternate=TFTGuildInactive>索拉卡 - </TFTGuildActive>%i:scaleAP% <spellActive enabled=TFT11_Trait_Heavenly_ActiveAP alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_AP@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveAttackSpeed alternate=TFTGuildInactive>孙悟空 - </TFTGuildActive>%i:scaleAS% <spellActive enabled=TFT11_Trait_Heavenly_ActiveAttackSpeed alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_AS@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveOmnivamp alternate=TFTGuildInactive>纹章 - 全能吸血</TFTGuildActive>%i:scaleSV% <spellActive enabled=TFT11_Trait_Heavenly_ActiveOmnivamp alternate=TFTGuildInactive>%</spellActive><br><br><rules>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Omnivamp@2星额外提供50%。<br>3星额外提供90%。</rules>",
+        "tooltip_text": "【天将】弈子们会为你的队伍提供一个独特的属性，该加成会随着其星级和已登场的【天将】弈子数量而提升。<br><br><expandRow>(@MinUnits@)<TFTGuildActive> @HeavenlyBonus*100@%</TFTGuildActive>加成。</expandRow><br><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveCrit alternate=TFTGuildInactive>卡兹克 - </TFTGuildActive>%i:scaleCrit% <spellActive enabled=TFT11_Trait_Heavenly_ActiveCrit alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Crit@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveDefenses alternate=TFTGuildInactive>墨菲特 - </TFTGuildActive>%i:scaleArmor%%i:scaleMR% <spellActive enabled=TFT11_Trait_Heavenly_ActiveDefenses alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Defenses@</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveHealth alternate=TFTGuildInactive>妮蔻 - </TFTGuildActive>%i:scaleHealth% <spellActive enabled=TFT11_Trait_Heavenly_ActiveHealth alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Health@</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveAttackDamage alternate=TFTGuildInactive>奇亚娜 - </TFTGuildActive>%i:scaleAD% <spellActive enabled=TFT11_Trait_Heavenly_ActiveAttackDamage alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_AD@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveAP alternate=TFTGuildInactive>索拉卡 - </TFTGuildActive>%i:scaleAP% <spellActive enabled=TFT11_Trait_Heavenly_ActiveAP alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_AP@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveAttackSpeed alternate=TFTGuildInactive>孙悟空 - </TFTGuildActive>%i:scaleAS% <spellActive enabled=TFT11_Trait_Heavenly_ActiveAttackSpeed alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_AS@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveOmnivamp alternate=TFTGuildInactive>纹章 - 全能吸血</TFTGuildActive><spellActive enabled=TFT11_Trait_Heavenly_ActiveOmnivamp alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Omnivamp@%</spellActive>",
         "innate_trait_sets": [
             {
                 "effect_amounts": [
@@ -4787,7 +4787,6 @@
                     }
                 ],
                 "min_units": 7,
-                "max_units": 8,
                 "style_idx": 4,
                 "style_name": "kGold"
             }
@@ -5546,7 +5545,14 @@
                 "effect_amounts": []
             }
         ],
-        "conditional_trait_sets": []
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [],
+                "min_units": 1,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            }
+        ]
     },
     {
         "display_name": "夜幽",
