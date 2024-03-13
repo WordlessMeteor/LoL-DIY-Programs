@@ -11265,7 +11265,7 @@
     {
         "id": 223158,
         "name": "明朗之靴",
-        "description": "<mainText><stats><buffedStat>40</buffedStat>技能急速<br><attention>45</attention>移动速度</stats><br><br><br><li>提供12召唤师技能急速。<br><br><flavorText>“这个物品是为了庆祝在2010年12月10日艾欧尼亚和诺克萨斯在争夺南方诸行省的重赛中，艾欧尼亚取得胜利。”</flavorText></mainText>",
+        "description": "<mainText><stats><buffedStat>40</buffedStat>技能急速<br><attention>45</attention>移动速度</stats><br><br><br><li>提供12召唤师技能急速。<br><br><flavorText>“这个物品是为了庆祝在联盟历20年12月10日艾欧尼亚和诺克萨斯在争夺南方诸行省的重赛中，艾欧尼亚取得胜利。”</flavorText></mainText>",
         "active": false,
         "inStore": true,
         "from": [],

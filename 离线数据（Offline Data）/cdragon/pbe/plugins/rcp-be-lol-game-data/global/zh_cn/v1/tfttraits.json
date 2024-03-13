@@ -3468,7 +3468,7 @@
                 "effect_amounts": [
                     {
                         "name": "Resists",
-                        "value": 25.0000,
+                        "value": 35.0000,
                         "format_string": ""
                     }
                 ],
@@ -3481,7 +3481,7 @@
                 "effect_amounts": [
                     {
                         "name": "Resists",
-                        "value": 40.0000,
+                        "value": 60.0000,
                         "format_string": ""
                     }
                 ],
@@ -3521,7 +3521,7 @@
                 "effect_amounts": [
                     {
                         "name": "ArcanistAbilityPower",
-                        "value": 40.0000,
+                        "value": 45.0000,
                         "format_string": ""
                     },
                     {
@@ -3557,12 +3557,12 @@
                 "effect_amounts": [
                     {
                         "name": "ArcanistAbilityPower",
-                        "value": 120.0000,
+                        "value": 125.0000,
                         "format_string": ""
                     },
                     {
                         "name": "TeamAbilityPower",
-                        "value": 100.0000,
+                        "value": 125.0000,
                         "format_string": ""
                     }
                 ],
@@ -3603,7 +3603,7 @@
         "trait_id": "TFT11_Behemoth",
         "set": "TFTSet11",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Behemoth.TFT_Set11.png",
-        "tooltip_text": "【擎天卫】获得护甲与魔抗。每当【擎天卫】阵亡时，相距最近的【擎天卫】获得额外的@BonusPercent*100@%此加成，持续@Duration@秒。<br><br><expandRow>(@MinUnits@) @Defenses@%i:scaleArmor%%i:scaleMR%</expandRow><br>",
+        "tooltip_text": "【擎天卫】获得护甲与魔抗提升。每当【擎天卫】阵亡时，相距最近的【擎天卫】获得额外的@BonusPercent*100@%此加成，持续@Duration@秒。<br><br><expandRow>(@MinUnits@) @Defenses@%i:scaleArmor%%i:scaleMR%</expandRow><br>",
         "innate_trait_sets": [
             {
                 "effect_amounts": [
@@ -3643,7 +3643,7 @@
                 "effect_amounts": [
                     {
                         "name": "Defenses",
-                        "value": 45.0000,
+                        "value": 55.0000,
                         "format_string": ""
                     }
                 ],
@@ -3656,7 +3656,7 @@
                 "effect_amounts": [
                     {
                         "name": "Defenses",
-                        "value": 75.0000,
+                        "value": 80.0000,
                         "format_string": ""
                     }
                 ],
@@ -3784,7 +3784,7 @@
                     },
                     {
                         "name": "AttackSpeedBuff",
-                        "value": 0.2000,
+                        "value": 0.1200,
                         "format_string": ""
                     },
                     {
@@ -3822,7 +3822,7 @@
                     },
                     {
                         "name": "AttackSpeedBuff",
-                        "value": 0.3000,
+                        "value": 0.2500,
                         "format_string": ""
                     },
                     {
@@ -3860,7 +3860,7 @@
                     },
                     {
                         "name": "AttackSpeedBuff",
-                        "value": 0.3000,
+                        "value": 0.2500,
                         "format_string": ""
                     },
                     {
@@ -3898,7 +3898,7 @@
                     },
                     {
                         "name": "AttackSpeedBuff",
-                        "value": 0.4000,
+                        "value": 0.4500,
                         "format_string": ""
                     },
                     {
@@ -3934,12 +3934,12 @@
                     },
                     {
                         "name": "StartingHealth",
-                        "value": 200.0000,
+                        "value": 250.0000,
                         "format_string": ""
                     },
                     {
                         "name": "StartingHealthHR",
-                        "value": 200.0000,
+                        "value": 250.0000,
                         "format_string": ""
                     }
                 ]
@@ -3958,7 +3958,7 @@
                     },
                     {
                         "name": "AP",
-                        "value": 10.0000,
+                        "value": 15.0000,
                         "format_string": ""
                     },
                     {
@@ -3976,7 +3976,7 @@
                 "effect_amounts": [
                     {
                         "name": "HealthPerCompost",
-                        "value": 5.0000,
+                        "value": 6.0000,
                         "format_string": ""
                     },
                     {
@@ -3986,7 +3986,7 @@
                     },
                     {
                         "name": "HealthPerCompostHR",
-                        "value": 10.0000,
+                        "value": 12.0000,
                         "format_string": ""
                     }
                 ],
@@ -3999,17 +3999,17 @@
                 "effect_amounts": [
                     {
                         "name": "HealthPerCompost",
-                        "value": 9.0000,
+                        "value": 10.0000,
                         "format_string": ""
                     },
                     {
                         "name": "AP",
-                        "value": 60.0000,
+                        "value": 65.0000,
                         "format_string": ""
                     },
                     {
                         "name": "HealthPerCompostHR",
-                        "value": 18.0000,
+                        "value": 20.0000,
                         "format_string": ""
                     }
                 ],
@@ -4077,7 +4077,7 @@
                 "effect_amounts": [
                     {
                         "name": "AttackSpeedPercent",
-                        "value": 0.1400,
+                        "value": 0.1300,
                         "format_string": ""
                     },
                     {
@@ -4087,7 +4087,7 @@
                     },
                     {
                         "name": "DamageReduction",
-                        "value": 0.1500,
+                        "value": 0.1200,
                         "format_string": ""
                     }
                 ],
@@ -4100,7 +4100,7 @@
                 "effect_amounts": [
                     {
                         "name": "AttackSpeedPercent",
-                        "value": 0.2200,
+                        "value": 0.1800,
                         "format_string": ""
                     },
                     {
@@ -4110,7 +4110,7 @@
                     },
                     {
                         "name": "DamageReduction",
-                        "value": 0.2400,
+                        "value": 0.1800,
                         "format_string": ""
                     }
                 ],
@@ -4141,7 +4141,7 @@
                     },
                     {
                         "name": "BaseDamageAmp",
-                        "value": 2.0000,
+                        "value": 4.0000,
                         "format_string": ""
                     }
                 ]
@@ -4240,7 +4240,7 @@
                     },
                     {
                         "name": "BondIncreasePercent",
-                        "value": 1.7500,
+                        "value": 2.0000,
                         "format_string": ""
                     },
                     {
@@ -4263,7 +4263,7 @@
                     },
                     {
                         "name": "BondIncreasePercent",
-                        "value": 2.7500,
+                        "value": 3.0000,
                         "format_string": ""
                     },
                     {
@@ -4358,7 +4358,7 @@
                     },
                     {
                         "name": "WinPenalty",
-                        "value": 0.2000,
+                        "value": 0.0500,
                         "format_string": ""
                     },
                     {
@@ -4479,7 +4479,7 @@
         "trait_id": "TFT11_Ghostly",
         "set": "TFTSet11",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Ghostly.TFT_Set11.png",
-        "tooltip_text": "在造成或承受@NumInstances@次伤害时，【幽魂】们会派出@NumSpectres@个幽鬼缠住附近的敌人们，且每@TickRate@秒为自身治疗@HealingPercent*100@%最大生命值。<br><br>被缠住的敌人会基于幽鬼数量受到额外伤害，并在阵亡时将幽鬼传递给其他单位。<br><br><expandRow>(@MinUnits@) 每个幽魂@DamagePercent*100@%</expandRow>",
+        "tooltip_text": "在造成或承受@NumInstances@次伤害时，【幽魂】们会派出@NumSpectres@个亡灵缠住附近的敌人们，且每@TickRate@秒为自身治疗@HealingPercent*100@%最大生命值。<br><br>被缠住的敌人会基于亡灵数量受到额外伤害，并在阵亡时将亡灵传递给其他单位。<br><br><expandRow>(@MinUnits@) 每个幽魂@DamagePercent*100@%</expandRow>",
         "innate_trait_sets": [
             {
                 "effect_amounts": [
@@ -4628,12 +4628,12 @@
                     },
                     {
                         "name": "TwoStarMultiplier",
-                        "value": 1.5000,
+                        "value": 1.3000,
                         "format_string": ""
                     },
                     {
                         "name": "ThreeStarMultiplier",
-                        "value": 1.9000,
+                        "value": 1.5000,
                         "format_string": ""
                     }
                 ]
@@ -4696,7 +4696,7 @@
                 "effect_amounts": [
                     {
                         "name": "HeavenlyBonus",
-                        "value": 1.9500,
+                        "value": 2.0000,
                         "format_string": ""
                     }
                 ],
@@ -4709,7 +4709,7 @@
                 "effect_amounts": [
                     {
                         "name": "HeavenlyBonus",
-                        "value": 2.2500,
+                        "value": 2.4000,
                         "format_string": ""
                     }
                 ],
@@ -4870,7 +4870,7 @@
                     },
                     {
                         "name": "InvokerMana",
-                        "value": 45.0000,
+                        "value": 35.0000,
                         "format_string": ""
                     },
                     {
@@ -4981,12 +4981,12 @@
                 "effect_amounts": [
                     {
                         "name": "AP",
-                        "value": 20.0000,
+                        "value": 22.0000,
                         "format_string": ""
                     },
                     {
                         "name": "HealthPct",
-                        "value": 0.1600,
+                        "value": 0.2000,
                         "format_string": ""
                     },
                     {
@@ -5004,12 +5004,12 @@
                 "effect_amounts": [
                     {
                         "name": "AP",
-                        "value": 32.0000,
+                        "value": 35.0000,
                         "format_string": ""
                     },
                     {
                         "name": "HealthPct",
-                        "value": 0.2400,
+                        "value": 0.3000,
                         "format_string": ""
                     },
                     {
@@ -5027,12 +5027,12 @@
                 "effect_amounts": [
                     {
                         "name": "AP",
-                        "value": 32.0000,
+                        "value": 35.0000,
                         "format_string": ""
                     },
                     {
                         "name": "HealthPct",
-                        "value": 0.2400,
+                        "value": 0.3000,
                         "format_string": ""
                     },
                     {
@@ -5087,7 +5087,7 @@
                 "effect_amounts": [
                     {
                         "name": "DR",
-                        "value": 0.3000,
+                        "value": 0.3500,
                         "format_string": ""
                     },
                     {
@@ -5110,12 +5110,12 @@
                 "effect_amounts": [
                     {
                         "name": "DR",
-                        "value": 0.5000,
+                        "value": 0.6000,
                         "format_string": ""
                     },
                     {
                         "name": "AS",
-                        "value": 1.0000,
+                        "value": 1.2500,
                         "format_string": ""
                     },
                     {
@@ -5260,7 +5260,7 @@
                     },
                     {
                         "name": "APAmount",
-                        "value": 70.0000,
+                        "value": 75.0000,
                         "format_string": ""
                     }
                 ],
@@ -5310,7 +5310,7 @@
                 "effect_amounts": [
                     {
                         "name": "PercentDamageIncrease",
-                        "value": 14.0000,
+                        "value": 15.0000,
                         "format_string": ""
                     },
                     {
@@ -5593,7 +5593,7 @@
                 "effect_amounts": [
                     {
                         "name": "DesireExecuteThreshhold",
-                        "value": 15.0000,
+                        "value": 18.0000,
                         "format_string": ""
                     },
                     {
@@ -5603,7 +5603,7 @@
                     },
                     {
                         "name": "ShieldAmount",
-                        "value": 450.0000,
+                        "value": 500.0000,
                         "format_string": ""
                     }
                 ],
@@ -5616,7 +5616,7 @@
                 "effect_amounts": [
                     {
                         "name": "DesireExecuteThreshhold",
-                        "value": 15.0000,
+                        "value": 18.0000,
                         "format_string": ""
                     },
                     {
@@ -5626,7 +5626,7 @@
                     },
                     {
                         "name": "ShieldAmount",
-                        "value": 750.0000,
+                        "value": 1000.0000,
                         "format_string": ""
                     }
                 ],
@@ -5654,7 +5654,7 @@
                     },
                     {
                         "name": "ShieldAmount",
-                        "value": 750.0000,
+                        "value": 1000.0000,
                         "format_string": ""
                     },
                     {

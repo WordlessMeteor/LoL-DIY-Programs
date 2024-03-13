@@ -14124,7 +14124,7 @@
     {
         "itemInstanceId": "9ffde8eb-9e7d-4300-84f8-7356d6d90ead",
         "itemTypeId": "a6bdfd45-048a-4ab7-859e-f87abe7efab5",
-        "name": "神来之笔",
+        "name": "笋尖爆炸",
         "starLevel": 1,
         "rarity": "Epic",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_Bamboo.png",
@@ -14943,7 +14943,7 @@
     {
         "itemInstanceId": "d843ddc2-3a07-4bea-a45c-0ef748fe63d2",
         "itemTypeId": "a6bdfd45-048a-4ab7-859e-f87abe7efab5",
-        "name": "玉剑传说  灵魂镣铐",
+        "name": "玉剑传说 小小莫甘娜  灵魂镣铐",
         "starLevel": 1,
         "rarity": "Epic",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_Chibi_Immortal_Morgana.png",
@@ -15213,7 +15213,7 @@
     {
         "itemInstanceId": "385e5460-856e-4de7-92a0-628f203887f0",
         "itemTypeId": "a6bdfd45-048a-4ab7-859e-f87abe7efab5",
-        "name": "灵魂镣铐",
+        "name": "小小莫甘娜 灵魂镣铐",
         "starLevel": 1,
         "rarity": "Epic",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_Chibi_BaseMorgana.png",
@@ -16926,7 +16926,7 @@
     {
         "itemInstanceId": "a268fa11-590c-4128-8963-a5dba6c29662",
         "itemTypeId": "b26717c6-87ec-43b0-b58f-fabc897c0b27",
-        "name": "彼岸花园",
+        "name": "竹间清茗",
         "rarity": "Legendary",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_TeaTerraces.TFT_ArenaSkin_TeaTerraces.dds",
         "highlightRewardAssetPath": "/lol-game-data/assets/"

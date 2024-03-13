@@ -3663,7 +3663,7 @@
             "G": 241,
             "A": 255
         },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/TooMuchCandy_III.TFT_Set11.png"
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/TooMuchCandy_II.TFT_Set11.png"
     },
     {
         "guid": "a066c9a8-f715-4058-9d0f-726b47b9e190",
@@ -3754,7 +3754,33 @@
             "G": 241,
             "A": 255
         },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/BaBoom_II.TFT_Set11.png"
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/BaBoom_III.TFT_Set11.png"
+    },
+    {
+        "guid": "49deabd7-3ea9-43d9-8c2b-c39528b68d4d",
+        "name": "精挑细选",
+        "nameId": "TFT11_Augment_PickOfTheLitter",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PickOfTheLitter_I.TFT_Set11.png"
+    },
+    {
+        "guid": "d8fa6b8a-6166-4df5-811b-829ad5038468",
+        "name": "精挑细选+",
+        "nameId": "TFT11_Augment_PickOfTheLitter_Plus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PickOfTheLitter_I.TFT_Set11.png"
     },
     {
         "guid": "12f5140e-6617-4a9c-8305-96e38b63f8f8",
@@ -7940,7 +7966,7 @@
             "G": 241,
             "A": 255
         },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/TooMuchCandy_III.TFT_Set11.png"
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/TooMuchCandy_II.TFT_Set11.png"
     },
     {
         "guid": "a066c9a8-f715-4058-9d0f-726b47b9e190",
@@ -8031,7 +8057,33 @@
             "G": 241,
             "A": 255
         },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/BaBoom_II.TFT_Set11.png"
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/BaBoom_III.TFT_Set11.png"
+    },
+    {
+        "guid": "49deabd7-3ea9-43d9-8c2b-c39528b68d4d",
+        "name": "精挑细选",
+        "nameId": "TFT11_Augment_PickOfTheLitter",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PickOfTheLitter_I.TFT_Set11.png"
+    },
+    {
+        "guid": "d8fa6b8a-6166-4df5-811b-829ad5038468",
+        "name": "精挑细选+",
+        "nameId": "TFT11_Augment_PickOfTheLitter_Plus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PickOfTheLitter_I.TFT_Set11.png"
     },
     {
         "guid": "83ddbdce-45fd-481b-9326-4049e34fd856",
@@ -8071,19 +8123,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PortableForge2.png"
-    },
-    {
-        "guid": "34a15a66-7ce0-4a0e-8f15-872129a35193",
-        "name": "二进制空投",
-        "nameId": "TFT6_Augment_BinaryAirdrop",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/BinaryAirdrop3.png"
     },
     {
         "guid": "5e559456-19cd-4042-a314-2e26070c819a",
@@ -10518,7 +10557,7 @@
     },
     {
         "guid": "0b852e15-320b-49c4-9565-ee0914b70a95",
-        "name": "交换条件（暂译）",
+        "name": "不计代价",
         "nameId": "TFT11_Augment_AtWhatCost",
         "id": 0,
         "color": {
@@ -10985,19 +11024,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/DropBlossom_II.TFT_Set11.png"
     },
     {
-        "guid": "b2c2466b-42a6-4c0b-9ab2-4e9bfbc2c65e",
-        "name": "我心永恒",
-        "nameId": "TFT11_Augment_Fated",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/MyHeartWillGoOn_II.TFT_Set11.png"
-    },
-    {
         "guid": "396b3927-09a7-467f-bbfb-8dc2ac41770e",
         "name": "少D为妙",
         "nameId": "TFT11_Augment_TooMuchCandy",
@@ -11008,7 +11034,7 @@
             "G": 241,
             "A": 255
         },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/TooMuchCandy_III.TFT_Set11.png"
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/TooMuchCandy_II.TFT_Set11.png"
     },
     {
         "guid": "12f5140e-6617-4a9c-8305-96e38b63f8f8",
@@ -15064,7 +15090,7 @@
             "G": 241,
             "A": 255
         },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/TooMuchCandy_III.TFT_Set11.png"
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/TooMuchCandy_II.TFT_Set11.png"
     },
     {
         "guid": "a066c9a8-f715-4058-9d0f-726b47b9e190",
@@ -15155,7 +15181,33 @@
             "G": 241,
             "A": 255
         },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/BaBoom_II.TFT_Set11.png"
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/BaBoom_III.TFT_Set11.png"
+    },
+    {
+        "guid": "49deabd7-3ea9-43d9-8c2b-c39528b68d4d",
+        "name": "精挑细选",
+        "nameId": "TFT11_Augment_PickOfTheLitter",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PickOfTheLitter_I.TFT_Set11.png"
+    },
+    {
+        "guid": "d8fa6b8a-6166-4df5-811b-829ad5038468",
+        "name": "精挑细选+",
+        "nameId": "TFT11_Augment_PickOfTheLitter_Plus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PickOfTheLitter_I.TFT_Set11.png"
     },
     {
         "guid": "83ddbdce-45fd-481b-9326-4049e34fd856",
@@ -15195,19 +15247,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PortableForge2.png"
-    },
-    {
-        "guid": "34a15a66-7ce0-4a0e-8f15-872129a35193",
-        "name": "二进制空投",
-        "nameId": "TFT6_Augment_BinaryAirdrop",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/BinaryAirdrop3.png"
     },
     {
         "guid": "5e559456-19cd-4042-a314-2e26070c819a",
@@ -17642,7 +17681,7 @@
     },
     {
         "guid": "0b852e15-320b-49c4-9565-ee0914b70a95",
-        "name": "交换条件（暂译）",
+        "name": "不计代价",
         "nameId": "TFT11_Augment_AtWhatCost",
         "id": 0,
         "color": {
@@ -18109,19 +18148,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/DropBlossom_II.TFT_Set11.png"
     },
     {
-        "guid": "b2c2466b-42a6-4c0b-9ab2-4e9bfbc2c65e",
-        "name": "我心永恒",
-        "nameId": "TFT11_Augment_Fated",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/MyHeartWillGoOn_II.TFT_Set11.png"
-    },
-    {
         "guid": "396b3927-09a7-467f-bbfb-8dc2ac41770e",
         "name": "少D为妙",
         "nameId": "TFT11_Augment_TooMuchCandy",
@@ -18132,7 +18158,7 @@
             "G": 241,
             "A": 255
         },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/TooMuchCandy_III.TFT_Set11.png"
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/TooMuchCandy_II.TFT_Set11.png"
     },
     {
         "guid": "a66244f8-93a0-4cf0-8ac6-3924b64016ec",
@@ -22331,7 +22357,7 @@
             "G": 241,
             "A": 255
         },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/TooMuchCandy_III.TFT_Set11.png"
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/TooMuchCandy_II.TFT_Set11.png"
     },
     {
         "guid": "a066c9a8-f715-4058-9d0f-726b47b9e190",
@@ -22422,7 +22448,33 @@
             "G": 241,
             "A": 255
         },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/BaBoom_II.TFT_Set11.png"
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/BaBoom_III.TFT_Set11.png"
+    },
+    {
+        "guid": "49deabd7-3ea9-43d9-8c2b-c39528b68d4d",
+        "name": "精挑细选",
+        "nameId": "TFT11_Augment_PickOfTheLitter",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PickOfTheLitter_I.TFT_Set11.png"
+    },
+    {
+        "guid": "d8fa6b8a-6166-4df5-811b-829ad5038468",
+        "name": "精挑细选+",
+        "nameId": "TFT11_Augment_PickOfTheLitter_Plus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PickOfTheLitter_I.TFT_Set11.png"
     },
     {
         "guid": "543031e7-fb54-4559-a686-c9d53b593fda",
@@ -22475,19 +22527,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PortableForge2.png"
-    },
-    {
-        "guid": "34a15a66-7ce0-4a0e-8f15-872129a35193",
-        "name": "二进制空投",
-        "nameId": "TFT6_Augment_BinaryAirdrop",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/BinaryAirdrop3.png"
     },
     {
         "guid": "5e559456-19cd-4042-a314-2e26070c819a",
@@ -22594,9 +22633,9 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Cybernetic-Bulk-II.png"
     },
     {
-        "guid": "a42a2049-9115-40b8-932e-45fd4785de55",
+        "guid": "352c04f2-0c27-49aa-a000-9fb22312ced3",
         "name": "成吨的伤害",
-        "nameId": "TFT9_Augment_PhreakyFriday",
+        "nameId": "TFT9_Augment_PhreakyFridayHR",
         "id": 0,
         "color": {
             "R": 255,
@@ -23489,19 +23528,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Caretaker_s-Chosen-III.png"
-    },
-    {
-        "guid": "a36fa9fd-6089-4d89-ba05-35611591eec5",
-        "name": "成吨的伤害+",
-        "nameId": "TFT9_Augment_PhreakyFridayPlus",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Phreaky-Friday-III.png"
     },
     {
         "guid": "4e280083-ba63-4be7-8584-20013c5a2d4a",
@@ -24753,7 +24779,7 @@
     },
     {
         "guid": "0b852e15-320b-49c4-9565-ee0914b70a95",
-        "name": "交换条件（暂译）",
+        "name": "不计代价",
         "nameId": "TFT11_Augment_AtWhatCost",
         "id": 0,
         "color": {
@@ -25155,19 +25181,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/DropBlossom_II.TFT_Set11.png"
     },
     {
-        "guid": "b2c2466b-42a6-4c0b-9ab2-4e9bfbc2c65e",
-        "name": "我心永恒",
-        "nameId": "TFT11_Augment_Fated",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/MyHeartWillGoOn_II.TFT_Set11.png"
-    },
-    {
         "guid": "396b3927-09a7-467f-bbfb-8dc2ac41770e",
         "name": "少D为妙",
         "nameId": "TFT11_Augment_TooMuchCandy",
@@ -25178,6 +25191,6 @@
             "G": 241,
             "A": 255
         },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/TooMuchCandy_III.TFT_Set11.png"
+        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/TooMuchCandy_II.TFT_Set11.png"
     }
 ]
