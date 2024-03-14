@@ -3468,7 +3468,7 @@
                 "effect_amounts": [
                     {
                         "name": "Resists",
-                        "value": 35.0000,
+                        "value": 25.0000,
                         "format_string": ""
                     }
                 ],
@@ -3481,7 +3481,7 @@
                 "effect_amounts": [
                     {
                         "name": "Resists",
-                        "value": 60.0000,
+                        "value": 45.0000,
                         "format_string": ""
                     }
                 ],
@@ -3822,7 +3822,7 @@
                     },
                     {
                         "name": "AttackSpeedBuff",
-                        "value": 0.2500,
+                        "value": 0.1800,
                         "format_string": ""
                     },
                     {
@@ -3860,7 +3860,7 @@
                     },
                     {
                         "name": "AttackSpeedBuff",
-                        "value": 0.2500,
+                        "value": 0.1800,
                         "format_string": ""
                     },
                     {
@@ -4358,7 +4358,7 @@
                     },
                     {
                         "name": "WinPenalty",
-                        "value": 0.0500,
+                        "value": 0.1000,
                         "format_string": ""
                     },
                     {
@@ -4401,7 +4401,7 @@
                     },
                     {
                         "name": "WinPenalty",
-                        "value": 0.2000,
+                        "value": 0.1000,
                         "format_string": ""
                     },
                     {
@@ -4495,7 +4495,7 @@
                     },
                     {
                         "name": "NumInstances",
-                        "value": 7.0000,
+                        "value": 6.0000,
                         "format_string": ""
                     },
                     {
@@ -4550,7 +4550,7 @@
                 "effect_amounts": [
                     {
                         "name": "DamagePercent",
-                        "value": 0.2700,
+                        "value": 0.3000,
                         "format_string": ""
                     }
                 ],
@@ -4890,7 +4890,7 @@
         "trait_id": "TFT11_Lovers",
         "set": "TFTSet11",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Lovers.TFT_Set11.png",
-        "tooltip_text": "根据【仙侣】部署的位置(前两排或后两排)，切换登场的英雄。在已登场的那个【仙侣】施放技能时，另一个会提供一个额外效果。<br><br>前排：【迅捷射手】【霞】<br>后排：【武仙子】【洛】",
+        "tooltip_text": "根据【仙侣】部署的位置(前两排或后两排)，切换登场的英雄。在已登场的那个【仙侣】施放技能时，另一个会提供一个额外效果。<br><br>前排：【武仙子】【洛】<br>后排：【迅捷射手】【霞】",
         "innate_trait_sets": [
             {
                 "effect_amounts": []
@@ -5175,7 +5175,7 @@
                     },
                     {
                         "name": "BleedDamage",
-                        "value": 0.6000,
+                        "value": 0.5000,
                         "format_string": ""
                     }
                 ],
@@ -5549,8 +5549,8 @@
             {
                 "effect_amounts": [],
                 "min_units": 1,
-                "style_idx": 2,
-                "style_name": "kBronze"
+                "style_idx": 6,
+                "style_name": "kUnique"
             }
         ]
     },

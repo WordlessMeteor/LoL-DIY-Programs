@@ -1132,7 +1132,7 @@
             }
         ],
         "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Xayah/HUD/TFT11_Xayah_Square.TFT_Set11.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Xayah_Square.TFT_Set11.png"
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Xayah_Mobile.TFT_Set11.png"
     },
     {
         "path": "Characters/TFT11_Gnar/CharacterRecords/Root",
@@ -1177,7 +1177,7 @@
             }
         ],
         "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Rakan/HUD/TFT11_Rakan_Square.TFT_Set11.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Rakan_Square.TFT_Set11.png"
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Rakan_Mobile.TFT_Set11.png"
     },
     {
         "path": "Characters/TFT11_Jax/CharacterRecords/Root",

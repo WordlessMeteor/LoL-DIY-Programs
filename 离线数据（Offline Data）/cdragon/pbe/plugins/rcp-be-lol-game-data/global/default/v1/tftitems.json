@@ -9412,19 +9412,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Inspiring-Epitaph-II.png"
     },
     {
-        "guid": "2bc28bbe-608e-4316-bfc6-63c01f9c7fea",
-        "name": "Vampirism II",
-        "nameId": "TFT10_Augment_VampirismPlus",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Vampirism-II.png"
-    },
-    {
         "guid": "941f433e-1701-4efe-b968-ab94fddd4850",
         "name": "New Recruit",
         "nameId": "TFT6_Augment_ForceOfNature",
@@ -10697,19 +10684,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/TwoForOne_III.TFT_Set11.png"
-    },
-    {
-        "guid": "4ca8a7f7-1359-48e4-bbe7-ad06407e43cd",
-        "name": "Full Sleeve",
-        "nameId": "TFT11_Augment_Inkshadow",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PassingTheCanvas_II.TFT_Set11.png"
     },
     {
         "guid": "14be2b8a-c602-49e1-8426-32985967ecb8",
@@ -14781,19 +14755,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Help-Is-On-The-Way-I.png"
     },
     {
-        "guid": "b7106b08-337b-4eff-a211-21abaee91b98",
-        "name": "Stimpack",
-        "nameId": "TFT10_Augment_Stimpack",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Stimpack-I.png"
-    },
-    {
         "guid": "e65118c4-cba4-483c-8f5a-5cd36239e3b7",
         "name": "Support Cache",
         "nameId": "TFT9_Augment_SupportCache",
@@ -15808,32 +15769,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Know-Your-Enemy-II.png"
     },
     {
-        "guid": "231173f0-60c9-4088-9629-ad7b1628f838",
-        "name": "Tiny Titans",
-        "nameId": "TFT6_Augment_TinyTitans",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Tiny-Titans-I.png"
-    },
-    {
-        "guid": "255d31ae-0448-4fb2-b5d1-b06009417b5b",
-        "name": "Metabolic Accelerator",
-        "nameId": "TFT6_Augment_MetabolicAccelerator",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/MetabolicAccel2.png"
-    },
-    {
         "guid": "3aefd60e-2daf-450e-a08c-a2a7f5c67ee5",
         "name": "Harmacist I",
         "nameId": "TFT9_Augment_Harmacist1",
@@ -15938,19 +15873,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Building-an-army-I.png"
     },
     {
-        "guid": "2c5818e5-8984-4609-8cea-77dad84c3dd2",
-        "name": "Risky Moves",
-        "nameId": "TFT9_Augment_RiskyMoves",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Risky-Moves-I.png"
-    },
-    {
         "guid": "d1a00c00-4117-47fb-b050-9c35f8047e42",
         "name": "Not Today",
         "nameId": "TFT9_Augment_NotToday",
@@ -16014,19 +15936,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Pumping-Up-III.png"
-    },
-    {
-        "guid": "00ae7099-3815-4d86-936d-738ef05e2a12",
-        "name": "Tiniest Titan",
-        "nameId": "TFT9_Augment_TiniestTitan",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Tiniest-TitanIII.png"
     },
     {
         "guid": "f298769f-9f70-4b6c-b981-6663b1b71400",
@@ -16536,19 +16445,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Inspiring-Epitaph-II.png"
     },
     {
-        "guid": "2bc28bbe-608e-4316-bfc6-63c01f9c7fea",
-        "name": "Vampirism II",
-        "nameId": "TFT10_Augment_VampirismPlus",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Vampirism-II.png"
-    },
-    {
         "guid": "941f433e-1701-4efe-b968-ab94fddd4850",
         "name": "New Recruit",
         "nameId": "TFT6_Augment_ForceOfNature",
@@ -16783,19 +16679,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Help-Is-On-The-Way-I.png"
     },
     {
-        "guid": "b7106b08-337b-4eff-a211-21abaee91b98",
-        "name": "Stimpack",
-        "nameId": "TFT10_Augment_Stimpack",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Stimpack-I.png"
-    },
-    {
         "guid": "e65118c4-cba4-483c-8f5a-5cd36239e3b7",
         "name": "Support Cache",
         "nameId": "TFT9_Augment_SupportCache",
@@ -16859,19 +16742,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Stationary-Support-III.png"
-    },
-    {
-        "guid": "5a536851-e5ea-40e4-823c-56a87c153b26",
-        "name": "Tiniest Titan+",
-        "nameId": "TFT9_Augment_TiniestTitanPlus",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Tiniest-TitanIII.png"
     },
     {
         "guid": "14657c11-a387-4697-bf0b-aa5e9fa27004",
@@ -17563,19 +17433,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/BuildABud_III.TFT_Set11.png"
     },
     {
-        "guid": "31e29b91-b2cc-49a6-be7d-093e9ca9697c",
-        "name": "Everything Must Go!",
-        "nameId": "TFT11_Augment_Common_EverythingMustGo",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/EverythingMustGo_II.TFT_Set11.png"
-    },
-    {
         "guid": "47a6b02b-1a5f-4a27-9475-aa79f02c6ba9",
         "name": "Sharing Is Caring",
         "nameId": "TFT11_Augment_SharingIsCaring",
@@ -17654,32 +17511,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/FineVintage_I.TFT_Set11.png"
     },
     {
-        "guid": "aa8b071a-e428-4469-a9ca-fd5360e393f9",
-        "name": "Lunch Money",
-        "nameId": "TFT11_Augment_BloodBank",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/BloodBank_I.TFT_Set11.png"
-    },
-    {
-        "guid": "953db385-0fb4-4e80-9ee6-6a7a6ded9dc3",
-        "name": "Scoreboard Scrapper",
-        "nameId": "TFT11_Augment_ScoreboardScrapper",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/ScoreboardScrapper_II.TFT_Set11.png"
-    },
-    {
         "guid": "0b852e15-320b-49c4-9565-ee0914b70a95",
         "name": "At What Cost",
         "nameId": "TFT11_Augment_AtWhatCost",
@@ -17745,19 +17576,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/CallToChaos_III.TFT_Set11.png"
     },
     {
-        "guid": "875f9ff5-f2ca-413a-ae0d-f3b465904e87",
-        "name": "Prizefighter",
-        "nameId": "TFT11_Augment_Prizefighter",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PrizeFighter_II.TFT_Set11.png"
-    },
-    {
         "guid": "bc0a6e3a-fd08-484e-b1c4-78ae7e3026fa",
         "name": "Dynamic Duo",
         "nameId": "TFT11_Augment_DynamicDuo",
@@ -17821,19 +17639,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/TwoForOne_III.TFT_Set11.png"
-    },
-    {
-        "guid": "4ca8a7f7-1359-48e4-bbe7-ad06407e43cd",
-        "name": "Full Sleeve",
-        "nameId": "TFT11_Augment_Inkshadow",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PassingTheCanvas_II.TFT_Set11.png"
     },
     {
         "guid": "14be2b8a-c602-49e1-8426-32985967ecb8",
@@ -17964,19 +17769,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/VenerablePiggyBank_II.TFT_Set11.png"
-    },
-    {
-        "guid": "51b69a2c-5546-4755-89eb-5d89d855c194",
-        "name": "It's Going to be Epic",
-        "nameId": "TFT11_Augment_Mythic",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/GoingToBeEpic_II.TFT_Set11.png"
     },
     {
         "guid": "afb048d6-c588-4a20-addd-e08886cee765",
@@ -21047,19 +20839,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Cybernetic-Bulk-III.png"
     },
     {
-        "guid": "5bdfe4a3-10a8-4735-ae47-1fbe74b892f1",
-        "name": "Starter Kit",
-        "nameId": "TFT9_Augment_StarterKit",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Starter-Kit-III.png"
-    },
-    {
         "guid": "008494b4-863b-440f-8d97-87d3267aee6b",
         "name": "Latent Forge",
         "nameId": "TFT9_Augment_LongTimeCraftingHR",
@@ -21489,19 +21268,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/One-Two-Five-I.png"
     },
     {
-        "guid": "f298769f-9f70-4b6c-b981-6663b1b71400",
-        "name": "Trade Sector",
-        "nameId": "TFT6_Augment_TradeSector",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Trade2.png"
-    },
-    {
         "guid": "5473b05d-1f68-4d68-8517-ca498ac5eca5",
         "name": "You Have My Sword",
         "nameId": "TFT9_Augment_YouHaveMySword",
@@ -21539,19 +21305,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Old-Man_s-Walking-Stick-II.png"
-    },
-    {
-        "guid": "28991aef-4db9-4e81-9bfe-8a20a3f09011",
-        "name": "Escort Quest",
-        "nameId": "TFT9_Augment_EscortQuest",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Escort-Quest-II.png"
     },
     {
         "guid": "00c079b0-8b2a-440b-b7d7-65db2196edc4",
@@ -21840,19 +21593,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Twin-Terror-III.png"
     },
     {
-        "guid": "3826eb50-c288-45bf-b66f-53ed3c344b19",
-        "name": "Learning to Spell",
-        "nameId": "TFT10_Augment_LearningToSpell",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Learning-To-Spell-II.png"
-    },
-    {
         "guid": "1633d5d6-3903-43ae-8194-35ec05a070b9",
         "name": "Keepers I",
         "nameId": "TFT6_Augment_Keepers1",
@@ -22033,19 +21773,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/The-Scapegoat-II.png"
-    },
-    {
-        "guid": "49630374-ea89-4b66-aeee-a09ac919ae05",
-        "name": "Good For Something I",
-        "nameId": "TFT10_Augment_GoodForSomethingSilver",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Good-For-Something-I.png"
     },
     {
         "guid": "a179f0a4-8b63-4b48-a76f-ed1088bc7746",
@@ -22347,19 +22074,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Wandering-Trainer-III.png"
     },
     {
-        "guid": "396b3927-09a7-467f-bbfb-8dc2ac41770e",
-        "name": "Too Much Candy",
-        "nameId": "TFT11_Augment_TooMuchCandy",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/TooMuchCandy_II.TFT_Set11.png"
-    },
-    {
         "guid": "a066c9a8-f715-4058-9d0f-726b47b9e190",
         "name": "Branching Out",
         "nameId": "TFT_Augment_BranchingOut",
@@ -22384,45 +22098,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Wandering-Trainer-II.png"
-    },
-    {
-        "guid": "1a39743a-95be-42d6-b056-83c113a0d6ff",
-        "name": "Dragon's Spirit",
-        "nameId": "TFT11_Augment_DragonSpirit",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/DragonsSpirit_II.TFT_Set11.png"
-    },
-    {
-        "guid": "9709aa6c-ccb2-4216-b88f-2772ab20e16c",
-        "name": "Raining Gold",
-        "nameId": "TFT11_Augment_RainingGold",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/RainingGold_II.TFT_Set11.png"
-    },
-    {
-        "guid": "e4969aac-18ae-4fdc-af8c-a113adb95f7c",
-        "name": "Raining Gold+",
-        "nameId": "TFT11_Augment_RainingGoldPlus",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/RainingGold_II.TFT_Set11.png"
     },
     {
         "guid": "6ab9b64e-d5e9-4e38-bca2-01f27e7f211c",
@@ -22503,19 +22178,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Salvage2.png"
     },
     {
-        "guid": "7f396223-c314-43e6-9742-0ae13b8aa0e8",
-        "name": "March of Progress",
-        "nameId": "TFT6_Augment_SlowAndSteady",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/SlowAndSteady3.png"
-    },
-    {
         "guid": "cad5d5db-85c5-4d22-a0e1-2c0ff695f9ce",
         "name": "Portable Forge",
         "nameId": "TFT6_Augment_PortableForge",
@@ -22568,19 +22230,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Threes-Company-II.png"
     },
     {
-        "guid": "d8a205d9-07ac-410e-b37b-e8a0998646af",
-        "name": "Living Forge",
-        "nameId": "TFT7_Augment_LivingForge",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Living-Forge-III.png"
-    },
-    {
         "guid": "b0bb4315-c3b5-434a-9efe-a4c0935de871",
         "name": "Birthday Present",
         "nameId": "TFT7_Augment_BirthdayPresents",
@@ -22605,19 +22254,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/GoldenTicket3.png"
-    },
-    {
-        "guid": "5ebbe1d0-e1d3-46ce-8755-dff8664d5725",
-        "name": "Young and Wild and Free",
-        "nameId": "TFT9_Augment_YoungAndWildAndFree",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Young-and-wild-and-free-I.png"
     },
     {
         "guid": "a0d8f74a-8eca-4e0f-bf1b-0448169109f7",
@@ -22685,19 +22321,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Cybernetic-Bulk-III.png"
     },
     {
-        "guid": "5bdfe4a3-10a8-4735-ae47-1fbe74b892f1",
-        "name": "Starter Kit",
-        "nameId": "TFT9_Augment_StarterKit",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Starter-Kit-III.png"
-    },
-    {
         "guid": "64fede20-1b33-4015-ab91-52e96f134962",
         "name": "Cybernetic Uplink II",
         "nameId": "TFT6_Augment_CyberneticUplink2",
@@ -22709,19 +22332,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Cybernetic-Uplink-II.png"
-    },
-    {
-        "guid": "dfb0c2fa-9d7b-41e6-b232-ef099ee28bec",
-        "name": "Latent Forge",
-        "nameId": "TFT9_Augment_LongTimeCrafting",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Long-time-Crafting-I.png"
     },
     {
         "guid": "2644f875-86ba-4039-9f52-528f22a25650",
@@ -22867,19 +22477,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Sleight-of-Hand-II.png"
     },
     {
-        "guid": "c2a4f80c-6d2c-4c7b-91eb-cce36bc94ad3",
-        "name": "A Cut Above",
-        "nameId": "TFT9_Augment_ACutAbove",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/A-Cut-Above-II.png"
-    },
-    {
         "guid": "f021d478-78fd-4edb-8f05-307e8a83a3bf",
         "name": "Idealism",
         "nameId": "TFT9_Augment_Idealism",
@@ -22943,32 +22540,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Gifts-from-the-Fallen-II.png"
-    },
-    {
-        "guid": "b253403f-8dde-4b9c-8b8c-96aed73a0175",
-        "name": "Hedge Fund",
-        "nameId": "TFT9_Augment_HedgeFund",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/RichGetRicher3.png"
-    },
-    {
-        "guid": "e22f0e65-f089-4b95-8ac6-99f4a87655bc",
-        "name": "Hedge Fund+",
-        "nameId": "TFT9_Augment_HedgeFundPlus",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/RichGetRicher3.png"
     },
     {
         "guid": "83e378ef-2b0a-4a5e-8862-dd2d7a60c492",
@@ -23153,32 +22724,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Pandora2.png"
     },
     {
-        "guid": "7508888b-b0c3-47d6-9a66-2e8eb5651ba1",
-        "name": "What Doesn't Kill You",
-        "nameId": "TFT9_Augment_WhatDoesntKillYou",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/What-Doesn_t-Kill-You-II.png"
-    },
-    {
-        "guid": "e0b7a521-af48-4629-9ed8-442f39fd03aa",
-        "name": "Team Building",
-        "nameId": "TFT9_Augment_ArmyBuilding",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Building-an-army-I.png"
-    },
-    {
         "guid": "d1a00c00-4117-47fb-b050-9c35f8047e42",
         "name": "Not Today",
         "nameId": "TFT9_Augment_NotToday",
@@ -23203,58 +22748,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/One-Two-Five-I.png"
-    },
-    {
-        "guid": "8005f084-8024-446c-ac9e-c73a0edaf76a",
-        "name": "Pumping Up I",
-        "nameId": "TFT9_Augment_PumpingUp",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Pumping-Up-I.png"
-    },
-    {
-        "guid": "9ca6dd2b-f048-47f7-a426-c980a6cad2f6",
-        "name": "Pumping Up II",
-        "nameId": "TFT9_Augment_PumpingUp2",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Pumping-Up-II.png"
-    },
-    {
-        "guid": "ac90c1c2-e4bd-4bb4-ba1f-3e539288a540",
-        "name": "Pumping Up III",
-        "nameId": "TFT9_Augment_PumpingUp3",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Pumping-Up-III.png"
-    },
-    {
-        "guid": "f298769f-9f70-4b6c-b981-6663b1b71400",
-        "name": "Trade Sector",
-        "nameId": "TFT6_Augment_TradeSector",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Trade2.png"
     },
     {
         "guid": "5473b05d-1f68-4d68-8517-ca498ac5eca5",
@@ -23296,19 +22789,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Old-Man_s-Walking-Stick-II.png"
     },
     {
-        "guid": "28991aef-4db9-4e81-9bfe-8a20a3f09011",
-        "name": "Escort Quest",
-        "nameId": "TFT9_Augment_EscortQuest",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Escort-Quest-II.png"
-    },
-    {
         "guid": "00c079b0-8b2a-440b-b7d7-65db2196edc4",
         "name": "Three's a Crowd",
         "nameId": "TFT9_Augment_ThreesACrowd",
@@ -23346,19 +22826,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Red-Buff-I.png"
-    },
-    {
-        "guid": "b36f42d7-9869-4aa3-a522-563af38ce628",
-        "name": "Patient Study",
-        "nameId": "TFT9_Augment_LearningFromExperience2",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Learning-From-Experience-II.png"
     },
     {
         "guid": "a9ca4d1e-42bd-48f7-9b9a-d8e94dc3fb2a",
@@ -23452,32 +22919,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Eagle-Eye-III.png"
     },
     {
-        "guid": "7889a8a2-00b4-49a4-b077-6eea7543b909",
-        "name": "Lategame Specialist",
-        "nameId": "TFT7_Augment_LategameSpecialist",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Late-Game-Specialist-I.png"
-    },
-    {
-        "guid": "aa3b8c50-324d-4628-aa9a-70c370cd77a5",
-        "name": "The Golden Egg",
-        "nameId": "TFT6_Augment_TheGoldenEgg",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/The-Golden-Egg-III.png"
-    },
-    {
         "guid": "d7c765d7-11ae-4925-994d-f12960acd067",
         "name": "Shopping Spree",
         "nameId": "TFT9_Augment_HighEndSector",
@@ -23543,19 +22984,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Infernal-Contract-III.png"
     },
     {
-        "guid": "e9be5c5a-51b9-430c-b61f-21800a281317",
-        "name": "Hedge Fund++",
-        "nameId": "TFT9_Augment_HedgeFundPlusPlus",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/RichGetRicher3.png"
-    },
-    {
         "guid": "bd255e17-a4a6-4596-9c7b-f63add267a62",
         "name": "Salvage Bin+",
         "nameId": "TFT8_Augment_SalvageBinPlus",
@@ -23580,19 +23008,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Crash-Test-Dummies-II.png"
-    },
-    {
-        "guid": "0ca9cda9-d5da-481a-aee7-7318c3565c70",
-        "name": "Lucky Streak",
-        "nameId": "TFT10_Augment_LuckyStreak",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Lucky-Streak-II.png"
     },
     {
         "guid": "6b3cf9a8-1a01-4144-9c0d-6bc7d086aed1",
@@ -23645,19 +23060,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Twin-Terror-III.png"
-    },
-    {
-        "guid": "3826eb50-c288-45bf-b66f-53ed3c344b19",
-        "name": "Learning to Spell",
-        "nameId": "TFT10_Augment_LearningToSpell",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Learning-To-Spell-II.png"
     },
     {
         "guid": "1633d5d6-3903-43ae-8194-35ec05a070b9",
@@ -23725,19 +23127,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Inspiring-Epitaph-II.png"
     },
     {
-        "guid": "2bc28bbe-608e-4316-bfc6-63c01f9c7fea",
-        "name": "Vampirism II",
-        "nameId": "TFT10_Augment_VampirismPlus",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Vampirism-II.png"
-    },
-    {
         "guid": "941f433e-1701-4efe-b968-ab94fddd4850",
         "name": "New Recruit",
         "nameId": "TFT6_Augment_ForceOfNature",
@@ -23762,32 +23151,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Shock-Treatment-II.png"
-    },
-    {
-        "guid": "dd83f20b-667a-4706-9407-8a2438d27971",
-        "name": "Low Interest Rates",
-        "nameId": "TFT10_Augment_LowInterestRates",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Low-Interest-Rates-II.png"
-    },
-    {
-        "guid": "ac395620-922e-4dc9-bbc6-d4e36ed83dcd",
-        "name": "Switching Gears",
-        "nameId": "TFT10_Augment_SwitchingGears",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Switching-Gears-I.png"
     },
     {
         "guid": "e79a88ea-4ca3-47d2-a2d1-ab5ee1127d6c",
@@ -23879,19 +23242,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/The-Scapegoat-II.png"
-    },
-    {
-        "guid": "49630374-ea89-4b66-aeee-a09ac919ae05",
-        "name": "Good For Something I",
-        "nameId": "TFT10_Augment_GoodForSomethingSilver",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Good-For-Something-I.png"
     },
     {
         "guid": "a179f0a4-8b63-4b48-a76f-ed1088bc7746",
@@ -24061,19 +23411,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Teaming-Up-I.png"
-    },
-    {
-        "guid": "cd66e313-3b47-411e-878f-11e7239a917a",
-        "name": "Stationary Support I",
-        "nameId": "TFT9_Augment_StationarySupport1",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Stationary-Support-I.png"
     },
     {
         "guid": "88c81c2f-de9e-4f51-b000-23c2bdb2c175",
@@ -24687,32 +24024,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/BuildABud_III.TFT_Set11.png"
     },
     {
-        "guid": "31e29b91-b2cc-49a6-be7d-093e9ca9697c",
-        "name": "Everything Must Go!",
-        "nameId": "TFT11_Augment_Common_EverythingMustGo",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/EverythingMustGo_II.TFT_Set11.png"
-    },
-    {
-        "guid": "47a6b02b-1a5f-4a27-9475-aa79f02c6ba9",
-        "name": "Sharing Is Caring",
-        "nameId": "TFT11_Augment_SharingIsCaring",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/SharingIsCaring_I.TFT_Set11.png"
-    },
-    {
         "guid": "76b910f3-7977-4897-a2cb-6abc71d4d9b9",
         "name": "ReinFOURcement",
         "nameId": "TFT11_Augment_Reinfourcement",
@@ -24739,58 +24050,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/TinyButDeadly_III.TFT_Set11.png"
     },
     {
-        "guid": "91979c15-6481-4abe-a307-373f68ef857e",
-        "name": "Over Encumbered",
-        "nameId": "TFT11_Augment_OverEncumbered",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/OverEncumbered_I.TFT_Set11.png"
-    },
-    {
-        "guid": "968151e0-5fd4-45b5-ae4d-ea9d93e230b5",
-        "name": "Fine Vintage",
-        "nameId": "TFT11_Augment_FineVintage",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/FineVintage_I.TFT_Set11.png"
-    },
-    {
-        "guid": "aa8b071a-e428-4469-a9ca-fd5360e393f9",
-        "name": "Lunch Money",
-        "nameId": "TFT11_Augment_BloodBank",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/BloodBank_I.TFT_Set11.png"
-    },
-    {
-        "guid": "0b852e15-320b-49c4-9565-ee0914b70a95",
-        "name": "At What Cost",
-        "nameId": "TFT11_Augment_AtWhatCost",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/AtWhatCost_III.TFT_Set11.png"
-    },
-    {
         "guid": "ecd5c234-4543-42ee-bb8c-e3aaa62201f2",
         "name": "Trash to Treasure",
         "nameId": "TFT11_Augment_TrashToTreasure",
@@ -24815,32 +24074,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Accomplice_III.TFT_Set11.png"
-    },
-    {
-        "guid": "481f6907-2100-4fa4-bfe7-d1cc5312b6e6",
-        "name": "Call to Chaos",
-        "nameId": "TFT11_Augment_Calltochaos",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/CallToChaos_III.TFT_Set11.png"
-    },
-    {
-        "guid": "875f9ff5-f2ca-413a-ae0d-f3b465904e87",
-        "name": "Prizefighter",
-        "nameId": "TFT11_Augment_Prizefighter",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PrizeFighter_II.TFT_Set11.png"
     },
     {
         "guid": "bc0a6e3a-fd08-484e-b1c4-78ae7e3026fa",
@@ -24882,45 +24115,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/HauntedHouse_II.TFT_Set11.png"
     },
     {
-        "guid": "d003087d-a84f-4b8d-9a36-956c179ee8db",
-        "name": "Divine Rolls",
-        "nameId": "TFT11_Augment_Heavenly",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/DivineRolls_II.TFT_Set11.png"
-    },
-    {
-        "guid": "0f75fa13-5f96-478a-aa9f-dec584d342be",
-        "name": "Two for One",
-        "nameId": "TFT11_Augment_TwoforOne",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/TwoForOne_III.TFT_Set11.png"
-    },
-    {
-        "guid": "4ca8a7f7-1359-48e4-bbe7-ad06407e43cd",
-        "name": "Full Sleeve",
-        "nameId": "TFT11_Augment_Inkshadow",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/PassingTheCanvas_II.TFT_Set11.png"
-    },
-    {
         "guid": "14be2b8a-c602-49e1-8426-32985967ecb8",
         "name": "Radiant Refactor",
         "nameId": "TFT11_Augment_RadiantRefactor",
@@ -24932,32 +24126,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/RadiantRefactor_III.TFT_Set11.png"
-    },
-    {
-        "guid": "077e5a9a-c0fd-415d-8da2-43355bd695ef",
-        "name": "Call to Adventure",
-        "nameId": "TFT11_Augment_Storyweaver",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/CallToAdventure_II.TFT_Set11.png"
-    },
-    {
-        "guid": "348fd0b3-5312-4ddc-bf8a-55027a608300",
-        "name": "Long Shot",
-        "nameId": "TFT11_Augment_Sniper",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/LongShot_II.TFT_Set11.png"
     },
     {
         "guid": "754e47b3-120c-4327-97e8-7b0525d33f66",
@@ -25010,19 +24178,6 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/GrimHarvest_II.TFT_Set11.png"
-    },
-    {
-        "guid": "51b69a2c-5546-4755-89eb-5d89d855c194",
-        "name": "It's Going to be Epic",
-        "nameId": "TFT11_Augment_Mythic",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/GoingToBeEpic_II.TFT_Set11.png"
     },
     {
         "guid": "afb048d6-c588-4a20-addd-e08886cee765",
@@ -25129,19 +24284,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/RaidBoss_II.TFT_Set11.png"
     },
     {
-        "guid": "39549941-03fb-4052-8629-53ebbf386b0e",
-        "name": "Mulched",
-        "nameId": "TFT11_Augment_Dryad",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Mulched_II.TFT_Set11.png"
-    },
-    {
         "guid": "38b5f3a5-a055-4e6e-864c-022e3eeac82f",
         "name": "Well Fed",
         "nameId": "TFT11_Augment_Bruiser",
@@ -25179,18 +24321,5 @@
             "A": 255
         },
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/DropBlossom_II.TFT_Set11.png"
-    },
-    {
-        "guid": "396b3927-09a7-467f-bbfb-8dc2ac41770e",
-        "name": "Too Much Candy",
-        "nameId": "TFT11_Augment_TooMuchCandy",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/TooMuchCandy_II.TFT_Set11.png"
     }
 ]
