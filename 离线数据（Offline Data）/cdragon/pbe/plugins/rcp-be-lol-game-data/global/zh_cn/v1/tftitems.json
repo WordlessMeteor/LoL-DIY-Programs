@@ -10426,19 +10426,6 @@
         "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/BuildABud_III.TFT_Set11.png"
     },
     {
-        "guid": "31e29b91-b2cc-49a6-be7d-093e9ca9697c",
-        "name": "清仓大促销！",
-        "nameId": "TFT11_Augment_Common_EverythingMustGo",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "loadoutsIcon": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/EverythingMustGo_II.TFT_Set11.png"
-    },
-    {
         "guid": "47a6b02b-1a5f-4a27-9475-aa79f02c6ba9",
         "name": "分享即是关心",
         "nameId": "TFT11_Augment_SharingIsCaring",

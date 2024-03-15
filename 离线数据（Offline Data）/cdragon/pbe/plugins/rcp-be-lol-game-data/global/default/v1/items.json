@@ -1998,9 +1998,9 @@
     {
         "id": 2141,
         "name": "Cappa Juice",
-        "description": "<mainText><stats></stats><br><br><br><br><rules>Helps you get on a head.</rules> <active>Active - Consume:</active> This juice does nothing.<br><br><flavorText>For a limited time only, get a free hat with every purchase!</flavorText></mainText>",
+        "description": "<mainText><stats></stats><br><br><rules>Helps you get on a head.</rules> <active>Active - Consume:</active> This juice does nothing.<br><br><flavorText>For a limited time only, get a free hat with every purchase!</flavorText></mainText>",
         "active": true,
-        "inStore": true,
+        "inStore": false,
         "from": [],
         "to": [],
         "categories": [
@@ -2014,8 +2014,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 700,
-        "priceTotal": 700,
+        "price": 500,
+        "priceTotal": 500,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/Icon_Item_SoulJuice_FunHat.png"
     },
     {
