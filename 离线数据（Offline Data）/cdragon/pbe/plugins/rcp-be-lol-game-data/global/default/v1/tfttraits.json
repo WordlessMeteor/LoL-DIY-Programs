@@ -4963,7 +4963,7 @@
                     },
                     {
                         "name": "HealthPct",
-                        "value": 0.1000,
+                        "value": 0.0800,
                         "format_string": ""
                     },
                     {
@@ -4986,7 +4986,7 @@
                     },
                     {
                         "name": "HealthPct",
-                        "value": 0.2000,
+                        "value": 0.1800,
                         "format_string": ""
                     },
                     {
@@ -5009,7 +5009,7 @@
                     },
                     {
                         "name": "HealthPct",
-                        "value": 0.3000,
+                        "value": 0.2500,
                         "format_string": ""
                     },
                     {
@@ -5032,7 +5032,7 @@
                     },
                     {
                         "name": "HealthPct",
-                        "value": 0.3000,
+                        "value": 0.2500,
                         "format_string": ""
                     },
                     {

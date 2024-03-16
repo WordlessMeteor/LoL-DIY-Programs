@@ -1024,9 +1024,12 @@ async def search_recent_players(connection):
     mode = input()
     if mode == "" or mode[0] != "1":
         detectMode = True
+    switch_mode = False #模式转换变量定义（Definition of the mode transfer variable）
     #然后获取历史记录（Next, fetch the history）
     print('''在腾讯代理的服务器上，如果查询某名玩家的对局记录，请尝试以下操作：\nTo search for the match history of a player on Tencent servers, try out the following operations:\n1. 在浏览器中打开本地主机网络协议：%s\n   Open the localhost IP in any browser: %s\n2. 尝试用以下用户名和密码登录：\n   Try logining in with the following username and password:\n   用户名（Username）：riot\n   密码（Password）：%s\n3. （如果可以立即知道一位玩家的玩家通用唯一识别码，则可以跳过第3和4步）在浏览器的地址栏中的地址最后，添加“lol-summoner/v1/summoners?name={name}”，其中{name}指的是召唤师名称编码后的字符串。当召唤师名称只包含英文字母和阿拉伯数字时，直接以召唤师名称去空格后的字符串代入{name}即可；当召唤师名称存在非美国标准信息交换代码时，以召唤师名称编码后的字符串代入{name}。\n(If a summoner's puuid can be immediately known, the user may skip Steps 3 and 4) Add to following the last character of the address in the browser's address bar "lol-summoner/v1/summoners?name={name}", where {name} refers to strings encoded from summonerName. When summonerName contains only English letters and Arabic numbers, simply substitute {name} with the strings with the spaces removed from summonerName. When a non-ASCII character exists in summonerName, substitute {name} by encoded summonerName.\n3.1 对于包含非美国标准信息交换代码的召唤师名称，如果可以得到该召唤师的精确名称（如通过复制到剪贴板），那么在Python中可以得知其编码后的字符串。在Python中使用from urllib.parse import quote命令引入quote函数，再使用quote(x)函数获取字符串x编码后的字符串。\nFor summonerNames that include non-ASCII characters, if the exact summonerName can be obtained (e. g. by copying to clipboard), then its encoded string can be returned in Python. In Python console, use "from urllib.parse import quote" to introduce the "quote" function. Then use quote(x) function to get the string encoded from the string x.\n4. 在lol-summoner/v1/summoners?name={name}返回的结果中找到puuid并复制。\n   Find "puuid" in the result returned by "lol-summoner/v1/summoners?name={name}" and copy it.\n5. 将地址栏中4位IP地址后的斜杠后的内容删除，再添加“lol-match-history/v1/products/lol/{puuid}/matches?begIndex=0&endIndex=20”，其中{puuid}是事先获知的玩家通用唯一识别码，或者是第4步复制到剪贴板的puuid。\nDelete the content following the slash after the 4-bit IP address in the address bar and then add to the end "lol-match-history/v1/products/lol/{puuid}/matches?begIndex=0&endIndex=20", where {puuid} refers to the puuid previously known, or copied to clipboard in Step 4.\n6. 尝试将上一步输入的地址中的“endIndex=”后的数字依次替换成21、199、200和500，观察每次替换后返回的网页结果有没有变多。\nTry changing the number following "endIndex=" in the last step into 21, 199, 200 and 500 one by one, and observe whether the returned webpage contains more information after each change.\n7. 教程完成，请继续执行本脚本……\n   Instruction finished. Please continue to run this program ...''' %(connection.address, connection.address, connection.auth_key))
     while True:
+        detectMode = not detectMode if switch_mode else detectMode
+        switch_mode = False #模式转换变量初始化（Initialization of the mode transfer variable）
         #初始化所有数据资源（Initialize all data resources）
         print("\n正在初始化所有数据资源……\nInitializing all data resources ...\n")
         patches = copy.deepcopy(patches_initial)
@@ -1042,13 +1045,16 @@ async def search_recent_players(connection):
         ArenaAugments = copy.deepcopy(ArenaAugments_initial)
         infos = {} #存储程序运行过程中遇到的玩家信息，防止后续程序反复获取已经获取过的玩家信息（Store the summoner information fetched  during the program execution, in case the program would keep capturing the summoner information already fetched before）
         if detectMode == False:
-            print('请输入要查询的召唤师名称，退出请输入“0”：\nPlease input the summoner name to be searched. Submit "0" to exit.')
+            print('请输入要查询的召唤师名称，退出请输入“0”，切换成检测模式请输入“3”：\nPlease input the summoner name to be searched. Submit "0" to exit. Submit "3" to switch to Detect Mode.')
             summoner_name = input()
         else:
             info = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
             summoner_name = info["puuid"]
         if summoner_name == "0":
             os._exit(0)
+        elif summoner_name == "3":
+            switch_mode = True
+            continue
         elif summoner_name == "":
             print("请输入非空字符串！\nPlease input a string instead of null!")
             continue
@@ -1401,14 +1407,14 @@ async def search_recent_players(connection):
                 
                 #下面获取最近一起玩过的英雄联盟玩家的信息（The following code captures the recently played LoL players' information）
                 if detectMode:
-                    print('请输入要查询的对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出程序请输入“0”：\nPlease enter the match ID to check. Submit a list containing matchIDs to search in batches. Submit "3" to search the currently stored history in batches. Submit "0" to exit the program.')
+                    print('请输入要查询的对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，切换到生成模式请输入“1”，退出程序请输入“0”：\nPlease enter the match ID to check. Submit a list containing matchIDs to search in batches. Submit "3" to search the currently stored history in batches. Submit "1" to switch to Generate Mdoe. Submit "0" to exit the program.')
                 else:
-                    print('请输入要查询的对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，切换召唤师请输入“0”：\nPlease enter the match ID to check. Submit a list containing matchIDs to search in batches. Submit "3" to search the currently stored history in batches. Submit "0" to switch for next summoner.')
+                    print('请输入要查询的对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，切换召唤师或切换到检测模式请输入“0”：\nPlease enter the match ID to check. Submit a list containing matchIDs to search in batches. Submit "3" to search the currently stored history in batches. Submit "0" to switch for next summoner or switch to Detect Mode.')
                 while True:
                     matchID = input()
                     if matchID == "":
                         continue
-                    elif matchID == "0":
+                    elif matchID == "0" or matchID == "1":
                         break
                     else:
                         if matchID == "3":
@@ -3253,6 +3259,11 @@ async def search_recent_players(connection):
                 #json.dump(infos, fp, indent = 4, ensure_ascii = False)
             if detectMode and matchID == "0":
                 break
+            if detectMode:
+                print("是否从检测模式切换到生成模式？（输入任意键切换，否则不切换）\nDo you want to switch from Detect Mode to Generate Mode? (Submit anything to switch, or null to refuse switching)")
+            else:
+                print("是否从生成模式切换到检测模式？（输入任意键切换，否则不切换）\nDo you want to switch from Detect Mode to Generate Mode? (Submit anything to switch, or null to refuse switching)")
+            switch_mode = bool(input())
 
 #-----------------------------------------------------------------------------
 # websocket

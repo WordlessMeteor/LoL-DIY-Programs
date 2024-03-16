@@ -1998,7 +1998,7 @@
     {
         "id": 2141,
         "name": "Cappa Juice",
-        "description": "<mainText><stats></stats><br><br><rules>Helps you get on a head.</rules> <active>Active - Consume:</active> This juice does nothing.<br><br><flavorText>For a limited time only, get a free hat with every purchase!</flavorText></mainText>",
+        "description": "<mainText><stats></stats><br><br> <active>Active - Consume:</active> This juice does nothing.<br><br><flavorText>For a limited time only, get a free hat with every purchase!</flavorText></mainText>",
         "active": true,
         "inStore": false,
         "from": [],

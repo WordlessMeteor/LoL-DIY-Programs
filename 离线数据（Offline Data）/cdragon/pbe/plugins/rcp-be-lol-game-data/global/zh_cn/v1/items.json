@@ -1998,7 +1998,7 @@
     {
         "id": 2141,
         "name": "帽子饮品",
-        "description": "<mainText><stats></stats><br><br>Item_2141_Tooltip<active>主动 - 消耗：</active>这个饮品什么也不做。<br><br><flavorText>在有限的时间内，每次购买都可以免费获得一顶帽子！</flavorText></mainText>",
+        "description": "<mainText><stats></stats><br><br><active>主动 - 消耗：</active>这个饮品什么也不做。<br><br><flavorText>在有限的时间内，每次购买都可以免费获得一顶帽子！</flavorText></mainText>",
         "active": true,
         "inStore": false,
         "from": [],
