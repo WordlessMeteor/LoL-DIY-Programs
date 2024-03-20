@@ -1,6 +1,6 @@
 {
     "type": "item",
-    "version": "14.5.1",
+    "version": "14.6.1",
     "basic": {
         "name": "",
         "rune": {
@@ -192,6 +192,7 @@
             "colloq": ";",
             "plaintext": "Slightly increases Health Regen",
             "into": [
+                "3211",
                 "3801"
             ],
             "image": {
@@ -719,7 +720,6 @@
                 "6029",
                 "6035",
                 "6673",
-                "6675",
                 "6692",
                 "6695"
             ],
@@ -765,7 +765,8 @@
                 "3026",
                 "3072",
                 "3302",
-                "4403"
+                "4403",
+                "6675"
             ],
             "image": {
                 "full": "1038.png",
@@ -2354,7 +2355,7 @@
         },
         "2015": {
             "name": "Kircheis Shard",
-            "description": "<mainText><stats><attention>15</attention> Attack Damage</stats><br><br><passive>Jolt</passive><br><keyword>Energized Attacks</keyword> deal an additional <magicDamage>60 magic damage</magicDamage>.</mainText>",
+            "description": "<mainText><stats><attention>15</attention> Attack Damage</stats><br><br><passive>Jolt</passive><br><keyword>Energized Attacks</keyword> deal an additional <magicDamage>50 magic damage</magicDamage>.</mainText>",
             "colloq": ";",
             "plaintext": "Attack speed and a chargable magic hit",
             "from": [
@@ -2404,6 +2405,7 @@
             "plaintext": "",
             "from": [
                 "1036",
+                "1029",
                 "1029"
             ],
             "into": [
@@ -2421,7 +2423,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 450,
+                "base": 150,
                 "purchasable": true,
                 "total": 1100,
                 "sell": 770
@@ -2445,7 +2447,7 @@
         },
         "2020": {
             "name": "The Brutalizer",
-            "description": "<mainText><stats><attention>25</attention> Attack Damage<br><attention>10</attention> Ability Haste<br><attention>8</attention> Lethality</stats><br><br></mainText>",
+            "description": "<mainText><stats><attention>25</attention> Attack Damage<br><attention>10</attention> Ability Haste<br><attention>5</attention> Lethality</stats><br><br></mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -2517,10 +2519,10 @@
                 "h": 48
             },
             "gold": {
-                "base": 350,
+                "base": 400,
                 "purchasable": true,
-                "total": 1100,
-                "sell": 770
+                "total": 1150,
+                "sell": 805
             },
             "tags": [
                 "Health",
@@ -2550,6 +2552,7 @@
                 "3133",
                 "223057",
                 "3802",
+                "3024",
                 "3057",
                 "3067",
                 "3108",
@@ -3083,11 +3086,12 @@
         },
         "2141": {
             "name": "Cappa Juice",
-            "description": "<mainText><stats></stats><br><br><br><br><rules>Helps you get on a head.</rules><active>Active - Consume:</active> This juice does nothing.<br><br><flavorText>For a limited time only, get a free hat with every purchase!</flavorText></mainText>",
+            "description": "<mainText><stats></stats><br><br><active>Active - Consume:</active> This juice does nothing.<br><br><flavorText>For a limited time only, get a free hat with every purchase!</flavorText></mainText>",
             "colloq": "",
             "plaintext": "",
             "consumed": true,
             "consumeOnFull": true,
+            "inStore": false,
             "image": {
                 "full": "2141.png",
                 "sprite": "item0.png",
@@ -3098,19 +3102,19 @@
                 "h": 48
             },
             "gold": {
-                "base": 700,
-                "purchasable": true,
-                "total": 700,
-                "sell": 700
+                "base": 500,
+                "purchasable": false,
+                "total": 500,
+                "sell": 500
             },
             "tags": [
                 "Damage",
                 "Consumable"
             ],
             "maps": {
-                "11": false,
-                "12": false,
-                "21": false,
+                "11": true,
+                "12": true,
+                "21": true,
                 "22": false,
                 "30": true
             },
@@ -3862,7 +3866,7 @@
         },
         "223031": {
             "name": "Infinity Edge",
-            "description": "<mainText><stats><nerfedStat>65</nerfedStat> Attack Damage<br><attention>20%</attention> Critical Strike Chance<br><attention>40%</attention> Critical Strike Damage</stats><br><br></mainText>",
+            "description": "<mainText><stats><nerfedStat>65</nerfedStat> Attack Damage<br><attention>20%</attention> Critical Strike Chance<br><attention>50%</attention> Critical Strike Damage</stats><br><br></mainText>",
             "colloq": "",
             "plaintext": "",
             "into": [
@@ -4640,7 +4644,7 @@
         },
         "223084": {
             "name": "Heartsteel",
-            "description": "<mainText><stats><attention>900</attention> Health<br><attention>200%</attention> Base Health Regen</stats><br><br><passive>Colossal Consumption</passive> (0s) per target<br>Charge up a powerful attack against a champion over 0s while within 700 range of them. The charged attack deals <physicalDamage>125 + <scaleHealth>10% Item Health</scaleHealth> bonus physical damage</physicalDamage>, and grants 12% of that damage as<scaleHealth> permanent max Health.</scaleHealth><br><br><passive>Goliath</passive><br>For each <scaleHealth>1000 max Health</scaleHealth>, gain 6% increased size, up to 30%. </mainText>",
+            "description": "<mainText><stats><attention>900</attention> Health<br><attention>200%</attention> Base Health Regen</stats><br><br><passive>Colossal Consumption</passive> (0s) per target<br>Charge up a powerful attack against a champion over 0s while within 700 range of them. The charged attack deals <physicalDamage>125 + <scaleHealth>12% Item Health</scaleHealth> bonus physical damage</physicalDamage>, and grants 12% of that damage as<scaleHealth> permanent max Health.</scaleHealth><br><br><passive>Goliath</passive><br>For each <scaleHealth>1000 max Health</scaleHealth>, gain 6% increased size, up to 30%. </mainText>",
             "colloq": "",
             "plaintext": "",
             "into": [
@@ -8841,7 +8845,7 @@
         },
         "227025": {
             "name": "Leviathan",
-            "description": "<mainText><stats><ornnBonus>1050</ornnBonus> Health<br><ornnBonus>300%</ornnBonus> Base Health Regen</stats><br><br><passive>Colossal Consumption</passive> (0s) per target<br>Charge up a powerful attack against a champion over 0s while within 700 range of them. The charged attack deals <physicalDamage>125 + <scaleHealth>10% Item Health</scaleHealth> bonus physical damage</physicalDamage>, and grants 12% of that damage as<scaleHealth> permanent max Health.</scaleHealth><br><br><passive>Goliath</passive><br>For each <scaleHealth>1000 max Health</scaleHealth>, gain 6% increased size, up to 30%. </mainText>",
+            "description": "<mainText><stats><ornnBonus>1050</ornnBonus> Health<br><ornnBonus>300%</ornnBonus> Base Health Regen</stats><br><br><passive>Colossal Consumption</passive> (0s) per target<br>Charge up a powerful attack against a champion over 0s while within 700 range of them. The charged attack deals <physicalDamage>125 + <scaleHealth>12% Item Health</scaleHealth> bonus physical damage</physicalDamage>, and grants 12% of that damage as<scaleHealth> permanent max Health.</scaleHealth><br><br><passive>Goliath</passive><br>For each <scaleHealth>1000 max Health</scaleHealth>, gain 6% increased size, up to 30%. </mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -9125,7 +9129,7 @@
         },
         "227031": {
             "name": "Edge of Finality",
-            "description": "<mainText><stats><ornnBonus>105</ornnBonus> Attack Damage<br><attention>20%</attention> Critical Strike Chance<br><attention>40%</attention> Critical Strike Damage</stats><br><br></mainText>",
+            "description": "<mainText><stats><ornnBonus>105</ornnBonus> Attack Damage<br><attention>20%</attention> Critical Strike Chance<br><attention>50%</attention> Critical Strike Damage</stats><br><br></mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -10435,8 +10439,9 @@
             "colloq": ";",
             "plaintext": "Increases Armor and Cooldown Reduction",
             "from": [
+                "1029",
                 "1027",
-                "1029"
+                "2022"
             ],
             "into": [
                 "3050",
@@ -10452,10 +10457,10 @@
                 "h": 48
             },
             "gold": {
-                "base": 250,
+                "base": 50,
                 "purchasable": true,
-                "total": 900,
-                "sell": 630
+                "total": 950,
+                "sell": 665
             },
             "tags": [
                 "Armor",
@@ -10525,7 +10530,7 @@
         },
         "3031": {
             "name": "Infinity Edge",
-            "description": "<mainText><stats><attention>65</attention> Attack Damage<br><attention>20%</attention> Critical Strike Chance<br><attention>40%</attention> Critical Strike Damage</stats><br><br></mainText>",
+            "description": "<mainText><stats><attention>65</attention> Attack Damage<br><attention>20%</attention> Critical Strike Chance<br><attention>50%</attention> Critical Strike Damage</stats><br><br></mainText>",
             "colloq": ";ie",
             "plaintext": "Massively enhances critical strikes",
             "from": [
@@ -10570,7 +10575,7 @@
         },
         "3033": {
             "name": "Mortal Reminder",
-            "description": "<mainText><stats><attention>40</attention> Attack Damage<br><attention>30%</attention> Armor Penetration<br><attention>20%</attention> Critical Strike Chance</stats><br><br><passive>Grievous Wounds</passive><br>Dealing physical damage applies <keyword>40% Grievous Wounds</keyword> to enemy champions for 3 seconds.</mainText>",
+            "description": "<mainText><stats><attention>40</attention> Attack Damage<br><attention>35%</attention> Armor Penetration<br><attention>20%</attention> Critical Strike Chance</stats><br><br><passive>Grievous Wounds</passive><br>Dealing physical damage applies <keyword>40% Grievous Wounds</keyword> to enemy champions for 3 seconds.</mainText>",
             "colloq": ";grievous",
             "plaintext": "Overcomes enemies with high Health recovery and Armor",
             "from": [
@@ -10658,7 +10663,7 @@
         },
         "3036": {
             "name": "Lord Dominik's Regards",
-            "description": "<mainText><stats><attention>40</attention> Attack Damage<br><attention>20%</attention> Critical Strike Chance<br><attention>30%</attention> Armor Penetration</stats><br><br><passive>Giant Slayer</passive><br>Deal bonus damage against champions with greater max Health than you.</mainText>",
+            "description": "<mainText><stats><attention>40</attention> Attack Damage<br><attention>20%</attention> Critical Strike Chance<br><attention>35%</attention> Armor Penetration</stats><br><br><passive>Giant Slayer</passive><br>Deal bonus damage against champions with greater max Health than you.</mainText>",
             "colloq": ";lw",
             "plaintext": "Overcomes enemies with high health and armor",
             "from": [
@@ -11053,7 +11058,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 500,
+                "base": 450,
                 "purchasable": true,
                 "total": 2200,
                 "sell": 1540
@@ -11080,7 +11085,7 @@
         },
         "3051": {
             "name": "Hearthbound Axe",
-            "description": "<mainText><stats><attention>20</attention> Attack Damage<br><attention>25%</attention> Attack Speed</stats><br><br></mainText>",
+            "description": "<mainText><stats><attention>15</attention> Attack Damage<br><attention>25%</attention> Attack Speed</stats><br><br></mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -11102,10 +11107,10 @@
                 "h": 48
             },
             "gold": {
-                "base": 250,
+                "base": 200,
                 "purchasable": true,
-                "total": 1200,
-                "sell": 840
+                "total": 1150,
+                "sell": 805
             },
             "tags": [
                 "Damage",
@@ -11119,7 +11124,7 @@
                 "30": false
             },
             "stats": {
-                "FlatPhysicalDamageMod": 20,
+                "FlatPhysicalDamageMod": 15,
                 "PercentAttackSpeedMod": 0.25
             },
             "depth": 2
@@ -11144,7 +11149,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 625,
+                "base": 575,
                 "purchasable": true,
                 "total": 3000,
                 "sell": 2100
@@ -11797,7 +11802,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 133,
+                "base": 183,
                 "purchasable": true,
                 "total": 3333,
                 "sell": 2333
@@ -12352,7 +12357,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 50,
+                "base": 150,
                 "purchasable": true,
                 "total": 3100,
                 "sell": 2170
@@ -12475,7 +12480,7 @@
         },
         "3108": {
             "name": "Fiendish Codex",
-            "description": "<mainText><stats><attention>35</attention> Ability Power<br><attention>10</attention> Ability Haste</stats><br><br></mainText>",
+            "description": "<mainText><stats><attention>25</attention> Ability Power<br><attention>10</attention> Ability Haste</stats><br><br></mainText>",
             "colloq": ";",
             "plaintext": "Increases Ability Power and Cooldown Reduction",
             "from": [
@@ -12524,7 +12529,7 @@
                 "30": false
             },
             "stats": {
-                "FlatMagicDamageMod": 35
+                "FlatMagicDamageMod": 25
             },
             "effect": {
                 "Effect1Amount": "-0.1"
@@ -12596,7 +12601,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 600,
+                "base": 550,
                 "purchasable": true,
                 "total": 2500,
                 "sell": 1750
@@ -13265,7 +13270,7 @@
         },
         "3133": {
             "name": "Caulfield's Warhammer",
-            "description": "<mainText><stats><attention>25</attention> Attack Damage<br><attention>10</attention> Ability Haste</stats><br><br></mainText>",
+            "description": "<mainText><stats><attention>20</attention> Attack Damage<br><attention>10</attention> Ability Haste</stats><br><br></mainText>",
             "colloq": ";",
             "plaintext": "Attack Damage and Cooldown Reduction",
             "stacks": 0,
@@ -13321,13 +13326,13 @@
                 "30": false
             },
             "stats": {
-                "FlatPhysicalDamageMod": 25
+                "FlatPhysicalDamageMod": 20
             },
             "depth": 2
         },
         "3134": {
             "name": "Serrated Dirk",
-            "description": "<mainText><stats><attention>25</attention> Attack Damage</stats><br><br><passive>Gouge</passive><br>Gain <scaleLethality>10 Lethality</scaleLethality>.</mainText>",
+            "description": "<mainText><stats><attention>20</attention> Attack Damage</stats><br><br><passive>Gouge</passive><br>Gain <scaleLethality>10 Lethality</scaleLethality>.</mainText>",
             "colloq": ";lethality",
             "plaintext": "Increases Attack Damage and Lethality",
             "stacks": 0,
@@ -13375,7 +13380,7 @@
                 "30": false
             },
             "stats": {
-                "FlatPhysicalDamageMod": 25
+                "FlatPhysicalDamageMod": 20
             },
             "effect": {
                 "Effect1Amount": "10"
@@ -13656,7 +13661,7 @@
         },
         "3145": {
             "name": "Hextech Alternator",
-            "description": "<mainText><stats><attention>50</attention> Ability Power</stats><br><br><passive>Revved</passive><br>Damaging a champion deals additional damage.</mainText>",
+            "description": "<mainText><stats><attention>45</attention> Ability Power</stats><br><br><passive>Revved</passive><br>Damaging a champion deals additional damage.</mainText>",
             "colloq": ";",
             "plaintext": "Increases Ability Power. Deal bonus magic damage on attack periodically.",
             "from": [
@@ -13698,7 +13703,7 @@
                 "30": false
             },
             "stats": {
-                "FlatMagicDamageMod": 50
+                "FlatMagicDamageMod": 45
             },
             "depth": 2
         },
@@ -13748,7 +13753,7 @@
         },
         "3147": {
             "name": "Haunting Guise",
-            "description": "<mainText><stats><attention>35</attention> Ability Power<br><attention>200</attention> Health</stats><br><br><passive>Madness</passive><br>For each second in combat with enemy champions, deal increased damage.</mainText>",
+            "description": "<mainText><stats><attention>30</attention> Ability Power<br><attention>200</attention> Health</stats><br><br><passive>Madness</passive><br>For each second in combat with enemy champions, deal increased damage.</mainText>",
             "colloq": ";lethality",
             "plaintext": "Deals additional physical damage when ambushing enemies",
             "from": [
@@ -13787,7 +13792,7 @@
             },
             "stats": {
                 "FlatHPPoolMod": 200,
-                "FlatMagicDamageMod": 35
+                "FlatMagicDamageMod": 30
             },
             "depth": 2
         },
@@ -14302,7 +14307,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 125,
+                "base": 75,
                 "purchasable": true,
                 "total": 3000,
                 "sell": 2100
@@ -14464,12 +14469,13 @@
         },
         "3211": {
             "name": "Spectre's Cowl",
-            "description": "<mainText><stats><attention>250</attention> Health<br><attention>25</attention> Magic Resist</stats><br><br><br><li><passive>Incorporeal:</passive> After taking damage from a champion, Regenerate Health.</mainText>",
+            "description": "<mainText><stats><attention>200</attention> Health<br><attention>25</attention> Magic Resist<br><attention>100%</attention> Base Health Regen</stats><br><br></mainText>",
             "colloq": ";hat",
             "plaintext": "Improves defense and grants regeneration upon being damaged",
             "from": [
                 "1028",
-                "1033"
+                "1033",
+                "1006"
             ],
             "into": [
                 "2504",
@@ -14486,7 +14492,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 400,
+                "base": 100,
                 "purchasable": true,
                 "total": 1250,
                 "sell": 875
@@ -14505,7 +14511,7 @@
             },
             "stats": {
                 "FlatSpellBlockMod": 25,
-                "FlatHPPoolMod": 250
+                "FlatHPPoolMod": 200
             },
             "depth": 2
         },
@@ -15195,7 +15201,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 600,
+                "base": 550,
                 "purchasable": true,
                 "total": 3300,
                 "sell": 2310
@@ -15382,7 +15388,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 700,
+                "base": 650,
                 "purchasable": true,
                 "total": 2800,
                 "sell": 1960
@@ -16015,7 +16021,7 @@
         },
         "3866": {
             "name": "Runic Compass",
-            "description": "<mainText><stats><attention>5</attention> Gold Per 10 Seconds<br><attention>50%</attention> Base Health Regen<br><attention>50%</attention> Base Mana Regen<br><attention>100</attention> Health</stats><br><br><br><br><active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. <br><br><br><br><passive>Quest</passive> <br>Earn 1000 gold from this item to transform it into <rarityGeneric>Runic Compass</rarityGeneric>. Gain a charge every <passive>20</passive> seconds, up to <passive>3</passive> charges. While nearby an ally champion, consume a charge to earn gold:<br><li>Damaging Abilities and Attacks against champions or buildings grant <keywordMajor>34</keywordMajor> (melee) / <keywordMajor>32</keywordMajor> (ranged) gold;<li>Killing a minion by any means grants you <keywordMajor>28</keywordMajor> gold and the nearest allied champion kill gold.<br><br><active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. </mainText>",
+            "description": "<mainText><stats><attention>5</attention> Gold Per 10 Seconds<br><attention>50%</attention> Base Health Regen<br><attention>50%</attention> Base Mana Regen<br><attention>100</attention> Health</stats><br><br><br><br><active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. <br><br><br><br><passive>Quest</passive> <br>Earn 800 gold from this item to transform it into <rarityGeneric>Runic Compass</rarityGeneric>. Gain a charge every <passive>20</passive> seconds, up to <passive>3</passive> charges. While nearby an ally champion, consume a charge to earn gold:<br><li>Damaging Abilities and Attacks against champions or buildings grant <keywordMajor>24</keywordMajor> (melee) / <keywordMajor>22</keywordMajor> (ranged) gold;<li>Killing a minion by any means grants you <keywordMajor>20</keywordMajor> gold and the nearest allied champion kill gold.<br><br><active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. </mainText>",
             "colloq": "",
             "plaintext": "",
             "specialRecipe": 3865,
@@ -17215,10 +17221,10 @@
                 "h": 48
             },
             "gold": {
-                "base": 550,
+                "base": 450,
                 "purchasable": true,
-                "total": 1800,
-                "sell": 1260
+                "total": 1700,
+                "sell": 1190
             },
             "tags": [
                 "SpellBlock",
@@ -17942,7 +17948,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 900,
+                "base": 850,
                 "purchasable": true,
                 "total": 3100,
                 "sell": 2170
@@ -18915,11 +18921,11 @@
         },
         "6675": {
             "name": "Navori Quickblades",
-            "description": "<mainText><stats><attention>60</attention> Attack Damage<br><attention>20%</attention> Critical Strike Chance<br><attention>15</attention> Ability Haste</stats><br><br><passive>Transcendence</passive><br>Your Attacks reduce your non-Ultimate Ability cooldowns.<br><br><passive>Impermanence</passive><br>Your abilities deal increased damage based on Critical Strike Chance. </mainText>",
+            "description": "<mainText><stats><attention>65</attention> Attack Damage<br><attention>20%</attention> Critical Strike Chance<br><attention>15</attention> Ability Haste</stats><br><br><passive>Transcendence</passive><br>Your Attacks reduce your non-Ultimate Ability cooldowns.<br><br><passive>Impermanence</passive><br>Your abilities deal increased damage based on Critical Strike Chance. </mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
-                "1037",
+                "1038",
                 "3133",
                 "1018"
             ],
@@ -18936,7 +18942,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 725,
+                "base": 300,
                 "purchasable": true,
                 "total": 3300,
                 "sell": 2310
@@ -18957,7 +18963,7 @@
             },
             "stats": {
                 "FlatCritChanceMod": 0.2,
-                "FlatPhysicalDamageMod": 60
+                "FlatPhysicalDamageMod": 65
             },
             "effect": {
                 "Effect1Amount": "0.5",
@@ -20988,7 +20994,7 @@
         },
         "7031": {
             "name": "Edge of Finality",
-            "description": "<mainText><stats><ornnBonus>95</ornnBonus> Attack Damage<br><attention>20%</attention> Critical Strike Chance<br><attention>40%</attention> Critical Strike Damage</stats><br><br></mainText>",
+            "description": "<mainText><stats><ornnBonus>95</ornnBonus> Attack Damage<br><attention>20%</attention> Critical Strike Chance<br><attention>50%</attention> Critical Strike Damage</stats><br><br></mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [

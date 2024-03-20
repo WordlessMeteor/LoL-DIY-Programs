@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.5.1",
+    "version": "14.6.1",
     "data": {
         "Gragas": {
             "id": "Gragas",
@@ -95,6 +95,12 @@
                     "num": 20,
                     "name": "Space Groove Gragas",
                     "chromas": true
+                },
+                {
+                    "id": "79029",
+                    "num": 29,
+                    "name": "High Noon Gragas",
+                    "chromas": true
                 }
             ],
             "lore": "Equal parts jolly and imposing, Gragas is a massive, rowdy brewmaster on his own quest for the perfect pint of ale. Hailing from parts unknown, he now searches for rare ingredients among the unblemished wastes of the Freljord, trying each recipe as he goes. Often intoxicated and extremely impulsive, he is legendary for the brawls he starts, which often end in all-night parties and widespread property damage. Any appearance from Gragas must surely foreshadow drinking and destruction—in that order.",
@@ -120,7 +126,7 @@
                 "difficulty": 5
             },
             "stats": {
-                "hp": 670,
+                "hp": 640,
                 "hpperlevel": 115,
                 "mp": 400,
                 "mpperlevel": 47,
@@ -172,12 +178,12 @@
                     "cooldownBurn": "10/9/8/7/6",
                     "cost": [
                         80,
-                        75,
-                        70,
-                        65,
-                        60
+                        80,
+                        80,
+                        80,
+                        80
                     ],
-                    "costBurn": "80/75/70/65/60",
+                    "costBurn": "80",
                     "datavalues": {},
                     "effect": [
                         null,

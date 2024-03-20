@@ -586,6 +586,122 @@
             ],
             "skinAugments": null,
             "description": "A living weapon of Nocturne's design, Cho'Gath is meant to cleanse the world of the Neverghaast. Empowered by sacred artifacts from the congregation's crypts, it has remained dormant while Nocturne feeds it prisoners to build its power. Despite its maker's intentions, nothing will be able to sate the monster's hunger once it fully awakens."
+        },
+        {
+            "id": 31032,
+            "isBase": false,
+            "name": "Toy Terror Cho'Gath",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/31/31032.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/31/31032.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/31/31032.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Chogath/skins/Skin32/ChogathLoadScreen_32.SKINS_Chogath_Skin32.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31032.png",
+            "chromas": [
+                {
+                    "id": 31033,
+                    "name": "Toy Terror Cho'Gath",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31033.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 31034,
+                    "name": "Toy Terror Cho'Gath",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31034.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 31035,
+                    "name": "Toy Terror Cho'Gath",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31035.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 31036,
+                    "name": "Toy Terror Cho'Gath",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31036.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 31037,
+                    "name": "Toy Terror Cho'Gath",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31037.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 31038,
+                    "name": "Toy Terror Cho'Gath",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31038.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 31039,
+                    "name": "Toy Terror Cho'Gath",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31039.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 31040,
+                    "name": "Toy Terror Cho'Gath",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31040.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 61
+                }
+            ],
+            "skinAugments": null,
+            "description": "Snuggle up with Cho'Gath, your favorite plush pal! Squeeze his soft belly and watch him scare away bad dreams for a guaranteed good night's sleep. Extendable claw arms included for double the fun! Not suitable for children under 5 years of age. Some assembly required."
         }
     ],
     "passive": {

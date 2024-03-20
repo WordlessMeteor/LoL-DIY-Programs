@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.5.1",
+    "version": "14.6.1",
     "data": {
         "Ornn": {
             "id": "Ornn",
@@ -391,13 +391,13 @@
                     },
                     "maxrank": 5,
                     "cooldown": [
-                        16,
-                        15,
                         14,
+                        13.5,
                         13,
+                        12.5,
                         12
                     ],
-                    "cooldownBurn": "16/15/14/13/12",
+                    "cooldownBurn": "14/13.5/13/12.5/12",
                     "cost": [
                         35,
                         40,

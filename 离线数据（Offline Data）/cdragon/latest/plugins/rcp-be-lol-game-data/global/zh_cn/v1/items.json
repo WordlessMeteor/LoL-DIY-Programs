@@ -64,6 +64,7 @@
         "inStore": true,
         "from": [],
         "to": [
+            3211,
             3801
         ],
         "categories": [
@@ -443,8 +444,7 @@
             3153,
             6695,
             6029,
-            6035,
-            6675
+            6035
         ],
         "categories": [
             "Damage"
@@ -475,7 +475,8 @@
             3031,
             3072,
             3302,
-            4403
+            4403,
+            6675
         ],
         "categories": [
             "Damage"
@@ -1530,7 +1531,7 @@
     {
         "id": 2015,
         "name": "吉尔菲艾斯碎片",
-        "description": "<mainText><stats><attention>15</attention>攻击力</stats><br><br><passive>突震</passive><br><keyword>盈能攻击</keyword>会造成额外的<magicDamage>60魔法伤害</magicDamage>。</mainText>",
+        "description": "<mainText><stats><attention>15</attention>攻击力</stats><br><br><passive>突震</passive><br><keyword>盈能攻击</keyword>会造成额外的<magicDamage>50魔法伤害</magicDamage>。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -1565,6 +1566,7 @@
         "inStore": true,
         "from": [
             1036,
+            1029,
             1029
         ],
         "to": [
@@ -1583,14 +1585,14 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 450,
+        "price": 150,
         "priceTotal": 1100,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/2019_Steel_Sigil.png"
     },
     {
         "id": 2020,
         "name": "残暴之力",
-        "description": "<mainText><stats><attention>25</attention>攻击力<br><attention>10</attention>技能急速<br><attention>8</attention>穿甲</stats><br><br></mainText>",
+        "description": "<mainText><stats><attention>25</attention>攻击力<br><attention>10</attention>技能急速<br><attention>5</attention>穿甲</stats><br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -1648,8 +1650,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 350,
-        "priceTotal": 1100,
+        "price": 400,
+        "priceTotal": 1150,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/2012_Tunneler.png"
     },
     {
@@ -1665,6 +1667,7 @@
             2020,
             223057,
             3108,
+            3024,
             3057,
             3067,
             3802,
@@ -1995,9 +1998,9 @@
     {
         "id": 2141,
         "name": "帽子饮品",
-        "description": "<mainText><stats></stats><br><br><br><br><rules>帮助你出人头地。</rules><active>主动 - 消耗：</active>这个饮品什么也不做。<br><br><flavorText>在有限的时间内，每次购买都可以免费获得一顶帽子！</flavorText></mainText>",
+        "description": "<mainText><stats></stats><br><br><active>主动 - 消耗：</active>这个饮品什么也不做。<br><br><flavorText>在有限的时间内，每次购买都可以免费获得一顶帽子！</flavorText></mainText>",
         "active": true,
-        "inStore": true,
+        "inStore": false,
         "from": [],
         "to": [],
         "categories": [
@@ -2011,8 +2014,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 700,
-        "priceTotal": 700,
+        "price": 500,
+        "priceTotal": 500,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/Icon_Item_SoulJuice_FunHat.png"
     },
     {
@@ -2674,8 +2677,9 @@
         "active": false,
         "inStore": true,
         "from": [
+            1029,
             1027,
-            1029
+            2022
         ],
         "to": [
             3110,
@@ -2694,8 +2698,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 250,
-        "priceTotal": 900,
+        "price": 50,
+        "priceTotal": 950,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3024_Tank_T2_GlacialShroud.png"
     },
     {
@@ -2727,7 +2731,7 @@
     {
         "id": 3031,
         "name": "无尽之刃",
-        "description": "<mainText><stats><attention>65</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>40%</attention>暴击伤害</stats><br><br></mainText>",
+        "description": "<mainText><stats><attention>65</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>50%</attention>暴击伤害</stats><br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -2756,7 +2760,7 @@
     {
         "id": 3033,
         "name": "凡性的提醒",
-        "description": "<mainText><stats><attention>40</attention>攻击力<br><attention>30%</attention>护甲穿透<br><attention>20%</attention>暴击几率</stats><br><br><passive>重伤</passive><br>对敌方英雄造成物理伤害时会施加<keyword>40%重伤</keyword>效果，持续3秒。</mainText>",
+        "description": "<mainText><stats><attention>40</attention>攻击力<br><attention>35%</attention>护甲穿透<br><attention>20%</attention>暴击几率</stats><br><br><passive>重伤</passive><br>对敌方英雄造成物理伤害时会施加<keyword>40%重伤</keyword>效果，持续3秒。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -2814,7 +2818,7 @@
     {
         "id": 3036,
         "name": "多米尼克领主的致意",
-        "description": "<mainText><stats><attention>40</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>30%</attention>护甲穿透</stats><br><br><passive>巨人杀手</passive><br>对最大生命值高于你的敌方英雄造成额外伤害。</mainText>",
+        "description": "<mainText><stats><attention>40</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>35%</attention>护甲穿透</stats><br><br><passive>巨人杀手</passive><br>对最大生命值高于你的敌方英雄造成额外伤害。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -3053,14 +3057,14 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 500,
+        "price": 450,
         "priceTotal": 2200,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3050_Enchanter_T3_ZekesConvergence.png"
     },
     {
         "id": 3051,
         "name": "缚炉之斧",
-        "description": "<mainText><stats><attention>20</attention>攻击力<br><attention>25%</attention>攻击速度</stats><br><br></mainText>",
+        "description": "<mainText><stats><attention>15</attention>攻击力<br><attention>25%</attention>攻击速度</stats><br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -3083,8 +3087,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 250,
-        "priceTotal": 1200,
+        "price": 200,
+        "priceTotal": 1150,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3051_Fighter_T2_AxeOfAvarosa.png"
     },
     {
@@ -3111,7 +3115,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 625,
+        "price": 575,
         "priceTotal": 3000,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3053_Steraks_Gage.png"
     },
@@ -3545,7 +3549,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 133,
+        "price": 183,
         "priceTotal": 3333,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3078_Fighter_T4_TrinityForce.png"
     },
@@ -3891,7 +3895,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 50,
+        "price": 150,
         "priceTotal": 3100,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3102_Mage_T3_BansheesVeil.png"
     },
@@ -3959,7 +3963,7 @@
     {
         "id": 3108,
         "name": "恶魔法典",
-        "description": "<mainText><stats><attention>35</attention>法术强度<br><attention>10</attention>技能急速</stats><br><br></mainText>",
+        "description": "<mainText><stats><attention>25</attention>法术强度<br><attention>10</attention>技能急速</stats><br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4052,7 +4056,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 600,
+        "price": 550,
         "priceTotal": 2500,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3110_Tank_T3_FrozenHeart.png"
     },
@@ -4446,7 +4450,7 @@
     {
         "id": 3133,
         "name": "考尔菲德的战锤",
-        "description": "<mainText><stats><attention>25</attention>攻击力<br><attention>10</attention>技能急速</stats><br><br></mainText>",
+        "description": "<mainText><stats><attention>20</attention>攻击力<br><attention>10</attention>技能急速</stats><br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4492,7 +4496,7 @@
     {
         "id": 3134,
         "name": "锯齿短匕",
-        "description": "<mainText><stats><attention>25</attention>攻击力</stats><br><br><passive>凿击</passive><br>获得<scaleLethality>10穿甲</scaleLethality>。</mainText>",
+        "description": "<mainText><stats><attention>20</attention>攻击力</stats><br><br><passive>凿击</passive><br>获得<scaleLethality>10穿甲</scaleLethality>。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4700,7 +4704,7 @@
     {
         "id": 3145,
         "name": "海克斯科技发电机",
-        "description": "<mainText><stats><attention>50</attention>法术强度</stats><br><br><passive>转速加快</passive><br>对一名敌方英雄造成伤害时会附带额外伤害。</mainText>",
+        "description": "<mainText><stats><attention>45</attention>法术强度</stats><br><br><passive>转速加快</passive><br>对一名敌方英雄造成伤害时会附带额外伤害。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4762,7 +4766,7 @@
     {
         "id": 3147,
         "name": "幽魂面具",
-        "description": "<mainText><stats><attention>35</attention>法术强度<br><attention>200</attention>生命值</stats><br><br><passive>癫狂</passive><br>在对敌方英雄造成伤害时，每过一秒就会造成提升过的伤害。</mainText>",
+        "description": "<mainText><stats><attention>30</attention>法术强度<br><attention>200</attention>生命值</stats><br><br><passive>癫狂</passive><br>在对敌方英雄造成伤害时，每过一秒就会造成提升过的伤害。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -5123,7 +5127,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 125,
+        "price": 75,
         "priceTotal": 3000,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3181_Hullbreaker.png"
     },
@@ -5219,12 +5223,13 @@
     {
         "id": 3211,
         "name": "幽魂斗篷",
-        "description": "<mainText><stats><attention>250</attention>生命值<br><attention>25</attention>魔法抗性</stats><br><br><br><li><passive>无实体：</passive>在受到来自英雄的伤害后，回复生命值。</mainText>",
+        "description": "<mainText><stats><attention>200</attention>生命值<br><attention>25</attention>魔法抗性<br><attention>100%</attention>基础生命回复</stats><br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
             1028,
-            1033
+            1033,
+            1006
         ],
         "to": [
             2504,
@@ -5243,7 +5248,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 400,
+        "price": 100,
         "priceTotal": 1250,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3211_Tank_T2_SpectresCowl.png"
     },
@@ -5686,7 +5691,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 600,
+        "price": 550,
         "priceTotal": 3300,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3748_Fighter_T3_TitanicHydra.png"
     },
@@ -5809,7 +5814,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 700,
+        "price": 650,
         "priceTotal": 2800,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3814_Assassin_T3_EdgeOfNight.png"
     },
@@ -6151,7 +6156,7 @@
     {
         "id": 3866,
         "name": "符文罗盘",
-        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>50%</attention>基础生命回复<br><attention>50%</attention>基础法力回复<br><attention>100</attention>生命值</stats><br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 <br><br><br><br><passive>任务</passive><br>使用这个装备赚取1000金币来将其转变为<rarityGeneric>符文罗盘</rarityGeneric>。每<passive>20</passive>秒获得1层充能，至多至<passive>3</passive>层。当附近有一个友方英雄时，消耗一层充能来赚取金币：<br><li>对英雄或建筑物进行的伤害型技能和攻击会提供<keywordMajor>34</keywordMajor> (近战) / <keywordMajor>32</keywordMajor> (远程) 金币；<li>以任意方式击杀一个小兵会为你提供<keywordMajor>28</keywordMajor>金币并为相距最近的友方英雄提供击杀金币。<br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
+        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>50%</attention>基础生命回复<br><attention>50%</attention>基础法力回复<br><attention>100</attention>生命值</stats><br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 <br><br><br><br><passive>任务</passive><br>使用这个装备赚取800金币来将其转变为<rarityGeneric>符文罗盘</rarityGeneric>。每<passive>20</passive>秒获得1层充能，至多至<passive>3</passive>层。当附近有一个友方英雄时，消耗一层充能来赚取金币：<br><li>对英雄或建筑物进行的伤害型技能和攻击会提供<keywordMajor>24</keywordMajor> (近战) / <keywordMajor>22</keywordMajor> (远程) 金币；<li>以任意方式击杀一个小兵会为你提供<keywordMajor>20</keywordMajor>金币并为相距最近的友方英雄提供击杀金币。<br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -6921,8 +6926,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 550,
-        "priceTotal": 1800,
+        "price": 450,
+        "priceTotal": 1700,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/4632_Tank_T2_VerdantBarrier.png"
     },
     {
@@ -7389,7 +7394,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 900,
+        "price": 850,
         "priceTotal": 3100,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6610_SunderedSky.png"
     },
@@ -8015,11 +8020,11 @@
     {
         "id": 6675,
         "name": "纳沃利迅刃",
-        "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>15</attention>技能急速</stats><br><br><passive>超凡入圣</passive><br>你的攻击会使你的各个非终极技能的冷却时间缩短。<br><br><passive>无常</passive><br>你的技能可基于你的暴击几率造成提升伤害。 </mainText>",
+        "description": "<mainText><stats><attention>65</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>15</attention>技能急速</stats><br><br><passive>超凡入圣</passive><br>你的攻击会使你的各个非终极技能的冷却时间缩短。<br><br><passive>无常</passive><br>你的技能可基于你的暴击几率造成提升伤害。 </mainText>",
         "active": false,
         "inStore": true,
         "from": [
-            1037,
+            1038,
             3133,
             1018
         ],
@@ -8040,7 +8045,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 725,
+        "price": 300,
         "priceTotal": 3300,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6675_Marksman_T3_NavoriQuickblades.png"
     },
@@ -8195,7 +8200,7 @@
     {
         "id": 6693,
         "name": "暗行者之爪",
-        "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>22</attention>穿甲<br><attention>15</attention>技能急速</stats><br><br><passive>盛名</passive><br>如果一名曾被你造成过伤害的英雄阵亡，则获得攻击力。<br><br><passive>唯我</passive><br>击杀英雄时会生成一座你自己的雕像，如果你已拥有一座雕像，则它会升级。</mainText>",
+        "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>22</attention>穿甲<br><attention>15</attention>技能急速</stats><br><br><passive>伺机待发</passive><br>在脱离与英雄的战斗状态8秒后获得穿甲。<br><br><passive>险境脱身</passive><br>击杀英雄后获得移动速度。</mainText>",
         "active": false,
         "inStore": false,
         "from": [
@@ -8427,7 +8432,7 @@
     {
         "id": 6701,
         "name": "禁忌时机",
-        "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>18</attention>穿甲<br><attention>5%</attention>移动速度</stats><br><br><passive>盛名</passive><br>如果一名曾被你造成过伤害的英雄阵亡，则获得攻击力。<br><br><passive>唯我</passive><br>击杀英雄时会生成一座你自己的雕像，如果你已拥有一座雕像，则它会升级。</mainText>",
+        "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>18</attention>穿甲<br><attention>5%</attention>移动速度</stats><br><br><passive>伺机待发</passive><br>在脱离与英雄的战斗状态8秒后获得穿甲。<br><br><passive>险境脱身</passive><br>击杀英雄后获得移动速度。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -8457,7 +8462,7 @@
     {
         "id": 7000,
         "name": " 沙雀之爪",
-        "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>26</ornnBonus>穿甲<br><ornnBonus>25</ornnBonus>技能急速</stats><br><br><passive>盛名</passive><br>如果一名曾被你造成过伤害的英雄阵亡，则获得攻击力。<br><br><passive>唯我</passive><br>击杀英雄时会生成一座你自己的雕像，如果你已拥有一座雕像，则它会升级。</mainText>",
+        "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>26</ornnBonus>穿甲<br><ornnBonus>25</ornnBonus>技能急速</stats><br><br><passive>伺机待发</passive><br>在脱离与英雄的战斗状态8秒后获得穿甲。<br><br><passive>险境脱身</passive><br>击杀英雄后获得移动速度。</mainText>",
         "active": false,
         "inStore": false,
         "from": [
@@ -8675,7 +8680,7 @@
     {
         "id": 7008,
         "name": " 无我",
-        "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>27</ornnBonus>穿甲<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br><passive>盛名</passive><br>如果一名曾被你造成过伤害的英雄阵亡，则获得攻击力。<br><br><passive>唯我</passive><br>击杀英雄时会生成一座你自己的雕像，如果你已拥有一座雕像，则它会升级。</mainText>",
+        "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>27</ornnBonus>穿甲<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br><passive>伺机待发</passive><br>在脱离与英雄的战斗状态8秒后获得穿甲。<br><br><passive>险境脱身</passive><br>击杀英雄后获得移动速度。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9073,7 +9078,7 @@
     {
         "id": 7022,
         "name": " 必然",
-        "description": "<mainText><stats><ornnBonus>70</ornnBonus>攻击力<br><ornnBonus>27</ornnBonus>穿甲<br><ornnBonus>8%</ornnBonus>移动速度</stats><br><br><passive>盛名</passive><br>如果一名曾被你造成过伤害的英雄阵亡，则获得攻击力。<br><br><passive>唯我</passive><br>击杀英雄时会生成一座你自己的雕像，如果你已拥有一座雕像，则它会升级。</mainText>",
+        "description": "<mainText><stats><ornnBonus>70</ornnBonus>攻击力<br><ornnBonus>27</ornnBonus>穿甲<br><ornnBonus>8%</ornnBonus>移动速度</stats><br><br><passive>伺机待发</passive><br>在脱离与英雄的战斗状态8秒后获得穿甲。<br><br><passive>险境脱身</passive><br>击杀英雄后获得移动速度。</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -9317,7 +9322,7 @@
     {
         "id": 7031,
         "name": " 终局锋刃",
-        "description": "<mainText><stats><ornnBonus>95</ornnBonus>攻击力<br><attention>20%</attention>暴击几率<br><attention>40%</attention>暴击伤害</stats><br><br></mainText>",
+        "description": "<mainText><stats><ornnBonus>95</ornnBonus>攻击力<br><attention>20%</attention>暴击几率<br><attention>50%</attention>暴击伤害</stats><br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -10058,7 +10063,7 @@
     {
         "id": 223031,
         "name": "无尽之刃",
-        "description": "<mainText><stats><nerfedStat>65</nerfedStat>攻击力<br><attention>20%</attention>暴击几率<br><attention>40%</attention>暴击伤害</stats><br><br></mainText>",
+        "description": "<mainText><stats><nerfedStat>65</nerfedStat>攻击力<br><attention>20%</attention>暴击几率<br><attention>50%</attention>暴击伤害</stats><br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -10533,7 +10538,7 @@
     {
         "id": 223084,
         "name": "心之钢",
-        "description": "<mainText><stats><attention>900</attention>生命值<br><attention>200%</attention>基础生命回复</stats><br><br><passive>庞然吞食</passive> 每个目标 (0秒)<br>当700码内有一名敌方英雄时，会在0秒里持续充能一次对该英雄的强力攻击。充能攻击会造成<physicalDamage>125 + <scaleHealth>10%装备生命值</scaleHealth>额外物理伤害</physicalDamage>，并为你提供相当于12%该伤害的<scaleHealth>永久最大生命值。</scaleHealth><br><br><passive>歌利亚巨人</passive><br>每有<scaleHealth>1000最大生命值</scaleHealth>，获得6%体型提升，至多至30%。 </mainText>",
+        "description": "<mainText><stats><attention>900</attention>生命值<br><attention>200%</attention>基础生命回复</stats><br><br><passive>庞然吞食</passive> 每个目标 (0秒)<br>当700码内有一名敌方英雄时，会在0秒里持续充能一次对该英雄的强力攻击。充能攻击会造成<physicalDamage>125 + <scaleHealth>12%装备生命值</scaleHealth>额外物理伤害</physicalDamage>，并为你提供相当于12%该伤害的<scaleHealth>永久最大生命值。</scaleHealth><br><br><passive>歌利亚巨人</passive><br>每有<scaleHealth>1000最大生命值</scaleHealth>，获得6%体型提升，至多至30%。 </mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -11260,7 +11265,7 @@
     {
         "id": 223158,
         "name": "明朗之靴",
-        "description": "<mainText><stats><buffedStat>40</buffedStat>技能急速<br><attention>45</attention>移动速度</stats><br><br><br><li>提供12召唤师技能急速。<br><br><flavorText>“这个物品是为了庆祝在2010年12月10日艾欧尼亚和诺克萨斯在争夺南方诸行省的重赛中，艾欧尼亚取得胜利。”</flavorText></mainText>",
+        "description": "<mainText><stats><buffedStat>40</buffedStat>技能急速<br><attention>45</attention>移动速度</stats><br><br><br><li>提供12召唤师技能急速。<br><br><flavorText>“这个物品是为了庆祝在联盟历20年12月10日艾欧尼亚和诺克萨斯在争夺南方诸行省的重赛中，艾欧尼亚取得胜利。”</flavorText></mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -13208,7 +13213,7 @@
     {
         "id": 227025,
         "name": " 利维坦之甲",
-        "description": "<mainText><stats><ornnBonus>1050</ornnBonus>生命值<br><ornnBonus>300%</ornnBonus>基础生命回复</stats><br><br><passive>庞然吞食</passive> 每个目标 (0秒)<br>当700码内有一名敌方英雄时，会在0秒里持续充能一次对该英雄的强力攻击。充能攻击会造成<physicalDamage>125 + <scaleHealth>10%装备生命值</scaleHealth>额外物理伤害</physicalDamage>，并为你提供相当于12%该伤害的<scaleHealth>永久最大生命值。</scaleHealth><br><br><passive>歌利亚巨人</passive><br>每有<scaleHealth>1000最大生命值</scaleHealth>，获得6%体型提升，至多至30%。 </mainText>",
+        "description": "<mainText><stats><ornnBonus>1050</ornnBonus>生命值<br><ornnBonus>300%</ornnBonus>基础生命回复</stats><br><br><passive>庞然吞食</passive> 每个目标 (0秒)<br>当700码内有一名敌方英雄时，会在0秒里持续充能一次对该英雄的强力攻击。充能攻击会造成<physicalDamage>125 + <scaleHealth>12%装备生命值</scaleHealth>额外物理伤害</physicalDamage>，并为你提供相当于12%该伤害的<scaleHealth>永久最大生命值。</scaleHealth><br><br><passive>歌利亚巨人</passive><br>每有<scaleHealth>1000最大生命值</scaleHealth>，获得6%体型提升，至多至30%。 </mainText>",
         "active": false,
         "inStore": false,
         "from": [
@@ -13369,7 +13374,7 @@
     {
         "id": 227031,
         "name": " 终局锋刃",
-        "description": "<mainText><stats><ornnBonus>105</ornnBonus>攻击力<br><attention>20%</attention>暴击几率<br><attention>40%</attention>暴击伤害</stats><br><br></mainText>",
+        "description": "<mainText><stats><ornnBonus>105</ornnBonus>攻击力<br><attention>20%</attention>暴击几率<br><attention>50%</attention>暴击伤害</stats><br><br></mainText>",
         "active": false,
         "inStore": false,
         "from": [

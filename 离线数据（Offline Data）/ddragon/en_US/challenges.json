@@ -2031,6 +2031,193 @@
         }
     },
     {
+        "id": 121000,
+        "name": "Glorious Evolution",
+        "description": "Earn points from challenges in the Glorious Evolution group",
+        "shortDescription": "Earn points from challenges in the Glorious Evolution group",
+        "hasLeaderboard": false,
+        "levelToIconPath": {
+            "IRON": "/challenges-images/121000-IRON.png",
+            "BRONZE": "/challenges-images/121000-BRONZE.png",
+            "SILVER": "/challenges-images/121000-SILVER.png",
+            "GOLD": "/challenges-images/121000-GOLD.png",
+            "PLATINUM": "/challenges-images/121000-PLATINUM.png",
+            "DIAMOND": "/challenges-images/121000-DIAMOND.png",
+            "MASTER": "/challenges-images/121000-MASTER.png"
+        },
+        "thresholds": {
+            "IRON": {
+                "value": 15
+            },
+            "BRONZE": {
+                "value": 30
+            },
+            "SILVER": {
+                "value": 45
+            },
+            "GOLD": {
+                "value": 75
+            },
+            "PLATINUM": {
+                "value": 120
+            },
+            "DIAMOND": {
+                "value": 180
+            },
+            "MASTER": {
+                "value": 300,
+                "rewards": [
+                    {
+                        "category": "TITLE",
+                        "quantity": 1,
+                        "title": "Turing Tested"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "id": 121001,
+        "name": "Get Bo(t)died",
+        "description": "Win Co-Op vs. AI (Intermediate) games without dying",
+        "shortDescription": "Win games without dying",
+        "hasLeaderboard": false,
+        "levelToIconPath": {
+            "IRON": "/challenges-images/121001-IRON.png",
+            "BRONZE": "/challenges-images/121001-BRONZE.png",
+            "SILVER": "/challenges-images/121001-SILVER.png",
+            "GOLD": "/challenges-images/121001-GOLD.png",
+            "PLATINUM": "/challenges-images/121001-PLATINUM.png",
+            "DIAMOND": "/challenges-images/121001-DIAMOND.png",
+            "MASTER": "/challenges-images/121001-MASTER.png",
+            "GRANDMASTER": "/challenges-images/121001-GRANDMASTER.png",
+            "CHALLENGER": "/challenges-images/121001-CHALLENGER.png"
+        },
+        "thresholds": {
+            "IRON": {
+                "value": 1
+            },
+            "BRONZE": {
+                "value": 3
+            },
+            "SILVER": {
+                "value": 6
+            },
+            "GOLD": {
+                "value": 10
+            },
+            "PLATINUM": {
+                "value": 15
+            },
+            "DIAMOND": {
+                "value": 30
+            },
+            "MASTER": {
+                "value": 50
+            },
+            "GRANDMASTER": {
+                "value": 80
+            },
+            "CHALLENGER": {
+                "value": 125
+            }
+        }
+    },
+    {
+        "id": 121002,
+        "name": "Error 410: Jungler Gone",
+        "description": "Kill the enemy jungler in their jungle before 10 min in Co-Op vs. AI (Intermediate) Games",
+        "shortDescription": "Kill the enemy jungler in their jungle before 10 min",
+        "hasLeaderboard": false,
+        "levelToIconPath": {
+            "IRON": "/challenges-images/121002-IRON.png",
+            "BRONZE": "/challenges-images/121002-BRONZE.png",
+            "SILVER": "/challenges-images/121002-SILVER.png",
+            "GOLD": "/challenges-images/121002-GOLD.png",
+            "PLATINUM": "/challenges-images/121002-PLATINUM.png",
+            "DIAMOND": "/challenges-images/121002-DIAMOND.png",
+            "MASTER": "/challenges-images/121002-MASTER.png",
+            "GRANDMASTER": "/challenges-images/121002-GRANDMASTER.png",
+            "CHALLENGER": "/challenges-images/121002-CHALLENGER.png"
+        },
+        "thresholds": {
+            "IRON": {
+                "value": 1
+            },
+            "BRONZE": {
+                "value": 2
+            },
+            "SILVER": {
+                "value": 5
+            },
+            "GOLD": {
+                "value": 12
+            },
+            "PLATINUM": {
+                "value": 25
+            },
+            "DIAMOND": {
+                "value": 50
+            },
+            "MASTER": {
+                "value": 90
+            },
+            "GRANDMASTER": {
+                "value": 150
+            },
+            "CHALLENGER": {
+                "value": 250
+            }
+        }
+    },
+    {
+        "id": 121003,
+        "name": "That'll Machine Learn You",
+        "description": "Destroy all three inhibitors in under 25 minutes in Co-Op vs. AI (Intermediate) games",
+        "shortDescription": "Destroy all 3 inhibitors in under 25 minutes",
+        "hasLeaderboard": false,
+        "levelToIconPath": {
+            "IRON": "/challenges-images/121003-IRON.png",
+            "BRONZE": "/challenges-images/121003-BRONZE.png",
+            "SILVER": "/challenges-images/121003-SILVER.png",
+            "GOLD": "/challenges-images/121003-GOLD.png",
+            "PLATINUM": "/challenges-images/121003-PLATINUM.png",
+            "DIAMOND": "/challenges-images/121003-DIAMOND.png",
+            "MASTER": "/challenges-images/121003-MASTER.png",
+            "GRANDMASTER": "/challenges-images/121003-GRANDMASTER.png",
+            "CHALLENGER": "/challenges-images/121003-CHALLENGER.png"
+        },
+        "thresholds": {
+            "IRON": {
+                "value": 1
+            },
+            "BRONZE": {
+                "value": 2
+            },
+            "SILVER": {
+                "value": 3
+            },
+            "GOLD": {
+                "value": 5
+            },
+            "PLATINUM": {
+                "value": 8
+            },
+            "DIAMOND": {
+                "value": 12
+            },
+            "MASTER": {
+                "value": 20
+            },
+            "GRANDMASTER": {
+                "value": 35
+            },
+            "CHALLENGER": {
+                "value": 60
+            }
+        }
+    },
+    {
         "id": 2,
         "name": "EXPERTISE",
         "description": "",

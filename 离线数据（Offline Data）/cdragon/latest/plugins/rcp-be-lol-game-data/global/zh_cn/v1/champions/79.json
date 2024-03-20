@@ -625,6 +625,164 @@
             ],
             "skinAugments": null,
             "description": "酷炫之王古拉加斯是一个知道如何享受派对乐趣的人。无论他走到哪里都带着放克乐，即使是不羁乐仙境的居民也承认他在律动上的实力。如果古拉加斯驾临迪斯科舞厅，你就知道你将度过一个狂野的夜晚。"
+        },
+        {
+            "id": 79029,
+            "isBase": false,
+            "name": "西部魔影 古拉加斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/79/79029.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/79/79029.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/79/79029.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Gragas/Skins/Skin29/GragasLoadScreen_29.SKINS_Gragas_Skin29.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Gragas/Skins/Skin29/GragasLoadScreen_29_LE.SKINS_Gragas_Skin29.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79029.png",
+            "chromas": [
+                {
+                    "id": 79030,
+                    "name": "西部魔影 古拉加斯 温和",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79030.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2024年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 79031,
+                    "name": "西部魔影 古拉加斯 忠诚",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79031.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 79032,
+                    "name": "西部魔影 古拉加斯 豪爽",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79032.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 79033,
+                    "name": "西部魔影 古拉加斯 善良",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79033.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 79034,
+                    "name": "西部魔影 古拉加斯 恭敬",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79034.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 79035,
+                    "name": "西部魔影 古拉加斯 节制",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79035.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 79036,
+                    "name": "西部魔影 古拉加斯 诚实",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79036.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 79037,
+                    "name": "西部魔影 古拉加斯 谦卑",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79037.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 79038,
+                    "name": "西部魔影 古拉加斯 正午幻日",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/79/79038.png",
+                    "colors": [
+                        "#A8BFF1",
+                        "#CD5867"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在西部魔影(2024)期间作为战利品专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "“这家伙不归你，伊芙，” 酒保说道，将一只大手放在那个魂不守舍的人身上，把他拉开了。古拉加斯被称为“绅士巨人”。“老碎桶者”。既非天使也非恶魔，而是别的东西。“这可不容易，朋友。见鬼，你甚至可能不会全身而退。但仔细听，你可能会重获新生。”"
         }
     ],
     "passive": {
@@ -655,11 +813,11 @@
             ],
             "costCoefficients": [
                 80.0000,
-                75.0000,
-                70.0000,
-                65.0000,
-                60.0000,
-                60.0000
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000,
+                80.0000
             ],
             "cooldownCoefficients": [
                 10.0000,

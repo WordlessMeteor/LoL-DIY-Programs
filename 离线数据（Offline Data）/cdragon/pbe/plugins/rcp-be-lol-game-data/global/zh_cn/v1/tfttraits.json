@@ -3934,12 +3934,12 @@
                     },
                     {
                         "name": "StartingHealth",
-                        "value": 250.0000,
+                        "value": 150.0000,
                         "format_string": ""
                     },
                     {
                         "name": "StartingHealthHR",
-                        "value": 250.0000,
+                        "value": 150.0000,
                         "format_string": ""
                     }
                 ]
@@ -3953,7 +3953,7 @@
                 "effect_amounts": [
                     {
                         "name": "HealthPerCompost",
-                        "value": 2.0000,
+                        "value": 3.0000,
                         "format_string": ""
                     },
                     {
@@ -3976,7 +3976,7 @@
                 "effect_amounts": [
                     {
                         "name": "HealthPerCompost",
-                        "value": 6.0000,
+                        "value": 7.0000,
                         "format_string": ""
                     },
                     {
@@ -3999,7 +3999,7 @@
                 "effect_amounts": [
                     {
                         "name": "HealthPerCompost",
-                        "value": 10.0000,
+                        "value": 11.0000,
                         "format_string": ""
                     },
                     {
@@ -4490,7 +4490,7 @@
                     },
                     {
                         "name": "HealingPercent",
-                        "value": 0.0300,
+                        "value": 0.0200,
                         "format_string": ""
                     },
                     {
@@ -4511,7 +4511,7 @@
                 "effect_amounts": [
                     {
                         "name": "DamagePercent",
-                        "value": 0.0600,
+                        "value": 0.0500,
                         "format_string": ""
                     }
                 ],
@@ -4537,7 +4537,7 @@
                 "effect_amounts": [
                     {
                         "name": "DamagePercent",
-                        "value": 0.1800,
+                        "value": 0.2000,
                         "format_string": ""
                     }
                 ],
@@ -4550,7 +4550,7 @@
                 "effect_amounts": [
                     {
                         "name": "DamagePercent",
-                        "value": 0.3000,
+                        "value": 0.3500,
                         "format_string": ""
                     }
                 ],
@@ -5426,7 +5426,7 @@
                     },
                     {
                         "name": "BonusASPerStage",
-                        "value": 0.1000,
+                        "value": 0.1500,
                         "format_string": ""
                     }
                 ]
@@ -5685,7 +5685,7 @@
                     },
                     {
                         "name": "StartOfCombatDRPercent",
-                        "value": 12.0000,
+                        "value": 15.0000,
                         "format_string": ""
                     }
                 ]
@@ -5696,7 +5696,7 @@
                 "effect_amounts": [
                     {
                         "name": "DRPercent",
-                        "value": 15.0000,
+                        "value": 10.0000,
                         "format_string": ""
                     }
                 ],
@@ -5709,7 +5709,7 @@
                 "effect_amounts": [
                     {
                         "name": "DRPercent",
-                        "value": 25.0000,
+                        "value": 20.0000,
                         "format_string": ""
                     }
                 ],
@@ -5722,7 +5722,7 @@
                 "effect_amounts": [
                     {
                         "name": "DRPercent",
-                        "value": 40.0000,
+                        "value": 33.0000,
                         "format_string": ""
                     }
                 ],

@@ -565,7 +565,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "斯莫德展翅高飞，无视地形并轰击生命值最低的敌人。",
-            "dynamicDescription": "斯莫德展翅高飞，获得<speed>@MoveSpeed*100@%移动速度</speed>并无视地形，持续@Duration@秒。<br><br>在飞行时，斯莫德轰击生命值最低的敌方英雄<spellName>@TotalNumberOfAttacks@</spellName>次，每次命中造成<physicalDamage>@DamagePerHit@物理伤害</physicalDamage> + <magicDamage>@Passive_Damage_Increase@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "斯莫德展翅高飞，获得<speed>@MoveSpeed*100@%移动速度</speed>并无视地形，持续@Duration@秒。<br><br>飞行时，斯莫德轰击生命值最低的敌方英雄<spellName>@TotalNumberOfAttacks@</spellName>次(向下取整)，每次命中造成<physicalDamage>@DamagePerHit@物理伤害</physicalDamage> + <magicDamage>@Passive_Damage_Increase@魔法伤害</magicDamage>。@SpellModifierDescriptionAppend@",
             "range": [
                 700.0000,
                 700.0000,
@@ -733,12 +733,12 @@
                 100.0000
             ],
             "cooldownCoefficients": [
+                140.0000,
+                130.0000,
                 120.0000,
-                110.0000,
-                100.0000,
-                100.0000,
-                100.0000,
-                100.0000
+                120.0000,
+                120.0000,
+                120.0000
             ],
             "coefficients": {
                 "coefficient1": 0.0000,

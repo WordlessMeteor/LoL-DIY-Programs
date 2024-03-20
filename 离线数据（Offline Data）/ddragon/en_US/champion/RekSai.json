@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.5.1",
+    "version": "14.6.1",
     "data": {
         "RekSai": {
             "id": "RekSai",
@@ -522,7 +522,7 @@
                     "resource": "No Cost"
                 },
                 {
-                    "id": "RekSaiRWrapper",
+                    "id": "RekSaiR",
                     "name": "Void Rush",
                     "description": "Rek'Sai passively marks targets by damaging them. She can activate this ability to become briefly untargetable and lunge at a marked target for heavy damage based on their missing health.",
                     "tooltip": "Rek'Sai targets an enemy damaged by her in the last {{ preymarkduration }} seconds and then dives underground, becoming Untargetable. Moments later, she leaps unstoppably at her target, dealing <physicalDamage>{{ rbasedamagecalc }} plus {{ percentmissinghealthdamage }}% missing Health physical damage</physicalDamage>.{{ spellmodifierdescriptionappend }}",
@@ -534,7 +534,7 @@
                         ],
                         "effect": [
                             "{{ rbasedamage }} -> {{ rbasedamageNL }}",
-                            "{{ percentmissinghealthdamage }}% -> {{ percentmissinghealthdamageNL }}%",
+                            "{{ percentmissinghealthdamage }} -> {{ percentmissinghealthdamageNL }}",
                             "{{ cooldown }} -> {{ cooldownNL }}"
                         ]
                     },
@@ -628,7 +628,7 @@
                     ],
                     "rangeBurn": "1500",
                     "image": {
-                        "full": "RekSaiRWrapper.png",
+                        "full": "RekSaiR.png",
                         "sprite": "spell10.png",
                         "group": "spell",
                         "x": 144,

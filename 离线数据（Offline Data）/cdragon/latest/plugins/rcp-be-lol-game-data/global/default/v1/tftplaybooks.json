@@ -2007,9 +2007,15 @@
         "earlyAugments": [
             {
                 "name": "Branching Out",
-                "description": "Gain a random Emblem and a Reforger.<br><br><rules>Reforgers allow you to remake any item.</rules>",
+                "description": "After @numberofcombats@ player combat(s) Gain a random Emblem and a Reforger.<br><br><rules>Reforgers allow you to remake any item.</rules>",
                 "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Branching-Out-I.png",
-                "effectAmounts": []
+                "effectAmounts": [
+                    {
+                        "name": "NumberofCombats",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
             },
             {
                 "name": "Ancient Archives I",

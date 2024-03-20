@@ -2701,7 +2701,10 @@
             "queueIds": [
                 830,
                 840,
-                850
+                850,
+                870,
+                880,
+                890
             ],
             "seasons": [],
             "endTimestamp": 0,
@@ -2760,7 +2763,10 @@
             "queueIds": [
                 830,
                 840,
-                850
+                850,
+                870,
+                880,
+                890
             ],
             "seasons": [],
             "endTimestamp": 0,
@@ -2812,7 +2818,10 @@
             "queueIds": [
                 830,
                 840,
-                850
+                850,
+                870,
+                880,
+                890
             ],
             "seasons": [],
             "endTimestamp": 0,
@@ -2848,6 +2857,229 @@
                 },
                 "MASTER": {
                     "value": 7500.0000
+                }
+            },
+            "leaderboard": false,
+            "reverseDirection": false
+        },
+        "121000": {
+            "name": "Glorious Evolution",
+            "description": "Earn points from challenges in the Glorious Evolution group",
+            "descriptionShort": "Earn points from challenges in the Glorious Evolution group",
+            "source": "CHALLENGES",
+            "tags": {
+                "isCapstone": "Y",
+                "parent": "1"
+            },
+            "queueIds": [],
+            "seasons": [],
+            "endTimestamp": 0,
+            "levelToIconPath": {
+                "IRON": "/lol-game-data/assets/ASSETS/Challenges/Config/121000/Tokens/IRON.png",
+                "BRONZE": "/lol-game-data/assets/ASSETS/Challenges/Config/121000/Tokens/BRONZE.png",
+                "SILVER": "/lol-game-data/assets/ASSETS/Challenges/Config/121000/Tokens/SILVER.png",
+                "GOLD": "/lol-game-data/assets/ASSETS/Challenges/Config/121000/Tokens/GOLD.png",
+                "PLATINUM": "/lol-game-data/assets/ASSETS/Challenges/Config/121000/Tokens/PLATINUM.png",
+                "DIAMOND": "/lol-game-data/assets/ASSETS/Challenges/Config/121000/Tokens/DIAMOND.png",
+                "MASTER": "/lol-game-data/assets/ASSETS/Challenges/Config/121000/Tokens/MASTER.png"
+            },
+            "thresholds": {
+                "IRON": {
+                    "value": 15.0000
+                },
+                "BRONZE": {
+                    "value": 30.0000
+                },
+                "SILVER": {
+                    "value": 45.0000
+                },
+                "GOLD": {
+                    "value": 75.0000
+                },
+                "PLATINUM": {
+                    "value": 120.0000
+                },
+                "DIAMOND": {
+                    "value": 180.0000
+                },
+                "MASTER": {
+                    "value": 300.0000,
+                    "rewardGroupId": "924982d8-69ac-40bd-a203-5e56c5eefa80",
+                    "rewards": [
+                        {
+                            "category": "TITLE",
+                            "id": "9894dc50-d106-45c7-ba88-6d7afc7c8994",
+                            "quantity": 1
+                        }
+                    ]
+                }
+            },
+            "leaderboard": false,
+            "reverseDirection": false
+        },
+        "121001": {
+            "name": "Get Bo(t)died",
+            "description": "Win Co-Op vs. AI (Intermediate) games without dying",
+            "descriptionShort": "Win games without dying",
+            "source": "EOGD",
+            "tags": {
+                "parent": "121000"
+            },
+            "queueIds": [
+                890
+            ],
+            "seasons": [],
+            "endTimestamp": 0,
+            "levelToIconPath": {
+                "IRON": "/lol-game-data/assets/ASSETS/Challenges/Config/121001/Tokens/IRON.png",
+                "BRONZE": "/lol-game-data/assets/ASSETS/Challenges/Config/121001/Tokens/BRONZE.png",
+                "SILVER": "/lol-game-data/assets/ASSETS/Challenges/Config/121001/Tokens/SILVER.png",
+                "GOLD": "/lol-game-data/assets/ASSETS/Challenges/Config/121001/Tokens/GOLD.png",
+                "PLATINUM": "/lol-game-data/assets/ASSETS/Challenges/Config/121001/Tokens/PLATINUM.png",
+                "DIAMOND": "/lol-game-data/assets/ASSETS/Challenges/Config/121001/Tokens/DIAMOND.png",
+                "MASTER": "/lol-game-data/assets/ASSETS/Challenges/Config/121001/Tokens/MASTER.png",
+                "GRANDMASTER": "/lol-game-data/assets/ASSETS/Challenges/Config/121001/Tokens/GRANDMASTER.png",
+                "CHALLENGER": "/lol-game-data/assets/ASSETS/Challenges/Config/121001/Tokens/CHALLENGER.png"
+            },
+            "thresholds": {
+                "IRON": {
+                    "value": 1.0000
+                },
+                "BRONZE": {
+                    "value": 3.0000
+                },
+                "SILVER": {
+                    "value": 6.0000
+                },
+                "GOLD": {
+                    "value": 10.0000
+                },
+                "PLATINUM": {
+                    "value": 15.0000
+                },
+                "DIAMOND": {
+                    "value": 30.0000
+                },
+                "MASTER": {
+                    "value": 50.0000
+                },
+                "GRANDMASTER": {
+                    "value": 80.0000
+                },
+                "CHALLENGER": {
+                    "value": 125.0000
+                }
+            },
+            "leaderboard": false,
+            "reverseDirection": false
+        },
+        "121002": {
+            "name": "Error 410: Jungler Gone",
+            "description": "Kill the enemy jungler in their jungle before 10 min in Co-Op vs. AI (Intermediate) Games",
+            "descriptionShort": "Kill the enemy jungler in their jungle before 10 min",
+            "source": "EOGD",
+            "tags": {
+                "parent": "121000"
+            },
+            "queueIds": [
+                890
+            ],
+            "seasons": [],
+            "endTimestamp": 0,
+            "levelToIconPath": {
+                "IRON": "/lol-game-data/assets/ASSETS/Challenges/Config/121002/Tokens/IRON.png",
+                "BRONZE": "/lol-game-data/assets/ASSETS/Challenges/Config/121002/Tokens/BRONZE.png",
+                "SILVER": "/lol-game-data/assets/ASSETS/Challenges/Config/121002/Tokens/SILVER.png",
+                "GOLD": "/lol-game-data/assets/ASSETS/Challenges/Config/121002/Tokens/GOLD.png",
+                "PLATINUM": "/lol-game-data/assets/ASSETS/Challenges/Config/121002/Tokens/PLATINUM.png",
+                "DIAMOND": "/lol-game-data/assets/ASSETS/Challenges/Config/121002/Tokens/DIAMOND.png",
+                "MASTER": "/lol-game-data/assets/ASSETS/Challenges/Config/121002/Tokens/MASTER.png",
+                "GRANDMASTER": "/lol-game-data/assets/ASSETS/Challenges/Config/121002/Tokens/GRANDMASTER.png",
+                "CHALLENGER": "/lol-game-data/assets/ASSETS/Challenges/Config/121002/Tokens/CHALLENGER.png"
+            },
+            "thresholds": {
+                "IRON": {
+                    "value": 1.0000
+                },
+                "BRONZE": {
+                    "value": 2.0000
+                },
+                "SILVER": {
+                    "value": 5.0000
+                },
+                "GOLD": {
+                    "value": 12.0000
+                },
+                "PLATINUM": {
+                    "value": 25.0000
+                },
+                "DIAMOND": {
+                    "value": 50.0000
+                },
+                "MASTER": {
+                    "value": 90.0000
+                },
+                "GRANDMASTER": {
+                    "value": 150.0000
+                },
+                "CHALLENGER": {
+                    "value": 250.0000
+                }
+            },
+            "leaderboard": false,
+            "reverseDirection": false
+        },
+        "121003": {
+            "name": "That'll Machine Learn You",
+            "description": "Destroy all three inhibitors in under 25 minutes in Co-Op vs. AI (Intermediate) games",
+            "descriptionShort": "Destroy all 3 inhibitors in under 25 minutes",
+            "source": "EOGD",
+            "tags": {
+                "parent": "121000"
+            },
+            "queueIds": [
+                890
+            ],
+            "seasons": [],
+            "endTimestamp": 0,
+            "levelToIconPath": {
+                "IRON": "/lol-game-data/assets/ASSETS/Challenges/Config/121003/Tokens/IRON.png",
+                "BRONZE": "/lol-game-data/assets/ASSETS/Challenges/Config/121003/Tokens/BRONZE.png",
+                "SILVER": "/lol-game-data/assets/ASSETS/Challenges/Config/121003/Tokens/SILVER.png",
+                "GOLD": "/lol-game-data/assets/ASSETS/Challenges/Config/121003/Tokens/GOLD.png",
+                "PLATINUM": "/lol-game-data/assets/ASSETS/Challenges/Config/121003/Tokens/PLATINUM.png",
+                "DIAMOND": "/lol-game-data/assets/ASSETS/Challenges/Config/121003/Tokens/DIAMOND.png",
+                "MASTER": "/lol-game-data/assets/ASSETS/Challenges/Config/121003/Tokens/MASTER.png",
+                "GRANDMASTER": "/lol-game-data/assets/ASSETS/Challenges/Config/121003/Tokens/GRANDMASTER.png",
+                "CHALLENGER": "/lol-game-data/assets/ASSETS/Challenges/Config/121003/Tokens/CHALLENGER.png"
+            },
+            "thresholds": {
+                "IRON": {
+                    "value": 1.0000
+                },
+                "BRONZE": {
+                    "value": 2.0000
+                },
+                "SILVER": {
+                    "value": 3.0000
+                },
+                "GOLD": {
+                    "value": 5.0000
+                },
+                "PLATINUM": {
+                    "value": 8.0000
+                },
+                "DIAMOND": {
+                    "value": 12.0000
+                },
+                "MASTER": {
+                    "value": 20.0000
+                },
+                "GRANDMASTER": {
+                    "value": 35.0000
+                },
+                "CHALLENGER": {
+                    "value": 60.0000
                 }
             },
             "leaderboard": false,
@@ -22655,6 +22887,14 @@
             "titleRequirementDescription": "",
             "isPermanentTitle": true,
             "titleAcquisitionType": "DEFAULT"
+        },
+        "9894dc50-d106-45c7-ba88-6d7afc7c8994": {
+            "name": "Turing Tested",
+            "itemId": 12100007,
+            "titleAcquisitionName": "",
+            "titleRequirementDescription": "",
+            "isPermanentTitle": true,
+            "titleAcquisitionType": "CHALLENGE"
         },
         "4c367562-4c52-3c01-c063-11467263ef41": {
             "name": "Lethal",

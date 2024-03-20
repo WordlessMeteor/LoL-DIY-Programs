@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.5.1",
+    "version": "14.6.1",
     "data": {
         "Yone": {
             "id": "Yone",
@@ -64,6 +64,18 @@
                     "id": "777046",
                     "num": 46,
                     "name": "至臻 心之钢 永恩",
+                    "chromas": false
+                },
+                {
+                    "id": "777055",
+                    "num": 55,
+                    "name": "西部魔影 永恩",
+                    "chromas": true
+                },
+                {
+                    "id": "777058",
+                    "num": 58,
+                    "name": "西部魔影 炽天使 永恩",
                     "chromas": false
                 }
             ],

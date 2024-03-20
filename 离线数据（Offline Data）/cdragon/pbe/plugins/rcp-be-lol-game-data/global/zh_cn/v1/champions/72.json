@@ -1,18 +1,18 @@
 {
     "id": 72,
-    "name": "水晶先锋",
+    "name": "",
     "alias": "Skarner",
-    "title": "斯卡纳",
-    "shortBio": "斯卡纳是一只身形庞大的水晶蝎，来自于恕瑞玛的一处隐秘的山谷。作为古老的壳人族，斯卡纳和他的同胞因卓然的智慧和与大地深切的联系而闻名。他们的灵魂都得到过生命水晶的加持，所以祖先的记忆与现世的思绪都被完好地保存了下来。在久远的过去，壳人族为了躲避神秘的魔法灾难而进入了长眠，然而现在，新的威胁唤醒了斯卡纳。作为整个部族中唯一醒来的人，他将拼尽全力保护其余的同胞，免遭任何人的迫害。",
+    "title": "",
+    "shortBio": "",
     "tacticalInfo": {
-        "style": 5,
+        "style": 1,
         "difficulty": 1,
         "damageType": "kMixed"
     },
     "playstyleInfo": {
         "damage": 1,
-        "durability": 3,
-        "crowdControl": 3,
+        "durability": 1,
+        "crowdControl": 1,
         "mobility": 1,
         "utility": 1
     },
@@ -29,11 +29,11 @@
         {
             "id": 72000,
             "isBase": true,
-            "name": "水晶先锋",
+            "name": "",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/72/72000.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/72/72000.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/72/72000.jpg",
-            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Base/SkarnerLoadScreen.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Base/Skarner_ReworkLoadScreen.Skarner_Rework.jpg",
             "skinType": "",
             "rarity": "kNoRarity",
             "isLegacy": false,
@@ -55,7 +55,7 @@
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/72/72001.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/72/72001.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/72/72001.jpg",
-            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin01/SkarnerLoadScreen_1.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin01/Skarner_ReworkLoadScreen_1.Skarner_Rework.jpg",
             "skinType": "",
             "rarity": "kNoRarity",
             "isLegacy": false,
@@ -81,7 +81,7 @@
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/72/72002.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/72/72002.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/72/72002.jpg",
-            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin02/SkarnerLoadScreen_2.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin02/Skarner_ReworkLoadScreen_2.Skarner_Rework.jpg",
             "skinType": "",
             "rarity": "kNoRarity",
             "isLegacy": false,
@@ -92,13 +92,9 @@
             "emblems": null,
             "regionRarityId": 0,
             "rarityGemPath": null,
-            "skinLines": [
-                {
-                    "id": 167
-                }
-            ],
+            "skinLines": null,
             "skinAugments": null,
-            "description": "斯卡纳曾经是一个古老文明的守护者，却被迫眼睁睁地看着这个文明在他眼前崩溃。他抱有一种孤注一掷的希望，希望有一天他和他的同伴能够重建被摧毁的一切。在那之前，他发誓要保持警惕，阻止任何入侵者们——只要他们胆敢威胁到这片废墟以及脉动于其中的魔法。"
+            "description": null
         },
         {
             "id": 72003,
@@ -107,8 +103,7 @@
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/72/72003.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/72/72003.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/72/72003.jpg",
-            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin03/SkarnerLoadScreen_3.PIE_C_14_5.jpg",
-            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin03/SkarnerLoadScreen_3_LE.PIE_C_14_5.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin03/Skarner_ReworkLoadScreen_3.Skarner_Rework.jpg",
             "skinType": "",
             "rarity": "kNoRarity",
             "isLegacy": false,
@@ -134,7 +129,7 @@
                 }
             ],
             "skinAugments": null,
-            "description": "所有战地机甲都惧怕“阿尔法”——他族群的首诞者——因为他残酷的效率和冷酷的计算。与其他战地机甲不同的是，他的大脑中不断有声音困扰着他，让他感到难以形容的愤怒，甚至连他自己的想法都不能被相信。这只能确保无论斯卡纳部署在哪里，转换都会很快随之而来。"
+            "description": "阿尔法斯卡纳作为最早期的原型机，为日后的战地机甲系列铺平了道路。在后期的几代设计中已经看不到斯卡纳充盈的怒火，也许是他的脑部希望敌人能够体会到和他同等程度的痛苦，亦或他只是以杀戮为乐。"
         },
         {
             "id": 72004,
@@ -143,9 +138,9 @@
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/72/72004.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/72/72004.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/72/72004.jpg",
-            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin04/SkarnerLoadScreen_4.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin04/Skarner_ReworkLoadScreen_4.Skarner_Rework.jpg",
             "skinType": "",
-            "rarity": "kNoRarity",
+            "rarity": "kEpic",
             "isLegacy": false,
             "splashVideoPath": null,
             "collectionSplashVideoPath": null,
@@ -169,7 +164,7 @@
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/72/72005.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/72/72005.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/72/72005.jpg",
-            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin05/SkarnerLoadScreen_5.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin05/Skarner_ReworkLoadScreen_5.Skarner_Rework.jpg",
             "skinType": "",
             "rarity": "kEpic",
             "isLegacy": false,
@@ -295,69 +290,69 @@
         }
     ],
     "passive": {
-        "name": "水晶尖塔",
-        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Passive.png",
+        "name": "Spell_Skarner_ReworkPassive_Name",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_Passive.Skarner_Rework.png",
         "abilityVideoPath": "champion-abilities/0072/ability_0072_P1.webm",
         "abilityVideoImagePath": "champion-abilities/0072/ability_0072_P1.jpg",
-        "description": "斯卡纳的出场会导致数座水晶尖塔出现在遍布地图的若干特定地点上。双方队伍可以通过靠近水晶尖塔来占据它们。在己方队伍控制的水晶尖塔附近时，斯卡纳会获得移动速度、攻击速度和法力回复提升。"
+        "description": "Spell_Skarner_ReworkPassive_Summary"
     },
     "spells": [
         {
             "spellKey": "q",
-            "name": "水晶横扫",
-            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Q.png",
+            "name": "Spell_Skarner_ReworkQ_Name",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_Q.Skarner_Rework.png",
             "abilityVideoPath": "champion-abilities/0072/ability_0072_Q1.webm",
             "abilityVideoImagePath": "champion-abilities/0072/ability_0072_Q1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
-            "description": "斯卡纳用他的爪子猛击周围敌军，对周围所有敌人造成物理伤害。如果斯卡纳击中了一个目标，他的身上就会暂时充盈水晶能量。在充盈着水晶能量的期间，斯卡纳的【Q水晶横扫】将造成额外魔法伤害。",
-            "dynamicDescription": "斯卡纳狂野地斩击，对附近的敌人们造成<physicalDamage>@QDamageCalc@外加@QBonusDamage@%最大生命值的物理伤害</physicalDamage>。如果至少命中了一个敌人，那么斯卡纳会变为持续@Effect2Amount@秒的<keywordMajor>已充能</keywordMajor>状态。在<keywordMajor>已充能</keywordMajor>状态下，这个技能造成额外的<magicDamage>@BonusQDamageCalc@外加@QBonusDamage@%最大生命值的魔法伤害</magicDamage>。<br><br><rules>对英雄发起的攻击会使这个技能的冷却时间缩短@TooltipChampionCDReducer@秒。<br>对非建筑单位发起的攻击会使这个技能的冷却时间缩短@TooltipMinionCDReducer@秒。</rules>@SpellModifierDescriptionAppend@",
+            "description": "Spell_Skarner_ReworkQ_Summary",
+            "dynamicDescription": "Spell_Skarner_ReworkQ_Tooltip@SpellModifierDescriptionAppend@",
             "range": [
-                350.0000,
-                350.0000,
-                350.0000,
-                350.0000,
-                350.0000,
-                350.0000
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000
             ],
             "costCoefficients": [
-                10.0000,
-                10.0000,
-                10.0000,
-                10.0000,
-                10.0000,
-                10.0000
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000
             ],
             "cooldownCoefficients": [
-                3.5000,
-                3.2500,
-                3.0000,
-                2.7500,
-                2.5000,
-                2.5000
+                13.0000,
+                11.5000,
+                10.0000,
+                8.5000,
+                7.0000,
+                7.0000
             ],
             "coefficients": {
-                "coefficient1": 0.3000,
+                "coefficient1": 0.0000,
                 "coefficient2": 0.0000
             },
             "effectAmounts": {
                 "Effect1Amount": [
-                    30.0000,
-                    33.0000,
-                    36.0000,
-                    39.0000,
-                    42.0000,
-                    45.0000,
-                    48.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect2Amount": [
-                    5.0000,
-                    5.0000,
-                    5.0000,
-                    5.0000,
-                    5.0000,
-                    5.0000,
-                    5.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect3Amount": [
                     0.0000,
@@ -454,87 +449,87 @@
         },
         {
             "spellKey": "w",
-            "name": "水晶蝎甲",
-            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_W.png",
+            "name": "Spell_Skarner_ReworkW_Name",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_W.Skarner_Rework.png",
             "abilityVideoPath": "champion-abilities/0072/ability_0072_W1.webm",
             "abilityVideoImagePath": "champion-abilities/0072/ability_0072_W1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
-            "description": "斯卡纳获得一个护盾，当护盾存在时，他的移动速度得到提升。",
-            "dynamicDescription": "斯卡纳获得<shield>@TotalShield@护盾值</shield>，持续@Effect4Amount@秒。在激活状态下，斯卡纳获得<speed>@Effect3Amount@%移动速度</speed>，会在3秒里持续提升至<speed>@Effect5Amount@%移动速度</speed> 。@SpellModifierDescriptionAppend@",
+            "description": "Spell_Skarner_ReworkW_Summary",
+            "dynamicDescription": "Spell_Skarner_ReworkW_Tooltip@SpellModifierDescriptionAppend@",
             "range": [
-                1.0000,
-                1.0000,
-                1.0000,
-                1.0000,
-                1.0000,
-                1.0000
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000
             ],
             "costCoefficients": [
-                60.0000,
-                60.0000,
-                60.0000,
-                60.0000,
-                60.0000,
-                60.0000
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000
             ],
             "cooldownCoefficients": [
-                13.0000,
-                12.5000,
-                12.0000,
-                11.5000,
-                11.0000,
-                11.0000
+                10.0000,
+                9.0000,
+                8.0000,
+                7.0000,
+                6.0000,
+                6.0000
             ],
             "coefficients": {
-                "coefficient1": 0.8000,
+                "coefficient1": 0.0000,
                 "coefficient2": 0.0000
             },
             "effectAmounts": {
                 "Effect1Amount": [
-                    8.0000,
-                    9.0000,
-                    10.0000,
-                    11.0000,
-                    12.0000,
-                    13.0000,
-                    14.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect2Amount": [
-                    25.0000,
-                    30.0000,
-                    35.0000,
-                    40.0000,
-                    45.0000,
-                    50.0000,
-                    55.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect3Amount": [
-                    6.0000,
-                    8.0000,
-                    10.0000,
-                    12.0000,
-                    14.0000,
-                    16.0000,
-                    18.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect4Amount": [
-                    6.0000,
-                    6.0000,
-                    6.0000,
-                    6.0000,
-                    6.0000,
-                    6.0000,
-                    6.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect5Amount": [
-                    12.0000,
-                    16.0000,
-                    20.0000,
-                    24.0000,
-                    28.0000,
-                    32.0000,
-                    36.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect6Amount": [
                     0.0000,
@@ -604,114 +599,114 @@
         },
         {
             "spellKey": "e",
-            "name": "晶体破碎",
-            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_E.png",
+            "name": "Spell_Skarner_ReworkE_Name",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_E.Skarner_Rework.png",
             "abilityVideoPath": "champion-abilities/0072/ability_0072_E1.webm",
             "abilityVideoImagePath": "champion-abilities/0072/ability_0072_E1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
-            "description": "斯卡纳召唤一股水晶能量，对命中的敌人造成伤害和减速效果。短时间内，对这些敌人进行的普攻会造成晕眩效果。",
-            "dynamicDescription": "斯卡纳将晶体能量爆裂而出，造成<magicDamage>@TotalMagicDamage@魔法伤害</magicDamage>，持续@Effect7Amount@秒的@Effect8Amount@%<status>减速</status>，并将其标记@Effect6Amount@秒。斯卡纳对被标记敌人的下次攻击会消耗标记以造成额外的<physicalDamage>@Effect2Amount@物理伤害</physicalDamage>和@StunDuration@秒<status>晕眩</status>。<br><br><rules>消耗这个技能的标记或使用<spellName>晶状毒刺</spellName>会使这个技能的冷却时间缩短，数额为控制效果的时长。</rules>@SpellModifierDescriptionAppend@",
+            "description": "Spell_Skarner_ReworkE_Summary",
+            "dynamicDescription": "Spell_Skarner_ReworkE_Tooltip@SpellModifierDescriptionAppend@",
             "range": [
-                980.0000,
-                980.0000,
-                980.0000,
-                980.0000,
-                980.0000,
-                980.0000
+                1700.0000,
+                1700.0000,
+                1700.0000,
+                1700.0000,
+                1700.0000,
+                1700.0000
             ],
             "costCoefficients": [
-                55.0000,
-                55.0000,
-                55.0000,
-                55.0000,
-                55.0000,
-                55.0000
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000
             ],
             "cooldownCoefficients": [
-                14.0000,
-                13.5000,
-                13.0000,
-                12.5000,
-                12.0000,
-                12.0000
+                24.0000,
+                22.0000,
+                20.0000,
+                18.0000,
+                16.0000,
+                16.0000
             ],
             "coefficients": {
-                "coefficient1": 0.2000,
-                "coefficient2": 0.6000
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
             },
             "effectAmounts": {
                 "Effect1Amount": [
-                    40.0000,
-                    40.0000,
-                    65.0000,
-                    90.0000,
-                    115.0000,
-                    140.0000,
-                    165.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect2Amount": [
-                    30.0000,
-                    30.0000,
-                    50.0000,
-                    70.0000,
-                    90.0000,
-                    110.0000,
-                    130.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect3Amount": [
-                    1.2500,
-                    1.2500,
-                    1.2500,
-                    1.2500,
-                    1.2500,
-                    1.2500,
-                    1.2500
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect4Amount": [
-                    50.0000,
-                    50.0000,
-                    50.0000,
-                    50.0000,
-                    50.0000,
-                    50.0000,
-                    50.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect5Amount": [
-                    6.0000,
-                    6.0000,
-                    6.0000,
-                    6.0000,
-                    6.0000,
-                    6.0000,
-                    6.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect6Amount": [
-                    5.0000,
-                    5.0000,
-                    5.0000,
-                    5.0000,
-                    5.0000,
-                    5.0000,
-                    5.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect7Amount": [
-                    2.5000,
-                    2.5000,
-                    2.5000,
-                    2.5000,
-                    2.5000,
-                    2.5000,
-                    2.5000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect8Amount": [
-                    25.0000,
-                    30.0000,
-                    35.0000,
-                    40.0000,
-                    45.0000,
-                    50.0000,
-                    55.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect9Amount": [
                     0.0000,
@@ -754,37 +749,37 @@
         },
         {
             "spellKey": "r",
-            "name": "晶状毒刺",
-            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_R.png",
+            "name": "Spell_Skarner_ReworkR_Name",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_R.Skarner_Rework.png",
             "abilityVideoPath": "champion-abilities/0072/ability_0072_R1.webm",
             "abilityVideoImagePath": "champion-abilities/0072/ability_0072_R1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
-            "description": "斯卡纳压制一个敌方英雄并对其造成伤害。在此期间，斯卡纳能自由移动并拖拽敌人。此效果结束后，目标将会受到额外伤害。",
-            "dynamicDescription": "斯卡纳穿刺一名敌方英雄，将其<status>压制</status>@RDuration@秒，同时在开始和结束时各造成<physicalDamage>@PhysicalDamage@物理伤害</physicalDamage>和<magicDamage>@MagicDamage@魔法伤害</magicDamage>。在<status>压制</status>时，斯卡纳能够移动并且会拖着目标一起移动。@SpellModifierDescriptionAppend@",
+            "description": "Spell_Skarner_ReworkR_Summary",
+            "dynamicDescription": "Spell_Skarner_ReworkR_Tooltip@SpellModifierDescriptionAppend@",
             "range": [
-                350.0000,
-                350.0000,
-                350.0000,
-                350.0000,
-                350.0000,
-                350.0000
+                625.0000,
+                625.0000,
+                625.0000,
+                625.0000,
+                625.0000,
+                625.0000
             ],
             "costCoefficients": [
                 100.0000,
                 100.0000,
                 100.0000,
-                0.0000,
-                0.0000,
-                0.0000
+                100.0000,
+                100.0000,
+                100.0000
             ],
             "cooldownCoefficients": [
                 120.0000,
-                100.0000,
-                80.0000,
-                120.0000,
-                120.0000,
-                110.0000
+                105.0000,
+                90.0000,
+                90.0000,
+                90.0000,
+                90.0000
             ],
             "coefficients": {
                 "coefficient1": 0.0000,

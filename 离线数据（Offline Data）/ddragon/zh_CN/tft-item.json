@@ -1,6 +1,6 @@
 {
     "type": "tft-item",
-    "version": "14.5.1",
+    "version": "14.6.1",
     "data": {
         "TFTTutorial_Items/TFTTutorial_Item_NeedlesslyLargeRod": {
             "id": "TFTTutorial_Item_NeedlesslyLargeRod",
@@ -1718,6 +1718,19 @@
                 "h": 48
             }
         },
+        "TFT7_ShimmerscaleItems/TFT7_Item_ShimmerscaleDeterminedInvestor": {
+            "id": "TFT7_Item_ShimmerscaleDeterminedInvestor",
+            "name": "坚定投资器",
+            "image": {
+                "full": "TFT7_Item_ShimmerscaleDeterminedInvestor.png",
+                "sprite": "tft-item4.png",
+                "group": "tft-item",
+                "x": 96,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
         "TFT7_ShimmerscaleItems/TFT7_Item_ShimmerscaleDiamondHands": {
             "id": "TFT7_Item_ShimmerscaleDiamondHands",
             "name": "钻石之手",
@@ -1725,7 +1738,7 @@
                 "full": "TFT7_Item_ShimmerscaleDiamondHands.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 96,
+                "x": 144,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -1738,7 +1751,7 @@
                 "full": "TFT7_Item_ShimmerscaleGamblersBlade_HR.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 144,
+                "x": 192,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -1751,7 +1764,7 @@
                 "full": "TFT_Item_DebugDamageAmp.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 192,
+                "x": 240,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -1764,30 +1777,17 @@
                 "full": "TFT_Consumable_MasterworkUpgrade.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 240,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_EmblemItems/TFT10_Item_PunkEmblem": {
-            "id": "TFT10_Item_PunkEmblem",
-            "name": "朋克纹章",
-            "image": {
-                "full": "TFT10_Item_PunkEmblem.png",
-                "sprite": "tft-item4.png",
-                "group": "tft-item",
                 "x": 288,
                 "y": 48,
                 "w": 48,
                 "h": 48
             }
         },
-        "TFT10_EmblemItems/TFT10_Item_EmoEmblem": {
-            "id": "TFT10_Item_EmoEmblem",
-            "name": "EMO纹章",
+        "TFT_Consumable_TrashToTreasure_Reforger": {
+            "id": "TFT_Consumable_TrashToTreasure_Reforger",
+            "name": "装备重铸器",
             "image": {
-                "full": "TFT10_Item_EmoEmblem.png",
+                "full": "TFT_Consumable_TrashToTreasure_Reforger.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
                 "x": 336,
@@ -1796,11 +1796,11 @@
                 "h": 48
             }
         },
-        "TFT10_EmblemItems/TFT10_Item_KDAEmblem": {
-            "id": "TFT10_Item_KDAEmblem",
-            "name": "K/DA纹章",
+        "TFT11_Item_ThiefsGlovesSupport": {
+            "id": "TFT11_Item_ThiefsGlovesSupport",
+            "name": "辅助手套",
             "image": {
-                "full": "TFT10_Item_KDAEmblem.png",
+                "full": "TFT11_Item_ThiefsGlovesSupport.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
                 "x": 384,
@@ -1809,1198 +1809,15 @@
                 "h": 48
             }
         },
-        "TFT10_EmblemItems/TFT10_Item_PentakillEmblem": {
-            "id": "TFT10_Item_PentakillEmblem",
-            "name": "五杀摇滚纹章",
+        "TFT9_Consumable_GoldenItemRemover": {
+            "id": "TFT9_Consumable_GoldenItemRemover",
+            "name": "金制装备拆卸器",
             "image": {
-                "full": "TFT10_Item_PentakillEmblem.png",
+                "full": "TFT9_Consumable_GoldenItemRemover.png",
                 "sprite": "tft-item4.png",
                 "group": "tft-item",
                 "x": 432,
                 "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_EmblemItems/TFT10_Item_SpellweaverEmblem": {
-            "id": "TFT10_Item_SpellweaverEmblem",
-            "name": "法师纹章",
-            "image": {
-                "full": "TFT10_Item_SpellweaverEmblem.png",
-                "sprite": "tft-item4.png",
-                "group": "tft-item",
-                "x": 0,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_EmblemItems/TFT10_Item_BigShotEmblem": {
-            "id": "TFT10_Item_BigShotEmblem",
-            "name": "大腕射手纹章",
-            "image": {
-                "full": "TFT10_Item_BigShotEmblem.png",
-                "sprite": "tft-item4.png",
-                "group": "tft-item",
-                "x": 48,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_EmblemItems/TFT10_Item_PBJEmblem": {
-            "id": "TFT10_Item_PBJEmblem",
-            "name": "心之钢纹章",
-            "image": {
-                "full": "TFT10_Item_PBJEmblem.png",
-                "sprite": "tft-item4.png",
-                "group": "tft-item",
-                "x": 96,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_EmblemItems/TFT10_Item_ExecutionerEmblem": {
-            "id": "TFT10_Item_ExecutionerEmblem",
-            "name": "裁决使纹章",
-            "image": {
-                "full": "TFT10_Item_ExecutionerEmblem.png",
-                "sprite": "tft-item4.png",
-                "group": "tft-item",
-                "x": 144,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_EmblemItems/TFT10_Item_DiscoEmblem": {
-            "id": "TFT10_Item_DiscoEmblem",
-            "name": "迪斯科纹章",
-            "image": {
-                "full": "TFT10_Item_DiscoEmblem.png",
-                "sprite": "tft-item4.png",
-                "group": "tft-item",
-                "x": 192,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_EmblemItems/TFT10_Item_BrawlerEmblem": {
-            "id": "TFT10_Item_BrawlerEmblem",
-            "name": "格斗家纹章",
-            "image": {
-                "full": "TFT10_Item_BrawlerEmblem.png",
-                "sprite": "tft-item4.png",
-                "group": "tft-item",
-                "x": 240,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_EmblemItems/TFT10_Item_SuperfanEmblem": {
-            "id": "TFT10_Item_SuperfanEmblem",
-            "name": "超级粉丝纹章",
-            "image": {
-                "full": "TFT10_Item_SuperfanEmblem.png",
-                "sprite": "tft-item4.png",
-                "group": "tft-item",
-                "x": 288,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_EmblemItems/TFT10_Item_RapidfireEmblem": {
-            "id": "TFT10_Item_RapidfireEmblem",
-            "name": "疾射枪手纹章",
-            "image": {
-                "full": "TFT10_Item_RapidfireEmblem.png",
-                "sprite": "tft-item4.png",
-                "group": "tft-item",
-                "x": 336,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Desperado/TFT10_Desperado_Deal_ComponentBounty": {
-            "id": "TFT10_Desperado_Deal_ComponentBounty",
-            "name": "",
-            "image": {
-                "full": "TFT10_Desperado_Deal_ComponentBounty.png",
-                "sprite": "tft-item4.png",
-                "group": "tft-item",
-                "x": 384,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Desperado/TFT10_Desperado_Deal_FutureSight": {
-            "id": "TFT10_Desperado_Deal_FutureSight",
-            "name": "",
-            "image": {
-                "full": "TFT10_Desperado_Deal_FutureSight.png",
-                "sprite": "tft-item4.png",
-                "group": "tft-item",
-                "x": 432,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Desperado/TFT10_Desperado_Deal_Stats": {
-            "id": "TFT10_Desperado_Deal_Stats",
-            "name": "",
-            "image": {
-                "full": "TFT10_Desperado_Deal_Stats.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 0,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_DJ/TFT10_Item_DJ_Mode1": {
-            "id": "TFT10_Item_DJ_Mode1",
-            "name": "为友军提供治疗和护盾",
-            "image": {
-                "full": "TFT10_Item_DJ_Mode1.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 48,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_DJ/TFT10_Item_DJ_Mode2": {
-            "id": "TFT10_Item_DJ_Mode2",
-            "name": "为友军提供攻击速度",
-            "image": {
-                "full": "TFT10_Item_DJ_Mode2.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 96,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_DJ/TFT10_Item_DJ_Mode3": {
-            "id": "TFT10_Item_DJ_Mode3",
-            "name": "增强法术强度并造成伤害",
-            "image": {
-                "full": "TFT10_Item_DJ_Mode3.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 144,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_EmblemItems/TFT10_Item_8bitEmblem": {
-            "id": "TFT10_Item_8bitEmblem",
-            "name": "8比特纹章",
-            "image": {
-                "full": "TFT10_Item_8bitEmblem.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 192,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_EmblemItems/TFT10_Item_JazzEmblem": {
-            "id": "TFT10_Item_JazzEmblem",
-            "name": "爵士乐纹章",
-            "image": {
-                "full": "TFT10_Item_JazzEmblem.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 240,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_EmblemItems/TFT10_Item_TrueDamageEmblem": {
-            "id": "TFT10_Item_TrueDamageEmblem",
-            "name": "真实伤害纹章",
-            "image": {
-                "full": "TFT10_Item_TrueDamageEmblem.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 288,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Consumable_KaynBlue": {
-            "id": "TFT10_Consumable_KaynBlue",
-            "name": "影流麦克风",
-            "image": {
-                "full": "TFT10_Consumable_KaynBlue.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 336,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Consumable_KaynRed": {
-            "id": "TFT10_Consumable_KaynRed",
-            "name": "怒火吉他",
-            "image": {
-                "full": "TFT10_Consumable_KaynRed.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 384,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "DoubleUp_AssistItems/TFT_Assist_Gold_2": {
-            "id": "TFT_Assist_Gold_2",
-            "name": "5金币",
-            "image": {
-                "full": "TFT_Assist_Gold_2.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 432,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "DoubleUp_AssistItems/TFT_Assist_Gold_10": {
-            "id": "TFT_Assist_Gold_10",
-            "name": "10金币",
-            "image": {
-                "full": "TFT_Assist_Gold_10.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 0,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "DoubleUp_AssistItems/TFT_Assist_ChampionDuplicator": {
-            "id": "TFT_Assist_ChampionDuplicator",
-            "name": "英雄复制器",
-            "image": {
-                "full": "TFT_Assist_ChampionDuplicator.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 48,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "DoubleUp_AssistItems/TFT_Assist_Gold_3": {
-            "id": "TFT_Assist_Gold_3",
-            "name": "5金币",
-            "image": {
-                "full": "TFT_Assist_Gold_3.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 96,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "DoubleUp_AssistItems/TFT_Assist_Gold_4": {
-            "id": "TFT_Assist_Gold_4",
-            "name": "4金币",
-            "image": {
-                "full": "TFT_Assist_Gold_4.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 144,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "DoubleUp_AssistItems/TFT_Assist_Gold_5": {
-            "id": "TFT_Assist_Gold_5",
-            "name": "5金币",
-            "image": {
-                "full": "TFT_Assist_Gold_5.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 192,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "DoubleUp_AssistItems/TFT_Assist_Gold_6": {
-            "id": "TFT_Assist_Gold_6",
-            "name": "6金币",
-            "image": {
-                "full": "TFT_Assist_Gold_6.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 240,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "DoubleUp_AssistItems/TFT_Assist_Gold_7": {
-            "id": "TFT_Assist_Gold_7",
-            "name": "7金币",
-            "image": {
-                "full": "TFT_Assist_Gold_7.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 288,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "DoubleUp_AssistItems/TFT_Assist_Gold_8": {
-            "id": "TFT_Assist_Gold_8",
-            "name": "8金币",
-            "image": {
-                "full": "TFT_Assist_Gold_8.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 336,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Assist_Gold_100": {
-            "id": "TFT_Assist_Gold_100",
-            "name": "100金币",
-            "image": {
-                "full": "TFT_Assist_Gold_100.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 384,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Assist_Gold_12": {
-            "id": "TFT_Assist_Gold_12",
-            "name": "12金币",
-            "image": {
-                "full": "TFT_Assist_Gold_12.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 432,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Assist_Gold_126": {
-            "id": "TFT_Assist_Gold_126",
-            "name": "126金币",
-            "image": {
-                "full": "TFT_Assist_Gold_126.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 0,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Assist_Gold_154": {
-            "id": "TFT_Assist_Gold_154",
-            "name": "154金币",
-            "image": {
-                "full": "TFT_Assist_Gold_154.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 48,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Assist_Gold_16": {
-            "id": "TFT_Assist_Gold_16",
-            "name": "16金币",
-            "image": {
-                "full": "TFT_Assist_Gold_16.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 96,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Assist_Gold_18": {
-            "id": "TFT_Assist_Gold_18",
-            "name": "18金币",
-            "image": {
-                "full": "TFT_Assist_Gold_18.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 144,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Assist_Gold_20": {
-            "id": "TFT_Assist_Gold_20",
-            "name": "20金币",
-            "image": {
-                "full": "TFT_Assist_Gold_20.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 192,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Assist_Gold_22": {
-            "id": "TFT_Assist_Gold_22",
-            "name": "22金币",
-            "image": {
-                "full": "TFT_Assist_Gold_22.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 240,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Assist_Gold_24": {
-            "id": "TFT_Assist_Gold_24",
-            "name": "24金币",
-            "image": {
-                "full": "TFT_Assist_Gold_24.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 288,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Assist_Gold_25": {
-            "id": "TFT_Assist_Gold_25",
-            "name": "25金币",
-            "image": {
-                "full": "TFT_Assist_Gold_25.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 336,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Assist_Gold_26": {
-            "id": "TFT_Assist_Gold_26",
-            "name": "26金币",
-            "image": {
-                "full": "TFT_Assist_Gold_26.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 384,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Assist_Gold_30": {
-            "id": "TFT_Assist_Gold_30",
-            "name": "30金币",
-            "image": {
-                "full": "TFT_Assist_Gold_30.png",
-                "sprite": "tft-item5.png",
-                "group": "tft-item",
-                "x": 432,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Assist_Gold_34": {
-            "id": "TFT_Assist_Gold_34",
-            "name": "34金币",
-            "image": {
-                "full": "TFT_Assist_Gold_34.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 0,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Assist_Gold_36": {
-            "id": "TFT_Assist_Gold_36",
-            "name": "36金币",
-            "image": {
-                "full": "TFT_Assist_Gold_36.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 48,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Assist_Gold_40": {
-            "id": "TFT_Assist_Gold_40",
-            "name": "40金币",
-            "image": {
-                "full": "TFT_Assist_Gold_40.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 96,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Assist_Gold_44": {
-            "id": "TFT_Assist_Gold_44",
-            "name": "44金币",
-            "image": {
-                "full": "TFT_Assist_Gold_44.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 144,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Assist_Gold_54": {
-            "id": "TFT_Assist_Gold_54",
-            "name": "54金币",
-            "image": {
-                "full": "TFT_Assist_Gold_54.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 192,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Assist_Gold_64": {
-            "id": "TFT_Assist_Gold_64",
-            "name": "64金币",
-            "image": {
-                "full": "TFT_Assist_Gold_64.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 240,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Assist_Gold_76": {
-            "id": "TFT_Assist_Gold_76",
-            "name": "76金币",
-            "image": {
-                "full": "TFT_Assist_Gold_76.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 288,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_EmblemItems/TFT10_Item_CountryEmblem": {
-            "id": "TFT10_Item_CountryEmblem",
-            "name": "乡村音乐纹章",
-            "image": {
-                "full": "TFT10_Item_CountryEmblem.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 336,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_EmblemItems/TFT10_Item_CrowdDiverEmblem": {
-            "id": "TFT10_Item_CrowdDiverEmblem",
-            "name": "音浪刺客纹章",
-            "image": {
-                "full": "TFT10_Item_CrowdDiverEmblem.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 384,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_EmblemItems/TFT10_Item_DazzlerEmblem": {
-            "id": "TFT10_Item_DazzlerEmblem",
-            "name": "耀光使纹章",
-            "image": {
-                "full": "TFT10_Item_DazzlerEmblem.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 432,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_EmblemItems/TFT10_Item_EdgelordEmblem": {
-            "id": "TFT10_Item_EdgelordEmblem",
-            "name": "刀锋领主纹章",
-            "image": {
-                "full": "TFT10_Item_EdgelordEmblem.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 0,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_EmblemItems/TFT10_Item_FighterEmblem": {
-            "id": "TFT10_Item_FighterEmblem",
-            "name": "舞者纹章",
-            "image": {
-                "full": "TFT10_Item_FighterEmblem.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 48,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_EmblemItems/TFT10_Item_GuardianEmblem": {
-            "id": "TFT10_Item_GuardianEmblem",
-            "name": "护卫纹章",
-            "image": {
-                "full": "TFT10_Item_GuardianEmblem.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 96,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_EmblemItems/TFT10_Item_WardenEmblem": {
-            "id": "TFT10_Item_WardenEmblem",
-            "name": "秘术护卫纹章",
-            "image": {
-                "full": "TFT10_Item_WardenEmblem.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 144,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Consumable_EDM_Selector": {
-            "id": "TFT10_Consumable_EDM_Selector",
-            "name": "电子舞曲选择器",
-            "image": {
-                "full": "TFT10_Consumable_EDM_Selector.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 192,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_EmblemItems/TFT10_Item_HyperPopEmblem": {
-            "id": "TFT10_Item_HyperPopEmblem",
-            "name": "高能流行纹章",
-            "image": {
-                "full": "TFT10_Item_HyperPopEmblem.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 240,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantComponentAnvil": {
-            "id": "TFT_Item_GrantComponentAnvil",
-            "name": "基础装备钥匙",
-            "image": {
-                "full": "TFT_Item_GrantComponentAnvil.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 288,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Heartsteel/TFT10_Heartsteel_Cashout": {
-            "id": "TFT10_Heartsteel_Cashout",
-            "name": "收手跑路",
-            "image": {
-                "full": "TFT10_Heartsteel_Cashout.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 336,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Heartsteel/TFT10_Heartsteel_PushYourLuck": {
-            "id": "TFT10_Heartsteel_PushYourLuck",
-            "name": "继续搞事",
-            "image": {
-                "full": "TFT10_Heartsteel_PushYourLuck.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 384,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Heartsteel/TFT10_Heartsteel_ReallyPushYourLuck": {
-            "id": "TFT10_Heartsteel_ReallyPushYourLuck",
-            "name": "继续搞事",
-            "image": {
-                "full": "TFT10_Heartsteel_ReallyPushYourLuck.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 432,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT7_TreasureDragonDummyItems/TFT7_Item_TreasureDragonBlankSlot": {
-            "id": "TFT7_Item_TreasureDragonBlankSlot",
-            "name": "",
-            "image": {
-                "full": "TFT7_Item_TreasureDragonBlankSlot.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 0,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT7_TreasureDragonDummyItems/TFT7_Item_TreasureDragonGold20": {
-            "id": "TFT7_Item_TreasureDragonGold20",
-            "name": "20金币",
-            "image": {
-                "full": "TFT7_Item_TreasureDragonGold20.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 48,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT7_TreasureDragonDummyItems/TFT7_Item_TreasureDragonGold3": {
-            "id": "TFT7_Item_TreasureDragonGold3",
-            "name": "3金币",
-            "image": {
-                "full": "TFT7_Item_TreasureDragonGold3.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 96,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT7_TreasureDragonDummyItems/TFT7_Item_TreasureDragonGold4": {
-            "id": "TFT7_Item_TreasureDragonGold4",
-            "name": "4金币",
-            "image": {
-                "full": "TFT7_Item_TreasureDragonGold4.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 144,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT7_TreasureDragonDummyItems/TFT7_Item_TreasureDragonGold9": {
-            "id": "TFT7_Item_TreasureDragonGold9",
-            "name": "9金币",
-            "image": {
-                "full": "TFT7_Item_TreasureDragonGold9.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 192,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Random_5_Cost": {
-            "id": "TFT_Random_5_Cost",
-            "name": "越狱！",
-            "image": {
-                "full": "TFT_Random_5_Cost.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 240,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Random_Two_Star_4_Cost": {
-            "id": "TFT_Random_Two_Star_4_Cost",
-            "name": "越狱！",
-            "image": {
-                "full": "TFT_Random_Two_Star_4_Cost.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 288,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantCompletedAnvil": {
-            "id": "TFT_Item_GrantCompletedAnvil",
-            "name": "成装钥匙",
-            "image": {
-                "full": "TFT_Item_GrantCompletedAnvil.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 336,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantTomeOfTraits": {
-            "id": "TFT_Item_GrantTomeOfTraits",
-            "name": "纹章之书",
-            "image": {
-                "full": "TFT_Item_GrantTomeOfTraits.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 384,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantCompletedItem1": {
-            "id": "TFT_Item_GrantCompletedItem1",
-            "name": "1件成装",
-            "image": {
-                "full": "TFT_Item_GrantCompletedItem1.png",
-                "sprite": "tft-item6.png",
-                "group": "tft-item",
-                "x": 432,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantCompletedItem2": {
-            "id": "TFT_Item_GrantCompletedItem2",
-            "name": "@ItemsToGive@件成装",
-            "image": {
-                "full": "TFT_Item_GrantCompletedItem2.png",
-                "sprite": "tft-item7.png",
-                "group": "tft-item",
-                "x": 0,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantCompletedItem3": {
-            "id": "TFT_Item_GrantCompletedItem3",
-            "name": "@ItemsToGive@件成装",
-            "image": {
-                "full": "TFT_Item_GrantCompletedItem3.png",
-                "sprite": "tft-item7.png",
-                "group": "tft-item",
-                "x": 48,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantComponent1": {
-            "id": "TFT_Item_GrantComponent1",
-            "name": "1件基础装备",
-            "image": {
-                "full": "TFT_Item_GrantComponent1.png",
-                "sprite": "tft-item7.png",
-                "group": "tft-item",
-                "x": 96,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantComponent2": {
-            "id": "TFT_Item_GrantComponent2",
-            "name": "@ItemsToGive@件基础装备",
-            "image": {
-                "full": "TFT_Item_GrantComponent2.png",
-                "sprite": "tft-item7.png",
-                "group": "tft-item",
-                "x": 144,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantComponent3": {
-            "id": "TFT_Item_GrantComponent3",
-            "name": "@ItemsToGive@件基础装备",
-            "image": {
-                "full": "TFT_Item_GrantComponent3.png",
-                "sprite": "tft-item7.png",
-                "group": "tft-item",
-                "x": 192,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantComponent4": {
-            "id": "TFT_Item_GrantComponent4",
-            "name": "@ItemsToGive@件基础装备",
-            "image": {
-                "full": "TFT_Item_GrantComponent4.png",
-                "sprite": "tft-item7.png",
-                "group": "tft-item",
-                "x": 240,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantComponent5": {
-            "id": "TFT_Item_GrantComponent5",
-            "name": "@ItemsToGive@件基础装备",
-            "image": {
-                "full": "TFT_Item_GrantComponent5.png",
-                "sprite": "tft-item7.png",
-                "group": "tft-item",
-                "x": 288,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantComponent6": {
-            "id": "TFT_Item_GrantComponent6",
-            "name": "@ItemsToGive@件基础装备",
-            "image": {
-                "full": "TFT_Item_GrantComponent6.png",
-                "sprite": "tft-item7.png",
-                "group": "tft-item",
-                "x": 336,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantComponent7": {
-            "id": "TFT_Item_GrantComponent7",
-            "name": "@ItemsToGive@件基础装备",
-            "image": {
-                "full": "TFT_Item_GrantComponent7.png",
-                "sprite": "tft-item7.png",
-                "group": "tft-item",
-                "x": 384,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantComponent8": {
-            "id": "TFT_Item_GrantComponent8",
-            "name": "@ItemsToGive@件基础装备",
-            "image": {
-                "full": "TFT_Item_GrantComponent8.png",
-                "sprite": "tft-item7.png",
-                "group": "tft-item",
-                "x": 432,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantComponent9": {
-            "id": "TFT_Item_GrantComponent9",
-            "name": "@ItemsToGive@件基础装备",
-            "image": {
-                "full": "TFT_Item_GrantComponent9.png",
-                "sprite": "tft-item7.png",
-                "group": "tft-item",
-                "x": 0,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantOrbs1": {
-            "id": "TFT_Item_GrantOrbs1",
-            "name": "1颗战利品法球",
-            "image": {
-                "full": "TFT_Item_GrantOrbs1.png",
-                "sprite": "tft-item7.png",
-                "group": "tft-item",
-                "x": 48,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantOrbs2": {
-            "id": "TFT_Item_GrantOrbs2",
-            "name": "@OrbsToGive@颗战利品法球",
-            "image": {
-                "full": "TFT_Item_GrantOrbs2.png",
-                "sprite": "tft-item7.png",
-                "group": "tft-item",
-                "x": 96,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantOrbs3": {
-            "id": "TFT_Item_GrantOrbs3",
-            "name": "@OrbsToGive@颗战利品法球",
-            "image": {
-                "full": "TFT_Item_GrantOrbs3.png",
-                "sprite": "tft-item7.png",
-                "group": "tft-item",
-                "x": 144,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantOrbs4": {
-            "id": "TFT_Item_GrantOrbs4",
-            "name": "@OrbsToGive@颗战利品法球",
-            "image": {
-                "full": "TFT_Item_GrantOrbs4.png",
-                "sprite": "tft-item7.png",
-                "group": "tft-item",
-                "x": 192,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantOrbs5": {
-            "id": "TFT_Item_GrantOrbs5",
-            "name": "@OrbsToGive@颗战利品法球",
-            "image": {
-                "full": "TFT_Item_GrantOrbs5.png",
-                "sprite": "tft-item7.png",
-                "group": "tft-item",
-                "x": 240,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantOrbs6": {
-            "id": "TFT_Item_GrantOrbs6",
-            "name": "@OrbsToGive@颗战利品法球",
-            "image": {
-                "full": "TFT_Item_GrantOrbs6.png",
-                "sprite": "tft-item7.png",
-                "group": "tft-item",
-                "x": 288,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantOrbs7": {
-            "id": "TFT_Item_GrantOrbs7",
-            "name": "@OrbsToGive@颗战利品法球",
-            "image": {
-                "full": "TFT_Item_GrantOrbs7.png",
-                "sprite": "tft-item7.png",
-                "group": "tft-item",
-                "x": 336,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantOrbs8": {
-            "id": "TFT_Item_GrantOrbs8",
-            "name": "@OrbsToGive@颗战利品法球",
-            "image": {
-                "full": "TFT_Item_GrantOrbs8.png",
-                "sprite": "tft-item7.png",
-                "group": "tft-item",
-                "x": 384,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantOrbs9": {
-            "id": "TFT_Item_GrantOrbs9",
-            "name": "@OrbsToGive@颗战利品法球",
-            "image": {
-                "full": "TFT_Item_GrantOrbs9.png",
-                "sprite": "tft-item7.png",
-                "group": "tft-item",
-                "x": 432,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT8_TheUndergroundItems/TFT_Item_GrantOrnnAnvil": {
-            "id": "TFT_Item_GrantOrnnAnvil",
-            "name": "神器锻造器",
-            "image": {
-                "full": "TFT_Item_GrantOrnnAnvil.png",
-                "sprite": "tft-item7.png",
-                "group": "tft-item",
-                "x": 0,
-                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -3010,9 +1827,9 @@
             "name": "剑士纹章",
             "image": {
                 "full": "TFT3_Item_BlademasterEmblem.png",
-                "sprite": "tft-item7.png",
+                "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 48,
+                "x": 0,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -3023,9 +1840,9 @@
             "name": "星之守护者纹章",
             "image": {
                 "full": "TFT3_Item_StarGuardianEmblem.png",
-                "sprite": "tft-item7.png",
+                "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 96,
+                "x": 48,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -3036,9 +1853,9 @@
             "name": "刺客纹章",
             "image": {
                 "full": "TFT3_Item_InfiltratorEmblem.png",
-                "sprite": "tft-item7.png",
+                "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 144,
+                "x": 96,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -3049,9 +1866,9 @@
             "name": "圣盾使纹章",
             "image": {
                 "full": "TFT3_Item_ProtectorEmblem.png",
-                "sprite": "tft-item7.png",
+                "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 192,
+                "x": 144,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -3062,9 +1879,9 @@
             "name": "暗星纹章",
             "image": {
                 "full": "TFT3_Item_DarkStarEmblem.png",
-                "sprite": "tft-item7.png",
+                "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 240,
+                "x": 192,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -3075,9 +1892,9 @@
             "name": "星神纹章",
             "image": {
                 "full": "TFT3_Item_CelestialEmblem.png",
-                "sprite": "tft-item7.png",
+                "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 288,
+                "x": 240,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -3088,9 +1905,9 @@
             "name": "奥德赛纹章",
             "image": {
                 "full": "TFT3_Item_RebelEmblem.png",
-                "sprite": "tft-item7.png",
+                "sprite": "tft-item4.png",
                 "group": "tft-item",
-                "x": 336,
+                "x": 288,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -3101,10 +1918,517 @@
             "name": "战地机甲纹章",
             "image": {
                 "full": "TFT3_Item_BattlecastEmblem.png",
-                "sprite": "tft-item7.png",
+                "sprite": "tft-item4.png",
+                "group": "tft-item",
+                "x": 336,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Storyweaver/TFT11_Storyweaver3_Support": {
+            "id": "TFT11_Storyweaver3_Support",
+            "name": "援助护符",
+            "image": {
+                "full": "TFT11_Storyweaver3_Support.png",
+                "sprite": "tft-item4.png",
                 "group": "tft-item",
                 "x": 384,
                 "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Storyweaver/TFT11_Storyweaver7_AP": {
+            "id": "TFT11_Storyweaver7_AP",
+            "name": "力量之书",
+            "image": {
+                "full": "TFT11_Storyweaver7_AP.png",
+                "sprite": "tft-item4.png",
+                "group": "tft-item",
+                "x": 432,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Storyweaver/TFT11_Storyweaver5_AS": {
+            "id": "TFT11_Storyweaver5_AS",
+            "name": "急速卷轴",
+            "image": {
+                "full": "TFT11_Storyweaver5_AS.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 0,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Consumable_Ghostly_SacrificialPact": {
+            "id": "TFT11_Consumable_Ghostly_SacrificialPact",
+            "name": "猩红契约",
+            "image": {
+                "full": "TFT11_Consumable_Ghostly_SacrificialPact.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 48,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Inkshadow/TFT11_Item_InkshadowOx": {
+            "id": "TFT11_Item_InkshadowOx",
+            "name": "活力墨纹",
+            "image": {
+                "full": "TFT11_Item_InkshadowOx.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 96,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Inkshadow/TFT11_Item_InkshadowSnake": {
+            "id": "TFT11_Item_InkshadowSnake",
+            "name": "猛毒墨纹",
+            "image": {
+                "full": "TFT11_Item_InkshadowSnake.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 144,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Inkshadow/TFT11_Item_InkshadowPig": {
+            "id": "TFT11_Item_InkshadowPig",
+            "name": "守护墨纹",
+            "image": {
+                "full": "TFT11_Item_InkshadowPig.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 192,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Inkshadow/TFT11_Item_InkshadowRat": {
+            "id": "TFT11_Item_InkshadowRat",
+            "name": "轰炸墨纹",
+            "image": {
+                "full": "TFT11_Item_InkshadowRat.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 240,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Inkshadow/TFT11_Item_InkshadowHorse": {
+            "id": "TFT11_Item_InkshadowHorse",
+            "name": "原力墨纹",
+            "image": {
+                "full": "TFT11_Item_InkshadowHorse.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 288,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Inkshadow/TFT11_Item_InkshadowTiger": {
+            "id": "TFT11_Item_InkshadowTiger",
+            "name": "狂怒墨纹",
+            "image": {
+                "full": "TFT11_Item_InkshadowTiger.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 336,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_EmblemItems/TFT11_Item_AltruistEmblemItem": {
+            "id": "TFT11_Item_AltruistEmblemItem",
+            "name": "武仙子纹章",
+            "image": {
+                "full": "TFT11_Item_AltruistEmblemItem.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 384,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_EmblemItems/TFT11_Item_BehemothEmblemItem": {
+            "id": "TFT11_Item_BehemothEmblemItem",
+            "name": "擎天卫纹章",
+            "image": {
+                "full": "TFT11_Item_BehemothEmblemItem.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 432,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_EmblemItems/TFT11_Item_BruiserEmblemItem": {
+            "id": "TFT11_Item_BruiserEmblemItem",
+            "name": "斗士纹章",
+            "image": {
+                "full": "TFT11_Item_BruiserEmblemItem.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 0,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_EmblemItems/TFT11_Item_DragonlordEmblemItem": {
+            "id": "TFT11_Item_DragonlordEmblemItem",
+            "name": "天龙之子纹章",
+            "image": {
+                "full": "TFT11_Item_DragonlordEmblemItem.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 48,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_EmblemItems/TFT11_Item_ChallengerEmblemItem": {
+            "id": "TFT11_Item_ChallengerEmblemItem",
+            "name": "决斗大师纹章",
+            "image": {
+                "full": "TFT11_Item_ChallengerEmblemItem.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 96,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_EmblemItems/TFT11_Item_DryadEmblemItem": {
+            "id": "TFT11_Item_DryadEmblemItem",
+            "name": "永恒之森纹章",
+            "image": {
+                "full": "TFT11_Item_DryadEmblemItem.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 144,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_EmblemItems/TFT11_Item_FatedEmblemItem": {
+            "id": "TFT11_Item_FatedEmblemItem",
+            "name": "灵魂莲华纹章",
+            "image": {
+                "full": "TFT11_Item_FatedEmblemItem.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 192,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_EmblemItems/TFT11_Item_FortuneEmblemItem": {
+            "id": "TFT11_Item_FortuneEmblemItem",
+            "name": "吉星纹章",
+            "image": {
+                "full": "TFT11_Item_FortuneEmblemItem.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 240,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_EmblemItems/TFT11_Item_GhostlyEmblemItem": {
+            "id": "TFT11_Item_GhostlyEmblemItem",
+            "name": "幽魂纹章",
+            "image": {
+                "full": "TFT11_Item_GhostlyEmblemItem.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 288,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_EmblemItems/TFT11_Item_WardenEmblemItem": {
+            "id": "TFT11_Item_WardenEmblemItem",
+            "name": "护卫纹章",
+            "image": {
+                "full": "TFT11_Item_WardenEmblemItem.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 336,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_EmblemItems/TFT11_Item_HeavenlyEmblemItem": {
+            "id": "TFT11_Item_HeavenlyEmblemItem",
+            "name": "天将纹章",
+            "image": {
+                "full": "TFT11_Item_HeavenlyEmblemItem.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 384,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_EmblemItems/TFT11_Item_InkShadowEmblemItem": {
+            "id": "TFT11_Item_InkShadowEmblemItem",
+            "name": "墨之影纹章",
+            "image": {
+                "full": "TFT11_Item_InkShadowEmblemItem.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 432,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_EmblemItems/TFT11_Item_InvokerEmblemItem": {
+            "id": "TFT11_Item_InvokerEmblemItem",
+            "name": "神谕者纹章",
+            "image": {
+                "full": "TFT11_Item_InvokerEmblemItem.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 0,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_EmblemItems/TFT11_Item_MythicEmblemItem": {
+            "id": "TFT11_Item_MythicEmblemItem",
+            "name": "山海绘卷纹章",
+            "image": {
+                "full": "TFT11_Item_MythicEmblemItem.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 48,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_EmblemItems/TFT11_Item_PorcelainEmblemItem": {
+            "id": "TFT11_Item_PorcelainEmblemItem",
+            "name": "青花瓷纹章",
+            "image": {
+                "full": "TFT11_Item_PorcelainEmblemItem.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 96,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_EmblemItems/TFT11_Item_ReaperEmblemItem": {
+            "id": "TFT11_Item_ReaperEmblemItem",
+            "name": "死神纹章",
+            "image": {
+                "full": "TFT11_Item_ReaperEmblemItem.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 144,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_EmblemItems/TFT11_Item_SageEmblemItem": {
+            "id": "TFT11_Item_SageEmblemItem",
+            "name": "圣贤纹章",
+            "image": {
+                "full": "TFT11_Item_SageEmblemItem.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 192,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_EmblemItems/TFT11_Item_SniperEmblemItem": {
+            "id": "TFT11_Item_SniperEmblemItem",
+            "name": "狙神纹章",
+            "image": {
+                "full": "TFT11_Item_SniperEmblemItem.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 240,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_EmblemItems/TFT11_Item_SpellslingerEmblemItem": {
+            "id": "TFT11_Item_SpellslingerEmblemItem",
+            "name": "法师纹章",
+            "image": {
+                "full": "TFT11_Item_SpellslingerEmblemItem.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 288,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_EmblemItems/TFT11_Item_StoryweaverEmblemItem": {
+            "id": "TFT11_Item_StoryweaverEmblemItem",
+            "name": "剪纸仙灵纹章",
+            "image": {
+                "full": "TFT11_Item_StoryweaverEmblemItem.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 336,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_EmblemItems/TFT11_Item_UmbralEmblemItem": {
+            "id": "TFT11_Item_UmbralEmblemItem",
+            "name": "夜幽纹章",
+            "image": {
+                "full": "TFT11_Item_UmbralEmblemItem.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 384,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Storyweaver/TFT11_Storyweaver9_Ascended": {
+            "id": "TFT11_Storyweaver9_Ascended",
+            "name": "登神护身符",
+            "image": {
+                "full": "TFT11_Storyweaver9_Ascended.png",
+                "sprite": "tft-item5.png",
+                "group": "tft-item",
+                "x": 432,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Storyweaver/TFT11_Storyweaver3_AS": {
+            "id": "TFT11_Storyweaver3_AS",
+            "name": "速度护符",
+            "image": {
+                "full": "TFT11_Storyweaver3_AS.png",
+                "sprite": "tft-item6.png",
+                "group": "tft-item",
+                "x": 0,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Storyweaver/TFT11_Storyweaver3_AP": {
+            "id": "TFT11_Storyweaver3_AP",
+            "name": "力量护符",
+            "image": {
+                "full": "TFT11_Storyweaver3_AP.png",
+                "sprite": "tft-item6.png",
+                "group": "tft-item",
+                "x": 48,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Storyweaver/TFT11_Storyweaver7_AS": {
+            "id": "TFT11_Storyweaver7_AS",
+            "name": "轻灵之书",
+            "image": {
+                "full": "TFT11_Storyweaver7_AS.png",
+                "sprite": "tft-item6.png",
+                "group": "tft-item",
+                "x": 96,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Storyweaver/TFT11_Storyweaver7_Support": {
+            "id": "TFT11_Storyweaver7_Support",
+            "name": "修补之书",
+            "image": {
+                "full": "TFT11_Storyweaver7_Support.png",
+                "sprite": "tft-item6.png",
+                "group": "tft-item",
+                "x": 144,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Fortune/TFT11_Fortune_Cashout": {
+            "id": "TFT11_Fortune_Cashout",
+            "name": "见好就收",
+            "image": {
+                "full": "TFT11_Fortune_Cashout.png",
+                "sprite": "tft-item6.png",
+                "group": "tft-item",
+                "x": 192,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Fortune/TFT11_Fortune_PushYourLuck": {
+            "id": "TFT11_Fortune_PushYourLuck",
+            "name": "再拼一次",
+            "image": {
+                "full": "TFT11_Fortune_PushYourLuck.png",
+                "sprite": "tft-item6.png",
+                "group": "tft-item",
+                "x": 240,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Storyweaver/TFT11_Storyweaver5_AP": {
+            "id": "TFT11_Storyweaver5_AP",
+            "name": "原力卷轴",
+            "image": {
+                "full": "TFT11_Storyweaver5_AP.png",
+                "sprite": "tft-item6.png",
+                "group": "tft-item",
+                "x": 288,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -3114,10 +2438,10 @@
             "name": "2个3费弈子",
             "image": {
                 "full": "TFT_Assist_Tier3_Units.png",
-                "sprite": "tft-item7.png",
+                "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 432,
-                "y": 96,
+                "x": 336,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -3127,10 +2451,75 @@
             "name": "3个2费弈子",
             "image": {
                 "full": "TFT_Assist_Tier2_Units.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item6.png",
+                "group": "tft-item",
+                "x": 384,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "DoubleUp_AssistItems/TFT_Assist_Gold_10": {
+            "id": "TFT_Assist_Gold_10",
+            "name": "10金币",
+            "image": {
+                "full": "TFT_Assist_Gold_10.png",
+                "sprite": "tft-item6.png",
+                "group": "tft-item",
+                "x": 432,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "DoubleUp_AssistItems/TFT_Assist_Gold_5": {
+            "id": "TFT_Assist_Gold_5",
+            "name": "5金币",
+            "image": {
+                "full": "TFT_Assist_Gold_5.png",
+                "sprite": "tft-item6.png",
                 "group": "tft-item",
                 "x": 0,
-                "y": 0,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "DoubleUp_AssistItems/TFT_Assist_Gold_6": {
+            "id": "TFT_Assist_Gold_6",
+            "name": "6金币",
+            "image": {
+                "full": "TFT_Assist_Gold_6.png",
+                "sprite": "tft-item6.png",
+                "group": "tft-item",
+                "x": 48,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "DoubleUp_AssistItems/TFT_Assist_Gold_7": {
+            "id": "TFT_Assist_Gold_7",
+            "name": "7金币",
+            "image": {
+                "full": "TFT_Assist_Gold_7.png",
+                "sprite": "tft-item6.png",
+                "group": "tft-item",
+                "x": 96,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "DoubleUp_AssistItems/TFT_Assist_Gold_8": {
+            "id": "TFT_Assist_Gold_8",
+            "name": "8金币",
+            "image": {
+                "full": "TFT_Assist_Gold_8.png",
+                "sprite": "tft-item6.png",
+                "group": "tft-item",
+                "x": 144,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -3140,10 +2529,10 @@
             "name": "随机基础装备",
             "image": {
                 "full": "TFT_Assist_RandomComponent.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 48,
-                "y": 0,
+                "x": 192,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -3153,10 +2542,10 @@
             "name": "忠诚符文",
             "image": {
                 "full": "TFT_Assist_RuneOfAllegiance.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 96,
-                "y": 0,
+                "x": 240,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -3166,10 +2555,10 @@
             "name": "次级忠诚符文",
             "image": {
                 "full": "TFT_Assist_LesserRuneOfAllegiance.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 144,
-                "y": 0,
+                "x": 288,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -3179,10 +2568,10 @@
             "name": "【装备重铸器】和5金币",
             "image": {
                 "full": "TFT_Assist_Reforger_And_Gold.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 192,
-                "y": 0,
+                "x": 336,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -3192,10 +2581,10 @@
             "name": "【纹章之书】和【装备重铸器】",
             "image": {
                 "full": "TFT_Assist_TomeOfTraits.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 240,
-                "y": 0,
+                "x": 384,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -3205,10 +2594,10 @@
             "name": "光明武器",
             "image": {
                 "full": "TFT_Assist_RandomRadiantItem.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 288,
-                "y": 0,
+                "x": 432,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -3218,10 +2607,23 @@
             "name": "金铲铲冠冕",
             "image": {
                 "full": "TFT_Assist_TacticiansCrown.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 336,
-                "y": 0,
+                "x": 0,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "DoubleUp_AssistItems/TFT_Assist_ChampionDuplicator": {
+            "id": "TFT_Assist_ChampionDuplicator",
+            "name": "英雄复制器",
+            "image": {
+                "full": "TFT_Assist_ChampionDuplicator.png",
+                "sprite": "tft-item6.png",
+                "group": "tft-item",
+                "x": 48,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -3231,10 +2633,10 @@
             "name": "成装锻造器",
             "image": {
                 "full": "TFT_Assist_ItemArmoryCompleted.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 384,
-                "y": 0,
+                "x": 96,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -3244,10 +2646,10 @@
             "name": "金铲铲",
             "image": {
                 "full": "TFT_Assist_Spatula.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 432,
-                "y": 0,
+                "x": 144,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -3257,10 +2659,10 @@
             "name": "【装备拆卸器】和5金币",
             "image": {
                 "full": "TFT_Assist_Remover_And_Gold.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 0,
-                "y": 48,
+                "x": 192,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -3270,10 +2672,10 @@
             "name": "灌铅骰子",
             "image": {
                 "full": "TFT_Assist_LoadedDice.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 48,
-                "y": 48,
+                "x": 240,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -3283,10 +2685,10 @@
             "name": "基础装备锻造器",
             "image": {
                 "full": "TFT_Assist_ItemArmoryComponent.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 96,
-                "y": 48,
+                "x": 288,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -3296,10 +2698,10 @@
             "name": "窃贼手套",
             "image": {
                 "full": "TFT_Assist_ThiefsGloves.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 144,
-                "y": 48,
+                "x": 336,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -3309,10 +2711,10 @@
             "name": "2件基础装备",
             "image": {
                 "full": "TFT_Assist_RandomComponent_3.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 192,
-                "y": 48,
+                "x": 384,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -3322,10 +2724,10 @@
             "name": "【金铲铲】和【基础装备锻造器】",
             "image": {
                 "full": "TFT_Assist_Spatula_And_ItemArmoryComponent.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item6.png",
                 "group": "tft-item",
-                "x": 240,
-                "y": 48,
+                "x": 432,
+                "y": 96,
                 "w": 48,
                 "h": 48
             }
@@ -3335,10 +2737,10 @@
             "name": "1个训练假人",
             "image": {
                 "full": "TFT_Assist_TrainingDummy.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 288,
-                "y": 48,
+                "x": 0,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -3348,10 +2750,10 @@
             "name": "2件随机成装和1个【装备重铸器】",
             "image": {
                 "full": "TFT_Assist_RandomCompletedItems_And_Reforger.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 336,
-                "y": 48,
+                "x": 48,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -3361,10 +2763,10 @@
             "name": "神器锻造器",
             "image": {
                 "full": "TFT_Assist_ItemArmoryOrnn.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 384,
-                "y": 48,
+                "x": 96,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -3374,10 +2776,10 @@
             "name": "2个4费弈子",
             "image": {
                 "full": "TFT_Assist_Tier4_Units.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 432,
-                "y": 48,
+                "x": 144,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -3387,10 +2789,10 @@
             "name": "神器装备",
             "image": {
                 "full": "TFT_Assist_RandomOrnnItem.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 0,
-                "y": 96,
+                "x": 192,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -3400,10 +2802,10 @@
             "name": "5费弈子和7金币",
             "image": {
                 "full": "TFT_Assist_Tier5_Units_And_Gold.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 48,
-                "y": 96,
+                "x": 240,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -3413,10 +2815,10 @@
             "name": "4费弈子和4金币",
             "image": {
                 "full": "TFT_Assist_Tier4_Units_And_Gold.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 96,
-                "y": 96,
+                "x": 288,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -3426,10 +2828,10 @@
             "name": "目标假人",
             "image": {
                 "full": "TFT_Consumable_TrainingDummy.png",
-                "sprite": "tft-item8.png",
+                "sprite": "tft-item7.png",
                 "group": "tft-item",
-                "x": 144,
-                "y": 96,
+                "x": 336,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }

@@ -1013,6 +1013,12 @@
         "description": "ARAM",
         "detailedDescription": ""
     },
+    "880": {
+        "name": "New: Beginner",
+        "shortName": "New: Beginner",
+        "description": "New: Beginner",
+        "detailedDescription": "New: Beginner"
+    },
     "950": {
         "name": "Level 100 Gauntlet",
         "shortName": "Level 100 Gauntlet",
@@ -1042,6 +1048,12 @@
         "shortName": "Nexus Siege",
         "description": "Nexus Siege",
         "detailedDescription": ""
+    },
+    "890": {
+        "name": "New: Intermediate",
+        "shortName": "New: Intermediate",
+        "description": "New: Intermediate",
+        "detailedDescription": "New: Intermediate"
     },
     "940": {
         "name": "Nexus Siege",
@@ -1114,6 +1126,12 @@
         "shortName": "2v2",
         "description": "2v2",
         "detailedDescription": ""
+    },
+    "870": {
+        "name": "New: Intro",
+        "shortName": "New: Intro",
+        "description": "New: Intro",
+        "detailedDescription": "New: Intro"
     },
     "1401": {
         "name": "1v1",

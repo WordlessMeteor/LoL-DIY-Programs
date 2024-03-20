@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.5.1",
+    "version": "14.6.1",
     "data": {
         "Ziggs": {
             "id": "Ziggs",
@@ -293,7 +293,7 @@
                         "effect": [
                             "{{ e1 }} -> {{ e1NL }}",
                             "{{ cooldown }} -> {{ cooldownNL }}",
-                            "{{ effect3amount*100.000000 }}% -> {{ effect3amountnl*100.000000 }}%"
+                            "{{ turretdestroypercent*100.000000 }}% -> {{ turretdestroypercentnl*100.000000 }}%"
                         ]
                     },
                     "maxrank": 5,

@@ -932,6 +932,171 @@
             ],
             "skinAugments": null,
             "description": "作为一位高深莫测的音乐制作人，永恩可能会说他不喜欢成为众人瞩目的焦点，但在乐团的出道作登上榜首时，他还是情不自禁地穿起时髦前卫的醒目盛装，来与他犀利的剑术和更犀利的风格相得益彰。当你的造型如此酷炫时，躲在电脑后面就太可惜了。"
+        },
+        {
+            "id": 777055,
+            "isBase": false,
+            "name": "西部魔影 永恩",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/777/777055.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/777/777055.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/777/777055.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yone/Skins/Skin55/YoneLoadScreen_55.SKINS_Yone_Skin55.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Yone/Skins/Skin55/YoneLoadScreen_55_LE.SKINS_Yone_Skin55.jpg",
+            "skinType": "",
+            "rarity": "kLegendary",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777055.png",
+            "chromas": [
+                {
+                    "id": 777059,
+                    "name": "西部魔影 永恩 温和",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777059.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2024年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 777060,
+                    "name": "西部魔影 永恩 善良",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777060.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 777061,
+                    "name": "西部魔影 永恩 诚实",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777061.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 777062,
+                    "name": "西部魔影 永恩 忠诚",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777062.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 777063,
+                    "name": "西部魔影 永恩 谦卑",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777063.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 777064,
+                    "name": "西部魔影 永恩 正午幻日",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/777/777064.png",
+                    "colors": [
+                        "#9DB3E1",
+                        "#CD5867"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在西部魔影(2024)期间作为战利品专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": [
+                {
+                    "name": "Legend",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/31.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/31.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 5,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/5_large.png",
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "那个魂不守舍的人没有呼吸，只是倚靠在拴马桩上，眯着眼睛看着边境的黄昏——但它不是他。不完全是。真正的永恩是阴影和硝烟，随着它重新回到他肉身的静止状态而不断翻腾。“你们怎么就这样分开了？” 年轻的火药女巫问道。永恩叹息道，“说来话长，孩子。”"
+        },
+        {
+            "id": 777058,
+            "isBase": false,
+            "name": "西部魔影 炽天使 永恩",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/777/777058.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/777/777058.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/777/777058.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Yone/Skins/Skin58/YoneLoadScreen_58.SKINS_Yone_Skin58.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Yone/Skins/Skin58/YoneLoadScreen_58_LE.SKINS_Yone_Skin58.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Mythic",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/68.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/68.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "那个魂不守舍的人没有呼吸，只是倚靠在拴马桩上，眯着眼睛看着边境的黄昏——但它不是他。不完全是。真正的永恩是阴影和硝烟，随着它重新回到他肉身的静止状态而不断翻腾。“你们怎么就这样分开了？” 年轻的火药女巫问道。永恩叹息道，“说来话长，孩子。”"
         }
     ],
     "passive": {

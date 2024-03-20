@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.5.1",
+    "version": "14.6.1",
     "data": {
         "Yone": {
             "id": "Yone",
@@ -64,6 +64,18 @@
                     "id": "777046",
                     "num": 46,
                     "name": "Prestige HEARTSTEEL Yone",
+                    "chromas": false
+                },
+                {
+                    "id": "777055",
+                    "num": 55,
+                    "name": "High Noon Yone",
+                    "chromas": true
+                },
+                {
+                    "id": "777058",
+                    "num": 58,
+                    "name": "Peacemaker High Noon Yone",
                     "chromas": false
                 }
             ],

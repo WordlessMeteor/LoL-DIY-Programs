@@ -1,6 +1,6 @@
 {
     "type": "item",
-    "version": "14.5.1",
+    "version": "14.6.1",
     "basic": {
         "name": "",
         "rune": {
@@ -192,6 +192,7 @@
             "colloq": ";zhiliaobaozhu;zlbz;Rejuvenation Bead",
             "plaintext": "略微提升生命回复",
             "into": [
+                "3211",
                 "3801"
             ],
             "image": {
@@ -719,7 +720,6 @@
                 "6029",
                 "6035",
                 "6673",
-                "6675",
                 "6692",
                 "6695"
             ],
@@ -765,7 +765,8 @@
                 "3026",
                 "3072",
                 "3302",
-                "4403"
+                "4403",
+                "6675"
             ],
             "image": {
                 "full": "1038.png",
@@ -2354,7 +2355,7 @@
         },
         "2015": {
             "name": "吉尔菲艾斯碎片",
-            "description": "<mainText><stats><attention>15</attention>攻击力</stats><br><br><passive>突震</passive><br><keyword>盈能攻击</keyword>会造成额外的<magicDamage>60魔法伤害</magicDamage>。</mainText>",
+            "description": "<mainText><stats><attention>15</attention>攻击力</stats><br><br><passive>突震</passive><br><keyword>盈能攻击</keyword>会造成额外的<magicDamage>50魔法伤害</magicDamage>。</mainText>",
             "colloq": ";Kircheis;Shard",
             "plaintext": "提供攻击速度和可充能的魔法打击",
             "from": [
@@ -2404,6 +2405,7 @@
             "plaintext": "",
             "from": [
                 "1036",
+                "1029",
                 "1029"
             ],
             "into": [
@@ -2421,7 +2423,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 450,
+                "base": 150,
                 "purchasable": true,
                 "total": 1100,
                 "sell": 770
@@ -2445,7 +2447,7 @@
         },
         "2020": {
             "name": "残暴之力",
-            "description": "<mainText><stats><attention>25</attention>攻击力<br><attention>10</attention>技能急速<br><attention>8</attention>穿甲</stats><br><br></mainText>",
+            "description": "<mainText><stats><attention>25</attention>攻击力<br><attention>10</attention>技能急速<br><attention>5</attention>穿甲</stats><br><br></mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -2517,10 +2519,10 @@
                 "h": 48
             },
             "gold": {
-                "base": 350,
+                "base": 400,
                 "purchasable": true,
-                "total": 1100,
-                "sell": 770
+                "total": 1150,
+                "sell": 805
             },
             "tags": [
                 "Health",
@@ -2550,6 +2552,7 @@
                 "3133",
                 "223057",
                 "3802",
+                "3024",
                 "3057",
                 "3067",
                 "3108",
@@ -3083,11 +3086,12 @@
         },
         "2141": {
             "name": "帽子饮品",
-            "description": "<mainText><stats></stats><br><br><br><br><rules>帮助你出人头地。</rules><active>主动 - 消耗：</active>这个饮品什么也不做。<br><br><flavorText>在有限的时间内，每次购买都可以免费获得一顶帽子！</flavorText></mainText>",
+            "description": "<mainText><stats></stats><br><br><active>主动 - 消耗：</active>这个饮品什么也不做。<br><br><flavorText>在有限的时间内，每次购买都可以免费获得一顶帽子！</flavorText></mainText>",
             "colloq": "",
             "plaintext": "",
             "consumed": true,
             "consumeOnFull": true,
+            "inStore": false,
             "image": {
                 "full": "2141.png",
                 "sprite": "item0.png",
@@ -3098,19 +3102,19 @@
                 "h": 48
             },
             "gold": {
-                "base": 700,
-                "purchasable": true,
-                "total": 700,
-                "sell": 700
+                "base": 500,
+                "purchasable": false,
+                "total": 500,
+                "sell": 500
             },
             "tags": [
                 "Damage",
                 "Consumable"
             ],
             "maps": {
-                "11": false,
-                "12": false,
-                "21": false,
+                "11": true,
+                "12": true,
+                "21": true,
                 "22": false,
                 "30": true
             },
@@ -3862,7 +3866,7 @@
         },
         "223031": {
             "name": "无尽之刃",
-            "description": "<mainText><stats><nerfedStat>65</nerfedStat>攻击力<br><attention>20%</attention>暴击几率<br><attention>40%</attention>暴击伤害</stats><br><br></mainText>",
+            "description": "<mainText><stats><nerfedStat>65</nerfedStat>攻击力<br><attention>20%</attention>暴击几率<br><attention>50%</attention>暴击伤害</stats><br><br></mainText>",
             "colloq": "",
             "plaintext": "",
             "into": [
@@ -4640,7 +4644,7 @@
         },
         "223084": {
             "name": "心之钢",
-            "description": "<mainText><stats><attention>900</attention>生命值<br><attention>200%</attention>基础生命回复</stats><br><br><passive>庞然吞食</passive> 每个目标(0秒)<br>当700码内有一名敌方英雄时，会在0秒里持续充能一次对该英雄的强力攻击。充能攻击会造成<physicalDamage>125 + <scaleHealth>10%装备生命值</scaleHealth>额外物理伤害</physicalDamage>，并为你提供相当于12%该伤害的<scaleHealth>永久最大生命值。</scaleHealth><br><br><passive>歌利亚巨人</passive><br>每有<scaleHealth>1000最大生命值</scaleHealth>，获得6%体型提升，至多至30%。 </mainText>",
+            "description": "<mainText><stats><attention>900</attention>生命值<br><attention>200%</attention>基础生命回复</stats><br><br><passive>庞然吞食</passive> 每个目标(0秒)<br>当700码内有一名敌方英雄时，会在0秒里持续充能一次对该英雄的强力攻击。充能攻击会造成<physicalDamage>125 + <scaleHealth>12%装备生命值</scaleHealth>额外物理伤害</physicalDamage>，并为你提供相当于12%该伤害的<scaleHealth>永久最大生命值。</scaleHealth><br><br><passive>歌利亚巨人</passive><br>每有<scaleHealth>1000最大生命值</scaleHealth>，获得6%体型提升，至多至30%。 </mainText>",
             "colloq": "",
             "plaintext": "",
             "into": [
@@ -5815,7 +5819,7 @@
         },
         "223158": {
             "name": "明朗之靴",
-            "description": "<mainText><stats><buffedStat>40</buffedStat>技能急速<br><attention>45</attention>移动速度</stats><br><br><br><li>提供12召唤师技能急速。<br><br><flavorText>“这个物品是为了庆祝在2010年12月10日艾欧尼亚和诺克萨斯在争夺南方诸行省的重赛中，艾欧尼亚取得胜利。”</flavorText></mainText>",
+            "description": "<mainText><stats><buffedStat>40</buffedStat>技能急速<br><attention>45</attention>移动速度</stats><br><br><br><li>提供12召唤师技能急速。<br><br><flavorText>“这个物品是为了庆祝在联盟历20年12月10日艾欧尼亚和诺克萨斯在争夺南方诸行省的重赛中，艾欧尼亚取得胜利。”</flavorText></mainText>",
             "colloq": "",
             "plaintext": "",
             "image": {
@@ -8841,7 +8845,7 @@
         },
         "227025": {
             "name": "利维坦之甲",
-            "description": "<mainText><stats><ornnBonus>1050</ornnBonus>生命值<br><ornnBonus>300%</ornnBonus>基础生命回复</stats><br><br><passive>庞然吞食</passive> 每个目标(0秒)<br>当700码内有一名敌方英雄时，会在0秒里持续充能一次对该英雄的强力攻击。充能攻击会造成<physicalDamage>125 + <scaleHealth>10%装备生命值</scaleHealth>额外物理伤害</physicalDamage>，并为你提供相当于12%该伤害的<scaleHealth>永久最大生命值。</scaleHealth><br><br><passive>歌利亚巨人</passive><br>每有<scaleHealth>1000最大生命值</scaleHealth>，获得6%体型提升，至多至30%。 </mainText>",
+            "description": "<mainText><stats><ornnBonus>1050</ornnBonus>生命值<br><ornnBonus>300%</ornnBonus>基础生命回复</stats><br><br><passive>庞然吞食</passive> 每个目标(0秒)<br>当700码内有一名敌方英雄时，会在0秒里持续充能一次对该英雄的强力攻击。充能攻击会造成<physicalDamage>125 + <scaleHealth>12%装备生命值</scaleHealth>额外物理伤害</physicalDamage>，并为你提供相当于12%该伤害的<scaleHealth>永久最大生命值。</scaleHealth><br><br><passive>歌利亚巨人</passive><br>每有<scaleHealth>1000最大生命值</scaleHealth>，获得6%体型提升，至多至30%。 </mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -9125,7 +9129,7 @@
         },
         "227031": {
             "name": "终局锋刃",
-            "description": "<mainText><stats><ornnBonus>105</ornnBonus>攻击力<br><attention>20%</attention>暴击几率<br><attention>40%</attention>暴击伤害</stats><br><br></mainText>",
+            "description": "<mainText><stats><ornnBonus>105</ornnBonus>攻击力<br><attention>20%</attention>暴击几率<br><attention>50%</attention>暴击伤害</stats><br><br></mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -10435,8 +10439,9 @@
             "colloq": ";bingchuanhujia;bchj;Glacial;Buckler",
             "plaintext": "提升护甲和冷却缩减",
             "from": [
+                "1029",
                 "1027",
-                "1029"
+                "2022"
             ],
             "into": [
                 "3050",
@@ -10452,10 +10457,10 @@
                 "h": 48
             },
             "gold": {
-                "base": 250,
+                "base": 50,
                 "purchasable": true,
-                "total": 900,
-                "sell": 630
+                "total": 950,
+                "sell": 665
             },
             "tags": [
                 "Armor",
@@ -10525,7 +10530,7 @@
         },
         "3031": {
             "name": "无尽之刃",
-            "description": "<mainText><stats><attention>65</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>40%</attention>暴击伤害</stats><br><br></mainText>",
+            "description": "<mainText><stats><attention>65</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>50%</attention>暴击伤害</stats><br><br></mainText>",
             "colloq": ";wujinzhiren;wjzr;Infinity;Edge",
             "plaintext": "巨幅加强暴击",
             "from": [
@@ -10570,7 +10575,7 @@
         },
         "3033": {
             "name": "凡性的提醒",
-            "description": "<mainText><stats><attention>40</attention>攻击力<br><attention>30%</attention>护甲穿透<br><attention>20%</attention>暴击几率</stats><br><br><passive>重伤</passive><br>对敌方英雄造成物理伤害时会施加<keyword>40%重伤</keyword>效果，持续3秒。</mainText>",
+            "description": "<mainText><stats><attention>40</attention>攻击力<br><attention>35%</attention>护甲穿透<br><attention>20%</attention>暴击几率</stats><br><br><passive>重伤</passive><br>对敌方英雄造成物理伤害时会施加<keyword>40%重伤</keyword>效果，持续3秒。</mainText>",
             "colloq": ";zhongshang;grievous;重伤;zs;Mortal Reminder",
             "plaintext": "用于对抗拥有高生命回复和高护甲的敌人",
             "from": [
@@ -10658,7 +10663,7 @@
         },
         "3036": {
             "name": "多米尼克领主的致意",
-            "description": "<mainText><stats><attention>40</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>30%</attention>护甲穿透</stats><br><br><passive>巨人杀手</passive><br>对最大生命值高于你的敌方英雄造成额外伤害。</mainText>",
+            "description": "<mainText><stats><attention>40</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>35%</attention>护甲穿透</stats><br><br><passive>巨人杀手</passive><br>对最大生命值高于你的敌方英雄造成额外伤害。</mainText>",
             "colloq": ";qy;zuihoudeqingyu;Lord Dominik's Regards",
             "plaintext": "用于对抗拥有高生命值和高护甲的敌人",
             "from": [
@@ -11053,7 +11058,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 500,
+                "base": 450,
                 "purchasable": true,
                 "total": 2200,
                 "sell": 1540
@@ -11080,7 +11085,7 @@
         },
         "3051": {
             "name": "缚炉之斧",
-            "description": "<mainText><stats><attention>20</attention>攻击力<br><attention>25%</attention>攻击速度</stats><br><br></mainText>",
+            "description": "<mainText><stats><attention>15</attention>攻击力<br><attention>25%</attention>攻击速度</stats><br><br></mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -11102,10 +11107,10 @@
                 "h": 48
             },
             "gold": {
-                "base": 250,
+                "base": 200,
                 "purchasable": true,
-                "total": 1200,
-                "sell": 840
+                "total": 1150,
+                "sell": 805
             },
             "tags": [
                 "Damage",
@@ -11119,7 +11124,7 @@
                 "30": false
             },
             "stats": {
-                "FlatPhysicalDamageMod": 20,
+                "FlatPhysicalDamageMod": 15,
                 "PercentAttackSpeedMod": 0.25
             },
             "depth": 2
@@ -11144,7 +11149,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 625,
+                "base": 575,
                 "purchasable": true,
                 "total": 3000,
                 "sell": 2100
@@ -11797,7 +11802,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 133,
+                "base": 183,
                 "purchasable": true,
                 "total": 3333,
                 "sell": 2333
@@ -12352,7 +12357,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 50,
+                "base": 150,
                 "purchasable": true,
                 "total": 3100,
                 "sell": 2170
@@ -12475,7 +12480,7 @@
         },
         "3108": {
             "name": "恶魔法典",
-            "description": "<mainText><stats><attention>35</attention>法术强度<br><attention>10</attention>技能急速</stats><br><br></mainText>",
+            "description": "<mainText><stats><attention>25</attention>法术强度<br><attention>10</attention>技能急速</stats><br><br></mainText>",
             "colloq": ";emofadian;emfd;Fiendish;Codex",
             "plaintext": "提升法术强度和冷却缩减",
             "from": [
@@ -12524,7 +12529,7 @@
                 "30": false
             },
             "stats": {
-                "FlatMagicDamageMod": 35
+                "FlatMagicDamageMod": 25
             },
             "effect": {
                 "Effect1Amount": "-0.1"
@@ -12596,7 +12601,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 600,
+                "base": 550,
                 "purchasable": true,
                 "total": 2500,
                 "sell": 1750
@@ -13265,7 +13270,7 @@
         },
         "3133": {
             "name": "考尔菲德的战锤",
-            "description": "<mainText><stats><attention>25</attention>攻击力<br><attention>10</attention>技能急速</stats><br><br></mainText>",
+            "description": "<mainText><stats><attention>20</attention>攻击力<br><attention>10</attention>技能急速</stats><br><br></mainText>",
             "colloq": ";Caulfield;Warhammer",
             "plaintext": "攻击力和冷却缩减",
             "stacks": 0,
@@ -13321,13 +13326,13 @@
                 "30": false
             },
             "stats": {
-                "FlatPhysicalDamageMod": 25
+                "FlatPhysicalDamageMod": 20
             },
             "depth": 2
         },
         "3134": {
             "name": "锯齿短匕",
-            "description": "<mainText><stats><attention>25</attention>攻击力</stats><br><br><passive>凿击</passive><br>获得<scaleLethality>10穿甲</scaleLethality>。</mainText>",
+            "description": "<mainText><stats><attention>20</attention>攻击力</stats><br><br><passive>凿击</passive><br>获得<scaleLethality>10穿甲</scaleLethality>。</mainText>",
             "colloq": ";canbaozhili;cbzl;穿甲;Serrated Dirk",
             "plaintext": "提升攻击力和穿甲",
             "stacks": 0,
@@ -13375,7 +13380,7 @@
                 "30": false
             },
             "stats": {
-                "FlatPhysicalDamageMod": 25
+                "FlatPhysicalDamageMod": 20
             },
             "effect": {
                 "Effect1Amount": "10"
@@ -13656,7 +13661,7 @@
         },
         "3145": {
             "name": "海克斯科技发电机",
-            "description": "<mainText><stats><attention>50</attention>法术强度</stats><br><br><passive>转速加快</passive><br>对一名敌方英雄造成伤害时会附带额外伤害。</mainText>",
+            "description": "<mainText><stats><attention>45</attention>法术强度</stats><br><br><passive>转速加快</passive><br>对一名敌方英雄造成伤害时会附带额外伤害。</mainText>",
             "colloq": ";haikesikejizuolunqiang;hkskjzlq;Hextech;Alternator",
             "plaintext": "提升法术强度。普攻会周期性附带额外魔法伤害。",
             "from": [
@@ -13698,7 +13703,7 @@
                 "30": false
             },
             "stats": {
-                "FlatMagicDamageMod": 50
+                "FlatMagicDamageMod": 45
             },
             "depth": 2
         },
@@ -13748,7 +13753,7 @@
         },
         "3147": {
             "name": "幽魂面具",
-            "description": "<mainText><stats><attention>35</attention>法术强度<br><attention>200</attention>生命值</stats><br><br><passive>癫狂</passive><br>在对敌方英雄造成伤害时，每过一秒就会造成提升过的伤害。</mainText>",
+            "description": "<mainText><stats><attention>30</attention>法术强度<br><attention>200</attention>生命值</stats><br><br><passive>癫狂</passive><br>在对敌方英雄造成伤害时，每过一秒就会造成提升过的伤害。</mainText>",
             "colloq": ";yemu;穿甲;Haunting;Guise",
             "plaintext": "偷袭敌人时造成额外物理伤害",
             "from": [
@@ -13787,7 +13792,7 @@
             },
             "stats": {
                 "FlatHPPoolMod": 200,
-                "FlatMagicDamageMod": 35
+                "FlatMagicDamageMod": 30
             },
             "depth": 2
         },
@@ -14302,7 +14307,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 125,
+                "base": 75,
                 "purchasable": true,
                 "total": 3000,
                 "sell": 2100
@@ -14464,12 +14469,13 @@
         },
         "3211": {
             "name": "幽魂斗篷",
-            "description": "<mainText><stats><attention>250</attention>生命值<br><attention>25</attention>魔法抗性</stats><br><br><br><li><passive>无实体：</passive>在受到来自英雄的伤害后，回复生命值。</mainText>",
+            "description": "<mainText><stats><attention>200</attention>生命值<br><attention>25</attention>魔法抗性<br><attention>100%</attention>基础生命回复</stats><br><br></mainText>",
             "colloq": ";帽子;maozi;Spectre's Cowl",
             "plaintext": "增强防御属性并在受到伤害时提供回复",
             "from": [
                 "1028",
-                "1033"
+                "1033",
+                "1006"
             ],
             "into": [
                 "2504",
@@ -14486,7 +14492,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 400,
+                "base": 100,
                 "purchasable": true,
                 "total": 1250,
                 "sell": 875
@@ -14505,7 +14511,7 @@
             },
             "stats": {
                 "FlatSpellBlockMod": 25,
-                "FlatHPPoolMod": 250
+                "FlatHPPoolMod": 200
             },
             "depth": 2
         },
@@ -15195,7 +15201,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 600,
+                "base": 550,
                 "purchasable": true,
                 "total": 3300,
                 "sell": 2310
@@ -15382,7 +15388,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 700,
+                "base": 650,
                 "purchasable": true,
                 "total": 2800,
                 "sell": 1960
@@ -16015,7 +16021,7 @@
         },
         "3866": {
             "name": "符文罗盘",
-            "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>50%</attention>基础生命回复<br><attention>50%</attention>基础法力回复<br><attention>100</attention>生命值</stats><br><br><br><br><active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 <br><br><br><br><passive>任务</passive><br>使用这个装备赚取1000金币来将其转变为<rarityGeneric>符文罗盘</rarityGeneric>。每<passive>20</passive>秒获得1层充能，至多至<passive>3</passive>层。当附近有一个友方英雄时，消耗一层充能来赚取金币：<br><li>对英雄或建筑物进行的伤害型技能和攻击会提供<keywordMajor>34</keywordMajor> (近战) / <keywordMajor>32</keywordMajor> (远程) 金币；<li>以任意方式击杀一个小兵会为你提供<keywordMajor>28</keywordMajor>金币并为相距最近的友方英雄提供击杀金币。<br><br><active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
+            "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>50%</attention>基础生命回复<br><attention>50%</attention>基础法力回复<br><attention>100</attention>生命值</stats><br><br><br><br><active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 <br><br><br><br><passive>任务</passive><br>使用这个装备赚取800金币来将其转变为<rarityGeneric>符文罗盘</rarityGeneric>。每<passive>20</passive>秒获得1层充能，至多至<passive>3</passive>层。当附近有一个友方英雄时，消耗一层充能来赚取金币：<br><li>对英雄或建筑物进行的伤害型技能和攻击会提供<keywordMajor>24</keywordMajor> (近战) / <keywordMajor>22</keywordMajor> (远程) 金币；<li>以任意方式击杀一个小兵会为你提供<keywordMajor>20</keywordMajor>金币并为相距最近的友方英雄提供击杀金币。<br><br><active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
             "colloq": "",
             "plaintext": "",
             "specialRecipe": 3865,
@@ -17215,10 +17221,10 @@
                 "h": 48
             },
             "gold": {
-                "base": 550,
+                "base": 450,
                 "purchasable": true,
-                "total": 1800,
-                "sell": 1260
+                "total": 1700,
+                "sell": 1190
             },
             "tags": [
                 "SpellBlock",
@@ -17942,7 +17948,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 900,
+                "base": 850,
                 "purchasable": true,
                 "total": 3100,
                 "sell": 2170
@@ -18915,11 +18921,11 @@
         },
         "6675": {
             "name": "纳沃利迅刃",
-            "description": "<mainText><stats><attention>60</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>15</attention>技能急速</stats><br><br><passive>超凡入圣</passive><br>你的攻击会使你的各个非终极技能的冷却时间缩短。<br><br><passive>无常</passive><br>你的技能可基于你的暴击几率造成提升伤害。 </mainText>",
+            "description": "<mainText><stats><attention>65</attention>攻击力<br><attention>20%</attention>暴击几率<br><attention>15</attention>技能急速</stats><br><br><passive>超凡入圣</passive><br>你的攻击会使你的各个非终极技能的冷却时间缩短。<br><br><passive>无常</passive><br>你的技能可基于你的暴击几率造成提升伤害。 </mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
-                "1037",
+                "1038",
                 "3133",
                 "1018"
             ],
@@ -18936,7 +18942,7 @@
                 "h": 48
             },
             "gold": {
-                "base": 725,
+                "base": 300,
                 "purchasable": true,
                 "total": 3300,
                 "sell": 2310
@@ -18957,7 +18963,7 @@
             },
             "stats": {
                 "FlatCritChanceMod": 0.2,
-                "FlatPhysicalDamageMod": 60
+                "FlatPhysicalDamageMod": 65
             },
             "effect": {
                 "Effect1Amount": "0.5",
@@ -19193,7 +19199,7 @@
         },
         "6693": {
             "name": "暗行者之爪",
-            "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>22</attention>穿甲<br><attention>15</attention>技能急速</stats><br><br><passive>盛名</passive><br>如果一名曾被你造成过伤害的英雄阵亡，则获得攻击力。<br><br><passive>唯我</passive><br>击杀英雄时会生成一座你自己的雕像，如果你已拥有一座雕像，则它会升级。</mainText>",
+            "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>22</attention>穿甲<br><attention>15</attention>技能急速</stats><br><br><passive>伺机待发</passive><br>在脱离与英雄的战斗状态8秒后获得穿甲。<br><br><passive>险境脱身</passive><br>击杀英雄后获得移动速度。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -19544,7 +19550,7 @@
         },
         "6701": {
             "name": "禁忌时机",
-            "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>18</attention>穿甲<br><attention>5%</attention>移动速度</stats><br><br><passive>盛名</passive><br>如果一名曾被你造成过伤害的英雄阵亡，则获得攻击力。<br><br><passive>唯我</passive><br>击杀英雄时会生成一座你自己的雕像，如果你已拥有一座雕像，则它会升级。</mainText>",
+            "description": "<mainText><stats><attention>55</attention>攻击力<br><attention>18</attention>穿甲<br><attention>5%</attention>移动速度</stats><br><br><passive>伺机待发</passive><br>在脱离与英雄的战斗状态8秒后获得穿甲。<br><br><passive>险境脱身</passive><br>击杀英雄后获得移动速度。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -19590,7 +19596,7 @@
         },
         "7000": {
             "name": "沙雀之爪",
-            "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>26</ornnBonus>穿甲<br><ornnBonus>25</ornnBonus>技能急速</stats><br><br><passive>盛名</passive><br>如果一名曾被你造成过伤害的英雄阵亡，则获得攻击力。<br><br><passive>唯我</passive><br>击杀英雄时会生成一座你自己的雕像，如果你已拥有一座雕像，则它会升级。</mainText>",
+            "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>26</ornnBonus>穿甲<br><ornnBonus>25</ornnBonus>技能急速</stats><br><br><passive>伺机待发</passive><br>在脱离与英雄的战斗状态8秒后获得穿甲。<br><br><passive>险境脱身</passive><br>击杀英雄后获得移动速度。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -19936,7 +19942,7 @@
         },
         "7008": {
             "name": "无我",
-            "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>27</ornnBonus>穿甲<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br><passive>盛名</passive><br>如果一名曾被你造成过伤害的英雄阵亡，则获得攻击力。<br><br><passive>唯我</passive><br>击杀英雄时会生成一座你自己的雕像，如果你已拥有一座雕像，则它会升级。</mainText>",
+            "description": "<mainText><stats><ornnBonus>75</ornnBonus>攻击力<br><ornnBonus>27</ornnBonus>穿甲<br><ornnBonus>20</ornnBonus>技能急速</stats><br><br><passive>伺机待发</passive><br>在脱离与英雄的战斗状态8秒后获得穿甲。<br><br><passive>险境脱身</passive><br>击杀英雄后获得移动速度。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -20572,7 +20578,7 @@
         },
         "7022": {
             "name": "必然",
-            "description": "<mainText><stats><ornnBonus>70</ornnBonus>攻击力<br><ornnBonus>27</ornnBonus>穿甲<br><ornnBonus>8%</ornnBonus>移动速度</stats><br><br><passive>盛名</passive><br>如果一名曾被你造成过伤害的英雄阵亡，则获得攻击力。<br><br><passive>唯我</passive><br>击杀英雄时会生成一座你自己的雕像，如果你已拥有一座雕像，则它会升级。</mainText>",
+            "description": "<mainText><stats><ornnBonus>70</ornnBonus>攻击力<br><ornnBonus>27</ornnBonus>穿甲<br><ornnBonus>8%</ornnBonus>移动速度</stats><br><br><passive>伺机待发</passive><br>在脱离与英雄的战斗状态8秒后获得穿甲。<br><br><passive>险境脱身</passive><br>击杀英雄后获得移动速度。</mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [
@@ -20988,7 +20994,7 @@
         },
         "7031": {
             "name": "终局锋刃",
-            "description": "<mainText><stats><ornnBonus>95</ornnBonus>攻击力<br><attention>20%</attention>暴击几率<br><attention>40%</attention>暴击伤害</stats><br><br></mainText>",
+            "description": "<mainText><stats><ornnBonus>95</ornnBonus>攻击力<br><attention>20%</attention>暴击几率<br><attention>50%</attention>暴击伤害</stats><br><br></mainText>",
             "colloq": "",
             "plaintext": "",
             "from": [

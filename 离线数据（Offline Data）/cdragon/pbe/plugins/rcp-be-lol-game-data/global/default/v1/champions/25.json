@@ -1528,7 +1528,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@s %i:cooldown%",
             "description": "Morgana casts a cursed shadow on an area, damaging enemies who dare stand in her dark circle. They receive magic damage over time, which increases the lower health they are.",
-            "dynamicDescription": "Morgana ignites the ground for @WDuration@ seconds, dealing <magicDamage>@TotalMinDamage@ magic damage</magicDamage> per second, increased by up to @MissingHealthAmpPercent*100@% based on the targets' percentage missing health.<br><br>This Ability's Cooldown is reduced by @CDRefundPercent*100@% every time Morgana is healed by <spellName>Soul Siphon</spellName>.@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "Morgana ignites the ground for @WDuration@ seconds, dealing <magicDamage>@TotalMinDamage@ magic damage</magicDamage> per second, increased by up to @MissingHealthAmpPercent*100@% based on the targets' percentage missing Health.<br><br>This Ability's Cooldown is reduced by @CDRefundPercent*100@% every time Morgana is healed by <spellName>Soul Siphon</spellName>.@SpellModifierDescriptionAppend@",
             "range": [
                 900.0000,
                 900.0000,

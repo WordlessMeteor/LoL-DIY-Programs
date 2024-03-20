@@ -979,6 +979,221 @@
             ],
             "skinAugments": null,
             "description": "大多数人都是通过努力来觉醒自己的斗魂，但这个战士……并非如此！只需要顺路拜访异象调查局然后嘣地一声！眼镜王蛇能量注入。当然，这个过程显然会涉及“人们能想到的最大限度的痛苦”。但看看现在的她吧！她来这里的目的，是抓捕一位逃无可逃的少女——有请伊芙琳！"
+        },
+        {
+            "id": 28052,
+            "isBase": false,
+            "name": "西部魔影 伊芙琳",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/28/28052.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/28/28052.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/28/28052.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Evelynn/Skins/Skin52/EvelynnLoadScreen_52.SKINS_Evelynn_Skin52.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Evelynn/Skins/Skin52/EvelynnLoadScreen_52_LE.SKINS_Evelynn_Skin52.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28052.png",
+            "chromas": [
+                {
+                    "id": 28054,
+                    "name": "西部魔影 伊芙琳 温和",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28054.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2024年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 28055,
+                    "name": "西部魔影 伊芙琳 善良",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28055.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 28056,
+                    "name": "西部魔影 伊芙琳 诚实",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28056.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 28057,
+                    "name": "西部魔影 伊芙琳 恭敬",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28057.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 28058,
+                    "name": "西部魔影 伊芙琳 节制",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28058.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 28059,
+                    "name": "西部魔影 伊芙琳 忠诚",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28059.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 28060,
+                    "name": "西部魔影 伊芙琳 慷慨",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28060.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 28061,
+                    "name": "西部魔影 伊芙琳 谦卑",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28061.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 28062,
+                    "name": "西部魔影 伊芙琳 正午幻日",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28062.png",
+                    "colors": [
+                        "#A8BFF1",
+                        "#CD5867"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在西部魔影(2024)期间作为战利品专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 28063,
+                    "name": "西部魔影 伊芙琳 午夜影月",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/28/28063.png",
+                    "colors": [
+                        "#D9C542",
+                        "#0B731C"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在西部魔影(2024)期间作为战利品专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "这个可怜人看上去魂不守舍。完美。伊芙琳靠在吧台顶上，朝他倾身，弯起红唇甜蜜一笑：“给我讲一讲你的烦心事，帅哥。”并且他讲了。他给她讲了他的兄弟，以及一次不公平的交易，以及他如何觉得自己可能已经死了但又不确定……然后那个恶魔开始痛饮。“没事啦，亲爱的，”她柔声说。“你现在归我了。”"
+        },
+        {
+            "id": 28053,
+            "isBase": false,
+            "name": "至臻 西部魔影 伊芙琳",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/28/28053.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/28/28053.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/28/28053.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Evelynn/Skins/Skin53/EvelynnLoadScreen_53.SKINS_Evelynn_Skin53.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Evelynn/Skins/Skin53/EvelynnLoadScreen_53_LE.SKINS_Evelynn_Skin53.jpg",
+            "skinType": "",
+            "rarity": "kMythic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": null,
+            "emblems": [
+                {
+                    "name": "Prestige",
+                    "emblemPath": {
+                        "large": "/lol-game-data/assets/v1/emblem-images/51.png",
+                        "small": "/lol-game-data/assets/v1/emblem-images/51.png"
+                    },
+                    "positions": {}
+                }
+            ],
+            "regionRarityId": 8,
+            "rarityGemPath": "/lol-game-data/assets/v1/rarity-gem-icons/8_large.png",
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "远近各地的工作室总是要求伊芙琳去穿他们的高级时装，但在这次盛会上，她将自己前卫的优雅带入了更为粗犷的西部服装中。时尚不就是一个狂野的新边疆吗？如果有人知道如何抓住时尚的缰绳并驾驭它走向日落的话，那这个人就是这位牛仔竞技女王。"
         }
     ],
     "passive": {

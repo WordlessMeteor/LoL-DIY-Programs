@@ -625,7 +625,7 @@
     },
     {
         "id": 72,
-        "name": "Skarner",
+        "name": "Skarner_Rework",
         "alias": "Skarner",
         "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/72.png",
         "roles": [

@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.5.1",
+    "version": "14.6.1",
     "data": {
         "Khazix": {
             "id": "Khazix",
@@ -64,6 +64,12 @@
                     "id": "121069",
                     "num": 69,
                     "name": "Lunar Guardian Kha'Zix",
+                    "chromas": false
+                },
+                {
+                    "id": "121079",
+                    "num": 79,
+                    "name": "Crystalis Indomitus Kha'Zix",
                     "chromas": false
                 }
             ],

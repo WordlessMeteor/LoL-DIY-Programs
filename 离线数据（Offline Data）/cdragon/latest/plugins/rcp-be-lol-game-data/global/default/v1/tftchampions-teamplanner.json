@@ -1,1262 +1,1287 @@
 [
     {
-        "path": "Characters/TFT10_Ahri/CharacterRecords/Root",
-        "character_id": "TFT10_Ahri",
-        "tier": 4,
+        "path": "Characters/TFT11_Aatrox/CharacterRecords/Root",
+        "character_id": "TFT11_Aatrox",
+        "tier": 2,
+        "display_name": "Aatrox",
+        "traits": [
+            {
+                "name": "Ghostly",
+                "id": "TFT11_Ghostly",
+                "amount": 1
+            },
+            {
+                "name": "Inkshadow",
+                "id": "TFT11_InkShadow",
+                "amount": 1
+            },
+            {
+                "name": "Bruiser",
+                "id": "TFT11_Bruiser",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Aatrox/HUD/TFT11_Aatrox_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Aatrox_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_Ahri/CharacterRecords/Root",
+        "character_id": "TFT11_Ahri",
+        "tier": 1,
         "display_name": "Ahri",
         "traits": [
             {
-                "name": "K/DA",
-                "id": "Set10_KDA",
+                "name": "Fated",
+                "id": "TFT11_Fated",
                 "amount": 1
             },
             {
-                "name": "Spellweaver",
-                "id": "Set10_Spellweaver",
+                "name": "Arcanist",
+                "id": "TFT11_Arcanist",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Ahri/HUD/TFT10_Ahri_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Ahri_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Ahri/HUD/TFT11_Ahri_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Ahri_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Akali_TrueDamage/CharacterRecords/Root",
-        "character_id": "TFT10_Akali_TrueDamage",
-        "tier": 4,
-        "display_name": "Akali",
-        "traits": [
-            {
-                "name": "True Damage",
-                "id": "Set10_TrueDamage",
-                "amount": 1
-            },
-            {
-                "name": "Executioner",
-                "id": "Set10_Executioner",
-                "amount": 1
-            },
-            {
-                "name": "Breakout",
-                "id": "Set10_Breakout",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Akali_TrueDamage/HUD/TFT10_Akali_TrueDamage_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Akali_TrueDamage_Mobile.TFT_Set10.png"
-    },
-    {
-        "path": "Characters/TFT10_Akali/CharacterRecords/Root",
-        "character_id": "TFT10_Akali",
-        "tier": 4,
-        "display_name": "Akali",
-        "traits": [
-            {
-                "name": "K/DA",
-                "id": "Set10_KDA",
-                "amount": 1
-            },
-            {
-                "name": "Executioner",
-                "id": "Set10_Executioner",
-                "amount": 1
-            },
-            {
-                "name": "Breakout",
-                "id": "Set10_Breakout",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Akali/HUD/TFT10_Akali_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Akali_Mobile.TFT_Set10.png"
-    },
-    {
-        "path": "Characters/TFT10_Amumu/CharacterRecords/Root",
-        "character_id": "TFT10_Amumu",
+        "path": "Characters/TFT11_Amumu/CharacterRecords/Root",
+        "character_id": "TFT11_Amumu",
         "tier": 3,
         "display_name": "Amumu",
         "traits": [
             {
-                "name": "Emo",
-                "id": "Set10_Emo",
+                "name": "Porcelain",
+                "id": "TFT11_Porcelain",
                 "amount": 1
             },
             {
-                "name": "Guardian",
-                "id": "Set10_Guardian",
+                "name": "Warden",
+                "id": "TFT11_Warden",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Amumu/HUD/TFT10_Amumu_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Amumu_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Amumu/HUD/TFT11_Amumu_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Amumu_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Annie/CharacterRecords/Root",
-        "character_id": "TFT10_Annie",
-        "tier": 1,
+        "path": "Characters/TFT11_Annie/CharacterRecords/Root",
+        "character_id": "TFT11_Annie",
+        "tier": 4,
         "display_name": "Annie",
         "traits": [
             {
-                "name": "Emo",
-                "id": "Set10_Emo",
+                "name": "Fortune",
+                "id": "TFT11_Fortune",
                 "amount": 1
             },
             {
-                "name": "Spellweaver",
-                "id": "Set10_Spellweaver",
+                "name": "Invoker",
+                "id": "TFT11_Invoker",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Annie/HUD/TFT10_Annie_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Annie_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Annie/HUD/TFT11_Annie_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Annie_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Aphelios/CharacterRecords/Root",
-        "character_id": "TFT10_Aphelios",
-        "tier": 2,
+        "path": "Characters/TFT11_Aphelios/CharacterRecords/Root",
+        "character_id": "TFT11_Aphelios",
+        "tier": 3,
         "display_name": "Aphelios",
         "traits": [
             {
-                "name": "Heartsteel",
-                "id": "Set10_PopBand",
+                "name": "Fated",
+                "id": "TFT11_Fated",
                 "amount": 1
             },
             {
-                "name": "Rapidfire",
-                "id": "Set10_Quickshot",
+                "name": "Sniper",
+                "id": "TFT11_Sniper",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Aphelios/HUD/TFT10_Aphelios_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Aphelios_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Aphelios/HUD/TFT11_Aphelios_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Aphelios_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Bard/CharacterRecords/Root",
-        "character_id": "TFT10_Bard",
-        "tier": 2,
+        "path": "Characters/TFT11_Ashe/CharacterRecords/Root",
+        "character_id": "TFT11_Ashe",
+        "tier": 4,
+        "display_name": "Ashe",
+        "traits": [
+            {
+                "name": "Porcelain",
+                "id": "TFT11_Porcelain",
+                "amount": 1
+            },
+            {
+                "name": "Sniper",
+                "id": "TFT11_Sniper",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Ashe/HUD/TFT11_Ashe_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Ashe_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_Alune/CharacterRecords/Root",
+        "character_id": "TFT11_Alune",
+        "tier": 3,
+        "display_name": "Alune",
+        "traits": [
+            {
+                "name": "Umbral",
+                "id": "TFT11_Umbral",
+                "amount": 1
+            },
+            {
+                "name": "Invoker",
+                "id": "TFT11_Invoker",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Alune/HUD/TFT11_Alune_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Alune_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_Bard/CharacterRecords/Root",
+        "character_id": "TFT11_Bard",
+        "tier": 3,
         "display_name": "Bard",
         "traits": [
             {
-                "name": "Jazz",
-                "id": "Set10_Jazz",
+                "name": "Mythic",
+                "id": "TFT11_Mythic",
                 "amount": 1
             },
             {
-                "name": "Dazzler",
-                "id": "Set10_Dazzler",
+                "name": "Trickshot",
+                "id": "TFT11_Trickshot",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Bard/HUD/TFT10_Bard_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Bard_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Bard/HUD/TFT11_Bard_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Bard_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Blitzcrank/CharacterRecords/Root",
-        "character_id": "TFT10_Blitzcrank",
-        "tier": 4,
-        "display_name": "Blitzcrank",
-        "traits": [
-            {
-                "name": "Disco",
-                "id": "Set10_Funk",
-                "amount": 1
-            },
-            {
-                "name": "Sentinel",
-                "id": "Set10_Sentinel",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Blitzcrank/HUD/TFT10_Blitzcrank_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Blitzcrank_Mobile.TFT_Set10.png"
-    },
-    {
-        "path": "Characters/TFT10_Caitlyn/CharacterRecords/Root",
-        "character_id": "TFT10_Caitlyn",
-        "tier": 4,
+        "path": "Characters/TFT11_Caitlyn/CharacterRecords/Root",
+        "character_id": "TFT11_Caitlyn",
+        "tier": 1,
         "display_name": "Caitlyn",
         "traits": [
             {
-                "name": "8-bit",
-                "id": "Set10_8Bit",
+                "name": "Ghostly",
+                "id": "TFT11_Ghostly",
                 "amount": 1
             },
             {
-                "name": "Rapidfire",
-                "id": "Set10_Quickshot",
+                "name": "Sniper",
+                "id": "TFT11_Sniper",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Caitlyn/HUD/TFT10_Caitlyn_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Caitlyn_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Caitlyn/HUD/TFT11_Caitlyn_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Caitlyn_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Corki/CharacterRecords/Root",
-        "character_id": "TFT10_Corki",
+        "path": "Characters/TFT11_ChoGath/CharacterRecords/Root",
+        "character_id": "TFT11_ChoGath",
         "tier": 1,
-        "display_name": "Corki",
+        "display_name": "Cho'Gath",
         "traits": [
             {
-                "name": "8-bit",
-                "id": "Set10_8Bit",
+                "name": "Mythic",
+                "id": "TFT11_Mythic",
                 "amount": 1
             },
             {
-                "name": "Big Shot",
-                "id": "Set10_Deadeye",
+                "name": "Behemoth",
+                "id": "TFT11_Behemoth",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Corki/HUD/TFT10_Corki_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Corki_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_ChoGath/HUD/TFT11_ChoGath_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_ChoGath_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Ekko/CharacterRecords/Root",
-        "character_id": "TFT10_Ekko",
-        "tier": 3,
-        "display_name": "Ekko",
-        "traits": [
-            {
-                "name": "True Damage",
-                "id": "Set10_TrueDamage",
-                "amount": 1
-            },
-            {
-                "name": "Spellweaver",
-                "id": "Set10_Spellweaver",
-                "amount": 1
-            },
-            {
-                "name": "Sentinel",
-                "id": "Set10_Sentinel",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Ekko/HUD/TFT10_Ekko_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Ekko_Mobile.TFT_Set10.png"
-    },
-    {
-        "path": "Characters/TFT10_Evelynn/CharacterRecords/Root",
-        "character_id": "TFT10_Evelynn",
+        "path": "Characters/TFT11_Darius/CharacterRecords/Root",
+        "character_id": "TFT11_Darius",
         "tier": 1,
-        "display_name": "Evelynn",
+        "display_name": "Darius",
         "traits": [
             {
-                "name": "K/DA",
-                "id": "Set10_KDA",
+                "name": "Umbral",
+                "id": "TFT11_Umbral",
                 "amount": 1
             },
             {
-                "name": "Crowd Diver",
-                "id": "Set10_CrowdDive",
+                "name": "Duelist",
+                "id": "TFT11_Duelist",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Evelynn/HUD/TFT10_Evelynn_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Evelynn_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Darius/HUD/TFT11_Darius_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Darius_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Ezreal/CharacterRecords/Root",
-        "character_id": "TFT10_Ezreal",
+        "path": "Characters/TFT11_Galio/CharacterRecords/Root",
+        "character_id": "TFT11_Galio",
         "tier": 4,
-        "display_name": "Ezreal",
+        "display_name": "Galio",
         "traits": [
             {
-                "name": "Heartsteel",
-                "id": "Set10_PopBand",
+                "name": "Storyweaver",
+                "id": "TFT11_Storyweaver",
                 "amount": 1
             },
             {
-                "name": "Big Shot",
-                "id": "Set10_Deadeye",
+                "name": "Bruiser",
+                "id": "TFT11_Bruiser",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Ezreal/HUD/TFT10_Ezreal_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Ezreal_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Galio/HUD/TFT11_Galio_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Galio_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Garen/CharacterRecords/Root",
-        "character_id": "TFT10_Garen",
-        "tier": 2,
+        "path": "Characters/TFT11_Garen/CharacterRecords/Root",
+        "character_id": "TFT11_Garen",
+        "tier": 1,
         "display_name": "Garen",
         "traits": [
             {
-                "name": "8-bit",
-                "id": "Set10_8Bit",
+                "name": "Storyweaver",
+                "id": "TFT11_Storyweaver",
                 "amount": 1
             },
             {
-                "name": "Sentinel",
-                "id": "Set10_Sentinel",
+                "name": "Warden",
+                "id": "TFT11_Warden",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Garen/HUD/TFT10_Garen_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Garen_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Garen/HUD/TFT11_Garen_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Garen_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Gnar/CharacterRecords/Root",
-        "character_id": "TFT10_Gnar",
-        "tier": 2,
-        "display_name": "Gnar",
-        "traits": [
-            {
-                "name": "Pentakill",
-                "id": "Set10_Pentakill",
-                "amount": 1
-            },
-            {
-                "name": "Superfan",
-                "id": "Set10_Superfan",
-                "amount": 1
-            },
-            {
-                "name": "Mosher",
-                "id": "Set10_Fighter",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Gnar/HUD/TFT10_Gnar_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Gnar_Mobile.TFT_Set10.png"
-    },
-    {
-        "path": "Characters/TFT10_Gragas/CharacterRecords/Root",
-        "character_id": "TFT10_Gragas",
-        "tier": 2,
-        "display_name": "Gragas",
-        "traits": [
-            {
-                "name": "Disco",
-                "id": "Set10_Funk",
-                "amount": 1
-            },
-            {
-                "name": "Spellweaver",
-                "id": "Set10_Spellweaver",
-                "amount": 1
-            },
-            {
-                "name": "Bruiser",
-                "id": "Set10_Brawler",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Gragas/HUD/TFT10_Gragas_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Gragas_Mobile.TFT_Set10.png"
-    },
-    {
-        "path": "Characters/TFT10_Illaoi/CharacterRecords/Root",
-        "character_id": "TFT10_Illaoi",
+        "path": "Characters/TFT11_Hwei/CharacterRecords/Root",
+        "character_id": "TFT11_Hwei",
         "tier": 5,
+        "display_name": "Hwei",
+        "traits": [
+            {
+                "name": "Mythic",
+                "id": "TFT11_Mythic",
+                "amount": 1
+            },
+            {
+                "name": "Artist",
+                "id": "TFT11_Artist",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Hwei/HUD/TFT11_Hwei_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Hwei_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_Illaoi/CharacterRecords/Root",
+        "character_id": "TFT11_Illaoi",
+        "tier": 3,
         "display_name": "Illaoi",
         "traits": [
             {
-                "name": "ILLBEATS",
-                "id": "Set10_IllBeats",
+                "name": "Ghostly",
+                "id": "TFT11_Ghostly",
                 "amount": 1
             },
             {
-                "name": "Bruiser",
-                "id": "Set10_Brawler",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Illaoi/HUD/TFT10_Illaoi_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Illaoi_Mobile.TFT_Set10.png"
-    },
-    {
-        "path": "Characters/TFT10_Jax/CharacterRecords/Root",
-        "character_id": "TFT10_Jax",
-        "tier": 2,
-        "display_name": "Jax",
-        "traits": [
-            {
-                "name": "EDM",
-                "id": "Set10_EDM",
+                "name": "Arcanist",
+                "id": "TFT11_Arcanist",
                 "amount": 1
             },
             {
-                "name": "Mosher",
-                "id": "Set10_Fighter",
+                "name": "Warden",
+                "id": "TFT11_Warden",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Jax/HUD/TFT10_Jax_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Jax_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Illaoi/HUD/TFT11_Illaoi_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Illaoi_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Jhin/CharacterRecords/Root",
-        "character_id": "TFT10_Jhin",
+        "path": "Characters/TFT11_Irelia/CharacterRecords/Root",
+        "character_id": "TFT11_Irelia",
         "tier": 5,
-        "display_name": "Jhin",
+        "display_name": "Irelia",
         "traits": [
             {
-                "name": "Maestro",
-                "id": "Set10_Classical",
+                "name": "Storyweaver",
+                "id": "TFT11_Storyweaver",
                 "amount": 1
             },
             {
-                "name": "Big Shot",
-                "id": "Set10_Deadeye",
+                "name": "Duelist",
+                "id": "TFT11_Duelist",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Jhin/HUD/TFT10_Jhin_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Jhin_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Irelia/HUD/TFT11_Irelia_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Irelia_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Jinx/CharacterRecords/Root",
-        "character_id": "TFT10_Jinx",
-        "tier": 1,
-        "display_name": "Jinx",
-        "traits": [
-            {
-                "name": "Punk",
-                "id": "Set10_PunkRock",
-                "amount": 1
-            },
-            {
-                "name": "Rapidfire",
-                "id": "Set10_Quickshot",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Jinx/HUD/TFT10_Jinx_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Jinx_Mobile.TFT_Set10.png"
-    },
-    {
-        "path": "Characters/TFT10_Kaisa/CharacterRecords/Root",
-        "character_id": "TFT10_Kaisa",
+        "path": "Characters/TFT11_Janna/CharacterRecords/Root",
+        "character_id": "TFT11_Janna",
         "tier": 2,
+        "display_name": "Janna",
+        "traits": [
+            {
+                "name": "Dragonlord",
+                "id": "TFT11_Dragonlord",
+                "amount": 1
+            },
+            {
+                "name": "Invoker",
+                "id": "TFT11_Invoker",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Janna/HUD/TFT11_Janna_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Janna_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_Kaisa/CharacterRecords/Root",
+        "character_id": "TFT11_Kaisa",
+        "tier": 4,
         "display_name": "Kai'Sa",
         "traits": [
             {
-                "name": "K/DA",
-                "id": "Set10_KDA",
+                "name": "Inkshadow",
+                "id": "TFT11_InkShadow",
                 "amount": 1
             },
             {
-                "name": "Big Shot",
-                "id": "Set10_Deadeye",
+                "name": "Trickshot",
+                "id": "TFT11_Trickshot",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Kaisa/HUD/TFT10_Kaisa_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Kaisa_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Kaisa/HUD/TFT11_Kaisa_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Kaisa_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Karthus/CharacterRecords/Root",
-        "character_id": "TFT10_Karthus",
+        "path": "Characters/TFT11_Kayn/CharacterRecords/Root",
+        "character_id": "TFT11_Kayn",
         "tier": 4,
-        "display_name": "Karthus",
-        "traits": [
-            {
-                "name": "Pentakill",
-                "id": "Set10_Pentakill",
-                "amount": 1
-            },
-            {
-                "name": "Executioner",
-                "id": "Set10_Executioner",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Karthus/HUD/TFT10_Karthus_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Karthus_Mobile.TFT_Set10.png"
-    },
-    {
-        "path": "Characters/TFT10_Katarina/CharacterRecords/Root",
-        "character_id": "TFT10_Katarina",
-        "tier": 2,
-        "display_name": "Katarina",
-        "traits": [
-            {
-                "name": "Country",
-                "id": "Set10_Country",
-                "amount": 1
-            },
-            {
-                "name": "Crowd Diver",
-                "id": "Set10_CrowdDive",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Katarina/HUD/TFT10_Katarina_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Katarina_Mobile.TFT_Set10.png"
-    },
-    {
-        "path": "Characters/TFT10_Kayle/CharacterRecords/Root",
-        "character_id": "TFT10_Kayle",
-        "tier": 2,
-        "display_name": "Kayle",
-        "traits": [
-            {
-                "name": "Pentakill",
-                "id": "Set10_Pentakill",
-                "amount": 1
-            },
-            {
-                "name": "Edgelord",
-                "id": "Set10_Edgelord",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Kayle/HUD/TFT10_Kayle_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Kayle_Mobile.TFT_Set10.png"
-    },
-    {
-        "path": "Characters/TFT10_Kayn/CharacterRecords/Root",
-        "character_id": "TFT10_Kayn",
-        "tier": 5,
         "display_name": "Kayn",
         "traits": [
             {
-                "name": "Heartsteel",
-                "id": "Set10_PopBand",
+                "name": "Ghostly",
+                "id": "TFT11_Ghostly",
                 "amount": 1
             },
             {
-                "name": "Edgelord",
-                "id": "Set10_Edgelord",
-                "amount": 1
-            },
-            {
-                "name": "Wildcard",
-                "id": "Set10_TwoSides",
+                "name": "Reaper",
+                "id": "TFT11_Reaper",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Kayn/HUD/TFT10_Kayn_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Kayn_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Kayn/HUD/TFT11_Kayn_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Kayn_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Kennen/CharacterRecords/Root",
-        "character_id": "TFT10_Kennen",
+        "path": "Characters/TFT11_KhaZix/CharacterRecords/Root",
+        "character_id": "TFT11_KhaZix",
         "tier": 1,
-        "display_name": "Kennen",
+        "display_name": "Kha'Zix",
         "traits": [
             {
-                "name": "True Damage",
-                "id": "Set10_TrueDamage",
+                "name": "Heavenly",
+                "id": "TFT11_Heavenly",
                 "amount": 1
             },
             {
-                "name": "Superfan",
-                "id": "Set10_Superfan",
-                "amount": 1
-            },
-            {
-                "name": "Guardian",
-                "id": "Set10_Guardian",
+                "name": "Reaper",
+                "id": "TFT11_Reaper",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Kennen/HUD/TFT10_Kennen_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Kennen_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_KhaZix/HUD/TFT11_KhaZix_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_KhaZix_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_KSante/CharacterRecords/Root",
-        "character_id": "TFT10_KSante",
-        "tier": 1,
-        "display_name": "K'Sante",
+        "path": "Characters/TFT11_Kindred/CharacterRecords/Root",
+        "character_id": "TFT11_Kindred",
+        "tier": 2,
+        "display_name": "Kindred",
         "traits": [
             {
-                "name": "Heartsteel",
-                "id": "Set10_PopBand",
+                "name": "Fated",
+                "id": "TFT11_Fated",
                 "amount": 1
             },
             {
-                "name": "Sentinel",
-                "id": "Set10_Sentinel",
+                "name": "Dryad",
+                "id": "TFT11_Dryad",
+                "amount": 1
+            },
+            {
+                "name": "Reaper",
+                "id": "TFT11_Reaper",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_KSante/HUD/TFT10_KSante_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_KSante_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Kindred/HUD/TFT11_Kindred_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Kindred_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Lillia/CharacterRecords/Root",
-        "character_id": "TFT10_Lillia",
+        "path": "Characters/TFT11_KogMaw/CharacterRecords/Root",
+        "character_id": "TFT11_KogMaw",
         "tier": 1,
+        "display_name": "Kog'Maw",
+        "traits": [
+            {
+                "name": "Mythic",
+                "id": "TFT11_Mythic",
+                "amount": 1
+            },
+            {
+                "name": "Invoker",
+                "id": "TFT11_Invoker",
+                "amount": 1
+            },
+            {
+                "name": "Sniper",
+                "id": "TFT11_Sniper",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_KogMaw/HUD/TFT11_KogMaw_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_KogMaw_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_LeeSin/CharacterRecords/Root",
+        "character_id": "TFT11_LeeSin",
+        "tier": 4,
+        "display_name": "Lee Sin",
+        "traits": [
+            {
+                "name": "Dragonlord",
+                "id": "TFT11_Dragonlord",
+                "amount": 1
+            },
+            {
+                "name": "Duelist",
+                "id": "TFT11_Duelist",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_LeeSin/HUD/TFT11_LeeSin_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_LeeSin_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_Lillia/CharacterRecords/Root",
+        "character_id": "TFT11_Lillia",
+        "tier": 4,
         "display_name": "Lillia",
         "traits": [
             {
-                "name": "K/DA",
-                "id": "Set10_KDA",
+                "name": "Mythic",
+                "id": "TFT11_Mythic",
                 "amount": 1
             },
             {
-                "name": "Superfan",
-                "id": "Set10_Superfan",
-                "amount": 1
-            },
-            {
-                "name": "Sentinel",
-                "id": "Set10_Sentinel",
+                "name": "Invoker",
+                "id": "TFT11_Invoker",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Lillia/HUD/TFT10_Lillia_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Lillia_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Lillia/HUD/TFT11_Lillia_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Lillia_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Lucian/CharacterRecords/Root",
-        "character_id": "TFT10_Lucian",
+        "path": "Characters/TFT11_Lissandra/CharacterRecords/Root",
+        "character_id": "TFT11_Lissandra",
         "tier": 5,
-        "display_name": "Lucian",
+        "display_name": "Lissandra",
         "traits": [
             {
-                "name": "Jazz",
-                "id": "Set10_Jazz",
+                "name": "Porcelain",
+                "id": "TFT11_Porcelain",
                 "amount": 1
             },
             {
-                "name": "Rapidfire",
-                "id": "Set10_Quickshot",
+                "name": "Arcanist",
+                "id": "TFT11_Arcanist",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Lucian/HUD/TFT10_Lucian_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Lucian_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Lissandra/HUD/TFT11_Lissandra_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Lissandra_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Lulu/CharacterRecords/Root",
-        "character_id": "TFT10_Lulu",
-        "tier": 3,
-        "display_name": "Lulu",
-        "traits": [
-            {
-                "name": "Hyperpop",
-                "id": "Set10_Hyperpop",
-                "amount": 1
-            },
-            {
-                "name": "Spellweaver",
-                "id": "Set10_Spellweaver",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Lulu/HUD/TFT10_Lulu_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Lulu_Mobile.TFT_Set10.png"
-    },
-    {
-        "path": "Characters/TFT10_Lux/CharacterRecords/Root",
-        "character_id": "TFT10_Lux",
-        "tier": 3,
+        "path": "Characters/TFT11_Lux/CharacterRecords/Root",
+        "character_id": "TFT11_Lux",
+        "tier": 2,
         "display_name": "Lux",
         "traits": [
             {
-                "name": "EDM",
-                "id": "Set10_EDM",
+                "name": "Porcelain",
+                "id": "TFT11_Porcelain",
                 "amount": 1
             },
             {
-                "name": "Dazzler",
-                "id": "Set10_Dazzler",
+                "name": "Arcanist",
+                "id": "TFT11_Arcanist",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Lux/HUD/TFT10_Lux_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Lux_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Lux/HUD/TFT11_Lux_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Lux_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_MissFortune/CharacterRecords/Root",
-        "character_id": "TFT10_MissFortune",
-        "tier": 3,
-        "display_name": "Miss Fortune",
-        "traits": [
-            {
-                "name": "Jazz",
-                "id": "Set10_Jazz",
-                "amount": 1
-            },
-            {
-                "name": "Big Shot",
-                "id": "Set10_Deadeye",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_MissFortune/HUD/TFT10_MissFortune_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_MissFortune_Mobile.TFT_Set10.png"
-    },
-    {
-        "path": "Characters/TFT10_Mordekaiser/CharacterRecords/Root",
-        "character_id": "TFT10_Mordekaiser",
-        "tier": 3,
-        "display_name": "Mordekaiser",
-        "traits": [
-            {
-                "name": "Pentakill",
-                "id": "Set10_Pentakill",
-                "amount": 1
-            },
-            {
-                "name": "Sentinel",
-                "id": "Set10_Sentinel",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Mordekaiser/HUD/TFT10_Mordekaiser_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Mordekaiser_Mobile.TFT_Set10.png"
-    },
-    {
-        "path": "Characters/TFT10_Nami/CharacterRecords/Root",
-        "character_id": "TFT10_Nami",
+        "path": "Characters/TFT11_Malphite/CharacterRecords/Root",
+        "character_id": "TFT11_Malphite",
         "tier": 1,
-        "display_name": "Nami",
+        "display_name": "Malphite",
         "traits": [
             {
-                "name": "Disco",
-                "id": "Set10_Funk",
+                "name": "Heavenly",
+                "id": "TFT11_Heavenly",
                 "amount": 1
             },
             {
-                "name": "Dazzler",
-                "id": "Set10_Dazzler",
+                "name": "Behemoth",
+                "id": "TFT11_Behemoth",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Nami/HUD/TFT10_Nami_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Nami_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Malphite/HUD/TFT11_Malphite_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Malphite_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Neeko/CharacterRecords/Root",
-        "character_id": "TFT10_Neeko",
-        "tier": 3,
+        "path": "Characters/TFT11_Morgana/CharacterRecords/Root",
+        "character_id": "TFT11_Morgana",
+        "tier": 4,
+        "display_name": "Morgana",
+        "traits": [
+            {
+                "name": "Ghostly",
+                "id": "TFT11_Ghostly",
+                "amount": 1
+            },
+            {
+                "name": "Sage",
+                "id": "TFT11_Sage",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Morgana/HUD/TFT11_Morgana_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Morgana_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_Neeko/CharacterRecords/Root",
+        "character_id": "TFT11_Neeko",
+        "tier": 2,
         "display_name": "Neeko",
         "traits": [
             {
-                "name": "K/DA",
-                "id": "Set10_KDA",
+                "name": "Mythic",
+                "id": "TFT11_Mythic",
                 "amount": 1
             },
             {
-                "name": "Superfan",
-                "id": "Set10_Superfan",
+                "name": "Heavenly",
+                "id": "TFT11_Heavenly",
                 "amount": 1
             },
             {
-                "name": "Guardian",
-                "id": "Set10_Guardian",
+                "name": "Arcanist",
+                "id": "TFT11_Arcanist",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Neeko/HUD/TFT10_Neeko_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Neeko_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Neeko/HUD/TFT11_Neeko_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Neeko_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Olaf/CharacterRecords/Root",
-        "character_id": "TFT10_Olaf",
-        "tier": 1,
-        "display_name": "Olaf",
-        "traits": [
-            {
-                "name": "Pentakill",
-                "id": "Set10_Pentakill",
-                "amount": 1
-            },
-            {
-                "name": "Bruiser",
-                "id": "Set10_Brawler",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Olaf/HUD/TFT10_Olaf_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Olaf_Mobile.TFT_Set10.png"
-    },
-    {
-        "path": "Characters/TFT10_Pantheon/CharacterRecords/Root",
-        "character_id": "TFT10_Pantheon",
-        "tier": 2,
-        "display_name": "Pantheon",
-        "traits": [
-            {
-                "name": "Punk",
-                "id": "Set10_PunkRock",
-                "amount": 1
-            },
-            {
-                "name": "Guardian",
-                "id": "Set10_Guardian",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Pantheon/HUD/TFT10_Pantheon_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Pantheon_Mobile.TFT_Set10.png"
-    },
-    {
-        "path": "Characters/TFT10_Poppy/CharacterRecords/Root",
-        "character_id": "TFT10_Poppy",
+        "path": "Characters/TFT11_Ornn/CharacterRecords/Root",
+        "character_id": "TFT11_Ornn",
         "tier": 4,
-        "display_name": "Poppy",
+        "display_name": "Ornn",
         "traits": [
             {
-                "name": "Emo",
-                "id": "Set10_Emo",
+                "name": "Dryad",
+                "id": "TFT11_Dryad",
                 "amount": 1
             },
             {
-                "name": "Mosher",
-                "id": "Set10_Fighter",
+                "name": "Behemoth",
+                "id": "TFT11_Behemoth",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Poppy/HUD/TFT10_Poppy_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Poppy_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Ornn/HUD/TFT11_Ornn_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Ornn_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Qiyana/CharacterRecords/Root",
-        "character_id": "TFT10_Qiyana",
-        "tier": 5,
+        "path": "Characters/TFT11_Qiyana/CharacterRecords/Root",
+        "character_id": "TFT11_Qiyana",
+        "tier": 2,
         "display_name": "Qiyana",
         "traits": [
             {
-                "name": "True Damage",
-                "id": "Set10_TrueDamage",
+                "name": "Heavenly",
+                "id": "TFT11_Heavenly",
                 "amount": 1
             },
             {
-                "name": "Crowd Diver",
-                "id": "Set10_CrowdDive",
+                "name": "Duelist",
+                "id": "TFT11_Duelist",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Qiyana/HUD/TFT10_Qiyana_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Qiyana_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Qiyana/HUD/TFT11_Qiyana_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Qiyana_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Riven/CharacterRecords/Root",
-        "character_id": "TFT10_Riven",
-        "tier": 3,
-        "display_name": "Riven",
-        "traits": [
-            {
-                "name": "8-bit",
-                "id": "Set10_8Bit",
-                "amount": 1
-            },
-            {
-                "name": "Edgelord",
-                "id": "Set10_Edgelord",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Riven/HUD/TFT10_Riven_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Riven_Mobile.TFT_Set10.png"
-    },
-    {
-        "path": "Characters/TFT10_Samira/CharacterRecords/Root",
-        "character_id": "TFT10_Samira",
-        "tier": 3,
-        "display_name": "Samira",
-        "traits": [
-            {
-                "name": "Country",
-                "id": "Set10_Country",
-                "amount": 1
-            },
-            {
-                "name": "Executioner",
-                "id": "Set10_Executioner",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Samira/HUD/TFT10_Samira_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Samira_Mobile.TFT_Set10.png"
-    },
-    {
-        "path": "Characters/TFT10_Senna/CharacterRecords/Root",
-        "character_id": "TFT10_Senna",
+        "path": "Characters/TFT11_Senna/CharacterRecords/Root",
+        "character_id": "TFT11_Senna",
         "tier": 2,
         "display_name": "Senna",
         "traits": [
             {
-                "name": "True Damage",
-                "id": "Set10_TrueDamage",
+                "name": "Inkshadow",
+                "id": "TFT11_InkShadow",
                 "amount": 1
             },
             {
-                "name": "Rapidfire",
-                "id": "Set10_Quickshot",
+                "name": "Sniper",
+                "id": "TFT11_Sniper",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Senna/HUD/TFT10_Senna_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Senna_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Senna/HUD/TFT11_Senna_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Senna_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Seraphine/CharacterRecords/Root",
-        "character_id": "TFT10_Seraphine",
-        "tier": 2,
-        "display_name": "Seraphine",
-        "traits": [
-            {
-                "name": "K/DA",
-                "id": "Set10_KDA",
-                "amount": 1
-            },
-            {
-                "name": "Spellweaver",
-                "id": "Set10_Spellweaver",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Seraphine/HUD/TFT10_Seraphine_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Seraphine_Mobile.TFT_Set10.png"
-    },
-    {
-        "path": "Characters/TFT10_Sett/CharacterRecords/Root",
-        "character_id": "TFT10_Sett",
-        "tier": 3,
+        "path": "Characters/TFT11_Sett/CharacterRecords/Root",
+        "character_id": "TFT11_Sett",
+        "tier": 5,
         "display_name": "Sett",
         "traits": [
             {
-                "name": "Heartsteel",
-                "id": "Set10_PopBand",
+                "name": "Fated",
+                "id": "TFT11_Fated",
+                "amount": 1
+            },
+            {
+                "name": "Umbral",
+                "id": "TFT11_Umbral",
+                "amount": 1
+            },
+            {
+                "name": "Warden",
+                "id": "TFT11_Warden",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Sett/HUD/TFT11_Sett_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Sett_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_Shen/CharacterRecords/Root",
+        "character_id": "TFT11_Shen",
+        "tier": 2,
+        "display_name": "Shen",
+        "traits": [
+            {
+                "name": "Ghostly",
+                "id": "TFT11_Ghostly",
+                "amount": 1
+            },
+            {
+                "name": "Behemoth",
+                "id": "TFT11_Behemoth",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Shen/HUD/TFT11_Shen_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Shen_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_Riven/CharacterRecords/Root",
+        "character_id": "TFT11_Riven",
+        "tier": 2,
+        "display_name": "Riven",
+        "traits": [
+            {
+                "name": "Storyweaver",
+                "id": "TFT11_Storyweaver",
+                "amount": 1
+            },
+            {
+                "name": "Altruist",
+                "id": "TFT11_Altruist",
                 "amount": 1
             },
             {
                 "name": "Bruiser",
-                "id": "Set10_Brawler",
-                "amount": 1
-            },
-            {
-                "name": "Mosher",
-                "id": "Set10_Fighter",
+                "id": "TFT11_Bruiser",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Sett/HUD/TFT10_Sett_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Sett_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Riven/HUD/TFT11_Riven_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Riven_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Sona/CharacterRecords/Root",
-        "character_id": "TFT10_Sona",
-        "tier": 5,
-        "display_name": "Sona",
+        "path": "Characters/TFT11_Sivir/CharacterRecords/Root",
+        "character_id": "TFT11_Sivir",
+        "tier": 1,
+        "display_name": "Sivir",
         "traits": [
             {
-                "name": "Mixmaster",
-                "id": "Set10_DJ",
+                "name": "Storyweaver",
+                "id": "TFT11_Storyweaver",
                 "amount": 1
             },
             {
-                "name": "Spellweaver",
-                "id": "Set10_Spellweaver",
+                "name": "Trickshot",
+                "id": "TFT11_Trickshot",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Sona/HUD/TFT10_Sona_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Sona_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Sivir/HUD/TFT11_Sivir_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Sivir_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_TahmKench/CharacterRecords/Root",
-        "character_id": "TFT10_TahmKench",
-        "tier": 1,
+        "path": "Characters/TFT11_Soraka/CharacterRecords/Root",
+        "character_id": "TFT11_Soraka",
+        "tier": 3,
+        "display_name": "Soraka",
+        "traits": [
+            {
+                "name": "Heavenly",
+                "id": "TFT11_Heavenly",
+                "amount": 1
+            },
+            {
+                "name": "Altruist",
+                "id": "TFT11_Altruist",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Soraka/HUD/TFT11_Soraka_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Soraka_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_Sylas/CharacterRecords/Root",
+        "character_id": "TFT11_Sylas",
+        "tier": 4,
+        "display_name": "Sylas",
+        "traits": [
+            {
+                "name": "Umbral",
+                "id": "TFT11_Umbral",
+                "amount": 1
+            },
+            {
+                "name": "Bruiser",
+                "id": "TFT11_Bruiser",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Sylas/HUD/TFT11_Sylas_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Sylas_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_Syndra/CharacterRecords/Root",
+        "character_id": "TFT11_Syndra",
+        "tier": 4,
+        "display_name": "Syndra",
+        "traits": [
+            {
+                "name": "Fated",
+                "id": "TFT11_Fated",
+                "amount": 1
+            },
+            {
+                "name": "Arcanist",
+                "id": "TFT11_Arcanist",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Syndra/HUD/TFT11_Syndra_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Syndra_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_TahmKench/CharacterRecords/Root",
+        "character_id": "TFT11_TahmKench",
+        "tier": 3,
         "display_name": "Tahm Kench",
         "traits": [
             {
-                "name": "Country",
-                "id": "Set10_Country",
+                "name": "Mythic",
+                "id": "TFT11_Mythic",
                 "amount": 1
             },
             {
                 "name": "Bruiser",
-                "id": "Set10_Brawler",
+                "id": "TFT11_Bruiser",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_TahmKench/HUD/TFT10_TahmKench_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_TahmKench_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_TahmKench/HUD/TFT11_TahmKench_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_TahmKench_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Taric/CharacterRecords/Root",
-        "character_id": "TFT10_Taric",
-        "tier": 1,
-        "display_name": "Taric",
+        "path": "Characters/TFT11_Teemo/CharacterRecords/Root",
+        "character_id": "TFT11_Teemo",
+        "tier": 2,
+        "display_name": "Teemo",
         "traits": [
             {
-                "name": "Disco",
-                "id": "Set10_Funk",
+                "name": "Fortune",
+                "id": "TFT11_Fortune",
                 "amount": 1
             },
             {
-                "name": "Guardian",
-                "id": "Set10_Guardian",
+                "name": "Trickshot",
+                "id": "TFT11_Trickshot",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Taric/HUD/TFT10_Taric_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Taric_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Teemo/HUD/TFT11_Teemo_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Teemo_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Thresh/CharacterRecords/Root",
-        "character_id": "TFT10_Thresh",
-        "tier": 4,
+        "path": "Characters/TFT11_Thresh/CharacterRecords/Root",
+        "character_id": "TFT11_Thresh",
+        "tier": 3,
         "display_name": "Thresh",
         "traits": [
             {
-                "name": "Country",
-                "id": "Set10_Country",
+                "name": "Fated",
+                "id": "TFT11_Fated",
                 "amount": 1
             },
             {
-                "name": "Guardian",
-                "id": "Set10_Guardian",
+                "name": "Behemoth",
+                "id": "TFT11_Behemoth",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Thresh/HUD/TFT10_Thresh_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Thresh_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Thresh/HUD/TFT11_Thresh_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Thresh_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_TwistedFate/CharacterRecords/Root",
-        "character_id": "TFT10_TwistedFate",
-        "tier": 4,
-        "display_name": "Twisted Fate",
-        "traits": [
-            {
-                "name": "Disco",
-                "id": "Set10_Funk",
-                "amount": 1
-            },
-            {
-                "name": "Dazzler",
-                "id": "Set10_Dazzler",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_TwistedFate/HUD/TFT10_TwistedFate_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_TwistedFate_Mobile.TFT_Set10.png"
-    },
-    {
-        "path": "Characters/TFT10_Twitch/CharacterRecords/Root",
-        "character_id": "TFT10_Twitch",
-        "tier": 2,
-        "display_name": "Twitch",
-        "traits": [
-            {
-                "name": "Punk",
-                "id": "Set10_PunkRock",
-                "amount": 1
-            },
-            {
-                "name": "Executioner",
-                "id": "Set10_Executioner",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Twitch/HUD/TFT10_Twitch_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Twitch_Mobile.TFT_Set10.png"
-    },
-    {
-        "path": "Characters/TFT10_Urgot/CharacterRecords/Root",
-        "character_id": "TFT10_Urgot",
+        "path": "Characters/TFT11_Tristana/CharacterRecords/Root",
+        "character_id": "TFT11_Tristana",
         "tier": 3,
-        "display_name": "Urgot",
+        "display_name": "Tristana",
         "traits": [
             {
-                "name": "Country",
-                "id": "Set10_Country",
+                "name": "Fortune",
+                "id": "TFT11_Fortune",
                 "amount": 1
             },
             {
-                "name": "Mosher",
-                "id": "Set10_Fighter",
+                "name": "Duelist",
+                "id": "TFT11_Duelist",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Urgot/HUD/TFT10_Urgot_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Urgot_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Tristana/HUD/TFT11_Tristana_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Tristana_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Vex/CharacterRecords/Root",
-        "character_id": "TFT10_Vex",
+        "path": "Characters/TFT11_Udyr/CharacterRecords/Root",
+        "character_id": "TFT11_Udyr",
+        "tier": 5,
+        "display_name": "Udyr",
+        "traits": [
+            {
+                "name": "Inkshadow",
+                "id": "TFT11_InkShadow",
+                "amount": 1
+            },
+            {
+                "name": "Behemoth",
+                "id": "TFT11_Behemoth",
+                "amount": 1
+            },
+            {
+                "name": "Spirit Walker",
+                "id": "TFT11_SpiritWalker",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Udyr/HUD/TFT11_Udyr_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Udyr_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_Volibear/CharacterRecords/Root",
+        "character_id": "TFT11_Volibear",
         "tier": 3,
-        "display_name": "Vex",
+        "display_name": "Volibear",
         "traits": [
             {
-                "name": "Emo",
-                "id": "Set10_Emo",
+                "name": "Inkshadow",
+                "id": "TFT11_InkShadow",
                 "amount": 1
             },
             {
-                "name": "Executioner",
-                "id": "Set10_Executioner",
+                "name": "Duelist",
+                "id": "TFT11_Duelist",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Vex/HUD/TFT10_Vex_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Vex_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Volibear/HUD/TFT11_Volibear_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Volibear_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Vi/CharacterRecords/Root",
-        "character_id": "TFT10_Vi",
-        "tier": 1,
-        "display_name": "Vi",
+        "path": "Characters/TFT11_WuKong/CharacterRecords/Root",
+        "character_id": "TFT11_WuKong",
+        "tier": 5,
+        "display_name": "Wukong",
         "traits": [
             {
-                "name": "Punk",
-                "id": "Set10_PunkRock",
+                "name": "Great",
+                "id": "TFT11_Great",
                 "amount": 1
             },
             {
-                "name": "Mosher",
-                "id": "Set10_Fighter",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Vi/HUD/TFT10_Vi_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Vi_Mobile.TFT_Set10.png"
-    },
-    {
-        "path": "Characters/TFT10_Viego/CharacterRecords/Root",
-        "character_id": "TFT10_Viego",
-        "tier": 4,
-        "display_name": "Viego",
-        "traits": [
-            {
-                "name": "Pentakill",
-                "id": "Set10_Pentakill",
+                "name": "Heavenly",
+                "id": "TFT11_Heavenly",
                 "amount": 1
             },
             {
-                "name": "Edgelord",
-                "id": "Set10_Edgelord",
+                "name": "Sage",
+                "id": "TFT11_Sage",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Viego/HUD/TFT10_Viego_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Viego_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_WuKong/HUD/TFT11_WuKong_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Wukong_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Yasuo/CharacterRecords/Root",
-        "character_id": "TFT10_Yasuo",
+        "path": "Characters/TFT11_Yasuo/CharacterRecords/Root",
+        "character_id": "TFT11_Yasuo",
         "tier": 1,
         "display_name": "Yasuo",
         "traits": [
             {
-                "name": "True Damage",
-                "id": "Set10_TrueDamage",
+                "name": "Fated",
+                "id": "TFT11_Fated",
                 "amount": 1
             },
             {
-                "name": "Edgelord",
-                "id": "Set10_Edgelord",
+                "name": "Duelist",
+                "id": "TFT11_Duelist",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Yasuo/HUD/TFT10_Yasuo_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Yasuo_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Yasuo/HUD/TFT11_Yasuo_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Yasuo_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Yone/CharacterRecords/Root",
-        "character_id": "TFT10_Yone",
+        "path": "Characters/TFT11_Yone/CharacterRecords/Root",
+        "character_id": "TFT11_Yone",
         "tier": 3,
         "display_name": "Yone",
         "traits": [
             {
-                "name": "Heartsteel",
-                "id": "Set10_PopBand",
+                "name": "Umbral",
+                "id": "TFT11_Umbral",
                 "amount": 1
             },
             {
-                "name": "Edgelord",
-                "id": "Set10_Edgelord",
-                "amount": 1
-            },
-            {
-                "name": "Crowd Diver",
-                "id": "Set10_CrowdDive",
+                "name": "Reaper",
+                "id": "TFT11_Reaper",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Yone/HUD/TFT10_Yone_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Yone_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Yone/HUD/TFT11_Yone_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Yone_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Yorick/CharacterRecords/Root",
-        "character_id": "TFT10_Yorick",
-        "tier": 5,
+        "path": "Characters/TFT11_Yorick/CharacterRecords/Root",
+        "character_id": "TFT11_Yorick",
+        "tier": 2,
         "display_name": "Yorick",
         "traits": [
             {
-                "name": "Pentakill",
-                "id": "Set10_Pentakill",
+                "name": "Umbral",
+                "id": "TFT11_Umbral",
                 "amount": 1
             },
             {
-                "name": "Mosher",
-                "id": "Set10_Fighter",
-                "amount": 1
-            },
-            {
-                "name": "Guardian",
-                "id": "Set10_Guardian",
+                "name": "Behemoth",
+                "id": "TFT11_Behemoth",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Yorick/HUD/TFT10_Yorick_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Yorick_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Yorick/HUD/TFT11_Yorick_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Yorick_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Zac/CharacterRecords/Root",
-        "character_id": "TFT10_Zac",
-        "tier": 4,
-        "display_name": "Zac",
+        "path": "Characters/TFT11_Zoe/CharacterRecords/Root",
+        "character_id": "TFT11_Zoe",
+        "tier": 3,
+        "display_name": "Zoe",
         "traits": [
             {
-                "name": "EDM",
-                "id": "Set10_EDM",
+                "name": "Fortune",
+                "id": "TFT11_Fortune",
+                "amount": 1
+            },
+            {
+                "name": "Storyweaver",
+                "id": "TFT11_Storyweaver",
+                "amount": 1
+            },
+            {
+                "name": "Arcanist",
+                "id": "TFT11_Arcanist",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Zoe/HUD/TFT11_Zoe_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Zoe_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_Zyra/CharacterRecords/Root",
+        "character_id": "TFT11_Zyra",
+        "tier": 2,
+        "display_name": "Zyra",
+        "traits": [
+            {
+                "name": "Storyweaver",
+                "id": "TFT11_Storyweaver",
+                "amount": 1
+            },
+            {
+                "name": "Sage",
+                "id": "TFT11_Sage",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Zyra/HUD/TFT11_Zyra_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Zyra_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_FortuneYord/CharacterRecords/Root",
+        "character_id": "TFT11_FortuneYord",
+        "tier": 1,
+        "display_name": "Kobuko",
+        "traits": [
+            {
+                "name": "Fortune",
+                "id": "TFT11_Fortune",
                 "amount": 1
             },
             {
                 "name": "Bruiser",
-                "id": "Set10_Brawler",
+                "id": "TFT11_Bruiser",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Zac/HUD/TFT10_Zac_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Zac_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_FortuneYord/HUD/TFT11_Kobuko_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Kobuko_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Zed/CharacterRecords/Root",
-        "character_id": "TFT10_Zed",
-        "tier": 4,
-        "display_name": "Zed",
+        "path": "Characters/TFT11_RekSai/CharacterRecords/Root",
+        "character_id": "TFT11_RekSai",
+        "tier": 1,
+        "display_name": "Rek'Sai",
         "traits": [
             {
-                "name": "EDM",
-                "id": "Set10_EDM",
+                "name": "Dryad",
+                "id": "TFT11_Dryad",
                 "amount": 1
             },
             {
-                "name": "Crowd Diver",
-                "id": "Set10_CrowdDive",
+                "name": "Bruiser",
+                "id": "TFT11_Bruiser",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Zed/HUD/TFT10_Zed_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Zed_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_RekSai/HUD/TFT11_RekSai_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Reksai_Mobile.TFT_Set11.png"
     },
     {
-        "path": "Characters/TFT10_Ziggs/CharacterRecords/Root",
-        "character_id": "TFT10_Ziggs",
+        "path": "Characters/TFT11_Xayah/CharacterRecords/Root",
+        "character_id": "TFT11_Xayah",
         "tier": 5,
-        "display_name": "Ziggs",
+        "display_name": "Xayah",
         "traits": [
             {
-                "name": "Hyperpop",
-                "id": "Set10_Hyperpop",
+                "name": "Dragonlord",
+                "id": "TFT11_Dragonlord",
                 "amount": 1
             },
             {
-                "name": "Dazzler",
-                "id": "Set10_Dazzler",
+                "name": "Lovers",
+                "id": "TFT11_Lovers",
+                "amount": 1
+            },
+            {
+                "name": "Trickshot",
+                "id": "TFT11_Trickshot",
                 "amount": 1
             }
         ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT10_Ziggs/HUD/TFT10_Ziggs_Square.TFT_Set10.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT10_Ziggs_Mobile.TFT_Set10.png"
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Xayah/HUD/TFT11_Xayah_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Xayah_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_Gnar/CharacterRecords/Root",
+        "character_id": "TFT11_Gnar",
+        "tier": 2,
+        "display_name": "Gnar",
+        "traits": [
+            {
+                "name": "Dryad",
+                "id": "TFT11_Dryad",
+                "amount": 1
+            },
+            {
+                "name": "Warden",
+                "id": "TFT11_Warden",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Gnar/HUD/TFT11_Gnar_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Gnar_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_Rakan/CharacterRecords/Root",
+        "character_id": "TFT11_Rakan",
+        "tier": 5,
+        "display_name": "Rakan",
+        "traits": [
+            {
+                "name": "Dragonlord",
+                "id": "TFT11_Dragonlord",
+                "amount": 1
+            },
+            {
+                "name": "Lovers",
+                "id": "TFT11_Lovers",
+                "amount": 1
+            },
+            {
+                "name": "Altruist",
+                "id": "TFT11_Altruist",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Rakan/HUD/TFT11_Rakan_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Rakan_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_Jax/CharacterRecords/Root",
+        "character_id": "TFT11_Jax",
+        "tier": 1,
+        "display_name": "Jax",
+        "traits": [
+            {
+                "name": "Inkshadow",
+                "id": "TFT11_InkShadow",
+                "amount": 1
+            },
+            {
+                "name": "Warden",
+                "id": "TFT11_Warden",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Jax/HUD/TFT11_Jax_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Jax_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_Diana/CharacterRecords/Root",
+        "character_id": "TFT11_Diana",
+        "tier": 3,
+        "display_name": "Diana",
+        "traits": [
+            {
+                "name": "Dragonlord",
+                "id": "TFT11_Dragonlord",
+                "amount": 1
+            },
+            {
+                "name": "Sage",
+                "id": "TFT11_Sage",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Diana/HUD/TFT11_Diana_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Diana_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_Azir/CharacterRecords/Root",
+        "character_id": "TFT11_Azir",
+        "tier": 5,
+        "display_name": "Azir",
+        "traits": [
+            {
+                "name": "Dryad",
+                "id": "TFT11_Dryad",
+                "amount": 1
+            },
+            {
+                "name": "Invoker",
+                "id": "TFT11_Invoker",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Azir/HUD/TFT11_Azir_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Azir_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_Nautilus/CharacterRecords/Root",
+        "character_id": "TFT11_Nautilus",
+        "tier": 4,
+        "display_name": "Nautilus",
+        "traits": [
+            {
+                "name": "Mythic",
+                "id": "TFT11_Mythic",
+                "amount": 1
+            },
+            {
+                "name": "Warden",
+                "id": "TFT11_Warden",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Nautilus/HUD/TFT11_Nautilus_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Nautilus_Mobile.TFT_Set11.png"
+    },
+    {
+        "path": "Characters/TFT11_XayahRakanDummy/CharacterRecords/Root",
+        "character_id": "TFT11_XayahRakanDummy",
+        "tier": 5,
+        "display_name": "Xayah & Rakan",
+        "traits": [
+            {
+                "name": "Lovers",
+                "id": "TFT11_Lovers",
+                "amount": 1
+            },
+            {
+                "name": "Dragonlord",
+                "id": "TFT11_Dragonlord",
+                "amount": 1
+            },
+            {
+                "name": "Trickshot/Altruist",
+                "id": "TFT11_TrickshotAltruist",
+                "amount": 1
+            }
+        ],
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_XayahRakanDummy/HUD/TFT11_XayahRakan_Square.TFT_Set11.jpg",
+        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_XayahRakan_Mobile.TFT_Set11.png"
     }
 ]

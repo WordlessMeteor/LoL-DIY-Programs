@@ -88339,6 +88339,66 @@
         "disabledRegions": []
     },
     {
+        "id": 6585,
+        "title": "summoner_icon_title_6585",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6585.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": ""
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6586,
+        "title": "summoner_icon_title_6586",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6586.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": ""
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6587,
+        "title": "summoner_icon_title_6587",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6587.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": ""
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
         "id": 658,
         "title": "阵容匹配 - 战士",
         "yearReleased": 2014,

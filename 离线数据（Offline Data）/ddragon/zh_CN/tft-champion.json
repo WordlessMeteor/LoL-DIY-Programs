@@ -1,6 +1,6 @@
 {
     "type": "tft-champion",
-    "version": "14.5.1",
+    "version": "14.6.1",
     "data": {
         "TFTTutorial_Zed": {
             "id": "TFTTutorial_Zed",
@@ -506,853 +506,13 @@
                 "h": 48
             }
         },
-        "TFT10_Ahri": {
-            "id": "TFT10_Ahri",
-            "name": "阿狸",
-            "tier": 4,
-            "image": {
-                "full": "TFT10_Ahri.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 288,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Akali_TrueDamage": {
-            "id": "TFT10_Akali_TrueDamage",
-            "name": "阿卡丽",
-            "tier": 4,
-            "image": {
-                "full": "TFT10_Akali_TrueDamage.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 336,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Akali": {
-            "id": "TFT10_Akali",
-            "name": "阿卡丽",
-            "tier": 4,
-            "image": {
-                "full": "TFT10_Akali.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 384,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Amumu": {
-            "id": "TFT10_Amumu",
-            "name": "阿木木",
-            "tier": 3,
-            "image": {
-                "full": "TFT10_Amumu.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 432,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Annie": {
-            "id": "TFT10_Annie",
-            "name": "安妮",
-            "tier": 1,
-            "image": {
-                "full": "TFT10_Annie.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 0,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Aphelios": {
-            "id": "TFT10_Aphelios",
-            "name": "厄斐琉斯",
-            "tier": 2,
-            "image": {
-                "full": "TFT10_Aphelios.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 48,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Bard": {
-            "id": "TFT10_Bard",
-            "name": "巴德",
-            "tier": 2,
-            "image": {
-                "full": "TFT10_Bard.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 96,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Blitzcrank": {
-            "id": "TFT10_Blitzcrank",
-            "name": "布里茨",
-            "tier": 4,
-            "image": {
-                "full": "TFT10_Blitzcrank.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 144,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Caitlyn": {
-            "id": "TFT10_Caitlyn",
-            "name": "凯特琳",
-            "tier": 4,
-            "image": {
-                "full": "TFT10_Caitlyn.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 192,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Corki": {
-            "id": "TFT10_Corki",
-            "name": "库奇",
-            "tier": 1,
-            "image": {
-                "full": "TFT10_Corki.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 240,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Ekko": {
-            "id": "TFT10_Ekko",
-            "name": "艾克",
-            "tier": 3,
-            "image": {
-                "full": "TFT10_Ekko.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 288,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Evelynn": {
-            "id": "TFT10_Evelynn",
-            "name": "伊芙琳",
-            "tier": 1,
-            "image": {
-                "full": "TFT10_Evelynn.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 336,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Ezreal": {
-            "id": "TFT10_Ezreal",
-            "name": "伊泽瑞尔",
-            "tier": 4,
-            "image": {
-                "full": "TFT10_Ezreal.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 384,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Garen": {
-            "id": "TFT10_Garen",
-            "name": "盖伦",
-            "tier": 2,
-            "image": {
-                "full": "TFT10_Garen.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 432,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Gnar": {
-            "id": "TFT10_Gnar",
-            "name": "纳尔",
-            "tier": 2,
-            "image": {
-                "full": "TFT10_Gnar.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 0,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Gragas": {
-            "id": "TFT10_Gragas",
-            "name": "古拉加斯",
-            "tier": 2,
-            "image": {
-                "full": "TFT10_Gragas.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 48,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Illaoi": {
-            "id": "TFT10_Illaoi",
-            "name": "俄洛伊",
-            "tier": 5,
-            "image": {
-                "full": "TFT10_Illaoi.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 96,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Jax": {
-            "id": "TFT10_Jax",
-            "name": "贾克斯",
-            "tier": 2,
-            "image": {
-                "full": "TFT10_Jax.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 144,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Jhin": {
-            "id": "TFT10_Jhin",
-            "name": "烬",
-            "tier": 5,
-            "image": {
-                "full": "TFT10_Jhin.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 192,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Jinx": {
-            "id": "TFT10_Jinx",
-            "name": "金克丝",
-            "tier": 1,
-            "image": {
-                "full": "TFT10_Jinx.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 240,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Kaisa": {
-            "id": "TFT10_Kaisa",
-            "name": "卡莎",
-            "tier": 2,
-            "image": {
-                "full": "TFT10_Kaisa.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 288,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Karthus": {
-            "id": "TFT10_Karthus",
-            "name": "卡尔萨斯",
-            "tier": 4,
-            "image": {
-                "full": "TFT10_Karthus.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 336,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Katarina": {
-            "id": "TFT10_Katarina",
-            "name": "卡特琳娜",
-            "tier": 2,
-            "image": {
-                "full": "TFT10_Katarina.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 384,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Kayle": {
-            "id": "TFT10_Kayle",
-            "name": "凯尔",
-            "tier": 2,
-            "image": {
-                "full": "TFT10_Kayle.TFT_Set10.png",
-                "sprite": "tft-champion1.png",
-                "group": "tft-champion",
-                "x": 432,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Kayn": {
-            "id": "TFT10_Kayn",
-            "name": "凯隐",
-            "tier": 5,
-            "image": {
-                "full": "TFT10_Kayn.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 0,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Kennen": {
-            "id": "TFT10_Kennen",
-            "name": "凯南",
-            "tier": 1,
-            "image": {
-                "full": "TFT10_Kennen.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 48,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_KSante": {
-            "id": "TFT10_KSante",
-            "name": "奎桑提",
-            "tier": 1,
-            "image": {
-                "full": "TFT10_KSante.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 96,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Lillia": {
-            "id": "TFT10_Lillia",
-            "name": "莉莉娅",
-            "tier": 1,
-            "image": {
-                "full": "TFT10_Lillia.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 144,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Lucian": {
-            "id": "TFT10_Lucian",
-            "name": "卢锡安",
-            "tier": 5,
-            "image": {
-                "full": "TFT10_Lucian.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 192,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Lulu": {
-            "id": "TFT10_Lulu",
-            "name": "璐璐",
-            "tier": 3,
-            "image": {
-                "full": "TFT10_Lulu.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 240,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Lux": {
-            "id": "TFT10_Lux",
-            "name": "拉克丝",
-            "tier": 3,
-            "image": {
-                "full": "TFT10_Lux.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 288,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_MissFortune": {
-            "id": "TFT10_MissFortune",
-            "name": "厄运小姐",
-            "tier": 3,
-            "image": {
-                "full": "TFT10_MissFortune.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 336,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Mordekaiser": {
-            "id": "TFT10_Mordekaiser",
-            "name": "莫德凯撒",
-            "tier": 3,
-            "image": {
-                "full": "TFT10_Mordekaiser.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 384,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Nami": {
-            "id": "TFT10_Nami",
-            "name": "娜美",
-            "tier": 1,
-            "image": {
-                "full": "TFT10_Nami.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 432,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Neeko": {
-            "id": "TFT10_Neeko",
-            "name": "妮蔻",
-            "tier": 3,
-            "image": {
-                "full": "TFT10_Neeko.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 0,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Olaf": {
-            "id": "TFT10_Olaf",
-            "name": "奥拉夫",
-            "tier": 1,
-            "image": {
-                "full": "TFT10_Olaf.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 48,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Pantheon": {
-            "id": "TFT10_Pantheon",
-            "name": "潘森",
-            "tier": 2,
-            "image": {
-                "full": "TFT10_Pantheon.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 96,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Poppy": {
-            "id": "TFT10_Poppy",
-            "name": "波比",
-            "tier": 4,
-            "image": {
-                "full": "TFT10_Poppy.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 144,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Qiyana": {
-            "id": "TFT10_Qiyana",
-            "name": "奇亚娜",
-            "tier": 5,
-            "image": {
-                "full": "TFT10_Qiyana.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 192,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Riven": {
-            "id": "TFT10_Riven",
-            "name": "锐雯",
-            "tier": 3,
-            "image": {
-                "full": "TFT10_Riven.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 240,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Samira": {
-            "id": "TFT10_Samira",
-            "name": "莎弥拉",
-            "tier": 3,
-            "image": {
-                "full": "TFT10_Samira.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 288,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Senna": {
-            "id": "TFT10_Senna",
-            "name": "赛娜",
-            "tier": 2,
-            "image": {
-                "full": "TFT10_Senna.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 336,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Seraphine": {
-            "id": "TFT10_Seraphine",
-            "name": "萨勒芬妮",
-            "tier": 2,
-            "image": {
-                "full": "TFT10_Seraphine.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 384,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Sett": {
-            "id": "TFT10_Sett",
-            "name": "瑟提",
-            "tier": 3,
-            "image": {
-                "full": "TFT10_Sett.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 432,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Sona": {
-            "id": "TFT10_Sona",
-            "name": "娑娜",
-            "tier": 5,
-            "image": {
-                "full": "TFT10_Sona.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 0,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_TahmKench": {
-            "id": "TFT10_TahmKench",
-            "name": "塔姆",
-            "tier": 1,
-            "image": {
-                "full": "TFT10_TahmKench.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 48,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Taric": {
-            "id": "TFT10_Taric",
-            "name": "塔里克",
-            "tier": 1,
-            "image": {
-                "full": "TFT10_Taric.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 96,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Thresh": {
-            "id": "TFT10_Thresh",
-            "name": "锤石",
-            "tier": 4,
-            "image": {
-                "full": "TFT10_Thresh.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 144,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_TwistedFate": {
-            "id": "TFT10_TwistedFate",
-            "name": "崔斯特",
-            "tier": 4,
-            "image": {
-                "full": "TFT10_TwistedFate.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 192,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Twitch": {
-            "id": "TFT10_Twitch",
-            "name": "图奇",
-            "tier": 2,
-            "image": {
-                "full": "TFT10_Twitch.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 240,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Urgot": {
-            "id": "TFT10_Urgot",
-            "name": "厄加特",
-            "tier": 3,
-            "image": {
-                "full": "TFT10_Urgot.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 288,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Vex": {
-            "id": "TFT10_Vex",
-            "name": "薇古丝",
-            "tier": 3,
-            "image": {
-                "full": "TFT10_Vex.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 336,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Vi": {
-            "id": "TFT10_Vi",
-            "name": "蔚",
-            "tier": 1,
-            "image": {
-                "full": "TFT10_Vi.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 384,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Viego": {
-            "id": "TFT10_Viego",
-            "name": "佛耶戈",
-            "tier": 4,
-            "image": {
-                "full": "TFT10_Viego.TFT_Set10.png",
-                "sprite": "tft-champion2.png",
-                "group": "tft-champion",
-                "x": 432,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Yasuo": {
-            "id": "TFT10_Yasuo",
-            "name": "亚索",
-            "tier": 1,
-            "image": {
-                "full": "TFT10_Yasuo.TFT_Set10.png",
-                "sprite": "tft-champion3.png",
-                "group": "tft-champion",
-                "x": 0,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Yone": {
-            "id": "TFT10_Yone",
-            "name": "永恩",
-            "tier": 3,
-            "image": {
-                "full": "TFT10_Yone.TFT_Set10.png",
-                "sprite": "tft-champion3.png",
-                "group": "tft-champion",
-                "x": 48,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Yorick": {
-            "id": "TFT10_Yorick",
-            "name": "约里克",
-            "tier": 5,
-            "image": {
-                "full": "TFT10_Yorick.TFT_Set10.png",
-                "sprite": "tft-champion3.png",
-                "group": "tft-champion",
-                "x": 96,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Zac": {
-            "id": "TFT10_Zac",
-            "name": "扎克",
-            "tier": 4,
-            "image": {
-                "full": "TFT10_Zac.TFT_Set10.png",
-                "sprite": "tft-champion3.png",
-                "group": "tft-champion",
-                "x": 144,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Zed": {
-            "id": "TFT10_Zed",
-            "name": "劫",
-            "tier": 4,
-            "image": {
-                "full": "TFT10_Zed.TFT_Set10.png",
-                "sprite": "tft-champion3.png",
-                "group": "tft-champion",
-                "x": 192,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "TFT10_Ziggs": {
-            "id": "TFT10_Ziggs",
-            "name": "吉格斯",
-            "tier": 5,
-            "image": {
-                "full": "TFT10_Ziggs.TFT_Set10.png",
-                "sprite": "tft-champion3.png",
-                "group": "tft-champion",
-                "x": 240,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
         "TFT3_Ziggs": {
             "id": "TFT3_Ziggs",
             "name": "吉格斯",
             "tier": 1,
             "image": {
                 "full": "TFT3_Ziggs.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 288,
                 "y": 0,
@@ -1366,7 +526,7 @@
             "tier": 4,
             "image": {
                 "full": "TFT3_Jinx.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 336,
                 "y": 0,
@@ -1380,7 +540,7 @@
             "tier": 4,
             "image": {
                 "full": "TFT3_Teemo.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 384,
                 "y": 0,
@@ -1394,7 +554,7 @@
             "tier": 2,
             "image": {
                 "full": "TFT3_Yasuo.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 432,
                 "y": 0,
@@ -1408,7 +568,7 @@
             "tier": 1,
             "image": {
                 "full": "TFT3_Malphite.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 0,
                 "y": 48,
@@ -1422,7 +582,7 @@
             "tier": 3,
             "image": {
                 "full": "TFT3_MasterYi.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 48,
                 "y": 48,
@@ -1436,7 +596,7 @@
             "tier": 5,
             "image": {
                 "full": "TFT3_AurelionSol.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 96,
                 "y": 48,
@@ -1450,7 +610,7 @@
             "tier": 4,
             "image": {
                 "full": "TFT3_Viktor.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 144,
                 "y": 48,
@@ -1464,7 +624,7 @@
             "tier": 2,
             "image": {
                 "full": "TFT3_KogMaw.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 192,
                 "y": 48,
@@ -1478,7 +638,7 @@
             "tier": 5,
             "image": {
                 "full": "TFT3_Urgot.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 240,
                 "y": 48,
@@ -1492,7 +652,7 @@
             "tier": 5,
             "image": {
                 "full": "TFT3_Ekko.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 288,
                 "y": 48,
@@ -1506,7 +666,7 @@
             "tier": 1,
             "image": {
                 "full": "TFT3_Fiora.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 336,
                 "y": 48,
@@ -1520,7 +680,7 @@
             "tier": 3,
             "image": {
                 "full": "TFT3_Vi.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 384,
                 "y": 48,
@@ -1534,7 +694,7 @@
             "tier": 4,
             "image": {
                 "full": "TFT3_Irelia.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 432,
                 "y": 48,
@@ -1548,7 +708,7 @@
             "tier": 1,
             "image": {
                 "full": "TFT3_Poppy.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 0,
                 "y": 96,
@@ -1562,7 +722,7 @@
             "tier": 4,
             "image": {
                 "full": "TFT3_Soraka.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 48,
                 "y": 96,
@@ -1576,7 +736,7 @@
             "tier": 2,
             "image": {
                 "full": "TFT3_Ahri.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 96,
                 "y": 96,
@@ -1590,7 +750,7 @@
             "tier": 3,
             "image": {
                 "full": "TFT3_Syndra.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 144,
                 "y": 96,
@@ -1604,7 +764,7 @@
             "tier": 3,
             "image": {
                 "full": "TFT3_Neeko.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 192,
                 "y": 96,
@@ -1618,7 +778,7 @@
             "tier": 5,
             "image": {
                 "full": "TFT3_Gangplank.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 240,
                 "y": 96,
@@ -1632,7 +792,7 @@
             "tier": 2,
             "image": {
                 "full": "TFT3_Darius.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 288,
                 "y": 96,
@@ -1646,7 +806,7 @@
             "tier": 3,
             "image": {
                 "full": "TFT3_Jayce.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 336,
                 "y": 96,
@@ -1660,7 +820,7 @@
             "tier": 2,
             "image": {
                 "full": "TFT3_Annie.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 384,
                 "y": 96,
@@ -1674,7 +834,7 @@
             "tier": 4,
             "image": {
                 "full": "TFT3_Fizz.png",
-                "sprite": "tft-champion3.png",
+                "sprite": "tft-champion1.png",
                 "group": "tft-champion",
                 "x": 432,
                 "y": 96,
@@ -1688,7 +848,7 @@
             "tier": 3,
             "image": {
                 "full": "TFT3_Rumble.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 0,
                 "y": 0,
@@ -1702,7 +862,7 @@
             "tier": 3,
             "image": {
                 "full": "TFT3_Ezreal.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 48,
                 "y": 0,
@@ -1716,7 +876,7 @@
             "tier": 2,
             "image": {
                 "full": "TFT3_Shen.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 96,
                 "y": 0,
@@ -1730,7 +890,7 @@
             "tier": 4,
             "image": {
                 "full": "TFT3_WuKong.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 144,
                 "y": 0,
@@ -1744,7 +904,7 @@
             "tier": 5,
             "image": {
                 "full": "TFT3_Thresh.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 192,
                 "y": 0,
@@ -1758,7 +918,7 @@
             "tier": 1,
             "image": {
                 "full": "TFT3_Caitlyn.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 240,
                 "y": 0,
@@ -1772,7 +932,7 @@
             "tier": 1,
             "image": {
                 "full": "TFT3_TwistedFate.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 288,
                 "y": 0,
@@ -1786,7 +946,7 @@
             "tier": 2,
             "image": {
                 "full": "TFT3_XinZhao.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 336,
                 "y": 0,
@@ -1800,7 +960,7 @@
             "tier": 5,
             "image": {
                 "full": "TFT3_Lulu.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 384,
                 "y": 0,
@@ -1814,7 +974,7 @@
             "tier": 1,
             "image": {
                 "full": "TFT3_Xayah.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 432,
                 "y": 0,
@@ -1828,7 +988,7 @@
             "tier": 2,
             "image": {
                 "full": "TFT3_Rakan.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 0,
                 "y": 48,
@@ -1842,7 +1002,7 @@
             "tier": 3,
             "image": {
                 "full": "TFT3_Ashe.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 48,
                 "y": 48,
@@ -1856,7 +1016,7 @@
             "tier": 2,
             "image": {
                 "full": "TFT3_Mordekaiser.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 96,
                 "y": 48,
@@ -1870,7 +1030,7 @@
             "tier": 3,
             "image": {
                 "full": "TFT3_Shaco.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 144,
                 "y": 48,
@@ -1884,7 +1044,7 @@
             "tier": 1,
             "image": {
                 "full": "TFT3_JarvanIV.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 192,
                 "y": 48,
@@ -1898,7 +1058,7 @@
             "tier": 3,
             "image": {
                 "full": "TFT3_Karma.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 240,
                 "y": 48,
@@ -1912,7 +1072,7 @@
             "tier": 4,
             "image": {
                 "full": "TFT3_Jhin.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 288,
                 "y": 48,
@@ -1926,7 +1086,7 @@
             "tier": 1,
             "image": {
                 "full": "TFT3_Zoe.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 336,
                 "y": 48,
@@ -1940,7 +1100,7 @@
             "tier": 2,
             "image": {
                 "full": "TFT3_Blitzcrank.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 384,
                 "y": 48,
@@ -1954,7 +1114,7 @@
             "tier": 1,
             "image": {
                 "full": "TFT3_Leona.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 432,
                 "y": 48,
@@ -1968,7 +1128,7 @@
             "tier": 2,
             "image": {
                 "full": "TFT3_Lucian.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 0,
                 "y": 96,
@@ -1982,7 +1142,7 @@
             "tier": 1,
             "image": {
                 "full": "TFT3_Graves.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 48,
                 "y": 96,
@@ -1996,7 +1156,7 @@
             "tier": 5,
             "image": {
                 "full": "TFT3_Xerath.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 96,
                 "y": 96,
@@ -2010,7 +1170,7 @@
             "tier": 4,
             "image": {
                 "full": "TFT3_Gnar.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 144,
                 "y": 96,
@@ -2024,7 +1184,7 @@
             "tier": 2,
             "image": {
                 "full": "TFT3_Nautilus.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 192,
                 "y": 96,
@@ -2038,7 +1198,7 @@
             "tier": 1,
             "image": {
                 "full": "TFT3_Illaoi.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 240,
                 "y": 96,
@@ -2052,7 +1212,7 @@
             "tier": 1,
             "image": {
                 "full": "TFT3_Nocturne.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 288,
                 "y": 96,
@@ -2066,7 +1226,7 @@
             "tier": 3,
             "image": {
                 "full": "TFT3_Cassiopeia.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 336,
                 "y": 96,
@@ -2080,7 +1240,7 @@
             "tier": 3,
             "image": {
                 "full": "TFT3_Vayne.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 384,
                 "y": 96,
@@ -2094,7 +1254,7 @@
             "tier": 5,
             "image": {
                 "full": "TFT3_Janna.png",
-                "sprite": "tft-champion4.png",
+                "sprite": "tft-champion2.png",
                 "group": "tft-champion",
                 "x": 432,
                 "y": 96,
@@ -2108,7 +1268,7 @@
             "tier": 4,
             "image": {
                 "full": "TFT3_Riven.png",
-                "sprite": "tft-champion5.png",
+                "sprite": "tft-champion3.png",
                 "group": "tft-champion",
                 "x": 0,
                 "y": 0,
@@ -2122,7 +1282,7 @@
             "tier": 3,
             "image": {
                 "full": "TFT3_Bard.png",
-                "sprite": "tft-champion5.png",
+                "sprite": "tft-champion3.png",
                 "group": "tft-champion",
                 "x": 48,
                 "y": 0,
@@ -2136,9 +1296,863 @@
             "tier": 2,
             "image": {
                 "full": "TFT3_Zed.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 96,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Aatrox": {
+            "id": "TFT11_Aatrox",
+            "name": "亚托克斯",
+            "tier": 2,
+            "image": {
+                "full": "TFT11_Aatrox.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 144,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Ahri": {
+            "id": "TFT11_Ahri",
+            "name": "阿狸",
+            "tier": 1,
+            "image": {
+                "full": "TFT11_Ahri.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 192,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Amumu": {
+            "id": "TFT11_Amumu",
+            "name": "阿木木",
+            "tier": 3,
+            "image": {
+                "full": "TFT11_Amumu.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 240,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Annie": {
+            "id": "TFT11_Annie",
+            "name": "安妮",
+            "tier": 4,
+            "image": {
+                "full": "TFT11_Annie.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 288,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Aphelios": {
+            "id": "TFT11_Aphelios",
+            "name": "厄斐琉斯",
+            "tier": 3,
+            "image": {
+                "full": "TFT11_Aphelios.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 336,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Ashe": {
+            "id": "TFT11_Ashe",
+            "name": "艾希",
+            "tier": 4,
+            "image": {
+                "full": "TFT11_Ashe.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 384,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Alune": {
+            "id": "TFT11_Alune",
+            "name": "拉露恩",
+            "tier": 3,
+            "image": {
+                "full": "TFT11_Alune.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 432,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Bard": {
+            "id": "TFT11_Bard",
+            "name": "巴德",
+            "tier": 3,
+            "image": {
+                "full": "TFT11_Bard.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 0,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Caitlyn": {
+            "id": "TFT11_Caitlyn",
+            "name": "凯特琳",
+            "tier": 1,
+            "image": {
+                "full": "TFT11_Caitlyn.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 48,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_ChoGath": {
+            "id": "TFT11_ChoGath",
+            "name": "科加斯",
+            "tier": 1,
+            "image": {
+                "full": "TFT11_ChoGath.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 96,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Darius": {
+            "id": "TFT11_Darius",
+            "name": "德莱厄斯",
+            "tier": 1,
+            "image": {
+                "full": "TFT11_Darius.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 144,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Galio": {
+            "id": "TFT11_Galio",
+            "name": "加里奥",
+            "tier": 4,
+            "image": {
+                "full": "TFT11_Galio.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 192,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Garen": {
+            "id": "TFT11_Garen",
+            "name": "盖伦",
+            "tier": 1,
+            "image": {
+                "full": "TFT11_Garen.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 240,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Hwei": {
+            "id": "TFT11_Hwei",
+            "name": "彗",
+            "tier": 5,
+            "image": {
+                "full": "TFT11_Hwei.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 288,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Illaoi": {
+            "id": "TFT11_Illaoi",
+            "name": "俄洛伊",
+            "tier": 3,
+            "image": {
+                "full": "TFT11_Illaoi.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 336,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Irelia": {
+            "id": "TFT11_Irelia",
+            "name": "艾瑞莉娅",
+            "tier": 5,
+            "image": {
+                "full": "TFT11_Irelia.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 384,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Janna": {
+            "id": "TFT11_Janna",
+            "name": "迦娜",
+            "tier": 2,
+            "image": {
+                "full": "TFT11_Janna.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 432,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Kaisa": {
+            "id": "TFT11_Kaisa",
+            "name": "卡莎",
+            "tier": 4,
+            "image": {
+                "full": "TFT11_Kaisa.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 0,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Kayn": {
+            "id": "TFT11_Kayn",
+            "name": "凯隐",
+            "tier": 4,
+            "image": {
+                "full": "TFT11_Kayn.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 48,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_KhaZix": {
+            "id": "TFT11_KhaZix",
+            "name": "卡兹克",
+            "tier": 1,
+            "image": {
+                "full": "TFT11_KhaZix.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 96,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Kindred": {
+            "id": "TFT11_Kindred",
+            "name": "千珏",
+            "tier": 2,
+            "image": {
+                "full": "TFT11_Kindred.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 144,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_KogMaw": {
+            "id": "TFT11_KogMaw",
+            "name": "克格莫",
+            "tier": 1,
+            "image": {
+                "full": "TFT11_KogMaw.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 192,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_LeeSin": {
+            "id": "TFT11_LeeSin",
+            "name": "李青",
+            "tier": 4,
+            "image": {
+                "full": "TFT11_LeeSin.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 240,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Lillia": {
+            "id": "TFT11_Lillia",
+            "name": "莉莉娅",
+            "tier": 4,
+            "image": {
+                "full": "TFT11_Lillia.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 288,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Lissandra": {
+            "id": "TFT11_Lissandra",
+            "name": "丽桑卓",
+            "tier": 5,
+            "image": {
+                "full": "TFT11_Lissandra.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 336,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Lux": {
+            "id": "TFT11_Lux",
+            "name": "拉克丝",
+            "tier": 2,
+            "image": {
+                "full": "TFT11_Lux.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 384,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Malphite": {
+            "id": "TFT11_Malphite",
+            "name": "墨菲特",
+            "tier": 1,
+            "image": {
+                "full": "TFT11_Malphite.TFT_Set11.png",
+                "sprite": "tft-champion3.png",
+                "group": "tft-champion",
+                "x": 432,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Morgana": {
+            "id": "TFT11_Morgana",
+            "name": "莫甘娜",
+            "tier": 4,
+            "image": {
+                "full": "TFT11_Morgana.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 0,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Neeko": {
+            "id": "TFT11_Neeko",
+            "name": "妮蔻",
+            "tier": 2,
+            "image": {
+                "full": "TFT11_Neeko.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 48,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Ornn": {
+            "id": "TFT11_Ornn",
+            "name": "奥恩",
+            "tier": 4,
+            "image": {
+                "full": "TFT11_Ornn.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 96,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Qiyana": {
+            "id": "TFT11_Qiyana",
+            "name": "奇亚娜",
+            "tier": 2,
+            "image": {
+                "full": "TFT11_Qiyana.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 144,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Senna": {
+            "id": "TFT11_Senna",
+            "name": "赛娜",
+            "tier": 2,
+            "image": {
+                "full": "TFT11_Senna.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 192,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Sett": {
+            "id": "TFT11_Sett",
+            "name": "瑟提",
+            "tier": 5,
+            "image": {
+                "full": "TFT11_Sett.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 240,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Shen": {
+            "id": "TFT11_Shen",
+            "name": "慎",
+            "tier": 2,
+            "image": {
+                "full": "TFT11_Shen.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 288,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Riven": {
+            "id": "TFT11_Riven",
+            "name": "锐雯",
+            "tier": 2,
+            "image": {
+                "full": "TFT11_Riven.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 336,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Sivir": {
+            "id": "TFT11_Sivir",
+            "name": "希维尔",
+            "tier": 1,
+            "image": {
+                "full": "TFT11_Sivir.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 384,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Soraka": {
+            "id": "TFT11_Soraka",
+            "name": "索拉卡",
+            "tier": 3,
+            "image": {
+                "full": "TFT11_Soraka.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 432,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Sylas": {
+            "id": "TFT11_Sylas",
+            "name": "塞拉斯",
+            "tier": 4,
+            "image": {
+                "full": "TFT11_Sylas.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 0,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Syndra": {
+            "id": "TFT11_Syndra",
+            "name": "辛德拉",
+            "tier": 4,
+            "image": {
+                "full": "TFT11_Syndra.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 48,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_TahmKench": {
+            "id": "TFT11_TahmKench",
+            "name": "塔姆",
+            "tier": 3,
+            "image": {
+                "full": "TFT11_TahmKench.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 96,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Teemo": {
+            "id": "TFT11_Teemo",
+            "name": "提莫",
+            "tier": 2,
+            "image": {
+                "full": "TFT11_Teemo.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 144,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Thresh": {
+            "id": "TFT11_Thresh",
+            "name": "锤石",
+            "tier": 3,
+            "image": {
+                "full": "TFT11_Thresh.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 192,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Tristana": {
+            "id": "TFT11_Tristana",
+            "name": "崔丝塔娜",
+            "tier": 3,
+            "image": {
+                "full": "TFT11_Tristana.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 240,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Udyr": {
+            "id": "TFT11_Udyr",
+            "name": "乌迪尔",
+            "tier": 5,
+            "image": {
+                "full": "TFT11_Udyr.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 288,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Volibear": {
+            "id": "TFT11_Volibear",
+            "name": "沃利贝尔",
+            "tier": 3,
+            "image": {
+                "full": "TFT11_Volibear.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 336,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_WuKong": {
+            "id": "TFT11_WuKong",
+            "name": "孙悟空",
+            "tier": 5,
+            "image": {
+                "full": "TFT11_WuKong.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 384,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Yasuo": {
+            "id": "TFT11_Yasuo",
+            "name": "亚索",
+            "tier": 1,
+            "image": {
+                "full": "TFT11_Yasuo.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 432,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Yone": {
+            "id": "TFT11_Yone",
+            "name": "永恩",
+            "tier": 3,
+            "image": {
+                "full": "TFT11_Yone.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 0,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Yorick": {
+            "id": "TFT11_Yorick",
+            "name": "约里克",
+            "tier": 2,
+            "image": {
+                "full": "TFT11_Yorick.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 48,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Zoe": {
+            "id": "TFT11_Zoe",
+            "name": "佐伊",
+            "tier": 3,
+            "image": {
+                "full": "TFT11_Zoe.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 96,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Zyra": {
+            "id": "TFT11_Zyra",
+            "name": "婕拉",
+            "tier": 2,
+            "image": {
+                "full": "TFT11_Zyra.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 144,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_FortuneYord": {
+            "id": "TFT11_FortuneYord",
+            "name": "可酷伯",
+            "tier": 1,
+            "image": {
+                "full": "TFT11_Kobuko.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 192,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_RekSai": {
+            "id": "TFT11_RekSai",
+            "name": "雷克塞",
+            "tier": 1,
+            "image": {
+                "full": "TFT11_RekSai.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 240,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Xayah": {
+            "id": "TFT11_Xayah",
+            "name": "霞",
+            "tier": 5,
+            "image": {
+                "full": "TFT11_XayahRakan.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 288,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Gnar": {
+            "id": "TFT11_Gnar",
+            "name": "纳尔",
+            "tier": 2,
+            "image": {
+                "full": "TFT11_Gnar.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 336,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Rakan": {
+            "id": "TFT11_Rakan",
+            "name": "洛",
+            "tier": 5,
+            "image": {
+                "full": "TFT11_Rakan.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 384,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Jax": {
+            "id": "TFT11_Jax",
+            "name": "贾克斯",
+            "tier": 1,
+            "image": {
+                "full": "TFT11_Jax.TFT_Set11.png",
+                "sprite": "tft-champion4.png",
+                "group": "tft-champion",
+                "x": 432,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Diana": {
+            "id": "TFT11_Diana",
+            "name": "黛安娜",
+            "tier": 3,
+            "image": {
+                "full": "TFT11_Diana.TFT_Set11.png",
+                "sprite": "tft-champion5.png",
+                "group": "tft-champion",
+                "x": 0,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Azir": {
+            "id": "TFT11_Azir",
+            "name": "阿兹尔",
+            "tier": 5,
+            "image": {
+                "full": "TFT11_Azir.TFT_Set11.png",
+                "sprite": "tft-champion5.png",
+                "group": "tft-champion",
+                "x": 48,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_Nautilus": {
+            "id": "TFT11_Nautilus",
+            "name": "诺提勒斯",
+            "tier": 4,
+            "image": {
+                "full": "TFT11_Nautilus.TFT_Set11.png",
                 "sprite": "tft-champion5.png",
                 "group": "tft-champion",
                 "x": 96,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TFT11_XayahRakanDummy": {
+            "id": "TFT11_XayahRakanDummy",
+            "name": "霞与洛",
+            "tier": 5,
+            "image": {
+                "full": "TFT11_XayahRakan.TFT_Set11.png",
+                "sprite": "tft-champion5.png",
+                "group": "tft-champion",
+                "x": 144,
                 "y": 0,
                 "w": 48,
                 "h": 48

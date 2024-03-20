@@ -88339,6 +88339,66 @@
         "disabledRegions": []
     },
     {
+        "id": 6585,
+        "title": "Season 2024 - Split 2 Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6585.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "This icon was earned by winning ranked games in Season 2024 - Split 1."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6586,
+        "title": "Arcane Jinx Merch Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6586.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "This icon was acquired by making a purchase from the merch store."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6587,
+        "title": "Brolaf Border Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6587.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "An icon that entitles the border for this champion."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
         "id": 658,
         "title": "Team Builder - Fighter",
         "yearReleased": 2014,

@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.5.1",
+    "version": "14.6.1",
     "data": {
         "Smolder": {
             "id": "Smolder",
@@ -365,7 +365,7 @@
                     "id": "SmolderE",
                     "name": "扑棱，扑棱，扑棱！",
                     "description": "斯莫德展翅高飞，无视地形并轰击生命值最低的敌人。",
-                    "tooltip": "斯莫德展翅高飞，获得<speed>{{ movespeed*100 }}%移动速度</speed>并无视地形，持续{{ duration }}秒。<br /><br />在飞行时，斯莫德轰击生命值最低的敌方英雄<spellName>{{ totalnumberofattacks }}</spellName>次，每次命中造成<physicalDamage>{{ damageperhit }}物理伤害</physicalDamage> + <magicDamage>{{ passive_damage_increase }}魔法伤害</magicDamage>。{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "斯莫德展翅高飞，获得<speed>{{ movespeed*100 }}%移动速度</speed>并无视地形，持续{{ duration }}秒。<br /><br />飞行时，斯莫德轰击生命值最低的敌方英雄<spellName>{{ totalnumberofattacks }}</spellName>次(向下取整)，每次命中造成<physicalDamage>{{ damageperhit }}物理伤害</physicalDamage> + <magicDamage>{{ passive_damage_increase }}魔法伤害</magicDamage>。{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "冷却时间",
@@ -521,11 +521,11 @@
                     },
                     "maxrank": 3,
                     "cooldown": [
-                        120,
-                        110,
-                        100
+                        140,
+                        130,
+                        120
                     ],
-                    "cooldownBurn": "120/110/100",
+                    "cooldownBurn": "140/130/120",
                     "cost": [
                         100,
                         100,

@@ -599,6 +599,137 @@
             ],
             "skinAugments": null,
             "description": "拉莫斯曾被认为是“太空计划”的核心资产，用于改造新行星——直到他挖出了一个没有人预料到的紫色惊喜。现在，他已经变成了完全不同的一种事物，他的能量经由邪恶侵略者——木灵们——之手被转而用于邪恶的目的。"
+        },
+        {
+            "id": 33026,
+            "isBase": false,
+            "name": "榴莲龙龟 拉莫斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/33/33026.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/33/33026.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/33/33026.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rammus/skins/Skin26/RammusLoadScreen_26.SKINS_Rammus_Skin26.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/33/33026.png",
+            "chromas": [
+                {
+                    "id": 33027,
+                    "name": "榴莲龙龟 拉莫斯 (Ruby)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/33/33027.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": ""
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 33028,
+                    "name": "榴莲龙龟 拉莫斯 (Citrine)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/33/33028.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 33029,
+                    "name": "榴莲龙龟 拉莫斯 (Aquamarine)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/33/33029.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 33030,
+                    "name": "榴莲龙龟 拉莫斯 (Rose Quartz)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/33/33030.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 33031,
+                    "name": "榴莲龙龟 拉莫斯 (Tanzanite)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/33/33031.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 33032,
+                    "name": "榴莲龙龟 拉莫斯 (Obsidian)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/33/33032.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 33033,
+                    "name": "榴莲龙龟 拉莫斯 (Jasper)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/33/33033.png",
+                    "colors": [
+                        "#9F4A25",
+                        "#9F4A25"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 33034,
+                    "name": "榴莲龙龟 拉莫斯 (Pearl)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/33/33034.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 203
+                }
+            ],
+            "skinAugments": null,
+            "description": null
         }
     ],
     "passive": {

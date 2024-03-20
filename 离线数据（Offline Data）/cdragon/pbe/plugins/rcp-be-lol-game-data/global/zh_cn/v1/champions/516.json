@@ -355,6 +355,137 @@
             ],
             "skinAugments": null,
             "description": "奥恩是贝斯之前的高潮旋律、各种原初乐器的创造者、一位名副其实的律动之神，在将律动传播到银河系的过程中一直发挥着重要的作用。但他对因此获得的名人地位并不感兴趣，而是将自己隐匿在一个由各种粘液旋转舞池组成的星球上以专注于他的工作。如果奥恩要来参加派对，那么这个派对最好是传说级的。"
+        },
+        {
+            "id": 516020,
+            "isBase": false,
+            "name": "嘟！嘟 ！奥恩",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/516/516020.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/516/516020.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/516/516020.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ornn/Skins/Skin20/OrnnLoadScreen_20.SKINS_Ornn_Skin20.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/516/516020.png",
+            "chromas": [
+                {
+                    "id": 516021,
+                    "name": "嘟！嘟 ！奥恩 (Ruby)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/516/516021.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": ""
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 516022,
+                    "name": "嘟！嘟 ！奥恩 (Rose Quartz)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/516/516022.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 516023,
+                    "name": "嘟！嘟 ！奥恩 (Catseye)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/516/516023.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 516024,
+                    "name": "嘟！嘟 ！奥恩 (Emerald)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/516/516024.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 516025,
+                    "name": "嘟！嘟 ！奥恩 (Citrine)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/516/516025.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 516026,
+                    "name": "嘟！嘟 ！奥恩 (Pearl)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/516/516026.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 516027,
+                    "name": "嘟！嘟 ！奥恩 (Amethyst)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/516/516027.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 516028,
+                    "name": "嘟！嘟 ！奥恩 (Aquamarine)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/516/516028.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 61
+                }
+            ],
+            "skinAugments": null,
+            "description": null
         }
     ],
     "passive": {

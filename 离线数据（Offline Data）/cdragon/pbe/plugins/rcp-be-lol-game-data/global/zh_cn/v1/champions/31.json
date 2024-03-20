@@ -622,6 +622,122 @@
             ],
             "skinAugments": null,
             "description": "作为魔腾设计的一件活体武器，科加斯旨在净化绝息者的世界。它由来自教众地穴的神圣宝物赋予了力量，一直处于休眠状态，而魔腾则将囚犯们喂给它以增强它的力量。尽管它的创造者是有意为之，但一旦它完全苏醒，就没有什么能满足它的饥饿感了。"
+        },
+        {
+            "id": 31032,
+            "isBase": false,
+            "name": "鳄加斯",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/31/31032.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/31/31032.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/31/31032.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Chogath/skins/Skin32/ChogathLoadScreen_32.SKINS_Chogath_Skin32.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31032.png",
+            "chromas": [
+                {
+                    "id": 31033,
+                    "name": "鳄加斯 (Ruby)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31033.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 31034,
+                    "name": "鳄加斯 (Aquamarine)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31034.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 31035,
+                    "name": "鳄加斯 (Rose Quartz)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31035.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 31036,
+                    "name": "鳄加斯 (Tanzanite)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31036.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 31037,
+                    "name": "鳄加斯 (Peridot)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31037.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 31038,
+                    "name": "鳄加斯 (Catseye)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31038.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 31039,
+                    "name": "鳄加斯 (Obsidian)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31039.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 31040,
+                    "name": "鳄加斯 (Pearl)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31040.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 61
+                }
+            ],
+            "skinAugments": null,
+            "description": null
         }
     ],
     "passive": {

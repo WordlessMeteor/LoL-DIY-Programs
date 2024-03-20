@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.5.1",
+    "version": "14.6.1",
     "data": {
         "Chogath": {
             "id": "Chogath",
@@ -285,13 +285,13 @@
                     },
                     "maxrank": 5,
                     "cooldown": [
-                        13,
-                        12,
                         11,
+                        10.5,
                         10,
+                        9.5,
                         9
                     ],
-                    "cooldownBurn": "13/12/11/10/9",
+                    "cooldownBurn": "11/10.5/10/9.5/9",
                     "cost": [
                         70,
                         75,

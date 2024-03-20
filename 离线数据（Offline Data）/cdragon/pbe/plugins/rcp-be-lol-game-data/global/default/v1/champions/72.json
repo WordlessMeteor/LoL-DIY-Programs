@@ -1,18 +1,18 @@
 {
     "id": 72,
-    "name": "Skarner",
+    "name": "Skarner_Rework",
     "alias": "Skarner",
     "title": "the Crystal Vanguard",
-    "shortBio": "Skarner is an immense crystalline scorpion from a hidden valley in Shurima. Part of the ancient Brackern race, Skarner and his kin are known for their great wisdom and deep connection to the land, as their souls are fused with powerful life crystals which hold the living thoughts and memories of their ancestors. In an age long past, the Brackern entered hibernation to avoid untold magical destruction, but recent, threatening events have roused Skarner. As the only Brackern awake, he strives to protect his kind from those who seek to harm them.",
+    "shortBio": "Skarner_Rework is an immense crystalline scorpion from a hidden valley in Shurima. Part of the ancient Brackern race, Skarner_Rework and his kin are known for their great wisdom and deep connection to the land, as their souls are fused with powerful life crystals which hold the living thoughts and memories of their ancestors. In an age long past, the Brackern entered hibernation to avoid untold magical destruction, but recent, threatening events have roused Skarner_Rework. As the only Brackern awake, he strives to protect his kind from those who seek to harm them.",
     "tacticalInfo": {
-        "style": 5,
+        "style": 1,
         "difficulty": 1,
         "damageType": "kMixed"
     },
     "playstyleInfo": {
         "damage": 1,
-        "durability": 3,
-        "crowdControl": 3,
+        "durability": 1,
+        "crowdControl": 1,
         "mobility": 1,
         "utility": 1
     },
@@ -29,11 +29,11 @@
         {
             "id": 72000,
             "isBase": true,
-            "name": "Skarner",
+            "name": "Skarner_Rework",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/72/72000.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/72/72000.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/72/72000.jpg",
-            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Base/SkarnerLoadScreen.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Base/Skarner_ReworkLoadScreen.Skarner_Rework.jpg",
             "skinType": "",
             "rarity": "kNoRarity",
             "isLegacy": false,
@@ -55,7 +55,7 @@
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/72/72001.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/72/72001.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/72/72001.jpg",
-            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin01/SkarnerLoadScreen_1.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin01/Skarner_ReworkLoadScreen_1.Skarner_Rework.jpg",
             "skinType": "",
             "rarity": "kNoRarity",
             "isLegacy": false,
@@ -81,7 +81,7 @@
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/72/72002.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/72/72002.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/72/72002.jpg",
-            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin02/SkarnerLoadScreen_2.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin02/Skarner_ReworkLoadScreen_2.Skarner_Rework.jpg",
             "skinType": "",
             "rarity": "kNoRarity",
             "isLegacy": false,
@@ -92,13 +92,9 @@
             "emblems": null,
             "regionRarityId": 0,
             "rarityGemPath": null,
-            "skinLines": [
-                {
-                    "id": 167
-                }
-            ],
+            "skinLines": null,
             "skinAugments": null,
-            "description": "Once the guardian of an ancient civilization, Skarner was forced to watch it collapse before his eyes. He clings to a desperate hope that one day he and his companion can rebuild what was ripped away. Until then, he vows to remain vigilant, deterring any trespassers who dare threaten the ruins and the magic that pulses through them."
+            "description": null
         },
         {
             "id": 72003,
@@ -107,8 +103,7 @@
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/72/72003.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/72/72003.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/72/72003.jpg",
-            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin03/SkarnerLoadScreen_3.PIE_C_14_5.jpg",
-            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin03/SkarnerLoadScreen_3_LE.PIE_C_14_5.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin03/Skarner_ReworkLoadScreen_3.Skarner_Rework.jpg",
             "skinType": "",
             "rarity": "kLegendary",
             "isLegacy": false,
@@ -125,7 +120,7 @@
                 }
             ],
             "skinAugments": null,
-            "description": "All Battlecasts fear the Alpha, first of his kind, for his brutal efficiency and cold calculation. Unlike the others, he is plagued by unrelenting voices in his brain, fueling him with an indescribable rage as even his thoughts cannot be trusted. This only ensures that wherever Skarner is deployed, conversion is soon to follow."
+            "description": "An early prototype that would pave the way for the Battlecast machines, Alpha Skarner is possessed of an extreme rage not seen in later models. Perhaps the brain inside it wishes to inflict as much pain as it experiences—or maybe it just likes to kill things."
         },
         {
             "id": 72004,
@@ -134,9 +129,9 @@
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/72/72004.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/72/72004.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/72/72004.jpg",
-            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin04/SkarnerLoadScreen_4.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin04/Skarner_ReworkLoadScreen_4.Skarner_Rework.jpg",
             "skinType": "",
-            "rarity": "kNoRarity",
+            "rarity": "kEpic",
             "isLegacy": false,
             "splashVideoPath": null,
             "collectionSplashVideoPath": null,
@@ -160,7 +155,7 @@
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/72/72005.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/72/72005.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/72/72005.jpg",
-            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin05/SkarnerLoadScreen_5.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin05/Skarner_ReworkLoadScreen_5.Skarner_Rework.jpg",
             "skinType": "",
             "rarity": "kEpic",
             "isLegacy": false,
@@ -286,69 +281,69 @@
         }
     ],
     "passive": {
-        "name": "Crystal Spires",
-        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Passive.png",
+        "name": "Threads of Vibration",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_Passive.Skarner_Rework.png",
         "abilityVideoPath": "champion-abilities/0072/ability_0072_P1.webm",
         "abilityVideoImagePath": "champion-abilities/0072/ability_0072_P1.jpg",
-        "description": "Skarner's presence causes crystals to spawn in set locations around the map. Crystals can be captured by either team by standing close to them. When near crystals his team owns, Skarner gains Move Speed, attack speed, and increased mana regeneration."
+        "description": "Skarner's Attacks, <spellName>Shattered Earth</spellName>, <spellName>Upheaval</spellName>, and <spellName>Impale</spellName>, apply <keywordMajor>Quaking</keywordMajor>. At max stacks of <keywordMajor>Quaking</keywordMajor>, enemies take <magicDamage>max-Health magic damage</magicDamage> over its duration."
     },
     "spells": [
         {
             "spellKey": "q",
-            "name": "Crystal Slash",
-            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Q.png",
+            "name": "Shattered Earth / Upheaval",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_Q.Skarner_Rework.png",
             "abilityVideoPath": "champion-abilities/0072/ability_0072_Q1.webm",
             "abilityVideoImagePath": "champion-abilities/0072/ability_0072_Q1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@s %i:cooldown%",
-            "description": "Skarner lashes out with his claws, dealing physical damage to all nearby enemies and charging himself with Crystal Energy for several seconds if a unit is struck. If he casts Crystal Slash again while powered by Crystal Energy, he deals bonus magic damage.",
-            "dynamicDescription": "Skarner slashes wildly, dealing <physicalDamage>@QDamageCalc@ plus @QBonusDamage@% max Health physical damage</physicalDamage> to nearby enemies. If at least one enemy was hit, Skarner becomes <keywordMajor>charged</keywordMajor> for @Effect2Amount@ seconds. While <keywordMajor>charged</keywordMajor>, this Ability deals an additional <magicDamage>@BonusQDamageCalc@ plus @QBonusDamage@% max Health magic damage</magicDamage>.<br><br><rules>Attacks against champions reduce this Ability's Cooldown by @TooltipChampionCDReducer@ second.<br>Attacks against non-structures reduce it by @TooltipMinionCDReducer@ seconds.</rules>@SpellModifierDescriptionAppend@",
+            "description": "Skarner rips a boulder from the earth that empowers his attacks and can be thrown as a powerful projectile.",
+            "dynamicDescription": "Skarner rips a boulder from the ground, empowering his next 3 Attacks with <attackSpeed>@AttackSpeed*100@% Attack Speed</attackSpeed> and dealing <physicalDamage>@AbilityDamage@ physical damage</physicalDamage> to surrounding enemies. His final Attack will deal an additional <physicalDamage>@MaxHPPercent*100@% max-Health physical damage</physicalDamage> and <status>Slow</status> affected foes by @SlowPercent*100@% for @SlowDuration@s.<br><br><recast>Recast:</recast> Skarner ends <spellName>Shattered Earth</spellName> and throws his boulder, dealing <physicalDamage>@spell.Skarner_ReworkQ:AbilityDamage@ + @spell.Skarner_ReworkQ:MaxHPPercent*100@% max-Health physical damage</physicalDamage>, and additionally <status>Slowing</status> the first enemy hit—and any other surrounding enemies—by @spell.Skarner_ReworkQ:SlowPercent*100@% for @spell.Skarner_ReworkQ:SlowDuration@s.@SpellModifierDescriptionAppend@",
             "range": [
-                350.0000,
-                350.0000,
-                350.0000,
-                350.0000,
-                350.0000,
-                350.0000
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000,
+                400.0000
             ],
             "costCoefficients": [
-                10.0000,
-                10.0000,
-                10.0000,
-                10.0000,
-                10.0000,
-                10.0000
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000,
+                40.0000
             ],
             "cooldownCoefficients": [
-                3.5000,
-                3.2500,
-                3.0000,
-                2.7500,
-                2.5000,
-                2.5000
+                13.0000,
+                11.5000,
+                10.0000,
+                8.5000,
+                7.0000,
+                7.0000
             ],
             "coefficients": {
-                "coefficient1": 0.3000,
+                "coefficient1": 0.0000,
                 "coefficient2": 0.0000
             },
             "effectAmounts": {
                 "Effect1Amount": [
-                    30.0000,
-                    33.0000,
-                    36.0000,
-                    39.0000,
-                    42.0000,
-                    45.0000,
-                    48.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect2Amount": [
-                    5.0000,
-                    5.0000,
-                    5.0000,
-                    5.0000,
-                    5.0000,
-                    5.0000,
-                    5.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect3Amount": [
                     0.0000,
@@ -445,87 +440,87 @@
         },
         {
             "spellKey": "w",
-            "name": "Crystalline Exoskeleton",
-            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_W.png",
+            "name": "Seismic Bastion",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_W.Skarner_Rework.png",
             "abilityVideoPath": "champion-abilities/0072/ability_0072_W1.webm",
             "abilityVideoImagePath": "champion-abilities/0072/ability_0072_W1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@s %i:cooldown%",
-            "description": "Skarner gains a shield and has increased Move Speed while the shield persists.",
-            "dynamicDescription": "Skarner gains <shield>@TotalShield@ Shield</shield> for @Effect4Amount@ seconds. While active, Skarner gains <speed>@Effect3Amount@% Move Speed</speed>, increasing up to <speed>@Effect5Amount@% Move Speed</speed> over 3 seconds.@SpellModifierDescriptionAppend@",
+            "description": "Skarner gains a shield and creates an earthquake whose shockwave damages and slows foes.",
+            "dynamicDescription": "Skarner gains <shield>@InitialShield@ Shield</shield> and triggers an earthquake that deals <magicDamage>@Damage@ magic damage</magicDamage> and <status>Slows</status> nearby enemies by @SlowEffect*-100@% for @SlowDuration@s.@SpellModifierDescriptionAppend@",
             "range": [
-                1.0000,
-                1.0000,
-                1.0000,
-                1.0000,
-                1.0000,
-                1.0000
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000,
+                650.0000
             ],
             "costCoefficients": [
-                60.0000,
-                60.0000,
-                60.0000,
-                60.0000,
-                60.0000,
-                60.0000
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000,
+                30.0000
             ],
             "cooldownCoefficients": [
-                13.0000,
-                12.5000,
-                12.0000,
-                11.5000,
-                11.0000,
-                11.0000
+                10.0000,
+                9.0000,
+                8.0000,
+                7.0000,
+                6.0000,
+                6.0000
             ],
             "coefficients": {
-                "coefficient1": 0.8000,
+                "coefficient1": 0.0000,
                 "coefficient2": 0.0000
             },
             "effectAmounts": {
                 "Effect1Amount": [
-                    8.0000,
-                    9.0000,
-                    10.0000,
-                    11.0000,
-                    12.0000,
-                    13.0000,
-                    14.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect2Amount": [
-                    25.0000,
-                    30.0000,
-                    35.0000,
-                    40.0000,
-                    45.0000,
-                    50.0000,
-                    55.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect3Amount": [
-                    6.0000,
-                    8.0000,
-                    10.0000,
-                    12.0000,
-                    14.0000,
-                    16.0000,
-                    18.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect4Amount": [
-                    6.0000,
-                    6.0000,
-                    6.0000,
-                    6.0000,
-                    6.0000,
-                    6.0000,
-                    6.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect5Amount": [
-                    12.0000,
-                    16.0000,
-                    20.0000,
-                    24.0000,
-                    28.0000,
-                    32.0000,
-                    36.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect6Amount": [
                     0.0000,
@@ -595,114 +590,114 @@
         },
         {
             "spellKey": "e",
-            "name": "Fracture",
-            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_E.png",
+            "name": "Ixtal's Impact",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_E.Skarner_Rework.png",
             "abilityVideoPath": "champion-abilities/0072/ability_0072_E1.webm",
             "abilityVideoImagePath": "champion-abilities/0072/ability_0072_E1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@s %i:cooldown%",
-            "description": "Skarner summons a blast of crystalline energy which deals damage to enemies struck and slows them. Basic attacking these enemies within a short window will stun them.",
-            "dynamicDescription": "Skarner blasts crystalline energy, dealing <magicDamage>@TotalMagicDamage@ magic damage</magicDamage>, <status>Slowing</status> by @Effect8Amount@% for @Effect7Amount@ seconds, and marking for @Effect6Amount@ seconds. Skarner's next Attack against a marked enemy consumes it to deal an additional <physicalDamage>@Effect2Amount@ physical damage</physicalDamage> and <status>Stun</status> for @StunDuration@ seconds.<br><br><rules>Consuming this Ability's mark or using <spellName>Impale</spellName> reduces this Ability's Cooldown by the duration of the crowd control.</rules>@SpellModifierDescriptionAppend@",
+            "description": "Skarner charges forward and passes through terrain. If he collides with a champion or large monster, he'll slam them into the next wall he hits to damage and stun them.",
+            "dynamicDescription": "Skarner charges forward, steering toward the chosen direction and ignoring terrain. If he runs into a Champion or large monster, Skarner drags them along for the rest of his charge.<br><br>Colliding into a wall with an enemy in tow deals <physicalDamage>@PinDamage@ physical damage</physicalDamage> to the enemy and <status>Stuns</status> them for @StunDuration@s.<br><br>Skarner can <recast>Recast</recast> this Ability to end his charge early.<br><br><rules>Successful wall collisions reduce this Ability's cooldown to @RefundPercent*100@%.</rules>@SpellModifierDescriptionAppend@",
             "range": [
-                980.0000,
-                980.0000,
-                980.0000,
-                980.0000,
-                980.0000,
-                980.0000
+                1700.0000,
+                1700.0000,
+                1700.0000,
+                1700.0000,
+                1700.0000,
+                1700.0000
             ],
             "costCoefficients": [
-                55.0000,
-                55.0000,
-                55.0000,
-                55.0000,
-                55.0000,
-                55.0000
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000
             ],
             "cooldownCoefficients": [
-                14.0000,
-                13.5000,
-                13.0000,
-                12.5000,
-                12.0000,
-                12.0000
+                24.0000,
+                22.0000,
+                20.0000,
+                18.0000,
+                16.0000,
+                16.0000
             ],
             "coefficients": {
-                "coefficient1": 0.2000,
-                "coefficient2": 0.6000
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
             },
             "effectAmounts": {
                 "Effect1Amount": [
-                    40.0000,
-                    40.0000,
-                    65.0000,
-                    90.0000,
-                    115.0000,
-                    140.0000,
-                    165.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect2Amount": [
-                    30.0000,
-                    30.0000,
-                    50.0000,
-                    70.0000,
-                    90.0000,
-                    110.0000,
-                    130.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect3Amount": [
-                    1.2500,
-                    1.2500,
-                    1.2500,
-                    1.2500,
-                    1.2500,
-                    1.2500,
-                    1.2500
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect4Amount": [
-                    50.0000,
-                    50.0000,
-                    50.0000,
-                    50.0000,
-                    50.0000,
-                    50.0000,
-                    50.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect5Amount": [
-                    6.0000,
-                    6.0000,
-                    6.0000,
-                    6.0000,
-                    6.0000,
-                    6.0000,
-                    6.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect6Amount": [
-                    5.0000,
-                    5.0000,
-                    5.0000,
-                    5.0000,
-                    5.0000,
-                    5.0000,
-                    5.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect7Amount": [
-                    2.5000,
-                    2.5000,
-                    2.5000,
-                    2.5000,
-                    2.5000,
-                    2.5000,
-                    2.5000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect8Amount": [
-                    25.0000,
-                    30.0000,
-                    35.0000,
-                    40.0000,
-                    45.0000,
-                    50.0000,
-                    55.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect9Amount": [
                     0.0000,
@@ -746,36 +741,36 @@
         {
             "spellKey": "r",
             "name": "Impale",
-            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_R.png",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_R.Skarner_Rework.png",
             "abilityVideoPath": "champion-abilities/0072/ability_0072_R1.webm",
             "abilityVideoImagePath": "champion-abilities/0072/ability_0072_R1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@s %i:cooldown%",
-            "description": "Skarner suppresses an enemy champion and deals damage to it. During this time, Skarner can move freely and will drag his helpless victim around with him. When the effect ends, the target will be dealt additional damage.",
-            "dynamicDescription": "Skarner impales an enemy champion, <status>Suppressing</status> them for @RDuration@ seconds, dealing <physicalDamage>@PhysicalDamage@ physical damage</physicalDamage> and <magicDamage>@MagicDamage@ magic damage</magicDamage> at the beginning and end of the duration. While <status>Suppressing</status>, Skarner can move and will drag his helpless victim around with him.@SpellModifierDescriptionAppend@",
+            "description": "Skarner's tails lash forward to suppress enemy champions. Once suppressed, the victims will be dragged along by Skarner as he moves around.",
+            "dynamicDescription": "Skarner's tails lash forward, dealing <magicDamage>@Damage@ magic damage</magicDamage> and <status>Suppressing</status> the first 3 Champions he hits for @Duration@s. Those hit are dragged along by Skarner for the duration of this Ability.<br><br>If Skarner hits at least one Champion he gains <speed>@SpeedBoostAmount*100@% Move Speed</speed> for @SpeedBoostDuration@ seconds.<br><br>If <spellName>Shattered Earth</spellName> is active, Skarner will cast <spellName>Upheaval</spellName> first.@SpellModifierDescriptionAppend@",
             "range": [
-                350.0000,
-                350.0000,
-                350.0000,
-                350.0000,
-                350.0000,
-                350.0000
+                625.0000,
+                625.0000,
+                625.0000,
+                625.0000,
+                625.0000,
+                625.0000
             ],
             "costCoefficients": [
                 100.0000,
                 100.0000,
                 100.0000,
-                0.0000,
-                0.0000,
-                0.0000
+                100.0000,
+                100.0000,
+                100.0000
             ],
             "cooldownCoefficients": [
                 120.0000,
-                100.0000,
-                80.0000,
-                120.0000,
-                120.0000,
-                110.0000
+                105.0000,
+                90.0000,
+                90.0000,
+                90.0000,
+                90.0000
             ],
             "coefficients": {
                 "coefficient1": 0.0000,

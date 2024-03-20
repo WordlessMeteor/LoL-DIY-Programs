@@ -917,7 +917,7 @@
             "abilityVideoImagePath": "champion-abilities/0107/ability_0107_Q1.jpg",
             "cost": "<font color='#EDDA74'>Generates 1 Ferocity</font>",
             "cooldown": "@AmmoRechargeTime@s %i:cooldown%",
-            "description": "Rengar's next attack brutally stabs his target for bonus damage.<br><br>Ferocity effect: deals increased damage and grants Attack Speed.",
+            "description": "Rengar's next Attack brutally stabs his target for bonus damage.<br><br>Ferocity effect: deals increased damage and grants Attack Speed.",
             "dynamicDescription": "Rengar's next 2 Attacks gain <attackSpeed>@Effect5Amount@% Attack Speed</attackSpeed>. The first Attack critically strikes for <physicalDamage>@F4@ (%i:scaleAD%%i:scaleCrit%) physical damage</physicalDamage>.<br><br><keywordMajor>Max Ferocity:</keywordMajor> The first Attack critically strikes for <physicalDamage>@F5@ (%i:scaleLevel%%i:scaleAD%%i:scaleCrit%) physical damage</physicalDamage> and grants Rengar <attackSpeed>@EmpoweredQAS@ Attack Speed</attackSpeed> for @Effect3Amount@ seconds.@SpellModifierDescriptionAppend@",
             "range": [
                 450.0000,
@@ -1218,7 +1218,7 @@
             "cost": "<font color='#EDDA74'>Generates 1 Ferocity</font>",
             "cooldown": "@AmmoRechargeTime@s %i:cooldown%",
             "description": "Rengar throws a bola, slowing the first target hit for a short duration.<br><br>Ferocity effect: roots the target.",
-            "dynamicDescription": "Rengar throws a bola, dealing <physicalDamage>@TotalDamage@ physical damage</physicalDamage> to the first enemy hit, Revealing and <status>Slowing</status> them by @Effect2Amount@% for @Effect3Amount@ seconds.<br><br><keywordMajor>Max Ferocity:</keywordMajor> Deals <physicalDamage>@TotalEmpoweredDamage@ physical damage</physicalDamage> and <status>Roots</status> for @Effect4Amount@ seconds.@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "Rengar throws a bola, dealing <physicalDamage>@TotalDamage@ physical damage</physicalDamage> to the first enemy hit, revealing and <status>Slowing</status> them by @Effect2Amount@% for @Effect3Amount@ seconds.<br><br><keywordMajor>Max Ferocity:</keywordMajor> Deals <physicalDamage>@TotalEmpoweredDamage@ physical damage</physicalDamage> and <status>Roots</status> for @Effect4Amount@ seconds.@SpellModifierDescriptionAppend@",
             "range": [
                 1000.0000,
                 1000.0000,
@@ -1368,7 +1368,7 @@
             "cost": "No Cost",
             "cooldown": "@Cooldown@s %i:cooldown%",
             "description": "Rengar's predatory instincts take over, <font color='#cd90ee'>Camouflaging</font> him and revealing the nearest enemy champion in a large radius around him. During Thrill of the Hunt, Rengar gains Move Speed and he can leap to the tracked enemy without being in brush, reducing their armor.",
-            "dynamicDescription": "<spellPassive>Passive:</spellPassive> Rengar will also leap attack when <keywordStealth>Camouflaged</keywordStealth>.<br><br><spellActive>Active:</spellActive> Rengar gains <speed>@StealthMS@% Move Speed</speed> and <keywordStealth>True Sight</keywordStealth> in a small area around the nearest enemy champion for @StealthDuration@ seconds.<br><br>After @FadeTime@ seconds, Rengar becomes <keywordStealth>Camouflaged</keywordStealth> and can leap without being in Brush. Leaping to the nearest champion deals an additional <physicalDamage>@BonusDamage@ physical damage</physicalDamage>, shreds <scaleArmor>@ArmorShred@ Armor</scaleArmor> for @ArmorShredDuration@ seconds, and ends this Ability.@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "<spellPassive>Passive:</spellPassive> Rengar will also leap Attack when <keywordStealth>Camouflaged</keywordStealth>.<br><br><spellActive>Active:</spellActive> Rengar gains <speed>@StealthMS@% Move Speed</speed> and <keywordStealth>True Sight</keywordStealth> in a small area around the nearest enemy champion for @StealthDuration@ seconds.<br><br>After @FadeTime@ seconds, Rengar becomes <keywordStealth>Camouflaged</keywordStealth> and can leap without being in Brush. Leaping to the nearest champion deals an additional <physicalDamage>@BonusDamage@ physical damage</physicalDamage>, shreds <scaleArmor>@ArmorShred@ Armor</scaleArmor> for @ArmorShredDuration@ seconds, and ends this Ability.@SpellModifierDescriptionAppend@",
             "range": [
                 2500.0000,
                 3000.0000,

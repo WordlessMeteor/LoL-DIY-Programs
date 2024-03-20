@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.5.1",
+    "version": "14.6.1",
     "data": {
         "RekSai": {
             "id": "RekSai",
@@ -522,7 +522,7 @@
                     "resource": "无消耗"
                 },
                 {
-                    "id": "RekSaiRWrapper",
+                    "id": "RekSaiR",
                     "name": "虚空猛冲",
                     "description": "雷克塞可通过伤害目标来将其标记。她可以激活这个技能，暂时变成不可被选取状态，并扑向一个被标记的目标，并基于其已损失生命值造成重度伤害。",
                     "tooltip": "雷克塞将一个在之前的{{ preymarkduration }}秒内被她造成过伤害的敌人选为目标，随后会遁入地下，变得无法被选取。片刻之后，她会不可阻挡地跃向目标，造成<physicalDamage>{{ rbasedamagecalc }}加上{{ percentmissinghealthdamage }}%已损失生命值的物理伤害</physicalDamage>。{{ spellmodifierdescriptionappend }}",
@@ -534,7 +534,7 @@
                         ],
                         "effect": [
                             "{{ rbasedamage }} -> {{ rbasedamageNL }}",
-                            "{{ percentmissinghealthdamage }}% -> {{ percentmissinghealthdamageNL }}%",
+                            "{{ percentmissinghealthdamage }} -> {{ percentmissinghealthdamageNL }}",
                             "{{ cooldown }} -> {{ cooldownNL }}"
                         ]
                     },
@@ -628,7 +628,7 @@
                     ],
                     "rangeBurn": "1500",
                     "image": {
-                        "full": "RekSaiRWrapper.png",
+                        "full": "RekSaiR.png",
                         "sprite": "spell10.png",
                         "group": "spell",
                         "x": 144,

@@ -1041,6 +1041,30 @@
             "name": "Spinning Axe"
         },
         {
+            "id": 1577745752,
+            "name": "<font color='#33AA33'>Elusive</font> <font color='#FFDD33'>V</font>"
+        },
+        {
+            "id": 1211327836,
+            "name": "<font color='#FFFF55'>Scuttle Speed</font>"
+        },
+        {
+            "id": 2215962665,
+            "name": "Herald Charge"
+        },
+        {
+            "id": 4273625465,
+            "name": "The Eye of Baron"
+        },
+        {
+            "id": 1153266467,
+            "name": "Warped Armor"
+        },
+        {
+            "id": 1048355259,
+            "name": "The Eye of Baron"
+        },
+        {
             "id": 3101828379,
             "name": "Primed"
         },
@@ -8081,6 +8105,10 @@
             "name": "Burning"
         },
         {
+            "id": 1914173019,
+            "name": "Last-hit Streak"
+        },
+        {
             "id": 1257049313,
             "name": "Stacked Deck"
         },
@@ -8167,6 +8195,14 @@
         {
             "id": 3779728783,
             "name": "Monstrous Toughness"
+        },
+        {
+            "id": 3062212232,
+            "name": "Little Legend Master!"
+        },
+        {
+            "id": 3089507753,
+            "name": "Rift Herald Rodeo"
         },
         {
             "id": 4088223293,

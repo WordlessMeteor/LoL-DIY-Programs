@@ -917,6 +917,137 @@
             ],
             "skinAugments": null,
             "description": "开头是这样的：一股有害之风吹过沙漠，已脱水的老鼠们出现在街上，在烈日下腐烂。然后旅行承办人登场了。没有人知道他是谁（或什么职业），也不知道他来自哪里……但似乎即使是死神也对硫磺铁路之王不满。又一个先驱者登场了。"
+        },
+        {
+            "id": 29055,
+            "isBase": false,
+            "name": "奶酪首领 图奇",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/29/29055.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/29/29055.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/29/29055.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Twitch/Skins/Skin55/TwitchLoadScreen_55.SKINS_Twitch_Skin55.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29055.png",
+            "chromas": [
+                {
+                    "id": 29056,
+                    "name": "奶酪首领 图奇 (Ruby)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29056.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": ""
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 29057,
+                    "name": "奶酪首领 图奇 (Aquamarine)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29057.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 29058,
+                    "name": "奶酪首领 图奇 (Rose Quartz)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29058.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 29059,
+                    "name": "奶酪首领 图奇 (Tanzanite)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29059.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 29060,
+                    "name": "奶酪首领 图奇 (Peridot)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29060.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 29061,
+                    "name": "奶酪首领 图奇 (Pearl)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29061.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 29062,
+                    "name": "奶酪首领 图奇 (Meteorite)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29062.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 29063,
+                    "name": "奶酪首领 图奇 (Rainbow)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29063.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 203
+                }
+            ],
+            "skinAugments": null,
+            "description": null
         }
     ],
     "passive": {

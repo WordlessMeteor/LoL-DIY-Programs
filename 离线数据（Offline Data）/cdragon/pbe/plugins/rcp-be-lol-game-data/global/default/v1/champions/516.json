@@ -346,6 +346,137 @@
             ],
             "skinAugments": null,
             "description": "The drop before the bass, the creator of the primordial instruments, a literal God of Groove, Ornn has been instrumental in spreading The Groove through the Galaxy. But he's not a fan of the celebrity status it's earned him, hermiting himself away on a planet of whirling pools of goo to focus on his work. If Ornn is coming to party, it better be legendary."
+        },
+        {
+            "id": 516020,
+            "isBase": false,
+            "name": "Choo-Choo Ornn",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/516/516020.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/516/516020.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/516/516020.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Ornn/Skins/Skin20/OrnnLoadScreen_20.SKINS_Ornn_Skin20.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/516/516020.png",
+            "chromas": [
+                {
+                    "id": 516021,
+                    "name": "Choo-Choo Ornn",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/516/516021.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2024."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 516022,
+                    "name": "Choo-Choo Ornn",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/516/516022.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 516023,
+                    "name": "Choo-Choo Ornn",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/516/516023.png",
+                    "colors": [
+                        "#FFEE59",
+                        "#FFEE59"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 516024,
+                    "name": "Choo-Choo Ornn",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/516/516024.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 516025,
+                    "name": "Choo-Choo Ornn",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/516/516025.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 516026,
+                    "name": "Choo-Choo Ornn",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/516/516026.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 516027,
+                    "name": "Choo-Choo Ornn",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/516/516027.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 516028,
+                    "name": "Choo-Choo Ornn",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/516/516028.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 61
+                }
+            ],
+            "skinAugments": null,
+            "description": "With a toot of his whistle, Ornn calls forth a mighty iron beast, roaring with his forge's fury. As his hammer pounds out a rhythm like pistons on the track, a soot-soaked grin unfurls beneath his smoldering beard. One imagines he must feel the thrill of creation, the joy of a perfect machine made manifest!"
         }
     ],
     "passive": {

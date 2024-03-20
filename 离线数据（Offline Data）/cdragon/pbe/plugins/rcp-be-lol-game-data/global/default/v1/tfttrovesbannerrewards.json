@@ -222,7 +222,7 @@
         "name": "Power Chord Ao Shin",
         "starLevel": 1,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band1_Tier1.LL_AoShin_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band1_Tier1.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -231,7 +231,7 @@
         "name": "Power Chord Ao Shin",
         "starLevel": 2,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band1_Tier2.LL_AoShin_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band1_Tier2.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -240,7 +240,7 @@
         "name": "Power Chord Ao Shin",
         "starLevel": 3,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band1_Tier3.LL_AoShin_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band1_Tier3.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -249,7 +249,7 @@
         "name": "Pentakill Ao Shin",
         "starLevel": 1,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band2_Tier1.LL_AoShin_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band2_Tier1.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -258,7 +258,7 @@
         "name": "Pentakill Ao Shin",
         "starLevel": 2,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band2_Tier2.LL_AoShin_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band2_Tier2.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -267,7 +267,7 @@
         "name": "Pentakill Ao Shin",
         "starLevel": 3,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band2_Tier3.LL_AoShin_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band2_Tier3.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -276,7 +276,7 @@
         "name": "Disco Ao Shin",
         "starLevel": 1,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band3_Tier1.LL_AoShin_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band3_Tier1.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -285,7 +285,7 @@
         "name": "Disco Ao Shin",
         "starLevel": 2,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band3_Tier2.LL_AoShin_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band3_Tier2.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -294,7 +294,7 @@
         "name": "Disco Ao Shin",
         "starLevel": 3,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band3_Tier3.LL_AoShin_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band3_Tier3.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -303,7 +303,7 @@
         "name": "Mixmaster Ao Shin",
         "starLevel": 1,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band4_Tier1.LL_AoShin_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band4_Tier1.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -312,7 +312,7 @@
         "name": "Mixmaster Ao Shin",
         "starLevel": 2,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band4_Tier2.LL_AoShin_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band4_Tier2.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -321,7 +321,7 @@
         "name": "Mixmaster Ao Shin",
         "starLevel": 3,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band4_Tier3.LL_AoShin_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band4_Tier3.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -330,7 +330,7 @@
         "name": "Emo Ao Shin",
         "starLevel": 1,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band5_Tier1.LL_AoShin_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band5_Tier1.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -339,7 +339,7 @@
         "name": "Emo Ao Shin",
         "starLevel": 2,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band5_Tier2.LL_AoShin_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band5_Tier2.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -348,7 +348,7 @@
         "name": "Emo Ao Shin",
         "starLevel": 3,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band5_Tier3.LL_AoShin_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/AoShin/Loot_AoShin_Band_Band5_Tier3.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -1086,7 +1086,7 @@
         "name": "Triumphant Bellswayer",
         "starLevel": 1,
         "rarity": "Legendary",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Bellswayer/Loot_Bellswayer_Set9RankedRewards_Triumph_Tier1.LL_Bellswayer_Set9RankedRewards.dds",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Bellswayer/Loot_Bellswayer_Set9RankedRewards_Triumph_Tier1.dds",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -1095,7 +1095,7 @@
         "name": "Victorious Bellswayer",
         "starLevel": 1,
         "rarity": "Legendary",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Bellswayer/Loot_Bellswayer_Set9RankedRewards_Victory_Tier1.LL_Bellswayer_Set9RankedRewards.dds",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Bellswayer/Loot_Bellswayer_Set9RankedRewards_Victory_Tier1.dds",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -2076,8 +2076,8 @@
         "name": "Chibi HEARTSTEEL Sett",
         "starLevel": 1,
         "rarity": "Mythic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/ChibiSett/Loot_ChibiSett_MusicBeat_MusicBeat1_Tier1.CHIBI_Sett_MusicBeat.png",
-        "highlightRewardAssetPath": "/lol-game-data/assets/ASSETS/UX/TFT/Troves_BannerContent/ChibiSett/TFT-TrovesCelebration-ChaseContent-ChibiHSSett.13_23_TR_PBJSett.png"
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/ChibiSett/Loot_ChibiSett_MusicBeat_MusicBeat1_Tier1.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/ASSETS/UX/TFT/Troves_BannerContent/ChibiSett/TFT-TrovesCelebration-ChaseContent-ChibiHSSett.png"
     },
     {
         "itemInstanceId": "d3963d44-5013-4ba4-b8f5-034f66386c0d",
@@ -2229,7 +2229,7 @@
         "name": "Disco Choncc",
         "starLevel": 1,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band2_Tier1.LL_Choncc_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band2_Tier1.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -2238,7 +2238,7 @@
         "name": "Disco Choncc",
         "starLevel": 2,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band2_Tier2.LL_Choncc_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band2_Tier2.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -2247,7 +2247,7 @@
         "name": "Disco Choncc",
         "starLevel": 3,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band2_Tier3.LL_Choncc_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band2_Tier3.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -2256,7 +2256,7 @@
         "name": "Mixmaster Choncc",
         "starLevel": 1,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band3_Tier1.LL_Choncc_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band3_Tier1.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -2265,7 +2265,7 @@
         "name": "Mixmaster Choncc",
         "starLevel": 2,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band3_Tier2.LL_Choncc_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band3_Tier2.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -2274,7 +2274,7 @@
         "name": "Mixmaster Choncc",
         "starLevel": 3,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band3_Tier3.LL_Choncc_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band3_Tier3.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -2283,7 +2283,7 @@
         "name": "Pentakill Choncc",
         "starLevel": 1,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band4_Tier1.LL_Choncc_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band4_Tier1.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -2292,7 +2292,7 @@
         "name": "Pentakill Choncc",
         "starLevel": 2,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band4_Tier2.LL_Choncc_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band4_Tier2.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -2301,7 +2301,7 @@
         "name": "Pentakill Choncc",
         "starLevel": 3,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band4_Tier3.LL_Choncc_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band4_Tier3.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -2310,7 +2310,7 @@
         "name": "Emo Choncc",
         "starLevel": 1,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band5_Tier1.LL_Choncc_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band5_Tier1.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -2319,7 +2319,7 @@
         "name": "Emo Choncc",
         "starLevel": 2,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band5_Tier2.LL_Choncc_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band5_Tier2.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -2328,7 +2328,7 @@
         "name": "Emo Choncc",
         "starLevel": 3,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band5_Tier3.LL_Choncc_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Choncc/Loot_Choncc_Band_Band5_Tier3.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -6180,7 +6180,7 @@
         "name": "DJ Gloop",
         "starLevel": 1,
         "rarity": "Legendary",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Gloop/Loot_Gloop_MusicBeat_MusicBeat1_Tier1.LL_Gloop_MusicBeat.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Gloop/Loot_Gloop_MusicBeat_MusicBeat1_Tier1.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -6189,7 +6189,7 @@
         "name": "DJ Gloop",
         "starLevel": 2,
         "rarity": "Legendary",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Gloop/Loot_Gloop_MusicBeat_MusicBeat1_Tier2.LL_Gloop_MusicBeat.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Gloop/Loot_Gloop_MusicBeat_MusicBeat1_Tier2.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -6198,7 +6198,7 @@
         "name": "DJ Gloop",
         "starLevel": 3,
         "rarity": "Legendary",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Gloop/Loot_Gloop_MusicBeat_MusicBeat1_Tier3.LL_Gloop_MusicBeat.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Gloop/Loot_Gloop_MusicBeat_MusicBeat1_Tier3.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -11634,7 +11634,7 @@
         "name": "Scratch",
         "starLevel": 1,
         "rarity": "Legendary",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Scratch/Loot_Scratch_Base_Classic_Tier1.LL_Scratch_Base.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Scratch/Loot_Scratch_Base_Classic_Tier1.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -12903,7 +12903,7 @@
         "name": "Boba Sprite",
         "starLevel": 1,
         "rarity": "Default",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/TFTAvatar/Loot_TFTAvatar_BubbleTea_BubbleTea_Tier1.LL_TFTAvatar_BubbleTea.dds",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/TFTAvatar/Loot_TFTAvatar_BubbleTea_BubbleTea_Tier1.dds",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -13011,7 +13011,7 @@
         "name": "Superfan Sprite",
         "starLevel": 1,
         "rarity": "Legendary",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/TFTAvatar/Loot_TFTAvatar_SuperFan_SuperFan_Tier1.LL_TFTAvatar_SuperFan.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/TFTAvatar/Loot_TFTAvatar_SuperFan_SuperFan_Tier1.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -13380,7 +13380,7 @@
         "name": "Slow Burn Umbra",
         "starLevel": 1,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band1_Tier1.LL_Umbra_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band1_Tier1.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -13389,7 +13389,7 @@
         "name": "Slow Burn Umbra",
         "starLevel": 2,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band1_Tier2.LL_Umbra_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band1_Tier2.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -13398,7 +13398,7 @@
         "name": "Slow Burn Umbra",
         "starLevel": 3,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band1_Tier3.LL_Umbra_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band1_Tier3.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -13407,7 +13407,7 @@
         "name": "Pentakill Umbra",
         "starLevel": 1,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band2_Tier1.LL_Umbra_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band2_Tier1.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -13416,7 +13416,7 @@
         "name": "Pentakill Umbra",
         "starLevel": 2,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band2_Tier2.LL_Umbra_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band2_Tier2.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -13425,7 +13425,7 @@
         "name": "Pentakill Umbra",
         "starLevel": 3,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band2_Tier3.LL_Umbra_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band2_Tier3.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -13434,7 +13434,7 @@
         "name": "Mixmaster Umbra",
         "starLevel": 1,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band3_Tier1.LL_Umbra_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band3_Tier1.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -13443,7 +13443,7 @@
         "name": "Mixmaster Umbra",
         "starLevel": 2,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band3_Tier2.LL_Umbra_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band3_Tier2.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -13452,7 +13452,7 @@
         "name": "Mixmaster Umbra",
         "starLevel": 3,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band3_Tier3.LL_Umbra_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band3_Tier3.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -13461,7 +13461,7 @@
         "name": "Emo Umbra",
         "starLevel": 1,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band4_Tier1.LL_Umbra_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band4_Tier1.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -13470,7 +13470,7 @@
         "name": "Emo Umbra",
         "starLevel": 2,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band4_Tier2.LL_Umbra_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band4_Tier2.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -13479,7 +13479,7 @@
         "name": "Emo Umbra",
         "starLevel": 3,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band4_Tier3.LL_Umbra_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band4_Tier3.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -13488,7 +13488,7 @@
         "name": "Disco Umbra",
         "starLevel": 1,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band5_Tier1.LL_Umbra_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band5_Tier1.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -13497,7 +13497,7 @@
         "name": "Disco Umbra",
         "starLevel": 2,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band5_Tier2.LL_Umbra_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band5_Tier2.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -13506,7 +13506,7 @@
         "name": "Disco Umbra",
         "starLevel": 3,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band5_Tier3.LL_Umbra_Band.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Umbra/Loot_Umbra_Band_Band5_Tier3.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -14793,7 +14793,7 @@
         "name": "Get Caked",
         "starLevel": 1,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_Get_Caked.TFT_Booms_Scratch_Base.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_Get_Caked.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -15135,7 +15135,7 @@
         "name": "Matcha Blast",
         "starLevel": 1,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Matcha_Blast_T1.TFT_Booms_Set10.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Matcha_Blast_T1.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -15144,7 +15144,7 @@
         "name": "Matcha Blast",
         "starLevel": 2,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Matcha_Blast_T2.TFT_Booms_Set10.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Matcha_Blast_T2.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -15153,7 +15153,7 @@
         "name": "Matcha Blast",
         "starLevel": 3,
         "rarity": "Epic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Matcha_Blast_T3.TFT_Booms_Set10.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Matcha_Blast_T3.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -16160,7 +16160,7 @@
         "itemTypeId": "b26717c6-87ec-43b0-b58f-fabc897c0b27",
         "name": "K/DA Practice Room",
         "rarity": "Default",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_Backstage_Day.TFT_ArenaSkin_Backstage_Day.dds",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_Backstage_Day.dds",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -16168,7 +16168,7 @@
         "itemTypeId": "b26717c6-87ec-43b0-b58f-fabc897c0b27",
         "name": "True Damage Sound Studio",
         "rarity": "Default",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_Backstage_Dusk.TFT_ArenaSkin_Backstage_Day.dds",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_Backstage_Dusk.dds",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -16176,7 +16176,7 @@
         "itemTypeId": "b26717c6-87ec-43b0-b58f-fabc897c0b27",
         "name": "Pentakill: Backstage",
         "rarity": "Default",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_Backstage_Night.TFT_ArenaSkin_Backstage_Day.dds",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_Backstage_Night.dds",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -16576,7 +16576,7 @@
         "itemTypeId": "b26717c6-87ec-43b0-b58f-fabc897c0b27",
         "name": "Neon Stage",
         "rarity": "Legendary",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_NeonDJ.TFT_ArenaSkin_NeonDJ.dds",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_NeonDJ.dds",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -16648,8 +16648,8 @@
         "itemTypeId": "b26717c6-87ec-43b0-b58f-fabc897c0b27",
         "name": "K/DA in the Convergence",
         "rarity": "Mythic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_Set10_KDA.TFT_ArenaSkin_Set10_KDA.dds",
-        "highlightRewardAssetPath": "/lol-game-data/assets/ASSETS/UX/TFT/Troves_BannerContent/KDAConvergence/TFT-TrovesCelebration-ChaseContent-KDAConvergence.13_23_TR_KDAArena.png"
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_Set10_KDA.dds",
+        "highlightRewardAssetPath": "/lol-game-data/assets/ASSETS/UX/TFT/Troves_BannerContent/KDAConvergence/TFT-TrovesCelebration-ChaseContent-KDAConvergence.png"
     },
     {
         "itemInstanceId": "298565be-018c-4400-b3a7-562d37646120",

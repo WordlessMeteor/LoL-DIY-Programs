@@ -337,6 +337,164 @@
             ],
             "skinAugments": null,
             "description": "Hailing from a sister city along with Quinn, Rell is a delinquent loner who does what she wants, when she wants, and avoids making friends by pushing everyone away. In battle she rides atop her mighty steed Sebastien, her simmering rage transforming her into a starlit knight who defends the meek from harm."
+        },
+        {
+            "id": 526020,
+            "isBase": false,
+            "name": "High Noon Rell",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/526/526020.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/526/526020.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/526/526020.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rell/Skins/Skin20/RellLoadScreen_20.SKINS_Rell_Skin20.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Rell/Skins/Skin20/RellLoadScreen_20_LE.SKINS_Rell_Skin20.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526020.png",
+            "chromas": [
+                {
+                    "id": 526021,
+                    "name": "High Noon Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526021.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2024."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 526022,
+                    "name": "High Noon Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526022.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526023,
+                    "name": "High Noon Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526023.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526024,
+                    "name": "High Noon Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526024.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526025,
+                    "name": "High Noon Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526025.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 526026,
+                    "name": "High Noon Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526026.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 526027,
+                    "name": "High Noon Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526027.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526028,
+                    "name": "High Noon Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526028.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526029,
+                    "name": "High Noon Rell",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526029.png",
+                    "colors": [
+                        "#A8BFF1",
+                        "#CD5867"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a Loot exclusive in the 2024 High Noon event."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "Rell ran as her home rotted away at the Fifth Harbinger's hands, but the young Powder Witch ain't running now. She squares her shoulders and swings into the saddle of a horse made of magic, steam, and fire. From its back, she looks down at the haunted gunslinger. “Come on, old man. We got a second chance, I ain't gonna waste it.”"
         }
     ],
     "passive": {

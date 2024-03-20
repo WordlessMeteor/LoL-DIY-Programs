@@ -346,6 +346,164 @@
             ],
             "skinAugments": null,
             "description": "从姊妹城市搬来的不只有奎因，还有芮尔。她是一个我行我素、令人头大的独行者，不想交朋友，所以和所有人都不对付。在战斗中，她骑着她强大的骏马塞巴斯蒂安，她翻腾的怒火将她变成一位星光骑士，保护温顺之人免受伤害。"
+        },
+        {
+            "id": 526020,
+            "isBase": false,
+            "name": "西部魔影 芮尔",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/526/526020.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/526/526020.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/526/526020.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Rell/Skins/Skin20/RellLoadScreen_20.SKINS_Rell_Skin20.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Rell/Skins/Skin20/RellLoadScreen_20_LE.SKINS_Rell_Skin20.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526020.png",
+            "chromas": [
+                {
+                    "id": 526021,
+                    "name": "西部魔影 芮尔 温和",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526021.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在2024年期间作为礼包专属发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 526022,
+                    "name": "西部魔影 芮尔 善良",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526022.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526023,
+                    "name": "西部魔影 芮尔 诚实",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526023.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526024,
+                    "name": "西部魔影 芮尔 恭敬",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526024.png",
+                    "colors": [
+                        "#73BFBE",
+                        "#73BFBE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526025,
+                    "name": "西部魔影 芮尔 忠诚",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526025.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 526026,
+                    "name": "西部魔影 芮尔 节制",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526026.png",
+                    "colors": [
+                        "#2756CE",
+                        "#2756CE"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 526027,
+                    "name": "西部魔影 芮尔 纯洁",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526027.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526028,
+                    "name": "西部魔影 芮尔 豪爽",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526028.png",
+                    "colors": [
+                        "#DF9117",
+                        "#DF9117"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 526029,
+                    "name": "西部魔影 芮尔 正午幻日",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/526/526029.png",
+                    "colors": [
+                        "#A8BFF1",
+                        "#CD5867"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "这个炫彩曾在西部魔影(2024)期间作为战利品专属来发布。"
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 39
+                }
+            ],
+            "skinAugments": null,
+            "description": "芮尔曾在她的家园腐烂于第五先驱者手中时逃跑了，但现在，年轻的火药女巫没有逃跑。她昂首挺胸，骑上一匹由魔法、蒸汽和火焰组成的马。从它的背上，她低头看着那个魂不守舍的枪手。“来吧，老人家。我们还有第二次机会，我不会浪费它。”"
         }
     ],
     "passive": {

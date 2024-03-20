@@ -1,0 +1,142 @@
+[
+    {
+        "internalName": "lny2024_elegant_dragon_liuli",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/ElegantDragon/Loot_ElegantDragon_Liuli_Liuli4_Tier1.LL_ElegantDragon_Liuli.png",
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "lny2024_firecracker_rollout",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/boom_FireWorks.png",
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "lny2024_golden_koi",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Event_Boom_CNY_Fish.png",
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "lny2024_lantern_festival_street",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_LanternFestivalStreet.TFT_ArenaSkin_LanternFestivalStreet.png",
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "lny2024_make_it_rain",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_RedPackets.png",
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "lny2024_prancie_dance",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/4460_Special_Invitation_Inventory.ACCESSORIES_14_2.png",
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "placeholder",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/Missions/TFT/BattlePass/Common/tft_reward_placeholder.png",
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "set11a_all_seeing_hundun",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactician_allseeing_hundun.TFT_Set11.png",
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "set11a_bamboo_shoots",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_Bamboo.png",
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "set11a_bonus_emote_1",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4487_Test_Me_Inventory.ACCESSORIES_14_6.png",
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "set11a_bonus_emote_2",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4488_Ready_To_Strike_Inventory.ACCESSORIES_14_6.png",
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "set11a_bonus_emote_3",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4489_Within_My_Grasp_Inventory.ACCESSORIES_14_6.png",
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "set11a_emote_im_good",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4486_Im_Good_Inventory.ACCESSORIES_14_6.png",
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "set11a_emote_its_art",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4483_ITS_ART_Inventory.ACCESSORIES_14_6.png",
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "set11a_emote_moonbeam_blast",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4485_Moonbeam_Blast_Inventory.ACCESSORIES_14_6.png",
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "set11a_emote_tokens_of_appreciation",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4484_Token_Of_Appreciation_Inventory.ACCESSORIES_14_6.png",
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "set11a_fans_of_a_feather",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTDamageSkins/Boom_PapperFanAttack.png",
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "set11a_ink_biome_sky",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_InkBiome_Sky.TFT_ArenaSkin_InkBiome.png",
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "set11a_ink_bottle_squink",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactician_ink_squink.TFT_Set11.png",
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "set11a_ink_drop_sprite",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactician_ink_sprite.TFT_Set11.png",
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "set11a_nebulous_hundun",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactician_nebulous_hundun.TFT_Set11.png",
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "set11a_spirit_blossom_akana_dowsie",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/Dowsie/Loot_Dowsie_Ink_Ink4_Tier1.png",
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "set11a_spirit_blossom_kanmei_dowsie",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tactician_SBKanmei_dowsie.TFT_Set11.png",
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "set11a_tea_terraces",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_TeaTerraces.TFT_ArenaSkin_TeaTerraces.png",
+        "iconNeedsFrame": true
+    },
+    {
+        "internalName": "star-shards",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/star_shard_bundle.png",
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "tft-standard-coins",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/Loot/TFT_Icon_SC.png",
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "tencent-tokens",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/tencent_token.png",
+        "iconNeedsFrame": false
+    },
+    {
+        "internalName": "treasure-tokens",
+        "iconTexturePath": "/lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/BattlePass/Rewards/treasure_token.png",
+        "iconNeedsFrame": false
+    }
+]

@@ -1,6 +1,6 @@
 {
     "type": "tft-arena",
-    "version": "14.5.1",
+    "version": "14.6.1",
     "data": {
         "Backstage_Day": {
             "id": "114",
@@ -418,6 +418,32 @@
                 "h": 48
             }
         },
+        "ImmortalJourney": {
+            "id": "119",
+            "name": "Heaven's Celestial Court",
+            "image": {
+                "full": "119.png",
+                "sprite": "tft-arena0.png",
+                "group": "tft-arena",
+                "x": 96,
+                "y": 144,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "InkBiome_Sky": {
+            "id": "120",
+            "name": "Shades of Sky",
+            "image": {
+                "full": "120.png",
+                "sprite": "tft-arena0.png",
+                "group": "tft-arena",
+                "x": 144,
+                "y": 144,
+                "w": 48,
+                "h": 48
+            }
+        },
         "Journeys_Destination": {
             "id": "33",
             "name": "Destination",
@@ -425,7 +451,7 @@
                 "full": "33.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 96,
+                "x": 192,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -438,7 +464,7 @@
                 "full": "35.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 144,
+                "x": 240,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -451,7 +477,7 @@
                 "full": "34.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 192,
+                "x": 288,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -464,7 +490,7 @@
                 "full": "79.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 240,
+                "x": 336,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -477,7 +503,7 @@
                 "full": "80.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 288,
+                "x": 384,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -490,7 +516,7 @@
                 "full": "81.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 336,
+                "x": 432,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -503,8 +529,8 @@
                 "full": "92.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 384,
-                "y": 144,
+                "x": 0,
+                "y": 192,
                 "w": 48,
                 "h": 48
             }
@@ -516,8 +542,8 @@
                 "full": "93.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 432,
-                "y": 144,
+                "x": 48,
+                "y": 192,
                 "w": 48,
                 "h": 48
             }
@@ -529,7 +555,7 @@
                 "full": "94.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 0,
+                "x": 96,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -542,7 +568,7 @@
                 "full": "118.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 48,
+                "x": 144,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -555,7 +581,7 @@
                 "full": "36.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 96,
+                "x": 192,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -568,7 +594,7 @@
                 "full": "117.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 144,
+                "x": 240,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -581,7 +607,7 @@
                 "full": "37.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 192,
+                "x": 288,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -594,7 +620,7 @@
                 "full": "54.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 240,
+                "x": 336,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -607,7 +633,7 @@
                 "full": "38.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 288,
+                "x": 384,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -620,7 +646,7 @@
                 "full": "39.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 336,
+                "x": 432,
                 "y": 192,
                 "w": 48,
                 "h": 48
@@ -633,8 +659,8 @@
                 "full": "40.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 384,
-                "y": 192,
+                "x": 0,
+                "y": 240,
                 "w": 48,
                 "h": 48
             }
@@ -646,8 +672,8 @@
                 "full": "84.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 432,
-                "y": 192,
+                "x": 48,
+                "y": 240,
                 "w": 48,
                 "h": 48
             }
@@ -659,7 +685,7 @@
                 "full": "113.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 0,
+                "x": 96,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -672,7 +698,7 @@
                 "full": "98.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 48,
+                "x": 144,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -685,7 +711,7 @@
                 "full": "21.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 96,
+                "x": 192,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -698,7 +724,7 @@
                 "full": "23.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 144,
+                "x": 240,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -711,7 +737,7 @@
                 "full": "22.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 192,
+                "x": 288,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -724,7 +750,7 @@
                 "full": "108.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 240,
+                "x": 336,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -737,7 +763,7 @@
                 "full": "109.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 288,
+                "x": 384,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -750,7 +776,7 @@
                 "full": "110.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 336,
+                "x": 432,
                 "y": 240,
                 "w": 48,
                 "h": 48
@@ -763,8 +789,8 @@
                 "full": "97.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 384,
-                "y": 240,
+                "x": 0,
+                "y": 288,
                 "w": 48,
                 "h": 48
             }
@@ -776,8 +802,8 @@
                 "full": "112.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 432,
-                "y": 240,
+                "x": 48,
+                "y": 288,
                 "w": 48,
                 "h": 48
             }
@@ -789,7 +815,7 @@
                 "full": "50.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 0,
+                "x": 96,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -802,7 +828,7 @@
                 "full": "49.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 48,
+                "x": 144,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -815,7 +841,7 @@
                 "full": "48.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 96,
+                "x": 192,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -828,7 +854,7 @@
                 "full": "46.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 144,
+                "x": 240,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -841,7 +867,7 @@
                 "full": "47.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 192,
+                "x": 288,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -854,7 +880,7 @@
                 "full": "45.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 240,
+                "x": 336,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -867,7 +893,7 @@
                 "full": "44.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 288,
+                "x": 384,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -880,7 +906,7 @@
                 "full": "41.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 336,
+                "x": 432,
                 "y": 288,
                 "w": 48,
                 "h": 48
@@ -893,8 +919,8 @@
                 "full": "43.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 384,
-                "y": 288,
+                "x": 0,
+                "y": 336,
                 "w": 48,
                 "h": 48
             }
@@ -906,8 +932,8 @@
                 "full": "42.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 432,
-                "y": 288,
+                "x": 48,
+                "y": 336,
                 "w": 48,
                 "h": 48
             }
@@ -919,7 +945,7 @@
                 "full": "66.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 0,
+                "x": 96,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -932,7 +958,7 @@
                 "full": "64.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 48,
+                "x": 144,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -945,7 +971,7 @@
                 "full": "58.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 96,
+                "x": 192,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -958,7 +984,7 @@
                 "full": "65.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 144,
+                "x": 240,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -971,7 +997,7 @@
                 "full": "59.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 192,
+                "x": 288,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -984,7 +1010,7 @@
                 "full": "56.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 240,
+                "x": 336,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -997,7 +1023,7 @@
                 "full": "51.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 288,
+                "x": 384,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -1010,7 +1036,7 @@
                 "full": "57.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 336,
+                "x": 432,
                 "y": 336,
                 "w": 48,
                 "h": 48
@@ -1023,8 +1049,8 @@
                 "full": "55.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 384,
-                "y": 336,
+                "x": 0,
+                "y": 384,
                 "w": 48,
                 "h": 48
             }
@@ -1036,8 +1062,8 @@
                 "full": "52.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 432,
-                "y": 336,
+                "x": 48,
+                "y": 384,
                 "w": 48,
                 "h": 48
             }
@@ -1049,7 +1075,7 @@
                 "full": "53.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 0,
+                "x": 96,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -1062,7 +1088,7 @@
                 "full": "67.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 48,
+                "x": 144,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -1075,7 +1101,7 @@
                 "full": "73.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 96,
+                "x": 192,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -1088,7 +1114,7 @@
                 "full": "68.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 144,
+                "x": 240,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -1101,7 +1127,7 @@
                 "full": "72.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 192,
+                "x": 288,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -1114,7 +1140,7 @@
                 "full": "75.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 240,
+                "x": 336,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -1127,7 +1153,7 @@
                 "full": "74.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 288,
+                "x": 384,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -1140,7 +1166,7 @@
                 "full": "83.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 336,
+                "x": 432,
                 "y": 384,
                 "w": 48,
                 "h": 48
@@ -1153,8 +1179,8 @@
                 "full": "99.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 384,
-                "y": 384,
+                "x": 0,
+                "y": 432,
                 "w": 48,
                 "h": 48
             }
@@ -1166,8 +1192,8 @@
                 "full": "91.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 432,
-                "y": 384,
+                "x": 48,
+                "y": 432,
                 "w": 48,
                 "h": 48
             }
@@ -1179,7 +1205,7 @@
                 "full": "29.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 0,
+                "x": 96,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -1192,7 +1218,7 @@
                 "full": "28.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 48,
+                "x": 144,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -1205,7 +1231,7 @@
                 "full": "30.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 96,
+                "x": 192,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -1218,7 +1244,20 @@
                 "full": "78.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 144,
+                "x": 240,
+                "y": 432,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "TeaTerraces": {
+            "id": "123",
+            "name": "Dreams of Earth",
+            "image": {
+                "full": "123.png",
+                "sprite": "tft-arena0.png",
+                "group": "tft-arena",
+                "x": 288,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -1231,7 +1270,7 @@
                 "full": "86.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 192,
+                "x": 336,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -1244,7 +1283,7 @@
                 "full": "87.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 240,
+                "x": 384,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -1257,7 +1296,7 @@
                 "full": "88.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 288,
+                "x": 432,
                 "y": 432,
                 "w": 48,
                 "h": 48
@@ -1270,8 +1309,8 @@
                 "full": "89.png",
                 "sprite": "tft-arena0.png",
                 "group": "tft-arena",
-                "x": 336,
-                "y": 432,
+                "x": 0,
+                "y": 480,
                 "w": 48,
                 "h": 48
             }

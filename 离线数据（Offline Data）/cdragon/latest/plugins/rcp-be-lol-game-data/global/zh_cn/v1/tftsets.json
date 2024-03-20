@@ -2,24 +2,10 @@
     "LCTFTModeData": {
         "mActiveSets": [
             {
-                "SetCoreName": "TFTTutorial",
+                "SetCoreName": "TFTSetTutorial",
                 "SetDisplayName": "强音争霸已开始",
                 "SetAugmentName": "海克斯核心 强化符文",
                 "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/gear.png",
-                "SetPortalSystemName": ""
-            },
-            {
-                "SetCoreName": "TFTSet10",
-                "SetDisplayName": "强音争霸已开始",
-                "SetAugmentName": "音响强化符文",
-                "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set10.TFT_Set10.png",
-                "SetPortalSystemName": ""
-            },
-            {
-                "SetCoreName": "TFTSet10",
-                "SetDisplayName": "强音争霸已开始",
-                "SetAugmentName": "音响强化符文",
-                "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set10.TFT_Set10.png",
                 "SetPortalSystemName": ""
             },
             {
@@ -30,18 +16,32 @@
                 "SetPortalSystemName": "银河"
             },
             {
-                "SetCoreName": "TFTSet10",
+                "SetCoreName": "TFTSet11",
                 "SetDisplayName": "强音争霸已开始",
-                "SetAugmentName": "音响强化符文",
-                "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/gear.png",
+                "SetAugmentName": "海克斯核心 强化符文",
+                "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set11.TFT_Set11.png",
+                "SetPortalSystemName": ""
+            },
+            {
+                "SetCoreName": "TFTSet11",
+                "SetDisplayName": "强音争霸已开始",
+                "SetAugmentName": "海克斯核心 强化符文",
+                "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set11.TFT_Set11.png",
+                "SetPortalSystemName": ""
+            },
+            {
+                "SetCoreName": "TFTSet11",
+                "SetDisplayName": "强音争霸已开始",
+                "SetAugmentName": "海克斯核心 强化符文",
+                "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set11.TFT_Set11.png",
                 "SetPortalSystemName": ""
             }
         ],
         "mDefaultSet": {
-            "SetCoreName": "TFTSet10",
+            "SetCoreName": "TFTSet11",
             "SetDisplayName": "强音争霸已开始",
-            "SetAugmentName": "音响强化符文",
-            "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set10.TFT_Set10.png",
+            "SetAugmentName": "海克斯核心 强化符文",
+            "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set11.TFT_Set11.png",
             "SetPortalSystemName": ""
         }
     }

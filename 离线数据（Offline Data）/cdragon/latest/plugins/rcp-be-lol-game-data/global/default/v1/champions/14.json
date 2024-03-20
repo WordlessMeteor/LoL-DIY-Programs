@@ -159,8 +159,8 @@
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/14/14005.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/14/14005.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/14/14005.jpg",
-            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sion/Skins/skin05/SionLoadScreen_5.PIE_C_13_24.jpg",
-            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sion/Skins/skin05/SionLoadScreen_5_LE.PIE_C_13_24.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sion/Skins/skin05/SionLoadScreen_5.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sion/Skins/skin05/SionLoadScreen_5_LE.jpg",
             "skinType": "",
             "rarity": "kLegendary",
             "isLegacy": false,
@@ -905,22 +905,22 @@
                     0.0000
                 ],
                 "Effect3Amount": [
-                    0.4500,
-                    0.4500,
-                    0.5250,
-                    0.6000,
-                    0.6750,
-                    0.7500,
-                    0.8250
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect4Amount": [
-                    90.0000,
-                    90.0000,
-                    155.0000,
-                    220.0000,
-                    285.0000,
-                    350.0000,
-                    415.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect5Amount": [
                     2.5000,
@@ -932,13 +932,13 @@
                     2.5000
                 ],
                 "Effect6Amount": [
-                    1.3500,
-                    1.3500,
-                    1.5750,
-                    1.8000,
-                    2.0250,
-                    2.2500,
-                    2.4750
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect7Amount": [
                     7.5000,
@@ -1037,13 +1037,13 @@
             },
             "effectAmounts": {
                 "Effect1Amount": [
-                    35.0000,
                     60.0000,
-                    85.0000,
-                    110.0000,
-                    135.0000,
-                    160.0000,
-                    185.0000
+                    60.0000,
+                    75.0000,
+                    90.0000,
+                    105.0000,
+                    120.0000,
+                    120.0000
                 ],
                 "Effect2Amount": [
                     15.0000,
@@ -1055,13 +1055,13 @@
                     165.0000
                 ],
                 "Effect3Amount": [
-                    7.0000,
                     8.0000,
-                    9.0000,
+                    8.0000,
                     10.0000,
-                    11.0000,
                     12.0000,
-                    13.0000
+                    14.0000,
+                    16.0000,
+                    16.0000
                 ],
                 "Effect4Amount": [
                     9.0000,

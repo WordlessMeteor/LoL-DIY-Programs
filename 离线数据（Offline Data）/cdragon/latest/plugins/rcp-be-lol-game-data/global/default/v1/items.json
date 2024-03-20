@@ -64,6 +64,7 @@
         "inStore": true,
         "from": [],
         "to": [
+            3211,
             3801
         ],
         "categories": [
@@ -443,8 +444,7 @@
             3153,
             6695,
             6029,
-            6035,
-            6675
+            6035
         ],
         "categories": [
             "Damage"
@@ -475,7 +475,8 @@
             3031,
             3072,
             3302,
-            4403
+            4403,
+            6675
         ],
         "categories": [
             "Damage"
@@ -1530,7 +1531,7 @@
     {
         "id": 2015,
         "name": "Kircheis Shard",
-        "description": "<mainText><stats><attention> 15</attention> Attack Damage</stats><br><br><passive>Jolt</passive><br><keyword>Energized Attacks</keyword> deal an additional <magicDamage>60 magic damage</magicDamage>.</mainText>",
+        "description": "<mainText><stats><attention> 15</attention> Attack Damage</stats><br><br><passive>Jolt</passive><br><keyword>Energized Attacks</keyword> deal an additional <magicDamage>50 magic damage</magicDamage>.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -1565,6 +1566,7 @@
         "inStore": true,
         "from": [
             1036,
+            1029,
             1029
         ],
         "to": [
@@ -1583,14 +1585,14 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 450,
+        "price": 150,
         "priceTotal": 1100,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/2019_Steel_Sigil.png"
     },
     {
         "id": 2020,
         "name": "The Brutalizer",
-        "description": "<mainText><stats><attention> 25</attention> Attack Damage<br><attention> 10</attention> Ability Haste<br><attention> 8</attention> Lethality</stats><br><br></mainText>",
+        "description": "<mainText><stats><attention> 25</attention> Attack Damage<br><attention> 10</attention> Ability Haste<br><attention> 5</attention> Lethality</stats><br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -1648,8 +1650,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 350,
-        "priceTotal": 1100,
+        "price": 400,
+        "priceTotal": 1150,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/2012_Tunneler.png"
     },
     {
@@ -1665,6 +1667,7 @@
             2020,
             223057,
             3108,
+            3024,
             3057,
             3067,
             3802,
@@ -1995,9 +1998,9 @@
     {
         "id": 2141,
         "name": "Cappa Juice",
-        "description": "<mainText><stats></stats><br><br><br><br><rules>Helps you get on a head.</rules> <active>Active - Consume:</active> This juice does nothing.<br><br><flavorText>For a limited time only, get a free hat with every purchase!</flavorText></mainText>",
+        "description": "<mainText><stats></stats><br><br> <active>Active - Consume:</active> This juice does nothing.<br><br><flavorText>For a limited time only, get a free hat with every purchase!</flavorText></mainText>",
         "active": true,
-        "inStore": true,
+        "inStore": false,
         "from": [],
         "to": [],
         "categories": [
@@ -2011,8 +2014,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 700,
-        "priceTotal": 700,
+        "price": 500,
+        "priceTotal": 500,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/Icon_Item_SoulJuice_FunHat.png"
     },
     {
@@ -2674,8 +2677,9 @@
         "active": false,
         "inStore": true,
         "from": [
+            1029,
             1027,
-            1029
+            2022
         ],
         "to": [
             3110,
@@ -2694,8 +2698,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 250,
-        "priceTotal": 900,
+        "price": 50,
+        "priceTotal": 950,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3024_Tank_T2_GlacialShroud.png"
     },
     {
@@ -2727,7 +2731,7 @@
     {
         "id": 3031,
         "name": "Infinity Edge",
-        "description": "<mainText><stats><attention> 65</attention> Attack Damage<br><attention> 20%</attention> Critical Strike Chance<br><attention> 40%</attention> Critical Strike Damage</stats><br><br></mainText>",
+        "description": "<mainText><stats><attention> 65</attention> Attack Damage<br><attention> 20%</attention> Critical Strike Chance<br><attention> 50%</attention> Critical Strike Damage</stats><br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -2756,7 +2760,7 @@
     {
         "id": 3033,
         "name": "Mortal Reminder",
-        "description": "<mainText><stats><attention> 40</attention> Attack Damage<br><attention> 30%</attention> Armor Penetration<br><attention> 20%</attention> Critical Strike Chance</stats><br><br><passive>Grievous Wounds</passive><br>Dealing physical damage applies <keyword>40% Grievous Wounds</keyword> to enemy champions for 3 seconds.</mainText>",
+        "description": "<mainText><stats><attention> 40</attention> Attack Damage<br><attention> 35%</attention> Armor Penetration<br><attention> 20%</attention> Critical Strike Chance</stats><br><br><passive>Grievous Wounds</passive><br>Dealing physical damage applies <keyword>40% Grievous Wounds</keyword> to enemy champions for 3 seconds.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -2814,7 +2818,7 @@
     {
         "id": 3036,
         "name": "Lord Dominik's Regards",
-        "description": "<mainText><stats><attention> 40</attention> Attack Damage<br><attention> 20%</attention> Critical Strike Chance<br><attention> 30%</attention> Armor Penetration</stats><br><br><passive>Giant Slayer</passive><br>Deal bonus damage against champions with greater max Health than you.</mainText>",
+        "description": "<mainText><stats><attention> 40</attention> Attack Damage<br><attention> 20%</attention> Critical Strike Chance<br><attention> 35%</attention> Armor Penetration</stats><br><br><passive>Giant Slayer</passive><br>Deal bonus damage against champions with greater max Health than you.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -3053,14 +3057,14 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 500,
+        "price": 450,
         "priceTotal": 2200,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3050_Enchanter_T3_ZekesConvergence.png"
     },
     {
         "id": 3051,
         "name": "Hearthbound Axe",
-        "description": "<mainText><stats><attention> 20</attention> Attack Damage<br><attention> 25%</attention> Attack Speed</stats><br><br></mainText>",
+        "description": "<mainText><stats><attention> 15</attention> Attack Damage<br><attention> 25%</attention> Attack Speed</stats><br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -3083,8 +3087,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 250,
-        "priceTotal": 1200,
+        "price": 200,
+        "priceTotal": 1150,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3051_Fighter_T2_AxeOfAvarosa.png"
     },
     {
@@ -3111,7 +3115,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 625,
+        "price": 575,
         "priceTotal": 3000,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3053_Steraks_Gage.png"
     },
@@ -3545,7 +3549,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 133,
+        "price": 183,
         "priceTotal": 3333,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3078_Fighter_T4_TrinityForce.png"
     },
@@ -3891,7 +3895,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 50,
+        "price": 150,
         "priceTotal": 3100,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3102_Mage_T3_BansheesVeil.png"
     },
@@ -3959,7 +3963,7 @@
     {
         "id": 3108,
         "name": "Fiendish Codex",
-        "description": "<mainText><stats><attention> 35</attention> Ability Power<br><attention> 10</attention> Ability Haste</stats><br><br></mainText>",
+        "description": "<mainText><stats><attention> 25</attention> Ability Power<br><attention> 10</attention> Ability Haste</stats><br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4052,7 +4056,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 600,
+        "price": 550,
         "priceTotal": 2500,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3110_Tank_T3_FrozenHeart.png"
     },
@@ -4446,7 +4450,7 @@
     {
         "id": 3133,
         "name": "Caulfield's Warhammer",
-        "description": "<mainText><stats><attention> 25</attention> Attack Damage<br><attention> 10</attention> Ability Haste</stats><br><br></mainText>",
+        "description": "<mainText><stats><attention> 20</attention> Attack Damage<br><attention> 10</attention> Ability Haste</stats><br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4492,7 +4496,7 @@
     {
         "id": 3134,
         "name": "Serrated Dirk",
-        "description": "<mainText><stats><attention> 25</attention> Attack Damage</stats><br><br><passive>Gouge</passive><br>Gain <scaleLethality>10 Lethality</scaleLethality>.</mainText>",
+        "description": "<mainText><stats><attention> 20</attention> Attack Damage</stats><br><br><passive>Gouge</passive><br>Gain <scaleLethality>10 Lethality</scaleLethality>.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4700,7 +4704,7 @@
     {
         "id": 3145,
         "name": "Hextech Alternator",
-        "description": "<mainText><stats><attention> 50</attention> Ability Power</stats><br><br><passive>Revved</passive><br>Damaging a champion deals additional damage.</mainText>",
+        "description": "<mainText><stats><attention> 45</attention> Ability Power</stats><br><br><passive>Revved</passive><br>Damaging a champion deals additional damage.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -4762,7 +4766,7 @@
     {
         "id": 3147,
         "name": "Haunting Guise",
-        "description": "<mainText><stats><attention> 35</attention> Ability Power<br><attention> 200</attention> Health</stats><br><br><passive>Madness</passive><br>For each second in combat with enemy champions, deal increased damage.</mainText>",
+        "description": "<mainText><stats><attention> 30</attention> Ability Power<br><attention> 200</attention> Health</stats><br><br><passive>Madness</passive><br>For each second in combat with enemy champions, deal increased damage.</mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -5123,7 +5127,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 125,
+        "price": 75,
         "priceTotal": 3000,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3181_Hullbreaker.png"
     },
@@ -5219,12 +5223,13 @@
     {
         "id": 3211,
         "name": "Spectre's Cowl",
-        "description": "<mainText><stats><attention> 250</attention> Health<br><attention> 25</attention> Magic Resist</stats><br><br><br><li><passive>Incorporeal:</passive> After taking damage from a champion, Regenerate Health.</mainText>",
+        "description": "<mainText><stats><attention> 200</attention> Health<br><attention> 25</attention> Magic Resist<br><attention> 100%</attention> Base Health Regen</stats><br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
             1028,
-            1033
+            1033,
+            1006
         ],
         "to": [
             2504,
@@ -5243,7 +5248,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 400,
+        "price": 100,
         "priceTotal": 1250,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3211_Tank_T2_SpectresCowl.png"
     },
@@ -5686,7 +5691,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 600,
+        "price": 550,
         "priceTotal": 3300,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3748_Fighter_T3_TitanicHydra.png"
     },
@@ -5809,7 +5814,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 700,
+        "price": 650,
         "priceTotal": 2800,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3814_Assassin_T3_EdgeOfNight.png"
     },
@@ -6151,7 +6156,7 @@
     {
         "id": 3866,
         "name": "Runic Compass",
-        "description": "<mainText><stats><attention> 5</attention> Gold Per 10 Seconds<br><attention> 50%</attention> Base Health Regen<br><attention> 50%</attention> Base Mana Regen<br><attention> 100</attention> Health</stats><br><br><br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. <br><br><br><br><passive>Quest</passive> <br>Earn 1000 gold from this item to transform it into <rarityGeneric>Runic Compass</rarityGeneric>. Gain a charge every <passive>20</passive> seconds, up to <passive>3</passive> charges. While nearby an ally champion, consume a charge to earn gold:<br><li>Damaging Abilities and Attacks against champions or buildings grant <keywordMajor>34</keywordMajor> (melee) / <keywordMajor>32</keywordMajor> (ranged) gold;<li>Killing a minion by any means grants you <keywordMajor>28</keywordMajor> gold and the nearest allied champion kill gold.<br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. </mainText>",
+        "description": "<mainText><stats><attention> 5</attention> Gold Per 10 Seconds<br><attention> 50%</attention> Base Health Regen<br><attention> 50%</attention> Base Mana Regen<br><attention> 100</attention> Health</stats><br><br><br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. <br><br><br><br><passive>Quest</passive> <br>Earn 800 gold from this item to transform it into <rarityGeneric>Runic Compass</rarityGeneric>. Gain a charge every <passive>20</passive> seconds, up to <passive>3</passive> charges. While nearby an ally champion, consume a charge to earn gold:<br><li>Damaging Abilities and Attacks against champions or buildings grant <keywordMajor>24</keywordMajor> (melee) / <keywordMajor>22</keywordMajor> (ranged) gold;<li>Killing a minion by any means grants you <keywordMajor>20</keywordMajor> gold and the nearest allied champion kill gold.<br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. </mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -6921,8 +6926,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 550,
-        "priceTotal": 1800,
+        "price": 450,
+        "priceTotal": 1700,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/4632_Tank_T2_VerdantBarrier.png"
     },
     {
@@ -7389,7 +7394,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 900,
+        "price": 850,
         "priceTotal": 3100,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6610_SunderedSky.png"
     },
@@ -8015,11 +8020,11 @@
     {
         "id": 6675,
         "name": "Navori Quickblades",
-        "description": "<mainText><stats><attention> 60</attention> Attack Damage<br><attention> 20%</attention> Critical Strike Chance<br><attention> 15</attention> Ability Haste</stats><br><br><passive>Transcendence</passive><br>Your Attacks reduce your non-Ultimate Ability cooldowns.<br><br><passive>Impermanence</passive><br>Your abilities deal increased damage based on Critical Strike Chance. </mainText>",
+        "description": "<mainText><stats><attention> 65</attention> Attack Damage<br><attention> 20%</attention> Critical Strike Chance<br><attention> 15</attention> Ability Haste</stats><br><br><passive>Transcendence</passive><br>Your Attacks reduce your non-Ultimate Ability cooldowns.<br><br><passive>Impermanence</passive><br>Your abilities deal increased damage based on Critical Strike Chance. </mainText>",
         "active": false,
         "inStore": true,
         "from": [
-            1037,
+            1038,
             3133,
             1018
         ],
@@ -8040,7 +8045,7 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 725,
+        "price": 300,
         "priceTotal": 3300,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/6675_Marksman_T3_NavoriQuickblades.png"
     },
@@ -9317,7 +9322,7 @@
     {
         "id": 7031,
         "name": " Edge of Finality",
-        "description": "<mainText><stats><ornnBonus> 95</ornnBonus> Attack Damage<br><attention> 20%</attention> Critical Strike Chance<br><attention> 40%</attention> Critical Strike Damage</stats><br><br></mainText>",
+        "description": "<mainText><stats><ornnBonus> 95</ornnBonus> Attack Damage<br><attention> 20%</attention> Critical Strike Chance<br><attention> 50%</attention> Critical Strike Damage</stats><br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [
@@ -10058,7 +10063,7 @@
     {
         "id": 223031,
         "name": "Infinity Edge",
-        "description": "<mainText><stats><nerfedStat> 65</nerfedStat> Attack Damage<br><attention> 20%</attention> Critical Strike Chance<br><attention> 40%</attention> Critical Strike Damage</stats><br><br></mainText>",
+        "description": "<mainText><stats><nerfedStat> 65</nerfedStat> Attack Damage<br><attention> 20%</attention> Critical Strike Chance<br><attention> 50%</attention> Critical Strike Damage</stats><br><br></mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -10533,7 +10538,7 @@
     {
         "id": 223084,
         "name": "Heartsteel",
-        "description": "<mainText><stats><attention> 900</attention> Health<br><attention> 200%</attention> Base Health Regen</stats><br><br><passive>Colossal Consumption</passive>  (0s) per target<br>Charge up a powerful attack against a champion over 0s while within 700 range of them. The charged attack deals <physicalDamage>125 + <scaleHealth>10% Item Health</scaleHealth> bonus physical damage</physicalDamage>, and grants 12% of that damage as<scaleHealth> permanent max Health.</scaleHealth><br><br><passive>Goliath</passive><br>For each <scaleHealth>1000 max Health</scaleHealth>, gain 6% increased size, up to 30%. </mainText>",
+        "description": "<mainText><stats><attention> 900</attention> Health<br><attention> 200%</attention> Base Health Regen</stats><br><br><passive>Colossal Consumption</passive>  (0s) per target<br>Charge up a powerful attack against a champion over 0s while within 700 range of them. The charged attack deals <physicalDamage>125 + <scaleHealth>12% Item Health</scaleHealth> bonus physical damage</physicalDamage>, and grants 12% of that damage as<scaleHealth> permanent max Health.</scaleHealth><br><br><passive>Goliath</passive><br>For each <scaleHealth>1000 max Health</scaleHealth>, gain 6% increased size, up to 30%. </mainText>",
         "active": false,
         "inStore": true,
         "from": [],
@@ -13208,7 +13213,7 @@
     {
         "id": 227025,
         "name": " Leviathan",
-        "description": "<mainText><stats><ornnBonus> 1050</ornnBonus> Health<br><ornnBonus> 300%</ornnBonus> Base Health Regen</stats><br><br><passive>Colossal Consumption</passive>  (0s) per target<br>Charge up a powerful attack against a champion over 0s while within 700 range of them. The charged attack deals <physicalDamage>125 + <scaleHealth>10% Item Health</scaleHealth> bonus physical damage</physicalDamage>, and grants 12% of that damage as<scaleHealth> permanent max Health.</scaleHealth><br><br><passive>Goliath</passive><br>For each <scaleHealth>1000 max Health</scaleHealth>, gain 6% increased size, up to 30%. </mainText>",
+        "description": "<mainText><stats><ornnBonus> 1050</ornnBonus> Health<br><ornnBonus> 300%</ornnBonus> Base Health Regen</stats><br><br><passive>Colossal Consumption</passive>  (0s) per target<br>Charge up a powerful attack against a champion over 0s while within 700 range of them. The charged attack deals <physicalDamage>125 + <scaleHealth>12% Item Health</scaleHealth> bonus physical damage</physicalDamage>, and grants 12% of that damage as<scaleHealth> permanent max Health.</scaleHealth><br><br><passive>Goliath</passive><br>For each <scaleHealth>1000 max Health</scaleHealth>, gain 6% increased size, up to 30%. </mainText>",
         "active": false,
         "inStore": false,
         "from": [
@@ -13369,7 +13374,7 @@
     {
         "id": 227031,
         "name": " Edge of Finality",
-        "description": "<mainText><stats><ornnBonus> 105</ornnBonus> Attack Damage<br><attention> 20%</attention> Critical Strike Chance<br><attention> 40%</attention> Critical Strike Damage</stats><br><br></mainText>",
+        "description": "<mainText><stats><ornnBonus> 105</ornnBonus> Attack Damage<br><attention> 20%</attention> Critical Strike Chance<br><attention> 50%</attention> Critical Strike Damage</stats><br><br></mainText>",
         "active": false,
         "inStore": false,
         "from": [

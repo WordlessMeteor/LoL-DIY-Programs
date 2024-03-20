@@ -1074,9 +1074,9 @@
     },
     {
         "display_name": "8比特",
-        "trait_id": "Set10_8Bit",
+        "trait_id": "TFT10_8Bit",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_8Bit.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_8Bit.png",
         "tooltip_text": "将你队伍的已造成伤害记录成分数。你每突破一个高分，【8比特】弈子们就会获得攻击力。<br><br><row>(@MinUnits@) @AttackDamage@% %i:scaleAD%</row><br><row>(@MinUnits@) @AttackDamage@% %i:scaleAD%</row><br><row>(@MinUnits@) @AttackDamage@% %i:scaleAD%并解锁一个终极高分，可奖励你一份大奖。</row><br><br>加成：@TFTUnitProperty.trait:TFT10_Trait_8bit_CurrentBonus@% %i:scaleAD% (@TFTUnitProperty.trait:TFT10_Trait_8bit_StackCount@/@NumHighScores@)",
         "innate_trait_sets": [
             {
@@ -1242,7 +1242,7 @@
     },
     {
         "display_name": "格斗家",
-        "trait_id": "Set10_Brawler",
+        "trait_id": "TFT10_Brawler",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Brawler.png",
         "tooltip_text": "你的弈子们获得@TeamFlatHealth@生命值。【格斗家】们获得额外的最大生命值。<br><br><expandRow>(@MinUnits@) @BonusPercentHealth*100@%最大%i:scaleHealth%</expandRow>",
@@ -1305,9 +1305,9 @@
     },
     {
         "display_name": "双修出道",
-        "trait_id": "Set10_Breakout",
+        "trait_id": "TFT10_Breakout",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Breakout.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Breakout.png",
         "tooltip_text": "(唯一) 【阿卡丽】可以是【K/DA】或【真实伤害】的一名成员，取决于哪个羁绊登场了更多弈子。她会基于所处的乐队获得一个相应的技能。 ",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -1321,9 +1321,9 @@
     },
     {
         "display_name": "戏命师",
-        "trait_id": "Set10_Classical",
+        "trait_id": "TFT10_Classical",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Classical.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Classical.png",
         "tooltip_text": "(唯一) 【戏命师】总会以一个固定的频率进行攻击，并且会将@BonusAttackSpeed@%额外攻击速度转化为@BonusAttackDamage@%攻击力。",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -1363,9 +1363,9 @@
     },
     {
         "display_name": "乡村音乐",
-        "trait_id": "Set10_Country",
+        "trait_id": "TFT10_Country",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Country.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Country.png",
         "tooltip_text": "当你的队伍损失@HealthRatio*100@%总生命值时，召唤一匹【恐惧战马】前来强化你的队伍。【乡村音乐】弈子的每个星级都会提升【恐惧战马】的生命值和攻击力。<br><br><row>(@MinUnits@) 恐惧战马</row><br><row>(@MinUnits@) 午夜恐惧战马</row><br><row>(@MinUnits@) 炼狱祈灵恐惧战马</row>",
         "innate_trait_sets": [
             {
@@ -1441,9 +1441,9 @@
     },
     {
         "display_name": "音浪刺客",
-        "trait_id": "Set10_CrowdDive",
+        "trait_id": "TFT10_CrowdDive",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_CrowdDiver.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_CrowdDiver.png",
         "tooltip_text": "【音浪刺客】在阵亡后会跳到相距最远的敌人身上，对其造成<magicDamage>@JumpDamage@</magicDamage>魔法伤害。@StunRange@格内的敌人们会被晕眩@StunDuration@秒。<br><br>【音浪刺客】们还会造成额外伤害，每秒提升@BonusPerSecond*100@%。<br><br><expandRow>(@MinUnits@) @BaseBonus*100@%额外伤害</expandRow>",
         "innate_trait_sets": [
             {
@@ -1514,9 +1514,9 @@
     },
     {
         "display_name": "DJ娑娜",
-        "trait_id": "Set10_DJ",
+        "trait_id": "TFT10_DJ",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_DJ.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_DJ.png",
         "tooltip_text": "(唯一) 选择一个模式来修改【DJ娑娜】的攻击和技能。",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -1530,7 +1530,7 @@
     },
     {
         "display_name": "耀光使",
-        "trait_id": "Set10_Dazzler",
+        "trait_id": "TFT10_Dazzler",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_4_Dazzler.png",
         "tooltip_text": "【耀光使】的技能会使目标的伤害降低@DamageDecrease*100@%，并持续造成额外魔法伤害，持续@Duration@秒。<br><br><expandRow>(@MinUnits@) <magicDamage>@DOTPercent*100@%</magicDamage>魔法伤害</expandRow>",
@@ -1608,9 +1608,9 @@
     },
     {
         "display_name": "大腕射手",
-        "trait_id": "Set10_Deadeye",
+        "trait_id": "TFT10_Deadeye",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_BigShot.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_BigShot.png",
         "tooltip_text": "【大腕射手】们获得攻击力。这个加成会在【大腕射手】们每次施放技能时获得持续@Duration@秒的提升。<br><br><expandRow>(@MinUnits@) @PercentAD*100@% %i:scaleAD%，施法后@PercentADEmpowered*100@%</expandRow>",
         "innate_trait_sets": [
             {
@@ -1681,9 +1681,9 @@
     },
     {
         "display_name": "电子舞曲",
-        "trait_id": "Set10_EDM",
+        "trait_id": "TFT10_EDM",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_EDM.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_EDM.png",
         "tooltip_text": "使用【电子舞曲选择器】来选出一个【电子舞曲】弈子和查看每个弈子的频率。<br><br>你的【电子舞曲】弈子们会以获选弈子的频率和修正过的效能来施放获选弈子的技能。<br><br><row>(@MinUnits@) @EDMstats*100@%效能</row><br><row>(@MinUnits@) @EDMstats*100@%效能</row><br><row>(@MinUnits@) @EDMstats*100@%效能，频率-@EDMtimereduction@秒</row><br><row>(@MinUnits@) @EDMstats*100@%效能，频率-@EDMtimereduction@秒</row>",
         "innate_trait_sets": [
             {
@@ -1797,9 +1797,9 @@
     },
     {
         "display_name": "刀锋领主",
-        "trait_id": "Set10_Edgelord",
+        "trait_id": "TFT10_Edgelord",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Edgelord.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Edgelord.png",
         "tooltip_text": "【刀锋领主】们获得攻击速度，这个攻速加成会在其目标跌下@HealthRatio*100@%生命值时翻倍。攻击距离为1格的【刀锋领主】的下次攻击还会冲刺并穿过其目标。<br><br><expandRow>(@MinUnits@) @AttackSpeed*100@% %i:scaleAS%</expandRow><br>",
         "innate_trait_sets": [
             {
@@ -1860,9 +1860,9 @@
     },
     {
         "display_name": "EMO",
-        "trait_id": "Set10_Emo",
+        "trait_id": "TFT10_Emo",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_BigSad.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_BigSad.png",
         "tooltip_text": "【EMO】弈子们的技能的法力消耗更低，并且他们会在一名己方弈子阵亡时获得法力值。<br><br><row>(@MinUnits@) 降低@InitialMana@%法力消耗，获得@StackingMana@ %i:scaleMana%</row><br><row>(@MinUnits@) 降低@InitialMana@%法力消耗，获得@StackingMana@ %i:scaleMana%</row><br><row>(@MinUnits@) @BonusAP@ %i:scaleAP%；降低@InitialMana@%法力消耗，获得@StackingMana@ %i:scaleMana% </row>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -1928,7 +1928,7 @@
     },
     {
         "display_name": "裁决使",
-        "trait_id": "Set10_Executioner",
+        "trait_id": "TFT10_Executioner",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_4_Executioner.png",
         "tooltip_text": "【裁决使】们的技能可以暴击，并且他们会获得额外的暴击伤害。他们的暴击几率会基于目标的已损失生命值而获得提升。<br><br><expandRow>(@MinUnits@) @CRIT_DAMAGE*100@% %i:scaleCritMult%。至多至@CRIT_PERCENT*100@% %i:scaleCrit%</expandRow>",
@@ -1991,9 +1991,9 @@
     },
     {
         "display_name": "舞者",
-        "trait_id": "Set10_Fighter",
+        "trait_id": "TFT10_Fighter",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Mosher.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Mosher.png",
         "tooltip_text": "【舞者】们获得攻击速度和<TFTKeyword>全能吸血</TFTKeyword>，这些加成基于已损失生命值至多提升@AmountIncrease*100@%。<br><br><expandRow>(@MinUnits@) @FighterAS@% %i:scaleAS%，@FighterVamp@%全能吸血</expandRow><br><br><rules>全能吸血：获得相当于一部分已造成伤害值的治疗效果</rules>",
         "innate_trait_sets": [
             {
@@ -2082,9 +2082,9 @@
     },
     {
         "display_name": "迪斯科",
-        "trait_id": "Set10_Funk",
+        "trait_id": "TFT10_Funk",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Funk.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Funk.png",
         "tooltip_text": "召唤一个可移动的【迪斯科灯球】。<br><br>战斗开始时：紧挨着灯球的弈子们每@TickRate@秒获得攻击速度和即时治疗效果。<br><br><row>(@MinUnits@) @AttackSpeed*100@% %i:scaleAS%和@Healing*100@%最大%i:scaleHealth%</row><br><row>(@MinUnits@) @AttackSpeed*100@% %i:scaleAS%和@Healing*100@%最大%i:scaleHealth%</row><br><row>(@MinUnits@) 2个【迪斯科灯球】，@AttackSpeed*100@% %i:scaleAS%和@Healing*100@%最大%i:scaleHealth%</row><br><row>(@MinUnits@) @AttackSpeed*100@% %i:scaleAS%和@Healing*100@%最大%i:scaleHealth%</row>",
         "innate_trait_sets": [
             {
@@ -2198,7 +2198,7 @@
     },
     {
         "display_name": "护卫",
-        "trait_id": "Set10_Guardian",
+        "trait_id": "TFT10_Guardian",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_7_Guardian.png",
         "tooltip_text": "每场战斗一次：【护卫】们在降至@PercentHealthThreshold@%生命值时，会为自身和相距最近的那名友军提供基于自身最大生命值的护盾值。<br><br><expandRow>(@MinUnits@) @ShieldPercentAmount@%</expandRow>",
@@ -2261,9 +2261,9 @@
     },
     {
         "display_name": "高能流行",
-        "trait_id": "Set10_Hyperpop",
+        "trait_id": "TFT10_Hyperpop",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Hyperpop.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Hyperpop.png",
         "tooltip_text": "在【高能流行】弈子们施放技能时，会为其相距最近的@NumOfAllies@个友军提供法力值和持续@BuffDuration@秒的攻击速度。<br><br><expandRow>(@MinUnits@) @Mana@ %i:scaleMana%和@AS*100@% %i:scaleAS%</expandRow>",
         "innate_trait_sets": [
             {
@@ -2357,9 +2357,9 @@
     },
     {
         "display_name": "大触打击乐",
-        "trait_id": "Set10_IllBeats",
+        "trait_id": "TFT10_IllBeats",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_ILLBeats.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_ILLBeats.png",
         "tooltip_text": "(唯一) 获得@1Star@/@2Star@/@3Star@可放置的灵体触手，取决于俄洛伊的星级。触手们拥有俄洛伊的额外护甲和魔抗。",
         "innate_trait_sets": [
             {
@@ -2394,9 +2394,9 @@
     },
     {
         "display_name": "爵士乐",
-        "trait_id": "Set10_Jazz",
+        "trait_id": "TFT10_Jazz",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Jazz.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Jazz.png",
         "tooltip_text": "每拥有一个处于激活状态的羁绊(唯一羁绊除外)，你的队伍就会获得额外生命值并造成额外伤害。<br><br><expandRow>(@MinUnits@) @BonusHealth*100@% %i:scaleHealth%, @BonusDamage*100@%伤害</expandRow><br><br>额外生命值：@TFTUnitProperty.trait:TFT10_Trait_Jazz_TraitTracker_CurrentBonus@%<br>额外伤害：@TFTUnitProperty.trait:TFT10_Trait_Jazz_TraitTracker_CurrentBonus_Damage@%",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -2457,9 +2457,9 @@
     },
     {
         "display_name": "K/DA",
-        "trait_id": "Set10_KDA",
+        "trait_id": "TFT10_KDA",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_KDA.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_KDA.png",
         "tooltip_text": "己方处于灯光格内的弈子们都会获得最大生命值、法术强度和攻击力。【K/DA】弈子们则双倍此加成！<br><br><row>(@MinUnits@) @BonusMaxHealth*100@%最大%i:scaleHealth%，@BonusAP@%%i:scaleAP%%i:scaleAD%</row><br><row>(@MinUnits@) @BonusMaxHealth*100@%最大%i:scaleHealth%，@BonusAP@%%i:scaleAP%%i:scaleAD%</row><br><row>(@MinUnits@) @BonusMaxHealth*100@%最大%i:scaleHealth%，@BonusAP@%%i:scaleAP%%i:scaleAD%</row><br><row>(@MinUnits@) @BonusMaxHealth*100@%最大%i:scaleHealth%，@BonusAP@%%i:scaleAP%%i:scaleAD%，每秒@ManaPerSecond@法力值</row>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -2578,9 +2578,9 @@
     },
     {
         "display_name": "五杀摇滚",
-        "trait_id": "Set10_Pentakill",
+        "trait_id": "TFT10_Pentakill",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Pentakill.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Pentakill.png",
         "tooltip_text": "【五杀摇滚】弈子们获得15%伤害减免并造成额外伤害。每击杀一个弈子，一个最强大的【五杀摇滚】弈子就会摇滚起来，使其伤害加成提升@Kill_Bonus*100@%。<br><br>第@Kill_Count@次击杀会使所有【五杀摇滚】弈子摇滚起来并且你的队伍会获得@Attack_Speed*100@%攻击速度。<br><br><row>(@MinUnits@) @Bonus_Damage*100@%额外伤害</row><br><row>(@MinUnits@) @Bonus_Damage*100@%额外伤害</row><br><row>(@MinUnits@) @Bonus_Damage*100@%额外伤害</row><br><row>(@MinUnits@) 50%伤害减免和@Bonus_Damage*100@%额外伤害</row>",
         "innate_trait_sets": [
             {
@@ -2679,9 +2679,9 @@
     },
     {
         "display_name": "心之钢",
-        "trait_id": "Set10_PopBand",
+        "trait_id": "TFT10_PopBand",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Heartsteel.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Heartsteel.png",
         "tooltip_text": "通过击杀敌人来获得心能。输掉玩家战斗回合会获得更多心能。每经过@RoundCount@场玩家战斗回合，就会将心能转化为强力奖励！<br><br><row>(@MinUnits@) @PercentHeartRate@x心能</row><br><row>(@MinUnits@) @PercentHeartRate@x心能</row><br><row>(@MinUnits@) @PercentHeartRate@x心能</row><br><row>(@MinUnits@) @PercentHeartRate@x心能，每回合获得奖励并保留你的@HeartKeepPercentage*100@%心能！</row>",
         "innate_trait_sets": [
             {
@@ -2930,9 +2930,9 @@
     },
     {
         "display_name": "朋克",
-        "trait_id": "Set10_PunkRock",
+        "trait_id": "TFT10_PunkRock",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Punk.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Punk.png",
         "tooltip_text": "【朋克】们获得额外生命值和攻击力。在你每次将金币花在刷新商店时，这个加成都会提升1%。<br><br>在【朋克】们参与战斗之后，你的第一次商店刷新花费1金币并转而提供@FIRST_ROLL_BONUS@%加成！<br><br><expandRow>(@MinUnits@) @BONUS_HEALTH@ %i:scaleHealth%和@BONUS_AD_AP*100@% %i:scaleAD%</expandRow><br><br>当前加成：@TFTUnitProperty.trait:TFT10_Punk_CurrentBonus@%<br>@TFTUnitProperty.trait:TFT10_Punk_CurrentHealthBonus@ %i:scaleHealth%和@TFTUnitProperty.trait:TFT10_Punk_CurrentADBonus@% %i:scaleAD%",
         "innate_trait_sets": [
             {
@@ -3008,9 +3008,9 @@
     },
     {
         "display_name": "疾射枪手",
-        "trait_id": "Set10_Quickshot",
+        "trait_id": "TFT10_Quickshot",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Rapidfire.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Rapidfire.png",
         "tooltip_text": "你的弈子们获得@TeamwideAttackSpeed*100@%攻击速度。<br><br>【疾射枪手】们在每次攻击时获得更多攻击速度，至多至@MaxStacks@层。<br><br><expandRow>(@MinUnits@) @PercentAS*100@% %i:scaleAS%</expandRow>",
         "innate_trait_sets": [
             {
@@ -3081,9 +3081,9 @@
     },
     {
         "display_name": "秘术护卫",
-        "trait_id": "Set10_Sentinel",
+        "trait_id": "TFT10_Sentinel",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Warden.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Warden.png",
         "tooltip_text": "你的队伍获得护甲与魔抗。【秘术护卫】们获得双倍此加成。<br><br><expandRow>(@MinUnits@) @BonusArmor@ %i:scaleArmor%，@BonusArmor@ %i:scaleMR%</expandRow>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -3162,7 +3162,7 @@
     },
     {
         "display_name": "法师",
-        "trait_id": "Set10_Spellweaver",
+        "trait_id": "TFT10_Spellweaver",
         "set": "TFTSet10",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_5_Sorcerer.png",
         "tooltip_text": "你的弈子们获得@TeamwideAP@法术强度。【法师】们获得更多法术强度，并在每个【法师】施法时进一步获得法术强度。<br><br><expandRow>(@MinUnits@) +@AP@ %i:scaleAP%，每次施法+@BonusAP@ %i:scaleAP%</expandRow>",
@@ -3253,9 +3253,9 @@
     },
     {
         "display_name": "超级粉丝",
-        "trait_id": "Set10_Superfan",
+        "trait_id": "TFT10_Superfan",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Superfan.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Superfan.png",
         "tooltip_text": "【超级粉丝】们会增强你的【赛季之星】！<br><br><row> (@MinUnits@) 【赛季之星】获得一件成装</row><br><row> (@MinUnits@) 【赛季之星】获得@HealthBonus@ %i:scaleHealth%和@OmnivampBonus*100@%<TFTKeyword>全能吸血</TFTKeyword></row><br><row> (@MinUnits@) 提供的这件装备升级至光明武器</row><br><br><rules>全能吸血：获得相当于一部分实际伤害值的治疗效果</rules>",
         "innate_trait_sets": [
             {
@@ -3298,9 +3298,9 @@
     },
     {
         "display_name": "真实伤害",
-        "trait_id": "Set10_TrueDamage",
+        "trait_id": "TFT10_TrueDamage",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_TrueDamage.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_TrueDamage.png",
         "tooltip_text": "【真实伤害】弈子们造成额外真实伤害。如果【真实伤害】弈子携带了一件装备，那么会使其技能获得一个独特的【闪亮加成】。<br><br><row>(@MinUnits@) <trueDamage>@BONUS_DAMAGE*100@%</trueDamage>伤害</row><br><row>(@MinUnits@) <trueDamage>@BONUS_DAMAGE*100@%</trueDamage>伤害</row><br><row>(@MinUnits@) <trueDamage>@BONUS_DAMAGE*100@%</trueDamage>伤害</row><br><row>(@MinUnits@) <trueDamage>@BONUS_DAMAGE*100@%</trueDamage>伤害，闪亮加成变为白金级！</row>",
         "innate_trait_sets": [
             {
@@ -3403,9 +3403,9 @@
     },
     {
         "display_name": "影流之镰",
-        "trait_id": "Set10_TwoSides",
+        "trait_id": "TFT10_TwoSides",
         "set": "TFTSet10",
-        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Wildcard.TFT_Set10.png",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_10_Wildcard.png",
         "tooltip_text": "(唯一) 如果你赢下了玩家战斗回合，那么【凯隐】就会变成【影流刺客】。如果没有，则他会变成【拉亚斯特】。每当他击杀@NumOfKills@个敌方弈子时，你就会获得一次基于他形态的奖励。<TFTBonus enabled=TFT10_WildcardShadowAssassin alternate=rules>影流刺客：@AssassinGoldPerKill@金币</TFTBonus><br><TFTBonus enabled=TFT10_WildcardRhaast alternate=rules>拉亚斯特：@RhaastPlayerHealthPerKill@玩家生命值</TFTBonus>",
         "innate_trait_sets": [],
         "conditional_trait_sets": [
@@ -3430,6 +3430,2305 @@
                 "min_units": 1,
                 "style_idx": 6,
                 "style_name": "kUnique"
+            }
+        ]
+    },
+    {
+        "display_name": "武仙子",
+        "trait_id": "TFT11_Altruist",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Altruist.TFT_Set11.png",
+        "tooltip_text": "【武仙子】们为生命值最低的那个友军治疗相当于【武仙子】@PercentDamageToHeal*100@%造成伤害值的生命值。你的队伍获得护甲与魔抗。<br><br><expandRow>(@MinUnits@) @Resists@%i:scaleArmor%%i:scaleMR%</expandRow>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PercentDamageToHeal",
+                        "value": 0.1500,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Resists",
+                        "value": 10.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 2,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Resists",
+                        "value": 25.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 3,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Resists",
+                        "value": 45.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "法师",
+        "trait_id": "TFT11_Arcanist",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_6_Arcanist.png",
+        "tooltip_text": "【法师】们获得法术强度，同时为友军提供法术强度。<br><br><row>(@MinUnits@) 为所有友军提供@TeamAbilityPower@ %i:scaleAP%。</row><br><row>(@MinUnits@) 为【法师】们提供@ArcanistAbilityPower@ %i:scaleAP%；为其他单位提供@TeamAbilityPower@ %i:scaleAP%</row><br><row>(@MinUnits@) 为【法师】们提供@ArcanistAbilityPower@ %i:scaleAP%；为其他单位提供@TeamAbilityPower@ %i:scaleAP%</row><br><row>(@MinUnits@) 为【法师】们提供@ArcanistAbilityPower@ %i:scaleAP%；为其他单位提供@TeamAbilityPower@ %i:scaleAP%</row>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ArcanistAbilityPower",
+                        "value": 20.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TeamAbilityPower",
+                        "value": 20.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ArcanistAbilityPower",
+                        "value": 45.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TeamAbilityPower",
+                        "value": 20.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ArcanistAbilityPower",
+                        "value": 80.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TeamAbilityPower",
+                        "value": 40.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 7,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ArcanistAbilityPower",
+                        "value": 125.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TeamAbilityPower",
+                        "value": 125.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 8,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "画圣",
+        "trait_id": "TFT11_Artist",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Artist.TFT_Set11.png",
+        "tooltip_text": "【画圣】绘出你放置在一个特别备战席栏位的弈子。【画圣】画好后，你将获得该英雄的1星弈子。<br><br><TFTBonus>完成回合数 = 弈子的费用</TFTBonus>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "ExtraTurns",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [],
+                "min_units": 1,
+                "style_idx": 6,
+                "style_name": "kUnique"
+            }
+        ]
+    },
+    {
+        "display_name": "擎天卫",
+        "trait_id": "TFT11_Behemoth",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Behemoth.TFT_Set11.png",
+        "tooltip_text": "【擎天卫】获得护甲与魔抗提升。每当【擎天卫】阵亡时，相距最近的【擎天卫】获得额外的@BonusPercent*100@%此加成，持续@Duration@秒。<br><br><expandRow>(@MinUnits@) @Defenses@%i:scaleArmor%%i:scaleMR%</expandRow><br>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "NearbyAllyEmpower",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Duration",
+                        "value": 5.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BonusPercent",
+                        "value": 0.5000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Defenses",
+                        "value": 25.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Defenses",
+                        "value": 55.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Defenses",
+                        "value": 80.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "斗士",
+        "trait_id": "TFT11_Bruiser",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_6_Bruiser.png",
+        "tooltip_text": "你的队伍获得@TeamBonusHealth@最大生命值。【斗士】们获得额外的最大生命值。<br><br><row>(@MinUnits@) @BonusPercentHealth*100@%%i:scaleHealth%</row><br><row>(@MinUnits@) @BonusPercentHealth*100@%%i:scaleHealth%</row><br><row>(@MinUnits@) @BonusPercentHealth*100@%%i:scaleHealth%</row><br><row>(@MinUnits@) @BonusPercentHealth*100@%%i:scaleHealth%；每@RefreshSeconds@秒，【斗士】们的下次攻击将造成@SlamPercentHealth*100@%%i:scaleHealth%额外物理伤害。</row>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "RefreshSeconds",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TeamBonusHealth",
+                        "value": 100.0000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "BonusPercentHealth",
+                        "value": 0.2000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "SlamPercentHealth",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "BonusPercentHealth",
+                        "value": 0.4000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "SlamPercentHealth",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "BonusPercentHealth",
+                        "value": 0.6500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "SlamPercentHealth",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 7,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "BonusPercentHealth",
+                        "value": 0.8000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "SlamPercentHealth",
+                        "value": 0.0600,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 8,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "天龙之子",
+        "trait_id": "TFT11_Dragonlord",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Dragonlord.TFT_Set11.png",
+        "tooltip_text": "战斗开始@FirstDelay@秒后，巨龙打击整个棋盘，对敌人们造成真实伤害，并提升所有友军的攻击速度，持续到战斗环节结束。<br><br><row>(@MinUnits@) <trueDamage>@TrueDamageHPRatio*100@% %i:scaleHealth%</trueDamage>伤害，@AttackSpeedBuff*100@% %i:scaleAS%。</row><br><row>(@MinUnits@) <trueDamage>@TrueDamageHPRatio*100@% %i:scaleHealth%</trueDamage>伤害，@AttackSpeedBuff*100@% %i:scaleAS%。</row><br><row>(@MinUnits@) <trueDamage>@TrueDamageHPRatio*100@% %i:scaleHealth%</trueDamage>伤害和@StunDuration@秒晕眩。</row><br><row>(@MinUnits@) <trueDamage>@TrueDamageHPRatio*100@% %i:scaleHealth%</trueDamage>伤害，@AttackSpeedBuff*100@% %i:scaleAS%。</row>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "FirstDelay",
+                        "value": 8.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TrueDamageHPRatio",
+                        "value": 0.0500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "AttackSpeedBuff",
+                        "value": 0.1200,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ASDuration",
+                        "value": 60.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "StrikeLevel",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 2,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "FirstDelay",
+                        "value": 8.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TrueDamageHPRatio",
+                        "value": 0.1000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "StunDuration",
+                        "value": 1.2500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "AttackSpeedBuff",
+                        "value": 0.1800,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ASDuration",
+                        "value": 60.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "StrikeLevel",
+                        "value": 2.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 3,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "FirstDelay",
+                        "value": 8.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TrueDamageHPRatio",
+                        "value": 0.1200,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "StunDuration",
+                        "value": 1.5000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "AttackSpeedBuff",
+                        "value": 0.1800,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ASDuration",
+                        "value": 60.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "StrikeLevel",
+                        "value": 3.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 4,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "FirstDelay",
+                        "value": 8.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TrueDamageHPRatio",
+                        "value": 0.1800,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "StunDuration",
+                        "value": 1.5000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "AttackSpeedBuff",
+                        "value": 0.4500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ASDuration",
+                        "value": 60.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "StrikeLevel",
+                        "value": 3.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 5,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "永恒之森",
+        "trait_id": "TFT11_Dryad",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Dryad.TFT_Set11.png",
+        "tooltip_text": "【永恒之森】弈子们获得法术强度和@StartingHealth@生命值。每有一名敌人阵亡，获得永久的额外生命值。<br><br><expandRow>(@MinUnits@) @AP@ %i:scaleAP%； 每次敌人阵亡获得@HealthPerCompost@ %i:scaleHealth%</expandRow><br><br><TFTTrackerLabel>(总生命值： @TFTUnitProperty.trait:TFT11_Trait_DryadHealth@%i:scaleHealth%)</TFTTrackerLabel><br><TFTTrackerLabel>(已击杀的敌人数量：@TFTUnitProperty.trait:TFT11_Trait_DryadCompost@)</TFTTrackerLabel><br>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Duration",
+                        "value": 4.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "StartingHealth",
+                        "value": 150.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "StartingHealthHR",
+                        "value": 150.0000,
+                        "format_string": ""
+                    }
+                ]
+            },
+            {
+                "effect_amounts": []
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HealthPerCompost",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "AP",
+                        "value": 15.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealthPerCompostHR",
+                        "value": 4.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HealthPerCompost",
+                        "value": 7.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "AP",
+                        "value": 30.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealthPerCompostHR",
+                        "value": 12.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HealthPerCompost",
+                        "value": 11.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "AP",
+                        "value": 65.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealthPerCompostHR",
+                        "value": 20.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "决斗大师",
+        "trait_id": "TFT11_Duelist",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_8_Duelist.png",
+        "tooltip_text": "【决斗大师】们每次攻击都会获得攻击速度，最多叠加@MaxStacks@次。<br><br><row>(@MinUnits@) @AttackSpeedPercent*100@% %i:scaleAS%</row><br><row>(@MinUnits@) @AttackSpeedPercent*100@% %i:scaleAS%</row><br><row>(@MinUnits@) @AttackSpeedPercent*100@% %i:scaleAS%；【决斗大师】们获得@DamageReduction*100@%伤害减免</row><br><row>(@MinUnits@) @AttackSpeedPercent*100@% %i:scaleAS%；【决斗大师】们获得@DamageReduction*100@%伤害减免</row>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AttackSpeedPercent",
+                        "value": 0.0500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "MaxStacks",
+                        "value": 12.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DamageReduction",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AttackSpeedPercent",
+                        "value": 0.0900,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "MaxStacks",
+                        "value": 12.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DamageReduction",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AttackSpeedPercent",
+                        "value": 0.1300,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "MaxStacks",
+                        "value": 12.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DamageReduction",
+                        "value": 0.1200,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 7,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AttackSpeedPercent",
+                        "value": 0.1800,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "MaxStacks",
+                        "value": 12.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DamageReduction",
+                        "value": 0.1800,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 8,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "尊者",
+        "trait_id": "TFT11_Exalted",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Exalted.TFT_Set11.png",
+        "tooltip_text": "己方队伍获得@BaseDamageAmp@%额外伤害，伤害加成随你的等级提升。<br><br>战斗环节结束后，将@BaseAmountXP@经验值储存在一个【灵魂核心】中。售出核心即可领取这些经验值。<br><br><expandRow>(@MinUnits@) 每级@DamageAmpPerLevel@%伤害</expandRow><br><br>(<TFTBonus>当前加成：@TFTUnitProperty.trait:TFT11_Trait_Exalted_CurrentBonus@%</TFTBonus>)。<br><br><rules>每场对局都有一组不同的弈子变成【尊者】。</rules>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "BaseAmountXP",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HRGold",
+                        "value": 2.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BaseDamageAmp",
+                        "value": 4.0000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DamageAmpPerLevel",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DamageAmpPerLevelHR",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 4,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DamageAmpPerLevel",
+                        "value": 2.5000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DamageAmpPerLevelHR",
+                        "value": 3.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 5,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "灵魂莲华",
+        "trait_id": "TFT11_Fated",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Fated.TFT_Set11.png",
+        "tooltip_text": "拖动【灵魂莲华】弈子到另一【灵魂莲华】弈子上，即可进行配对并解锁一个<TFTBonus>莲华加成</TFTBonus>。你的【灵魂莲华】组合获得@PairHPBonus*100@% %i:scaleHealth%。<br><br><row>(@MinUnits@) 该组合获得莲华加成。</row><br><row>(@MinUnits@) 所有【灵魂莲华】弈子获得@BondIncreasePercent*100@%的莲华加成。</row><br><row>(@MinUnits@) 所有【灵魂莲华】弈子获得@BondIncreasePercent*100@%的莲华加成。</row><br><row>(@MinUnits@) 所有【灵魂莲华】弈子获得@BondIncreasePercent*100@%的每种莲华加成。</row>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PairHPBonus",
+                        "value": 0.2000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "EmblemHPRegen",
+                        "value": 0.2000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PairCount",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BondIncreasePercent",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "GiveToAll",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 4,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PairCount",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BondIncreasePercent",
+                        "value": 2.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "GiveToAll",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 5,
+                "max_units": 6,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PairCount",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BondIncreasePercent",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "GiveToAll",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 7,
+                "max_units": 9,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PairCount",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BondIncreasePercent",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "GiveToAll",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 10,
+                "style_idx": 5,
+                "style_name": "kChromatic"
+            }
+        ]
+    },
+    {
+        "display_name": "吉星",
+        "trait_id": "TFT11_Fortune",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_4_Fortune.png",
+        "tooltip_text": "在你输掉一场战斗时，获得吉运。你连败的战斗场次越多，你获得的吉运就越多。<br><br>在你赢得战斗时失去吉运。<br><br><row>(@MinUnits@) 投掷一颗骰子；经过相当于掷出点数的玩家对战回合之后，进行一次庆典。你在庆典中可以将吉运兑换为奖励。</row><br><row>(@MinUnits@) 每场玩家对战开始时，治疗@Heal@玩家生命值。</row><br><row>@TFTUnitProperty.:TFT11_Trait_Fortune7Tooltip@</row><br><br><rules>每次庆典，投掷一个新骰子。</rules>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "LossValueStage2",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "LossValueStage3",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "LossValueStage4",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "LossValueStage5",
+                        "value": 4.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "LossValueStage6",
+                        "value": 4.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "LossValueStage7",
+                        "value": 5.0000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DieMinRoll",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DieMaxRoll",
+                        "value": 6.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "WinPenalty",
+                        "value": 0.1000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "FlatHearts",
+                        "value": 0.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Heal",
+                        "value": 0.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealHR",
+                        "value": 0.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealDU",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 4,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DieMinRoll",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DieMaxRoll",
+                        "value": 6.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "WinPenalty",
+                        "value": 0.1000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "FlatHearts",
+                        "value": 0.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Heal",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealHR",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealDU",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 5,
+                "max_units": 6,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DieMinRoll",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DieMaxRoll",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "WinPenalty",
+                        "value": 0.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "FlatLuck",
+                        "value": 30.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Heal",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealHR",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealDU",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 7,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "幽魂",
+        "trait_id": "TFT11_Ghostly",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Ghostly.TFT_Set11.png",
+        "tooltip_text": "在造成或承受@NumInstances@次伤害时，【幽魂】们会派出@NumSpectres@个亡灵缠住附近的敌人们，且每@TickRate@秒为自身治疗@HealingPercent*100@%最大生命值。<br><br>被缠住的敌人会基于亡灵数量受到额外伤害，并在阵亡时将亡灵传递给其他单位。<br><br><expandRow>(@MinUnits@) 每个幽魂@DamagePercent*100@%</expandRow>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "TickRate",
+                        "value": 2.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealingPercent",
+                        "value": 0.0200,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "NumInstances",
+                        "value": 6.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "NumSpectres",
+                        "value": 2.0000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DamagePercent",
+                        "value": 0.0500,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DamagePercent",
+                        "value": 0.1200,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DamagePercent",
+                        "value": 0.2000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 7,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DamagePercent",
+                        "value": 0.3500,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 8,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "齐天大圣",
+        "trait_id": "TFT11_Great",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Great.TFT_Set11.png",
+        "tooltip_text": "每进行@CastCount@次技能施放，【孙悟空】的武器就会变大，技能也会随之改变。",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "CastCount",
+                        "value": 3.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 1,
+                "style_idx": 6,
+                "style_name": "kUnique"
+            }
+        ]
+    },
+    {
+        "display_name": "天将",
+        "trait_id": "TFT11_Heavenly",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Heavenly.TFT_Set11.png",
+        "tooltip_text": "【天将】弈子们会为你的队伍提供一个独特的属性，该加成会随着其星级和已登场的【天将】弈子数量而提升。<br><br><expandRow>(@MinUnits@)<TFTGuildActive> @HeavenlyBonus*100@%</TFTGuildActive>加成。</expandRow><br><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveCrit alternate=TFTGuildInactive>卡兹克 - </TFTGuildActive>%i:scaleCrit% <spellActive enabled=TFT11_Trait_Heavenly_ActiveCrit alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Crit@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveDefenses alternate=TFTGuildInactive>墨菲特 - </TFTGuildActive>%i:scaleArmor%%i:scaleMR% <spellActive enabled=TFT11_Trait_Heavenly_ActiveDefenses alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Defenses@</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveHealth alternate=TFTGuildInactive>妮蔻 - </TFTGuildActive>%i:scaleHealth% <spellActive enabled=TFT11_Trait_Heavenly_ActiveHealth alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Health@</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveAttackDamage alternate=TFTGuildInactive>奇亚娜 - </TFTGuildActive>%i:scaleAD% <spellActive enabled=TFT11_Trait_Heavenly_ActiveAttackDamage alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_AD@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveAP alternate=TFTGuildInactive>索拉卡 - </TFTGuildActive>%i:scaleAP% <spellActive enabled=TFT11_Trait_Heavenly_ActiveAP alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_AP@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveAttackSpeed alternate=TFTGuildInactive>孙悟空 - </TFTGuildActive>%i:scaleAS% <spellActive enabled=TFT11_Trait_Heavenly_ActiveAttackSpeed alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_AS@%</spellActive><br><TFTGuildActive enabled=TFT11_Trait_Heavenly_ActiveOmnivamp alternate=TFTGuildInactive>纹章 - 全能吸血</TFTGuildActive><spellActive enabled=TFT11_Trait_Heavenly_ActiveOmnivamp alternate=TFTGuildInactive>@TFTUnitProperty.trait:TFT11_Trait_Heavenly_Omnivamp@%</spellActive>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DefensesOneStar",
+                        "value": 8.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "CritOneStar",
+                        "value": 10.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "APOneStar",
+                        "value": 10.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealthOneStar",
+                        "value": 60.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ASOneStar",
+                        "value": 12.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ADOneStar",
+                        "value": 10.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "OmnivampOneStar",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TwoStarMultiplier",
+                        "value": 1.3000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ThreeStarMultiplier",
+                        "value": 1.5000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HeavenlyBonus",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 2,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HeavenlyBonus",
+                        "value": 1.1500,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 3,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HeavenlyBonus",
+                        "value": 1.3500,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 4,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HeavenlyBonus",
+                        "value": 1.6500,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 5,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HeavenlyBonus",
+                        "value": 2.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 6,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HeavenlyBonus",
+                        "value": 2.4000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 7,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "墨之影",
+        "trait_id": "TFT11_InkShadow",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Ink_Shadow.TFT_Set11.png",
+        "tooltip_text": "获得各种独特的【墨之影】装备。【墨之影】弈子们获得@PercentBuff@%伤害加成和伤害减免。<br><br><row>(@MinUnits@) @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item1@</row><br><row>(@MinUnits@) @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item2@和@IncreasedPercentBuff@%的额外伤害加成和伤害减免</row><br><row>(@MinUnits@) @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item3@和@TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item4@</row>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PercentBuff",
+                        "value": 5.0000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "NumOfTattoos",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "IncreasedPercentBuff",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 4,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "NumOfTattoos",
+                        "value": 2.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "IncreasedPercentBuff",
+                        "value": 5.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 5,
+                "max_units": 6,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "NumOfTattoos",
+                        "value": 4.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "IncreasedPercentBuff",
+                        "value": 5.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 7,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "神谕者",
+        "trait_id": "TFT11_Invoker",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Preserver.png",
+        "tooltip_text": "每@TickRate@秒，你的弈子们获得法力值。<br><br><row>(@MinUnits@) 所有己方弈子获得@TeamMana@ %i:scaleMana%。</row><br><row>(@MinUnits@) 【神谕者】们获得@InvokerMana@ %i:scaleMana%；其它弈子们获得@TeamMana@ %i:scaleMana%</row><br><row>(@MinUnits@) 【神谕者】们获得@InvokerMana@ %i:scaleMana%；其它弈子们获得@TeamMana@ %i:scaleMana%</row>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "TickRate",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TeamMana",
+                        "value": 5.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "InvokerMana",
+                        "value": 5.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TeamAP",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "TickRate",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TeamMana",
+                        "value": 5.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "InvokerMana",
+                        "value": 20.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TeamAP",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "TickRate",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TeamMana",
+                        "value": 20.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "InvokerMana",
+                        "value": 35.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "TeamAP",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "仙侣",
+        "trait_id": "TFT11_Lovers",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Lovers.TFT_Set11.png",
+        "tooltip_text": "根据【仙侣】部署的位置(前两排或后两排)，切换登场的英雄。在已登场的那个【仙侣】施放技能时，另一个会提供一个额外效果。<br><br>前排：【武仙子】【洛】<br>后排：【迅捷射手】【霞】",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": []
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "RakanHealOneStar",
+                        "value": 150.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "RakanHealTwoStar",
+                        "value": 200.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "RakanHealThreeStar",
+                        "value": 1000.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "RakanTargets",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "XayahDamageOneStar",
+                        "value": 200.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "XayahDamageTwoStar",
+                        "value": 300.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "XayahDamageThreeStar",
+                        "value": 1500.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 1,
+                "max_units": 1,
+                "style_idx": 6,
+                "style_name": "kUnique"
+            }
+        ]
+    },
+    {
+        "display_name": "山海绘卷",
+        "trait_id": "TFT11_Mythic",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Mythic.TFT_Set11.png",
+        "tooltip_text": "【山海绘卷】弈子们获得生命值、法术强度和攻击力。<br><br>4个玩家对战回合后，【山海绘卷】弈子们会变成史诗级，使该加成提升@Multiplier*100@%。<br><br><row>(@MinUnits@) +@HealthPct*100@%%i:scaleHealth%，@AP@%%i:scaleAP%%i:scaleAS%</row><br><row>(@MinUnits@) +@HealthPct*100@%%i:scaleHealth%，@AP@%%i:scaleAP%%i:scaleAS%</row><br><row>(@MinUnits@) +@HealthPct*100@%%i:scaleHealth%，@AP@%%i:scaleAP%%i:scaleAS%</row><br><row>(@MinUnits@) 立即变成史诗级。此加成转而提升@PrismaticMultiplier*100@%。</row>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": []
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AP",
+                        "value": 12.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealthPct",
+                        "value": 0.0800,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Multiplier",
+                        "value": 0.5000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 4,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AP",
+                        "value": 22.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealthPct",
+                        "value": 0.1800,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Multiplier",
+                        "value": 0.5000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 5,
+                "max_units": 6,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AP",
+                        "value": 35.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealthPct",
+                        "value": 0.2500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Multiplier",
+                        "value": 0.5000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 7,
+                "max_units": 9,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "AP",
+                        "value": 35.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealthPct",
+                        "value": 0.2500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Multiplier",
+                        "value": 0.5000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "PrismaticMultiplier",
+                        "value": 2.5000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 10,
+                "style_idx": 5,
+                "style_name": "kChromatic"
+            }
+        ]
+    },
+    {
+        "display_name": "青花瓷",
+        "trait_id": "TFT11_Porcelain",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Porcelain.TFT_Set11.png",
+        "tooltip_text": "施放技能后，【青花瓷】弈子们将沸腾，获得攻击速度和伤害减免，持续@Duration@秒。<br><br><expandRow>(@MinUnits@) @AS*100@% %i:scaleAS%；@DR*100@%伤害减免</expandRow><br>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DR",
+                        "value": 0.2000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "AS",
+                        "value": 0.3000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Duration",
+                        "value": 4.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DR",
+                        "value": 0.3500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "AS",
+                        "value": 0.6000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Duration",
+                        "value": 4.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DR",
+                        "value": 0.6000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "AS",
+                        "value": 1.2500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Duration",
+                        "value": 4.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "死神",
+        "trait_id": "TFT11_Reaper",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Reaper.TFT_Set11.png",
+        "tooltip_text": "<row>(@MinUnits@)【死神】的技能可以暴击，并且他们获得@CritChance*100@%暴击几率。</row><br><row>(@MinUnits@) 此外，【死神】们会对敌人施加流血效果，在@Duration@秒里持续造成@BleedDamage*100@%额外真实伤害。</row><br>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Duration",
+                        "value": 3.0000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "CritChance",
+                        "value": 0.2000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BleedDamage",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "CritChance",
+                        "value": 0.2000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BleedDamage",
+                        "value": 0.5000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "圣贤",
+        "trait_id": "TFT11_Sage",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Sage.TFT_Set11.png",
+        "tooltip_text": "战斗开始时：前2排的友军获得全能吸血。后2排的友军获得法术强度。<br><br><expandRow>(@MinUnits@) @Omnivamp*100@%全能吸血，@APAmount@%i:scaleAP%</expandRow>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": []
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Omnivamp",
+                        "value": 0.1200,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "APAmount",
+                        "value": 15.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 2,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Omnivamp",
+                        "value": 0.2000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "APAmount",
+                        "value": 30.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 3,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Omnivamp",
+                        "value": 0.3000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "APAmount",
+                        "value": 45.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 4,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Omnivamp",
+                        "value": 0.4500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "APAmount",
+                        "value": 75.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 5,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "狙神",
+        "trait_id": "TFT11_Sniper",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_6_Sniper.png",
+        "tooltip_text": "固有能力：【狙神】们获得@HexRangeIncrease@攻击距离。<br><br>【狙神】们可对距离更远的目标造成更高伤害。<br><br><row>(@MinUnits@) 每格@PercentDamageIncrease@%伤害，</row><br><row>(@MinUnits@) 每格@PercentDamageIncrease@%伤害。</row><br><row>(@MinUnits@) 每格@PercentDamageIncrease@%伤害。【狙神】们获得额外的@BonusHexRangeIncrease@攻击距离。</row>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "HexRangeIncrease",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PercentDamageIncrease",
+                        "value": 7.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BonusHexRangeIncrease",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PercentDamageIncrease",
+                        "value": 15.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BonusHexRangeIncrease",
+                        "value": 0.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PercentDamageIncrease",
+                        "value": 30.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BonusHexRangeIncrease",
+                        "value": 2.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "灵魂行者",
+        "trait_id": "TFT11_SpiritWalker",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Spirit_Walker.TFT_Set11.png",
+        "tooltip_text": "【灵魂行者】首次降至@RevivePercent*100@%生命值以下时，会释放体内的怒火，治疗至满额生命值，获得移动速度提升，并将技能从【蛮羊冲击】变更为【猛虎爪击】。",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "OmnivampPercent",
+                        "value": 0.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "RevivePercent",
+                        "value": 0.5000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DamageReduction",
+                        "value": 100.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 1,
+                "style_idx": 6,
+                "style_name": "kUnique"
+            }
+        ]
+    },
+    {
+        "display_name": "剪纸仙灵",
+        "trait_id": "TFT11_Storyweaver",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Storyweaver.TFT_Set11.png",
+        "tooltip_text": "【剪纸仙灵】召唤一个名为【凯尔】的英雄，并使其进化。【剪纸仙灵】们获得最大生命值。<br><br><row>(@MinUnits@) 选择一个辅助型效果。@Health@&nbsp;%i:scaleHealth%</row><br><row>(@MinUnits@) 选择一个战斗型效果。 @Health@&nbsp;%i:scaleHealth%</row><br><row>(@MinUnits@) 选择一个战斗型效果。@Health@&nbsp;%i:scaleHealth%</row><br><row>(@MinUnits@) 登神。@Health@&nbsp;%i:scaleHealth%</row><br><br><rules>【剪纸仙灵】的每个星级都会提升【凯尔】的生命值和法术强度。【凯尔】每个阶段都会获得@BonusASPerStage*100@%攻击速度。</rules>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "PercentHealthADPerStarLevel",
+                        "value": 0.1000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Storyweaver3CarryItemPercent",
+                        "value": 20.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Storyweaver3JazzItemPercent",
+                        "value": 10.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Storyweaver5TraitItemPercent",
+                        "value": 25.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Storyweaver3ChoiceCount",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Storyweaver5ChoiceCount",
+                        "value": 3.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "Storyweaver7ChoiceCount",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "HealthPerChapter",
+                        "value": 100.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "BonusASPerStage",
+                        "value": 0.1500,
+                        "format_string": ""
+                    }
+                ]
+            },
+            {
+                "effect_amounts": []
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Health",
+                        "value": 60.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 3,
+                "max_units": 4,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Health",
+                        "value": 100.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 5,
+                "max_units": 6,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Health",
+                        "value": 150.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 7,
+                "max_units": 9,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Health",
+                        "value": 250.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 10,
+                "style_idx": 5,
+                "style_name": "kChromatic"
+            }
+        ]
+    },
+    {
+        "display_name": "迅捷射手",
+        "trait_id": "TFT11_Trickshot",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_4_Sharpshooter.png",
+        "tooltip_text": "【迅捷射手】们的技能会进行弹射。每次弹射将造成一定百分比的先前弹射伤害。<br><br><row>(@MinUnits@) @MaxBounces@次弹射；@PercentDamage*100@%的先前伤害</row><br><row>(@MinUnits@) @MaxBounces@次弹射；@PercentDamage*100@%的先前伤害</row>",
+        "innate_trait_sets": [],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "MaxBounces",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "PercentDamage",
+                        "value": 0.4000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "MaxBounces",
+                        "value": 2.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "PercentDamage",
+                        "value": 0.6000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "style_idx": 4,
+                "style_name": "kGold"
+            }
+        ]
+    },
+    {
+        "display_name": "迅捷射手/武仙子",
+        "trait_id": "TFT11_TrickshotAltruist",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Altruist_Trickshot.TFT_Set11.png",
+        "tooltip_text": "放置在后两排可获得【迅捷射手】，放置在前两排则可获得【武仙子】！",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": []
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [],
+                "min_units": 1,
+                "style_idx": 6,
+                "style_name": "kUnique"
+            }
+        ]
+    },
+    {
+        "display_name": "夜幽",
+        "trait_id": "TFT11_Umbral",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Umbral.TFT_Set11.png",
+        "tooltip_text": "月光照亮若干格子，战斗开始时为其中的单位提供护盾。<br><br>处于月光格中的【夜幽】单位将处决低生命值的敌人。<br><br><row>(@MinUnits@) @ShieldAmount@护盾值；低于@DesireExecuteThreshhold@%生命值时触发处决</row><br><row>(@MinUnits@) @ShieldAmount@护盾值；低于@DesireExecuteThreshhold@%生命值时触发处决。更多格子被照亮。</row><br><row>(@MinUnits@) @ShieldAmount@护盾值并照亮整个棋盘</row><br><row>(@MinUnits@) 被处决的敌人有@DesireExecuteRewardPercent*100@%几率掉落战利品；低于@DesireExecuteThreshhold@%生命值时触发处决</row>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": []
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DesireExecuteThreshhold",
+                        "value": 10.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DesireExecuteRewardPercent",
+                        "value": 0.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ShieldAmount",
+                        "value": 200.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DesireExecuteThreshhold",
+                        "value": 18.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DesireExecuteRewardPercent",
+                        "value": 0.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ShieldAmount",
+                        "value": 500.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DesireExecuteThreshhold",
+                        "value": 18.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DesireExecuteRewardPercent",
+                        "value": 0.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ShieldAmount",
+                        "value": 1000.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "max_units": 8,
+                "style_idx": 4,
+                "style_name": "kGold"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DesireExecuteThreshhold",
+                        "value": 40.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DesireExecuteRewardPercent",
+                        "value": 1.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ItemPercent",
+                        "value": 0.2500,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "ShieldAmount",
+                        "value": 1000.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "DesireExecuteRewardPercentHR",
+                        "value": 1.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 9,
+                "style_idx": 5,
+                "style_name": "kChromatic"
+            }
+        ]
+    },
+    {
+        "display_name": "护卫",
+        "trait_id": "TFT11_Warden",
+        "set": "TFTSet11",
+        "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Warden.TFT_Set11.png",
+        "tooltip_text": "【护卫】们获得伤害减免。在战斗的最初@Duration@秒，【护卫】们获得额外@StartOfCombatDRPercent@%伤害减免。<br><br><expandRow>(@MinUnits@) @DRPercent@%伤害减免</expandRow>",
+        "innate_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "Duration",
+                        "value": 10.0000,
+                        "format_string": ""
+                    },
+                    {
+                        "name": "StartOfCombatDRPercent",
+                        "value": 15.0000,
+                        "format_string": ""
+                    }
+                ]
+            }
+        ],
+        "conditional_trait_sets": [
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DRPercent",
+                        "value": 10.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 2,
+                "max_units": 3,
+                "style_idx": 2,
+                "style_name": "kBronze"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DRPercent",
+                        "value": 20.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 4,
+                "max_units": 5,
+                "style_idx": 3,
+                "style_name": "kSilver"
+            },
+            {
+                "effect_amounts": [
+                    {
+                        "name": "DRPercent",
+                        "value": 33.0000,
+                        "format_string": ""
+                    }
+                ],
+                "min_units": 6,
+                "style_idx": 4,
+                "style_name": "kGold"
             }
         ]
     },
@@ -4582,7 +6881,7 @@
     },
     {
         "display_name": "主宰",
-        "trait_id": "Set9_Armorclad",
+        "trait_id": "TFT9_Armorclad",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Juggernaut.png",
         "tooltip_text": "【主宰】们会随着生命值的降低而获得伤害减免。<br><br><expandRow>(@MinUnits@) @MinDR*100@%至@MaxDR*100@%伤害减免</expandRow>",
@@ -4660,7 +6959,7 @@
     },
     {
         "display_name": "约德尔人",
-        "trait_id": "Set9_BandleCity",
+        "trait_id": "TFT9_BandleCity",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_6_Yordle.png",
         "tooltip_text": "你的弈子们获得@BonusAttackSpeed*100@%x星级的攻击速度。<br><br>如果你有3个3星弈子，那么你的【约德尔人】们会变为4星，从而使他们的技能获得一个奇异的升级！<br><br><row>(@MinUnits@) 你最强大的那个3星【约德尔人】</row><br><row>(@MinUnits@) 你最强大的2个3星【约德尔人】</row><br><br><rules>如果装备数持平，则会优先选择登场时间最短的那个【约德尔人】。</rules>",
@@ -4755,7 +7054,7 @@
     },
     {
         "display_name": "堡垒卫士",
-        "trait_id": "Set9_Bastion",
+        "trait_id": "TFT9_Bastion",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Bastion.png",
         "tooltip_text": "【堡垒卫士】们获得护甲与魔抗。这个加成会在战斗的最初@Duration@秒提升@BonusPercent*100@%。<br><br><expandRow>(@MinUnits@) +@BonusArmor@ %i:scaleArmor%, +@BonusArmor@ %i:scaleMR%</expandRow>",
@@ -4896,7 +7195,7 @@
     },
     {
         "display_name": "格斗家",
-        "trait_id": "Set9_Bruiser",
+        "trait_id": "TFT9_Bruiser",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_6_Bruiser.png",
         "tooltip_text": "你的弈子们获得@TeamFlatHealth@生命值。【格斗家】们获得额外的最大生命值。<br><br><expandRow>(@MinUnits@) +@BonusPercentHealth*100@%最大%i:scaleHealth%</expandRow>",
@@ -4977,7 +7276,7 @@
     },
     {
         "display_name": "挑战者",
-        "trait_id": "Set9_Challenger",
+        "trait_id": "TFT9_Challenger",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_6_Challenger.png",
         "tooltip_text": "【挑战者】们获得额外攻击速度。在其目标阵亡后，【挑战者】们会冲刺向一个新的目标并使他们的攻速加成提升@IncreasePct*100@%，持续@BurstDuration@秒。<br><br><expandRow>(@MinUnits@) @BonusAS@% %i:scaleAS%</expandRow>",
@@ -5078,7 +7377,7 @@
     },
     {
         "display_name": "暗裔",
-        "trait_id": "Set9_Darkin",
+        "trait_id": "TFT9_Darkin",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Darkin.png",
         "tooltip_text": "每当【亚托克斯】或【暗裔魔剑】的持有者阵亡时，【暗裔魔剑】就会被装备给相距最近的一名己方弈子，并为其提供@BonusHealth@生命值和@BonusOmnivamp*100@%全能吸血。<br><br>在被装备给一个弈子@RespawnTimer@秒后，【亚托克斯】就会转而在该弈子阵亡后复活。",
@@ -5110,7 +7409,7 @@
     },
     {
         "display_name": "亡眼射手",
-        "trait_id": "Set9_Deadeye",
+        "trait_id": "TFT9_Deadeye",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Deadeye.png",
         "tooltip_text": "<spellPassive>固有能力：</spellPassive> +@BonusRange@距离 <br><br>每过@ShotFrequency@秒，所有【亡眼射手】就会攻击拥有最多百分比生命值的那名敌人并造成额外伤害。<br><br><expandRow>(@MinUnits@) +@DamageAmp*100@%伤害</expandRow>",
@@ -5183,7 +7482,7 @@
     },
     {
         "display_name": "圣盾使",
-        "trait_id": "Set9_DefTrait",
+        "trait_id": "TFT9_DefTrait",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_5_Vanquisher.png",
         "tooltip_text": "【圣盾使】们在每次施放技能时都会为自己提供一个持续@Duration@秒的护盾值。这个护盾值不会叠加。<br><br><expandRow> (@MinUnits@) @ShieldPercent@%最大生命值的护盾值</expandRow>",
@@ -5246,7 +7545,7 @@
     },
     {
         "display_name": "德玛西亚",
-        "trait_id": "Set9_Demacia",
+        "trait_id": "TFT9_Demacia",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Demacia.png",
         "tooltip_text": "在每场战斗中，你最强大的【德玛西亚】弈子们会变为【精锐】并携带一件光明武器。【精锐】们给自身和邻格的友军们提供护甲和魔抗，但这个效果不会叠加。<br><br><row>(@MinUnits@) @NumElites@个【精锐】，+@BonusDefenses@ %i:scaleArmor%，+@BonusDefenses@ %i:scaleMR%</row><br><row>(@MinUnits@) @NumElites@个【精锐】，+@BonusDefenses@ %i:scaleArmor%，+@BonusDefenses@ %i:scaleMR%</row><br><row>(@MinUnits@) @NumElites@个【精锐】，+@BonusDefenses@ %i:scaleArmor%，+@BonusDefenses@ %i:scaleMR%</row><br><row>(@MinUnits@) @NumElites@个【精锐】，+@BonusDefenses@ %i:scaleArmor%，+@BonusDefenses@ %i:scaleMR%</row><br><br><rules>光明武器是成装的更强版本。</rules>",
@@ -5327,7 +7626,7 @@
     },
     {
         "display_name": "女皇",
-        "trait_id": "Set9_Empress",
+        "trait_id": "TFT9_Empress",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Empress.png",
         "tooltip_text": "【卑尔维斯】在击杀一个敌人时，会留下一个【虚空珊瑚】来供她享用。被她吃掉的第一个【虚空珊瑚】会使她的最大生命值提升@PercentBonusMaxHealth*100@%，而后续【虚空珊瑚】会回复她@PercentHealthHeal*100@%最大生命值。<br><br>每当一个【虚空珊瑚】被享用时，她就会对@HexRange@格半径内的敌人们造成相当于她@PercentHealthMagicDamage*100@%最大生命值的魔法伤害。",
@@ -5364,7 +7663,7 @@
     },
     {
         "display_name": "被遗忘者",
-        "trait_id": "Set9_Forsaken",
+        "trait_id": "TFT9_Forsaken",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_5_Forgotten.png",
         "tooltip_text": "在战斗开始时，如果一名【被遗忘者】的邻格没有友军，就会获得防御穿透。<br><br><expandRow>(@MinUnits@) @Penetration@%护甲和魔抗穿透</expandRow>",
@@ -5412,7 +7711,7 @@
     },
     {
         "display_name": "弗雷尔卓德",
-        "trait_id": "Set9_Freljord",
+        "trait_id": "TFT9_Freljord",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Freljord.png",
         "tooltip_text": "在@DelayTime@秒后，一场冰风暴将席卷战场。敌人将受到相当于一部分最大生命值的真实伤害，并被施加减益效果。<br><br><row>(@MinUnits@) 敌人受到@PercentHealthDamage@%最大%i:scaleHealth%的真实伤害，并被施加持续@Duration@秒的@ShredSunder@%<TFTKeyword>护甲击碎</TFTKeyword>和<TFTKeyword>魔抗击碎</TFTKeyword></row><br><row> (@MinUnits@) 敌人受到@PercentHealthDamage@%最大%i:scaleHealth%的真实伤害，还会被施加@StunDuration@秒<TFTKeyword>晕眩</TFTKeyword></row><br><br><rules><tftbold>护甲击碎：</tftbold>降低护甲值<br><tftbold>魔抗击碎：</tftbold>降低魔抗值</rules>",
@@ -5487,7 +7786,7 @@
     },
     {
         "display_name": "艾欧尼亚",
-        "trait_id": "Set9_Ionia",
+        "trait_id": "TFT9_Ionia",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Ionia.png",
         "tooltip_text": "每个【艾欧尼亚】弈子的技能里都有一个独特加成。<br><br>每@SpiritDuration@秒，你的最强大的【艾欧尼亚】弈子们会显现成他们的灵体状态，从而获得@Mana@法力值和双倍属性加成，持续@SpiritDuration@秒。<br><br><expandRow>(@MinUnits@) @TooltipBonus*100@%【艾欧尼亚】加成，显现@NumberOfSpirits@个灵体</expandRow>",
@@ -5760,7 +8059,7 @@
     },
     {
         "display_name": "枪手",
-        "trait_id": "Set9_Marksman",
+        "trait_id": "TFT9_Marksman",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Gunner.png",
         "tooltip_text": "当【枪手】们攻击时，他们会获得额外攻击力，至多至@MaxStacks@层。<br><br><expandRow>(@MinUnits@) 每层@PercentAD@% %i:scaleAD%</expandRow>",
@@ -5823,7 +8122,7 @@
     },
     {
         "display_name": "术士",
-        "trait_id": "Set9_Multicaster",
+        "trait_id": "TFT9_Multicaster",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Multicaster.png",
         "tooltip_text": "【术士】们在施放其技能时会额外施放1次。额外施放的效能会受到削减。<br><br><row>(@MinUnits@) @DamageReduction*100@%削减</row><br><row>(@MinUnits@) @DamageReduction*100@%削减</row><br><row>(@MinUnits@) @DamageReduction*100@%削减。每次普攻提供@ManaPerAuto@额外法力值。</row>",
@@ -5901,7 +8200,7 @@
     },
     {
         "display_name": "变异战士",
-        "trait_id": "Set9_Mutant",
+        "trait_id": "TFT9_Mutant",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_6_Striker.png",
         "tooltip_text": "【卡兹克】的形态会基于他的变异而改变。他的变异每天都会变化。<br><br>当前变异：<br><ShowIf.TFT9_Mutant_Claws>收割利爪：【卡兹克】的技能会处决孤立无援且低于@ClawsExecuteThreshold*100@%生命值的弈子。</ShowIf.TFT9_Mutant_Claws><ShowIf.TFT9_Mutant_Spikes>刺鞘：【卡兹克】在着陆时释放@SpikesNumSpikes@个尖刺，每个尖刺在命中一名敌人时都会治疗【卡兹克】@SpikesPercentHeal*100@%最大生命值并对该敌人施加他的攻速减缓效果。</ShowIf.TFT9_Mutant_Spikes><ShowIf.TFT9_Mutant_Wings>虫翼：【卡兹克】在战斗开始时跃至后排，并且如果他的技能击杀了一名敌人就会回复@WingsManaRefund@法力值。</ShowIf.TFT9_Mutant_Wings><ShowIf.TFT9_Mutant_Carapace>甲壳：所有友军对孤立无援的目标们造成@CarapaceBonusDamage*100@%额外伤害。</ShowIf.TFT9_Mutant_Carapace>",
@@ -5948,7 +8247,7 @@
     },
     {
         "display_name": "诺克萨斯",
-        "trait_id": "Set9_Noxus",
+        "trait_id": "TFT9_Noxus",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Noxus.png",
         "tooltip_text": "【诺克萨斯】弈子们获得生命值、法术强度和攻击力。每有一个不同的对手被你征服或被淘汰，这个加成就会提升@BonusRatio*100@%。<br><br><expandRow>(@MinUnits@) @Health@ %i:scaleHealth%、@AP@ %i:scaleAP%、@AD@% %i:scaleAD%</expandRow><br><br><TFTTrackerLabel>征服加成：@TFTUnitProperty.trait:TFT9_Trait_ConquerorBonus@% / @BonusRatio*700@%</TFTTrackerLabel>",
@@ -6069,7 +8368,7 @@
     },
     {
         "display_name": "皮尔特沃夫",
-        "trait_id": "Set9_Piltover",
+        "trait_id": "TFT9_Piltover",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Piltover.png",
         "tooltip_text": "获得【海克斯霸龙】。每当你输掉一场与玩家的战斗时，【海克斯霸龙】就会获得充能数。胜利会将充能数转化为【海克斯霸龙】的电量并为你提供基于已转化充能数的战利品。<br><br><row>(@MinUnits@) 获得【海克斯霸龙】。</row><br><row>(@MinUnits@) 每回合获得额外战利品。每次失败会转而被算作2次失败。</row>",
@@ -6114,7 +8413,7 @@
     },
     {
         "display_name": "神谕者",
-        "trait_id": "Set9_Preserver",
+        "trait_id": "TFT9_Preserver",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Preserver.png",
         "tooltip_text": "每@TickRate@秒，你的弈子们获得法力值。<br><br><row>(@MinUnits@) 所有己方弈子获得@TeamMana@ %i:scaleMana%</row><br><row>(@MinUnits@) 【神谕者】们额外获得@SelfBonusMana@ </row><br><row>(@MinUnits@) 所有己方弈子获得@TeamMana@ %i:scaleMana%，【神谕者】们额外获得@SelfBonusMana@ </row><br><row>(@MinUnits@) 所有己方弈子获得@TeamMana@ %i:scaleMana%，并且开始时拥有额外的@TeamAP@法术强度</row><br>",
@@ -6235,7 +8534,7 @@
     },
     {
         "display_name": "迅捷射手",
-        "trait_id": "Set9_Quickdraw",
+        "trait_id": "TFT9_Quickdraw",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_Ranger.png",
         "tooltip_text": "施放技能后，【迅捷射手】英雄获得持续@Duration@秒的额外攻击速度。<br><br><expandRow>(@MinUnits@)  +@BonusAttackSpeed*100@%攻击速度</expandRow>",
@@ -6316,7 +8615,7 @@
     },
     {
         "display_name": "涤魂圣枪",
-        "trait_id": "Set9_Redeemer",
+        "trait_id": "TFT9_Redeemer",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Mistwalker.png",
         "tooltip_text": "每当一名友军获得护盾时，【赛娜】为该友军提供可叠加的@AttackSpeed*100@%攻击速度，持续到战斗结束。",
@@ -6338,7 +8637,7 @@
     },
     {
         "display_name": "潜行者",
-        "trait_id": "Set9_Rogue",
+        "trait_id": "TFT9_Rogue",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Rogue.png",
         "tooltip_text": "<row>(@MinUnits@) 在一名【潜行者】降至@HealthThreshold*100@%生命值时，该弈子会短暂变为不可被选取状态并冲刺到@HexRange@格内的一名敌人处 (优先选择敌方后排)。</row><br><row>(@MinUnits@) 此外，【潜行者】的伤害会对其目标施加流血效果，在@BleedDuration@秒里持续造成@BleedPct*100@%额外魔法伤害。</row>",
@@ -6423,7 +8722,7 @@
     },
     {
         "display_name": "暗影岛",
-        "trait_id": "Set9_ShadowIsles",
+        "trait_id": "TFT9_ShadowIsles",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_ShadowIsles.png",
         "tooltip_text": "在造成或受到@DamageInstances@次伤害后，【暗影岛】弈子们会获得持续@Duration@秒的护盾并变为幽魂形态，持续到战斗结束。幽魂弈子们每秒获得法力值。<br><br><expandRow>(@MinUnits@) @MaxHealthShield@% %i:scaleHealth%护盾值，@ManaRegen@ %i:scaleMana%</expandRow>",
@@ -6531,7 +8830,7 @@
     },
     {
         "display_name": "恕瑞玛",
-        "trait_id": "Set9_Shurima",
+        "trait_id": "TFT9_Shurima",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Shurima.png",
         "tooltip_text": "每@PulsePeriod@秒，【恕瑞玛】弈子们治疗@HealthRegen*100@%最大生命值。在@SecondsToAscend@秒后，选择【恕瑞玛】弈子们飞升并获得@BonusHealthPercent*100@%最大生命值和@BonusASPercent*100@%攻击速度。<br><br><row>(@MinUnits@) 最强大的那个【恕瑞玛】弈子会飞升</row><br><row>(@MinUnits@) 所有【恕瑞玛】弈子都会飞升。+@AscensionStrengthBoost*100@%飞升加成</row><br><row>(@MinUnits@) 飞升转而在战斗开始时进行。+@AscensionStrengthBoost*100@%飞升加成</row><br><row>(@MinUnits@) 飞升两次，在战斗开始时以及在@SecondsToAscend@秒后。+@AscensionStrengthBoost*100@%飞升加成</row>",
@@ -6712,7 +9011,7 @@
     },
     {
         "display_name": "裁决战士",
-        "trait_id": "Set9_Slayer",
+        "trait_id": "TFT9_Slayer",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_4_Slayer.png",
         "tooltip_text": "【裁决战士】们获得@Omnivamp@%全能吸血。<br><br>【裁决战士】们造成额外伤害，这个额外伤害对低于@HealthThreshold*100@%生命值的单位们翻倍。<br><br><expandRow>(@MinUnits@) +@BonusDamageBase@%额外伤害</expandRow>",
@@ -6790,7 +9089,7 @@
     },
     {
         "display_name": "法师",
-        "trait_id": "Set9_Sorcerer",
+        "trait_id": "TFT9_Sorcerer",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_3_Sorcerer.png",
         "tooltip_text": "【法师】们获得额外法术强度。<br><br>在一个敌人被一个【法师】伤害后阵亡时，会对其他敌人们造成该敌人一部分最大生命值的伤害。<br><br><row>(@MinUnits@) @BonusAP@ %i:scaleAP%；@HealthPct*100@%最大%i:scaleHealth%</row><br><row>(@MinUnits@) @BonusAP@ %i:scaleAP%；@HealthPct*100@%最大%i:scaleHealth%</row><br><row>(@MinUnits@) @BonusAP@ %i:scaleAP%；@HealthPct*100@%最大%i:scaleHealth%给@TargetNum@个敌人</row><br><row>(@MinUnits@) @BonusAP@ %i:scaleAP%；@HealthPct*100@%最大%i:scaleHealth%给@TargetNum@个敌人</row>",
@@ -6911,7 +9210,7 @@
     },
     {
         "display_name": "司令",
-        "trait_id": "Set9_Strategist",
+        "trait_id": "TFT9_Strategist",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Strategist.png",
         "tooltip_text": "<spellPassive>战斗开始时：</spellPassive>前2排的友军们获得持续@ShieldDuration@秒的护盾值。后2排的友军们获得法术强度。<br><br><expandRow>(@MinUnits@) @ShieldHP@护盾值；@BonusAP@ %i:scaleAP%</expandRow><br>",
@@ -7012,7 +9311,7 @@
     },
     {
         "display_name": "巨神峰",
-        "trait_id": "Set9_Targon",
+        "trait_id": "TFT9_Targon",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Targon.png",
         "tooltip_text": "你的所有弈子的治疗和护盾得到提升。<br><br><expandRow>(@MinUnits@) 治疗和护盾提升@HealShieldIncrease*100@%</expandRow>",
@@ -7060,7 +9359,7 @@
     },
     {
         "display_name": "大发明家",
-        "trait_id": "Set9_Technogenius",
+        "trait_id": "TFT9_Technogenius",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Technogenius.png",
         "tooltip_text": "获得一个可部署且拥有3个升级栏位的【尖端炮台】。【尖端炮台】的各种升级将出现在你的商店中，售价为@GoldCost@金币。【尖端炮台】共享【黑默丁格】的攻击速度和法术强度。<br><br><rules>你仅能拥有1台【尖端炮台】。</rules>",
@@ -7092,7 +9391,7 @@
     },
     {
         "display_name": "虚空",
-        "trait_id": "Set9_Void",
+        "trait_id": "TFT9_Void",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Void.png",
         "tooltip_text": "获得一颗可部署的虚空蛋。在战斗开始时，它会孵化成一个不可言说的恐怖之物，并击飞邻格的敌人们。<br><br>【虚空】弈子们的每个星级都会使这个恐怖之物的生命值和法术强度提升@PercentHealthAPPerStarLevel*100@%。<br><br><row>(@MinUnits@) 虚空鱼</row><br><row>(@MinUnits@) 峡谷先锋</row><br><row>(@MinUnits@) 纳什男爵</row>",
@@ -7155,7 +9454,7 @@
     },
     {
         "display_name": "流浪法师",
-        "trait_id": "Set9_Wanderer",
+        "trait_id": "TFT9_Wanderer",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Wanderer.png",
         "tooltip_text": "瑞兹的技能会基于玩家们在游戏开始时投票选出的那个地区传送门而发生变化。",
@@ -7171,7 +9470,7 @@
     },
     {
         "display_name": "祖安",
-        "trait_id": "Set9_Zaun",
+        "trait_id": "TFT9_Zaun",
         "set": "TFTSet9",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_9_Zaun.png",
         "tooltip_text": "【祖安】弈子们可以制造仅有他们能用的随机炼金改件。弈子同一时间仅能携带一个改件，并且改件可通过将该弈子放到备战席或售出该弈子来移除。<br><br><row>(@MinUnits@) 获得1个炼金改件</row><br><row>(@MinUnits@) 获得2个炼金改件并将改件们过载</row><br><row>(@MinUnits@) 获得5个炼金改件并将改件们过载</row><br>",

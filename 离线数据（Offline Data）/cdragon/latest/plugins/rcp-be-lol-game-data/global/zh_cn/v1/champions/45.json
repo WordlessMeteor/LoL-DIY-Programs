@@ -926,7 +926,7 @@
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/45/45051.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/45/45051.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/45/45051.jpg",
-            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Veigar/Skins/Skin51/VeigarLoadScreen_51.PIE_C_13_23.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Veigar/Skins/Skin51/VeigarLoadScreen_51.jpg",
             "skinType": "",
             "rarity": "kEpic",
             "isLegacy": false,

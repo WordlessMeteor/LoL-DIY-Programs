@@ -2007,9 +2007,15 @@
         "earlyAugments": [
             {
                 "name": "节外生枝",
-                "description": "提供1个随机【纹章】和1个【装备重铸器】。<br><br><rules>【装备重铸器】允许你将任一装备随机成另一件装备。</rules>",
+                "description": "在@numberofcombats@个玩家对战回合后，获得1个随机【纹章】和1个【装备重铸器】。<br><br><rules>【装备重铸器】允许你将任一装备随机成另一件装备。</rules>",
                 "iconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/Branching-Out-I.png",
-                "effectAmounts": []
+                "effectAmounts": [
+                    {
+                        "name": "NumberofCombats",
+                        "value": 1.0,
+                        "formatString": ""
+                    }
+                ]
             },
             {
                 "name": "古代档案 I",

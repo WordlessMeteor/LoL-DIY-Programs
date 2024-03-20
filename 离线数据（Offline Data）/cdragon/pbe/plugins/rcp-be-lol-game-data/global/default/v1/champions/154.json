@@ -432,6 +432,137 @@
             ],
             "skinAugments": null,
             "description": "The Foreglow affects everyone differently. For Zac, it burned away all of his insecurities, but opened up his senses to the loneliness felt by the other Zacs across the realms. They needed him, and now he has the power to bring everyone together as one. A family reunion for the ages."
+        },
+        {
+            "id": 154024,
+            "isBase": false,
+            "name": "Zesty Dip Zac",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/154/154024.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/154/154024.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/154/154024.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Zac/Skins/Skin24/ZacLoadScreen_24.SKINS_Zac_Skin24.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154024.png",
+            "chromas": [
+                {
+                    "id": 154025,
+                    "name": "Zesty Dip Zac",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154025.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2024."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 154026,
+                    "name": "Zesty Dip Zac",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154026.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 154027,
+                    "name": "Zesty Dip Zac",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154027.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 154028,
+                    "name": "Zesty Dip Zac",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154028.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 154029,
+                    "name": "Zesty Dip Zac",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154029.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 154030,
+                    "name": "Zesty Dip Zac",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154030.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 154031,
+                    "name": "Zesty Dip Zac",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154031.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 154032,
+                    "name": "Zesty Dip Zac",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154032.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 203
+                }
+            ],
+            "skinAugments": null,
+            "description": "Zac is “nacho” average ooze monster—he's the snack that fights back! Topped with jalapeños, chips, and bacon bits, this sentient cheese-blob is the life of the party... and a nightmare for lactose intolerant eaters everywhere."
         }
     ],
     "passive": {

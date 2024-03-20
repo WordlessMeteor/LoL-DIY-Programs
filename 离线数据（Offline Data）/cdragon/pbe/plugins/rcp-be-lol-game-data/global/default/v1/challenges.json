@@ -2920,7 +2920,7 @@
         "121001": {
             "name": "Get Bo(t)died",
             "description": "Win Co-Op vs. AI (Intermediate) games without dying",
-            "descriptionShort": "Win games without dying",
+            "descriptionShort": "Win Co-Op vs. AI games without dying",
             "source": "EOGD",
             "tags": {
                 "parent": "121000"
@@ -2975,7 +2975,7 @@
         },
         "121002": {
             "name": "Error 410: Jungler Gone",
-            "description": "Kill the enemy jungler in their jungle before 10 min in Co-Op vs. AI (Intermediate) Games",
+            "description": "As a jungler, kill the enemy jungler in their jungle before 10 min in Co-Op vs. AI (Intermediate) Games",
             "descriptionShort": "Kill the enemy jungler in their jungle before 10 min",
             "source": "EOGD",
             "tags": {

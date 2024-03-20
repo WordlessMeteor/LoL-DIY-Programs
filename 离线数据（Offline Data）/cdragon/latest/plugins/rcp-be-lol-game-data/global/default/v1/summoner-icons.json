@@ -87936,6 +87936,66 @@
         "disabledRegions": []
     },
     {
+        "id": 6567,
+        "title": "Crystalis Indomitus Kha'Zix Border Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6567.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "This icon was acquired by obtaining the Crystalis Indomitus Kha'Zix skin in the Mythic Shop in 2024."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 4
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6568,
+        "title": "Crystalis Indomitus Kha'Zix Reclaimed Chroma Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6568.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "This icon was acquired by obtaining the Crystalis Indomitus Kha'Zix chroma in the Mythic Shop."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 4
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6569,
+        "title": "High Noon 2024 Insignia Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6569.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "A free milestone exclusive High Noon 2024 icon."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
         "id": 656,
         "title": "OGN 2014 - Midas Fio",
         "yearReleased": 2014,
@@ -87959,6 +88019,206 @@
         "disabledRegions": []
     },
     {
+        "id": 6570,
+        "title": "High Noon 2024 Brand Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6570.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "A paid milestone exclusive High Noon 2024 icon."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6571,
+        "title": "High Noon 2024 Seal Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6571.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "A paid milestone exclusive High Noon 2024 icon."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6572,
+        "title": "Gothic Ammunition Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6572.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "An icon crafted with the 125 Mythic Essence shop item."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6573,
+        "title": "High Noon Yone Border Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6573.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "An icon that entitles the border for this champion."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6574,
+        "title": "High Noon Yone Chroma Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6574.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "An icon that comes with the Event Shop-exclusive chroma."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6575,
+        "title": "Prestige Edition High Noon Evelynn Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6575.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "This icon was acquired by earning Prestige Edition High Noon Evelynn during the High Noon 2024 event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 4
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6576,
+        "title": "High Noon Evelynn Border Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6576.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "An icon that entitles the border for this champion."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6577,
+        "title": "High Noon Evelynn Chroma Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6577.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "An icon that comes with the Event Shop-exclusive chroma."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6578,
+        "title": "High Noon Gragas Border Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6578.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "An icon that entitles the border for this champion."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6579,
+        "title": "High Noon Gragas Chroma Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6579.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "An icon that comes with the Event Shop-exclusive chroma."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
         "id": 657,
         "title": "Team Builder - Assassin",
         "yearReleased": 2014,
@@ -87968,6 +88228,106 @@
             {
                 "region": "riot",
                 "description": "Earned by playing 5 games as an Assassin champion in Team Builder during the 2014 Teambuilder event."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6580,
+        "title": "High Noon Rell Border Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6580.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "An icon that entitles the border for this champion."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 1
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6581,
+        "title": "High Noon Rell Chroma Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6581.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "An icon that comes with the Event Shop-exclusive chroma."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 2
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6582,
+        "title": "Peacemaker High Noon Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6582.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "This icon was acquired by as part of the Peacemaker High Noon Yone 2024 loot milestones."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 4
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6583,
+        "title": "Peacemaker High Noon Yone Border Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6583.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "This icon was acquired by as part of the Peacemaker High Noon Yone 2024 loot milestones."
+            }
+        ],
+        "rarities": [
+            {
+                "region": "riot",
+                "rarity": 4
+            }
+        ],
+        "disabledRegions": []
+    },
+    {
+        "id": 6584,
+        "title": "Hatty Crabby Icon",
+        "yearReleased": 2024,
+        "isLegacy": false,
+        "imagePath": "/lol-game-data/assets/v1/profile-icons/6584.jpg",
+        "descriptions": [
+            {
+                "region": "riot",
+                "description": "This icon was released in celebration of April Fool's Day 2024."
             }
         ],
         "rarities": [

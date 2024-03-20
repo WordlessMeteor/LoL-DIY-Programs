@@ -450,28 +450,28 @@
     {
         "internalName": "arena_a_10a",
         "internalDescription": "",
-        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_Backstage_Day.TFT_ArenaSkin_Backstage_Day.png",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_Backstage_Day.png",
         "startDate": 0,
         "iconNeedsFrame": true
     },
     {
         "internalName": "arena_a_10b",
         "internalDescription": "",
-        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_Backstage_Dusk.TFT_ArenaSkin_Backstage_Day.png",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_Backstage_Dusk.png",
         "startDate": 0,
         "iconNeedsFrame": true
     },
     {
         "internalName": "arena_b_10a",
         "internalDescription": "",
-        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_NeonDJ.TFT_ArenaSkin_NeonDJ.png",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_NeonDJ.png",
         "startDate": 0,
         "iconNeedsFrame": true
     },
     {
         "internalName": "arena_b_10b",
         "internalDescription": "",
-        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_Backstage_Night.TFT_ArenaSkin_Backstage_Day.png",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/TFTMapSkins/Square_Battlefield_Lg_Backstage_Night.png",
         "startDate": 0,
         "iconNeedsFrame": true
     },
@@ -527,7 +527,7 @@
     {
         "internalName": "emote_a_10a",
         "internalDescription": "",
-        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4419_Heading_Out_Inventory.ACCESSORIES_13_23.png",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4419_Heading_Out_Inventory.png",
         "startDate": 0,
         "iconNeedsFrame": false
     },
@@ -541,7 +541,7 @@
     {
         "internalName": "emote_b_10a",
         "internalDescription": "",
-        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4422_The_Boss_Inventory.ACCESSORIES_13_23.png",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4422_The_Boss_Inventory.png",
         "startDate": 0,
         "iconNeedsFrame": false
     },
@@ -555,7 +555,7 @@
     {
         "internalName": "emote_c_10a",
         "internalDescription": "",
-        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4421_On_Mute_Inventory.ACCESSORIES_13_23.png",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4421_On_Mute_Inventory.png",
         "startDate": 0,
         "iconNeedsFrame": false
     },
@@ -569,7 +569,7 @@
     {
         "internalName": "emote_d_10a",
         "internalDescription": "",
-        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4420_Fawning_Inventory.ACCESSORIES_13_23.png",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/StandardRewards/4420_Fawning_Inventory.png",
         "startDate": 0,
         "iconNeedsFrame": false
     },
@@ -583,7 +583,7 @@
     {
         "internalName": "emote_devotion_10a",
         "internalDescription": "",
-        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4425_Victory_Jump_Inventory.ACCESSORIES_13_23.png",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4425_Victory_Jump_Inventory.png",
         "startDate": 0,
         "iconNeedsFrame": false
     },
@@ -597,7 +597,7 @@
     {
         "internalName": "emote_perserverance_10a",
         "internalDescription": "",
-        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4424_Cake_Throw_Inventory.ACCESSORIES_13_23.png",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4424_Cake_Throw_Inventory.png",
         "startDate": 0,
         "iconNeedsFrame": false
     },
@@ -611,7 +611,7 @@
     {
         "internalName": "emote_tenacity_10a",
         "internalDescription": "",
-        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4423_Approaching_Challenger_Inventory.ACCESSORIES_13_23.png",
+        "path": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/GrindRewards/4423_Approaching_Challenger_Inventory.png",
         "startDate": 0,
         "iconNeedsFrame": false
     },

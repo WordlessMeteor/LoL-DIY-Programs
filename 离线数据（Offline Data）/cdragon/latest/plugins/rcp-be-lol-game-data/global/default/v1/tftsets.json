@@ -2,24 +2,10 @@
     "LCTFTModeData": {
         "mActiveSets": [
             {
-                "SetCoreName": "TFTTutorial",
+                "SetCoreName": "TFTSetTutorial",
                 "SetDisplayName": "REMIX RUMBLE IS ON",
                 "SetAugmentName": "Hexcore Augments",
                 "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/gear.png",
-                "SetPortalSystemName": ""
-            },
-            {
-                "SetCoreName": "TFTSet10",
-                "SetDisplayName": "REMIX RUMBLE IS ON",
-                "SetAugmentName": "Boombox Augment",
-                "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set10.TFT_Set10.png",
-                "SetPortalSystemName": ""
-            },
-            {
-                "SetCoreName": "TFTSet10",
-                "SetDisplayName": "REMIX RUMBLE IS ON",
-                "SetAugmentName": "Boombox Augment",
-                "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set10.TFT_Set10.png",
                 "SetPortalSystemName": ""
             },
             {
@@ -30,18 +16,32 @@
                 "SetPortalSystemName": "Galaxy"
             },
             {
-                "SetCoreName": "TFTSet10",
+                "SetCoreName": "TFTSet11",
                 "SetDisplayName": "REMIX RUMBLE IS ON",
-                "SetAugmentName": "Boombox Augment",
-                "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/gear.png",
+                "SetAugmentName": "Hexcore Augments",
+                "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set11.TFT_Set11.png",
+                "SetPortalSystemName": ""
+            },
+            {
+                "SetCoreName": "TFTSet11",
+                "SetDisplayName": "REMIX RUMBLE IS ON",
+                "SetAugmentName": "Hexcore Augments",
+                "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set11.TFT_Set11.png",
+                "SetPortalSystemName": ""
+            },
+            {
+                "SetCoreName": "TFTSet11",
+                "SetDisplayName": "REMIX RUMBLE IS ON",
+                "SetAugmentName": "Hexcore Augments",
+                "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set11.TFT_Set11.png",
                 "SetPortalSystemName": ""
             }
         ],
         "mDefaultSet": {
-            "SetCoreName": "TFTSet10",
+            "SetCoreName": "TFTSet11",
             "SetDisplayName": "REMIX RUMBLE IS ON",
-            "SetAugmentName": "Boombox Augment",
-            "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set10.TFT_Set10.png",
+            "SetAugmentName": "Hexcore Augments",
+            "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set11.TFT_Set11.png",
             "SetPortalSystemName": ""
         }
     }

@@ -19659,5 +19659,543 @@
                 }
             }
         ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kLarge",
+                "canvasBackgroundImage": "ASSETS/UX/TFT/OutOfGame/Backgrounds/ranked-reward-celebration-evergreen.jpg"
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/DoubleUp/4507_TFT_Remix_Rumble___Double_Up_Challenger_Inventory.ACCESSORIES_14_6.png"
+                }
+            },
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loot/Companions/SennaBunny/Loot_SennaBunny_Ranked_Ranked1_Tier1.LL_SennaBunny_Ranked.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kLarge",
+                "canvasBackgroundImage": "ASSETS/UX/TFT/OutOfGame/Backgrounds/ranked-reward-celebration-evergreen.jpg"
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/DoubleUp/4504_TFT_Remix_Rumble___Double_Up_Diamond_Inventory.ACCESSORIES_14_6.png"
+                }
+            },
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loot/Companions/SennaBunny/Loot_SennaBunny_Ranked_Ranked1_Tier1.LL_SennaBunny_Ranked.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kLarge",
+                "canvasBackgroundImage": "ASSETS/UX/TFT/OutOfGame/Backgrounds/ranked-reward-celebration-evergreen.jpg"
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/DoubleUp/4503_TFT_Remix_Rumble___Double_Up_Emerald_Inventory.ACCESSORIES_14_6.png"
+                }
+            },
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loot/Companions/SennaBunny/Loot_SennaBunny_Ranked_Ranked1_Tier1.LL_SennaBunny_Ranked.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kLarge",
+                "canvasBackgroundImage": "ASSETS/UX/TFT/OutOfGame/Backgrounds/ranked-reward-celebration-evergreen.jpg"
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/DoubleUp/4501_TFT_Remix_Rumble___Double_Up_Gold_Inventory.ACCESSORIES_14_6.png"
+                }
+            },
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loot/Companions/SennaBunny/Loot_SennaBunny_Ranked_Ranked1_Tier1.LL_SennaBunny_Ranked.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kLarge",
+                "canvasBackgroundImage": "ASSETS/UX/TFT/OutOfGame/Backgrounds/ranked-reward-celebration-evergreen.jpg"
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/DoubleUp/4506_TFT_Remix_Rumble___Double_Up_Grandmaster_Inventory.ACCESSORIES_14_6.png"
+                }
+            },
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loot/Companions/SennaBunny/Loot_SennaBunny_Ranked_Ranked1_Tier1.LL_SennaBunny_Ranked.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kLarge",
+                "canvasBackgroundImage": "ASSETS/UX/TFT/OutOfGame/Backgrounds/ranked-reward-celebration-evergreen.jpg"
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/DoubleUp/4505_TFT_Remix_Rumble___Double_Up_Master_Inventory.ACCESSORIES_14_6.png"
+                }
+            },
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loot/Companions/SennaBunny/Loot_SennaBunny_Ranked_Ranked1_Tier1.LL_SennaBunny_Ranked.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kLarge",
+                "canvasBackgroundImage": "ASSETS/UX/TFT/OutOfGame/Backgrounds/ranked-reward-celebration-evergreen.jpg"
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/DoubleUp/4502_TFT_Remix_Rumble___Double_Up_Platinum_Inventory.ACCESSORIES_14_6.png"
+                }
+            },
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loot/Companions/SennaBunny/Loot_SennaBunny_Ranked_Ranked1_Tier1.LL_SennaBunny_Ranked.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kLarge",
+                "canvasBackgroundImage": "ASSETS/UX/TFT/OutOfGame/Backgrounds/ranked-reward-celebration-evergreen.jpg"
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/HyperRoll/4491_TFT_Remix_Rumble___Hyper_Roll_Blue_Tier_Inventory.ACCESSORIES_14_6.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kLarge",
+                "canvasBackgroundImage": "ASSETS/UX/TFT/OutOfGame/Backgrounds/ranked-reward-celebration-evergreen.jpg"
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/HyperRoll/4490_TFT_Remix_Rumble__Hyper_Roll_Green_Tier_Inventory.ACCESSORIES_14_6.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kLarge",
+                "canvasBackgroundImage": "ASSETS/UX/TFT/OutOfGame/Backgrounds/ranked-reward-celebration-evergreen.jpg"
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/HyperRoll/4493_TFT_Remix_Rumble___Hyper_Roll_Hyper_Tier_Inventory.ACCESSORIES_14_6.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kLarge",
+                "canvasBackgroundImage": "ASSETS/UX/TFT/OutOfGame/Backgrounds/ranked-reward-celebration-evergreen.jpg"
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/HyperRoll/4492_TFT_Remix_Rumble___Hyper_Roll_Purple_Tier_Inventory.ACCESSORIES_14_6.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kLarge",
+                "canvasBackgroundImage": "ASSETS/UX/TFT/OutOfGame/Backgrounds/ranked-reward-celebration-evergreen.jpg"
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/RankedRewards/4500_TFT_Remix_Rumble___Challenger_Inventory.ACCESSORIES_14_6.png"
+                }
+            },
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loot/Companions/SennaBunny/Loot_SennaBunny_Ranked_Ranked1_Tier1.LL_SennaBunny_Ranked.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kLarge",
+                "canvasBackgroundImage": "ASSETS/UX/TFT/OutOfGame/Backgrounds/ranked-reward-celebration-evergreen.jpg"
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/RankedRewards/4497_TFT_Remix_Rumble___Diamond_Inventory.ACCESSORIES_14_6.png"
+                }
+            },
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loot/Companions/SennaBunny/Loot_SennaBunny_Ranked_Ranked1_Tier1.LL_SennaBunny_Ranked.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kLarge",
+                "canvasBackgroundImage": "ASSETS/UX/TFT/OutOfGame/Backgrounds/ranked-reward-celebration-evergreen.jpg"
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/RankedRewards/4496_TFT_Remix_Rumble___Emerald_Inventory.ACCESSORIES_14_6.png"
+                }
+            },
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loot/Companions/SennaBunny/Loot_SennaBunny_Ranked_Ranked1_Tier1.LL_SennaBunny_Ranked.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kLarge",
+                "canvasBackgroundImage": "ASSETS/UX/TFT/OutOfGame/Backgrounds/ranked-reward-celebration-evergreen.jpg"
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/RankedRewards/4494_TFT_Remix_Rumble___Gold_Inventory.ACCESSORIES_14_6.png"
+                }
+            },
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loot/Companions/SennaBunny/Loot_SennaBunny_Ranked_Ranked1_Tier1.LL_SennaBunny_Ranked.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kLarge",
+                "canvasBackgroundImage": "ASSETS/UX/TFT/OutOfGame/Backgrounds/ranked-reward-celebration-evergreen.jpg"
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/RankedRewards/4499_TFT_Remix_Rumble___Grandmaster_Inventory.ACCESSORIES_14_6.png"
+                }
+            },
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loot/Companions/SennaBunny/Loot_SennaBunny_Ranked_Ranked1_Tier1.LL_SennaBunny_Ranked.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kLarge",
+                "canvasBackgroundImage": "ASSETS/UX/TFT/OutOfGame/Backgrounds/ranked-reward-celebration-evergreen.jpg"
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/RankedRewards/4498_TFT_Remix_Rumble___Master_Inventory.ACCESSORIES_14_6.png"
+                }
+            },
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loot/Companions/SennaBunny/Loot_SennaBunny_Ranked_Ranked1_Tier1.LL_SennaBunny_Ranked.png"
+                }
+            }
+        ]
+    },
+    {
+        "celebrationAssets": {
+            "canvas": {
+                "canvasSize": "kLarge",
+                "canvasBackgroundImage": "ASSETS/UX/TFT/OutOfGame/Backgrounds/ranked-reward-celebration-evergreen.jpg"
+            },
+            "intro": {
+                "introAnimation": "",
+                "introAnimationAudio": "",
+                "introLowSpecImage": "",
+                "loopAnimation": "",
+                "loopAnimationAudio": ""
+            },
+            "transition": {
+                "transitionAnimation": "",
+                "transitionAnimationAudio": ""
+            }
+        },
+        "rewards": [
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/TFT/RankedRewards/4495_TFT_Remix_Rumble___Platinum_Inventory.ACCESSORIES_14_6.png"
+                }
+            },
+            {
+                "media": {
+                    "image": "/lol-game-data/assets/ASSETS/Loot/Companions/SennaBunny/Loot_SennaBunny_Ranked_Ranked1_Tier1.LL_SennaBunny_Ranked.png"
+                }
+            }
+        ]
     }
 ]

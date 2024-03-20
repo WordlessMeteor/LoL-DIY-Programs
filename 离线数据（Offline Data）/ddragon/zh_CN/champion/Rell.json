@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.5.1",
+    "version": "14.6.1",
     "data": {
         "Rell": {
             "id": "Rell",
@@ -34,6 +34,12 @@
                     "id": "526010",
                     "num": 10,
                     "name": "星之守护者 芮尔",
+                    "chromas": true
+                },
+                {
+                    "id": "526020",
+                    "num": 20,
+                    "name": "西部魔影 芮尔",
                     "chromas": true
                 }
             ],

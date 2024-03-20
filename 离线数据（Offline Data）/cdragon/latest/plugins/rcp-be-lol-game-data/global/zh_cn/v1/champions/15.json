@@ -1255,7 +1255,7 @@
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/15/15051.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/15/15051.jpg",
             "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin51/SivirLoadScreen_51.jpg",
-            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin51/SivirLoadscreen_51_LE.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Sivir/Skins/Skin51/SivirLoadScreen_51_LE.PIE_C_Legacy_Bugs_2024_February.jpg",
             "skinType": "",
             "rarity": "kMythic",
             "isLegacy": true,

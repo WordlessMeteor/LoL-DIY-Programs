@@ -1600,7 +1600,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "莫甘娜在一个区域施放一团诅咒之影，对胆敢站在她黑色环形之中的敌人造成伤害。敌人会持续受到魔法伤害，并且生命值越低受到伤害越高。",
-            "dynamicDescription": "莫甘娜点燃一个区域@WDuration@秒，每秒对区域内的敌人造成<magicDamage>@TotalMinDamage@魔法伤害</magicDamage>，基于目标的已损失生命值，伤害可最多提升至@MissingHealthAmpPercent*100@%。<br><br>每当莫甘娜被<spellName>灵魂吸取</spellName>治疗时，这个技能的冷却时间就会减少@CDRefundPercent*100@%。@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "Spell_MorganaW_Tooltip@SpellModifierDescriptionAppend@",
             "range": [
                 900.0000,
                 900.0000,

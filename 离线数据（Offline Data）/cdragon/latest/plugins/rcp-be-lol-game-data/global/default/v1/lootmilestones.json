@@ -4399,5 +4399,337 @@
                 }
             ]
         }
+    },
+    {
+        "id": "c826f799-b84f-4c8f-a468-44afb2999c0a",
+        "storeGroupTitle": "High Noon 2024 Capsule",
+        "startDate": "2024-03-20T18:00:00Z",
+        "endDate": "2024-04-29T18:00:00Z",
+        "recipes": [
+            {
+                "name": "CHEST_686_OPEN"
+            }
+        ],
+        "progressTrack": {
+            "id": "727afebb-8555-4933-870f-81bd4cdd6f89",
+            "name": "High Noon 2024 Progress Track",
+            "repeat": {
+                "GroupRepeat": {
+                    "Count": 0,
+                    "Scope": 0,
+                    "Multiplier": 1.0
+                }
+            },
+            "counters": [
+                {
+                    "id": "402dd5b1-6fc7-4937-ba9a-d445ebb33cec",
+                    "name": "High Noon 2024 Counter",
+                    "direction": "kIncreasing",
+                    "startValue": 0
+                }
+            ],
+            "milestones": [
+                {
+                    "id": "173732ab-0718-4648-b330-d6a7c13f2833",
+                    "name": "High Noon 2024 Milestone 1",
+                    "triggerValue": 1,
+                    "properties": [
+                        {
+                            "id": "1ac70ffa-4164-4039-80a7-b3d36403f445",
+                            "name": "Placeholder Name for Reward Group DO NOT TRANSLATE",
+                            "description": "Placeholder Description for Reward Group DO NOT TRANSLATE",
+                            "rewardStrategy": "kSelection",
+                            "selectionStrategyConfig": {
+                                "SelectionStrategyConfig": {
+                                    "MinSelectionsAllowed": 1,
+                                    "MaxSelectionsAllowed": 1
+                                }
+                            },
+                            "rewards": [
+                                {
+                                    "CapEntitlementsReward": {
+                                        "Id": "",
+                                        "LocalizedTitle": "summoner_icon_title_6582",
+                                        "LocalizedDetails": "",
+                                        "RewardType": "kEntitlement",
+                                        "Quantity": 1,
+                                        "Media": null,
+                                        "ItemId": "4d704874-05cd-4f56-8834-7d3871f83b08",
+                                        "ItemType": "bb69c4a5-35a6-423c-a61a-a1eb4ca1aae7"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "counter": {
+                        "id": "402dd5b1-6fc7-4937-ba9a-d445ebb33cec",
+                        "name": "High Noon 2024 Counter",
+                        "direction": "kIncreasing",
+                        "startValue": 0
+                    }
+                },
+                {
+                    "id": "85e7625b-4b5b-41a4-b39f-443ab798aa41",
+                    "name": "High Noon 2024 Milestone 2",
+                    "triggerValue": 3,
+                    "properties": [
+                        {
+                            "id": "97ec21d5-097f-4016-a42f-3849b50eea11",
+                            "name": "Placeholder Name for Reward Group DO NOT TRANSLATE",
+                            "description": "Placeholder Description for Reward Group DO NOT TRANSLATE",
+                            "rewardStrategy": "kSelection",
+                            "selectionStrategyConfig": {
+                                "SelectionStrategyConfig": {
+                                    "MinSelectionsAllowed": 1,
+                                    "MaxSelectionsAllowed": 1
+                                }
+                            },
+                            "rewards": [
+                                {
+                                    "CapEntitlementsReward": {
+                                        "Id": "",
+                                        "LocalizedTitle": "game_summoner_emote_name_4512",
+                                        "LocalizedDetails": "",
+                                        "RewardType": "kEntitlement",
+                                        "Quantity": 1,
+                                        "Media": null,
+                                        "ItemId": "e98ba7b9-57ad-4319-8ead-eb6a068c229d",
+                                        "ItemType": "5cee03fb-af16-4bc9-89f7-064b49e1233f"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "counter": {
+                        "id": "402dd5b1-6fc7-4937-ba9a-d445ebb33cec",
+                        "name": "High Noon 2024 Counter",
+                        "direction": "kIncreasing",
+                        "startValue": 0
+                    }
+                },
+                {
+                    "id": "ad01e3b8-5cc1-4101-a380-49fa387dfaf0",
+                    "name": "High Noon 2024 Milestone 3",
+                    "triggerValue": 5,
+                    "properties": [
+                        {
+                            "id": "b361e1a4-ecc3-4688-9fba-11c9b041447e",
+                            "name": "Placeholder Name for Reward Group DO NOT TRANSLATE",
+                            "description": "Placeholder Description for Reward Group DO NOT TRANSLATE",
+                            "rewardStrategy": "kSelection",
+                            "selectionStrategyConfig": {
+                                "SelectionStrategyConfig": {
+                                    "MinSelectionsAllowed": 1,
+                                    "MaxSelectionsAllowed": 1
+                                }
+                            },
+                            "rewards": [
+                                {
+                                    "rewardType": "kLoot",
+                                    "quantity": 1,
+                                    "lootItemToGrant": {
+                                        "internalName": "CHEST_685"
+                                    },
+                                    "legacyLootItem": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "counter": {
+                        "id": "402dd5b1-6fc7-4937-ba9a-d445ebb33cec",
+                        "name": "High Noon 2024 Counter",
+                        "direction": "kIncreasing",
+                        "startValue": 0
+                    }
+                },
+                {
+                    "id": "bfba5d99-6413-4785-817d-f0df0e9154b6",
+                    "name": "High Noon 2024 Milestone 4",
+                    "triggerValue": 10,
+                    "properties": [
+                        {
+                            "id": "f756c49b-9382-492f-84ff-9a859f2e4d63",
+                            "name": "Placeholder Name for Reward Group DO NOT TRANSLATE",
+                            "description": "Placeholder Description for Reward Group DO NOT TRANSLATE",
+                            "rewardStrategy": "kSelection",
+                            "selectionStrategyConfig": {
+                                "SelectionStrategyConfig": {
+                                    "MinSelectionsAllowed": 1,
+                                    "MaxSelectionsAllowed": 1
+                                }
+                            },
+                            "rewards": [
+                                {
+                                    "rewardType": "kLoot",
+                                    "quantity": 1,
+                                    "lootItemToGrant": {
+                                        "internalName": "CHEST_685"
+                                    },
+                                    "legacyLootItem": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "counter": {
+                        "id": "402dd5b1-6fc7-4937-ba9a-d445ebb33cec",
+                        "name": "High Noon 2024 Counter",
+                        "direction": "kIncreasing",
+                        "startValue": 0
+                    }
+                },
+                {
+                    "id": "321c2c39-3ced-44f1-81cd-2215ac84c1e3",
+                    "name": "High Noon 2024 Milestone 5",
+                    "triggerValue": 15,
+                    "properties": [
+                        {
+                            "id": "fc203ae3-99a5-43c0-8b8f-9145bb334b47",
+                            "name": "Placeholder Name for Reward Group DO NOT TRANSLATE",
+                            "description": "Placeholder Description for Reward Group DO NOT TRANSLATE",
+                            "rewardStrategy": "kSelection",
+                            "selectionStrategyConfig": {
+                                "SelectionStrategyConfig": {
+                                    "MinSelectionsAllowed": 1,
+                                    "MaxSelectionsAllowed": 1
+                                }
+                            },
+                            "rewards": [
+                                {
+                                    "rewardType": "kLoot",
+                                    "quantity": 1,
+                                    "lootItemToGrant": {
+                                        "internalName": "CHEST_685"
+                                    },
+                                    "legacyLootItem": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "counter": {
+                        "id": "402dd5b1-6fc7-4937-ba9a-d445ebb33cec",
+                        "name": "High Noon 2024 Counter",
+                        "direction": "kIncreasing",
+                        "startValue": 0
+                    }
+                },
+                {
+                    "id": "cb6dc3de-a3c3-4a1f-b3e8-1453bb5ba8e7",
+                    "name": "High Noon 2024 Milestone 6",
+                    "triggerValue": 20,
+                    "properties": [
+                        {
+                            "id": "ad139e8b-e93d-4a52-ad29-c10b437cbe71",
+                            "name": "Placeholder Name for Reward Group DO NOT TRANSLATE",
+                            "description": "Placeholder Description for Reward Group DO NOT TRANSLATE",
+                            "rewardStrategy": "kSelection",
+                            "selectionStrategyConfig": {
+                                "SelectionStrategyConfig": {
+                                    "MinSelectionsAllowed": 2,
+                                    "MaxSelectionsAllowed": 2
+                                }
+                            },
+                            "rewards": [
+                                {
+                                    "rewardType": "kLoot",
+                                    "quantity": 1,
+                                    "lootItemToGrant": {
+                                        "internalName": "CHEST_683"
+                                    },
+                                    "legacyLootItem": ""
+                                },
+                                {
+                                    "rewardType": "kLoot",
+                                    "quantity": 1,
+                                    "lootItemToGrant": {
+                                        "internalName": "CHEST_685"
+                                    },
+                                    "legacyLootItem": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "counter": {
+                        "id": "402dd5b1-6fc7-4937-ba9a-d445ebb33cec",
+                        "name": "High Noon 2024 Counter",
+                        "direction": "kIncreasing",
+                        "startValue": 0
+                    }
+                },
+                {
+                    "id": "c8234b34-06b3-4c97-8825-d5e48c9bf973",
+                    "name": "High Noon 2024 Milestone 7",
+                    "triggerValue": 25,
+                    "properties": [
+                        {
+                            "id": "dba4a53d-5e8a-4c61-8001-f1b1f37f069c",
+                            "name": "Placeholder Name for Reward Group DO NOT TRANSLATE",
+                            "description": "Placeholder Description for Reward Group DO NOT TRANSLATE",
+                            "rewardStrategy": "kSelection",
+                            "selectionStrategyConfig": {
+                                "SelectionStrategyConfig": {
+                                    "MinSelectionsAllowed": 1,
+                                    "MaxSelectionsAllowed": 1
+                                }
+                            },
+                            "rewards": [
+                                {
+                                    "rewardType": "kLoot",
+                                    "quantity": 2,
+                                    "lootItemToGrant": {
+                                        "internalName": "CHEST_683"
+                                    },
+                                    "legacyLootItem": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "counter": {
+                        "id": "402dd5b1-6fc7-4937-ba9a-d445ebb33cec",
+                        "name": "High Noon 2024 Counter",
+                        "direction": "kIncreasing",
+                        "startValue": 0
+                    }
+                },
+                {
+                    "id": "de48851a-601f-4cc6-b038-c6c5f33fdd20",
+                    "name": "High Noon 2024 Milestone 8",
+                    "triggerValue": 30,
+                    "properties": [
+                        {
+                            "id": "100c1f61-2aaf-4b07-a060-eb0f9c7cac6f",
+                            "name": "Placeholder Name for Reward Group DO NOT TRANSLATE",
+                            "description": "Placeholder Description for Reward Group DO NOT TRANSLATE",
+                            "rewardStrategy": "kSelection",
+                            "selectionStrategyConfig": {
+                                "SelectionStrategyConfig": {
+                                    "MinSelectionsAllowed": 2,
+                                    "MaxSelectionsAllowed": 2
+                                }
+                            },
+                            "rewards": [
+                                {
+                                    "rewardType": "kLoot",
+                                    "quantity": 1,
+                                    "lootItemToGrant": null,
+                                    "legacyLootItem": "CHAMPION_SKIN_777058"
+                                },
+                                {
+                                    "rewardType": "kLoot",
+                                    "quantity": 1,
+                                    "lootItemToGrant": null,
+                                    "legacyLootItem": "SUMMONER_ICON_6583"
+                                }
+                            ]
+                        }
+                    ],
+                    "counter": {
+                        "id": "402dd5b1-6fc7-4937-ba9a-d445ebb33cec",
+                        "name": "High Noon 2024 Counter",
+                        "direction": "kIncreasing",
+                        "startValue": 0
+                    }
+                }
+            ]
+        }
     }
 ]

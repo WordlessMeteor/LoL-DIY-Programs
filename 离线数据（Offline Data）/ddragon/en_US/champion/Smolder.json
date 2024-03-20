@@ -1,7 +1,7 @@
 {
     "type": "champion",
     "format": "standAloneComplex",
-    "version": "14.5.1",
+    "version": "14.6.1",
     "data": {
         "Smolder": {
             "id": "Smolder",
@@ -365,7 +365,7 @@
                     "id": "SmolderE",
                     "name": "Flap, Flap, Flap",
                     "description": "Smolder takes flight ignoring terrain and bombarding the lowest health enemy.",
-                    "tooltip": "Smolder takes flight, gaining <speed>{{ movespeed*100 }}% Move Speed</speed> and ignoring terrain for {{ duration }} seconds.<br /><br />While flying, Smolder bombards the lowest Health enemy <spellName>{{ totalnumberofattacks }}</spellName> times for <physicalDamage>{{ damageperhit }} physical damage</physicalDamage> + <magicDamage>{{ passive_damage_increase }} magic damage</magicDamage> per hit.{{ spellmodifierdescriptionappend }}",
+                    "tooltip": "Smolder takes flight, gaining <speed>{{ movespeed*100 }}% Move Speed</speed> and ignoring terrain for {{ duration }} seconds.<br /><br />While flying, Smolder bombards the lowest Health enemy <spellName>{{ totalnumberofattacks }}</spellName> (rounded down) times for <physicalDamage>{{ damageperhit }} physical damage</physicalDamage> + <magicDamage>{{ passive_damage_increase }} magic damage</magicDamage> per hit.{{ spellmodifierdescriptionappend }}",
                     "leveltip": {
                         "label": [
                             "Cooldown",
@@ -521,11 +521,11 @@
                     },
                     "maxrank": 3,
                     "cooldown": [
-                        120,
-                        110,
-                        100
+                        140,
+                        130,
+                        120
                     ],
-                    "cooldownBurn": "120/110/100",
+                    "cooldownBurn": "140/130/120",
                     "cost": [
                         100,
                         100,

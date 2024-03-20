@@ -890,6 +890,137 @@
             ],
             "skinAugments": null,
             "description": "It starts like this: An ill wind blows across the desert, dessicated rats turn up in the streets, rotting under the hot sun. Then the traveling undertaker arrives. No one knows who (or what) he is, nor where he hails from… But it seems even Death has a bone to pick with the King of the Sulfur Rail. Another Harbinger arrives."
+        },
+        {
+            "id": 29055,
+            "isBase": false,
+            "name": "Cheddar Chief Twitch",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/29/29055.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/29/29055.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/29/29055.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Twitch/Skins/Skin55/TwitchLoadScreen_55.SKINS_Twitch_Skin55.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29055.png",
+            "chromas": [
+                {
+                    "id": 29056,
+                    "name": "Cheddar Chief Twitch",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29056.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2024."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 29057,
+                    "name": "Cheddar Chief Twitch",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29057.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 29058,
+                    "name": "Cheddar Chief Twitch",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29058.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 29059,
+                    "name": "Cheddar Chief Twitch",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29059.png",
+                    "colors": [
+                        "#54209B",
+                        "#54209B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 29060,
+                    "name": "Cheddar Chief Twitch",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29060.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 29061,
+                    "name": "Cheddar Chief Twitch",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29061.png",
+                    "colors": [
+                        "#ECF9F8",
+                        "#ECF9F8"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 29062,
+                    "name": "Cheddar Chief Twitch",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29062.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 29063,
+                    "name": "Cheddar Chief Twitch",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29063.png",
+                    "colors": [
+                        "#C1F2FF",
+                        "#C1F2FF"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 203
+                }
+            ],
+            "skinAugments": null,
+            "description": "During a daring heist at the local cheesery, Twitch dove headfirst into a wedge of aged Swiss and was trapped. He escaped, but with his head encased! Over time food and rat became one, and Twitch now revels in his role as the \"big cheese\" of the criminal underworld, proclaiming to all who question his dairy dominance: \"Brie-ware!"
         }
     ],
     "passive": {

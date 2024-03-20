@@ -2031,6 +2031,193 @@
         }
     },
     {
+        "id": 121000,
+        "name": "光荣进化",
+        "description": "获取来自【光荣进化】分组中的成就点数",
+        "shortDescription": "获取来自【光荣进化】分组中的成就点数",
+        "hasLeaderboard": false,
+        "levelToIconPath": {
+            "IRON": "/challenges-images/121000-IRON.png",
+            "BRONZE": "/challenges-images/121000-BRONZE.png",
+            "SILVER": "/challenges-images/121000-SILVER.png",
+            "GOLD": "/challenges-images/121000-GOLD.png",
+            "PLATINUM": "/challenges-images/121000-PLATINUM.png",
+            "DIAMOND": "/challenges-images/121000-DIAMOND.png",
+            "MASTER": "/challenges-images/121000-MASTER.png"
+        },
+        "thresholds": {
+            "IRON": {
+                "value": 15
+            },
+            "BRONZE": {
+                "value": 30
+            },
+            "SILVER": {
+                "value": 45
+            },
+            "GOLD": {
+                "value": 75
+            },
+            "PLATINUM": {
+                "value": 120
+            },
+            "DIAMOND": {
+                "value": 180
+            },
+            "MASTER": {
+                "value": 300,
+                "rewards": [
+                    {
+                        "category": "TITLE",
+                        "quantity": 1,
+                        "title": "图灵测试完毕"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "id": 121001,
+        "name": "完美爆机",
+        "description": "赢得【人机对战 (一般级)】对局且一次不死",
+        "shortDescription": "一次不死赢得对局",
+        "hasLeaderboard": false,
+        "levelToIconPath": {
+            "IRON": "/challenges-images/121001-IRON.png",
+            "BRONZE": "/challenges-images/121001-BRONZE.png",
+            "SILVER": "/challenges-images/121001-SILVER.png",
+            "GOLD": "/challenges-images/121001-GOLD.png",
+            "PLATINUM": "/challenges-images/121001-PLATINUM.png",
+            "DIAMOND": "/challenges-images/121001-DIAMOND.png",
+            "MASTER": "/challenges-images/121001-MASTER.png",
+            "GRANDMASTER": "/challenges-images/121001-GRANDMASTER.png",
+            "CHALLENGER": "/challenges-images/121001-CHALLENGER.png"
+        },
+        "thresholds": {
+            "IRON": {
+                "value": 1
+            },
+            "BRONZE": {
+                "value": 3
+            },
+            "SILVER": {
+                "value": 6
+            },
+            "GOLD": {
+                "value": 10
+            },
+            "PLATINUM": {
+                "value": 15
+            },
+            "DIAMOND": {
+                "value": 30
+            },
+            "MASTER": {
+                "value": 50
+            },
+            "GRANDMASTER": {
+                "value": 80
+            },
+            "CHALLENGER": {
+                "value": 125
+            }
+        }
+    },
+    {
+        "id": 121002,
+        "name": "错误410：打野已去",
+        "description": "在【人机对战 (一般级)】对局中，在10分钟前于敌方野区击杀敌方打野",
+        "shortDescription": "在10分钟前于敌方野区击杀敌方打野",
+        "hasLeaderboard": false,
+        "levelToIconPath": {
+            "IRON": "/challenges-images/121002-IRON.png",
+            "BRONZE": "/challenges-images/121002-BRONZE.png",
+            "SILVER": "/challenges-images/121002-SILVER.png",
+            "GOLD": "/challenges-images/121002-GOLD.png",
+            "PLATINUM": "/challenges-images/121002-PLATINUM.png",
+            "DIAMOND": "/challenges-images/121002-DIAMOND.png",
+            "MASTER": "/challenges-images/121002-MASTER.png",
+            "GRANDMASTER": "/challenges-images/121002-GRANDMASTER.png",
+            "CHALLENGER": "/challenges-images/121002-CHALLENGER.png"
+        },
+        "thresholds": {
+            "IRON": {
+                "value": 1
+            },
+            "BRONZE": {
+                "value": 2
+            },
+            "SILVER": {
+                "value": 5
+            },
+            "GOLD": {
+                "value": 12
+            },
+            "PLATINUM": {
+                "value": 25
+            },
+            "DIAMOND": {
+                "value": 50
+            },
+            "MASTER": {
+                "value": 90
+            },
+            "GRANDMASTER": {
+                "value": 150
+            },
+            "CHALLENGER": {
+                "value": 250
+            }
+        }
+    },
+    {
+        "id": 121003,
+        "name": "机器会学习你",
+        "description": "在【人机对战 (一般级)】对局中，在25分钟之前摧毁所有3座召唤水晶",
+        "shortDescription": "在25分钟以内摧毁所有3座召唤水晶",
+        "hasLeaderboard": false,
+        "levelToIconPath": {
+            "IRON": "/challenges-images/121003-IRON.png",
+            "BRONZE": "/challenges-images/121003-BRONZE.png",
+            "SILVER": "/challenges-images/121003-SILVER.png",
+            "GOLD": "/challenges-images/121003-GOLD.png",
+            "PLATINUM": "/challenges-images/121003-PLATINUM.png",
+            "DIAMOND": "/challenges-images/121003-DIAMOND.png",
+            "MASTER": "/challenges-images/121003-MASTER.png",
+            "GRANDMASTER": "/challenges-images/121003-GRANDMASTER.png",
+            "CHALLENGER": "/challenges-images/121003-CHALLENGER.png"
+        },
+        "thresholds": {
+            "IRON": {
+                "value": 1
+            },
+            "BRONZE": {
+                "value": 2
+            },
+            "SILVER": {
+                "value": 3
+            },
+            "GOLD": {
+                "value": 5
+            },
+            "PLATINUM": {
+                "value": 8
+            },
+            "DIAMOND": {
+                "value": 12
+            },
+            "MASTER": {
+                "value": 20
+            },
+            "GRANDMASTER": {
+                "value": 35
+            },
+            "CHALLENGER": {
+                "value": 60
+            }
+        }
+    },
+    {
         "id": 2,
         "name": "行家里手",
         "description": "",

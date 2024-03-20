@@ -840,7 +840,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@s %i:cooldown%",
             "description": "Samira dashes through an enemy (including structures), slashing enemies she passes through and gaining Attack Speed. Killing an enemy champion refreshes this ability's cooldown.",
-            "dynamicDescription": "Samira dashes through an enemy (including structures), slashing enemies she passes through dealing <magicDamage>@DashDamage@ magic damage</magicDamage> and gaining <attackSpeed>@BonusAttackSpeed*100@% Attack Speed</attackSpeed> for 3 seconds. <br><br>If an enemy champion is killed within 3 seconds of Samira damaging them, Wild Rush's cooldown is reset.@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "Samira dashes through an enemy (including structures), slashing enemies she passes through dealing <magicDamage>@DashDamage@ magic damage</magicDamage> and gaining <attackSpeed>@BonusAttackSpeed*100@% Attack Speed</attackSpeed> for 3 seconds. <br><br>If an enemy champion is killed within 3 seconds of Samira damaging them, This Ability's Cooldown is reset.@SpellModifierDescriptionAppend@",
             "range": [
                 600.0000,
                 600.0000,
@@ -990,7 +990,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@s %i:cooldown%",
             "description": "Samira unleashes a torrent of shots from her weapons, wildly shooting all enemies surrounding her.",
-            "dynamicDescription": "Samira can only use this Ability if her current <keywordMajor>Style</keywordMajor> rating is S. Using this ability consumes all <keywordMajor>Style</keywordMajor> rating.<br><br>Samira unleashes a torrent of shots from her weapons, wildly shooting all enemies surrounding her 10 times over 2 seconds, each shot dealing <physicalDamage>@DamageCalc@ physical damage</physicalDamage> and applying lifesteal at @LifestealMod*100@% effectiveness. Each shot can also critically strike.<br><br>@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "Samira can only use this Ability if her current <keywordMajor>Style</keywordMajor> rating is S. Using this Ability consumes all <keywordMajor>Style</keywordMajor> rating.<br><br>Samira unleashes a torrent of shots from her weapons, wildly shooting all enemies surrounding her 10 times over 2 seconds, each shot dealing <physicalDamage>@DamageCalc@ physical damage</physicalDamage> and applying Life Steal at @LifestealMod*100@% effectiveness. Each shot can also critically strike.<br><br>@SpellModifierDescriptionAppend@",
             "range": [
                 600.0000,
                 600.0000,

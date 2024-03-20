@@ -450,6 +450,137 @@
             ],
             "skinAugments": null,
             "description": "盈晖对每个人的影响都不同。 对于扎克来说，它烧掉了他所有的不安全感，但也让他对其它位面的扎克们感受到的孤独感敞开了大门。他们需要他，现在他有能力将所有人团结在一起。一家人团团圆圆，长长久久。 "
+        },
+        {
+            "id": 154024,
+            "isBase": false,
+            "name": "香浓芝士 扎克",
+            "splashPath": "/lol-game-data/assets/v1/champion-splashes/154/154024.jpg",
+            "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/154/154024.jpg",
+            "tilePath": "/lol-game-data/assets/v1/champion-tiles/154/154024.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Zac/Skins/Skin24/ZacLoadScreen_24.SKINS_Zac_Skin24.jpg",
+            "skinType": "",
+            "rarity": "kEpic",
+            "isLegacy": false,
+            "splashVideoPath": null,
+            "collectionSplashVideoPath": null,
+            "featuresText": null,
+            "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154024.png",
+            "chromas": [
+                {
+                    "id": 154025,
+                    "name": "香浓芝士 扎克 (Ruby)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154025.png",
+                    "colors": [
+                        "#D33528",
+                        "#D33528"
+                    ],
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": ""
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 154026,
+                    "name": "香浓芝士 扎克 (Meteorite)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154026.png",
+                    "colors": [
+                        "#5F432B",
+                        "#5F432B"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 154027,
+                    "name": "香浓芝士 扎克 (Aquamarine)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154027.png",
+                    "colors": [
+                        "#6ABBEE",
+                        "#6ABBEE"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 154028,
+                    "name": "香浓芝士 扎克 (Emerald)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154028.png",
+                    "colors": [
+                        "#2DA130",
+                        "#2DA130"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 154029,
+                    "name": "香浓芝士 扎克 (Pearl)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154029.png",
+                    "colors": [
+                        "#B6E084",
+                        "#B6E084"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 154030,
+                    "name": "香浓芝士 扎克 (Obsidian)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154030.png",
+                    "colors": [
+                        "#27211C",
+                        "#27211C"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 154031,
+                    "name": "香浓芝士 扎克 (Amethyst)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154031.png",
+                    "colors": [
+                        "#9C68D7",
+                        "#9C68D7"
+                    ],
+                    "descriptions": [],
+                    "rarities": []
+                },
+                {
+                    "id": 154032,
+                    "name": "香浓芝士 扎克 (Rose Quartz)",
+                    "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154032.png",
+                    "colors": [
+                        "#E58BA5",
+                        "#E58BA5"
+                    ],
+                    "descriptions": [],
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
+                }
+            ],
+            "emblems": null,
+            "regionRarityId": 0,
+            "rarityGemPath": null,
+            "skinLines": [
+                {
+                    "id": 203
+                }
+            ],
+            "skinAugments": null,
+            "description": null
         }
     ],
     "passive": {
