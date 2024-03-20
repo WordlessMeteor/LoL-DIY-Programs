@@ -21,10 +21,13 @@ connector = Connector()
 async def get_summoner_data(connection):
     data = await connection.request('GET', '/lol-summoner/v1/current-summoner')
     summoner = await data.json()
-    print(f"displayName:    {summoner['displayName']}")
-    print(f"summonerId:     {summoner['summonerId']}")
-    print(f"puuid:          {summoner['puuid']}")
-    print("-")
+    if not "errorCode" in summoner:
+        print(f"displayName:    {summoner['displayName']}")
+        print(f"summonerId:     {summoner['summonerId']}")
+        print(f"puuid:          {summoner['puuid']}")
+        print("-")
+    else:
+        print(summoner, end = "\n\n")
 
 
 #-----------------------------------------------------------------------------
