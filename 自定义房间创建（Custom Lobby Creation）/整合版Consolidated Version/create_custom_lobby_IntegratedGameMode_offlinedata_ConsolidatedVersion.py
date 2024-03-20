@@ -496,11 +496,11 @@ async def add_bots_team2(connection):
 # 获取房间信息（Get lobby information）
 #-----------------------------------------------------------------------------
 async def get_lobby_information(connection):
-    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json
+    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
     print(lobby_information)
     print("创建完成！输入任意键开始游戏，否则继续获取房间信息。\nLobby created successfully! Please press any key to start the game, or null to continue getting lobby information:")
     while input() == "":
-        lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json
+        lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
         print(lobby_information)
 
 #-----------------------------------------------------------------------------
