@@ -1277,7 +1277,7 @@
         "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Diana/HUD/Icons2D/Diana_Passive_LunarBlade.png",
         "abilityVideoPath": "champion-abilities/0131/ability_0131_P1.webm",
         "abilityVideoImagePath": "champion-abilities/0131/ability_0131_P1.jpg",
-        "description": "Every third strike cleaves nearby enemies for an additional magic damage. After casting a spell, Diana gains Attack Speed for her next 3 attacks."
+        "description": "Every third strike cleaves nearby enemies for an additional magic damage. After casting a spell, Diana gains Attack Speed for 5 seconds."
     },
     "spells": [
         {

@@ -46156,8 +46156,8 @@
             "storeIconImage": "/lol-game-data/assets/ASSETS/Store/Statstones/series1.png"
         },
         {
-            "name": "stat_stone_set_1_Skarner_Rework",
-            "description": "stat_stone_set_1_Skarner_Rework_desc",
+            "name": "斯卡纳 - 第1系列",
+            "description": "为斯卡纳解锁第1系列永恒星碑。",
             "itemId": 66600569,
             "contentId": "ebd680a4-08a7-4c5d-af2e-f740f5306f3f",
             "storeIconImage": "/lol-game-data/assets/ASSETS/Store/Statstones/series1.png"
@@ -47332,8 +47332,8 @@
             "storeIconImage": "/lol-game-data/assets/ASSETS/Store/Statstones/series2.png"
         },
         {
-            "name": "stat_stone_set_2_Skarner_Rework",
-            "description": "stat_stone_set_2_Skarner_Rework_desc",
+            "name": "斯卡纳 - 第2系列",
+            "description": "为斯卡纳解锁第2系列永恒星碑。",
             "itemId": 66600570,
             "contentId": "400bc7be-78d5-4c3d-bd78-641e6ea676bc",
             "storeIconImage": "/lol-game-data/assets/ASSETS/Store/Statstones/series2.png"

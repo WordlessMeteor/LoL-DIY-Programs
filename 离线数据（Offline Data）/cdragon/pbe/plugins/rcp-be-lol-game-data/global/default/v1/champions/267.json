@@ -1190,7 +1190,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@s %i:cooldown%",
             "description": "Unleashes a stream of water that bounces back and forth between allied and enemy champions, healing allies and damaging enemies.",
-            "dynamicDescription": "Nami unleashes a stream of water that bounces between allied and enemy champions. Each champion can only be hit once, and it hits up to @Effect2Amount@ targets.<li>Restores <healing>@TotalHealTooltip@ Health</healing> to allies and will bounce to a nearby enemy champion. <li>Deals <magicDamage>@TotalDamageTooltip@ magic damage</magicDamage> to enemies and will bounce to a nearby allied champion.<br>The damage and healing value is modified by @BounceScalingTooltip@ each bounce. @SpellModifierDescriptionAppend@",
+            "dynamicDescription": "Nami unleashes a stream of water that bounces between allied and enemy champions. Each champion can only be hit once, and it hits up to @MaxTargets@ targets.<li>Restores <healing>@TotalHeal@ Health</healing> to allies and will bounce to a nearby enemy champion. <li>Deals <magicDamage>@TotalDamage@ magic damage</magicDamage> to enemies and will bounce to a nearby allied champion.<br>The damage and healing value is modified by @BounceScaling@ each bounce. @SpellModifierDescriptionAppend@",
             "range": [
                 725.0000,
                 725.0000,
@@ -1208,26 +1208,26 @@
                 145.0000
             ],
             "cooldownCoefficients": [
-                10.0000,
-                10.0000,
-                10.0000,
-                10.0000,
-                10.0000,
-                10.0000
+                9.0000,
+                9.0000,
+                9.0000,
+                9.0000,
+                9.0000,
+                9.0000
             ],
             "coefficients": {
-                "coefficient1": 0.5500,
-                "coefficient2": 0.2500
+                "coefficient1": 0.0000,
+                "coefficient2": 0.0000
             },
             "effectAmounts": {
                 "Effect1Amount": [
-                    60.0000,
-                    60.0000,
-                    100.0000,
-                    140.0000,
-                    180.0000,
-                    220.0000,
-                    220.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect2Amount": [
                     3.0000,
@@ -1239,13 +1239,13 @@
                     3.0000
                 ],
                 "Effect3Amount": [
-                    55.0000,
-                    55.0000,
-                    75.0000,
-                    95.0000,
-                    115.0000,
-                    135.0000,
-                    135.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect4Amount": [
                     15.0000,
@@ -1340,7 +1340,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@s %i:cooldown%",
             "description": "Empowers an allied champion for a short duration. The ally's basic attacks and spells deal bonus magic damage and slow the target.",
-            "dynamicDescription": "Nami empowers an allied champion's next @Effect4Amount@ Attacks and Abilities for @Effect5Amount@ seconds, causing them to <status>Slow</status> their targets by @TotalSlowTooltip@ for @Effect3Amount@ second and deal an additional <magicDamage>@TotalDamageTooltip@ magic damage</magicDamage>. @SpellModifierDescriptionAppend@",
+            "dynamicDescription": "Nami empowers an allied champion's next @HitCount@ Attacks and Abilities for @BuffDuration@ seconds, causing them to <status>Slow</status> their targets by @TotalSlow@ for @SlowDuration@s and deal an additional <magicDamage>@TotalDamage@ magic damage</magicDamage>. @SpellModifierDescriptionAppend@",
             "range": [
                 800.0000,
                 800.0000,
@@ -1371,13 +1371,13 @@
             },
             "effectAmounts": {
                 "Effect1Amount": [
-                    15.0000,
                     20.0000,
-                    35.0000,
+                    20.0000,
+                    30.0000,
+                    40.0000,
                     50.0000,
-                    65.0000,
-                    80.0000,
-                    100.0000
+                    60.0000,
+                    60.0000
                 ],
                 "Effect2Amount": [
                     10.0000,

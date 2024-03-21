@@ -1420,7 +1420,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@s %i:cooldown%",
             "description": "Karma summons a protective shield that absorbs incoming damage and increases the Move Speed of the protected ally.<br><br>Mantra Bonus: Energy radiates out from her target, strengthening the initial shield and applying Inspire to nearby allied champions.",
-            "dynamicDescription": "Karma grants an allied champion <shield>@TotalShield@ Shield</shield> for @Effect4Amount@ seconds and <speed>@Effect3Amount*100@% Move Speed</speed> for @Effect2Amount@ seconds.@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "Karma grants an allied champion <shield>@TotalShield@ Shield</shield> for @ShieldDuration@s and <speed>@MoveSpeed*100@% Move Speed</speed> for @MoveSpeedDuration@s.@SpellModifierDescriptionAppend@",
             "range": [
                 800.0000,
                 800.0000,
@@ -1570,7 +1570,7 @@
             "cost": "No Cost",
             "cooldown": "@Cooldown@s %i:cooldown%",
             "description": "Karma empowers her next ability to do an additional effect. Mantra is available at level 1 and does not require a skill point.",
-            "dynamicDescription": "Karma empowers her next Ability used within 8 seconds.<br><li><spellName>Inner Flame</spellName>: Deals an additional <magicDamage>@RQTotalImpactDamage@ magic damage</magicDamage> and leaves behind a circle of flame, <status>Slowing</status> enemies and dealing an additional <magicDamage>@RQFieldDamage@ magic damage</magicDamage>.<li><spellName>Focused Resolve</spellName>: Karma will restore <healing>@RWHealAmount@ Health</healing> at the beginning and end of the tether, and <status>Root</status> for @RWTotalRoot@ second(s) longer.<li><spellName>Inspire</spellName>: Karma shields her target for <shield>@REBonusShield@ more Shield</shield>, and also shields allies near her target, granting @Effect9Amount*100@% of the total <shield>Shield</shield> and <speed>Move Speed</speed> value.@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "Karma empowers her next Ability used within 8 seconds.<br><li><spellName>Inner Flame</spellName>: Deals an additional <magicDamage>@RQTotalImpactDamage@ magic damage</magicDamage> and leaves behind a circle of flame, <status>Slowing</status> enemies and dealing an additional <magicDamage>@RQFieldDamage@ magic damage</magicDamage>.<li><spellName>Focused Resolve</spellName>: Karma will restore <healing>@RWHealAmount@ Health</healing> at the beginning and end of the tether, and <status>Root</status> for @RWTotalRoot@ second(s) longer.<li><spellName>Inspire</spellName>: Karma shields her target for <shield>@REBonusShield@ more Shield</shield>, and also shields allies near her target, granting them <shield>@REBonusShield@ Shield</shield> and <speed>@REMoveSpeed*100@% Move Speed</speed>.@SpellModifierDescriptionAppend@",
             "range": [
                 1100.0000,
                 1100.0000,

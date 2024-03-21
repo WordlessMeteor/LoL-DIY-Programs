@@ -1349,7 +1349,7 @@
         "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Diana/HUD/Icons2D/Diana_Passive_LunarBlade.png",
         "abilityVideoPath": "champion-abilities/0131/ability_0131_P1.webm",
         "abilityVideoImagePath": "champion-abilities/0131/ability_0131_P1.jpg",
-        "description": "每第三次攻击会顺劈附近的敌人，造成额外的魔法伤害。在施放一个技能后，黛安娜的下3次攻击获得攻击速度。"
+        "description": "Spell_DianaPassive_Summary"
     },
     "spells": [
         {

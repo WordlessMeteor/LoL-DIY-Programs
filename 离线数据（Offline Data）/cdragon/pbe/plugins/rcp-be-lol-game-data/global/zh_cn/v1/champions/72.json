@@ -51,11 +51,11 @@
         {
             "id": 72001,
             "isBase": false,
-            "name": "沙暴巨蝎 斯卡纳",
+            "name": "",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/72/72001.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/72/72001.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/72/72001.jpg",
-            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin01/Skarner_ReworkLoadScreen_1.Skarner_Rework.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin01/SkarnerLoadScreen_1.Skarner_Rework.jpg",
             "skinType": "",
             "rarity": "kNoRarity",
             "isLegacy": false,
@@ -77,7 +77,7 @@
         {
             "id": 72002,
             "isBase": false,
-            "name": "远土之灵 斯卡纳",
+            "name": "",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/72/72002.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/72/72002.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/72/72002.jpg",
@@ -99,11 +99,12 @@
         {
             "id": 72003,
             "isBase": false,
-            "name": "战地机甲 斯卡纳",
+            "name": "",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/72/72003.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/72/72003.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/72/72003.jpg",
-            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin03/Skarner_ReworkLoadScreen_3.Skarner_Rework.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin03/SkarnerLoadScreen_3.Skarner_Rework.jpg",
+            "loadScreenVintagePath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin03/SkarnerLoadScreen_3_LE.Skarner_Rework.jpg",
             "skinType": "",
             "rarity": "kNoRarity",
             "isLegacy": false,
@@ -134,11 +135,11 @@
         {
             "id": 72004,
             "isBase": false,
-            "name": "沙之守护 斯卡纳",
+            "name": "",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/72/72004.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/72/72004.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/72/72004.jpg",
-            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin04/Skarner_ReworkLoadScreen_4.Skarner_Rework.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin04/SkarnerLoadScreen_4.Skarner_Rework.jpg",
             "skinType": "",
             "rarity": "kEpic",
             "isLegacy": false,
@@ -160,11 +161,11 @@
         {
             "id": 72005,
             "isBase": false,
-            "name": "天蝎星神 斯卡纳",
+            "name": "",
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/72/72005.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/72/72005.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/72/72005.jpg",
-            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin05/Skarner_ReworkLoadScreen_5.Skarner_Rework.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin05/SkarnerLoadScreen_5.Skarner_Rework.jpg",
             "skinType": "",
             "rarity": "kEpic",
             "isLegacy": false,
@@ -175,7 +176,7 @@
             "chromas": [
                 {
                     "id": 72006,
-                    "name": "天蝎星神 斯卡纳 战神星魂",
+                    "name": "",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/72/72006.png",
                     "colors": [
                         "#D33528",
@@ -196,7 +197,7 @@
                 },
                 {
                     "id": 72007,
-                    "name": "天蝎星神 斯卡纳 智神星魂",
+                    "name": "",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/72/72007.png",
                     "colors": [
                         "#6ABBEE",
@@ -207,7 +208,7 @@
                 },
                 {
                     "id": 72008,
-                    "name": "天蝎星神 斯卡纳 猎神星魂",
+                    "name": "",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/72/72008.png",
                     "colors": [
                         "#73BFBE",
@@ -218,7 +219,7 @@
                 },
                 {
                     "id": 72009,
-                    "name": "天蝎星神 斯卡纳 夜神星魂",
+                    "name": "",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/72/72009.png",
                     "colors": [
                         "#54209B",
@@ -229,7 +230,7 @@
                 },
                 {
                     "id": 72010,
-                    "name": "天蝎星神 斯卡纳 美神星魂",
+                    "name": "",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/72/72010.png",
                     "colors": [
                         "#E58BA5",
@@ -245,7 +246,7 @@
                 },
                 {
                     "id": 72011,
-                    "name": "天蝎星神 斯卡纳 光神星魂",
+                    "name": "",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/72/72011.png",
                     "colors": [
                         "#DF9117",
@@ -256,7 +257,7 @@
                 },
                 {
                     "id": 72012,
-                    "name": "天蝎星神 斯卡纳 冥神星魂",
+                    "name": "",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/72/72012.png",
                     "colors": [
                         "#27211C",
@@ -267,7 +268,7 @@
                 },
                 {
                     "id": 72013,
-                    "name": "天蝎星神 斯卡纳 主神星魂",
+                    "name": "",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/72/72013.png",
                     "colors": [
                         "#2DA130",
@@ -290,23 +291,23 @@
         }
     ],
     "passive": {
-        "name": "Spell_Skarner_ReworkPassive_Name",
+        "name": "Spell_Skarner_Passive_Name",
         "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_Passive.Skarner_Rework.png",
         "abilityVideoPath": "champion-abilities/0072/ability_0072_P1.webm",
         "abilityVideoImagePath": "champion-abilities/0072/ability_0072_P1.jpg",
-        "description": "Spell_Skarner_ReworkPassive_Summary"
+        "description": "Spell_Skarner_Passive_Summary"
     },
     "spells": [
         {
             "spellKey": "q",
-            "name": "Spell_Skarner_ReworkQ_Name",
+            "name": "Spell_Skarner_Q_Name",
             "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_Q.Skarner_Rework.png",
             "abilityVideoPath": "champion-abilities/0072/ability_0072_Q1.webm",
             "abilityVideoImagePath": "champion-abilities/0072/ability_0072_Q1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
-            "description": "Spell_Skarner_ReworkQ_Summary",
-            "dynamicDescription": "Spell_Skarner_ReworkQ_Tooltip@SpellModifierDescriptionAppend@",
+            "description": "Spell_Skarner_Q_Summary",
+            "dynamicDescription": "Spell_Skarner_Q_Tooltip@SpellModifierDescriptionAppend@",
             "range": [
                 400.0000,
                 400.0000,
@@ -449,14 +450,14 @@
         },
         {
             "spellKey": "w",
-            "name": "Spell_Skarner_ReworkW_Name",
+            "name": "Spell_Skarner_W_Name",
             "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_W.Skarner_Rework.png",
             "abilityVideoPath": "champion-abilities/0072/ability_0072_W1.webm",
             "abilityVideoImagePath": "champion-abilities/0072/ability_0072_W1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
-            "description": "Spell_Skarner_ReworkW_Summary",
-            "dynamicDescription": "Spell_Skarner_ReworkW_Tooltip@SpellModifierDescriptionAppend@",
+            "description": "Spell_Skarner_W_Summary",
+            "dynamicDescription": "Spell_Skarner_W_Tooltip@SpellModifierDescriptionAppend@",
             "range": [
                 650.0000,
                 650.0000,
@@ -599,14 +600,14 @@
         },
         {
             "spellKey": "e",
-            "name": "Spell_Skarner_ReworkE_Name",
+            "name": "Spell_Skarner_E_Name",
             "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_E.Skarner_Rework.png",
             "abilityVideoPath": "champion-abilities/0072/ability_0072_E1.webm",
             "abilityVideoImagePath": "champion-abilities/0072/ability_0072_E1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
-            "description": "Spell_Skarner_ReworkE_Summary",
-            "dynamicDescription": "Spell_Skarner_ReworkE_Tooltip@SpellModifierDescriptionAppend@",
+            "description": "Spell_Skarner_E_Summary",
+            "dynamicDescription": "Spell_Skarner_E_Tooltip@SpellModifierDescriptionAppend@",
             "range": [
                 1700.0000,
                 1700.0000,
@@ -749,14 +750,14 @@
         },
         {
             "spellKey": "r",
-            "name": "Spell_Skarner_ReworkR_Name",
+            "name": "Spell_Skarner_R_Name",
             "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_R.Skarner_Rework.png",
             "abilityVideoPath": "champion-abilities/0072/ability_0072_R1.webm",
             "abilityVideoImagePath": "champion-abilities/0072/ability_0072_R1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
-            "description": "Spell_Skarner_ReworkR_Summary",
-            "dynamicDescription": "Spell_Skarner_ReworkR_Tooltip@SpellModifierDescriptionAppend@",
+            "description": "Spell_Skarner_R_Summary",
+            "dynamicDescription": "Spell_Skarner_R_Tooltip@SpellModifierDescriptionAppend@",
             "range": [
                 625.0000,
                 625.0000,

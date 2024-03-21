@@ -1833,7 +1833,7 @@
         "name": "Chibi Akali",
         "starLevel": 1,
         "rarity": "Default",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/ChibiAkali/Loot_ChibiAkali_Base_Classic_Tier1.CHIBI_Akali_Base.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/ChibiAkali/Loot_ChibiAkali_Base_Classic_Tier1.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },
     {
@@ -1842,8 +1842,8 @@
         "name": "Chibi K/DA ALL OUT Akali",
         "starLevel": 1,
         "rarity": "Mythic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/ChibiAkali/Loot_ChibiAkali_KDA_KDA1_Tier1.CHIBI_Akali_Kda.png",
-        "highlightRewardAssetPath": "/lol-game-data/assets/ASSETS/UX/TFT/Troves_BannerContent/ChibiAkali/TFT-TR-ChaseContent-ChibiKDAAkalia.13_24_TR_ChibiKDAAkali.png"
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/ChibiAkali/Loot_ChibiAkali_KDA_KDA1_Tier1.png",
+        "highlightRewardAssetPath": "/lol-game-data/assets/ASSETS/UX/TFT/Troves_BannerContent/ChibiAkali/TFT-TR-ChaseContent-ChibiKDAAkalia.png"
     },
     {
         "itemInstanceId": "0a8e982e-3dff-442d-8db8-9cca5ad880d2",
@@ -1968,7 +1968,7 @@
         "name": "Chibi Headliner K/DA POP/STARS Kai'Sa",
         "starLevel": 1,
         "rarity": "Mythic",
-        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/ChibiKaisa/Loot_ChibiKaisa_Popstars_Popstars1_Tier1.CHIBI_Kaisa_Popstars.png",
+        "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/ChibiKaisa/Loot_ChibiKaisa_Popstars_Popstars1_Tier1.png",
         "highlightRewardAssetPath": "/lol-game-data/assets/ASSETS/UX/TFT/Troves_BannerContent/ChibiKaiSa/TFT-TR-ChaseContent-ChibiKDAKaisa.13_24_TR_ChibiPrestigeKaisa.png"
     },
     {
@@ -13035,9 +13035,9 @@
     {
         "itemInstanceId": "91410d0b-0fc9-4f3c-9ebc-ca94540f5e8c",
         "itemTypeId": "c958d32d-d80d-43d1-9c8a-7004fcebcf7e",
-        "name": "",
+        "name": "Serenity Sprite",
         "starLevel": 1,
-        "rarity": "Default",
+        "rarity": "Legendary",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/TFTAvatar/Loot_TFTAvatar_Set11UpdateBattlePass_Triumph_Tier1.LL_TFTAvatar_Set11UpdateBattlePass.dds",
         "highlightRewardAssetPath": "/lol-game-data/assets/"
     },

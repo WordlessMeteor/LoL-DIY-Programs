@@ -6156,7 +6156,7 @@
     {
         "id": 3866,
         "name": "Runic Compass",
-        "description": "<mainText><stats><attention> 5</attention> Gold Per 10 Seconds<br><attention> 50%</attention> Base Health Regen<br><attention> 50%</attention> Base Mana Regen<br><attention> 100</attention> Health</stats><br><br><br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. <br><br><br><br><passive>Quest</passive> <br>Earn 800 gold from this item to transform it into <rarityGeneric>Runic Compass</rarityGeneric>. Gain a charge every <passive>20</passive> seconds, up to <passive>3</passive> charges. While nearby an ally champion, consume a charge to earn gold:<br><li>Damaging Abilities and Attacks against champions or buildings grant <keywordMajor>24</keywordMajor> (melee) / <keywordMajor>22</keywordMajor> (ranged) gold;<li>Killing a minion by any means grants you <keywordMajor>20</keywordMajor> gold and the nearest allied champion kill gold.<br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. </mainText>",
+        "description": "<mainText><stats><attention> 100</attention> Health<br><attention> 50%</attention> Base Health Regen<br><attention> 50%</attention> Base Mana Regen<br><attention> 5</attention> Gold Per 10 Seconds</stats><br><br><br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. <br><br><br><br><passive>Quest</passive> <br>Earn 800 gold from this item to transform it into <rarityGeneric>Runic Compass</rarityGeneric>. Gain a charge every <passive>20</passive> seconds, up to <passive>3</passive> charges. While nearby an ally champion, consume a charge to earn gold:<br><li>Damaging Abilities and Attacks against champions or buildings grant <keywordMajor>24</keywordMajor> (melee) / <keywordMajor>22</keywordMajor> (ranged) gold;<li>Killing a minion by any means grants you <keywordMajor>20</keywordMajor> gold and the nearest allied champion kill gold.<br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. </mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -6212,7 +6212,7 @@
     {
         "id": 3869,
         "name": "Celestial Opposition",
-        "description": "<mainText><stats><attention> 5</attention> Gold Per 10 Seconds<br><attention> 75%</attention> Base Health Regen<br><attention> 75%</attention> Base Mana Regen<br><attention> 200</attention> Health</stats><br><br><passive>Blessing of the Mountain:</passive> <br>Become Blessed to reduce incoming champion damage, lingering for 2 seconds after taking damage from a champion.<br><br><br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. </mainText>",
+        "description": "<mainText><stats><attention> 200</attention> Health<br><attention> 75%</attention> Base Health Regen<br><attention> 75%</attention> Base Mana Regen<br><attention> 5</attention> Gold Per 10 Seconds</stats><br><br><passive>Blessing of the Mountain:</passive> <br>Become Blessed to reduce incoming champion damage, lingering for 2 seconds after taking damage from a champion.<br><br><br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. </mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -6240,7 +6240,7 @@
     {
         "id": 3870,
         "name": "Dream Maker",
-        "description": "<mainText><stats><attention> 5</attention> Gold Per 10 Seconds<br><attention> 75%</attention> Base Health Regen<br><attention> 75%</attention> Base Mana Regen<br><attention> 200</attention> Health</stats><br><br><passive>Dream Maker</passive><br>Gain a <passive>Blue Dream Bubble</passive> and a <passive>Purple Dream Bubble</passive> overtime. Healing and Shielding another ally blows both <passive>Dream Bubbles</passive> to them and empowers them, reducing incoming damage and granting outgoing damage.<br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. </mainText>",
+        "description": "<mainText><stats><attention> 200</attention> Health<br><attention> 75%</attention> Base Health Regen<br><attention> 75%</attention> Base Mana Regen<br><attention> 5</attention> Gold Per 10 Seconds</stats><br><br><passive>Dream Maker</passive><br>Gain a <passive>Blue Dream Bubble</passive> and a <passive>Purple Dream Bubble</passive> overtime. Healing and Shielding another ally blows both <passive>Dream Bubbles</passive> to them and empowers them, reducing incoming damage and granting outgoing damage.<br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. </mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -6268,7 +6268,7 @@
     {
         "id": 3871,
         "name": "Zaz'Zak's Realmspike",
-        "description": "<mainText><stats><attention> 5</attention> Gold Per 10 Seconds<br><attention> 75%</attention> Base Health Regen<br><attention> 75%</attention> Base Mana Regen<br><attention> 200</attention> Health</stats><br><br><passive>Void Explosion</passive><br>Dealing ability damage causes an explosion dealing magic damage and damage based on the targets max Health.<br><br><br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. </mainText>",
+        "description": "<mainText><stats><attention> 200</attention> Health<br><attention> 75%</attention> Base Health Regen<br><attention> 75%</attention> Base Mana Regen<br><attention> 5</attention> Gold Per 10 Seconds</stats><br><br><passive>Void Explosion</passive><br>Dealing ability damage causes an explosion dealing magic damage and damage based on the targets max Health.<br><br><br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. </mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -6296,7 +6296,7 @@
     {
         "id": 3876,
         "name": "Solstice Sleigh",
-        "description": "<mainText><stats><attention> 5</attention> Gold Per 10 Seconds<br><attention> 75%</attention> Base Health Regen<br><attention> 75%</attention> Base Mana Regen<br><attention> 200</attention> Health</stats><br><br><passive>Going Sledding</passive><br><status>Slowing</status> or <status>Immobilizing</status> an enemy champion grants you and a nearby ally with lowest Health bonus Health and Move Speed.<br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. </mainText>",
+        "description": "<mainText><stats><attention> 200</attention> Health<br><attention> 75%</attention> Base Health Regen<br><attention> 75%</attention> Base Mana Regen<br><attention> 5</attention> Gold Per 10 Seconds</stats><br><br><passive>Going Sledding</passive><br><status>Slowing</status> or <status>Immobilizing</status> an enemy champion grants you and a nearby ally with lowest Health bonus Health and Move Speed.<br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. </mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -6324,7 +6324,7 @@
     {
         "id": 3877,
         "name": "Bloodsong",
-        "description": "<mainText><stats><attention> 5</attention> Gold Per 10 Seconds<br><attention> 75%</attention> Base Health Regen<br><attention> 75%</attention> Base Mana Regen<br><attention> 200</attention> Health</stats><br><br><passive>Spellblade</passive><br>After using an ability, your next basic attack within 10 seconds deals 150% base AD bonus physical damage on-hit and increases damage taken by the inflicted enemy champion for 6s. <br><br><br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. </mainText>",
+        "description": "<mainText><stats><attention> 200</attention> Health<br><attention> 75%</attention> Base Health Regen<br><attention> 75%</attention> Base Mana Regen<br><attention> 5</attention> Gold Per 10 Seconds</stats><br><br><passive>Spellblade</passive><br>After using an ability, your next basic attack within 10 seconds deals 100% base AD bonus physical damage on-hit and increases damage taken by the inflicted enemy champion for 6s. <br><br><br><br> <active>ACTIVE</active><br><active>Ward</active> <br>Place an <keywordStealth>Invisible</keywordStealth> Stealth Ward that grants vision. Stores 0 Stealth Wards, which refill upon visiting the shop. </mainText>",
         "active": true,
         "inStore": true,
         "from": [

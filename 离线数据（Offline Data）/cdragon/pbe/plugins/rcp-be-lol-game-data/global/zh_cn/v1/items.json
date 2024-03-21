@@ -6156,7 +6156,7 @@
     {
         "id": 3866,
         "name": "符文罗盘",
-        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>50%</attention>基础生命回复<br><attention>50%</attention>基础法力回复<br><attention>100</attention>生命值</stats><br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 <br><br><br><br><passive>任务</passive><br>使用这个装备赚取800金币来将其转变为<rarityGeneric>符文罗盘</rarityGeneric>。每<passive>20</passive>秒获得1层充能，至多至<passive>3</passive>层。当附近有一个友方英雄时，消耗一层充能来赚取金币：<br><li>对英雄或建筑物进行的伤害型技能和攻击会提供<keywordMajor>24</keywordMajor> (近战) / <keywordMajor>22</keywordMajor> (远程) 金币；<li>以任意方式击杀一个小兵会为你提供<keywordMajor>20</keywordMajor>金币并为相距最近的友方英雄提供击杀金币。<br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
+        "description": "<mainText><stats><attention>100</attention>生命值<br><attention>50%</attention>基础生命回复<br><attention>50%</attention>基础法力回复<br><attention>5</attention>金币/10秒</stats><br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 <br><br><br><br><passive>任务</passive><br>使用这个装备赚取800金币来将其转变为<rarityGeneric>符文罗盘</rarityGeneric>。每<passive>20</passive>秒获得1层充能，至多至<passive>3</passive>层。当附近有一个友方英雄时，消耗一层充能来赚取金币：<br><li>对英雄或建筑物进行的伤害型技能和攻击会提供<keywordMajor>24</keywordMajor> (近战) / <keywordMajor>22</keywordMajor> (远程) 金币；<li>以任意方式击杀一个小兵会为你提供<keywordMajor>20</keywordMajor>金币并为相距最近的友方英雄提供击杀金币。<br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -6212,7 +6212,7 @@
     {
         "id": 3869,
         "name": "星界据守",
-        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>神峰庇佑：</passive><br>获得庇佑，使所承受的来自英雄的伤害降低，受到来自英雄的伤害后会存留2秒。<br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
+        "description": "<mainText><stats><attention>200</attention>生命值<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>5</attention>金币/10秒</stats><br><br><passive>神峰庇佑：</passive><br>获得庇佑，使所承受的来自英雄的伤害降低，受到来自英雄的伤害后会存留2秒。<br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -6240,7 +6240,7 @@
     {
         "id": 3870,
         "name": "圆梦使者",
-        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>圆梦使者</passive><br>随时间获得一个<passive>蓝色美梦泡泡</passive>和一个<passive>紫色美梦泡泡</passive>。给其他队友进行治疗或加护盾时，<passive>两个泡泡</passive>都会飞向对方，为其赋能，来降低即将受到的伤害并提升即将造成的伤害。<br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
+        "description": "<mainText><stats><attention>200</attention>生命值<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>5</attention>金币/10秒</stats><br><br><passive>圆梦使者</passive><br>随时间获得一个<passive>蓝色美梦泡泡</passive>和一个<passive>紫色美梦泡泡</passive>。给其他队友进行治疗或加护盾时，<passive>两个泡泡</passive>都会飞向对方，为其赋能，来降低即将受到的伤害并提升即将造成的伤害。<br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -6268,7 +6268,7 @@
     {
         "id": 3871,
         "name": "扎兹沙克的溃口",
-        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>虚空扩爆</passive><br>造成技能伤害时会引发一次爆炸，造成魔法伤害和基于目标最大生命值的伤害。<br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
+        "description": "<mainText><stats><attention>200</attention>生命值<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>5</attention>金币/10秒</stats><br><br><passive>虚空扩爆</passive><br>造成技能伤害时会引发一次爆炸，造成魔法伤害和基于目标最大生命值的伤害。<br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -6296,7 +6296,7 @@
     {
         "id": 3876,
         "name": "摩天雪橇",
-        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>雪橇出击</passive><br><status>减速</status>或<status>定身</status>一名敌方英雄时会为你和附近生命值最低的那名友军回复额外生命值并提供移动速度。<br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
+        "description": "<mainText><stats><attention>200</attention>生命值<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>5</attention>金币/10秒</stats><br><br><passive>雪橇出击</passive><br><status>减速</status>或<status>定身</status>一名敌方英雄时会为你和附近生命值最低的那名友军回复额外生命值并提供移动速度。<br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
         "active": true,
         "inStore": true,
         "from": [
@@ -6324,7 +6324,7 @@
     {
         "id": 3877,
         "name": "血鸣",
-        "description": "<mainText><stats><attention>5</attention>金币/10秒<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>200</attention>生命值</stats><br><br><passive>咒刃</passive><br>在施放技能后，你在10秒内的下次普攻附带150%基础攻击力的额外物理伤害并使受影响的敌方英雄在6秒里受到额外伤害。<br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
+        "description": "<mainText><stats><attention>200</attention>生命值<br><attention>75%</attention>基础生命回复<br><attention>75%</attention>基础法力回复<br><attention>5</attention>金币/10秒</stats><br><br><passive>咒刃</passive><br>在施放技能后，你在10秒内的下次普攻附带100%基础攻击力的额外物理伤害并使受影响的敌方英雄在6秒里受到额外伤害。<br><br><br><br> <active>主动</active><br><active>守卫</active> <br>放置一个<keywordStealth>隐形</keywordStealth>的侦察守卫来提供视野。可储存0个侦察守卫，并在访问商店时补满。 </mainText>",
         "active": true,
         "inStore": true,
         "from": [
