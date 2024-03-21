@@ -388,13 +388,17 @@ async def fetch_store(connection):
         catalogDicts[inventoryType] = await (await connection.request("GET", "/lol-catalog/v1/items/" + inventoryType)).json()
         catalogDicts[inventoryType] = sorted(catalogDicts[inventoryType], key = lambda x: x["itemId"])
         catalogList += catalogDicts[inventoryType]
-    #with open("catalogDicts.json", "w", encoding = "utf-8") as fp:
-        #json.dump(catalogDicts, fp, indent = 4, ensure_ascii = False)
-    #with open("catalogList.json", "w", encoding = "utf-8") as fp:
+    txt1name = "Catalog - %s.json" %(get_info_name(info))
+    with open(os.path.join(folder, txt1name), "w", encoding = "utf-8") as fp:
+        json.dump(catalogDicts, fp, indent = 4, ensure_ascii = False)
+    #with open(os.path.join(folder, txt1name), "w", encoding = "utf-8") as fp:
         #json.dump(catalogList, fp, indent = 4, ensure_ascii = False)
+    print('商品信息已保存为“%s”。\nCatalog information is saved as "%s".\n' %(os.path.join(folder, txt1name), os.path.join(folder, txt1name)))
     collection = await (await connection.request("GET", '/lol-inventory/v1/inventory?inventoryTypes=["AUGMENT","AUGMENT_SLOT","BOOST","BUNDLES","CHAMPION","CHAMPION_SKIN","COMPANION","CURRENCY","EMOTE","EVENT_PASS","GIFT","HEXTECH_CRAFTING","MODE_PROGRESSION_REWARD","MYSTERY","QUEUE_ENTRY","RP","SPELL_BOOK_PAGE","STATSTONE","SUMMONER_CUSTOMIZATION","SUMMONER_ICON","TEAM_SKIN_PURCHASE","TFT_DAMAGE_SKIN","TFT_MAP_SKIN","TOURNAMENT_TROPHY","TRANSFER","WARD_SKIN"]')).json()
-    #with open("collection.json", "w", encoding = "utf-8") as fp:
-        #json.dump(collection, fp, indent = 4, ensure_ascii = False)
+    txt2name = "Collection - %s.json" %(get_info_name(info))
+    with open(os.path.join(folder, txt2name), "w", encoding = "utf-8") as fp:
+        json.dump(collection, fp, indent = 4, ensure_ascii = False)
+    print('藏品信息已保存为“%s”。\nCollection information is saved as "%s".\n' %(os.path.join(folder, txt2name), os.path.join(folder, txt2name)))
     collection_hashtable = {} #原本的藏品信息中没有记录名称，所以需要借用商品信息中的名称（The original collection information doesn't contain the names, so they're cited from the catalog information）
     for item in catalogList:
         if item["itemInstanceId"] != "":
@@ -461,7 +465,7 @@ async def fetch_store(connection):
         wardSkins_hashtable[wardSkin["id"]]["description"] = wardSkin["description"]
     hashtable_dicts = {"CHAMPION_SKIN": championSkins_hashtable, "COMPANION": companions_hashtable, "STATSTONE": statstones_hashtable, "EMOTE": summonerEmotes_hashtable, "SUMMONER_ICON": summonerIcons_hashtable, "TFT_DAMAGE_SKIN": tftdamageskins_hashtable, "TFT_MAP_SKIN": tftmapskins_hashtable, "WARD_SKIN": wardSkins_hashtable}
     #定义商品数据结构（Define the store item data structure）
-    catalog_header = {"active": "可用性", "description": "简介", "imagePath": "缩略图路径", "inactiveDate": "停止销售日期", "inventoryType": "道具类型", "itemId": "序号", "itemInstanceId": "识别码", "metadata": "元数据", "name": "名称", "offerId": "赠送代码", "owned": "已拥有", "ownershipType": "拥有权", "prices": "价格", "purchaseDate": "购买日期", "questSkinInfo": "赠送皮肤信息", "releaseDate": "发布日期", "sale": "销售信息", "subInventoryType": "次级道具类型", "subTitle": "副标题", "tags": "搜索关键词"}
+    catalog_header = {"active": "可用性", "description": "简介", "imagePath": "缩略图路径", "inactiveDate": "停止销售日期", "inventoryType": "道具类型", "itemId": "序号", "itemInstanceId": "识别码", "metadata": "元数据", "name": "名称", "offerId": "赠送代码", "owned": "已拥有", "ownershipType": "拥有权", "price_IP": "价格（蓝色精粹）", "price_RP": "价格（点券）", "purchaseDate": "购买日期", "questSkinInfo": "赠送皮肤信息", "releaseDate": "发布日期", "sale": "销售信息", "subInventoryType": "次级道具类型", "subTitle": "副标题", "tags": "搜索关键词"}
     catalog_data = {}
     catalog_header_keys = list(catalog_header.keys())
     inventoryType_dict = {"AUGMENT": "AUGMENT", "AUGMENT_SLOT": "AUGMENT_SLOT", "BOOST": "加成道具", "BUNDLES": "道具包", "CHAMPION": "英雄", "CHAMPION_SKIN": "皮肤", "COMPANION": "小小英雄", "CURRENCY": "货币", "EMOTE": "表情", "EVENT_PASS": "事件通行证", "GIFT": "礼物", "HEXTECH_CRAFTING": "海克斯科技宝箱", "MODE_PROGRESSION_REWARD": "MODE_PROGRESSION_REWARD", "MYSTERY": "MYSTERY", "QUEUE_ENTRY": "队列通行证", "RP": "点券", "SPELL_BOOK_PAGE": "符文页", "STATSTONE": "永恒星碑", "SUMMONER_CUSTOMIZATION": "SUMMONER_CUSTOMIZATION", "SUMMONER_ICON": "召唤师图标", "TEAM_SKIN_PURCHASE": "TEAM_SKIN_PURCHASE", "TFT_DAMAGE_SKIN": "云顶之弈进攻特效", "TFT_MAP_SKIN": "云顶之弈棋盘皮肤", "TOURNAMENT_TROPHY": "赛事奖励", "TRANSFER": "转区项目", "WARD_SKIN": "守卫（眼）皮肤"}
@@ -498,7 +502,7 @@ async def fetch_store(connection):
                 else:
                     imagePath = connection.address + "/" + item[key]
                 catalog_data[key].append(imagePath)
-            elif i in {3, 13, 15}:
+            elif i in {3, 14, 16}:
                 if item[key] == 0:
                     catalog_data[key].append("")
                 elif item[key] == 18446744073709551615:
@@ -516,14 +520,15 @@ async def fetch_store(connection):
                 catalog_data[key].append(inventoryType_dict[item[key]])
             elif i == 11:
                 catalog_data[key].append(ownershipType_dict[item[key]])
-            elif i == 12:
-                priceList = []
-                for price in item[key]:
-                    priceList.append(str(price["cost"]) + " " + price["currency"])
-                priceStr = " & ".join(priceList)
-                priceStr = priceStr.replace(" IP", "蓝色精萃").replace(" RP", "点券").replace(" & ", "&")
-                catalog_data[key].append(priceStr)
-            elif i == 17:
+            elif i == 12 or i == 13:
+                priceDict = {}
+                for price in item["prices"]:
+                    priceDict[price["currency"]] = price["cost"]
+                if i == 12:
+                    catalog_data[key].append(priceDict.get("IP", ""))
+                else:
+                    catalog_data[key].append(priceDict.get("RP", ""))
+            elif i == 18:
                 catalog_data[key].append(subInventoryType_dict[item[key]])
             else:
                 catalog_data[key].append(item[key])
@@ -551,7 +556,7 @@ async def fetch_store(connection):
             else:
                 collection_data[key].append(item[key])
     #数据框列序整理（Dataframe column ordering）
-    catalog_statistics_display_order = [8, 18, 1, 5, 0, 4, 17, 7, 6, 15, 3, 12, 10, 11, 13, 14, 9, 16, 19, 2]
+    catalog_statistics_display_order = [8, 19, 1, 5, 0, 4, 18, 7, 6, 16, 3, 12, 13, 10, 11, 14, 15, 9, 17, 20, 2]
     catalog_data_organized = {}
     for i in catalog_statistics_display_order:
         key = catalog_header_keys[i]
