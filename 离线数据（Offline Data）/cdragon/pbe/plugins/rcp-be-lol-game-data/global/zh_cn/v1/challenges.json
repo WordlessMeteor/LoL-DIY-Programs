@@ -2920,7 +2920,7 @@
         "121001": {
             "name": "完美爆机",
             "description": "赢得【人机对战 (一般级)】对局且一次不死",
-            "descriptionShort": "一次不死赢得对局",
+            "descriptionShort": "一次不死赢得人机对局",
             "source": "EOGD",
             "tags": {
                 "parent": "121000"
@@ -2975,7 +2975,7 @@
         },
         "121002": {
             "name": "错误410：打野已去",
-            "description": "在【人机对战 (一般级)】对局中，在10分钟前于敌方野区击杀敌方打野",
+            "description": "作为打野，在【人机对战 (一般级)】对局中，在10分钟前于敌方野区击杀敌方打野",
             "descriptionShort": "在10分钟前于敌方野区击杀敌方打野",
             "source": "EOGD",
             "tags": {

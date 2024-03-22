@@ -15262,10 +15262,92 @@
         },
         {
             "name": "Series 1",
-            "itemId": 66600569,
+            "itemId": 66600105,
             "inventoryType": "STATSTONE",
-            "contentId": "ebd680a4-08a7-4c5d-af2e-f740f5306f3f",
-            "statstones": []
+            "contentId": "2fcda791-0efb-43ba-bba8-2c3bb85ae22f",
+            "statstones": [
+                {
+                    "name": "Dragged and Bagged",
+                    "contentId": "6a018a9f-c899-4c4b-a4a8-c1f5c4589354",
+                    "itemId": 6172,
+                    "isRetired": true,
+                    "trackingType": 0,
+                    "isEpic": true,
+                    "description": "Takedowns on champions within 5s of them being affected by Impale (R)",
+                    "milestones": [
+                        9,
+                        25,
+                        45,
+                        55,
+                        70,
+                        25
+                    ],
+                    "boundChampion": {
+                        "itemId": 72,
+                        "inventoryType": "CHAMPION",
+                        "contentId": "6e1a05d4-1fbc-44b0-9bdb-491991a74f04"
+                    },
+                    "category": "Support_Unique",
+                    "iconUnowned": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Support_Unique_0.png",
+                    "iconUnlit": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Support_Unique_1.png",
+                    "iconLit": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Support_Unique_2.png",
+                    "iconFull": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Support_Unique_3.png"
+                },
+                {
+                    "name": "Gem Stuns",
+                    "contentId": "9445602b-f5be-4c11-951c-40fd0b86e3e8",
+                    "itemId": 224,
+                    "isRetired": true,
+                    "trackingType": 0,
+                    "isEpic": true,
+                    "description": "Champions stunned with Fracture (E)",
+                    "milestones": [
+                        35,
+                        80,
+                        175,
+                        200,
+                        250,
+                        100
+                    ],
+                    "boundChampion": {
+                        "itemId": 72,
+                        "inventoryType": "CHAMPION",
+                        "contentId": "6e1a05d4-1fbc-44b0-9bdb-491991a74f04"
+                    },
+                    "category": "CC_Unique",
+                    "iconUnowned": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_CC_Unique_0.png",
+                    "iconUnlit": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_CC_Unique_1.png",
+                    "iconLit": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_CC_Unique_2.png",
+                    "iconFull": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_CC_Unique_3.png"
+                },
+                {
+                    "name": "Home Field Advantage",
+                    "contentId": "6dc9e2a1-9d15-4252-a43c-0219b65d192e",
+                    "itemId": 223,
+                    "isRetired": true,
+                    "trackingType": 0,
+                    "isEpic": true,
+                    "description": "Champions killed while benefitting from Crystal Spires (P)",
+                    "milestones": [
+                        3,
+                        7,
+                        15,
+                        20,
+                        20,
+                        9
+                    ],
+                    "boundChampion": {
+                        "itemId": 72,
+                        "inventoryType": "CHAMPION",
+                        "contentId": "6e1a05d4-1fbc-44b0-9bdb-491991a74f04"
+                    },
+                    "category": "Offense_Unique",
+                    "iconUnowned": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Offense_Unique_0.png",
+                    "iconUnlit": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Offense_Unique_1.png",
+                    "iconLit": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Offense_Unique_2.png",
+                    "iconFull": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Offense_Unique_3.png"
+                }
+            ]
         },
         {
             "name": "Series 2",
@@ -30205,10 +30287,92 @@
         },
         {
             "name": "Series 2",
-            "itemId": 66600570,
+            "itemId": 66600482,
             "inventoryType": "STATSTONE",
-            "contentId": "400bc7be-78d5-4c3d-bd78-641e6ea676bc",
-            "statstones": []
+            "contentId": "36aed7ce-0424-4a16-ad2c-333294696086",
+            "statstones": [
+                {
+                    "name": "Breaking Baddies",
+                    "contentId": "f95d189c-6bbe-4b6b-a961-452fd5dc8eb8",
+                    "itemId": 126230,
+                    "isRetired": true,
+                    "trackingType": 0,
+                    "isEpic": true,
+                    "description": "Magic damage to champions with Crystal Slash (Q)",
+                    "milestones": [
+                        3500,
+                        8000,
+                        16000,
+                        20000,
+                        25000,
+                        10000
+                    ],
+                    "boundChampion": {
+                        "itemId": 72,
+                        "inventoryType": "CHAMPION",
+                        "contentId": "6e1a05d4-1fbc-44b0-9bdb-491991a74f04"
+                    },
+                    "category": "Offense_Unique",
+                    "iconUnowned": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Offense_Unique_0.png",
+                    "iconUnlit": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Offense_Unique_1.png",
+                    "iconLit": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Offense_Unique_2.png",
+                    "iconFull": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Offense_Unique_3.png"
+                },
+                {
+                    "name": "Shatter Resistant ",
+                    "contentId": "3cb620da-7aa6-4edf-a930-bc90adb2dc3a",
+                    "itemId": 126231,
+                    "isRetired": true,
+                    "trackingType": 0,
+                    "isEpic": true,
+                    "description": "Champion damage mitigated with Crystalline Exoskeleton (W)",
+                    "milestones": [
+                        14000,
+                        36000,
+                        71000,
+                        86000,
+                        100000,
+                        43000
+                    ],
+                    "boundChampion": {
+                        "itemId": 72,
+                        "inventoryType": "CHAMPION",
+                        "contentId": "6e1a05d4-1fbc-44b0-9bdb-491991a74f04"
+                    },
+                    "category": "Defense_Unique",
+                    "iconUnowned": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Defense_Unique_0.png",
+                    "iconUnlit": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Defense_Unique_1.png",
+                    "iconLit": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Defense_Unique_2.png",
+                    "iconFull": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Defense_Unique_3.png"
+                },
+                {
+                    "name": "Stun N' Sting",
+                    "contentId": "88278d20-b4f6-49cd-aaa2-899450e64bab",
+                    "itemId": 126232,
+                    "isRetired": true,
+                    "trackingType": 0,
+                    "isEpic": true,
+                    "description": "Champions stunned by Fracture (E) within 2 seconds before or after being Impaled (R)",
+                    "milestones": [
+                        6,
+                        15,
+                        30,
+                        35,
+                        45,
+                        15
+                    ],
+                    "boundChampion": {
+                        "itemId": 72,
+                        "inventoryType": "CHAMPION",
+                        "contentId": "6e1a05d4-1fbc-44b0-9bdb-491991a74f04"
+                    },
+                    "category": "CC_Unique",
+                    "iconUnowned": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_CC_Unique_0.png",
+                    "iconUnlit": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_CC_Unique_1.png",
+                    "iconLit": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_CC_Unique_2.png",
+                    "iconFull": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_CC_Unique_3.png"
+                }
+            ]
         },
         {
             "name": "Starter Series",
@@ -44983,6 +45147,95 @@
                     "iconFull": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Support_Common_3.png"
                 }
             ]
+        },
+        {
+            "name": "Starter Series",
+            "itemId": 66600247,
+            "inventoryType": "STATSTONE",
+            "contentId": "1c3eb474-3577-4937-b0ba-86fa1bef817b",
+            "statstones": [
+                {
+                    "name": "Epic Monsters Killed",
+                    "contentId": "6c78ce43-7d02-47e6-aa43-a426dacf908b",
+                    "itemId": 125678,
+                    "isRetired": false,
+                    "trackingType": 0,
+                    "isEpic": false,
+                    "description": "Dragons, Rift Heralds and Barons slain",
+                    "milestones": [
+                        3,
+                        10,
+                        20,
+                        22,
+                        25,
+                        10
+                    ],
+                    "boundChampion": {
+                        "itemId": 72,
+                        "inventoryType": "CHAMPION",
+                        "contentId": "6e1a05d4-1fbc-44b0-9bdb-491991a74f04"
+                    },
+                    "category": "Goal_Common",
+                    "iconUnowned": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Goal_Common_0.png",
+                    "iconUnlit": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Goal_Common_1.png",
+                    "iconLit": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Goal_Common_2.png",
+                    "iconFull": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Goal_Common_3.png"
+                },
+                {
+                    "name": "Structures Destroyed",
+                    "contentId": "3d3305e7-cbdf-4cde-aaa6-977a4945640e",
+                    "itemId": 125680,
+                    "isRetired": false,
+                    "trackingType": 0,
+                    "isEpic": false,
+                    "description": "Turret, Inhibitor and Nexus structures destroyed",
+                    "milestones": [
+                        5,
+                        15,
+                        25,
+                        30,
+                        40,
+                        15
+                    ],
+                    "boundChampion": {
+                        "itemId": 72,
+                        "inventoryType": "CHAMPION",
+                        "contentId": "6e1a05d4-1fbc-44b0-9bdb-491991a74f04"
+                    },
+                    "category": "Goal_Common",
+                    "iconUnowned": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Goal_Common_0.png",
+                    "iconUnlit": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Goal_Common_1.png",
+                    "iconLit": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Goal_Common_2.png",
+                    "iconFull": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Goal_Common_3.png"
+                },
+                {
+                    "name": "Takedowns",
+                    "contentId": "ec465b46-211a-46c7-8e64-de57703b71eb",
+                    "itemId": 125679,
+                    "isRetired": false,
+                    "trackingType": 0,
+                    "isEpic": false,
+                    "description": "Champion Kills and Assists",
+                    "milestones": [
+                        25,
+                        65,
+                        125,
+                        150,
+                        185,
+                        75
+                    ],
+                    "boundChampion": {
+                        "itemId": 72,
+                        "inventoryType": "CHAMPION",
+                        "contentId": "6e1a05d4-1fbc-44b0-9bdb-491991a74f04"
+                    },
+                    "category": "Support_Common",
+                    "iconUnowned": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Support_Common_0.png",
+                    "iconUnlit": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Support_Common_1.png",
+                    "iconLit": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Support_Common_2.png",
+                    "iconFull": "/lol-game-data/assets/ASSETS/Loadouts/StatStones/Categories/LCU/SS_Icon_Support_Common_3.png"
+                }
+            ]
         }
     ],
     "packData": [
@@ -46158,8 +46411,8 @@
         {
             "name": "Skarner - Series 1",
             "description": "Unlock Series 1 Eternals for Skarner.",
-            "itemId": 66600569,
-            "contentId": "ebd680a4-08a7-4c5d-af2e-f740f5306f3f",
+            "itemId": 66600105,
+            "contentId": "2fcda791-0efb-43ba-bba8-2c3bb85ae22f",
             "storeIconImage": "/lol-game-data/assets/ASSETS/Store/Statstones/series1.png"
         },
         {
@@ -47334,8 +47587,8 @@
         {
             "name": "Skarner - Series 2",
             "description": "Unlock Series 2 Eternals for Skarner",
-            "itemId": 66600570,
-            "contentId": "400bc7be-78d5-4c3d-bd78-641e6ea676bc",
+            "itemId": 66600482,
+            "contentId": "36aed7ce-0424-4a16-ad2c-333294696086",
             "storeIconImage": "/lol-game-data/assets/ASSETS/Store/Statstones/series2.png"
         },
         {
@@ -48506,6 +48759,13 @@
             "itemId": 66600571,
             "contentId": "298e17fa-572e-4089-ae20-c75febe49934",
             "storeIconImage": "/lol-game-data/assets/ASSETS/Store/Statstones/seriesStarter.png"
+        },
+        {
+            "name": "Skarner - Starter Series",
+            "description": "Unlock Starter Series Eternals for Skarner.",
+            "itemId": 66600247,
+            "contentId": "1c3eb474-3577-4937-b0ba-86fa1bef817b",
+            "storeIconImage": "/lol-game-data/assets/ASSETS/Store/Statstones/seriesStarter.png"
         }
     ],
     "packIdToStatStonesIds": {
@@ -49075,7 +49335,10 @@
             "decde313-c69d-48e1-860e-6d0fa0f2f0e1",
             "a0dd4fdc-3585-4f31-9efa-253193ebf28b",
             "f87bba2a-651d-4018-a9d7-29cade0b9e78",
-            "4c9db7e1-07f1-4369-89bd-68fe8526fc2c"
+            "4c9db7e1-07f1-4369-89bd-68fe8526fc2c",
+            "6a018a9f-c899-4c4b-a4a8-c1f5c4589354",
+            "9445602b-f5be-4c11-951c-40fd0b86e3e8",
+            "6dc9e2a1-9d15-4252-a43c-0219b65d192e"
         ],
         "e1cd3436-cfab-47cd-9572-8708bdd5002d": [
             "944c6d7a-44ae-42bd-801a-cd54cfd88c31",
@@ -49717,6 +49980,11 @@
             "7fcb0efb-2196-4045-bb3e-385e0c83ab52",
             "186387e1-4670-45f7-aa2a-ccd10e62d950"
         ],
+        "1c3eb474-3577-4937-b0ba-86fa1bef817b": [
+            "6c78ce43-7d02-47e6-aa43-a426dacf908b",
+            "3d3305e7-cbdf-4cde-aaa6-977a4945640e",
+            "ec465b46-211a-46c7-8e64-de57703b71eb"
+        ],
         "e15bc257-8f81-4ac3-8c49-dd40b7f10175": [
             "25c6690c-629d-4036-beae-2cdb1680863d",
             "1dbdc4ab-944b-4cb1-8336-c3003de03dc4",
@@ -50250,7 +50518,10 @@
             "7bd64145-77fc-4bfc-8168-4ed3950447fe",
             "6ec3d223-2a5f-4e54-9aa8-d28ee17eec6d",
             "2b353e5d-bbd5-4091-89b1-b9a54b091d4c",
-            "43cb8af4-c2aa-4043-9eab-e747ee807403"
+            "43cb8af4-c2aa-4043-9eab-e747ee807403",
+            "6c78ce43-7d02-47e6-aa43-a426dacf908b",
+            "3d3305e7-cbdf-4cde-aaa6-977a4945640e",
+            "ec465b46-211a-46c7-8e64-de57703b71eb"
         ],
         "75122b80-ce4d-4655-9912-7a27e4c6b2e6": [
             "9b421b79-05a8-46a2-8c4a-0c7087b80ab6",
@@ -50835,6 +51106,16 @@
             "f87bba2a-651d-4018-a9d7-29cade0b9e78",
             "4c9db7e1-07f1-4369-89bd-68fe8526fc2c"
         ],
+        "19083368-e2f0-40a2-8cad-ef042e671eca": [
+            "e8688c53-bb62-40d4-a906-f5db74965cbc",
+            "9b0cc8ee-9db9-48f8-8bfe-432a28f3c1d1",
+            "b80d4fd5-3b00-4364-aaa6-b690b06a3c66"
+        ],
+        "2fcda791-0efb-43ba-bba8-2c3bb85ae22f": [
+            "6a018a9f-c899-4c4b-a4a8-c1f5c4589354",
+            "9445602b-f5be-4c11-951c-40fd0b86e3e8",
+            "6dc9e2a1-9d15-4252-a43c-0219b65d192e"
+        ],
         "b1df4c9b-15c3-4684-8c45-42976b91a39a": [
             "86612e68-2b40-4b75-bed3-0530b54dfde1",
             "a8255723-fb9c-40eb-b9d5-f33aee9e7f6f",
@@ -51339,7 +51620,10 @@
             "5d4fcb73-2b1a-424c-9e42-860d22f56db6",
             "0683791b-5490-4cdf-bfe3-4df25981e672",
             "7c69ab01-1025-420b-a3ad-e7f5622993d2",
-            "fee98c4c-404a-46b0-843e-b9e9c183e602"
+            "fee98c4c-404a-46b0-843e-b9e9c183e602",
+            "f95d189c-6bbe-4b6b-a961-452fd5dc8eb8",
+            "3cb620da-7aa6-4edf-a930-bc90adb2dc3a",
+            "88278d20-b4f6-49cd-aaa2-899450e64bab"
         ],
         "976fce4d-ef6e-43c3-89fb-4469937cb990": [
             "86612e68-2b40-4b75-bed3-0530b54dfde1",
@@ -51485,6 +51769,11 @@
             "563d862f-e26a-4e31-ba88-917bbc4e28e5",
             "3a19be31-5c7e-436b-a3f9-2f337453d7a6",
             "f958a2c3-ff60-4bb7-9442-b8440c36b238"
+        ],
+        "36aed7ce-0424-4a16-ad2c-333294696086": [
+            "f95d189c-6bbe-4b6b-a961-452fd5dc8eb8",
+            "3cb620da-7aa6-4edf-a930-bc90adb2dc3a",
+            "88278d20-b4f6-49cd-aaa2-899450e64bab"
         ],
         "d2461631-0964-4d44-a22b-c18e7ec96e3b": [
             "3e703718-15ee-498e-89a6-010677182bf6",
@@ -52176,11 +52465,6 @@
             "6a46653a-afbb-420d-9204-3119b4e7523d",
             "4680e5f9-8766-4b2e-ab89-c02ff314cb22",
             "18e4552e-1078-4bf0-b238-683c9b7d9a51"
-        ],
-        "19083368-e2f0-40a2-8cad-ef042e671eca": [
-            "e8688c53-bb62-40d4-a906-f5db74965cbc",
-            "9b0cc8ee-9db9-48f8-8bfe-432a28f3c1d1",
-            "b80d4fd5-3b00-4364-aaa6-b690b06a3c66"
         ],
         "c09d9bc4-91df-41df-8358-61e911a8c7e2": [
             "2e6d194c-cefa-43aa-81b7-451e5e559670",
@@ -53234,6 +53518,11 @@
             "7fcb0efb-2196-4045-bb3e-385e0c83ab52",
             "186387e1-4670-45f7-aa2a-ccd10e62d950"
         ],
+        "1c3eb474-3577-4937-b0ba-86fa1bef817b": [
+            "6c78ce43-7d02-47e6-aa43-a426dacf908b",
+            "3d3305e7-cbdf-4cde-aaa6-977a4945640e",
+            "ec465b46-211a-46c7-8e64-de57703b71eb"
+        ],
         "e15bc257-8f81-4ac3-8c49-dd40b7f10175": [
             "25c6690c-629d-4036-beae-2cdb1680863d",
             "1dbdc4ab-944b-4cb1-8336-c3003de03dc4",
@@ -53852,6 +54141,16 @@
             "f87bba2a-651d-4018-a9d7-29cade0b9e78",
             "4c9db7e1-07f1-4369-89bd-68fe8526fc2c"
         ],
+        "19083368-e2f0-40a2-8cad-ef042e671eca": [
+            "e8688c53-bb62-40d4-a906-f5db74965cbc",
+            "9b0cc8ee-9db9-48f8-8bfe-432a28f3c1d1",
+            "b80d4fd5-3b00-4364-aaa6-b690b06a3c66"
+        ],
+        "2fcda791-0efb-43ba-bba8-2c3bb85ae22f": [
+            "6a018a9f-c899-4c4b-a4a8-c1f5c4589354",
+            "9445602b-f5be-4c11-951c-40fd0b86e3e8",
+            "6dc9e2a1-9d15-4252-a43c-0219b65d192e"
+        ],
         "976fce4d-ef6e-43c3-89fb-4469937cb990": [
             "86612e68-2b40-4b75-bed3-0530b54dfde1",
             "a8255723-fb9c-40eb-b9d5-f33aee9e7f6f",
@@ -53996,6 +54295,11 @@
             "563d862f-e26a-4e31-ba88-917bbc4e28e5",
             "3a19be31-5c7e-436b-a3f9-2f337453d7a6",
             "f958a2c3-ff60-4bb7-9442-b8440c36b238"
+        ],
+        "36aed7ce-0424-4a16-ad2c-333294696086": [
+            "f95d189c-6bbe-4b6b-a961-452fd5dc8eb8",
+            "3cb620da-7aa6-4edf-a930-bc90adb2dc3a",
+            "88278d20-b4f6-49cd-aaa2-899450e64bab"
         ],
         "d2461631-0964-4d44-a22b-c18e7ec96e3b": [
             "3e703718-15ee-498e-89a6-010677182bf6",
@@ -54693,11 +54997,6 @@
             "4680e5f9-8766-4b2e-ab89-c02ff314cb22",
             "18e4552e-1078-4bf0-b238-683c9b7d9a51"
         ],
-        "19083368-e2f0-40a2-8cad-ef042e671eca": [
-            "e8688c53-bb62-40d4-a906-f5db74965cbc",
-            "9b0cc8ee-9db9-48f8-8bfe-432a28f3c1d1",
-            "b80d4fd5-3b00-4364-aaa6-b690b06a3c66"
-        ],
         "c09d9bc4-91df-41df-8358-61e911a8c7e2": [
             "2e6d194c-cefa-43aa-81b7-451e5e559670",
             "ebc6c08d-d44c-4a33-8185-9e50889d3a0b",
@@ -55232,7 +55531,7 @@
             "5bb34720-27ef-4460-ade7-216ef83b3dc6",
             "7f23ec7a-8c4b-4383-a685-ad64d3ad60a9",
             "5e9a2d9d-3c08-497f-93e7-975e02466deb",
-            "ebd680a4-08a7-4c5d-af2e-f740f5306f3f"
+            "2fcda791-0efb-43ba-bba8-2c3bb85ae22f"
         ],
         "9ddda714-c38a-446a-b012-92b7965248e4": [
             "3cfcdaca-77e9-4373-a72d-971157284fa2",
@@ -55400,7 +55699,8 @@
             "82dd3e24-5497-430b-824b-f5c52a97c973",
             "72f3a843-82a2-4266-b14b-994cf503c144",
             "868c8aae-f1d9-48f0-819f-b49be8284fd2",
-            "298e17fa-572e-4089-ae20-c75febe49934"
+            "298e17fa-572e-4089-ae20-c75febe49934",
+            "1c3eb474-3577-4937-b0ba-86fa1bef817b"
         ],
         "b1df4c9b-15c3-4684-8c45-42976b91a39a": [
             "976fce4d-ef6e-43c3-89fb-4469937cb990",
@@ -55569,7 +55869,7 @@
             "19b88c07-b55d-4c95-b2d7-5f4898dc56ab",
             "f220aabc-3b52-4dae-811d-c77657c99a2e",
             "90f87f57-5802-4ebe-9f61-1bafa73c7866",
-            "400bc7be-78d5-4c3d-bd78-641e6ea676bc"
+            "36aed7ce-0424-4a16-ad2c-333294696086"
         ]
     },
     "collectionIdToStatStoneIds": {
@@ -56089,7 +56389,10 @@
             "decde313-c69d-48e1-860e-6d0fa0f2f0e1",
             "a0dd4fdc-3585-4f31-9efa-253193ebf28b",
             "f87bba2a-651d-4018-a9d7-29cade0b9e78",
-            "4c9db7e1-07f1-4369-89bd-68fe8526fc2c"
+            "4c9db7e1-07f1-4369-89bd-68fe8526fc2c",
+            "6a018a9f-c899-4c4b-a4a8-c1f5c4589354",
+            "9445602b-f5be-4c11-951c-40fd0b86e3e8",
+            "6dc9e2a1-9d15-4252-a43c-0219b65d192e"
         ],
         "9ddda714-c38a-446a-b012-92b7965248e4": [
             "27ce8fe4-0125-4e40-b622-82d4e27ffb34",
@@ -56589,7 +56892,10 @@
             "7bd64145-77fc-4bfc-8168-4ed3950447fe",
             "6ec3d223-2a5f-4e54-9aa8-d28ee17eec6d",
             "2b353e5d-bbd5-4091-89b1-b9a54b091d4c",
-            "43cb8af4-c2aa-4043-9eab-e747ee807403"
+            "43cb8af4-c2aa-4043-9eab-e747ee807403",
+            "6c78ce43-7d02-47e6-aa43-a426dacf908b",
+            "3d3305e7-cbdf-4cde-aaa6-977a4945640e",
+            "ec465b46-211a-46c7-8e64-de57703b71eb"
         ],
         "b1df4c9b-15c3-4684-8c45-42976b91a39a": [
             "86612e68-2b40-4b75-bed3-0530b54dfde1",
@@ -57095,7 +57401,10 @@
             "5d4fcb73-2b1a-424c-9e42-860d22f56db6",
             "0683791b-5490-4cdf-bfe3-4df25981e672",
             "7c69ab01-1025-420b-a3ad-e7f5622993d2",
-            "fee98c4c-404a-46b0-843e-b9e9c183e602"
+            "fee98c4c-404a-46b0-843e-b9e9c183e602",
+            "f95d189c-6bbe-4b6b-a961-452fd5dc8eb8",
+            "3cb620da-7aa6-4edf-a930-bc90adb2dc3a",
+            "88278d20-b4f6-49cd-aaa2-899450e64bab"
         ]
     },
     "packIdToChampIds": {
@@ -57676,6 +57985,9 @@
         "221570ce-90df-4e22-9e4c-dd23dca210f4": [
             2
         ],
+        "1c3eb474-3577-4937-b0ba-86fa1bef817b": [
+            72
+        ],
         "e15bc257-8f81-4ac3-8c49-dd40b7f10175": [
             12
         ],
@@ -57863,7 +58175,8 @@
             950,
             910,
             233,
-            901
+            901,
+            72
         ],
         "75122b80-ce4d-4655-9912-7a27e4c6b2e6": [
             1
@@ -57930,9 +58243,6 @@
         ],
         "0c972e45-1bbc-4136-bcc3-70fd99dea01d": [
             266
-        ],
-        "400bc7be-78d5-4c3d-bd78-641e6ea676bc": [
-            72
         ],
         "88daf41f-e9da-49be-9cd6-235dbb538427": [
             31
@@ -58213,7 +58523,10 @@
         "5e9a2d9d-3c08-497f-93e7-975e02466deb": [
             901
         ],
-        "ebd680a4-08a7-4c5d-af2e-f740f5306f3f": [
+        "19083368-e2f0-40a2-8cad-ef042e671eca": [
+            127
+        ],
+        "2fcda791-0efb-43ba-bba8-2c3bb85ae22f": [
             72
         ],
         "b1df4c9b-15c3-4684-8c45-42976b91a39a": [
@@ -58471,6 +58784,9 @@
         ],
         "59a9196f-9217-4a18-9946-366103e9dc1c": [
             412
+        ],
+        "36aed7ce-0424-4a16-ad2c-333294696086": [
+            72
         ],
         "d2461631-0964-4d44-a22b-c18e7ec96e3b": [
             24
@@ -58882,9 +59198,6 @@
         ],
         "b189517a-f2b5-4ee3-824f-eaf21c769f2e": [
             121
-        ],
-        "19083368-e2f0-40a2-8cad-ef042e671eca": [
-            127
         ],
         "c09d9bc4-91df-41df-8358-61e911a8c7e2": [
             16
@@ -60437,9 +60750,11 @@
         ],
         "72": [
             "4ee4f814-65d0-430d-ac36-41c8a9192235",
-            "ebd680a4-08a7-4c5d-af2e-f740f5306f3f",
+            "2fcda791-0efb-43ba-bba8-2c3bb85ae22f",
             "b1df4c9b-15c3-4684-8c45-42976b91a39a",
-            "400bc7be-78d5-4c3d-bd78-641e6ea676bc"
+            "36aed7ce-0424-4a16-ad2c-333294696086",
+            "9ddda714-c38a-446a-b012-92b7965248e4",
+            "1c3eb474-3577-4937-b0ba-86fa1bef817b"
         ]
     },
     "packItemIdToContainingPackItemId": {
@@ -61151,10 +61466,10 @@
         "66600566": [
             66700001
         ],
-        "66600424": [
-            66700003
+        "66600226": [
+            66700002
         ],
-        "66600569": [
+        "66600105": [
             66700001
         ],
         "66600369": [
@@ -61251,6 +61566,9 @@
             66700003
         ],
         "66600383": [
+            66700003
+        ],
+        "66600424": [
             66700003
         ],
         "66600515": [
@@ -61589,7 +61907,10 @@
         "66600562": [
             66700003
         ],
-        "66600570": [
+        "66600152": [
+            66700002
+        ],
+        "66600482": [
             66700003
         ],
         "66600181": [
@@ -61736,9 +62057,6 @@
         "66600189": [
             66700002
         ],
-        "66600226": [
-            66700002
-        ],
         "66600158": [
             66700002
         ],
@@ -61758,9 +62076,6 @@
             66700002
         ],
         "66600231": [
-            66700002
-        ],
-        "66600152": [
             66700002
         ],
         "66600298": [
@@ -61941,6 +62256,9 @@
             66700002
         ],
         "66600560": [
+            66700002
+        ],
+        "66600247": [
             66700002
         ]
     }

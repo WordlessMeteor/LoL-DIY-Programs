@@ -944,7 +944,7 @@
             "abilityVideoImagePath": "champion-abilities/0107/ability_0107_Q1.jpg",
             "cost": "<font color='#EDDA74'>产生1点残暴值</font>",
             "cooldown": "@AmmoRechargeTime@秒%i:cooldown%",
-            "description": "Spell_RengarQ_Summary",
+            "description": "雷恩加尔的下次攻击会蛮横地戳刺他的目标来造成额外伤害。<br><br>残暴效果：造成更多伤害，并且他会获得攻击速度加成。",
             "dynamicDescription": "雷恩加尔的下2次攻击获得<attackSpeed>@Effect5Amount@%攻击速度</attackSpeed>。第一次攻击会暴击，造成<physicalDamage>@F4@ (%i:scaleAD%%i:scaleCrit%) 物理伤害</physicalDamage>。<br><br><keywordMajor>满层残暴值：</keywordMajor>第一次攻击会暴击，造成<physicalDamage>@F5@ (%i:scaleLevel%%i:scaleAD%%i:scaleCrit%) 物理伤害</physicalDamage>并为雷恩加尔提供@Effect3Amount@秒的<attackSpeed>@EmpoweredQAS@攻击速度</attackSpeed>。@SpellModifierDescriptionAppend@",
             "range": [
                 450.0000,
@@ -1245,7 +1245,7 @@
             "cost": "<font color='#EDDA74'>产生1点残暴值</font>",
             "cooldown": "@AmmoRechargeTime@秒%i:cooldown%",
             "description": "雷恩加尔扔出一个套索，套索在命中第一个敌人后，会暂时降低这名敌人的移动速度。<br><br>残暴效果：对目标造成禁锢效果。",
-            "dynamicDescription": "Spell_RengarE_Tooltip@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "雷恩加尔扔出一个套索，对命中的第一个敌人造成<physicalDamage>@TotalDamage@物理伤害</physicalDamage>，以及持续@Effect3Amount@秒的显形和@Effect2Amount@%<status>减速</status>。<br><br><keywordMajor>残暴效果：</keywordMajor>造成<physicalDamage>@TotalEmpoweredDamage@物理伤害</physicalDamage>并将其<status>禁锢</status>@Effect4Amount@秒。@SpellModifierDescriptionAppend@",
             "range": [
                 1000.0000,
                 1000.0000,
@@ -1395,7 +1395,7 @@
             "cost": "无消耗",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "雷恩加尔激活他的掠食者本能，<font color='#cd90ee'>伪装</font>自身并感知附近极大范围内的距他最近的敌方英雄。在狩猎律动期间，他会获得移动速度加成，他的下次攻击将使他即使不在草丛内也可以进行跳跃，并且会减少目标的护甲。",
-            "dynamicDescription": "Spell_RengarR_Tooltip@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "<spellPassive>被动：</spellPassive>雷恩加尔在<keywordStealth>伪装</keywordStealth>状态下也能进行跃击。<br><br><spellActive>主动：</spellActive>雷恩加尔获得<speed>@StealthMS@%移动速度</speed>和相距最近的敌方英雄周围一个小区域内的<keywordStealth>真实视野</keywordStealth>，持续@StealthDuration@秒。<br><br>在@FadeTime@秒后，雷恩加尔变为<keywordStealth>伪装</keywordStealth>状态并且不需要在草丛中就能进行跃击。跃击该相距最近的敌方英雄时会造成<physicalDamage>@BonusDamage@物理伤害</physicalDamage>，击碎<scaleArmor>@ArmorShred@护甲</scaleArmor>达@ArmorShredDuration@秒，并结束这个技能。@SpellModifierDescriptionAppend@",
             "range": [
                 2500.0000,
                 3000.0000,

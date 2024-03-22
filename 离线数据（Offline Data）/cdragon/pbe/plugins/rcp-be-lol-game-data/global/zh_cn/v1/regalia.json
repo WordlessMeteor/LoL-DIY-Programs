@@ -20,7 +20,7 @@
     {
         "id": "5",
         "idSecondary": "",
-        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/bee2023.ACCESSORIES_13_24.png",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/bee2023.png",
         "isSelectable": true,
         "regaliaType": "kBanner",
         "localizedName": "蓝色精萃商店2023旗帜",
@@ -29,7 +29,7 @@
     {
         "id": "6",
         "idSecondary": "",
-        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/wn2023.ACCESSORIES_13_24.png",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/wn2023.png",
         "isSelectable": true,
         "regaliaType": "kBanner",
         "localizedName": "北极星(2023)贵族旗帜",
@@ -38,7 +38,7 @@
     {
         "id": "7",
         "idSecondary": "",
-        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/wr2023.ACCESSORIES_13_24.png",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/wr2023.png",
         "isSelectable": true,
         "regaliaType": "kBanner",
         "localizedName": "北极星(2023)皇家旗帜",
@@ -47,7 +47,7 @@
     {
         "id": "8",
         "idSecondary": "",
-        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/wa2023.ACCESSORIES_13_24.png",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/wa2023.png",
         "isSelectable": true,
         "regaliaType": "kBanner",
         "localizedName": "北极星(2023)极光旗帜",

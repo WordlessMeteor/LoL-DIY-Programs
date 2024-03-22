@@ -1969,7 +1969,7 @@
         "starLevel": 1,
         "rarity": "Mythic",
         "rewardTexturePath": "/lol-game-data/assets/ASSETS/Loot/Companions/ChibiKaisa/Loot_ChibiKaisa_Popstars_Popstars1_Tier1.png",
-        "highlightRewardAssetPath": "/lol-game-data/assets/ASSETS/UX/TFT/Troves_BannerContent/ChibiKaiSa/TFT-TR-ChaseContent-ChibiKDAKaisa.13_24_TR_ChibiPrestigeKaisa.png"
+        "highlightRewardAssetPath": "/lol-game-data/assets/ASSETS/UX/TFT/Troves_BannerContent/ChibiKaiSa/TFT-TR-ChaseContent-ChibiKDAKaisa.png"
     },
     {
         "itemInstanceId": "51e12c33-bf9a-4cd7-b619-36fe636952ee",

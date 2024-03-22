@@ -1998,7 +1998,7 @@
     {
         "id": 2141,
         "name": "帽子饮品",
-        "description": "<mainText><stats></stats><br><br>Item_2141_Tooltip<active>主动 - 消耗：</active>这个饮品什么也不做。<br><br><flavorText>在有限的时间内，每次购买都可以免费获得一顶帽子！</flavorText></mainText>",
+        "description": "<mainText><stats></stats><br><br><rules>帮助你出人头地。</rules><active>主动 - 消耗：</active>这个饮品什么也不做。<br><br><flavorText>在有限的时间内，每次购买都可以免费获得一顶帽子！</flavorText></mainText>",
         "active": true,
         "inStore": false,
         "from": [],
@@ -4379,6 +4379,7 @@
             7030
         ],
         "categories": [
+            "Damage",
             "AttackSpeed",
             "OnHit"
         ],
@@ -9305,6 +9306,7 @@
         ],
         "to": [],
         "categories": [
+            "Damage",
             "AttackSpeed",
             "OnHit"
         ],
@@ -11017,6 +11019,7 @@
             227030
         ],
         "categories": [
+            "Damage",
             "AttackSpeed",
             "OnHit"
         ],
@@ -13357,6 +13360,7 @@
         ],
         "to": [],
         "categories": [
+            "Damage",
             "AttackSpeed",
             "OnHit"
         ],

@@ -4379,6 +4379,7 @@
             7030
         ],
         "categories": [
+            "Damage",
             "AttackSpeed",
             "OnHit"
         ],
@@ -9305,6 +9306,7 @@
         ],
         "to": [],
         "categories": [
+            "Damage",
             "AttackSpeed",
             "OnHit"
         ],
@@ -11017,6 +11019,7 @@
             227030
         ],
         "categories": [
+            "Damage",
             "AttackSpeed",
             "OnHit"
         ],
@@ -13357,6 +13360,7 @@
         ],
         "to": [],
         "categories": [
+            "Damage",
             "AttackSpeed",
             "OnHit"
         ],

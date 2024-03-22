@@ -9254,103 +9254,103 @@
     {
         "id": 4434,
         "name": "高光与黯影",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Champions/4434_Highlights_and_Shadows_Inventory.ACCESSORIES_13_24.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Champions/4434_Highlights_and_Shadows_Inventory.png",
         "description": ""
     },
     {
         "id": 4435,
         "name": "黯影与高光",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Champions/4435_Shadows_and_Highlights_Inventory.ACCESSORIES_13_24.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Champions/4435_Shadows_and_Highlights_Inventory.png",
         "description": ""
     },
     {
         "id": 4436,
         "name": "加冕",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Winterblessed/4436_Crowned_Inventory.ACCESSORIES_13_24.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Winterblessed/4436_Crowned_Inventory.png",
         "description": ""
     },
     {
         "id": 4437,
         "name": "超级社恐",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Winterblessed/4437_Super_Shy_Inventory.ACCESSORIES_13_24.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Winterblessed/4437_Super_Shy_Inventory.png",
         "description": ""
     },
     {
         "id": 4438,
         "name": "无我冥想",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Winterblessed/4438_Maniacal_Contemplation_Inventory.ACCESSORIES_13_24.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Winterblessed/4438_Maniacal_Contemplation_Inventory.png",
         "description": ""
     },
     {
         "id": 4439,
         "name": "你掉了这个",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Winterblessed/4439_You_Dropped_This_Inventory.ACCESSORIES_13_24.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Winterblessed/4439_You_Dropped_This_Inventory.png",
         "description": ""
     },
     {
         "id": 4440,
         "name": "举杯陷入沉思",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Winterblessed/4440_Brooding_With_A_Beverage_Inventory.ACCESSORIES_13_24.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Winterblessed/4440_Brooding_With_A_Beverage_Inventory.png",
         "description": ""
     },
     {
         "id": 4441,
         "name": "略略略！",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Esports/Digital_Esports/4441_Bleh_Inventory.ACCESSORIES_13_24.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Esports/Digital_Esports/4441_Bleh_Inventory.png",
         "description": ""
     },
     {
         "id": 4442,
         "name": "笨格莫",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Esports/Digital_Esports/4442_DERPMaw_Inventory.ACCESSORIES_13_24.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Esports/Digital_Esports/4442_DERPMaw_Inventory.png",
         "description": ""
     },
     {
         "id": 4443,
         "name": "哈哈笑死",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Esports/Digital_Esports/4443_Haha_HILARIOUS_Inventory.ACCESSORIES_13_24.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Esports/Digital_Esports/4443_Haha_HILARIOUS_Inventory.png",
         "description": ""
     },
     {
         "id": 4444,
         "name": "有亿点久",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Esports/Digital_Esports/4444_Its_Been_Forever_Inventory.ACCESSORIES_13_24.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Esports/Digital_Esports/4444_Its_Been_Forever_Inventory.png",
         "description": ""
     },
     {
         "id": 4445,
         "name": "呵呵好吧",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Esports/Digital_Esports/4445_Heheh_Okay_Inventory.ACCESSORIES_13_24.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Esports/Digital_Esports/4445_Heheh_Okay_Inventory.png",
         "description": ""
     },
     {
         "id": 4446,
         "name": "噢耶？",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Esports/Digital_Esports/4446_OH_YEaH_Inventory.ACCESSORIES_13_24.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Esports/Digital_Esports/4446_OH_YEaH_Inventory.png",
         "description": ""
     },
     {
         "id": 4447,
         "name": "呃，别。",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Esports/Digital_Esports/4447_Just_No_Inventory.ACCESSORIES_13_24.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Esports/Digital_Esports/4447_Just_No_Inventory.png",
         "description": ""
     },
     {
         "id": 4448,
         "name": "噢！这是什么？！",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Esports/Digital_Esports/4448_Oh_Whats_This_Inventory.ACCESSORIES_13_24.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Esports/Digital_Esports/4448_Oh_Whats_This_Inventory.png",
         "description": ""
     },
     {
         "id": 4449,
         "name": "前往胜利！",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Modes/Arena/4449_To_Victory_Inventory.ACCESSORIES_13_24.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Modes/Arena/4449_To_Victory_Inventory.png",
         "description": ""
     },
     {
         "id": 4450,
         "name": "噢，是我干的吗？",
-        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/CrystalisMotus/4450_Oops_Did_I_Do_That_Inventory.ACCESSORIES_13_24.png",
+        "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/CrystalisMotus/4450_Oops_Did_I_Do_That_Inventory.png",
         "description": ""
     },
     {
@@ -9721,9 +9721,9 @@
     },
     {
         "id": 4513,
-        "name": "game_summoner_emote_name_4513",
+        "name": "2024赛季 - 第2赛段 - 胜利之王 泰达米尔",
         "inventoryIcon": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Rewards/Ranked/2024/4513_2024__Split_2__Victorious_Tryndamere_Inventory.ACCESSORIES_14_7.png",
-        "description": "game_summoner_emote_description_4513"
+        "description": ""
     },
     {
         "id": 5,

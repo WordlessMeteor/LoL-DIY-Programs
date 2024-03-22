@@ -1554,7 +1554,7 @@
         "rewards": [
             {
                 "media": {
-                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Winterblessed/4438_Maniacal_Contemplation_Inventory.ACCESSORIES_13_24.png"
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Winterblessed/4438_Maniacal_Contemplation_Inventory.png"
                 }
             }
         ]
@@ -1580,7 +1580,7 @@
         "rewards": [
             {
                 "media": {
-                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Winterblessed/4437_Super_Shy_Inventory.ACCESSORIES_13_24.png"
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Winterblessed/4437_Super_Shy_Inventory.png"
                 }
             }
         ]
@@ -1606,7 +1606,7 @@
         "rewards": [
             {
                 "media": {
-                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Winterblessed/4436_Crowned_Inventory.ACCESSORIES_13_24.png"
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Winterblessed/4436_Crowned_Inventory.png"
                 }
             }
         ]
@@ -1632,7 +1632,7 @@
         "rewards": [
             {
                 "media": {
-                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Winterblessed/4439_You_Dropped_This_Inventory.ACCESSORIES_13_24.png"
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Events/Winterblessed/4439_You_Dropped_This_Inventory.png"
                 }
             }
         ]
@@ -15652,7 +15652,7 @@
         "rewards": [
             {
                 "media": {
-                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Modes/Arena/4449_To_Victory_Inventory.ACCESSORIES_13_24.png"
+                    "image": "/lol-game-data/assets/ASSETS/Loadouts/SummonerEmotes/Modes/Arena/4449_To_Victory_Inventory.png"
                 }
             }
         ]
@@ -15678,7 +15678,7 @@
         "rewards": [
             {
                 "media": {
-                    "image": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/wa2023.ACCESSORIES_13_24.png"
+                    "image": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/wa2023.png"
                 }
             }
         ]
@@ -15704,7 +15704,7 @@
         "rewards": [
             {
                 "media": {
-                    "image": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/wn2023.ACCESSORIES_13_24.png"
+                    "image": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/wn2023.png"
                 }
             }
         ]
@@ -15730,7 +15730,7 @@
         "rewards": [
             {
                 "media": {
-                    "image": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/wr2023.ACCESSORIES_13_24.png"
+                    "image": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/wr2023.png"
                 }
             }
         ]

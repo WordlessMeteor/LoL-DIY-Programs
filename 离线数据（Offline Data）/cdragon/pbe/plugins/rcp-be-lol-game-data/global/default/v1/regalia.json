@@ -20,7 +20,7 @@
     {
         "id": "5",
         "idSecondary": "",
-        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/bee2023.ACCESSORIES_13_24.png",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/bee2023.png",
         "isSelectable": true,
         "regaliaType": "kBanner",
         "localizedName": "Blue Essence Emporium 2023 Banner",
@@ -29,7 +29,7 @@
     {
         "id": "6",
         "idSecondary": "",
-        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/wn2023.ACCESSORIES_13_24.png",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/wn2023.png",
         "isSelectable": true,
         "regaliaType": "kBanner",
         "localizedName": "Winterblessed 2023 Noble Banner",
@@ -38,7 +38,7 @@
     {
         "id": "7",
         "idSecondary": "",
-        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/wr2023.ACCESSORIES_13_24.png",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/wr2023.png",
         "isSelectable": true,
         "regaliaType": "kBanner",
         "localizedName": "Winterblessed 2023 Royal Banner",
@@ -47,7 +47,7 @@
     {
         "id": "8",
         "idSecondary": "",
-        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/wa2023.ACCESSORIES_13_24.png",
+        "assetPath": "/lol-game-data/assets/ASSETS/Regalia/BannerSkins/wa2023.png",
         "isSelectable": true,
         "regaliaType": "kBanner",
         "localizedName": "Winterblessed 2023 Aurora Banner",

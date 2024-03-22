@@ -849,7 +849,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "莎弥拉冲刺并越过一名敌人（包含建筑物），斩击沿途的敌人并获得攻击速度。击杀一名敌方英雄会刷新这个技能的冷却时间。",
-            "dynamicDescription": "Spell_SamiraE_Tooltip@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "莎弥拉冲刺并越过一名敌人（包含建筑物），斩击沿途的敌人来造成<magicDamage>@DashDamage@魔法伤害</magicDamage>并获得<attackSpeed>@BonusAttackSpeed*100@%攻击速度</attackSpeed>，持续3秒。<br><br>如果一名敌方英雄在受到莎弥拉的伤害后的3秒内阵亡，那么这个技能的冷却时间会重置。@SpellModifierDescriptionAppend@",
             "range": [
                 600.0000,
                 600.0000,
@@ -999,7 +999,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "莎弥拉的武器倾泻出大量的子弹，狂野地射击她周围的所有敌人。",
-            "dynamicDescription": "Spell_SamiraR_Tooltip@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "莎弥拉只能在她当前的<keywordMajor>评价等级</keywordMajor>为S时使用这个技能。使用这个技能会消耗掉所有<keywordMajor>评价等级</keywordMajor>。<br><br>莎弥拉的武器倾泻出大量的子弹，狂野地在2秒里持续对她周围的所有敌人进行10次射击，每次射击造成<physicalDamage>@DamageCalc@物理伤害</physicalDamage>并施加@LifestealMod*100@%效能的生命偷取。这些射击也可以产生暴击。<br><br>@SpellModifierDescriptionAppend@",
             "range": [
                 600.0000,
                 600.0000,

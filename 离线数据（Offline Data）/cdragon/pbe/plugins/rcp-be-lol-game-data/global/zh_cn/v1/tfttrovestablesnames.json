@@ -1,0 +1,6550 @@
+[
+    {
+        "nameTraKey": "tft_troves_table_highlight",
+        "translatedName": "高亮推荐"
+    },
+    {
+        "nameTraKey": "tft_troves_table_prestige",
+        "translatedName": "至臻"
+    },
+    {
+        "nameTraKey": "tft_troves_table_standard",
+        "translatedName": "标准"
+    },
+    {
+        "nameTraKey": "tft_troves_table_star",
+        "translatedName": "星级"
+    },
+    {
+        "nameTraKey": "companion_species_name_akalidragon",
+        "translatedName": "奥希雅"
+    },
+    {
+        "nameTraKey": "companion_aoshin_default_name",
+        "translatedName": "敖兴"
+    },
+    {
+        "nameTraKey": "companion_species_name_balldragon",
+        "translatedName": "啵啵龙"
+    },
+    {
+        "nameTraKey": "companion_species_name_baron",
+        "translatedName": "小小男爵"
+    },
+    {
+        "nameTraKey": "companion_bellswayer_default_name",
+        "translatedName": "铃角"
+    },
+    {
+        "nameTraKey": "companion_species_name_bigknifedog",
+        "translatedName": "利刃冥犬"
+    },
+    {
+        "nameTraKey": "companion_species_name_Buglet",
+        "translatedName": "嗡嗡虫"
+    },
+    {
+        "nameTraKey": "companion_species_name_bunny",
+        "translatedName": "兔兔"
+    },
+    {
+        "nameTraKey": "companion_species_name_chibiaatrox",
+        "translatedName": "亚托克斯"
+    },
+    {
+        "nameTraKey": "companion_species_name_chibiahri",
+        "translatedName": "阿狸"
+    },
+    {
+        "nameTraKey": "companion_species_name_chibiakali",
+        "translatedName": "阿卡丽"
+    },
+    {
+        "nameTraKey": "companion_species_name_chibiannie",
+        "translatedName": "安妮"
+    },
+    {
+        "nameTraKey": "companion_species_name_chibiashe",
+        "translatedName": "艾希"
+    },
+    {
+        "nameTraKey": "companion_species_name_chibiekko",
+        "translatedName": "艾克"
+    },
+    {
+        "nameTraKey": "companion_species_name_chibigwen",
+        "translatedName": "格温"
+    },
+    {
+        "nameTraKey": "companion_species_name_chibiirelia",
+        "translatedName": "艾瑞莉娅"
+    },
+    {
+        "nameTraKey": "companion_species_name_chibijinx",
+        "translatedName": "金克丝"
+    },
+    {
+        "nameTraKey": "companion_species_name_chibikaisa",
+        "translatedName": "卡莎"
+    },
+    {
+        "nameTraKey": "companion_species_name_chibileesin",
+        "translatedName": "李青"
+    },
+    {
+        "nameTraKey": "companion_species_name_chibilux",
+        "translatedName": "拉克丝"
+    },
+    {
+        "nameTraKey": "companion_species_name_chibimalphite",
+        "translatedName": "墨菲特"
+    },
+    {
+        "nameTraKey": "companion_species_name_chibimorgana",
+        "translatedName": "莫甘娜"
+    },
+    {
+        "nameTraKey": "companion_species_name_chibisett",
+        "translatedName": "瑟提"
+    },
+    {
+        "nameTraKey": "companion_species_name_chibisona",
+        "translatedName": "娑娜"
+    },
+    {
+        "nameTraKey": "companion_species_name_chibiteemo",
+        "translatedName": "提莫"
+    },
+    {
+        "nameTraKey": "companion_species_name_chibivi",
+        "translatedName": "蔚"
+    },
+    {
+        "nameTraKey": "companion_species_name_chibiyasuo",
+        "translatedName": "亚索"
+    },
+    {
+        "nameTraKey": "companion_species_name_chibized",
+        "translatedName": "劫"
+    },
+    {
+        "nameTraKey": "companion_choncc_default_name",
+        "translatedName": "胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_species_name_creepycat",
+        "translatedName": "胡子喵"
+    },
+    {
+        "nameTraKey": "companion_species_name_DSSquid",
+        "translatedName": "宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_species_name_DSSwordGuy",
+        "translatedName": "菜大师"
+    },
+    {
+        "nameTraKey": "companion_species_name_DSWhale",
+        "translatedName": "星星鲲"
+    },
+    {
+        "nameTraKey": "companion_species_name_dowsie",
+        "translatedName": "小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_species_name_duckbill",
+        "translatedName": "比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_species_name_elegantdragon",
+        "translatedName": "小雅"
+    },
+    {
+        "nameTraKey": "companion_fairy_default_name",
+        "translatedName": "小妖"
+    },
+    {
+        "nameTraKey": "companion_species_name_fenroar",
+        "translatedName": "斩月狼"
+    },
+    {
+        "nameTraKey": "companion_species_name_Gargoyle",
+        "translatedName": "石像仔"
+    },
+    {
+        "nameTraKey": "companion_species_name_GemTiger",
+        "translatedName": "喵卫"
+    },
+    {
+        "nameTraKey": "companion_species_name_ghost",
+        "translatedName": "幽灵"
+    },
+    {
+        "nameTraKey": "companion_species_name_gloop",
+        "translatedName": "黏黏"
+    },
+    {
+        "nameTraKey": "companion_species_name_silverwing",
+        "translatedName": "银翼"
+    },
+    {
+        "nameTraKey": "companion_species_name_grumpylion",
+        "translatedName": "怒角"
+    },
+    {
+        "nameTraKey": "companion_species_name_heroicscuttlecrab",
+        "translatedName": ""
+    },
+    {
+        "nameTraKey": "companion_species_name_HextechBirb",
+        "translatedName": "发条鸟"
+    },
+    {
+        "nameTraKey": "companion_species_name_hundun",
+        "translatedName": "混沌"
+    },
+    {
+        "nameTraKey": "companion_species_name_jawdragon",
+        "translatedName": "爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_species_name_koala",
+        "translatedName": "咯吱拉"
+    },
+    {
+        "nameTraKey": "companion_species_name_miner",
+        "translatedName": "鼹鼠"
+    },
+    {
+        "nameTraKey": "companion_species_name_minigolem",
+        "translatedName": "符灵"
+    },
+    {
+        "nameTraKey": "companion_species_name_nimblefoot",
+        "translatedName": "风神鼠"
+    },
+    {
+        "nameTraKey": "companion_species_name_owl",
+        "translatedName": "假面鹰"
+    },
+    {
+        "nameTraKey": "companion_pegasus_default_name",
+        "translatedName": "小马"
+    },
+    {
+        "nameTraKey": "companion_species_name_penguknight",
+        "translatedName": "羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_species_name_piximander",
+        "translatedName": "皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_species_name_poro",
+        "translatedName": "魄罗"
+    },
+    {
+        "nameTraKey": "companion_species_name_porofluft",
+        "translatedName": "魄罗团团"
+    },
+    {
+        "nameTraKey": "companion_species_name_pupdragon",
+        "translatedName": "笨戈"
+    },
+    {
+        "nameTraKey": "companion_species_name_qiyanadog",
+        "translatedName": "琦琦"
+    },
+    {
+        "nameTraKey": "companion_species_name_razorbeak",
+        "translatedName": "小小鸡哥"
+    },
+    {
+        "nameTraKey": "companion_species_name_sgcat",
+        "translatedName": "团子"
+    },
+    {
+        "nameTraKey": "companion_species_name_sgpig",
+        "translatedName": "软软"
+    },
+    {
+        "nameTraKey": "companion_species_name_sgshisa",
+        "translatedName": "小志"
+    },
+    {
+        "nameTraKey": "companion_species_name_scratch",
+        "translatedName": "搓碟鼬"
+    },
+    {
+        "nameTraKey": "companion_species_name_scuttlecrab",
+        "translatedName": "小小迅捷蟹"
+    },
+    {
+        "nameTraKey": "companion_species_name_sennabunny",
+        "translatedName": "魔力玛"
+    },
+    {
+        "nameTraKey": "companion_species_name_shark",
+        "translatedName": "小鲨鱼"
+    },
+    {
+        "nameTraKey": "companion_species_name_smolknifedog",
+        "translatedName": "小小利刃犬"
+    },
+    {
+        "nameTraKey": "companion_species_name_SpiritFox",
+        "translatedName": "静尾"
+    },
+    {
+        "nameTraKey": "companion_species_name_TFT_Avatar",
+        "translatedName": "小河灵"
+    },
+    {
+        "nameTraKey": "companion_species_name_turtle",
+        "translatedName": "桨翼"
+    },
+    {
+        "nameTraKey": "companion_umbra_default_name",
+        "translatedName": "夜煞"
+    },
+    {
+        "nameTraKey": "companion_species_name_unicorn",
+        "translatedName": "[占位] 独角兽"
+    },
+    {
+        "nameTraKey": "companion_species_name_voideye",
+        "translatedName": "猫克塞"
+    },
+    {
+        "nameTraKey": "akalidragon_beatmaker_tier1_name",
+        "translatedName": "节奏大师 奥希雅"
+    },
+    {
+        "nameTraKey": "akalidragon_beatmaker_tier1_name",
+        "translatedName": "节奏大师 奥希雅"
+    },
+    {
+        "nameTraKey": "akalidragon_beatmaker_tier1_name",
+        "translatedName": "节奏大师 奥希雅"
+    },
+    {
+        "nameTraKey": "companion_name_akalidragon_dragonmancer",
+        "translatedName": "舞龙少女 奥希雅"
+    },
+    {
+        "nameTraKey": "companion_name_akalidragon_dragonmancer",
+        "translatedName": "舞龙少女 奥希雅"
+    },
+    {
+        "nameTraKey": "companion_name_akalidragon_dragonmancer",
+        "translatedName": "舞龙少女 奥希雅"
+    },
+    {
+        "nameTraKey": "companion_species_name_akalidragon",
+        "translatedName": "奥希雅"
+    },
+    {
+        "nameTraKey": "companion_species_name_akalidragon",
+        "translatedName": "奥希雅"
+    },
+    {
+        "nameTraKey": "companion_species_name_akalidragon",
+        "translatedName": "奥希雅"
+    },
+    {
+        "nameTraKey": "akalidragon_popqueen_tier1_name",
+        "translatedName": "潮流天后 奥希雅"
+    },
+    {
+        "nameTraKey": "akalidragon_popqueen_tier1_name",
+        "translatedName": "潮流天后 奥希雅"
+    },
+    {
+        "nameTraKey": "akalidragon_popqueen_tier1_name",
+        "translatedName": "潮流天后 奥希雅"
+    },
+    {
+        "nameTraKey": "akalidragon_prodigy_tier1_name",
+        "translatedName": "天纵奇才 奥希雅"
+    },
+    {
+        "nameTraKey": "akalidragon_prodigy_tier1_name",
+        "translatedName": "天纵奇才 奥希雅"
+    },
+    {
+        "nameTraKey": "akalidragon_prodigy_tier1_name",
+        "translatedName": "天纵奇才 奥希雅"
+    },
+    {
+        "nameTraKey": "akalidragon_pumpedup_tier1_name",
+        "translatedName": "燃爆 奥希雅"
+    },
+    {
+        "nameTraKey": "akalidragon_pumpedup_tier1_name",
+        "translatedName": "燃爆 奥希雅"
+    },
+    {
+        "nameTraKey": "akalidragon_pumpedup_tier1_name",
+        "translatedName": "燃爆 奥希雅"
+    },
+    {
+        "nameTraKey": "akalidragon_soloist_tier1_name",
+        "translatedName": "独奏家 奥希雅"
+    },
+    {
+        "nameTraKey": "akalidragon_soloist_tier1_name",
+        "translatedName": "独奏家 奥希雅"
+    },
+    {
+        "nameTraKey": "akalidragon_soloist_tier1_name",
+        "translatedName": "独奏家 奥希雅"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_band1",
+        "translatedName": "能量和弦 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_band1",
+        "translatedName": "能量和弦 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_band1",
+        "translatedName": "能量和弦 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_band2",
+        "translatedName": "五杀摇滚 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_band2",
+        "translatedName": "五杀摇滚 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_band2",
+        "translatedName": "五杀摇滚 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_band3",
+        "translatedName": "迪斯科 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_band3",
+        "translatedName": "迪斯科 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_band3",
+        "translatedName": "迪斯科 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_band4",
+        "translatedName": "混音大师 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_band4",
+        "translatedName": "混音大师 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_band4",
+        "translatedName": "混音大师 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_band5",
+        "translatedName": "EMO 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_band5",
+        "translatedName": "EMO 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_band5",
+        "translatedName": "EMO 敖兴"
+    },
+    {
+        "nameTraKey": "companion_aoshin_classic_name",
+        "translatedName": "敖兴"
+    },
+    {
+        "nameTraKey": "companion_aoshin_classic_name",
+        "translatedName": "敖兴"
+    },
+    {
+        "nameTraKey": "companion_aoshin_classic_name",
+        "translatedName": "敖兴"
+    },
+    {
+        "nameTraKey": "companion_aoshin_darkstar_name",
+        "translatedName": "暗星 敖兴"
+    },
+    {
+        "nameTraKey": "companion_aoshin_darkstar_name",
+        "translatedName": "暗星 敖兴"
+    },
+    {
+        "nameTraKey": "companion_aoshin_darkstar_name",
+        "translatedName": "暗星 敖兴"
+    },
+    {
+        "nameTraKey": "companion_aoshin_divine_name",
+        "translatedName": "神龙 敖兴"
+    },
+    {
+        "nameTraKey": "companion_aoshin_divine_name",
+        "translatedName": "神龙 敖兴"
+    },
+    {
+        "nameTraKey": "companion_aoshin_divine_name",
+        "translatedName": "神龙 敖兴"
+    },
+    {
+        "nameTraKey": "companion_aoshin_elder_name",
+        "translatedName": "远古巨龙 敖兴"
+    },
+    {
+        "nameTraKey": "companion_aoshin_elder_name",
+        "translatedName": "远古巨龙 敖兴"
+    },
+    {
+        "nameTraKey": "companion_aoshin_elder_name",
+        "translatedName": "远古巨龙 敖兴"
+    },
+    {
+        "nameTraKey": "companion_aoshin_firecracker_name",
+        "translatedName": "神龙烈焰 敖兴"
+    },
+    {
+        "nameTraKey": "companion_aoshin_firecracker_name",
+        "translatedName": "神龙烈焰 敖兴"
+    },
+    {
+        "nameTraKey": "companion_aoshin_firecracker_name",
+        "translatedName": "神龙烈焰 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_spiritfairy1",
+        "translatedName": "月夜青莲 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_spiritfairy1",
+        "translatedName": "月夜青莲 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_spiritfairy1",
+        "translatedName": "月夜青莲 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_spiritfairy2",
+        "translatedName": "芙蓉碧水 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_spiritfairy2",
+        "translatedName": "芙蓉碧水 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_spiritfairy2",
+        "translatedName": "芙蓉碧水 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_spiritfairy3",
+        "translatedName": "郁金红 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_spiritfairy3",
+        "translatedName": "郁金红 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_spiritfairy3",
+        "translatedName": "郁金红 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_spiritfairy4",
+        "translatedName": "紫陌尘 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_spiritfairy4",
+        "translatedName": "紫陌尘 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_spiritfairy4",
+        "translatedName": "紫陌尘 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_spiritfairy5",
+        "translatedName": "墨上孤灯 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_spiritfairy5",
+        "translatedName": "墨上孤灯 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_spiritfairy5",
+        "translatedName": "墨上孤灯 敖兴"
+    },
+    {
+        "nameTraKey": "companion_aoshin_starforger_name",
+        "translatedName": "铸星龙王 敖兴"
+    },
+    {
+        "nameTraKey": "companion_aoshin_starforger_name",
+        "translatedName": "铸星龙王 敖兴"
+    },
+    {
+        "nameTraKey": "companion_aoshin_starforger_name",
+        "translatedName": "铸星龙王 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_swimmer1",
+        "translatedName": "泳池龙王 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_swimmer1",
+        "translatedName": "泳池龙王 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_aoshin_swimmer1",
+        "translatedName": "泳池龙王 敖兴"
+    },
+    {
+        "nameTraKey": "companion_name_balldragon_classic",
+        "translatedName": "啵啵龙"
+    },
+    {
+        "nameTraKey": "companion_name_balldragon_classic",
+        "translatedName": "啵啵龙"
+    },
+    {
+        "nameTraKey": "companion_name_balldragon_classic",
+        "translatedName": "啵啵龙"
+    },
+    {
+        "nameTraKey": "companion_name_balldragon_mythic",
+        "translatedName": "舞狮本狮 啵啵龙"
+    },
+    {
+        "nameTraKey": "companion_name_balldragon_mythic",
+        "translatedName": "舞狮本狮 啵啵龙"
+    },
+    {
+        "nameTraKey": "companion_name_balldragon_mythic",
+        "translatedName": "舞狮本狮 啵啵龙"
+    },
+    {
+        "nameTraKey": "companion_name_balldragon_variant1",
+        "translatedName": "呱呱 啵啵龙"
+    },
+    {
+        "nameTraKey": "companion_name_balldragon_variant1",
+        "translatedName": "呱呱 啵啵龙"
+    },
+    {
+        "nameTraKey": "companion_name_balldragon_variant1",
+        "translatedName": "呱呱 啵啵龙"
+    },
+    {
+        "nameTraKey": "companion_name_balldragon_variant2",
+        "translatedName": "小蜜蜂 啵啵龙"
+    },
+    {
+        "nameTraKey": "companion_name_balldragon_variant2",
+        "translatedName": "小蜜蜂 啵啵龙"
+    },
+    {
+        "nameTraKey": "companion_name_balldragon_variant2",
+        "translatedName": "小蜜蜂 啵啵龙"
+    },
+    {
+        "nameTraKey": "companion_name_balldragon_variant3",
+        "translatedName": "3000℃ 啵啵龙"
+    },
+    {
+        "nameTraKey": "companion_name_balldragon_variant3",
+        "translatedName": "3000℃ 啵啵龙"
+    },
+    {
+        "nameTraKey": "companion_name_balldragon_variant3",
+        "translatedName": "3000℃ 啵啵龙"
+    },
+    {
+        "nameTraKey": "companion_name_balldragon_variant4",
+        "translatedName": "大鲨鱼 啵啵龙"
+    },
+    {
+        "nameTraKey": "companion_name_balldragon_variant4",
+        "translatedName": "大鲨鱼 啵啵龙"
+    },
+    {
+        "nameTraKey": "companion_name_balldragon_variant4",
+        "translatedName": "大鲨鱼 啵啵龙"
+    },
+    {
+        "nameTraKey": "companion_name_balldragon_variant5",
+        "translatedName": "甜筒 啵啵龙"
+    },
+    {
+        "nameTraKey": "companion_name_balldragon_variant5",
+        "translatedName": "甜筒 啵啵龙"
+    },
+    {
+        "nameTraKey": "companion_name_balldragon_variant5",
+        "translatedName": "甜筒 啵啵龙"
+    },
+    {
+        "nameTraKey": "companion_name_baron_classic",
+        "translatedName": "小小男爵"
+    },
+    {
+        "nameTraKey": "companion_name_baron_variant1",
+        "translatedName": "超级小小男爵"
+    },
+    {
+        "nameTraKey": "companion_name_baron_variant2",
+        "translatedName": "奥德赛 小小男爵"
+    },
+    {
+        "nameTraKey": "companion_name_baron_variant3",
+        "translatedName": "星之守护者 小小男爵"
+    },
+    {
+        "nameTraKey": "companion_name_baron_variant4",
+        "translatedName": "吞星者 小小男爵"
+    },
+    {
+        "nameTraKey": "companion_name_baron_variant5",
+        "translatedName": "星界天灾 小小男爵"
+    },
+    {
+        "nameTraKey": "companion_bellswayer_blackmist_name",
+        "translatedName": "黑雾 铃角"
+    },
+    {
+        "nameTraKey": "companion_bellswayer_blackmist_name",
+        "translatedName": "黑雾 铃角"
+    },
+    {
+        "nameTraKey": "companion_bellswayer_blackmist_name",
+        "translatedName": "黑雾 铃角"
+    },
+    {
+        "nameTraKey": "companion_bellswayer_bloodmoon_name",
+        "translatedName": "腥红之月 铃角"
+    },
+    {
+        "nameTraKey": "companion_bellswayer_bloodmoon_name",
+        "translatedName": "腥红之月 铃角"
+    },
+    {
+        "nameTraKey": "companion_bellswayer_bloodmoon_name",
+        "translatedName": "腥红之月 铃角"
+    },
+    {
+        "nameTraKey": "companion_bellswayer_classic_name",
+        "translatedName": "铃角"
+    },
+    {
+        "nameTraKey": "companion_bellswayer_classic_name",
+        "translatedName": "铃角"
+    },
+    {
+        "nameTraKey": "companion_bellswayer_classic_name",
+        "translatedName": "铃角"
+    },
+    {
+        "nameTraKey": "companion_bellswayer_lunarrevel2021_name",
+        "translatedName": "瓷娃娃 铃角"
+    },
+    {
+        "nameTraKey": "companion_bellswayer_lunarrevel2021_name",
+        "translatedName": "瓷娃娃 铃角"
+    },
+    {
+        "nameTraKey": "companion_bellswayer_lunarrevel2021_name",
+        "translatedName": "瓷娃娃 铃角"
+    },
+    {
+        "nameTraKey": "companion_bellswayer_sugarrush_name",
+        "translatedName": "糖果大战 铃角"
+    },
+    {
+        "nameTraKey": "companion_bellswayer_sugarrush_name",
+        "translatedName": "糖果大战 铃角"
+    },
+    {
+        "nameTraKey": "companion_bellswayer_sugarrush_name",
+        "translatedName": "糖果大战 铃角"
+    },
+    {
+        "nameTraKey": "companion_bellswayer_thunderstorm_name",
+        "translatedName": "雷霆 铃角"
+    },
+    {
+        "nameTraKey": "companion_bellswayer_thunderstorm_name",
+        "translatedName": "雷霆 铃角"
+    },
+    {
+        "nameTraKey": "companion_bellswayer_thunderstorm_name",
+        "translatedName": "雷霆 铃角"
+    },
+    {
+        "nameTraKey": "companion_name_bellswayer_triumph",
+        "translatedName": "凯旋 铃角"
+    },
+    {
+        "nameTraKey": "companion_name_bellswayer_victory",
+        "translatedName": "胜利 铃角"
+    },
+    {
+        "nameTraKey": "companion_bellswayer_yuletide_name",
+        "translatedName": "圣诞 铃角"
+    },
+    {
+        "nameTraKey": "companion_bellswayer_yuletide_name",
+        "translatedName": "圣诞 铃角"
+    },
+    {
+        "nameTraKey": "companion_bellswayer_yuletide_name",
+        "translatedName": "圣诞 铃角"
+    },
+    {
+        "nameTraKey": "companion_name_bigknifedog_classic",
+        "translatedName": "利刃冥犬"
+    },
+    {
+        "nameTraKey": "companion_name_bigknifedog_classic",
+        "translatedName": "利刃冥犬"
+    },
+    {
+        "nameTraKey": "companion_name_bigknifedog_classic",
+        "translatedName": "利刃冥犬"
+    },
+    {
+        "nameTraKey": "companion_name_bigknifedog_variant1",
+        "translatedName": "雷霆 利刃冥犬"
+    },
+    {
+        "nameTraKey": "companion_name_bigknifedog_variant1",
+        "translatedName": "雷霆 利刃冥犬"
+    },
+    {
+        "nameTraKey": "companion_name_bigknifedog_variant1",
+        "translatedName": "雷霆 利刃冥犬"
+    },
+    {
+        "nameTraKey": "companion_name_bigknifedog_variant2",
+        "translatedName": "斗魂觉醒 利刃冥犬"
+    },
+    {
+        "nameTraKey": "companion_name_bigknifedog_variant2",
+        "translatedName": "斗魂觉醒 利刃冥犬"
+    },
+    {
+        "nameTraKey": "companion_name_bigknifedog_variant2",
+        "translatedName": "斗魂觉醒 利刃冥犬"
+    },
+    {
+        "nameTraKey": "companion_name_bigknifedog_variant3",
+        "translatedName": "夜幽 利刃冥犬"
+    },
+    {
+        "nameTraKey": "companion_name_bigknifedog_variant3",
+        "translatedName": "夜幽 利刃冥犬"
+    },
+    {
+        "nameTraKey": "companion_name_bigknifedog_variant3",
+        "translatedName": "夜幽 利刃冥犬"
+    },
+    {
+        "nameTraKey": "companion_name_bigknifedog_variant4",
+        "translatedName": "恕瑞玛 利刃冥犬"
+    },
+    {
+        "nameTraKey": "companion_name_bigknifedog_variant4",
+        "translatedName": "恕瑞玛 利刃冥犬"
+    },
+    {
+        "nameTraKey": "companion_name_bigknifedog_variant4",
+        "translatedName": "恕瑞玛 利刃冥犬"
+    },
+    {
+        "nameTraKey": "companion_name_bigknifedog_variant5",
+        "translatedName": "利刃柴犬"
+    },
+    {
+        "nameTraKey": "companion_name_bigknifedog_variant5",
+        "translatedName": "利刃柴犬"
+    },
+    {
+        "nameTraKey": "companion_name_bigknifedog_variant5",
+        "translatedName": "利刃柴犬"
+    },
+    {
+        "nameTraKey": "buglet_beevil_tier1_name",
+        "translatedName": "蜂魔 嗡嗡虫"
+    },
+    {
+        "nameTraKey": "buglet_beevil_tier1_name",
+        "translatedName": "蜂魔 嗡嗡虫"
+    },
+    {
+        "nameTraKey": "buglet_beevil_tier1_name",
+        "translatedName": "蜂魔 嗡嗡虫"
+    },
+    {
+        "nameTraKey": "buglet_flutterbug_tier1_name",
+        "translatedName": "嗡嗡虫"
+    },
+    {
+        "nameTraKey": "buglet_flutterbug_tier1_name",
+        "translatedName": "嗡嗡虫"
+    },
+    {
+        "nameTraKey": "buglet_flutterbug_tier1_name",
+        "translatedName": "嗡嗡虫"
+    },
+    {
+        "nameTraKey": "buglet_ixtali_tier1_name",
+        "translatedName": "以绪塔尔 嗡嗡虫"
+    },
+    {
+        "nameTraKey": "buglet_ixtali_tier1_name",
+        "translatedName": "以绪塔尔 嗡嗡虫"
+    },
+    {
+        "nameTraKey": "buglet_ixtali_tier1_name",
+        "translatedName": "以绪塔尔 嗡嗡虫"
+    },
+    {
+        "nameTraKey": "companion_name_buglet_kaiju1",
+        "translatedName": "凯旋 嗡嗡虫"
+    },
+    {
+        "nameTraKey": "companion_name_buglet_kaiju2",
+        "translatedName": "胜利 嗡嗡虫"
+    },
+    {
+        "nameTraKey": "buglet_legionnaire_tier1_name",
+        "translatedName": "军团士兵 嗡嗡虫"
+    },
+    {
+        "nameTraKey": "buglet_legionnaire_tier1_name",
+        "translatedName": "军团士兵 嗡嗡虫"
+    },
+    {
+        "nameTraKey": "buglet_legionnaire_tier1_name",
+        "translatedName": "军团士兵 嗡嗡虫"
+    },
+    {
+        "nameTraKey": "buglet_sandbringer_tier1_name",
+        "translatedName": "沙漠使者 嗡嗡虫"
+    },
+    {
+        "nameTraKey": "buglet_sandbringer_tier1_name",
+        "translatedName": "沙漠使者 嗡嗡虫"
+    },
+    {
+        "nameTraKey": "buglet_sandbringer_tier1_name",
+        "translatedName": "沙漠使者 嗡嗡虫"
+    },
+    {
+        "nameTraKey": "companion_name_buglet_sentinel_sentinel1",
+        "translatedName": "光明哨兵 嗡嗡虫"
+    },
+    {
+        "nameTraKey": "buglet_trueice_tier1_name",
+        "translatedName": "极冰 嗡嗡虫"
+    },
+    {
+        "nameTraKey": "buglet_trueice_tier1_name",
+        "translatedName": "极冰 嗡嗡虫"
+    },
+    {
+        "nameTraKey": "buglet_trueice_tier1_name",
+        "translatedName": "极冰 嗡嗡虫"
+    },
+    {
+        "nameTraKey": "companion_name_buglet_variant1",
+        "translatedName": "生日蛋糕 嗡嗡虫"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_classic",
+        "translatedName": "兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_classic",
+        "translatedName": "兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_classic",
+        "translatedName": "兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_lunarrevel1",
+        "translatedName": "恭喜发财 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_lunarrevel1",
+        "translatedName": "恭喜发财 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_lunarrevel1",
+        "translatedName": "恭喜发财 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_lunarrevel2",
+        "translatedName": "青花瓷 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_lunarrevel2",
+        "translatedName": "青花瓷 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_lunarrevel2",
+        "translatedName": "青花瓷 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_lunarrevel3",
+        "translatedName": "赤兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_lunarrevel3",
+        "translatedName": "赤兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_lunarrevel3",
+        "translatedName": "赤兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_lunarrevel4",
+        "translatedName": "莲花之令 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_lunarrevel4",
+        "translatedName": "莲花之令 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_lunarrevel4",
+        "translatedName": "莲花之令 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_lunarrevel5",
+        "translatedName": "小食神 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_lunarrevel5",
+        "translatedName": "小食神 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_lunarrevel5",
+        "translatedName": "小食神 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_variant1",
+        "translatedName": "香甜巧克力 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_variant1",
+        "translatedName": "香甜巧克力 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_variant1",
+        "translatedName": "香甜巧克力 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_variant2",
+        "translatedName": "幻灵战斗兔 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_variant2",
+        "translatedName": "幻灵战斗兔 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_variant2",
+        "translatedName": "幻灵战斗兔 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_variant3",
+        "translatedName": "小红帽 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_variant3",
+        "translatedName": "小红帽 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_variant3",
+        "translatedName": "小红帽 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_variant4",
+        "translatedName": "太空律动 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_variant4",
+        "translatedName": "太空律动 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_variant4",
+        "translatedName": "太空律动 兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_variant5",
+        "translatedName": "香蕉兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_variant5",
+        "translatedName": "香蕉兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_bunny_variant5",
+        "translatedName": "香蕉兔兔"
+    },
+    {
+        "nameTraKey": "companion_name_chibiaatrox_classic",
+        "translatedName": "小小亚托克斯"
+    },
+    {
+        "nameTraKey": "companion_name_chibiaatrox_drx1",
+        "translatedName": "DRX 小小亚托克斯"
+    },
+    {
+        "nameTraKey": "companion_name_chibiahri_blossom1",
+        "translatedName": "灵魂莲华 小小阿狸"
+    },
+    {
+        "nameTraKey": "companion_name_chibiahri_classic",
+        "translatedName": "小小阿狸"
+    },
+    {
+        "nameTraKey": "companion_name_chibiahri_starguardian1",
+        "translatedName": "星之守护者 小小阿狸"
+    },
+    {
+        "nameTraKey": "companion_name_chibiakali_classic",
+        "translatedName": "小小阿卡丽"
+    },
+    {
+        "nameTraKey": "companion_name_chibiakali_kda1",
+        "translatedName": "K/DA ALL OUT 小小阿卡丽"
+    },
+    {
+        "nameTraKey": "companion_name_chibiannie_classic",
+        "translatedName": "小小安妮"
+    },
+    {
+        "nameTraKey": "companion_name_chibiannie_panda",
+        "translatedName": "“你看见过我的胖达吗？” 小小安妮"
+    },
+    {
+        "nameTraKey": "companion_name_chibiashe_classic",
+        "translatedName": "小小艾希"
+    },
+    {
+        "nameTraKey": "companion_name_chibiashe_dragonmancer1",
+        "translatedName": "神龙尊者 小小艾希"
+    },
+    {
+        "nameTraKey": "companion_name_chibiekko_classic",
+        "translatedName": "小小艾克"
+    },
+    {
+        "nameTraKey": "companion_name_chibigwen_classic",
+        "translatedName": "小小格温"
+    },
+    {
+        "nameTraKey": "companion_name_chibigwen_soulfighter",
+        "translatedName": "斗魂觉醒 小小格温"
+    },
+    {
+        "nameTraKey": "companion_name_chibiirelia_classic",
+        "translatedName": "小小艾瑞莉娅"
+    },
+    {
+        "nameTraKey": "companion_name_chibiirelia_divinesword1",
+        "translatedName": "玉剑传说 小小艾瑞莉娅"
+    },
+    {
+        "nameTraKey": "companion_name_chibijinx_classic",
+        "translatedName": "小小金克丝"
+    },
+    {
+        "nameTraKey": "companion_name_chibijinx_firecracker1",
+        "translatedName": "神龙烈焰 小小金克丝"
+    },
+    {
+        "nameTraKey": "companion_name_chibikaisa_classic",
+        "translatedName": "小小卡莎"
+    },
+    {
+        "nameTraKey": "companion_name_chibikaisa_dragonmancer1",
+        "translatedName": "神龙尊者 小小卡莎"
+    },
+    {
+        "nameTraKey": "companion_name_popstars_kaisa",
+        "translatedName": "赛季之星 K/DA POP/STARS 小小卡莎"
+    },
+    {
+        "nameTraKey": "companion_name_chibileesin_classic",
+        "translatedName": "小小李青"
+    },
+    {
+        "nameTraKey": "companion_name_chibileesin_dragonfist1",
+        "translatedName": "至臻 龙的传人 小小李青"
+    },
+    {
+        "nameTraKey": "companion_name_chibileesin_dragonmancer1",
+        "translatedName": "神龙尊者 小小李青"
+    },
+    {
+        "nameTraKey": "companion_name_chibilux_classic",
+        "translatedName": "小小拉克丝"
+    },
+    {
+        "nameTraKey": "companion_name_chibilux_porcelain1",
+        "translatedName": "青花瓷 小小拉克丝"
+    },
+    {
+        "nameTraKey": "companion_name_chibilux_starguardian1",
+        "translatedName": "星之守护者 小小拉克丝"
+    },
+    {
+        "nameTraKey": "companion_name_chibimalphite_classic",
+        "translatedName": "小小墨菲特"
+    },
+    {
+        "nameTraKey": "companion_name_chibimalphite_mecha1",
+        "translatedName": "霸天巨兽 小小墨菲特"
+    },
+    {
+        "nameTraKey": "companion_name_chibimorgana_classic",
+        "translatedName": "小小莫甘娜"
+    },
+    {
+        "nameTraKey": "companion_name_chibimorgana_immortal",
+        "translatedName": "玉剑传说 小小莫甘娜"
+    },
+    {
+        "nameTraKey": "companion_name_chibisett_classic",
+        "translatedName": "小小瑟提"
+    },
+    {
+        "nameTraKey": "companion_name_chibisett_musicbeat1",
+        "translatedName": "心之钢 小小瑟提"
+    },
+    {
+        "nameTraKey": "companion_name_chibisona_classic",
+        "translatedName": "小小娑娜"
+    },
+    {
+        "nameTraKey": "companion_name_chibisona_guqin1",
+        "translatedName": "古琴余韵 小小娑娜"
+    },
+    {
+        "nameTraKey": "companion_name_chibiteemo_classic",
+        "translatedName": "小小提莫"
+    },
+    {
+        "nameTraKey": "companion_name_chibiteemo_devil1",
+        "translatedName": "小小大魔王提莫"
+    },
+    {
+        "nameTraKey": "companion_name_chibivi_classic",
+        "translatedName": "小小蔚"
+    },
+    {
+        "nameTraKey": "companion_name_chibiyasuo_classic",
+        "translatedName": "小小亚索"
+    },
+    {
+        "nameTraKey": "companion_name_chibiyasuo_dragonmancer1",
+        "translatedName": "夜月幻龙 小小亚索"
+    },
+    {
+        "nameTraKey": "companion_name_chibiyasuo_prestige1",
+        "translatedName": "至臻 神龙尊者 小小亚索"
+    },
+    {
+        "nameTraKey": "companion_name_chibized_classic",
+        "translatedName": "小小劫"
+    },
+    {
+        "nameTraKey": "companion_name_chibized_project1",
+        "translatedName": "源计划：阴 小小劫"
+    },
+    {
+        "nameTraKey": "companion_choncc_atlantean_name",
+        "translatedName": "胖水龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_atlantean_name",
+        "translatedName": "胖水龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_atlantean_name",
+        "translatedName": "胖水龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_band_dripdrummer",
+        "translatedName": "爆裂鼓手 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_band_dripdrummer",
+        "translatedName": "爆裂鼓手 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_band_dripdrummer",
+        "translatedName": "爆裂鼓手 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_band2",
+        "translatedName": "迪斯科 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_band2",
+        "translatedName": "迪斯科 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_band2",
+        "translatedName": "迪斯科 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_band3",
+        "translatedName": "混音大师 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_band3",
+        "translatedName": "混音大师 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_band3",
+        "translatedName": "混音大师 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_band4",
+        "translatedName": "五杀摇滚 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_band4",
+        "translatedName": "五杀摇滚 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_band4",
+        "translatedName": "五杀摇滚 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_band5",
+        "translatedName": "EMO 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_band5",
+        "translatedName": "EMO 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_band5",
+        "translatedName": "EMO 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_classic_name",
+        "translatedName": "胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_classic_name",
+        "translatedName": "胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_classic_name",
+        "translatedName": "胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_earthtitan_name",
+        "translatedName": "胖石龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_earthtitan_name",
+        "translatedName": "胖石龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_earthtitan_name",
+        "translatedName": "胖石龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_fireborn_name",
+        "translatedName": "胖火龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_fireborn_name",
+        "translatedName": "胖火龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_fireborn_name",
+        "translatedName": "胖火龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_honeybuzz_name",
+        "translatedName": "胖嗡嗡龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_honeybuzz_name",
+        "translatedName": "胖嗡嗡龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_honeybuzz_name",
+        "translatedName": "胖嗡嗡龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_lunarbeast_name",
+        "translatedName": "福牛 除夕 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_lunarbeast_name",
+        "translatedName": "福牛 除夕 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_lunarbeast_name",
+        "translatedName": "福牛 除夕 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_lunarrevel2021_name",
+        "translatedName": "福牛 春节 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_lunarrevel2021_name",
+        "translatedName": "福牛 春节 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_lunarrevel2021_name",
+        "translatedName": "福牛 春节 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_mythic",
+        "translatedName": "大聪明 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_mythic",
+        "translatedName": "大聪明 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_mythic",
+        "translatedName": "大聪明 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_preciouspanda_name",
+        "translatedName": "胖达龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_preciouspanda_name",
+        "translatedName": "胖达龙"
+    },
+    {
+        "nameTraKey": "companion_choncc_preciouspanda_name",
+        "translatedName": "胖达龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_swimmer1",
+        "translatedName": "浪花派对 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_swimmer1",
+        "translatedName": "浪花派对 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_swimmer1",
+        "translatedName": "浪花派对 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_swimmer2",
+        "translatedName": "救生员 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_swimmer2",
+        "translatedName": "救生员 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_swimmer2",
+        "translatedName": "救生员 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_swimmer3",
+        "translatedName": "草裙舞 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_swimmer3",
+        "translatedName": "草裙舞 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_choncc_swimmer3",
+        "translatedName": "草裙舞 胖胖龙"
+    },
+    {
+        "nameTraKey": "companion_name_creepycat_classic",
+        "translatedName": "胡子喵"
+    },
+    {
+        "nameTraKey": "companion_name_creepycat_classic",
+        "translatedName": "胡子喵"
+    },
+    {
+        "nameTraKey": "companion_name_creepycat_classic",
+        "translatedName": "胡子喵"
+    },
+    {
+        "nameTraKey": "companion_name_creepycat_mythic1",
+        "translatedName": "究极大怪兽 胡子喵"
+    },
+    {
+        "nameTraKey": "companion_name_creepycat_mythic1",
+        "translatedName": "究极大怪兽 胡子喵"
+    },
+    {
+        "nameTraKey": "companion_name_creepycat_mythic1",
+        "translatedName": "究极大怪兽 胡子喵"
+    },
+    {
+        "nameTraKey": "companion_name_creepycat_variant1",
+        "translatedName": "星之守护者 胡子喵"
+    },
+    {
+        "nameTraKey": "companion_name_creepycat_variant1",
+        "translatedName": "星之守护者 胡子喵"
+    },
+    {
+        "nameTraKey": "companion_name_creepycat_variant1",
+        "translatedName": "星之守护者 胡子喵"
+    },
+    {
+        "nameTraKey": "companion_name_creepycat_variant2",
+        "translatedName": "超级胡子喵"
+    },
+    {
+        "nameTraKey": "companion_name_creepycat_variant2",
+        "translatedName": "超级胡子喵"
+    },
+    {
+        "nameTraKey": "companion_name_creepycat_variant2",
+        "translatedName": "超级胡子喵"
+    },
+    {
+        "nameTraKey": "companion_name_creepycat_variant3",
+        "translatedName": "最强补丁 胡子喵"
+    },
+    {
+        "nameTraKey": "companion_name_creepycat_variant3",
+        "translatedName": "最强补丁 胡子喵"
+    },
+    {
+        "nameTraKey": "companion_name_creepycat_variant3",
+        "translatedName": "最强补丁 胡子喵"
+    },
+    {
+        "nameTraKey": "companion_name_creepycat_variant4",
+        "translatedName": "吞星者 胡子喵"
+    },
+    {
+        "nameTraKey": "companion_name_creepycat_variant4",
+        "translatedName": "吞星者 胡子喵"
+    },
+    {
+        "nameTraKey": "companion_name_creepycat_variant4",
+        "translatedName": "吞星者 胡子喵"
+    },
+    {
+        "nameTraKey": "companion_name_creepycat_variant5",
+        "translatedName": "暗星 胡子喵"
+    },
+    {
+        "nameTraKey": "companion_name_creepycat_variant5",
+        "translatedName": "暗星 胡子喵"
+    },
+    {
+        "nameTraKey": "companion_name_creepycat_variant5",
+        "translatedName": "暗星 胡子喵"
+    },
+    {
+        "nameTraKey": "dssquid_cosmic_tier1_name",
+        "translatedName": "系星魔须 宇宙鱿"
+    },
+    {
+        "nameTraKey": "dssquid_cosmic_tier1_name",
+        "translatedName": "系星魔须 宇宙鱿"
+    },
+    {
+        "nameTraKey": "dssquid_cosmic_tier1_name",
+        "translatedName": "系星魔须 宇宙鱿"
+    },
+    {
+        "nameTraKey": "dssquid_dreadnova_tier1_name",
+        "translatedName": "恐惧新星 宇宙鱿"
+    },
+    {
+        "nameTraKey": "dssquid_dreadnova_tier1_name",
+        "translatedName": "恐惧新星 宇宙鱿"
+    },
+    {
+        "nameTraKey": "dssquid_dreadnova_tier1_name",
+        "translatedName": "恐惧新星 宇宙鱿"
+    },
+    {
+        "nameTraKey": "dssquid_fruitytooty_tier1_name",
+        "translatedName": "瓜皮 宇宙鱿"
+    },
+    {
+        "nameTraKey": "dssquid_fruitytooty_tier1_name",
+        "translatedName": "瓜皮 宇宙鱿"
+    },
+    {
+        "nameTraKey": "dssquid_fruitytooty_tier1_name",
+        "translatedName": "瓜皮 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_ink1",
+        "translatedName": "墨之灵 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_ink1",
+        "translatedName": "墨之灵 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_ink1",
+        "translatedName": "墨之灵 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_dssquid_kda1_name",
+        "translatedName": "K/DA ALL OUT 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_dssquid_kda1_name",
+        "translatedName": "K/DA ALL OUT 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_dssquid_kda1_name",
+        "translatedName": "K/DA ALL OUT 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_dssquid_kda2_name",
+        "translatedName": "K/DA POP/STARS 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_dssquid_kda2_name",
+        "translatedName": "K/DA POP/STARS 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_dssquid_kda2_name",
+        "translatedName": "K/DA POP/STARS 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_mecha1",
+        "translatedName": "银河魔装机神 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_mecha1",
+        "translatedName": "银河魔装机神 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_mecha1",
+        "translatedName": "银河魔装机神 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_mecha2",
+        "translatedName": "料理之王 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_mecha2",
+        "translatedName": "料理之王 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_mecha2",
+        "translatedName": "料理之王 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_mecha3",
+        "translatedName": "太空律动 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_mecha3",
+        "translatedName": "太空律动 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_mecha3",
+        "translatedName": "太空律动 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_mecha4",
+        "translatedName": "键盘侠领主 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_mecha4",
+        "translatedName": "键盘侠领主 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_mecha4",
+        "translatedName": "键盘侠领主 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_mecha5",
+        "translatedName": "王牌机师 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_mecha5",
+        "translatedName": "王牌机师 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_mecha5",
+        "translatedName": "王牌机师 宇宙鱿"
+    },
+    {
+        "nameTraKey": "dssquid_odyssey_tier1_name",
+        "translatedName": "奥德赛 宇宙鱿"
+    },
+    {
+        "nameTraKey": "dssquid_odyssey_tier1_name",
+        "translatedName": "奥德赛 宇宙鱿"
+    },
+    {
+        "nameTraKey": "dssquid_odyssey_tier1_name",
+        "translatedName": "奥德赛 宇宙鱿"
+    },
+    {
+        "nameTraKey": "dssquid_squink_tier1_name",
+        "translatedName": "宇宙鱿"
+    },
+    {
+        "nameTraKey": "dssquid_squink_tier1_name",
+        "translatedName": "宇宙鱿"
+    },
+    {
+        "nameTraKey": "dssquid_squink_tier1_name",
+        "translatedName": "宇宙鱿"
+    },
+    {
+        "nameTraKey": "dssquid_sugarcone_tier1_name",
+        "translatedName": "粉红冰淇淋 宇宙鱿"
+    },
+    {
+        "nameTraKey": "dssquid_sugarcone_tier1_name",
+        "translatedName": "粉红冰淇淋 宇宙鱿"
+    },
+    {
+        "nameTraKey": "dssquid_sugarcone_tier1_name",
+        "translatedName": "粉红冰淇淋 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_variant1",
+        "translatedName": "仙人掌 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_variant1",
+        "translatedName": "仙人掌 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_variant1",
+        "translatedName": "仙人掌 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_variant2",
+        "translatedName": "西部牛仔 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_variant2",
+        "translatedName": "西部牛仔 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_variant2",
+        "translatedName": "西部牛仔 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_variant3",
+        "translatedName": "光明哨兵 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_variant3",
+        "translatedName": "光明哨兵 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_variant3",
+        "translatedName": "光明哨兵 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_variant4",
+        "translatedName": "玉米 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_variant4",
+        "translatedName": "玉米 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_variant4",
+        "translatedName": "玉米 宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_variant5",
+        "translatedName": "枪火游侠  宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_variant5",
+        "translatedName": "枪火游侠  宇宙鱿"
+    },
+    {
+        "nameTraKey": "companion_name_dssquid_variant5",
+        "translatedName": "枪火游侠  宇宙鱿"
+    },
+    {
+        "nameTraKey": "dsswordguy_abyssia_tier1_name",
+        "translatedName": "菜大师"
+    },
+    {
+        "nameTraKey": "dsswordguy_abyssia_tier1_name",
+        "translatedName": "菜大师"
+    },
+    {
+        "nameTraKey": "dsswordguy_abyssia_tier1_name",
+        "translatedName": "菜大师"
+    },
+    {
+        "nameTraKey": "dsswordguy_calcite_tier1_name",
+        "translatedName": "白色杀影 菜大师"
+    },
+    {
+        "nameTraKey": "dsswordguy_calcite_tier1_name",
+        "translatedName": "白色杀影 菜大师"
+    },
+    {
+        "nameTraKey": "dsswordguy_calcite_tier1_name",
+        "translatedName": "白色杀影 菜大师"
+    },
+    {
+        "nameTraKey": "dsswordguy_cosmic_tier1_name",
+        "translatedName": "斩星魔剑 菜大师"
+    },
+    {
+        "nameTraKey": "dsswordguy_cosmic_tier1_name",
+        "translatedName": "斩星魔剑 菜大师"
+    },
+    {
+        "nameTraKey": "dsswordguy_cosmic_tier1_name",
+        "translatedName": "斩星魔剑 菜大师"
+    },
+    {
+        "nameTraKey": "companion_name_dsswordguy_cybernetic",
+        "translatedName": "源计划：菜大师"
+    },
+    {
+        "nameTraKey": "companion_name_dsswordguy_cybernetic",
+        "translatedName": "源计划：菜大师"
+    },
+    {
+        "nameTraKey": "companion_name_dsswordguy_cybernetic",
+        "translatedName": "源计划：菜大师"
+    },
+    {
+        "nameTraKey": "dsswordguy_darkin_tier1_name",
+        "translatedName": "黑夜使者 菜大师"
+    },
+    {
+        "nameTraKey": "dsswordguy_darkin_tier1_name",
+        "translatedName": "黑夜使者 菜大师"
+    },
+    {
+        "nameTraKey": "dsswordguy_darkin_tier1_name",
+        "translatedName": "黑夜使者 菜大师"
+    },
+    {
+        "nameTraKey": "dsswordguy_galaxyslayer_tier1_name",
+        "translatedName": "银河杀星 菜大师"
+    },
+    {
+        "nameTraKey": "dsswordguy_galaxyslayer_tier1_name",
+        "translatedName": "银河杀星 菜大师"
+    },
+    {
+        "nameTraKey": "dsswordguy_galaxyslayer_tier1_name",
+        "translatedName": "银河杀星 菜大师"
+    },
+    {
+        "nameTraKey": "dsswordguy_willowbark_tier1_name",
+        "translatedName": "拂柳剑 菜大师"
+    },
+    {
+        "nameTraKey": "dsswordguy_willowbark_tier1_name",
+        "translatedName": "拂柳剑 菜大师"
+    },
+    {
+        "nameTraKey": "dsswordguy_willowbark_tier1_name",
+        "translatedName": "拂柳剑 菜大师"
+    },
+    {
+        "nameTraKey": "dswhale_cosmic_tier1_name",
+        "translatedName": "吞星魔口 星星鲲"
+    },
+    {
+        "nameTraKey": "dswhale_cosmic_tier1_name",
+        "translatedName": "吞星魔口 星星鲲"
+    },
+    {
+        "nameTraKey": "dswhale_cosmic_tier1_name",
+        "translatedName": "吞星魔口 星星鲲"
+    },
+    {
+        "nameTraKey": "dswhale_dreadnova_tier1_name",
+        "translatedName": "恐惧新星 星星鲲"
+    },
+    {
+        "nameTraKey": "dswhale_dreadnova_tier1_name",
+        "translatedName": "恐惧新星 星星鲲"
+    },
+    {
+        "nameTraKey": "dswhale_dreadnova_tier1_name",
+        "translatedName": "恐惧新星 星星鲲"
+    },
+    {
+        "nameTraKey": "dswhale_galaxyslayer_tier1_name",
+        "translatedName": "银河杀星 星星鲲"
+    },
+    {
+        "nameTraKey": "dswhale_galaxyslayer_tier1_name",
+        "translatedName": "银河杀星 星星鲲"
+    },
+    {
+        "nameTraKey": "dswhale_galaxyslayer_tier1_name",
+        "translatedName": "银河杀星 星星鲲"
+    },
+    {
+        "nameTraKey": "dswhale_goo_tier1_name",
+        "translatedName": "粘粘 星星鲲"
+    },
+    {
+        "nameTraKey": "dswhale_goo_tier1_name",
+        "translatedName": "粘粘 星星鲲"
+    },
+    {
+        "nameTraKey": "dswhale_goo_tier1_name",
+        "translatedName": "粘粘 星星鲲"
+    },
+    {
+        "nameTraKey": "companion_name_dswhale_starmaw",
+        "translatedName": "皇家锦鲤 星星鲲 "
+    },
+    {
+        "nameTraKey": "companion_name_dswhale_starmaw",
+        "translatedName": "皇家锦鲤 星星鲲 "
+    },
+    {
+        "nameTraKey": "companion_name_dswhale_starmaw",
+        "translatedName": "皇家锦鲤 星星鲲 "
+    },
+    {
+        "nameTraKey": "dswhale_orcus_tier1_name",
+        "translatedName": "冥王 星星鲲"
+    },
+    {
+        "nameTraKey": "dswhale_orcus_tier1_name",
+        "translatedName": "冥王 星星鲲"
+    },
+    {
+        "nameTraKey": "dswhale_orcus_tier1_name",
+        "translatedName": "冥王 星星鲲"
+    },
+    {
+        "nameTraKey": "dswhale_starmaw_tier1_name",
+        "translatedName": "星星鲲"
+    },
+    {
+        "nameTraKey": "dswhale_starmaw_tier1_name",
+        "translatedName": "星星鲲"
+    },
+    {
+        "nameTraKey": "dswhale_starmaw_tier1_name",
+        "translatedName": "星星鲲"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_classic",
+        "translatedName": "小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_classic",
+        "translatedName": "小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_classic",
+        "translatedName": "小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_ink1",
+        "translatedName": "山海绘卷 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_ink1",
+        "translatedName": "山海绘卷 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_ink1",
+        "translatedName": "山海绘卷 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_ink2",
+        "translatedName": "灵魂莲华 明昼 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_ink2",
+        "translatedName": "灵魂莲华 明昼 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_ink2",
+        "translatedName": "灵魂莲华 明昼 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_ink3",
+        "translatedName": "灵魂莲华 夜幽 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_ink3",
+        "translatedName": "灵魂莲华 夜幽 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_ink3",
+        "translatedName": "灵魂莲华 夜幽 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_ink5",
+        "translatedName": "玉剑传说 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_ink5",
+        "translatedName": "玉剑传说 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_ink5",
+        "translatedName": "玉剑传说 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_lunarrevel1",
+        "translatedName": "青花瓷 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_lunarrevel1",
+        "translatedName": "青花瓷 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_lunarrevel1",
+        "translatedName": "青花瓷 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_lunarrevel2",
+        "translatedName": "麻辣香锅 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_lunarrevel2",
+        "translatedName": "麻辣香锅 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_lunarrevel2",
+        "translatedName": "麻辣香锅 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_lunarrevel3",
+        "translatedName": "清汤铜锅 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_lunarrevel3",
+        "translatedName": "清汤铜锅 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_lunarrevel3",
+        "translatedName": "清汤铜锅 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_lunarrevel4",
+        "translatedName": "川味火锅 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_lunarrevel4",
+        "translatedName": "川味火锅 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_lunarrevel4",
+        "translatedName": "川味火锅 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_lunarrevel5",
+        "translatedName": "冰淇淋火锅 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_lunarrevel5",
+        "translatedName": "冰淇淋火锅 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_lunarrevel5",
+        "translatedName": "冰淇淋火锅 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_seal",
+        "translatedName": "金铲铲 海牛 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_seal",
+        "translatedName": "金铲铲 海牛 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_seal",
+        "translatedName": "金铲铲 海牛 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_variant1",
+        "translatedName": "锦鲤 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_variant1",
+        "translatedName": "锦鲤 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_variant1",
+        "translatedName": "锦鲤 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_variant2",
+        "translatedName": "草莓果酱 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_variant2",
+        "translatedName": "草莓果酱 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_variant2",
+        "translatedName": "草莓果酱 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_variant3",
+        "translatedName": "鲷鱼烧 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_variant3",
+        "translatedName": "鲷鱼烧 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_variant3",
+        "translatedName": "鲷鱼烧 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_variant4",
+        "translatedName": "彩虹果冻 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_variant4",
+        "translatedName": "彩虹果冻 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_variant4",
+        "translatedName": "彩虹果冻 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_variant5",
+        "translatedName": "黑夜使者 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_variant5",
+        "translatedName": "黑夜使者 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_dowsie_variant5",
+        "translatedName": "黑夜使者 小美人鱼"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_classic",
+        "translatedName": "比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_classic",
+        "translatedName": "比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_classic",
+        "translatedName": "比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_lunarrevel1",
+        "translatedName": "小财神 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_lunarrevel1",
+        "translatedName": "小财神 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_lunarrevel1",
+        "translatedName": "小财神 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_lunarrevel2",
+        "translatedName": "武圣 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_lunarrevel2",
+        "translatedName": "武圣 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_lunarrevel2",
+        "translatedName": "武圣 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_lunarrevel3",
+        "translatedName": "文曲星 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_lunarrevel3",
+        "translatedName": "文曲星 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_lunarrevel3",
+        "translatedName": "文曲星 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_lunarrevel4",
+        "translatedName": "虎虎生威 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_lunarrevel4",
+        "translatedName": "虎虎生威 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_lunarrevel4",
+        "translatedName": "虎虎生威 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_lunarrevel5",
+        "translatedName": "铁面无私 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_lunarrevel5",
+        "translatedName": "铁面无私 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_lunarrevel5",
+        "translatedName": "铁面无私 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_variant1",
+        "translatedName": "小蜜蜂 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_variant1",
+        "translatedName": "小蜜蜂 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_variant1",
+        "translatedName": "小蜜蜂 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_variant2",
+        "translatedName": "使命必达快递 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_variant2",
+        "translatedName": "使命必达快递 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_variant2",
+        "translatedName": "使命必达快递 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_variant3",
+        "translatedName": "睡衣守护者 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_variant3",
+        "translatedName": "睡衣守护者 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_variant3",
+        "translatedName": "睡衣守护者 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_variant4",
+        "translatedName": "粉红甜筒 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_variant4",
+        "translatedName": "粉红甜筒 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_variant4",
+        "translatedName": "粉红甜筒 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_variant5",
+        "translatedName": "祖安 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_variant5",
+        "translatedName": "祖安 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_variant5",
+        "translatedName": "祖安 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_variant6",
+        "translatedName": "皮城 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_variant6",
+        "translatedName": "皮城 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_variant6",
+        "translatedName": "皮城 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_variant7",
+        "translatedName": "呆呆 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_variant7",
+        "translatedName": "呆呆 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_duckbill_variant7",
+        "translatedName": "呆呆 比尔鸭"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_classic",
+        "translatedName": "小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_classic",
+        "translatedName": "小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_classic",
+        "translatedName": "小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_liuli1",
+        "translatedName": "琉璃 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_liuli1",
+        "translatedName": "琉璃 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_liuli1",
+        "translatedName": "琉璃 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_liuli2",
+        "translatedName": "莲花 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_liuli2",
+        "translatedName": "莲花 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_liuli2",
+        "translatedName": "莲花 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_liuli3",
+        "translatedName": "青花瓷 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_liuli3",
+        "translatedName": "青花瓷 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_liuli3",
+        "translatedName": "青花瓷 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_liuli4",
+        "translatedName": "幸运花灯 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_liuli4",
+        "translatedName": "幸运花灯 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_liuli4",
+        "translatedName": "幸运花灯 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_liuli5",
+        "translatedName": "祥瑞 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_liuli5",
+        "translatedName": "祥瑞 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_liuli5",
+        "translatedName": "祥瑞 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_variant1",
+        "translatedName": "锦鲤 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_variant1",
+        "translatedName": "锦鲤 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_variant1",
+        "translatedName": "锦鲤 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_variant2",
+        "translatedName": "怒翼龙 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_variant2",
+        "translatedName": "怒翼龙 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_variant2",
+        "translatedName": "怒翼龙 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_variant3",
+        "translatedName": "玉龙 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_variant3",
+        "translatedName": "玉龙 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_variant3",
+        "translatedName": "玉龙 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_variant4",
+        "translatedName": "黯灵龙 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_variant4",
+        "translatedName": "黯灵龙 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_variant4",
+        "translatedName": "黯灵龙 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_variant5",
+        "translatedName": "永恒之霜 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_variant5",
+        "translatedName": "永恒之霜 小雅"
+    },
+    {
+        "nameTraKey": "companion_name_elegantdragon_variant5",
+        "translatedName": "永恒之霜 小雅"
+    },
+    {
+        "nameTraKey": "companion_fairy_chameleon_name",
+        "translatedName": "万花妖灵"
+    },
+    {
+        "nameTraKey": "companion_fairy_chameleon_name",
+        "translatedName": "万花妖灵"
+    },
+    {
+        "nameTraKey": "companion_fairy_chameleon_name",
+        "translatedName": "万花妖灵"
+    },
+    {
+        "nameTraKey": "companion_fairy_classic_name",
+        "translatedName": "小妖"
+    },
+    {
+        "nameTraKey": "companion_fairy_classic_name",
+        "translatedName": "小妖"
+    },
+    {
+        "nameTraKey": "companion_fairy_classic_name",
+        "translatedName": "小妖"
+    },
+    {
+        "nameTraKey": "companion_fairy_extraspicy_name",
+        "translatedName": "特辣 小妖"
+    },
+    {
+        "nameTraKey": "companion_fairy_extraspicy_name",
+        "translatedName": "特辣 小妖"
+    },
+    {
+        "nameTraKey": "companion_fairy_extraspicy_name",
+        "translatedName": "特辣 小妖"
+    },
+    {
+        "nameTraKey": "companion_fairy_mermaid_name",
+        "translatedName": "锦鲤 小妖"
+    },
+    {
+        "nameTraKey": "companion_fairy_mermaid_name",
+        "translatedName": "锦鲤 小妖"
+    },
+    {
+        "nameTraKey": "companion_fairy_mermaid_name",
+        "translatedName": "锦鲤 小妖"
+    },
+    {
+        "nameTraKey": "companion_name_fairy_progressday",
+        "translatedName": "社交名流 小妖"
+    },
+    {
+        "nameTraKey": "companion_name_fairy_progressday",
+        "translatedName": "社交名流 小妖"
+    },
+    {
+        "nameTraKey": "companion_name_fairy_progressday",
+        "translatedName": "社交名流 小妖"
+    },
+    {
+        "nameTraKey": "companion_fairy_rosebloom_name",
+        "translatedName": "玫瑰蓓蕾 小妖"
+    },
+    {
+        "nameTraKey": "companion_fairy_rosebloom_name",
+        "translatedName": "玫瑰蓓蕾 小妖"
+    },
+    {
+        "nameTraKey": "companion_fairy_rosebloom_name",
+        "translatedName": "玫瑰蓓蕾 小妖"
+    },
+    {
+        "nameTraKey": "companion_name_fairy_triumphant",
+        "translatedName": "凯旋 小妖"
+    },
+    {
+        "nameTraKey": "companion_fairy_vampire_name",
+        "translatedName": "吸血鬼 小妖"
+    },
+    {
+        "nameTraKey": "companion_fairy_vampire_name",
+        "translatedName": "吸血鬼 小妖"
+    },
+    {
+        "nameTraKey": "companion_fairy_vampire_name",
+        "translatedName": "吸血鬼 小妖"
+    },
+    {
+        "nameTraKey": "companion_name_fairy_victorious",
+        "translatedName": "胜利 小妖"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_classic",
+        "translatedName": "斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_classic",
+        "translatedName": "斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_classic",
+        "translatedName": "斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_prgressday1",
+        "translatedName": "苏打汽水 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_prgressday1",
+        "translatedName": "苏打汽水 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_prgressday1",
+        "translatedName": "苏打汽水 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_prgressday2",
+        "translatedName": "极速引擎 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_prgressday2",
+        "translatedName": "极速引擎 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_prgressday2",
+        "translatedName": "极速引擎 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_prgressday3",
+        "translatedName": "海克斯科技 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_prgressday3",
+        "translatedName": "海克斯科技 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_prgressday3",
+        "translatedName": "海克斯科技 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_prgressday4",
+        "translatedName": "未来战士 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_prgressday4",
+        "translatedName": "未来战士 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_prgressday4",
+        "translatedName": "未来战士 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_prgressday5",
+        "translatedName": "赏金猎人 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_prgressday5",
+        "translatedName": "赏金猎人 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_prgressday5",
+        "translatedName": "赏金猎人 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_variant1",
+        "translatedName": "恕瑞玛 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_variant1",
+        "translatedName": "恕瑞玛 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_variant1",
+        "translatedName": "恕瑞玛 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_variant2",
+        "translatedName": "大黄 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_variant2",
+        "translatedName": "大黄 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_variant2",
+        "translatedName": "大黄 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_variant3",
+        "translatedName": "天裔 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_variant3",
+        "translatedName": "天裔 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_variant3",
+        "translatedName": "天裔 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_variant4",
+        "translatedName": "黑夜使者 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_variant4",
+        "translatedName": "黑夜使者 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_variant4",
+        "translatedName": "黑夜使者 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_variant5",
+        "translatedName": "明昼 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_variant5",
+        "translatedName": "明昼 斩月狼"
+    },
+    {
+        "nameTraKey": "companion_name_fenroar_variant5",
+        "translatedName": "明昼 斩月狼"
+    },
+    {
+        "nameTraKey": "gargoyle_blackmist_tier1_name",
+        "translatedName": "黑雾 石像仔"
+    },
+    {
+        "nameTraKey": "gargoyle_blackmist_tier1_name",
+        "translatedName": "黑雾 石像仔"
+    },
+    {
+        "nameTraKey": "gargoyle_blackmist_tier1_name",
+        "translatedName": "黑雾 石像仔"
+    },
+    {
+        "nameTraKey": "gargoyle_craggle_tier1_name",
+        "translatedName": "石像仔"
+    },
+    {
+        "nameTraKey": "gargoyle_craggle_tier1_name",
+        "translatedName": "石像仔"
+    },
+    {
+        "nameTraKey": "gargoyle_craggle_tier1_name",
+        "translatedName": "石像仔"
+    },
+    {
+        "nameTraKey": "gargoyle_hextech_tier1_name",
+        "translatedName": "海克斯科技 石像仔"
+    },
+    {
+        "nameTraKey": "gargoyle_hextech_tier1_name",
+        "translatedName": "海克斯科技 石像仔"
+    },
+    {
+        "nameTraKey": "gargoyle_hextech_tier1_name",
+        "translatedName": "海克斯科技 石像仔"
+    },
+    {
+        "nameTraKey": "gargoyle_legionnaire_tier1_name",
+        "translatedName": "军团士兵 石像仔"
+    },
+    {
+        "nameTraKey": "gargoyle_legionnaire_tier1_name",
+        "translatedName": "军团士兵 石像仔"
+    },
+    {
+        "nameTraKey": "gargoyle_legionnaire_tier1_name",
+        "translatedName": "军团士兵 石像仔"
+    },
+    {
+        "nameTraKey": "gargoyle_sandbringer_tier1_name",
+        "translatedName": "沙漠使者 石像仔"
+    },
+    {
+        "nameTraKey": "gargoyle_sandbringer_tier1_name",
+        "translatedName": "沙漠使者 石像仔"
+    },
+    {
+        "nameTraKey": "gargoyle_sandbringer_tier1_name",
+        "translatedName": "沙漠使者 石像仔"
+    },
+    {
+        "nameTraKey": "companion_name_gargoyle_variant1",
+        "translatedName": "光明哨兵 石像仔"
+    },
+    {
+        "nameTraKey": "companion_name_gargoyle_triumphant",
+        "translatedName": "凯旋 石像仔"
+    },
+    {
+        "nameTraKey": "gargoyle_trueice_tier1_name",
+        "translatedName": "极冰 石像仔"
+    },
+    {
+        "nameTraKey": "gargoyle_trueice_tier1_name",
+        "translatedName": "极冰 石像仔"
+    },
+    {
+        "nameTraKey": "gargoyle_trueice_tier1_name",
+        "translatedName": "极冰 石像仔"
+    },
+    {
+        "nameTraKey": "companion_name_gargoyle_victorious",
+        "translatedName": "胜利 石像仔"
+    },
+    {
+        "nameTraKey": "gemtiger_fierce_tier1_name",
+        "translatedName": "暴躁 喵卫"
+    },
+    {
+        "nameTraKey": "gemtiger_fierce_tier1_name",
+        "translatedName": "暴躁 喵卫"
+    },
+    {
+        "nameTraKey": "gemtiger_fierce_tier1_name",
+        "translatedName": "暴躁 喵卫"
+    },
+    {
+        "nameTraKey": "gemtiger_jeweled_tier1_name",
+        "translatedName": "珠光 喵卫"
+    },
+    {
+        "nameTraKey": "gemtiger_jeweled_tier1_name",
+        "translatedName": "珠光 喵卫"
+    },
+    {
+        "nameTraKey": "gemtiger_jeweled_tier1_name",
+        "translatedName": "珠光 喵卫"
+    },
+    {
+        "nameTraKey": "companion_name_gemtiger_lunarrevel",
+        "translatedName": "虎年 喵卫"
+    },
+    {
+        "nameTraKey": "companion_name_gemtiger_lunarrevel",
+        "translatedName": "虎年 喵卫"
+    },
+    {
+        "nameTraKey": "companion_name_gemtiger_lunarrevel",
+        "translatedName": "虎年 喵卫"
+    },
+    {
+        "nameTraKey": "gemtiger_reigning_tier1_name",
+        "translatedName": "霸气 喵卫"
+    },
+    {
+        "nameTraKey": "gemtiger_reigning_tier1_name",
+        "translatedName": "霸气 喵卫"
+    },
+    {
+        "nameTraKey": "gemtiger_reigning_tier1_name",
+        "translatedName": "霸气 喵卫"
+    },
+    {
+        "nameTraKey": "gemtiger_shadowgem_tier1_name",
+        "translatedName": "影钻 喵卫"
+    },
+    {
+        "nameTraKey": "gemtiger_shadowgem_tier1_name",
+        "translatedName": "影钻 喵卫"
+    },
+    {
+        "nameTraKey": "gemtiger_shadowgem_tier1_name",
+        "translatedName": "影钻 喵卫"
+    },
+    {
+        "nameTraKey": "gemtiger_skygem_tier1_name",
+        "translatedName": "天钻 喵卫"
+    },
+    {
+        "nameTraKey": "gemtiger_skygem_tier1_name",
+        "translatedName": "天钻 喵卫"
+    },
+    {
+        "nameTraKey": "gemtiger_skygem_tier1_name",
+        "translatedName": "天钻 喵卫"
+    },
+    {
+        "nameTraKey": "gemtiger_sunborne_tier1_name",
+        "translatedName": "阳裔 喵卫"
+    },
+    {
+        "nameTraKey": "gemtiger_sunborne_tier1_name",
+        "translatedName": "阳裔 喵卫"
+    },
+    {
+        "nameTraKey": "gemtiger_sunborne_tier1_name",
+        "translatedName": "阳裔 喵卫"
+    },
+    {
+        "nameTraKey": "companion_name_gemtiger_triumphant",
+        "translatedName": "凯旋 喵卫"
+    },
+    {
+        "nameTraKey": "companion_name_gemtiger_victorious",
+        "translatedName": "胜利 喵卫"
+    },
+    {
+        "nameTraKey": "ghosty_black_tier1_name",
+        "translatedName": "暗影面具 幽灵"
+    },
+    {
+        "nameTraKey": "ghosty_black_tier1_name",
+        "translatedName": "暗影面具 幽灵"
+    },
+    {
+        "nameTraKey": "ghosty_black_tier1_name",
+        "translatedName": "暗影面具 幽灵"
+    },
+    {
+        "nameTraKey": "ghosty_blue_tier1_name",
+        "translatedName": "月之爪 幽灵"
+    },
+    {
+        "nameTraKey": "ghosty_blue_tier1_name",
+        "translatedName": "月之爪 幽灵"
+    },
+    {
+        "nameTraKey": "ghosty_blue_tier1_name",
+        "translatedName": "月之爪 幽灵"
+    },
+    {
+        "nameTraKey": "ghosty_fire_tier1_name",
+        "translatedName": "火焰血脉 幽灵"
+    },
+    {
+        "nameTraKey": "ghosty_fire_tier1_name",
+        "translatedName": "火焰血脉 幽灵"
+    },
+    {
+        "nameTraKey": "ghosty_fire_tier1_name",
+        "translatedName": "火焰血脉 幽灵"
+    },
+    {
+        "nameTraKey": "companion_ghosty_triumphant",
+        "translatedName": "凯旋幽灵"
+    },
+    {
+        "nameTraKey": "ghosty_green_tier1_name",
+        "translatedName": "剧毒 幽灵"
+    },
+    {
+        "nameTraKey": "ghosty_green_tier1_name",
+        "translatedName": "剧毒 幽灵"
+    },
+    {
+        "nameTraKey": "ghosty_green_tier1_name",
+        "translatedName": "剧毒 幽灵"
+    },
+    {
+        "nameTraKey": "companion_name_ghosty_hauntling1",
+        "translatedName": "怒翼龙 幽灵"
+    },
+    {
+        "nameTraKey": "companion_name_ghosty_hauntling1",
+        "translatedName": "怒翼龙 幽灵"
+    },
+    {
+        "nameTraKey": "companion_name_ghosty_hauntling1",
+        "translatedName": "怒翼龙 幽灵"
+    },
+    {
+        "nameTraKey": "companion_name_ghosty_hauntling2",
+        "translatedName": "玉龙 幽灵"
+    },
+    {
+        "nameTraKey": "companion_name_ghosty_hauntling2",
+        "translatedName": "玉龙 幽灵"
+    },
+    {
+        "nameTraKey": "companion_name_ghosty_hauntling2",
+        "translatedName": "玉龙 幽灵"
+    },
+    {
+        "nameTraKey": "companion_name_ghosty_hauntling3",
+        "translatedName": "碧波龙 幽灵"
+    },
+    {
+        "nameTraKey": "companion_name_ghosty_hauntling3",
+        "translatedName": "碧波龙 幽灵"
+    },
+    {
+        "nameTraKey": "companion_name_ghosty_hauntling3",
+        "translatedName": "碧波龙 幽灵"
+    },
+    {
+        "nameTraKey": "companion_name_ghosty_hauntling4",
+        "translatedName": "巨岩龙 幽灵"
+    },
+    {
+        "nameTraKey": "companion_name_ghosty_hauntling4",
+        "translatedName": "巨岩龙 幽灵"
+    },
+    {
+        "nameTraKey": "companion_name_ghosty_hauntling4",
+        "translatedName": "巨岩龙 幽灵"
+    },
+    {
+        "nameTraKey": "companion_name_ghosty_hauntling5",
+        "translatedName": "风暴龙 幽灵"
+    },
+    {
+        "nameTraKey": "companion_name_ghosty_hauntling5",
+        "translatedName": "风暴龙 幽灵"
+    },
+    {
+        "nameTraKey": "companion_name_ghosty_hauntling5",
+        "translatedName": "风暴龙 幽灵"
+    },
+    {
+        "nameTraKey": "ghosty_purple_tier1_name",
+        "translatedName": "黑暗物质 幽灵"
+    },
+    {
+        "nameTraKey": "ghosty_purple_tier1_name",
+        "translatedName": "黑暗物质 幽灵"
+    },
+    {
+        "nameTraKey": "ghosty_purple_tier1_name",
+        "translatedName": "黑暗物质 幽灵"
+    },
+    {
+        "nameTraKey": "companion_name_ghosty_variant1",
+        "translatedName": "光明哨兵 幽灵"
+    },
+    {
+        "nameTraKey": "ghosty_spooky_tier1_name",
+        "translatedName": "暗影岛 幽灵"
+    },
+    {
+        "nameTraKey": "ghosty_spooky_tier1_name",
+        "translatedName": "暗影岛 幽灵"
+    },
+    {
+        "nameTraKey": "ghosty_spooky_tier1_name",
+        "translatedName": "暗影岛 幽灵"
+    },
+    {
+        "nameTraKey": "companion_ghosty_victorious",
+        "translatedName": "胜利幽灵"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_classic",
+        "translatedName": "黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_classic",
+        "translatedName": "黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_classic",
+        "translatedName": "黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_lunarrevel1",
+        "translatedName": "蟠桃 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_lunarrevel1",
+        "translatedName": "蟠桃 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_lunarrevel1",
+        "translatedName": "蟠桃 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_lunarrevel2",
+        "translatedName": "虾饺 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_lunarrevel2",
+        "translatedName": "虾饺 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_lunarrevel2",
+        "translatedName": "虾饺 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_lunarrevel3",
+        "translatedName": "佛跳墙 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_lunarrevel3",
+        "translatedName": "佛跳墙 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_lunarrevel3",
+        "translatedName": "佛跳墙 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_lunarrevel4",
+        "translatedName": "青花瓷 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_lunarrevel4",
+        "translatedName": "青花瓷 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_lunarrevel4",
+        "translatedName": "青花瓷 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_lunarrevel5",
+        "translatedName": "黑金流沙 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_lunarrevel5",
+        "translatedName": "黑金流沙 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_lunarrevel5",
+        "translatedName": "黑金流沙 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_musicbeat1",
+        "translatedName": "DJ 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_musicbeat1",
+        "translatedName": "DJ 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_musicbeat1",
+        "translatedName": "DJ 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_variant1",
+        "translatedName": "小蜜蜂 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_variant1",
+        "translatedName": "小蜜蜂 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_variant1",
+        "translatedName": "小蜜蜂 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_variant2",
+        "translatedName": "海克斯科技 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_variant2",
+        "translatedName": "海克斯科技 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_variant2",
+        "translatedName": "海克斯科技 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_variant3",
+        "translatedName": "日炎 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_variant3",
+        "translatedName": "日炎 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_variant3",
+        "translatedName": "日炎 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_variant4",
+        "translatedName": "电玩 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_variant4",
+        "translatedName": "电玩 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_variant4",
+        "translatedName": "电玩 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_variant5",
+        "translatedName": "香草甜筒 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_variant5",
+        "translatedName": "香草甜筒 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_variant5",
+        "translatedName": "香草甜筒 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_variant6",
+        "translatedName": "太空律动 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_variant6",
+        "translatedName": "太空律动 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_variant6",
+        "translatedName": "太空律动 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_variant7",
+        "translatedName": "坚决不放菠萝的披萨 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_variant7",
+        "translatedName": "坚决不放菠萝的披萨 黏黏"
+    },
+    {
+        "nameTraKey": "companion_name_gloop_variant7",
+        "translatedName": "坚决不放菠萝的披萨 黏黏"
+    },
+    {
+        "nameTraKey": "griffin_cream_tier1_name",
+        "translatedName": "德玛西亚 银翼"
+    },
+    {
+        "nameTraKey": "griffin_cream_tier1_name",
+        "translatedName": "德玛西亚 银翼"
+    },
+    {
+        "nameTraKey": "griffin_cream_tier1_name",
+        "translatedName": "德玛西亚 银翼"
+    },
+    {
+        "nameTraKey": "griffin_black_tier1_name",
+        "translatedName": "失落 银翼"
+    },
+    {
+        "nameTraKey": "griffin_black_tier1_name",
+        "translatedName": "失落 银翼"
+    },
+    {
+        "nameTraKey": "griffin_black_tier1_name",
+        "translatedName": "失落 银翼"
+    },
+    {
+        "nameTraKey": "griffin_hawk_tier1_name",
+        "translatedName": "雪樱 银翼"
+    },
+    {
+        "nameTraKey": "griffin_hawk_tier1_name",
+        "translatedName": "雪樱 银翼"
+    },
+    {
+        "nameTraKey": "griffin_hawk_tier1_name",
+        "translatedName": "雪樱 银翼"
+    },
+    {
+        "nameTraKey": "griffin_parrot_tier1_name",
+        "translatedName": "热带 银翼"
+    },
+    {
+        "nameTraKey": "griffin_parrot_tier1_name",
+        "translatedName": "热带 银翼"
+    },
+    {
+        "nameTraKey": "griffin_parrot_tier1_name",
+        "translatedName": "热带 银翼"
+    },
+    {
+        "nameTraKey": "griffin_pink_tier1_name",
+        "translatedName": "玫瑰花 银翼"
+    },
+    {
+        "nameTraKey": "griffin_pink_tier1_name",
+        "translatedName": "玫瑰花 银翼"
+    },
+    {
+        "nameTraKey": "griffin_pink_tier1_name",
+        "translatedName": "玫瑰花 银翼"
+    },
+    {
+        "nameTraKey": "companion_name_griffin_silverwing1",
+        "translatedName": "风暴龙 银翼"
+    },
+    {
+        "nameTraKey": "companion_name_griffin_silverwing1",
+        "translatedName": "风暴龙 银翼"
+    },
+    {
+        "nameTraKey": "companion_name_griffin_silverwing1",
+        "translatedName": "风暴龙 银翼"
+    },
+    {
+        "nameTraKey": "companion_name_griffin_silverwing2",
+        "translatedName": "怒翼龙 银翼"
+    },
+    {
+        "nameTraKey": "companion_name_griffin_silverwing2",
+        "translatedName": "怒翼龙 银翼"
+    },
+    {
+        "nameTraKey": "companion_name_griffin_silverwing2",
+        "translatedName": "怒翼龙 银翼"
+    },
+    {
+        "nameTraKey": "companion_name_griffin_silverwing3",
+        "translatedName": "碧波龙 银翼"
+    },
+    {
+        "nameTraKey": "companion_name_griffin_silverwing3",
+        "translatedName": "碧波龙 银翼"
+    },
+    {
+        "nameTraKey": "companion_name_griffin_silverwing3",
+        "translatedName": "碧波龙 银翼"
+    },
+    {
+        "nameTraKey": "companion_name_griffin_silverwing4",
+        "translatedName": "巨岩龙 银翼"
+    },
+    {
+        "nameTraKey": "companion_name_griffin_silverwing4",
+        "translatedName": "巨岩龙 银翼"
+    },
+    {
+        "nameTraKey": "companion_name_griffin_silverwing4",
+        "translatedName": "巨岩龙 银翼"
+    },
+    {
+        "nameTraKey": "companion_name_griffin_silverwing5",
+        "translatedName": "玉龙 银翼"
+    },
+    {
+        "nameTraKey": "companion_name_griffin_silverwing5",
+        "translatedName": "玉龙 银翼"
+    },
+    {
+        "nameTraKey": "companion_name_griffin_silverwing5",
+        "translatedName": "玉龙 银翼"
+    },
+    {
+        "nameTraKey": "griffin_StarGuardian_tier1_name",
+        "translatedName": "星之守护者 银翼"
+    },
+    {
+        "nameTraKey": "griffin_StarGuardian_tier1_name",
+        "translatedName": "星之守护者 银翼"
+    },
+    {
+        "nameTraKey": "griffin_StarGuardian_tier1_name",
+        "translatedName": "星之守护者 银翼"
+    },
+    {
+        "nameTraKey": "griffin_victorious_name",
+        "translatedName": "胜利银翼"
+    },
+    {
+        "nameTraKey": "griffin_yellow_tier1_name",
+        "translatedName": "破晓之辉 银翼"
+    },
+    {
+        "nameTraKey": "griffin_yellow_tier1_name",
+        "translatedName": "破晓之辉 银翼"
+    },
+    {
+        "nameTraKey": "griffin_yellow_tier1_name",
+        "translatedName": "破晓之辉 银翼"
+    },
+    {
+        "nameTraKey": "grumpylion_dark_tier1_name",
+        "translatedName": "苔原 怒角"
+    },
+    {
+        "nameTraKey": "grumpylion_dark_tier1_name",
+        "translatedName": "苔原 怒角"
+    },
+    {
+        "nameTraKey": "grumpylion_dark_tier1_name",
+        "translatedName": "苔原 怒角"
+    },
+    {
+        "nameTraKey": "grumpylion_green_tier1_name",
+        "translatedName": "柳绒 怒角"
+    },
+    {
+        "nameTraKey": "grumpylion_green_tier1_name",
+        "translatedName": "柳绒 怒角"
+    },
+    {
+        "nameTraKey": "grumpylion_green_tier1_name",
+        "translatedName": "柳绒 怒角"
+    },
+    {
+        "nameTraKey": "grumpylion_icecream_tier1_name",
+        "translatedName": "甜筒 怒角"
+    },
+    {
+        "nameTraKey": "grumpylion_icecream_tier1_name",
+        "translatedName": "甜筒 怒角"
+    },
+    {
+        "nameTraKey": "grumpylion_icecream_tier1_name",
+        "translatedName": "甜筒 怒角"
+    },
+    {
+        "nameTraKey": "companion_grumpylion_kda1_name",
+        "translatedName": "K/DA ALL OUT 怒角"
+    },
+    {
+        "nameTraKey": "companion_grumpylion_kda1_name",
+        "translatedName": "K/DA ALL OUT 怒角"
+    },
+    {
+        "nameTraKey": "companion_grumpylion_kda1_name",
+        "translatedName": "K/DA ALL OUT 怒角"
+    },
+    {
+        "nameTraKey": "companion_grumpylion_kda2_name",
+        "translatedName": "K/DA POP/STARS 怒角"
+    },
+    {
+        "nameTraKey": "companion_grumpylion_kda2_name",
+        "translatedName": "K/DA POP/STARS 怒角"
+    },
+    {
+        "nameTraKey": "companion_grumpylion_kda2_name",
+        "translatedName": "K/DA POP/STARS 怒角"
+    },
+    {
+        "nameTraKey": "companion_grumpylion_lunarbeast_name",
+        "translatedName": "舞狮 除夕 怒角"
+    },
+    {
+        "nameTraKey": "companion_grumpylion_lunarbeast_name",
+        "translatedName": "舞狮 除夕 怒角"
+    },
+    {
+        "nameTraKey": "companion_grumpylion_lunarbeast_name",
+        "translatedName": "舞狮 除夕 怒角"
+    },
+    {
+        "nameTraKey": "companion_grumpylion_lunarrevel2021_name",
+        "translatedName": "舞狮 春节 怒角"
+    },
+    {
+        "nameTraKey": "companion_grumpylion_lunarrevel2021_name",
+        "translatedName": "舞狮 春节 怒角"
+    },
+    {
+        "nameTraKey": "companion_grumpylion_lunarrevel2021_name",
+        "translatedName": "舞狮 春节 怒角"
+    },
+    {
+        "nameTraKey": "grumpylion_orange_tier1_name",
+        "translatedName": "狮心 怒角"
+    },
+    {
+        "nameTraKey": "grumpylion_orange_tier1_name",
+        "translatedName": "狮心 怒角"
+    },
+    {
+        "nameTraKey": "grumpylion_orange_tier1_name",
+        "translatedName": "狮心 怒角"
+    },
+    {
+        "nameTraKey": "grumpylion_red_tier1_name",
+        "translatedName": "熔皮 怒角"
+    },
+    {
+        "nameTraKey": "grumpylion_red_tier1_name",
+        "translatedName": "熔皮 怒角"
+    },
+    {
+        "nameTraKey": "grumpylion_red_tier1_name",
+        "translatedName": "熔皮 怒角"
+    },
+    {
+        "nameTraKey": "companion_name_grumpylion_variant1",
+        "translatedName": "星之守护者 怒角"
+    },
+    {
+        "nameTraKey": "companion_name_grumpylion_variant1",
+        "translatedName": "星之守护者 怒角"
+    },
+    {
+        "nameTraKey": "companion_name_grumpylion_variant1",
+        "translatedName": "星之守护者 怒角"
+    },
+    {
+        "nameTraKey": "companion_name_grumpylion_variant2",
+        "translatedName": "星火璀璨 怒角"
+    },
+    {
+        "nameTraKey": "companion_name_grumpylion_variant2",
+        "translatedName": "星火璀璨 怒角"
+    },
+    {
+        "nameTraKey": "companion_name_grumpylion_variant2",
+        "translatedName": "星火璀璨 怒角"
+    },
+    {
+        "nameTraKey": "companion_name_grumpylion_variant3",
+        "translatedName": "熔铁之星 怒角"
+    },
+    {
+        "nameTraKey": "companion_name_grumpylion_variant3",
+        "translatedName": "熔铁之星 怒角"
+    },
+    {
+        "nameTraKey": "companion_name_grumpylion_variant3",
+        "translatedName": "熔铁之星 怒角"
+    },
+    {
+        "nameTraKey": "companion_name_grumpylion_variant4",
+        "translatedName": "晨星 怒角"
+    },
+    {
+        "nameTraKey": "companion_name_grumpylion_variant4",
+        "translatedName": "晨星 怒角"
+    },
+    {
+        "nameTraKey": "companion_name_grumpylion_variant4",
+        "translatedName": "晨星 怒角"
+    },
+    {
+        "nameTraKey": "companion_name_grumpylion_variant5",
+        "translatedName": "吞星者 怒角"
+    },
+    {
+        "nameTraKey": "companion_name_grumpylion_variant5",
+        "translatedName": "吞星者 怒角"
+    },
+    {
+        "nameTraKey": "companion_name_grumpylion_variant5",
+        "translatedName": "吞星者 怒角"
+    },
+    {
+        "nameTraKey": "grumpylion_victorious_name",
+        "translatedName": "胜利怒角"
+    },
+    {
+        "nameTraKey": "grumpylion_void_tier1_name",
+        "translatedName": "虚空印记 怒角"
+    },
+    {
+        "nameTraKey": "grumpylion_void_tier1_name",
+        "translatedName": "虚空印记 怒角"
+    },
+    {
+        "nameTraKey": "grumpylion_void_tier1_name",
+        "translatedName": "虚空印记 怒角"
+    },
+    {
+        "nameTraKey": "hextechbirb_blackmist_tier1_name",
+        "translatedName": "黑雾 发条鸟"
+    },
+    {
+        "nameTraKey": "hextechbirb_blackmist_tier1_name",
+        "translatedName": "黑雾 发条鸟"
+    },
+    {
+        "nameTraKey": "hextechbirb_blackmist_tier1_name",
+        "translatedName": "黑雾 发条鸟"
+    },
+    {
+        "nameTraKey": "hextechbirb_chemtech_tier1_name",
+        "translatedName": "炼金科技 发条鸟"
+    },
+    {
+        "nameTraKey": "hextechbirb_chemtech_tier1_name",
+        "translatedName": "炼金科技 发条鸟"
+    },
+    {
+        "nameTraKey": "hextechbirb_chemtech_tier1_name",
+        "translatedName": "炼金科技 发条鸟"
+    },
+    {
+        "nameTraKey": "hextechbirb_legionnaire_tier1_name",
+        "translatedName": "军团士兵 发条鸟"
+    },
+    {
+        "nameTraKey": "hextechbirb_legionnaire_tier1_name",
+        "translatedName": "军团士兵 发条鸟"
+    },
+    {
+        "nameTraKey": "hextechbirb_legionnaire_tier1_name",
+        "translatedName": "军团士兵 发条鸟"
+    },
+    {
+        "nameTraKey": "hextechbirb_petaldancer_tier1_name",
+        "translatedName": "花瓣舞者 发条鸟"
+    },
+    {
+        "nameTraKey": "hextechbirb_petaldancer_tier1_name",
+        "translatedName": "花瓣舞者 发条鸟"
+    },
+    {
+        "nameTraKey": "hextechbirb_petaldancer_tier1_name",
+        "translatedName": "花瓣舞者 发条鸟"
+    },
+    {
+        "nameTraKey": "hextechbirb_petricite_tier1_name",
+        "translatedName": "禁魔石 发条鸟"
+    },
+    {
+        "nameTraKey": "hextechbirb_petricite_tier1_name",
+        "translatedName": "禁魔石 发条鸟"
+    },
+    {
+        "nameTraKey": "hextechbirb_petricite_tier1_name",
+        "translatedName": "禁魔石 发条鸟"
+    },
+    {
+        "nameTraKey": "companion_name_hextechbirb_tocker",
+        "translatedName": "星之守护者 发条鸟"
+    },
+    {
+        "nameTraKey": "companion_name_hextechbirb_tocker",
+        "translatedName": "星之守护者 发条鸟"
+    },
+    {
+        "nameTraKey": "companion_name_hextechbirb_tocker",
+        "translatedName": "星之守护者 发条鸟"
+    },
+    {
+        "nameTraKey": "hextechbirb_tocker_tier1_name",
+        "translatedName": "发条鸟"
+    },
+    {
+        "nameTraKey": "hextechbirb_tocker_tier1_name",
+        "translatedName": "发条鸟"
+    },
+    {
+        "nameTraKey": "hextechbirb_tocker_tier1_name",
+        "translatedName": "发条鸟"
+    },
+    {
+        "nameTraKey": "companion_name_hextechbirb_triumphant",
+        "translatedName": "凯旋 发条鸟"
+    },
+    {
+        "nameTraKey": "companion_name_hextechbirb_victorious",
+        "translatedName": "胜利 发条鸟"
+    },
+    {
+        "nameTraKey": "companion_name_hundun_classic",
+        "translatedName": "混沌"
+    },
+    {
+        "nameTraKey": "companion_name_hundun_classic",
+        "translatedName": "混沌"
+    },
+    {
+        "nameTraKey": "companion_name_hundun_classic",
+        "translatedName": "混沌"
+    },
+    {
+        "nameTraKey": "companion_name_hundun_classic3",
+        "translatedName": "绽放之花 混沌"
+    },
+    {
+        "nameTraKey": "companion_name_hundun_classic3",
+        "translatedName": "绽放之花 混沌"
+    },
+    {
+        "nameTraKey": "companion_name_hundun_classic3",
+        "translatedName": "绽放之花 混沌"
+    },
+    {
+        "nameTraKey": "companion_name_hundun_classic4",
+        "translatedName": "太极 混沌"
+    },
+    {
+        "nameTraKey": "companion_name_hundun_classic4",
+        "translatedName": "太极 混沌"
+    },
+    {
+        "nameTraKey": "companion_name_hundun_classic4",
+        "translatedName": "太极 混沌"
+    },
+    {
+        "nameTraKey": "companion_name_hundun_classic5",
+        "translatedName": "黑洞 混沌"
+    },
+    {
+        "nameTraKey": "companion_name_hundun_classic5",
+        "translatedName": "黑洞 混沌"
+    },
+    {
+        "nameTraKey": "companion_name_hundun_classic5",
+        "translatedName": "黑洞 混沌"
+    },
+    {
+        "nameTraKey": "companion_name_hundun_classic6",
+        "translatedName": "千里眼 混沌"
+    },
+    {
+        "nameTraKey": "companion_name_hundun_classic6",
+        "translatedName": "千里眼 混沌"
+    },
+    {
+        "nameTraKey": "companion_name_hundun_classic6",
+        "translatedName": "千里眼 混沌"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_classic",
+        "translatedName": "爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_classic",
+        "translatedName": "爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_classic",
+        "translatedName": "爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_mecha1",
+        "translatedName": "王牌机师 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_mecha1",
+        "translatedName": "王牌机师 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_mecha1",
+        "translatedName": "王牌机师 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_mecha2",
+        "translatedName": "太空律动 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_mecha2",
+        "translatedName": "太空律动 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_mecha2",
+        "translatedName": "太空律动 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_mecha3",
+        "translatedName": "料理之王 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_mecha3",
+        "translatedName": "料理之王 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_mecha3",
+        "translatedName": "料理之王 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_mecha4",
+        "translatedName": "第六天魔龙王 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_mecha4",
+        "translatedName": "第六天魔龙王 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_mecha4",
+        "translatedName": "第六天魔龙王 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_mecha5",
+        "translatedName": "银河魔装机神 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_mecha5",
+        "translatedName": "银河魔装机神 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_mecha5",
+        "translatedName": "银河魔装机神 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_variant1",
+        "translatedName": "3000℃ 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_variant1",
+        "translatedName": "3000℃ 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_variant1",
+        "translatedName": "3000℃ 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_variant2",
+        "translatedName": "甜筒 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_variant2",
+        "translatedName": "甜筒 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_variant2",
+        "translatedName": "甜筒 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_variant3",
+        "translatedName": "执事 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_variant3",
+        "translatedName": "执事 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_variant3",
+        "translatedName": "执事 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_variant4",
+        "translatedName": "大聪明 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_variant4",
+        "translatedName": "大聪明 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_variant4",
+        "translatedName": "大聪明 爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_variant5",
+        "translatedName": "源计划：爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_variant5",
+        "translatedName": "源计划：爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_jawdragon_variant5",
+        "translatedName": "源计划：爆爆龙"
+    },
+    {
+        "nameTraKey": "companion_name_koala_classic",
+        "translatedName": "咯吱拉"
+    },
+    {
+        "nameTraKey": "companion_name_koala_classic",
+        "translatedName": "咯吱拉"
+    },
+    {
+        "nameTraKey": "companion_name_koala_classic",
+        "translatedName": "咯吱拉"
+    },
+    {
+        "nameTraKey": "companion_name_koala_variant1",
+        "translatedName": "超级咯吱拉"
+    },
+    {
+        "nameTraKey": "companion_name_koala_variant1",
+        "translatedName": "超级咯吱拉"
+    },
+    {
+        "nameTraKey": "companion_name_koala_variant1",
+        "translatedName": "超级咯吱拉"
+    },
+    {
+        "nameTraKey": "companion_name_koala_variant2",
+        "translatedName": "星之守护者 咯吱拉"
+    },
+    {
+        "nameTraKey": "companion_name_koala_variant2",
+        "translatedName": "星之守护者 咯吱拉"
+    },
+    {
+        "nameTraKey": "companion_name_koala_variant2",
+        "translatedName": "星之守护者 咯吱拉"
+    },
+    {
+        "nameTraKey": "companion_name_koala_variant3",
+        "translatedName": "暗星 咯吱拉"
+    },
+    {
+        "nameTraKey": "companion_name_koala_variant3",
+        "translatedName": "暗星 咯吱拉"
+    },
+    {
+        "nameTraKey": "companion_name_koala_variant3",
+        "translatedName": "暗星 咯吱拉"
+    },
+    {
+        "nameTraKey": "companion_name_koala_variant4",
+        "translatedName": "太空律动 咯吱拉"
+    },
+    {
+        "nameTraKey": "companion_name_koala_variant4",
+        "translatedName": "太空律动 咯吱拉"
+    },
+    {
+        "nameTraKey": "companion_name_koala_variant4",
+        "translatedName": "太空律动 咯吱拉"
+    },
+    {
+        "nameTraKey": "companion_name_koala_variant5",
+        "translatedName": "吞星者 咯吱拉"
+    },
+    {
+        "nameTraKey": "companion_name_koala_variant5",
+        "translatedName": "吞星者 咯吱拉"
+    },
+    {
+        "nameTraKey": "companion_name_koala_variant5",
+        "translatedName": "吞星者 咯吱拉"
+    },
+    {
+        "nameTraKey": "miner_Astronaut_tier1_name",
+        "translatedName": "宇航员 鼹鼠"
+    },
+    {
+        "nameTraKey": "miner_Astronaut_tier1_name",
+        "translatedName": "宇航员 鼹鼠"
+    },
+    {
+        "nameTraKey": "miner_Astronaut_tier1_name",
+        "translatedName": "宇航员 鼹鼠"
+    },
+    {
+        "nameTraKey": "companion_name_miner_chaos",
+        "translatedName": "破败军团 鼹鼠"
+    },
+    {
+        "nameTraKey": "companion_name_miner_chaos",
+        "translatedName": "破败军团 鼹鼠"
+    },
+    {
+        "nameTraKey": "companion_name_miner_chaos",
+        "translatedName": "破败军团 鼹鼠"
+    },
+    {
+        "nameTraKey": "miner_dark_tier1_name",
+        "translatedName": "笨手笨脚 鼹鼠"
+    },
+    {
+        "nameTraKey": "miner_dark_tier1_name",
+        "translatedName": "笨手笨脚 鼹鼠"
+    },
+    {
+        "nameTraKey": "miner_dark_tier1_name",
+        "translatedName": "笨手笨脚 鼹鼠"
+    },
+    {
+        "nameTraKey": "miner_green_tier1_name",
+        "translatedName": "淡水 鼹鼠"
+    },
+    {
+        "nameTraKey": "miner_green_tier1_name",
+        "translatedName": "淡水 鼹鼠"
+    },
+    {
+        "nameTraKey": "miner_green_tier1_name",
+        "translatedName": "淡水 鼹鼠"
+    },
+    {
+        "nameTraKey": "miner_grey_tier1_name",
+        "translatedName": "软鼻 鼹鼠"
+    },
+    {
+        "nameTraKey": "miner_grey_tier1_name",
+        "translatedName": "软鼻 鼹鼠"
+    },
+    {
+        "nameTraKey": "miner_grey_tier1_name",
+        "translatedName": "软鼻 鼹鼠"
+    },
+    {
+        "nameTraKey": "companion_name_miner_neutral",
+        "translatedName": "铁甲卫士 鼹鼠"
+    },
+    {
+        "nameTraKey": "companion_name_miner_neutral",
+        "translatedName": "铁甲卫士 鼹鼠"
+    },
+    {
+        "nameTraKey": "companion_name_miner_neutral",
+        "translatedName": "铁甲卫士 鼹鼠"
+    },
+    {
+        "nameTraKey": "companion_name_miner_order",
+        "translatedName": "光明哨兵 鼹鼠"
+    },
+    {
+        "nameTraKey": "companion_name_miner_order",
+        "translatedName": "光明哨兵 鼹鼠"
+    },
+    {
+        "nameTraKey": "companion_name_miner_order",
+        "translatedName": "光明哨兵 鼹鼠"
+    },
+    {
+        "nameTraKey": "miner_rainbow_tier1_name",
+        "translatedName": "空舞 鼹鼠"
+    },
+    {
+        "nameTraKey": "miner_rainbow_tier1_name",
+        "translatedName": "空舞 鼹鼠"
+    },
+    {
+        "nameTraKey": "miner_rainbow_tier1_name",
+        "translatedName": "空舞 鼹鼠"
+    },
+    {
+        "nameTraKey": "miner_red_tier1_name",
+        "translatedName": "烈战 鼹鼠"
+    },
+    {
+        "nameTraKey": "miner_red_tier1_name",
+        "translatedName": "烈战 鼹鼠"
+    },
+    {
+        "nameTraKey": "miner_red_tier1_name",
+        "translatedName": "烈战 鼹鼠"
+    },
+    {
+        "nameTraKey": "miner_yellow_tier1_name",
+        "translatedName": "剧毒 鼹鼠"
+    },
+    {
+        "nameTraKey": "miner_yellow_tier1_name",
+        "translatedName": "剧毒 鼹鼠"
+    },
+    {
+        "nameTraKey": "miner_yellow_tier1_name",
+        "translatedName": "剧毒 鼹鼠"
+    },
+    {
+        "nameTraKey": "minigolem_dark_tier1_name",
+        "translatedName": "黑雾 符灵"
+    },
+    {
+        "nameTraKey": "minigolem_dark_tier1_name",
+        "translatedName": "黑雾 符灵"
+    },
+    {
+        "nameTraKey": "minigolem_dark_tier1_name",
+        "translatedName": "黑雾 符灵"
+    },
+    {
+        "nameTraKey": "minigolem_grey_tier1_name",
+        "translatedName": "哨兵 符灵"
+    },
+    {
+        "nameTraKey": "minigolem_grey_tier1_name",
+        "translatedName": "哨兵 符灵"
+    },
+    {
+        "nameTraKey": "minigolem_grey_tier1_name",
+        "translatedName": "哨兵 符灵"
+    },
+    {
+        "nameTraKey": "minigolem_ice_tier1_name",
+        "translatedName": "冰川 符灵"
+    },
+    {
+        "nameTraKey": "minigolem_ice_tier1_name",
+        "translatedName": "冰川 符灵"
+    },
+    {
+        "nameTraKey": "minigolem_ice_tier1_name",
+        "translatedName": "冰川 符灵"
+    },
+    {
+        "nameTraKey": "minigolem_lava_tier1_name",
+        "translatedName": "棘背 符灵"
+    },
+    {
+        "nameTraKey": "minigolem_lava_tier1_name",
+        "translatedName": "棘背 符灵"
+    },
+    {
+        "nameTraKey": "minigolem_lava_tier1_name",
+        "translatedName": "棘背 符灵"
+    },
+    {
+        "nameTraKey": "minigolem_moss_tier1",
+        "translatedName": "幼苗 符灵"
+    },
+    {
+        "nameTraKey": "minigolem_moss_tier1",
+        "translatedName": "幼苗 符灵"
+    },
+    {
+        "nameTraKey": "minigolem_moss_tier1",
+        "translatedName": "幼苗 符灵"
+    },
+    {
+        "nameTraKey": "minigolem_spring_tier1",
+        "translatedName": "樱花 符灵"
+    },
+    {
+        "nameTraKey": "minigolem_spring_tier1",
+        "translatedName": "樱花 符灵"
+    },
+    {
+        "nameTraKey": "minigolem_spring_tier1",
+        "translatedName": "樱花 符灵"
+    },
+    {
+        "nameTraKey": "companion_name_minigolem_turret1",
+        "translatedName": "防御塔 符灵"
+    },
+    {
+        "nameTraKey": "companion_name_minigolem_turret1",
+        "translatedName": "防御塔 符灵"
+    },
+    {
+        "nameTraKey": "companion_name_minigolem_turret1",
+        "translatedName": "防御塔 符灵"
+    },
+    {
+        "nameTraKey": "TFT Anniversary MiniGolem",
+        "translatedName": "生日蛋糕 符灵"
+    },
+    {
+        "nameTraKey": "companion_name_nimblefoot_classic",
+        "translatedName": "风神鼠"
+    },
+    {
+        "nameTraKey": "companion_name_nimblefoot_classic",
+        "translatedName": "风神鼠"
+    },
+    {
+        "nameTraKey": "companion_name_nimblefoot_classic",
+        "translatedName": "风神鼠"
+    },
+    {
+        "nameTraKey": "companion_name_nimblefoot_set8battlepass1",
+        "translatedName": "吞星者 风神鼠"
+    },
+    {
+        "nameTraKey": "companion_name_nimblefoot_set8battlepass1",
+        "translatedName": "吞星者 风神鼠"
+    },
+    {
+        "nameTraKey": "companion_name_nimblefoot_set8battlepass1",
+        "translatedName": "吞星者 风神鼠"
+    },
+    {
+        "nameTraKey": "companion_name_nimblefoot_variant1",
+        "translatedName": "黑夜使者 风神鼠"
+    },
+    {
+        "nameTraKey": "companion_name_nimblefoot_variant1",
+        "translatedName": "黑夜使者 风神鼠"
+    },
+    {
+        "nameTraKey": "companion_name_nimblefoot_variant1",
+        "translatedName": "黑夜使者 风神鼠"
+    },
+    {
+        "nameTraKey": "companion_name_nimblefoot_variant2",
+        "translatedName": "圣光卫士 风神鼠"
+    },
+    {
+        "nameTraKey": "companion_name_nimblefoot_variant2",
+        "translatedName": "圣光卫士 风神鼠"
+    },
+    {
+        "nameTraKey": "companion_name_nimblefoot_variant2",
+        "translatedName": "圣光卫士 风神鼠"
+    },
+    {
+        "nameTraKey": "companion_name_nimblefoot_variant3",
+        "translatedName": "均衡教派 风神鼠"
+    },
+    {
+        "nameTraKey": "companion_name_nimblefoot_variant3",
+        "translatedName": "均衡教派 风神鼠"
+    },
+    {
+        "nameTraKey": "companion_name_nimblefoot_variant3",
+        "translatedName": "均衡教派 风神鼠"
+    },
+    {
+        "nameTraKey": "companion_name_nimblefoot_variant4",
+        "translatedName": "神佑之森 风神鼠"
+    },
+    {
+        "nameTraKey": "companion_name_nimblefoot_variant4",
+        "translatedName": "神佑之森 风神鼠"
+    },
+    {
+        "nameTraKey": "companion_name_nimblefoot_variant4",
+        "translatedName": "神佑之森 风神鼠"
+    },
+    {
+        "nameTraKey": "companion_name_nimblefoot_variant5",
+        "translatedName": "破败军团 风神鼠"
+    },
+    {
+        "nameTraKey": "companion_name_nimblefoot_variant5",
+        "translatedName": "破败军团 风神鼠"
+    },
+    {
+        "nameTraKey": "companion_name_nimblefoot_variant5",
+        "translatedName": "破败军团 风神鼠"
+    },
+    {
+        "nameTraKey": "companion_name_owl_classic",
+        "translatedName": "假面鹰"
+    },
+    {
+        "nameTraKey": "companion_name_owl_classic",
+        "translatedName": "假面鹰"
+    },
+    {
+        "nameTraKey": "companion_name_owl_classic",
+        "translatedName": "假面鹰"
+    },
+    {
+        "nameTraKey": "companion_name_owl_variant1",
+        "translatedName": "未来战士 假面鹰"
+    },
+    {
+        "nameTraKey": "companion_name_owl_variant1",
+        "translatedName": "未来战士 假面鹰"
+    },
+    {
+        "nameTraKey": "companion_name_owl_variant1",
+        "translatedName": "未来战士 假面鹰"
+    },
+    {
+        "nameTraKey": "companion_name_owl_variant2",
+        "translatedName": "星之守护者 假面鹰"
+    },
+    {
+        "nameTraKey": "companion_name_owl_variant2",
+        "translatedName": "星之守护者 假面鹰"
+    },
+    {
+        "nameTraKey": "companion_name_owl_variant2",
+        "translatedName": "星之守护者 假面鹰"
+    },
+    {
+        "nameTraKey": "companion_name_owl_variant3",
+        "translatedName": "吞星者 假面鹰"
+    },
+    {
+        "nameTraKey": "companion_name_owl_variant3",
+        "translatedName": "吞星者 假面鹰"
+    },
+    {
+        "nameTraKey": "companion_name_owl_variant3",
+        "translatedName": "吞星者 假面鹰"
+    },
+    {
+        "nameTraKey": "companion_name_owl_variant4",
+        "translatedName": "绅士假面鹰"
+    },
+    {
+        "nameTraKey": "companion_name_owl_variant4",
+        "translatedName": "绅士假面鹰"
+    },
+    {
+        "nameTraKey": "companion_name_owl_variant4",
+        "translatedName": "绅士假面鹰"
+    },
+    {
+        "nameTraKey": "companion_name_owl_variant5",
+        "translatedName": "超级假面鹰"
+    },
+    {
+        "nameTraKey": "companion_name_owl_variant5",
+        "translatedName": "超级假面鹰"
+    },
+    {
+        "nameTraKey": "companion_name_owl_variant5",
+        "translatedName": "超级假面鹰"
+    },
+    {
+        "nameTraKey": "companion_pegasus_arcade_name",
+        "translatedName": "电玩 小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_arcade_name",
+        "translatedName": "电玩 小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_arcade_name",
+        "translatedName": "电玩 小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_blackmist_name",
+        "translatedName": "黑雾 小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_blackmist_name",
+        "translatedName": "黑雾 小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_blackmist_name",
+        "translatedName": "黑雾 小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_classic_name",
+        "translatedName": "小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_classic_name",
+        "translatedName": "小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_classic_name",
+        "translatedName": "小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_crystal_name",
+        "translatedName": "水晶 小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_crystal_name",
+        "translatedName": "水晶 小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_crystal_name",
+        "translatedName": "水晶 小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_highnoon_name",
+        "translatedName": "西部魔影 小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_highnoon_name",
+        "translatedName": "西部魔影 小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_highnoon_name",
+        "translatedName": "西部魔影 小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_kda1_name",
+        "translatedName": "K/DA ALL OUT 小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_kda1_name",
+        "translatedName": "K/DA ALL OUT 小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_kda1_name",
+        "translatedName": "K/DA ALL OUT 小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_kda2_name",
+        "translatedName": "K/DA POP/STARS 小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_kda2_name",
+        "translatedName": "K/DA POP/STARS 小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_kda2_name",
+        "translatedName": "K/DA POP/STARS 小马"
+    },
+    {
+        "nameTraKey": "companion_name_pegasus_lightcharger1",
+        "translatedName": "小天角兽"
+    },
+    {
+        "nameTraKey": "companion_name_pegasus_lightcharger1",
+        "translatedName": "小天角兽"
+    },
+    {
+        "nameTraKey": "companion_name_pegasus_lightcharger1",
+        "translatedName": "小天角兽"
+    },
+    {
+        "nameTraKey": "companion_name_pegasus_progressday1",
+        "translatedName": "赤色彗星 小马"
+    },
+    {
+        "nameTraKey": "companion_name_pegasus_progressday1",
+        "translatedName": "赤色彗星 小马"
+    },
+    {
+        "nameTraKey": "companion_name_pegasus_progressday1",
+        "translatedName": "赤色彗星 小马"
+    },
+    {
+        "nameTraKey": "companion_name_pegasus_progressday2",
+        "translatedName": "海克斯科技 小马"
+    },
+    {
+        "nameTraKey": "companion_name_pegasus_progressday2",
+        "translatedName": "海克斯科技 小马"
+    },
+    {
+        "nameTraKey": "companion_name_pegasus_progressday2",
+        "translatedName": "海克斯科技 小马"
+    },
+    {
+        "nameTraKey": "companion_name_pegasus_progressday3",
+        "translatedName": "未来战士 小马"
+    },
+    {
+        "nameTraKey": "companion_name_pegasus_progressday3",
+        "translatedName": "未来战士 小马"
+    },
+    {
+        "nameTraKey": "companion_name_pegasus_progressday3",
+        "translatedName": "未来战士 小马"
+    },
+    {
+        "nameTraKey": "companion_name_pegasus_progressday4",
+        "translatedName": "太空律动 小马"
+    },
+    {
+        "nameTraKey": "companion_name_pegasus_progressday4",
+        "translatedName": "太空律动 小马"
+    },
+    {
+        "nameTraKey": "companion_name_pegasus_progressday4",
+        "translatedName": "太空律动 小马"
+    },
+    {
+        "nameTraKey": "companion_name_pegasus_progressday5",
+        "translatedName": "泡泡糖彗星 小马"
+    },
+    {
+        "nameTraKey": "companion_name_pegasus_progressday5",
+        "translatedName": "泡泡糖彗星 小马"
+    },
+    {
+        "nameTraKey": "companion_name_pegasus_progressday5",
+        "translatedName": "泡泡糖彗星 小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_sugarcone_name",
+        "translatedName": "甜筒 小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_sugarcone_name",
+        "translatedName": "甜筒 小马"
+    },
+    {
+        "nameTraKey": "companion_pegasus_sugarcone_name",
+        "translatedName": "甜筒 小马"
+    },
+    {
+        "nameTraKey": "companion_name_penguknight_chaos",
+        "translatedName": "破败军团 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_penguknight_chaos",
+        "translatedName": "破败军团 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_penguknight_chaos",
+        "translatedName": "破败军团 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_classic_tier1_name",
+        "translatedName": "企鹅 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_classic_tier1_name",
+        "translatedName": "企鹅 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_classic_tier1_name",
+        "translatedName": "企鹅 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_dark_tier1_name",
+        "translatedName": "鸦领主 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_dark_tier1_name",
+        "translatedName": "鸦领主 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_dark_tier1_name",
+        "translatedName": "鸦领主 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_penguknight_esport1",
+        "translatedName": "TOC 2 限定 电竞羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_ice_tier1_name",
+        "translatedName": "极冰 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_ice_tier1_name",
+        "translatedName": "极冰 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_ice_tier1_name",
+        "translatedName": "极冰 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_penguknight_kda1_name",
+        "translatedName": "K/DA ALL OUT 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_penguknight_kda1_name",
+        "translatedName": "K/DA ALL OUT 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_penguknight_kda1_name",
+        "translatedName": "K/DA ALL OUT 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_penguknight_kda2_name",
+        "translatedName": "K/DA POP/STARS 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_penguknight_kda2_name",
+        "translatedName": "K/DA POP/STARS 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_penguknight_kda2_name",
+        "translatedName": "K/DA POP/STARS 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_penguknight_mythic",
+        "translatedName": "驯龙大师 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_penguknight_mythic",
+        "translatedName": "驯龙大师 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_penguknight_mythic",
+        "translatedName": "驯龙大师 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_penguknight_order",
+        "translatedName": "光明哨兵 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_penguknight_order",
+        "translatedName": "光明哨兵 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_penguknight_order",
+        "translatedName": "光明哨兵 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_owl_tier1_name",
+        "translatedName": "樱花 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_owl_tier1_name",
+        "translatedName": "樱花 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_owl_tier1_name",
+        "translatedName": "樱花 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_rooster_tier1_name",
+        "translatedName": "特辣 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_rooster_tier1_name",
+        "translatedName": "特辣 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_rooster_tier1_name",
+        "translatedName": "特辣 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_penguknight_default_name",
+        "translatedName": "破败之王 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_spiritblossom_kanmei_name",
+        "translatedName": "明昼 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_spiritblossom_kanmei_name",
+        "translatedName": "明昼 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_spiritblossom_kanmei_name",
+        "translatedName": "明昼 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_spiritblossom_akana_name",
+        "translatedName": "夜幽 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_spiritblossom_akana_name",
+        "translatedName": "夜幽 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_spiritblossom_akana_name",
+        "translatedName": "夜幽 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_featherknight_spiritfairy1",
+        "translatedName": "紫陌尘 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_featherknight_spiritfairy1",
+        "translatedName": "紫陌尘 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_featherknight_spiritfairy1",
+        "translatedName": "紫陌尘 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_featherknight_spiritfairy2",
+        "translatedName": "郁金红 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_featherknight_spiritfairy2",
+        "translatedName": "郁金红 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_featherknight_spiritfairy2",
+        "translatedName": "郁金红 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_featherknight_spiritfairy3",
+        "translatedName": "芙蓉碧水 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_featherknight_spiritfairy3",
+        "translatedName": "芙蓉碧水 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_featherknight_spiritfairy3",
+        "translatedName": "芙蓉碧水 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_featherknight_spiritfairy4",
+        "translatedName": "墨上孤灯 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_featherknight_spiritfairy4",
+        "translatedName": "墨上孤灯 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_featherknight_spiritfairy4",
+        "translatedName": "墨上孤灯 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_featherknight_spiritfairy5",
+        "translatedName": "月夜青莲 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_featherknight_spiritfairy5",
+        "translatedName": "月夜青莲 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_featherknight_spiritfairy5",
+        "translatedName": "月夜青莲 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_yellow_tier1_name",
+        "translatedName": "幼雏 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_yellow_tier1_name",
+        "translatedName": "幼雏 羽饰骑士"
+    },
+    {
+        "nameTraKey": "penguknight_yellow_tier1_name",
+        "translatedName": "幼雏 羽饰骑士"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_classic",
+        "translatedName": "皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_classic",
+        "translatedName": "皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_classic",
+        "translatedName": "皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_variant1",
+        "translatedName": "小蜜蜂 皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_variant1",
+        "translatedName": "小蜜蜂 皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_variant1",
+        "translatedName": "小蜜蜂 皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_variant2",
+        "translatedName": "黯晶 皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_variant2",
+        "translatedName": "黯晶 皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_variant2",
+        "translatedName": "黯晶 皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_variant3",
+        "translatedName": "亮晶晶 皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_variant3",
+        "translatedName": "亮晶晶 皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_variant3",
+        "translatedName": "亮晶晶 皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_variant4",
+        "translatedName": "火龙果 皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_variant4",
+        "translatedName": "火龙果 皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_variant4",
+        "translatedName": "火龙果 皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_variant5",
+        "translatedName": "海克斯科技 皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_variant5",
+        "translatedName": "海克斯科技 皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_variant5",
+        "translatedName": "海克斯科技 皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_variant6",
+        "translatedName": "炼金科技 皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_variant6",
+        "translatedName": "炼金科技 皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_variant6",
+        "translatedName": "炼金科技 皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_variant7",
+        "translatedName": "哞哞 皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_variant7",
+        "translatedName": "哞哞 皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_piximander_variant7",
+        "translatedName": "哞哞 皮克蜥"
+    },
+    {
+        "nameTraKey": "companion_name_poro_classic",
+        "translatedName": "魄罗"
+    },
+    {
+        "nameTraKey": "companion_name_poro_variant1",
+        "translatedName": "红鼻子 魄罗"
+    },
+    {
+        "nameTraKey": "companion_name_poro_variant2",
+        "translatedName": "虚空吞噬者 魄罗"
+    },
+    {
+        "nameTraKey": "companion_name_poro_variant3",
+        "translatedName": "活体锻炉 魄罗"
+    },
+    {
+        "nameTraKey": "companion_name_poro_variant4",
+        "translatedName": "无畏先锋 魄罗"
+    },
+    {
+        "nameTraKey": "companion_name_poro_variant5",
+        "translatedName": "甜筒 魄罗"
+    },
+    {
+        "nameTraKey": "companion_name_porofluft_classic",
+        "translatedName": "魄罗团团"
+    },
+    {
+        "nameTraKey": "companion_name_pupdragon_classic",
+        "translatedName": "笨戈"
+    },
+    {
+        "nameTraKey": "companion_name_pupdragon_classic",
+        "translatedName": "笨戈"
+    },
+    {
+        "nameTraKey": "companion_name_pupdragon_classic",
+        "translatedName": "笨戈"
+    },
+    {
+        "nameTraKey": "companion_name_pupdragon_variant1",
+        "translatedName": "蜜糖糖 笨戈"
+    },
+    {
+        "nameTraKey": "companion_name_pupdragon_variant1",
+        "translatedName": "蜜糖糖 笨戈"
+    },
+    {
+        "nameTraKey": "companion_name_pupdragon_variant1",
+        "translatedName": "蜜糖糖 笨戈"
+    },
+    {
+        "nameTraKey": "companion_name_pupdragon_variant2",
+        "translatedName": "玫瑰蓓蕾 笨戈"
+    },
+    {
+        "nameTraKey": "companion_name_pupdragon_variant2",
+        "translatedName": "玫瑰蓓蕾 笨戈"
+    },
+    {
+        "nameTraKey": "companion_name_pupdragon_variant2",
+        "translatedName": "玫瑰蓓蕾 笨戈"
+    },
+    {
+        "nameTraKey": "companion_name_pupdragon_variant3",
+        "translatedName": "玉龙 笨戈"
+    },
+    {
+        "nameTraKey": "companion_name_pupdragon_variant3",
+        "translatedName": "玉龙 笨戈"
+    },
+    {
+        "nameTraKey": "companion_name_pupdragon_variant3",
+        "translatedName": "玉龙 笨戈"
+    },
+    {
+        "nameTraKey": "companion_name_pupdragon_variant4",
+        "translatedName": "星界龙 笨戈"
+    },
+    {
+        "nameTraKey": "companion_name_pupdragon_variant4",
+        "translatedName": "星界龙 笨戈"
+    },
+    {
+        "nameTraKey": "companion_name_pupdragon_variant4",
+        "translatedName": "星界龙 笨戈"
+    },
+    {
+        "nameTraKey": "companion_name_pupdragon_variant5",
+        "translatedName": "白晶晶 笨戈"
+    },
+    {
+        "nameTraKey": "companion_name_pupdragon_variant5",
+        "translatedName": "白晶晶 笨戈"
+    },
+    {
+        "nameTraKey": "companion_name_pupdragon_variant5",
+        "translatedName": "白晶晶 笨戈"
+    },
+    {
+        "nameTraKey": "qiyanadog_bassqueen_tier1_name",
+        "translatedName": "贝斯女皇 琦琦"
+    },
+    {
+        "nameTraKey": "qiyanadog_bassqueen_tier1_name",
+        "translatedName": "贝斯女皇 琦琦"
+    },
+    {
+        "nameTraKey": "qiyanadog_bassqueen_tier1_name",
+        "translatedName": "贝斯女皇 琦琦"
+    },
+    {
+        "nameTraKey": "qiyanadog_beatmaker_tier1_name",
+        "translatedName": "节奏大师 琦琦"
+    },
+    {
+        "nameTraKey": "qiyanadog_beatmaker_tier1_name",
+        "translatedName": "节奏大师 琦琦"
+    },
+    {
+        "nameTraKey": "qiyanadog_beatmaker_tier1_name",
+        "translatedName": "节奏大师 琦琦"
+    },
+    {
+        "nameTraKey": "qiyanadog_hardhitter_tier1_name",
+        "translatedName": "强力打击 琦琦"
+    },
+    {
+        "nameTraKey": "qiyanadog_hardhitter_tier1_name",
+        "translatedName": "强力打击 琦琦"
+    },
+    {
+        "nameTraKey": "qiyanadog_hardhitter_tier1_name",
+        "translatedName": "强力打击 琦琦"
+    },
+    {
+        "nameTraKey": "qiyanadog_prodigy_tier1_name",
+        "translatedName": "天纵奇才 琦琦"
+    },
+    {
+        "nameTraKey": "qiyanadog_prodigy_tier1_name",
+        "translatedName": "天纵奇才 琦琦"
+    },
+    {
+        "nameTraKey": "qiyanadog_prodigy_tier1_name",
+        "translatedName": "天纵奇才 琦琦"
+    },
+    {
+        "nameTraKey": "companion_name_qiyanadog_progressday1",
+        "translatedName": "电力四射 琦琦"
+    },
+    {
+        "nameTraKey": "companion_name_qiyanadog_progressday1",
+        "translatedName": "电力四射 琦琦"
+    },
+    {
+        "nameTraKey": "companion_name_qiyanadog_progressday1",
+        "translatedName": "电力四射 琦琦"
+    },
+    {
+        "nameTraKey": "companion_name_qiyanadog_progressday2",
+        "translatedName": "太空律动 琦琦"
+    },
+    {
+        "nameTraKey": "companion_name_qiyanadog_progressday2",
+        "translatedName": "太空律动 琦琦"
+    },
+    {
+        "nameTraKey": "companion_name_qiyanadog_progressday2",
+        "translatedName": "太空律动 琦琦"
+    },
+    {
+        "nameTraKey": "companion_name_qiyanadog_progressday3",
+        "translatedName": "海克斯科技 琦琦"
+    },
+    {
+        "nameTraKey": "companion_name_qiyanadog_progressday3",
+        "translatedName": "海克斯科技 琦琦"
+    },
+    {
+        "nameTraKey": "companion_name_qiyanadog_progressday3",
+        "translatedName": "海克斯科技 琦琦"
+    },
+    {
+        "nameTraKey": "companion_name_qiyanadog_progressday4",
+        "translatedName": "电玩女神 琦琦"
+    },
+    {
+        "nameTraKey": "companion_name_qiyanadog_progressday4",
+        "translatedName": "电玩女神 琦琦"
+    },
+    {
+        "nameTraKey": "companion_name_qiyanadog_progressday4",
+        "translatedName": "电玩女神 琦琦"
+    },
+    {
+        "nameTraKey": "companion_name_qiyanadog_progressday5",
+        "translatedName": "未来战士 琦琦"
+    },
+    {
+        "nameTraKey": "companion_name_qiyanadog_progressday5",
+        "translatedName": "未来战士 琦琦"
+    },
+    {
+        "nameTraKey": "companion_name_qiyanadog_progressday5",
+        "translatedName": "未来战士 琦琦"
+    },
+    {
+        "nameTraKey": "companion_species_name_qiyanadog",
+        "translatedName": "琦琦"
+    },
+    {
+        "nameTraKey": "companion_species_name_qiyanadog",
+        "translatedName": "琦琦"
+    },
+    {
+        "nameTraKey": "companion_species_name_qiyanadog",
+        "translatedName": "琦琦"
+    },
+    {
+        "nameTraKey": "qiyanadog_soloist_tier1_name",
+        "translatedName": "独奏家 琦琦"
+    },
+    {
+        "nameTraKey": "qiyanadog_soloist_tier1_name",
+        "translatedName": "独奏家 琦琦"
+    },
+    {
+        "nameTraKey": "qiyanadog_soloist_tier1_name",
+        "translatedName": "独奏家 琦琦"
+    },
+    {
+        "nameTraKey": "companion_name_razorbeak_classic",
+        "translatedName": "小小鸡哥"
+    },
+    {
+        "nameTraKey": "companion_name_razorbeak_classic",
+        "translatedName": "小小鸡哥"
+    },
+    {
+        "nameTraKey": "companion_name_razorbeak_classic",
+        "translatedName": "小小鸡哥"
+    },
+    {
+        "nameTraKey": "companion_name_razorbeak_variant1",
+        "translatedName": "小小巨嘴鸟"
+    },
+    {
+        "nameTraKey": "companion_name_razorbeak_variant1",
+        "translatedName": "小小巨嘴鸟"
+    },
+    {
+        "nameTraKey": "companion_name_razorbeak_variant1",
+        "translatedName": "小小巨嘴鸟"
+    },
+    {
+        "nameTraKey": "companion_name_razorbeak_variant2",
+        "translatedName": "疯狂小小特辣鸡哥"
+    },
+    {
+        "nameTraKey": "companion_name_razorbeak_variant2",
+        "translatedName": "疯狂小小特辣鸡哥"
+    },
+    {
+        "nameTraKey": "companion_name_razorbeak_variant2",
+        "translatedName": "疯狂小小特辣鸡哥"
+    },
+    {
+        "nameTraKey": "companion_name_razorbeak_variant3",
+        "translatedName": "小小锦鲲"
+    },
+    {
+        "nameTraKey": "companion_name_razorbeak_variant3",
+        "translatedName": "小小锦鲲"
+    },
+    {
+        "nameTraKey": "companion_name_razorbeak_variant3",
+        "translatedName": "小小锦鲲"
+    },
+    {
+        "nameTraKey": "companion_name_razorbeak_variant4",
+        "translatedName": "小小皇鸡"
+    },
+    {
+        "nameTraKey": "companion_name_razorbeak_variant4",
+        "translatedName": "小小皇鸡"
+    },
+    {
+        "nameTraKey": "companion_name_razorbeak_variant4",
+        "translatedName": "小小皇鸡"
+    },
+    {
+        "nameTraKey": "companion_name_razorbeak_variant5",
+        "translatedName": "小小乌鸦"
+    },
+    {
+        "nameTraKey": "companion_name_razorbeak_variant5",
+        "translatedName": "小小乌鸦"
+    },
+    {
+        "nameTraKey": "companion_name_razorbeak_variant5",
+        "translatedName": "小小乌鸦"
+    },
+    {
+        "nameTraKey": "sgcat_theme2_tier1_name",
+        "translatedName": "泡泡糖 团子"
+    },
+    {
+        "nameTraKey": "sgcat_theme2_tier1_name",
+        "translatedName": "泡泡糖 团子"
+    },
+    {
+        "nameTraKey": "sgcat_theme2_tier1_name",
+        "translatedName": "泡泡糖 团子"
+    },
+    {
+        "nameTraKey": "sgcat_theme1_tier1_name",
+        "translatedName": "团子"
+    },
+    {
+        "nameTraKey": "sgcat_theme1_tier1_name",
+        "translatedName": "团子"
+    },
+    {
+        "nameTraKey": "sgcat_theme1_tier1_name",
+        "translatedName": "团子"
+    },
+    {
+        "nameTraKey": "sgcat_theme3_tier1_name",
+        "translatedName": "姜饼 团子"
+    },
+    {
+        "nameTraKey": "sgcat_theme3_tier1_name",
+        "translatedName": "姜饼 团子"
+    },
+    {
+        "nameTraKey": "sgcat_theme3_tier1_name",
+        "translatedName": "姜饼 团子"
+    },
+    {
+        "nameTraKey": "sgcat_theme4_tier1_name",
+        "translatedName": "柠檬糖 团子"
+    },
+    {
+        "nameTraKey": "sgcat_theme4_tier1_name",
+        "translatedName": "柠檬糖 团子"
+    },
+    {
+        "nameTraKey": "sgcat_theme4_tier1_name",
+        "translatedName": "柠檬糖 团子"
+    },
+    {
+        "nameTraKey": "sgcat_theme5_tier1_name",
+        "translatedName": "酸莓 团子"
+    },
+    {
+        "nameTraKey": "sgcat_theme5_tier1_name",
+        "translatedName": "酸莓 团子"
+    },
+    {
+        "nameTraKey": "sgcat_theme5_tier1_name",
+        "translatedName": "酸莓 团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_lunarrevel1",
+        "translatedName": "青花瓷 团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_lunarrevel1",
+        "translatedName": "青花瓷 团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_lunarrevel1",
+        "translatedName": "青花瓷 团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_lunarrevel2",
+        "translatedName": "幸运花灯 团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_lunarrevel2",
+        "translatedName": "幸运花灯 团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_lunarrevel2",
+        "translatedName": "幸运花灯 团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_lunarrevel3",
+        "translatedName": "虎虎生威 团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_lunarrevel3",
+        "translatedName": "虎虎生威 团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_lunarrevel3",
+        "translatedName": "虎虎生威 团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_lunarrevel4",
+        "translatedName": "舞狮大师 团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_lunarrevel4",
+        "translatedName": "舞狮大师 团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_lunarrevel4",
+        "translatedName": "舞狮大师 团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_lunarrevel5",
+        "translatedName": "披挂上阵 团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_lunarrevel5",
+        "translatedName": "披挂上阵 团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_lunarrevel5",
+        "translatedName": "披挂上阵 团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_rangers1",
+        "translatedName": "炽热烈焰红团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_rangers1",
+        "translatedName": "炽热烈焰红团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_rangers1",
+        "translatedName": "炽热烈焰红团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_rangers2",
+        "translatedName": "雷电奔腾黄团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_rangers2",
+        "translatedName": "雷电奔腾黄团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_rangers2",
+        "translatedName": "雷电奔腾黄团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_rangers3",
+        "translatedName": "明镜止水蓝团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_rangers3",
+        "translatedName": "明镜止水蓝团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_rangers3",
+        "translatedName": "明镜止水蓝团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_rangers4",
+        "translatedName": "狂野玫瑰粉团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_rangers4",
+        "translatedName": "狂野玫瑰粉团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_rangers4",
+        "translatedName": "狂野玫瑰粉团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_rangers5",
+        "translatedName": "华贵辉耀金团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_rangers5",
+        "translatedName": "华贵辉耀金团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgcat_rangers5",
+        "translatedName": "华贵辉耀金团子"
+    },
+    {
+        "nameTraKey": "sgcat_theme6_tier1_name",
+        "translatedName": "甜到爆 团子"
+    },
+    {
+        "nameTraKey": "sgcat_theme6_tier1_name",
+        "translatedName": "甜到爆 团子"
+    },
+    {
+        "nameTraKey": "sgcat_theme6_tier1_name",
+        "translatedName": "甜到爆 团子"
+    },
+    {
+        "nameTraKey": "companion_name_sgpig_anniversary1",
+        "translatedName": "生日惊喜 软软"
+    },
+    {
+        "nameTraKey": "companion_name_sgpig_chaos",
+        "translatedName": "破败军团 软软"
+    },
+    {
+        "nameTraKey": "companion_name_sgpig_chaos",
+        "translatedName": "破败军团 软软"
+    },
+    {
+        "nameTraKey": "companion_name_sgpig_chaos",
+        "translatedName": "破败军团 软软"
+    },
+    {
+        "nameTraKey": "sgpig_theme6_tier1_name",
+        "translatedName": "晨星 软软"
+    },
+    {
+        "nameTraKey": "sgpig_theme6_tier1_name",
+        "translatedName": "晨星 软软"
+    },
+    {
+        "nameTraKey": "sgpig_theme6_tier1_name",
+        "translatedName": "晨星 软软"
+    },
+    {
+        "nameTraKey": "sgpig_theme4_tier1_name",
+        "translatedName": "黯然 软软"
+    },
+    {
+        "nameTraKey": "sgpig_theme4_tier1_name",
+        "translatedName": "黯然 软软"
+    },
+    {
+        "nameTraKey": "sgpig_theme4_tier1_name",
+        "translatedName": "黯然 软软"
+    },
+    {
+        "nameTraKey": "sgpig_theme5_tier1_name",
+        "translatedName": "花火 软软"
+    },
+    {
+        "nameTraKey": "sgpig_theme5_tier1_name",
+        "translatedName": "花火 软软"
+    },
+    {
+        "nameTraKey": "sgpig_theme5_tier1_name",
+        "translatedName": "花火 软软"
+    },
+    {
+        "nameTraKey": "sgpig_theme1_tier1_name",
+        "translatedName": "软软"
+    },
+    {
+        "nameTraKey": "sgpig_theme1_tier1_name",
+        "translatedName": "软软"
+    },
+    {
+        "nameTraKey": "sgpig_theme1_tier1_name",
+        "translatedName": "软软"
+    },
+    {
+        "nameTraKey": "sgpig_theme2_tier1_name",
+        "translatedName": "遗愿 软软"
+    },
+    {
+        "nameTraKey": "sgpig_theme2_tier1_name",
+        "translatedName": "遗愿 软软"
+    },
+    {
+        "nameTraKey": "sgpig_theme2_tier1_name",
+        "translatedName": "遗愿 软软"
+    },
+    {
+        "nameTraKey": "sgpig_theme3_tier1_name",
+        "translatedName": "热恋 软软"
+    },
+    {
+        "nameTraKey": "sgpig_theme3_tier1_name",
+        "translatedName": "热恋 软软"
+    },
+    {
+        "nameTraKey": "sgpig_theme3_tier1_name",
+        "translatedName": "热恋 软软"
+    },
+    {
+        "nameTraKey": "sgpig_journey_name",
+        "translatedName": "福星 软软"
+    },
+    {
+        "nameTraKey": "sgpig_journey_name",
+        "translatedName": "福星 软软"
+    },
+    {
+        "nameTraKey": "sgpig_journey_name",
+        "translatedName": "福星 软软"
+    },
+    {
+        "nameTraKey": "companion_name_sgpig_neutral",
+        "translatedName": "神佑之森 软软"
+    },
+    {
+        "nameTraKey": "companion_name_sgpig_neutral",
+        "translatedName": "神佑之森 软软"
+    },
+    {
+        "nameTraKey": "companion_name_sgpig_neutral",
+        "translatedName": "神佑之森 软软"
+    },
+    {
+        "nameTraKey": "companion_name_sgpig_order",
+        "translatedName": "光明哨兵 软软"
+    },
+    {
+        "nameTraKey": "companion_name_sgpig_order",
+        "translatedName": "光明哨兵 软软"
+    },
+    {
+        "nameTraKey": "companion_name_sgpig_order",
+        "translatedName": "光明哨兵 软软"
+    },
+    {
+        "nameTraKey": "sgshisa_theme6_tier1_name",
+        "translatedName": "堕落 小志"
+    },
+    {
+        "nameTraKey": "sgshisa_theme6_tier1_name",
+        "translatedName": "堕落 小志"
+    },
+    {
+        "nameTraKey": "sgshisa_theme6_tier1_name",
+        "translatedName": "堕落 小志"
+    },
+    {
+        "nameTraKey": "companion_name_sgshisa_doctor",
+        "translatedName": "小志博士"
+    },
+    {
+        "nameTraKey": "companion_name_sgshisa_doctor",
+        "translatedName": "小志博士"
+    },
+    {
+        "nameTraKey": "companion_name_sgshisa_doctor",
+        "translatedName": "小志博士"
+    },
+    {
+        "nameTraKey": "sgshisa_theme5_tier1_name",
+        "translatedName": "花火 小志"
+    },
+    {
+        "nameTraKey": "sgshisa_theme5_tier1_name",
+        "translatedName": "花火 小志"
+    },
+    {
+        "nameTraKey": "sgshisa_theme5_tier1_name",
+        "translatedName": "花火 小志"
+    },
+    {
+        "nameTraKey": "sgshisa_theme2_tier1_name",
+        "translatedName": "英勇 小志"
+    },
+    {
+        "nameTraKey": "sgshisa_theme2_tier1_name",
+        "translatedName": "英勇 小志"
+    },
+    {
+        "nameTraKey": "sgshisa_theme2_tier1_name",
+        "translatedName": "英勇 小志"
+    },
+    {
+        "nameTraKey": "sgshisa_theme3_tier1_name",
+        "translatedName": "最幼 小志"
+    },
+    {
+        "nameTraKey": "sgshisa_theme3_tier1_name",
+        "translatedName": "最幼 小志"
+    },
+    {
+        "nameTraKey": "sgshisa_theme3_tier1_name",
+        "translatedName": "最幼 小志"
+    },
+    {
+        "nameTraKey": "companion_sgshisa_lunarbeast_name",
+        "translatedName": "除夕 小志"
+    },
+    {
+        "nameTraKey": "companion_sgshisa_lunarbeast_name",
+        "translatedName": "除夕 小志"
+    },
+    {
+        "nameTraKey": "companion_sgshisa_lunarbeast_name",
+        "translatedName": "除夕 小志"
+    },
+    {
+        "nameTraKey": "companion_sgshisa_lunarrevel_name",
+        "translatedName": "春节 小志"
+    },
+    {
+        "nameTraKey": "companion_sgshisa_lunarrevel_name",
+        "translatedName": "春节 小志"
+    },
+    {
+        "nameTraKey": "companion_sgshisa_lunarrevel_name",
+        "translatedName": "春节 小志"
+    },
+    {
+        "nameTraKey": "companion_name_sgshisa_mecha1",
+        "translatedName": "王牌机师 小志"
+    },
+    {
+        "nameTraKey": "companion_name_sgshisa_mecha1",
+        "translatedName": "王牌机师 小志"
+    },
+    {
+        "nameTraKey": "companion_name_sgshisa_mecha1",
+        "translatedName": "王牌机师 小志"
+    },
+    {
+        "nameTraKey": "companion_name_sgshisa_mecha2",
+        "translatedName": "至高神皇 小志"
+    },
+    {
+        "nameTraKey": "companion_name_sgshisa_mecha2",
+        "translatedName": "至高神皇 小志"
+    },
+    {
+        "nameTraKey": "companion_name_sgshisa_mecha2",
+        "translatedName": "至高神皇 小志"
+    },
+    {
+        "nameTraKey": "companion_name_sgshisa_mecha3",
+        "translatedName": "太空律动 小志"
+    },
+    {
+        "nameTraKey": "companion_name_sgshisa_mecha3",
+        "translatedName": "太空律动 小志"
+    },
+    {
+        "nameTraKey": "companion_name_sgshisa_mecha3",
+        "translatedName": "太空律动 小志"
+    },
+    {
+        "nameTraKey": "companion_name_sgshisa_mecha4",
+        "translatedName": "银河魔装机神 小志"
+    },
+    {
+        "nameTraKey": "companion_name_sgshisa_mecha4",
+        "translatedName": "银河魔装机神 小志"
+    },
+    {
+        "nameTraKey": "companion_name_sgshisa_mecha4",
+        "translatedName": "银河魔装机神 小志"
+    },
+    {
+        "nameTraKey": "companion_name_sgshisa_mecha5",
+        "translatedName": "料理之王 小志"
+    },
+    {
+        "nameTraKey": "companion_name_sgshisa_mecha5",
+        "translatedName": "料理之王 小志"
+    },
+    {
+        "nameTraKey": "companion_name_sgshisa_mecha5",
+        "translatedName": "料理之王 小志"
+    },
+    {
+        "nameTraKey": "sgshisa_theme1_tier1_name",
+        "translatedName": "小志"
+    },
+    {
+        "nameTraKey": "sgshisa_theme1_tier1_name",
+        "translatedName": "小志"
+    },
+    {
+        "nameTraKey": "sgshisa_theme1_tier1_name",
+        "translatedName": "小志"
+    },
+    {
+        "nameTraKey": "sgshisa_theme4_tier1_name",
+        "translatedName": "落日 小志"
+    },
+    {
+        "nameTraKey": "sgshisa_theme4_tier1_name",
+        "translatedName": "落日 小志"
+    },
+    {
+        "nameTraKey": "sgshisa_theme4_tier1_name",
+        "translatedName": "落日 小志"
+    },
+    {
+        "nameTraKey": "companion_name_scratch_classic",
+        "translatedName": "搓碟鼬"
+    },
+    {
+        "nameTraKey": "companion_name_scuttlecrab_classic",
+        "translatedName": "小小迅捷蟹"
+    },
+    {
+        "nameTraKey": "companion_name_scuttlecrab_classic",
+        "translatedName": "小小迅捷蟹"
+    },
+    {
+        "nameTraKey": "companion_name_scuttlecrab_classic",
+        "translatedName": "小小迅捷蟹"
+    },
+    {
+        "nameTraKey": "companion_name_scuttlecrab_variant1",
+        "translatedName": "峡谷迅捷蟹"
+    },
+    {
+        "nameTraKey": "companion_name_scuttlecrab_variant1",
+        "translatedName": "峡谷迅捷蟹"
+    },
+    {
+        "nameTraKey": "companion_name_scuttlecrab_variant1",
+        "translatedName": "峡谷迅捷蟹"
+    },
+    {
+        "nameTraKey": "companion_name_scuttlecrab_variant2",
+        "translatedName": "绅士迅捷蟹"
+    },
+    {
+        "nameTraKey": "companion_name_scuttlecrab_variant2",
+        "translatedName": "绅士迅捷蟹"
+    },
+    {
+        "nameTraKey": "companion_name_scuttlecrab_variant2",
+        "translatedName": "绅士迅捷蟹"
+    },
+    {
+        "nameTraKey": "companion_name_scuttlecrab_variant3",
+        "translatedName": "超级迅捷蟹"
+    },
+    {
+        "nameTraKey": "companion_name_scuttlecrab_variant3",
+        "translatedName": "超级迅捷蟹"
+    },
+    {
+        "nameTraKey": "companion_name_scuttlecrab_variant3",
+        "translatedName": "超级迅捷蟹"
+    },
+    {
+        "nameTraKey": "companion_name_scuttlecrab_variant4",
+        "translatedName": "星之守护者迅捷蟹"
+    },
+    {
+        "nameTraKey": "companion_name_scuttlecrab_variant4",
+        "translatedName": "星之守护者迅捷蟹"
+    },
+    {
+        "nameTraKey": "companion_name_scuttlecrab_variant4",
+        "translatedName": "星之守护者迅捷蟹"
+    },
+    {
+        "nameTraKey": "companion_name_scuttlecrab_variant5",
+        "translatedName": "吞星者迅捷蟹"
+    },
+    {
+        "nameTraKey": "companion_name_scuttlecrab_variant5",
+        "translatedName": "吞星者迅捷蟹"
+    },
+    {
+        "nameTraKey": "companion_name_scuttlecrab_variant5",
+        "translatedName": "吞星者迅捷蟹"
+    },
+    {
+        "nameTraKey": "sennabunny_beatmaker_tier1_name",
+        "translatedName": "节奏大师 魔力玛"
+    },
+    {
+        "nameTraKey": "sennabunny_beatmaker_tier1_name",
+        "translatedName": "节奏大师 魔力玛"
+    },
+    {
+        "nameTraKey": "sennabunny_beatmaker_tier1_name",
+        "translatedName": "节奏大师 魔力玛"
+    },
+    {
+        "nameTraKey": "sennabunny_hardhitter_tier1_name",
+        "translatedName": "强力打击 魔力玛"
+    },
+    {
+        "nameTraKey": "sennabunny_hardhitter_tier1_name",
+        "translatedName": "强力打击 魔力玛"
+    },
+    {
+        "nameTraKey": "sennabunny_hardhitter_tier1_name",
+        "translatedName": "强力打击 魔力玛"
+    },
+    {
+        "nameTraKey": "companion_name_sennabunny_lunarrevel1",
+        "translatedName": "莲花之令 魔力玛"
+    },
+    {
+        "nameTraKey": "companion_name_sennabunny_lunarrevel1",
+        "translatedName": "莲花之令 魔力玛"
+    },
+    {
+        "nameTraKey": "companion_name_sennabunny_lunarrevel1",
+        "translatedName": "莲花之令 魔力玛"
+    },
+    {
+        "nameTraKey": "companion_name_sennabunny_lunarrevel2",
+        "translatedName": "焰火仙子 魔力玛"
+    },
+    {
+        "nameTraKey": "companion_name_sennabunny_lunarrevel2",
+        "translatedName": "焰火仙子 魔力玛"
+    },
+    {
+        "nameTraKey": "companion_name_sennabunny_lunarrevel2",
+        "translatedName": "焰火仙子 魔力玛"
+    },
+    {
+        "nameTraKey": "companion_name_sennabunny_lunarrevel3",
+        "translatedName": "青花瓷 魔力玛"
+    },
+    {
+        "nameTraKey": "companion_name_sennabunny_lunarrevel3",
+        "translatedName": "青花瓷 魔力玛"
+    },
+    {
+        "nameTraKey": "companion_name_sennabunny_lunarrevel3",
+        "translatedName": "青花瓷 魔力玛"
+    },
+    {
+        "nameTraKey": "companion_name_sennabunny_lunarrevel4",
+        "translatedName": "吉祥玉仙 魔力玛"
+    },
+    {
+        "nameTraKey": "companion_name_sennabunny_lunarrevel4",
+        "translatedName": "吉祥玉仙 魔力玛"
+    },
+    {
+        "nameTraKey": "companion_name_sennabunny_lunarrevel4",
+        "translatedName": "吉祥玉仙 魔力玛"
+    },
+    {
+        "nameTraKey": "companion_name_sennabunny_lunarrevel5",
+        "translatedName": "醒狮 魔力玛"
+    },
+    {
+        "nameTraKey": "companion_name_sennabunny_lunarrevel5",
+        "translatedName": "醒狮 魔力玛"
+    },
+    {
+        "nameTraKey": "companion_name_sennabunny_lunarrevel5",
+        "translatedName": "醒狮 魔力玛"
+    },
+    {
+        "nameTraKey": "companion_species_name_sennabunny",
+        "translatedName": "魔力玛"
+    },
+    {
+        "nameTraKey": "companion_species_name_sennabunny",
+        "translatedName": "魔力玛"
+    },
+    {
+        "nameTraKey": "companion_species_name_sennabunny",
+        "translatedName": "魔力玛"
+    },
+    {
+        "nameTraKey": "sennabunny_popqueen_tier1_name",
+        "translatedName": "潮流天后 魔力玛"
+    },
+    {
+        "nameTraKey": "sennabunny_popqueen_tier1_name",
+        "translatedName": "潮流天后 魔力玛"
+    },
+    {
+        "nameTraKey": "sennabunny_popqueen_tier1_name",
+        "translatedName": "潮流天后 魔力玛"
+    },
+    {
+        "nameTraKey": "sennabunny_prodigy_tier1_name",
+        "translatedName": "天纵奇才 魔力玛"
+    },
+    {
+        "nameTraKey": "sennabunny_prodigy_tier1_name",
+        "translatedName": "天纵奇才 魔力玛"
+    },
+    {
+        "nameTraKey": "sennabunny_prodigy_tier1_name",
+        "translatedName": "天纵奇才 魔力玛"
+    },
+    {
+        "nameTraKey": "companion_name_sennabunny_ranked1",
+        "translatedName": "胜利 魔力玛"
+    },
+    {
+        "nameTraKey": "sennabunny_shadowbeat_tier1_name",
+        "translatedName": "暗影节拍 魔力玛"
+    },
+    {
+        "nameTraKey": "sennabunny_shadowbeat_tier1_name",
+        "translatedName": "暗影节拍 魔力玛"
+    },
+    {
+        "nameTraKey": "sennabunny_shadowbeat_tier1_name",
+        "translatedName": "暗影节拍 魔力玛"
+    },
+    {
+        "nameTraKey": "sennabunny_spiritblossom_kanmei_name",
+        "translatedName": "明昼 魔力玛"
+    },
+    {
+        "nameTraKey": "sennabunny_spiritblossom_kanmei_name",
+        "translatedName": "明昼 魔力玛"
+    },
+    {
+        "nameTraKey": "sennabunny_spiritblossom_kanmei_name",
+        "translatedName": "明昼 魔力玛"
+    },
+    {
+        "nameTraKey": "sennabunny_spiritblossom_akana_name",
+        "translatedName": "夜幽 魔力玛"
+    },
+    {
+        "nameTraKey": "sennabunny_spiritblossom_akana_name",
+        "translatedName": "夜幽 魔力玛"
+    },
+    {
+        "nameTraKey": "sennabunny_spiritblossom_akana_name",
+        "translatedName": "夜幽 魔力玛"
+    },
+    {
+        "nameTraKey": "companion_name_shark_classic",
+        "translatedName": "小鲨鱼"
+    },
+    {
+        "nameTraKey": "companion_name_shark_classic",
+        "translatedName": "小鲨鱼"
+    },
+    {
+        "nameTraKey": "companion_name_shark_classic",
+        "translatedName": "小鲨鱼"
+    },
+    {
+        "nameTraKey": "companion_name_shark_variant1",
+        "translatedName": "超级小鲨鱼"
+    },
+    {
+        "nameTraKey": "companion_name_shark_variant1",
+        "translatedName": "超级小鲨鱼"
+    },
+    {
+        "nameTraKey": "companion_name_shark_variant1",
+        "translatedName": "超级小鲨鱼"
+    },
+    {
+        "nameTraKey": "companion_name_shark_variant2",
+        "translatedName": "绅士小鲨鱼"
+    },
+    {
+        "nameTraKey": "companion_name_shark_variant2",
+        "translatedName": "绅士小鲨鱼"
+    },
+    {
+        "nameTraKey": "companion_name_shark_variant2",
+        "translatedName": "绅士小鲨鱼"
+    },
+    {
+        "nameTraKey": "companion_name_shark_variant3",
+        "translatedName": "星之守护者 小鲨鱼"
+    },
+    {
+        "nameTraKey": "companion_name_shark_variant3",
+        "translatedName": "星之守护者 小鲨鱼"
+    },
+    {
+        "nameTraKey": "companion_name_shark_variant3",
+        "translatedName": "星之守护者 小鲨鱼"
+    },
+    {
+        "nameTraKey": "companion_name_shark_variant4",
+        "translatedName": "吞星者 小鲨鱼"
+    },
+    {
+        "nameTraKey": "companion_name_shark_variant4",
+        "translatedName": "吞星者 小鲨鱼"
+    },
+    {
+        "nameTraKey": "companion_name_shark_variant4",
+        "translatedName": "吞星者 小鲨鱼"
+    },
+    {
+        "nameTraKey": "companion_name_shark_variant5",
+        "translatedName": "小不点 小鲨鱼"
+    },
+    {
+        "nameTraKey": "companion_name_shark_variant5",
+        "translatedName": "小不点 小鲨鱼"
+    },
+    {
+        "nameTraKey": "companion_name_shark_variant5",
+        "translatedName": "小不点 小鲨鱼"
+    },
+    {
+        "nameTraKey": "companion_name_smolknifedog_classic",
+        "translatedName": "小小利刃犬"
+    },
+    {
+        "nameTraKey": "companion_name_smolknifedog_classic",
+        "translatedName": "小小利刃犬"
+    },
+    {
+        "nameTraKey": "companion_name_smolknifedog_classic",
+        "translatedName": "小小利刃犬"
+    },
+    {
+        "nameTraKey": "companion_name_smolknifedog_variant1",
+        "translatedName": "小小玉米利刃犬"
+    },
+    {
+        "nameTraKey": "companion_name_smolknifedog_variant1",
+        "translatedName": "小小玉米利刃犬"
+    },
+    {
+        "nameTraKey": "companion_name_smolknifedog_variant1",
+        "translatedName": "小小玉米利刃犬"
+    },
+    {
+        "nameTraKey": "companion_name_smolknifedog_variant2",
+        "translatedName": "小小面包利刃犬"
+    },
+    {
+        "nameTraKey": "companion_name_smolknifedog_variant2",
+        "translatedName": "小小面包利刃犬"
+    },
+    {
+        "nameTraKey": "companion_name_smolknifedog_variant2",
+        "translatedName": "小小面包利刃犬"
+    },
+    {
+        "nameTraKey": "companion_name_smolknifedog_variant3",
+        "translatedName": "斗魂觉醒 小小利刃犬"
+    },
+    {
+        "nameTraKey": "companion_name_smolknifedog_variant3",
+        "translatedName": "斗魂觉醒 小小利刃犬"
+    },
+    {
+        "nameTraKey": "companion_name_smolknifedog_variant3",
+        "translatedName": "斗魂觉醒 小小利刃犬"
+    },
+    {
+        "nameTraKey": "companion_name_smolknifedog_variant4",
+        "translatedName": "小小雷霆利刃犬"
+    },
+    {
+        "nameTraKey": "companion_name_smolknifedog_variant4",
+        "translatedName": "小小雷霆利刃犬"
+    },
+    {
+        "nameTraKey": "companion_name_smolknifedog_variant4",
+        "translatedName": "小小雷霆利刃犬"
+    },
+    {
+        "nameTraKey": "companion_name_smolknifedog_variant5",
+        "translatedName": "明昼 小小利刃犬"
+    },
+    {
+        "nameTraKey": "companion_name_smolknifedog_variant5",
+        "translatedName": "明昼 小小利刃犬"
+    },
+    {
+        "nameTraKey": "companion_name_smolknifedog_variant5",
+        "translatedName": "明昼 小小利刃犬"
+    },
+    {
+        "nameTraKey": "spiritfox_eternal_tier1_name",
+        "translatedName": "永恒 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_eternal_tier1_name",
+        "translatedName": "永恒 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_eternal_tier1_name",
+        "translatedName": "永恒 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_fae_tier1_name",
+        "translatedName": "林仙 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_fae_tier1_name",
+        "translatedName": "林仙 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_fae_tier1_name",
+        "translatedName": "林仙 静尾"
+    },
+    {
+        "nameTraKey": "companion_name_spiritfox_hushtail1",
+        "translatedName": "星尘 静尾"
+    },
+    {
+        "nameTraKey": "companion_name_spiritfox_hushtail1",
+        "translatedName": "星尘 静尾"
+    },
+    {
+        "nameTraKey": "companion_name_spiritfox_hushtail1",
+        "translatedName": "星尘 静尾"
+    },
+    {
+        "nameTraKey": "companion_name_spiritfox_hushtail2",
+        "translatedName": "焰尾妖狐 静尾"
+    },
+    {
+        "nameTraKey": "companion_name_spiritfox_hushtail2",
+        "translatedName": "焰尾妖狐 静尾"
+    },
+    {
+        "nameTraKey": "companion_name_spiritfox_hushtail2",
+        "translatedName": "焰尾妖狐 静尾"
+    },
+    {
+        "nameTraKey": "companion_name_spiritfox_hushtail3",
+        "translatedName": " 追云 静尾"
+    },
+    {
+        "nameTraKey": "companion_name_spiritfox_hushtail3",
+        "translatedName": " 追云 静尾"
+    },
+    {
+        "nameTraKey": "companion_name_spiritfox_hushtail3",
+        "translatedName": " 追云 静尾"
+    },
+    {
+        "nameTraKey": "companion_name_spiritfox_hushtail4",
+        "translatedName": "爱之守护者 静尾"
+    },
+    {
+        "nameTraKey": "companion_name_spiritfox_hushtail4",
+        "translatedName": "爱之守护者 静尾"
+    },
+    {
+        "nameTraKey": "companion_name_spiritfox_hushtail4",
+        "translatedName": "爱之守护者 静尾"
+    },
+    {
+        "nameTraKey": "companion_name_spiritfox_hushtail5",
+        "translatedName": "吞星者 静尾"
+    },
+    {
+        "nameTraKey": "companion_name_spiritfox_hushtail5",
+        "translatedName": "吞星者 静尾"
+    },
+    {
+        "nameTraKey": "companion_name_spiritfox_hushtail5",
+        "translatedName": "吞星者 静尾"
+    },
+    {
+        "nameTraKey": "companion_spiritfox_kda1_name",
+        "translatedName": "K/DA ALL OUT 静尾"
+    },
+    {
+        "nameTraKey": "companion_spiritfox_kda1_name",
+        "translatedName": "K/DA ALL OUT 静尾"
+    },
+    {
+        "nameTraKey": "companion_spiritfox_kda1_name",
+        "translatedName": "K/DA ALL OUT 静尾"
+    },
+    {
+        "nameTraKey": "companion_spiritfox_kda2_name",
+        "translatedName": "K/DA POP/STARS 静尾"
+    },
+    {
+        "nameTraKey": "companion_spiritfox_kda2_name",
+        "translatedName": "K/DA POP/STARS 静尾"
+    },
+    {
+        "nameTraKey": "companion_spiritfox_kda2_name",
+        "translatedName": "K/DA POP/STARS 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_mistberry_tier1_name",
+        "translatedName": "雾莓 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_mistberry_tier1_name",
+        "translatedName": "雾莓 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_mistberry_tier1_name",
+        "translatedName": "雾莓 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_monarch_tier1_name",
+        "translatedName": "蝶耳 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_monarch_tier1_name",
+        "translatedName": "蝶耳 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_monarch_tier1_name",
+        "translatedName": "蝶耳 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_moontipped_tier1_name",
+        "translatedName": "镶月 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_moontipped_tier1_name",
+        "translatedName": "镶月 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_moontipped_tier1_name",
+        "translatedName": "镶月 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_spiritblossom_kanmei_name",
+        "translatedName": "明昼 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_spiritblossom_kanmei_name",
+        "translatedName": "明昼 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_spiritblossom_kanmei_name",
+        "translatedName": "明昼 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_spiritblossom_akana_name",
+        "translatedName": "夜幽 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_spiritblossom_akana_name",
+        "translatedName": "夜幽 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_spiritblossom_akana_name",
+        "translatedName": "夜幽 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_untamed_tier1_name",
+        "translatedName": "不驯 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_untamed_tier1_name",
+        "translatedName": "不驯 静尾"
+    },
+    {
+        "nameTraKey": "spiritfox_untamed_tier1_name",
+        "translatedName": "不驯 静尾"
+    },
+    {
+        "nameTraKey": "companion_name_tftavatar_arcane",
+        "translatedName": "双城之战 河灵"
+    },
+    {
+        "nameTraKey": "companion_name_tftavatar_bubbletea",
+        "translatedName": "珍珠奶茶河灵"
+    },
+    {
+        "nameTraKey": "companion_name_tftavatar_chaos",
+        "translatedName": "大魔王 河灵"
+    },
+    {
+        "nameTraKey": "companion_species_name_TFT_Avatar",
+        "translatedName": "小河灵"
+    },
+    {
+        "nameTraKey": "companion_name_tftavatar_egg",
+        "translatedName": "龙蛋河灵"
+    },
+    {
+        "nameTraKey": "companion_name_tftavatar_evil1",
+        "translatedName": "超级大坏蛋 河灵 1星"
+    },
+    {
+        "nameTraKey": "companion_name_tftavatar_healthpotion1",
+        "translatedName": "小红瓶河灵"
+    },
+    {
+        "nameTraKey": "companion_name_tftavatar_hotspring",
+        "translatedName": "温泉蛋河灵"
+    },
+    {
+        "nameTraKey": "companion_tft_avatar_lunarrevel2021_name",
+        "translatedName": "饺子河灵"
+    },
+    {
+        "nameTraKey": "companion_name_tftavatar_order",
+        "translatedName": "光明哨兵 河灵"
+    },
+    {
+        "nameTraKey": "companion_name_tftavatar_progressday",
+        "translatedName": "奇葩 河灵"
+    },
+    {
+        "nameTraKey": "companion_tft_avatar_journey_name",
+        "translatedName": "玉帝河灵"
+    },
+    {
+        "nameTraKey": "TFT_Avatar_StarGuardian",
+        "translatedName": "星之守护灵"
+    },
+    {
+        "nameTraKey": "companion_name_tftavatar_superfan",
+        "translatedName": "超级粉丝河灵"
+    },
+    {
+        "nameTraKey": "companion_name_tftavatar_superhero1",
+        "translatedName": "超级河灵 1星"
+    },
+    {
+        "nameTraKey": "companion_name_tftavatar_traveler",
+        "translatedName": "探险家河灵"
+    },
+    {
+        "nameTraKey": "companion_name_tftavatar_triumph",
+        "translatedName": "宁静河灵"
+    },
+    {
+        "nameTraKey": "TFT_Avatar_UFO",
+        "translatedName": "开UFO的银河灵"
+    },
+    {
+        "nameTraKey": "companion_name_tftavatar_underwatertreasure",
+        "translatedName": "潜水员河灵"
+    },
+    {
+        "nameTraKey": "companion_name_tftavatar_variant",
+        "translatedName": "究极粉丝河灵"
+    },
+    {
+        "nameTraKey": "companion_name_tftavatar_victory",
+        "translatedName": "水墨河灵"
+    },
+    {
+        "nameTraKey": "turtle_caldera_tier1_name",
+        "translatedName": "火山口 桨翼"
+    },
+    {
+        "nameTraKey": "turtle_caldera_tier1_name",
+        "translatedName": "火山口 桨翼"
+    },
+    {
+        "nameTraKey": "turtle_caldera_tier1_name",
+        "translatedName": "火山口 桨翼"
+    },
+    {
+        "nameTraKey": "turtle_glamorous_tier1_name",
+        "translatedName": "幻魅 桨翼"
+    },
+    {
+        "nameTraKey": "turtle_glamorous_tier1_name",
+        "translatedName": "幻魅 桨翼"
+    },
+    {
+        "nameTraKey": "turtle_glamorous_tier1_name",
+        "translatedName": "幻魅 桨翼"
+    },
+    {
+        "nameTraKey": "turtle_jade_tier1_name",
+        "translatedName": "翡翠 桨翼"
+    },
+    {
+        "nameTraKey": "turtle_jade_tier1_name",
+        "translatedName": "翡翠 桨翼"
+    },
+    {
+        "nameTraKey": "turtle_jade_tier1_name",
+        "translatedName": "翡翠 桨翼"
+    },
+    {
+        "nameTraKey": "turtle_rosebloom_tier1_name",
+        "translatedName": "玫瑰蓓蕾 桨翼"
+    },
+    {
+        "nameTraKey": "turtle_rosebloom_tier1_name",
+        "translatedName": "玫瑰蓓蕾 桨翼"
+    },
+    {
+        "nameTraKey": "turtle_rosebloom_tier1_name",
+        "translatedName": "玫瑰蓓蕾 桨翼"
+    },
+    {
+        "nameTraKey": "companion_name_turtle_spiritfairy1",
+        "translatedName": "月夜青莲 桨翼"
+    },
+    {
+        "nameTraKey": "companion_name_turtle_spiritfairy1",
+        "translatedName": "月夜青莲 桨翼"
+    },
+    {
+        "nameTraKey": "companion_name_turtle_spiritfairy1",
+        "translatedName": "月夜青莲 桨翼"
+    },
+    {
+        "nameTraKey": "companion_name_turtle_spiritfairy2",
+        "translatedName": "墨上孤灯 桨翼"
+    },
+    {
+        "nameTraKey": "companion_name_turtle_spiritfairy2",
+        "translatedName": "墨上孤灯 桨翼"
+    },
+    {
+        "nameTraKey": "companion_name_turtle_spiritfairy2",
+        "translatedName": "墨上孤灯 桨翼"
+    },
+    {
+        "nameTraKey": "companion_name_turtle_spiritfairy3",
+        "translatedName": "郁金红 桨翼"
+    },
+    {
+        "nameTraKey": "companion_name_turtle_spiritfairy3",
+        "translatedName": "郁金红 桨翼"
+    },
+    {
+        "nameTraKey": "companion_name_turtle_spiritfairy3",
+        "translatedName": "郁金红 桨翼"
+    },
+    {
+        "nameTraKey": "companion_name_turtle_spiritfairy4",
+        "translatedName": "紫陌尘 桨翼"
+    },
+    {
+        "nameTraKey": "companion_name_turtle_spiritfairy4",
+        "translatedName": "紫陌尘 桨翼"
+    },
+    {
+        "nameTraKey": "companion_name_turtle_spiritfairy4",
+        "translatedName": "紫陌尘 桨翼"
+    },
+    {
+        "nameTraKey": "companion_name_turtle_spiritfairy5",
+        "translatedName": "芙蓉碧水 桨翼"
+    },
+    {
+        "nameTraKey": "companion_name_turtle_spiritfairy5",
+        "translatedName": "芙蓉碧水 桨翼"
+    },
+    {
+        "nameTraKey": "companion_name_turtle_spiritfairy5",
+        "translatedName": "芙蓉碧水 桨翼"
+    },
+    {
+        "nameTraKey": "turtle_tidepool_tier1_name",
+        "translatedName": "潮池 桨翼"
+    },
+    {
+        "nameTraKey": "turtle_tidepool_tier1_name",
+        "translatedName": "潮池 桨翼"
+    },
+    {
+        "nameTraKey": "turtle_tidepool_tier1_name",
+        "translatedName": "潮池 桨翼"
+    },
+    {
+        "nameTraKey": "turtle_yuletide_tier1_name",
+        "translatedName": "圣诞时节 桨翼"
+    },
+    {
+        "nameTraKey": "turtle_yuletide_tier1_name",
+        "translatedName": "圣诞时节 桨翼"
+    },
+    {
+        "nameTraKey": "turtle_yuletide_tier1_name",
+        "translatedName": "圣诞时节 桨翼"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_band1",
+        "translatedName": "慢燃 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_band1",
+        "translatedName": "慢燃 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_band1",
+        "translatedName": "慢燃 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_band2",
+        "translatedName": "五杀摇滚 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_band2",
+        "translatedName": "五杀摇滚 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_band2",
+        "translatedName": "五杀摇滚 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_band3",
+        "translatedName": "混音大师 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_band3",
+        "translatedName": "混音大师 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_band3",
+        "translatedName": "混音大师 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_band4",
+        "translatedName": "EMO 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_band4",
+        "translatedName": "EMO 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_band4",
+        "translatedName": "EMO 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_band5",
+        "translatedName": "迪斯科 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_band5",
+        "translatedName": "迪斯科 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_band5",
+        "translatedName": "迪斯科 夜煞"
+    },
+    {
+        "nameTraKey": "companion_umbra_blackmist_name",
+        "translatedName": "黑雾 夜煞"
+    },
+    {
+        "nameTraKey": "companion_umbra_blackmist_name",
+        "translatedName": "黑雾 夜煞"
+    },
+    {
+        "nameTraKey": "companion_umbra_blackmist_name",
+        "translatedName": "黑雾 夜煞"
+    },
+    {
+        "nameTraKey": "companion_umbra_bloodmoon_name",
+        "translatedName": "腥红之月 夜煞"
+    },
+    {
+        "nameTraKey": "companion_umbra_bloodmoon_name",
+        "translatedName": "腥红之月 夜煞"
+    },
+    {
+        "nameTraKey": "companion_umbra_bloodmoon_name",
+        "translatedName": "腥红之月 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_chaos",
+        "translatedName": "破败军团 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_chaos",
+        "translatedName": "破败军团 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_chaos",
+        "translatedName": "破败军团 夜煞"
+    },
+    {
+        "nameTraKey": "companion_umbra_classic_name",
+        "translatedName": "夜煞"
+    },
+    {
+        "nameTraKey": "companion_umbra_classic_name",
+        "translatedName": "夜煞"
+    },
+    {
+        "nameTraKey": "companion_umbra_classic_name",
+        "translatedName": "夜煞"
+    },
+    {
+        "nameTraKey": "companion_umbra_fruitytooty_name",
+        "translatedName": "火龙果 夜煞"
+    },
+    {
+        "nameTraKey": "companion_umbra_fruitytooty_name",
+        "translatedName": "火龙果 夜煞"
+    },
+    {
+        "nameTraKey": "companion_umbra_fruitytooty_name",
+        "translatedName": "火龙果 夜煞"
+    },
+    {
+        "nameTraKey": "companion_umbra_hexgold_name",
+        "translatedName": "黄金海克斯 夜煞"
+    },
+    {
+        "nameTraKey": "companion_umbra_hexgold_name",
+        "translatedName": "黄金海克斯 夜煞"
+    },
+    {
+        "nameTraKey": "companion_umbra_hexgold_name",
+        "translatedName": "黄金海克斯 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_neutral",
+        "translatedName": "龙族 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_neutral",
+        "translatedName": "龙族 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_neutral",
+        "translatedName": "龙族 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_order",
+        "translatedName": "光明哨兵 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_order",
+        "translatedName": "光明哨兵 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_order",
+        "translatedName": "光明哨兵 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_swimming1",
+        "translatedName": "粉红救生圈 鲨鲨"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_swimming1",
+        "translatedName": "粉红救生圈 鲨鲨"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_swimming1",
+        "translatedName": "粉红救生圈 鲨鲨"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_swimming2",
+        "translatedName": "救生员 鲨鲨"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_swimming2",
+        "translatedName": "救生员 鲨鲨"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_swimming2",
+        "translatedName": "救生员 鲨鲨"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_swimming3",
+        "translatedName": "小樱桃 鲨鲨"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_swimming3",
+        "translatedName": "小樱桃 鲨鲨"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_swimming3",
+        "translatedName": "小樱桃 鲨鲨"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_swimming4",
+        "translatedName": "草裙舞 鲨鲨"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_swimming4",
+        "translatedName": "草裙舞 鲨鲨"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_swimming4",
+        "translatedName": "草裙舞 鲨鲨"
+    },
+    {
+        "nameTraKey": "companion_name_umbra_swimming5",
+        "translatedName": "潜水员 鲨鲨 "
+    },
+    {
+        "nameTraKey": "companion_name_umbra_swimming5",
+        "translatedName": "潜水员 鲨鲨 "
+    },
+    {
+        "nameTraKey": "companion_name_umbra_swimming5",
+        "translatedName": "潜水员 鲨鲨 "
+    },
+    {
+        "nameTraKey": "companion_umbra_thunderbeast_name",
+        "translatedName": "雷霆狂龙 夜煞"
+    },
+    {
+        "nameTraKey": "companion_umbra_thunderbeast_name",
+        "translatedName": "雷霆狂龙 夜煞"
+    },
+    {
+        "nameTraKey": "companion_umbra_thunderbeast_name",
+        "translatedName": "雷霆狂龙 夜煞"
+    },
+    {
+        "nameTraKey": "companion_name_voideye_classic",
+        "translatedName": "猫克塞"
+    },
+    {
+        "nameTraKey": "companion_name_voideye_classic",
+        "translatedName": "猫克塞"
+    },
+    {
+        "nameTraKey": "companion_name_voideye_classic",
+        "translatedName": "猫克塞"
+    },
+    {
+        "nameTraKey": "companion_name_voideye_variant1",
+        "translatedName": "比尔吉沃特 猫克塞"
+    },
+    {
+        "nameTraKey": "companion_name_voideye_variant1",
+        "translatedName": "比尔吉沃特 猫克塞"
+    },
+    {
+        "nameTraKey": "companion_name_voideye_variant1",
+        "translatedName": "比尔吉沃特 猫克塞"
+    },
+    {
+        "nameTraKey": "companion_name_voideye_variant2",
+        "translatedName": "德玛西亚 猫克塞"
+    },
+    {
+        "nameTraKey": "companion_name_voideye_variant2",
+        "translatedName": "德玛西亚 猫克塞"
+    },
+    {
+        "nameTraKey": "companion_name_voideye_variant2",
+        "translatedName": "德玛西亚 猫克塞"
+    },
+    {
+        "nameTraKey": "companion_name_voideye_variant3",
+        "translatedName": "甜筒 猫克塞"
+    },
+    {
+        "nameTraKey": "companion_name_voideye_variant3",
+        "translatedName": "甜筒 猫克塞"
+    },
+    {
+        "nameTraKey": "companion_name_voideye_variant3",
+        "translatedName": "甜筒 猫克塞"
+    },
+    {
+        "nameTraKey": "companion_name_voideye_variant4",
+        "translatedName": "星界 猫克塞"
+    },
+    {
+        "nameTraKey": "companion_name_voideye_variant4",
+        "translatedName": "星界 猫克塞"
+    },
+    {
+        "nameTraKey": "companion_name_voideye_variant4",
+        "translatedName": "星界 猫克塞"
+    },
+    {
+        "nameTraKey": "companion_name_voideye_variant5",
+        "translatedName": "诺克萨斯 猫克塞"
+    },
+    {
+        "nameTraKey": "companion_name_voideye_variant5",
+        "translatedName": "诺克萨斯 猫克塞"
+    },
+    {
+        "nameTraKey": "companion_name_voideye_variant5",
+        "translatedName": "诺克萨斯 猫克塞"
+    }
+]

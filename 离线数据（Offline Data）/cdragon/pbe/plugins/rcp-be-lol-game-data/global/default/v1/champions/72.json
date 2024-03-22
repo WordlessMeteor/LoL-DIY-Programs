@@ -33,7 +33,7 @@
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/72/72000.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/72/72000.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/72/72000.jpg",
-            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Base/Skarner_ReworkLoadScreen.Skarner_Rework.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Base/SkarnerLoadScreen_0.Skarner_Rework.jpg",
             "skinType": "",
             "rarity": "kNoRarity",
             "isLegacy": false,
@@ -81,7 +81,7 @@
             "splashPath": "/lol-game-data/assets/v1/champion-splashes/72/72002.jpg",
             "uncenteredSplashPath": "/lol-game-data/assets/v1/champion-splashes/uncentered/72/72002.jpg",
             "tilePath": "/lol-game-data/assets/v1/champion-tiles/72/72002.jpg",
-            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin02/Skarner_ReworkLoadScreen_2.Skarner_Rework.jpg",
+            "loadScreenPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/Skins/Skin02/SkarnerLoadScreen_2.Skarner_Rework.jpg",
             "skinType": "",
             "rarity": "kNoRarity",
             "isLegacy": false,
@@ -450,12 +450,12 @@
             "description": "Skarner gains a shield and creates an earthquake whose shockwave damages and slows foes.",
             "dynamicDescription": "Skarner gains <shield>@InitialShield@ Shield</shield> and triggers an earthquake that deals <magicDamage>@Damage@ magic damage</magicDamage> and <status>Slows</status> nearby enemies by @SlowEffect*-100@% for @SlowDuration@s.@SpellModifierDescriptionAppend@",
             "range": [
-                650.0000,
-                650.0000,
-                650.0000,
-                650.0000,
-                650.0000,
-                650.0000
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000,
+                700.0000
             ],
             "costCoefficients": [
                 30.0000,

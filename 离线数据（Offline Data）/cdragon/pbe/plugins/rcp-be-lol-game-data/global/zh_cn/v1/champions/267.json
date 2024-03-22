@@ -1244,7 +1244,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "释放一股在友方英雄和敌方英雄之间交替流动的水流，治疗友军并伤害敌军。",
-            "dynamicDescription": "Spell_NamiW_Tooltip@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "娜美释放一股在友方英雄和敌方英雄之间交替弹跳的水流。每个目标只会被弹到一次，并且水流至多可弹@MaxTargets@个目标。<li>为友方英雄回复<healing>@TotalHeal@生命值</healing>并弹向附近的一名敌方英雄身上。<li>对敌方英雄造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>并弹向附近的一名友方英雄身上。<br>每次弹跳会使伤害和治疗数额修正@BounceScaling@。 @SpellModifierDescriptionAppend@",
             "range": [
                 725.0000,
                 725.0000,
@@ -1259,15 +1259,15 @@
                 90.0000,
                 100.0000,
                 110.0000,
-                145.0000
+                110.0000
             ],
             "cooldownCoefficients": [
-                9.0000,
-                9.0000,
-                9.0000,
-                9.0000,
-                9.0000,
-                9.0000
+                10.0000,
+                10.0000,
+                10.0000,
+                10.0000,
+                10.0000,
+                10.0000
             ],
             "coefficients": {
                 "coefficient1": 0.0000,
@@ -1284,13 +1284,13 @@
                     0.0000
                 ],
                 "Effect2Amount": [
-                    3.0000,
-                    3.0000,
-                    3.0000,
-                    3.0000,
-                    3.0000,
-                    3.0000,
-                    3.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect3Amount": [
                     0.0000,
@@ -1302,22 +1302,22 @@
                     0.0000
                 ],
                 "Effect4Amount": [
-                    15.0000,
-                    15.0000,
-                    15.0000,
-                    15.0000,
-                    15.0000,
-                    15.0000,
-                    15.0000
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect5Amount": [
-                    0.0750,
-                    0.0750,
-                    0.0750,
-                    0.0750,
-                    0.0750,
-                    0.0750,
-                    0.0750
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000,
+                    0.0000
                 ],
                 "Effect6Amount": [
                     0.0000,
@@ -1394,7 +1394,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "短时间里强化一个友军英雄。友军的普通攻击和技能会对其目标造成额外伤害和减速效果。",
-            "dynamicDescription": "Spell_NamiE_Tooltip@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "娜美强化一位友方英雄的下@HitCount@次普通攻击和技能，持续@BuffDuration@秒，使其可以对目标造成持续@SlowDuration@秒的@TotalSlow@<status>减速</status>，并造成额外的<magicDamage>@TotalDamage@魔法伤害</magicDamage>。 @SpellModifierDescriptionAppend@",
             "range": [
                 800.0000,
                 800.0000,

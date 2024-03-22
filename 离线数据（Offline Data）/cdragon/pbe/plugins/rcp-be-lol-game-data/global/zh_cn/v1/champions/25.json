@@ -1600,7 +1600,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "莫甘娜在一个区域施放一团诅咒之影，对胆敢站在她黑色环形之中的敌人造成伤害。敌人会持续受到魔法伤害，并且生命值越低受到伤害越高。",
-            "dynamicDescription": "Spell_MorganaW_Tooltip@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "莫甘娜点燃一个区域@WDuration@秒，每秒对区域内的敌人造成<magicDamage>@TotalMinDamage@魔法伤害</magicDamage>，基于目标的已损失生命值，伤害可最多提升至@MissingHealthAmpPercent*100@%。<br><br>每当莫甘娜被<spellName>灵魂吸取</spellName>治疗时，这个技能的冷却时间就会减少@CDRefundPercent*100@%。@SpellModifierDescriptionAppend@",
             "range": [
                 900.0000,
                 900.0000,
@@ -1899,7 +1899,7 @@
             "abilityVideoImagePath": "champion-abilities/0025/ability_0025_R1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
-            "description": "莫甘娜全力释放她的星界能量，与此同时，她的羽翼会解除束缚并且会悬浮在地面上。她将黑暗痛苦组成的锁链抽击到附近的敌方英雄身上，在朝向他们移动时获得移动速度。锁链会减速并造成初段伤害，并在一段延迟后，晕眩那些未能挣脱的敌方英雄。",
+            "description": "莫甘娜全力释放她的星界能量，与此同时，她的羽翼会解除束缚并且会悬浮在地面上。她将黑暗痛苦组成的锁链抽击到附近的敌方英雄身上，获得移动速度。锁链会减速并造成初段伤害，并在一段延迟后，晕眩那些未能挣脱的敌方英雄。",
             "dynamicDescription": "莫甘娜将她自己与附近的敌方英雄用锁链铐在一起，造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>和@SlowPercent@%<status>减速</status>效果。在@ChainDuration@秒后，仍未挣断锁链的敌人会受到<magicDamage>@TotalDamage@魔法伤害</magicDamage>并被<status>晕眩</status>@StunDuration@秒。<br><br>在施放这个技能时，莫甘娜会获得<speed>@HastePercent@%移动速度</speed>。@SpellModifierDescriptionAppend@",
             "range": [
                 625.0000,

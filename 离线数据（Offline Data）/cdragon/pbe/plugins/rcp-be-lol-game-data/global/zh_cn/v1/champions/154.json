@@ -478,7 +478,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "这个炫彩曾在2024年期间作为礼包专属发布。"
                         }
                     ],
                     "rarities": [
@@ -580,7 +580,7 @@
                 }
             ],
             "skinAugments": null,
-            "description": null
+            "description": "扎克是“烤干酪辣味玉米片”一般的软泥怪——他是会还手的零食！顶着墨西哥辣椒、薯条和培根片，这个有智识的奶酪球是派对的焦点……也是各地乳糖不耐受者的噩梦。"
         }
     ],
     "passive": {
