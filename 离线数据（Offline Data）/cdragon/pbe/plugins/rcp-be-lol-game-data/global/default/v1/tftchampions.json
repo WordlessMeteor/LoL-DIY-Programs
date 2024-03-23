@@ -110,6 +110,17 @@
         }
     },
     {
+        "name": "TFT_BlueGolem",
+        "character_record": {
+            "path": "Characters/TFT_BlueGolem/CharacterRecords/Root",
+            "character_id": "TFT_BlueGolem",
+            "rarity": 0,
+            "display_name": "Sentinel",
+            "traits": [],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_BlueGolem/HUD/TFT_BlueGolem_Spell.png"
+        }
+    },
+    {
         "name": "TFTTutorial_Zed",
         "character_record": {
             "path": "Characters/TFTTutorial_Zed/CharacterRecords/Root",
@@ -943,6 +954,17 @@
             "display_name": "Template Hexcore",
             "traits": [],
             "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_Template_Augment_Prop/HUD/TFT_Template_Augment_Prop_Square.TFT_Set11.png"
+        }
+    },
+    {
+        "name": "TFT_BlueGolem",
+        "character_record": {
+            "path": "Characters/TFT_BlueGolem/CharacterRecords/Root",
+            "character_id": "TFT_BlueGolem",
+            "rarity": 0,
+            "display_name": "Sentinel",
+            "traits": [],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_BlueGolem/HUD/TFT_BlueGolem_Spell.png"
         }
     },
     {
@@ -2237,6 +2259,17 @@
         }
     },
     {
+        "name": "TFT_BlueGolem",
+        "character_record": {
+            "path": "Characters/TFT_BlueGolem/CharacterRecords/Root",
+            "character_id": "TFT_BlueGolem",
+            "rarity": 0,
+            "display_name": "Sentinel",
+            "traits": [],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_BlueGolem/HUD/TFT_BlueGolem_Spell.png"
+        }
+    },
+    {
         "name": "TFT11_Aatrox",
         "character_record": {
             "path": "Characters/TFT11_Aatrox/CharacterRecords/Root",
@@ -3718,6 +3751,17 @@
         }
     },
     {
+        "name": "TFT_BlueGolem",
+        "character_record": {
+            "path": "Characters/TFT_BlueGolem/CharacterRecords/Root",
+            "character_id": "TFT_BlueGolem",
+            "rarity": 0,
+            "display_name": "Sentinel",
+            "traits": [],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_BlueGolem/HUD/TFT_BlueGolem_Spell.png"
+        }
+    },
+    {
         "name": "TFT11_Aatrox",
         "character_record": {
             "path": "Characters/TFT11_Aatrox/CharacterRecords/Root",
@@ -5196,6 +5240,17 @@
             "display_name": "Template Hexcore",
             "traits": [],
             "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_Template_Augment_Prop/HUD/TFT_Template_Augment_Prop_Square.TFT_Set11.png"
+        }
+    },
+    {
+        "name": "TFT_BlueGolem",
+        "character_record": {
+            "path": "Characters/TFT_BlueGolem/CharacterRecords/Root",
+            "character_id": "TFT_BlueGolem",
+            "rarity": 0,
+            "display_name": "Sentinel",
+            "traits": [],
+            "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT_BlueGolem/HUD/TFT_BlueGolem_Spell.png"
         }
     },
     {

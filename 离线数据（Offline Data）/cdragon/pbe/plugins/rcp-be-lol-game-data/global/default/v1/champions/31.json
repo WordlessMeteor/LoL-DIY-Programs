@@ -611,8 +611,18 @@
                         "#D33528",
                         "#D33528"
                     ],
-                    "descriptions": [],
-                    "rarities": []
+                    "descriptions": [
+                        {
+                            "region": "riot",
+                            "description": "This chroma was released as a bundle exclusive in 2024."
+                        }
+                    ],
+                    "rarities": [
+                        {
+                            "region": "riot",
+                            "rarity": 1
+                        }
+                    ]
                 },
                 {
                     "id": 31034,
@@ -634,7 +644,12 @@
                         "#E58BA5"
                     ],
                     "descriptions": [],
-                    "rarities": []
+                    "rarities": [
+                        {
+                            "region": "TENCENT",
+                            "rarity": 1
+                        }
+                    ]
                 },
                 {
                     "id": 31036,

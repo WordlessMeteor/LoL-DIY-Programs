@@ -4782,7 +4782,7 @@
                     },
                     {
                         "name": "IncreasedPercentBuff",
-                        "value": 5.0000,
+                        "value": 15.0000,
                         "format_string": ""
                     }
                 ],
@@ -4958,7 +4958,7 @@
                 "effect_amounts": [
                     {
                         "name": "AP",
-                        "value": 12.0000,
+                        "value": 10.0000,
                         "format_string": ""
                     },
                     {
@@ -4981,7 +4981,7 @@
                 "effect_amounts": [
                     {
                         "name": "AP",
-                        "value": 22.0000,
+                        "value": 20.0000,
                         "format_string": ""
                     },
                     {
@@ -5004,7 +5004,7 @@
                 "effect_amounts": [
                     {
                         "name": "AP",
-                        "value": 35.0000,
+                        "value": 32.0000,
                         "format_string": ""
                     },
                     {

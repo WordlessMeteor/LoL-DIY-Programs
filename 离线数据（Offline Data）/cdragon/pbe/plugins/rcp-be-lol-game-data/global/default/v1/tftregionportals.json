@@ -123,13 +123,13 @@
         "iconPath": "/lol-game-data/assets/",
         "nameId": "TFT_Portals_Combat_WanderingTrainers",
         "displayName": "",
-        "description": "Wandering Trainers"
+        "description": "Trainer Sentinels"
     },
     {
         "iconPath": "/lol-game-data/assets/",
         "nameId": "TFT_Portals_Combat_WanderingVendors",
         "displayName": "",
-        "description": "Wandering Vendors"
+        "description": "Vendor Sentinels"
     },
     {
         "iconPath": "/lol-game-data/assets/",

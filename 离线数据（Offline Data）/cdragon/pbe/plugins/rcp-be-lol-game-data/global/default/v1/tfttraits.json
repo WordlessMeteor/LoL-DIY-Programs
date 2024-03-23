@@ -4724,7 +4724,7 @@
         "trait_id": "TFT11_InkShadow",
         "set": "TFTSet11",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Ink_Shadow.TFT_Set11.png",
-        "tooltip_text": "Gain unique Inkshadow items. Inkshadow champions gain @PercentBuff@% bonus damage and damage reduction.<br><br><row>(@MinUnits@) @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item1@</row><br><row>(@MinUnits@) @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item2@ and @IncreasedPercentBuff@% more bonus damage and damage reduction </row><br><row>(@MinUnits@) @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item3@ and @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item4@</row>",
+        "tooltip_text": "Gain unique Inkshadow items. Inkshadow champions gain @PercentBuff@% bonus damage and damage reduction.<br><br><row>(@MinUnits@) @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item1@</row><br><row>(@MinUnits@) @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item2@ and @IncreasedPercentBuff@% more bonus damage and damage reduction </row><br><row>(@MinUnits@) @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item3@, @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item4@, and @IncreasedPercentBuff@% more bonus damage and damage reduction.</row>",
         "innate_trait_sets": [
             {
                 "effect_amounts": [
@@ -4782,7 +4782,7 @@
                     },
                     {
                         "name": "IncreasedPercentBuff",
-                        "value": 5.0000,
+                        "value": 15.0000,
                         "format_string": ""
                     }
                 ],
@@ -4958,7 +4958,7 @@
                 "effect_amounts": [
                     {
                         "name": "AP",
-                        "value": 12.0000,
+                        "value": 10.0000,
                         "format_string": ""
                     },
                     {
@@ -4981,7 +4981,7 @@
                 "effect_amounts": [
                     {
                         "name": "AP",
-                        "value": 22.0000,
+                        "value": 20.0000,
                         "format_string": ""
                     },
                     {
@@ -5004,7 +5004,7 @@
                 "effect_amounts": [
                     {
                         "name": "AP",
-                        "value": 35.0000,
+                        "value": 32.0000,
                         "format_string": ""
                     },
                     {

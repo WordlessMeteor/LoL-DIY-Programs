@@ -1624,7 +1624,7 @@
             "cost": "无消耗",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "卡尔玛的下个技能会获得强化，造成额外特效。梵咒在1级时就可以使用，并且不需要投入技能点。",
-            "dynamicDescription": "卡尔玛增强她在8秒内使用的下一个技能。<br><li><spellName>心灵烈焰</spellName>：造成额外的<magicDamage>@RQImpactDamage@魔法伤害</magicDamage>并留下一道烈焰圆环，<status>减速</status>敌人并造成额外的<magicDamage>@RQFieldDamage@魔法伤害</magicDamage>。<li><spellName>坚定不移</spellName>：卡尔玛将在灵链的开始和结束时回复<healing>@RWHealAmount@已损失生命值</healing>，并且<status>禁锢</status>延长@RWBonusRoot@秒。<li><spellName>鼓舞</spellName>：卡尔玛提供<shield>额外的@REBonusShield@护盾值</shield>，并且还会对目标附近的友军提供护盾，为他们提供<shield>@REBonusShieldArea@护盾值</shield>和<speed>@REMoveSpeed*100@%移动速度</speed>。@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "卡尔玛增强她在8秒内使用的下一个技能。<br><li><spellName>心灵烈焰</spellName>：造成额外的<magicDamage>@RQImpactDamage@魔法伤害</magicDamage>并留下一道烈焰圆环，<status>减速</status>敌人并造成额外的<magicDamage>@RQFieldDamage@魔法伤害</magicDamage>。<li><spellName>坚定不移</spellName>：卡尔玛将在灵链的开始和结束时回复<healing>@RWHealAmount@已损失生命值</healing>，并且<status>禁锢</status>延长@RWBonusRoot@秒。<li><spellName>鼓舞</spellName>：卡尔玛为她的目标提供<shield>额外的@REBonusShield@护盾值</shield>，并且还会对目标附近的友军提供护盾，为他们提供<shield>@REBonusShieldArea@护盾值</shield>和<speed>@REMoveSpeed*100@%移动速度</speed>。@SpellModifierDescriptionAppend@",
             "range": [
                 1100.0000,
                 1100.0000,

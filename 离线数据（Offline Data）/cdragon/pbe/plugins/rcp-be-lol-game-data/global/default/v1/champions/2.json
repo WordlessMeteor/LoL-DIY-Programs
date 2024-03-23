@@ -981,12 +981,12 @@
                 700.0000
             ],
             "costCoefficients": [
-                30.0000,
-                30.0000,
-                30.0000,
-                30.0000,
-                30.0000,
-                30.0000
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000
             ],
             "cooldownCoefficients": [
                 16.0000,
@@ -1121,7 +1121,7 @@
             "cost": "Costs <font color='#FF3300'>@f1@ Health</font>",
             "cooldown": "@Cooldown@s %i:cooldown%",
             "description": "Olaf attacks with such force that it deals true damage to his target and himself, refunding the Health cost if he destroys the target.",
-            "dynamicDescription": "Olaf ferociously swings his axes, dealing <trueDamage>@TotalDamage@ true damage</trueDamage>. If the enemy dies, the cost is refunded.<br><br>Attacks lower the Cooldown of this Ability by 1 second.@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "Olaf ferociously swings his axes, dealing <trueDamage>@TotalDamage@ true damage</trueDamage>. If the enemy dies, the cost is refunded.<br><br>Attacks lower the Cooldown of this Ability by 1 second, increased to 2 seconds when attacking monsters.@SpellModifierDescriptionAppend@",
             "range": [
                 325.0000,
                 325.0000,
@@ -1268,7 +1268,7 @@
             "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Olaf/HUD/Icons2D/OlafR.png",
             "abilityVideoPath": "champion-abilities/0002/ability_0002_R1.webm",
             "abilityVideoImagePath": "champion-abilities/0002/ability_0002_R1.jpg",
-            "cost": "No Cost",
+            "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@s %i:cooldown%",
             "description": "Olaf passively gains increased armor and magic resist. He can activate this ability to become immune to disables for as long as he keeps attacking.",
             "dynamicDescription": "<spellPassive>Passive:</spellPassive> Olaf gains <scaleArmor>@Resists@ Armor</scaleArmor> and <scaleMR>@Resists@ Magic Resist</scaleMR>.<br><br><spellActive>Active: </spellActive>Olaf cleanses all <status>Immobilizing</status> and <status>Disabling</status> effects on himself and becomes immune to them for @Duration@ seconds. While active, Olaf gains <scaleAD>@AD@ Attack Damage</scaleAD>. Hitting a champion with an Attack or <spellName>Reckless Swing</spellName> extends the duration by @DurationExtension@ seconds.<br><br>Additionally, Olaf gains <speed>@Haste*100@% Move Speed</speed> towards enemy champions for @HasteDuration@ second.@SpellModifierDescriptionAppend@",
@@ -1281,12 +1281,12 @@
                 400.0000
             ],
             "costCoefficients": [
-                0.0000,
-                0.0000,
-                0.0000,
-                0.0000,
-                0.0000,
-                0.0000
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
             ],
             "cooldownCoefficients": [
                 100.0000,

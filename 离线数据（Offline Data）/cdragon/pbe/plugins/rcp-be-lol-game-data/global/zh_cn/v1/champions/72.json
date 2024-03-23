@@ -292,7 +292,7 @@
     ],
     "passive": {
         "name": "战栗",
-        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_Passive.Skarner_Rework.png",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Passive.png",
         "abilityVideoPath": "champion-abilities/0072/ability_0072_P1.webm",
         "abilityVideoImagePath": "champion-abilities/0072/ability_0072_P1.jpg",
         "description": "斯卡纳的普通攻击、<spellName>撼地</spellName>、<spellName>擎天</spellName>和<spellName>毒刺贯体</spellName>都会施加<keywordMajor>战栗</keywordMajor>效果。在满层<keywordMajor>战栗</keywordMajor>时，敌人们会在其持续期间内受到<magicDamage>最大生命值魔法伤害</magicDamage>。"
@@ -301,13 +301,13 @@
         {
             "spellKey": "q",
             "name": "撼地 / 擎天",
-            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_Q.Skarner_Rework.png",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Q.png",
             "abilityVideoPath": "champion-abilities/0072/ability_0072_Q1.webm",
             "abilityVideoImagePath": "champion-abilities/0072/ability_0072_Q1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "斯卡纳从地面掘出一块巨石来强化他的普攻，这块巨石可作为飞弹投掷。",
-            "dynamicDescription": "斯卡纳从地面掘出一块巨石，使他的下三次攻击拥有<attackSpeed>@AttackSpeed*100@%攻击速度</attackSpeed>并且对附近敌人们造成<physicalDamage>@AbilityDamage@物理伤害</physicalDamage>。 他的最后一次攻击将对被影响的敌人们造成额外的<physicalDamage>@MaxHPPercent*100@%最大生命值物理伤害</physicalDamage>和持续@SlowDuration@秒的@SlowPercent*100@%<status>减速</status>。<br><br><recast>再次施放：</recast>斯卡纳结束<spellName>撼地</spellName>并扔出他的巨石，对命中的第一个敌人及其周围的其它敌人们造成<physicalDamage>@spell.SkarnerQ:AbilityDamage@ + @spell.SkarnerQ:MaxHPPercent*100@%最大生命值物理伤害</physicalDamage>和持续@spell.SkarnerQ:SlowDuration@秒的@spell.SkarnerQ:SlowPercent*100@%<status>减速</status>。@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "斯卡纳从地面掘出一块巨石，使他的下三次攻击拥有<attackSpeed>@AttackSpeed*100@%攻击速度</attackSpeed>并且对附近敌人们造成<physicalDamage>@AbilityDamage@物理伤害</physicalDamage>。 他的最后一次攻击将对被影响的敌人们造成额外的<physicalDamage>@MaxHPPercent*100@%最大生命值物理伤害</physicalDamage>和持续@SlowDuration@秒的@SlowPercent*100@%<status>减速</status>。<br><br><recast>再次施放：</recast>斯卡纳结束<spellName>撼地</spellName>并扔出他的巨石，对命中的第一个敌人——及其周围的其它敌人们——造成<physicalDamage>@spell.SkarnerQ:AbilityDamage@ + @spell.SkarnerQ:MaxHPPercent*100@%最大生命值物理伤害</physicalDamage>和持续@spell.SkarnerQ:SlowDuration@秒的@spell.SkarnerQ:SlowPercent*100@%<status>减速</status>。@SpellModifierDescriptionAppend@",
             "range": [
                 400.0000,
                 400.0000,
@@ -318,11 +318,11 @@
             ],
             "costCoefficients": [
                 40.0000,
-                40.0000,
-                40.0000,
-                40.0000,
-                40.0000,
-                40.0000
+                45.0000,
+                50.0000,
+                55.0000,
+                60.0000,
+                60.0000
             ],
             "cooldownCoefficients": [
                 13.0000,
@@ -451,7 +451,7 @@
         {
             "spellKey": "w",
             "name": "震地壁垒",
-            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_W.Skarner_Rework.png",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_W.png",
             "abilityVideoPath": "champion-abilities/0072/ability_0072_W1.webm",
             "abilityVideoImagePath": "champion-abilities/0072/ability_0072_W1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
@@ -467,12 +467,12 @@
                 700.0000
             ],
             "costCoefficients": [
-                30.0000,
-                30.0000,
-                30.0000,
-                30.0000,
-                30.0000,
-                30.0000
+                40.0000,
+                45.0000,
+                50.0000,
+                55.0000,
+                60.0000,
+                60.0000
             ],
             "cooldownCoefficients": [
                 10.0000,
@@ -601,7 +601,7 @@
         {
             "spellKey": "e",
             "name": "以绪塔尔冲击",
-            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_E.Skarner_Rework.png",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_E.png",
             "abilityVideoPath": "champion-abilities/0072/ability_0072_E1.webm",
             "abilityVideoImagePath": "champion-abilities/0072/ability_0072_E1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
@@ -618,11 +618,11 @@
             ],
             "costCoefficients": [
                 50.0000,
-                50.0000,
-                50.0000,
-                50.0000,
-                50.0000,
-                50.0000
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                70.0000
             ],
             "cooldownCoefficients": [
                 24.0000,
@@ -751,7 +751,7 @@
         {
             "spellKey": "r",
             "name": "毒刺贯体",
-            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_R.Skarner_Rework.png",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_R.png",
             "abilityVideoPath": "champion-abilities/0072/ability_0072_R1.webm",
             "abilityVideoImagePath": "champion-abilities/0072/ability_0072_R1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",

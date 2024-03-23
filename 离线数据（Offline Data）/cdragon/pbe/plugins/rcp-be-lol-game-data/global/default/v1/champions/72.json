@@ -283,7 +283,7 @@
     ],
     "passive": {
         "name": "Threads of Vibration",
-        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_Passive.Skarner_Rework.png",
+        "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Passive.png",
         "abilityVideoPath": "champion-abilities/0072/ability_0072_P1.webm",
         "abilityVideoImagePath": "champion-abilities/0072/ability_0072_P1.jpg",
         "description": "Skarner's Attacks, <spellName>Shattered Earth</spellName>, <spellName>Upheaval</spellName>, and <spellName>Impale</spellName>, apply <keywordMajor>Quaking</keywordMajor>. At max stacks of <keywordMajor>Quaking</keywordMajor>, enemies take <magicDamage>max-Health magic damage</magicDamage> over its duration."
@@ -292,13 +292,13 @@
         {
             "spellKey": "q",
             "name": "Shattered Earth / Upheaval",
-            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_Q.Skarner_Rework.png",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Q.png",
             "abilityVideoPath": "champion-abilities/0072/ability_0072_Q1.webm",
             "abilityVideoImagePath": "champion-abilities/0072/ability_0072_Q1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@s %i:cooldown%",
             "description": "Skarner rips a boulder from the earth that empowers his attacks and can be thrown as a powerful projectile.",
-            "dynamicDescription": "Skarner rips a boulder from the ground, empowering his next 3 Attacks with <attackSpeed>@AttackSpeed*100@% Attack Speed</attackSpeed> and dealing <physicalDamage>@AbilityDamage@ physical damage</physicalDamage> to surrounding enemies. His final Attack will deal an additional <physicalDamage>@MaxHPPercent*100@% max-Health physical damage</physicalDamage> and <status>Slow</status> affected foes by @SlowPercent*100@% for @SlowDuration@s.<br><br><recast>Recast:</recast> Skarner ends <spellName>Shattered Earth</spellName> and throws his boulder, dealing <physicalDamage>@spell.SkarnerQ:AbilityDamage@ + @spell.SkarnerQ:MaxHPPercent*100@% max-Health physical damage</physicalDamage>, and additionally <status>Slowing</status> the first enemy hit—and any other surrounding enemies—by @spell.SkarnerQ:SlowPercent*100@% for @spell.SkarnerQ:SlowDuration@s.@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "Skarner rips a boulder from the ground, empowering his next 3 Attacks with <attackSpeed>@AttackSpeed*100@% Attack Speed</attackSpeed> and dealing <physicalDamage>@AbilityDamage@ physical damage</physicalDamage> to surrounding enemies. His final Attack will deal an additional <physicalDamage>@MaxHPPercent*100@% max-Health physical damage</physicalDamage> and <status>Slow</status> affected foes by @SlowPercent*100@% for @SlowDuration@s.<br><br><recast>Recast:</recast> Skarner ends <spellName>Shattered Earth</spellName> and throws his boulder, dealing <physicalDamage>@spell.SkarnerQ:AbilityDamage@ + @spell.SkarnerQ:MaxHPPercent*100@% max-Health physical damage</physicalDamage>, and additionally <status>Slowing</status> the first enemy hit — and any other surrounding enemies — by @spell.SkarnerQ:SlowPercent*100@% for @spell.SkarnerQ:SlowDuration@s.@SpellModifierDescriptionAppend@",
             "range": [
                 400.0000,
                 400.0000,
@@ -309,11 +309,11 @@
             ],
             "costCoefficients": [
                 40.0000,
-                40.0000,
-                40.0000,
-                40.0000,
-                40.0000,
-                40.0000
+                45.0000,
+                50.0000,
+                55.0000,
+                60.0000,
+                60.0000
             ],
             "cooldownCoefficients": [
                 13.0000,
@@ -442,13 +442,13 @@
         {
             "spellKey": "w",
             "name": "Seismic Bastion",
-            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_W.Skarner_Rework.png",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_W.png",
             "abilityVideoPath": "champion-abilities/0072/ability_0072_W1.webm",
             "abilityVideoImagePath": "champion-abilities/0072/ability_0072_W1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@s %i:cooldown%",
             "description": "Skarner gains a shield and creates an earthquake whose shockwave damages and slows foes.",
-            "dynamicDescription": "Skarner gains <shield>@InitialShield@ Shield</shield> and triggers an earthquake that deals <magicDamage>@Damage@ magic damage</magicDamage> and <status>Slows</status> nearby enemies by @SlowEffect*-100@% for @SlowDuration@s.@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "Skarner gains <shield>@InitialShield@ Shield</shield> for @ShieldDuration@s and triggers an earthquake that deals <magicDamage>@Damage@ magic damage</magicDamage> and <status>Slows</status> nearby enemies by @SlowEffect*-100@% for @SlowDuration@s.@SpellModifierDescriptionAppend@",
             "range": [
                 700.0000,
                 700.0000,
@@ -458,12 +458,12 @@
                 700.0000
             ],
             "costCoefficients": [
-                30.0000,
-                30.0000,
-                30.0000,
-                30.0000,
-                30.0000,
-                30.0000
+                40.0000,
+                45.0000,
+                50.0000,
+                55.0000,
+                60.0000,
+                60.0000
             ],
             "cooldownCoefficients": [
                 10.0000,
@@ -592,7 +592,7 @@
         {
             "spellKey": "e",
             "name": "Ixtal's Impact",
-            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_E.Skarner_Rework.png",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_E.png",
             "abilityVideoPath": "champion-abilities/0072/ability_0072_E1.webm",
             "abilityVideoImagePath": "champion-abilities/0072/ability_0072_E1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",
@@ -609,11 +609,11 @@
             ],
             "costCoefficients": [
                 50.0000,
-                50.0000,
-                50.0000,
-                50.0000,
-                50.0000,
-                50.0000
+                55.0000,
+                60.0000,
+                65.0000,
+                70.0000,
+                70.0000
             ],
             "cooldownCoefficients": [
                 24.0000,
@@ -742,7 +742,7 @@
         {
             "spellKey": "r",
             "name": "Impale",
-            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_Rework_R.Skarner_Rework.png",
+            "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Skarner/HUD/Icons2D/Skarner_R.png",
             "abilityVideoPath": "champion-abilities/0072/ability_0072_R1.webm",
             "abilityVideoImagePath": "champion-abilities/0072/ability_0072_R1.jpg",
             "cost": "@Cost@ @AbilityResourceName@",

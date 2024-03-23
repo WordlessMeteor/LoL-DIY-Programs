@@ -1035,12 +1035,12 @@
                 700.0000
             ],
             "costCoefficients": [
-                30.0000,
-                30.0000,
-                30.0000,
-                30.0000,
-                30.0000,
-                30.0000
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000,
+                50.0000
             ],
             "cooldownCoefficients": [
                 16.0000,
@@ -1175,7 +1175,7 @@
             "cost": "消耗<font color='#FF3300'>@f1@生命值</font>",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "奥拉夫以破釜沉舟之势发动进攻，对目标造成真实伤害（不受护甲与魔抗减免），同时，自身也会根据敌方所受的伤害而受到真实伤害的反噬。",
-            "dynamicDescription": "奥拉夫狂野地挥舞他的双斧，造成<trueDamage>@TotalDamage@真实伤害</trueDamage>。如果该敌人阵亡，那么会返还此技能的消耗。<br><br>攻击会使这个技能的冷却时间缩短1秒。@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "Spell_OlafRecklessStrike_Tooltip@SpellModifierDescriptionAppend@",
             "range": [
                 325.0000,
                 325.0000,
@@ -1322,7 +1322,7 @@
             "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Olaf/HUD/Icons2D/OlafR.png",
             "abilityVideoPath": "champion-abilities/0002/ability_0002_R1.webm",
             "abilityVideoImagePath": "champion-abilities/0002/ability_0002_R1.jpg",
-            "cost": "无消耗",
+            "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "奥拉夫被动获得护甲和魔法抗性提升。他可以激活这个技能来变得免疫控制效果，并且会在他保持攻击时一直持续。",
             "dynamicDescription": "<spellPassive>被动：</spellPassive>奥拉夫获得<scaleArmor>@Resists@护甲</scaleArmor>和<scaleMR>@Resists@魔法抗性</scaleMR>。<br><br><spellActive>主动：</spellActive>奥拉夫净化掉他身上的所有<status>定身</status>和<status>限制</status>效果并且在接下来的@Duration@秒内免疫这些效果。在激活时，奥拉夫获得<scaleAD>@AD@攻击力</scaleAD>。用一次攻击或<spellName>鲁莽挥击</spellName>命中一名英雄时，会使持续时间延长@DurationExtension@秒。<br><br>此外，奥拉夫会在朝着敌方英雄时获得<speed>@Haste*100@%移动速度</speed>，持续@HasteDuration@秒。@SpellModifierDescriptionAppend@",
@@ -1335,12 +1335,12 @@
                 400.0000
             ],
             "costCoefficients": [
-                0.0000,
-                0.0000,
-                0.0000,
-                0.0000,
-                0.0000,
-                0.0000
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000,
+                100.0000
             ],
             "cooldownCoefficients": [
                 100.0000,

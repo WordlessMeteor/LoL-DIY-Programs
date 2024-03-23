@@ -1258,30 +1258,5 @@
         ],
         "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_Nautilus/HUD/TFT11_Nautilus_Square.TFT_Set11.jpg",
         "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_Nautilus_Mobile.TFT_Set11.png"
-    },
-    {
-        "path": "Characters/TFT11_XayahRakanDummy/CharacterRecords/Root",
-        "character_id": "TFT11_XayahRakanDummy",
-        "tier": 5,
-        "display_name": "霞与洛",
-        "traits": [
-            {
-                "name": "仙侣",
-                "id": "TFT11_Lovers",
-                "amount": 1
-            },
-            {
-                "name": "天龙之子",
-                "id": "TFT11_Dragonlord",
-                "amount": 1
-            },
-            {
-                "name": "迅捷射手/武仙子",
-                "id": "TFT11_TrickshotAltruist",
-                "amount": 1
-            }
-        ],
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Characters/TFT11_XayahRakanDummy/HUD/TFT11_XayahRakan_Square.TFT_Set11.jpg",
-        "squareSplashIconPath": "/lol-game-data/assets/ASSETS/UX/TFT/ChampionSplashes/TFT11_XayahRakan_Mobile.TFT_Set11.png"
     }
 ]
