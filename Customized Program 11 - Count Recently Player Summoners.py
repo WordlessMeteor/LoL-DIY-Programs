@@ -1126,7 +1126,7 @@ async def search_recent_players(connection):
                             LoLHistory_get = False
                             print("对局记录获取失败！请等待官方修复对局记录服务！\nMatch history capture failure! Please wait for Tencent to fix the match history service!")
                             break
-                        print('该玩家共进行%d场对局。\nThis player has played %d matches.\n' %(LoLHistory["games"]["gameCount"], LoLHistory["games"]["gameCount"]))
+                        print('该玩家共进行%d场英雄联盟对局。\nThis player has played %d LoL matches.\n' %(LoLHistory["games"]["gameCount"], LoLHistory["games"]["gameCount"]))
                     except KeyError:
                         print(LoLHistory)
                         LoLHistory_url = "%s/lol-match-history/v1/products/lol/%s/matches?begIndex=0&endIndex=200" %(connection.address, info["puuid"])
@@ -1818,6 +1818,7 @@ async def search_recent_players(connection):
                                         TFTHistory_get = False
                                         print("云顶之弈对局记录获取失败！请等待官方修复对局记录服务！\TFT match history capture failure! Please wait for Tencent to fix the match history service!")
                                         break
+                                    print('该玩家共进行%d场云顶之弈对局。\nThis player has played %d TFT matches.\n' %(len(TFTHistory["games"]), len(TFTHistory["games"])))
                                 except KeyError:
                                     if "errorCode" in TFTHistory:
                                         print(TFTHistory)
