@@ -1184,7 +1184,7 @@
         "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Lucian/HUD/Icons2D/Lucian_Passive.png",
         "abilityVideoPath": "champion-abilities/0236/ability_0236_P1.webm",
         "abilityVideoImagePath": "champion-abilities/0236/ability_0236_P1.jpg",
-        "description": "每使用一个技能时，卢锡安的下次普通攻击都会连射2次。当卢锡安从另一位友军处获得治疗或护盾、或者有一名附近的敌方英雄被<status>定身</status>时，他的下2次普通攻击造成额外魔法伤害。"
+        "description": "每使用一个技能时，卢锡安的下次普通攻击都会连射2次。当卢锡安从另一位友军处获得治疗或护盾、或者有一名附近的敌方英雄被定身时，他的下2次普通攻击造成额外魔法伤害。"
     },
     "spells": [
         {

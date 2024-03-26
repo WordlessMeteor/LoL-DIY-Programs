@@ -11024,6 +11024,45 @@
         "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/TooMuchCandy_II.TFT_Set11.png"
     },
     {
+        "guid": "ba2a336f-d2fc-453f-b7b4-afc22949c6a6",
+        "name": "Ethereal Blades+",
+        "nameId": "TFT11_Augment_ShenCarryPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/EtherealBlades_II.TFT_Set11.png"
+    },
+    {
+        "guid": "f6a45dfb-8f13-44d3-828f-6a90585ea1d3",
+        "name": "Drop Blossom!+",
+        "nameId": "TFT11_Augment_NeekoCarryPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/DropBlossom_II.TFT_Set11.png"
+    },
+    {
+        "guid": "e1b1503b-4f5e-4880-9c3a-b534773f89b6",
+        "name": "Midnight Siphon+",
+        "nameId": "TFT11_Augment_YorickCarryPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/MidnightSiphon_II.TFT_Set11.png"
+    },
+    {
         "guid": "12f5140e-6617-4a9c-8305-96e38b63f8f8",
         "name": "Champion Duplicator",
         "nameId": "TFT_Consumable_NeekosHelp",
@@ -17979,6 +18018,45 @@
         "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/TooMuchCandy_II.TFT_Set11.png"
     },
     {
+        "guid": "ba2a336f-d2fc-453f-b7b4-afc22949c6a6",
+        "name": "Ethereal Blades+",
+        "nameId": "TFT11_Augment_ShenCarryPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/EtherealBlades_II.TFT_Set11.png"
+    },
+    {
+        "guid": "f6a45dfb-8f13-44d3-828f-6a90585ea1d3",
+        "name": "Drop Blossom!+",
+        "nameId": "TFT11_Augment_NeekoCarryPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/DropBlossom_II.TFT_Set11.png"
+    },
+    {
+        "guid": "e1b1503b-4f5e-4880-9c3a-b534773f89b6",
+        "name": "Midnight Siphon+",
+        "nameId": "TFT11_Augment_YorickCarryPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/MidnightSiphon_II.TFT_Set11.png"
+    },
+    {
         "guid": "a66244f8-93a0-4cf0-8ac6-3924b64016ec",
         "name": "2 3-cost champions",
         "nameId": "TFT_Assist_Tier3_Units",
@@ -24360,5 +24438,44 @@
             "A": 255
         },
         "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/DropBlossom_II.TFT_Set11.png"
+    },
+    {
+        "guid": "ba2a336f-d2fc-453f-b7b4-afc22949c6a6",
+        "name": "Ethereal Blades+",
+        "nameId": "TFT11_Augment_ShenCarryPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/EtherealBlades_II.TFT_Set11.png"
+    },
+    {
+        "guid": "f6a45dfb-8f13-44d3-828f-6a90585ea1d3",
+        "name": "Drop Blossom!+",
+        "nameId": "TFT11_Augment_NeekoCarryPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/DropBlossom_II.TFT_Set11.png"
+    },
+    {
+        "guid": "e1b1503b-4f5e-4880-9c3a-b534773f89b6",
+        "name": "Midnight Siphon+",
+        "nameId": "TFT11_Augment_YorickCarryPlus",
+        "id": 0,
+        "color": {
+            "R": 255,
+            "B": 76,
+            "G": 241,
+            "A": 255
+        },
+        "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/MidnightSiphon_II.TFT_Set11.png"
     }
 ]

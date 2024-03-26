@@ -1322,7 +1322,7 @@
             "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Olaf/HUD/Icons2D/OlafR.png",
             "abilityVideoPath": "champion-abilities/0002/ability_0002_R1.webm",
             "abilityVideoImagePath": "champion-abilities/0002/ability_0002_R1.jpg",
-            "cost": "@Cost@ @AbilityResourceName@",
+            "cost": "无消耗",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "奥拉夫被动获得护甲和魔法抗性提升。他可以激活这个技能来变得免疫控制效果，并且会在他保持攻击时一直持续。",
             "dynamicDescription": "<spellPassive>被动：</spellPassive>奥拉夫获得<scaleArmor>@Resists@护甲</scaleArmor>和<scaleMR>@Resists@魔法抗性</scaleMR>。<br><br><spellActive>主动：</spellActive>奥拉夫净化掉他身上的所有<status>定身</status>和<status>限制</status>效果并且在接下来的@Duration@秒内免疫这些效果。在激活时，奥拉夫获得<scaleAD>@AD@攻击力</scaleAD>。用一次攻击或<spellName>鲁莽挥击</spellName>命中一名英雄时，会使持续时间延长@DurationExtension@秒。<br><br>此外，奥拉夫会在朝着敌方英雄时获得<speed>@Haste*100@%移动速度</speed>，持续@HasteDuration@秒。@SpellModifierDescriptionAppend@",
@@ -1335,12 +1335,12 @@
                 400.0000
             ],
             "costCoefficients": [
-                100.0000,
-                100.0000,
-                100.0000,
-                100.0000,
-                100.0000,
-                100.0000
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000,
+                0.0000
             ],
             "cooldownCoefficients": [
                 100.0000,

@@ -4724,7 +4724,7 @@
         "trait_id": "TFT11_InkShadow",
         "set": "TFTSet11",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Ink_Shadow.TFT_Set11.png",
-        "tooltip_text": "获得各种独特的【墨之影】装备。【墨之影】弈子们获得@PercentBuff@%伤害加成和伤害减免。<br><br><row>(@MinUnits@) @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item1@</row><br><row>(@MinUnits@) @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item2@和@IncreasedPercentBuff@%的额外伤害加成和伤害减免</row><br><row>(@MinUnits@) @TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item3@和@TFTUnitProperty.trait:TFT11_Trait_Inkshadow_Item4@</row>",
+        "tooltip_text": "tft_trait_description_TFT11_InkShadow",
         "innate_trait_sets": [
             {
                 "effect_amounts": [
@@ -5559,7 +5559,7 @@
         "trait_id": "TFT11_Umbral",
         "set": "TFTSet11",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Umbral.TFT_Set11.png",
-        "tooltip_text": "月光照亮若干格子，战斗开始时为其中的单位提供护盾。<br><br>处于月光格中的【夜幽】单位将处决低生命值的敌人。<br><br><row>(@MinUnits@) @ShieldAmount@护盾值；低于@DesireExecuteThreshhold@%生命值时触发处决</row><br><row>(@MinUnits@) @ShieldAmount@护盾值；低于@DesireExecuteThreshhold@%生命值时触发处决。更多格子被照亮。</row><br><row>(@MinUnits@) @ShieldAmount@护盾值并照亮整个棋盘</row><br><row>(@MinUnits@) 被处决的敌人有@DesireExecuteRewardPercent*100@%几率掉落战利品；低于@DesireExecuteThreshhold@%生命值时触发处决</row>",
+        "tooltip_text": "tft_trait_description_TFT11_Akana_Desire",
         "innate_trait_sets": [
             {
                 "effect_amounts": []

@@ -5559,7 +5559,7 @@
         "trait_id": "TFT11_Umbral",
         "set": "TFTSet11",
         "icon_path": "/lol-game-data/assets/ASSETS/UX/TraitIcons/Trait_Icon_11_Umbral.TFT_Set11.png",
-        "tooltip_text": "The moon illuminates hexes, Shielding units placed in them at the start of combat. <br><br>Umbral units in illuminated hexes execute low Health enemies.<br><br><row>(@MinUnits@) @ShieldAmount@&nbsp;Shield; @DesireExecuteThreshhold@% Health execute</row><br><row>(@MinUnits@) @ShieldAmount@&nbsp;Shield; @DesireExecuteThreshhold@% Health execute. More hexes are illuminated. </row><br><row>(@MinUnits@) @ShieldAmount@&nbsp;Shield and illuminate the whole board</row><br><row>(@MinUnits@) Executed enemies have a @DesireExecuteRewardPercent*100@% chance to drop loot; @DesireExecuteThreshhold@% Health execute </row>",
+        "tooltip_text": "The moon illuminates hexes, Shielding units placed in them at the start of combat. <br><br>Umbral units in illuminated hexes execute low Health enemies.<br><br><row>(@MinUnits@) @ShieldAmount@&nbsp;Shield; @DesireExecuteThreshhold@% Health execute</row><br><row>(@MinUnits@) @ShieldAmount@&nbsp;Shield; @DesireExecuteThreshhold@% Health execute. More hexes are illuminated </row><br><row>(@MinUnits@) @ShieldAmount@&nbsp;Shield; @DesireExecuteThreshhold@% Health execute. Illuminate the whole board</row><br><row>(@MinUnits@) Executed enemies have a @DesireExecuteRewardPercent*100@% chance to drop loot; @DesireExecuteThreshhold@% Health execute </row>",
         "innate_trait_sets": [
             {
                 "effect_amounts": []

@@ -1112,7 +1112,7 @@
         "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Lucian/HUD/Icons2D/Lucian_Passive.png",
         "abilityVideoPath": "champion-abilities/0236/ability_0236_P1.webm",
         "abilityVideoImagePath": "champion-abilities/0236/ability_0236_P1.jpg",
-        "description": "Whenever Lucian uses an ability, his next attack becomes a double-shot. When Lucian is healed or shielded by an ally, or when a nearby enemy Champion is <status>immobilized</status>, his next 2 basic attacks will deal bonus magic damage."
+        "description": "Whenever Lucian uses an ability, his next attack becomes a double-shot. When Lucian is healed or shielded by an ally, or when a nearby enemy Champion is immobilized, his next 2 basic attacks will deal bonus magic damage."
     },
     "spells": [
         {
