@@ -936,7 +936,7 @@
             "chromas": [
                 {
                     "id": 29056,
-                    "name": "奶酪首领 图奇 (Ruby)",
+                    "name": "奶酪首领 图奇 西瓜奶盖",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29056.png",
                     "colors": [
                         "#D33528",
@@ -957,7 +957,7 @@
                 },
                 {
                     "id": 29057,
-                    "name": "奶酪首领 图奇 (Aquamarine)",
+                    "name": "奶酪首领 图奇 蓝纹布里",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29057.png",
                     "colors": [
                         "#6ABBEE",
@@ -968,7 +968,7 @@
                 },
                 {
                     "id": 29058,
-                    "name": "奶酪首领 图奇 (Rose Quartz)",
+                    "name": "奶酪首领 图奇 切达奶酪",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29058.png",
                     "colors": [
                         "#E58BA5",
@@ -984,7 +984,7 @@
                 },
                 {
                     "id": 29059,
-                    "name": "奶酪首领 图奇 (Tanzanite)",
+                    "name": "奶酪首领 图奇 莓果蛋糕",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29059.png",
                     "colors": [
                         "#54209B",
@@ -995,7 +995,7 @@
                 },
                 {
                     "id": 29060,
-                    "name": "奶酪首领 图奇 (Peridot)",
+                    "name": "奶酪首领 图奇 抹茶蛋糕",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29060.png",
                     "colors": [
                         "#B6E084",
@@ -1006,7 +1006,7 @@
                 },
                 {
                     "id": 29061,
-                    "name": "奶酪首领 图奇 (Pearl)",
+                    "name": "奶酪首领 图奇 奶酪蛋糕",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29061.png",
                     "colors": [
                         "#ECF9F8",
@@ -1017,7 +1017,7 @@
                 },
                 {
                     "id": 29062,
-                    "name": "奶酪首领 图奇 (Meteorite)",
+                    "name": "奶酪首领 图奇 巧克力派",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29062.png",
                     "colors": [
                         "#5F432B",
@@ -1028,7 +1028,7 @@
                 },
                 {
                     "id": 29063,
-                    "name": "奶酪首领 图奇 (Rainbow)",
+                    "name": "奶酪首领 图奇 七彩蛋糕",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/29/29063.png",
                     "colors": [
                         "#C1F2FF",

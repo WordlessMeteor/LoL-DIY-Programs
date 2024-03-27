@@ -3468,7 +3468,7 @@
                 "effect_amounts": [
                     {
                         "name": "Resists",
-                        "value": 25.0000,
+                        "value": 20.0000,
                         "format_string": ""
                     }
                 ],
@@ -3481,7 +3481,7 @@
                 "effect_amounts": [
                     {
                         "name": "Resists",
-                        "value": 45.0000,
+                        "value": 40.0000,
                         "format_string": ""
                     }
                 ],
@@ -3521,7 +3521,7 @@
                 "effect_amounts": [
                     {
                         "name": "ArcanistAbilityPower",
-                        "value": 45.0000,
+                        "value": 50.0000,
                         "format_string": ""
                     },
                     {
@@ -3539,7 +3539,7 @@
                 "effect_amounts": [
                     {
                         "name": "ArcanistAbilityPower",
-                        "value": 80.0000,
+                        "value": 85.0000,
                         "format_string": ""
                     },
                     {
@@ -4449,7 +4449,7 @@
                     },
                     {
                         "name": "FlatLuck",
-                        "value": 30.0000,
+                        "value": 25.0000,
                         "format_string": ""
                     },
                     {
@@ -4613,7 +4613,7 @@
                     },
                     {
                         "name": "ASOneStar",
-                        "value": 12.0000,
+                        "value": 10.0000,
                         "format_string": ""
                     },
                     {
@@ -4623,7 +4623,7 @@
                     },
                     {
                         "name": "OmnivampOneStar",
-                        "value": 3.0000,
+                        "value": 6.0000,
                         "format_string": ""
                     },
                     {
@@ -5175,7 +5175,7 @@
                     },
                     {
                         "name": "BleedDamage",
-                        "value": 0.5000,
+                        "value": 0.4500,
                         "format_string": ""
                     }
                 ],

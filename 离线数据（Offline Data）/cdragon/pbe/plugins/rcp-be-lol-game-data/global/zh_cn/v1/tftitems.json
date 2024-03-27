@@ -9594,19 +9594,6 @@
         "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Going-Long-III.png"
     },
     {
-        "guid": "9c4db033-758e-4714-868a-f24341e32857",
-        "name": "挂件也疯狂",
-        "nameId": "TFT10_Augment_SticksAndStones",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Sticks-And-Stones-I.png"
-    },
-    {
         "guid": "25a12cd6-bdbe-4483-98fa-0bde66c38844",
         "name": "替罪羊",
         "nameId": "TFT10_Augment_Scapegoat",
@@ -10556,19 +10543,6 @@
         "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/ScoreboardScrapper_II.TFT_Set11.png"
     },
     {
-        "guid": "0b852e15-320b-49c4-9565-ee0914b70a95",
-        "name": "不计代价",
-        "nameId": "TFT11_Augment_AtWhatCost",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/AtWhatCost_III.TFT_Set11.png"
-    },
-    {
         "guid": "ecd5c234-4543-42ee-bb8c-e3aaa62201f2",
         "name": "变废为宝",
         "nameId": "TFT11_Augment_TrashToTreasure",
@@ -11025,7 +10999,7 @@
     },
     {
         "guid": "ba2a336f-d2fc-453f-b7b4-afc22949c6a6",
-        "name": "tft11_augment_ShenCarry+_name_",
+        "name": "缥缈之刃+",
         "nameId": "TFT11_Augment_ShenCarryPlus",
         "id": 0,
         "color": {
@@ -11038,7 +11012,7 @@
     },
     {
         "guid": "f6a45dfb-8f13-44d3-828f-6a90585ea1d3",
-        "name": "tft11_augment_NeekoCarry+_name_",
+        "name": "急落怒放！+",
         "nameId": "TFT11_Augment_NeekoCarryPlus",
         "id": 0,
         "color": {
@@ -11051,7 +11025,7 @@
     },
     {
         "guid": "e1b1503b-4f5e-4880-9c3a-b534773f89b6",
-        "name": "tft11_Augment_YorickCarry+_name_",
+        "name": "午夜虹吸+",
         "nameId": "TFT11_Augment_YorickCarryPlus",
         "id": 0,
         "color": {
@@ -16666,19 +16640,6 @@
         "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Going-Long-III.png"
     },
     {
-        "guid": "9c4db033-758e-4714-868a-f24341e32857",
-        "name": "挂件也疯狂",
-        "nameId": "TFT10_Augment_SticksAndStones",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Sticks-And-Stones-I.png"
-    },
-    {
         "guid": "25a12cd6-bdbe-4483-98fa-0bde66c38844",
         "name": "替罪羊",
         "nameId": "TFT10_Augment_Scapegoat",
@@ -17576,19 +17537,6 @@
         "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/FineVintage_I.TFT_Set11.png"
     },
     {
-        "guid": "0b852e15-320b-49c4-9565-ee0914b70a95",
-        "name": "不计代价",
-        "nameId": "TFT11_Augment_AtWhatCost",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/AtWhatCost_III.TFT_Set11.png"
-    },
-    {
         "guid": "ecd5c234-4543-42ee-bb8c-e3aaa62201f2",
         "name": "变废为宝",
         "nameId": "TFT11_Augment_TrashToTreasure",
@@ -18019,7 +17967,7 @@
     },
     {
         "guid": "ba2a336f-d2fc-453f-b7b4-afc22949c6a6",
-        "name": "tft11_augment_ShenCarry+_name_",
+        "name": "缥缈之刃+",
         "nameId": "TFT11_Augment_ShenCarryPlus",
         "id": 0,
         "color": {
@@ -18032,7 +17980,7 @@
     },
     {
         "guid": "f6a45dfb-8f13-44d3-828f-6a90585ea1d3",
-        "name": "tft11_augment_NeekoCarry+_name_",
+        "name": "急落怒放！+",
         "nameId": "TFT11_Augment_NeekoCarryPlus",
         "id": 0,
         "color": {
@@ -18045,7 +17993,7 @@
     },
     {
         "guid": "e1b1503b-4f5e-4880-9c3a-b534773f89b6",
-        "name": "tft11_Augment_YorickCarry+_name_",
+        "name": "午夜虹吸+",
         "nameId": "TFT11_Augment_YorickCarryPlus",
         "id": 0,
         "color": {
@@ -23335,19 +23283,6 @@
         "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Ascension2.png"
     },
     {
-        "guid": "9c4db033-758e-4714-868a-f24341e32857",
-        "name": "挂件也疯狂",
-        "nameId": "TFT10_Augment_SticksAndStones",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Sticks-And-Stones-I.png"
-    },
-    {
         "guid": "25a12cd6-bdbe-4483-98fa-0bde66c38844",
         "name": "替罪羊",
         "nameId": "TFT10_Augment_Scapegoat",
@@ -24441,7 +24376,7 @@
     },
     {
         "guid": "ba2a336f-d2fc-453f-b7b4-afc22949c6a6",
-        "name": "tft11_augment_ShenCarry+_name_",
+        "name": "缥缈之刃+",
         "nameId": "TFT11_Augment_ShenCarryPlus",
         "id": 0,
         "color": {
@@ -24454,7 +24389,7 @@
     },
     {
         "guid": "f6a45dfb-8f13-44d3-828f-6a90585ea1d3",
-        "name": "tft11_augment_NeekoCarry+_name_",
+        "name": "急落怒放！+",
         "nameId": "TFT11_Augment_NeekoCarryPlus",
         "id": 0,
         "color": {
@@ -24467,7 +24402,7 @@
     },
     {
         "guid": "e1b1503b-4f5e-4880-9c3a-b534773f89b6",
-        "name": "tft11_Augment_YorickCarry+_name_",
+        "name": "午夜虹吸+",
         "nameId": "TFT11_Augment_YorickCarryPlus",
         "id": 0,
         "color": {

@@ -123,13 +123,13 @@
         "iconPath": "/lol-game-data/assets/",
         "nameId": "TFT_Portals_Combat_WanderingTrainers",
         "displayName": "",
-        "description": "TFT_Portals_Combat_WanderingTrainers_Name"
+        "description": "雕纹魔像训练师"
     },
     {
         "iconPath": "/lol-game-data/assets/",
         "nameId": "TFT_Portals_Combat_WanderingVendors",
         "displayName": "",
-        "description": "TFT_Portals_Combat_WanderingVendors_Name"
+        "description": "雕纹魔像供应商"
     },
     {
         "iconPath": "/lol-game-data/assets/",

@@ -9594,19 +9594,6 @@
         "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Going-Long-III.png"
     },
     {
-        "guid": "9c4db033-758e-4714-868a-f24341e32857",
-        "name": "Sticks And Stones",
-        "nameId": "TFT10_Augment_SticksAndStones",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Sticks-And-Stones-I.png"
-    },
-    {
         "guid": "25a12cd6-bdbe-4483-98fa-0bde66c38844",
         "name": "Scapegoat",
         "nameId": "TFT10_Augment_Scapegoat",
@@ -10554,19 +10541,6 @@
             "A": 255
         },
         "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/ScoreboardScrapper_II.TFT_Set11.png"
-    },
-    {
-        "guid": "0b852e15-320b-49c4-9565-ee0914b70a95",
-        "name": "At What Cost",
-        "nameId": "TFT11_Augment_AtWhatCost",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/AtWhatCost_III.TFT_Set11.png"
     },
     {
         "guid": "ecd5c234-4543-42ee-bb8c-e3aaa62201f2",
@@ -16666,19 +16640,6 @@
         "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Going-Long-III.png"
     },
     {
-        "guid": "9c4db033-758e-4714-868a-f24341e32857",
-        "name": "Sticks And Stones",
-        "nameId": "TFT10_Augment_SticksAndStones",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Sticks-And-Stones-I.png"
-    },
-    {
         "guid": "25a12cd6-bdbe-4483-98fa-0bde66c38844",
         "name": "Scapegoat",
         "nameId": "TFT10_Augment_Scapegoat",
@@ -17574,19 +17535,6 @@
             "A": 255
         },
         "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/FineVintage_I.TFT_Set11.png"
-    },
-    {
-        "guid": "0b852e15-320b-49c4-9565-ee0914b70a95",
-        "name": "At What Cost",
-        "nameId": "TFT11_Augment_AtWhatCost",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/AtWhatCost_III.TFT_Set11.png"
     },
     {
         "guid": "ecd5c234-4543-42ee-bb8c-e3aaa62201f2",
@@ -23333,19 +23281,6 @@
             "A": 255
         },
         "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Ascension2.png"
-    },
-    {
-        "guid": "9c4db033-758e-4714-868a-f24341e32857",
-        "name": "Sticks And Stones",
-        "nameId": "TFT10_Augment_SticksAndStones",
-        "id": 0,
-        "color": {
-            "R": 255,
-            "B": 76,
-            "G": 241,
-            "A": 255
-        },
-        "squareIconPath": "/lol-game-data/assets/ASSETS/Maps/TFT/Icons/Augments/Hexcore/Sticks-And-Stones-I.png"
     },
     {
         "guid": "25a12cd6-bdbe-4483-98fa-0bde66c38844",

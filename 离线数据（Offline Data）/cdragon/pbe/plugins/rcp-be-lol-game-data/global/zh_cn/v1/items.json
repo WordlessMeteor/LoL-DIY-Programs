@@ -3724,8 +3724,8 @@
         "requiredBuffCurrencyCost": 0,
         "specialRecipe": 0,
         "isEnchantment": false,
-        "price": 100,
-        "priceTotal": 2700,
+        "price": 300,
+        "priceTotal": 2900,
         "iconPath": "/lol-game-data/assets/ASSETS/Items/Icons2D/3087_Statikk_Shiv.png"
     },
     {
@@ -4381,6 +4381,7 @@
         "categories": [
             "Damage",
             "AttackSpeed",
+            "SpellDamage",
             "OnHit"
         ],
         "maxStacks": 1,
@@ -9308,6 +9309,7 @@
         "categories": [
             "Damage",
             "AttackSpeed",
+            "SpellDamage",
             "OnHit"
         ],
         "maxStacks": 1,
@@ -11021,6 +11023,7 @@
         "categories": [
             "Damage",
             "AttackSpeed",
+            "SpellDamage",
             "OnHit"
         ],
         "maxStacks": 1,
@@ -13362,6 +13365,7 @@
         "categories": [
             "Damage",
             "AttackSpeed",
+            "SpellDamage",
             "OnHit"
         ],
         "maxStacks": 1,

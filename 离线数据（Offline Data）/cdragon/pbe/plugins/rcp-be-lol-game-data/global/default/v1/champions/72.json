@@ -5,15 +5,15 @@
     "title": "the Primordial Sovereign",
     "shortBio": "The ancient, colossal brackern Skarner is revered in Ixtal as one of the founding members of its ruling caste, the Yun Tal. Devoted to keeping his nation safe from the rest of the world, Skarner dwells in a chamber beneath Ixaocan where he can hear the vibrations of the earth and detect potential threats. As more members of the Yun Tal begin questioning Ixtal's self-isolation, Skarner grows increasingly paranoid and will do anything to keep Ixtal and its people safe—no matter the cost.",
     "tacticalInfo": {
-        "style": 1,
-        "difficulty": 1,
+        "style": 5,
+        "difficulty": 2,
         "damageType": "kMixed"
     },
     "playstyleInfo": {
-        "damage": 1,
-        "durability": 1,
-        "crowdControl": 1,
-        "mobility": 1,
+        "damage": 2,
+        "durability": 3,
+        "crowdControl": 3,
+        "mobility": 2,
         "utility": 1
     },
     "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/72.png",
@@ -94,7 +94,7 @@
             "rarityGemPath": null,
             "skinLines": null,
             "skinAugments": null,
-            "description": null
+            "description": "Once the guardian of an ancient civilization, Skarner was forced to watch it collapse before his eyes. He clings to a desperate hope that one day he and his companion can rebuild what was ripped away. Until then, he vows to remain vigilant, deterring any trespassers who dare threaten the ruins and the magic that pulses through them."
         },
         {
             "id": 72003,

@@ -5,15 +5,15 @@
     "title": "斯卡纳",
     "shortBio": "作为以绪塔尔统治阶层——育恩塔尔的初创成员之一，古老而庞大的壳人斯卡纳在这里深受景仰。他一心致力于保护这个国度免受外界所害，为此，斯卡纳栖息在以绪奥肯地下的密室中，聆听着大地的震动，只为了觉察潜在的威胁。但随着育恩塔尔越来越多的成员开始质疑他们与世隔离的做法，斯卡纳也变得越发偏执和猜疑。为了保护以绪塔尔和他的人民，他愿意不惜一切代价——无论这个代价意味着什么。",
     "tacticalInfo": {
-        "style": 1,
-        "difficulty": 1,
+        "style": 5,
+        "difficulty": 2,
         "damageType": "kMixed"
     },
     "playstyleInfo": {
-        "damage": 1,
-        "durability": 1,
-        "crowdControl": 1,
-        "mobility": 1,
+        "damage": 2,
+        "durability": 3,
+        "crowdControl": 3,
+        "mobility": 2,
         "utility": 1
     },
     "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/72.png",
@@ -94,7 +94,7 @@
             "rarityGemPath": null,
             "skinLines": null,
             "skinAugments": null,
-            "description": null
+            "description": "斯卡纳曾经是一个古老文明的守护者，却被迫眼睁睁地看着这个文明在他眼前崩溃。他抱有一种孤注一掷的希望，希望有一天他和他的同伴能够重建被摧毁的一切。在那之前，他发誓要保持警惕，阻止任何入侵者们——只要他们胆敢威胁到这片废墟以及脉动于其中的魔法。"
         },
         {
             "id": 72003,
@@ -457,7 +457,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "斯卡纳获得一个护盾并生成一阵地震，地震的冲击波会伤害并减速敌人们。",
-            "dynamicDescription": "斯卡纳获得<shield>@InitialShield@护盾值</shield>并引发一阵地震，来对附近的敌人们造成<magicDamage>@Damage@魔法伤害</magicDamage>和持续@SlowDuration@秒的@SlowEffect*-100@%<status>减速</status>。@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "斯卡纳获得持续@ShieldDuration@秒的<shield>@InitialShield@护盾值</shield>并引发一阵地震，来对附近的敌人们造成<magicDamage>@Damage@魔法伤害</magicDamage>和持续@SlowDuration@秒的@SlowEffect*-100@%<status>减速</status>。@SpellModifierDescriptionAppend@",
             "range": [
                 700.0000,
                 700.0000,

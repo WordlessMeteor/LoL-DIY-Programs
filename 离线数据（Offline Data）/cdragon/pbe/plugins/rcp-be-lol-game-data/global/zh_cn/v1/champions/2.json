@@ -1175,7 +1175,7 @@
             "cost": "消耗<font color='#FF3300'>@f1@生命值</font>",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "奥拉夫以破釜沉舟之势发动进攻，对目标造成真实伤害（不受护甲与魔抗减免），同时，自身也会根据敌方所受的伤害而受到真实伤害的反噬。",
-            "dynamicDescription": "Spell_OlafRecklessStrike_Tooltip@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "奥拉夫狂野地挥舞他的双斧，造成<trueDamage>@TotalDamage@真实伤害</trueDamage>。如果该敌人阵亡，那么会返还此技能的消耗。<br><br>攻击会使这个技能的冷却时间缩短1秒，在攻击野怪时，缩短值提升至2秒。@SpellModifierDescriptionAppend@",
             "range": [
                 325.0000,
                 325.0000,

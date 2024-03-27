@@ -641,7 +641,7 @@
             "chromas": [
                 {
                     "id": 31033,
-                    "name": "鳄加斯 (Ruby)",
+                    "name": "铁甲鳄加斯",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31033.png",
                     "colors": [
                         "#D33528",
@@ -650,7 +650,7 @@
                     "descriptions": [
                         {
                             "region": "riot",
-                            "description": ""
+                            "description": "这个炫彩曾在2024年期间作为礼包专属发布。"
                         }
                     ],
                     "rarities": [
@@ -662,7 +662,7 @@
                 },
                 {
                     "id": 31034,
-                    "name": "鳄加斯 (Aquamarine)",
+                    "name": "鲨鳍鳄加斯",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31034.png",
                     "colors": [
                         "#6ABBEE",
@@ -673,7 +673,7 @@
                 },
                 {
                     "id": 31035,
-                    "name": "鳄加斯 (Rose Quartz)",
+                    "name": "萌萌鳄加斯",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31035.png",
                     "colors": [
                         "#E58BA5",
@@ -689,7 +689,7 @@
                 },
                 {
                     "id": 31036,
-                    "name": "鳄加斯 (Tanzanite)",
+                    "name": "松饼鳄加斯",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31036.png",
                     "colors": [
                         "#54209B",
@@ -700,7 +700,7 @@
                 },
                 {
                     "id": 31037,
-                    "name": "鳄加斯 (Peridot)",
+                    "name": "金牙鳄加斯",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31037.png",
                     "colors": [
                         "#B6E084",
@@ -711,7 +711,7 @@
                 },
                 {
                     "id": 31038,
-                    "name": "鳄加斯 (Catseye)",
+                    "name": "百战鳄加斯",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31038.png",
                     "colors": [
                         "#DF9117",
@@ -722,7 +722,7 @@
                 },
                 {
                     "id": 31039,
-                    "name": "鳄加斯 (Obsidian)",
+                    "name": "星月夜鳄加斯",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31039.png",
                     "colors": [
                         "#27211C",
@@ -733,7 +733,7 @@
                 },
                 {
                     "id": 31040,
-                    "name": "鳄加斯 (Pearl)",
+                    "name": "斑点鳄加斯",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/31/31040.png",
                     "colors": [
                         "#ECF9F8",

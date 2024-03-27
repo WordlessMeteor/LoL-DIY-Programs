@@ -1003,7 +1003,7 @@
             "cost": "@Cost@ @AbilityResourceName@",
             "cooldown": "@Cooldown@秒 %i:cooldown%",
             "description": "魔腾减少所有敌方英雄的视野范围，并在此过程中移除敌方英雄的友军的视野。魔腾能够借机突进到附近的敌方英雄身边。",
-            "dynamicDescription": "魔腾使地图变暗，降低视野半径并移除敌方英雄们的友方视野，持续@ParanoiaDuration@秒。魔腾能够在持续期间<recast>再次施放</recast>这个技能，来突进到一名敌方英雄的身边并造成<physicalDamage>@Damage@物理伤害</physicalDamage>。@SpellModifierDescriptionAppend@",
+            "dynamicDescription": "魔腾使地图变暗，降低所有敌方英雄的视野半径并移除其友方视野，持续@ParanoiaDuration@秒。魔腾能够在持续期间<recast>再次施放</recast>这个技能，来突进到一名敌方英雄的身边并造成<physicalDamage>@Damage@物理伤害</physicalDamage>。@SpellModifierDescriptionAppend@",
             "range": [
                 2500.0000,
                 3250.0000,

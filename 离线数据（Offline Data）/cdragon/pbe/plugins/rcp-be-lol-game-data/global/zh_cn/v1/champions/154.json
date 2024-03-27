@@ -469,7 +469,7 @@
             "chromas": [
                 {
                     "id": 154025,
-                    "name": "香浓芝士 扎克 (Ruby)",
+                    "name": "香浓芝士 扎克 西瓜奶盖",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154025.png",
                     "colors": [
                         "#D33528",
@@ -490,7 +490,7 @@
                 },
                 {
                     "id": 154026,
-                    "name": "香浓芝士 扎克 (Meteorite)",
+                    "name": "香浓芝士 扎克 巧克力锅",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154026.png",
                     "colors": [
                         "#5F432B",
@@ -501,7 +501,7 @@
                 },
                 {
                     "id": 154027,
-                    "name": "香浓芝士 扎克 (Aquamarine)",
+                    "name": "香浓芝士 扎克 蓝色圣代",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154027.png",
                     "colors": [
                         "#6ABBEE",
@@ -512,7 +512,7 @@
                 },
                 {
                     "id": 154028,
-                    "name": "香浓芝士 扎克 (Emerald)",
+                    "name": "香浓芝士 扎克 鳄梨酱",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154028.png",
                     "colors": [
                         "#2DA130",
@@ -523,7 +523,7 @@
                 },
                 {
                     "id": 154029,
-                    "name": "香浓芝士 扎克 (Pearl)",
+                    "name": "香浓芝士 扎克 香蒜酱",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154029.png",
                     "colors": [
                         "#B6E084",
@@ -534,7 +534,7 @@
                 },
                 {
                     "id": 154030,
-                    "name": "香浓芝士 扎克 (Obsidian)",
+                    "name": "香浓芝士 扎克 黑芝麻糊",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154030.png",
                     "colors": [
                         "#27211C",
@@ -545,7 +545,7 @@
                 },
                 {
                     "id": 154031,
-                    "name": "香浓芝士 扎克 (Amethyst)",
+                    "name": "香浓芝士 扎克 森莓果冻",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154031.png",
                     "colors": [
                         "#9C68D7",
@@ -556,7 +556,7 @@
                 },
                 {
                     "id": 154032,
-                    "name": "香浓芝士 扎克 (Rose Quartz)",
+                    "name": "香浓芝士 扎克 甜品抹酱",
                     "chromaPath": "/lol-game-data/assets/v1/champion-chroma-images/154/154032.png",
                     "colors": [
                         "#E58BA5",
