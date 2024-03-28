@@ -18,21 +18,21 @@
             {
                 "SetCoreName": "TFTSet11",
                 "SetDisplayName": "REMIX RUMBLE IS ON",
-                "SetAugmentName": "Hexcore Augments",
+                "SetAugmentName": "Inkborn Augments",
                 "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set11.TFT_Set11.png",
                 "SetPortalSystemName": ""
             },
             {
                 "SetCoreName": "TFTSet11",
                 "SetDisplayName": "REMIX RUMBLE IS ON",
-                "SetAugmentName": "Hexcore Augments",
+                "SetAugmentName": "Inkborn Augments",
                 "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set11.TFT_Set11.png",
                 "SetPortalSystemName": ""
             },
             {
                 "SetCoreName": "TFTSet11",
                 "SetDisplayName": "REMIX RUMBLE IS ON",
-                "SetAugmentName": "Hexcore Augments",
+                "SetAugmentName": "Inkborn Augments",
                 "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set11.TFT_Set11.png",
                 "SetPortalSystemName": ""
             }
@@ -40,7 +40,7 @@
         "mDefaultSet": {
             "SetCoreName": "TFTSet11",
             "SetDisplayName": "REMIX RUMBLE IS ON",
-            "SetAugmentName": "Hexcore Augments",
+            "SetAugmentName": "Inkborn Augments",
             "SetAugmentContainer": "/lol-game-data/assets/ASSETS/UX/TFTMobile/PostGame/EOG_AugmentProp_Set11.TFT_Set11.png",
             "SetPortalSystemName": ""
         }
