@@ -3,10 +3,12 @@
 ----
 **本程序集仅供学习和个人娱乐，不得用于其它盈利用途！**
 
+**警告：请谨慎使用劫车脚本和克隆脚本！不当使用将导致账号永久封禁！**
+
 ----
 > 你永远可以相信：万物皆可二维表！
 
-本程序集基于LCU API和SGP API，主要实现**英雄联盟召唤师信息的导出**和**客户端行为的模拟**。
+本程序集基于<ins>LCU API和SGP API</ins>，主要实现**英雄联盟召唤师信息的导出**和**客户端行为的模拟**。
 ## 运行环境配置和基本说明
 1. 本程序集全部为Python程序，需要从[Python官网中](https://www.python.org/)下载最新版本的Python（不是最新版本也可，但不要太古早～），并通过pip安装所需的库。
     - 图文示范见[大乱斗概率测试脚本宣传手册](https://zhuanlan.zhihu.com/p/2009344399239316285)的第三节的第二小节。
@@ -112,6 +114,14 @@
             <td>
                 <ul>
                     <li>游戏文件提取（<a href="https://github.com/CommunityDragon/CDTB">cdtb库</a>使用）</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center;"><a href="https://space.bilibili.com/35535774">三元君_</a></td>
+            <td>
+                <ul>
+                    <li>说明文本和提交模式建议</li>
                 </ul>
             </td>
         </tr>

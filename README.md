@@ -5,15 +5,16 @@
 ----
 **This program set only supports study use or personal entertainment. Any commercial use is forbidden!**
 
+**Warning: Use Customized Programs 14 and 15 with extreme caution! Improper use will result in a permaban!**
+
 ----
 > Truth is: Anything can be converted into a 2D table.
 
-This program set mainly achieves **LoL Summoner information export** and **League Client behavior simulation**.
+This program set mainly achieves **LoL Summoner information export** and **League Client behavior simulation** based on <ins>LCU API and SGP API</ins>.
 ## Environment setup and basic notes
 1. The whole program set is made of Python programs. Users are highly suggested to download the latest version of Python from [Python official website](https://www.python.org/) (It's OK if you don't install the latest version, but please make sure it's not too old) and then install necessary libraries with pip.
     - Refer to Section 3, Subsection 2 of [ARAM Probability Test Program Brochure](https://zhuanlan.zhihu.com/p/2009344399239316285) for a more vivid tutorial.
-    - For this first time of Python installation, please check <ins>Add Python to PATH</ins> option.
-    - If the working directories of Python aren't present in the environment variable Path, the following steps can be adopted to add Python to Path.
+    - For this first time of Python installation, please check <ins>Add Python to PATH</ins> option. If the working directories of Python aren't present in the environment variable Path, the following steps can be adopted to add Python to Path.
         1. Type in `path` in Windows search bar and click **Edit system environment variables**. **System Properties** window will pop up.
         2. Click **Environment Variables (N)** button and the **Environment Variable** window will occur.
         3. In **User Variables**, Find the variable `Path` and double-click it to enter the **Edit environment variable** dialog box.
@@ -115,6 +116,14 @@ This program set mainly achieves **LoL Summoner information export** and **Leagu
             <td>
                 <ul>
                     <li>Game Data Extraction (<a href="https://github.com/CommunityDragon/CDTB">cdtb</a> HOWTO)</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center;"><a href="https://space.bilibili.com/35535774">三元君_</a></td>
+            <td>
+                <ul>
+                    <li>Suggestions on README and commit pattern</li>
                 </ul>
             </td>
         </tr>
