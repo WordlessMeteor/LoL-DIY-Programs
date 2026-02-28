@@ -72,7 +72,7 @@ def format_df(df: pandas.DataFrame, width_exceed_ask: bool = True, direct_print:
         if not all(map(lambda x: x in {"<", "^", ">"}, header_align)) or not all(map(lambda x: x in {"<", "^", ">"}, align)):
             print('排列方式字符串参数错误！排列方式必须是“<”“^”或者“>”中的一个。请修改排列方式字符串参数。\nParameter ERROR of the alignment string! The alignment value must be one of {"<", "^", ">"}. Please change the alignment string parameter.')
         if len(header_align) == 0: #指定为空字符串，即默认居中输出（Specifying it as a null string means output centered by default）
-            header_alignments = ["^"] * df.shape[1]
+            header_alignments: list[str] = ["^"] * df.shape[1]
         elif len(header_align) == 1:
             header_alignments = [header_align] * df.shape[1]
         else:
@@ -214,7 +214,7 @@ def requestUrl(method: str, url: str, session: requests.sessions.Session | None 
                 else:
                     logPrint(f"请求失败！正在尝试第{retry}次重新获取数据！\nRequest failed! Trying to recapture the data with url: {url}. Time(s) tried: {retry}", write_time = False)
             else:
-                return (source, source.status_code, session)
+                return (source, 200, session)
     return (source, source.status_code, session)
 
 def CopyConvert(src: str, dst: str) -> None: #纯文本文件复制函数（Plain text file copy function）
