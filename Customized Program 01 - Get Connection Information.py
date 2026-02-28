@@ -1,4 +1,6 @@
 from lcu_driver import Connector
+from lcu_driver.connection import Connection
+from typing import Any
 
 #=============================================================================
 # * 声明（Declaration）
@@ -6,7 +8,7 @@ from lcu_driver import Connector
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2025/04/13
+# 更新（Last update）：     2026/01/31
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -16,13 +18,13 @@ from lcu_driver import Connector
 #    https://github.com/sousa-andre/lcu-driver
 #-----------------------------------------------------------------------------
 
-connector = Connector()
+connector: Connector = Connector()
 
 #-----------------------------------------------------------------------------
 # 自定义函数（DIY Function）
 #-----------------------------------------------------------------------------
-async def get_connection_data(connection):
-    current_summoner = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
+async def get_connection_data(connection: Connection) -> None:
+    current_summoner: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     print("连接信息如下：\nConnection information is as follows:")
     print("address: ", connection.address)
     print("auth_key: ", connection.auth_key)
@@ -44,8 +46,12 @@ async def get_connection_data(connection):
 # websocket
 #-----------------------------------------------------------------------------
 @connector.ready
-async def connect(connection):
+async def connect(connection: Connection) -> None:
     await get_connection_data(connection)
+
+@connector.close
+async def disconnect(connection: Connection) -> None:
+    print("已从英雄联盟客户端断开连接。\nDisconnected from the League Client.")
 
 #-----------------------------------------------------------------------------
 # Main

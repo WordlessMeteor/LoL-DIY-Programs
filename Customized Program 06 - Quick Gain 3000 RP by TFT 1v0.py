@@ -1,5 +1,8 @@
 from lcu_driver import Connector
+from lcu_driver.connection import Connection
 import os, time
+from typing import Any, Optional
+from src.utils.summoner import get_summoner_data
 
 #=============================================================================
 # * 声明（Declaration）
@@ -7,7 +10,7 @@ import os, time
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2025/05/10
+# 更新（Last update）：     2026/02/09
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -17,48 +20,16 @@ import os, time
 #    https://github.com/sousa-andre/lcu-driver
 #-----------------------------------------------------------------------------
 
-connector = Connector()
-
-async def get_summoner_data(connection):
-    data = await connection.request('GET', '/lol-summoner/v1/current-summoner')
-    summoner = await data.json()
-    print("displayName:    %s" %(summoner["gameName"] + "#" + summoner["tagLine"]))
-    print("summonerId:     %s" %(summoner["summonerId"]))
-    print("puuid:          %s" %(summoner["puuid"]))
-    print("-")
-
-
-#-----------------------------------------------------------------------------
-#  lockfile
-#-----------------------------------------------------------------------------
-async def update_lockfile(connection):
-    path = os.path.join(connection.installation_path.encode('gb18030').decode('utf-8'), 'lockfile')
-    if os.path.isfile(path):
-        file = open(path, 'w+')
-        text = "LeagueClient:%d:%d:%s:%s" %(connection.pid, connection.port, connection.auth_key, connection.protocols[0])
-        file.write(text)
-        file.close()
-    return None
-
-async def get_lockfile(connection):
-    path = os.path.join(connection.installation_path.encode('gb18030').decode('utf-8'), 'lockfile')
-    if os.path.isfile(path):
-        file = open(path, 'r')
-        text = file.readline().split(':')
-        file.close()
-        print(connection.address)
-        print(f'riot    {connection.auth_key}')
-        return connection.auth_key
-    return None
+connector: Connector = Connector()
 
 #-----------------------------------------------------------------------------
 # 快速启动云顶之弈对局（Quickly launch a TFT match）
 #-----------------------------------------------------------------------------
-async def RP_generator(connection):
-    queue = {"queueId": 1220}
-    count = 1
+async def RP_generator(connection: Connection) -> None:
+    queue: dict[str, Any] = {"queueId": 1220}
+    count: int = 1
     while True:
-        create_lobby = await (await connection.request("POST", "/lol-lobby/v2/lobby", data = queue)).json()
+        create_lobby: dict[str, Any] = await (await connection.request("POST", "/lol-lobby/v2/lobby", data = queue)).json()
         print("create-lobby = %s. Times tried: %d" %(create_lobby, count))
         if "errorCode" in create_lobby:
             if create_lobby["message"] == "INVALID_LOBBY":
@@ -66,7 +37,7 @@ async def RP_generator(connection):
                 time.sleep(5)
                 return create_lobby["httpStatus"]
             elif create_lobby["message"] == "Gameflow prevented a lobby.":
-                gameflow_phase = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
+                gameflow_phase: str = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
                 if gameflow_phase != "None":
                     print(f"gameflow-phase = {gameflow_phase}")
                     print("您正在选择英雄或者游戏内！程序即将退出！\nYou're right now in champ select or game progress! The program will exit soon!")
@@ -78,7 +49,7 @@ async def RP_generator(connection):
     #寻找对局（Find match）
     count = 1
     while True:
-        start_game = await (await connection.request("POST", "/lol-lobby/v2/lobby/matchmaking/search")).json()
+        start_game: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/lobby/matchmaking/search")).json()
         print("start-game = %s. Times tried: %d" %(start_game, count))
         if start_game == None:
             break
@@ -103,7 +74,7 @@ async def RP_generator(connection):
             os._exit(0)
         count += 1
     #接受对局（Accept）
-    accept = await (await connection.request("POST", "/lol-matchmaking/v1/ready-check/accept")).json()
+    accept: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-matchmaking/v1/ready-check/accept")).json()
     print("match-accept = " + str(accept))
     #游戏中（In progress）
     while True:
@@ -121,9 +92,13 @@ async def RP_generator(connection):
 # websocket
 #-----------------------------------------------------------------------------
 @connector.ready
-async def connect(connection):
+async def connect(connection: Connection) -> None:
     await get_summoner_data(connection)
     await RP_generator(connection)
+
+@connector.close
+async def disconnect(connection: Connection) -> None:
+    print("已从英雄联盟客户端断开连接。\nDisconnected from the League Client.")
 
 #-----------------------------------------------------------------------------
 # Main

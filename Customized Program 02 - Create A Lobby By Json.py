@@ -1,5 +1,7 @@
 from lcu_driver import Connector
-import os
+from lcu_driver.connection import Connection
+from typing import Any, Optional
+from src.utils.summoner import get_summoner_data
 
 #=============================================================================
 # * 声明（Declaration）
@@ -7,7 +9,7 @@ import os
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2025/08/27
+# 更新（Last update）：     2026/02/09
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -17,56 +19,21 @@ import os
 #    https://github.com/sousa-andre/lcu-driver
 #-----------------------------------------------------------------------------
 
-connector = Connector()
-
-#-----------------------------------------------------------------------------
-# 获得召唤师数据（Get access to summoner data）
-#-----------------------------------------------------------------------------
-async def get_summoner_data(connection):
-    data = await connection.request("GET", "/lol-summoner/v1/current-summoner")
-    summoner = await data.json()
-    print("displayName:    %s" %(summoner["gameName"] + "#" + summoner["tagLine"]))
-    print("summonerId:     %s" %(summoner["summonerId"]))
-    print("puuid:          %s" %(summoner["puuid"]))
-    print("-")
-
-
-#-----------------------------------------------------------------------------
-#  lockfile
-#-----------------------------------------------------------------------------
-async def update_lockfile(connection):
-    path = os.path.join(connection.installation_path.encode('gb18030').decode('utf-8'), 'lockfile')
-    if os.path.isfile(path):
-        file = open(path, 'w+')
-        text = "LeagueClient:%d:%d:%s:%s" %(connection.pid, connection.port, connection.auth_key, connection.protocols[0])
-        file.write(text)
-        file.close()
-    return None
-
-async def get_lockfile(connection):
-    import os
-    path = os.path.join(connection.installation_path.encode('gb18030').decode('utf-8'), 'lockfile')
-    if os.path.isfile(path):
-        file = open(path, 'r')
-        text = file.readline().split(':')
-        file.close()
-        print(connection.address)
-        print(f'riot    {text[3]}')
-        return text[3]
-    return None
+connector: Connector = Connector()
 
 #-----------------------------------------------------------------------------
 # 创建训练模式 5V5 自定义房间（Create a Practice Tool lobby）
 #-----------------------------------------------------------------------------
-async def create_custom_lobby(connection):
-    custom = {
+async def create_custom_lobby(connection: Connection) -> None:
+    custom: dict[str, Any] = {
         "queueId": 3140,
         "isCustom": True,
         "customGameLobby": {
-            "lobbyName": "WordlessMeteor's Lobby",
+            "lobbyName": "Custom Lobby",
             "lobbyPassword": "",
             "configuration": {
                 "mapId": 11,
+                "aramMapMutator": "MapSkin_HA_Bilgewater",
                 "gameMode": "PRACTICETOOL",
                 "gameTypeConfig": {
                     "id": 1
@@ -80,16 +47,20 @@ async def create_custom_lobby(connection):
             }
         }
     }
-    response = await (await connection.request("POST", "/lol-lobby/v2/lobby", data = custom)).json()
+    response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/lobby", data = custom)).json()
     print(response)
 
 #-----------------------------------------------------------------------------
 # websocket
 #-----------------------------------------------------------------------------
 @connector.ready
-async def connect(connection):
+async def connect(connection: Connection) -> None:
     await get_summoner_data(connection)
     await create_custom_lobby(connection)
+
+@connector.close
+async def disconnect(connection: Connection) -> None:
+    print("已从英雄联盟客户端断开连接。\nDisconnected from the League Client.")
 
 #-----------------------------------------------------------------------------
 # Main

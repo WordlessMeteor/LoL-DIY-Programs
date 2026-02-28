@@ -2,8 +2,8 @@
 setlocal enabledelayedexpansion
 set batchFilePath=%~dp0
 set folderPath="%batchFilePath%\召唤师信息（Summoner Information）"
-echo 请选择数据文档转换方向: 
-echo Please select a direction for data file format conversion: 
+echo 请选择数据文档转换方向：
+echo Please select a direction for data file format conversion:
 echo 1	txt → json
 echo 2	json → txt
 set /p flag=
