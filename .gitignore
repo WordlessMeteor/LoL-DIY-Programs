@@ -3,6 +3,7 @@
 #调试文件（Debug files）
 调试脚本.py
 生成表头.py
+GitIgnore Generator.py
 #日志文件（Log files）
 离线数据（Offline Data）/Update Logs/*
 日志（Logs）/*
@@ -15,3 +16,6 @@ cache/*
 离线数据（Offline Data）/cdragon/*
 离线数据（Offline Data）/ddragon/*
 离线数据（Offline Data）/versions.json
+#不开源脚本（Non-open-source programs）
+Customized Program 14 - Vie An Open Lobby's Seat.py
+Customized Program 15 - Create Any Manual OneForAll Game.py
