@@ -1,12 +1,13 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
 import argparse, json, keyboard, os, random, time
-from typing import Any, Callable, Optional
+from typing import Any, Callable, Iterable, Optional
 from typing_extensions import Literal
 from src.utils.logger import LogManager
 from src.utils.webRequest import SGPSession
 from src.utils.patch import Patch
 from src.utils.summoner import get_summoner_data
+from src.core.config.const import TEST_GAME_INFO
 from src.core.dataframes.matchHistory import get_game_info_sgp, get_game_timeline_sgp
 
 parser = argparse.ArgumentParser()
@@ -20,7 +21,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/02/03
+# 更新（Last update）：     2026/03/02
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -35,7 +36,7 @@ connector: Connector = Connector()
 #-----------------------------------------------------------------------------
 # 遍历对局以查找符合要求的对局（Traverse the matches to find one that fits the demands）
 #-----------------------------------------------------------------------------
-def acquire_matchId_limit(start_matchId: Optional[int] = None, end_matchId: Optional[int] = None, func: Optional[Callable[[dict[str, Any]], bool]] = None) -> tuple[int, int]: #处理命令行和函数传入的变量（Handle the arguments passed from cmdline and a function）
+def specify_matchId_limit(start_matchId: Optional[int] = None, end_matchId: Optional[int] = None) -> tuple[int, int]: #处理命令行和函数传入的变量（Handle the arguments passed from cmdline and a function）
     if args.begin == 0 or not isinstance(args.begin, int):
         if start_matchId == None:
             print("请输入起始对局序号：\nPlease input the starting matchId:")
@@ -90,7 +91,7 @@ def acquire_matchId_limit(start_matchId: Optional[int] = None, end_matchId: Opti
     else:
         return (start_matchId, end_matchId)
 
-async def search_match(connection: Connection, start_matchId: Optional[int] = None, end_matchId: Optional[int] = None, func: Optional[Callable[[dict[str, Any]], bool]] = None, product: Optional[Literal["LoL", "TFT"]] = None) -> int:
+async def search_match(connection: Connection, start_matchId: Optional[int] = None, end_matchId: Optional[int] = None, func_str: str = "", product: Literal["LoL", "TFT", ""] = "") -> int:
     '''
     在给定对局上下限的情况下，遍历范围内的对局，并保存所有符合条件的对局信息和时间轴。<br>Given the starting and ending matchIds, traverse save information and timeline of matches that meet the condition.
     
@@ -100,20 +101,41 @@ async def search_match(connection: Connection, start_matchId: Optional[int] = No
     :type start_matchId: int
     :param end_matchId: 终止对局序号。<br>Ending matchId.
     :type end_matchId: int
-    :param func: 判断条件函数，给定对局序号的情况下返回其是否符合条件。<br>A condition judgment function that returns whether a matchId meets the condition.
-    :type func: Callable[[dict[str, Any]], bool]
+    :param func_str: 判断条件函数的字符串形式，给定对局序号的情况下返回其是否符合条件。<br>A string form of a condition judgment function that returns whether a matchId meets the condition.
+    :type func_str: str
+    :param product: 游戏产品名。有以下取值：<br>Game product name, which has the following values:
+    
+        - LoL: 英雄联盟（League of Legends）
+        - TFT: 云顶之弈（Teamfight Tactics）
+    :type product: str
     :return: 状态码。<br>Status code.
     :rtype: int
     '''
     #参数预处理（Parameter preprocess）
-    start_matchId, end_matchId = acquire_matchId_limit(start_matchId, end_matchId)
+    start_matchId, end_matchId = specify_matchId_limit(start_matchId, end_matchId)
     if start_matchId == -1 and end_matchId == -1:
         return -1
-    if func == None:
+    if func_str == "":
         print("未指定条件函数。将保存所有有效的对局信息和时间轴。\nNo condition function specified. All valid match information and timeline will be saved.")
-        func = lambda x: "metadata" in x and "json" in x
+        func: Callable[[dict[str, Any]], bool] = lambda x: "metadata" in x and "json" in x
+    else:
+        try:
+            func = eval(f"lambda game_info: {func_str}")
+        except:
+            print("判断条件函数语法错误！\nCondition judgment function syntax error!")
+            return -1
+        else:
+            try:
+                tmp = func(TEST_GAME_INFO) #校验函数是否能如期运行（Check whether the function can run as expected）
+            except:
+                print("判断条件函数运行出错！\nAn error occurred when testing the condition judgment function!")
+                return -1
+            else:
+                if not isinstance(tmp, bool):
+                    print("判断条件函数返回类型错误！\nCondition judgment function return type mismatch!")
+                    return -1
     #变量和会话初始化（Variable and session initialization）
-    if product == None:
+    if product == "":
         checkLoL: bool = True
         checkTFT: bool = False
         skipTFT: bool = False
@@ -137,9 +159,12 @@ async def search_match(connection: Connection, start_matchId: Optional[int] = No
     logPrint = log.logPrint
     session.setLog(log)
     logPrint(f"正在查询{platformId}服务器的对局……\nSearching matches on server {platformId} ...")
-    logPrint(f"【参数设置】本次查询的对局序号范围（matchId range for this query）：[{start_matchId}, {end_matchId}]")
+    logPrint(f"【参数设置】对局序号范围（matchId range）：[{start_matchId}, {end_matchId}]")
+    logPrint(f"【参数设置】判断条件（Condition）： {func_str}")
+    logPrint(f"【参数设置】产品（Product）：{product}")
     #查询前的数据结构准备（Data structure prepared for query）
     matches_found: list[int] = []
+    #遍历对局序号（Traverse matchIds）
     gameCount: int = end_matchId - start_matchId + 1
     for matchId in range(start_matchId, end_matchId + 1):
         if keyboard.is_pressed("esc"):
@@ -179,7 +204,7 @@ async def search_match(connection: Connection, start_matchId: Optional[int] = No
     log.close()
     return 0
 
-async def binary_search_match(connection: Connection, start_matchId: Optional[int] = None, end_matchId: Optional[int] = None, func: Optional[Callable[[dict[str, Any]], bool]] = None, matchIds_not_found: Optional[set[int]] = None, product: Literal["LoL", "TFT"] = "LoL") -> int:
+async def binary_search_match(connection: Connection, start_matchId: Optional[int] = None, end_matchId: Optional[int] = None, func_str: str = "", product: Literal["LoL", "TFT", ""] = "LoL", matchIds_not_found: Optional[set[int]] = None) -> int:
     '''
     在给定对局上下限的情况下，通过指定判断条件函数参数，查询符合条件的**一场**对局。<br>Given the starting and ending matchIds, by specifying the condition judgment function in the parameter, this function searches for **a** match that fits the conditions.
     
@@ -196,20 +221,41 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
     :type start_matchId: int
     :param end_matchId: 终止对局序号。<br>Ending matchId.
     :type end_matchId: int
-    :param func: 判断条件函数，给定对局序号的情况下返回其是否符合条件。<br>A condition judgment function that returns whether a matchId meets the condition.
-    :type func: Callable[[dict[str, Any]], bool]
+    :param func_str: 阈值函数的字符串形式，给定对局序号的情况下返回其是否符合条件。<br>A string form of a threshold function that returns whether a matchId meets the condition.
+    :type func_str: str
+    :param product: 游戏产品名。有以下取值：<br>Game product name, which has the following values:
+    
+        - LoL: 英雄联盟（League of Legends）
+        - TFT: 云顶之弈（Teamfight Tactics）
+    :type product: str
     :param matchIds_not_found: 通过事先指定不存在的对局序号，减少请求次数。在某个阶段提示后半部分无可用对局时，用户中断程序后重新运行的情形下非常好用。<br>Decrease the number of requests by specifying the matchIds of matches that don't exist in advance. Especially useful when the program gives a hint that "No match found in latter half", then the user interrupts the program and runs it again.
     :type matchIds_not_found: set[int]
     :return: 符合条件的最小对局序号。<br>The smallest matchId that fits the condition.
     :rtype: int
     '''
     #参数预处理（Parameter preprocess）
-    start_matchId, end_matchId = acquire_matchId_limit(start_matchId, end_matchId)
+    start_matchId, end_matchId = specify_matchId_limit(start_matchId, end_matchId)
     if start_matchId == -1 and end_matchId == -1:
         return -1
-    if func == None:
+    if func_str == "":
         print("请指定一个条件函数。\nPlease specify a condition function.")
         return -1
+    else:
+        try:
+            func: Callable[[dict[str, Any]], bool] = eval(f"lambda game_info: {func_str}")
+        except:
+            print("阈值函数语法错误！\nThreshold function syntax error!")
+            return -1
+        else:
+            try:
+                tmp = func(TEST_GAME_INFO) #校验函数是否能如期运行（Check whether the function can run as expected）
+            except:
+                print("阈值函数运行出错！\nAn error occurred when testing the threshold function!")
+                return -1
+            else:
+                if not isinstance(tmp, bool):
+                    print("阈值函数必须返回一个逻辑值。\nThe threshold function must return a boolean value.")
+                    return -1
     if matchIds_not_found == None:
         matchIds_not_found = set()
     #变量和会话初始化（Variable and session initialization）
@@ -225,8 +271,12 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
     currentTime = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())
     log: LogManager = LogManager(os.path.join(log_folder, currentTime + ".log"), mode = "a+", encoding = "utf-8")
     logPrint = log.logPrint
+    logPrint(f"正在查询{platformId}服务器的对局……\nSearching matches on server {platformId} ...")
+    logPrint(f"【参数设置】对局序号范围（matchId range）：[{start_matchId}, {end_matchId}]")
+    logPrint(f"【参数设置】判断条件（Condition）： {func_str}")
+    logPrint(f"【参数设置】产品（Product）：{product}")
     #首先检查目标对局序号是否会落在所指定的对局序号范围中（First, check whether the target matchId will fall within the specified matchId range）
-    logPrint("正在递减查找起始对局……\nSearching for an available starting match by decrement ...")
+    logPrint("【参数处理】正在递减查找起始对局……\nSearching for an available starting match by decrement ...")
     while True:
         print(start_matchId, end = "\r")
         match_id: str = f"{platformId}_{start_matchId}"
@@ -236,11 +286,11 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
         else:
             traversed_matchIds[start_matchId] = func(game_info)
             if func(game_info):
-                logPrint(f"起始对局序号{start_matchId}已符合条件。请尝试更改条件或者换用一个更小的起始对局序号。\nThe starting matchId {start_matchId} already meets the demands. Please try again with another condition or a smaller `start_matchId`.")
+                logPrint(f"【中止程序】起始对局序号{start_matchId}已符合条件。请尝试更改条件或者换用一个更小的起始对局序号。\nThe starting matchId {start_matchId} already meets the demands. Please try again with another condition or a smaller `start_matchId`.")
                 return -1
             else:
                 break
-    logPrint("正在递增查找终止对局……\nSearching for an available ending match by increment ...")
+    logPrint("【参数处理】正在递增查找终止对局……\nSearching for an available ending match by increment ...")
     while True:
         print(end_matchId, end = "\r")
         match_id: str = f"{platformId}_{end_matchId}"
@@ -252,7 +302,7 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
             if func(game_info):
                 break
             else:
-                logPrint(f"终止对局序号{end_matchId}不符合条件。请尝试更改条件或者换用一个更大的终止对局序号。\nThe ending matchId {end_matchId} doesn't meet the demands. Please try again with another condition or a bigger `end_matchId`.")
+                logPrint(f"【中止程序】终止对局序号{end_matchId}不符合条件。请尝试更改条件或者换用一个更大的终止对局序号。\nThe ending matchId {end_matchId} doesn't meet the demands. Please try again with another condition or a bigger `end_matchId`.")
                 return -1
     #执行二分查找。需要着重解决对局序号的稀疏性（Perform the binary search. Need to settle the sparsity of matchIds）
     logPrint("开始执行二分查找。\nBegin to perform binary search.")
@@ -392,28 +442,177 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
     logPrint(f"结果（Result）： {result}")
     return result
 
-#在这里自定义用于对局遍历函数的判断条件函数（Define the custom condition judgment conditions for `search_match` function hereafter）
+#在这里自定义用于对局遍历函数的判断条件函数模板（Define the custom condition judgment function templates for `search_match` function hereafter）
 ##示例（Examples）
 def isKiwiMatch(game_info: dict[str, Any]) -> bool:
     return game_info["metadata"]["product"] == "LoL" and game_info["json"]["gameMode"] == "KIWI"
 
-#在这里自定义用于二分查找对局函数的判断条件函数（Define the custom condition judgment conditions for `binary_search_match` function hereafter）
+#在这里自定义用于二分查找对局函数的阈值函数模板（Define the custom threshold function templates for `binary_search_match` function hereafter）
 ##调试（Debug）
-def condition_debug(game_info: dict[str, Any]) -> bool:
-    return game_info["json"]["gameId"] >= 8502294282
+def gameId_compare(game_info: dict[str, Any], gameId: int) -> bool:
+    return game_info["json"]["gameId"] >= gameId
 
 ##示例（Examples）
-def first_match_after_mainteinance(game_info: dict[str, Any]) -> bool:
-    return game_info["json"].get("endOfGameResult", "") != "Abort_Unexpected" and Patch(game_info["json"]["gameVersion"]) >= Patch("16.5")
+def first_match_after_mainteinance(game_info: dict[str, Any], patch: str) -> bool:
+    return game_info["json"].get("endOfGameResult", "") != "Abort_Unexpected" and Patch(game_info["json"]["gameVersion"]) >= Patch(patch)
+
+def define_function() -> tuple[str, Optional[Callable[[dict[str, Any]], bool]]]:
+    while True:
+        func_str: str = input("f(game_info): ")
+        if func_str == "":
+            func = None
+            break
+        else:
+            try:
+                func = eval(f"lambda game_info: {func_str}")
+            except:
+                print("您的输入有误！请重新输入。\nERROR input! Please try again.")
+            else:
+                try:
+                    tmp = func(TEST_GAME_INFO) #校验函数是否能如期运行（Check whether the function can run as expected）
+                except:
+                    print("函数运行出错！请重新输入。\nAn error occurred when testing the function! Please try again.")
+                else:
+                    if isinstance(tmp, bool):
+                        break
+                    else:
+                        print("您输入的函数返回的不是逻辑值！请重新输入。\nYour function doesn't return a boolean value! Please try again.")
+    return (func_str, func)
 
 #-----------------------------------------------------------------------------
 # websocket
 #-----------------------------------------------------------------------------
 @connector.ready
 async def connect(connection: Connection) -> None:
+    threshold_function_definition_hint_printed: bool = False #标记是否已经打印过阈值函数定义的提示（Marks whether the program has printed the hint of a threshold function's definition）
     await get_summoner_data(connection)
-    # await search_match(connection, start_matchId = 4524116001, end_matchId = 4524406763, func = None, product = None)
-    await binary_search_match(connection, 4524891249, 4524988488, first_match_after_mainteinance, product = "LoL")
+    print("请选择一个选项：\nPlease select an option:\n0\t退出程序（Exit the program）\n1\t遍历对局序号（Traverse matchIds）\n2\t二分查找对局（Binary search for a match）")
+    while True:
+        option: str = input()
+        if option == "":
+            continue
+        elif option[0] == "0":
+            break
+        elif option[0] == "1":
+            prepared: bool = False #标记函数参数是否准备就绪（Marks whether the parameters are ready）
+            step: int = 1 #步骤计数（Step counter）
+            start_matchId: int = -1 #起始对局序号（Starting matchId）
+            end_matchId: int = -1 #终止对局序号（Ending matchId）
+            func_str: str = "" #函数字符串（Function string）
+            func: Optional[Callable[[dict[str, Any]], bool]] = None #函数对象（Function object）
+            product: str = "" #产品（Product）
+            while True:
+                if step == 0:
+                    break
+                elif step == 1:
+                    start_matchId, end_matchId = specify_matchId_limit()
+                    if start_matchId == -1 and end_matchId == -1:
+                        step -= 2
+                elif step == 2:
+                    print('请输入一个筛选对局的函数。该函数应当返回逻辑值。\nPlease input a function to filter matches. This function should return a boolean value.\n示例（Example）：\ngame_info["metadata"]["product"] == "LoL" and game_info["json"]["gameMode"] == "KIWI" #判断对局是否是海克斯大乱斗（Judge whethe a match is ARAM: Mayhem）\n输入空字符串以放弃筛选，转而保留所有对局的信息。\nSumbit an empty string to give up filtering and save all matches instead.')
+                    func_str, func = define_function()
+                elif step == 3:
+                    print('请选择一个产品。\nPlease select a product.\n0\t返回第一步（Return to the first step）\n1\t英雄联盟（LoL）\n2\t云顶之弈（TFT）\n%s3\t全部（Both）' %("☆" if func == None else "!"))
+                    while True:
+                        product_option: str = input()
+                        if product_option == "":
+                            continue
+                        elif product_option[0] == "0":
+                            step = 0
+                            break
+                        elif product_option[0] == "1":
+                            product = "LoL"
+                            break
+                        elif product_option[0] == "2":
+                            product = "TFT"
+                            break
+                        elif product_option[0] == "3":
+                            product = ""
+                            break
+                        else:
+                            print("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                elif step == 4:
+                    prepared = True
+                    break
+                else:
+                    print("步骤异常。请联系开发人员修复程序。\nStep error. Please contact the developer to fix the program.")
+                step += 1
+            if prepared:
+                await search_match(connection, start_matchId = start_matchId, end_matchId = end_matchId, func_str = func_str, product = product)
+            break
+        elif option[0] == "2":
+            prepared: bool = False
+            step: int = 1
+            start_matchId: int = -1
+            end_matchId: int = -1
+            func_str: str = ""
+            func: Optional[Callable[[dict[str, Any]], bool]] = None
+            product: str = ""
+            matchIds_not_found: set[int] = set()
+            while True:
+                if step == 0:
+                    break
+                elif step == 1:
+                    start_matchId, end_matchId = specify_matchId_limit()
+                    if start_matchId == -1 and end_matchId == -1:
+                        step -= 2
+                elif step == 2:
+                    if not threshold_function_definition_hint_printed:
+                        print("阈值函数f：存在唯一的对局序号x₀ ∈ [a, b]，使得对于任意的x < x₀，f(x)为假，且对于任意的x ≥ x₀，f(x)为真。\nThreshold function f: There exists a unique matchId x₀ ∈ [a, b] such that for any x < x₀, f(x) is false, and for any x ≥ x₀, f(x) is true.")
+                        threshold_function_definition_hint_printed = True
+                    print('请输入一个阈值函数。该函数应当返回逻辑值。\nPlease input a threshold function. This function should return a boolean value.\n示例（Example）：\ngame_info["json"]["gameId"] >= 8502294282 #获取对局序号在8502294282之后的下一场可用对局（Get the next available match after Match 8502294282）\ngame_info["json"].get("endOfGameResult", "") != "Abort_Unexpected" and Patch(game_info["json"]["gameVersion"]) >= Patch("16.5") #查找当前大区在26.05版本的第一场对局（Check the first match in Patch 26.05 on the current server）\n输入空字符串以返回上一步。\nSumbit an empty string to return to the last step.')
+                    func_str, func = define_function()
+                    if func == None:
+                        step -= 2
+                elif step == 3:
+                    print('请选择一个产品。\nPlease select a product.\n0\t返回上一步（Return to the last step）\n1\t英雄联盟（LoL）\n2\t云顶之弈（TFT）')
+                    while True:
+                        product_option: str = input()
+                        if product_option == "":
+                            continue
+                        elif product_option[0] == "0":
+                            step -= 2
+                            break
+                        elif product_option[0] == "1":
+                            product = "LoL"
+                            break
+                        elif product_option[0] == "2":
+                            product = "TFT"
+                            break
+                        else:
+                            print("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                elif step == 4:
+                    print('''如果您已知某些对局不存在，请在下方输入它们的对局序号组成的列表。输入空字符串以跳过此步骤。输入“0”以返回上一步。\nIf you already know that some matches don't exist, please provide them here. Submit an empty string to skip this step. Submit "0" to return to the last step.''')
+                    while True:
+                        matchIds_not_found_str: str = input()
+                        if matchIds_not_found_str == "":
+                            matchIds_not_found = set()
+                            break
+                        elif matchIds_not_found_str[0] == "0":
+                            step -= 2
+                            break
+                        else:
+                            try:
+                                tmp = eval(matchIds_not_found_str)
+                            except:
+                                print("语法错误！请重新输入。\nSyntax ERROR! Please try again.")
+                            else:
+                                if isinstance(tmp, Iterable) and all(map(lambda x: isinstance(x, int), tmp)):
+                                    matchIds_not_found = set(tmp)
+                                    break
+                                else:
+                                    print("格式错误！请重新输入。\nFormat ERROR! Please try again.")
+                elif step == 5:
+                    prepared = True
+                    break
+                else:
+                    print("步骤异常。请联系开发人员修复程序。\nStep error. Please contact the developer to fix the program.")
+                step += 1
+            if prepared:
+                await binary_search_match(connection, start_matchId = start_matchId, end_matchId = end_matchId, func_str = func_str, product = product, matchIds_not_found = matchIds_not_found)
+            break
+        else:
+            print("请选择一个选项：\nPlease select an option:\n0\t退出程序（Exit the program）\n1\t遍历对局序号（Traverse matchIds）\n2\t二分查找对局（Binary search for a match）")
 
 @connector.close
 async def disconnect(connection: Connection) -> None:

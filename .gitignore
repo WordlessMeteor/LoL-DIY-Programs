@@ -7,6 +7,7 @@ GitIgnore Generator.py
 #日志文件（Log files）
 离线数据（Offline Data）/Update Logs/*
 日志（Logs）/*
+*.log
 #库缓存（Pycache）
 *__pycache__*
 #由程序生成的数据文件（Generated data files）
