@@ -4379,8 +4379,11 @@ async def lobby_simulation(connection: Connection) -> str:
                                 if gameflow_phase == "Lobby" or gameflow_phase == "ChampSelect":
                                     lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
                                     if lobby_information["localMember"]["isLeader"]:
-                                        await add_bots_team(connection, teamId = "100")
-                                        await add_bots_team(connection, teamId = "200")
+                                        if os.path.exists("available-bots.xlsx"):
+                                            await add_bots_team(connection, teamId = "100")
+                                            await add_bots_team(connection, teamId = "200")
+                                        else:
+                                            logPrint("未在同目录下发现可用电脑玩家工作簿。请使用查英雄脚本生成该工作簿。\nAvailable bot workbook isn't found under the same directory. Please generate it through Customized Program 04.")
                                     else:
                                         logPrint("您不是小队拥有者，无法进行此操作。\nYou're not the lobby owner and thus can't perform this operation.")
                                 else:
