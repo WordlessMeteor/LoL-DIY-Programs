@@ -2084,8 +2084,16 @@ async def add_bots_team(connection: Connection, teamId: str = "200") -> None:
             botPositions.remove(position)
             botPositions_tmp.append(position)
     botPositions = botPositions_tmp + botPositions
+    botPositions_bulkLane: list[str] = list(botPositions_set)
+    botPositions_tmp: list[str] = []
+    for position in ["TOP", "MIDDLE", "BOTTOM", "UTILITY", "JUNGLE"]:
+        if position in botPositions_bulkLane:
+            botPositions_bulkLane.remove(position)
+            botPositions_tmp.append(position)
+    botPositions_bulkLane = botPositions_tmp + botPositions_bulkLane
     del botPositions_tmp
     #botPositions: list[str] = ["TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY"]
+    #botPositions_bulkLane: list[str] = ["TOP", "MIDDLE", "BOTTOM", "UTILITY", "JUNGLE"]
     ##各分路的英雄（Champions on each lane）
     recommended_champion_for_position: dict[str, list[int]] = {} #用于生成某条分路的随机英雄（Used to generate random champions of specific positions respectively）
     for position in botPositions:
@@ -2152,8 +2160,8 @@ async def add_bots_team(connection: Connection, teamId: str = "200") -> None:
                 botPositions_add_str: str = logInput()
                 botPositions_add = botPositions_add_str.split()
                 if botPositions_add == []:
-                    botPositions_add = botPositions[:]
-                if all(map(lambda x: x in botPositions, botPositions_add)):
+                    botPositions_add = botPositions_bulkLane[:]
+                if all(map(lambda x: x in botPositions_bulkLane, botPositions_add)):
                     botPositions_add = botPositions_add[:maxTeamSize]
                     break
                 else:
@@ -2286,7 +2294,8 @@ async def add_bots_team(connection: Connection, teamId: str = "200") -> None:
         while True:
             botDifficulty_team: str = logInput()
             if botDifficulty_team == "":
-                continue
+                botDifficulty_team = "RSINTERMEDIATE"
+                break
             elif botDifficulty_team in botDifficulties:
                 break
             else:
