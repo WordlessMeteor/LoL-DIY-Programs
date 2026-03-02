@@ -933,7 +933,7 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
             if not switch_prepare_mode:
                 break
     if not switch_language:
-        #下面按照程序需求对数据资源进行一定的整理。需要注意，从Json中读取到的整数键会被转换为字符串（The following code sort out the data resource according to the program's need. Note that integer keys read from local json files will transform into strings）
+        #下面按照程序需求对数据资源进行一定的整理。需要注意，从Json中读取到的整数键会被转换为字符串（The following code organize the data resource according to the program's need. Note that integer keys read from local json files will transform into strings）
         queues_initial = {int(queue_iter["id"]): queue_iter for queue_iter in queue_initial} #queues为嵌套字典，键为队列序号，值为游戏模式信息字典。一个键值对的示例如右：（Variable `queues` is a nested dictionary, whose keys are queueIds and values are game mode information dictionaries. An example of the key-value pairs is shown as follows: ）{"id": 0, "name": "", "shortName": "", "description": "", "detailedDescription": "", "gameSelectModeGroup": "kARAM", "gameSelectCategory": "kPvP", "gameSelectPriority": 0, "isSkillTreeQueue": false, "isLimitedTimeQueue": false, "isBotHonoringAllowed": false, "hidePlayerPosition": false, "viableChampionRoster": null}
         spells_initial = {int(spell_iter["id"]): spell_iter for spell_iter in spell_initial} #spells为嵌套字典，键为召唤师技能序号，值为召唤师技能信息字典。一个键值对的示例如右：（Variable `spells` is a nested dictionary, whose keys are spellIds and values are spell information dictionaries. An example of the key-value pairs is shown as follows: ）{1: {"name": "净化", "description": "移除身上的所有限制效果（压制效果和击飞效果除外）和召唤师技能的减益效果，并且若在接下来的3秒里再次被施加限制效果时，新效果的持续时间会减少65%。", "summonerLevel": 9, "cooldown": 210, "gameModes": ["URF", "CLASSIC", "ARSR", "ARAM", "ULTBOOK", "WIPMODEWIP", "TUTORIAL", "DOOMBOTSTEEMO", "PRACTICETOOL", "FIRSTBLOOD", "NEXUSBLITZ", "PROJECT", "ONEFORALL"], "iconPath": "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_boost.png"}}
         LoLChampions_initial = {int(LoLChampion_iter["id"]): LoLChampion_iter for LoLChampion_iter in LoLChampion_initial} #LoLChampions为嵌套字典，键为英雄序号，值为英雄信息字典。一个键值对的示例如右：（Variable `LoLItems` is a nested dictionary, whose keys are itemIds and values are item information dictionaries. An example of the key-value pairs is shown as follows: ）{1: {"name": "黑暗之女", "alias": "Annie", "squarePortraitPath": "/lol-game-data/assets/v1/champion-icons/1.png", "roles": ["mage", "support"]}}
@@ -1112,7 +1112,7 @@ async def sort_basic_info(connection: Connection, puuid: str, remove_empty: bool
     if isinstance(topStatstones, dict) and "errorCode" in topStatstones:
         logPrint(topStatstones)
         logPrint("玩家%s的最高永恒星碑信息获取失败。\nTop statstone information of Player %s capture failed." %(displayName, displayName))
-    #然后整理数据（Then sort out data）
+    #然后整理数据（Then organize data）
     unmapped_keys: dict[str, set[Any]] = {"summonerIcon": set(), "regaliaBanner": set(), "LoLChampion": set()}
     profile_header_keys: list[str] = list(profile_header.keys())
     profile_data: dict[str, list[Any]] = {"项目": [], "Items": [], "值": []}
@@ -1332,7 +1332,7 @@ async def sort_ranked_ladders(connection: Connection, puuid: str) -> pandas.Data
     ladder_data: dict[str, list[Any]] = {key: [] for key in ladder_header_keys}
     for i in range(len(ladders)):
         ladder: dict[str, Any] = ladders[i]
-        logPrint("顶级%s%s玩家信息整理进度（Top %s %s player information sorting process）：" %(queueTypes[ladder["queueType"]], tiers_all[ladder["tier"]], ladder["queueType"], ladder["tier"]))
+        logPrint("顶级%s%s玩家信息整理进度（Top %s %s player information organization process）：" %(queueTypes[ladder["queueType"]], tiers_all[ladder["tier"]], ladder["queueType"], ladder["tier"]))
         for j in range(len(ladder["divisions"])):
             division: dict[str, Any] = ladder["divisions"][j]
             for k in range(len(division["standings"])):
@@ -1422,7 +1422,7 @@ async def search_profile(connection: Connection) -> None:
     TemplateBoolList: list[bool] = [False for i in range(len(bigPatches))] #为什么想到起个template作为后面字典的构成，是为了致敬后续出现的模板羁绊（The reason why I choose a name containing "template" to compose the following dictionary is in honor of the following "TemplateTrait"）
     recaptured_header: list[str] = ["bigPatch", "spell", "LoLChampion", "LoLItem", "summonerIcon", "perk", "perkstyle", "TFTAugment", "TFTChampion", "TFTItem", "TFTCompanion", "TFTTrait", "CherryAugment"]
     recaptured: dict[str, dict[str, bool]] = {str(bigPatch): {_: False for _ in recaptured_header} for bigPatch in bigPatches}
-    #实际上，目前recaptured并未投入使用。原本打算使用这个字典，是因为有些时候在获取连续的几场版本相同的对局时，如果都没能正确地把数据对应到其名称，那么每一局都会提示将原始数据填充至单元格。但是后来想到，这样虽然会使得输出减少，但是一旦代码完成英雄联盟对局记录的数据整理，要开始整理具体每一场对局了，那么回归到最近的对局的获取时，由于这场场对局的数据可能标记为“曾经获取过”，那么程序可能不再获取这场对局的版本的数据。此时，程序刚完成对局记录的整理，而对局记录最后几场对局可能是老版本，有些新版本的数据是没有的。这样的话，本来可以通过重新获取新版本的数据来将原始数据对应到其名称，现在却因为新版本被标记为已获取过数据的版本，而导致其原始数据被保存下来（Actually, `recaptured` isn't used currently. The original plan on using this dictionary is due to that if the data of several continuous matches of the same gameVersion fail to be mapped to their names, then the prompt like `the original data will be adopted` will pop up for every match to be captured. But then I come to realize that the use of `recaptured` may reduce the output, but under the circumstance of finishing the data sorting of LoL match history, when the program is about to capture the latest specific game information and timeline, then the program may never fetch data of this patch. At that time, the program has just finished sorting out the match history. Maybe the data version then is an old version, and it doesn't include some new data. In that case, the program could have recaptured data of the latest patch to map data to the corresponding names, but because of the use of `recapture`, this latest patch is marked as "a patch that has been recaptured", and hence the original data instead of their corresponding labels are saved）
+    #实际上，目前recaptured并未投入使用。原本打算使用这个字典，是因为有些时候在获取连续的几场版本相同的对局时，如果都没能正确地把数据对应到其名称，那么每一局都会提示将原始数据填充至单元格。但是后来想到，这样虽然会使得输出减少，但是一旦代码完成英雄联盟对局记录的数据整理，要开始整理具体每一场对局了，那么回归到最近的对局的获取时，由于这场场对局的数据可能标记为“曾经获取过”，那么程序可能不再获取这场对局的版本的数据。此时，程序刚完成对局记录的整理，而对局记录最后几场对局可能是老版本，有些新版本的数据是没有的。这样的话，本来可以通过重新获取新版本的数据来将原始数据对应到其名称，现在却因为新版本被标记为已获取过数据的版本，而导致其原始数据被保存下来（Actually, `recaptured` isn't used currently. The original plan on using this dictionary is due to that if the data of several continuous matches of the same gameVersion fail to be mapped to their names, then the prompt like `the original data will be adopted` will pop up for every match to be captured. But then I come to realize that the use of `recaptured` may reduce the output, but under the circumstance of finishing the data organization of LoL match history, when the program is about to capture the latest specific game information and timeline, then the program may never fetch data of this patch. At that time, the program has just finished organizing the match history. Maybe the data version then is an old version, and it doesn't include some new data. In that case, the program could have recaptured data of the latest patch to map data to the corresponding names, but because of the use of `recapture`, this latest patch is marked as "a patch that has been recaptured", and hence the original data instead of their corresponding labels are saved）
     #下面创建一个字典，用来存储程序正在使用的各数据资源的版本（The following code create a dictionary to store the versions of data resources that the program currently uses）
     current_versions: dict[str, str] = {"queue": URLPatch, "spell": URLPatch, "LoLChampion": URLPatch, "LoLItem": URLPatch, "summonerIcon": URLPatch, "perk": URLPatch, "perkstyle": URLPatch, "TFTAugment": URLPatch, "TFTChampion": URLPatch, "TFTItem": URLPatch, "TFTCompanion": URLPatch, "TFTTrait": URLPatch, "CherryAugment": URLPatch}
     #下面创建一个字典，用来存储程序正在使用的各数据资源的版本下发生错误的键。当某个数据资源更换版本时，其出错的键会被清空（The following code create a dictionary to store the keys that fail to map to the constant dictionaries under certain versions of each kind of data resource. Once the version of a data resource changes, its unmapped keys will be cleared）
@@ -1566,7 +1566,7 @@ async def search_profile(connection: Connection) -> None:
         info_df: pandas.DataFrame = await sort_basic_info(connection, current_puuid)
         info_htmlTable: str = info_df.to_html(escape = False)
         
-        #整理英雄成就数据（Sort out champion mastery data）
+        #整理英雄成就数据（Organize champion mastery data）
         #logPrint("召唤师英雄成就如下：\nSummoner champion mastery is as follows:")
         mastery: list[dict[str, Any]] = await (await connection.request("GET", f"/lol-champion-mastery/v1/{current_puuid}/champion-mastery")).json()
         #logPrint(mastery)
@@ -1586,7 +1586,7 @@ async def search_profile(connection: Connection) -> None:
         #     pickle.dump(mastery, IntObj2)
         mastery_df: pandas.DataFrame = await sort_champion_mastery(connection, LoLChampions, current_puuid)
         
-        #整理排位数据（Sort out ranked data）
+        #整理排位数据（Organize ranked data）
         #logPrint("召唤师排位数据如下：\nSummoner ranked data are as follows:") #排位赛部分数据位于召唤师信息中（Part of ranked data are in Profile Sheet）
         ranked: dict[str, Any] = await (await connection.request("GET", f"/lol-ranked/v1/ranked-stats/{current_puuid}")).json()
         #logPrint(ranked)
@@ -1627,7 +1627,7 @@ async def search_profile(connection: Connection) -> None:
         ranked_df: pandas.DataFrame = await sort_ranked_data(connection, current_puuid)
         ranked_htmltable: str = ranked_df.to_html(escape = False)
         
-        #整理天梯数据（Sort out ranked apex data）
+        #整理天梯数据（Organize ranked apex data）
         #logPrint("召唤师所在赛段天梯数据如下：\nSummoner league ladders data are as follows:")
         ladders: list[dict[str, Any]] = await (await connection.request("GET", f"/lol-ranked/v1/league-ladders/{current_puuid}")).json()
         json07name: str = "Ranked Ladders - " + displayName + ".json"
@@ -1649,7 +1649,7 @@ async def search_profile(connection: Connection) -> None:
             for division in ladder["divisions"]:
                 standings_count += len(division["standings"])
         if standings_count > 1000:
-            logPrint(f"即将整理{standings_count}名玩家的信息。是否继续？（输入任意键继续，否则不整理）\nInformation of {standings_count} player(s) is going to be sorted out. Do you want to continue? (Submit any non-empty string to continue or null to refuse)")
+            logPrint(f"即将整理{standings_count}名玩家的信息。是否继续？（输入任意键继续，否则不整理）\nInformation of {standings_count} player(s) is going to be organized. Do you want to continue? (Submit any non-empty string to continue or null to refuse)")
             ladder_sort_str: str = logInput()
             ladder_sort: bool = bool(ladder_sort_str)
         else:
@@ -1672,7 +1672,7 @@ async def search_profile(connection: Connection) -> None:
         isLoL: dict[int, bool] = {}
         isTFT: dict[int, bool] = {}
         
-        #整理英雄联盟对局记录（Sort out LoL match history）
+        #整理英雄联盟对局记录（Organize LoL match history）
         logPrint("是否查询英雄联盟对局记录？（输入任意键查询，否则不查询）\nSearch LoL matches? (Input anything to search or null to skip searching LoL matches)")
         search_LoL_str: str = logInput()
         search_LoL: bool = bool(search_LoL_str)
@@ -1735,7 +1735,7 @@ async def search_profile(connection: Connection) -> None:
             LoLMatchIDs: list[int] = [] #代表实际需要查询的对局序号（Represents the matchIds for query）
             LoLMatches_not_found: list[int] = [] #在扫描模式下，当从本地文件获取的对局从API重新获取出现异常时，处理策略是输出异常信息并跳过该对局，而不是将其直接从对局序号列表中去除，因为这样会使循环乱套。而后面的info_exist_error、timeline_exist_error、main_player_included和match_reserve_strategy只会在该对局正常获取时才会统计。所以一旦出现数据获取失败的对局，在最后导出数据时，“if match_reserve_strategy[i]:”语句会出现“IndexError: list index out of range”报错（Under scan mode, when an exception occurred during crawling matches with LoLMatchIDs obtained from local files from API, the strategy is to print the exception and skip this match, instead of directly removing them from the matchId list, for the removal will disturb the loop. However, the variables info_exist_error, timeline_exist_error, main_player_included and match_reserve_strategy only work when the matches are crawled from the database as expected. So once a match fails to be captured, during xlsx file export at the end of the program, an "IndexError: list index out of range" exception will emerge from the statement "if match_reserve_strategy[i]:"）
             error_LoLMatchIDs: list[int] = [] #记录实际存在但未如期获取的对局序号（Records the LoL matchIDs that really exist but fail to be fetched）
-            scan_lol: bool = False #用于将扫描获取的历史记录保存为后缀为“ - Scan”的工作表，防止后续【一键查询】时会把【本地重查】辛辛苦苦得到的对局记录覆盖掉。这样也有利于手动重整，即每次【一键查询】后，可手动将新增的对局记录加到后缀为“ - Scan”的工作表中（Determines whether to save the match histories to a sheet postfixxed with " - Scan", in case the subsequent [One-Key Query] overwrites the match histories fetched and sorted hard by [Local Recheck]. It also helps manual arrangement. That is, after each [One-Key Query], the user may manually add the new match histories to the sheet postfixxed with " - Scan"）
+            scan_lol: bool = False #用于将扫描获取的历史记录保存为后缀为“ - Scan”的工作表，防止后续【一键查询】时会把【本地重查】辛辛苦苦得到的对局记录覆盖掉。这样也有利于手动重整，即每次【一键查询】后，可手动将新增的对局记录加到后缀为“ - Scan”的工作表中（Determines whether to save the match histories to a sheet postfixxed with " - Scan", in case the subsequent [One-Key Query] overwrites the match histories fetched and organized hard by [Local Recheck]. It also helps manual arrangement. That is, after each [One-Key Query], the user may manually add the new match histories to the sheet postfixxed with " - Scan"）
             old_LoLMatch_detected = len(saved_LoLMatchIDs) > 0 #是否检测到旧对局（Whether any old match is detected）
             update_unsaved_only: bool = False #决定在批量查询时是否只保存未保存过的对局（Decides whether to only save the unsaved matches during searching in batches）
             while True:
@@ -1804,7 +1804,7 @@ async def search_profile(connection: Connection) -> None:
                             CherryAugments = CherryAugments_initial.copy()
                             current_versions["queue"] = current_versions["summonerIcon"] = current_versions["spell"] = current_versions["LoLChampion"] = current_versions["LoLItem"] = current_versions["perk"] = current_versions["perkstyle"] = current_versions["CherryAugment"] = URLPatch
                             unmapped_keys["queue"], unmapped_keys["summonerIcon"], unmapped_keys["spell"], unmapped_keys["LoLChampion"], unmapped_keys["LoLItem"], unmapped_keys["perk"], unmapped_keys["perkstyle"], unmapped_keys["CherryAugment"] = set(), set(), set(), set(), set(), set(), set(), set()
-                            #官方的历史记录最多保留200场对局的个人信息。这里要实现将待保存对局全部整理成一个类似于历史记录的布局的功能（要查看历史记录的原来的布局，可以先不使用scan选项，生成Excel文件后查看“Match History”工作表的布局），所以不再使用前面的历史记录，而是从每一局中提取信息，整合成一张历史记录表。因此，大部分代码复制自前面一部分的代码（Official match history holds personal history of at most 200 matches. Here I want to implement a function to sort the information of all matches into a table like the original match history table. (To check this format for the first time, please don't choose the "scan" option and view the "Match History" sheet of the generated xlsx file.) Therefore, the previous history_df is abandoned. Instead, information in the match history is extracted from all matches to form the table subsequently）
+                            #官方的历史记录最多保留200场对局的个人信息。这里要实现将待保存对局全部整理成一个类似于历史记录的布局的功能（要查看历史记录的原来的布局，可以先不使用scan选项，生成Excel文件后查看“Match History”工作表的布局），所以不再使用前面的历史记录，而是从每一局中提取信息，整合成一张历史记录表。因此，大部分代码复制自前面一部分的代码（Official match history holds personal history of at most 200 matches. Here I want to implement a function to organize the information of all matches into a table like the original match history table. (To check this format for the first time, please don't choose the "scan" option and view the "Match History" sheet of the generated xlsx file.) Therefore, the previous history_df is abandoned. Instead, information in the match history is extracted from all matches to form the table subsequently）
                             if use_sgp:
                                 LoLHistory_df_all = (await reconstruct_LoLHistory_sgp(connection, sgpSession, LoLMatchIDs, current_puuid_list, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, log = log))[0]
                             else:
@@ -1856,7 +1856,7 @@ async def search_profile(connection: Connection) -> None:
                     match_id: str = f"{platformId}_{matchId}"
                     LoLGame_info_export: bool = not (old_LoLMatch_detected and update_unsaved_only and matchId in saved_LoLMatchIDs) #标记是否导出对局详细信息。如果是在批量查询全部对局的情况下仅保存本地没有的对局，且该对局已在本地，则不保存本场对局（Marks whether to export the match information. If the user submits "3" to search matches in batch and selected to update the matches that don't exist locally, while the current match already exists, then the program won't export this match）
                     #LoLGame_leaderboard_export: bool = False #标记是否导出对局排行榜。这一块目前待定，未来考虑设计识别成只有那些要保存的匹配对局才导出（Marks whether to export the match leaderboard. This is currently undicided, and in the future it should export matched games to be saved as planned）
-                    LoLGame_timeline_export: bool = LoLGame_info_export #标记是否导出对局时间轴。时间轴的整理依赖于详细信息，因此目前认为这两者的值相同（Marks whether to export the match timeline. Timeline data sorting is based on the match information, so its value is set the same as the above）
+                    LoLGame_timeline_export: bool = LoLGame_info_export #标记是否导出对局时间轴。时间轴的整理依赖于详细信息，因此目前认为这两者的值相同（Marks whether to export the match timeline. Timeline data organization is based on the match information, so its value is set the same as the above）
                     #LoLGame_event_export: bool = LoLGame_timeline_export #标记是否导出对局事件信息。由于事件信息源于时间轴，因此这两者的值在任何情形下是相同的（Marks whether to export the match events. Because events are extracted from the timeline, these two values should be the same under any circumstance）
                     info_text_saved = timeline_text_saved = False #标记对局信息和时间轴的文本文档是否保存（Marks whether the json files of match information and timeline are saved）
                     isLoL[matchId] = False #这里可以使用（This assignment can be replaced by）：`isLoL[matchId] = isTFT[matchId] = False`
@@ -1922,7 +1922,7 @@ async def search_profile(connection: Connection) -> None:
                         elif "errorCode" in LoLGame_info:
                             LoLGame_timeline_export = False
                             timeline_exist_error[matchId] = False
-                        else: #在整理时间轴数据时，需要使用`LoLGame_info`中的一些数据（While sorting the timeline, some data in `LoLGame_info` are needed）
+                        else: #在整理时间轴数据时，需要使用`LoLGame_info`中的一些数据（While organizing the timeline data, some data in `LoLGame_info` are needed）
                             timeline_exist_error[matchId] = False
                     else:
                         LoLGame_timeline: dict[str, Any] = {}
@@ -1962,7 +1962,7 @@ async def search_profile(connection: Connection) -> None:
                         #     participant_puuid: list[str] = list(map(lambda x: x["player"]["puuid"], LoLGame_info["participantIdentities"]))
                         # LoLGame_leaderboard_df: pandas.DataFrame = await sort_game_leaderboard(connection, puuids = participant_puuid, log = log)
                     else:
-                        if status == 404: #由于时间轴的整理依赖于详细信息，仅根据对局信息的获取情况来判断对局是否存在即可（Because sorting out timeline relies on the information, the status of getting the match information is enough for judging whether a match file exists）
+                        if status == 404: #由于时间轴的整理依赖于详细信息，仅根据对局信息的获取情况来判断对局是否存在即可（Because organizing timeline relies on the information, the status of getting the match information is enough for judging whether a match file exists）
                             LoLMatches_not_found.append(matchId)
                         else:
                             error_LoLMatchIDs.append(matchId)
@@ -2028,7 +2028,7 @@ async def search_profile(connection: Connection) -> None:
                     if match_to_remove in LoLMatchIDs:
                         LoLMatchIDs.remove(match_to_remove)
         
-        #整理云顶之弈对局记录（Sort out TFT match history）
+        #整理云顶之弈对局记录（Organize TFT match history）
         logPrint("是否查询云顶之弈对局记录？（输入任意键查询，否则不查询）\nSearch TFT matches? (Input anything to search or null to export data or switch for another summoner)")
         search_TFT_str: str = logInput()
         search_TFT: bool = bool(search_TFT_str)
@@ -2072,7 +2072,7 @@ async def search_profile(connection: Connection) -> None:
                     TFTHistory_dfs.append(TFTHistory_df)
                     if TFTGamePlayed:
                         logPrint(TFTHistory_df[:min(21, TFTGameCount + 1)], write_time = False)
-            #由于云顶之弈的对局记录包含所有玩家的信息，所以这里考虑先整合所有账号的对局记录，再对总对局记录进行整理。如果先整理再整合，后续排序时玩家顺序的信息会丢失，因为在这种情形下根据对局序号排序，而数据框中不包含玩家序号键，无法按照玩家序号进行升序排列（Because TFT match history includes all players' information, here the program first merges all accounts' match history, and then sort out the aggregate match history. Otherwise, if the program first sort out the match history respectively and then merge the result dataframe, the participantId order may be lost during the subsequent ordering, for gameId is taken to arrange the aggregate dataframe, but the key `participantId` isn't in the dataframe, and therefore the dataframe can't be arranged in the ascending order of participantId）
+            #由于云顶之弈的对局记录包含所有玩家的信息，所以这里考虑先整合所有账号的对局记录，再对总对局记录进行整理。如果先整理再整合，后续排序时玩家顺序的信息会丢失，因为在这种情形下根据对局序号排序，而数据框中不包含玩家序号键，无法按照玩家序号进行升序排列（Because TFT match history includes all players' information, here the program first merges all accounts' match history, and then sort out the aggregate match history. Otherwise, if the program first organize the match history respectively and then merge the result dataframe, the participantId order may be lost during the subsequent ordering, for gameId is taken to arrange the aggregate dataframe, but the key `participantId` isn't in the dataframe, and therefore the dataframe can't be arranged in the ascending order of participantId）
             TFTGameIDs: list[int] = sorted(TFTHistory_dict.keys(), reverse = True)
             TFTHistory_all: dict[str, str | list[dict[str, Any]]] = {"active_puuid": "", "games": list(map(lambda x: TFTHistory_dict[x], TFTGameIDs))}
             #构建云顶之弈对局记录数据框（Construct TFT match history dataframe）
@@ -2199,7 +2199,7 @@ async def search_profile(connection: Connection) -> None:
                     info_text_saved: bool = False
                     isTFT[matchId] = False #前面部分对局即使添加到此字典中，其值也是False（Even if some matches are added into this dictionary previously, their values are still False）
                     
-                    if TFTGame_info_export: #这里和英雄联盟对局信息的区别是，在整理英雄联盟对局信息的同时会梳理出英雄联盟战绩汇总表，而整理云顶之弈对局信息时没有其它操作。所以如果一个云顶之弈对局信息文本文档不需要保存和导出，那么直接不加载就可以了（Here the difference from the case of LoL match information is that the program summarizes the LoL match stats table while sorting out LoL match information, while the program does nothing else while sorting out TFT match information. Therefore, if a TFT match information json file isn't saved and exported, then it's better not load it）
+                    if TFTGame_info_export: #这里和英雄联盟对局信息的区别是，在整理英雄联盟对局信息的同时会梳理出英雄联盟战绩汇总表，而整理云顶之弈对局信息时没有其它操作。所以如果一个云顶之弈对局信息文本文档不需要保存和导出，那么直接不加载就可以了（Here the difference from the case of LoL match information is that the program summarizes the LoL match stats table while organizing LoL match information, while the program does nothing else while organizing TFT match information. Therefore, if a TFT match information json file isn't saved and exported, then it's better not load it）
                         #获取数据（Get data）
                         status, TFTGame_info = await get_game_info_sgp(connection, sgpSession, match_id, checkLoL = False, checkTFT = True, log = log) #通过LCU API和SGP API获取到的云顶之弈对局记录和对局信息是相同的（TFT match history and TFT game information obtained through LCU API and SGP API are the same）
                         if status == 200 and "json" in TFTGame_info and bool(TFTGame_info["json"]):

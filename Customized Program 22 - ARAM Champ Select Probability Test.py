@@ -39,7 +39,7 @@ async def prepare_data_resources(connection: Connection) -> None:
     current_summoner = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     LoLChampions_initial = await (await connection.request("GET", "/lol-champions/v1/inventories/%s/champions" %(current_summoner["summonerId"]))).json()
     LoLChampions = {champion["id"]: champion for champion in LoLChampions_initial}
-    logPrint("正在整理英雄数据……\nSorting out champion data ...")
+    logPrint("正在整理英雄数据……\nOrganizing champion data ...")
     LoLChampion_df, count = await sort_inventory_champions(connection, LoLChampions)
 
 #-----------------------------------------------------------------------------

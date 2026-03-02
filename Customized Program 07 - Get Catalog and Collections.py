@@ -14,7 +14,7 @@ from src.core.config.localization import inventoryType_dict, ownershipTypes, sub
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/02/17
+# 更新（Last update）：     2026/03/02
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -255,7 +255,7 @@ def sort_catalog_items(catalogList: list[dict[str, Any]], hashtable_dicts: dict[
     catalog_header_keys: list[str] = list(catalog_header.keys())
     catalog_data: dict[str, list[Any]] = {key: [] for key in catalog_header_keys}
     catalog_data_json: dict[str, list[Any]] = copy.deepcopy(catalog_data)
-    #数据整理核心部分（Data sorting - core part）
+    #数据整理核心部分（Data organization - core part）
     for item_index in range(len(catalogList)):
         item: dict[str, Any] = catalogList[item_index]
         priceDict: dict[str, int] = {}
@@ -318,9 +318,9 @@ def sort_catalog_items(catalogList: list[dict[str, Any]], hashtable_dicts: dict[
             catalog_data[key].append(to_append)
             catalog_data_json[key].append(pyobj2json(to_append))
         if item_index < len(catalogList) - 1:
-            print("商品信息整理进度（Catalog data sorting process）：%d/%d" %(item_index + 1, len(catalogList)), end = "\r", flush = True)
+            print("商品信息整理进度（Catalog data organization process）：%d/%d" %(item_index + 1, len(catalogList)), end = "\r", flush = True)
         else:
-            print("商品信息整理进度（Catalog data sorting process）：%d/%d" %(item_index + 1, len(catalogList)))
+            print("商品信息整理进度（Catalog data organization process）：%d/%d" %(item_index + 1, len(catalogList)))
     #数据框列序整理（Dataframe column ordering）
     catalog_statistics_output_order: list[int] = [8, 17, 1, 5, 0, 4, 16, 7, 6, 21, 19, 22, 23, 24, 25, 15, 26, 27, 29, 28, 30, 31, 33, 32, 10, 11, 20, 13, 9, 18, 2]
     catalog_data_organized: dict[str, list[Any]] = {catalog_header_keys[i]: catalog_data_json[catalog_header_keys[i]] for i in catalog_statistics_output_order}
@@ -349,7 +349,7 @@ def sort_store_items(store: list[dict[str, Any]], locale: str, collection_hashta
     store_header_keys: list[str] = list(store_header.keys())
     store_data: dict[str, list[Any]] = {key: [] for key in store_header_keys}
     store_data_json: dict[str, list[Any]] = copy.deepcopy(store_data)
-    #数据整理核心部分（Data sorting - core part）
+    #数据整理核心部分（Data organization - core part）
     for item_index in range(len(store)):
         item: dict[str, Any] = store[item_index]
         priceDict: dict[str, dict[str, int]] = {} #应用于“i <= 19”的场景（Applies when "i <= 19"）
@@ -405,9 +405,9 @@ def sort_store_items(store: list[dict[str, Any]], locale: str, collection_hashta
             store_data[key].append(to_append)
             store_data_json[key].append(pyobj2json(to_append))
         if item_index < len(store) - 1:
-            print("商店信息整理进度（Store data sorting process）：%d/%d" %(item_index + 1, len(store)), end = "\r", flush = True)
+            print("商店信息整理进度（Store data organization process）：%d/%d" %(item_index + 1, len(store)), end = "\r", flush = True)
         else:
-            print("商店信息整理进度（Store data sorting process）：%d/%d" %(item_index + 1, len(store)))
+            print("商店信息整理进度（Store data organization process）：%d/%d" %(item_index + 1, len(store)))
     #数据框列序整理（Dataframe column ordering）
     store_statistics_output_order: list[int] = [14, 15, 5, 0, 4, 12, 9, 1, 6, 11, 3, 16, 17, 18, 19, 8, 7, 10, 21, 20, 22, 23, 24, 25, 13, 2]
     store_data_organized: dict[str, list[Any]] = {store_header_keys[i]: store_data_json[store_header_keys[i]] for i in store_statistics_output_order}
@@ -434,7 +434,7 @@ def sort_collection_items(collection: list[dict[str, Any]], collection_hashtable
     collection_header_keys: list[str] = list(collection_header.keys())
     collection_data: dict[str, list[Any]] = {key: [] for key in collection_header_keys}
     collection_data_json: dict[str, list[Any]] = copy.deepcopy(collection_data)
-    #数据整理核心部分（Data sorting - core part）
+    #数据整理核心部分（Data organization - core part）
     for item_index in range(len(collection)):
         item: dict[str, Any] = collection[item_index]
         for i in range(len(collection_header)):
@@ -474,9 +474,9 @@ def sort_collection_items(collection: list[dict[str, Any]], collection_hashtable
             collection_data[key].append(to_append)
             collection_data_json[key].append(pyobj2json(to_append))
         if item_index < len(collection) - 1:
-            print("藏品信息整理进度（Collection data sorting process）：%d/%d" %(item_index + 1, len(collection)), end = "\r", flush = True)
+            print("藏品信息整理进度（Collection data organization process）：%d/%d" %(item_index + 1, len(collection)), end = "\r", flush = True)
         else:
-            print("藏品信息整理进度（Collection data sorting process）：%d/%d\n" %(item_index + 1, len(collection)))
+            print("藏品信息整理进度（Collection data organization process）：%d/%d\n" %(item_index + 1, len(collection)))
     #数据框列序整理（Dataframe column ordering）
     collection_statistics_output_order: list[int] = [15, 9, 3, 2, 12, 6, 10, 1, 4, 5, 7, 8, 0, 14, 13, 11]
     collection_data_organized: dict[str, list[Any]] = {collection_header_keys[i]: collection_data_json[collection_header_keys[i]] for i in collection_statistics_output_order}
@@ -524,8 +524,8 @@ async def fetch_store(connection: Connection) -> None:
     print("正在创建索引……\nCreating index ...\n")
     collection_hashtable: dict[tuple[str, int], str] = {(item["inventoryType"], item["itemId"]): item["name"] for item in catalogList} | {(item["inventoryType"], item["itemId"]): item["localizations"][locale]["name"] for item in store if item["localizations"] != None} #原本的藏品信息中没有记录名称，所以需要借用商品信息中的名称。之所以不考虑使用识别码作为键，是因为在从`lol-store`接口获取的商品信息中，存在识别码重复的两件商品，而道具类型和道具序号的组合应当能够唯一确定一件商品。另外，从`lol-catalog`和`lol-store`接口获取的商品信息可以互相补充（The original collection information doesn't contain the names, so they're cited from the catalog information. The reason why `itemInstanceId` isn't taken as the key is that there're two items with the same `itemInstanceId` in the items obtaned from `lol-store` API. However, the combination of `inventoryType` and `itemId` should uniquely correspond to an item. Besides, item information obtained from `lol-catalog` API and that from `lol-store` API can supplement each other）
     hashtable_dicts = await create_hashtable(connection)
-    #整理数据（Sort out data）
-    print("开始整理数据。\nBegin to sort out the data ...")
+    #整理数据（Oranize data）
+    print("开始整理数据。\nBegin to organize data ...")
     catalog_df: pandas.DataFrame = sort_catalog_items(catalogList, hashtable_dicts)
     store_df: pandas.DataFrame = sort_store_items(store, locale, collection_hashtable, hashtable_dicts)
     collection_df: pandas.DataFrame = sort_collection_items(collection, collection_hashtable, hashtable_dicts)

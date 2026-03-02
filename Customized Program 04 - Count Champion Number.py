@@ -16,7 +16,7 @@ from src.core.dataframes.champions import test_bot, sort_ddragon_champions, sort
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/02/03
+# 更新（Last update）：     2026/03/02
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -240,7 +240,7 @@ def get_cdragon_champions(locale: str = "zh_CN") -> tuple[dict[int, dict[str, An
     LoLChampions: dict[int, dict[str, Any]] = {champion["id"]: champion for champion in LoLChampion}
     return (LoLChampions, version)
 
-async def get_plugin_champions(connection: Connection) -> list: #和整理静态英雄数据资源的函数不同，这里返回的是一个列表（What's different from the functions that sort out static champion data resources is that this function returns a list）
+async def get_plugin_champions(connection: Connection) -> list: #和整理静态英雄数据资源的函数不同，这里返回的是一个列表（What's different from the functions that organize static champion data resources is that this function returns a list）
     champion_summary: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/champion-summary.json")).json()
     championIds: list[int] = list(map(lambda x: x["id"], champion_summary))
     LoLChampion: list[dict[str, Any]] = []
@@ -311,11 +311,11 @@ async def count_champions(connection: Connection) -> None:
             continue
         version: str = await (await connection.request("GET", "/lol-patch/v1/game-version")).json()
         version_df: pandas.DataFrame = pandas.DataFrame({"Patch": [version]})
-        #下面按照程序需求对数据资源进行一定的整理（The following code sort out the data resource according to the program's need）
+        #下面按照程序需求对数据资源进行一定的整理（The following code organize the data resource according to the program's need）
         if champion_got:
             count: int = 0
             if mode[0] == "2":
-                print("正在整理数据……\nSorting out the data ...")
+                print("正在整理数据……\nOrganizing data ...")
             if data_type[0] == "1":
                 LoLChampion_df, count = await sort_inventory_champions(connection, LoLChampions, verbose = mode[0] != "2")
             elif data_type[0] == "2":

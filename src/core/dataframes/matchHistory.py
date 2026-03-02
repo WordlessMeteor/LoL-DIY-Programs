@@ -655,7 +655,7 @@ async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int],
                                 unmapped_keys["CherryAugment"].clear()
                                 break
                         break
-            #下面开始整理数据（Sorts out the data）
+            #下面开始整理数据（Organize data）
             for participantIndex in participantIndices:
                 generate_LoLHistory_records(LoLHistory_data, LoLGame_info, participantIndex, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = i + 1, unmapped_keys = unmapped_keys, log = log, verbose = verbose)
             logPrint("对局记录重查进度（Match history recheck process）：%d/%d\t对局序号（MatchID）： %s" %(i + 1, len(LoLMatchIDs), matchId), print_time = True, verbose = verbose)
@@ -1008,7 +1008,7 @@ async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSess
                                 unmapped_keys["CherryAugment"].clear()
                                 break
                         break
-            #下面开始整理数据（Sorts out the data）
+            #下面开始整理数据（Organize data）
             for participantIndex in participantIndices:
                 generate_LoLHistory_records_sgp(LoLHistory_data, LoLGame_info, participantIndex, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = i + 1, unmapped_keys = unmapped_keys, log = log, verbose = verbose)
             logPrint("对局记录重查进度（Match history recheck process）：%d/%d\t对局序号（MatchID）： %s" %(i + 1, len(LoLMatchIDs), matchId), print_time = True, verbose = verbose)
@@ -2006,7 +2006,7 @@ async def sort_LoLHistory(connection: Connection, LoLHistory: dict[str, Any], qu
                             unmapped_keys["CherryAugment"].clear()
                             break
                     break
-        #下面开始整理数据（Sorts out the data）
+        #下面开始整理数据（Organize data）
         generate_LoLHistory_records(LoLHistory_data, game, 0, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = i + 1, unmapped_keys = unmapped_keys, log = log, verbose = verbose)
         print("对局记录查询进度（Match history query process）：%d/%d\t对局序号（MatchId）：%d" %(i + 1, len(games), game["gameId"]), end = "\r")
     #数据框列序整理（Dataframe column ordering）
@@ -2082,7 +2082,7 @@ def generate_LoLGameInfo_records(LoLGame_info_data: dict[str, list[Any]], LoLGam
             mapName = "进步之桥"
         else:
             mapName = "嚎哭深渊"
-    #数据整理核心部分（Data sorting core part）
+    #数据整理核心部分（Data organization core part）
     LoLGame_info_header_keys: list[str] = list(LoLGame_info_header.keys())
     for i in range(len(LoLGame_info_header_keys)):
         key: str = LoLGame_info_header_keys[i]
@@ -2406,7 +2406,7 @@ def generate_LoLGameInfo_records_sgp(LoLGame_info_data: dict[str, list[Any]], Lo
             mapName = "进步之桥"
         else:
             mapName = "嚎哭深渊"
-    #数据整理核心部分（Data sorting core part）
+    #数据整理核心部分（Data organization core part）
     LoLGame_info_header: dict[str, str] = LoLGame_info_sgp_header #通过在函数内指定同名变量，使得其不再使用全局变量，并减少以下代码的修改（By specifying the variable with the same name, this variable is no longer the global one, and meanwhile the following code doesn't need changing much）
     LoLGame_info_header_keys: list[str] = list(LoLGame_info_header.keys())
     for i in range(len(LoLGame_info_header_keys)):
@@ -3134,7 +3134,7 @@ def sort_LoLGame_info(LoLGame_info: dict[str, Any], queues: dict[int, dict[str, 
                         unmapped_keys["CherryAugment"].clear()
                         break
                 break
-    #下面开始整理数据（Sorts out the data）
+    #下面开始整理数据（Organize data）
     LoLGame_info_header_keys: list[str] = list(LoLGame_info_header.keys())
     LoLGame_info_data: dict[str, list[Any]] = {key: [] for key in LoLGame_info_header} #这里将对局的数据放在一个字典中，键为统计量，值为由所有玩家的数据组成的列表（Here the whole match data are stored in a dictionary whose keys are statistics and values are lists composed of corresponding data of all players）
     for i in range(len(LoLGame_info["participantIdentities"])): #对于对局信息而言，每个玩家对应一条记录（For match information, each record represents a player）
@@ -3456,7 +3456,7 @@ def sort_LoLGame_info_sgp(LoLGame_info: dict[str, Any], queues: dict[int, dict[s
                         unmapped_keys["CherryAugment"].clear()
                         break
                 break
-    #下面开始整理数据（Sorts out the data）
+    #下面开始整理数据（Organize data）
     LoLGame_info_header: dict[str, str] = LoLGame_info_sgp_header #通过在函数内指定同名变量，使得其不再使用全局变量，并减少以下代码的修改（By specifying the variable with the same name, this variable is no longer the global one, and meanwhile the following code doesn't need changing much）
     LoLGame_info_header_keys: list[str] = list(LoLGame_info_header.keys())
     LoLGame_info_data: dict[str, list[Any]] = {key: [] for key in LoLGame_info_header} #这里将对局的数据放在一个字典中，键为统计量，值为由所有玩家的数据组成的列表（Here the whole match data are stored in a dictionary whose keys are statistics and values are lists composed of corresponding data of all players）
@@ -3774,7 +3774,7 @@ async def sort_LoLGame_stats(connection: Connection, LoLMatchIDs: list[int], que
                                     unmapped_keys["CherryAugment"].clear()
                                     break
                             break
-                #下面开始整理数据（Sorts out the data）
+                #下面开始整理数据（Organize data）
                 for i in range(len(LoLGame_info["participants"])):
                     if not (not save_bot and LoLGame_info["participantIdentities"][i]["player"]["puuid"] == BOT_UUID or not save_self and LoLGame_info["participantIdentities"][i]["player"]["puuid"] in puuidList or not save_other and not LoLGame_info["participantIdentities"][i]["player"]["puuid"] in puuidList):
                         generate_LoLGameInfo_records(LoLGame_stat_data, LoLGame_info, i, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = LoLMatchIDs.index(matchId) + 1, current_puuid = puuidList, bans = bans, legacy_banData_appended = legacy_banData_appended, unmapped_keys = unmapped_keys, log = log, verbose = verbose)
@@ -4141,7 +4141,7 @@ async def sort_LoLGame_stats_sgp(connection: Connection, sgpSession: SGPSession,
                                     unmapped_keys["CherryAugment"].clear()
                                     break
                             break
-                #下面开始整理数据（Sorts out the data）
+                #下面开始整理数据（Organize data）
                 for i in range(len(LoLGame_info_json["participants"])):
                     if not (not save_bot and LoLGame_info_json["participants"][i]["puuid"] == BOT_UUID or not save_self and LoLGame_info_json["participants"][i]["puuid"] in puuidList or not save_other and not LoLGame_info_json["participants"][i]["puuid"] in puuidList):
                         generate_LoLGameInfo_records_sgp(LoLGame_stat_data, LoLGame_info, i, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = LoLMatchIDs.index(matchId) + 1, current_puuid = puuidList, bans = bans, legacy_banData_appended = legacy_banData_appended, unmapped_keys = unmapped_keys, log = log, verbose = verbose)
@@ -4222,7 +4222,7 @@ def sort_LoLGame_timeline(LoLGame_timeline: dict[str, Any], LoLGame_info: dict[s
                         unmapped_keys["LoLChampion"].clear()
                         break
                 break
-    #数据整理核心部分（Data sorting core part）
+    #数据整理核心部分（Data organization core part）
     ##时间轴（Timeline）
     frames: list[dict[str, Any]] = LoLGame_timeline["frames"]
     LoLGame_timeline_header_keys: list[str] = list(LoLGame_timeline_header.keys())
@@ -4535,7 +4535,7 @@ def sort_LoLGame_timeline_sgp(LoLGame_timeline: dict[str, Any], LoLGame_info: di
                         unmapped_keys["LoLItem"].clear()
                         break
                 break
-    #数据整理核心部分（Data sorting core part）
+    #数据整理核心部分（Data organization core part）
     ##时间轴（Timeline）
     LoLGame_timeline_header: dict[str, str] = LoLGame_timeline_sgp_header
     LoLGame_timeline_header_keys: list[str] = list(LoLGame_timeline_header.keys())
@@ -4821,7 +4821,7 @@ async def generate_TFTHistory_records(connection: Connection, TFTHistory_data: d
                         logPrint(TFTPlayer_info["body"], verbose = verbose)
                         logPrint("对局%d玩家信息（玩家通用唯一识别码：%s）获取失败！\nInformation of player (puuid: %s) in Match %d capture failed!" %(TFTGame_info_json["game_id"], TFTPlayer["puuid"], TFTPlayer["puuid"], TFTGame_info_json["game_id"]), verbose = verbose)
                     TFTPlayer_info_got = TFTPlayer_info["info_got"]
-        #数据整理核心部分（Data sorting core part）
+        #数据整理核心部分（Data organization core part）
         for i in range(len(TFTHistory_header)):
             key = TFTHistory_header_keys[i]
             if i == 0: #游戏序号（`gameIndex`）
@@ -5358,7 +5358,7 @@ async def generate_TFTGameInfo_records(connection: Connection, TFTGame_info_data
                     logPrint(TFTPlayer_info["message"], verbose = verbose)
                     logPrint("对局%d玩家信息（玩家通用唯一识别码：%s）获取失败！\nInformation of player (puuid: %s) in Match %d capture failed!" %(TFTGame_info_json["game_id"], TFTPlayer["puuid"], TFTPlayer["puuid"], TFTGame_info_json["game_id"]), verbose = verbose)
                 TFTPlayer_info_got = TFTPlayer_info["info_got"]
-    #数据整理核心部分（Data sorting core part）
+    #数据整理核心部分（Data organization core part）
     TFTGame_info_header_keys: list[str] = list(TFTGame_info_header.keys())
     for i in range(len(TFTGame_info_header_keys)):
         key: str = TFTGame_info_header_keys[i]
@@ -5813,7 +5813,7 @@ async def sort_TFTGame_info(connection: Connection, TFTGame_info: dict[str, Any]
                                 unmapped_keys["TFTAugment"].clear()
                                 break
                     break
-        #下面开始整理数据（Sorts out the data）
+        #下面开始整理数据（Organize data）
         for i in range(len(TFTGame_info_json["participants"])):
             if save_self or TFTGame_info_json["participants"][i]["puuid"] in puuidList:
                 await generate_TFTGameInfo_records(connection, TFTGame_info_data, TFTGame_info, i, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = gameIndex, current_puuid = puuidList, unmapped_keys = unmapped_keys, useInfoDict = useInfoDict, infos = infos, log = log, verbose = verbose)

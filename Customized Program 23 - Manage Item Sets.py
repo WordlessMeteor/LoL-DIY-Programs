@@ -20,7 +20,7 @@ from src.core.dataframes.champions import sort_champion_summary
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/02/14
+# 更新（Last update）：     2026/03/02
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1929,12 +1929,12 @@ def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                         logPrint("您的输入有误，请重新输入！\nERROR input! Please try again.")
         if back:
             break
-        runTimes: list[float] = [] #记录整理一个版本的装备数据所花费的时间（Records the time spent in sorting out item data of one version）
+        runTimes: list[float] = [] #记录整理一个版本的装备数据所花费的时间（Records the time spent in organizing item data of one version）
         total_used: float = 0
         failed_count: int = 0 #记录数据获取失败的版本的个数（Count the number of versions whose data fail to be fetched）
         for version_index in range(len(versions_sort)):
             start: float = time.time()
-            logPrint("整理进度（Sorting process）：%d/%d" %(version_index + 1, len(versions_sort)), print_time = True)
+            logPrint("整理进度（Organization process）：%d/%d" %(version_index + 1, len(versions_sort)), print_time = True)
             version: str = versions_sort[version_index]
             LoLItems_locale_url: str = "https://ddragon.leagueoflegends.com/cdn/%s/data/%s/item.json" %(version, locale)
             LoLItems_default_url: str = "https://ddragon.leagueoflegends.com/cdn/%s/data/en_US/item.json" %version
@@ -2001,7 +2001,7 @@ def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
             #print(LoLItem_header_keys)
             #定义常量字典（Define the constant dictionaries）
             LoLItem_name_map: dict[str, str] = {key: value["name"] for (key, value) in LoLItems_locale["data"].items()}
-            logPrint("开始整理数据……\nSorting data ...")
+            logPrint("开始整理数据……\nOrganizing data ...")
             pStats = re.compile(r"<stats>.*</stats>")
             pFormat = re.compile(r"<[/\sA-Za-z0-9=#\'_@]*>")
             champions: dict[str, str] = {}
@@ -2123,10 +2123,10 @@ def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
             total_used += unit
             runTimes.append(unit)
             total_remaining: float = sum(runTimes) / (version_index + 1 - failed_count) * (len(versions_sort) - version_index - 1)
-            logPrint("整理该版本数据所花费的时间（Time spent in sorting out this version）：", format_runtime(unit))
-            logPrint("已花费的总时间（Total time used）                                   ：", format_runtime(total_used))
-            logPrint("剩余时间（Time remaining）                                          ：", format_runtime(total_remaining))
-            logPrint("预计总时间（Expected total time）                                   ：", format_runtime(total_used + total_remaining), end = "\n\n")
+            logPrint("整理该版本数据所花费的时间（Time spent in organizing this version）：", format_runtime(unit))
+            logPrint("已花费的总时间（Total time used）                                  ：", format_runtime(total_used))
+            logPrint("剩余时间（Time remaining）                                         ：", format_runtime(total_remaining))
+            logPrint("预计总时间（Expected total time）                                  ：", format_runtime(total_used + total_remaining), end = "\n\n")
     return (LoLItem_dfs, item_df_formed)
 
 def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame], bool]:
@@ -2168,12 +2168,12 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                         logPrint("您的输入有误，请重新输入！\nERROR input! Please try again.")
         if back:
             break
-        runTimes: list[float] = [] #记录整理一个版本的装备数据所花费的时间（Records the time spent in sorting out item data of one version）
+        runTimes: list[float] = [] #记录整理一个版本的装备数据所花费的时间（Records the time spent in organizing item data of one version）
         total_used: float = 0
         failed_count: int = 0 #记录数据获取失败的版本的个数（Count the number of versions whose data fail to be fetched）
         for version_index in range(len(versions_sort)):
             start: float = time.time()
-            logPrint("整理进度（Sorting process）：%d/%d" %(version_index + 1, len(versions_sort)), print_time = True)
+            logPrint("整理进度（Organization process）：%d/%d" %(version_index + 1, len(versions_sort)), print_time = True)
             version: str = versions_sort[version_index]
             LoLItems_locale_url: str = "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(version, language_cdragon[locale])
             LoLItems_default_url: str = "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/default/v1/items.json" %version
@@ -2285,7 +2285,7 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
             for (key, value) in LoLItems_binary.items():
                 if key != "__linked" and value["__type"] == "ItemData":
                     itemKey_itemId_map[value["itemID"]] = key
-            logPrint("开始整理数据……\nSorting data ...")
+            logPrint("开始整理数据……\nOrganizing data ...")
             pStats = re.compile(r"<stats>.*</stats>")
             pFormat = re.compile(r"<[/\sA-Za-z0-9=#\'_@]*>")
             pSection = re.compile(r"<section>.*?</section>") #在星号后添加问号以启用贪婪模式（Enable greedy match by adding a question mark after the asterisk）
@@ -2409,10 +2409,10 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
             total_used += unit
             runTimes.append(unit)
             total_remaining = sum(runTimes) / (version_index + 1 - failed_count) * (len(versions_sort) - version_index - 1)
-            logPrint("整理该版本数据所花费的时间（Time spent in sorting out this version）：", format_runtime(unit))
-            logPrint("已花费的总时间（Total time used）                                   ：", format_runtime(total_used))
-            logPrint("剩余时间（Time remaining）                                          ：", format_runtime(total_remaining))
-            logPrint("预计总时间（Expected total time）                                   ：", format_runtime(total_used + total_remaining), end = "\n\n")
+            logPrint("整理该版本数据所花费的时间（Time spent in organizing this version）：", format_runtime(unit))
+            logPrint("已花费的总时间（Total time used）                                  ：", format_runtime(total_used))
+            logPrint("剩余时间（Time remaining）                                         ：", format_runtime(total_remaining))
+            logPrint("预计总时间（Expected total time）                                  ：", format_runtime(total_used + total_remaining), end = "\n\n")
     return (LoLItem_dfs, item_df_formed)
 
 def export_item_data() -> None:

@@ -470,7 +470,7 @@ async def get_recent_players(connection: Connection, search_mode: int = 2, lol_s
         if LoLHistory_get:
             LoLMatchIDs = list(map(lambda x: x["gameId"], LoLHistory["games"]["games"]))
     if len(LoLMatchIDs) > 0:
-        logPrint("开始整理英雄联盟对局数据……\nStart sorting out LoL match data ...")
+        logPrint("开始整理英雄联盟对局数据……\nStart organizing LoL match data ...")
         unmapped_keys1: dict[str, set[int]] = {"queue": set(), "summonerIcon": set(), "spell": set(), "LoLChampion": set(), "LoLItem": set(), "summonerIcon": set(), "perk": set(), "perkstyle": set(), "CherryAugment": set()}
         if lol_sgp:
             recent_LoLPlayer_df: pandas.DataFrame = await sort_LoLGame_stats_sgp(connection, sgpSession, LoLMatchIDs, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, puuid = current_puuid, save_self = False, save_other = True, save_bot = False, useAllVersions = False, unmapped_keys = unmapped_keys1, log = log)
@@ -484,7 +484,7 @@ async def get_recent_players(connection: Connection, search_mode: int = 2, lol_s
         logPrint("开始获取云顶之弈对局记录。\nStart getting TFT match history.")
         TFTHistory_get, TFTHistory = await get_TFTHistory(connection, current_info["puuid"], log = log)
         if TFTHistory_get:
-            logPrint("开始整理云顶之弈对局数据……\nStart sorting out TFT match data ...")
+            logPrint("开始整理云顶之弈对局数据……\nStart organizing TFT match data ...")
             # TFTMatchIDs = list(map(lambda x: int(x["metadata"]["match_id"].split("_")[-1]), TFTHistory["games"]))
             unmapped_keys2: dict[str, set[Any]] = {"queue": set(), "TFTAugment": set(), "TFTChampion": set(), "TFTItem": set(), "TFTCompanion": set(), "TFTTrait": set()}
             TFTGame_info_header_keys: list[str] = list(TFTGame_info_header.keys())
@@ -2826,7 +2826,7 @@ async def friend_behavior_simulation(connection: Connection) -> None: #在本函
                                         logPrint("请选择邀请处理方式：\nPlease select a method of handling the invitation(s):\n0\t返回上一层（Return to the last step）\n1\t接受（Accept）\n2\t拒绝（Decline）")
                                         break
                                     elif invitationIndex_str in set(map(str, range(1, len(invid_df)))):
-                                        invitationId: str = invid_df["invitationId"][int(invitationIndex_str)] #注意到邀请序号和小队编号的获取方式有所不同。小队编号是从原始的小队数据中获取的，因为小队数据作为静态数据传入小队信息整理函数中，而邀请信息没有传入邀请信息整理函数中，在程序运行前后邀请信息会频繁更新，可能导致原始邀请信息和邀请信息数据框中的内容不符（邀请信息数据框整理过程中的邀请信息和这里的邀请信息不在同一个作用域中）【Note that it differs between getting invitationId and getting partyId. PartyId is obtained from the original party data, in that party data are passed into `sort_party_data` function as static data, while invitation data aren't passed into `sort_received_invitations` function. As a result, invitation information may be frequently updated, which causes the original invitation data not in accordance with data in the invitation dataframe (invitation data here don't belong to the same scope of those during sorting out the invitation dataframe)】
+                                        invitationId: str = invid_df["invitationId"][int(invitationIndex_str)] #注意到邀请序号和小队编号的获取方式有所不同。小队编号是从原始的小队数据中获取的，因为小队数据作为静态数据传入小队信息整理函数中，而邀请信息没有传入邀请信息整理函数中，在程序运行前后邀请信息会频繁更新，可能导致原始邀请信息和邀请信息数据框中的内容不符（邀请信息数据框整理过程中的邀请信息和这里的邀请信息不在同一个作用域中）【Note that it differs between getting invitationId and getting partyId. PartyId is obtained from the original party data, in that party data are passed into `sort_party_data` function as static data, while invitation data aren't passed into `sort_received_invitations` function. As a result, invitation information may be frequently updated, which causes the original invitation data not in accordance with data in the invitation dataframe (invitation data here don't belong to the same scope of those during organizing the invitation dataframe)】
                                         invid_owner: str = invid_df["fromSummonerName"][int(invitationIndex_str)]
                                         response: Optional[dict[str, Any]] = await (await connection.request("POST", f"/lol-lobby/v2/received-invitations/{invitationId}/accept")).json()
                                         logPrint(response)

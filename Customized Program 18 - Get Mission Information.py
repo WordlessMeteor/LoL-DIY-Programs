@@ -15,7 +15,7 @@ from src.core.config.localization import celebrationTypes, clientNotifyLevels, d
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/02/10
+# 更新（Last update）：     2026/03/02
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -65,7 +65,7 @@ async def get_mission_info(connection: Connection) -> None:
                 weight2 += 1
                 for mission in objectiveGroup["missions"]: #任务所属目标信息在`/lol-missions/v1/missions`接口中无法体现，因此需要提前准备这方面数据（Belonging objective of a mission isn't reflected by the endpoint `/lol-missions/v1/missions`, so this information needs preparing in advance）
                     mission_objectiveGroup_map[(mission["id"], mission["sequence"])] = {"id": objectiveGroup["id"], "localizedTag": objectiveGroup["localizedTag"], "localizedTitle": objectiveGroup["localizedTitle"]}
-    #整理数据（Sort out data）
+    #整理数据（Organize data）
     ##任务（Mission）
     mission_header_keys: list[str] = list(mission_header.keys())
     mission_data: dict[str, list[Any]] = {key: [] for key in mission_header_keys}

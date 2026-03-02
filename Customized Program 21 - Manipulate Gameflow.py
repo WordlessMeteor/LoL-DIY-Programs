@@ -28,7 +28,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/02/26
+# 更新（Last update）：     2026/03/02
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -269,7 +269,7 @@ async def prepare_data_resources(connection: Connection) -> None:
     else:
         logPrint("已加载藏品数据缓存。\nCollection data cache has been loaded.")
     ##皮肤数据框（Skin dataframe）
-    logPrint("正在整理皮肤数据……\nSorting out skin data ...")
+    logPrint("正在整理皮肤数据……\nOrganizing skin data ...")
     skin_df_json_relpath: str = "cache/skin_df_json.pkl"
     skin_df_json_exist: bool = os.path.exists(skin_df_json_relpath)
     if skin_df_json_exist:
@@ -2809,10 +2809,10 @@ async def get_collection(connection: Connection, verbose: bool = True) -> pandas
     collection_header_keys: list[str] = list(collection_header.keys())
     collection_data: dict[str, list[Any]] = {key: [] for key in collection_header_keys}
     #数据整理核心部分（Data assignment - core part）
-    logPrint("[get_collection]正在整理数据…… | Sorting data ...", print_time = True, verbose = verbose)
+    logPrint("[get_collection]正在整理数据…… | Organizing data ...", print_time = True, verbose = verbose)
     for item_index in range(len(collection)):
         item: dict[str, Any] = collection[item_index]
-        # logPrint("数据整理进度（Data sorting process）：%d/%d" %(item_index + 1, len(collection)), end = "\r", print_time = True, verbose = verbose)
+        # logPrint("数据整理进度（Data organization process）：%d/%d" %(item_index + 1, len(collection)), end = "\r", print_time = True, verbose = verbose)
         for i in range(len(collection_header_keys)):
             key: str = collection_header_keys[i]
             if i in {0, 8, 11}: #时间字符串相关键（Time string-related keys）
@@ -5205,11 +5205,11 @@ async def sort_skin_data(connection: Connection, verbose: bool = True) -> pandas
     #静态皮肤数据的定义代码放在数据资源导入函数中（Static skin data related code are put under `prepare_data_resources` function）
     skin_header_keys: list[str] = list(skin_header.keys())
     skin_data: dict[str, list[Any]] = {key: [] for key in skin_header_keys}
-    logPrint("[sort_skin_data]正在整理数据…… | Sorting data ...", print_time = True, verbose = verbose)
+    logPrint("[sort_skin_data]正在整理数据…… | Organizing data ...", print_time = True, verbose = verbose)
     skinIds: list[int] = sorted(set(championSkins.keys()) & set(skins_flat.keys())) #在2025年8月15日，美测服在`/lol-champions/v1/inventories/{summonerId}/champions`接口中删除了德邦总管 赵信及其所有皮肤信息，导致下面出现键错误。考虑到当天有玩家反馈无法选用赵信，所以这里取`championSkins`和`skins_flat`的键的交集（On Aug. 15th, 2025, Xin Zhao is removed from the response body of the endpoint `lol-champions/v1/inventories/{summonerId}/champions`. Considering some player reported that Xin Zhao can't be selected on that day, here we take the intersection of the keys of `championSkins` and `skins_flat`）
     for skin_index in range(len(skinIds)):
         skinId: int = skinIds[skin_index]
-        # logPrint("数据整理进度（Data sorting process）：%d/%d" %(skin_index + 1, len(skinIds)), end = "\r", print_time = True, verbose = verbose)
+        # logPrint("数据整理进度（Data organization process）：%d/%d" %(skin_index + 1, len(skinIds)), end = "\r", print_time = True, verbose = verbose)
         skin: dict[str, Any] = championSkins[skinId]
         skin_flat: dict[str, Any] = skins_flat[skinId]
         for i in range(len(skin_header_keys)):

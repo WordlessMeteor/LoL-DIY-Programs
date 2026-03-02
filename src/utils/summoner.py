@@ -264,7 +264,7 @@ async def sort_summoner_info(connection: Connection, puuids: list[str], summoner
     info_data: dict[str, Any] = {key: [] for key in info_header_keys}
     for i in range(len(puuids)):
         puuid: str = puuids[i]
-        logPrint("召唤师信息整理进度（Summoner information sorting process）：%d/%d\t玩家通用唯一识别码（Puuid）： %s" %(i + 1, len(puuids), puuid))
+        logPrint("召唤师信息整理进度（Summoner information organization process）：%d/%d\t玩家通用唯一识别码（Puuid）： %s" %(i + 1, len(puuids), puuid))
         info_recapture: int = 0
         info: dict[str, Any] = await get_info(connection, puuid)
         while not info["info_got"] and info["body"]["httpStatus"] != 404 and info_recapture < 3:
@@ -299,7 +299,7 @@ async def sort_summoner_info(connection: Connection, puuids: list[str], summoner
             if isinstance(topStatstones, dict) and "errorCode" in topStatstones:
                 logPrint(topStatstones, verbose = verbose)
                 logPrint("玩家%s的最高永恒星碑信息获取失败。\nTop statstone information of Player %s capture failed." %(displayName, displayName), verbose = verbose)
-            #整理数据（Sort out data）
+            #整理数据（Organize data）
             for i in range(len(info_header_keys)):
                 key: str = info_header_keys[i]
                 if i <= 21: #召唤师信息（Summoner information）

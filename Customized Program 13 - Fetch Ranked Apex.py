@@ -15,7 +15,7 @@ from src.core.config.headers import challenger_ladder_metadata_header, challenge
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/02/03
+# 更新（Last update）：     2026/03/02
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -69,7 +69,7 @@ async def get_challenger_tier(connection: Connection) -> None:
     #         break
     # splits_info_header_keys: list[str] = list(splits_info_header.keys())
     # splits_info_data: dict[str, Any] = {key: [] for key in splits_info_header_keys}
-    # logPrint("赛季信息整理进度（Split config sorting process）：")
+    # logPrint("赛季信息整理进度（Split config organization process）：")
     # for i in range(len(splitsConfig["splits"])):
     #     split: dict[str, Any] = splitsConfig["splits"][i]
     #     for j in range(len(splits_info_header_keys)):
@@ -101,7 +101,7 @@ async def get_challenger_tier(connection: Connection) -> None:
     #     rewardNames |= {item["itemInstanceId"]: item["name"] for item in items}
     # rewardTrack_header_keys: list[str] = list(rewardTrack_header.keys())
     # rewardTrack_data: dict[str, list[Any]] = {key: [] for key in rewardTrack_header_keys}
-    # logPrint("奖励里程整理进度（Reward track sorting process）：")
+    # logPrint("奖励里程整理进度（Reward track organization process）：")
     # for i in range(len(splitsConfig["splits"])):
     #     split: dict[str, Any] = splitsConfig["splits"][i]
     #     for j in range(len(split["rewardTrack"])):
@@ -162,7 +162,7 @@ async def get_challenger_tier(connection: Connection) -> None:
                 else:
                     logPrint('\n顶级%s%s玩家信息已保存为“%s”。\nTop %s %s player information is saved as "%s".\n' %(queueTypes_zh[queueType], tiers_zh[tier], os.path.join(folder, json2name), queueTypes_en[queueType], tiers_en[tier], os.path.join(folder, json2name)))
                     break
-            logPrint("顶级%s%s玩家信息整理进度（Top %s %s player information sorting process）：" %(queueTypes_zh[queueType], tiers_zh[tier], queueTypes_en[queueType], tiers_en[tier]))
+            logPrint("顶级%s%s玩家信息整理进度（Top %s %s player information organization process）：" %(queueTypes_zh[queueType], tiers_zh[tier], queueTypes_en[queueType], tiers_en[tier]))
             # ladder_summoner_infos: dict[str, dict[str, Any]] = await get_infos(connection, puuids = [standing["puuid"] for ladder in ladders for division in ladders["divisions"]])
             for i in range(len(ladders["divisions"])):
                 division: dict[str, Any] = ladders["divisions"][i]
@@ -246,7 +246,7 @@ async def get_challenger_tier(connection: Connection) -> None:
                 break
         ladder_data["topRated_ladder"][queueType] = {key: [] for key in topRated_ladder_header_keys}
         queue_ladder_data: dict[str, list[Any]] = ladder_data["topRated_ladder"][queueType]
-        logPrint("顶级%s玩家信息整理进度（Top %s player information sorting process）：" %(queueTypes_zh[queueType], queueTypes_en[queueType]))
+        logPrint("顶级%s玩家信息整理进度（Top %s player information organization process）：" %(queueTypes_zh[queueType], queueTypes_en[queueType]))
         # ladder_summoner_infos: dict[str, dict[str, Any]] = await get_infos(connection, puuids = [standing["puuid"] for ladder in ladders for division in ladders["divisions"]])
         for i in range(len(ladders["standings"])):
             standing: dict[str, Any] = ladders["standings"][i]

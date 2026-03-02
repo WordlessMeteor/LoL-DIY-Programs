@@ -18,7 +18,7 @@ from src.utils.runtimeDebug import subscope
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/02/26
+# 更新（Last update）：     2026/03/02
 #=============================================================================
 
 #定义异质性检验函数（Define heterogeneity verification function）
@@ -2522,7 +2522,7 @@ class MapExtractor(LoLDataExtractor):
         map_data: dict[str, list[Any]] = {key: [] for key in map_header_keys} #这个数据并不会被导出（This dictionary won't be exported）
         map_data_json: dict[str, list[Any]] = copy.deepcopy(map_data) #将数据框中的Python列表和字典转化成Json对象（Transform Python lists and dictionaries in the dataframe into Json objects）
         
-        #数据整理核心部分（Data sorting core part）
+        #数据整理核心部分（Data organization core part）
         strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
         for (key1, value) in maps_bin.items():
             if key1 != "__linked" and value["__type"] == "GameModeMapData":
@@ -2743,7 +2743,7 @@ class CheatExtractor(LoLDataExtractor):
                         for cheat in cheatPage["mCheats"]:
                             cheatset_map[cheat] = value["mName"]
 
-        #数据整理核心部分（Data sorting core part）
+        #数据整理核心部分（Data organization core part）
         pStrConst = re.compile(r"_content_\w*")
         strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
         strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
@@ -2937,7 +2937,7 @@ class PerkExtractor(LoLDataExtractor):
         perk_data: dict[str, list[Any]] = {key: [] for key in perk_header_keys}
         perk_data_json: dict[str, list[Any]] = copy.deepcopy(perk_data)
         
-        #数据整理核心部分（Data sorting core part）
+        #数据整理核心部分（Data organization core part）
         pStrConst = re.compile(r"_content_\w*")
         strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
         strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
@@ -3597,7 +3597,7 @@ class ChampionExtractor(LoLDataExtractor):
                 rootSpell_ability_map[value["mRootSpell"]] = value
         # logPrint("已构建基本指令到技能的映射关系。\nFinished building the map from root spells to abilities.")
         
-        #数据整理核心部分（Data sorting core part）
+        #数据整理核心部分（Data organization core part）
         pStrConst = re.compile(r"_content_\w*")
         strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
         strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
@@ -3769,7 +3769,7 @@ class ChampionExtractor(LoLDataExtractor):
                                 to_append = tmp_ptr
                     champion_data[key].append(to_append)
                     champion_data_json[key].append(pyobj2json(to_append))
-                # logPrint("[%d/%d]已整理角色对象（Sorted character record）： %s" %(count, len(champions_bin.items()), key1), print_time = True)
+                # logPrint("[%d/%d]已整理角色对象（Organized character record）： %s" %(count, len(champions_bin.items()), key1), print_time = True)
             elif key1 != "__linked" and value["__type"] == "SpellObject":
                 for i in range(len(champion_spell_header_keys)):
                     key = champion_spell_header_keys[i]
@@ -3864,7 +3864,7 @@ class ChampionExtractor(LoLDataExtractor):
                                 to_append = tmp_ptr
                     champion_spell_data[key].append(to_append)
                     champion_spell_data_json[key].append(pyobj2json(to_append))
-            #     logPrint("[%d/%d]已整理指令对象（Sorted spell object）： %s" %(count, len(champions_bin.items()), key1), print_time = True)
+            #     logPrint("[%d/%d]已整理指令对象（Organized spell object）： %s" %(count, len(champions_bin.items()), key1), print_time = True)
             # else:
             #     logPrint("[%d/%d]已跳过键（Skipped key）： %s" %(count, len(champions_bin.items()), key1), print_time = True)
 
@@ -3891,7 +3891,7 @@ class ChampionExtractor(LoLDataExtractor):
         champion_spell_statistics_output_order: list[int] = [0, 11, 12, 1, 10, 247, 264, 265, 3, 2, 7, 8, 9, 6, 4, 5, 24, 13, 14, 15, 25, 101, 116, 218, 65, 219, 44, 30, 39, 66, 47, 61, 62, 63, 29, 64, 67, 26, 27, 28, 31, 217, 32, 33, 220, 196, 122, 123, 56, 57, 58, 93, 124, 125, 42, 43, 197, 126, 127, 128, 95, 96, 45, 46, 49, 50, 51, 52, 48, 22, 23, 97, 102, 16, 17, 54, 19, 18, 20, 21, 38, 53, 55, 59, 60, 86, 78, 79, 89, 90, 70, 69, 75, 107, 72, 73, 74, 91, 94, 68, 71, 233, 81, 76, 77, 92, 84, 85, 80, 82, 83, 87, 105, 115, 88, 235, 236, 237, 103, 118, 117, 119, 121, 232, 221, 222, 223, 224, 225, 226, 227, 34, 35, 36, 98, 231, 100, 114, 104, 205, 206, 106, 109, 108, 110, 113, 111, 112, 120, 129, 208, 99, 209, 210, 211, 212, 213, 216, 228, 229, 230, 234, 238, 240, 239, 300, 301, 241, 242, 243, 244, 258, 259, 248, 253, 280, 282, 281, 283, 256, 292, 294, 293, 295, 251, 274, 275, 252, 276, 278, 277, 279, 254, 284, 286, 285, 287, 255, 288, 290, 289, 291, 257, 296, 298, 297, 299, 245, 260, 261, 246, 262, 263, 249, 266, 268, 267, 269, 250, 270, 272, 271, 273, 302, 303, 304, 305, 306, 307, 308, 309, 310, 207, 40, 37, 41, 311, 312, 314, 315, 324, 316, 329, 330, 313, 325, 327, 326, 328, 317, 331, 333, 332, 334, 318, 335, 337, 336, 338, 319, 320, 321, 322, 323, 198, 199, 200, 201, 202, 203, 204, 130, 174, 134, 132, 135, 136, 131, 133, 214, 215, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 175, 182, 176, 177, 178, 179, 180, 181, 192, 183, 184, 185, 186, 187, 188, 189, 190, 191, 193, 194, 195, 339]
         champion_spell_data_organized: dict[str, list[Any]] = {champion_spell_header_keys[i]: champion_spell_data_json[champion_spell_header_keys[i]] for i in champion_spell_statistics_output_order}
         champion_spell_df: pandas.DataFrame = pandas.DataFrame(data = champion_spell_data_organized)
-        logPrint("正在排序英雄技能数据框……\nSorting champion spell dataframe ...")
+        logPrint("正在排序英雄技能数据框……\nOrganizing champion spell dataframe ...")
         champion_spell_df_keys_ordered = []
         for i in range(1, len(champion_df)): #根据英雄数据框排序后的英雄顺序读取其技能，使得这些技能总是位于英雄技能数据框的顶部（Read the abilities of champions which follow the order in the champion dataframe to make champion abilities always in the front of the champion spell dataframe）
             mAbilities_str: str = champion_df.loc[i, "mAbilities"]
@@ -4041,7 +4041,7 @@ class ItemExtractor(LoLDataExtractor):
         item_data: dict[str, list[Any]] = {key: [] for key in item_header_keys}
         item_data_json: dict[str, list[Any]] = copy.deepcopy(item_data)
         
-        #数据整理核心部分（Data sorting core part）
+        #数据整理核心部分（Data organization core part）
         pStrConst = re.compile(r"_content_\w*")
         item_rarities: dict[str, str] = {0: "无", 1: "初始", 2: "基础", 3: "工资装", 4: "史诗", 5: "传说", 6: "神话", 7: "升级", 8: "锻造器", 9: "棱彩"}
         # item_rarities: dict[str, str] = {0: "NONE", 1: "STARTER", 2: "BASIC", 3: "Gold Income", 4: "EPIC", 5: "LEGENDARY", 6: "Mythic", 7: "Level Up", 8: "ANVIL", 9: "PRISMATIC"}
@@ -4328,7 +4328,7 @@ class AugmentExtractor(LoLDataExtractor):
         KiwiAugmentSet_data: dict[str, list[Any]] = {key: [] for key in KiwiAugmentSet_header_keys}
         KiwiAugmentSet_data_json: dict[str, list[Any]] = copy.deepcopy(KiwiAugmentSet_data)
         
-        #数据整理核心部分（Data sorting core part）
+        #数据整理核心部分（Data organization core part）
         AugmentDisplayTags: dict[int, str] = {0: "己方", 1: "伤害", 2: "综合", 3: "复原力", 4: "速度", 5: "功能", 6: "属性锻造器", 7: "经济"} #通过字符串常量池的“cherry_augmentdisplaytag_...”类键得到（Obtained by "cherry_augmentdisplaytag_..." keys）
         #AugmentDisplayTags: dict[int, str] = {0: "Ally", 1: "Damage", 2: "General", 3: "Resilience", 4: "Speed", 5: "Utility", 6: "Stat Anvil", 7: "Economy"}
         augment_rarities: dict[int, str] = {0: "白银", 1: "黄金", 2: "棱彩"}
@@ -4729,7 +4729,7 @@ class AnvilExtractor(LoLDataExtractor):
         KiwiAnvil_data: dict[str, list[Any]] = {key: [] for key in KiwiAnvil_header_keys}
         KiwiAnvil_data_json: dict[str, list[Any]] = copy.deepcopy(KiwiAnvil_data)
         
-        #数据整理核心部分（Data sorting core part）
+        #数据整理核心部分（Data organization core part）
         AugmentDisplayTags: dict[int, str] = {0: "己方", 1: "伤害", 2: "综合", 3: "复原力", 4: "速度", 5: "功能", 6: "属性锻造器", 7: "经济"}
         #AugmentDisplayTags: dict[int, str] = {0: "Ally", 1: "Damage", 2: "General", 3: "Resilience", 4: "Speed", 5: "Utility", 6: "Stat Anvil", 7: "Economy"}
         anvil_rarities: dict[int, str] = {0: "白银阶属性", 1: "传说级战士装备", 2: "传说级射手装备", 3: "传说级刺客装备", 4: "传说级法师装备", 5: "传说级坦克装备", 6: "传说级辅助装备", 7: "棱彩装备", 8: "黄金阶属性", 9: "棱彩阶属性"}
@@ -5106,7 +5106,7 @@ class TFTExtractor(LoLDataExtractor):
         flexibleData: dict[str, dict[str, Any]] = {}
         flexibleData["map22_bin"] = self.map22_bin
         
-        #数据整理核心部分（Data sorting core part）
+        #数据整理核心部分（Data organization core part）
         pStrConst = re.compile(r"_content_\w*")
         strtable_tft_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.tftstringtable_target
         strtable_tft_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.tftstringtable_default
