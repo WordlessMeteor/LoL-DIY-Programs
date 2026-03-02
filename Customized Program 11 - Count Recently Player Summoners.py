@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from typing import Any, Optional
 from src.utils.summoner import get_summoner_data, get_info, get_info_name
 from src.utils.logger import LogManager
-from src.utils.format import format_df, verify_uuid
+from src.utils.format import format_df, addDefaultStyle, verify_uuid
 from src.utils.patch import Patch
 from src.utils.webRequest import requestUrl, SGPSession
 from src.core.config.conditional_formatting import addFormat_LoLGame_info_wb, addFormat_LoLGame_info_wb_transpose
@@ -1236,7 +1236,7 @@ def generate_mode(search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: panda
     while True:
         try:
             with pandas.ExcelWriter(path = wb01Path) as writer:
-                recent_players_metaDf.to_excel(excel_writer = writer)
+                addDefaultStyle(recent_players_metaDf).to_excel(excel_writer = writer)
         except PermissionError:
             logPrint("近期一起玩过的玩家对局数量统计表导出失败！请检查文件的权限以及是否被占用！按回车键重试，或者输入任意非空字符串以放弃导出。\nRecently played summoner count table export failure! Please check the permission and if the file is occupied! Press Enter to try again, or submit any non-empty string to give up exporting.")
             gameCount_export_str = logInput()
@@ -1365,7 +1365,7 @@ def generate_mode(search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: panda
             try:
                 with (pandas.ExcelWriter(path = os.path.join(export_folder, wb02Name), engine = "openpyxl", mode = "a", if_sheet_exists = "replace") if os.path.exists(wb02Path) else pandas.ExcelWriter(path = os.path.join(export_folder, wb02Name), engine = "openpyxl")) as writer:
                     if search_LoL:
-                        recent_LoLPlayer_df.to_excel(excel_writer = writer, sheet_name = "Recently Played Summoners (LoL)")
+                        addDefaultStyle(recent_LoLPlayer_df).to_excel(excel_writer = writer, sheet_name = "Recently Played Summoners (LoL)")
                         worksheet = writer.sheets["Recently Played Summoners (LoL)"]
                         worksheet.conditional_formatting.rules = [] #读取时清空原规则（Clear original rules when reading）
                         if len(recent_LoLPlayer_df) > 1:
@@ -1373,7 +1373,7 @@ def generate_mode(search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: panda
                             addFormat_LoLGame_info_wb(worksheet, recent_LoLPlayer_df, numColorScale_order = max_numPlayersPerTeam_lol)
                         logPrint("近期一起玩过的英雄联盟玩家数据导出完成！\nRecently played summoner data (LoL) exported!\n")
                     if search_TFT:
-                        recent_TFTPlayer_df.to_excel(excel_writer = writer, sheet_name = "Recently Played Summoners (TFT)")
+                        addDefaultStyle(recent_TFTPlayer_df).to_excel(excel_writer = writer, sheet_name = "Recently Played Summoners (TFT)")
                         logPrint("近期一起玩过的云顶之弈玩家数据导出完成！\nRecently played summoner data (TFT) exported!\n")
             except PermissionError:
                 logPrint("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
@@ -1541,9 +1541,9 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
                         try:
                             with (pandas.ExcelWriter(path = wb03Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb03Name) else pandas.ExcelWriter(path = wb03Name)) as writer:
                                 if search_LoL and len(LoLMember_index) > 1:
-                                    LoLMember_df.to_excel(excel_writer = writer, sheet_name = get_info_name(member_info_body) + " (LoL)")
+                                    addDefaultStyle(LoLMember_df).to_excel(excel_writer = writer, sheet_name = get_info_name(member_info_body) + " (LoL)")
                                 if search_TFT and len(TFTMember_index) > 1:
-                                    TFTMember_df.to_excel(excel_writer = writer, sheet_name = get_info_name(member_info_body) + " (TFT)")
+                                    addDefaultStyle(TFTMember_df).to_excel(excel_writer = writer, sheet_name = get_info_name(member_info_body) + " (TFT)")
                                 logPrint("成员%s曾经与您一同战斗过%d次。\nMember %s has fought with you for %d time(s)." %(get_info_name(member_info_body), len(LoLMember_index) + len(TFTMember_index) - 2, get_info_name(member_info_body), len(LoLMember_index) + len(TFTMember_index) - 2))
                         except PermissionError:
                             logPrint("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
@@ -1641,9 +1641,9 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
                         try:
                             with (pandas.ExcelWriter(path = wb04Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb04Name) else pandas.ExcelWriter(path = wb04Name)) as writer:
                                 if search_LoL and len(LoLAlly_index) > 1:
-                                    LoLAlly_df.to_excel(excel_writer = writer, sheet_name = get_info_name(ally_info_body) + " (LoL)")
+                                    addDefaultStyle(LoLAlly_df).to_excel(excel_writer = writer, sheet_name = get_info_name(ally_info_body) + " (LoL)")
                                 if search_TFT and len(TFTAlly_index) > 1:
-                                    TFTAlly_df.to_excel(excel_writer = writer, sheet_name = get_info_name(ally_info_body) + " (TFT)")
+                                    addDefaultStyle(TFTAlly_df).to_excel(excel_writer = writer, sheet_name = get_info_name(ally_info_body) + " (TFT)")
                                 logPrint("队友%s曾经与您一同战斗过%d次。\nAlly %s has fought with you for %d time(s)." %(get_info_name(ally_info_body), len(LoLAlly_index) + len(TFTAlly_index) - 2, get_info_name(ally_info_body), len(LoLAlly_index) + len(TFTAlly_index) - 2))
                         except PermissionError:
                             logPrint("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
@@ -1692,9 +1692,9 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
                             try:
                                 with (pandas.ExcelWriter(path = wb04Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb04Name) else pandas.ExcelWriter(path = wb04Name)) as writer:
                                     if search_LoL and len(LoLEnemy_index) > 1:
-                                        LoLEnemy_df.to_excel(excel_writer = writer, sheet_name = get_info_name(enemy_info_body) + " (LoL)")
+                                        addDefaultStyle(LoLEnemy_df).to_excel(excel_writer = writer, sheet_name = get_info_name(enemy_info_body) + " (LoL)")
                                     if search_TFT and len(TFTEnemy_index) > 1:
-                                        TFTEnemy_df.to_excel(excel_writer = writer, sheet_name = get_info_name(enemy_info_body) + " (TFT)")
+                                        addDefaultStyle(TFTEnemy_df).to_excel(excel_writer = writer, sheet_name = get_info_name(enemy_info_body) + " (TFT)")
                                     logPrint("对手%s曾经与您一同战斗过%d次。\nEnemy %s has fought with you for %d time(s)." %(get_info_name(enemy_info_body), len(LoLEnemy_index) + len(TFTEnemy_index) - 2, get_info_name(enemy_info_body), len(LoLEnemy_index) + len(TFTEnemy_index) - 2))
                             except PermissionError:
                                 logPrint("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
@@ -1786,9 +1786,9 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
                             try:
                                 with (pandas.ExcelWriter(path = wb05Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb05Name) else pandas.ExcelWriter(path = wb05Name)) as writer:
                                     if search_LoL and len(LoLPlayer_index) > 1:
-                                        LoLPlayer_df.to_excel(excel_writer = writer, sheet_name = get_info_name(player_info_body) + " (LoL)")
+                                        addDefaultStyle(LoLPlayer_df).to_excel(excel_writer = writer, sheet_name = get_info_name(player_info_body) + " (LoL)")
                                     if search_TFT and len(TFTPlayer_index) > 1:
-                                        TFTPlayer_df.to_excel(excel_writer = writer, sheet_name = get_info_name(player_info_body) + " (TFT)")
+                                        addDefaultStyle(TFTPlayer_df).to_excel(excel_writer = writer, sheet_name = get_info_name(player_info_body) + " (TFT)")
                                     logPrint("玩家%s曾经与您一同战斗过%d次。\nPlayer %s has fought with you for %d time(s)." %(get_info_name(player_info_body), len(LoLPlayer_index) + len(TFTPlayer_index) - 2, get_info_name(player_info_body), len(LoLPlayer_index) + len(TFTPlayer_index) - 2))
                             except PermissionError:
                                 logPrint("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
@@ -1882,9 +1882,9 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
                             try:
                                 with (pandas.ExcelWriter(path = wb05Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb05Name) else pandas.ExcelWriter(path = wb05Name)) as writer:
                                     if search_LoL and len(LoLAlly_index) > 1:
-                                        LoLAlly_df.to_excel(excel_writer = writer, sheet_name = get_info_name(ally_info_body) + " (LoL)")
+                                        addDefaultStyle(LoLAlly_df).to_excel(excel_writer = writer, sheet_name = get_info_name(ally_info_body) + " (LoL)")
                                     if search_TFT and len(TFTAlly_index) > 1:
-                                        TFTAlly_df.to_excel(excel_writer = writer, sheet_name = get_info_name(ally_info_body) + " (TFT)")
+                                        addDefaultStyle(TFTAlly_df).to_excel(excel_writer = writer, sheet_name = get_info_name(ally_info_body) + " (TFT)")
                                     if isSpectating:
                                         logPrint("玩家%s曾经与您一同战斗过%d次。\nPlayer %s has fought with you for %d time(s)." %(get_info_name(ally_info_body), len(LoLAlly_index) + len(TFTAlly_index) - 2, get_info_name(ally_info_body), len(LoLAlly_index) + len(TFTAlly_index) - 2))
                                     else:
@@ -1935,9 +1935,9 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
                             try:
                                 with (pandas.ExcelWriter(path = wb05Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb05Name) else pandas.ExcelWriter(path = wb05Name)) as writer:
                                     if search_LoL and len(LoLEnemy_index) > 1:
-                                        LoLEnemy_df.to_excel(excel_writer = writer, sheet_name = get_info_name(enemy_info_body) + " (LoL)")
+                                        addDefaultStyle(LoLEnemy_df).to_excel(excel_writer = writer, sheet_name = get_info_name(enemy_info_body) + " (LoL)")
                                     if search_TFT and len(TFTEnemy_index) > 1:
-                                        TFTEnemy_df.to_excel(excel_writer = writer, sheet_name = get_info_name(enemy_info_body) + " (TFT)")
+                                        addDefaultStyle(TFTEnemy_df).to_excel(excel_writer = writer, sheet_name = get_info_name(enemy_info_body) + " (TFT)")
                                     logPrint("对手%s曾经与您一同战斗过%d次。\nEnemy %s has fought with you for %d time(s)." %(get_info_name(enemy_info_body), len(LoLEnemy_index) + len(TFTEnemy_index) - 2, get_info_name(enemy_info_body), len(LoLEnemy_index) + len(TFTEnemy_index) - 2))
                             except PermissionError:
                                 logPrint("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
@@ -2119,7 +2119,7 @@ async def detect_postgame(connection: Connection, search_LoL: bool, search_TFT: 
                         try:
                             with (pandas.ExcelWriter(path = wb06Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb06Name) else pandas.ExcelWriter(path = wb06Name)) as writer:
                                 if not players_metaDf_exported:
-                                    players_metaDf.transpose().to_excel(excel_writer = writer, sheet_name = f"Match {gameId} - Information")
+                                    addDefaultStyle(players_metaDf.transpose()).to_excel(excel_writer = writer, sheet_name = f"Match {gameId} - Information")
                                     if not isTFT:
                                         worksheet = writer.sheets[f"Match {gameId} - Information"]
                                         worksheet.conditional_formatting.rules = [] #读取时清空原规则（Clear original rules when reading）
@@ -2139,9 +2139,9 @@ async def detect_postgame(connection: Connection, search_LoL: bool, search_TFT: 
                                         addFormat_LoLGame_info_wb_transpose(worksheet, players_metaDf.transpose(), numColorScale_order = max_numPlayersPerTeam_lol)
                                     players_metaDf_exported = True
                                 if search_LoL and recent_LoLGame_played > 0:
-                                    recent_LoLParticipant_df.to_excel(excel_writer = writer, sheet_name = participant_summonerName + " (LoL)")
+                                    addDefaultStyle(recent_LoLParticipant_df).to_excel(excel_writer = writer, sheet_name = participant_summonerName + " (LoL)")
                                 if search_TFT and recent_TFTGame_played > 0:
-                                    recent_TFTParticipant_df.to_excel(excel_writer = writer, sheet_name = participant_summonerName + " (TFT)")
+                                    addDefaultStyle(recent_TFTParticipant_df).to_excel(excel_writer = writer, sheet_name = participant_summonerName + " (TFT)")
                                 logPrint("玩家%s曾经与您一同战斗过%d次。\nPlayer %s has fought with you for %d time(s)." %(participant_summonerName, recent_LoLGame_played + recent_TFTGame_played, participant_summonerName, recent_LoLGame_played + recent_TFTGame_played))
                         except PermissionError:
                             logPrint("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
@@ -2210,9 +2210,9 @@ async def detect_friend(connection: Connection, search_LoL: bool, search_TFT: bo
                 try:
                     with (pandas.ExcelWriter(path = wb07Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb07Name) else pandas.ExcelWriter(path = wb07Name)) as writer:
                         if search_LoL and len(LoLFriend_index) > 1:
-                            recent_LoLFriend_df.to_excel(excel_writer = writer, sheet_name = friend_summonerName + " (LoL)")
+                            addDefaultStyle(recent_LoLFriend_df).to_excel(excel_writer = writer, sheet_name = friend_summonerName + " (LoL)")
                         if search_TFT and len(TFTFriend_index) > 1:
-                            recent_TFTFriend_df.to_excel(excel_writer = writer, sheet_name = friend_summonerName + " (TFT)")
+                            addDefaultStyle(recent_TFTFriend_df).to_excel(excel_writer = writer, sheet_name = friend_summonerName + " (TFT)")
                         logPrint("好友%s曾经与您一同战斗过%d次。\nFriend %s has fought with you for %d time(s)." %(friend_summonerName, len(LoLFriend_index) + len(TFTFriend_index) - 2, friend_summonerName, len(LoLFriend_index) + len(TFTFriend_index) - 2))
                 except PermissionError:
                     logPrint("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
@@ -2278,9 +2278,9 @@ async def detect_friend_request(connection: Connection, search_LoL: bool, search
                 try:
                     with (pandas.ExcelWriter(path = wb08Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb08Name) else pandas.ExcelWriter(path = wb08Name)) as writer:
                         if search_LoL and len(LoLPrefriend_index) > 1:
-                            recent_LoLPrefriend_df.to_excel(excel_writer = writer, sheet_name = prefriend_summonerName + " (" + prefriend["direction"] + ") (LoL)")
+                            addDefaultStyle(recent_LoLPrefriend_df).to_excel(excel_writer = writer, sheet_name = prefriend_summonerName + " (" + prefriend["direction"] + ") (LoL)")
                         if search_TFT and len(TFTPrefriend_index) > 1:
-                            recent_TFTPrefriend_df.to_excel(excel_writer = writer, sheet_name = prefriend_summonerName + " (" + prefriend["direction"] + ") (TFT)")
+                            addDefaultStyle(recent_TFTPrefriend_df).to_excel(excel_writer = writer, sheet_name = prefriend_summonerName + " (" + prefriend["direction"] + ") (TFT)")
                         logPrint("好友请求列表中的%s曾经与您一同战斗过%d次。\nPlayer %s in friend request list has fought with you for %d time(s)." %(prefriend_summonerName, len(LoLPrefriend_index) + len(TFTPrefriend_index) - 2, prefriend_summonerName, len(LoLPrefriend_index) + len(TFTPrefriend_index) - 2))
                 except PermissionError:
                     logPrint("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
@@ -2371,9 +2371,9 @@ async def detect_party_invitaion(connection: Connection, search_LoL: bool, searc
                         try:
                             with (pandas.ExcelWriter(path = wb09Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb09Name) else pandas.ExcelWriter(path = wb09Name)) as writer:
                                 if search_LoL and len(LoLInvitee_index) > 1:
-                                    LoLInvitee_df.to_excel(excel_writer = writer, sheet_name = get_info_name(invitee_info_body) + " (out) (LoL)")
+                                    addDefaultStyle(LoLInvitee_df).to_excel(excel_writer = writer, sheet_name = get_info_name(invitee_info_body) + " (out) (LoL)")
                                 if search_TFT and len(TFTInvitee_index) > 1:
-                                    TFTInvitee_df.to_excel(excel_writer = writer, sheet_name = get_info_name(invitee_info_body) + " (out) (TFT)")
+                                    addDefaultStyle(TFTInvitee_df).to_excel(excel_writer = writer, sheet_name = get_info_name(invitee_info_body) + " (out) (TFT)")
                                 logPrint("被邀请者%s曾经与您一同战斗过%d次。\nInvitee %s has fought with you for %d time(s)." %(get_info_name(invitee_info_body), len(LoLInvitee_index) + len(TFTInvitee_index) - 2, get_info_name(invitee_info_body), len(LoLInvitee_index) + len(TFTInvitee_index) - 2))
                         except PermissionError:
                             logPrint("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
@@ -2418,9 +2418,9 @@ async def detect_party_invitaion(connection: Connection, search_LoL: bool, searc
                 try:
                     with (pandas.ExcelWriter(path = wb09Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb09Name) else pandas.ExcelWriter(path = wb09Name)) as writer:
                         if search_LoL and len(LoLInviter_index) > 1:
-                            LoLInviter_df.to_excel(excel_writer = writer, sheet_name = get_info_name(inviter_info_body) + " (in) (LoL)")
+                            addDefaultStyle(LoLInviter_df).to_excel(excel_writer = writer, sheet_name = get_info_name(inviter_info_body) + " (in) (LoL)")
                         if search_TFT and len(TFTInviter_index) > 1:
-                            TFTInviter_df.to_excel(excel_writer = writer, sheet_name = get_info_name(inviter_info_body) + " (in) (TFT)")
+                            addDefaultStyle(TFTInviter_df).to_excel(excel_writer = writer, sheet_name = get_info_name(inviter_info_body) + " (in) (TFT)")
                         logPrint("邀请者%s曾经与您一同战斗过%d次。\nInviter %s has fought with you for %d time(s)." %(get_info_name(inviter_info_body), len(LoLInviter_index) + len(TFTInviter_index) - 2, get_info_name(inviter_info_body), len(LoLInviter_index) + len(TFTInviter_index) - 2))
                 except PermissionError:
                     logPrint("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
@@ -2507,9 +2507,9 @@ async def detect_blockList(connection: Connection, search_LoL: bool, search_TFT:
                 try:
                     with (pandas.ExcelWriter(path = wb10Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb10Name) else pandas.ExcelWriter(path = wb10Name)) as writer:
                         if search_LoL and len(LoLBlockedPlayer_index) > 1:
-                            recent_LoLBlockedPlayer_df.to_excel(excel_writer = writer, sheet_name = blockedPlayer_summonerName + " (LoL)")
+                            addDefaultStyle(recent_LoLBlockedPlayer_df).to_excel(excel_writer = writer, sheet_name = blockedPlayer_summonerName + " (LoL)")
                         if search_TFT and len(TFTBlockedPlayer_index) > 1:
-                            recent_TFTBlockedPlayer_df.to_excel(excel_writer = writer, sheet_name = blockedPlayer_summonerName + " (TFT)")
+                            addDefaultStyle(recent_TFTBlockedPlayer_df).to_excel(excel_writer = writer, sheet_name = blockedPlayer_summonerName + " (TFT)")
                         logPrint("黑名单玩家%s曾经与您一同战斗过%d次。\nThe blocked player %s has fought with you for %d time(s)." %(blockedPlayer_summonerName, len(LoLBlockedPlayer_index) + len(TFTBlockedPlayer_index) - 2, blockedPlayer_summonerName, len(LoLBlockedPlayer_index) + len(TFTBlockedPlayer_index) - 2))
                 except PermissionError:
                     logPrint("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
@@ -2606,9 +2606,9 @@ async def detect_custom_list(connection: Connection, search_LoL: bool, search_TF
                     try:
                         with (pandas.ExcelWriter(path = wb11Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb11Name) else pandas.ExcelWriter(path = wb11Name)) as writer:
                             if search_LoL and len(LoLPlayer_index) > 1:
-                                recent_LoLPlayer_df.to_excel(excel_writer = writer, sheet_name = detect_summonerName + " (LoL)")
+                                addDefaultStyle(recent_LoLPlayer_df).to_excel(excel_writer = writer, sheet_name = detect_summonerName + " (LoL)")
                             if search_TFT and len(TFTPlayer_index) > 1:
-                                recent_TFTPlayer_df.to_excel(excel_writer = writer, sheet_name = detect_summonerName + " (TFT)")
+                                addDefaultStyle(recent_TFTPlayer_df).to_excel(excel_writer = writer, sheet_name = detect_summonerName + " (TFT)")
                             logPrint("玩家%s曾经与您一同战斗过%d次。\nPlayer %s has fought with you for %d time(s)." %(detect_summonerName, len(LoLPlayer_index) + len(TFTPlayer_index) - 2, detect_summonerName, len(LoLPlayer_index) + len(TFTPlayer_index) - 2))
                     except PermissionError:
                         logPrint("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")

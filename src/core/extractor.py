@@ -9,7 +9,7 @@ if not wd in sys.path:
 from src.utils.logger import LogManager
 from src.utils.patch import Patch
 from src.utils.webRequest import requestUrl
-from src.utils.format import optimize_bool_display, format_df, pyobj2json, capitalize, decapitalize
+from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, pyobj2json, capitalize, decapitalize
 from src.utils.runtimeDebug import subscope
 
 #=============================================================================
@@ -2645,7 +2645,7 @@ class MapExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    self.map_df.to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(self.map_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
             except PermissionError:
@@ -2833,8 +2833,8 @@ class CheatExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    self.cheatset_df.to_excel(excel_writer = writer, sheet_name = sheet1_name)
-                    self.cheat_df.to_excel(excel_writer = writer, sheet_name = sheet2_name)
+                    addDefaultStyle(self.cheatset_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(self.cheat_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
@@ -3136,8 +3136,8 @@ class PerkExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    self.perkstyle_df.to_excel(excel_writer = writer, sheet_name = sheet1_name)
-                    self.perk_df.to_excel(excel_writer = writer, sheet_name = sheet2_name)
+                    addDefaultStyle(self.perkstyle_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(self.perk_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
@@ -3947,8 +3947,8 @@ class ChampionExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    self.champion_df.to_excel(excel_writer = writer, sheet_name = sheet1_name)
-                    self.champion_spell_df.to_excel(excel_writer = writer, sheet_name = sheet2_name)
+                    addDefaultStyle(self.champion_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(self.champion_spell_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A1 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
@@ -4170,7 +4170,7 @@ class ItemExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    self.item_df.to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(self.item_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
             except PermissionError:
@@ -4581,11 +4581,11 @@ class AugmentExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    self.CherryAugment_df.to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(self.CherryAugment_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
                     if not self.KiwiAugment_df.empty:
-                        self.KiwiAugment_df.to_excel(excel_writer = writer, sheet_name = sheet2_name)
+                        addDefaultStyle(self.KiwiAugment_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
                     if not self.KiwiAugmentSet_df.empty:
-                        self.KiwiAugmentSet_df.to_excel(excel_writer = writer, sheet_name = sheet3_name)
+                        addDefaultStyle(self.KiwiAugmentSet_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
                     if not self.KiwiAugment_df.empty:
@@ -4878,8 +4878,8 @@ class AnvilExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    self.CherryAnvil_df.to_excel(excel_writer = writer, sheet_name = sheet1_name)
-                    self.KiwiAnvil_df.to_excel(excel_writer = writer, sheet_name = sheet2_name)
+                    addDefaultStyle(self.CherryAnvil_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(self.KiwiAnvil_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
@@ -6120,24 +6120,24 @@ class TFTExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    self.TFTSet_df.to_excel(excel_writer = writer, sheet_name = sheet1_name)
-                    self.TFTShop_df.to_excel(excel_writer = writer, sheet_name = sheet2_name)
-                    self.TFTShopContent_df.to_excel(excel_writer = writer, sheet_name = sheet3_name)
-                    self.TFTDropRate_df.to_excel(excel_writer = writer, sheet_name = sheet4_name)
-                    self.TFTStageRound_df.to_excel(excel_writer = writer, sheet_name = sheet5_name)
-                    self.TFTRound_df.to_excel(excel_writer = writer, sheet_name = sheet6_name)
-                    self.TFTPortal_df.to_excel(excel_writer = writer, sheet_name = sheet7_name)
-                    self.TFTEncounterDistribution_df.to_excel(excel_writer = writer, sheet_name = sheet8_name)
-                    self.TFTEncounter_df.to_excel(excel_writer = writer, sheet_name = sheet9_name)
-                    self.TFTUnitProperty_df.to_excel(excel_writer = writer, sheet_name = sheet10_name)
-                    self.TFTCharacterRole_df.to_excel(excel_writer = writer, sheet_name = sheet11_name)
-                    self.TFTItemList_df.to_excel(excel_writer = writer, sheet_name = sheet12_name)
-                    self.TFTItem_df.to_excel(excel_writer = writer, sheet_name = sheet13_name)
-                    self.TFTTraitList_df.to_excel(excel_writer = writer, sheet_name = sheet14_name)
-                    self.TFTTrait_df.to_excel(excel_writer = writer, sheet_name = sheet15_name)
-                    self.TFTPVENPC_df.to_excel(excel_writer = writer, sheet_name = sheet16_name)
-                    self.TFTScript_df.to_excel(excel_writer = writer, sheet_name = sheet17_name)
-                    self.TFTAnnouncement_df.to_excel(excel_writer = writer, sheet_name = sheet18_name)
+                    addDefaultStyle(self.TFTSet_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(self.TFTShop_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
+                    addDefaultStyle(self.TFTShopContent_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
+                    addDefaultStyle(self.TFTDropRate_df).to_excel(excel_writer = writer, sheet_name = sheet4_name)
+                    addDefaultStyle(self.TFTStageRound_df).to_excel(excel_writer = writer, sheet_name = sheet5_name)
+                    addDefaultStyle(self.TFTRound_df).to_excel(excel_writer = writer, sheet_name = sheet6_name)
+                    addDefaultStyle(self.TFTPortal_df).to_excel(excel_writer = writer, sheet_name = sheet7_name)
+                    addDefaultStyle(self.TFTEncounterDistribution_df).to_excel(excel_writer = writer, sheet_name = sheet8_name)
+                    addDefaultStyle(self.TFTEncounter_df).to_excel(excel_writer = writer, sheet_name = sheet9_name)
+                    addDefaultStyle(self.TFTUnitProperty_df).to_excel(excel_writer = writer, sheet_name = sheet10_name)
+                    addDefaultStyle(self.TFTCharacterRole_df).to_excel(excel_writer = writer, sheet_name = sheet11_name)
+                    addDefaultStyle(self.TFTItemList_df).to_excel(excel_writer = writer, sheet_name = sheet12_name)
+                    addDefaultStyle(self.TFTItem_df).to_excel(excel_writer = writer, sheet_name = sheet13_name)
+                    addDefaultStyle(self.TFTTraitList_df).to_excel(excel_writer = writer, sheet_name = sheet14_name)
+                    addDefaultStyle(self.TFTTrait_df).to_excel(excel_writer = writer, sheet_name = sheet15_name)
+                    addDefaultStyle(self.TFTPVENPC_df).to_excel(excel_writer = writer, sheet_name = sheet16_name)
+                    addDefaultStyle(self.TFTScript_df).to_excel(excel_writer = writer, sheet_name = sheet17_name)
+                    addDefaultStyle(self.TFTAnnouncement_df).to_excel(excel_writer = writer, sheet_name = sheet18_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)

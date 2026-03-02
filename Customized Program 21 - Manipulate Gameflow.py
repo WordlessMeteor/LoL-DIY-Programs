@@ -5,7 +5,7 @@ from urllib.parse import quote, unquote, urljoin
 from typing import Any, Optional
 from src.utils.logger import aInput, LogManager
 from src.utils.summoner import get_summoner_data, get_info, get_info_name
-from src.utils.format import optimize_bool_display, format_df, lcuTime, getISOTime, verify_uuid, normalize_file_name
+from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, lcuTime, getISOTime, verify_uuid, normalize_file_name
 from src.utils.runtimeDebug import send_commands
 from src.utils.webRequest import SGPSession, requestUrl
 from src.core.config.const import ALL_GAMEFLOW_PHASES, BOT_DIFFICULTY_LIST, BOT_UUID, SPECTATOR_POLICY_LIST, GLOBAL_RESPONSE_LAG, REPORT_CATEGORY_LIST_CHAMPSELECT, REPORT_CATEGORY_LIST_POSTGAME
@@ -6673,7 +6673,7 @@ async def inGame_simulation(connection: Connection) -> str:
                 print(format_df(players_metaDf)[0])
                 try:
                     with (pandas.ExcelWriter(path = excel_name, engine = "openpyxl", mode = "a", if_sheet_exists = "replace") if os.path.exists(excel_name) else pandas.ExcelWriter(path = excel_name, engine = "openpyxl")) as writer:
-                        players_metaDf.to_excel(excel_writer = writer, sheet_name = "MemberComposition (InProgress)")
+                        addDefaultStyle(players_metaDf).to_excel(excel_writer = writer, sheet_name = "MemberComposition (InProgress)")
                 except PermissionError:
                     logPrint(f"无写入权限！请确保{excel_name}未被打开且非只读状态！\nPermission denied! Please ensure {excel_name} isn't opened right now or read-only!")
                 else:
@@ -6767,7 +6767,7 @@ async def inGame_simulation(connection: Connection) -> str:
                             excel_name: str = "inGame_data.xlsx"
                             try:
                                 with (pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") if os.path.exists(excel_name) else pandas.ExcelWriter(path = excel_name)) as writer:
-                                    inGame_allPlayer_df.to_excel(excel_writer = writer, sheet_name = "AllPlayers")
+                                    addDefaultStyle(inGame_allPlayer_df).to_excel(excel_writer = writer, sheet_name = "AllPlayers")
                                     worksheet = writer.sheets["AllPlayers"]
                                     worksheet.conditional_formatting.rules = [] #读取时清空原规则（Clear original rules when reading）
                                     addFormat_inGame_allPlayer_wb(worksheet, inGame_allPlayer_df)
@@ -6780,7 +6780,7 @@ async def inGame_simulation(connection: Connection) -> str:
                             excel_name: str = "inGame_data.xlsx"
                             try:
                                 with (pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") if os.path.exists(excel_name) else pandas.ExcelWriter(path = excel_name)) as writer:
-                                    inGame_event_df.to_excel(excel_writer = writer, sheet_name = "Events")
+                                    addDefaultStyle(inGame_event_df).to_excel(excel_writer = writer, sheet_name = "Events")
                             except PermissionError:
                                 logPrint(f"无写入权限！请确保{excel_name}未被打开且非只读状态！\nPermission denied! Please ensure {excel_name} isn't opened right now or read-only!")
                             else:
@@ -7287,8 +7287,8 @@ async def endOfGame_simulation(connection: Connection) -> str:
                         while True:
                             try:
                                 with pandas.ExcelWriter(path = excel_name) as writer:
-                                    eog_stat_metaDf_tft.to_excel(excel_writer = writer, sheet_name = "Metadata")
-                                    eog_stat_df_tft_export.to_excel(excel_writer = writer, sheet_name = "Player Stats")
+                                    addDefaultStyle(eog_stat_metaDf_tft).to_excel(excel_writer = writer, sheet_name = "Metadata")
+                                    addDefaultStyle(eog_stat_df_tft_export).to_excel(excel_writer = writer, sheet_name = "Player Stats")
                             except PermissionError:
                                 logPrint("无写入权限！请确保文件未被打开且非只读状态！按回车键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press Enter to try again.")
                                 logInput()
@@ -7314,9 +7314,9 @@ async def endOfGame_simulation(connection: Connection) -> str:
                         while True:
                             try:
                                 with pandas.ExcelWriter(path = excel_name) as writer:
-                                    eog_stat_metaDf_lol.to_excel(excel_writer = writer, sheet_name = "Metadata")
-                                    eog_teamstat_df_lol.to_excel(excel_writer = writer, sheet_name = "Team Stats")
-                                    eog_playerstat_df_lol_export.to_excel(excel_writer = writer, sheet_name = "Player Stats")
+                                    addDefaultStyle(eog_stat_metaDf_lol).to_excel(excel_writer = writer, sheet_name = "Metadata")
+                                    addDefaultStyle(eog_teamstat_df_lol).to_excel(excel_writer = writer, sheet_name = "Team Stats")
+                                    addDefaultStyle(eog_playerstat_df_lol_export).to_excel(excel_writer = writer, sheet_name = "Player Stats")
                             except PermissionError:
                                 logPrint("无写入权限！请确保文件未被打开且非只读状态！按回车键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press Enter to try again.")
                                 logInput()

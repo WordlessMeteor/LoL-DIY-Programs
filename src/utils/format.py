@@ -192,6 +192,22 @@ def format_df(df: pandas.DataFrame, width_exceed_ask: bool = True, direct_print:
         print("排列方式参数错误！请传入字符串。\nAlignment parameter ERROR! Please pass a string instead.")
     return (result, maxLens)
 
+def addDefaultStyle(df: pandas.DataFrame) -> pandas.io.formats.style.Styler: #为数据框添加默认样式（Add default style for a dataframe）
+    '''
+    将要导出为工作表的数据框的表头和索引列添加以下样式：<br>Add the following styles for the header and index column of a dataframe to be exported as a worksheet:
+    - 居中（Center)
+    - 加粗（Bold)
+    - 全边框（Full border)
+    
+    以上样式在pandas2导出时默认启用，在pandas3中默认不启用。<br>These styles are enabled by default in pandas2 but not in pandas3.
+    
+    :param df: 要添加默认样式的数据框。<br>A dataframe to add default style.
+    :type df: pandas.DataFrame
+    :return: 添加样式后的数据框。<br>A dataframe added with styles.
+    :rtype: pandas.io.formats.style.Styler
+    '''
+    return df.style.map_index(lambda v: "text-align:center; font-weight:bold; border: 1px solid black", axis = 0).map_index(lambda v: "text-align:center; font-weight:bold; border: 1px solid black", axis = 1)
+
 def lcuTime(timestamp: float) -> str: #根据对局时间轴的时间戳返回对局时间（Return the time according to the timestamp in match timeline）
     '''
     将LCU API中涉及的时间戳转化为“M:(0)S”持续时长的形式。<br>Transform the timestamp in data returned by LCU API into the duration like "M:(0)S" form.

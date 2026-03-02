@@ -5,7 +5,7 @@ from typing import Any, Optional
 from src.utils.summoner import get_summoner_data
 from src.utils.logger import LogManager
 from src.utils.repeatConnect import LCUConnect
-from src.utils.format import optimize_bool_display, format_df, format_runtime, verify_uuid, pyobj2json
+from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, format_runtime, verify_uuid, pyobj2json
 from src.utils.patch import Patch, get_ddragon_versionList, get_cdragon_patchList
 from src.utils.runtimeDebug import subscope
 from src.utils.webRequest import requestUrl
@@ -2469,11 +2469,11 @@ def export_item_data() -> None:
                                 version: str = versions_sort[i]
                                 logPrint("装备信息导出进度（Item data export process）：%d/%d\t版本（Version）：%s" %(i + 1, len(versions_sort), version))
                                 if version == "latest" or version == "pbe":
-                                    LoLItem_dfs[version].to_excel(excel_writer = writer, sheet_name = version)
+                                    addDefaultStyle(LoLItem_dfs[version]).to_excel(excel_writer = writer, sheet_name = version)
                                 elif source != "" and source[0] == "1":
-                                    LoLItem_dfs[version].to_excel(excel_writer = writer, sheet_name = version + " (ddragon)")
+                                    addDefaultStyle(LoLItem_dfs[version]).to_excel(excel_writer = writer, sheet_name = version + " (ddragon)")
                                 else:
-                                    LoLItem_dfs[version].to_excel(excel_writer = writer, sheet_name = version + " (cdragon)")
+                                    addDefaultStyle(LoLItem_dfs[version]).to_excel(excel_writer = writer, sheet_name = version + " (cdragon)")
                                 end: float = time.time()
                                 unit: float = end - start
                                 total_used += unit

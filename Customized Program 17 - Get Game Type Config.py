@@ -3,7 +3,7 @@ from lcu_driver.connection import Connection
 import os, pandas, json
 from typing import Any
 from src.utils.summoner import get_summoner_data
-from src.utils.format import optimize_bool_display
+from src.utils.format import optimize_bool_display, addDefaultStyle
 from src.core.config.localization import gameTypes_config
 from src.core.config.headers import gametype_config_header
 
@@ -13,7 +13,7 @@ from src.core.config.headers import gametype_config_header
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/02/03
+# 更新（Last update）：     2026/03/02
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -72,7 +72,7 @@ async def sort_gametype_config(connection: Connection) -> None:
     while True:
         try:
             with (pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") if os.path.exists(excel_name) else pandas.ExcelWriter(path = excel_name)) as writer:
-                gametype_config_df.to_excel(excel_writer = writer, sheet_name = "All Game Types")
+                addDefaultStyle(gametype_config_df).to_excel(excel_writer = writer, sheet_name = "All Game Types")
         except PermissionError:
             print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
             input()

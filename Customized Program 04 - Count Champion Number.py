@@ -4,7 +4,7 @@ from urllib.parse import urljoin
 from typing import Any
 from src.utils.patch import get_cdragon_patchList
 from src.utils.webRequest import requestUrl
-from src.utils.format import format_df
+from src.utils.format import format_df, addDefaultStyle
 from src.utils.summoner import get_summoner_data
 from src.utils.repeatConnect import LCUConnect
 from src.core.config.localization import language_ddragon, language_cdragon
@@ -325,7 +325,7 @@ async def count_champions(connection: Connection) -> None:
             while True:
                 try:
                     with (pandas.ExcelWriter(path = wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(path = wbPath)) as writer:
-                        LoLChampion_df.to_excel(excel_writer = writer, sheet_name = sheet_name)
+                        addDefaultStyle(LoLChampion_df).to_excel(excel_writer = writer, sheet_name = sheet_name)
                     with pandas.ExcelWriter(path = wbPath, mode = "a", if_sheet_exists = "overlay") as writer:
                         version_df.to_excel(excel_writer = writer, sheet_name = sheet_name, header = None, index = False, startcol = 0, startrow = 0)
                 except PermissionError:
@@ -389,7 +389,7 @@ def main():
                     while True:
                         try:
                             with (pandas.ExcelWriter(path = "available-bots.xlsx", mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(path = "available-bots.xlsx")) as writer:
-                                LoLChampion_df.to_excel(excel_writer = writer, sheet_name = "Sheet3")
+                                addDefaultStyle(LoLChampion_df).to_excel(excel_writer = writer, sheet_name = "Sheet3")
                             with pandas.ExcelWriter(path = "available-bots.xlsx", mode = "a", if_sheet_exists = "overlay") as writer:
                                 version_df.to_excel(excel_writer = writer, sheet_name = "Sheet3", header = None, index = False, startcol = 0, startrow = 0)
                         except PermissionError:
@@ -409,7 +409,7 @@ def main():
                     while True:
                         try:
                             with (pandas.ExcelWriter(path = "available-bots.xlsx", mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(path = "available-bots.xlsx")) as writer:
-                                LoLChampion_df.to_excel(excel_writer = writer, sheet_name = "Sheet3")
+                                addDefaultStyle(LoLChampion_df).to_excel(excel_writer = writer, sheet_name = "Sheet3")
                             with pandas.ExcelWriter(path = "available-bots.xlsx", mode = "a", if_sheet_exists = "overlay") as writer:
                                 version_df.to_excel(excel_writer = writer, sheet_name = "Sheet3", header = None, index = False, startcol = 0, startrow = 0)
                         except PermissionError:

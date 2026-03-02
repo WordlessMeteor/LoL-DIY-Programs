@@ -2,7 +2,7 @@ from lcu_driver import Connector
 from lcu_driver.connection import Connection
 import json, keyboard, os, pandas, time
 from typing import Any
-from src.utils.format import optimize_bool_display
+from src.utils.format import addDefaultStyle, optimize_bool_display
 from src.utils.summoner import get_summoner_data, get_info
 from src.utils.logger import LogManager
 from src.utils.webRequest import SGPSession
@@ -15,7 +15,7 @@ from src.core.dataframes.matchHistory import get_matchHistory_sgp
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/02/14
+# 更新（Last update）：     2026/03/02
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -210,7 +210,7 @@ async def interaction_traverse_summoner(connection: Connection, export: bool = T
         while True:
             try:
                 with pandas.ExcelWriter(path = excel_name, mode = "w") as writer:
-                    info_df.to_excel(excel_writer = writer)
+                    addDefaultStyle(info_df).to_excel(excel_writer = writer)
             except PermissionError:
                 logPrint("无写入权限！请确保文件未被打开且非只读状态！按回车键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press Enter to try again.")
                 logInput()

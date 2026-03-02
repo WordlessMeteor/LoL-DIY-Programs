@@ -4,7 +4,7 @@ import os, pandas, re, time
 from openpyxl import load_workbook
 from typing import Any
 from src.utils.summoner import get_summoner_data, get_info_name
-from src.utils.format import getISOTime, optimize_bool_display, format_df
+from src.utils.format import getISOTime, optimize_bool_display, format_df, addDefaultStyle
 from src.core.config.servers import set_summonerInfo_folder, save_platform_info
 from src.core.config.headers import mission_header, objective_group_header, objective_category_header
 from src.core.config.localization import celebrationTypes, clientNotifyLevels, displayTypes, missionTypes, metadataMissionTypes, objectiveStatus_dict, objectiveTypes, rewardGroupStrategies, rewardTypes, missionStatus_dict, gameTypes_mission, objectivesTypes, categoryTypes, lolEventHubTypes, objectiveCategoryFilter_dict, tftPassTypes
@@ -202,9 +202,9 @@ async def get_mission_info(connection: Connection) -> None:
         try:
             with (pandas.ExcelWriter(path = wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(path = wbPath)) as writer:
                 currentTime: str = time.strftime("%Y-%m-%d", time.localtime(time.time()))
-                mission_df_sorted.to_excel(excel_writer = writer, sheet_name = f"Missions - {currentTime}_{platformId}")
-                objective_group_df_sorted.to_excel(excel_writer = writer, sheet_name = f"Objectives - {currentTime}_{platformId}")
-                objective_category_df.to_excel(excel_writer = writer, sheet_name = f"Categories - {currentTime}_{platformId}")
+                addDefaultStyle(mission_df_sorted).to_excel(excel_writer = writer, sheet_name = f"Missions - {currentTime}_{platformId}")
+                addDefaultStyle(objective_group_df_sorted).to_excel(excel_writer = writer, sheet_name = f"Objectives - {currentTime}_{platformId}")
+                addDefaultStyle(objective_category_df).to_excel(excel_writer = writer, sheet_name = f"Categories - {currentTime}_{platformId}")
         except PermissionError:
             print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
             input()

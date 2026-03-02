@@ -2,6 +2,7 @@ from lcu_driver import Connector
 from lcu_driver.connection import Connection
 import os, pandas, json, time
 from typing import Any, IO
+from src.utils.format import addDefaultStyle
 from src.utils.summoner import get_summoner_data, get_info_name
 from src.core.config.servers import set_summonerInfo_folder, save_platform_info
 from src.core.config.headers import player_loot_header
@@ -13,7 +14,7 @@ from src.core.config.localization import essenceTypes, lootCategories, itemStatu
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/02/03
+# 更新（Last update）：     2026/03/02
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -89,7 +90,7 @@ async def analyze_player_loots(connection: Connection) -> None: #导出玩家目
         try:
             with (pandas.ExcelWriter(path = os.path.join(folder, excel_name), mode = "a", if_sheet_exists = "replace") if os.path.exists(os.path.join(folder, excel_name)) else pandas.ExcelWriter(path = os.path.join(folder, excel_name))) as writer:
                 currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
-                player_loot_df.to_excel(excel_writer = writer, sheet_name = f"{currentTime} {platformId} {locale}")
+                addDefaultStyle(player_loot_df).to_excel(excel_writer = writer, sheet_name = f"{currentTime} {platformId} {locale}")
         except PermissionError:
             print("无写入权限！请确保文件未被打开且非只读状态！按回车键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press Enter to try again.")
             input()

@@ -299,14 +299,14 @@ async def get_challenger_tier(connection: Connection) -> None:
             while True:
                 try:
                     with (pandas.ExcelWriter(path = wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(path = wbPath)) as writer:
-                        # splits_info_df.to_excel(excel_writer = writer, sheet_name = f"Split Config - Season {currentSeason}")
+                        # addDefaultStyle(splits_info_df).to_excel(excel_writer = writer, sheet_name = f"Split Config - Season {currentSeason}")
                         # logPrint("赛季信息导出完成！\nSplit config exported!\n")
-                        # rewardTrack_df.to_excel(excel_writer = writer, sheet_name = f"Reward Track - Season {currentSeason}")
+                        # addDefaultStyle(rewardTrack_df).to_excel(excel_writer = writer, sheet_name = f"Reward Track - Season {currentSeason}")
                         # logPrint("奖励里程导出完成！\nReward milestones exported!\n")
-                        challenger_ladder_metadata_df.to_excel(excel_writer = writer, sheet_name = f"Tier Apex Metadata - Season {currentSeason}")
+                        addDefaultStyle(challenger_ladder_metadata_df).to_excel(excel_writer = writer, sheet_name = f"Tier Apex Metadata - Season {currentSeason}")
                         logPrint("胜点系列段位天梯元数据导出完成！\nLP apex metadata exported!\n")
-                        #topRated_ladder_metadata_df.to_excel(excel_writer = writer, sheet_name = f"Rating Apex Metadata - Season {currentSeason}")
-                        #logPrint("排名分系列段位天梯元数据导出完成！\nRating apex metadata exported!\n")
+                        # addDefaultStyle(topRated_ladder_metadata_df).to_excel(excel_writer = writer, sheet_name = f"Rating Apex Metadata - Season {currentSeason}")
+                        # logPrint("排名分系列段位天梯元数据导出完成！\nRating apex metadata exported!\n")
                         runTimes: list[float] = [] #记录保存每个队列的顶级玩家信息所花费的时间（Records the time spent in saving the top player information of each queue）
                         total_used: int = 0
                         ladders_reserved: int = 0
@@ -314,7 +314,7 @@ async def get_challenger_tier(connection: Connection) -> None:
                             for queueType in ladder_dfs[ladderType]:
                                 start: float = time.time()
                                 logPrint("正在导出顶级%s玩家信息……\nExporting top %s player information ..." %(queueTypes_zh[queueType], queueTypes_en[queueType]))
-                                ladder_dfs[ladderType][queueType].to_excel(excel_writer = writer, sheet_name = queueType + " " + (runTime_day if ladderType == "challenger_ladder" else runTime_hour))
+                                addDefaultStyle(ladder_dfs[ladderType][queueType]).to_excel(excel_writer = writer, sheet_name = queueType + " " + (runTime_day if ladderType == "challenger_ladder" else runTime_hour))
                                 ladders_reserved += 1
                                 end: float = time.time()
                                 unit: float = end - start

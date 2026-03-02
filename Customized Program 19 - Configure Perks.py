@@ -2,7 +2,7 @@ from lcu_driver import Connector
 from lcu_driver.connection import Connection
 import copy, json, numpy, os, pandas, platform, pyperclip, re, time, traceback
 from typing import Any, Optional
-from src.utils.format import getISOTime, optimize_bool_display, format_df, pyobj2json
+from src.utils.format import getISOTime, optimize_bool_display, format_df, addDefaultStyle, pyobj2json
 from src.utils.logger import LogManager
 from src.utils.summoner import get_summoner_data, get_info_name
 from src.core.config.localization import slotTypes, positions, recommendedAttributes
@@ -16,7 +16,7 @@ from src.core.dataframes.champions import sort_inventory_champions
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/02/14
+# 更新（Last update）：     2026/03/02
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -304,7 +304,7 @@ async def configure_perks(connection: Connection) -> None:
                     while True:
                         try:
                             with pandas.ExcelWriter(path = excel_name) as writer:
-                                perk_df.to_excel(excel_writer = writer, sheet_name = "Perks") #数据框在导出到Excel中时保留最原始的数据（When the dataframe is exported to Excel, the most original information is reserved）
+                                addDefaultStyle(perk_df).to_excel(excel_writer = writer, sheet_name = "Perks") #数据框在导出到Excel中时保留最原始的数据（When the dataframe is exported to Excel, the most original information is reserved）
                         except PermissionError:
                             logPrint("无写入权限！请确保文件未被打开且非只读状态！按回车键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press Enter to try again.")
                             logInput()
@@ -477,7 +477,7 @@ async def configure_perks(connection: Connection) -> None:
                         try:
                             with (pandas.ExcelWriter(path = wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(path = wbPath)) as writer:
                                 currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
-                                perkPage_df.to_excel(excel_writer = writer, sheet_name = f"Perk Page - {currentTime}")
+                                addDefaultStyle(perkPage_df).to_excel(excel_writer = writer, sheet_name = f"Perk Page - {currentTime}")
                         except PermissionError:
                             logPrint("无写入权限！请确保文件未被打开且非只读状态！按回车键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press Enter to try again.")
                             logInput()

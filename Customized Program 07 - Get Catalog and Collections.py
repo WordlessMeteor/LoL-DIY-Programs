@@ -4,7 +4,7 @@ import copy, os, json, time, pandas, re, requests
 from openpyxl import load_workbook
 from typing import Any
 from src.utils.summoner import get_summoner_data, get_info_name
-from src.utils.format import getISOTime, optimize_bool_display, pyobj2json
+from src.utils.format import getISOTime, addDefaultStyle, optimize_bool_display, pyobj2json
 from src.core.config.servers import set_platform_folder, set_summonerInfo_folder, save_platform_info
 from src.core.config.localization import inventoryType_dict, ownershipTypes, subInventoryTypes
 
@@ -542,13 +542,13 @@ async def fetch_store(connection: Connection) -> None:
             if workbook1_exist:
                 with pandas.ExcelWriter(path = wb1Path, mode = "a", if_sheet_exists = "replace") as writer:
                     currentTime: str = time.strftime("%Y-%m-%d", time.localtime(time.time()))
-                    store_df.to_excel(excel_writer = writer, sheet_name = f"Store - {currentTime}_{platformId}_{locale}")
+                    addDefaultStyle(store_df).to_excel(excel_writer = writer, sheet_name = f"Store - {currentTime}_{platformId}_{locale}")
                 with pandas.ExcelWriter(path = wb1Path, mode = "a", if_sheet_exists = "overlay") as writer:
                     version_df.to_excel(excel_writer = writer, sheet_name = f"Store - {currentTime}_{platformId}_{locale}", header = None, index = False, startcol = 0, startrow = 0)
             else:
                 with pandas.ExcelWriter(path = wb1Path) as writer:
                     currentTime: str = time.strftime("%Y-%m-%d", time.localtime(time.time()))
-                    store_df.to_excel(excel_writer = writer, sheet_name = f"Store - {currentTime}_{platformId}_{locale}")
+                    addDefaultStyle(store_df).to_excel(excel_writer = writer, sheet_name = f"Store - {currentTime}_{platformId}_{locale}")
                     version_df.to_excel(excel_writer = writer, sheet_name = f"Store - {currentTime}_{platformId}_{locale}", header = None, index = False, startcol = 0, startrow = 0)
         except PermissionError:
             print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
@@ -565,8 +565,8 @@ async def fetch_store(connection: Connection) -> None:
         try:
             with (pandas.ExcelWriter(path = wb2Path, mode = "a", if_sheet_exists = "replace") if workbook2_exist else pandas.ExcelWriter(path = wb2Path)) as writer:
                 currentTime: str = time.strftime("%Y-%m-%d", time.localtime(time.time()))
-                catalog_df.to_excel(excel_writer = writer, sheet_name = f"Catalog - {currentTime}_{platformId}_{locale}")
-                collection_df.to_excel(excel_writer = writer, sheet_name = f"Collections - {currentTime}_{platformId}")
+                addDefaultStyle(catalog_df).to_excel(excel_writer = writer, sheet_name = f"Catalog - {currentTime}_{platformId}_{locale}")
+                addDefaultStyle(collection_df).to_excel(excel_writer = writer, sheet_name = f"Collections - {currentTime}_{platformId}")
         except PermissionError:
             print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
             input()

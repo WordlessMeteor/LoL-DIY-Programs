@@ -4,7 +4,7 @@ import argparse, os, pandas, psutil, time, win32com.client
 from typing import Any
 from src.utils.summoner import get_summoner_data, get_info, get_info_name, sort_summoner_info
 from src.utils.logger import LogManager
-from src.utils.format import optimize_bool_display, format_df, normalize_file_name, verify_uuid
+from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, normalize_file_name, verify_uuid
 from src.utils.webRequest import requestUrl, SGPSession
 from src.utils.runtimeDebug import subscope
 from src.core.config.const import BOT_UUID
@@ -48,7 +48,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/02/14
+# 更新（Last update）：     2026/03/02
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -878,16 +878,16 @@ async def Clarke_revival(connection: Connection) -> None:
         while True:
             try:
                 with pandas.ExcelWriter(path = excel_name, engine = "openpyxl") as writer: #使用openpyxl引擎套用条件格式（Use "openpyxl" engine to add conditional formats）
-                    player_info_df.to_excel(excel_writer = writer, sheet_name = "MemberIdentity")
+                    addDefaultStyle(player_info_df).to_excel(excel_writer = writer, sheet_name = "MemberIdentity")
                     logPrint("成员身份信息已导出。\nMember identity information has been exported.")
                     if mode == "1" and gameflow_phase == "ChampSelect":
-                        players_metaDf.transpose().to_excel(excel_writer = writer, sheet_name = "MemberComposition (ChampSelect)")
+                        addDefaultStyle(players_metaDf.transpose()).to_excel(excel_writer = writer, sheet_name = "MemberComposition (ChampSelect)")
                         logPrint("英雄选择阶段的成员构成已导出。\nMember composition during the champ select stage has been exported.", verbose = print_detail)
                     elif mode == "1" and gameflow_phase in {"InProgress", "Reconnect"}:
-                        players_metaDf.transpose().to_excel(excel_writer = writer, sheet_name = "MemberComposition (InProgress)")
+                        addDefaultStyle(players_metaDf.transpose()).to_excel(excel_writer = writer, sheet_name = "MemberComposition (InProgress)")
                         logPrint("游戏内的成员构成已导出。\nMember composition in the game has been exported.", verbose = print_detail)
                     elif mode == "2":
-                        players_metaDf.transpose().to_excel(excel_writer = writer, sheet_name = "MemberComposition (PostGame)")
+                        addDefaultStyle(players_metaDf.transpose()).to_excel(excel_writer = writer, sheet_name = "MemberComposition (PostGame)")
                         if gameMode != "TFT":
                             worksheet = writer.sheets["MemberComposition (PostGame)"]
                             worksheet.conditional_formatting.rules = [] #读取时清空原规则（Clear original rules when reading）
@@ -906,10 +906,10 @@ async def Clarke_revival(connection: Connection) -> None:
                             max_numPlayersPerTeam_lol: int = max(map(len, participantId_subteamId_map.values())) if gameMode == "CHERRY" else max(map(len, participantId_teamId_map.values()))
                             addFormat_LoLGame_info_wb_transpose(worksheet, players_metaDf.transpose(), numColorScale_order = max_numPlayersPerTeam_lol)
                         logPrint(f"对局{gameId}的玩家数据已导出。\nPlayer stats in Match {gameId} have been exported.", verbose = print_detail)
-                    game_leaderboard_df.to_excel(excel_writer = writer, sheet_name = "Game Leaderboard")
+                    addDefaultStyle(game_leaderboard_df).to_excel(excel_writer = writer, sheet_name = "Game Leaderboard")
                     logPrint("玩家排位信息已汇总。\nGame leaderboard has been summarized.", verbose = print_detail)
                     if search_LoL:
-                        LoLPlayer_summary_df.to_excel(excel_writer = writer, sheet_name = "Player Summary (LoL)")
+                        addDefaultStyle(LoLPlayer_summary_df).to_excel(excel_writer = writer, sheet_name = "Player Summary (LoL)")
                         worksheet = writer.sheets["Player Summary (LoL)"]
                         worksheet.conditional_formatting.rules = [] #读取时清空原规则（Clear original rules when reading）
                         if len(LoLPlayer_summary_df) > 1:
@@ -917,13 +917,13 @@ async def Clarke_revival(connection: Connection) -> None:
                             addFormat_LoLPlayer_summary_wb(worksheet, LoLPlayer_summary_df, numColorScale_order = max_numPlayersPerTeam_lol)
                         logPrint("英雄联盟战绩已汇总。\nLoL game stats have been summarized.", verbose = print_detail)
                     if search_TFT:
-                        TFTPlayer_summary_df.to_excel(excel_writer = writer, sheet_name = "Player Summary (TFT)")
+                        addDefaultStyle(TFTPlayer_summary_df).to_excel(excel_writer = writer, sheet_name = "Player Summary (TFT)")
                         logPrint("云顶之弈战绩已汇总。\nTFT game stats have been summarized.", verbose = print_detail)
                     if search_LoL:
                         for summonerName in LoLPlayer_stat_details_dfs:
                             LoLPlayer_stat_details_df = LoLPlayer_stat_details_dfs[summonerName]
                             if len(LoLPlayer_stat_details_df) > 1:
-                                LoLPlayer_stat_details_df.to_excel(excel_writer = writer, sheet_name = "%s%s (LoL)" %(sheet_headers[summonerName], summonerName))
+                                addDefaultStyle(LoLPlayer_stat_details_df).to_excel(excel_writer = writer, sheet_name = "%s%s (LoL)" %(sheet_headers[summonerName], summonerName))
                                 worksheet = writer.sheets["%s%s (LoL)" %(sheet_headers[summonerName], summonerName)]
                                 worksheet.conditional_formatting.rules = [] #读取时清空原规则（Clear original rules when reading）
                                 max_numPlayersPerTeam_lol = 5 if len(LoLPlayer_stat_details_df) <= 1 else max(map(lambda x: 5 if x == 0 else 2 if gameQueues[x]["gameMode"] == "CHERRY" else gameQueues[x]["numPlayersPerTeam"], LoLPlayer_stat_details_df["queueId"][1:]))
@@ -935,7 +935,7 @@ async def Clarke_revival(connection: Connection) -> None:
                         for summonerName in TFTPlayer_stat_details_dfs:
                             TFTPlayer_stat_details_df = TFTPlayer_stat_details_dfs[summonerName]
                             if len(TFTPlayer_stat_details_df) > 1:
-                                TFTPlayer_stat_details_df.to_excel(excel_writer = writer, sheet_name = "%s%s (TFT)" %(sheet_headers[summonerName], summonerName))
+                                addDefaultStyle(TFTPlayer_stat_details_df).to_excel(excel_writer = writer, sheet_name = "%s%s (TFT)" %(sheet_headers[summonerName], summonerName))
                                 logPrint(f"{summonerName}的云顶之弈详细战绩已导出。\n{summonerName}'s detailed TFT game stats have been exported.", verbose = print_detail)
                             else:
                                 logPrint(f"{summonerName}从5月1日起就没有进行过任何云顶之弈对局。\n{summonerName} hasn't played TFT game yet since May 1st.", verbose = print_detail)

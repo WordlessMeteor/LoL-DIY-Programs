@@ -2,7 +2,7 @@ from lcu_driver import Connector
 from lcu_driver.connection import Connection
 import os, pandas, time
 from typing import Any
-from src.utils.format import format_df
+from src.utils.format import format_df, addDefaultStyle
 from src.utils.summoner import get_summoner_data
 from src.core.config.localization import gamemaps
 from src.core.dataframes.gameMode import sort_queue_data
@@ -13,7 +13,7 @@ from src.core.dataframes.gameMode import sort_queue_data
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/01/31
+# 更新（Last update）：     2026/03/02
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -82,7 +82,7 @@ async def gamemode(connection: Connection) -> None:
         try:
             with (pandas.ExcelWriter(path = "游戏队列信息.xlsx", mode = "a", if_sheet_exists = "overlay") if os.path.exists("游戏队列信息.xlsx") else pandas.ExcelWriter(path = "游戏队列信息.xlsx")) as writer:
                 currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
-                queue_df.to_excel(excel_writer = writer, sheet_name = f"{currentTime} {platformId} {locale}")
+                addDefaultStyle(queue_df).to_excel(excel_writer = writer, sheet_name = f"{currentTime} {platformId} {locale}")
                 version_df.to_excel(excel_writer = writer, sheet_name = f"{currentTime} {platformId} {locale}", header = None, index = False, startcol = 0, startrow = 0)
         except PermissionError:
             print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")

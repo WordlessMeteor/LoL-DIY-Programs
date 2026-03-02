@@ -6,7 +6,7 @@ from openpyxl import load_workbook
 from typing import Any, Optional
 from src.utils.summoner import get_summoner_data, get_info, get_infos, get_info_name
 from src.utils.logger import LogManager
-from src.utils.format import getISOTime, optimize_bool_display, format_df, format_runtime, verify_uuid
+from src.utils.format import getISOTime, optimize_bool_display, format_df, addDefaultStyle, format_runtime, verify_uuid
 from src.utils.patch import Patch
 from src.utils.webRequest import requestUrl, SGPSession
 from src.core.config.headers import profile_header, mastery_header, ranked_header, ladder_header
@@ -1602,8 +1602,8 @@ async def search_profile(connection: Connection) -> None:
                 while True:
                     try:
                         with pandas.ExcelWriter(path = wbPath) as writer:
-                            info_df.to_excel(excel_writer = writer, sheet_name = "Profile")
-                            mastery_df.to_excel(excel_writer = writer, sheet_name = "Champion Mastery")
+                            addDefaultStyle(info_df).to_excel(excel_writer = writer, sheet_name = "Profile")
+                            addDefaultStyle(mastery_df).to_excel(excel_writer = writer, sheet_name = "Champion Mastery")
                     except PermissionError:
                         logPrint("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
                         logInput()
@@ -2368,14 +2368,14 @@ async def search_profile(connection: Connection) -> None:
             while True:
                 try:
                     with (pandas.ExcelWriter(path = wbPath, engine = "openpyxl", mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(path = wbPath, engine = "openpyxl")) as writer:
-                        info_df.to_excel(excel_writer = writer, sheet_name = "Profile")
+                        addDefaultStyle(info_df).to_excel(excel_writer = writer, sheet_name = "Profile")
                         logPrint("召唤师生涯导出完成！\nSummoner profile exported!\n")
-                        ranked_df.to_excel(excel_writer = writer, sheet_name = "Rank")
+                        addDefaultStyle(ranked_df).to_excel(excel_writer = writer, sheet_name = "Rank")
                         logPrint("召唤师排位数据导出完成！\nSummoner ranked data exported!\n")
                         if ladder_sort:
-                            ladder_df.to_excel(excel_writer = writer, sheet_name = "Ladders")
+                            addDefaultStyle(ladder_df).to_excel(excel_writer = writer, sheet_name = "Ladders")
                             logPrint("召唤师排位天梯数据导出完成！\nSummoner league ladder data exported!\n")
-                        mastery_df.to_excel(excel_writer = writer, sheet_name = "Champion Mastery")
+                        addDefaultStyle(mastery_df).to_excel(excel_writer = writer, sheet_name = "Champion Mastery")
                         logPrint("召唤师英雄成就导出完成！\nSummoner champion mastery exported!\n")
                         if not workbook_exist:
                             pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "Recently Played Summoners (LoL)")
@@ -2385,12 +2385,12 @@ async def search_profile(connection: Connection) -> None:
                             if scan_lol:
                                 if not workbook_exist and not args.deny_empty_sheet_creation:
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History")
-                                LoLHistory_df_all.to_excel(excel_writer = writer, sheet_name = "LoL Match History - Scan")
+                                addDefaultStyle(LoLHistory_df_all).to_excel(excel_writer = writer, sheet_name = "LoL Match History - Scan")
                                 if not workbook_exist and not args.deny_empty_sheet_creation:
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History - Manual")
                                 worksheet = writer.sheets["LoL Match History - Scan"]
                             else:
-                                LoLHistory_df_all.to_excel(excel_writer = writer, sheet_name = "LoL Match History")
+                                addDefaultStyle(LoLHistory_df_all).to_excel(excel_writer = writer, sheet_name = "LoL Match History")
                                 if not workbook_exist and not args.deny_empty_sheet_creation:
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History - Scan")
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History - Manual")
@@ -2401,13 +2401,13 @@ async def search_profile(connection: Connection) -> None:
                             logPrint("召唤师英雄联盟对局记录导出完成！\nSummoner LoL match history exported!\n")
                             if LoLGame_stat_df_export:
                                 if scan_lol:
-                                    LoLGame_stat_df.to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Scan")
+                                    addDefaultStyle(LoLGame_stat_df).to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Scan")
                                     if not workbook_exist and not args.deny_empty_sheet_creation:
                                         pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats")
                                         pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Manual")
                                     worksheet = writer.sheets["LoL Match Stats - Scan"]
                                 else:
-                                    LoLGame_stat_df.to_excel(excel_writer = writer, sheet_name = "LoL Match Stats")
+                                    addDefaultStyle(LoLGame_stat_df).to_excel(excel_writer = writer, sheet_name = "LoL Match Stats")
                                     if not workbook_exist and not args.deny_empty_sheet_creation:
                                         pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Scan")
                                         pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Manual")
@@ -2435,11 +2435,11 @@ async def search_profile(connection: Connection) -> None:
                             if scan_tft:
                                 if not workbook_exist and not args.deny_empty_sheet_creation:
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "TFT Match History")
-                                TFTHistory_df_all.to_excel(excel_writer = writer, sheet_name = "TFT Match History - Scan")
+                                addDefaultStyle(TFTHistory_df_all).to_excel(excel_writer = writer, sheet_name = "TFT Match History - Scan")
                                 if not workbook_exist and not args.deny_empty_sheet_creation:
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "TFT Match History - Manual")
                             else:
-                                TFTHistory_df_all.to_excel(excel_writer = writer, sheet_name = "TFT Match History")
+                                addDefaultStyle(TFTHistory_df_all).to_excel(excel_writer = writer, sheet_name = "TFT Match History")
                                 if not workbook_exist and not args.deny_empty_sheet_creation:
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "TFT Match History - Scan")
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "TFT Match History - Manual")
@@ -2478,9 +2478,9 @@ async def search_profile(connection: Connection) -> None:
                                     match_reserved += 1
                                     if not info_exist_error[matchIDs[i]]:
                                         game_info_df = game_info_dfs[matchIDs[i]]
-                                        # game_leaderboard_dfs[matchIDs[i]].to_excel(excel_writer = writer, sheet_name = "Match %d - Leaderboard" %(matchIDs[i]))
+                                        # addDefaultStyle(game_leaderboard_dfs[matchIDs[i]]).to_excel(excel_writer = writer, sheet_name = "Match %d - Leaderboard" %(matchIDs[i]))
                                         # logPrint("对局段位排行榜导出完成。\nMatch leaderboard exported.")
-                                        game_info_df.transpose().to_excel(excel_writer = writer, sheet_name = "Match %d - Information" %(matchIDs[i]))
+                                        addDefaultStyle(game_info_df.transpose()).to_excel(excel_writer = writer, sheet_name = "Match %d - Information" %(matchIDs[i]))
                                         if isLoL.get(matchIDs[i], False) and args.info_color:
                                             worksheet = writer.sheets["Match %d - Information" %(matchIDs[i])]
                                             worksheet.conditional_formatting.rules = []
@@ -2500,9 +2500,9 @@ async def search_profile(connection: Connection) -> None:
                                             addFormat_LoLGame_info_wb_transpose(worksheet, game_info_df.transpose(), numColorScale_order = max_numPlayersPerTeam_lol)
                                         logPrint("对局信息导出完成。\nMatch information exported.")
                                     if not timeline_exist_error[matchIDs[i]]:
-                                        game_timeline_dfs[matchIDs[i]].to_excel(excel_writer = writer, sheet_name = "Match %d - Timeline" %(matchIDs[i]))
+                                        addDefaultStyle(game_timeline_dfs[matchIDs[i]]).to_excel(excel_writer = writer, sheet_name = "Match %d - Timeline" %(matchIDs[i]))
                                         logPrint("对局时间轴导出完成。\nMatch timeline exported.")
-                                        game_event_dfs[matchIDs[i]].to_excel(excel_writer = writer, sheet_name = "Match %d - Events" %(matchIDs[i]))
+                                        addDefaultStyle(game_event_dfs[matchIDs[i]]).to_excel(excel_writer = writer, sheet_name = "Match %d - Events" %(matchIDs[i]))
                                         logPrint("对局事件导出完成。\nMatch events exported.")
                                 end: float = time.time()
                                 unit: float = end - start

@@ -5,7 +5,7 @@ from urllib.parse import urljoin
 from typing import Any, Optional
 from src.utils.logger import LogManager, aInput
 from src.utils.summoner import get_summoner_data, get_info, get_info_name
-from src.utils.format import getISOTime, optimize_bool_display, format_df
+from src.utils.format import getISOTime, optimize_bool_display, format_df, addDefaultStyle
 from src.utils.patch import Patch
 from src.utils.runtimeDebug import subscope
 from src.utils.webRequest import requestUrl, SGPSession
@@ -720,7 +720,7 @@ async def friend_behavior_simulation(connection: Connection) -> None: #在本函
                     try:
                         with (pandas.ExcelWriter(path = wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(path = wbPath)) as writer:
                             currentTime: str = time.strftime("%Y-%m-%d", time.localtime())
-                            friend_hovercard_df.to_excel(excel_writer = writer, sheet_name = platformId + "-" + get_info_name(current_info) + " " + currentTime)
+                            addDefaultStyle(friend_hovercard_df).to_excel(excel_writer = writer, sheet_name = platformId + "-" + get_info_name(current_info) + " " + currentTime)
                     except PermissionError:
                         logPrint("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
                         logInput()
@@ -1059,7 +1059,7 @@ async def friend_behavior_simulation(connection: Connection) -> None: #在本函
                         while True:
                             try:
                                 with (pandas.ExcelWriter(path = wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(path = wbPath)) as writer:
-                                    message_df.to_excel(excel_writer = writer, sheet_name = sheet_name)
+                                    addDefaultStyle(message_df).to_excel(excel_writer = writer, sheet_name = sheet_name)
                             except PermissionError:
                                 logPrint("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
                                 logInput()
