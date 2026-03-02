@@ -29,7 +29,7 @@ use_sgp: bool = args.lol_api == "sgp"
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/02/13
+# 更新（Last update）：     2026/03/02
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -972,7 +972,7 @@ async def load_smurf(connection: Connection, selfDetect: bool, infos: Optional[d
     smurfMode_str: str = logInput()
     smurfMode: bool = bool(smurfMode_str)
     if smurfMode:
-        smurf_header: dict[str, str] = {"displayName": "显示名", "gameName": "玩家昵称", "tagLine": "昵称编号", "summonerId": "召唤师序号", "puuid": "玩家通用唯一识别码"}
+        smurf_header: dict[str, str] = {"displayName": "显示名", "gameName": "玩家名称", "tagLine": "名称编号", "summonerId": "召唤师序号", "puuid": "玩家通用唯一识别码"}
         smurf_df: pandas.DataFrame = pandas.DataFrame(data = smurf_header, index = [0])
         logPrint("请选择导入方式：\nPlease select an option to import:\n☆1\t读取文件（Read a file）\n2\t手动输入（Manually input）")
         smurf_option: str = logInput()
@@ -2858,7 +2858,7 @@ async def search_recent_players(connection: Connection) -> None:
         displayName: str = get_info_name(info_body) #用于扫描模式定位到某召唤师（Determines the directory which contains the summoner's data）
         current_summonerId: int = info_body["summonerId"] #用于排除房间邀请信息中的自己（Defined to exclude the user itself from the lobby invitations）
         current_puuid: str = info_body["puuid"] #用于核验对局是否包含该召唤师。此外，还用于扫描模式从对局的所有玩家信息中定位到该玩家（For use of checking whether the searched matches include this summoner. In addition, it's used for localization of this player from all players in a match in "scan" mode）
-        current_summonerName: str = info_body["displayName"] if info_body["gameName"] == "" and info_body["tagLine"] == "" else info_body["gameName"] + "#" + info_body["tagLine"] #作用同上，用于模糊定位，主要应用于玩家通用唯一识别码发生变动的大区且在昵称编号引入后注册的主召唤师的对局记录扫描模式（Acts as the same role as the above variable for a rough localization. It's mainly designed for Scan Mode on players that signed up after tagLine was introduced on servers that changed the players' puuids）
+        current_summonerName: str = info_body["displayName"] if info_body["gameName"] == "" and info_body["tagLine"] == "" else info_body["gameName"] + "#" + info_body["tagLine"] #作用同上，用于模糊定位，主要应用于玩家通用唯一识别码发生变动的大区且在名称编号引入后注册的主召唤师的对局记录扫描模式（Acts as the same role as the above variable for a rough localization. It's mainly designed for Scan Mode on players that signed up after tagLine was introduced on servers that changed the players' puuids）
         infos[current_puuid] = info_body
         #下面检测本地已保存的召唤师信息是否包含已改名的召唤师（Detect whether the local summoner information contain any summoner that has changed its name）
         folderNames: list[str] = os.listdir(platform_folder)

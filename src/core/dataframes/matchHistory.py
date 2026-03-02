@@ -1554,9 +1554,9 @@ def generate_LoLHistory_records_sgp(LoLHistory_data: dict[str, Any], LoLGame_inf
             else:
                 to_append = LoLGame_info_json.get(key, "")
         else:
-            if i == 19: #玩家昵称（`gameName`）
+            if i == 19: #玩家名称（`gameName`）
                 to_append = stats["riotIdGameName"] if "riotIdGameName" in stats else stats["riotIdName"] if "riotIdName" in stats else ""
-            elif i == 26: #昵称编号（`tagLine`）
+            elif i == 26: #名称编号（`tagLine`）
                 to_append = stats["riotIdTagline"] if "riotIdTagline" in stats else ""
             elif i == 27 or i == 28: #召唤师图标相关键（Summoner icon-related keys）
                 if "profileIcon" in stats:
@@ -4884,7 +4884,7 @@ async def generate_TFTHistory_records(connection: Connection, TFTHistory_data: d
                         to_append = TFTCompanionId if i == 33 else ""
                 elif i == 45: #通关人机对战（`pve_wonrun`）
                     to_append = "" if not "pve_wonrun" in TFTPlayer else "√" if TFTPlayer["pve_wonrun"] else "×"
-                elif i == 46 or i == 47: #玩家昵称和昵称编号（`riotIdGameName` and `riotIdTagline`）
+                elif i == 46 or i == 47: #玩家名称和名称编号（`riotIdGameName` and `riotIdTagline`）
                     if key in TFTPlayer:
                         to_append = TFTPlayer[key]
                     else:
@@ -5420,7 +5420,7 @@ async def generate_TFTGameInfo_records(connection: Connection, TFTGame_info_data
                     to_append = TFTCompanionId if i == 33 else ""
             elif i == 45: #通关人机对战（`pve_wonrun`）
                 to_append = "" if not "pve_wonrun" in TFTPlayer else "√" if TFTPlayer["pve_wonrun"] else "×"
-            elif i == 46 or i == 47: #玩家昵称和昵称编号（`riotIdGameName` and `riotIdTagline`）
+            elif i == 46 or i == 47: #玩家名称和名称编号（`riotIdGameName` and `riotIdTagline`）
                 if key in TFTPlayer:
                     to_append = TFTPlayer[key]
                 else:

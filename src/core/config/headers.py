@@ -2,7 +2,7 @@
 info_header: dict[str, str] = {
     "accountId": "账户序号",
     "displayName": "显示名",
-    "gameName": "玩家昵称",
+    "gameName": "玩家名称",
     "internalName": "内置名称",
     "nameChangeFlag": "改名警告",
     "percentCompleteForNextLevel": "升级进度",
@@ -11,7 +11,7 @@ info_header: dict[str, str] = {
     "puuid": "玩家通用唯一识别码",
     "summonerId": "召唤师序号",
     "summonerLevel": "召唤师等级",
-    "tagLine": "昵称编号",
+    "tagLine": "名称编号",
     "unnamed": "尚未命名",
     "xpSinceLastLevel": "目前经验",
     "xpUntilNextLevel": "升级所需经验",
@@ -26,7 +26,7 @@ info_header: dict[str, str] = {
 profile_header: dict[str, str] = {
     "accountId": "账户序号",
     "displayName": "显示名",
-    "gameName": "玩家昵称",
+    "gameName": "玩家名称",
     "internalName": "内置名称",
     "nameChangeFlag": "改名警告",
     "percentCompleteForNextLevel": "升级进度",
@@ -35,7 +35,7 @@ profile_header: dict[str, str] = {
     "puuid": "玩家通用唯一识别码",
     "summonerId": "召唤师序号",
     "summonerLevel": "召唤师等级",
-    "tagLine": "昵称编号",
+    "tagLine": "名称编号",
     "unnamed": "尚未命名",
     "xpSinceLastLevel": "目前经验",
     "xpUntilNextLevel": "升级所需经验",
@@ -211,15 +211,15 @@ ladder_header: dict[str, str] = {
     "summonerName": "召唤师名",
     "tier": "当前段位",
     "wins": "胜场",
-    "gameName": "玩家昵称",
-    "tagLine": "昵称编号",
+    "gameName": "玩家名称",
+    "tagLine": "名称编号",
     "mark": "本人标记"
 }
 game_leaderboard_header: dict[str, str] = {
     "puuid": "玩家通用唯一识别码",
     "displayName": "显示名",
-    "gameName": "玩家昵称",
-    "tagLine": "昵称编号",
+    "gameName": "玩家名称",
+    "tagLine": "名称编号",
     "division": "分级",
     "isProvisional": "定位中",
     "leaguePoints": "胜点",
@@ -304,8 +304,8 @@ challenger_ladder_header: dict[str, str] = {
     "summonerName": "召唤师名",
     "tier": "当前段位",
     "wins": "胜场",
-    "gameName": "玩家昵称",
-    "tagLine": "昵称编号"
+    "gameName": "玩家名称",
+    "tagLine": "名称编号"
 }
 topRated_ladder_header: dict[str, str] = {
     "leaguePoints": "排名分",
@@ -317,8 +317,8 @@ topRated_ladder_header: dict[str, str] = {
     "summonerId": "召唤师序号",
     "summonerName": "召唤师名",
     "wins": "胜场",
-    "gameName": "玩家昵称",
-    "tagLine": "昵称编号"
+    "gameName": "玩家名称",
+    "tagLine": "名称编号"
 }
 #英雄联盟对局记录（LoL match history）
 LoLHistory_header: dict[str, str] = {
@@ -341,14 +341,14 @@ LoLHistory_header: dict[str, str] = {
     "accountId": "帐户序号",
     "currentAccountId": "当前帐户序号",
     "currentPlatformId": "当前服务器代码",
-    "gameName": "玩家昵称",
+    "gameName": "玩家名称",
     "matchHistoryUri": "对局记录网址",
     "platformId": "服务器代码",
     "profileIcon": "召唤师图标序号",
     "puuid": "玩家通用唯一识别码",
     "summonerId": "召唤师序号",
     "summonerName": "召唤师名称",
-    "tagLine": "昵称编号",
+    "tagLine": "名称编号",
     "profileIcon_title": "召唤师图标名称",
     "profileIcon_imagePath": "召唤师图标路径",
     "championId": "英雄序号",
@@ -568,14 +568,14 @@ LoLGame_info_header: dict[str, str] = {
     "accountId": "账户序号",
     "currentAccountId": "当前账户序号",
     "currentPlatformId": "当前大区",
-    "gameName": "玩家昵称",
+    "gameName": "玩家名称",
     "matchHistoryUri": "对局记录网址",
     "platformId": "原大区",
     "profileIcon": "召唤师图标序号",
     "puuid": "玩家通用唯一识别码",
     "summonerId": "召唤师序号",
     "summonerName": "召唤师名称",
-    "tagLine": "昵称编号",
+    "tagLine": "名称编号",
     "profileIcon_title": "召唤师图标名称",
     "profileIcon_imagePath": "召唤师图标路径",
     "championId": "选用英雄序号",
@@ -1943,8 +1943,8 @@ TFTHistory_header: dict[str, str] = {
     "puuid": "玩家通用唯一识别码",
     "pve_score": "人机对战得分",
     "pve_wonrun": "通关人机对战",
-    "riotIdGameName": "玩家昵称",
-    "riotIdTagline": "昵称编号",
+    "riotIdGameName": "玩家名称",
+    "riotIdTagline": "名称编号",
     "skill_tree": "技巧加成",
     "time_eliminated": "存活时长（秒）",
     "total_damage_to_players": "造成玩家伤害",
@@ -2253,8 +2253,8 @@ TFTGame_info_header: dict[str, str] = {
     "puuid": "玩家通用唯一识别码",
     "pve_score": "人机对战得分",
     "pve_wonrun": "通关人机对战",
-    "riotIdGameName": "玩家昵称",
-    "riotIdTagline": "昵称编号",
+    "riotIdGameName": "玩家名称",
+    "riotIdTagline": "名称编号",
     "skill_tree": "技巧加成",
     "time_eliminated": "存活时长（秒）",
     "total_damage_to_players": "造成玩家伤害",
@@ -2620,7 +2620,7 @@ champSelect_player_header: dict[str, str] = {
     "cellId": "槽位序号",
     "championId": "选用英雄序号",
     "championPickIntent": "声明英雄序号",
-    "gameName": "玩家昵称",
+    "gameName": "玩家名称",
     "internalName": "内置名",
     "isAutofilled": "自动补位",
     "isHumanoid": "电脑玩家",
@@ -2636,7 +2636,7 @@ champSelect_player_header: dict[str, str] = {
     "spell1Id": "召唤师技能1序号",
     "spell2Id": "召唤师技能2序号",
     "summonerId": "召唤师序号",
-    "tagLine": "昵称编号",
+    "tagLine": "名称编号",
     "team": "阵营",
     "wardSkinId": "饰品序号",
     "team_color": "阵营名称",
@@ -2672,8 +2672,8 @@ champSelect_mutedPlayer_header: dict[str, str] = {
     "obfuscatedPuuid": "隐藏识别码",
     "puuid": "玩家通用唯一识别码",
     "summonerId": "召唤师序号",
-    "gameName": "玩家昵称",
-    "tagLine": "昵称编号"
+    "gameName": "玩家名称",
+    "tagLine": "名称编号"
 }
 #游戏内（In game）
 inGame_player_header: dict[str, str] = {
@@ -2703,8 +2703,8 @@ inGame_player_header: dict[str, str] = {
     "lastSelectedSkin chromaPath": "上次选用皮肤炫彩",
     "profileIcon title": "召唤师图标名称",
     "profileIcon imagePath": "召唤师图标路径",
-    "gameName": "玩家昵称",
-    "tagLine": "昵称编号",
+    "gameName": "玩家名称",
+    "tagLine": "名称编号",
     "isHumanoid": "电脑玩家",
     "selectedSkinIndex": "选用皮肤序号",
     "spell1Id": "召唤师技能1序号",
@@ -2776,8 +2776,8 @@ inGame_allPlayer_header: dict[str, str] = {
     "rawSkinName": "原始皮肤名称",
     "respawnTimer": "复活倒计时",
     "riotId": "拳头代号",
-    "riotIdGameName": "玩家昵称",
-    "riotIdTagLine": "昵称编号",
+    "riotIdGameName": "玩家名称",
+    "riotIdTagLine": "名称编号",
     "screenPositionBottom": "屏幕底部坐标",
     "screenPositionCenter": "屏幕中央坐标",
     "skinID": "皮肤序号",
@@ -3314,8 +3314,8 @@ member_header: dict[str, str] = {
     "strawberryMapName": "无尽狂潮地图名称",
     "summonerIcon_title": "召唤师图标名称",
     "summonerIcon_imagePath": "召唤师图标路径",
-    "gameName": "玩家昵称",
-    "tagLine": "昵称编号"
+    "gameName": "玩家名称",
+    "tagLine": "名称编号"
 }
 grid_champion_header: dict[str, str] = {
     "disabled": "已禁用",
@@ -3449,8 +3449,8 @@ friend_hovercard_header: dict[str, str] = {
     "discordOnlineStatus": "Discord登录状态",
     "displayGroupId": "分组显示序号",
     "displayGroupName": "分组显示名",
-    "gameName": "玩家昵称",
-    "gameTag": "昵称编号",
+    "gameName": "玩家名称",
+    "gameTag": "名称编号",
     "groupId": "分组序号",
     "groupName": "分组名称",
     "icon": "召唤师图标序号",
@@ -3571,8 +3571,8 @@ friend_group_header: dict[str, str] = {
     "priority": "优先级"
 }
 conversation_header: dict[str, str] = {
-    "gameName": "玩家昵称",
-    "gameTag": "昵称编号",
+    "gameName": "玩家名称",
+    "gameTag": "名称编号",
     "id": "对话序号",
     "inviterId": "邀请人序号",
     "isMuted": "已静音",
@@ -3599,7 +3599,7 @@ message_header: dict[str, str] = {
 }
 friend_request_header: dict[str, str] = {
     "direction": "方向",
-    "gameName": "玩家昵称",
+    "gameName": "玩家名称",
     "icon": "召唤师图标序号",
     "id": "好友请求序号",
     "name": "显示名",
@@ -3668,12 +3668,12 @@ participant_record_header: dict[str, str] = {
     "puuid": "玩家通用唯一识别码",
     "summonerId": "召唤师序号",
     "volume": "音量",
-    "gameName": "玩家昵称",
-    "tagLine": "昵称编号"
+    "gameName": "玩家名称",
+    "tagLine": "名称编号"
 }
 blockList_header: dict[str, str] = {
-    "gameName": "玩家昵称",
-    "gameTag": "昵称编号",
+    "gameName": "玩家名称",
+    "gameTag": "名称编号",
     "icon": "召唤师图标序号",
     "id": "社交代码",
     "name": "显示名",
@@ -3684,8 +3684,8 @@ blockList_header: dict[str, str] = {
 }
 #观战（Spectate）
 spectate_nonfriend_header: dict[str, str] = {
-    "gameName": "玩家昵称",
-    "tagLine": "昵称编号",
+    "gameName": "玩家名称",
+    "tagLine": "名称编号",
     "puuid": "玩家通用唯一识别码",
     "availability": "观战可用性"
 }
@@ -3877,8 +3877,8 @@ ballot_player_header: dict[str, str] = {
     "skinSplashPath": "皮肤插画路径",
     "summonerId": "召唤师序号",
     "summonerName": "召唤师名称",
-    "gameName": "玩家昵称",
-    "tagLine": "昵称编号",
+    "gameName": "玩家名称",
+    "tagLine": "名称编号",
     "ally?": "是否队友",
     "honored": "已赞誉",
     "honorType": "赞誉类型",
@@ -3908,8 +3908,8 @@ eog_mastery_update_header: dict[str, str] = {
     "champion_name": "使用英雄称号",
     "champion_alias": "使用英雄代号",
     "champion_title": "使用英雄名称",
-    "gameName": "玩家昵称",
-    "tagLine": "昵称编号"
+    "gameName": "玩家名称",
+    "tagLine": "名称编号"
 }
 eog_stat_metadata_lol_header: dict[str, str] = {
     "basePoints": "基础胜点",
@@ -4106,8 +4106,8 @@ eog_playerstat_data_lol_header: dict[str, str] = {
     "losses": "模式负场",
     "profileIconId": "召唤师图标序号",
     "puuid": "玩家通用唯一识别码",
-    "riotIdGameName": "玩家昵称",
-    "riotIdTagLine": "昵称编号",
+    "riotIdGameName": "玩家名称",
+    "riotIdTagLine": "名称编号",
     "selectedPosition": "选择角色定位",
     "skinEmblemPaths": "皮肤徽章路径",
     "skinSplashPath": "皮肤插画路径",
@@ -4310,8 +4310,8 @@ eog_stat_data_tft_header: dict[str, str] = {
     "partnerGroupId": "搭档组号",
     "puuid": "玩家通用唯一识别码",
     "rank": "最终名次",
-    "riotIdGameName": "玩家昵称",
-    "riotIdTagLine": "昵称编号",
+    "riotIdGameName": "玩家名称",
+    "riotIdTagLine": "名称编号",
     "setCoreName": "云顶之弈赛季核心名称",
     "summonerId": "召唤师序号",
     "summonerName": "召唤师名称",
@@ -4577,7 +4577,7 @@ perkPage_header: dict[str, str] = {
 social_leaderboard_header: dict[str, str] = {
     "availability": "可用性",
     "division": "段位分级",
-    "gameName": "玩家昵称",
+    "gameName": "玩家名称",
     "isGiftable": "可赠送礼物",
     "isProvisional": "定位中",
     "leaderboardPosition": "排名",
@@ -4588,7 +4588,7 @@ social_leaderboard_header: dict[str, str] = {
     "summonerId": "召唤师序号",
     "summonerLevel": "召唤师等级",
     "summonerName": "召唤师名",
-    "tagLine": "昵称编号",
+    "tagLine": "名称编号",
     "tier": "段位",
     "wins": "胜场",
     "profileIcon_title": "召唤师图标名称",
@@ -4599,6 +4599,6 @@ chat_mutedPlayer_header: dict[str, str] = {
     "summonerId": "召唤师序号",
     "obfuscatedPuuid": "隐藏玩家通用唯一识别码",
     "obfuscatedSummonerId": "隐藏召唤师序号",
-    "gameName": "玩家昵称",
-    "tagLine": "昵称编号"
+    "gameName": "玩家名称",
+    "tagLine": "名称编号"
 }

@@ -36,7 +36,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/02/13
+# 更新（Last update）：     2026/03/02
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -966,7 +966,7 @@ async def load_smurf(connection: Connection, infos: Optional[dict[str, dict[str,
     smurfMode_str: str = logInput()
     smurfMode: bool = bool(smurfMode_str)
     if smurfMode:
-        smurf_header: dict[str, str] = {"displayName": "显示名", "gameName": "玩家昵称", "tagLine": "昵称编号", "summonerId": "召唤师序号", "puuid": "玩家通用唯一识别码"}
+        smurf_header: dict[str, str] = {"displayName": "显示名", "gameName": "玩家名称", "tagLine": "名称编号", "summonerId": "召唤师序号", "puuid": "玩家通用唯一识别码"}
         smurf_df: pandas.DataFrame = pandas.DataFrame(data = smurf_header, index = [0])
         logPrint("请选择导入方式：\nPlease select an option to import:\n☆1\t读取文件（Read a file）\n2\t手动输入（Manually input）")
         smurf_option: str = logInput()
@@ -1468,7 +1468,7 @@ async def search_profile(connection: Connection) -> None:
                     main_info_body: dict[str, Any] = main_info["body"]
                     displayName: str = get_info_name(main_info_body) #用于文件名命名（For use of file naming）
                     current_puuid: str = main_info_body["puuid"] #用于核验对局是否包含该召唤师。此外，还用于扫描模式从对局的所有玩家信息中定位到该玩家（For use of checking whether the searched matches include this summoner. In addition, it's used for localization of this player from all players in a match in "scan" mode）
-                    current_summonerName: str = "" if main_info_body["gameName"] == "" and main_info_body["tagLine"] == "" else main_info_body["gameName"] + "#" + main_info_body["tagLine"] #作用同上，用于模糊定位，主要应用于玩家通用唯一识别码发生变动的大区且在昵称编号引入后注册的主召唤师的对局记录扫描模式（Acts as the same role as the above variable for a rough localization. It's mainly designed for Scan Mode on players that signed up after tagLine was introduced on servers that changed the players' puuids）
+                    current_summonerName: str = "" if main_info_body["gameName"] == "" and main_info_body["tagLine"] == "" else main_info_body["gameName"] + "#" + main_info_body["tagLine"] #作用同上，用于模糊定位，主要应用于玩家通用唯一识别码发生变动的大区且在名称编号引入后注册的主召唤师的对局记录扫描模式（Acts as the same role as the above variable for a rough localization. It's mainly designed for Scan Mode on players that signed up after tagLine was introduced on servers that changed the players' puuids）
                     infos[current_puuid] = main_info_body
                     if main_info_body["privacy"] == "PUBLIC":
                         logPrint(f"玩家{displayName}的生涯是公开的。您可以在客户端内搜索其召唤师名以查看其信息。\nPlayer {displayName}'s profile is public. You can search for his/her summoner name in the League Client to view it.")
@@ -1883,7 +1883,7 @@ async def search_profile(connection: Connection) -> None:
                         if len(set(current_puuid_list) & set(participant_puuid)) > 0: #之所以使用玩家通用唯一识别码，而不是用召唤师名称来识别对局是否包含主玩家，是因为该玩家可能使用过改名卡。这里也没有选择帐户序号，这是因为保存在对局中的各玩家的帐户序号竟然是0！（The reason why the puuid instead of the displayName or summonerName is used to identify whether the matches contain the main player is that the player may have used name changing card. AccountId isn't chosen here, because all players' accountIds saved in the match fetched from 127 API is 0, to my surprise!）
                             main_player_included[matchId] = True
                             match_reserve_strategy[matchId] = True
-                        elif len(set(current_summonerName_list) & set(participant_gameName)) > 0: #在玩家通用唯一识别码发生变动的大区，要识别变动之前的对局是否包含主玩家，最好的办法是依据显示名。因为在引入昵称编号后，显示名就固定下来，没有办法变动了，玩家只能通过改名卡修改玩家昵称和昵称编号。也就是说，显示名可视为玩家的另一种“身份识别码”。对于在引入昵称编号后注册的玩家，其显示名是空字符串，所以在模糊定位时用玩家昵称代替（On servers that changed the players' puuids once, to identify whether the matches before this change include this player, the best strategy is to refer to the displayName. This is because after tagLine is introduced, displayName is locked and there's no way of changing it. What the player can change through the Summmoner Name Change is gameName and tagLine. That is to say, displayName may be regarded as another ID of a player. For those who signed up after tagLine was introduced, their displayNames are empty strings. So gameName is taken for the rough localization）
+                        elif len(set(current_summonerName_list) & set(participant_gameName)) > 0: #在玩家通用唯一识别码发生变动的大区，要识别变动之前的对局是否包含主玩家，最好的办法是依据显示名。因为在引入名称编号后，显示名就固定下来，没有办法变动了，玩家只能通过改名卡修改玩家名称和名称编号。也就是说，显示名可视为玩家的另一种“身份识别码”。对于在引入名称编号后注册的玩家，其显示名是空字符串，所以在模糊定位时用玩家名称代替（On servers that changed the players' puuids once, to identify whether the matches before this change include this player, the best strategy is to refer to the displayName. This is because after tagLine is introduced, displayName is locked and there's no way of changing it. What the player can change through the Summmoner Name Change is gameName and tagLine. That is to say, displayName may be regarded as another ID of a player. For those who signed up after tagLine was introduced, their displayNames are empty strings. So gameName is taken for the rough localization）
                             main_player_included[matchId] = True
                             match_reserve_strategy[matchId] = True
                             if not puuid_change_warning_printed:

@@ -67,7 +67,7 @@ async def get_info(connection: Connection, name: str, searchType: str | int = "r
         except ValueError:
             if name == "current-summoner":
                 result = {"searchType": "selfCheck", "endpoint": "/lol-summoner/v1/current-summoner", "info_got": True, "network_error": False, "body": current_info, "message": "", "selfInfo": True}
-            elif name.count("-") == 4 and len(name.replace(" ", "")) > 22: #拳头规定的玩家昵称不超过16个字符，昵称编号不超过5个字符（Riot game name can't exceed 16 characters. The tagline can't exceed 5 characters）
+            elif name.count("-") == 4 and len(name.replace(" ", "")) > 22: #拳头规定的玩家名称不超过16个字符，名称编号不超过5个字符（Riot game name can't exceed 16 characters. The tagline can't exceed 5 characters）
                 result["searchType"] = "puuid"
                 result["endpoint"] = "/lol-summoner/v2/summoners/puuid/{puuid}"
                 info: dict[str, Any] = await (await connection.request("GET", f"/lol-summoner/v2/summoners/puuid/{name}")).json()
@@ -90,19 +90,19 @@ async def get_info(connection: Connection, name: str, searchType: str | int = "r
                 result["searchType"] = "riotId"
                 result["endpoint"] = "/lol-summoner/v1/summoners?name={name}"
                 if name.count("#") == 0:
-                    result["message"] = '召唤师名称已变更为拳头ID。请以“{玩家昵称}#{昵称编号}”的格式输入。\nSummoner name has been replaced with Riot ID. Please input the name in this format: "{gameName}#{tagLine}", e.g. "%s#%s".' %(current_info["gameName"], current_info["tagLine"])
+                    result["message"] = '召唤师名称已变更为拳头ID。请以“{玩家名称}#{名称编号}”的格式输入。\nSummoner name has been replaced with Riot ID. Please input the name in this format: "{gameName}#{tagLine}", e.g. "%s#%s".' %(current_info["gameName"], current_info["tagLine"])
                 elif name.count("#") > 1:
                     result["message"] = "该玩家名字包含了无效字符。\nThis player name contains invalid characters."
                 else:
                     gameName, tagLine = name.split("#")
                     if len(gameName) == 0:
-                        result["message"] = "缺少玩家昵称。\nGame name is missing."
+                        result["message"] = "缺少玩家名称。\nGame name is missing."
                     elif len(tagLine) == 0:
-                        result["message"] = "缺少昵称编号。\nTagline is missing."
+                        result["message"] = "缺少名称编号。\nTagline is missing."
                     elif len(gameName) < 3:
-                        result["message"] = "召唤师昵称过短。\nRiot ID is too short."
+                        result["message"] = "召唤师名称过短。\nRiot ID is too short."
                     elif len(gameName.replace(" ", "")) > 16:
-                        result["message"] = "召唤师昵称过长。\nRiot ID is too long."
+                        result["message"] = "召唤师名称过长。\nRiot ID is too long."
                     else:
                         info = await (await connection.request("GET", "/lol-summoner/v1/summoners?name=" + quote(name))).json()
                         result["body"] = info

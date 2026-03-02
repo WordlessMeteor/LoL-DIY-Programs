@@ -22,7 +22,7 @@ from src.core.dataframes.gameflow import sort_ChampSelect_players
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/02/26
+# 更新（Last update）：     2026/03/02
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -359,7 +359,7 @@ async def sort_friend_hovercard_simple(connection: Connection) -> pandas.DataFra
     current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     friends: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
     #定义好友数据结构（Define the friend hovercard data structure）
-    friend_hovercard_header_simple: dict[str, str] = {"availability": "可用性", "gameName": "玩家昵称", "gameTag": "昵称编号", "groupId": "分组序号", "groupName": "分组名称", "name": "显示名", "note": "备注", "pid": "社交代码", "puuid": "玩家通用唯一识别码", "summonerId": "召唤师序号"}
+    friend_hovercard_header_simple: dict[str, str] = {"availability": "可用性", "gameName": "玩家名称", "gameTag": "名称编号", "groupId": "分组序号", "groupName": "分组名称", "name": "显示名", "note": "备注", "pid": "社交代码", "puuid": "玩家通用唯一识别码", "summonerId": "召唤师序号"}
     friend_hovercard_header_keys_simple: list[str] = list(friend_hovercard_header_simple.keys())
     friend_hovercard_data_simple: dict[str, list[Any]] = {key: [] for key in friend_hovercard_header_keys_simple}
     #数据整理核心部分（Data assignment - core part）
@@ -1358,7 +1358,7 @@ async def friend_behavior_simulation(connection: Connection) -> None: #在本函
                 elif action[0] == "0":
                     break
                 elif action[0] == "1":
-                    logPrint("已经知道好友的召唤师昵称#尾标？快给TA发送好友请求吧！请输入您想要添加的玩家名称：\nAlready know your friend’s Riot ID? Send them a friend request! Please submit the Riot IDs of the player(s) you want to make friend with:")
+                    logPrint("已经知道好友的玩家名称#名称编号？快给TA发送好友请求吧！请输入您想要添加的玩家名称：\nAlready know your friend’s Riot ID? Send them a friend request! Please submit the Riot IDs of the player(s) you want to make friend with:")
                     while True:
                         friends = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
                         friend_puuids = set(map(lambda x: x["puuid"], friends))
@@ -1686,7 +1686,7 @@ async def friend_behavior_simulation(connection: Connection) -> None: #在本函
                                             else:
                                                 logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                                     elif method[0] == "2":
-                                        logPrint('''请输入要移动的好友的召唤师名。每个好友的召唤师名格式为{玩家昵称}#{昵称编号}。输入“-1”以结束输入。\nPlease submit the names of the friends to be moved. Each friend's name should accord to the format {gameName}#{gameTag}. Submit "-1" to end the input.\n变量提示（Variable hints）：\nfriends = await (await connection.request("GET", "/lol-chat/v1/friends")).json()\nfriend_hovercard_df = await sort_friend_hovercard_simple(connection)''')
+                                        logPrint('''请输入要移动的好友的召唤师名。每个好友的召唤师名格式为{玩家名称}#{名称编号}。输入“-1”以结束输入。\nPlease submit the names of the friends to be moved. Each friend's name should accord to the format {gameName}#{gameTag}. Submit "-1" to end the input.\n变量提示（Variable hints）：\nfriends = await (await connection.request("GET", "/lol-chat/v1/friends")).json()\nfriend_hovercard_df = await sort_friend_hovercard_simple(connection)''')
                                         move_indices = []
                                         while True:
                                             friend_summonerName = logInput()
@@ -1966,7 +1966,7 @@ async def friend_behavior_simulation(connection: Connection) -> None: #在本函
                                             else:
                                                 logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                                     elif method[0] == "2":
-                                        logPrint('''请输入要删除的好友的召唤师名。每个好友的召唤师名格式为{玩家昵称}#{昵称编号}。输入“-1”以结束输入。\nPlease submit the names of the friends to be unfriended. Each friend's name should accord to the format {gameName}#{gameTag}. Submit "-1" to end the input.\n变量提示（Variable hints）：\nfriends = await (await connection.request("GET", "/lol-chat/v1/friends")).json()\nfriend_hovercard_df = await sort_friend_hovercard_simple(connection)''')
+                                        logPrint('''请输入要删除的好友的召唤师名。每个好友的召唤师名格式为{玩家名称}#{名称编号}。输入“-1”以结束输入。\nPlease submit the names of the friends to be unfriended. Each friend's name should accord to the format {gameName}#{gameTag}. Submit "-1" to end the input.\n变量提示（Variable hints）：\nfriends = await (await connection.request("GET", "/lol-chat/v1/friends")).json()\nfriend_hovercard_df = await sort_friend_hovercard_simple(connection)''')
                                         unfriend_indices = []
                                         while True:
                                             friend_summonerName = logInput()
@@ -2163,7 +2163,7 @@ async def friend_behavior_simulation(connection: Connection) -> None: #在本函
                                             else:
                                                 logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                                     elif method[0] == "2":
-                                        logPrint('''请输入要拉黑的好友的召唤师名。每个好友的召唤师名格式为{玩家昵称}#{昵称编号}。输入“-1”以结束输入。\nPlease submit the names of the friends to be blocked. Each friend's name should accord to the format {gameName}#{gameTag}. Submit "-1" to end the input.\n变量提示（Variable hints）：\nfriends = await (await connection.request("GET", "/lol-chat/v1/friends")).json()\nfriend_hovercard_df = await sort_friend_hovercard_simple(connection)''')
+                                        logPrint('''请输入要拉黑的好友的召唤师名。每个好友的召唤师名格式为{玩家名称}#{名称编号}。输入“-1”以结束输入。\nPlease submit the names of the friends to be blocked. Each friend's name should accord to the format {gameName}#{gameTag}. Submit "-1" to end the input.\n变量提示（Variable hints）：\nfriends = await (await connection.request("GET", "/lol-chat/v1/friends")).json()\nfriend_hovercard_df = await sort_friend_hovercard_simple(connection)''')
                                         block_indices = []
                                         while True:
                                             friend_summonerName = logInput()
@@ -2574,7 +2574,7 @@ async def friend_behavior_simulation(connection: Connection) -> None: #在本函
                                             else:
                                                 logPrint(invitee_info["message"])
                             elif method[0] == "4":
-                                logPrint('''请输入要邀请的玩家的召唤师名。每个玩家的召唤师名格式为{玩家昵称}#{昵称编号}。输入“-1”以结束输入。\nPlease submit the invitees' names. Each invitee's name should accord to the format {gameName}#{gameTag}. Submit "-1" to end the input.''')
+                                logPrint('''请输入要邀请的玩家的召唤师名。每个玩家的召唤师名格式为{玩家名称}#{名称编号}。输入“-1”以结束输入。\nPlease submit the invitees' names. Each invitee's name should accord to the format {gameName}#{gameTag}. Submit "-1" to end the input.''')
                                 invitee_summonerIds = []
                                 while True:
                                     invitee_summonerName = logInput()
@@ -4619,7 +4619,7 @@ async def blacklist_behavior_simulation(connection: Connection) -> None:
                                         else:
                                             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                                 elif method[0] == "2":
-                                    logPrint('''请输入要移出聊天黑名单的玩家的召唤师名。每个玩家的召唤师名格式为{玩家昵称}#{昵称编号}。输入“-1”以结束输入。\nPlease submit the names of the blocked players to be unblocked. Each player's name should accord to the format {gameName}#{gameTag}. Submit "-1" to end the input.\n变量提示（Variable hints）：\nblockList = await (await connection.request("GET", "/lol-chat/v1/blocked-players")).json()\nblockList_df = await sort_blockList_data(connection)''')
+                                    logPrint('''请输入要移出聊天黑名单的玩家的召唤师名。每个玩家的召唤师名格式为{玩家名称}#{名称编号}。输入“-1”以结束输入。\nPlease submit the names of the blocked players to be unblocked. Each player's name should accord to the format {gameName}#{gameTag}. Submit "-1" to end the input.\n变量提示（Variable hints）：\nblockList = await (await connection.request("GET", "/lol-chat/v1/blocked-players")).json()\nblockList_df = await sort_blockList_data(connection)''')
                                     unblock_indices = []
                                     while True:
                                         player_summonerName = logInput()
