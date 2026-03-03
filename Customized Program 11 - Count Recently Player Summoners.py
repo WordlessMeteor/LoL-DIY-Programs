@@ -29,7 +29,7 @@ use_sgp: bool = args.lol_api == "sgp"
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/02
+# 更新（Last update）：     2026/03/03
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2987,6 +2987,8 @@ async def search_recent_players(connection: Connection) -> None:
                                 except ValueError:
                                     logPrint("请以空格为分隔符输入对局索引的自然数类型的下界和上界！\nPlease enter the two nonnegative integers as the begIndex and endIndex of the matches split by space!")
                                     continue
+                                else:
+                                    break
                         if gameIndex == "0":
                             search_LoL = False
                             LoLMatchIDs = []
@@ -3120,6 +3122,8 @@ async def search_recent_players(connection: Connection) -> None:
                                 except ValueError:
                                     logPrint("请以空格为分隔符输入对局索引的自然数类型的下界和上界！\nPlease enter the two nonnegative integers as the begIndex and endIndex of the matches split by space!")
                                     continue
+                                else:
+                                    break
                         if gameIndex == "0":
                             search_TFT = False
                             TFTMatchIDs = []

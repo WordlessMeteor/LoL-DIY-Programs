@@ -1774,6 +1774,8 @@ async def search_profile(connection: Connection) -> None:
                                     except ValueError:
                                         logPrint("请以空格为分隔符输入对局索引的自然数类型的下界和上界！\nPlease enter the two nonnegative integers as the begIndex and endIndex of the matches split by space!")
                                         continue
+                                    else:
+                                        break
                             if gameIndex == "0":
                                 search_LoL = False
                                 LoLMatchIDs = []
@@ -2129,6 +2131,8 @@ async def search_profile(connection: Connection) -> None:
                                     except ValueError:
                                         logPrint("请以空格为分隔符输入对局索引的自然数类型的下界和上界！\nPlease enter the two nonnegative integers as the begIndex and endIndex of the matches split by space!")
                                         continue
+                                    else:
+                                        break
                             if gameIndex == "0":
                                 search_TFT = False
                                 TFTMatchIDs = []
