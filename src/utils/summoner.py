@@ -246,6 +246,8 @@ def get_info_name(info: Any, mode: int = 1) -> str:
                     name = "0. New Player/" + puuid
                 else:
                     name = puuid
+        elif gameName_exist and tagLine_exist and bool(gameName) and bool(tagLine):
+            name = gameName + "#" + tagLine
         else:
             print("您的召唤师信息格式有误！\nERROR format of summoner information!")
             name = ""
