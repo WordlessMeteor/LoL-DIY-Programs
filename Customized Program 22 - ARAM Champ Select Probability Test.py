@@ -15,7 +15,7 @@ from src.utils.format import format_df
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/02/27
+# 更新（Last update）：     2026/03/03
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -39,8 +39,9 @@ async def prepare_data_resources(connection: Connection) -> None:
     current_summoner = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     LoLChampions_initial = await (await connection.request("GET", "/lol-champions/v1/inventories/%s/champions" %(current_summoner["summonerId"]))).json()
     LoLChampions = {champion["id"]: champion for champion in LoLChampions_initial}
+    recommended_position_for_champion: dict[str, dict[str, Any]] = await (await connection.request("GET", "/lol-perks/v1/recommended-champion-positions")).json()
     logPrint("正在整理英雄数据……\nOrganizing champion data ...")
-    LoLChampion_df, count = await sort_inventory_champions(connection, LoLChampions)
+    LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion)
 
 #-----------------------------------------------------------------------------
 # 创建房间（Create a lobby）

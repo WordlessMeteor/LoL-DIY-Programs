@@ -130,7 +130,7 @@ def sort_ddragon_champions(LoLChampions: dict[int, dict[str, Any]], log: Optiona
     LoLChampion_df = pandas.concat([pandas.DataFrame([LoLChampion_header])[LoLChampion_df.columns], LoLChampion_df], ignore_index = True)
     return (LoLChampion_df, count)
 
-async def sort_inventory_champions(connection: Connection, LoLChampions: dict[int, dict[str, Any]], log: Optional[LogManager] = None, verbose: bool = False) -> tuple[pandas.DataFrame, int]:
+def sort_inventory_champions(LoLChampions: dict[int, dict[str, Any]], recommended_position_for_champion: dict[str, dict[str, Any]], log: Optional[LogManager] = None, verbose: bool = False) -> tuple[pandas.DataFrame, int]:
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
@@ -138,7 +138,6 @@ async def sort_inventory_champions(connection: Connection, LoLChampions: dict[in
     LoLChampion_header_keys: list[str] = list(LoLChampion_header.keys())
     LoLChampion_data: dict[str, list[Any]] = {key: [] for key in LoLChampion_header_keys}
     LoLChampion_data_json: dict[str, list[Any]] = copy.deepcopy(LoLChampion_data)
-    recommended_position_for_champion: dict[str, dict[str, Any]] = await (await connection.request("GET", "/lol-perks/v1/recommended-champion-positions")).json()
     logPrint("championId\tname\ttitle\talias", verbose = verbose)
     count: int = 0
     for i in sorted(LoLChampions.keys()):

@@ -54,6 +54,7 @@ current_info: dict[str, Any] = {}
 queues: dict[int, dict[str, Any]] = {}
 summonerIcons: dict[int, dict[str, Any]] = {}
 LoLChampions: dict[int, dict[str, Any]] = {}
+recommended_position_for_champion: dict[str, dict[str, Any]] = {}
 skins_flat: dict[int, dict[str, Any]] = {}
 championSkins: dict[int, dict[str, Any]] = {}
 skinlines: dict[int, dict[str, Any]] = {}
@@ -110,7 +111,7 @@ async def check_account_ready(connection: Connection) -> bool:
 
 async def prepare_data_resources(connection: Connection) -> None:
     #准备数据资源（Prepare data resources）
-    global session, platformId, current_info, queues, summonerIcons, LoLChampions, skins_flat, championSkins, skinlines, spells, available_spell_dict, LoLItems, perks, perkstyles, CherryAugments, TFTAugments, TFTCompanions, TFTTraits, TFTChampions, TFTItems, TFTDamageSkins, TFTMapSkins, strawberryMaps, wardSkins, collection_df_refresh, collection_df, skin_df_refresh, skin_df
+    global session, platformId, current_info, queues, summonerIcons, LoLChampions, recommended_position_for_champion, skins_flat, championSkins, skinlines, spells, available_spell_dict, LoLItems, perks, perkstyles, CherryAugments, TFTAugments, TFTCompanions, TFTTraits, TFTChampions, TFTItems, TFTDamageSkins, TFTMapSkins, strawberryMaps, wardSkins, collection_df_refresh, collection_df, skin_df_refresh, skin_df
     ##大区信息（Platform information）
     logPrint("正在准备大区信息……\nPreparing platform information ...")
     platformId = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
@@ -137,6 +138,7 @@ async def prepare_data_resources(connection: Connection) -> None:
             for tier in skin["questSkinInfo"]["tiers"]:
                 if not tier["id"] in skins_flat: #圣堂皮肤和终极皮肤中的系列与主皮肤存在重复的序号（There're redundant ids between the tier and the parent ultimate skin）
                     skins_flat[tier["id"]] = tier
+    recommended_position_for_champion = await (await connection.request("GET", "/lol-perks/v1/recommended-champion-positions")).json()
     ##皮肤（Champion skin）
     logPrint("正在加载皮肤信息……\nLoading skin information ...")
     championSkins_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/skins.json")).json()
@@ -3585,7 +3587,7 @@ async def lobby_simulation(connection: Connection) -> str:
                                                             break
                                                         elif step == 1:
                                                             logPrint("第一步：请选择一个英雄。\nStep 1: Please select a champion.")
-                                                            LoLChampion_df, count = await sort_inventory_champions(connection, LoLChampions, log = log, verbose = False)
+                                                            LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion, log = log, verbose = False)
                                                             LoLChampion_fields_to_print: list[str] = ["id", "name", "title", "alias"]
                                                             LoLChampion_df_selected: pandas.DataFrame = pandas.concat([LoLChampion_df.iloc[:1, :], LoLChampion_df[(LoLChampion_df["freeToPlay"] == "√") | (LoLChampion_df["ownership: owned"] == "√") | (LoLChampion_df["ownership: rental: rented"] == "√")]], ignore_index = True)
                                                             LoLChampion_df_query: pandas.DataFrame = LoLChampion_df.loc[:, LoLChampion_fields_to_print]
@@ -4226,7 +4228,7 @@ async def lobby_simulation(connection: Connection) -> str:
                                                             botTest: bool = bool(botTest_str)
                                                             if botTest:
                                                                 available_bot_championIds: list[int] = list((await test_bot(connection, LoLChampions))[0].keys())
-                                                                LoLChampion_df, count = await sort_inventory_champions(connection, LoLChampions, log = log, verbose = False)
+                                                                LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion, log = log, verbose = False)
                                                                 if len(available_bot_championIds) == 0:
                                                                     logPrint("没有获取到可用的电脑玩家。\nNo available bot champions found.")
                                                                 else:
@@ -5648,7 +5650,7 @@ async def champ_select_simulation(connection: Connection) -> str:
                                 logPrint("还没有人重随过。\nNobody has rerolled.")
                             else:
                                 logPrint("可用英雄池如下：\nAvailable champion pool:")
-                                LoLChampion_df, count = await sort_inventory_champions(connection, LoLChampions, log = log, verbose = False)
+                                LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion, log = log, verbose = False)
                                 LoLChampion_df_fields_to_print: list[str] = ["id", "name", "title", "alias", "freeToPlay", "ownership: owned", "ownership: rental: rented"]
                                 LoLChampion_df_selected: pandas.DataFrame = pandas.concat([LoLChampion_df.iloc[:1, :], LoLChampion_df[LoLChampion_df["id"].isin(benchedChampionIds)]], ignore_index = True)
                                 print(format_df(LoLChampion_df_selected.loc[:, LoLChampion_df_fields_to_print], print_index = True)[0])
@@ -5729,7 +5731,7 @@ async def champ_select_simulation(connection: Connection) -> str:
                                 else:
                                     selectable_champion_ids = await (await connection.request("GET", "/lol-lobby-team-builder/champ-select/v1/pickable-champion-ids")).json()
                         logPrint("请输入英雄序号：\nPlease enter a champion id:") #这部分代码复制于符文脚本（This part of code is copied from Customized Program 19）
-                        LoLChampion_df, count = await sort_inventory_champions(connection, LoLChampions, log = log, verbose = False)
+                        LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion, log = log, verbose = False)
                         LoLChampion_fields_to_print: list[str] = ["id", "name", "title", "alias"]
                         LoLChampion_df_selected: pandas.DataFrame = pandas.concat([LoLChampion_df.iloc[:1, :], LoLChampion_df[LoLChampion_df["id"].isin(selectable_champion_ids)]], ignore_index = True)
                         LoLChampion_df_query: pandas.DataFrame = LoLChampion_df.loc[:, LoLChampion_fields_to_print]

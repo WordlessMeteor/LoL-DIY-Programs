@@ -16,7 +16,7 @@ from src.core.dataframes.champions import sort_inventory_champions
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/02
+# 更新（Last update）：     2026/03/03
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -32,6 +32,7 @@ perks: dict[int, dict[str, Any]] = {}
 perkstyles_source: dict[str, Any] = {}
 perkstyles: dict[int, dict[str, Any]] = {}
 LoLChampions: dict[int, dict[str, Any]] = {}
+recommended_position_for_champions: dict[str, dict[str, Any]] = {}
 log: LogManager = LogManager()
 
 connector: Connector = Connector()
@@ -46,7 +47,7 @@ def clear_screen() -> None:
         os.system("clear")
 
 async def prepare_data_resources(connection: Connection) -> None:
-    global spells, perks_source, perks, perkstyles_source, perkstyles, LoLChampions
+    global spells, perks_source, perks, perkstyles_source, perkstyles, LoLChampions, recommended_position_for_champion
     #召唤师技能（Summoner spell）
     spells_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/summoner-spells.json")).json()
     spells = {spell["id"]: spell for spell in spells_source}
@@ -60,6 +61,8 @@ async def prepare_data_resources(connection: Connection) -> None:
     current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     LoLChampions_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-champions/v1/inventories/%s/champions" %(current_info["summonerId"]))).json()
     LoLChampions = {champion["id"]: champion for champion in LoLChampions_source}
+    #推荐分路（Recommended positions）
+    recommended_position_for_champion = await (await connection.request("GET", "/lol-perks/v1/recommended-champion-positions")).json()
 
 async def sort_perk_data(connection: Connection) -> pandas.DataFrame:
     #下面指定符文的排列顺序（The following code specify the perk ordering）
@@ -316,7 +319,7 @@ async def configure_perks(connection: Connection) -> None:
                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
         elif option == "2":
             logPrint("请输入英雄序号：\nPlease enter a champion id:")
-            LoLChampion_df, count = await sort_inventory_champions(connection, LoLChampions)
+            LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion)
             LoLChampion_fields_to_print: list[str] = ["id", "name", "title", "alias"]
             LoLChampion_df_query: pandas.DataFrame = LoLChampion_df.loc[:, LoLChampion_fields_to_print]
             LoLChampion_df_query["id"] = LoLChampion_df["id"].astype(str) #方便检索（For convenience of retrieval）
@@ -1127,6 +1130,7 @@ async def connect(connection: Connection) -> None:
     logInput = log.logInput
     logPrint = log.logPrint
     await get_summoner_data(connection)
+    await prepare_data_resources(connection)
     await save_platform_info(connection)
     await configure_perks(connection)
     log.write("\n[Program terminated and returned status 0.]\n")

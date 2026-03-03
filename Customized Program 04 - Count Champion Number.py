@@ -16,7 +16,7 @@ from src.core.dataframes.champions import test_bot, sort_ddragon_champions, sort
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/02
+# 更新（Last update）：     2026/03/03
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -246,8 +246,7 @@ async def get_plugin_champions(connection: Connection) -> list: #和整理静态
     LoLChampion: list[dict[str, Any]] = []
     for i in range(len(championIds)):
         championId: int = championIds[i]
-        champion_uri: str = f"/lol-game-data/assets/v1/champions/{championId}.json"
-        champion: dict[str, Any] = await (await connection.request("GET", champion_uri)).json() #插件从本地读取，因此一般不需要设置异常处理（Plugins are read locally, so exception handling isn't needed here）
+        champion: dict[str, Any] = await (await connection.request("GET", f"/lol-game-data/assets/v1/champions/{championId}.json")).json() #插件从本地读取，因此一般不需要设置异常处理（Plugins are read locally, so exception handling isn't needed here）
         LoLChampion.append(champion)
         print("[%s]" %(time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())), end = "")
         print("获取进度（Capturing process）：%d/%d" %(i + 1, len(championIds)))
@@ -255,6 +254,7 @@ async def get_plugin_champions(connection: Connection) -> list: #和整理静态
 
 async def count_champions(connection: Connection) -> None:
     current_summoner: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
+    recommended_position_for_champion: dict[str, dict[str, Any]] = await (await connection.request("GET", "/lol-perks/v1/recommended-champion-positions")).json()
     print("请选择英雄数据类型：\nPlease a champion data type:\n1\t个人所有（Personal inventory）\n2\t插件（Plugins）")
     while True:
         data_type: str = input()
@@ -317,7 +317,7 @@ async def count_champions(connection: Connection) -> None:
             if mode[0] == "2":
                 print("正在整理数据……\nOrganizing data ...")
             if data_type[0] == "1":
-                LoLChampion_df, count = await sort_inventory_champions(connection, LoLChampions, verbose = mode[0] != "2")
+                LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion, verbose = mode[0] != "2")
             elif data_type[0] == "2":
                 LoLChampion_df, count = sort_plugin_champions(LoLChampions, verbose = mode[0] != "2")
             wbPath: str = "available-bots.xlsx"
