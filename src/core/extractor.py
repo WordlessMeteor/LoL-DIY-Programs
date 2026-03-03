@@ -7,7 +7,7 @@ os.chdir(wd)
 if not wd in sys.path:
     sys.path.append(wd)
 from src.utils.logger import LogManager
-from src.utils.patch import Patch
+from src.utils.patch import Patch, get_cdragon_patchList
 from src.utils.webRequest import requestUrl
 from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, pyobj2json, capitalize, decapitalize
 from src.utils.runtimeDebug import subscope
@@ -6415,28 +6415,9 @@ if __name__ == "__main__":
         if session == None:
             session = requests.Session()
         logPrint("请在以下版本号中选择并输入完整的版本号：\nPlease select a version and then enter it entirely:")
-        cdragon_home_url: str = "https://raw.communitydragon.org/"
-        response, status, session = requestUrl("GET", urljoin(cdragon_home_url, "json"), session = session)
-        if status != 200:
-            if status == -1:
-                logPrint("CommunityDragon数据库主页访问失败！\nCommunityDragon database homepage access failed!")
-            elif status == 404:
-                logPrint("CommunityDragon数据库主页不存在！可能它已经变更了。\nCommunityDragon database homepage not found! Maybe it's changed.")
+        patches_cdragon, patchList_fetched = get_cdragon_patchList(session = session, log = log)
+        if not patchList_fetched:
             return ([], session)
-        cdragon_homepage_json = response.json()
-        patch_re = re.compile(r"[0-9]+\.[0-9]+")
-        patches_cdragon: list[str] | list[Patch] = []
-        for record in cdragon_homepage_json:
-            if record["type"] == "directory":
-                matchedLine = patch_re.search(record["name"])
-                if matchedLine:
-                    matchedPatch: str = matchedLine.group()
-                    patches_cdragon.append(matchedPatch)
-        patches_cdragon = list(map(Patch, patches_cdragon))
-        patches_cdragon.sort(reverse = True)
-        patches_cdragon = list(map(str, patches_cdragon))
-        patches_cdragon.insert(0, "pbe")
-        patches_cdragon.insert(0, "latest")
         logPrint(json.dumps(patches_cdragon, ensure_ascii = False))
         while True:
             version: str = logInput()
