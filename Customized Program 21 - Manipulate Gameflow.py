@@ -219,7 +219,7 @@ async def prepare_data_resources(connection: Connection) -> None:
     ##云顶之弈英雄（TFT champion）
     logPrint("正在加载云顶之弈棋子信息……\nLoading TFT champion information ...")
     TFTChampions_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/tftchampions.json")).json()
-    TFTChampions = {TFTChampion_iter["name"]: TFTChampion_iter for TFTChampion_iter in TFTChampions_source}
+    TFTChampions = {TFTChampion_iter["name"]: TFTChampion_iter["character_record"] for TFTChampion_iter in TFTChampions_source}
     ##云顶之弈装备（TFT items）
     logPrint("正在加载云顶之弈装备信息……\nLoading TFT item information ...")
     TFTItems_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/tftitems.json")).json()
@@ -1105,7 +1105,7 @@ async def send_report_request(connection: Connection, resource: dict[str, Any], 
     else:
         logPrint(response)
         if response == {"errorCode": "RPC_ERROR", "httpStatus": 404, "implementationDetails": {}, "message": "Retrieved match token from honor is empty."}:
-            logPrint("玩家对局令牌获取异常。请确保您正在举报一场匹配对局中的一名人类玩家。\nPlayer match token capture failed. Please make sure you're reporting a human player in a matched game.")
+            logPrint("玩家对局令牌获取异常。请确保您正在举报您所在的一场匹配对局中的一名人类玩家。\nPlayer match token capture failed. Please make sure you're reporting a human player in a matched game of yours.")
         elif response["httpStatus"] == 400 and "Failed to submit match-history report for player" in response["message"]:
             logPrint("在发送举报请求时出现了一个异常。\nAn error occurred when the program was trying to send a report request.")
         else:
@@ -1452,9 +1452,9 @@ async def report_player_matchHistory(connection: Connection) -> None:
         if fetched_info:
             if isTFT and bool(game_info["json"]):
                 TFTGame_info = game_info
-                humanPlayers: list[dict[str, Any]] = TFTGame_info["json"]["players"] #同上，云顶之弈中无法判断一名玩家是否电脑玩家（Same as above, we can't tell whether a player is a bot here）
+                humanPlayers: list[dict[str, Any]] = TFTGame_info["json"]["participants"] #同上，云顶之弈中无法判断一名玩家是否电脑玩家（Same as above, we can't tell whether a player is a bot here）
                 player_df: pandas.DataFrame = (await sort_TFTGame_info(connection, TFTGame_info, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = 1, current_puuid = current_info["puuid"], useAllVersions = False, sortStats = False, log = log))[0]
-                player_df_fields_to_print = ["partner_group_id", "riotIdGameName", "riotIdTagline", "ffaStanding", "rank"]
+                player_df_fields_to_print = ["partner_group_id", "riotIdGameName", "riotIdTagline", "placement"]
             elif not isTFT: #为了简化程序，这里直接用SGP API来查询对局信息，没有设置LCU API的选项。这是因为在本脚本中，仅此处会用到对局记录查询接口，而因为这一个场景设置一个命令行参数有些小题大做了（To simplify the program, here only SGP API is used to search for a match. LCU API isn't enabled as another option. This is because in this program, only this place uses the match history endpoint, so it's not necessary to set command line arguments）
                 LoLGame_info = game_info
                 humanPlayers = [player for player in LoLGame_info["json"]["participants"] if player != BOT_UUID]
