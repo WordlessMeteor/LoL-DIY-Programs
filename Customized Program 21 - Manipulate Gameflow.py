@@ -28,7 +28,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/03/02
+# 更新（Last update）：     2026/03/03
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1459,7 +1459,8 @@ async def report_player_matchHistory(connection: Connection) -> None:
                 LoLGame_info = game_info
                 humanPlayers = [player for player in LoLGame_info["json"]["participants"] if player != BOT_UUID]
                 player_df = sort_LoLGame_info_sgp(LoLGame_info, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = 1, current_puuid = current_info["puuid"], sortStats = False, log = log)[0]
-                player_df.insert(player_df.shape[1], "K/D/A", ["击杀得分"] + list(map(lambda i: "%d/%d/%d" %(player_df["kills"][i], player_df["deaths"][i], player_df["assists"][i]), range(1, len(player_df)))))
+                # player_df.insert(player_df.shape[1], "K/D/A", ["击杀得分"] + list(map(lambda i: "%d/%d/%d" %(player_df["kills"][i], player_df["deaths"][i], player_df["assists"][i]), range(1, len(player_df)))))
+                player_df = pandas.concat([player_df, pandas.DataFrame({"K/D/A": ["击杀得分"] + list(map(lambda i: "%d/%d/%d" %(player_df["kills"][i], player_df["deaths"][i], player_df["assists"][i]), range(1, len(player_df))))})], axis = 1)
                 player_df_fields_to_print: list[str] = [("playerSubteamColor" if LoLGame_info["json"]["gameMode"] == "CHERRY" else "team_color"), "riotIdGameName", "riotIdTagline", "champion_name", "K/D/A", "CS"]
             else:
                 logPrint("未获取到有效的玩家信息。请切换其它对局。\nNo valid participant information detected. Please change another game.")

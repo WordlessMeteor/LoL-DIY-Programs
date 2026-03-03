@@ -2201,10 +2201,12 @@ async def detect_friend(connection: Connection, search_LoL: bool, search_TFT: bo
         if len(LoLFriend_index) + len(TFTFriend_index) > 2:
             recent_friend_count += 1
             recent_LoLFriend_df: pandas.DataFrame = recent_LoLPlayer_df.loc[LoLFriend_index, :]
-            recent_LoLFriend_df.insert(1, "note", ["备注"] + [friend["note"]] * (len(LoLFriend_index) - 1))
+            # recent_LoLFriend_df.insert(1, "note", ["备注"] + [friend["note"]] * (len(LoLFriend_index) - 1))
+            recent_LoLFriend_df = pandas.concat([recent_LoLFriend_df.iloc[:, :1], pandas.DataFrame({"note": ["备注"] + [friend["note"]] * (len(LoLFriend_index) - 1)}, index = LoLFriend_index), recent_LoLFriend_df.iloc[:, 1:]], axis = 1)
             recent_LoLFriend_df_to_print = pandas.concat([recent_LoLFriend_df_to_print, recent_LoLFriend_df.loc[1:, recent_LoLPlayer_fields]], axis = 0)
             recent_TFTFriend_df: pandas.DataFrame = recent_TFTPlayer_df.loc[TFTFriend_index, :]
-            recent_TFTFriend_df.insert(1, "note", ["备注"] + [friend["note"]] * (len(TFTFriend_index) - 1))
+            # recent_LoLFriend_df.insert(1, "note", ["备注"] + [friend["note"]] * (len(LoLFriend_index) - 1))
+            recent_TFTFriend_df = pandas.concat([recent_TFTFriend_df.iloc[:, :1], pandas.DataFrame({"note": ["备注"] + [friend["note"]] * (len(TFTFriend_index) - 1)}, index = TFTFriend_index), recent_TFTFriend_df.iloc[:, 1:]], axis = 1)
             recent_TFTFriend_df_to_print = pandas.concat([recent_TFTFriend_df_to_print, recent_TFTFriend_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
             while True:
                 try:
