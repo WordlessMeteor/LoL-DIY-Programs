@@ -18,7 +18,7 @@ from src.utils.runtimeDebug import subscope
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/03/02
+# 更新（Last update）：     2026/03/04
 #=============================================================================
 
 #定义异质性检验函数（Define heterogeneity verification function）
@@ -211,9 +211,9 @@ class LoLDataExtractor:
     calculatedVariables: dict[str, dict[Literal["value", "__type"], str | dict[str, str]]] = {} #缓存同一个说明文本中计算过的变量。切换到下一个说明文本时清空（Cache the variables that have been calculated before while transforming a tooltip. When another tooltip is to transform, this variable is cleaned）
     mSpells: dict[str, Any] = {} #收录某个二进制描述数据中所有的技能指令对象。键是每个技能指令对象的mScriptName键的值，值是每个技能指令对象（Collect all SpellObjects in binary description data. Each key is the value of the `mScriptName` key of a SpellObject, and its value is this SpellObject）
     mItems: dict[str, Any] = {} #收录装备二进制描述数据中所有的装备对象。键是每个装备数据对象的装备序号，值是每个装备数据对象（Collect all ItemData objects in item binary description data. Each key is the value of `itemID` key of an ItemData object, and each value is this ItemData object）
-    TFTUnitPropertyMap: dict[str, Any] = {} #收录聚点危机地图二进制描述数据中的单位属性定义对象。键是每个单位属性定义对象的名称，值是每个单位属性定义对象（Collect TftUnitPropertyDefinition objects in Convergence map's binary description data. Each key is the value of `mName` key of a TftUnitPropertyDefinition object, and its value is this TftUnitPropertyDefinition object）
-    TFTTraitMap: dict[str, Any] = {} #收录聚点危机地图二进制描述数据中的羁绊对象。键是每个羁绊对象的名称，值是每个羁绊对象（Collect TftTraitData objects in Convergence map's binary description data. Each key is the value of `mName` key of a TftTraitData object, and its value is this TftTraitData object）
-    TFTScriptDataMap: dict[str, Any] = {} #收录聚点危机地图二进制描述数据中的指令数据对象。键是每个指令数据对象的名称，值是每个指令数据对象（Collect ScriptDataObjects in Convergence map's binary description data. Each key is the value of `mName` key of a ScriptDataObject, and its value os this ScriptDataObject）
+    TFTUnitPropertyMap: dict[str, Any] = {} #收录聚点危机地图二进制描述数据中的单位属性定义对象。键是每个单位属性定义对象的名称，值是每个单位属性定义对象（Collect TftUnitPropertyDefinition objects in Convergence map's binary description data. Each key is the value of `name` key of a TftUnitPropertyDefinition object, and its value is this TftUnitPropertyDefinition object）
+    TFTTraitMap: dict[str, Any] = {} #收录聚点危机地图二进制描述数据中的羁绊对象。键是每个羁绊对象的名称，值是每个羁绊对象（Collect TftTraitData objects in Convergence map's binary description data. Each key is the value of `name` key of a TftTraitData object, and its value is this TftTraitData object）
+    TFTScriptDataMap: dict[str, Any] = {} #收录聚点危机地图二进制描述数据中的指令数据对象。键是每个指令数据对象的名称，值是每个指令数据对象（Collect ScriptDataObjects in Convergence map's binary description data. Each key is the value of `name` key of a ScriptDataObject, and its value os this ScriptDataObject）
     Spell_tooltip_map: dict[str, Any] = {} #收录角色二进制描述数据中所有技能说明文本对应的技能指令对象。键是技能说明文本键，值是每个技能指令对象（Collect all SpellObjects that has spell tooltip key in character binary description data. Each key is a value of `keyTooltip`, and each value is the corresponding SpellObject）
     data_cache: dict[str, dict[str, Any]] = {"online": {}, "local": {}} #每个链接或路径指向的Json对象的缓存（Caches of Json objects directed by each URL or path）
     merged_data_cache: dict[str, Any] = {} #每个变量名代表的变量的缓存。在设计初衷上，这个数据结构只缓存那些获取较为麻烦的合并后的数据字典（Caches of the variables that the name keys represent. By design, this data structure only caches those data dictionaries hard to obtain）
@@ -815,7 +815,10 @@ class LoLDataExtractor:
             if "DataValues" in binData:
                 DataValues: dict[str, dict[str, str | float | list[float]]] = {}
                 for spellData in binData["DataValues"]:
-                    var: str = spellData["mName"].lower() #对变量统一取小写形式，因为原格式存在不一致（Get the lower form of all variables, for some variables may not correspond well with their form in the tooltip）
+                    if "name" in spellData:
+                        var: str = spellData["name"].lower() #对变量统一取小写形式，因为原格式存在不一致（Get the lower form of all variables, for some variables may not correspond well with their form in the tooltip）
+                    else: #这里不写成`elif "mName" in spellData`是为了在以后出现问题时，由程序直接报错，这样更好发现问题。下同（The reason why I don't write `elif "mName" in spellData` here is that if something wrong occurs to this key, error thrown by the program should make it easier to find the problem. So do the following）
+                        var = spellData["mName"].lower()
                     DataValues[var] = spellData
                     if not pHash.fullmatch(var): #当然可以舍弃上面的部分，直接全部采用hash形式，但是既然存储字典存的是引用，多一份数据实际上不会占用太大空间，并且如果全都是hash，调试的时候会非常难辨认（Of course we can abandon the above part and normalize all variables into the hash form, but since dictionaries are cited by reference, a shallow copy won't take up too much extra space. Besides, all variables transformed into hashes will make it obscure for debugging）
                         var_hash: str = cls.compute_binhash(var)
@@ -824,7 +827,10 @@ class LoLDataExtractor:
             if "mDataValues" in binData:
                 DataValues: dict[str, dict[str, str | float | list[float]]] = {}
                 for data in binData["mDataValues"]:
-                    var = data["mName"].lower()
+                    if "name" in data:
+                        var = data["name"].lower()
+                    else:
+                        var = data["mName"].lower()
                     DataValues[var] = data
                     if not pHash.fullmatch(var):
                         var_hash = cls.compute_binhash(var)
@@ -872,8 +878,11 @@ class LoLDataExtractor:
                     for (key, value) in binData["DataValuesModeOverride"][gameModeName].items():
                         if isinstance(value, list) and all(map(lambda x: isinstance(x, dict), value)):
                             for dataValue in value:
-                                if "mName" in dataValue:
-                                    var = dataValue["mName"].lower()
+                                if "name" in dataValue or "mName" in dataValue:
+                                    if "name" in dataValue:
+                                        var = dataValue["name"].lower()
+                                    else:
+                                        var = dataValue["mName"].lower()
                                     if not var in DataValuesModeOverride:
                                         DataValuesModeOverride[var] = {}
                                     DataValuesModeOverride[var][gameModeName] = dataValue #将变量从列表中提取出来，并且放到模式的上一层（Extract the variable from the data value list and put it as a parent layer of game modes）、
@@ -1097,7 +1106,7 @@ class LoLDataExtractor:
                 levelValues = list(map(lambda x: cls.aRound(x, 5), levelValues))
                 formulaStr = " - ".join(list(map(str, levelValues))) + " (based on Level)"
         elif formulaPart_type == "ByCharLevelFormulaCalculationPart": #公式等级提供增益（Bonus value provided by levels following a formula）
-            formulaStr = cls.burnValueList(formulaPart["mValues"])
+            formulaStr = cls.burnValueList(formulaPart["values"] if "values" in formulaPart else formulaPart["mValues"]) #在25.06版本以前，值列表的键名是mValues（Before Patch 25.06, the value list's key name is "mValues"）
         elif formulaPart_type == "ByCharLevelInterpolationCalculationPart": #线性等级提供增益（Bonus value provided by levels in a linear manner）
             mStartValue: int | float = cls.aRound(formulaPart.get("mStartValue", 0), 5)
             mEndValue: int | float = cls.aRound(formulaPart["mEndValue"], 5)
@@ -1222,7 +1231,7 @@ class LoLDataExtractor:
                 var_modeValues = binData["DataValuesModeOverride"][var_hash]
             for (gameModeName, dataValue) in var_modeValues.items():
                 if dataValue["__type"] == "SpellDataValue":
-                    result[gameModeName] = cls.burnValueList(dataValue.get("mValues", [0])) #在无限火力中，战争之影 赫卡里姆的【暴走】的冷却缩减被降为0，从而导致其模式覆盖数值中没有mValues键（In URF, Hecarim's Rampage's cooldown reduction is reduced to 0, and consequently its modeOverrideDataValue doesn't have `mValues` key）
+                    result[gameModeName] = cls.burnValueList(cls.aGet(dataValue, ["values", "mValues"], [0])) #在无限火力中，战争之影 赫卡里姆的【暴走】的冷却缩减被降为0，从而导致其模式覆盖数值中没有mValues键（In URF, Hecarim's Rampage's cooldown reduction is reduced to 0, and consequently its modeOverrideDataValue doesn't have `values` key）
                 elif dataValue["__type"] == "ItemDataValue":
                     result[gameModeName] = str(cls.aRound(dataValue["mValue"], 5))
                 else:
@@ -1320,9 +1329,9 @@ class LoLDataExtractor:
                 skip = True
         elif "DataValues" in binData and (var.lower() in binData["DataValues"] or var_hash in binData["DataValues"]):
             if var.lower() in binData["DataValues"]:
-                values: list[int | float] = list(map(lambda x: cls.aRound(x, 5), binData["DataValues"][var.lower()].get("mValues", [0])))
+                values: list[int | float] = list(map(lambda x: cls.aRound(x, 5), cls.aGet(binData["DataValues"][var.lower()], ["values", "mValues"], [0])))
             else:
-                values: list[int | float] = list(map(lambda x: cls.aRound(x, 5), binData["DataValues"][var_hash].get("mValues", [0])))
+                values: list[int | float] = list(map(lambda x: cls.aRound(x, 5), cls.aGet(binData["DataValues"][var_hash], ["values", "mValues"], [0])))
             normalValue = cls.burnValueList(values)
         elif "mDataValues" in binData and (var.lower() in binData["mDataValues"] or var_hash in binData["mDataValues"]):
             if var.lower() in binData["mDataValues"]:
@@ -6330,19 +6339,20 @@ def modeOverrideTooltipTransform(binData: dict[str, Any], objectType: str, keyPa
                                     s += "{%s}【%s】（%s）：" %(characterName, keyName_content, mHotKey)
                                     for i in range(len(overrideValues["SpellDataValues"])):
                                         spellDataValue = overrideValues["SpellDataValues"][i]
-                                        var = spellDataValue["mName"]
+                                        var = spellDataValue["name"] if "name" in spellDataValue else spellDataValue["mName"]
                                         if var.lower() in value["mSpell"]["DataValues"]:
+                                            varData: dict[str, Any] = value["mSpell"]["DataValues"][var.lower()]
                                             if mHotKey == "R":
-                                                value_list = value["mSpell"]["DataValues"][var.lower()]["mValues"][1:4]
+                                                value_list: list[int | float] = varData["values"][1:4] if "values" in varData else varData["mValues"][1:4]
                                             else:
-                                                value_list = value["mSpell"]["DataValues"][var.lower()]["mValues"][1:6]
+                                                value_list = varData["values"][1:6] if "values" in varData else varData["mValues"][1:6]
                                             defaultValue = LoLDataExtractor.burnValueList(value_list)
                                         else:
                                             defaultValue = "φ"
                                         if mHotKey == "R":
-                                            overrideValue = LoLDataExtractor.burnValueList(spellDataValue["mValues"][1:4]) if "mValues" in spellDataValue else "φ"
+                                            overrideValue = LoLDataExtractor.burnValueList(spellDataValue["values"][1:4]) if "values" in spellDataValue else varData["mValues"][1:4] if "mValues" in varData else "φ"
                                         else:
-                                            overrideValue = LoLDataExtractor.burnValueList(spellDataValue["mValues"][1:6]) if "mValues" in spellDataValue else "φ"
+                                            overrideValue = LoLDataExtractor.burnValueList(spellDataValue["values"][1:6]) if "values" in spellDataValue else varData["mValues"][1:6] if "mValues" in varData else "φ"
                                         s += "{%s}：%s → %s" %(var, defaultValue, overrideValue)
                                         if i < len(overrideValues["SpellDataValues"]) - 1:
                                             s += "；"
@@ -6352,7 +6362,7 @@ def modeOverrideTooltipTransform(binData: dict[str, Any], objectType: str, keyPa
                                     s += "【%s】：" %(keyName_content)
                                     for i in range(len(overrideValues["DataValues"])):
                                         itemDataValue = overrideValues["DataValues"][i]
-                                        var = spellDataValue["mName"]
+                                        var = spellDataValue["name"] if "name" in spellDataValue else spellDataValue["mName"]
                                         if var.lower() in value["mDataValues"]:
                                             defaultValue = LoLDataExtractor.aRound(value["mDataValues"][var.lower()]["mValue"], 5)
                                         else:
@@ -6901,11 +6911,11 @@ if __name__ == "__main__":
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/perks.cdtb.bin.json", "r", encoding = "utf-8") as fp:
         #     perks_bin = json.load(fp)
         ##强化符文（Augment）
-        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
-            KiwiAugments_bin = json.load(fp)
+        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
+        #     KiwiAugments_bin = json.load(fp)
         ##整合后的数据（Merged data）
-        # with open("C:/Users/19250/Documents/Workspace/JupyterLab/自定义脚本/英雄联盟自定义房间创建/champions_bin.json", "r", encoding = "utf-8") as fp:
-        #     champions_bin = json.load(fp)
+        with open("C:/Users/19250/Documents/Workspace/JupyterLab/自定义脚本/英雄联盟自定义房间创建/champions_bin.json", "r", encoding = "utf-8") as fp:
+            champions_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/自定义脚本/英雄联盟自定义房间创建/characters_bin.json", "r", encoding = "utf-8") as fp:
         #     characters_bin = json.load(fp)
         
@@ -6943,16 +6953,16 @@ if __name__ == "__main__":
         # print(LoLDataExtractor.get_strtable_value(lolstringtable_zh, mDisplayName_key, default = "获取失败。"))
         
         #说明文本转换（Tooltip transformation）
-        tooltip_raw = "Kiwi_Augment_Set_Ambulance_TierTooltip_V2"
-        print("原始说明文本：\n" + tooltip_raw)
-        binData = KiwiAugments_bin["{82eee788}"]["mSpell"]
-        print("----")
-        print("转换文本：")
-        print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = False))
+        # tooltip_raw = "Kiwi_Augment_Set_Ambulance_TierTooltip_V2"
+        # print("原始说明文本：\n" + tooltip_raw)
+        # binData = KiwiAugments_bin["{82eee788}"]["mSpell"]
+        # print("----")
+        # print("转换文本：")
+        # print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = False))
         # print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = True))
         # print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = False))
         # print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = True))
-        # print(modeOverrideTooltipTransform(champions_bin, objectType = "SpellObject", keyPaths = "mSpell|DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh))
+        print(modeOverrideTooltipTransform(champions_bin, objectType = "SpellObject", keyPaths = "mSpell|DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh))
         
         return 0
 
