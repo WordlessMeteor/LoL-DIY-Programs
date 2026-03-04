@@ -2692,6 +2692,7 @@ async def search_recent_players(connection: Connection) -> None:
     if mode == "" or mode[0] != "1":
         detectMode = True
     smurf_asked: bool = False #在检测模式时，询问用户是否导入其它账号。当用户从检测模式切换到生成模式时，该变量会置为假（Under Detect Mode, the program asks if the user wants to import other accounts. When the user switch from Detect Mode to Generate Mode, this variable is set False）
+    smurfs: list[dict[str, Any]] = []
     switch_mode: bool = False #模式转换变量定义（Definition of the mode transfer variable）
     #然后获取历史记录（Next, fetch the history）
     while True:
@@ -2699,13 +2700,10 @@ async def search_recent_players(connection: Connection) -> None:
         #通过小号模式导入其它自己玩过的账号（Import other accounts that the user has played by Smurf Mode）
         detectMode: bool = not detectMode if switch_mode else detectMode
         selfDetect: bool = detectMode #标记检测模式是否检测自己（Marks whether Detect Mode detects the user itself）
-        smurf_asked = False if not detectMode else smurf_asked
         switch_mode = False #模式转换变量初始化（Initialization of the mode transfer variable）
-        if detectMode and not smurf_asked:
-            smurfs: list[dict[str, Any]] = await load_smurf(connection, selfDetect, infos = infos)
+        if not smurf_asked:
+            smurfs = await load_smurf(connection, selfDetect, infos = infos)
             smurf_asked = True
-        else:
-            smurfs = []
         smurfMode: bool = len(smurfs) > 0
         #初始化所有数据资源（Initialize all data resources）
         logPrint("\n正在初始化所有数据资源……\nInitializing all data resources ...\n")
@@ -3201,6 +3199,12 @@ async def search_recent_players(connection: Connection) -> None:
             logPrint("是否从生成模式切换到检测模式？（输入任意键切换，否则不切换）\nDo you want to switch from Detect Mode to Generate Mode? (Submit anything to switch, or null to refuse switching)")
         switch_mode_str: str = logInput()
         switch_mode = bool(switch_mode_str)
+        if not detectMode:
+            logPrint("是否更换小号信息？（输入任意非空字符串以重置小号信息，否则保存现有的小号信息。）\nDo you want to change the smurf information? (Submit any non-empty string to reset smurfs, or null to reserve the current information.)")
+            clear_smurf_str: str = logInput()
+            clear_smurf: bool = bool(clear_smurf_str)
+            if clear_smurf:
+                smurf_asked = False
 
 #-----------------------------------------------------------------------------
 # websocket
