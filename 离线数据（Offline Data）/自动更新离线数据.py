@@ -591,7 +591,7 @@ while True:
             local_folder_filelist: list[str] = os.listdir(localdir) if os.path.exists(localdir) else []
             for name in local_folder_filelist:
                 if name.endswith(TEXT_EXTENSIONS):
-                    if mode != "1" and option != "4" and not name in web_folder_fileset: #这里额外添加一下被删除的文件的信息。因为全局扫描模式下有另外一套赋值模式，所以这里不包含（Here we extraly add those deleted files. Because Glocal Scan has another assignment pattern, it's not included here）
+                    if mode != "1" and not name in web_folder_fileset: #这里额外添加一下被删除的文件的信息。因为全局扫描模式下有另外一套赋值模式，所以这里不包含（Here we extraly add those deleted files. Because Glocal Scan has another assignment pattern, it's not included here）
                         local_timestamp: float = os.path.getmtime(os.path.join(localdir, name)) if os.path.exists(localdir) and name in os.listdir(localdir) else 0
                         local_date: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(local_timestamp))
                         table_content["file"].append(name)
@@ -687,7 +687,7 @@ while True:
             for file in error_files:
                 logPrint(file, write_time = False)
             logPrint("", write_time = False)
-        if option in {"1", "2", "3"} and complete_scan and len(files_to_delete) > 0:
+        if (option in {"1", "2", "3"} and complete_scan or option == "4") and len(files_to_delete) > 0:
             logPrint("以下%d个文件不存在于数据库中。是否永久删除这些文件？（输入任意非空字符串删除，否则不删除）\nThe following %d file(s) don't exist in the database. Do you want to delete them? (Submit any non-empty string to delete, or null to refuse deleting the files)\n" %(len(files_to_delete), len(files_to_delete)) + "\n".join(files_to_delete), write_time = False)
             delete_str: str = logInput()
             delete: bool = bool(delete_str)
