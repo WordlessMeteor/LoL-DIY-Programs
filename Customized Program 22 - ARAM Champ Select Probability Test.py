@@ -1,13 +1,26 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
-import keyboard, pandas, time
+import argparse, keyboard, pandas, time
 from typing_extensions import Any, Literal, Optional
 from src.core.config.const import GLOBAL_RESPONSE_LAG
 from src.core.dataframes.champions import sort_inventory_champions
 from src.core.dataframes.gameflow import get_champSelect_player, extract_champSelect_player, update_champ_select_session
+from src.core.dataframes.gameMode import check_available_queue
 from src.utils.summoner import get_summoner_data, get_info, get_info_name
 from src.utils.logger import LogManager
 from src.utils.format import format_df
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-q", "--queueId", help = "通过队列序号指定要创建的自定义房间。必须是全随机模式（Specify the custom lobby to create by queueId. Must be all-random）", action = "store", type = int, default = 0)
+# parser.add_argument("-c", "--is-custom", help = "是否创建自定义房间（Whether to create a custom lobby）", action = "store_true")
+parser.add_argument("-n", "--lobby-name", help = "指定一个自定义房间名称（Specify the lobby name）", action = "store", type = str, default = None)
+parser.add_argument("-s", "--lobby-password", help = "指定自定义房间的密码（Specify the lobby password）", action = "store", type = str, default = "")
+parser.add_argument("-m", "--aram-map-mutator", help = "指定一个大乱斗地图（Specify the map of ARAM）", action = "store", type = str, choices = ["NONE", "MapSkin_Map12_Bloom", "MapSkin_HA_Bilgewater", "MapSkin_HA_Crepe"], default = "MapSkin_HA_Bilgewater")
+parser.add_argument("-sp", "--spectator-policy", help = "指定观战策略（Specify a spectate policy）", action = "store", type = str, choices = ["LobbyAllowed", "FriendsAllowed", "AllAllowed", "NotAllowed"], default = "AllAllowed")
+parser.add_argument("-ts", "--team-size", help = "指定队伍规模（Specify the team size）", action = "store", type = int, default = 5)
+parser.add_argument("--enable-spectator-delay", help = "是否启用观战延迟（Whether to enable spectator delay）", action = "store_true")
+parser.add_argument("--hide-publicly", help = "是否隐藏自定义房间（Whether to hide the custom lobby from being seen publicly）", action = "store_true")
+args = parser.parse_args()
 
 #=============================================================================
 # * 声明（Declaration）
@@ -28,6 +41,8 @@ from src.utils.format import format_df
 current_summoner: dict[str, Any] = {}
 LoLChampions: dict[int, dict[str, Any]] = {}
 LoLChampion_df: pandas.DataFrame = pandas.DataFrame()
+gameQueues: dict[int, dict[str, Any]] = {}
+log: LogManager = LogManager()
 
 connector: Connector = Connector()
 
@@ -35,13 +50,15 @@ connector: Connector = Connector()
 # 定义全局变量（Define global variables）
 #-----------------------------------------------------------------------------
 async def prepare_data_resources(connection: Connection) -> None:
-    global current_summoner, LoLChampions, LoLChampion_df
+    global current_summoner, LoLChampions, LoLChampion_df, gameQueues
     current_summoner = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
-    LoLChampions_initial = await (await connection.request("GET", "/lol-champions/v1/inventories/%s/champions" %(current_summoner["summonerId"]))).json()
-    LoLChampions = {champion["id"]: champion for champion in LoLChampions_initial}
+    LoLChampions_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-champions/v1/inventories/%s/champions" %(current_summoner["summonerId"]))).json()
+    LoLChampions = {champion["id"]: champion for champion in LoLChampions_source}
     recommended_position_for_champion: dict[str, dict[str, Any]] = await (await connection.request("GET", "/lol-perks/v1/recommended-champion-positions")).json()
     logPrint("正在整理英雄数据……\nOrganizing champion data ...")
     LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion)
+    gameQueues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
+    gameQueues = {queue["id"]: queue for queue in gameQueues_source}
 
 #-----------------------------------------------------------------------------
 # 创建房间（Create a lobby）
@@ -50,13 +67,18 @@ async def create_lobby(connection: Connection, queueId: int = 0, isCustom: bool 
     '''
     对房间创建接口的封装，支持所有可用参数。<br>An encapsulation of the lobby creation endpoint, which supports all available parameters.
     
-    :param queueId: 队列序号，默认取值为0，通过`GET /lol-game-queues/v1/queues`接口获取（QueueId, 0 by default, obtained through `GET /lol-game-queues/v1/queues` endpoint）
+    :param queueId: 队列序号，默认取值为0，通过`GET /lol-game-queues/v1/queues`接口获取。<br>QueueId, 0 by default, obtained through `GET /lol-game-queues/v1/queues` endpoint.
     :type queueId: int
-    :param lobbyName: 对局名，默认为空，此时采用客户端语言的默认配置（Lobby name, an empty string by default, when client's default value if an empty string is passed）
+    :param lobbyName: 对局名，默认为空，此时采用客户端语言的默认配置。<br>Lobby name, an empty string by default, when client's default value if an empty string is passed.
     :type lobbyName: str
-    :param lobbyPassword: 密码，默认为空（Password, an empty string by default）
+    :param lobbyPassword: 密码，默认为空。<br>Password, an empty string by default.
     :type lobbyPassword: str
-    :param aramMapMutator: 极地大乱斗地图，默认为MapSkin_Map12_Bloom，固定取值为NONE、MapSkin_Map12_Bloom、MapSkin_HA_Bilgewater和MapSkin_HA_Crepe（ARAM map, "MapSkin_HA_Bilgewater" by default, which has fixed values: "None" "MapSkin_Map12_Bloom" "MapSkin_HA_Bilgewater" and "MapSkin_HA_Crepe"）
+    :param aramMapMutator: 极地大乱斗地图，默认为屠夫之桥。有以下取值：<br>ARAM map, Butcher's Bridge by default. It may be one of the following values:
+        
+        - NONE: 嚎哭深渊（Howling Abyss）
+        - MapSkin_HA_Crepe: 进步之桥（Bridge of Progress）
+        - MapSkin_Map12_Bloom: 莲华栈桥（Koeshin's Crossing）
+        - MapSkin_HA_Bilgewater: 屠夫之桥（Butcher's Bridge）
     :type aramMapMutator: str
     :param spectatorPolicy: 观战策略，默认为AllAllowed，固定取值为LobbyAllowed、FriendsAllowed、AllAllowed和NotAllowed（Spectator policy, "AllAllowed" by default, which has fixed values: "LobbyAllowed" "FriendsAllowed" "AllAllowed" and "NotAllowed"）
     :type spectatorPolicy: str
@@ -69,15 +91,13 @@ async def create_lobby(connection: Connection, queueId: int = 0, isCustom: bool 
     :rtype: dict[str, Any]
     '''
     current_summoner: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
-    gameQueues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
-    gameQueues: dict[int, dict[str, Any]] = {queue["id"]: queue for queue in gameQueues_source}
     region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
     custom_game_setup_name_default_dict: dict[str, str] = {"ar_AE": "مباراة {{summonerName}}", "cs_CZ": "Hra uživatele {{summonerName}}", "el_GR": "Παιχνίδι του {{summonerName}}", "pl_PL": "Rozgrywka gracza {{summonerName}}", "ro_RO": "Jocul lui {{summonerName}}", "hu_HU": "{{summonerName}} játéka", "en_GB": "{{summonerName}}'s Game", "de_DE": "Spiel von {{summonerName}}", "es_ES": "Partida de {{summonerName}}", "it_IT": "Partita di {{summonerName}}", "fr_FR": "Partie de {{summonerName}}", "ja_JP": "{{summonerName}}の試合", "ko_KR": "{{summonerName}} 님의 게임", "es_MX": "Partida de {{summonerName}}", "es_AR": "Partida de {{summonerName}}", "pt_BR": "Partida de {{summonerName}}", "en_US": "{{summonerName}}'s Game", "en_AU": "{{summonerName}}'s Game", "ru_RU": "Игра {{summonerName}}", "tr_TR": "{{summonerName}} oyunu", "en_PH": "{{summonerName}}'s Game", "en_SG": "{{summonerName}}'s Game", "th_TH": "เกมของ {{summonerName}}", "vi_VN": "Trận của {{summonerName}}", "id_ID": "Game {{summonerName}}", "zh_MY": "{{summonerName}} 的房间", "zh_CN": "{{summonerName}}的对局", "zh_TW": "{{summonerName}} 的房間"} #来自（From）：plugins/rcp-fe-lol-parties/global/{locale}/trans.json
     if lobbyName == None:
         lobbyName = custom_game_setup_name_default_dict.get(region_locale["locale"], "{{summonerName}}的对局").replace("{{summonerName}}", current_summoner["gameName"])
     custom = {
         "queueId": queueId,
-        "isCustom": True,
+        "isCustom": isCustom,
         "customGameLobby": {
             "lobbyName": lobbyName,
             "lobbyPassword": lobbyPassword,
@@ -284,7 +304,7 @@ def GetCandidateChampionChoices(candidate_championId_options: Optional[list[list
         valid_championId_options.append([]) #保证该列表中至少有一个元素（Ensure there's at least one element in this list）
     return valid_championId_options
 
-async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = False, isCrowd: bool = False, roleType: Literal[1, 2, 3] = 1, preset_championIds: Optional[list[int]] = None, ally_candidate_championId_options: Optional[list[list[int]]] = None, enemy_candidate_championId_options: Optional[list[list[int]]] = None, interval: Optional[float] = None, champion_frequency_dict: Optional[dict[int, int]] = None) -> tuple[int, pandas.DataFrame]: #以想玩的英雄启动海克斯大乱斗自定义游戏（Start a custom ARAM: Mayhem game with a wanted champion）
+async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = False, isCrowd: bool = False, roleType: Literal[1, 2, 3] = 1, queueId: int = 3270, preset_championIds: Optional[list[int]] = None, ally_candidate_championId_options: Optional[list[list[int]]] = None, enemy_candidate_championId_options: Optional[list[list[int]]] = None, interval: Optional[float] = None, champion_frequency_dict: Optional[dict[int, int]] = None) -> tuple[int, pandas.DataFrame]: #以想玩的英雄启动海克斯大乱斗自定义游戏（Start a custom ARAM: Mayhem game with a wanted champion）
     '''
     统计在全随机模式中选到想玩的英雄的频率。在只需要房主选定一名英雄的情况下可使用此函数。<br>Count the frequency of rolling candidate champions in an all-random mode. This function may be used when only the lobby owner needs some specific champions.
     
@@ -324,6 +344,8 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
             - 在任意玩家发起英雄交换请求时，迅速同意之。<br>Once a champion swap request is made, accept it.
         
     :type roleType: int
+    :param queueId: 拟创建的自定义房间的对局序号。自定义房间必须是**全随机模式**。默认创建海克斯大乱斗自定义。<br>QueueId of the custom lobby to create. The custom lobby must be **all-random**. ARAM: Mayhem lobby is created by default.
+    :type queueId: int
     :param preset_championIds: 指定预选英雄序号列表参数以快速指定英雄。如果不指定，将会在函数体内要求用户输入一个英雄序号列表。<br>Specify this parameter to quickly specify champions. If it's not specified, the function will ask the user to submit a championId list.
     :type preset_championIds: list[int]
     :param ally_candidate_championId_options: 我方候选英雄序号方案。<br>A list of candidate championId schemes of myTeam.
@@ -402,10 +424,10 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
                             logPrint(LoLChampions[championId]["name"] + " " + LoLChampions[championId]["title"], write_time = False)
         if not premade or roleType == 1: #房主（Lobby owner）
             lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-            if "gameConfig" in lobby_information and lobby_information["gameConfig"]["queueId"] == 3270:
+            if "gameConfig" in lobby_information and lobby_information["gameConfig"]["queueId"] == queueId:
                 logPrint('在所有成员准备就绪后，按回车键继续。输入“0”以返回上一层更换候选英雄。\nAfter all members are ready, press Enter to continue. Submit "0" to return to the last step and change the candidate champions.')
             else:
-                response = await create_lobby(connection, queueId = 3270)
+                response = await create_lobby(connection, queueId = queueId, lobbyName = args.lobby_name, lobbyPassword = args.lobby_password, aramMapMutator = args.aram_map_mutator, spectatorPolicy = args.spectator_policy, teamSize = args.team_size, spectatorDelayEnabled = args.enable_spectator_delay, hidePublicly = args.hide_publicly)
                 if "errorCode" in response:
                     logPrint('创建房间失败。请手动创建房间，然后按回车键继续。输入“0”以返回上一层更换候选英雄。\nLobby creation failed. Please manually create a lobby and then Press Enter to continue. Submit "0" to return to the last step and change the candidate champions.')
                 else:
@@ -1026,7 +1048,7 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
     logPrint(champion_frequency_dict_singleTest, verbose = False)
     return (target_championId, champion_frequency_df_singleTest)
 
-async def RotateBlindPickCustomAARAM(connection: Connection, premade: bool = False, isCrowd: bool = False, roleType: Literal[1, 2, 3] = 1, preset_championIds: Optional[list[int]] = None, ally_candidate_championId_options: Optional[list[list[int]]] = None, enemy_candidate_championId_options: Optional[list[list[int]]] = None, interval: Optional[float] = None, champion_frequency_dict: Optional[dict[int, int]] = None) -> None: #通过连续按回车键以在海克斯大乱斗自定义游戏中连续测试想玩的英雄（Continuously start custom pick ARAM: Mayhem games using wanted champions by continuously pressing Enter）
+async def RotateBlindPickCustomAARAM(connection: Connection, premade: bool = False, isCrowd: bool = False, roleType: Literal[1, 2, 3] = 1, queueId: int = 3270, preset_championIds: Optional[list[int]] = None, ally_candidate_championId_options: Optional[list[list[int]]] = None, enemy_candidate_championId_options: Optional[list[list[int]]] = None, interval: Optional[float] = None, champion_frequency_dict: Optional[dict[int, int]] = None) -> None: #通过连续按回车键以在海克斯大乱斗自定义游戏中连续测试想玩的英雄（Continuously start custom pick ARAM: Mayhem games using wanted champions by continuously pressing Enter）
     '''
     参数注释见StartBlindPickCustomAARAM函数。<br>Refer to `StartBlindPickCustomAARAM` function for explanations on these parameters.
     '''
@@ -1083,7 +1105,7 @@ async def RotateBlindPickCustomAARAM(connection: Connection, premade: bool = Fal
             count += 1
             logPrint("*****************************************************************************", write_time = False)
             logPrint(f"试验{count}（Test No. {count}）：", print_time = True)
-            picked_championId, freq_df = await StartBlindPickCustomAARAM(connection, premade = premade, isCrowd = isCrowd, roleType = roleType, preset_championIds = self_candidate_championIds, ally_candidate_championId_options = ally_candidate_championId_options, enemy_candidate_championId_options = enemy_candidate_championId_options, interval = interval, champion_frequency_dict = champion_frequency_dict)
+            picked_championId, freq_df = await StartBlindPickCustomAARAM(connection, premade = premade, isCrowd = isCrowd, roleType = roleType, queueId = queueId, preset_championIds = self_candidate_championIds, ally_candidate_championId_options = ally_candidate_championId_options, enemy_candidate_championId_options = enemy_candidate_championId_options, interval = interval, champion_frequency_dict = champion_frequency_dict)
             if len(freq_df) > 1:
                 logPrint("本次试验过程的英雄出现次数频数统计情况如下：\nThe champion occurrence frequency distribution during this test is as follows:")
                 logPrint(format_df(freq_df)[0], write_time = False)
@@ -1179,22 +1201,12 @@ async def ARAMBalanceBuffTest(connection: Connection, preset_championIds: Option
             if quit:
                 break
 
-#-----------------------------------------------------------------------------
-# websocket
-#-----------------------------------------------------------------------------
-@connector.ready
-async def connect(connection: Connection) -> None:
-    print("警告：该脚本涉及频繁操作。如果出现异常，请尝试通过调试脚本发送重启用户体验界面的指令。如果您不知道如何操作，请重新启动客户端。\nFrequent operations are involved in this program. If an issue happens, please try posting a request to restart ux through Customized Program 03. If you don't know how, restart the League Client instead.\n重启用户体验界面指令（The request to restart ux）：\nPOST /riotclient/kill-and-restart-ux\n")
-    global logInput, logPrint
-    currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())
-    log: LogManager = LogManager(f"日志（Logs）/Customized Program 22 - ARAM Champ Select Probability Test/{currentTime}.log", "w", encoding = "utf-8")
-    logInput = log.logInput
-    logPrint = log.logPrint
-    await get_summoner_data(connection)
-    await prepare_data_resources(connection)
-    # target_championId, champion_frequency_df = await StartBlindPickCustomAARAM(connection, preset_championIds = [13], premade = False, interval = 0.2) #以想玩的英雄启动海克斯大乱斗自定义游戏（Start a custom ARAM: Mayhem game with a wanted champion）
+async def main(connection: Connection) -> None:
+    platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    game_version: str = await (await connection.request("GET", "/lol-patch/v1/game-version")).json()
     crowd_mode_hine_printed: bool = False
     step: int = 1
+    queueId: int = 0 #标记队列序号（Marks the queueId）
     premade: bool = False #标记是否预组队（Marks whether the party is premade）
     isCrowd: bool = False #标记是否启用多选模式（Marks whether to enable crowd mode）
     roleType: Literal[1, 2, 3] = 1 #标记用户的角色类型（Marks the user's role type）
@@ -1204,7 +1216,60 @@ async def connect(connection: Connection) -> None:
         if step == 0: #退出程序（Exit the program）
             break
         elif step == 1:
-            logPrint("第一步：是否预组队？\nStep 1: Premade?\n1\t是（Yes）\n☆2\t否（No）")
+            logPrint("第一步：选择一个游戏模式。\nStep 1: Select a game mode.")
+            if args.queueId in gameQueues and gameQueues[args.queueId]["isCustom"] and gameQueues[args.queueId]["gameTypeConfig"]["id"] == 21 or args.queueId == 3270: #海克斯大乱斗的游戏类型异常显示为自选模式（Game type of ARAM: Mayhem displays as Blind Pick unexpectedly）
+                queueId = args.queueId
+                logPrint("您已通过命令行变量指定了以下游戏模式：\nYou specified the following game mode through the cmdline argument:\n%d\t%s" %(args.queueId, gameQueues[args.queueId]["name"]))
+                args.queueId = 0 #这一步是考虑到当用户指定了正确的队列序号，但是在后续步骤返回该步时，应当重新指定游戏模式（Considering when a correct queueId is provided but the user returns to this step from a subsequent step, the game mode should be specified again）
+            else:
+                if args.queueId != 0:
+                    if not args.queueId in gameQueues:
+                        logPrint("队列序号%d无效！请手动指定队列序号。\nInvalid queueId %d! Please specify a queueId manually." %(args.queueId, args.queueId))
+                    elif not gameQueues[args.queueId]["isCustom"]:
+                        logPrint("以下游戏模式不是自定义房间。请切换一个队列序号。\nThe specified game mode isn't custom. Please change the queueId.\n%d\t%s" %(args.queueId, gameQueues[args.queueId]["name"]))
+                    elif not gameQueues[args.queueId]["gameTypeConfig"]["id"] == 21:
+                        logPrint("以下游戏模式不是全随机模式。请切换一个队列序号。\nThe specified game mode isn't all-random. Please change the queueId.\n%d\t%s" %(args.queueId, gameQueues[args.queueId]["name"]))
+                logPrint('请输入队列序号：（输入“0”以刷新可用队列信息。输入负数以退出程序。）\nPlease enter the queueId: (Enter "0" to refresh available queue information. Enter any negative number to exit the program.)')
+                while True:
+                    queueId_str: str = logInput()
+                    if queueId_str == "":
+                        queueId = 3270
+                        break
+                    elif queueId_str[0] == "0":
+                        available_queue_df: pandas.DataFrame = await check_available_queue(connection)
+                        logPrint("*****************************************************************************")
+                        print(format_df(available_queue_df)[0])
+                        log.write(format_df(available_queue_df, width_exceed_ask = False, direct_print = False)[0] + "\n")
+                        logPrint("*****************************************************************************")
+                        logPrint("(%s\t%s\t%s)" %(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), platformId, game_version))
+                        logPrint('请输入队列序号：（输入“0”以刷新可用队列信息。输入负数以退出程序。）\nPlease enter the queueId: (Enter "0" to refresh available queue information. Enter any negative number to exit the program.)')
+                    else:
+                        try:
+                            tmp = int(queueId_str)
+                        except ValueError:
+                            logPrint("请输入一个整数！\nPlease input an integer.")
+                        else:
+                            queueId = tmp
+                            if queueId < 0:
+                                step -= 2
+                                break
+                            elif queueId in gameQueues:
+                                if gameQueues[queueId]["isCustom"] and gameQueues[queueId]["gameTypeConfig"]["id"] == 21 or queueId == 3270:
+                                    break
+                                elif not gameQueues[queueId]["isCustom"]:
+                                    logPrint("请选择一个自定义游戏模式。\nPlease select a custom game mode.")
+                                else:
+                                    logPrint("警告：您输入了一个非随机选择英雄的游戏模式。您确定要继续吗？（输入任意非空字符串以继续，否则重新输入队列序号。）\nWarning: You selected a non-random game mode. Do you really want to continue? (Submit any non-empty string to continue, or null to change the queueId.)")
+                                    queueId_change_str: str = logInput()
+                                    queueId_change: bool = not bool(queueId_change_str)
+                                    if queueId_change:
+                                        logPrint('请输入队列序号：（输入“0”以刷新可用队列信息。输入负数以退出程序。）\nPlease enter the queueId: (Enter "0" to refresh available queue information. Enter any negative number to exit the program.)')
+                                    else:
+                                        break
+                            else:
+                                logPrint("无效的对局序号。请重新输入。\nInvalid queueId. Please try again.")
+        elif step == 2:
+            logPrint("第二步：是否预组队？\nStep 2: Premade?\n1\t是（Yes）\n☆2\t否（No）")
             while True:
                 premade_str: str = logInput()
                 if premade_str == "" or premade_str[0] == "2":
@@ -1218,9 +1283,9 @@ async def connect(connection: Connection) -> None:
                     break
                 else:
                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-        elif step == 2:
+        elif step == 3:
             if premade:
-                logPrint("第二步：是否启用多选模式？\nStep 2: Do you want to enable crowd mode?\n1\t是（Yes）\n☆2\t否（No）")
+                logPrint("第三步：是否启用多选模式？\nStep 3: Do you want to enable crowd mode?\n1\t是（Yes）\n☆2\t否（No）")
                 if not crowd_mode_hine_printed:
                     logPrint("注：在多选模式下，可以指定多名玩家同时想要使用的英雄的英雄序号，而不再只为房主一个人选择。\nNote: Under crowd mode, you can specify the championIds of champions that multiple members want to play, instead of only specifying the ones that only the lobby owner wants.")
                     crowd_mode_hine_printed = True
@@ -1237,9 +1302,9 @@ async def connect(connection: Connection) -> None:
                         break
                     else:
                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-        elif step == 3:
+        elif step == 4:
             if premade:
-                logPrint("第三步：请选择您的角色：\nStep 3: Please select your role:\n1\t房主（Owner）\n2\t房主所在阵营成员（Member that allies with Owner）\n3\t房主对方阵营成员（不可用）【Member against Owner (unavailable)】")
+                logPrint("第四步：请选择您的角色：\nStep 4: Please select your role:\n1\t房主（Owner）\n2\t房主所在阵营成员（Member that allies with Owner）\n3\t房主对方阵营成员（不可用）【Member against Owner (unavailable)】")
                 while True:
                     roleType_str: str = input()
                     if roleType_str == "":
@@ -1259,8 +1324,8 @@ async def connect(connection: Connection) -> None:
                         break
                     else:
                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-        elif step == 4:
-            logPrint("第四步：是否添加适当间隔？\nStep 4: Do you want to add an interval between requests?\n☆1\t是（Yes）\n2\t否（No）")
+        elif step == 5:
+            logPrint("第五步：是否添加适当间隔？\nStep 5: Do you want to add an interval between requests?\n☆1\t是（Yes）\n2\t否（No）")
             while True:
                 lagged_str: str = logInput()
                 if lagged_str == "" or lagged_str[0] == "1":
@@ -1274,9 +1339,9 @@ async def connect(connection: Connection) -> None:
                     break
                 else:
                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-        elif step == 5:
+        elif step == 6:
             if lagged:
-                logPrint("第五步：请设置延迟（单位：秒），默认为0.2秒。\nStep 5: Please set a lag (in seconds). Default: 0.2 second.")
+                logPrint("第六步：请设置延迟（单位：秒），默认为0.2秒。\nStep 6: Please set a lag (in seconds). Default: 0.2 second.")
                 while True:
                     interval_str: str = logInput()
                     if interval_str == "":
@@ -1291,14 +1356,30 @@ async def connect(connection: Connection) -> None:
                             if interval == 0:
                                 step -= 2 if lagged else 5
                             break
-        elif step == 6: #执行程序核心部分（Execute the core part）
+        elif step == 7: #执行程序核心部分（Execute the core part）
             break
         else:
             logPrint("步骤异常。请联系开发人员修复程序。\nStep error. Please contact the developer to fix the program.")
             break
         step += 1
-    if step == 6:
-        await RotateBlindPickCustomAARAM(connection, premade = premade, isCrowd = isCrowd, roleType = roleType, interval = interval)
+    if step == 7:
+        await RotateBlindPickCustomAARAM(connection, premade = premade, isCrowd = isCrowd, roleType = roleType, interval = interval, queueId = queueId)
+
+#-----------------------------------------------------------------------------
+# websocket
+#-----------------------------------------------------------------------------
+@connector.ready
+async def connect(connection: Connection) -> None:
+    print("警告：该脚本涉及频繁操作。如果出现异常，请尝试通过调试脚本发送重启用户体验界面的指令。如果您不知道如何操作，请重新启动客户端。\nFrequent operations are involved in this program. If an issue happens, please try posting a request to restart ux through Customized Program 03. If you don't know how, restart the League Client instead.\n重启用户体验界面指令（The request to restart ux）：\nPOST /riotclient/kill-and-restart-ux\n")
+    global log, logInput, logPrint
+    currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())
+    log = LogManager(f"日志（Logs）/Customized Program 22 - ARAM Champ Select Probability Test/{currentTime}.log", "w", encoding = "utf-8")
+    logInput = log.logInput
+    logPrint = log.logPrint
+    await get_summoner_data(connection)
+    await prepare_data_resources(connection)
+    await main(connection)
+    # target_championId, champion_frequency_df = await StartBlindPickCustomAARAM(connection, preset_championIds = [13], premade = False, interval = 0.2, queueId = 3270) #以想玩的英雄启动海克斯大乱斗自定义游戏（Start a custom ARAM: Mayhem game with a wanted champion）
     log.close()
 
 @connector.close

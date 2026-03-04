@@ -5,7 +5,7 @@ from typing import Any
 from src.utils.format import format_df, addDefaultStyle
 from src.utils.summoner import get_summoner_data
 from src.core.config.localization import gamemaps
-from src.core.dataframes.gameMode import sort_queue_data
+from src.core.dataframes.gameMode import sort_queue_data, check_available_queue
 
 #=============================================================================
 # * 声明（Declaration）
@@ -13,7 +13,7 @@ from src.core.dataframes.gameMode import sort_queue_data
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/02
+# 更新（Last update）：     2026/03/04
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -24,35 +24,6 @@ from src.core.dataframes.gameMode import sort_queue_data
 #-----------------------------------------------------------------------------
 
 connector = Connector()
-
-#-----------------------------------------------------------------------------
-# 梳理可用队列（Sorts out available queues）
-#-----------------------------------------------------------------------------
-async def check_available_queue(connection: Connection) -> None:
-    gameQueues: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
-    platform_config: dict[str, Any] = await (await connection.request("GET", "/lol-platform-config/v1/namespaces")).json()
-    map_CN: dict[int, str] = {mapId: gamemaps[mapId]["zh_CN"] for mapId in gamemaps}
-    map_EN: dict[int, str] = {mapId: gamemaps[mapId]["en_US"] for mapId in gamemaps}
-    pickmode_CN: dict[str, str] = {"AllRandomPickStrategy": "全随机模式", "SimulPickStrategy": "自选模式", "TeamBuilderDraftPickStrategy": "征召模式", "OneTeamVotePickStrategy": "投票", "TournamentPickStrategy": "竞技征召模式", "QuickplayPickStrategy": "快速匹配", "": "待定"}
-    pickmode_EN: dict[str, str] = {"AllRandomPickStrategy": "All Random", "SimulPickStrategy": "Blind Pick", "TeamBuilderDraftPickStrategy": "Draft Mode", "OneTeamVotePickStrategy": "Vote", "TournamentPickStrategy": "Tournament Draft", "QuickplayPickStrategy": "Quickplay", "": "Pending"}
-    available_queues: dict[int, dict[str, Any]] = {}
-    for queue in gameQueues:
-        if queue["queueAvailability"] == "Available" or queue["id"] in platform_config["ClientSystemStates"]["enabledQueueIdsList"]:
-            available_queues[queue["id"]] = queue
-    queue_dict: dict[str, list[Any]] = {"queueID": [], "mapID": [], "map_CN": [], "map_EN": [], "gameMode": [], "pickType_CN": [], "pickType_EN": []}
-    for queue in available_queues.values():
-        queue_dict["queueID"].append(queue["id"])
-        queue_dict["mapID"].append(queue["mapId"])
-        queue_dict["map_CN"].append(map_CN[queue["mapId"]])
-        queue_dict["map_EN"].append(map_EN[queue["mapId"]])
-        queue_dict["gameMode"].append(queue["name"])
-        queue_dict["pickType_CN"].append(pickmode_CN[queue["gameTypeConfig"]["pickMode"]])
-        queue_dict["pickType_EN"].append(pickmode_EN[queue["gameTypeConfig"]["pickMode"]])
-    queue_df: pandas.DataFrame = pandas.DataFrame(queue_dict)
-    queue_df.sort_values(by = "queueID", inplace = True, ascending = True, ignore_index = True)
-    print("*****************************************************************************")
-    print(format_df(queue_df)[0])
-    print("*****************************************************************************")
 
 #-----------------------------------------------------------------------------
 # 获取游戏模式信息（Get game mode information）
@@ -99,7 +70,10 @@ async def print_available_queue(connection: Connection) -> None:
     check: bool = bool(input())
     if check:
         while True:
-            await check_available_queue(connection)
+            availableQueue_df: pandas.DataFrame = await check_available_queue(connection)
+            print("*****************************************************************************")
+            print(format_df(availableQueue_df)[0])
+            print("*****************************************************************************")
             print("(" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + "\t" + platformId + "\t" + game_version + ")")
             print("是否刷新可用队列信息？（输入任意键不刷新，否则刷新）\nRefresh available queue information? (Submit anything to quit refreshing, or null to continue refreshing)")
             refresh: bool = bool(input())

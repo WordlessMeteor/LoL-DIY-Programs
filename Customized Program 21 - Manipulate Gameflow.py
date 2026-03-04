@@ -15,6 +15,7 @@ from src.core.config.localization import gamemodes, gamemaps, ARAMmaps, gameType
 from src.core.config.conditional_formatting import addFormat_inGame_allPlayer_wb
 from src.core.dataframes.gameflow import get_gameflow_phase, get_champ_select_session, get_champSelect_player, sort_ChampSelect_players, sort_inGame_players, sort_eog_playerstat_lol_data, sort_eog_stat_tft_data
 from src.core.dataframes.champions import test_bot, sort_inventory_champions
+from src.core.dataframes.gameMode import check_available_queue
 from src.core.dataframes.matchHistory import get_game_info_sgp, sort_LoLGame_info, sort_LoLGame_info_sgp, sort_TFTGame_info
 
 urllib3.disable_warnings() #忽略访问游戏数据时产生的警告（Neglect warnings produced when the program is accessing the in-game data）
@@ -28,7 +29,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/03/03
+# 更新（Last update）：     2026/03/04
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1560,30 +1561,6 @@ async def unlogged_actions(connection: Connection) -> None:
 #-----------------------------------------------------------------------------
 # 创建房间（Create a lobby）
 #-----------------------------------------------------------------------------
-async def check_available_queue(connection: Connection) -> None:
-    gameQueues: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
-    platform_config: dict[str, Any] = await (await connection.request("GET", "/lol-platform-config/v1/namespaces")).json()
-    map_CN: dict[int, str] = {8: "水晶之痕", 10: "扭曲丛林", 11: "召唤师峡谷", 12: "随机地图", 14: "屠夫之桥", 16: "星界废墟", 18: "瓦洛兰城市公园", 19: "第43区", 20: "飞船坠落点", 21: "百合与莲花的神庙", 22: "聚点危机", 30: "怒火角斗场", 33: "最终都市", 35: "班德尔之森"}
-    map_EN: dict[int, str] = {8: "Crystal Scar", 10: "Twisted Treeline", 11: "Summoner's Rift", 12: "Random Map", 14: "Butcher's Bridge", 16: "Cosmic Ruins", 18: "Valoran City Park", 19: "Substructure 43", 20: "Crash Site", 21: "Temple of Lily and Lotus", 22: "Convergence", 30: "Rings of Wrath", 33: "Final City", 35: "The Bandlewood"}
-    pickmode_CN: dict[str, str] = {"AllRandomPickStrategy": "全随机模式", "SimulPickStrategy": "自选模式", "TeamBuilderDraftPickStrategy": "征召模式", "OneTeamVotePickStrategy": "投票", "TournamentPickStrategy": "竞技征召模式", "QuickplayPickStrategy": "快速匹配", "": "待定"}
-    pickmode_EN: dict[str, str] = {"AllRandomPickStrategy": "All Random", "SimulPickStrategy": "Blind Pick", "TeamBuilderDraftPickStrategy": "Draft Mode", "OneTeamVotePickStrategy": "Vote", "TournamentPickStrategy": "Tournament Draft", "QuickplayPickStrategy": "Quickplay", "": "Pending"}
-    available_queues: dict[int, dict[str, Any]] = {}
-    for queue in gameQueues:
-        if queue["queueAvailability"] == "Available" or queue["id"] in platform_config["ClientSystemStates"]["enabledQueueIdsList"]:
-            available_queues[queue["id"]] = queue
-    queue_dict: dict[str, list[Any]] = {"queueID": [], "mapID": [], "map_CN": [], "map_EN": [], "gameMode": [], "pickType_CN": [], "pickType_EN": []}
-    for queue in available_queues.values():
-        queue_dict["queueID"].append(queue["id"])
-        queue_dict["mapID"].append(queue["mapId"])
-        queue_dict["map_CN"].append(map_CN[queue["mapId"]])
-        queue_dict["map_EN"].append(map_EN[queue["mapId"]])
-        queue_dict["gameMode"].append(queue["name"])
-        queue_dict["pickType_CN"].append(pickmode_CN[queue["gameTypeConfig"]["pickMode"]])
-        queue_dict["pickType_EN"].append(pickmode_EN[queue["gameTypeConfig"]["pickMode"]])
-    available_queue_df: pandas.DataFrame = pandas.DataFrame(queue_dict)
-    available_queue_df.sort_values(by = "queueID", inplace = True, ascending = True, ignore_index = True)
-    return available_queue_df
-
 async def create_queue_lobby(connection: Connection, loop_test: bool = False) -> int: #返回值为0代表请求正确发送，为1代表返回异常请求，为2代表中途退出。自定义房间创建函数同理（The returned value is 0 if the request is sent properly, 1 if an error message is returned and 2 if the user exits the function halfway. So as `create_custom_lobby` function）
     '''
     创建小队。现在适用于所有游戏模式。<br>Create a party. Now applies to any game mode.
@@ -1611,7 +1588,7 @@ async def create_queue_lobby(connection: Connection, loop_test: bool = False) ->
     logPrint("*****************************************************************************")
     logPrint("(%s\t%s\t%s)" %(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), platformId, game_version))
     status: int = 0 #返回值（Returned value）
-    logPrint('请输入队列房间序号：（输入“0”以刷新可用队列信息。输入负数以退出创建。）\nPlease enter the queueID: (Enter "0" to refresh available queue information. Enter any negative number to exit creation.)')
+    logPrint('请输入队列房间序号：（输入“0”以刷新可用队列信息。输入负数以退出创建。）\nPlease enter the queueId: (Enter "0" to refresh available queue information. Enter any negative number to exit creation.)')
     while True:
         valid_queueId: bool = False
         queueId: int = -1
@@ -1625,7 +1602,7 @@ async def create_queue_lobby(connection: Connection, loop_test: bool = False) ->
             log.write(format_df(available_queue_df, width_exceed_ask = False, direct_print = False)[0] + "\n")
             logPrint("*****************************************************************************")
             logPrint("(%s\t%s\t%s)" %(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), platformId, game_version))
-            logPrint('请输入队列房间序号：（输入“0”以刷新可用队列信息。输入负数以退出创建。）\nPlease enter the queueID: (Enter "0" to refresh available queue information. Enter any negative number to exit creation.)')
+            logPrint('请输入队列房间序号：（输入“0”以刷新可用队列信息。输入负数以退出创建。）\nPlease enter the queueId: (Enter "0" to refresh available queue information. Enter any negative number to exit creation.)')
             continue
         else:
             try:
