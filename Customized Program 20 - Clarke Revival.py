@@ -8,15 +8,15 @@ from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, 
 from src.utils.webRequest import requestUrl, SGPSession
 from src.utils.runtimeDebug import subscope
 from src.core.config.const import BOT_UUID
-from src.core.config.conditional_formatting import addFormat_LoLPlayer_summary_wb, addFormat_LoLGame_info_wb, addFormat_LoLGame_info_wb_transpose
-from src.core.config.headers import TFTGame_info_header as TFTGame_stat_header
-from src.core.dataframes.matchHistory import get_LoLHistory, get_matchSummary_sgp, get_LoLGame_info, get_game_info_sgp, sort_LoLGame_info, sort_LoLGame_info_sgp, sort_TFTGame_info
+from src.core.config.conditional_formatting import addFormat_LoLPlayer_summary_wb, addFormat_LoLGame_summary_wb, addFormat_LoLGame_summary_wb_transpose
+from src.core.config.headers import TFTGame_summary_header as TFTGame_stat_header
+from src.core.dataframes.matchHistory import get_LoLHistory, get_matchSummary_sgp, get_LoLGame_summary, get_game_summary_sgp, sort_LoLGame_summary, sort_LoLGame_summary_sgp, sort_TFTGame_summary
 from src.core.dataframes.gameflow import sort_ChampSelect_players, sort_inGame_players, sort_eog_playerstat_lol_data, sort_eog_stat_tft_data
 from src.core.dataframes.gameMode import sort_queue_data
 from src.core.dataframes.ranked import sort_game_leaderboard
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-a", "--lol_api", help = "指定通过什么接口获取英雄联盟对局信息和时间轴（Specify the interface used to fetch LoL game information and timeline）", action = "store", type = str, choices = ["lcu", "sgp"], default = "lcu")
+parser.add_argument("-a", "--lol_api", help = "指定通过什么接口获取英雄联盟对局概要和时间轴（Specify the interface used to fetch LoL game summary and timeline）", action = "store", type = str, choices = ["lcu", "sgp"], default = "lcu")
 parser.add_argument("-c", "--count", help = "指定每个召唤师查询的默认对局数量（Specify the default number of matches to search for each summoner）", action = "store", type = int, default = 20)
 parser.add_argument("-e", "--save_early", help = "只导出早于查询对局的对局（Export only the matches whose creation is earlier than the current queried match）", action = "store_true")
 parser.add_argument("-l", "--locale", help = "选择非《英雄联盟》本地化内容的显示语言（Choose the display language that isn't part of League of Legends localization content）", action = "store")
@@ -27,9 +27,9 @@ parser.add_argument("--nonverbose", help = "显示简略加载进度（Display s
 args = parser.parse_args()
 use_sgp: bool = args.lol_api == "sgp"
 if use_sgp:
-    from src.core.config.headers import LoLGame_info_sgp_header as LoLGame_stat_header
+    from src.core.config.headers import LoLGame_summary_sgp_header as LoLGame_stat_header
 else:
-    from src.core.config.headers import LoLGame_info_header as LoLGame_stat_header
+    from src.core.config.headers import LoLGame_summary_header as LoLGame_stat_header
 if args.locale == "en_US":
     arg_locale = "en_US" #只影响常量字典的本地化（Only influences the localization of the constant dictionaries）
 else:
@@ -237,13 +237,13 @@ async def search_player_match_stats_lol(connection: Connection, puuid: str, begI
     LoLGame_stat_data: dict[str, list[Any]] = {key: [] for key in LoLGame_stat_header_keys}
     info: dict[str, Any] = await get_info(connection, puuid)
     if info["info_got"]:
-        LoLGame_info_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {}
+        LoLGame_summary_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {}
         if lol_sgp:
             LoLHistory_get, LoLHistory = await get_matchSummary_sgp(connection, sgpSession, puuid, "LoL", begin = 0, count = 1000, log = log, verbose = verbose)
             for game in LoLHistory["games"]:
                 matchId: int = int(game["metadata"]["match_id"].split("_")[1])
-                if not matchId in LoLGame_info_cache_fromSummary_sgp:
-                    LoLGame_info_cache_fromSummary_sgp[matchId] = game
+                if not matchId in LoLGame_summary_cache_fromSummary_sgp:
+                    LoLGame_summary_cache_fromSummary_sgp[matchId] = game
             games: list[dict[str, Any]] = LoLHistory["games"]
         else:
             LoLHistory_get, LoLHistory = await get_LoLHistory(connection, puuid, begIndex = begIndex, endIndex = endIndex, log = log, verbose = verbose)
@@ -254,19 +254,19 @@ async def search_player_match_stats_lol(connection: Connection, puuid: str, begI
                 matchId: int = int(games[i]["metadata"]["match_id"].split("_")[1]) if lol_sgp else games[i]["gameId"]
                 match_id: str = f"{platformId}_{matchId}"
                 if lol_sgp:
-                    if matchId in LoLGame_info_cache_fromSummary_sgp:
-                        LoLGame_info: dict[str, Any] = LoLGame_info_cache_fromSummary_sgp[matchId]
+                    if matchId in LoLGame_summary_cache_fromSummary_sgp:
+                        LoLGame_summary: dict[str, Any] = LoLGame_summary_cache_fromSummary_sgp[matchId]
                         status: int = 200
                     else:
-                        status, LoLGame_info = await get_game_info_sgp(connection, sgpSession, match_id, skipTFT = True, log = log, verbose = verbose)
+                        status, LoLGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, skipTFT = True, log = log, verbose = verbose)
                 else:
-                    status, LoLGame_info = await get_LoLGame_info(connection, matchId, log = log, verbose = verbose)
+                    status, LoLGame_summary = await get_LoLGame_summary(connection, matchId, log = log, verbose = verbose)
                 if status == 200:
                     #下一行语句的关键是sortStats和LoLGame_stats_data参数（The key point of the following statement is `sortStats` and `LoLGame_stats_data` parameters）
                     if lol_sgp:
-                        LoLGame_info_df: pandas.DataFrame = sort_LoLGame_info_sgp(LoLGame_info, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = i + 1, current_puuid = puuid, useAllVersions = False, unmapped_keys = unmapped_keys, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, log = log, verbose = verbose)[0]
+                        LoLGame_summary_df: pandas.DataFrame = sort_LoLGame_summary_sgp(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = i + 1, current_puuid = puuid, useAllVersions = False, unmapped_keys = unmapped_keys, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, log = log, verbose = verbose)[0]
                     else:
-                        LoLGame_info_df = sort_LoLGame_info(LoLGame_info, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = i + 1, current_puuid = puuid, useAllVersions = False, unmapped_keys = unmapped_keys, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, log = log, verbose = verbose)[0]
+                        LoLGame_summary_df = sort_LoLGame_summary(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = i + 1, current_puuid = puuid, useAllVersions = False, unmapped_keys = unmapped_keys, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, log = log, verbose = verbose)[0]
                     logPrint("对局加载进度（Match loading process）：%d/%d\t对局序号（matchID）： %d" %(i + 1, len(games), matchId), verbose = verbose)
                 else:
                     logPrint("对局加载进度（Match loading process）：%d/%d\t对局序号（matchID）： %d (Match not found)" %(i + 1, len(games), matchId), verbose = verbose)
@@ -294,18 +294,18 @@ async def search_player_match_stats_tft(connection: Connection, puuid: str, begi
             unmapped_keys: dict[str, set[Any]] = {"queue": set(), "TFTAugment": set(), "TFTChampion": set(), "TFTItem": set(), "TFTCompanion": set(), "TFTTrait": set()}
             for i in range(len(TFTHistory["games"])):
                 matchId: int = int(TFTHistory["games"][i]["metadata"]["match_id"].split("_")[-1])
-                TFTGame_info: dict[str, Any] = TFTHistory["games"][i]
-                if TFTGame_info.get("json"):
+                TFTGame_summary: dict[str, Any] = TFTHistory["games"][i]
+                if TFTGame_summary.get("json"):
                     #下一行语句的关键是sortStats和TFTGame_stats_data参数（The key point of the following statement is `sortStats` and `TFTGame_stats_data` parameters）
-                    TFTGame_info_df: pandas.DataFrame = (await sort_TFTGame_info(connection, TFTGame_info, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = i + 1, current_puuid = puuid, save_self = True, useAllVersions = False, unmapped_keys = unmapped_keys, useInfoDict = False, sortStats = True, TFTGame_stat_data = TFTGame_stat_data, log = log, verbose = verbose))[0]
-                    logPrint("对局加载进度（Match loading process）：%d/%d\t对局序号（matchID）： %d" %(i + 1, len(TFTHistory["games"]), TFTGame_info["json"]["game_id"]), verbose = verbose)
+                    TFTGame_summary_df: pandas.DataFrame = (await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = i + 1, current_puuid = puuid, save_self = True, useAllVersions = False, unmapped_keys = unmapped_keys, useInfoDict = False, sortStats = True, TFTGame_stat_data = TFTGame_stat_data, log = log, verbose = verbose))[0]
+                    logPrint("对局加载进度（Match loading process）：%d/%d\t对局序号（matchID）： %d" %(i + 1, len(TFTHistory["games"]), TFTGame_summary["json"]["game_id"]), verbose = verbose)
                 else:
                     logPrint("对局加载进度（Match loading process）：%d/%d (Exceptional match neglected)" %(i + 1, len(TFTHistory["games"])), verbose = verbose)
                 # match_id: str = f"{platformId}_{matchId}"
-                # status, TFTGame_info = await get_game_info_sgp(connection, sgpSession, match_id, checkLoL = False, log = log, verbose = verbose)
+                # status, TFTGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, checkLoL = False, log = log, verbose = verbose)
                 # if status == 200:
-                #     if TFTGame_info.get("json"):
-                #         TFTGame_info_df: pandas.DataFrame = (await sort_TFTGame_info(connection, TFTHistory["games"][i], queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = i + 1, current_puuid = puuid, save_self = True, useAllVersions = False, unmapped_keys = unmapped_keys, useInfoDict = False, sortStats = True, TFTGame_stat_data = TFTGame_stat_data, log = log, verbose = verbose))[0]
+                #     if TFTGame_summary.get("json"):
+                #         TFTGame_summary_df: pandas.DataFrame = (await sort_TFTGame_summary(connection, TFTHistory["games"][i], queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = i + 1, current_puuid = puuid, save_self = True, useAllVersions = False, unmapped_keys = unmapped_keys, useInfoDict = False, sortStats = True, TFTGame_stat_data = TFTGame_stat_data, log = log, verbose = verbose))[0]
                 #         logPrint("对局加载进度（Match loading process）：%d/%d\t对局序号（matchID）： %d" %(i + 1, len(TFTHistory["games"]), matchId), verbose = verbose)
                 #     else:
                 #         logPrint("对局加载进度（Match loading process）：%d/%d\t对局序号（matchID）： %d (Exceptional match neglected)" %(i + 1, len(TFTHistory["games"]), matchId), verbose = verbose)
@@ -354,9 +354,9 @@ async def Clarke_revival(connection: Connection) -> None:
     #仅用于对局后查询的全局变量（Global variables only used for post-match query）
     gameId: int = 0
     isTFT: bool = False
-    game_info: dict[str, Any] = {}
-    LoLGame_info: dict[str, Any] = {}
-    TFTGame_info: dict[str, Any] = {}
+    game_summary: dict[str, Any] = {}
+    LoLGame_summary: dict[str, Any] = {}
+    TFTGame_summary: dict[str, Any] = {}
     gameflow_phase: str = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
     gameflow_ongoing: bool = gameflow_phase in {"ChampSelect", "InProgress", "Reconnect", "PreEndOfGame", "EndOfGame"}
     logPrint("请选择运行模式：\nPlease select a mode:\n%s1\t运行时查询（Runtime query）\n%s2\t对局后查询（Post-match query）" %("☆" if gameflow_ongoing else "", "" if gameflow_ongoing else "☆"))
@@ -579,48 +579,48 @@ async def Clarke_revival(connection: Connection) -> None:
                 else:
                     if gameId > 0:
                         match_id: str = f"{platformId}_{gameId}"
-                        status, game_info = await get_game_info_sgp(connection, sgpSession, match_id, log = log)
+                        status, game_summary = await get_game_summary_sgp(connection, sgpSession, match_id, log = log)
                         if status == 200:
-                            isTFT = game_info["metadata"]["product"] == "TFT"
+                            isTFT = game_summary["metadata"]["product"] == "TFT"
                             break
                         else:
                             logPrint("请求失败！请切换一个对局序号或稍后重试。\nRequest failed! Please change a gameId or try it again later.")
                     else:
                         logPrint("请输入一个正整数！\nPlease enter a positive integer.")
         if pastCheck:
-            #然后获取对局信息并生成对局信息数据框（Then, get game information and generate game information dataframe）
-            if isTFT and game_info.get("json"):
-                TFTGame_info = game_info
+            #然后获取对局概要并生成对局概要数据框（Then, get game summary and generate game summary dataframe）
+            if isTFT and game_summary.get("json"):
+                TFTGame_summary = game_summary
                 gameMode: str = "TFT"
-                gameModeName = gameQueues[TFTGame_info["json"]["queueId"]]["name"] if TFTGame_info["json"]["queueId"] in gameQueues else "TFT (%d)" %(TFTGame_info["json"]["queueId"])
-                players_metaDf: pandas.DataFrame = (await sort_TFTGame_info(connection, TFTGame_info, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = 1, current_puuid = current_info["puuid"], useAllVersions = False, sortStats = False, log = log))[0]
-                current_timestamp_millis = TFTGame_info["json"]["gameCreation"]
+                gameModeName = gameQueues[TFTGame_summary["json"]["queueId"]]["name"] if TFTGame_summary["json"]["queueId"] in gameQueues else "TFT (%d)" %(TFTGame_summary["json"]["queueId"])
+                players_metaDf: pandas.DataFrame = (await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = 1, current_puuid = current_info["puuid"], useAllVersions = False, sortStats = False, log = log))[0]
+                current_timestamp_millis = TFTGame_summary["json"]["gameCreation"]
             elif not isTFT:
-                LoLGame_info = game_info
-                if use_sgp and LoLGame_info.get("json"):
-                    gameMode = LoLGame_info["json"]["gameMode"]
-                    gameModeName = gameQueues[LoLGame_info["json"]["queueId"]]["name"] if LoLGame_info["json"]["queueId"] in gameQueues else gameMode + " (%d)" %(LoLGame_info["json"]["queueId"])
-                    players_metaDf = sort_LoLGame_info_sgp(LoLGame_info, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = 1, current_puuid = current_info["puuid"], useAllVersions = False, sortStats = False, log = log)[0]
-                    current_timestamp_millis = LoLGame_info["json"]["gameCreation"]
+                LoLGame_summary = game_summary
+                if use_sgp and LoLGame_summary.get("json"):
+                    gameMode = LoLGame_summary["json"]["gameMode"]
+                    gameModeName = gameQueues[LoLGame_summary["json"]["queueId"]]["name"] if LoLGame_summary["json"]["queueId"] in gameQueues else gameMode + " (%d)" %(LoLGame_summary["json"]["queueId"])
+                    players_metaDf = sort_LoLGame_summary_sgp(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = 1, current_puuid = current_info["puuid"], useAllVersions = False, sortStats = False, log = log)[0]
+                    current_timestamp_millis = LoLGame_summary["json"]["gameCreation"]
                 else:
-                    status, LoLGame_info = await get_LoLGame_info(connection, gameId, log = log)
-                    gameMode = LoLGame_info["gameMode"]
-                    gameModeName = gameQueues[LoLGame_info["queueId"]]["name"] if LoLGame_info["queueId"] in gameQueues else gameMode + " (%d)" %(LoLGame_info["queueId"])
-                    players_metaDf = sort_LoLGame_info(LoLGame_info, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = 1, current_puuid = current_info["puuid"], useAllVersions = False, sortStats = False, log = log, verbose = print_detail)[0]
-                    current_timestamp_millis = LoLGame_info["gameCreation"]
+                    status, LoLGame_summary = await get_LoLGame_summary(connection, gameId, log = log)
+                    gameMode = LoLGame_summary["gameMode"]
+                    gameModeName = gameQueues[LoLGame_summary["queueId"]]["name"] if LoLGame_summary["queueId"] in gameQueues else gameMode + " (%d)" %(LoLGame_summary["queueId"])
+                    players_metaDf = sort_LoLGame_summary(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = 1, current_puuid = current_info["puuid"], useAllVersions = False, sortStats = False, log = log, verbose = print_detail)[0]
+                    current_timestamp_millis = LoLGame_summary["gameCreation"]
             else:
                 logPrint("未获取到有效的玩家信息。请切换其它对局。\nNo valid participant information detected. Please change another game.")
                 return
             excel_name: str = "Player Stats in Match %s-%s (%s).xlsx" %(platformId, gameId, normalize_file_name(gameModeName))
             isSpectating: bool = False #严格地讲并不算观战，但其作用与其它地方该变量的作用相同（Seriously, this situation can't be regarded as spectating. However, it plays the same role as in other places）
             if isTFT:
-                for player in TFTGame_info["json"]["participants"]:
+                for player in TFTGame_summary["json"]["participants"]:
                     currentPlayer_partnerGroupId: int = player.get("partner_group_id", 0)
                     if player["puuid"] == current_info["puuid"]:
                         break
                 else:
                     currentPlayer_partnerGroupId = -1
-                fetched_players = TFTGame_info["json"]["participants"]
+                fetched_players = TFTGame_summary["json"]["participants"]
                 isSpectating = current_info["puuid"] in list(map(lambda x: x["puuid"], fetched_players))
                 teamOneOnly = all(map(lambda x: x.get("partner_group_id", 0) == 0, fetched_players))
                 myTeam: list[dict[str, Any]] = []
@@ -637,14 +637,14 @@ async def Clarke_revival(connection: Connection) -> None:
                 #首先列出各阵营的玩家（First, list participants of each team）
                 teamOne: list[dict[str, Any]] = []
                 teamTwo: list[dict[str, Any]] = []
-                for player in LoLGame_info["json"]["participants"]:
+                for player in LoLGame_summary["json"]["participants"]:
                     if player["teamId"] == 100:
                         teamOne.append(player)
                     elif player["teamId"] == 200:
                         teamTwo.append(player)
                 #其次，判断两支阵营哪支是我方，哪支是对方（Second, judge which team is allied team and vice versa）
-                if LoLGame_info["json"]["gameMode"] == "CHERRY": #斗魂竞技场的对局需要根据子阵营来判断一名玩家是否是队友（To judge whether a player is the ally in an Arena game, the subteam needs to be checked）
-                    for player in LoLGame_info["json"]["participants"]: #第一次循环确定自己的子阵营序号（The first loop determines the subteamId of the user itself）
+                if LoLGame_summary["json"]["gameMode"] == "CHERRY": #斗魂竞技场的对局需要根据子阵营来判断一名玩家是否是队友（To judge whether a player is the ally in an Arena game, the subteam needs to be checked）
+                    for player in LoLGame_summary["json"]["participants"]: #第一次循环确定自己的子阵营序号（The first loop determines the subteamId of the user itself）
                         mySubteamId: int = player.get("playerSubteamId", 0)
                         if player["puuid"] == current_info["puuid"]:
                             break
@@ -657,7 +657,7 @@ async def Clarke_revival(connection: Connection) -> None:
                     else:
                         myTeam = []
                         theirTeam = []
-                        for player in LoLGame_info["json"]["participants"]: #第二次循环确定己方阵营和敌方阵营（The second loop determines myTeam and theirTeam）
+                        for player in LoLGame_summary["json"]["participants"]: #第二次循环确定己方阵营和敌方阵营（The second loop determines myTeam and theirTeam）
                             if player["playerSubteamId"] == mySubteamId:
                                 myTeam.append(player)
                             else:
@@ -679,20 +679,20 @@ async def Clarke_revival(connection: Connection) -> None:
                     if not player["puuid"] in {"", BOT_UUID}:
                         fetched_players.append(player)
                         ally_bool_dict[player["puuid"]] = player["puuid"] in myTeam_puuids
-                teamOneOnly: bool = LoLGame_info["json"]["mapId"] == 22 or LoLGame_info["json"]["mapId"] == 30 and isSpectating #在查看自己参与的过往斗魂竞技场对局，则可以推断出队友信息，进而区分敌我双方（The ally of a previous Arena game that the user participated in by himself/herself can be inferred, so that the program can tell myTeam and theirTeam）
+                teamOneOnly: bool = LoLGame_summary["json"]["mapId"] == 22 or LoLGame_summary["json"]["mapId"] == 30 and isSpectating #在查看自己参与的过往斗魂竞技场对局，则可以推断出队友信息，进而区分敌我双方（The ally of a previous Arena game that the user participated in by himself/herself can be inferred, so that the program can tell myTeam and theirTeam）
             else: #LCU API中的玩家信息被分成“participantIdentities”和“participants”两个键，而最终要形成的fetched_players的有效信息位于“participantIdentities”键的“player”子键下（In LCU API, participant information is divided into "participantIdentities" and "participants" keys. The information we need is located at the "player" subkey of "participantIdentities" key）
                 #首先列出各阵营的玩家（First, list participants of each team）
-                participantIdentities: dict[int, dict[str, Any]] = {participant["participantId"]: participant["player"] for participant in LoLGame_info["participantIdentities"]}
+                participantIdentities: dict[int, dict[str, Any]] = {participant["participantId"]: participant["player"] for participant in LoLGame_summary["participantIdentities"]}
                 teamOne: list[dict[str, Any]] = []
                 teamTwo: list[dict[str, Any]] = []
-                for player in LoLGame_info["participants"]:
+                for player in LoLGame_summary["participants"]:
                     if player["teamId"] == 100:
                         teamOne.append(participantIdentities[player["participantId"]])
                     elif player["teamId"] == 200:
                         teamTwo.append(participantIdentities[player["participantId"]])
                 #其次，判断两支阵营哪支是我方，哪支是对方（Second, judge which team is allied team and vice versa）
-                if LoLGame_info["gameMode"] == "CHERRY":
-                    for player in LoLGame_info["participants"]:
+                if LoLGame_summary["gameMode"] == "CHERRY":
+                    for player in LoLGame_summary["participants"]:
                         mySubteamId: int = player["stats"]["playerSubteamId"]
                         if participantIdentities[player["participantId"]]["puuid"] == current_info["puuid"]:
                             break
@@ -705,7 +705,7 @@ async def Clarke_revival(connection: Connection) -> None:
                     else:
                         myTeam = []
                         theirTeam = []
-                        for player in LoLGame_info["participants"]: #第二次循环确定己方阵营和敌方阵营（The second loop determines myTeam and theirTeam）
+                        for player in LoLGame_summary["participants"]: #第二次循环确定己方阵营和敌方阵营（The second loop determines myTeam and theirTeam）
                             if player["stats"]["playerSubteamId"] == mySubteamId:
                                 myTeam.append(participantIdentities[player["participantId"]])
                             else:
@@ -727,7 +727,7 @@ async def Clarke_revival(connection: Connection) -> None:
                     if not player["puuid"] in {"", BOT_UUID}:
                         fetched_players.append(player)
                         ally_bool_dict[player["puuid"]] = player["puuid"] in myTeam_puuids
-                teamOneOnly: bool = LoLGame_info["mapId"] == 22 or LoLGame_info["mapId"] == 30 and isSpectating #在查看自己参与的过往斗魂竞技场对局，则可以推断出队友信息，进而区分敌我双方（The ally of a previous Arena game that the user participated in by himself/herself can be inferred, so that the program can tell myTeam and theirTeam）
+                teamOneOnly: bool = LoLGame_summary["mapId"] == 22 or LoLGame_summary["mapId"] == 30 and isSpectating #在查看自己参与的过往斗魂竞技场对局，则可以推断出队友信息，进而区分敌我双方（The ally of a previous Arena game that the user participated in by himself/herself can be inferred, so that the program can tell myTeam and theirTeam）
         else: #这个分支只是为了消除类型检查报错（This branch is only designed to eliminate the errors from type check）
             current_timestamp_millis = 0
             isSpectating = teamOneOnly = True
@@ -919,7 +919,7 @@ async def Clarke_revival(connection: Connection) -> None:
                                     participantId_subteamId_map[playerSubteam] = []
                                 participantId_subteamId_map[playerSubteam].append(participantId)
                             max_numPlayersPerTeam_lol: int = max(map(len, participantId_subteamId_map.values())) if gameMode == "CHERRY" else max(map(len, participantId_teamId_map.values()))
-                            addFormat_LoLGame_info_wb_transpose(worksheet, players_metaDf.transpose(), numColorScale_order = max_numPlayersPerTeam_lol)
+                            addFormat_LoLGame_summary_wb_transpose(worksheet, players_metaDf.transpose(), numColorScale_order = max_numPlayersPerTeam_lol)
                         logPrint(f"对局{gameId}的玩家数据已导出。\nPlayer stats in Match {gameId} have been exported.", verbose = print_detail)
                     addDefaultStyle(game_leaderboard_df).to_excel(excel_writer = writer, sheet_name = "Game Leaderboard")
                     logPrint("玩家排位信息已汇总。\nGame leaderboard has been summarized.", verbose = print_detail)
@@ -942,7 +942,7 @@ async def Clarke_revival(connection: Connection) -> None:
                                 worksheet = writer.sheets["%s%s (LoL)" %(sheet_headers[summonerName], summonerName)]
                                 worksheet.conditional_formatting.rules = [] #读取时清空原规则（Clear original rules when reading）
                                 max_numPlayersPerTeam_lol = 5 if len(LoLPlayer_stat_details_df) <= 1 else max(map(lambda x: 5 if x == 0 else 2 if gameQueues[x]["gameMode"] == "CHERRY" else gameQueues[x]["numPlayersPerTeam"], LoLPlayer_stat_details_df["queueId"][1:]))
-                                addFormat_LoLGame_info_wb(worksheet, LoLPlayer_stat_details_df, numColorScale_order = max_numPlayersPerTeam_lol)
+                                addFormat_LoLGame_summary_wb(worksheet, LoLPlayer_stat_details_df, numColorScale_order = max_numPlayersPerTeam_lol)
                                 logPrint(f"{summonerName}的英雄联盟详细战绩已导出。\n{summonerName}'s detailed LoL game stats have been exported.", verbose = print_detail)
                             else:
                                 logPrint(f"{summonerName}从5月1日起就没有进行过任何英雄联盟对局。\n{summonerName} hasn't played LoL game yet since May 1st.", verbose = print_detail)

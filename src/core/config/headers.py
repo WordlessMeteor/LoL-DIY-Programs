@@ -547,7 +547,7 @@ LoLHistory_header: dict[str, str] = {
     "lane": "分路",
     "role": "角色定位"
 }
-LoLGame_info_header: dict[str, str] = {
+LoLGame_summary_header: dict[str, str] = {
     "gameIndex": "游戏序号",
     "endOfGameResult": "对局终止情况",
     "gameCreation": "对局创建时间戳",
@@ -965,7 +965,7 @@ LoLGame_event_header: dict[str, str] = {
     "victimChampionSquarePotraitPaths": "被杀者英雄方块头像路径",
     "victimParticipantSummonerName": "被杀者召唤师名"
 }
-LoLGame_info_sgp_header: dict[str, str] = {
+LoLGame_summary_sgp_header: dict[str, str] = {
     "gameIndex": "游戏序号",
     "product": "产品",
     "tags": "标签",
@@ -2206,7 +2206,7 @@ TFTHistory_header: dict[str, str] = {
     "tags": "标签",
     "timestamp": "对局时间戳"
 }
-TFTGame_info_header: dict[str, str] = {
+TFTGame_summary_header: dict[str, str] = {
     "gameIndex": "游戏序号",
     "endOfGameResult": "对局终止情况",
     "gameCreation": "对局创建时间戳",

@@ -989,7 +989,7 @@ roles: dict[str, str] = {
     "SUPPORT": "辅助",
     "NONE": ""
 }
-##英雄联盟对局信息（LoL match information）
+##英雄联盟对局概要（LoL match summary）
 subteam_colors: dict[int, str] = {
     0: "",
     1: "魄罗",
@@ -1778,7 +1778,7 @@ honorType_tooltip_bodies: dict[str, str] = {
 #     "SUPPORT": "SUPPORT",
 #     "NONE": ""
 # }
-##英雄联盟对局信息（LoL match information）
+##英雄联盟对局概要（LoL match summary）
 # subteam_colors: dict[int, str] = {
 #     0: "",
 #     1: "Poro",

@@ -7,9 +7,9 @@ from src.utils.logger import LogManager
 from src.utils.webRequest import SGPSession
 from src.utils.patch import Patch
 from src.utils.summoner import print_summoner_info, get_info, get_info_name
-from src.core.config.const import TEST_GAME_INFO
+from src.core.config.const import TEST_GAME_SUMMARY
 from src.core.config.servers import set_platform_folder
-from src.core.dataframes.matchHistory import get_matchSummary_sgp, get_matchDetails_sgp, get_game_info_sgp, get_game_timeline_sgp
+from src.core.dataframes.matchHistory import get_matchSummary_sgp, get_matchDetails_sgp, get_game_summary_sgp, get_game_timeline_sgp
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-b", "--begin", help = "指定对局序号范围的下标（Specify the lower limit of matchId range）", action = "store", type = int, default = 0)
@@ -94,7 +94,7 @@ def specify_matchId_limit(start_matchId: Optional[int] = None, end_matchId: Opti
 
 async def index_traverse_match(connection: Connection, start_matchId: Optional[int] = None, end_matchId: Optional[int] = None, func_str: str = "", product: Literal["LoL", "TFT", ""] = "") -> int:
     '''
-    在给定对局上下限的情况下，遍历范围内的对局，并保存所有符合条件的对局信息和时间轴。<br>Given the starting and ending matchIds, traverse save information and timeline of matches that meet the condition.
+    在给定对局上下限的情况下，遍历范围内的对局，并保存所有符合条件的对局概要和时间轴。<br>Given the starting and ending matchIds, traverse save summary and timeline of matches that meet the condition.
     
     :param connection: 连接对象。一般在程序中已指定好。<br>A Connection object. Usually specified in the program.
     :type connection: lcu_driver.connection.Connection
@@ -117,17 +117,17 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
     if start_matchId == -1 and end_matchId == -1:
         return -1
     if func_str == "":
-        print("未指定条件函数。将保存所有有效的对局信息和时间轴。\nNo condition function specified. All valid match information and timeline will be saved.")
+        print("未指定条件函数。将保存所有有效的对局概要和时间轴。\nNo condition function specified. All valid match summary and timeline will be saved.")
         func: Callable[[dict[str, Any]], bool] = lambda x: "metadata" in x and "json" in x
     else:
         try:
-            func = eval(f"lambda game_info: {func_str}")
+            func = eval(f"lambda game_summary: {func_str}")
         except:
             print("判断条件函数语法错误！\nCondition judgment function syntax error!")
             return -1
         else:
             try:
-                tmp = func(TEST_GAME_INFO) #校验函数是否能如期运行（Check whether the function can run as expected）
+                tmp = func(TEST_GAME_SUMMARY) #校验函数是否能如期运行（Check whether the function can run as expected）
             except:
                 print("判断条件函数运行出错！\nAn error occurred when testing the condition judgment function!")
                 return -1
@@ -179,19 +179,19 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
             break
         currentProcess: int = matchId - start_matchId + 1
         match_id: str = f"{platformId}_{matchId}"
-        status, game_info = await get_game_info_sgp(connection, session, match_id, checkLoL = checkLoL, checkTFT = checkTFT, skipTFT = skipTFT)
+        status, game_summary = await get_game_summary_sgp(connection, session, match_id, checkLoL = checkLoL, checkTFT = checkTFT, skipTFT = skipTFT)
         if status != 200:
-            logPrint(f"【获取失败】[{currentProcess}/{gameCount}]对局{matchId}信息获取失败！\nMatch {matchId} information capture failure!", print_time = True)
+            logPrint(f"【获取失败】[{currentProcess}/{gameCount}]对局{matchId}概要获取失败！\nMatch {matchId} summary capture failure!", print_time = True)
         else:
-            if func(game_info):
+            if func(game_summary):
                 matches_found.append(matchId)
-                logPrint(f"【找到对局】[{currentProcess}/{gameCount}]对局{matchId}信息符合条件。已将其加入列表。\nMatch {matchId} fits the requirements and has been added to the found match list!", print_time = True)
+                logPrint(f"【找到对局】[{currentProcess}/{gameCount}]对局{matchId}符合条件。已将其加入列表。\nMatch {matchId} fits the requirements and has been added to the found match list!", print_time = True)
                 #下面将json文件保存到对局文件夹中（The following code save the json files into the match folder）
                 if not matchId in saved_matchIds:
-                    match_product: str = game_info["metadata"]["product"]
+                    match_product: str = game_summary["metadata"]["product"]
                     json1name: str = f"Match Information ({match_product}) - {platformId}-{matchId} (SGP).json"
                     with open(os.path.join(json_folder, json1name), "w", encoding = "utf-8") as fp:
-                        json.dump(game_info, fp, indent = 4, ensure_ascii = False)
+                        json.dump(game_summary, fp, indent = 4, ensure_ascii = False)
                     if match_product == "LoL":
                         json2name: str = f"Match Timeline ({match_product}) - {platformId}-{matchId} (SGP).json"
                         status, game_timeline = await get_game_timeline_sgp(connection, session, match_id, checkLoL = checkLoL, checkTFT = checkTFT)
@@ -233,17 +233,17 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
     '''
     #参数预处理（Parameter preprocess）
     if func_str == "":
-        print("未指定条件函数。将保存所有有效的对局信息和时间轴。\nNo condition function specified. All valid match information and timeline will be saved.")
+        print("未指定条件函数。将保存所有有效的对局概要和时间轴。\nNo condition function specified. All valid match summary and timeline will be saved.")
         func: Callable[[dict[str, Any]], bool] = lambda x: "metadata" in x and "json" in x
     else:
         try:
-            func = eval(f"lambda game_info: {func_str}")
+            func = eval(f"lambda game_summary: {func_str}")
         except:
             print("判断条件函数语法错误！\nCondition judgment function syntax error!")
             return -1
         else:
             try:
-                tmp = func(TEST_GAME_INFO) #校验函数是否能如期运行（Check whether the function can run as expected）
+                tmp = func(TEST_GAME_SUMMARY) #校验函数是否能如期运行（Check whether the function can run as expected）
             except:
                 print("判断条件函数运行出错！\nAn error occurred when testing the condition judgment function!")
                 return -1
@@ -311,21 +311,21 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
                 matchTimelines: dict[int, dict[str, Any]] = {int(game_timeline["metadata"]["match_id"].split("_")[1]): game_timeline for game_timeline in matchDetails["games"]}
             else:
                 matchTimelines = {}
-            for game_info in matchHistory["games"]:
-                match_id: str = game_info["metadata"]["match_id"]
+            for game_summary in matchHistory["games"]:
+                match_id: str = game_summary["metadata"]["match_id"]
                 matchId: int = int(match_id.split("_")[1])
-                if "participants" in game_info["metadata"]:
-                    puuids_to_search.extend(game_info["metadata"]["participants"])
-                if func(game_info):
+                if "participants" in game_summary["metadata"]:
+                    puuids_to_search.extend(game_summary["metadata"]["participants"])
+                if func(game_summary):
                     matches_found.add(matchId)
                     found_match_count += 1
-                    logPrint(f"【找到对局】[{traversed_player_count}][{found_match_count}]对局{matchId}信息符合条件。已将其加入集合。\nMatch {matchId} fits the requirements and has been added to the found match set!")
+                    logPrint(f"【找到对局】[{traversed_player_count}][{found_match_count}]对局{matchId}符合条件。已将其加入集合。\nMatch {matchId} fits the requirements and has been added to the found match set!")
                     #下面将json文件保存到日志文件夹中（The following code save the json files into the log folder）
                     if not matchId in saved_matchIds:
-                        match_product: str = game_info["metadata"]["product"]
+                        match_product: str = game_summary["metadata"]["product"]
                         json1name: str = f"Match Information ({match_product}) - {platformId}-{matchId} (SGP).json"
                         with open(os.path.join(json_folder, json1name), "w", encoding = "utf-8") as fp:
-                            json.dump(game_info, fp, indent = 4, ensure_ascii = False)
+                            json.dump(game_summary, fp, indent = 4, ensure_ascii = False)
                         if matchId in matchTimelines:
                             json2name: str = f"Match Timeline ({match_product}) - {platformId}-{matchId} (SGP).json"
                             game_timeline: dict[str, Any] = matchTimelines[matchId]
@@ -388,13 +388,13 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
         return -1
     else:
         try:
-            func: Callable[[dict[str, Any]], bool] = eval(f"lambda game_info: {func_str}")
+            func: Callable[[dict[str, Any]], bool] = eval(f"lambda game_summary: {func_str}")
         except:
             print("阈值函数语法错误！\nThreshold function syntax error!")
             return -1
         else:
             try:
-                tmp = func(TEST_GAME_INFO) #校验函数是否能如期运行（Check whether the function can run as expected）
+                tmp = func(TEST_GAME_SUMMARY) #校验函数是否能如期运行（Check whether the function can run as expected）
             except:
                 print("阈值函数运行出错！\nAn error occurred when testing the threshold function!")
                 return -1
@@ -426,12 +426,12 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
     while True:
         print(start_matchId, end = "\r")
         match_id: str = f"{platformId}_{start_matchId}"
-        status, game_info = await get_game_info_sgp(connection, session, match_id, skipTFT = skipTFT, verbose = False)
+        status, game_summary = await get_game_summary_sgp(connection, session, match_id, skipTFT = skipTFT, verbose = False)
         if status == 404:
             start_matchId -= 1
         else:
-            traversed_matchIds[start_matchId] = func(game_info)
-            if func(game_info):
+            traversed_matchIds[start_matchId] = func(game_summary)
+            if func(game_summary):
                 logPrint(f"【中止程序】起始对局序号{start_matchId}已符合条件。请尝试更改条件或者换用一个更小的起始对局序号。\nThe starting matchId {start_matchId} already meets the demands. Please try again with another condition or a smaller `start_matchId`.")
                 return -1
             else:
@@ -440,12 +440,12 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
     while True:
         print(end_matchId, end = "\r")
         match_id: str = f"{platformId}_{end_matchId}"
-        status, game_info = await get_game_info_sgp(connection, session, match_id, skipTFT = skipTFT, verbose = False)
+        status, game_summary = await get_game_summary_sgp(connection, session, match_id, skipTFT = skipTFT, verbose = False)
         if status == 404:
             end_matchId += 1
         else:
-            traversed_matchIds[end_matchId] = func(game_info)
-            if func(game_info):
+            traversed_matchIds[end_matchId] = func(game_summary)
+            if func(game_summary):
                 break
             else:
                 logPrint(f"【中止程序】终止对局序号{end_matchId}不符合条件。请尝试更改条件或者换用一个更大的终止对局序号。\nThe ending matchId {end_matchId} doesn't meet the demands. Please try again with another condition or a bigger `end_matchId`.")
@@ -486,16 +486,16 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
     #         logPrint("{0:<30}".format("Match not found."), "×", sep = " | ", write_time = False)
     #     else:
     #         match_id = f"{platformId}_{middle}"
-    #         status, game_info = await get_game_info_sgp(connection, session, match_id, skipTFT = skipTFT, verbose = False)
+    #         status, game_summary = await get_game_summary_sgp(connection, session, match_id, skipTFT = skipTFT, verbose = False)
     #         if status == 404:
     #             matchIds_not_found.add(middle)
     #             offset += 10 ** power
     #             logPrint("{0:<30}".format("Match not found."), "×", sep = " | ", write_time = False)
     #         else:
-    #             traversed_matchIds[middle] = func(game_info)
+    #             traversed_matchIds[middle] = func(game_summary)
     #             ordered_matchIds: list[int] = sorted(traversed_matchIds.keys()) #每次遍历一场存在的对局后更新此列表（Each traversal of an existing match updates this list）
     #             current_index: int = ordered_matchIds.index(middle) #获取有序列表中刚刚添加的对局的下标（Get the index of the match just added in the ordered list）
-    #             if func(game_info):
+    #             if func(game_summary):
     #                 prev_matchId: int = ordered_matchIds[current_index - 1] #这里不可能出现下标越界，因为有序列表中至少已经有用户一开始输入的起始对局序号了（Here IndexError can't be thrown, for the ordered list at least contains the starting matchId that the user inputs at the beginning of the program execution）
     #                 if not traversed_matchIds[prev_matchId] and set(range(prev_matchId + 1, middle)) < matchIds_not_found: #prev_matchId不符合条件，middle符合条件，且prev_matchId和middle之间的对局序号都不存在（`prev_matchId` doesn't meet the condition, `middle` does and none of the matchIds between `prev_matchId` and `middle` exists）
     #                     logPrint("{0:<30}".format("Target match is found."), "√", sep = " | ", write_time = False)
@@ -547,7 +547,7 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
                 continue
         else:
             match_id = f"{platformId}_{middle}"
-            status, game_info = await get_game_info_sgp(connection, session, match_id, skipTFT = skipTFT, verbose = False)
+            status, game_summary = await get_game_summary_sgp(connection, session, match_id, skipTFT = skipTFT, verbose = False)
             if status == 404:
                 matchIds_not_found.add(middle)
                 offset_range.remove(offset)
@@ -562,10 +562,10 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
                     reset_offset_range = True
                     continue
             else:
-                traversed_matchIds[middle] = func(game_info)
+                traversed_matchIds[middle] = func(game_summary)
                 ordered_matchIds: list[int] = sorted(traversed_matchIds.keys()) #每次遍历一场存在的对局后更新此列表（Each traversal of an existing match updates this list）
                 current_index: int = ordered_matchIds.index(middle) #获取有序列表中刚刚添加的对局的下标（Get the index of the match just added in the ordered list）
-                if func(game_info):
+                if func(game_summary):
                     prev_matchId: int = ordered_matchIds[current_index - 1] #这里不可能出现下标越界，因为有序列表中至少已经有用户一开始输入的起始对局序号了（Here IndexError can't be thrown, for the ordered list at least contains the starting matchId that the user inputs at the beginning of the program execution）
                     if not traversed_matchIds[prev_matchId] and set(range(prev_matchId + 1, middle)) < matchIds_not_found: #prev_matchId不符合条件，middle符合条件，且prev_matchId和middle之间的对局序号都不存在（`prev_matchId` doesn't meet the condition, `middle` does and none of the matchIds between `prev_matchId` and `middle` exists）
                         logPrint("{0:<30}".format("Target match is found."), "√", sep = " | ", write_time = False)
@@ -590,35 +590,35 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
 
 #在这里自定义用于对局遍历函数的判断条件函数模板（Define the custom condition judgment function templates for `index_traverse_match` function hereafter）
 ##示例（Examples）
-def isKiwiMatch(game_info: dict[str, Any]) -> bool:
-    return game_info["metadata"]["product"] == "LoL" and game_info["json"]["gameMode"] == "KIWI"
+def isKiwiMatch(game_summary: dict[str, Any]) -> bool:
+    return game_summary["metadata"]["product"] == "LoL" and game_summary["json"]["gameMode"] == "KIWI"
 
-def isKiwiPentaMatch(game_info: dict[str, Any]) -> bool:
-    return game_info["metadata"]["product"] == "LoL" and bool(game_info["json"]) and game_info["json"]["queueId"] == 2400 and any(map(lambda participant: bool(participant["pentaKills"]), game_info["json"]["participants"]))
+def isKiwiPentaMatch(game_summary: dict[str, Any]) -> bool:
+    return game_summary["metadata"]["product"] == "LoL" and bool(game_summary["json"]) and game_summary["json"]["queueId"] == 2400 and any(map(lambda participant: bool(participant["pentaKills"]), game_summary["json"]["participants"]))
 
 #在这里自定义用于二分查找对局函数的阈值函数模板（Define the custom threshold function templates for `binary_search_match` function hereafter）
 ##调试（Debug）
-def gameId_compare(game_info: dict[str, Any], gameId: int) -> bool:
-    return game_info["json"]["gameId"] >= gameId
+def gameId_compare(game_summary: dict[str, Any], gameId: int) -> bool:
+    return game_summary["json"]["gameId"] >= gameId
 
 ##示例（Examples）
-def first_match_after_mainteinance(game_info: dict[str, Any], patch: str) -> bool:
-    return game_info["json"].get("endOfGameResult", "") != "Abort_Unexpected" and Patch(game_info["json"]["gameVersion"]) >= Patch(patch)
+def first_match_after_mainteinance(game_summary: dict[str, Any], patch: str) -> bool:
+    return game_summary["json"].get("endOfGameResult", "") != "Abort_Unexpected" and Patch(game_summary["json"]["gameVersion"]) >= Patch(patch)
 
 def define_function() -> tuple[str, Optional[Callable[[dict[str, Any]], bool]]]:
     while True:
-        func_str: str = input("f(game_info): ")
+        func_str: str = input("f(game_summary): ")
         if func_str == "":
             func = None
             break
         else:
             try:
-                func = eval(f"lambda game_info: {func_str}")
+                func = eval(f"lambda game_summary: {func_str}")
             except:
                 print("您的输入有误！请重新输入。\nERROR input! Please try again.")
             else:
                 try:
-                    tmp = func(TEST_GAME_INFO) #校验函数是否能如期运行（Check whether the function can run as expected）
+                    tmp = func(TEST_GAME_SUMMARY) #校验函数是否能如期运行（Check whether the function can run as expected）
                 except:
                     print("函数运行出错！请重新输入。\nAn error occurred when testing the function! Please try again.")
                 else:
@@ -644,7 +644,7 @@ async def index_traversal_main(connection: Connection) -> None:
             if start_matchId == -1 and end_matchId == -1:
                 step -= 2
         elif step == 2:
-            print('请输入一个筛选对局的函数。该函数应当返回逻辑值。\nPlease input a function to filter matches. This function should return a boolean value.\n示例（Example）：\ngame_info["metadata"]["product"] == "LoL" and game_info["json"]["gameMode"] == "KIWI" #判断对局是否是海克斯大乱斗（Judge whethe a match is ARAM: Mayhem）\n输入空字符串以放弃筛选，转而保留所有对局的信息。\nSumbit an empty string to give up filtering and save all matches instead.')
+            print('请输入一个筛选对局的函数。该函数应当返回逻辑值。\nPlease input a function to filter matches. This function should return a boolean value.\n示例（Example）：\ngame_summary["metadata"]["product"] == "LoL" and game_summary["json"]["gameMode"] == "KIWI" #判断对局是否是海克斯大乱斗（Judge whethe a match is ARAM: Mayhem）\n输入空字符串以放弃筛选，转而保留所有对局的信息。\nSumbit an empty string to give up filtering and save all matches instead.')
             func_str, func = define_function()
         elif step == 3:
             print('请选择一个产品。\nPlease select a product.\n0\t返回第一步（Return to the first step）\n1\t英雄联盟（LoL）\n2\t云顶之弈（TFT）\n%s3\t全部（Both）' %("☆" if func == None else "!"))
@@ -704,7 +704,7 @@ async def history_traversal_main(connection: Connection) -> None:
                     else:
                         print(start_info["message"])
         elif step == 2:
-            print('请输入一个筛选对局的函数。该函数应当返回逻辑值。\nPlease input a function to filter matches. This function should return a boolean value.\n示例（Example）：\ngame_info["metadata"]["product"] == "LoL" and game_info["json"]["gameMode"] == "KIWI" #判断对局是否是海克斯大乱斗（Judge whethe a match is ARAM: Mayhem）\n输入空字符串以放弃筛选，转而保留所有对局的信息。\nSumbit an empty string to give up filtering and save all matches instead.')
+            print('请输入一个筛选对局的函数。该函数应当返回逻辑值。\nPlease input a function to filter matches. This function should return a boolean value.\n示例（Example）：\ngame_summary["metadata"]["product"] == "LoL" and game_summary["json"]["gameMode"] == "KIWI" #判断对局是否是海克斯大乱斗（Judge whethe a match is ARAM: Mayhem）\n输入空字符串以放弃筛选，转而保留所有对局的信息。\nSumbit an empty string to give up filtering and save all matches instead.')
             func_str, func = define_function()
         elif step == 3:
             print('请选择一个产品。\nPlease select a product.\n0\t返回第一步（Return to the first step）\n1\t英雄联盟（LoL）\n2\t云顶之弈（TFT）')
@@ -753,7 +753,7 @@ async def binary_search_main(connection: Connection) -> None:
             if not threshold_function_definition_hint_printed:
                 print("阈值函数f：存在唯一的对局序号x₀ ∈ [a, b]，使得对于任意的x < x₀，f(x)为假，且对于任意的x ≥ x₀，f(x)为真。\nThreshold function f: There exists a unique matchId x₀ ∈ [a, b] such that for any x < x₀, f(x) is false, and for any x ≥ x₀, f(x) is true.")
                 threshold_function_definition_hint_printed = True
-            print('请输入一个阈值函数。该函数应当返回逻辑值。\nPlease input a threshold function. This function should return a boolean value.\n示例（Example）：\ngame_info["json"]["gameId"] >= 8502294282 #获取对局序号在8502294282之后的下一场可用对局（Get the next available match after Match 8502294282）\ngame_info["json"].get("endOfGameResult", "") != "Abort_Unexpected" and Patch(game_info["json"]["gameVersion"]) >= Patch("16.5") #查找当前大区在26.05版本的第一场对局（Check the first match in Patch 26.05 on the current server）\n输入空字符串以返回上一步。\nSumbit an empty string to return to the last step.')
+            print('请输入一个阈值函数。该函数应当返回逻辑值。\nPlease input a threshold function. This function should return a boolean value.\n示例（Example）：\ngame_summary["json"]["gameId"] >= 8502294282 #获取对局序号在8502294282之后的下一场可用对局（Get the next available match after Match 8502294282）\ngame_summary["json"].get("endOfGameResult", "") != "Abort_Unexpected" and Patch(game_summary["json"]["gameVersion"]) >= Patch("16.5") #查找当前大区在26.05版本的第一场对局（Check the first match in Patch 26.05 on the current server）\n输入空字符串以返回上一步。\nSumbit an empty string to return to the last step.')
             func_str, func = define_function()
             if func == None:
                 step -= 2

@@ -57,7 +57,7 @@ REPORT_CATEGORY_LIST_CHAMPSELECT: list[str] = [
     "INAPPROPRIATE_NAME",
     "OTHER"
 ]
-TEST_GAME_INFO: dict[str, Any] = {
+TEST_GAME_SUMMARY: dict[str, Any] = {
     "metadata": {
         "product": "LoL",
         "tags": [

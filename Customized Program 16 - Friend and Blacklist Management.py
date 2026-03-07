@@ -10,7 +10,7 @@ from src.utils.patch import Patch
 from src.utils.runtimeDebug import subscope
 from src.utils.webRequest import requestUrl, SGPSession
 from src.core.config.localization import availabilities, challengeCrystalLevels, tiers, rarities, spectatorPolicies, titleAcquisitionTypes, krarities, conversationTypes, messageTypes
-from src.core.config.headers import friend_hovercard_header, friend_group_header, conversation_header, message_header, friend_request_header, party_header, invid_header, champSelect_mutedPlayer_header, captureDevice_header, voiceSettings_header, participant_record_header, spectate_nonfriend_header, blockList_header, TFTGame_info_header
+from src.core.config.headers import friend_hovercard_header, friend_group_header, conversation_header, message_header, friend_request_header, party_header, invid_header, champSelect_mutedPlayer_header, captureDevice_header, voiceSettings_header, participant_record_header, spectate_nonfriend_header, blockList_header, TFTGame_summary_header
 from src.core.config.servers import set_summonerInfo_folder, save_platform_info
 from src.core.config.const import BOT_UUID
 from src.core.dataframes.matchHistory import get_LoLHistory, get_matchSummary_sgp, sort_LoLGame_stats, sort_LoLGame_stats_sgp, generate_TFTGameInfo_records, sort_TFTGame_stats
@@ -480,13 +480,13 @@ async def get_recent_players(connection: Connection, search_mode: int = 2, lol_s
         logPrint("开始整理英雄联盟对局数据……\nStart organizing LoL match data ...")
         unmapped_keys1: dict[str, set[int]] = {"queue": set(), "summonerIcon": set(), "spell": set(), "LoLChampion": set(), "LoLItem": set(), "summonerIcon": set(), "perk": set(), "perkstyle": set(), "CherryAugment": set()}
         if lol_sgp:
-            LoLGame_info_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {}
+            LoLGame_summary_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {}
             LoLHistory_get, LoLHistory = await get_matchSummary_sgp(connection, sgpSession, current_puuid, "LoL", begin = 0, count = 1000, log = log)
             for game in LoLHistory["games"]:
                 matchId: int = int(game["metadata"]["match_id"].split("_")[1])
-                if not matchId in LoLGame_info_cache_fromSummary_sgp:
-                    LoLGame_info_cache_fromSummary_sgp[matchId] = game
-            recent_LoLPlayer_df: pandas.DataFrame = await sort_LoLGame_stats_sgp(connection, sgpSession, LoLMatchIDs, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, puuid = current_puuid, save_self = False, save_other = True, save_bot = False, useAllVersions = False, unmapped_keys = unmapped_keys1, LoLGame_info_cache = LoLGame_info_cache_fromSummary_sgp, log = log)
+                if not matchId in LoLGame_summary_cache_fromSummary_sgp:
+                    LoLGame_summary_cache_fromSummary_sgp[matchId] = game
+            recent_LoLPlayer_df: pandas.DataFrame = await sort_LoLGame_stats_sgp(connection, sgpSession, LoLMatchIDs, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, puuid = current_puuid, save_self = False, save_other = True, save_bot = False, useAllVersions = False, unmapped_keys = unmapped_keys1, LoLGame_summary_cache = LoLGame_summary_cache_fromSummary_sgp, log = log)
         else:
             recent_LoLPlayer_df = await sort_LoLGame_stats(connection, LoLMatchIDs, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, puuid = current_puuid, save_self = False, save_other = True, save_bot = False, useAllVersions = False, unmapped_keys = unmapped_keys1, log = log)
     else:
@@ -500,8 +500,8 @@ async def get_recent_players(connection: Connection, search_mode: int = 2, lol_s
             logPrint("开始整理云顶之弈对局数据……\nStart organizing TFT match data ...")
             # TFTMatchIDs = list(map(lambda x: int(x["metadata"]["match_id"].split("_")[-1]), TFTHistory["games"]))
             unmapped_keys2: dict[str, set[Any]] = {"queue": set(), "TFTAugment": set(), "TFTChampion": set(), "TFTItem": set(), "TFTCompanion": set(), "TFTTrait": set()}
-            TFTGame_info_header_keys: list[str] = list(TFTGame_info_header.keys())
-            TFTGame_stat_data: dict[str, list[Any]] = {key: [] for key in TFTGame_info_header_keys}
+            TFTGame_summary_header_keys: list[str] = list(TFTGame_summary_header.keys())
+            TFTGame_stat_data: dict[str, list[Any]] = {key: [] for key in TFTGame_summary_header_keys}
             for i in range(len(TFTHistory["games"])):
                 game: dict[str, Any] = TFTHistory["games"][i]
                 if game.get("json"):
@@ -510,12 +510,12 @@ async def get_recent_players(connection: Connection, search_mode: int = 2, lol_s
                         if not participant["puuid"] in {current_puuid, BOT_UUID}:
                             await generate_TFTGameInfo_records(connection, TFTGame_stat_data, game, j, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = i + 1, current_puuid = current_puuid, unmapped_keys = unmapped_keys2, log = log)
             TFTGame_stat_statistics_output_order: list[int] = [0, 19, 46, 47, 43, 5, 14, 15, 16, 6, 10, 18, 7, 13, 11, 12, 307, 305, 40, 55, 33, 34, 35, 38, 52, 53, 49, 36, 50, 42, 54, 41, 39, 44, 45, 23, 24, 25, 150, 148, 149, 203, 206, 209, 155, 153, 154, 212, 215, 218, 160, 158, 159, 221, 224, 227, 165, 163, 164, 230, 233, 236, 170, 168, 169, 239, 242, 245, 175, 173, 174, 248, 251, 254, 180, 178, 179, 257, 260, 263, 185, 183, 184, 266, 269, 272, 190, 188, 189, 275, 278, 281, 195, 193, 194, 284, 287, 290, 200, 198, 199, 293, 296, 299, 61, 57, 58, 59, 60, 68, 64, 65, 66, 67, 75, 71, 72, 73, 74, 82, 78, 79, 80, 81, 89, 85, 86, 87, 88, 96, 92, 93, 94, 95, 103, 99, 100, 101, 102, 110, 106, 107, 108, 109, 117, 113, 114, 115, 116, 124, 120, 121, 122, 123, 131, 127, 128, 129, 130, 138, 134, 135, 136, 137, 145, 141, 142, 143, 144]
-            TFTGame_stat_data_organized: dict[str, list[Any]] = {TFTGame_info_header_keys[i]: TFTGame_stat_data[TFTGame_info_header_keys[i]] for i in TFTGame_stat_statistics_output_order}
+            TFTGame_stat_data_organized: dict[str, list[Any]] = {TFTGame_summary_header_keys[i]: TFTGame_stat_data[TFTGame_summary_header_keys[i]] for i in TFTGame_stat_statistics_output_order}
             recent_TFTPlayer_df: pandas.DataFrame = pandas.DataFrame(data = TFTGame_stat_data_organized)
             logPrint("正在优化逻辑值显示……\nOptimizing the display of boolean values ...")
             optimize_bool_display(recent_TFTPlayer_df)
             logPrint("逻辑值显示优化完成！\nBoolean value display optimization finished!")
-            recent_TFTPlayer_df = pandas.concat([pandas.DataFrame([TFTGame_info_header])[recent_TFTPlayer_df.columns], recent_TFTPlayer_df], ignore_index = True)
+            recent_TFTPlayer_df = pandas.concat([pandas.DataFrame([TFTGame_summary_header])[recent_TFTPlayer_df.columns], recent_TFTPlayer_df], ignore_index = True)
         else:
             recent_TFTPlayer_df = pandas.DataFrame()
     else:

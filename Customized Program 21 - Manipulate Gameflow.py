@@ -16,7 +16,7 @@ from src.core.config.conditional_formatting import addFormat_inGame_allPlayer_wb
 from src.core.dataframes.gameflow import get_gameflow_phase, get_champ_select_session, get_champSelect_player, sort_ChampSelect_players, sort_inGame_players, sort_eog_playerstat_lol_data, sort_eog_stat_tft_data
 from src.core.dataframes.champions import test_bot, sort_inventory_champions
 from src.core.dataframes.gameMode import check_available_queue
-from src.core.dataframes.matchHistory import get_game_info_sgp, sort_LoLGame_info_sgp, sort_TFTGame_info
+from src.core.dataframes.matchHistory import get_game_summary_sgp, sort_LoLGame_summary_sgp, sort_TFTGame_summary
 
 urllib3.disable_warnings() #忽略访问游戏数据时产生的警告（Neglect warnings produced when the program is accessing the in-game data）
 parser = argparse.ArgumentParser()
@@ -1429,9 +1429,9 @@ async def report_player_endOfGame(connection: Connection) -> None:
 
 async def report_player_matchHistory(connection: Connection) -> None:
     gameId: int = 0
-    game_info: dict[str, Any] = {}
-    LoLGame_info: dict[str, Any] = {}
-    TFTGame_info: dict[str, Any] = {}
+    game_summary: dict[str, Any] = {}
+    LoLGame_summary: dict[str, Any] = {}
+    TFTGame_summary: dict[str, Any] = {}
     logPrint('请输入对局序号。输入“0”以返回上一层。\nPlease input gameId. Submit "0" to return to the last step.')
     while True:
         isTFT: bool = False
@@ -1449,27 +1449,27 @@ async def report_player_matchHistory(connection: Connection) -> None:
             else:
                 if gameId > 0:
                     match_id: str = f"{platformId}_{gameId}"
-                    status, game_info = await get_game_info_sgp(connection, sgpSession, match_id, log = log)
+                    status, game_summary = await get_game_summary_sgp(connection, sgpSession, match_id, log = log)
                     if status == 200:
                         fetched_info = True
-                        isTFT = game_info["metadata"]["product"] == "TFT"
+                        isTFT = game_summary["metadata"]["product"] == "TFT"
                     else:
                         logPrint("请求失败！请切换一个对局序号或稍后重试。\nRequest failed! Please change a gameId or try it again later.")
                 else:
                     logPrint("请输入一个正整数！\nPlease enter a positive integer.")
         if fetched_info:
-            if isTFT and game_info.get("json"):
-                TFTGame_info = game_info
-                humanPlayers: list[dict[str, Any]] = TFTGame_info["json"]["participants"] #同上，云顶之弈中无法判断一名玩家是否电脑玩家（Same as above, we can't tell whether a player is a bot here）
-                player_df: pandas.DataFrame = (await sort_TFTGame_info(connection, TFTGame_info, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = 1, current_puuid = current_info["puuid"], useAllVersions = False, sortStats = False, log = log))[0]
+            if isTFT and game_summary.get("json"):
+                TFTGame_summary = game_summary
+                humanPlayers: list[dict[str, Any]] = TFTGame_summary["json"]["participants"] #同上，云顶之弈中无法判断一名玩家是否电脑玩家（Same as above, we can't tell whether a player is a bot here）
+                player_df: pandas.DataFrame = (await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = 1, current_puuid = current_info["puuid"], useAllVersions = False, sortStats = False, log = log))[0]
                 player_df_fields_to_print = ["partner_group_id", "riotIdGameName", "riotIdTagline", "placement"]
-            elif not isTFT: #为了简化程序，这里直接用SGP API来查询对局信息，没有设置LCU API的选项。这是因为在本脚本中，仅此处会用到对局记录查询接口，而因为这一个场景设置一个命令行参数有些小题大做了（To simplify the program, here only SGP API is used to search for a match. LCU API isn't enabled as another option. This is because in this program, only this place uses the match history endpoint, so it's not necessary to set command line arguments）
-                LoLGame_info = game_info
-                humanPlayers = [player for player in LoLGame_info["json"]["participants"] if player != BOT_UUID]
-                player_df = sort_LoLGame_info_sgp(LoLGame_info, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = 1, current_puuid = current_info["puuid"], sortStats = False, log = log)[0]
+            elif not isTFT: #为了简化程序，这里直接用SGP API来查询对局概要，没有设置LCU API的选项。这是因为在本脚本中，仅此处会用到对局记录查询接口，而因为这一个场景设置一个命令行参数有些小题大做了（To simplify the program, here only SGP API is used to search for a match. LCU API isn't enabled as another option. This is because in this program, only this place uses the match history endpoint, so it's not necessary to set command line arguments）
+                LoLGame_summary = game_summary
+                humanPlayers = [player for player in LoLGame_summary["json"]["participants"] if player != BOT_UUID]
+                player_df = sort_LoLGame_summary_sgp(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = 1, current_puuid = current_info["puuid"], sortStats = False, log = log)[0]
                 # player_df.insert(player_df.shape[1], "K/D/A", ["击杀得分"] + list(map(lambda i: "%d/%d/%d" %(player_df["kills"][i], player_df["deaths"][i], player_df["assists"][i]), range(1, len(player_df)))))
                 player_df = pandas.concat([player_df, pandas.DataFrame({"K/D/A": ["击杀得分"] + list(map(lambda i: "%d/%d/%d" %(player_df["kills"][i], player_df["deaths"][i], player_df["assists"][i]), range(1, len(player_df))))})], axis = 1)
-                player_df_fields_to_print: list[str] = [("playerSubteamColor" if LoLGame_info["json"]["gameMode"] == "CHERRY" else "team_color"), "riotIdGameName", "riotIdTagline", "champion_name", "K/D/A", "CS"]
+                player_df_fields_to_print: list[str] = [("playerSubteamColor" if LoLGame_summary["json"]["gameMode"] == "CHERRY" else "team_color"), "riotIdGameName", "riotIdTagline", "champion_name", "K/D/A", "CS"]
             else:
                 logPrint("未获取到有效的玩家信息。请切换其它对局。\nNo valid participant information detected. Please change another game.")
                 continue
@@ -1488,7 +1488,7 @@ async def report_player_matchHistory(connection: Connection) -> None:
                     player_puuid: str = ""
                     player_obfuscatedPuuid: str = "" #赛后结算数据中没有加密的玩家通用唯一识别码。而且实际上，赛后结算数据不会隐藏玩家的玩家的玩家通用唯一识别码（Obfuscated puuid isn't displayed in the end-of-game data. And actually, end-of-game data shouldn't hide a player's puuid）
                     report_categories: list[str] = []
-                    gameId: int = TFTGame_info["json"]["gameId"] if isTFT else LoLGame_info["json"]["gameId"]
+                    gameId: int = TFTGame_summary["json"]["gameId"] if isTFT else LoLGame_summary["json"]["gameId"]
                     comment: str = ""
                     step: int = 1
                     body_ready: bool = False #表示请求主体是否准备就绪（Marks whether the request body is ready）
@@ -7078,7 +7078,7 @@ async def sort_eog_stat_lol_metadata(connection: Connection) -> pandas.DataFrame
     eog_stat_metadata_lol_header_keys: list[str] = list(eog_stat_metadata_lol_header.keys())
     eog_stat_metadata_lol: dict[str, list[Any]] = {"项目": [], "Items": [], "值": []}
     if not (isinstance(eog_stats_block, dict) and "errorCode" in eog_stats_block):
-        LoLGame_info: dict[str, Any] = await (await connection.request("GET", "/lol-match-history/v1/games/%d" %(eog_stats_block["gameId"]))).json()
+        LoLGame_summary: dict[str, Any] = await (await connection.request("GET", "/lol-match-history/v1/games/%d" %(eog_stats_block["gameId"]))).json()
         for i in range(len(eog_stat_metadata_lol_header_keys)):
             key: str = eog_stat_metadata_lol_header_keys[i]
             eog_stat_metadata_lol["项目"].append(eog_stat_metadata_lol_header[key])
@@ -7097,9 +7097,9 @@ async def sort_eog_stat_lol_metadata(connection: Connection) -> pandas.DataFrame
                     cooldown_second: int = cooldown % 60
                     value = "%d:%02d:%02d" %(cooldown_hour, cooldown_minute, cooldown_second)
                 elif i == 45: #队列序号（`queueId`）
-                    value = "" if isinstance(LoLGame_info, dict) and "errorCode" in LoLGame_info else LoLGame_info["queueId"]
+                    value = "" if isinstance(LoLGame_summary, dict) and "errorCode" in LoLGame_summary else LoLGame_summary["queueId"]
                 elif i == 46: #游戏模式名称（`gameModeName`）
-                    value = "" if isinstance(LoLGame_info, dict) and "errorCode" in LoLGame_info else "自定义" if LoLGame_info["queueId"] == 0 else gameQueues[LoLGame_info["queueId"]]["name"]
+                    value = "" if isinstance(LoLGame_summary, dict) and "errorCode" in LoLGame_summary else "自定义" if LoLGame_summary["queueId"] == 0 else gameQueues[LoLGame_summary["queueId"]]["name"]
                 else:
                     value = eog_stats_block[key]
             else:
